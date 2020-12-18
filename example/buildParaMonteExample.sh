@@ -284,7 +284,11 @@ do
 
             #### copy MPI shared library files
 
-            if ! [ -z ${MPIEXEC_PATH+x} ] && [ "${MPI_ENABLED}" = "true" ]; then
+            if ! [ -z ${MPIEXEC_PATH+x} ] && ! [ "${MPILIB_NAME}" = "openmpi" ] && [ "${MPI_ENABLED}" = "true" ]; then
+
+                # copy files only if it is not openMPI. OpenMPI files interfer for local installations of the library on the user system. Example:
+                # mpiexec: Error: unknown option "-np"
+                # mpiexec: Error: unknown option "--oversubscribe"
 
                 #echo >&2
                 #echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the the mpiexec executable file..."

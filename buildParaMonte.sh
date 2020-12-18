@@ -2200,6 +2200,7 @@ if [ -z ${MPILIB_NAME+x} ] && [ "${MPI_ENABLED}" = "true" ]; then
     echo >&2 "${pmwarn} The ParaMonte library name will be suffixed with the generic \"${MPILIB_NAME}\" label."
     echo >&2
 fi
+export MPILIB_NAME
 
 ####################################################################################################################################
 # set ParaMonte build dir
