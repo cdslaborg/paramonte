@@ -28,39 +28,39 @@ matrix:
     ####  linux test latest OpenMPI release
     ################################################################################################################################
 
-    - os: linux
-      dist: trusty
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - cmake
-            - gcc-9
-            - g++-9
-            - gfortran-9
-            - libopenmpi-dev
-            - openmpi-bin
-      script:
-        - pmRootDir="$(pwd)"
-        - pmBinDir="${pmRootDir}/bin/"
-        - echo "pmRootDir = ${pmRootDir}"
-        - echo "pmBinDir = ${pmBinDir}"
-        - if ! [ -d "${pmBinDir}" ]; then mkdir -p ${pmRootDir}/bin/; fi
-        - echo "$(dpkg -L libopenmpi-dev)"
-        - echo "$(dpkg -L openmpi-bin)"
-        - MPIEXEC_PATH="$(dpkg -L openmpi-bin | egrep bin/mpiexec.openmpi)"
-        - MPI_BIN_DIR="$(dirname "${MPIEXEC_PATH}")"
-        - MPI_LIB_DIR="${MPI_BIN_DIR}/../lib"
-        - PATH="${MPI_BIN_DIR}:${PATH}"
-        - export LD_LIBRARY_PATH="${MPI_LIB_DIR}:${LD_LIBRARY_PATH}"
-        - "wget https://github.com/cdslaborg/paramonte/releases/latest/download/libparamonte_c_linux_x64_gnu_release_dynamic_heap_openmpi.tar.gz"
-        - "wget https://github.com/cdslaborg/paramonte/releases/latest/download/libparamonte_cpp_linux_x64_gnu_release_dynamic_heap_openmpi.tar.gz"
-        - "wget https://github.com/cdslaborg/paramonte/releases/latest/download/libparamonte_fortran_linux_x64_gnu_release_dynamic_heap_openmpi.tar.gz"
-        - ls libparamonte*.tar.gz* | xargs -i tar xvzf {}
-        - cd libparamonte_c_linux_x64_gnu_release_dynamic_heap_openmpi && ./build.sh && ./run.sh --nproc 2 && cd ..
-        - cd libparamonte_cpp_linux_x64_gnu_release_dynamic_heap_openmpi && ./build.sh && ./run.sh --nproc 2 && cd ..
-        - cd libparamonte_fortran_linux_x64_gnu_release_dynamic_heap_openmpi && ./build.sh && ./run.sh --nproc 2 && cd ..
+#    - os: linux
+#      dist: trusty
+#      addons:
+#        apt:
+#          sources:
+#            - ubuntu-toolchain-r-test
+#          packages:
+#            - cmake
+#            - gcc-9
+#            - g++-9
+#            - gfortran-9
+#            - libopenmpi-dev
+#            - openmpi-bin
+#      script:
+#        - pmRootDir="$(pwd)"
+#        - pmBinDir="${pmRootDir}/bin/"
+#        - echo "pmRootDir = ${pmRootDir}"
+#        - echo "pmBinDir = ${pmBinDir}"
+#        - if ! [ -d "${pmBinDir}" ]; then mkdir -p ${pmRootDir}/bin/; fi
+#        - echo "$(dpkg -L libopenmpi-dev)"
+#        - echo "$(dpkg -L openmpi-bin)"
+#        - MPIEXEC_PATH="$(dpkg -L openmpi-bin | egrep bin/mpiexec.openmpi)"
+#        - MPI_BIN_DIR="$(dirname "${MPIEXEC_PATH}")"
+#        - MPI_LIB_DIR="${MPI_BIN_DIR}/../lib"
+#        - PATH="${MPI_BIN_DIR}:${PATH}"
+#        - export LD_LIBRARY_PATH="${MPI_LIB_DIR}:${LD_LIBRARY_PATH}"
+#        - "wget https://github.com/cdslaborg/paramonte/releases/latest/download/libparamonte_c_linux_x64_gnu_release_dynamic_heap_openmpi.tar.gz"
+#        - "wget https://github.com/cdslaborg/paramonte/releases/latest/download/libparamonte_cpp_linux_x64_gnu_release_dynamic_heap_openmpi.tar.gz"
+#        - "wget https://github.com/cdslaborg/paramonte/releases/latest/download/libparamonte_fortran_linux_x64_gnu_release_dynamic_heap_openmpi.tar.gz"
+#        - ls libparamonte*.tar.gz* | xargs -i tar xvzf {}
+#        - cd libparamonte_c_linux_x64_gnu_release_dynamic_heap_openmpi && ./build.sh && ./run.sh --nproc 2 && cd ..
+#        - cd libparamonte_cpp_linux_x64_gnu_release_dynamic_heap_openmpi && ./build.sh && ./run.sh --nproc 2 && cd ..
+#        - cd libparamonte_fortran_linux_x64_gnu_release_dynamic_heap_openmpi && ./build.sh && ./run.sh --nproc 2 && cd ..
 
     ################################################################################################################################
     ####  linux test latest MPICH release
