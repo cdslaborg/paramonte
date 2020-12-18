@@ -43,7 +43,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 +   **Windows**: Intel Parallel Studio Version 19.1.1.216 Build 20200306 / Intel(R) MPI Library 2019 Update 7 for Windows  
 +   **Linux**: Intel Parallel Studio Version 19.1.1.217 20200306 / Intel(R) MPI Library for Linux OS, Version 2019 Update 7 Build 20200312
-+   **Linux**: GNU 10.2.0 / Open-MPI 4.0.3  
++   **Linux**: GNU 10.1.0 / Open-MPI 4.0.3  
 +   **Linux**: GNU 10.1.0 / MPICH 3.2  
 +   **macOS**: Intel Parallel Studio Version 19.1.0.216 20200306  
 +   **macOS**: GNU 10.2.0 / Open-MPI 4.0.5  
