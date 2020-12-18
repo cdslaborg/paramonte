@@ -1907,7 +1907,7 @@ if [ "${PMCS}" = "gnu" ] && ( [[ "${Fortran_COMPILER_PATH}" =~ .*"build/prerequi
     } > ${SETUP_FILE_PATH}
     chmod +x ${SETUP_FILE_PATH}
 
-    if [ -f "${CAF_LOCAL_INSTALLATION_SETUP_FILE}" ]; then
+    if [ -f "${CAF_LOCAL_INSTALLATION_SETUP_FILE}" ] && [ "${CAF_ENABLED}" = "true" ]; then
         {
             echo ""
             echo "source ${CAF_LOCAL_INSTALLATION_SETUP_FILE}"
@@ -1933,7 +1933,7 @@ if [ "${PMCS}" = "gnu" ] && ( [[ "${Fortran_COMPILER_PATH}" =~ .*"build/prerequi
     #### add the GNU installation paths to the setup file
     #####################################################
 
-    if [ -d "${GNU_LOCAL_INSTALLATION_BIN_DIR}" ]; then
+    if [ -d "${GNU_LOCAL_INSTALLATION_BIN_DIR}" ] && [[ "${Fortran_COMPILER_PATH}" =~ .*"build/prerequisites/prerequisites/installations".* ]]; then
         if [ -z ${PATH+x} ]; then
             PATH="${GNU_LOCAL_INSTALLATION_BIN_DIR}"
         else
@@ -1994,104 +1994,114 @@ if [ "${PMCS}" = "gnu" ] && ( [[ "${Fortran_COMPILER_PATH}" =~ .*"build/prerequi
     #### add path to local MPI
     ##########################
 
-    if [ -d "${MPI_LOCAL_INSTALLATION_BIN_DIR}" ]; then
-        if [ -z ${PATH+x} ]; then
-            PATH="${MPI_LOCAL_INSTALLATION_BIN_DIR}"
-        else
-            if [[ ":$PATH:" != *":${MPI_LOCAL_INSTALLATION_BIN_DIR}:"* ]]; then
-                PATH="${MPI_LOCAL_INSTALLATION_BIN_DIR}:${PATH}"
-            fi
-        fi
-        {
-            echo "if [ -z \${PATH+x} ]; then"
-            echo "    export PATH=\"${MPI_LOCAL_INSTALLATION_BIN_DIR}\""
-            echo "else"
-            echo "    if [[ \":\$PATH:\" != *\":${MPI_LOCAL_INSTALLATION_BIN_DIR}:\"* ]]; then"
-            echo "        export PATH=\"${MPI_LOCAL_INSTALLATION_BIN_DIR}:\${PATH}\""
-            echo "    fi"
-            echo "fi"
-        } >> ${SETUP_FILE_PATH}
-    fi
+    if [[ "${MPIEXEC_PATH}" =~ .*"build/prerequisites/prerequisites/installations".* ]]; then
 
-    if [ -d "${MPI_LOCAL_INSTALLATION_LIB_DIR}" ]; then
-        if [ -z ${LD_LIBRARY_PATH+x} ]; then
-            LD_LIBRARY_PATH="${MPI_LOCAL_INSTALLATION_LIB_DIR}"
-        else
-            if [[ ":$LD_LIBRARY_PATH:" != *":${MPI_LOCAL_INSTALLATION_LIB_DIR}:"* ]]; then
-                LD_LIBRARY_PATH="${MPI_LOCAL_INSTALLATION_LIB_DIR}:${LD_LIBRARY_PATH}"
+        if [ -d "${MPI_LOCAL_INSTALLATION_BIN_DIR}" ]; then
+            if [ -z ${PATH+x} ]; then
+                PATH="${MPI_LOCAL_INSTALLATION_BIN_DIR}"
+            else
+                if [[ ":$PATH:" != *":${MPI_LOCAL_INSTALLATION_BIN_DIR}:"* ]]; then
+                    PATH="${MPI_LOCAL_INSTALLATION_BIN_DIR}:${PATH}"
+                fi
             fi
+            {
+                echo "if [ -z \${PATH+x} ]; then"
+                echo "    export PATH=\"${MPI_LOCAL_INSTALLATION_BIN_DIR}\""
+                echo "else"
+                echo "    if [[ \":\$PATH:\" != *\":${MPI_LOCAL_INSTALLATION_BIN_DIR}:\"* ]]; then"
+                echo "        export PATH=\"${MPI_LOCAL_INSTALLATION_BIN_DIR}:\${PATH}\""
+                echo "    fi"
+                echo "fi"
+            } >> ${SETUP_FILE_PATH}
         fi
-        {
-            echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
-            echo "    export LD_LIBRARY_PATH=\"${MPI_LOCAL_INSTALLATION_LIB_DIR}\""
-            echo "else"
-            echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${MPI_LOCAL_INSTALLATION_LIB_DIR}:\"* ]]; then"
-            echo "        export LD_LIBRARY_PATH=\"${MPI_LOCAL_INSTALLATION_LIB_DIR}:\${LD_LIBRARY_PATH}\""
-            echo "    fi"
-            echo "fi"
-        } >> ${SETUP_FILE_PATH}
-    fi
 
-    if [ -d "${MPI_LOCAL_INSTALLATION_LIB64_DIR}" ]; then
-        if [ -z ${LD_LIBRARY_PATH+x} ]; then
-            LD_LIBRARY_PATH="${MPI_LOCAL_INSTALLATION_LIB64_DIR}"
-        else
-            if [[ ":$LD_LIBRARY_PATH:" != *":${MPI_LOCAL_INSTALLATION_LIB64_DIR}:"* ]]; then
-                LD_LIBRARY_PATH="${MPI_LOCAL_INSTALLATION_LIB64_DIR}:${LD_LIBRARY_PATH}"
+        if [ -d "${MPI_LOCAL_INSTALLATION_LIB_DIR}" ]; then
+            if [ -z ${LD_LIBRARY_PATH+x} ]; then
+                LD_LIBRARY_PATH="${MPI_LOCAL_INSTALLATION_LIB_DIR}"
+            else
+                if [[ ":$LD_LIBRARY_PATH:" != *":${MPI_LOCAL_INSTALLATION_LIB_DIR}:"* ]]; then
+                    LD_LIBRARY_PATH="${MPI_LOCAL_INSTALLATION_LIB_DIR}:${LD_LIBRARY_PATH}"
+                fi
             fi
+            {
+                echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
+                echo "    export LD_LIBRARY_PATH=\"${MPI_LOCAL_INSTALLATION_LIB_DIR}\""
+                echo "else"
+                echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${MPI_LOCAL_INSTALLATION_LIB_DIR}:\"* ]]; then"
+                echo "        export LD_LIBRARY_PATH=\"${MPI_LOCAL_INSTALLATION_LIB_DIR}:\${LD_LIBRARY_PATH}\""
+                echo "    fi"
+                echo "fi"
+            } >> ${SETUP_FILE_PATH}
         fi
-        {
-            echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
-            echo "    export LD_LIBRARY_PATH=\"${MPI_LOCAL_INSTALLATION_LIB64_DIR}\""
-            echo "else"
-            echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${MPI_LOCAL_INSTALLATION_LIB64_DIR}:\"* ]]; then"
-            echo "        export LD_LIBRARY_PATH=\"${MPI_LOCAL_INSTALLATION_LIB64_DIR}:\${LD_LIBRARY_PATH}\""
-            echo "    fi"
-            echo "fi"
-        } >> ${SETUP_FILE_PATH}
+
+        if [ -d "${MPI_LOCAL_INSTALLATION_LIB64_DIR}" ]; then
+            if [ -z ${LD_LIBRARY_PATH+x} ]; then
+                LD_LIBRARY_PATH="${MPI_LOCAL_INSTALLATION_LIB64_DIR}"
+            else
+                if [[ ":$LD_LIBRARY_PATH:" != *":${MPI_LOCAL_INSTALLATION_LIB64_DIR}:"* ]]; then
+                    LD_LIBRARY_PATH="${MPI_LOCAL_INSTALLATION_LIB64_DIR}:${LD_LIBRARY_PATH}"
+                fi
+            fi
+            {
+                echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
+                echo "    export LD_LIBRARY_PATH=\"${MPI_LOCAL_INSTALLATION_LIB64_DIR}\""
+                echo "else"
+                echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${MPI_LOCAL_INSTALLATION_LIB64_DIR}:\"* ]]; then"
+                echo "        export LD_LIBRARY_PATH=\"${MPI_LOCAL_INSTALLATION_LIB64_DIR}:\${LD_LIBRARY_PATH}\""
+                echo "    fi"
+                echo "fi"
+            } >> ${SETUP_FILE_PATH}
+        fi
+
     fi
 
     ############################
     #### add path to caf wrapper
     ############################
 
-    if [ -d "${CAF_LOCAL_INSTALLATION_BIN_DIR}" ]; then
-        if [ -z ${PATH+x} ]; then
-            PATH="${CAF_LOCAL_INSTALLATION_BIN_DIR}"
-        else
-            if [[ ":$PATH:" != *":${CAF_LOCAL_INSTALLATION_BIN_DIR}:"* ]]; then
-                PATH="${CAF_LOCAL_INSTALLATION_BIN_DIR}:${PATH}"
+    if [ "${CAF_ENABLED}" = "true" ]; then
+
+        if [ -d "${CAF_LOCAL_INSTALLATION_BIN_DIR}" ]; then
+            if [ -z ${PATH+x} ]; then
+                PATH="${CAF_LOCAL_INSTALLATION_BIN_DIR}"
+            else
+                if [[ ":$PATH:" != *":${CAF_LOCAL_INSTALLATION_BIN_DIR}:"* ]]; then
+                    PATH="${CAF_LOCAL_INSTALLATION_BIN_DIR}:${PATH}"
+                fi
             fi
+            {
+                echo "if [ -z \${PATH+x} ]; then"
+                echo "    export PATH=\"${CAF_LOCAL_INSTALLATION_BIN_DIR}\""
+                echo "else"
+                echo "    if [[ \":\$PATH:\" != *\":${CAF_LOCAL_INSTALLATION_BIN_DIR}:\"* ]]; then"
+                echo "        export PATH=\"${CAF_LOCAL_INSTALLATION_BIN_DIR}:\${PATH}\""
+                echo "    fi"
+                echo "fi"
+            } >> ${SETUP_FILE_PATH}
         fi
-        {
-            echo "if [ -z \${PATH+x} ]; then"
-            echo "    export PATH=\"${CAF_LOCAL_INSTALLATION_BIN_DIR}\""
-            echo "else"
-            echo "    if [[ \":\$PATH:\" != *\":${CAF_LOCAL_INSTALLATION_BIN_DIR}:\"* ]]; then"
-            echo "        export PATH=\"${CAF_LOCAL_INSTALLATION_BIN_DIR}:\${PATH}\""
-            echo "    fi"
-            echo "fi"
-        } >> ${SETUP_FILE_PATH}
+
+        if [ -d "${CAF_LOCAL_INSTALLATION_LIB_DIR}" ]; then
+            if [ -z ${LD_LIBRARY_PATH+x} ]; then
+                LD_LIBRARY_PATH="${CAF_LOCAL_INSTALLATION_LIB_DIR}"
+            else
+                if [[ ":$LD_LIBRARY_PATH:" != *":${CAF_LOCAL_INSTALLATION_LIB_DIR}:"* ]]; then
+                    LD_LIBRARY_PATH="${CAF_LOCAL_INSTALLATION_LIB_DIR}:${LD_LIBRARY_PATH}"
+                fi
+            fi
+            {
+                echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
+                echo "    export LD_LIBRARY_PATH=\"${CAF_LOCAL_INSTALLATION_LIB_DIR}\""
+                echo "else"
+                echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${CAF_LOCAL_INSTALLATION_LIB_DIR}:\"* ]]; then"
+                echo "        export LD_LIBRARY_PATH=\"${CAF_LOCAL_INSTALLATION_LIB_DIR}:\${LD_LIBRARY_PATH}\""
+                echo "    fi"
+                echo "fi"
+            } >> ${SETUP_FILE_PATH}
+        fi
+
     fi
 
-    if [ -d "${CAF_LOCAL_INSTALLATION_LIB_DIR}" ]; then
-        if [ -z ${LD_LIBRARY_PATH+x} ]; then
-            LD_LIBRARY_PATH="${CAF_LOCAL_INSTALLATION_LIB_DIR}"
-        else
-            if [[ ":$LD_LIBRARY_PATH:" != *":${CAF_LOCAL_INSTALLATION_LIB_DIR}:"* ]]; then
-                LD_LIBRARY_PATH="${CAF_LOCAL_INSTALLATION_LIB_DIR}:${LD_LIBRARY_PATH}"
-            fi
-        fi
-        {
-            echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
-            echo "    export LD_LIBRARY_PATH=\"${CAF_LOCAL_INSTALLATION_LIB_DIR}\""
-            echo "else"
-            echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${CAF_LOCAL_INSTALLATION_LIB_DIR}:\"* ]]; then"
-            echo "        export LD_LIBRARY_PATH=\"${CAF_LOCAL_INSTALLATION_LIB_DIR}:\${LD_LIBRARY_PATH}\""
-            echo "    fi"
-            echo "fi"
-        } >> ${SETUP_FILE_PATH}
-    fi
+    ######################################
 
     export PATH
     export LD_LIBRARY_PATH
