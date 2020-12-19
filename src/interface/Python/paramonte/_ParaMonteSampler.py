@@ -475,16 +475,16 @@ class ParaMonteSampler:
 
             if "LD_LIBRARY_PATH" not in os.environ:
                 os.environ["LD_LIBRARY_PATH"] = "."
-                if self.reportEnabled and pm.platform.isLinux:
-                    pm.warn( msg   = "LD_LIBRARY_PATH environmental variable is not defined in " + newline
-                                    + "your Python session. Consider running the following command " + newline
-                                    + "in your Bash shell before reopening Python and using ParaMonte: " + newline
-                                    + newline
-                                    + "    export LD_LIBRARY_PATH=."
-                            , methodName = self._methodName
-                            , marginTop = 1
-                            , marginBot = 1
-                            )
+                #if self.reportEnabled and pm.platform.isLinux:
+                #    pm.warn( msg   = "LD_LIBRARY_PATH environmental variable is not defined in " + newline
+                #                    + "your Python session. Consider running the following command " + newline
+                #                    + "in your Bash shell before reopening Python and using ParaMonte: " + newline
+                #                    + newline
+                #                    + "    export LD_LIBRARY_PATH=."
+                #            , methodName = self._methodName
+                #            , marginTop = 1
+                #            , marginBot = 1
+                #            )
             libdir = "/usr/lib"
             if os.path.isdir(libdir):
                 os.environ["LD_LIBRARY_PATH"]  = libdir + os.pathsep + os.environ["LD_LIBRARY_PATH"]
