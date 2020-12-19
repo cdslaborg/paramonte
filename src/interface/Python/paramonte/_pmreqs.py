@@ -1987,11 +1987,11 @@ def checkForUpdate(package = "paramonte"):
                 + "You can upgrade to the latest version by typing the following " + newline
                 + "on your Bash terminal or Anaconda command prompt: " + newline
                 + newline
-                + "    pip install --user --upgrade " + package + newline
+                + "    pip3 install --user --upgrade " + package + newline
                 + newline
                 + "To upgrade from within your Jupyter or IPython session, try, " + newline
                 + newline
-                + "    !pip install --user --upgrade " + package + newline
+                + "    !pip3 install --user --upgrade " + package + newline
                 + newline
                 + "To see the latest changes to the ParaMonte::Python library, visit, " + newline
                 + newline
