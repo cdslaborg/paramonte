@@ -3265,7 +3265,7 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                             # postprocess the html files
 
                             pmlinkopen='<a href="https:\/\/www.cdslab.org\/paramonte\/" target="_blank">'
-                            pmlinklogo='<img alt="The ParaMonte Documentation Website" src="https:\/\/www.cdslab.org\/paramonte\/notes\/api\/kernel\/logo.png"\/>'
+                            pmlinklogo='<img alt="The ParaMonte Documentation Website" src="https:\/\/cdslaborg.github.io\/paramonte-kernel-doc\/html\/logo.png"\/>'
                             pmlinkclose='<\/a>'
 
                             original='<tr><td class="title">LCOV - code coverage report<\/td><\/tr>'
