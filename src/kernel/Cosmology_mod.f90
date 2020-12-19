@@ -217,8 +217,10 @@ contains
                                 , ierr              = ierr                      &
                                 )
         if (ierr/=0_IK) then
+            ! LCOV_EXCL_START
             write(output_unit,"(A)") ErrorMessage(ierr)
             error stop
+            ! LCOV_EXCL_STOP
         end if
         lookBackTime = HUBBLE_TIME_GYRS * lookBackTime
 
