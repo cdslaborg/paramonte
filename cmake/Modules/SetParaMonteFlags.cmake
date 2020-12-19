@@ -903,7 +903,14 @@ if (HEAP_ARRAY_ENABLED)
     elseif(gnu_compiler)
         #set(FCL_FLAGS "${FCL_FLAGS}" -fmax-stack-var-size=10 )
         # -frecursive overwrites -fmax-stack-var-size=10 and causes all allocations to happen on stack.
-        set(FC_LIB_FLAGS "${FC_LIB_FLAGS}" -frecursive ) # -fmax-stack-var-size=10
+        #set(FC_LIB_FLAGS "${FC_LIB_FLAGS}" -frecursive ) # -fmax-stack-var-size=10
+        # @todo:
+        # Strangely, -frecursive flag causes deadlock with sampler tests in Coarray mode.
+        # Therefore, the -frecursive flag is reversed to -fmax-stack-var-size=10 until the behavior is understood.
+        # The use of -frecursive was based on the GFortran-10 warning message about unsafe storage move from stack to static storage.
+        # See also this thread: https://comp.lang.fortran.narkive.com/WApl1KMt/gfortran-stack-size-warning#post4
+        # Perhaps adding `non_recursive` to functions would fix this warning message.
+        set(FC_LIB_FLAGS "${FC_LIB_FLAGS}" -fmax-stack-var-size=10 )
     endif()
 endif()
 
