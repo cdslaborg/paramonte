@@ -119,6 +119,7 @@ Thumbs.db
 #########################
 
 **/src/kernel/ParaMonte_mod@version@kernel.inc.f90
+**/getCompilerVersion.f90
 **/paramonte-kernel-doc
 **/.ipynb_checkpoints
 **/benchmark
