@@ -563,6 +563,9 @@ if (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
 
         set(FL_LIB_FLAGS 
             -fPIC -shared -Wl,-rpath=.
+            # -static-libgfortran -static-libgcc
+            # It seems like static linking with GCC/GFortran can only be a wishful dream.
+            # It works on neither Linux nor macOS. So, better to not specify it at all.
             CACHE STRING "GNU Fortran linker dynamic library flags" )
 
     else(intel_compiler)
@@ -856,13 +859,10 @@ elseif (gnu_compiler)
     # The problem still persists in debug mode. Therefore, when gfortran is 10, debug mode is disabled.
     #set(FCL_FLAGS_DEFAULT -std=gnu -ffree-line-length-none -fallow-argument-mismatch CACHE STRING "GNU Fortran default compiler flags" )
 
-    # It seems like static linking with GCC/GFortran can only be a wishful dream.
-    # It works on neither Linux nor macOS. So, better to not specify it at all.
-
-    set(FCL_FLAGS_DEFAULT -std=legacy -ffree-line-length-none ) #-static-libgfortran -static-libgcc ) # CACHE STRING "GNU Fortran default compiler flags" )
+    set(FCL_FLAGS_DEFAULT -std=legacy -ffree-line-length-none ) # CACHE STRING "GNU Fortran default compiler flags" )
     set(CCL_FLAGS_DEFAULT -ffree-line-length-none )# CACHE STRING "GNU CXX default compiler flags" )
 
-    set(FL_FLAGS -fopt-info-all=GFortranOptReport.txt ) #-static-libgfortran -static-libgcc )
+    set(FL_FLAGS -fopt-info-all=GFortranOptReport.txt )
 
     if (MT_ENABLED)
         set(FCL_FLAGS_DEFAULT "${FCL_FLAGS_DEFAULT}" -pthread )
