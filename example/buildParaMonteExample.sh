@@ -230,9 +230,12 @@ do
 
         #### GNU
 
-        if [ "${PMCS}" = "gnu" ] && ! [ "${CAF_ENABLED}" = "true" ]; then # caf does not have lib dependency  && ! [ "${isMacOS}" = "true" ]
+        if [ "${PMCS}" = "gnu" ] && ! [ "${CAF_ENABLED}" = "true" ] && ! [ "${isMacOS}" = "true" ]; then # caf does not have lib dependency
 
             #### copy Fortran compiler shared library files
+
+            # On macOS, simply copying the dependencies does not work.
+            # @todo A better strategy is to ask the user to install the relevant GFortran version on their system on their behalf via the build script.
 
             if ! [ -z ${Fortran_COMPILER_PATH+x} ]; then
 
