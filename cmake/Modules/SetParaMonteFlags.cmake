@@ -859,7 +859,7 @@ elseif (gnu_compiler)
     set(FCL_FLAGS_DEFAULT -std=legacy -ffree-line-length-none ) # CACHE STRING "GNU Fortran default compiler flags" )
     set(CCL_FLAGS_DEFAULT -ffree-line-length-none )# CACHE STRING "GNU CXX default compiler flags" )
 
-    set(FL_FLAGS -fopt-info-all=GFortranOptReport.txt ) # set Fortran linker flags for release mode
+    set(FL_FLAGS -fopt-info-all=GFortranOptReport.txt -static-libgfortran -static-libgcc )
 
     if (MT_ENABLED)
         set(FCL_FLAGS_DEFAULT "${FCL_FLAGS_DEFAULT}" -pthread )
