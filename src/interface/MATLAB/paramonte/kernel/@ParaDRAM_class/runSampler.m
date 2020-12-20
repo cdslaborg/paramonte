@@ -35,7 +35,7 @@
 %%%%   work (education/research/industry/development/...) by citing the ParaMonte 
 %%%%   library as described on this page:
 %%%%
-%%%%       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
+%%%%       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md
 %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -133,20 +133,20 @@ function runSampler ( self          ...
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % Now depending on the requested parallelism type, determine the process master/slave type and open output files
+    % Now depending on the requested parallelism type, determine the process leader/rooter type and open output files
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    self.Image.isMaster     = false;
+    self.Image.isLeader     = false;
     if self.SpecBase.parallelizationModel.isSinglChain
-        if self.Image.isFirst, self.Image.isMaster = true; end
+        if self.Image.isFirst, self.Image.isLeader = true; end
     elseif self.SpecBase.parallelizationModel.isMultiChain
-        self.Image.isMaster = true;
+        self.Image.isLeader = true;
     else
         self.Err.msg        = FUNCTION_NAME + ": Error occurred. Unknown parallelism requested via the input variable parallelizationModel='"...
                             + self.SpecBase.parallelizationModel.val + "'.";
         self.Err.abort();
     end
-    self.Image.isNotMaster  = ~self.Image.isMaster;
+    self.Image.isRooter  = ~self.Image.isLeader;
 
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -204,7 +204,7 @@ function runSampler ( self          ...
                                     ;
         self.Chain.writeHeader ( ndim, self.ChainFile.unit, self.SpecBase.chainFileFormat.isBinary, self.ChainFile.headerFormat);
     else
-        if self.Image.isMaster, fgets(self.TimeFile.unit); end   % read the header line of the time file, only by master images
+        if self.Image.isLeader, fgets(self.TimeFile.unit); end   % read the header line of the time file, only by leader images
         %self.Chain.getLenHeader(ndim, self.SpecBase.chainFileFormat.isBinary, self.ChainFile.headerFormat);
     end
 
@@ -225,14 +225,14 @@ function runSampler ( self          ...
     % run ParaDRAM kernel
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    if self.isFreshRun && self.Image.isMaster
+    if self.isFreshRun && self.Image.isLeader
         self.Decor.writeDecoratedText   ( " " + newline + "Starting " + self.name + " sampling - " + DateTime_class.getNiceDateTime() + newline ...
                                         , [], [], [], [], 1, 1, self.LogFile.unit, 1 ) ;
     end
 
     self.runKernel(getLogFunc);
 
-    if self.isFreshRun && self.Image.isMaster
+    if self.isFreshRun && self.Image.isLeader
         self.Decor.writeDecoratedText   ( " " + newline + "Exiting " + self.name + " sampling - " + DateTime_class.getNiceDateTime() + newline  ...
                                         , [], [], [], [], 1, 1, self.LogFile.unit, 1 ) ;
     end
@@ -247,7 +247,7 @@ function runSampler ( self          ...
     self.Err.outputUnit     = self.LogFile.unit;
     spaces8                 = Decoration_class.TAB + Decoration_class.TAB;
 
-    if self.Image.isMaster  % blockMasterPostProcessing
+    if self.Image.isLeader  % blockLeaderPostProcessing
 
         logFileColWidthStr = num2str(max(self.SpecBase.outputRealPrecision.val, self.SpecBase.variableNameList.MaxLen.val) + 9);
         formatStr   = "%"   +       logFileColWidthStr              + "s";
@@ -838,7 +838,7 @@ function runSampler ( self          ...
         fclose(self.TimeFile.unit);
         fclose(self.LogFile.unit);
 
-    end % blockMasterPostProcessing
+    end % blockLeaderPostProcessing
 
     self.Err.msg    = "To read the generated output files, try the following:" + newline ...
                     + newline ...

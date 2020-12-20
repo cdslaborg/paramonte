@@ -35,7 +35,7 @@
 !!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
-!!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
+!!!!       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md
 !!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -378,7 +378,7 @@ contains
         call getForkJoinSpeedup ( successProb = ForkJoin%SuccessProb%effective &                ! max(mcmcSamplingEfficiency, ForkJoin%SuccessProb%PowellMinimum%xmin(1)) & ! avoid unstable estimates of the effective efficiency.
                                 , seqSecTime = epsilon(seqSecTime) &                            ! time cost of the sequential section of the code, which is negligible here.
                                 , parSecTime = parSecTime &                                     ! the serial runtime for the parallel section of the code.
-                                , comSecTimePerProc = comSecTime / (processCount - 1) &         ! the communication overhead for each additional image beyond master.
+                                , comSecTimePerProc = comSecTime / (processCount - 1) &         ! the communication overhead for each additional image beyond the leader.
                                 , minMaxNumProc = 2 * processCount &                            ! speedup will be computed at least up to this process count, if not more.
                                 , Speedup = ForkJoin%Speedup%Scaling &                          ! returned Speedup.
                                 , lenSpeedup = ForkJoin%Speedup%count &                         ! length of the returned `Speedup%Scaling` vector.

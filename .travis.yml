@@ -3,7 +3,7 @@ sudo: true
 
 branches:
   only:
-    - master
+    - main
     - dev
 
 before_cache:

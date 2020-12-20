@@ -35,7 +35,7 @@
 !!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
-!!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
+!!!!       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md
 !!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -413,7 +413,7 @@ contains
     !> @param[inout]    self    :   An object of class [ParaMonte_type](@ref paramonte_type).
     !>
     !> \remark
-    !> This routine has to be called by all master images (processes).
+    !> This routine has to be called by all leader images (processes).
     subroutine addSplashScreen(self)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: addSplashScreen
@@ -565,7 +565,7 @@ contains
         ! Get system info by all images. why? Not anymore.
         ! On many parallel processors via singlChain this leads to
         ! the creation of thousands of files on the system, simultaneously.
-        ! this is not needed by any process other than the masters.
+        ! this is not needed by any process other than the leader images.
 
         self%SystemInfo = SystemInfo_type(OS = self%OS, path = self%SpecBase%SystemInfoFilePath%val)
         if (self%SystemInfo%Err%occurred) then
@@ -598,7 +598,7 @@ contains
     !> @param[inout]    self    :   An object of class [ParaMonte_type](@ref paramonte_type).
     !>
     !> \remark
-    !> This routine has to be called by all master images (processes).
+    !> This routine has to be called by all leader images (processes).
     subroutine noteUserAboutEnvSetup(self)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: noteUserAboutEnvSetup
@@ -835,7 +835,7 @@ contains
 
         if (self%Image%isFirst) call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = "Searching for previous runs of " // self%name // "..." )
 
-        ! this block could be all executed by only the master images
+        ! this block could be all executed by only the leader images
 
         self%LogFile%Path%Ext = FILE_EXT%ascii
         self%TimeFile%Path%Ext = FILE_EXT%ascii

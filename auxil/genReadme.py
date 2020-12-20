@@ -36,7 +36,7 @@
 ####   work (education/research/industry/development/...) by citing the ParaMonte 
 ####   library as described on this page:
 ####
-####       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
+####       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md
 ####
 ####################################################################################################################################
 ####################################################################################################################################
@@ -52,18 +52,18 @@ banner = """
 <a href="https://github.com/cdslaborg/paramonte/releases" target="_blank"><img src="https://img.shields.io/github/v/release/cdslaborg/paramonte?color=orange&label=kernel%20release&style=flat-square" alt="GitHub release (latest by date)" /></a> 
 <a href="https://github.com/cdslaborg/paramonte/releases" target="_blank"><img src="https://img.shields.io/github/release-date/cdslaborg/paramonte?color=orange&style=flat-square" alt="GitHub Release Date" /></a> 
 <a href="https://pypi.org/project/paramonte/" target="_blank"><img src="https://img.shields.io/pypi/v/paramonte?color=orange&label=pypi%20release&style=flat-square" alt="PyPI - release version" /></a> 
-<a href="https://travis-ci.org/cdslaborg/paramonte" target="_blank"><img src="https://travis-ci.org/cdslaborg/paramonte.svg?branch=master&style=flat-square" alt="Build Status" /></a> 
+<a href="https://travis-ci.org/cdslaborg/paramonte" target="_blank"><img src="https://travis-ci.org/cdslaborg/paramonte.svg?branch=main&style=flat-square" alt="Build Status" /></a> 
 <a href="https://github.com/cdslaborg/paramonte/releases" target="_blank"><img src="https://img.shields.io/pypi/status/paramonte?style=flat-square" alt="PyPI - Status" /></a>
 <a href="https://lgtm.com/projects/g/cdslaborg/paramonte/?mode=list" target="_blank"><img src="https://img.shields.io/lgtm/grade/python/github/cdslaborg/paramonte?label=code%20quality&style=flat-square&color=brightgreen" alt="LGTM Grade" /></a>
 <a href="https://github.com/cdslaborg/paramonte/issues" target="_blank"><img src="https://img.shields.io/github/issues/cdslaborg/paramonte?style=flat-square" alt="GitHub issues" /></a>
-<a href="https://github.com/cdslaborg/paramonte/tree/master/src/interface" target="_blank"><img src="https://img.shields.io/badge/available%20in-C%20%2F%20C%2B%2B%20%2F%20Fortran%20%2F%20MATLAB%20%2F%20Python-brightgreen?style=flat-square" alt="supported languages" /></a>
+<a href="https://github.com/cdslaborg/paramonte/tree/main/src/interface" target="_blank"><img src="https://img.shields.io/badge/available%20in-C%20%2F%20C%2B%2B%20%2F%20Fortran%20%2F%20MATLAB%20%2F%20Python-brightgreen?style=flat-square" alt="supported languages" /></a>
 <a href="https://github.com/cdslaborg/paramonte/graphs/traffic" target="_blank"><img src="https://img.shields.io/github/downloads/cdslaborg/paramonte/total?color=brightgreen&label=kernel%20downloads&style=flat-square" alt="GitHub All Releases" /></a>
 <a href="https://libraries.io/pypi/paramonte" target="_blank"><img src="https://img.shields.io/pypi/dm/paramonte?color=brightgreen&label=pypi%20downloads&style=flat-square" alt="PyPI - Downloads" /></a>
 <a href="https://www.mathworks.com/matlabcentral/fileexchange/78946-paramonte" target="_blank"><img src="https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg" alt="View ParaMonte on File Exchange" /></a>  
 <a href="https://github.com/cdslaborg/paramonte/" target="_blank"><img src="https://img.shields.io/github/repo-size/cdslaborg/paramonte?style=flat-square" alt="GitHub repo size" /></a>
-<a href="https://github.com/cdslaborg/paramonte/tree/master/src/interface" target="_blank"><img src="https://img.shields.io/github/languages/count/cdslaborg/paramonte?style=flat-square" alt="GitHub language count" /></a>
+<a href="https://github.com/cdslaborg/paramonte/tree/main/src/interface" target="_blank"><img src="https://img.shields.io/github/languages/count/cdslaborg/paramonte?style=flat-square" alt="GitHub language count" /></a>
 <a href="https://github.com/cdslaborg/paramonte/graphs/contributors" target="_blank"><img src="https://img.shields.io/github/commit-activity/y/cdslaborg/paramonte?style=flat-square" alt="GitHub commit activity" /></a>
-<a href="https://github.com/cdslaborg/paramonte/commits/master" target="_blank"><img src="https://img.shields.io/github/last-commit/cdslaborg/paramonte?color=blue&style=flat-square" alt="GitHub last commit" /></a>
+<a href="https://github.com/cdslaborg/paramonte/commits/main" target="_blank"><img src="https://img.shields.io/github/last-commit/cdslaborg/paramonte?color=blue&style=flat-square" alt="GitHub last commit" /></a>
 <a href="https://zenodo.org/record/4076479#.X4Stte17ng4" target="_blank"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.4076479.svg" alt="citations and references" /></a>
 <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><img src="https://img.shields.io/badge/reference-%20%09arXiv%3A1209.4647-blueviolet?style=flat-square" alt="citations and references" /></a>
 <a href="https://ascl.net/2008.016" target="_blank"><img src="https://img.shields.io/badge/ascl-2008.016-blue.svg?colorB=262255" alt="ascl:2008.016" /></a>
@@ -154,7 +154,7 @@ readme["quickstart"]["fortran"] = """"""
 
 readme["quickstart"]["matlab"] = readme["quickstart"]["title"] + """
 For a quick start with some MATLAB Live Script examples, visit [this ParaMonte documentation page](https://www.cdslab.org/paramonte/notes/examples/matlab/mlx/). 
-The corresponding example source files (the `*.mlx` files) can be downloaded from the [paramontex GitHub repository](https://github.com/cdslaborg/paramontex/tree/master/MATLAB/mlx), 
+The corresponding example source files (the `*.mlx` files) can be downloaded from the [paramonte.svg?branch=main GitHub repository](https://github.com/cdslaborg/paramonte.svg?branch=main/tree/main/MATLAB/mlx), 
 a repository dedicated to the ParaMonte library examples.  
 
 The following example code samples a 4-dimensional MultiVariate Normal (MNV) distribution via the ParaDRAM sampler in serial mode,  
@@ -174,7 +174,7 @@ To learn about the post-processing and visualization tools of the `ParaMonte::MA
 
 readme["quickstart"]["python"] = readme["quickstart"]["title"] + """
 For a quick start with some Jupyter Notebook examples, visit [this ParaMonte documentation page](https://www.cdslab.org/paramonte/notes/examples/python/jupyter/). 
-The corresponding example source files (the `*.ipynb` files) can be downloaded from the [paramontex GitHub repository](https://github.com/cdslaborg/paramontex/tree/master/Python/Jupyter), 
+The corresponding example source files (the `*.ipynb` files) can be downloaded from the [paramonte.svg?branch=main GitHub repository](https://github.com/cdslaborg/paramonte.svg?branch=main/tree/main/Python/Jupyter), 
 which is a repository dedicated to the ParaMonte library examples.  
 
 The following example code samples a 4-dimensional MultiVariate Normal (MNV) distribution via the ParaDRAM sampler in serial mode,  
@@ -319,7 +319,7 @@ readme["citation"]["main"] = readme["citation"]["title"] + """
 The ParaMonte library is an honor-ware and its currency is acknowledgment and citations.  
   
 If you use ParaMonte, please acknowledge it by citing the ParaMonte library's main publications 
-as listed in [ACKNOWLEDGMENT.md](https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md).  
+as listed in [ACKNOWLEDGMENT.md](https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md).  
 
 Visit [the ParaMonte library homepage](https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work) 
 to access the PDF version of these files free of charge.  
@@ -344,7 +344,7 @@ License
 """
 
 readme["license"]["main"] = readme["license"]["title"] + """
-[MIT License](https://github.com/cdslaborg/paramonte/blob/master/LICENSE.md)  
+[MIT License](https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md)  
 
 **What does this license mean?**  
 
@@ -433,11 +433,11 @@ readme["examples"]["main"] = readme["examples"]["title"] + """
 +   For complete organized up-to-date instructions, visit: [cdslab.org/pm](https://www.cdslab.org/paramonte)  
 
 +   For a quick look into *language-specific* README.md instructions, visit:  
-    +   **C**: [https://github.com/cdslaborg/paramonte/tree/master/src/interface/C](https://github.com/cdslaborg/paramonte/tree/master/src/interface/C)  
-    +   **C++**: [https://github.com/cdslaborg/paramonte/tree/master/src/interface/C++](https://github.com/cdslaborg/paramonte/tree/master/src/interface/C++)  
-    +   **Fortran**: [https://github.com/cdslaborg/paramonte/tree/master/src/interface/Fortran](https://github.com/cdslaborg/paramonte/tree/master/src/interface/Fortran)  
-    +   **MATLAB**: [https://github.com/cdslaborg/paramonte/tree/master/src/interface/MATLAB](https://github.com/cdslaborg/paramonte/tree/master/src/interface/MATLAB)  
-    +   **Python**: [https://github.com/cdslaborg/paramonte/tree/master/src/interface/Python](https://github.com/cdslaborg/paramonte/tree/master/src/interface/Python)  
+    +   **C**: [https://github.com/cdslaborg/paramonte/tree/main/src/interface/C](https://github.com/cdslaborg/paramonte/tree/main/src/interface/C)  
+    +   **C++**: [https://github.com/cdslaborg/paramonte/tree/main/src/interface/C++](https://github.com/cdslaborg/paramonte/tree/main/src/interface/C++)  
+    +   **Fortran**: [https://github.com/cdslaborg/paramonte/tree/main/src/interface/Fortran](https://github.com/cdslaborg/paramonte/tree/main/src/interface/Fortran)  
+    +   **MATLAB**: [https://github.com/cdslaborg/paramonte/tree/main/src/interface/MATLAB](https://github.com/cdslaborg/paramonte/tree/main/src/interface/MATLAB)  
+    +   **Python**: [https://github.com/cdslaborg/paramonte/tree/main/src/interface/Python](https://github.com/cdslaborg/paramonte/tree/main/src/interface/Python)  
 """
 
 readme["examples"]["c"] = readme["examples"]["cpp"] = readme["examples"]["title"] + """
@@ -730,13 +730,13 @@ readme["examples"]["matlab"] = readme["examples"]["title"] + """
     For complete up-to-date detailed instructions, visit: https://www.cdslab.org/paramonte/notes/run/matlab/
     +   Open the MATLAB software. On **Linux** and **macOS**, call the matlab executable from a Bash command line.  
     +   Suppose your mathematical objective function is a multivariate Normal distribution as implemented in this 
-        [logfunc.m](https://raw.githubusercontent.com/cdslaborg/paramonte/master/example/mvn/MATLAB/logfunc.m) file.  
+        [logfunc.m](https://raw.githubusercontent.com/cdslaborg/paramonte/main/example/mvn/MATLAB/logfunc.m) file.  
     +   For **serial** simulations, download this example generic serial 
-        [main.m](https://raw.githubusercontent.com/cdslaborg/paramonte/master/example/main.m) 
+        [main.m](https://raw.githubusercontent.com/cdslaborg/paramonte/main/example/main.m) 
         MATLAB main file and save it in the same folder containing the `logfunc.m` file that you downloaded in the above. 
         Then, simply type the name of this MATLAB main script, `main` on the MATLAB command prompt.  
     +   For **parallel** simulations, download this example generic parallel 
-        [main_mpi.m](https://raw.githubusercontent.com/cdslaborg/paramonte/master/example/main_mpi.m) 
+        [main_mpi.m](https://raw.githubusercontent.com/cdslaborg/paramonte/main/example/main_mpi.m) 
         MATLAB main file and save it in the same folder containing the `logfunc.m` file that you downloaded in the above. 
         Then, simply invoke the MPI launcher followed by the name of the MATLAB main script on a 
         MATLAB-aware MPI-aware Windows or Bash command prompt, similar to the following,  
@@ -774,13 +774,13 @@ readme["examples"]["python"] = readme["examples"]["title"] + """
 +   **Running the ParaMonte simulations**  
     +   Open an Anaconda command-line interface or `jupyter` notebook.  
     +   Suppose your mathematical objective function is a multivariate Normal distribution as implemented in this   
-        [logfunc.py](https://raw.githubusercontent.com/cdslaborg/paramonte/master/example/mvn/Python/logfunc.py) file.  
+        [logfunc.py](https://raw.githubusercontent.com/cdslaborg/paramonte/main/example/mvn/Python/logfunc.py) file.  
     +   For **serial** simulations, download this example generic serial 
-        [main.py](https://raw.githubusercontent.com/cdslaborg/paramonte/master/example/main.py) 
+        [main.py](https://raw.githubusercontent.com/cdslaborg/paramonte/main/example/main.py) 
         Python main file and save it in the same folder containing the `logfunc.py` file that you downloaded in the above. 
         Then, simply type the name of the Python main script, `python main.py` on the Bash terminal or the Anaconda command line.  
     +   For **parallel** simulations, download this example generic parallel 
-        [main_mpi.py](https://raw.githubusercontent.com/cdslaborg/paramonte/master/example/main_mpi.py) Python main file and save it in the same folder containing the `logfunc.py` file that you downloaded in the above. Then, simply invoke the MPI launcher followed by the name of the Python main script on the Bash terminal, similar to the following,  
+        [main_mpi.py](https://raw.githubusercontent.com/cdslaborg/paramonte/main/example/main_mpi.py) Python main file and save it in the same folder containing the `logfunc.py` file that you downloaded in the above. Then, simply invoke the MPI launcher followed by the name of the Python main script on the Bash terminal, similar to the following,  
         +   on Windows (within the Anaconda command line or a terminal that recognizes both `mpiexec` and `python` software),  
             ```  
             mpiexec -localonly -n 3 python main_mpi.py

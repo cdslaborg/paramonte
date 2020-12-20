@@ -35,7 +35,7 @@
 !!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
-!!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
+!!!!       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md
 !!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -424,7 +424,7 @@ contains
 
                         currentStateWeight = 0_IK
 
-                        ! communicate the accepted logFunc and State from the winning image to master/all images: co_LogFuncState
+                        ! communicate the accepted logFunc and State from the winning image to the leader/all images: co_LogFuncState
 
 #if defined MPI_ENABLED
                         if (self%SpecBase%ParallelizationModel%isSinglChain) then

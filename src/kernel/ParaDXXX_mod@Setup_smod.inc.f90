@@ -35,7 +35,7 @@
 !!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
-!!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
+!!!!       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md
 !!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -426,7 +426,7 @@ contains
 
         if (self%Image%isLeader) then
             if (.not.self%isFreshRun) then
-                read(self%TimeFile%unit, *, iostat = self%Err%stat) ! read the header line of the time file, only by master images
+                read(self%TimeFile%unit, *, iostat = self%Err%stat) ! read the header line of the time file, only by leader images
             end if
             if (self%isFreshRun .or. is_iostat_end(self%Err%stat)) then
                     write( self%TimeFile%unit, self%TimeFile%format ) "NumFuncCallTotal" &

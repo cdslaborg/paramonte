@@ -35,7 +35,7 @@
 %%%%   work (education/research/industry/development/...) by citing the ParaMonte 
 %%%%   library as described on this page:
 %%%%
-%%%%       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
+%%%%       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md
 %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -93,8 +93,8 @@ classdef ParaMonte_class < dynamicprops % handle % dynamicprops is needed for ad
                                                     , 'count', []       ...
                                                     , 'isFirst', []     ...
                                                     , 'isNotFirst', []  ...
-                                                    , 'isMaster', []    ...
-                                                    , 'isNotMaster', [] ...
+                                                    , 'isLeader', []    ...
+                                                    , 'isRooter', [] ...
                                                     , 'name', []        ...
                                                     ) ;
 
@@ -134,8 +134,8 @@ classdef ParaMonte_class < dynamicprops % handle % dynamicprops is needed for ad
             self.Image.name         = "@process(" + num2str(self.Image.id) + ")";
             self.Image.isFirst      = self.Image.id == 1;
             self.Image.isNotFirst   = ~self.Image.isFirst;
-            self.Image.isMaster     = true;    % ATTN in Parallel mode: set to false initially and change later on, depending on the requested type of parallelism
-            self.Image.isNotMaster  = ~self.Image.isMaster;
+            self.Image.isLeader     = true;    % ATTN in Parallel mode: set to false initially and change later on, depending on the requested type of parallelism
+            self.Image.isRooter  = ~self.Image.isLeader;
 
             % setup formatting variables
 
@@ -400,7 +400,7 @@ classdef ParaMonte_class < dynamicprops % handle % dynamicprops is needed for ad
                 self.Err.note();
             end
 
-            % this block could be all executed by only the master images
+            % this block could be all executed by only the leader images
 
             self.LogFile.Path.ext           = Constants.FILE_EXT.ascii;
             self.TimeFile.Path.ext          = Constants.FILE_EXT.ascii;
@@ -502,7 +502,7 @@ classdef ParaMonte_class < dynamicprops % handle % dynamicprops is needed for ad
 
             % open/append the output files:
 
-            if self.Image.isMaster
+            if self.Image.isLeader
                 if self.isFreshRun
                     workingOn                           = "Generating the output ";
                     self.LogFile.       status          = "w";
@@ -559,7 +559,7 @@ classdef ParaMonte_class < dynamicprops % handle % dynamicprops is needed for ad
             self.Err.marginTop      = 1;
             self.Err.marginBot      = 1;
             
-            if self.Image.isMaster
+            if self.Image.isLeader
                 
                 % open LogFile
                 %if self.LogFile.exists,     opentype = "a+";    else, opentype = "w"; end

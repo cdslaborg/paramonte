@@ -35,7 +35,7 @@
 ####   work (education/research/industry/development/...) by citing the ParaMonte
 ####   library as described on this page:
 ####
-####       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
+####       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md
 ####
 ####################################################################################################################################
 ####################################################################################################################################
@@ -439,7 +439,7 @@ def getLocalInstallDir():
     localInstallDir.caf.lib = None
 
 
-    pmGitRootDir = os.path.join( pm.path.root , "paramonte-master" )
+    pmGitRootDir = os.path.join( pm.path.root , "paramonte-main" )
 
     if os.path.isdir(pmGitRootDir):
 
@@ -1567,12 +1567,12 @@ def build(flags=""):
 
             currentDir = os.getcwd()
 
-            pmGitTarPath = os.path.join( pm.path.root, "master.tar.gz" )
-            download( url = pm.website.github.archive.master.tar.url
+            pmGitTarPath = os.path.join( pm.path.root, "main.tar.gz" )
+            download( url = pm.website.github.archive.main.tar.url
                     , filePath = pmGitTarPath
                     )
 
-            pmGitRootDir = os.path.join( pm.path.root, "paramonte-master" )
+            pmGitRootDir = os.path.join( pm.path.root, "paramonte-main" )
 
             try:
 

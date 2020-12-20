@@ -19,7 +19,7 @@
 ##   You should have received a copy of the GNU Lesser General Public License
 ##   along with the ParaMonte library. If not, see,
 ##
-##       https://github.com/cdslaborg/paramonte/blob/master/LICENSE
+##       https://github.com/cdslaborg/paramonte/blob/main/LICENSE
 ##
 ##   ACKNOWLEDGMENT
 ##
@@ -29,7 +29,7 @@
 ##   in your work (education/research/industry/development/...)
 ##   by citing the ParaMonte library as described on this page:
 ##
-##       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
+##       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md
 ##
 ####################################################################################################################################
 ####################################################################################################################################

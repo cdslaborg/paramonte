@@ -35,7 +35,7 @@
 ####   work (education/research/industry/development/...) by citing the ParaMonte 
 ####   library as described on this page:
 ####
-####       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
+####       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md
 ####
 ####################################################################################################################################
 ####################################################################################################################################
@@ -208,16 +208,16 @@ website.github.release.latest = Struct()
 website.github.release.latest.url = website.github.release.url + "/latest"
 website.github.archive = Struct()
 website.github.archive._url = website.github.url + "/archive"
-website.github.archive.master = Struct()
-website.github.archive.master.zip = Struct()
-website.github.archive.master.tar = Struct()
-website.github.archive.master.zip.url = website.github.archive._url + "/master.zip"
-website.github.archive.master.tar.url = website.github.archive._url + "/master.tar.gz"
+website.github.archive.main = Struct()
+website.github.archive.main.zip = Struct()
+website.github.archive.main.tar = Struct()
+website.github.archive.main.zip.url = website.github.archive._url + "/main.zip"
+website.github.archive.main.tar.url = website.github.archive._url + "/main.tar.gz"
 
 # GitHub examples
 
 website.github.examples = Struct()
-website.github.examples.url = "https://github.com/cdslaborg/paramontex"
+website.github.examples.url = "https://github.com/cdslaborg/paramonte.svg?branch=main"
 
 # Intel MPI
 

@@ -35,7 +35,7 @@
 %%%%   work (education/research/industry/development/...) by citing the ParaMonte 
 %%%%   library as described on this page:
 %%%%
-%%%%       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
+%%%%       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md
 %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -130,7 +130,7 @@ flag2 = false;
             self.isDryRun   = ~self.isFreshRun;
         end
 
-        if self.Image.isMaster
+        if self.Image.isLeader
 
             % set up the chain file
 
@@ -499,7 +499,7 @@ if flag2, self.writeOutput2(); end
         self.Proposal.Global.SumAccRateSinceStart.acceptedRejectedDelayed   = self.Proposal.Global.SumAccRateSinceStart.acceptedRejected;
     end
 
-    if self.Image.isMaster
+    if self.Image.isLeader
 
         if self.SpecDRAM.burninAdaptationMeasure.val > 0.999999
             self.Stats.AdaptationBurninLoc.compact = 1;
