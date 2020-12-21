@@ -41,6 +41,8 @@
 ####################################################################################################################################
 ####################################################################################################################################
 
+# In this script, the priority is always given to the Intel over GNU compilers if they are detected.
+
 FILE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 usage()
@@ -420,18 +422,36 @@ fi
 echo >&2 "-- ParaMonteExample${pmExamLang} - MPI_ENABLED: ${MPI_ENABLED}"
 
 if [ "${MPI_ENABLED}" = "true" ] && [ "${pmLibType}" = "static" ]; then
+    compilerListTemp=()
     if [ "${pmExamLang}" = "Fortran" ]; then
-        if [ "${pmCompilerSuite}" = "intel" ]; then
-            declare -a compilerList=("mpiifort" "mpifort")
-        elif [ "${pmCompilerSuite}" = "gnu" ]; then
-            declare -a compilerList=("mpifort" "mpiifort")
+        if command -v mpiifort >/dev/null 2>&1; then
+            compilerListTemp+=("mpiifort")
+        fi
+        if command -v mpiifort >/dev/null 2>&1; then
+            compilerListTemp+=("mpifort")
         fi
     fi
     if [ "${pmExamLang}" = "C" ]; then
-        declare -a compilerList=("${cIntelMPIWrapperName}" "mpicc")
+        if command -v ${cIntelMPIWrapperName} >/dev/null 2>&1; then
+            compilerList+=("${cIntelMPIWrapperName}")
+        fi
+        if command -v mpicc >/dev/null 2>&1; then
+            compilerList+=("mpicc")
+        fi
     fi
     if [ "${pmExamLang}" = "C++" ]; then
-        declare -a compilerList=("${cppIntelMPIWrapperName}" "mpicxx" "mpic++" "mpicc")
+        if command -v ${cppIntelMPIWrapperName} >/dev/null 2>&1; then
+            compilerList+=("${cppIntelMPIWrapperName}")
+        fi
+        if command -v mpicxx >/dev/null 2>&1; then
+            compilerList+=("mpicxx")
+        fi
+        if command -v "mpic++" >/dev/null 2>&1; then
+            compilerList+=("mpic++")
+        fi
+        if command -v "mpicc" >/dev/null 2>&1; then
+            compilerList+=("mpicc")
+        fi
     fi
 fi
 
@@ -550,7 +570,7 @@ do
 
             if [ "${pmExamLang}" = "C" ] || [ "${pmExamLang}" = "C++" ]; then
 
-                if [ "${COMPILER}" = "icl" ] || [ "${COMPILER}" = "icc" ] || [ "${pmExamLang}" = "icpc" ] || [ "${pmExamLang}" = "mpiicc" ] || [ "${pmExamLang}" = "mpiicpc" ]; then
+                if [ "${COMPILER}" = "icl" ] || [ "${COMPILER}" = "icc" ] || [ "${COMPILER}" = "icpc" ] || [ "${COMPILER}" = "mpiicc" ] || [ "${COMPILER}" = "mpiicpc" ]; then
                     COMPILER_FLAGS="${INTEL_C_COMPILER_FLAGS}"
                 else
                     COMPILER_FLAGS="${GNU_C_COMPILER_FLAGS}"
@@ -560,7 +580,7 @@ do
 
                 # -DIS_COMPATIBLE_COMPILER
 
-                if [ "${COMPILER}" = "ifort" ] || [ "${pmExamLang}" = "mpiifort" ]; then
+                if [ "${COMPILER}" = "ifort" ] || [ "${COMPILER}" = "mpiifort" ]; then
                     COMPILER_FLAGS="${INTEL_Fortran_COMPILER_FLAGS}"
                 else
                     COMPILER_FLAGS="${GNU_Fortran_COMPILER_FLAGS}"
