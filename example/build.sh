@@ -183,7 +183,12 @@ fi
 export FOR_COARRAY_NUM_IMAGES
 
 for pmLibExt in ${pmLibExtList}; do
-    pmLibFullPath="$(ls -dp ${FILE_DIR}/*libparamonte_*${pmLibExt} | sort -V | tail -n1)" && break
+    pmLibFullPath="$(ls -dp ${FILE_DIR}/*libparamonte_*${pmLibExt} | sort -V | tail -n1)"
+    if [ -f "${pmLibFullPath}" ]; then
+        break
+    else
+        unset pmLibFullPath
+    fi
 done
 
 if [ -f "${pmLibFullPath}" ]; then
@@ -191,6 +196,7 @@ if [ -f "${pmLibFullPath}" ]; then
     pmLibBaseName=${pmLibFullName%.*}
 else
     echo >&2
+    echo >&2 "-- ParaMonteExample - FATAL: pmLibFullPath=${pmLibFullPath}"
     echo >&2 "-- ParaMonteExample - FATAL: The ParaMonte library file could not be found in the current directory."
     echo >&2 "-- ParaMonteExample - FATAL: This is the file that is prefixed with libparamonte_ and suffixed with"
     echo >&2 "-- ParaMonteExample - FATAL: the library file extension which can be either: dll, so, dylib, lib, a"
@@ -684,7 +690,6 @@ do
                 } || {
                 #else
 
-                    echo >&2
                     echo >&2 "-- ParaMonteExample${pmExamLang} - The example's source files compilation and linking appear to have failed. skipping..."
                     echo >&2 "-- ParaMonteExample${pmExamLang} - If the compiler is missing or unidentified, you can pass the path to the compiler to the build script:"
                     echo >&2 "-- ParaMonteExample${pmExamLang} - For instructions, type on the command line:"
@@ -700,7 +705,6 @@ do
 
         } || {
 
-            echo >&2
             echo >&2 "-- ParaMonteExample${pmExamLang} - The example's source files compilation and linking appear to have failed. skipping..."
             echo >&2 "-- ParaMonteExample${pmExamLang} - If the compiler is missing or unidentified, you can pass the path to the compiler to the build script."
             echo >&2 "-- ParaMonteExample${pmExamLang} - For instructions, type on the command line:"
