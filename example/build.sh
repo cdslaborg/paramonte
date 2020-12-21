@@ -423,14 +423,6 @@ echo >&2 "-- ParaMonteExample${pmExamLang} - MPI_ENABLED: ${MPI_ENABLED}"
 
 if [ "${MPI_ENABLED}" = "true" ] && [ "${pmLibType}" = "static" ]; then
     compilerListTemp=()
-    if [ "${pmExamLang}" = "Fortran" ]; then
-        if command -v mpiifort >/dev/null 2>&1; then
-            compilerListTemp+=("mpiifort")
-        fi
-        if command -v mpiifort >/dev/null 2>&1; then
-            compilerListTemp+=("mpifort")
-        fi
-    fi
     if [ "${pmExamLang}" = "C" ]; then
         if command -v ${cIntelMPIWrapperName} >/dev/null 2>&1; then
             compilerListTemp+=("${cIntelMPIWrapperName}")
@@ -451,6 +443,14 @@ if [ "${MPI_ENABLED}" = "true" ] && [ "${pmLibType}" = "static" ]; then
         fi
         if command -v "mpicc" >/dev/null 2>&1; then
             compilerListTemp+=("mpicc")
+        fi
+    fi
+    if [ "${pmExamLang}" = "Fortran" ]; then
+        if command -v mpiifort >/dev/null 2>&1; then
+            compilerListTemp+=("mpiifort")
+        fi
+        if command -v mpifort >/dev/null 2>&1; then
+            compilerListTemp+=("mpifort")
         fi
     fi
     if ! [ ${#compilerListTemp[@]} -eq 0 ]; then
