@@ -185,7 +185,7 @@ fi
 export FOR_COARRAY_NUM_IMAGES
 
 for pmLibExt in ${pmLibExtList}; do
-    pmLibFullPath="$(ls -dp ${FILE_DIR}/*libparamonte_*${pmLibExt} | sort -V | tail -n1)"
+    pmLibFullPath="$(ls -dp libparamonte_*${pmLibExt} | grep -v / | sort -V | tail -n1)"
     if [ -f "${pmLibFullPath}" ]; then
         break
     else
