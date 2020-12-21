@@ -433,25 +433,28 @@ if [ "${MPI_ENABLED}" = "true" ] && [ "${pmLibType}" = "static" ]; then
     fi
     if [ "${pmExamLang}" = "C" ]; then
         if command -v ${cIntelMPIWrapperName} >/dev/null 2>&1; then
-            compilerList+=("${cIntelMPIWrapperName}")
+            compilerListTemp+=("${cIntelMPIWrapperName}")
         fi
         if command -v mpicc >/dev/null 2>&1; then
-            compilerList+=("mpicc")
+            compilerListTemp+=("mpicc")
         fi
     fi
     if [ "${pmExamLang}" = "C++" ]; then
         if command -v ${cppIntelMPIWrapperName} >/dev/null 2>&1; then
-            compilerList+=("${cppIntelMPIWrapperName}")
+            compilerListTemp+=("${cppIntelMPIWrapperName}")
         fi
         if command -v mpicxx >/dev/null 2>&1; then
-            compilerList+=("mpicxx")
+            compilerListTemp+=("mpicxx")
         fi
         if command -v "mpic++" >/dev/null 2>&1; then
-            compilerList+=("mpic++")
+            compilerListTemp+=("mpic++")
         fi
         if command -v "mpicc" >/dev/null 2>&1; then
-            compilerList+=("mpicc")
+            compilerListTemp+=("mpicc")
         fi
+    fi
+    if [ ${#compilerListTemp[@]} -eq 0 ]; then
+        compilerList=("${compilerListTemp[@]}")
     fi
 fi
 
