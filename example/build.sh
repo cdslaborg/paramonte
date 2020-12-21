@@ -146,7 +146,7 @@ else
     export PLATFORM
 fi
 
-pmLibExt=""
+pmLibExtList=""
 isMinGW=false
 isLinux=false
 isDarwin=false
@@ -155,19 +155,19 @@ isCygwin=false
 if [[ "${PLATFORM}" =~ .*"darwin".* ]]; then
     isDarwin=true
     OSNAME="macOS"
-    pmLibExt=".dylib"
+    pmLibExtList=".dylib .a"
 elif [[ "${PLATFORM}" =~ .*"linux".* ]]; then
     isLinux=true
     OSNAME="Linux"
-    pmLibExt=".so"
+    pmLibExtList=".so .a"
 elif [[ "${PLATFORM}" =~ .*"mingw".* ]]; then
     isMinGW=true
     OSNAME="MinGW"
-    pmLibExt=".dll"
+    pmLibExtList=".dll .lib .a"
 elif [[ "${PLATFORM}" =~ .*"cygwin".* ]]; then
     isCygwin=true
     OSNAME="Cygwin"
-    pmLibExt=".dll"
+    pmLibExtList=".dll .lib .a"
 fi
 
 ####################################################################################################################################
@@ -182,9 +182,27 @@ if [ -z ${FOR_COARRAY_NUM_IMAGES+x} ]; then
 fi
 export FOR_COARRAY_NUM_IMAGES
 
-pmLibFullPath="$(ls -d ${FILE_DIR}/*libparamonte_*${pmLibExt} | sort -V | tail -n1)"
-pmLibFullName=${pmLibFullPath##*/}
-pmLibBaseName=${pmLibFullName%.*}
+for pmLibExt in ${pmLibExtList}; do
+    pmLibFullPath="$(ls -dp ${FILE_DIR}/*libparamonte_*${pmLibExt} | sort -V | tail -n1)" && break
+done
+
+if [ -f "${pmLibFullPath}" ]; then
+    pmLibFullName=${pmLibFullPath##*/}
+    pmLibBaseName=${pmLibFullName%.*}
+else
+    echo >&2
+    echo >&2 "-- ParaMonteExample - FATAL: The ParaMonte library file could not be found in the current directory."
+    echo >&2 "-- ParaMonteExample - FATAL: This is the file that is prefixed with libparamonte_ and suffixed with"
+    echo >&2 "-- ParaMonteExample - FATAL: the library file extension which can be either: dll, so, dylib, lib, a"
+    echo >&2 "-- ParaMonteExample - FATAL: Ensure the ParaMonte library file exists in the current directory, then rerun the script."
+    echo >&2 "-- ParaMonteExample - FATAL: If the problem persists, please report this issue at:"
+    echo >&2 "-- ParaMonteExample - FATAL: "
+    echo >&2 "-- ParaMonteExample - FATAL:     https://github.com/cdslaborg/paramonte/issues"
+    echo >&2 "-- ParaMonteExample - FATAL: "
+    echo >&2 "-- ParaMonteExample - FATAL: Gracefully exiting..."
+    echo >&2
+    exit 1
+fi
 
 ####################################################################################################################################
 # determine the existing GNU and Intel compilers, generate a list of potential compilers, infer the example's language and src files
@@ -248,7 +266,7 @@ else
     echo >&2 "-- ParaMonteExample - FATAL: Ensure the ParaMonte library file exists in the current directory, then rerun the script."
     echo >&2 "-- ParaMonteExample - FATAL: If the problem persists, please report this issue at:"
     echo >&2 "-- ParaMonteExample - FATAL: "
-    echo >&2 "-- ParaMonteExample - FATAL: https://github.com/cdslaborg/paramonte/issues"
+    echo >&2 "-- ParaMonteExample - FATAL:     https://github.com/cdslaborg/paramonte/issues"
     echo >&2 "-- ParaMonteExample - FATAL: "
     echo >&2 "-- ParaMonteExample - FATAL: Gracefully exiting..."
     echo >&2
@@ -415,6 +433,7 @@ fi
 
 echo >&2 "-- ParaMonteExample${pmExamLang} - ParaMonte library's compiler suite: ${pmCompilerSuite}"
 echo >&2 "-- ParaMonteExample${pmExamLang} - inferred compiler choice(s):"
+echo >&2 "-- ParaMonteExample${pmExamLang} - "
 compilerListLen=${#compilerList[@]}
 compilerListLenMinusOne="$(($compilerListLen-1))"
 for i in $(seq 0 $compilerListLenMinusOne)
