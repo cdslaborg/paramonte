@@ -185,7 +185,7 @@ fi
 export FOR_COARRAY_NUM_IMAGES
 
 for pmLibExt in ${pmLibExtList}; do
-    pmLibFullPath="$(ls -dp ${FILE_DIR}/*libparamonte_*${pmLibExt} | sort -V | tail -n1)"
+    pmLibFullPath="$(ls -dp ${FILE_DIR}/*libparamonte_*${pmLibExt} | sort -V | tail -n1 >/dev/null 2>&1)"
     if [ -f "${pmLibFullPath}" ]; then
         break
     else
@@ -453,7 +453,7 @@ if [ "${MPI_ENABLED}" = "true" ] && [ "${pmLibType}" = "static" ]; then
             compilerListTemp+=("mpicc")
         fi
     fi
-    if [ ${#compilerListTemp[@]} -eq 0 ]; then
+    if ! [ ${#compilerListTemp[@]} -eq 0 ]; then
         compilerList=("${compilerListTemp[@]}")
     fi
 fi
