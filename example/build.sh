@@ -304,9 +304,9 @@ fi
 ####################################################################################################################################
 
 unset pmBuildType
+unset GNU_C_COMPILER_FLAGS
 unset INTEL_C_COMPILER_FLAGS
 
-GNU_C_COMPILER_FLAGS="-E"
 GNU_Fortran_COMPILER_FLAGS="-std=gnu -cpp"
 INTEL_Fortran_COMPILER_FLAGS="-standard-semantics -fpp"
 
@@ -521,7 +521,7 @@ do
         fi
 
         echo >&2
-        echo >&2 "-- ParaMonteExample${pmExamLang} - The ParaMonte example compilation command:"
+        echo >&2 "-- ParaMonteExample${pmExamLang} - The ParaMonte example's compilation command:"
         echo >&2 "-- ParaMonteExample${pmExamLang} -     ${COMPILER} ${COMPILER_FLAGS} ${pmSrcFiles} -c"
 
         # Intel compiler does not support -dumpversion
@@ -570,7 +570,7 @@ do
             do
 
                 echo >&2
-                echo >&2 "-- ParaMonteExample${pmExamLang} - linking ParaMonte example with ${LINKER}"
+                echo >&2 "-- ParaMonteExample${pmExamLang} - The ParaMonte example's compilation command:"
                 echo >&2 "-- ParaMonteExample${pmExamLang} -     ${LINKER} ${COMPILER_FLAGS} ${LINKER_FLAGS} ${pmSrcFiles//.$pmSrcExt/.o} ${pmLibFullName} -o ${PM_EXAM_EXE_NAME}"
 
                 # Intel compiler does not support -dumpversion
