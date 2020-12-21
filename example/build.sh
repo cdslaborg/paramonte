@@ -163,11 +163,11 @@ elif [[ "${PLATFORM}" =~ .*"linux".* ]]; then
 elif [[ "${PLATFORM}" =~ .*"mingw".* ]]; then
     isMinGW=true
     OSNAME="MinGW"
-    pmLibExtList=".dll .lib .a"
+    pmLibExtList=".dll .lib"
 elif [[ "${PLATFORM}" =~ .*"cygwin".* ]]; then
     isCygwin=true
     OSNAME="Cygwin"
-    pmLibExtList=".dll .lib .a"
+    pmLibExtList=".dll .lib"
 fi
 
 ####################################################################################################################################
@@ -219,6 +219,18 @@ iccIntelCompilerDetected=false
 icpcIntelCompilerDetected=false
 ifortIntelCompilerDetected=false
 
+if [ "$isMinGW" = "true" ] || [ "$isCygwin" = "true" ]; then
+    cIntelCompilerName="icl"
+    cppIntelCompilerName="icl"
+    cIntelMPIWrapperName="mpicl"
+    cppIntelMPIWrapperName="mpicl"
+else
+    cIntelCompilerName="icc"
+    cppIntelCompilerName="icpc"
+    cIntelMPIWrapperName="mpiicc"
+    cppIntelMPIWrapperName="mpiicpc"
+fi
+
 if [[ "${pmLibFullName}" =~ .*"_c_".* ]]; then
 
     pmSrcExt=c
@@ -226,9 +238,9 @@ if [[ "${pmLibFullName}" =~ .*"_c_".* ]]; then
 
     clist="gcc"
 
-    if command -v icc >/dev/null 2>&1; then
+    if command -v ${cIntelCompilerName} >/dev/null 2>&1; then
         iccIntelCompilerDetected=true
-        declare -a compilerList=("icc" "${clist}")
+        declare -a compilerList=("${cIntelCompilerName}" "${clist}")
     else
         declare -a compilerList=("${clist}")
     fi
@@ -241,9 +253,9 @@ elif [[ "${pmLibFullName}" =~ .*"_cpp_".* ]]; then
     cpattern="g++"
     clist=$(( IFS=:; for p in $PATH; do unset lsout; lsout=$(ls -dm "$p"/${cpattern}*); if ! [[ -z "${lsout// }" ]]; then echo "${lsout}, "; fi; done ) 2>/dev/null)
 
-    if command -v icpc >/dev/null 2>&1; then
+    if command -v ${cppIntelCompilerName} >/dev/null 2>&1; then
         icpcIntelCompilerDetected=true
-        declare -a compilerList=("icpc" "${clist}")
+        declare -a compilerList=("${cppIntelCompilerName}" "${clist}")
     else
         declare -a compilerList=("${clist}")
     fi
@@ -314,40 +326,76 @@ unset GNU_C_COMPILER_FLAGS
 unset INTEL_C_COMPILER_FLAGS
 
 GNU_Fortran_COMPILER_FLAGS="-std=gnu -cpp"
-INTEL_Fortran_COMPILER_FLAGS="-standard-semantics -fpp"
-
-if [[ "${pmLibFullName}" =~ .*"darwin".* ]]; then
-    INTEL_C_COMPILER_FLAGS="-no-multibyte-chars"
-fi
 
 if [ "$isMinGW" = "true" ] || [ "$isCygwin" = "true" ]; then
+
     GNU_Fortran_COMPILER_FLAGS="${GNU_Fortran_COMPILER_FLAGS} -D__WIN64__"
+
+    INTEL_C_COMPILER_FLAGS_DEBUG="/debug:full /Zi /Od /Wall /traceback /Qcheck-pointers:rw"
+    INTEL_C_COMPILER_FLAGS_TESTING="/Od"
+    INTEL_C_COMPILER_FLAGS_RELEASE="/O3 /Qip /Qipo /Qunroll /Qunroll-aggressive /Ob2 /Qparallel /Qinline-dllimport"
+
+    INTEL_Fortran_COMPILER_FLAGS_DEBUG="/debug:full /Zi /CB /Od"
+    INTEL_Fortran_COMPILER_FLAGS_TESTING="/Od"
+    INTEL_Fortran_COMPILER_FLAGS_RELEASE="/O3 /Qip /Qipo /Qunroll /Qunroll-aggressive"
+    INTEL_Fortran_COMPILER_FLAGS="/standard-semantics /fpp /nologo /F0x1000000000"
+
+else
+
+    INTEL_Fortran_COMPILER_FLAGS_DEBUG="-O0 -debug full"
+    INTEL_Fortran_COMPILER_FLAGS_TESTING="-O0"
+    INTEL_Fortran_COMPILER_FLAGS_RELEASE="-O3 -ip -ipo -unroll -unroll-aggressive -finline-functions"
+    INTEL_Fortran_COMPILER_FLAGS="-standard-semantics -fpp"
+
+    INTEL_C_COMPILER_FLAGS_DEBUG="-O0 -debug full"
+    INTEL_C_COMPILER_FLAGS_TESTING="-O0"
+    INTEL_C_COMPILER_FLAGS_RELEASE="-O3"
+    if [ "${isDarwin}" = "true" ]; then
+        INTEL_C_COMPILER_FLAGS="-no-multibyte-chars"
+    fi
+
 fi
 
 if [[ "${pmLibFullName}" =~ .*"release".* ]]; then
+
     pmBuildType=release
+
     GNU_C_COMPILER_FLAGS="${GNU_C_COMPILER_FLAGS} -O3"
-    INTEL_C_COMPILER_FLAGS="${INTEL_C_COMPILER_FLAGS} -O3"
     GNU_Fortran_COMPILER_FLAGS="${GNU_Fortran_COMPILER_FLAGS} -O3 -funroll-loops -finline-functions -ftree-vectorize"
-    INTEL_Fortran_COMPILER_FLAGS="${INTEL_Fortran_COMPILER_FLAGS} -O3 -ip -ipo -unroll -unroll-aggressive -finline-functions"
+
+    INTEL_C_COMPILER_FLAGS="${INTEL_C_COMPILER_FLAGS} ${INTEL_C_COMPILER_FLAGS_RELEASE}"
+    INTEL_Fortran_COMPILER_FLAGS="${INTEL_Fortran_COMPILER_FLAGS} ${INTEL_Fortran_COMPILER_FLAGS_RELEASE}"
+
 fi
+
 if [[ "${pmLibFullName}" =~ .*"testing".* ]]; then
+
     pmBuildType=testing
+
     GNU_C_COMPILER_FLAGS="${GNU_C_COMPILER_FLAGS} -O0"
-    INTEL_C_COMPILER_FLAGS="${INTEL_C_COMPILER_FLAGS} -O0"
     GNU_Fortran_COMPILER_FLAGS="${GNU_Fortran_COMPILER_FLAGS} -O0"
-    INTEL_Fortran_COMPILER_FLAGS="${INTEL_Fortran_COMPILER_FLAGS} -O0"
+
+    INTEL_C_COMPILER_FLAGS="${INTEL_C_COMPILER_FLAGS} ${INTEL_C_COMPILER_FLAGS_TESTING}"
+    INTEL_Fortran_COMPILER_FLAGS="${INTEL_Fortran_COMPILER_FLAGS} ${INTEL_Fortran_COMPILER_FLAGS_TESTING}"
+
 fi
+
 if [[ "${pmLibFullName}" =~ .*"debug".* ]]; then
+
     pmBuildType=debug
+
     GNU_C_COMPILER_FLAGS="${GNU_C_COMPILER_FLAGS} -O0 -g"
-    INTEL_C_COMPILER_FLAGS="${INTEL_C_COMPILER_FLAGS} -O0 -debug full"
     GNU_Fortran_COMPILER_FLAGS="${GNU_Fortran_COMPILER_FLAGS} -O0 -g"
-    INTEL_Fortran_COMPILER_FLAGS="${INTEL_Fortran_COMPILER_FLAGS} -O0 -debug full"
+
+    INTEL_C_COMPILER_FLAGS="${INTEL_C_COMPILER_FLAGS} ${INTEL_C_COMPILER_FLAGS_DEBUG}"
+    INTEL_Fortran_COMPILER_FLAGS="${INTEL_Fortran_COMPILER_FLAGS} ${INTEL_Fortran_COMPILER_FLAGS_DEBUG}"
+
 fi
+
 if [ "${pmExamLang}" = "C++" ]; then
     GNU_C_COMPILER_FLAGS="${GNU_C_COMPILER_FLAGS} -std=gnu++11"
 fi
+
 echo >&2 "-- ParaMonteExample${pmExamLang} - ParaMonte build type: ${pmBuildType}"
 
 ####################################################################################################################################
@@ -380,10 +428,10 @@ if [ "${MPI_ENABLED}" = "true" ] && [ "${pmLibType}" = "static" ]; then
         fi
     fi
     if [ "${pmExamLang}" = "C" ]; then
-        declare -a compilerList=("mpiicc" "mpicc")
+        declare -a compilerList=("${cIntelMPIWrapperName}" "mpicc")
     fi
     if [ "${pmExamLang}" = "C++" ]; then
-        declare -a compilerList=("mpiicpc" "mpicxx" "mpic++" "mpicc")
+        declare -a compilerList=("${cppIntelMPIWrapperName}" "mpicxx" "mpic++" "mpicc")
     fi
 fi
 
@@ -502,7 +550,7 @@ do
 
             if [ "${pmExamLang}" = "C" ] || [ "${pmExamLang}" = "C++" ]; then
 
-                if [ "${COMPILER}" = "icc" ] || [ "${pmExamLang}" = "icpc" ] || [ "${pmExamLang}" = "mpiicc" ] || [ "${pmExamLang}" = "mpiicpc" ]; then
+                if [ "${COMPILER}" = "icl" ] || [ "${COMPILER}" = "icc" ] || [ "${pmExamLang}" = "icpc" ] || [ "${pmExamLang}" = "mpiicc" ] || [ "${pmExamLang}" = "mpiicpc" ]; then
                     COMPILER_FLAGS="${INTEL_C_COMPILER_FLAGS}"
                 else
                     COMPILER_FLAGS="${GNU_C_COMPILER_FLAGS}"
@@ -582,7 +630,16 @@ do
                 # Intel compiler does not support -dumpversion
                 #${LINKER} -dumpversion >/dev/null 2>&1 && \
 
-                ${LINKER} ${COMPILER_FLAGS} ${LINKER_FLAGS} ${pmSrcFiles//.$pmSrcExt/.o} "${pmLibFullName}" -o ${PM_EXAM_EXE_NAME} >/dev/null 2>&1 && \
+                if ([ "$isMinGW" = "true" ] || [ "$isCygwin" = "true" ]) \
+                && ([ "${LINKER}" = "icl" ] || [ "${LINKER}" = "ifort" ] || [ "${LINKER}" = "mpicl" ] || [ "${LINKER}" = "mpiifort" ]); then
+                    pmLibFullNameCurrent="${pmLibBaseName}.lib"
+                    pmObjExt="obj"
+                else
+                    pmLibFullNameCurrent="${pmLibFullName}"
+                    pmObjExt="o"
+                fi
+
+                ${LINKER} ${COMPILER_FLAGS} ${LINKER_FLAGS} ${pmSrcFiles//.$pmSrcExt/.$pmObjExt} "${pmLibFullNameCurrent}" -o ${PM_EXAM_EXE_NAME} >/dev/null 2>&1 && \
                 {
                 #if [ $? -eq 0 ]; then
 
