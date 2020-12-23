@@ -116,7 +116,6 @@ contains
         integer, intent(out)                            :: numRecord
 
         character(99999)                                :: record
-        character(:), allocatable                       :: closeStatus
         integer                                         :: fileUnit, irecord, i
         logical                                         :: delEnabledDefault, isOpen, fileExists
 
