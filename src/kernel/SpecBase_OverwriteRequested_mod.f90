@@ -40,6 +40,11 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+!> \brief
+!> This module contains the classes and procedures for setting up the `overwriteRequested` attribute of ParaMonte samplers.
+!> For more information, see the description of this attribute in the body of the module.
+!> \author Amir Shahmoradi
+
 module SpecBase_OverwriteRequested_mod
 
     implicit none

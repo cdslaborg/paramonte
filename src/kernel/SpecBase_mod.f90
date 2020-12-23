@@ -40,6 +40,11 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+!> \brief
+!> This module contains the classes and procedures for setting up the basic attributes of ParaMonte samplers.
+!> For more information, see the description of this attributes in the body of the corresponding modules.
+!> \author Amir Shahmoradi
+
 module SpecBase_mod
 
     ! ParaMonte Spec variable types

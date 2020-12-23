@@ -40,6 +40,11 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+!> \brief
+!> This module contains the classes and procedures for setting up the `sampleRefinementCount` attribute of samplers of class [ParaMCMC_type](@ref paramcmc_mod::paramcmc_type).
+!> For more information, see the description of this attribute in the body of the module.
+!> \author Amir Shahmoradi
+
 module SpecMCMC_SampleRefinementCount_mod
 
     use Constants_mod, only: IK

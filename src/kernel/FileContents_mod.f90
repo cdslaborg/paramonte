@@ -101,7 +101,7 @@ contains
     !> @param[out]  numRecord   :   The number of lines in the file.
     !> @param[out]  Err         :   An object of [Err_type](@ref err_mod::err_type) indicating whether error has occurred during the file IO.
     !> @param[out]  delEnabled  :   An optional logical value indicating whether the file should be deleted upon successful reading of it.
-    subroutine getFileContents(path,Contents,numRecord,Err,delEnabled)
+    subroutine getFileContents(path, Contents, numRecord, Err, delEnabled)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFileContents
 #endif
@@ -117,16 +117,17 @@ contains
 
         character(99999)                                :: record
         character(:), allocatable                       :: closeStatus
-        integer                                         :: fileUnit, irecord, iostat
+        integer                                         :: fileUnit, irecord, i
+        logical                                         :: delEnabledDefault, isOpen, fileExists
 
-        character(*), parameter                         :: PROCEDURE_NAME = "@getFileContents()"
+        character(*), parameter                         :: PROCEDURE_NAME = MODULE_NAME//"@getFileContents()"
 
         Err%occurred = .false.
         Err%msg = ""
 
-        closeStatus = "keep"
+        delEnabledDefault = .false.
         if (present(delEnabled)) then
-            if (delEnabled) closeStatus = "delete"
+            delEnabledDefault = delEnabled
         end if
 
         call getNumRecordInFile(path,numRecord,Err)
@@ -147,16 +148,16 @@ contains
 #endif
             )
         do irecord = 1,numRecord
-            read(fileUnit,"(A)",iostat=Err%stat) record
+            read(fileUnit,"(A)", iostat=Err%stat) record
             if (Err%stat==0) then
                 Contents(irecord)%record = trim(adjustl(record))
             ! LCOV_EXCL_START
-            elseif (is_iostat_end(iostat)) then
+            elseif (is_iostat_end(Err%stat)) then
                 Err%occurred = .true.
                 Err%msg =   PROCEDURE_NAME // ": End-of-file error occurred while expecting " // &
                             num2str(numRecord-irecord+1) // " records in file='" // path // "'."
                 return
-            elseif (is_iostat_eor(iostat)) then
+            elseif (is_iostat_eor(Err%stat)) then
                 Err%occurred = .true.
                 Err%msg =   PROCEDURE_NAME // ": End-of-record error occurred while reading line number " // &
                             num2str(irecord) // " from file='" // path // "'."
@@ -170,7 +171,38 @@ contains
             ! LCOV_EXCL_STOP
         end do
 
-        close(fileUnit,status=closeStatus, iostat = Err%stat) ! parallel processes cannot delete the same file
+        ! attempt to delete the file repeatedly. This is important on windows systems as the file often remains locked.
+
+        blockDeleteFile: if (delEnabledDefault) then
+
+            ! Attempt to delete the file repeatedly
+
+            loopDeleteFile: do i = 1, 100
+                inquire(file=path, opened=isOpen, exist=fileExists, iostat = Err%stat)
+                if (Err%stat==0) then
+                    if (fileExists) then
+                        if (.not. isOpen) then
+                            open( newunit = fileUnit    & ! LCOV_EXCL_LINE
+                                , status = "replace"    & ! LCOV_EXCL_LINE
+                                , iostat = Err%stat     & ! LCOV_EXCL_LINE
+                                , file = path           & ! LCOV_EXCL_LINE
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
+                                , SHARED                & ! LCOV_EXCL_LINE
+#endif
+                                )
+                        end if
+                        close(fileUnit, status="delete", iostat = Err%stat) ! parallel processes cannot delete the same file. Err%stat is required to handle exceptions.
+                    else
+                        return
+                    end if
+                end if
+            end do loopDeleteFile
+
+        end if blockDeleteFile
+
+        ! If file deletion fails or if it should not be deleted, then simply close the file and return.
+
+        close(fileUnit, status = "keep", iostat = Err%stat) ! parallel processes cannot delete the same file. Err%stat is required to handle exceptions.
 
         !if (Err%stat>0) then
         !! LCOV_EXCL_START

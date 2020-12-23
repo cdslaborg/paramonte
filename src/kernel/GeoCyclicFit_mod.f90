@@ -40,13 +40,12 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-!> \brief
-!> This module contains the classes and procedures for fitting a Cyclic Geometric distribution.
-!> The functions and procedures contained in this module were originally part of the [Statistics_mod](@ref statistics_mod)
-!> module. However, they were moved out to bypass the segmentation fault error with internal functions when the library is 
-!> compiled and run on Microsoft Windows Subsystem for Linux using the GNU Fortran compiler.
-!>
+!> \brief This module contains the classes and procedures for fitting a Cyclic Geometric distribution.
 !> \author Amir Shahmoradi
+
+! The functions and procedures contained in this module were originally part of the [Statistics_mod](@ref statistics_mod)
+! module. However, they were moved out to bypass the segmentation fault error with internal functions when the library is 
+! compiled and run on Microsoft Windows Subsystem for Linux using the GNU Fortran compiler.
 
 module GeoCyclicFit_mod
 

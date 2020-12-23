@@ -40,6 +40,11 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+!> \brief
+!> This module contains the classes and procedures for setting up the `domainLowerLimitVec` attribute of ParaMonte samplers.
+!> For more information, see the description of this attribute in the body of the module.
+!> \author Amir Shahmoradi
+
 module SpecBase_DomainLowerLimitVec_mod
 
     use Constants_mod, only: RK

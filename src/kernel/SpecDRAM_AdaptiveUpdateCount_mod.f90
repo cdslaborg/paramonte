@@ -40,6 +40,11 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+!> \brief
+!> This module contains the classes and procedures for setting up the `adaptiveUpdateCount` attribute of samplers of class [ParaDRAM_type](@ref paradram_mod::paradram_type).
+!> For more information, see the description of this attribute in the body of the module.
+!> \author Amir Shahmoradi
+
 module SpecDRAM_AdaptiveUpdateCount_mod
 
     use Constants_mod, only: IK
