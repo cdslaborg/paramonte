@@ -2255,7 +2255,7 @@ if [ -z ${CFI_ENABLED+x} ]; then
 fi
 
 if [ "${CODECOV_ENABLED}" = "true" ]; then
-    ParaMonte_BLD_DIR="${ParaMonte_BLD_DIR}/codecov"
+    ParaMonte_BLD_DIR="${ParaMonte_BLD_DIR}/paramonte-codecov"
 fi
 
 export ParaMonte_BLD_DIR

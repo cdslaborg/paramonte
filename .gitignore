@@ -33,7 +33,6 @@
 
 *.pyc
 **/__pycache__/*
-**/codecov/*
 
 #########################
 # Packages              #
@@ -122,6 +121,10 @@ Thumbs.db
 **/getCompilerVersion.f90
 **/paramonte-kernel-doc
 **/.ipynb_checkpoints
+**/paramonte-codecov
+**/paramonte-doc
+**/paramontex
+**/codecov
 **/benchmark
 **/codecov
 **/build
