@@ -9,3 +9,6 @@
 **/.travis/* export-ignore
 **/pubs/* export-ignore
 codecov.yml export-ignore
+
+# override github-liguist's automatic detection of m-files as M code.
+*.m linguist-language=MATLAB
