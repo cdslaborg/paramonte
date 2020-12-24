@@ -56,4 +56,4 @@ LOG_SMVN_COEF = NDIM * np.log( 1.0 / np.sqrt(2.0*np.pi) )
 
 def getLogFuncRaw(ndim,Point): return LOG_SMVN_COEF - 0.5 * np.sum( np.double( Point[0:ndim] )**2 )
 
-def getLogFunc(Point): return LOG_SMVN_COEF - 0.5 * np.sum( np.double( Point )**2 )
+def getLogFunc(Point): return LOG_SMVN_COEF - 0.5 * np.dot(point,point)

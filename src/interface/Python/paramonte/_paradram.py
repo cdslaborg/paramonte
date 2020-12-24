@@ -85,7 +85,7 @@ class ParaDRAM(ParaMonteSampler):
         def getLogFunc(point):
             # return the log of a multivariate Normal 
             # density function with ndim dimensions
-            return -0.5 * np.sum( point**2 )
+            return -0.5 * np.dot(point, point)
         pmpd = pm.ParaDRAM()
         pmpd.runSampler ( ndim = 4 # assume 4-dimensional objective function
                         , getLogFunc = getLogFunc   # the objective function
@@ -125,7 +125,7 @@ class ParaDRAM(ParaMonteSampler):
         def getLogFunc(point):
             # return the log of the standard multivariate
             # Normal density function with ndim dimensions
-            return -0.5 * np.sum( point**2 )
+            return -0.5 * np.dot(point, point)
         pmpd = pm.ParaDRAM()
         pmpd.mpiEnabled = True
         pmpd.runSampler ( ndim = 4 # assume 4-dimensional objective function

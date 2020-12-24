@@ -257,8 +257,8 @@ class ParaMonteSampler:
         the user-provided input objective function ``getLogFuncRaw(ndim,point)`` is
         a C-style raw pointer. This requires the user to guarantee that ``point`` will
         be always used with array bounds in their implementation of the objective function.
-        The use of ``_runSampler()`` in place of ``runSampler()`` leads to a slight
-        performance gain in the simulations.
+        The use of ``_runSampler()`` in place of ``runSampler()`` might lead to a slight
+        performance gain in the simulations, that is often negligible.
 
             **Example serial usage**
 
