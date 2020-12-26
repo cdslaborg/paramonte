@@ -263,6 +263,11 @@ if (${LTYPE} MATCHES "[Ss][Tt][Aa][Tt][Ii][Cc]")
 
 elseif (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
 
+    set(CMAKE_INSTALL_RPATH $ORIGIN)
+
+    add_library(${PMLIB_NAME} SHARED ${ParaMonte_SOURCE_FILES})
+   #add_library(${PMLIB_NAME} MODULE ${ParaMonte_SOURCE_FILES})
+
     if (gnu_compiler)
         #set_target_properties( ${PMLIB_NAME} PROPERTIES COMPILE_FLAGS "-static-libgfortran" )
         #set_target_properties( ${PMLIB_NAME} PROPERTIES LINK_FLAGS "-static-libgfortran" )
@@ -284,9 +289,6 @@ elseif (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
             set_target_properties( ${PMLIB_NAME} PROPERTIES LINK_FLAGS "-static-intel" )
         endif()
     endif()
-
-    add_library(${PMLIB_NAME} SHARED ${ParaMonte_SOURCE_FILES})
-   #add_library(${PMLIB_NAME} MODULE ${ParaMonte_SOURCE_FILES})
 
    #if (gnu_compiler)
    #    find_static_library(libgfortran LIBGFORTRAN_PATH)
