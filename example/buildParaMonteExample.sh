@@ -278,7 +278,7 @@ do
 
                         # copy dependencyFilePath only if they are GNU shared files and are not MPI-related.
 
-                        if  [ -f "${dependencyFilePath}" ] && ! [ -f "${ParaMonteExample_LIB_DIR_CURRENT}/${dependencyFileName}" ] && \
+                        if  [ -f "${dependencyFilePath}" ] && \
                           ( [[ "${dependencyFilePath}" =~ .*"gnu".* ]] || \
                             [[ "${dependencyFilePath}" =~ .*"gcc".* ]] || \
                             [[ "${dependencyFilePath}" =~ .*"gfortran".* ]] ) && \
@@ -298,46 +298,60 @@ do
                     dependencyListLenMinusOne="$(($dependencyListLen-1))"
 
                     if [ ${dependencyListLen} -eq 0 ]; then
+
                         echo >&2
                         echo >&2 "-- ParaMonteExample${LANG_NAME} - NOTE: No shared file dependencies were detected in the shared library file: ${sharedFilePath}"
                         echo >&2 "-- ParaMonteExample${LANG_NAME} - NOTE: Skipping the shared library file copying..."
                         echo >&2
+
                     else
+
                         echo >&2
                         echo >&2 "-- ParaMonteExample${LANG_NAME} - ${dependencyListLen} shared library file dependencies were detected."
                         echo >&2
+
                         for idep in $(seq 0 $dependencyListLenMinusOne); do
+
                             dependencyName=$(basename "${dependencyList[idep]}")
                             dependencyPathDestin="${ParaMonteExample_LIB_DIR_CURRENT}/${dependencyName}"
-                            echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library dependency shared file..."
-                            echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${dependencyList[idep]}"
-                            echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${dependencyPathDestin}"
-                            (yes | \cp -rf "${dependencyList[idep]}" "${dependencyPathDestin}") >/dev/null 2>&1 && {
-                                echo >&2 "-- ParaMonteExample${LANG_NAME} - appending the shared file list with: ${dependencyPathDestin}"
-                                sharedFilePathList+=("${dependencyPathDestin}")
-                                if [ "${isMacOS}" = "true" ]; then
-                                    echo >&2 "-- ParaMonteExample${LANG_NAME} - changing the install_name to @rpath for the dependency file..."
-                                    install_name_tool -change \
-                                    "${dependencyList[idep]}" \
-                                    "@rpath/${dependencyName}" \
-                                    "${sharedFilePath}" || {
-                                        echo >&2
-                                        echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: Changing the install_name of the dependency file to @rpath failed."
-                                        echo >&2
-                                        exit 1
-                                        #if [ "$BASH_SOURCE" == "$0" ]; then exit 30; else return 88; fi # return with an error message
-                                    }
-                                fi
-                            } || {
-                                echo >&2
-                                echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: The dependency file copy attempt failed at: ${dependencyList[idep]}"
-                                echo >&2
-                                exit 1
-                                #if [ "$BASH_SOURCE" == "$0" ]; then exit 30; else return 88; fi # return with an error message
-                            }
+
+                            if [ -f "${dependencyPathDestin}" ]; then
+                                echo >&2 "-- ParaMonteExample${LANG_NAME} - skipping the copying of the existing dependency: ${dependencyName}"
+                            else
+                                echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library dependency shared file..."
+                                echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${dependencyList[idep]}"
+                                echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${dependencyPathDestin}"
+                                (yes | \cp -rf "${dependencyList[idep]}" "${dependencyPathDestin}") >/dev/null 2>&1 || {
+                                    echo >&2
+                                    echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: The dependency file copy attempt failed at: ${dependencyList[idep]}"
+                                    echo >&2
+                                    exit 1
+                                    #if [ "$BASH_SOURCE" == "$0" ]; then exit 30; else return 88; fi # return with an error message
+                                }
+                            fi
+
+                            echo >&2 "-- ParaMonteExample${LANG_NAME} - appending the shared file list with: ${dependencyPathDestin}"
+                            sharedFilePathList+=("${dependencyPathDestin}")
+
+                            if [ "${isMacOS}" = "true" ]; then
+                                echo >&2 "-- ParaMonteExample${LANG_NAME} - changing the install_name to @rpath for the dependency file..."
+                                install_name_tool -change \
+                                "${dependencyList[idep]}" \
+                                "@rpath/${dependencyName}" \
+                                "${sharedFilePath}" || {
+                                    echo >&2
+                                    echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: Changing the install_name of the dependency file to @rpath failed."
+                                    echo >&2
+                                    exit 1
+                                    #if [ "$BASH_SOURCE" == "$0" ]; then exit 30; else return 88; fi # return with an error message
+                                }
+                            fi
                             echo >&2
+
                         done
+
                     fi
+
                     sharedFilePathListLen=${#sharedFilePathList[@]}
                     ishared=$((ishared+1))
 
