@@ -269,9 +269,11 @@ do
                 dependencyListLenMinusOne="$(($dependencyListLen-1))"
                 echo >&2 "-- ParaMonteExample${LANG_NAME} - ${dependencyListLen} shared library file dependencies were detected."
                 for i in $(seq 0 $dependencyListLenMinusOne); do
+                    echo >&2
                     echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library dependency shared file..."
                     echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${dependencyList[$i]}"
                     echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_LIB_DIR_CURRENT}/"
+                    echo >&2
                     (yes | \cp -rf "${dependencyList[$i]}" "${ParaMonteExample_LIB_DIR_CURRENT}/") >/dev/null 2>&1 && {
                         if [ "${isMacOS}" = "true" ]; then
                             echo >&2 "-- ParaMonteExample${LANG_NAME} - changing the install_name to @rpath for the dependency file..."
@@ -630,7 +632,7 @@ fi
 echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library files to the install directory..."
 echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteExample_BLD_DIR_CURRENT}"
 echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BIN_DIR_CURRENT}"
-cp -R "${ParaMonteExample_BLD_DIR_CURRENT}"/* "${ParaMonteExample_BIN_DIR_CURRENT}" || printCopyFailMsg
+cp -rf "${ParaMonteExample_BLD_DIR_CURRENT}"/* "${ParaMonteExample_BIN_DIR_CURRENT}" || printCopyFailMsg
 
 #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # The ParaMonte library example build and run if requested
