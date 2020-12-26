@@ -302,7 +302,7 @@ do
                                         install_name_tool -change \
                                         "${dependencyList[$i]}" \
                                         "@rpath/$(basename "${dependencyList[$i]}")" \
-                                        "${ParaMonteExample_LIB_DIR_CURRENT}/${PMLIB_FULL_NAME}" || {
+                                        "${sharedFilePath}" || {
                                             echo >&2
                                             echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: Changing the install_name of the dependency file to @rpath failed."
                                             echo >&2
