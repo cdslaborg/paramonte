@@ -263,9 +263,6 @@ if (${LTYPE} MATCHES "[Ss][Tt][Aa][Tt][Ii][Cc]")
 
 elseif (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
 
-    add_library(${PMLIB_NAME} SHARED ${ParaMonte_SOURCE_FILES})
-   #add_library(${PMLIB_NAME} MODULE ${ParaMonte_SOURCE_FILES})
-
     if (gnu_compiler)
         #set_target_properties( ${PMLIB_NAME} PROPERTIES COMPILE_FLAGS "-static-libgfortran" )
         #set_target_properties( ${PMLIB_NAME} PROPERTIES LINK_FLAGS "-static-libgfortran" )
@@ -281,12 +278,15 @@ elseif (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
         set_target_properties( ${PMLIB_NAME} PROPERTIES BUILD_WITH_INSTALL_RPATH FALSE) # when building, don't use the install RPATH for the build
         set_target_properties( ${PMLIB_NAME} PROPERTIES INSTALL_RPATH_USE_LINK_PATH TRUE) # if TRUE, append the automatically determined parts of RPATH
         set_target_properties( ${PMLIB_NAME} PROPERTIES INSTALL_RPATH "./") # the RPATH to be used when installing the library
-        #set_target_properties( ${PMLIB_NAME} PROPERTIES LINK_FLAGS "-Wl,-rpath,./" ) # if uncommented, this will override all of the above!
+        set_target_properties( ${PMLIB_NAME} PROPERTIES LINK_FLAGS "-Wl,-rpath,'$ORIGIN'" ) # if uncommented, this will override all of the above!
     elseif(intel_compiler)
         if (UNIX OR APPLE)
             set_target_properties( ${PMLIB_NAME} PROPERTIES LINK_FLAGS "-static-intel" )
         endif()
     endif()
+
+    add_library(${PMLIB_NAME} SHARED ${ParaMonte_SOURCE_FILES})
+   #add_library(${PMLIB_NAME} MODULE ${ParaMonte_SOURCE_FILES})
 
    #if (gnu_compiler)
    #    find_static_library(libgfortran LIBGFORTRAN_PATH)
