@@ -343,7 +343,7 @@ do
 
                     echo >&2
                     echo >&2 "-- ParaMonteExample${LANG_NAME} - The updated shared file list:"
-                    printf   '-- ParaMonteExample${LANG_NAME} - %s\n' "${sharedFilePathList[@]}"
+                    printf   '%s\n' "${sharedFilePathList[@]}"
                     echo >&2 "-- ParaMonteExample${LANG_NAME} - The length of the shared file list: ${sharedFilePathListLen}"
                     echo >&2 "-- ParaMonteExample${LANG_NAME} - The current index through the list: ${ishared}"
                     echo >&2
