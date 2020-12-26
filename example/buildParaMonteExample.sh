@@ -336,6 +336,7 @@ do
 
                             if [ "${isMacOS}" = "true" ]; then
                                 echo >&2 "-- ParaMonteExample${LANG_NAME} - changing the install_name to @rpath for the dependency file..."
+                                chmod a+w "${sharedFilePath}" && \
                                 install_name_tool -change \
                                 "${dependencyList[idep]}" \
                                 "@rpath/${dependencyName}" \
