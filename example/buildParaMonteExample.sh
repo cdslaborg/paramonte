@@ -261,6 +261,8 @@ do
 
                     #### loop over all existing shared files
 
+                    sharedFileNeeded=false
+
                     for sharedFilePath in "${ParaMonteExample_LIB_DIR_CURRENT}"/*.${sharedFileExt}; do
 
                         dependencyList=()
@@ -282,12 +284,11 @@ do
 
                         if [ ${dependencyListLen} -eq 0 ]; then
                             echo >&2
-                            echo >&2 "-- ParaMonteExample${LANG_NAME} - NOTE: No shared file dependencies were detected in the shared library file: "
+                            echo >&2 "-- ParaMonteExample${LANG_NAME} - NOTE: No shared file dependencies were detected in the shared library file: ${sharedFilePath}"
                             echo >&2 "-- ParaMonteExample${LANG_NAME} - NOTE: Skipping the shared library file copying..."
                             echo >&2
-                            sharedFileNeeded=false
-                            break
                         else
+                            sharedFileNeeded=true
                             echo >&2 "-- ParaMonteExample${LANG_NAME} - ${dependencyListLen} shared library file dependencies were detected."
                             for i in $(seq 0 $dependencyListLenMinusOne); do
                                 echo >&2
