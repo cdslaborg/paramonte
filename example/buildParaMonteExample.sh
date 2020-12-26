@@ -258,14 +258,13 @@ do
 
                 #### loop over all existing shared files, and their dependencies recursively
 
-                i=0
-                sharedFileNeeded=true
+                ishared=0
                 sharedFilePathList=($(ls "${ParaMonteExample_LIB_DIR_CURRENT}"/libparamonte_*.${sharedFileExt}))
                 sharedFilePathListLen=${#sharedFilePathList[@]}
 
-                while [ "$i" -lt "${sharedFilePathListLen}" ]; do
+                while [ "$ishared" -lt "${sharedFilePathListLen}" ]; do
 
-                    sharedFilePath="${sharedFilePathList[$i]}"
+                    sharedFilePath="${sharedFilePathList[$ishared]}"
 
                     echo >&2
                     echo >&2 "-- ParaMonteExample${LANG_NAME} - checking the dependencies of ${sharedFilePath}"
@@ -307,19 +306,19 @@ do
                         echo >&2
                         echo >&2 "-- ParaMonteExample${LANG_NAME} - ${dependencyListLen} shared library file dependencies were detected."
                         echo >&2
-                        for i in $(seq 0 $dependencyListLenMinusOne); do
-                            dependencyName=$(basename "${dependencyList[$i]}")
+                        for idep in $(seq 0 $dependencyListLenMinusOne); do
+                            dependencyName=$(basename "${dependencyList[idep]}")
                             dependencyPathDestin="${ParaMonteExample_LIB_DIR_CURRENT}/${dependencyName}"
                             echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library dependency shared file..."
-                            echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${dependencyList[$i]}"
+                            echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${dependencyList[idep]}"
                             echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${dependencyPathDestin}"
-                            (yes | \cp -rf "${dependencyList[$i]}" "${dependencyPathDestin}") >/dev/null 2>&1 && {
+                            (yes | \cp -rf "${dependencyList[idep]}" "${dependencyPathDestin}") >/dev/null 2>&1 && {
                                 echo >&2 "-- ParaMonteExample${LANG_NAME} - appending the shared file list with: ${dependencyPathDestin}"
                                 sharedFilePathList+=("${dependencyPathDestin}")
                                 if [ "${isMacOS}" = "true" ]; then
                                     echo >&2 "-- ParaMonteExample${LANG_NAME} - changing the install_name to @rpath for the dependency file..."
                                     install_name_tool -change \
-                                    "${dependencyList[$i]}" \
+                                    "${dependencyList[idep]}" \
                                     "@rpath/${dependencyName}" \
                                     "${sharedFilePath}" || {
                                         echo >&2
@@ -331,7 +330,7 @@ do
                                 fi
                             } || {
                                 echo >&2
-                                echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: The dependency file copy attempt failed at: ${dependencyList[$i]}"
+                                echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: The dependency file copy attempt failed at: ${dependencyList[idep]}"
                                 echo >&2
                                 exit 1
                                 #if [ "$BASH_SOURCE" == "$0" ]; then exit 30; else return 88; fi # return with an error message
@@ -339,9 +338,15 @@ do
                             echo >&2
                         done
                     fi
-
                     sharedFilePathListLen=${#sharedFilePathList[@]}
-                    i=$((i+1))
+                    ishared=$((ishared+1))
+
+                    echo >&2
+                    echo >&2 "-- ParaMonteExample${LANG_NAME} - The updated shared file list:"
+                    printf   '-- ParaMonteExample${LANG_NAME} - %s\n' "${sharedFilePathList[@]}"
+                    echo >&2 "-- ParaMonteExample${LANG_NAME} - The length of the shared file list: ${sharedFilePathListLen}"
+                    echo >&2 "-- ParaMonteExample${LANG_NAME} - The current index through the list: ${ishared}"
+                    echo >&2
 
                 done # with while loop
 
