@@ -325,7 +325,10 @@ do
                                 echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library dependency shared file..."
                                 echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${dependencyList[idep]}"
                                 echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${dependencyPathDestin}"
-                                (yes | \cp -rf "${dependencyList[idep]}" "${dependencyPathDestin}") >/dev/null 2>&1 || {
+                                (yes | \cp -rf "${dependencyList[idep]}" "${dependencyPathDestin}") >/dev/null 2>&1 && {
+                                    echo >&2 "-- ParaMonteExample${LANG_NAME} - appending the shared file list with the dependency: ${dependencyPathDestin}"
+                                    sharedFilePathList+=("${dependencyPathDestin}")
+                                } || {
                                     echo >&2
                                     echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: The dependency file copy attempt failed at: ${dependencyList[idep]}"
                                     echo >&2
@@ -349,9 +352,6 @@ do
                                 }
                             fi
                             echo >&2
-
-                            echo >&2 "-- ParaMonteExample${LANG_NAME} - appending the shared file list with the dependency: ${dependencyPathDestin}"
-                            sharedFilePathList+=("${dependencyPathDestin}")
 
                         done
 
