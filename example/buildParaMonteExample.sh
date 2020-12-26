@@ -97,6 +97,12 @@ printCopyFailMsg() {
     exit 1
 }
 
+if [ "${isMacOS}" = "true" ]; then
+    sharedFileExt="dylib"
+else
+    sharedFileExt="so"
+fi
+
 unset LANG_NAME
 LANG_IS_C=false
 LANG_IS_CPP=false
@@ -234,7 +240,6 @@ do
 
             #### first create the dependencies list
 
-            unset dependencyList
             unset dependencyCommand
             if [ "${isMacOS}" = "true" ] && command -v otool >/dev/null 2>&1 && command -v install_name_tool >/dev/null 2>&1; then
                 dependencyCommand="otool -L"
@@ -243,58 +248,80 @@ do
             fi
 
             if [ -z ${dependencyCommand+x} ]; then
+
                 echo >&2
                 echo >&2 "-- ParaMonteExample${LANG_NAME} - WARNING: The ldd (Linux) or otool/install_name_tool (macOS) could not be found."
                 echo >&2 "-- ParaMonteExample${LANG_NAME} - WARNING: Skipping the shared library file copying..."
                 echo >&2
-            else
-                dependencyList=()
-                # @todo: point of weakness: The following for-loop assumes no white space in the dependency paths.
-                for item in $(${dependencyCommand} "${ParaMonteExample_LIB_DIR_CURRENT}/${PMLIB_FULL_NAME}"); do
-                    # copy items only if they are shared files and are not MPI-related shared files.
-                    if [ -f "${item}" ] && ! ( [[ "${item}" =~ .*"mpich".* ]] || [[ "${item}" =~ .*"open-mpi".* ]] || [[ "${item}" =~ .*"openmpi".* ]] ); then
-                        echo >&2 "-- ParaMonteExample${LANG_NAME} - dependencies detected: ${item}"
-                        dependencyList+=("${item}")
-                    fi
-                done
-            fi
 
-            if [ -z ${dependencyList+x} ]; then
-                echo >&2
-                echo >&2 "-- ParaMonteExample${LANG_NAME} - WARNING: No shared files were detected in the installed ParaMonte library."
-                echo >&2 "-- ParaMonteExample${LANG_NAME} - WARNING: Skipping the shared library file copying..."
-                echo >&2
             else
-                dependencyListLen=${#dependencyList[@]}
-                dependencyListLenMinusOne="$(($dependencyListLen-1))"
-                echo >&2 "-- ParaMonteExample${LANG_NAME} - ${dependencyListLen} shared library file dependencies were detected."
-                for i in $(seq 0 $dependencyListLenMinusOne); do
-                    echo >&2
-                    echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library dependency shared file..."
-                    echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${dependencyList[$i]}"
-                    echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_LIB_DIR_CURRENT}/"
-                    echo >&2
-                    (yes | \cp -rf "${dependencyList[$i]}" "${ParaMonteExample_LIB_DIR_CURRENT}/") >/dev/null 2>&1 && {
-                        if [ "${isMacOS}" = "true" ]; then
-                            echo >&2 "-- ParaMonteExample${LANG_NAME} - changing the install_name to @rpath for the dependency file..."
-                            install_name_tool -change \
-                            "${dependencyList[$i]}" \
-                            "@rpath/$(basename "${dependencyList[$i]}")" \
-                            "${ParaMonteExample_LIB_DIR_CURRENT}/${PMLIB_FULL_NAME}" || {
+
+                sharedFileNeeded=true
+                while [ "${sharedFileNeeded}" = "true" ]; do
+
+                    #### loop over all existing shared files
+
+                    for sharedFilePath in "${ParaMonteExample_LIB_DIR_CURRENT}"/*.${sharedFileExt}; do
+
+                        dependencyList=()
+                        # @todo: point of weakness: The following for-loop assumes no white space in the dependency paths.
+                        for dependencyFilePath in $(${dependencyCommand} "${sharedFilePath}"); do
+                            dependencyFileName="$(basename "${dependencyFilePath}")"
+                            # copy dependencyFilePath only if they are shared files and are not MPI-related shared files.
+                            if [ -f "${dependencyFilePath}" ] && ! [ -f "${ParaMonteExample_LIB_DIR_CURRENT}/${dependencyFileName}" ] && \
+                            ! ( [[ "${dependencyFilePath}" =~ .*"mpich".* ]] || [[ "${dependencyFilePath}" =~ .*"open-mpi".* ]] || [[ "${dependencyFilePath}" =~ .*"openmpi".* ]] ); then
+                                if ! [ "${isMacOS}" = "true" ] || ( [ "${isMacOS}" = "true" ] && ! [[ "${dependencyFilePath}" =~ .*"/usr/lib/".* ]] ); then
+                                    echo >&2 "-- ParaMonteExample${LANG_NAME} - dependencies detected: ${dependencyFilePath}"
+                                    dependencyList+=("${dependencyFilePath}")
+                                fi
+                            fi
+                        done
+
+                        dependencyListLen=${#dependencyList[@]}
+                        dependencyListLenMinusOne="$(($dependencyListLen-1))"
+
+                        if [ ${dependencyListLen} -eq 0 ]; then
+                            echo >&2
+                            echo >&2 "-- ParaMonteExample${LANG_NAME} - NOTE: No shared file dependencies were detected in the shared library file: "
+                            echo >&2 "-- ParaMonteExample${LANG_NAME} - NOTE: Skipping the shared library file copying..."
+                            echo >&2
+                            sharedFileNeeded=false
+                            break
+                        else
+                            echo >&2 "-- ParaMonteExample${LANG_NAME} - ${dependencyListLen} shared library file dependencies were detected."
+                            for i in $(seq 0 $dependencyListLenMinusOne); do
                                 echo >&2
-                                echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: Changing the install_name of the dependency file to @rpath failed."
+                                echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library dependency shared file..."
+                                echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${dependencyList[$i]}"
+                                echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_LIB_DIR_CURRENT}/"
                                 echo >&2
-                                if [ "$BASH_SOURCE" == "$0" ]; then exit 30; else return 88; fi # return with an error message
-                            }
+                                (yes | \cp -rf "${dependencyList[$i]}" "${ParaMonteExample_LIB_DIR_CURRENT}/") >/dev/null 2>&1 && {
+                                    if [ "${isMacOS}" = "true" ]; then
+                                        echo >&2 "-- ParaMonteExample${LANG_NAME} - changing the install_name to @rpath for the dependency file..."
+                                        install_name_tool -change \
+                                        "${dependencyList[$i]}" \
+                                        "@rpath/$(basename "${dependencyList[$i]}")" \
+                                        "${ParaMonteExample_LIB_DIR_CURRENT}/${PMLIB_FULL_NAME}" || {
+                                            echo >&2
+                                            echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: Changing the install_name of the dependency file to @rpath failed."
+                                            echo >&2
+                                            if [ "$BASH_SOURCE" == "$0" ]; then exit 30; else return 88; fi # return with an error message
+                                        }
+                                    fi
+                                } || {
+                                    echo >&2
+                                    echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: The dependency file copy attempt failed at: ${dependencyList[$i]}"
+                                    echo >&2
+                                    if [ "$BASH_SOURCE" == "$0" ]; then exit 30; else return 88; fi # return with an error message
+                                    #continue
+                                }
+                            done
                         fi
-                    } || {
-                        echo >&2
-                        echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: The dependency file copy attempt failed at: ${dependencyList[$i]}"
-                        echo >&2
-                        if [ "$BASH_SOURCE" == "$0" ]; then exit 30; else return 88; fi # return with an error message
-                        continue
-                    }
-                done
+
+                    done # with loop over shared files
+
+                done # with while loop
+
             fi
 
         fi
@@ -312,9 +339,9 @@ do
 
                 if [ "${isMacOS}" = "true" ]; then
                     Fortran_COMPILER_LIB_DIR_LIST="/usr/local/gfortran/lib"
-                    sharedLibExt="dylib"
+                    sharedFileExt="dylib"
                 else
-                    sharedLibExt="so"
+                    sharedFileExt="so"
                     Fortran_COMPILER_DIR=$(dirname "${Fortran_COMPILER_PATH}")
                     FortranCompilerVersion=$("${Fortran_COMPILER_PATH}" -dumpversion)
                     FortranCompilerMajorVersion="$(cut -d '.' -f 1 <<< "$FortranCompilerVersion")"
@@ -329,7 +356,7 @@ do
                     for Fortran_COMPILER_LIB_DIR in ${Fortran_COMPILER_LIB_DIR_LIST//:/ }
                     do
                         if [ -d "${Fortran_COMPILER_LIB_DIR}" ]; then
-                            flist=$(( IFS=:; unset lsout; lsout=$(ls -dm "${Fortran_COMPILER_LIB_DIR}/${FILE}"*.${sharedLibExt}*); if ! [[ -z "${lsout// }" ]]; then echo "${lsout}, "; fi) 2>/dev/null)
+                            flist=$(( IFS=:; unset lsout; lsout=$(ls -dm "${Fortran_COMPILER_LIB_DIR}/${FILE}"*.${sharedFileExt}*); if ! [[ -z "${lsout// }" ]]; then echo "${lsout}, "; fi) 2>/dev/null)
                             for fpath in $(echo $flist | sed "s/,/ /g"); do
                                 echo >&2
                                 echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library dll dependency file..."
