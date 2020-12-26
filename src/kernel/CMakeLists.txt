@@ -277,6 +277,11 @@ elseif (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
         #elseif(UNIX)
             #set_target_properties( ${PMLIB_NAME} PROPERTIES LINK_FLAGS "-Wl,-static-libgfortran" )
         #endif()
+        set_target_properties( ${PMLIB_NAME} PROPERTIES SKIP_BUILD_RPATH FALSE) # don't skip the full RPATH for the build tree
+        set_target_properties( ${PMLIB_NAME} PROPERTIES BUILD_WITH_INSTALL_RPATH FALSE) # when building, don't use the install RPATH for the build
+        set_target_properties( ${PMLIB_NAME} PROPERTIES INSTALL_RPATH_USE_LINK_PATH TRUE) # if TRUE, append the automatically determined parts of RPATH
+        set_target_properties( ${PMLIB_NAME} PROPERTIES INSTALL_RPATH "./") # the RPATH to be used when installing the library
+        #set_target_properties( ${PMLIB_NAME} PROPERTIES LINK_FLAGS "-Wl,-rpath,./" ) # if uncommented, this will override all of the above!
     elseif(intel_compiler)
         if (UNIX OR APPLE)
             set_target_properties( ${PMLIB_NAME} PROPERTIES LINK_FLAGS "-static-intel" )
