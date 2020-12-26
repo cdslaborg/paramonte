@@ -310,6 +310,10 @@ do
                         echo >&2 "-- ParaMonteExample${LANG_NAME} - ${dependencyListLen} shared library file dependencies were detected."
                         echo >&2
 
+                        #### loop over the dependencies in the current shared file, 
+                        #### copy those missing to the install folder, 
+                        #### and change their install_path in the shared files, if OS is macOS.
+
                         for idep in $(seq 0 $dependencyListLenMinusOne); do
 
                             dependencyName=$(basename "${dependencyList[idep]}")
@@ -330,9 +334,6 @@ do
                                 }
                             fi
 
-                            echo >&2 "-- ParaMonteExample${LANG_NAME} - appending the shared file list with: ${dependencyPathDestin}"
-                            sharedFilePathList+=("${dependencyPathDestin}")
-
                             if [ "${isMacOS}" = "true" ]; then
                                 echo >&2 "-- ParaMonteExample${LANG_NAME} - changing the install_name to @rpath for the dependency file..."
                                 install_name_tool -change \
@@ -347,6 +348,9 @@ do
                                 }
                             fi
                             echo >&2
+
+                            echo >&2 "-- ParaMonteExample${LANG_NAME} - appending the shared file list with the dependency: ${dependencyPathDestin}"
+                            sharedFilePathList+=("${dependencyPathDestin}")
 
                         done
 
