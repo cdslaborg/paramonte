@@ -97,7 +97,7 @@ MatDRAM_ENABLED="false"
 shared_enabled="true"
 codecov_flag=""
 dryrun_flag=""
-unset TTYPE=""
+TTYPE=""
 
 while [ "$1" != "" ]; do
     case $1 in
