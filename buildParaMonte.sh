@@ -2526,6 +2526,12 @@ else
     CODECOV_ENABLED_FLAG=""
 fi
 
+if [ "${isMacOS}" = "true" ]; then
+    # target all OSX newer than 10.7 x86_64
+    MACOSX_DEPLOYMENT_TARGET="10.7"
+    export MACOSX_DEPLOYMENT_TARGET
+fi
+
 if [ "${DRYRUN_ENABLED}" != "true" ]; then
 
     # determine whether the current system is a Windows Subsystem for Linux (WSL).
