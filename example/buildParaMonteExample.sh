@@ -313,10 +313,10 @@ do
                             echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library dependency shared file..."
                             echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${dependencyList[$i]}"
                             echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${dependencyPathDestin}"
-                            echo >&2
                             (yes | \cp -rf "${dependencyList[$i]}" "${dependencyPathDestin}") >/dev/null 2>&1 && {
+                                echo >&2 "-- ParaMonteExample${LANG_NAME} - appending the shared file list with: ${dependencyPathDestin}"
+                                sharedFilePathList+=("${dependencyPathDestin}")
                                 if [ "${isMacOS}" = "true" ]; then
-                                    sharedFilePathList+=("${dependencyPathDestin}")
                                     echo >&2 "-- ParaMonteExample${LANG_NAME} - changing the install_name to @rpath for the dependency file..."
                                     install_name_tool -change \
                                     "${dependencyList[$i]}" \
@@ -336,6 +336,7 @@ do
                                 exit 1
                                 #if [ "$BASH_SOURCE" == "$0" ]; then exit 30; else return 88; fi # return with an error message
                             }
+                            echo >&2
                         done
                     fi
 
