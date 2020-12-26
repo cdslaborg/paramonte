@@ -394,7 +394,7 @@ cat << EndOfMessage
         -e | --heap_enabled     : the ParaMonte library heap array allocation enabled?: true, false
         -t | --test             : the ParaMonte library test run enabled?: none, all, pm, nopm
         -x | --exam_enabled     : the ParaMonte library examples run enabled?: true, false
-        -S | --shared_enabled   : release the shared library dependencies in the binary release of the ParaMonte library: true, false
+        -D | --deploy           : release the shared library dependencies in the binary release of the ParaMonte library (this is mostly useful for the library developers)
         -f | --fortran          : path to Fortran compiler. If provided, the ParaMonte library will be built via the specified compiler.
         -M | --mpiexec          : path to mpiexec routine. If provided, it will be used to find the MPI library.
         -F | --fresh            : enables a fresh installation of all of the prerequisites of ParaMonte library. Applicable only to GNU compiler suite.
@@ -436,7 +436,7 @@ freshInstallEnabled=false
 YES_TO_ALL_DISABLED=true
 CODECOV_ENABLED=false
 DRYRUN_ENABLED=false
-shared_enabled=true
+deploy_enabled=false
 CLEAN=false
 
 chmod a+x ./configParaMonte.sh
@@ -479,8 +479,7 @@ while [ "$1" != "" ]; do
         -x | --exam_enabled )   shift
                                 ParaMonteExample_RUN_ENABLED=$1; export ParaMonteExample_RUN_ENABLED
                                 ;;
-        -S | --shared_enabled ) shift
-                                shared_enabled=$1; export shared_enabled
+        -D | --deploy )         deploy_enabled=true; export deploy_enabled
                                 ;;
         -f | --fortran )        shift
                                 Fortran_COMPILER_PATH_USER=$1; export Fortran_COMPILER_PATH_USER

@@ -94,9 +94,9 @@ yes_to_all_flag=""
 gcc_bootstrap_flag=""
 FOR_COARRAY_NUM_IMAGES=3
 MatDRAM_ENABLED="false"
-shared_enabled="true"
 codecov_flag=""
 dryrun_flag=""
+deploy_flag=""
 TTYPE=""
 
 while [ "$1" != "" ]; do
@@ -125,8 +125,7 @@ while [ "$1" != "" ]; do
         -x | --exam_enabled )   shift
                                 ParaMonteExample_RUN_ENABLED="$1"
                                 ;;
-        -S | --shared_enabled ) shift
-                                shared_enabled="$1"
+        -D | --deploy )         deploy_flag="--deploy"
                                 ;;
         -f | --fortran )        shift
                                 Fortran_COMPILER_PATH="$1"
@@ -565,7 +564,6 @@ for PMCS in $PMCS_LIST; do
 
                         #test_enabled_flag="--test_enabled ${ParaMonteTest_RUN_ENABLED}"
                         exam_enabled_flag="--exam_enabled ${ParaMonteExample_RUN_ENABLED}"
-                        shared_enabled_flag="--shared_enabled ${shared_enabled}"
 
                         if [ "${PMCS}" = "none" ]; then
                            compiler_suite_flag=""
@@ -631,7 +629,7 @@ for PMCS in $PMCS_LIST; do
                             echo >&2 "                          ${caftype_flag} \ "
                             echo >&2 "                          ${test_type_flag} \ "
                             echo >&2 "                          ${exam_enabled_flag} \ "
-                            echo >&2 "                          ${shared_enabled_flag} \ "
+                            echo >&2 "                          ${deploy_flag} \ "
                             if ! [ "${yes_to_all_flag}" = "" ]; then
                             echo >&2 "                          ${yes_to_all_flag} \ "
                             fi
@@ -677,10 +675,10 @@ for PMCS in $PMCS_LIST; do
                             ${caftype_flag} \
                             ${test_type_flag} \
                             ${exam_enabled_flag} \
-                            ${shared_enabled_flag} \
                             ${yes_to_all_flag} \
                             ${fresh_flag} \
                             ${local_flag} \
+                            ${deploy_flag} \
                             ${dryrun_flag} \
                             ${codecov_flag} \
                             ${gcc_bootstrap_flag} \
