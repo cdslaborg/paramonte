@@ -2585,8 +2585,13 @@ fi
 #### Test the ParaMonte library if requested
 ####################################################################################################################################
 
-LD_LIBRARY_PATH=${ParaMonte_BLD_DIR}/lib:${LD_LIBRARY_PATH}
-export LD_LIBRARY_PATH
+if [ "${isMacOS}" = "true" ]; then
+    DYLD_LIBRARY_PATH=${ParaMonte_BLD_DIR}/lib:${DYLD_LIBRARY_PATH}
+    export DYLD_LIBRARY_PATH
+else
+    LD_LIBRARY_PATH=${ParaMonte_BLD_DIR}/lib:${LD_LIBRARY_PATH}
+    export LD_LIBRARY_PATH
+fi
 
 # set test object/module/lib files directories
 
