@@ -316,21 +316,50 @@ do
 
                         for idep in $(seq 0 $dependencyListLenMinusOne); do
 
-                            dependencyName=$(basename "${dependencyList[idep]}")
+                            dependencyPath="${dependencyList[idep]}"
+                            dependencyName="$(basename "${dependencyPath}")"
+
+                            #### If the source file is symlink, copy the target to the new folder and rename it to the symlink's name instead.
+
+                            dependencyPathTarget="${dependencyPath}"
+                            dependencyNameTarget="${dependencyName}"
+
+                            if [ "${isMacOS}" = "true" ]; then
+                                echo >&2 "-- ParaMonteExample${LANG_NAME} - macOS symlink handling not supported yet. skipping!"
+                            else
+                                if [ -L "${dependencyPath}" ]; then
+                                    dependencyPathTarget="$(readlink -f "${dependencyPath}")"
+                                    dependencyNameTarget="$(basename "${dependencyPathTarget}")"
+                                fi
+                            fi
+
                             dependencyPathDestin="${ParaMonteExample_LIB_DIR_CURRENT}/${dependencyName}"
 
                             if [ -f "${dependencyPathDestin}" ]; then
+
                                 echo >&2 "-- ParaMonteExample${LANG_NAME} - skipping the copying of the existing dependency: ${dependencyName}"
+
                             else
+
                                 echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library dependency shared file..."
-                                echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${dependencyList[idep]}"
+                                echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${dependencyPathTarget}"
                                 echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${dependencyPathDestin}"
-                                (yes | \cp -rf "${dependencyList[idep]}" "${dependencyPathDestin}") >/dev/null 2>&1 && {
-                                    echo >&2 "-- ParaMonteExample${LANG_NAME} - appending the shared file list with the dependency: ${dependencyPathDestin}"
-                                    sharedFilePathList+=("${dependencyPathDestin}")
+
+                                (yes | \cp -arf "${dependencyPathTarget}" "${ParaMonteExample_LIB_DIR_CURRENT}"/) >/dev/null 2>&1 && {
+                                    mv "${ParaMonteExample_LIB_DIR_CURRENT}/${dependencyNameTarget}" "${dependencyPathDestin}" && {
+                                        echo >&2 "-- ParaMonteExample${LANG_NAME} - appending the shared file list with the dependency: ${dependencyPathDestin}"
+                                        sharedFilePathList+=("${dependencyPathDestin}")
+                                    } || {
+                                        echo >&2
+                                        echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: The dependency renaming failed:"
+                                        echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: from: ${ParaMonteExample_LIB_DIR_CURRENT}/${dependencyNameTarget}"
+                                        echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL:   to: ${dependencyPathDestin}"
+                                        echo >&2
+                                        exit 1
+                                    }
                                 } || {
                                     echo >&2
-                                    echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: The dependency file copy attempt failed at: ${dependencyList[idep]}"
+                                    echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: The dependency file copy attempt failed at: ${dependencyPath}"
                                     echo >&2
                                     exit 1
                                     #if [ "$BASH_SOURCE" == "$0" ]; then exit 30; else return 88; fi # return with an error message
@@ -341,7 +370,7 @@ do
                                 echo >&2 "-- ParaMonteExample${LANG_NAME} - changing the install_name to @rpath for the dependency file..."
                                 chmod a+w "${sharedFilePath}" && \
                                 install_name_tool -change \
-                                "${dependencyList[idep]}" \
+                                "${dependencyPath}" \
                                 "@rpath/${dependencyName}" \
                                 "${sharedFilePath}" || {
                                     echo >&2
