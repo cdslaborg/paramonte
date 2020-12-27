@@ -80,8 +80,8 @@ class ParaDRAM(ParaMonteSampler):
         :linenos:
 
         ##################################
-        import paramonte as pm
         import numpy as np
+        import paramonte as pm
         def getLogFunc(point):
             # return the log of a multivariate Normal 
             # density function with ndim dimensions
@@ -120,8 +120,8 @@ class ParaDRAM(ParaMonteSampler):
         ##################################
         with open("main.py", "w") as file:
             file.write  ('''
-        import paramonte as pm
         import numpy as np
+        import paramonte as pm
         def getLogFunc(point):
             # return the log of the standard multivariate
             # Normal density function with ndim dimensions
