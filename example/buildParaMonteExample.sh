@@ -339,7 +339,8 @@ do
 
                             if [ -f "${dependencyPathDestin}" ]; then
 
-                                echo >&2 "-- ParaMonteExample${LANG_NAME} - skipping the copying of the existing dependency: ${dependencyName}"
+                                echo >&2 "-- ParaMonteExample${LANG_NAME} - the dependency already exists in the build tree: ${dependencyPathDestin}"
+                                echo >&2 "-- ParaMonteExample${LANG_NAME} - skipping the copy action for ${dependencyName}"
 
                             else
 
