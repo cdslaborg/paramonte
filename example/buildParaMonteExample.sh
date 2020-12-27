@@ -313,7 +313,7 @@ do
                         #### copy those missing to the install folder, 
                         #### and change their install_path in the shared files, if OS is macOS.
 
-                        for ((idep=0; idep<${dependencyListLen}; idep++))
+                        for ((idep=0; idep<${dependencyListLen}; idep++)); do
 
                             dependencyPath="${dependencyList[idep]}"
                             dependencyName="$(basename "${dependencyPath}")"
