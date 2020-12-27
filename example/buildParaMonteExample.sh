@@ -295,7 +295,6 @@ do
                     done
 
                     dependencyListLen=${#dependencyList[@]}
-                    dependencyListLenMinusOne="$(($dependencyListLen-1))"
 
                     if [ ${dependencyListLen} -eq 0 ]; then
 
@@ -314,7 +313,7 @@ do
                         #### copy those missing to the install folder, 
                         #### and change their install_path in the shared files, if OS is macOS.
 
-                        for idep in $(seq 0 $dependencyListLenMinusOne); do
+                        for ((idep=0; idep<${dependencyListLen}; idep++))
 
                             dependencyPath="${dependencyList[idep]}"
                             dependencyName="$(basename "${dependencyPath}")"
