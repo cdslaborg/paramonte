@@ -512,11 +512,15 @@ echo >&2 "-- ParaMonteExample${pmExamLang} - ParaMonte library's compiler suite:
 echo >&2 "-- ParaMonteExample${pmExamLang} - inferred compiler choice(s):"
 echo >&2 "-- ParaMonteExample${pmExamLang} - "
 compilerListLen=${#compilerList[@]}
-compilerListLenMinusOne="$(($compilerListLen-1))"
-for i in $(seq 0 $compilerListLenMinusOne)
+# compilerListLenMinusOne="$(($compilerListLen-1))"
+# for i in $(seq 0 $compilerListLenMinusOne)
+# The following appears to be more generic and cross-platform
+for ((i=0; i<${compilerListLen}; i++))
 do
     csvCompilerList="${compilerList[$i]}"
-    for COMPILER in $(echo ${csvCompilerList} | sed "s/,/ /g")
+    #for COMPILER in $(echo ${csvCompilerList} | sed "s/,/ /g")
+    # The following is more generic and works on Ubuntu, Debian, and Opensuse.
+    for COMPILER in ${csvCompilerList//,/ }
     do
         echo >&2 "-- ParaMonteExample${pmExamLang} -     ${COMPILER}"
     done
@@ -554,15 +558,18 @@ export LD_LIBRARY_PATH
 BUILD_SUCCEEDED=false
 RUN_FILE_NAME="run.sh"
 
-#for COMPILER in ${compilerList}
 compilerListLen=${#compilerList[@]}
-compilerListLenMinusOne="$(($compilerListLen-1))"
-for i in $(seq 0 $compilerListLenMinusOne)
+
+# for i in $(seq 0 $compilerListLenMinusOne)
+# The following appears to be more generic and cross-platform
+for ((i=0; i<${compilerListLen}; i++))
 do
 
     csvCompilerList="${compilerList[$i]}"
 
-    for COMPILER in $(echo ${csvCompilerList} | sed "s/,/ /g")
+    # for COMPILER in $(echo ${csvCompilerList} | sed "s/,/ /g")
+    # The following appears to be more generic and cross-platform
+    for COMPILER in ${csvCompilerList//,/ }
     do
 
         #### Infer the compiler flags
@@ -643,7 +650,9 @@ do
                 fi
             fi
 
-            for LINKER in $(echo ${csvLinkerList} | sed "s/,/ /g")
+            #for LINKER in $(echo ${csvLinkerList} | sed "s/,/ /g")
+            # The following is more generic and works on Ubuntu, Debian, and Opensuse.
+            for LINKER in ${csvLinkerList//,/ }
             do
 
                 echo >&2
