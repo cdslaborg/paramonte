@@ -284,7 +284,9 @@ do
                         #   ATTN: @todo: On WSL Ubuntu 20, there is a dependency on libc.so.6, which is not
                         #   ATTN: @todo: portable across other linux distros like Debian, Opensuse and causes segfault.
                         #   ATTN: @todo: Conversely, another dependency libm.so.6 seems to be needed and portable.
-                        #   ATTN: @todo: These dependencies do not exist when the library is built on TACC.
+                        #   ATTN: @todo: For now, the best strategy seems to be to avoid all basic C library dependencies
+                        #   ATTN: @todo: which currently includes three shared files: libc, libm, libpthread.
+                        #   ATTN: @todo: See: https://stackoverflow.com/questions/54054925/what-functions-is-the-libm-intended-for
 
                         if  [ -f "${dependencyFilePath}" ] && \
                             ( \
@@ -297,9 +299,11 @@ do
                                 [[ "${dependencyFilePath}" =~ .*"quadmath".* ]] \
                             ) && \
                             ! ( \
+                                [[ "${dependencyFilePath}" =~ .*"libc.so".* ]] \
+                                || \
                                 [[ "${dependencyFilePath}" =~ .*"libm.so".* ]] \
                                 || \
-                                [[ "${dependencyFilePath}" =~ .*"libc.so".* ]] \
+                                [[ "${dependencyFilePath}" =~ .*"libpthread.so".* ]] \
                                 || \
                                 [[ "${dependencyFilePath}" =~ .*"mpich".* ]] \
                                 || \
