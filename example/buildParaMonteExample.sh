@@ -278,13 +278,26 @@ do
 
                         # copy dependencyFilePath only if they are GNU shared files and are not MPI-related.
 
+                        #   [[ "${dependencyFilePath}" =~ .*"gnu".* ]] || \
+                        #   [[ "${dependencyFilePath}" =~ .*"gcc".* ]] || \
+                        #   WSL Ubuntu libc.so.6 is not portable across other linux distros like Debian, Opensuse, ...
+                            
                         if  [ -f "${dependencyFilePath}" ] && \
-                          ( [[ "${dependencyFilePath}" =~ .*"gnu".* ]] || \
-                            [[ "${dependencyFilePath}" =~ .*"gcc".* ]] || \
-                            [[ "${dependencyFilePath}" =~ .*"gfortran".* ]] ) && \
-                        ! ( [[ "${dependencyFilePath}" =~ .*"mpich".* ]] || \
-                            [[ "${dependencyFilePath}" =~ .*"open-mpi".* ]] || 
-                            [[ "${dependencyFilePath}" =~ .*"openmpi".* ]] 
+                            ( \
+                                [[ "${dependencyFilePath}" =~ .*"gnu".* ]] \
+                                || \
+                                [[ "${dependencyFilePath}" =~ .*"gcc".* ]] \
+                                || \
+                                [[ "${dependencyFilePath}" =~ .*"gfortran".* ]] \
+                                || \
+                                [[ "${dependencyFilePath}" =~ .*"quadmath".* ]] \
+                            ) && \
+                            ! ( \
+                                [[ "${dependencyFilePath}" =~ .*"mpich".* ]] \
+                                || \
+                                [[ "${dependencyFilePath}" =~ .*"open-mpi".* ]] \
+                                || \
+                                [[ "${dependencyFilePath}" =~ .*"openmpi".* ]] \
                             ); then
                             #if ! [ "${isMacOS}" = "true" ] || ( [ "${isMacOS}" = "true" ] && ! [[ "${dependencyFilePath}" =~ .*"/usr/lib/".* ]] ); then
                                 echo >&2 "-- ParaMonteExample${LANG_NAME} - dependency detected: ${dependencyFilePath}"
