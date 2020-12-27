@@ -333,6 +333,8 @@ do
                                 fi
                             fi
 
+                            #### copy and work on the dependency file only if it does not already exist in the folder.
+
                             dependencyPathDestin="${ParaMonteExample_LIB_DIR_CURRENT}/${dependencyName}"
 
                             if [ -f "${dependencyPathDestin}" ]; then
@@ -345,11 +347,21 @@ do
                                 echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${dependencyPathTarget}"
                                 echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${dependencyPathDestin}"
 
-                                (yes | \cp -arf "${dependencyPathTarget}" "${ParaMonteExample_LIB_DIR_CURRENT}"/) >/dev/null 2>&1 && {
-                                    mv "${ParaMonteExample_LIB_DIR_CURRENT}/${dependencyNameTarget}" "${dependencyPathDestin}" && {
-                                        echo >&2 "-- ParaMonteExample${LANG_NAME} - appending the shared file list with the dependency: ${dependencyPathDestin}"
-                                        sharedFilePathList+=("${dependencyPathDestin}")
-                                    } || {
+                                #### copy the dependency file to the destination folder
+
+                                (yes | \cp -arf "${dependencyPathTarget}" "${ParaMonteExample_LIB_DIR_CURRENT}"/) >/dev/null 2>&1 || {
+                                    echo >&2
+                                    echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: The dependency file copy attempt failed at: ${dependencyPath}"
+                                    echo >&2
+                                    exit 1
+                                    #if [ "$BASH_SOURCE" == "$0" ]; then exit 30; else return 88; fi # return with an error message
+                                }
+
+                                #### If the dependency is symlink, rename the target to the symlink's name in the destination folder
+
+                                if ! [ "${dependencyName}" = "${dependencyNameTarget}" ]; then
+
+                                    mv "${ParaMonteExample_LIB_DIR_CURRENT}/${dependencyNameTarget}" "${dependencyPathDestin}" || {
                                         echo >&2
                                         echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: The dependency renaming failed:"
                                         echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: from: ${ParaMonteExample_LIB_DIR_CURRENT}/${dependencyNameTarget}"
@@ -357,13 +369,14 @@ do
                                         echo >&2
                                         exit 1
                                     }
-                                } || {
-                                    echo >&2
-                                    echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: The dependency file copy attempt failed at: ${dependencyPath}"
-                                    echo >&2
-                                    exit 1
-                                    #if [ "$BASH_SOURCE" == "$0" ]; then exit 30; else return 88; fi # return with an error message
-                                }
+
+                                fi
+
+                                #### Add the new shared file for subsequent scanning
+
+                                echo >&2 "-- ParaMonteExample${LANG_NAME} - appending the shared file list with the dependency: ${dependencyPathDestin}"
+                                sharedFilePathList+=("${dependencyPathDestin}")
+
                             fi
 
                             if [ "${isMacOS}" = "true" ]; then
