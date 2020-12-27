@@ -280,8 +280,12 @@ do
 
                         #   [[ "${dependencyFilePath}" =~ .*"gnu".* ]] || \
                         #   [[ "${dependencyFilePath}" =~ .*"gcc".* ]] || \
-                        #   WSL Ubuntu libc.so.6 is not portable across other linux distros like Debian, Opensuse, ...
-                            
+                        #   ATTN: @todo: point of weakness: Some gcc libraries do not seem to be portable.
+                        #   ATTN: @todo: On WSL Ubuntu 20, there is a dependency on libc.so.6, which is not
+                        #   ATTN: @todo: portable across other linux distros like Debian, Opensuse and causes segfault.
+                        #   ATTN: @todo: Conversely, another dependency libm.so.6 seems to be needed and portable.
+                        #   ATTN: @todo: These dependencies do not exist when the library is built on TACC.
+
                         if  [ -f "${dependencyFilePath}" ] && \
                             ( \
                                 [[ "${dependencyFilePath}" =~ .*"gnu".* ]] \
@@ -293,6 +297,10 @@ do
                                 [[ "${dependencyFilePath}" =~ .*"quadmath".* ]] \
                             ) && \
                             ! ( \
+                                [[ "${dependencyFilePath}" =~ .*"libm.so".* ]] \
+                                || \
+                                [[ "${dependencyFilePath}" =~ .*"libc.so".* ]] \
+                                || \
                                 [[ "${dependencyFilePath}" =~ .*"mpich".* ]] \
                                 || \
                                 [[ "${dependencyFilePath}" =~ .*"open-mpi".* ]] \
@@ -322,8 +330,8 @@ do
                         echo >&2 "-- ParaMonteExample${LANG_NAME} - ${dependencyListLen} shared library file dependencies were detected."
                         echo >&2
 
-                        #### loop over the dependencies in the current shared file, 
-                        #### copy those missing to the install folder, 
+                        #### loop over the dependencies in the current shared file,
+                        #### copy those missing to the install folder,
                         #### and change their install_path in the shared files, if OS is macOS.
 
                         for ((idep=0; idep<${dependencyListLen}; idep++)); do
