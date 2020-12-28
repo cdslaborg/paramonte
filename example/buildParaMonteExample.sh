@@ -410,9 +410,17 @@ do
                                 chmod a+w "${sharedFilePath}" \
                                 && \
                                 install_name_tool -change "${dependencyPath}" "@rpath/${dependencyName}" "${sharedFilePath}" \
-                                && \
-                                install_name_tool -add_rpath "@loader_path" "${sharedFilePath}" \
-                                || {
+                                && {
+                                    if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [[ "${sharedFilePath}" =~ .*"mexmaci".* ]]; then
+                                        # define rpath for mex files.
+                                        install_name_tool -add_rpath "@loader_path" "${sharedFilePath}" || {
+                                            echo >&2
+                                            echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: Failed to define rpath for shared file: ${sharedFilePath}"
+                                            echo >&2
+                                            exit 1
+                                        }
+                                    fi
+                                } || {
                                     echo >&2
                                     echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: Changing the install_name of the dependency file to @rpath failed."
                                     echo >&2
