@@ -407,11 +407,12 @@ do
 
                             if [ "${isMacOS}" = "true" ]; then
                                 echo >&2 "-- ParaMonteExample${LANG_NAME} - changing the install_name to @rpath for the dependency file..."
-                                chmod a+w "${sharedFilePath}" && \
-                                install_name_tool -change \
-                                "${dependencyPath}" \
-                                "@rpath/${dependencyName}" \
-                                "${sharedFilePath}" || {
+                                chmod a+w "${sharedFilePath}" \
+                                && \
+                                install_name_tool -change "${dependencyPath}" "@rpath/${dependencyName}" "${sharedFilePath}" \
+                                && \
+                                install_name_tool -add_rpath "@loader_path" "${sharedFilePath}"
+                                || {
                                     echo >&2
                                     echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: Changing the install_name of the dependency file to @rpath failed."
                                     echo >&2
