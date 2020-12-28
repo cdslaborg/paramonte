@@ -372,7 +372,8 @@ do
                                 echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${dependencyPathTarget}"
                                 echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${dependencyPathDestin}"
 
-                                #### copy the dependency file to the destination folder
+                                #### copy the dependency file to the destination folder.
+                                #### note that -a and -r for cp are inconsistent with each other on macOS as -a contains -R.
 
                                 (yes | \cp -af "${dependencyPathTarget}" "${ParaMonteExample_LIB_DIR_CURRENT}"/) >/dev/null 2>&1 || {
                                     echo >&2
