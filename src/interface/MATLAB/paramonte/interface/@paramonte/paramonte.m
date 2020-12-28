@@ -637,7 +637,7 @@ classdef paramonte %< dynamicprops
                     if ~self.platform.isWin32
                         % save a copy of the original bashrc contents. will be used in installParaMonte().
                         self.bashrcContentsBeforeParaMonteInstall = getBashrcContents();
-                        self.setupUnixPath();
+                        %self.setupUnixPath(); % This is too aggressive and not needed naymore.
                     end
 
                     % install library
@@ -906,9 +906,14 @@ classdef paramonte %< dynamicprops
                             self.Err.marginTop = dummy1;
                             self.Err.marginBot = dummy2;
                             if errorOccurred && contains(installRootDir,"local")
-                                self.Err.msg    = "An attempt to locally install the ParaMonte library on your system failed with the following message: " + newline  + newline ...
-                                                + string(errMsg) + " Error flag: " + string(msgID) + newline  + newline ...
-                                                + "Continuing at the risk of not being able to use the ParaMonte kernel samplers...";
+                                self.Err.msg    = "An attempt to locally install the ParaMonte library on your system failed with the following message: " + newline ...
+                                                + newline ...
+                                                + string(errMsg) + " Error flag: " + string(msgID) + newline ...
+                                                + newline ...
+                                                + "This will likely be fine. But if the simulation fails, please report it at:" + newline ...
+                                                + newline ...
+                                                + "    " + href(self.website.github.issues.url) ...
+                                                ;
                                 self.Err.warn();
                             %else
                             %    self.pmInstallFailed = false;
@@ -941,7 +946,10 @@ classdef paramonte %< dynamicprops
                 self.Err.marginTop = 1;
                 self.Err.marginBot = 1;
                 if self.pmInstallFailed
-                    self.Err.msg    = "Failed to locally install the ParaMonte library on this system. This is highly unusual. " ...
+                    self.Err.msg    = "Failed to locally install the ParaMonte library on your system. " ...
+                                    + "Such failure is unusual but not necessarily fatal. " ...
+                                    + "However, if your subsequent ParaMonte simulations fail, follow the instructions below: " + newline ...
+                                    + newline ...
                                     + "If you have already successfully installed the ParaMonte library files locally on your system " ...
                                     + "through the following procedure, you can safely ignore this warning message and the subsequent " ...
                                     + "request for reinstallation given below. Otherwise, if you have administrator previlages on this system " ...
@@ -1202,7 +1210,49 @@ classdef paramonte %< dynamicprops
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+        %
+        %   setupUnixPath(self)
+        %
+        %   Setup the PATH and LD_LIBRARY_PATH environmental variables such that
+        %   they point to the ParaMonte library's current installation folder.
+        %   Then check if these variable modifications are already defined in bashrc.
+        %   If not, then add a bash script to the bashrc such that the environmental variables 
+        %   get updated automatically every time a bash terminal is opened.
+        %
+        %       WARNING
+        %
+        %           This method results in aggressive modification of the bashrc file, 
+        %           which could lead to undesirable behavioral changes to the user's system.
+        %           For example, the paramonte library folder commonly keeps private copies of 
+        %           the generic runtime libraries that it needs, such as libgfortran, libgcc, ...
+        %           Adding the ParaMonte library directory to these environmental variables would 
+        %           then cause all usages of these generic libraries to be pointed to this folder
+        %           which contains a private copy of them. This can subsequently lead to linking
+        %           failures as these libraries contain different version of gcc and gfortran
+        %           even though they might be similarly named. For example, libgfortran.so.5
+        %           may contain symlinks to GFORTRAN8 or GFORTRAN10, depending on the GNU
+        %           compiler version to which it belongs.
+        %
+        %           BOTTOM LINE:
+        %
+        %           Calling this method should be avoided. As of version 1.5.1 of
+        %           the ParaMonte kernel routines, such global environmental 
+        %           variable modifications are not needed anymore.
+        %
+        %   Parameters
+        %   ----------
+        %
+        %       self
+        %
+        %           An object of class paramonte, to which this method belongs.
+        %
+        %   Returns
+        %   -------
+        %
+        %       None
+        %
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %
         function setupUnixPath(self)
 
             bashrcContents = getBashrcContents();
