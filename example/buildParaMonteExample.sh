@@ -260,6 +260,9 @@ do
 
                 ishared=0
                 sharedFilePathList=($(ls "${ParaMonteExample_LIB_DIR_CURRENT}"/libparamonte_*.${sharedFileExt}))
+                if [ "${INTERFACE_LANGUAGE}" = "matlab" ]; then
+                    sharedFilePathList+=($(ls "${ParaMonteExample_LIB_DIR_CURRENT}"/libparamonte_*.mexmaci*))
+                fi
                 sharedFilePathListLen=${#sharedFilePathList[@]}
 
                 while [ "$ishared" -lt "${sharedFilePathListLen}" ]; do
