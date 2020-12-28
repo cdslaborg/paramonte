@@ -240,7 +240,7 @@ if [[ "${pmLibFullName}" =~ .*"_c_".* ]]; then
 
     clist="gcc"
 
-    if command -v ${cIntelCompilerName} >/dev/null 2>&1; then
+    if command -v "${cIntelCompilerName}" >/dev/null 2>&1; then
         iccIntelCompilerDetected=true
         declare -a compilerList=("${cIntelCompilerName}" "${clist}")
     else
@@ -255,7 +255,7 @@ elif [[ "${pmLibFullName}" =~ .*"_cpp_".* ]]; then
     cpattern="g++"
     clist=$(( IFS=:; for p in $PATH; do unset lsout; lsout=$(ls -dm "$p"/${cpattern}*); if ! [[ -z "${lsout// }" ]]; then echo "${lsout}, "; fi; done ) 2>/dev/null)
 
-    if command -v ${cppIntelCompilerName} >/dev/null 2>&1; then
+    if command -v "${cppIntelCompilerName}" >/dev/null 2>&1; then
         icpcIntelCompilerDetected=true
         declare -a compilerList=("${cppIntelCompilerName}" "${clist}")
     else
@@ -424,7 +424,7 @@ echo >&2 "-- ParaMonteExample${pmExamLang} - MPI_ENABLED: ${MPI_ENABLED}"
 if [ "${MPI_ENABLED}" = "true" ] && [ "${pmLibType}" = "static" ]; then
     compilerListTemp=()
     if [ "${pmExamLang}" = "C" ]; then
-        if command -v ${cIntelMPIWrapperName} >/dev/null 2>&1; then
+        if command -v "${cIntelMPIWrapperName}" >/dev/null 2>&1; then
             compilerListTemp+=("${cIntelMPIWrapperName}")
         fi
         if command -v mpicc >/dev/null 2>&1; then
@@ -432,7 +432,7 @@ if [ "${MPI_ENABLED}" = "true" ] && [ "${pmLibType}" = "static" ]; then
         fi
     fi
     if [ "${pmExamLang}" = "C++" ]; then
-        if command -v ${cppIntelMPIWrapperName} >/dev/null 2>&1; then
+        if command -v "${cppIntelMPIWrapperName}" >/dev/null 2>&1; then
             compilerListTemp+=("${cppIntelMPIWrapperName}")
         fi
         if command -v mpicxx >/dev/null 2>&1; then
@@ -733,7 +733,7 @@ do
                     echo "fi"
                     echo "export LD_LIBRARY_PATH"
                     echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
-                    echo "    LD_LIBRARY_PATH=${FILE_DIR}"
+                    echo "    LD_LIBRARY_PATH=\"${FILE_DIR}\""
                     echo "else"
                     echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${FILE_DIR}:\"* ]]; then"
                     echo "        LD_LIBRARY_PATH=\"${FILE_DIR}:\${LD_LIBRARY_PATH}\""
@@ -750,7 +750,7 @@ do
                     } >> ${RUN_FILE_NAME}
 
                     if [ -f "${FILE_DIR}/setup.sh" ]; then
-                        echo "source ${FILE_DIR}/setup.sh" >> ${RUN_FILE_NAME}
+                        echo "source \"${FILE_DIR}\"/setup.sh" >> ${RUN_FILE_NAME}
                         echo "" >> ${RUN_FILE_NAME}
                     fi
 

@@ -5,6 +5,21 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 1.x.x**  
 
+### **Version 1.5.1** -- Dec 28, 2020
+
+**Minor Enhancements**  
+
++   This is minor enhancement release, but is a major step toward 
+    further portability of the ParaMonte library. All ParaMonte kernel 
+    library dependencies are now properly handled and recognized at runtime
+    without such aggressive actions as permanently redefining the environmental
+    path variables, most importantly, `PATH` and `LD_LIBRARY_PATH` on Linux/macOS.
++   The ParaMonte kernel routines are now capable of handling user-input 
+    file paths that contain white-space (blank) or other exotic characters.
++   The Bash build script for the ParaMonte C/C++/Fortran examples can now handle
+    file paths that contain white-space (blank) or other exotic characters.
++   typo-fixes in the documentation of the library.
+
 ### **Version 1.5.0** -- Dec 17, 2020
 
 **Major Enhancements**  
