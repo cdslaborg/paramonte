@@ -9,30 +9,30 @@
 ####
 ####   This file is part of the ParaMonte library.
 ####
-####   Permission is hereby granted, free of charge, to any person obtaining a 
-####   copy of this software and associated documentation files (the "Software"), 
-####   to deal in the Software without restriction, including without limitation 
-####   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-####   and/or sell copies of the Software, and to permit persons to whom the 
+####   Permission is hereby granted, free of charge, to any person obtaining a
+####   copy of this software and associated documentation files (the "Software"),
+####   to deal in the Software without restriction, including without limitation
+####   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+####   and/or sell copies of the Software, and to permit persons to whom the
 ####   Software is furnished to do so, subject to the following conditions:
 ####
-####   The above copyright notice and this permission notice shall be 
+####   The above copyright notice and this permission notice shall be
 ####   included in all copies or substantial portions of the Software.
 ####
-####   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-####   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-####   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-####   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-####   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-####   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+####   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+####   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+####   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+####   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+####   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+####   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 ####   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ####
 ####   ACKNOWLEDGMENT
 ####
 ####   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-####   As per the ParaMonte library license agreement terms, if you use any parts of 
-####   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-####   work (education/research/industry/development/...) by citing the ParaMonte 
+####   As per the ParaMonte library license agreement terms, if you use any parts of
+####   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+####   work (education/research/industry/development/...) by citing the ParaMonte
 ####   library as described on this page:
 ####
 ####       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md
@@ -57,11 +57,11 @@ class ParaDRAM(ParaMonteSampler):
     """
 
     This is the **ParaDRAM** class to generate instances of **serial** and **parallel**
-    **Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo** 
-    sampler class of the ParaMonte library. The ``ParaDRAM`` class is a 
+    **Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo**
+    sampler class of the ParaMonte library. The ``ParaDRAM`` class is a
     child of the ``ParaMonteSampler`` class.
 
-    All ParaDRAM class attributes are optional and all 
+    All ParaDRAM class attributes are optional and all
     attributes can be set after a ParaDRAM instance
     is returned by the constructor.
 
@@ -83,7 +83,7 @@ class ParaDRAM(ParaMonteSampler):
         import numpy as np
         import paramonte as pm
         def getLogFunc(point):
-            # return the log of a multivariate Normal 
+            # return the log of a multivariate Normal
             # density function with ndim dimensions
             return -0.5 * np.dot(point, point)
         pmpd = pm.ParaDRAM()
@@ -158,11 +158,11 @@ class ParaDRAM(ParaMonteSampler):
     The above will generate a Parallel-ParaDRAM-simulation Python script in the
     current working directory of Python. Note the only difference between the
     serial and parallel simulation scripts: the extra line ``pmpd.mpiEnabled = True``
-    which tell the ParaMonte library to run the simulation in parallel.
+    which forces the ParaMonte library to invoke the parallel sampler to run the simulation.
 
     Assuming that you already have an MPI runtime library installed on your
-    system (see below), you can now execute this Python script file ``main.py``
-    in parallel in two ways:
+    system (see the **Tips on parallel usage** below), you can now execute this
+    Python script file ``main.py`` in parallel in two ways:
 
     1.  from inside ipython or jupyter, type the following,
 
@@ -359,14 +359,13 @@ class ParaDRAM(ParaMonteSampler):
 
             optional string input representing the path to
             an external input namelist of simulation specifications.
-            USE THIS OPTIONAL ARGUMENT WITH CAUTION AND
-            ONLY IF YOU KNOW WHAT YOU ARE DOING.
 
             **WARNING**
 
-            Specifying an input file will cause the ParaDRAM sampler
-            to ignore all other simulation specifications set by the 
-            user via sampler instance's `spec`-component attributes.
+            **Use this optional argument only if you know the consequences**.
+            Specifying an input file will cause the ParaDRAM sampler to ignore
+            all other simulation specifications set by the user via the sampler
+            instance's `spec`-component attributes.
 
         spec
 
@@ -417,11 +416,11 @@ class ParaDRAM(ParaMonteSampler):
 
         super().__init__(methodName = "ParaDRAM")
 
-        ## ParaMonte specifications
+        #### ParaMonte specifications
         #
         #self.spec = pm.utils.FrozenClass()
         #
-        ## ParaMonte variables
+        #### ParaMonte variables
         #self.spec.sampleSize                           = sampleSize
         #self.spec.randomSeed                           = randomSeed
         #self.spec.description                          = description
@@ -441,7 +440,7 @@ class ParaDRAM(ParaMonteSampler):
         #self.spec.mpiFinalizeRequested                 = mpiFinalizeRequested
         #self.spec.maxNumDomainCheckToWarn              = maxNumDomainCheckToWarn
         #self.spec.maxNumDomainCheckToStop              = maxNumDomainCheckToStop
-        ## ParaMCMC variables
+        #### ParaMCMC variables
         #self.spec.chainSize                            = chainSize
         #self.spec.scaleFactor                          = scaleFactor
         #self.spec.startPointVec                        = startPointVec
@@ -454,7 +453,7 @@ class ParaDRAM(ParaMonteSampler):
         #self.spec.randomStartPointRequested            = randomStartPointRequested
         #self.spec.randomStartPointDomainLowerLimitVec  = randomStartPointDomainLowerLimitVec
         #self.spec.randomStartPointDomainUpperLimitVec  = randomStartPointDomainUpperLimitVec
-        ## ParaDRAM variables
+        #### ParaDRAM variables
         #self.spec.adaptiveUpdateCount                  = adaptiveUpdateCount
         #self.spec.adaptiveUpdatePeriod                 = adaptiveUpdatePeriod
         #self.spec.greedyAdaptationCount                = greedyAdaptationCount
@@ -642,7 +641,7 @@ class ParaDRAM(ParaMonteSampler):
 
                     plot
 
-                        A structure containing the graphics tools for the 
+                        A structure containing the graphics tools for the
                         visualization of the contents of the file.
 
                     df
@@ -655,7 +654,7 @@ class ParaDRAM(ParaMonteSampler):
                         corresponding to each column in the progress file, a property
                         with the same name as the column header is also created
                         for the object which contains the data stored in that column
-                        of the progress file. These properties are all stored in the 
+                        of the progress file. These properties are all stored in the
                         attribute ``contents``.
 
                 If ``renabled = True``, the list of objects will be returned as the
