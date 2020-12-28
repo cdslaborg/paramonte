@@ -2874,7 +2874,9 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
             "${MATLAB_BIN_DIR}/mex" ${MEX_FLAGS} CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" \
             "${ParaMonteKernel_SRC_DIR}/paramonte.m.c" ${PMLIB_FULL_PATH} -output ${PMLIB_MATLAB_NAME}
             if [ $? -eq 0 ]; then
+                echo >&2
                 echo >&2 "-- ${BUILD_NAME}MATLAB - ${BoldGreen}The ParaMonte MATLAB dynamic library build appears to have succeeded.${ColorReset}"
+                echo >&2
             else
                 echo >&2
                 echo >&2 "-- ${BUILD_NAME}MATLAB - ${BoldRed}Fatal Error${ColorReset}: The ParaMonte MATLAB library build failed."
