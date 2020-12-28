@@ -263,14 +263,23 @@ if (${LTYPE} MATCHES "[Ss][Tt][Aa][Tt][Ii][Cc]")
 
 elseif (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
 
-    if (gnu_compiler AND UNIX AND NOT APPLE)
-        set(CMAKE_INSTALL_RPATH $ORIGIN)
-    endif()
+    # The following does not seem to work. 
+
+    #if (gnu_compiler AND UNIX AND NOT APPLE)
+    #    #set(CMAKE_SKIP_RPATH ON CACHE BOOL "Skip adding a build-dir rpath")
+    #    set(CMAKE_BUILD_WITH_INSTALL_RPATH ON CACHE BOOL "Build using the install rpath")
+    #    set(CMAKE_BUILD_RPATH_USE_ORIGIN ON CACHE BOOL "Use relative rpaths")
+    #    set(CMAKE_INSTALL_RPATH "$ORIGIN")
+    #endif()
 
     add_library(${PMLIB_NAME} SHARED ${ParaMonte_SOURCE_FILES})
 
     if (gnu_compiler AND APPLE)
         set_target_properties(${PMLIB_NAME} PROPERTIES INSTALL_RPATH "@loader_path/.")
+    elseif(UNIX)
+        set_target_properties(${PMLIB_NAME} PROPERTIES BUILD_WITH_INSTALL_RPATH ON)
+        set_target_properties(${PMLIB_NAME} PROPERTIES BUILD_RPATH_USE_ORIGIN ON)
+        set_target_properties(${PMLIB_NAME} PROPERTIES INSTALL_RPATH "$ORIGIN")
     endif()
 
     #if (gnu_compiler)
@@ -362,7 +371,7 @@ target_compile_options( ${PMLIB_NAME} BEFORE PRIVATE "${FCL_FLAGS}" "${FC_LIB_FL
 
 #message( STATUS "${pmattn} ParaMonte library build linker flags: ${${FCL_FLAGS}${FL_LIB_FLAGS}}${MATLAB_LINKER_FLAGS}" )
 #target_link_options( ${PMLIB_NAME} BEFORE PRIVATE ${${FCL_FLAGS}${FL_LIB_FLAGS}}${MATLAB_LINKER_FLAGS} )
-message( STATUS "${pmattn} ParaMonte library build linker flags: ${${FCL_FLAGS}${FL_LIB_FLAGS}}" )
+message( STATUS "${pmattn} ParaMonte library build linker flags: ${FCL_FLAGS} ${FL_LIB_FLAGS}" )
 target_link_options( ${PMLIB_NAME} BEFORE PRIVATE ${${FCL_FLAGS}${FL_LIB_FLAGS}} )
 
 if (CODECOV_ENABLED AND gnu_compiler)

@@ -2850,16 +2850,29 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
             # if ${BTYPE}==testing set "MATLAB_BUILD_FLAGS=!MATLAB_BUILD_FLAGS!!INTEL_CPP_TESTING_FLAGS!"
             # if ${BTYPE}==release set "MATLAB_BUILD_FLAGS=!MATLAB_BUILD_FLAGS!!INTEL_CPP_RELEASE_FLAGS!"
             MEX_FLAGS="-v -nojvm"
-            CFLAGS="COMPFLAGS='-fPIC -shared -Wl,-rpath=.'"
-            LINKFLAGS="LINKFLAGS='-fPIC -shared -Wl,-rpath=.'"
-            if [ "${BTYPE}" = "debug" ]; then MEX_FLAGS="${MEX_FLAGS} -g"; fi
-            if [ "${BTYPE}" = "release" ]; then MEX_FLAGS="${MEX_FLAGS} -O"; fi
+            # use COMPFLAGS and LINKFLAGS on Windows systems instead of CFLAGS and LDFLAGS.
+            CFLAGS='-fPIC -shared'
+            LDFLAGS='-fPIC -shared'
+            if [ "isMacOS"  = "true" ]; then
+                LDFLAGS+=' -Wl,-rpath,@rpath'
+            else
+                LDFLAGS+=' -Wl,-rpath,\$ORIGIN'
+            fi
+            if [ "${BTYPE}" = "debug" ]; then
+                MEX_FLAGS="${MEX_FLAGS} -g"
+            elif [ "${BTYPE}" = "release" ]; then
+                # -O is the release mode for mex. -O3 does not exist.
+                MEX_FLAGS="${MEX_FLAGS} -O"
+                LDFLAGS+=' -O3'
+                CFLAGS+=' -O3'
+            fi
             echo >&2 "-- ${BUILD_NAME}MATLAB - generating the ParaMonte MATLAB dynamic library: ${ParaMonteMATLAB_BLD_LIB_DIR}${PMLIB_MATLAB_NAME}"
-            echo >&2 "-- ${BUILD_NAME}MATLAB - compiler options: ${MATLAB_BUILD_FLAGS}"
-            echo >&2 "-- ${BUILD_NAME}MATLAB - compiler command: ${MATLAB_BIN_DIR}/mex ${MEX_FLAGS} ${CFLAGS} ${LINKFLAGS} ${ParaMonteKernel_SRC_DIR}/paramonte.m.c ${PMLIB_FULL_PATH} -output ${PMLIB_MATLAB_NAME}"
-            # CC=icl COMPFLAGS="${MATLAB_BUILD_FLAGS}"
+            echo >&2 "-- ${BUILD_NAME}MATLAB - compiler command: ${MATLAB_BIN_DIR}/mex ${MEX_FLAGS} CFLAGS=${CFLAGS} LDFLAGS=${LDFLAGS} ${ParaMonteKernel_SRC_DIR}/paramonte.m.c ${PMLIB_FULL_PATH} -output ${PMLIB_MATLAB_NAME}"
+            #echo >&2 "-- ${BUILD_NAME}MATLAB - compiler options: ${MATLAB_BUILD_FLAGS}"
+            # CC=icl CFLAGS="${MATLAB_BUILD_FLAGS}"
             cd "${ParaMonteMATLAB_BLD_LIB_DIR}"
-            "${MATLAB_BIN_DIR}/mex" ${MEX_FLAGS} "${CFLAGS}" "${LINKFLAGS}" "${ParaMonteKernel_SRC_DIR}/paramonte.m.c" ${PMLIB_FULL_PATH} -output ${PMLIB_MATLAB_NAME}
+            "${MATLAB_BIN_DIR}/mex" ${MEX_FLAGS} CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" \
+            "${ParaMonteKernel_SRC_DIR}/paramonte.m.c" ${PMLIB_FULL_PATH} -output ${PMLIB_MATLAB_NAME}
             if [ $? -eq 0 ]; then
                 echo >&2 "-- ${BUILD_NAME}MATLAB - ${BoldGreen}The ParaMonte MATLAB dynamic library build appears to have succeeded.${ColorReset}"
             else

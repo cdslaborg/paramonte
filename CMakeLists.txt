@@ -147,10 +147,6 @@ if(DEFINED ENV{SOURCE_DATE_EPOCH})
     set(SOURCE_DATE_EPOCH "$ENV{SOURCE_DATE_EPOCH}")
 endif()
 
-set(CMAKE_SKIP_RPATH ON CACHE BOOL "Skip adding a build-dir rpath")
-set(CMAKE_BUILD_WITH_INSTALL_RPATH ON CACHE BOOL "Build using the install rpath")
-set(CMAKE_BUILD_RPATH_USE_ORIGIN ON CACHE BOOL "Use relative rpaths")
-
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # Add our local modules to the module path
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

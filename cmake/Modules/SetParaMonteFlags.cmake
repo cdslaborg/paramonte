@@ -563,12 +563,17 @@ if (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
 
         set(FL_LIB_FLAGS 
             -fPIC -shared
+            -static-libgfortran -static-libgcc
             # -Wl,-rpath=.
+            # -Wl,-rpath,'$ORIGIN'
             # The rpath is now set specifically for ${PMLIB_NAME} target. So no need to override it by the following flag.
-            # -static-libgfortran -static-libgcc
             # It seems like static linking with GCC/GFortran can only be a wishful dream.
             # It works on neither Linux nor macOS. So, better to not specify it at all.
             CACHE STRING "GNU Fortran linker dynamic library flags" )
+
+        if (UNIX AND NOT APPLE)
+            set(FL_LIB_FLAGS "${FL_LIB_FLAGS} -Wl,-rpath,'$ORIGIN'" )
+        endif()
 
     else(intel_compiler)
 
