@@ -416,7 +416,7 @@ do
                                 && {
                                     if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [[ "${sharedFilePath}" =~ .*"mexmaci".* ]]; then
                                         # define rpath for mex files.
-                                        install_name_tool -add_rpath "@loader_rpath" "${sharedFilePath}" || {
+                                        install_name_tool -add_rpath "@loader_path" "${sharedFilePath}" || {
                                             echo >&2
                                             echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: Failed to define rpath for shared file: ${sharedFilePath}"
                                             echo >&2
