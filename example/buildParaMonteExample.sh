@@ -238,7 +238,7 @@ do
 
         sharedFilePathList=()
 
-        if [ "isMacOS" = "true" ] && [ "${INTERFACE_LANGUAGE}" = "matlab" ]; then
+        if [ "${isMacOS}" = "true" ] && [ "${INTERFACE_LANGUAGE}" = "matlab" ]; then
             # define rpath for mex files.
             sharedFilePathList+=($(ls "${ParaMonteExample_LIB_DIR_CURRENT}"/libparamonte_*.mexmaci*))
             sharedFilePathListLen=${#sharedFilePathList[@]}
