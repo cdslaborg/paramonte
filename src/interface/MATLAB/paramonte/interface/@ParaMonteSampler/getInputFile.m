@@ -70,8 +70,8 @@ function namelist = getInputFile(self)
 
         if contains(self.spec.outputFileName," ") && self.reportEnabled
             self.Err.msg    = "The specified path to the simulation output files contains whitespace characters(s). " + newline ...
-                            + "The whitespace characters are infamous for causing software crashes and failures. Be prepared for your simulation to crash. " + newline ...
-                            + "Otherwise, specify a path for the output files that does not contain whitespace character(s).";
+                            + "The whitespace characters are infamous for causing problems and failures. " + newline ...
+                            + "Avoid using whitespace and other problematic characters in system paths.";
             self.Err.warn();
         end
 
