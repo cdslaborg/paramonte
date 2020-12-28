@@ -236,15 +236,21 @@ do
 
         #### all compilers
 
-        #if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [[ "${sharedFilePath}" =~ .*"mexmaci".* ]]; then
-        #    # define rpath for mex files.
-        #    install_name_tool -add_rpath "@loader_path" "${sharedFilePath}" || {
-        #        echo >&2
-        #        echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: Failed to define rpath for shared file: ${sharedFilePath}"
-        #        echo >&2
-        #        exit 1
-        #    }
-        #fi
+        sharedFilePathList=()
+
+        if [ "isMacOS" = "true" ] && [ "${INTERFACE_LANGUAGE}" = "matlab" ]; then
+            # define rpath for mex files.
+            sharedFilePathList+=($(ls "${ParaMonteExample_LIB_DIR_CURRENT}"/libparamonte_*.mexmaci*))
+            sharedFilePathListLen=${#sharedFilePathList[@]}
+            for ((ishared=0; ishared<${sharedFilePathListLen}; ishared++)); do
+                install_name_tool -add_rpath "@loader_path" "${sharedFilePathList[$ishared]}" || {
+                    echo >&2
+                    echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: Failed to define rpath for shared file: ${sharedFilePathList[$ishared]}"
+                    echo >&2
+                    exit 1
+                }
+            done
+        fi
 
         #### gnu compilers
 
@@ -271,10 +277,7 @@ do
                 #### loop over all existing shared files, and their dependencies recursively
 
                 ishared=0
-                sharedFilePathList=($(ls "${ParaMonteExample_LIB_DIR_CURRENT}"/libparamonte_*.${sharedFileExt}))
-                #if [ "${INTERFACE_LANGUAGE}" = "matlab" ]; then
-                #    sharedFilePathList+=($(ls "${ParaMonteExample_LIB_DIR_CURRENT}"/libparamonte_*.mexmaci*))
-                #fi
+                sharedFilePathList+=($(ls "${ParaMonteExample_LIB_DIR_CURRENT}"/libparamonte_*.${sharedFileExt}))
                 sharedFilePathListLen=${#sharedFilePathList[@]}
 
                 while [ "$ishared" -lt "${sharedFilePathListLen}" ]; do
