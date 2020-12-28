@@ -243,6 +243,9 @@ do
             sharedFilePathList+=($(ls "${ParaMonteExample_LIB_DIR_CURRENT}"/libparamonte_*.mexmaci*))
             sharedFilePathListLen=${#sharedFilePathList[@]}
             for ((ishared=0; ishared<${sharedFilePathListLen}; ishared++)); do
+                echo >&2
+                echo >&2 "-- ParaMonteExample${LANG_NAME} - Adding rpath to the shared file: ${sharedFilePathList[$ishared]}"
+                echo >&2
                 install_name_tool -add_rpath "@loader_path" "${sharedFilePathList[$ishared]}" || {
                     echo >&2
                     echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: Failed to define rpath for shared file: ${sharedFilePathList[$ishared]}"
