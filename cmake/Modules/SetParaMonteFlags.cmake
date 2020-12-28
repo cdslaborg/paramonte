@@ -564,16 +564,11 @@ if (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
         set(FL_LIB_FLAGS 
             -fPIC -shared
             -static-libgfortran -static-libgcc
-            # -Wl,-rpath=.
+            # ATTN: The rpath is now set specifically for ${PMLIB_NAME} target. So no need to override it by the following flag.
+            # ATTN: It seems like static linking with GCC/GFortran can only be a wishful dream.
+            # ATTN: It works on neither Linux nor macOS.
             # -Wl,-rpath,'$ORIGIN'
-            # The rpath is now set specifically for ${PMLIB_NAME} target. So no need to override it by the following flag.
-            # It seems like static linking with GCC/GFortran can only be a wishful dream.
-            # It works on neither Linux nor macOS. So, better to not specify it at all.
             CACHE STRING "GNU Fortran linker dynamic library flags" )
-
-        if (UNIX AND NOT APPLE)
-            set(FL_LIB_FLAGS "${FL_LIB_FLAGS} -Wl,-rpath,'$ORIGIN'" )
-        endif()
 
     else(intel_compiler)
 
@@ -582,7 +577,10 @@ if (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
                 -fpic -dynamiclib -noall_load # -weak_references_mismatches non-weak -threads -arch_only i386
                 CACHE STRING "Intel Mac Fortran compiler dynamic library flags" )
             set(FL_LIB_FLAGS
-                -shared -dynamiclib -noall_load -weak_references_mismatches -Wl,-rpath,. # non-weak -threads -arch_only i386
+                "-shared -dynamiclib -noall_load -weak_references_mismatches"
+                # non-weak -threads -arch_only i386
+                # -Wl,-rpath,@loader_path
+                # The above rpath is now set specifically for the PM_LIB target
                 CACHE STRING "Intel Apple Fortran linker dynamic library flags" )
                 # https://software.intel.com/en-us/fortran-compiler-developer-guide-and-reference-creating-shared-libraries
         elseif(WIN32)
@@ -597,9 +595,11 @@ if (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
             set(FC_LIB_FLAGS 
                 -fpic -shared #-threads -fast -static-intel # -fpic: Request compiler to generate position-independent code.
                 CACHE STRING "Intel Linux Fortran compiler dynamic library flags" )
-            set(FL_LIB_FLAGS
-                -shared -Wl,-rpath,. #-threads -fast -static-intel
-                CACHE STRING "Intel Linux Fortran linker dynamic library flags" )
+            # These are now set specifically for the PM_LIB target
+            #set(FL_LIB_FLAGS
+            #    "-shared -Wl,-rpath,'$ORIGIN'"
+            #    #-threads -fast -static-intel
+            #    CACHE STRING "Intel Linux Fortran linker dynamic library flags" )
         endif()
     endif()
 
@@ -803,6 +803,9 @@ if (intel_compiler)
         )
         if (MT_ENABLED)
             set(FCL_FLAGS_DEFAULT "${FCL_FLAGS_DEFAULT}" -threads )
+        endif()
+        if (UNIX AND NOT APPLE)
+            set(FL_FLAGS "${FL_FLAGS} -static-libgcc -static-libstdc++" )
         endif()
     endif()
 

@@ -234,7 +234,19 @@ do
 
     if [ "${deploy_enabled}" = "true" ]; then
 
-        #### gnu
+        #### all compilers
+
+        #if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [[ "${sharedFilePath}" =~ .*"mexmaci".* ]]; then
+        #    # define rpath for mex files.
+        #    install_name_tool -add_rpath "@loader_path" "${sharedFilePath}" || {
+        #        echo >&2
+        #        echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: Failed to define rpath for shared file: ${sharedFilePath}"
+        #        echo >&2
+        #        exit 1
+        #    }
+        #fi
+
+        #### gnu compilers
 
         if [ "${PMCS}" = "gnu" ] && ! [ "${CAF_ENABLED}" = "true" ]; then
 
@@ -260,9 +272,9 @@ do
 
                 ishared=0
                 sharedFilePathList=($(ls "${ParaMonteExample_LIB_DIR_CURRENT}"/libparamonte_*.${sharedFileExt}))
-                if [ "${INTERFACE_LANGUAGE}" = "matlab" ]; then
-                    sharedFilePathList+=($(ls "${ParaMonteExample_LIB_DIR_CURRENT}"/libparamonte_*.mexmaci*))
-                fi
+                #if [ "${INTERFACE_LANGUAGE}" = "matlab" ]; then
+                #    sharedFilePathList+=($(ls "${ParaMonteExample_LIB_DIR_CURRENT}"/libparamonte_*.mexmaci*))
+                #fi
                 sharedFilePathListLen=${#sharedFilePathList[@]}
 
                 while [ "$ishared" -lt "${sharedFilePathListLen}" ]; do
@@ -413,17 +425,7 @@ do
                                 chmod a+w "${sharedFilePath}" \
                                 && \
                                 install_name_tool -change "${dependencyPath}" "@rpath/${dependencyName}" "${sharedFilePath}" \
-                                && {
-                                    if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [[ "${sharedFilePath}" =~ .*"mexmaci".* ]]; then
-                                        # define rpath for mex files.
-                                        install_name_tool -add_rpath "@loader_path" "${sharedFilePath}" || {
-                                            echo >&2
-                                            echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: Failed to define rpath for shared file: ${sharedFilePath}"
-                                            echo >&2
-                                            exit 1
-                                        }
-                                    fi
-                                } || {
+                                || {
                                     echo >&2
                                     echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: Changing the install_name of the dependency file to @rpath failed."
                                     echo >&2

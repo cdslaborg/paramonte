@@ -2854,7 +2854,7 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
             CFLAGS='-fPIC -shared'
             LDFLAGS='-fPIC -shared'
             if [ "isMacOS"  = "true" ]; then
-                LDFLAGS+=' -Wl,-rpath,@loader_path'
+                LDFLAGS+=' -Wl,-rpath,@rpath -Wl,-rpath,@loader_path'
             else
                 LDFLAGS+=' -Wl,-rpath,\$ORIGIN'
             fi

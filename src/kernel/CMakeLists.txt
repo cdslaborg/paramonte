@@ -274,11 +274,12 @@ elseif (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
 
     add_library(${PMLIB_NAME} SHARED ${ParaMonte_SOURCE_FILES})
 
-    if (gnu_compiler AND APPLE)
-        set_target_properties(${PMLIB_NAME} PROPERTIES INSTALL_RPATH "@loader_path/.")
+    set_target_properties(${PMLIB_NAME} PROPERTIES BUILD_WITH_INSTALL_RPATH ON)
+    set_target_properties(${PMLIB_NAME} PROPERTIES BUILD_RPATH_USE_ORIGIN ON)
+
+    if (APPLE)
+        set_target_properties(${PMLIB_NAME} PROPERTIES INSTALL_RPATH "@loader_path")
     elseif(UNIX)
-        set_target_properties(${PMLIB_NAME} PROPERTIES BUILD_WITH_INSTALL_RPATH ON)
-        set_target_properties(${PMLIB_NAME} PROPERTIES BUILD_RPATH_USE_ORIGIN ON)
         set_target_properties(${PMLIB_NAME} PROPERTIES INSTALL_RPATH "$ORIGIN")
     endif()
 
