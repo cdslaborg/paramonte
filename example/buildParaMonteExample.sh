@@ -374,7 +374,7 @@ do
 
                                 #### copy the dependency file to the destination folder
 
-                                (yes | \cp -arf "${dependencyPathTarget}" "${ParaMonteExample_LIB_DIR_CURRENT}"/) >/dev/null 2>&1 || {
+                                (yes | \cp -af "${dependencyPathTarget}" "${ParaMonteExample_LIB_DIR_CURRENT}"/) >/dev/null 2>&1 || {
                                     echo >&2
                                     echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: The dependency file copy attempt failed at: ${dependencyPath}"
                                     echo >&2
