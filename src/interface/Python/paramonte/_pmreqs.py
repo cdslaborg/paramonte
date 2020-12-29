@@ -1531,7 +1531,7 @@ def dispFinalMessage():
                     + "To get started, type the following on the Python command-line," + newline
                     + newline
                     + "    import paramonte as pm" + newline
-                    + "    pm.helpme()"
+                    + "    pm.helpme()" + newline
                     + newline
                     + "To get help on individual components of the paramonte modules," + newline
                     + "pass the name of the components to `helpme()`. For example," + newline
