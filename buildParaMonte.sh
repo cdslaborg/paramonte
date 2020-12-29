@@ -1375,8 +1375,6 @@ if ! [ -z ${MPIEXEC_PATH_USER+x} ]; then
             echo >&2 "-- ${BUILD_NAME} - ${warning}: user-specified mpiexec path: ${MPIEXEC_PATH_USER}"
             echo >&2 "-- ${BUILD_NAME} - ${warning}:       inferred mpiexec path: ${MPIEXEC_PATH}"
             echo >&2
-            echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
-            echo >&2
         fi
         MPIEXEC_PATH="${MPIEXEC_PATH_USER}"
     else
@@ -1609,155 +1607,159 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
         fi
 
         ############################################################################################################################
-        #### check mpi installation
+        #### check mpi installation, only if the user has not specified the mpiexec path
         ############################################################################################################################
 
-        localMpiInstallationDetected=false
-        if [ "${isMacOS}" = "true" ]; then
-            CURRENT_PKG="the Open-MPI library"
-            echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
-            echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
-            (brew install open-mpi && brew link open-mpi )
-            (command -v mpiexec >/dev/null 2>&1 )
-            verify $? "installation of ${CURRENT_PKG}"
-            MPIEXEC_PATH="$(command -v mpiexec)"
-        else
-            CURRENT_PKG="the MPICH library"
-            if [ "${mpiInstallEnabled}" = "true" ]; then
-                MPIEXEC_PATH="${MPI_LOCAL_INSTALLATION_BIN_DIR}/mpiexec"
-                if [[ -f "${MPIEXEC_PATH}" ]]; then
-                    echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected: ${MPI_LOCAL_INSTALLATION_BIN_DIR}"
-                    localMpiInstallationDetected=true
-                    if [[ ":$PATH:" != *":${MPI_LOCAL_INSTALLATION_BIN_DIR}:"* ]]; then
-                        PATH="${MPI_LOCAL_INSTALLATION_BIN_DIR}:${PATH}"
-                    fi
-                    if [[ ":$LD_LIBRARY_PATH:" != *":${MPI_LOCAL_INSTALLATION_LIB_DIR}:"* ]]; then
-                        LD_LIBRARY_PATH="${MPI_LOCAL_INSTALLATION_LIB_DIR}:${LD_LIBRARY_PATH}"
-                        export LD_LIBRARY_PATH
-                    fi
-                    PATH="${MPI_LOCAL_INSTALLATION_LIB_DIR}:${PATH}"
-                    export PATH
-                else
-                    ##########################################################################
-                    echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
-                    echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
-                    chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all --package mpich --install-version ${mpichVersionOpenCoarrays} ) ||
-                    {
-                        if [ -z ${GCC_BOOTSTRAP+x} ]; then
-                            if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
-                                answerNotGiven=true
-                                while [ "${answerNotGiven}" = "true" ]; do
+        if [ -z ${MPIEXEC_PATH_USER+x} ]; then
+            localMpiInstallationDetected=false
+            if [ "${isMacOS}" = "true" ]; then
+                CURRENT_PKG="the Open-MPI library"
+                echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
+                echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
+                (brew install open-mpi && brew link open-mpi )
+                (command -v mpiexec >/dev/null 2>&1 )
+                verify $? "installation of ${CURRENT_PKG}"
+                MPIEXEC_PATH="$(command -v mpiexec)"
+            else
+                CURRENT_PKG="the MPICH library"
+                if [ "${mpiInstallEnabled}" = "true" ]; then
+                    MPIEXEC_PATH="${MPI_LOCAL_INSTALLATION_BIN_DIR}/mpiexec"
+                    if [[ -f "${MPIEXEC_PATH}" ]]; then
+                        echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected: ${MPI_LOCAL_INSTALLATION_BIN_DIR}"
+                        localMpiInstallationDetected=true
+                        if [[ ":$PATH:" != *":${MPI_LOCAL_INSTALLATION_BIN_DIR}:"* ]]; then
+                            PATH="${MPI_LOCAL_INSTALLATION_BIN_DIR}:${PATH}"
+                        fi
+                        if [[ ":$LD_LIBRARY_PATH:" != *":${MPI_LOCAL_INSTALLATION_LIB_DIR}:"* ]]; then
+                            LD_LIBRARY_PATH="${MPI_LOCAL_INSTALLATION_LIB_DIR}:${LD_LIBRARY_PATH}"
+                            export LD_LIBRARY_PATH
+                        fi
+                        PATH="${MPI_LOCAL_INSTALLATION_LIB_DIR}:${PATH}"
+                        export PATH
+                    else
+                        ##########################################################################
+                        echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
+                        echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
+                        chmod +x "${ParaMonte_REQ_DIR}/install.sh"
+                        (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all --package mpich --install-version ${mpichVersionOpenCoarrays} ) ||
+                        {
+                            if [ -z ${GCC_BOOTSTRAP+x} ]; then
+                                if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
+                                    answerNotGiven=true
+                                    while [ "${answerNotGiven}" = "true" ]; do
+                                        echo >&2
+                                        read -p "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer
+                                        echo >&2
+                                        if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
+                                            answer=y
+                                            answerNotGiven=false
+                                        fi
+                                        if [[ $answer == [nN] || $answer == [nN][oO] ]]; then
+                                            answer=n
+                                            answerNotGiven=false
+                                        fi
+                                        if [ "${answerNotGiven}" = "true" ]; then
+                                            echo >&2 "-- ${BUILD_NAME} - please enter either y or n"
+                                        fi
+                                    done
+                                else
                                     echo >&2
-                                    read -p "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer
+                                    echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? y"
                                     echo >&2
-                                    if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
-                                        answer=y
-                                        answerNotGiven=false
-                                    fi
-                                    if [[ $answer == [nN] || $answer == [nN][oO] ]]; then
-                                        answer=n
-                                        answerNotGiven=false
-                                    fi
-                                    if [ "${answerNotGiven}" = "true" ]; then
-                                        echo >&2 "-- ${BUILD_NAME} - please enter either y or n"
-                                    fi
-                                done
-                            else
+                                    answer=y
+                                fi
                                 echo >&2
-                                echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? y"
-                                echo >&2
-                                answer=y
-                            fi
-                            echo >&2
-                            if [ "${answer}" = "y" ]; then
-                                GCC_BOOTSTRAP="--bootstrap"
-                                chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                                (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} )
-                                verify $? "installation of ${CURRENT_PKG}"
+                                if [ "${answer}" = "y" ]; then
+                                    GCC_BOOTSTRAP="--bootstrap"
+                                    chmod +x "${ParaMonte_REQ_DIR}/install.sh"
+                                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} )
+                                    verify $? "installation of ${CURRENT_PKG}"
+                                else
+                                    verify 1 "installation of ${CURRENT_PKG}"
+                                fi
                             else
                                 verify 1 "installation of ${CURRENT_PKG}"
                             fi
-                        else
-                            verify 1 "installation of ${CURRENT_PKG}"
-                        fi
-                    }
-                    ##########################################################################
+                        }
+                        ##########################################################################
+                    fi
                 fi
             fi
         fi
 
         ############################################################################################################################
-        #### check gnu
+        #### check the gnu installation, only if the user has not specified the gfortran path
         ############################################################################################################################
 
-        CURRENT_PKG="the GNU compiler collection"
-        if [ "${gnuInstallEnabled}" = "true" ]; then # || [ "${localMpiInstallationDetected}" = "false" ]); then
-            Fortran_COMPILER_PATH="${GNU_LOCAL_INSTALLATION_BIN_DIR}/gfortran"
-            if [[ -f "${Fortran_COMPILER_PATH}" ]]; then
-                echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected: ${GNU_LOCAL_INSTALLATION_BIN_DIR}"
-                if [[ ":$PATH:" != *":${GNU_LOCAL_INSTALLATION_LIB_DIR}:"* ]]; then
-                    PATH="${GNU_LOCAL_INSTALLATION_LIB_DIR}:${PATH}"
-                    export PATH
-                fi
-                if [[ ":$LD_LIBRARY_PATH:" != *":${GNU_LOCAL_INSTALLATION_LIB_DIR}:"* ]]; then
-                    LD_LIBRARY_PATH="${GNU_LOCAL_INSTALLATION_LIB_DIR}:${LD_LIBRARY_PATH}"
-                    export LD_LIBRARY_PATH
-                fi
-                #gnuInstallEnabled=false
-            else
-                ##########################################################################
-                echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
-                echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
-                if [ "${isMacOS}" = "true" ]; then
-                    (brew install gcc && brew link gcc )
-                    (command -v gfortran >/dev/null 2>&1 )
-                    verify $? "installation of ${CURRENT_PKG}"
-                    Fortran_COMPILER_PATH="$(command -v gfortran)"
+        if [ -z ${Fortran_COMPILER_PATH_USER+x} ]; then
+            CURRENT_PKG="the GNU compiler collection"
+            if [ "${gnuInstallEnabled}" = "true" ]; then # || [ "${localMpiInstallationDetected}" = "false" ]); then
+                Fortran_COMPILER_PATH="${GNU_LOCAL_INSTALLATION_BIN_DIR}/gfortran"
+                if [[ -f "${Fortran_COMPILER_PATH}" ]]; then
+                    echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected: ${GNU_LOCAL_INSTALLATION_BIN_DIR}"
+                    if [[ ":$PATH:" != *":${GNU_LOCAL_INSTALLATION_LIB_DIR}:"* ]]; then
+                        PATH="${GNU_LOCAL_INSTALLATION_LIB_DIR}:${PATH}"
+                        export PATH
+                    fi
+                    if [[ ":$LD_LIBRARY_PATH:" != *":${GNU_LOCAL_INSTALLATION_LIB_DIR}:"* ]]; then
+                        LD_LIBRARY_PATH="${GNU_LOCAL_INSTALLATION_LIB_DIR}:${LD_LIBRARY_PATH}"
+                        export LD_LIBRARY_PATH
+                    fi
+                    #gnuInstallEnabled=false
                 else
-                    chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} ) ||
-                    {
-                        if [ -z ${GCC_BOOTSTRAP+x} ]; then
-                            if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
-                                answerNotGiven=true
-                                while [ "${answerNotGiven}" = "true" ]; do
+                    ##########################################################################
+                    echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
+                    echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
+                    if [ "${isMacOS}" = "true" ]; then
+                        (brew install gcc && brew link gcc )
+                        (command -v gfortran >/dev/null 2>&1 )
+                        verify $? "installation of ${CURRENT_PKG}"
+                        Fortran_COMPILER_PATH="$(command -v gfortran)"
+                    else
+                        chmod +x "${ParaMonte_REQ_DIR}/install.sh"
+                        (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} ) ||
+                        {
+                            if [ -z ${GCC_BOOTSTRAP+x} ]; then
+                                if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
+                                    answerNotGiven=true
+                                    while [ "${answerNotGiven}" = "true" ]; do
+                                        echo >&2
+                                        read -p "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer
+                                        echo >&2
+                                        if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
+                                            answer=y
+                                            answerNotGiven=false
+                                        fi
+                                        if [[ $answer == [nN] || $answer == [nN][oO] ]]; then
+                                            answer=n
+                                            answerNotGiven=false
+                                        fi
+                                        if [ "${answerNotGiven}" = "true" ]; then
+                                            echo >&2 "-- ${BUILD_NAME} - please enter either y or n"
+                                        fi
+                                    done
+                                else
                                     echo >&2
-                                    read -p "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer
+                                    echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? y"
                                     echo >&2
-                                    if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
-                                        answer=y
-                                        answerNotGiven=false
-                                    fi
-                                    if [[ $answer == [nN] || $answer == [nN][oO] ]]; then
-                                        answer=n
-                                        answerNotGiven=false
-                                    fi
-                                    if [ "${answerNotGiven}" = "true" ]; then
-                                        echo >&2 "-- ${BUILD_NAME} - please enter either y or n"
-                                    fi
-                                done
-                            else
+                                    answer=y
+                                fi
                                 echo >&2
-                                echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? y"
-                                echo >&2
-                                answer=y
-                            fi
-                            echo >&2
-                            if [ "${answer}" = "y" ]; then
-                                GCC_BOOTSTRAP="--bootstrap"
-                                chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                                (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} )
-                                verify $? "installation of ${CURRENT_PKG}"
+                                if [ "${answer}" = "y" ]; then
+                                    GCC_BOOTSTRAP="--bootstrap"
+                                    chmod +x "${ParaMonte_REQ_DIR}/install.sh"
+                                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} )
+                                    verify $? "installation of ${CURRENT_PKG}"
+                                else
+                                    verify 1 "installation of ${CURRENT_PKG}"
+                                fi
                             else
                                 verify 1 "installation of ${CURRENT_PKG}"
                             fi
-                        else
-                            verify 1 "installation of ${CURRENT_PKG}"
-                        fi
-                    }
+                        }
+                    fi
+                    ##########################################################################
                 fi
-                ##########################################################################
             fi
         fi
 
@@ -1765,78 +1767,79 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
         #### check caf
         ############################################################################################################################
 
-        CURRENT_PKG="the OpenCoarrays compiler wrapper"
-        if [ "${CAF_ENABLED}" = "true" ] && [ "${cafInstallEnabled}" = "true" ]; then
-            if [[ -f "${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}" ]]; then
-                echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected: ${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}"
-            else
-                ##########################################################################
-                echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
-                echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
-                if [ "${isMacOS}" = "true" ]; then
-                    (brew install opencoarrays && brew link opencoarrays )
-                    (command -v caf >/dev/null 2>&1 )
-                    verify $? "installation of ${CURRENT_PKG}"
-                    CAF_LOCAL_INSTALLATION_WRAPPER_PATH="$(command -v caf)"
+        if [ -z ${Fortran_COMPILER_PATH_USER+x} ]; then
+            CURRENT_PKG="the OpenCoarrays compiler wrapper"
+            if [ "${CAF_ENABLED}" = "true" ] && [ "${cafInstallEnabled}" = "true" ]; then
+                if [[ -f "${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}" ]]; then
+                    echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected: ${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}"
                 else
-                    chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh ${GCC_BOOTSTRAP} --yes-to-all) ||
-                    {
-                        if [ -z ${GCC_BOOTSTRAP+x} ]; then
-                            if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
-                                answerNotGiven=true
-                                while [ "${answerNotGiven}" = "true" ]; do
+                    ##########################################################################
+                    echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
+                    echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
+                    if [ "${isMacOS}" = "true" ]; then
+                        (brew install opencoarrays && brew link opencoarrays )
+                        (command -v caf >/dev/null 2>&1 )
+                        verify $? "installation of ${CURRENT_PKG}"
+                        CAF_LOCAL_INSTALLATION_WRAPPER_PATH="$(command -v caf)"
+                    else
+                        chmod +x "${ParaMonte_REQ_DIR}/install.sh"
+                        (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh ${GCC_BOOTSTRAP} --yes-to-all) ||
+                        {
+                            if [ -z ${GCC_BOOTSTRAP+x} ]; then
+                                if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
+                                    answerNotGiven=true
+                                    while [ "${answerNotGiven}" = "true" ]; do
+                                        echo >&2
+                                        read -p "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer
+                                        echo >&2
+                                        if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
+                                            answer=y
+                                            answerNotGiven=false
+                                        fi
+                                        if [[ $answer == [nN] || $answer == [nN][oO] ]]; then
+                                            answer=n
+                                            answerNotGiven=false
+                                        fi
+                                        if [ "${answerNotGiven}" = "true" ]; then
+                                            echo >&2 "-- ${BUILD_NAME} - please enter either y or n"
+                                        fi
+                                    done
+                                else
                                     echo >&2
-                                    read -p "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer
+                                    echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? y"
                                     echo >&2
-                                    if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
-                                        answer=y
-                                        answerNotGiven=false
-                                    fi
-                                    if [[ $answer == [nN] || $answer == [nN][oO] ]]; then
-                                        answer=n
-                                        answerNotGiven=false
-                                    fi
-                                    if [ "${answerNotGiven}" = "true" ]; then
-                                        echo >&2 "-- ${BUILD_NAME} - please enter either y or n"
-                                    fi
-                                done
-                            else
+                                    answer=y
+                                fi
                                 echo >&2
-                                echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? y"
-                                echo >&2
-                                answer=y
-                            fi
-                            echo >&2
-                            if [ "${answer}" = "y" ]; then
-                                GCC_BOOTSTRAP="--bootstrap"
-                                chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                                (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} )
-                                verify $? "installation of ${CURRENT_PKG}"
+                                if [ "${answer}" = "y" ]; then
+                                    GCC_BOOTSTRAP="--bootstrap"
+                                    chmod +x "${ParaMonte_REQ_DIR}/install.sh"
+                                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} )
+                                    verify $? "installation of ${CURRENT_PKG}"
+                                else
+                                    verify 1 "installation of ${CURRENT_PKG}"
+                                fi
                             else
                                 verify 1 "installation of ${CURRENT_PKG}"
                             fi
-                        else
-                            verify 1 "installation of ${CURRENT_PKG}"
-                        fi
-                    }
+                        }
+                    fi
+                    ##########################################################################
                 fi
-                ##########################################################################
+                Fortran_COMPILER_PATH="${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}"
             fi
-            Fortran_COMPILER_PATH="${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}"
+            if [ -f "${CAF_LOCAL_INSTALLATION_SETUP_FILE}" ]; then
+                source "${CAF_LOCAL_INSTALLATION_SETUP_FILE}"
+                # source "${SETUP_FILE_PATH}"
+                # echo "" >> ${SETUP_FILE_PATH}
+                # echo "source ${CAF_LOCAL_INSTALLATION_SETUP_FILE}" >> ${SETUP_FILE_PATH}
+                # echo "" >> ${SETUP_FILE_PATH}
+            fi
         fi
 
-        if [ -f "${CAF_LOCAL_INSTALLATION_SETUP_FILE}" ]; then
-            source "${CAF_LOCAL_INSTALLATION_SETUP_FILE}"
-            # source "${SETUP_FILE_PATH}"
-            # echo "" >> ${SETUP_FILE_PATH}
-            # echo "source ${CAF_LOCAL_INSTALLATION_SETUP_FILE}" >> ${SETUP_FILE_PATH}
-            # echo "" >> ${SETUP_FILE_PATH}
-        fi
+    fi # block user permission for prereqs installation
 
-    fi
-
-fi
+fi # block prereqs installation enabled
 
 # check one last time if Fortran compiler path exists, if not unset
 
