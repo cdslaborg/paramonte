@@ -790,6 +790,7 @@ def findMPI():
             mpi.isOpenMPI = "openrte" in cmdout or "openmpi" in cmdout or "open-mpi" in cmdout
             mpi.install.bin.mpiexec.path = shutil.which("mpiexec")
             if mpi.install.bin.mpiexec.path is not None and not (mpi.isOpenMPI or mpi.isMPICH or mpi.isIntel):
+            try:            
                 #mpi.isMPICH = "mpich" in str(subprocess.run(args=["mpichversion"],capture_output=True).stdout)
                 mpi.isMPICH = "mpich" in subprocess.getoutput("mpiexec --version").lower()
                 # If the MPI library is neither Intel nor MPICH nor OpenMPI, then assume no MPI library exists.
