@@ -151,9 +151,9 @@ def verify(reset = True):
 
             # verifyDependencyVersion()
 
-            #### library path
+            #### library path: This is too aggressive and not needed anymore as of ParaMonte kernel version 1.5.0
 
-            if not pm.platform.isWin32: setupUnixPath()
+            # if not pm.platform.isWin32: setupUnixPath()
 
             #### search for the MPI library
 
@@ -586,7 +586,9 @@ def findMPI():
                                     + "         a single node (this flag will obviate the need for the MPI " + newline
                                     + "         library credentials registration). For more information, visit: " + newline
                                     + "         " + pm.website.intel.mpi.windows.url + " " + newline
-                                    + "    3.   main_mpi.py is the Python file which serves as the entry point to " + newline
+                                    + "    3.   python is the name of the Python software installed on your system." + newline
+                                    + "         If python is not recognized on your command line, use python3 instead." + newline
+                                    + "    4.   main_mpi.py is the Python file which serves as the entry point to " + newline
                                     + "         your simulation, where you call the ParaMonte sampler routines. " + newline
                                     + newline
                                     + "Note that the above two commands must be executed on a command-line that " + newline
@@ -692,7 +694,9 @@ def findMPI():
                                     + "         and the second command runs in the simulation in parallel, where," + newline
                                     + "    1.   you should replace the number 2 with the desired processor count " + newline
                                     + "         that you wish to assign to your simulation task, " + newline
-                                    + "    2.   main_mpi.py is the Python file which serves as the entry point to " + newline
+                                    + "    2.   python is the name of the Python software installed on your system." + newline
+                                    + "         If python is not recognized on your command line, use python3 instead." + newline
+                                    + "    3.   main_mpi.py is the Python file which serves as the entry point to " + newline
                                     + "         your simulation, where you call the ParaMonte sampler routines. " + newline
                                     + newline
                                     + "For more information on how to install and use and run parallel " + newline
@@ -831,7 +835,9 @@ def findMPI():
                             + "         launcher might be necessary, such as ibrun, mpirun, etc." + newline
                             + "    1.   you should replace the number 2 with your desired processor " + newline
                             + "         count that you wish to assign to your parallel simulation task, " + newline
-                            + "    2.   main_mpi.py is the Python file that serves as the entry point to " + newline
+                            + "    2.   python is the name of the Python software installed on your system." + newline
+                            + "         If python is not recognized on your command line, use python3 instead." + newline
+                            + "    3.   main_mpi.py is the Python file that serves as the entry point to " + newline
                             + "         your simulation, where you call the ParaMonte sampler routines. " + newline
                             + "         Change this file name to your simulation's main file as needed. " + newline
                             + newline
