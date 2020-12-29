@@ -5,11 +5,11 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 1.x.x**  
 
-### **Version 1.5.1** -- Dec 28, 2020
+### **Version 1.5.1** -- Dec 29, 2020
 
 **Minor Enhancements**  
 
-+   This is minor enhancement release, but is a major step toward 
++   This is a minor enhancement release, but is a major step toward 
     further portability of the ParaMonte library. All ParaMonte kernel 
     library dependencies are now properly handled and recognized at runtime
     without such aggressive actions as permanently redefining the environmental
