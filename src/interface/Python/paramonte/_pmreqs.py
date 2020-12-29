@@ -1532,6 +1532,12 @@ def dispFinalMessage():
                     + newline
                     + "    import paramonte as pm" + newline
                     + "    pm.helpme()"
+                    + newline
+                    + "To get help on individual components of the paramonte modules," + newline
+                    + "pass the name of the components to `helpme()`. For example," + newline
+                    + newline
+                    + "    import paramonte as pm" + newline
+                    + "    pm.helpme(\"ParaDRAM\")"
             , methodName = pm.names.paramonte
             , marginTop = 1
             , marginBot = 1
