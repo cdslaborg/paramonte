@@ -453,9 +453,9 @@ class ParaMonteSampler:
         if pm.platform.isWin32:
 
             if "PATH" in os.environ:
-                os.environ["PATH"] = pm.path.root + os.pathsep + os.environ["PATH"]
+                os.environ["PATH"] = pm.path.lib + os.pathsep + os.environ["PATH"]
             else:
-                os.environ["PATH"] = pm.path.root
+                os.environ["PATH"] = pm.path.lib
 
             #mpiFound = False
             pathList = os.environ["PATH"].split(";")
@@ -474,7 +474,7 @@ class ParaMonteSampler:
         else:
 
             if "LD_LIBRARY_PATH" not in os.environ:
-                os.environ["LD_LIBRARY_PATH"] = "."
+                os.environ["LD_LIBRARY_PATH"] = pm.path.lib
                 #if self.reportEnabled and pm.platform.isLinux:
                 #    pm.warn( msg   = "LD_LIBRARY_PATH environmental variable is not defined in " + newline
                 #                    + "your Python session. Consider running the following command " + newline
@@ -497,7 +497,7 @@ class ParaMonteSampler:
             libdir = "/usr/local/lib64"
             if os.path.isdir(libdir):
                 os.environ["LD_LIBRARY_PATH"]  = libdir + os.pathsep + os.environ["LD_LIBRARY_PATH"]
-            os.environ["LD_LIBRARY_PATH"]  = pm.path.root + os.pathsep + os.environ["LD_LIBRARY_PATH"]
+            os.environ["LD_LIBRARY_PATH"]  = pm.path.lib + os.pathsep + os.environ["LD_LIBRARY_PATH"]
 
             from _pmreqs import getLocalInstallDir
             localInstallDir = getLocalInstallDir()
@@ -578,7 +578,7 @@ class ParaMonteSampler:
                 #### Build the library name
 
                 libName = libNamePrefix + pmcs + "_" + buildMode + "_dynamic_heap" + parallelism + libNameSuffix
-                libPath = find_library(os.path.join(pm.path.root, libName))
+                libPath = find_library(os.path.join(pm.path.lib, libName))
 
                 libFound = os.path.isfile(libPath)
                 if libFound: break
