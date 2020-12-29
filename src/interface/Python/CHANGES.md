@@ -5,6 +5,27 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 2.x.x**  
 
+### Version  2.5.0 -- December 29, 2020  
+
+**Major enhancements**  
+
++   This release is a a major step toward further portability 
+    of the kernel routines of the `ParaMonte::Python` library. The kernel 
+    library dependencies are now properly handled and recognized at runtime
+    without such aggressive actions as permanently redefining the environmental
+    path variables, most importantly, `PATH` and `LD_LIBRARY_PATH` on Linux/macOS.
+
++   The `ParaMonte::Python` library is now capable of recognizing the existing MPI
+    libraries such as MPICH and OpenMPI on user's system and avoid further 
+    installation of a new MPI library if it is deemed unnecessary.  
+
++   The ParaMonte kernel routines are now capable of handling user-input 
+    file paths that contain white-space (blank) or other exotic characters.  
+
+**Minor enhancements**  
+
++   Typo-fixes in the documentation of the library.
+
 ### Version  2.4.0 -- December 17, 2020  
 
 **Major enhancements**  
