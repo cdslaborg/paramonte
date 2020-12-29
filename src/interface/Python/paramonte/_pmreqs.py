@@ -443,11 +443,9 @@ def getLocalInstallDir():
     localInstallDir.caf.lib = None
     localInstallDir.caf.lib64 = None
 
-    _ = os.path.join( pm.path.root , "paramonte-main", "build", "prerequisites", "prerequisites", "installations" )
+    if os.path.isdir(pm.path.localInstall):
 
-    if os.path.isdir(_):
-
-        localInstallDir.root = _
+        localInstallDir.root = pm.path.localInstall
 
         from glob import glob
 
@@ -1653,20 +1651,18 @@ def build(flags=""):
 
             currentDir = os.getcwd()
 
-            pmGitTarPath = os.path.join( pm.path.root, "main.tar.gz" )
+            pmGitTarPath = os.path.join( pm.path.download, "main.tar.gz" )
             download( url = pm.website.github.archive.main.tar.url
                     , filePath = pmGitTarPath
                     )
-
-            pmGitRootDir = os.path.join( pm.path.root, "paramonte-main" )
 
             try:
 
                 import tarfile
                 tf = tarfile.open(pmGitTarPath)
-                tf.extractall(path=pm.path.root) # path=pmGitRootDir)
+                tf.extractall(path = pm.path.download) # path=pm.path.archive)
 
-                pmGitInstallScriptPath = os.path.join( pmGitRootDir, "install.sh" )
+                pmGitInstallScriptPath = os.path.join( pm.path.archive, "install.sh" )
                 if not os.path.exists(pmGitInstallScriptPath):
                     pm.abort( msg   = "Internal error occurred." + newline
                                     + "Failed to detect the ParaMonte installation Bash script. " + newline
@@ -1703,11 +1699,11 @@ def build(flags=""):
                         , marginBot = 1
                         )
 
-            os.chdir(pmGitRootDir)
+            os.chdir(pm.path.archive)
 
             import subprocess
             try:
-                os.system( "find " + pmGitRootDir + " -type f -iname \"*.sh\" -exec chmod +x {} \;" )
+                os.system( "find " + pm.path.archive + " -type f -iname \"*.sh\" -exec chmod +x {} \;" )
                 os.system( pmGitInstallScriptPath + " --lang python --test_enabled true --exam_enabled false --yes-to-all " + flags )
             except Exception as e:
                 print(str(e))
@@ -1726,7 +1722,7 @@ def build(flags=""):
 
             from glob import glob
             import shutil
-            pythonBinDir = os.path.join( pmGitRootDir , "bin" , "Python" , "paramonte" )
+            pythonBinDir = os.path.join( pm.path.archive , "bin" , "Python" , "paramonte" )
             fileList = glob( os.path.join( pythonBinDir , "libparamonte_*" ) )
 
             if len(fileList)==0:
@@ -1769,7 +1765,7 @@ def build(flags=""):
                         , marginBot = 1
                         )
 
-                setupFilePath = os.path.join( pmGitRootDir , "build", "prerequisites", "prerequisites", "installations", "opencoarrays", "*", "setup.sh" )
+                setupFilePath = os.path.join( pm.path.localInstall, "opencoarrays", "*", "setup.sh" )
                 setupFilePathList = glob(setupFilePath)
                 if setupFilePathList: setupFilePath = setupFilePath[-1]
 

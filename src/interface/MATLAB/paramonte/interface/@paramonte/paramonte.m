@@ -396,12 +396,19 @@ classdef paramonte %< dynamicprops
 
             self.isGUI = isGUI(); 
 
+            self.platform.isWSL = false;
             self.platform.isWin32 = ispc;
             self.platform.isMacOS = ismac;
             self.platform.isLinux = isunix && ~ismac;
             if self.platform.isWin32; self.platform.osname = "Windows"; end
             if self.platform.isMacOS; self.platform.osname = "Darwin"; end % do NOT set this to macOS !
             if self.platform.isLinux; self.platform.osname = "Linux"; end
+            if self.platform.isLinux
+                [errorOccurred, cmdout] = system("uname -a");
+                if ~errorOccurred
+                    self.platform.isWSL = contains(cmdout, "microsoft")
+                end
+            end
 
             self.platform.systemInfoFilePrefix = fullfile(self.path.auxil, ".systemInfo_");
             self.platform.systemInfoFilePath = self.platform.systemInfoFilePrefix + string(strrep(date,"-","_"));
