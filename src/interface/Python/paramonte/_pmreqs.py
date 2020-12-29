@@ -790,15 +790,16 @@ def findMPI():
             mpi.isOpenMPI = "openrte" in cmdout or "openmpi" in cmdout or "open-mpi" in cmdout
             mpi.install.bin.mpiexec.path = shutil.which("mpiexec")
             if mpi.install.bin.mpiexec.path is not None and not (mpi.isOpenMPI or mpi.isMPICH or mpi.isIntel):
-            try:            
-                #mpi.isMPICH = "mpich" in str(subprocess.run(args=["mpichversion"],capture_output=True).stdout)
-                mpi.isMPICH = "mpich" in subprocess.getoutput("mpiexec --version").lower()
-                # If the MPI library is neither Intel nor MPICH nor OpenMPI, then assume no MPI library exists.
-                if not mpi.isMPICH: mpi.install.bin.mpiexec.path = None
-            except:
-                warnings.warn("Failed to capture the MPICH MPI library version. skipping...")
+                try:            
+                    #mpi.isMPICH = "mpich" in str(subprocess.run(args=["mpichversion"],capture_output=True).stdout)
+                    mpi.isMPICH = "mpich" in subprocess.getoutput("mpiexec --version").lower()
+                    # If the MPI library is neither Intel nor MPICH nor OpenMPI, then assume no MPI library exists.
+                except:
+                    warnings.warn("Failed to capture the MPICH MPI library version. skipping...")
         except:
             warnings.warn("Failed to capture the mpiexec version. skipping...")
+
+        if not (mpi.isOpenMPI or mpi.isMPICH or mpi.isIntel): mpi.install.bin.mpiexec.path = None
 
         if mpi.install.bin.mpiexec.path is not None: # and (gfortranPath is not None):
 
