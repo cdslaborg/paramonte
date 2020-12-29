@@ -562,8 +562,9 @@ class ParaMonteSampler:
 
         libNameSuffix = { "windows" : ".dll"
                         , "cygwin"  : ".dll"
-                        , "darwin"  : ".dylib"
+                        , "mingw"   : ".dll"
                         , "linux"   : ".so"
+                        , "darwin"  : ".dylib"
                         }.get(pm.platform.osname, ".so")
 
         libPath = None
@@ -577,8 +578,7 @@ class ParaMonteSampler:
                 #### Build the library name
 
                 libName = libNamePrefix + pmcs + "_" + buildMode + "_dynamic_heap" + parallelism + libNameSuffix
-                libPath = find_library(libName)
-                if libPath is None: libPath = os.path.join( pm.path.root, libName )
+                libPath = find_library(os.path.join(pm.path.root, libName))
 
                 libFound = os.path.isfile(libPath)
                 if libFound: break
