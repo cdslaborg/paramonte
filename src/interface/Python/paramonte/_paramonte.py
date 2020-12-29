@@ -55,10 +55,15 @@ from pathlib import Path as _Path
 
 path = Struct()
 path.root = os.path.dirname(os.path.abspath(__file__))
-path.lib = os.path.join(path.root,"lib")
 path.auxil = os.path.join(path.root,"auxil")
 path.download = os.path.join(path.root,"download")
 path.home = str(_Path.home()) # path.home = os.path.expanduser("~")
+
+path.lib = path.root # os.path.join(path.root,"lib")
+"""
+The library directory of ParaMonte Python must be root directory. 
+This is essential for the correct functionality of ctypes module.
+"""
 
 path.archive = os.path.join(path.download,"paramonte-main")
 """path to the directory of uncompressed paramonte archive."""

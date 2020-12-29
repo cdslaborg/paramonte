@@ -1728,7 +1728,7 @@ def build(flags=""):
 
             from glob import glob
             import shutil
-            pythonBinDir = os.path.join( pm.path.archive , "bin" , "Python" , "paramonte" )
+            pythonBinDir = os.path.join( pm.path.archive , "bin" , "libparamonte_Python" , "paramonte" )
             fileList = glob( os.path.join( pythonBinDir , "libparamonte_*" ) )
 
             if len(fileList)==0:
