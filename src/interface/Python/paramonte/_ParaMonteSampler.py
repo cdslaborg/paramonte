@@ -579,10 +579,9 @@ class ParaMonteSampler:
 
                 libName = libNamePrefix + pmcs + "_" + buildMode + "_dynamic_heap" + parallelism + libNameSuffix
                 libPath = find_library(libName)
-
-                if libPath is not None:
-                    libFound = os.path.isfile(libPath)
-                    if libFound: break
+                if libPath is None: libPath = os.path.join( pm.path.lib, libName )
+                libFound = os.path.isfile(libPath)
+                if libFound: break
 
             # exist the loop if the library has been found
 
