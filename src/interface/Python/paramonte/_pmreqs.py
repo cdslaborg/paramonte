@@ -1901,9 +1901,10 @@ def displayDependencyVersionMessage():
                     + indentedNewLine.join("{} : {}".format(key, val) for key, val in dependencyVersionDict.items()) + newline
                     + newline
                     + "If you do not intend to use the postprocessing and visualization tools, " + newline
-                    + "you can ignore this message. Otherwise, UPDATE THE ABOVE PACKAGES TO " + newline
-                    + "THE REQUESTED VERSIONS OR NEWER, SO THAT THE VISUALIZATION TOOLS " + newline
-                    + "OF THE ParaMonte::Python LIBRARY FUNCTION PROPERLY."
+                    + "you can ignore this message. Otherwise, " + newline
+                    + newline
+                    + "    UPDATE THE ABOVE PACKAGES TO THE REQUESTED VERSIONS OR NEWER TO ENABLE" + newline
+                    + "    THE VISUALIZATION AND POSTPROCESSING TOOLS OF THE ParaMonte LIBRARY."
             , methodName = pm.names.paramonte
             , marginTop = 1
             , marginBot = 1
