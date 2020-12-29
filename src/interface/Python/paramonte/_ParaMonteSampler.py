@@ -579,10 +579,10 @@ class ParaMonteSampler:
 
                 libName = libNamePrefix + pmcs + "_" + buildMode + "_dynamic_heap" + parallelism + libNameSuffix
                 libPath = find_library(libName)
-                if libPath is None: libPath = os.path.join( pm.path.lib, libName )
 
-                libFound = os.path.isfile(libPath)
-                if libFound: break
+                if libPath is not None:
+                    libFound = os.path.isfile(libPath)
+                    if libFound: break
 
             # exist the loop if the library has been found
 
@@ -771,7 +771,11 @@ class ParaMonteSampler:
            #while isLoaded(libPath):
            #    dlclose(pmdll._handle)
             try:
-                ct.dlclose(pmdll._handle)
+                #ct.dlclose(pmdll._handle)
+                _dlclose_func = ct.cdll.LoadLibrary('').dlclose
+                _dlclose_func.argtypes = [ct.c_void_p]
+                _dlclose_func(pmdll._handle)
+                del pmdll
             except:
                 if self.reportEnabled:
                     pm.warn ( msg   = "Failed to properly close the ParaMonte shared library file. " + newline

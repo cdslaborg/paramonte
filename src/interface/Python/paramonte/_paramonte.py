@@ -59,7 +59,7 @@ path.auxil = os.path.join(path.root,"auxil")
 path.download = os.path.join(path.root,"download")
 path.home = str(_Path.home()) # path.home = os.path.expanduser("~")
 
-path.lib = path.root # os.path.join(path.root,"lib")
+path.lib = os.path.join(path.root,"lib")
 """
 The library directory of ParaMonte Python must be the root directory. 
 This is essential for the correct functionality of the ctypes module.
