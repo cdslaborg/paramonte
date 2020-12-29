@@ -63,7 +63,7 @@ path.download = os.path.join(path.root,"download")
 path.archive = os.path.join(path.download,"paramonte-main")
 """path to the directory of uncompressed paramonte archive."""
 
-path.localInstall = os.path.join( pm.path.archive , "build", "prerequisites", "prerequisites", "installations" )
+path.localInstall = os.path.join( path.archive , "build", "prerequisites", "prerequisites", "installations" )
 """path to the directory of the local installation of the paramonte kernel."""
 
 sys.path.append(path.root)
