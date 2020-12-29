@@ -574,19 +574,19 @@ def findMPI():
                                     + newline
                                     + "    " + mpivarsCommand + newline
                                     + newline
-                                    + "    mpiexec -localonly -n NUM_PROCESSES python main.py" + newline
+                                    + "    mpiexec -localonly -n 2 python main_mpi.py" + newline
                                     + newline
                                     + "where, " + newline
                                     + newline
                                     + "    0.   the first command defines the essential environment variables, " + newline
                                     + "         and the second command runs in the simulation in parallel, where, " + newline
-                                    + "    1.   you should replace NUM_PROCESSES with the number of processors " + newline
+                                    + "    1.   you should replace the number 2 with the desired processor count " + newline
                                     + "         you wish to assign to your simulation task and, " + newline
                                     + "    2.   the flag '-localonly' indicates a parallel simulation on only " + newline
                                     + "         a single node (this flag will obviate the need for the MPI " + newline
                                     + "         library credentials registration). For more information, visit: " + newline
                                     + "         " + pm.website.intel.mpi.windows.url + " " + newline
-                                    + "    3.   main.py is the Python file which serves as the entry point to " + newline
+                                    + "    3.   main_mpi.py is the Python file which serves as the entry point to " + newline
                                     + "         your simulation, where you call the ParaMonte sampler routines. " + newline
                                     + newline
                                     + "Note that the above two commands must be executed on a command-line that " + newline
@@ -684,16 +684,16 @@ def findMPI():
                                     + newline
                                     + "    source " + mpivarsCommand + newline
                                     + newline
-                                    + "    mpiexec -n NUM_PROCESSES python main.py" + newline
+                                    + "    mpiexec -n 2 python main_mpi.py" + newline
                                     + newline
                                     + "where, " + newline
                                     + newline
                                     + "    0.   the first command defines the essential environment variables" + newline
                                     + "         and the second command runs in the simulation in parallel, where," + newline
-                                    + "    1.   you should replace NUM_PROCESSES with the number of processors " + newline
-                                    + "         you wish to assign to your simulation task, " + newline
-                                    + "    2.   main.py is the Python file which serves as the entry point to " + newline
-                                    + "         your simulation, where you call ParaMonte sampler routines. " + newline
+                                    + "    1.   you should replace the number 2 with the desired processor count " + newline
+                                    + "         that you wish to assign to your simulation task, " + newline
+                                    + "    2.   main_mpi.py is the Python file which serves as the entry point to " + newline
+                                    + "         your simulation, where you call the ParaMonte sampler routines. " + newline
                                     + newline
                                     + "For more information on how to install and use and run parallel " + newline
                                     + "ParaMonte simulations on Linux systems, visit: " + newline
@@ -790,7 +790,7 @@ def findMPI():
             mpi.isOpenMPI = "openrte" in cmdout or "openmpi" in cmdout or "open-mpi" in cmdout
             mpi.install.bin.mpiexec.path = shutil.which("mpiexec")
             if mpi.install.bin.mpiexec.path is not None and not (mpi.isOpenMPI or mpi.isMPICH or mpi.isIntel):
-                try:            
+                try:
                     #mpi.isMPICH = "mpich" in str(subprocess.run(args=["mpichversion"],capture_output=True).stdout)
                     mpi.isMPICH = "mpich" in subprocess.getoutput("mpiexec --version").lower()
                     # If the MPI library is neither Intel nor MPICH nor OpenMPI, then assume no MPI library exists.
@@ -810,36 +810,42 @@ def findMPI():
 
             mpi.install.bin.found = True
             mpi.install.bin.mpiexec.found = True
-            mpi.install.bin.mpivars.found = True # dummy
             mpi.install.bin.path = os.path.dirname(mpi.install.bin.mpiexec.path)
-            pm.note ( msg   = mpiName + " MPI runtime libraries detected at: " + newline
+            mpi.install.bin.mpivars.found = True
+            # mpi.install.bin.mpivars.found = os.path.isfile( os.path.join(mpi.install.bin.path, "mpivars") )
+            # On macOS mpivars files is neither so easy to find, nor is essential. So skip checking its existence.
+
+            pm.note ( msg   = mpiName + "MPI launcher and runtime libraries detected at: " + newline
                             + newline
                             + "    " + mpi.install.bin.path + newline
                             + newline
-                            + "To perform ParaMonte simulations in parallel on a single node, " + newline
-                            + "run the following command, in the form and order specified, " + newline
-                            + "in a Bash shell (terminal), " + newline
+                            + "To perform ParaMonte simulations in parallel, invoke the mpiexec MPI launcher" + newline
+                            + "in the form and order specified, in a Bash shell (terminal)" + newline
                             + newline
-                            + "    mpiexec -n 2 python main.py" + newline
+                            + "    mpiexec -n 2 python main_mpi.py" + newline
                             + newline
                             + "where, " + newline
                             + newline
+                            + "    0.   mpiexec is the common name of the MPI launcher. On some " + newline
+                            + "         specific platforms like supercomputers, a different MPI " + newline
+                            + "         launcher might be necessary, such as ibrun, mpirun, etc." + newline
                             + "    1.   you should replace the number 2 with your desired processor " + newline
                             + "         count that you wish to assign to your parallel simulation task, " + newline
-                            + "    2.   main.py is the Python file which serves as the entry point to " + newline
+                            + "    2.   main_mpi.py is the Python file that serves as the entry point to " + newline
                             + "         your simulation, where you call the ParaMonte sampler routines. " + newline
                             + "         Change this file name to your simulation's main file as needed. " + newline
                             + newline
                             + "For more information on how to install and use and run parallel ParaMonte " + newline
                             + "simulations on Linux or macOS (Darwin) operating systems, visit:" + newline
                             + newline
-                            + pm.website.home.url
+                            + "    " + pm.website.home.url
             , marginTop = 1
             , marginBot = 1
             , methodName = pm.names.paramonte
             )
 
         mpi.install.found = mpi.install.bin.found and mpi.install.bin.mpiexec.found and mpi.install.bin.mpivars.found
+        if mpi.install.found: mpi.path.broken = False
 
     #### return the search results
 
