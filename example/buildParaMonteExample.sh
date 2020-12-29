@@ -99,6 +99,8 @@ printCopyFailMsg() {
 
 if [ "${isMacOS}" = "true" ]; then
     sharedFileExt="dylib"
+elif [ "${isMinGW}" = "true" ] || [ "${isCygwin}" = "true" ]; then
+    sharedFileExt="dll"
 else
     sharedFileExt="so"
 fi
@@ -214,7 +216,10 @@ do
     #### The library directory of ParaMonte Python must be root directory. 
     #### This is essential for the correct functionality of ctypes module.
 
-    ParaMonteExample_LIB_DIR_CURRENT="${ParaMonteExample_BLD_DIR_CURRENT}/paramonte/lib"
+    ParaMonteExample_LIB_DIR_CURRENT="${ParaMonteExample_BLD_DIR_CURRENT}"
+    if [ "${LANG_IS_DYNAMIC}" = "true" ]; then
+        ParaMonteExample_LIB_DIR_CURRENT="${ParaMonteExample_LIB_DIR_CURRENT}/paramonte/lib/${ARCHITECTURE}/${sharedFileExt}/${MPILIB_NAME}"
+    fi
 
     if [[ -d "${ParaMonteExample_LIB_DIR_CURRENT}" ]]; then
         echo >&2 "-- ParaMonteExample${LANG_NAME} - ParaMonte ${EXAM_NAME} example library directory already exists. skipping..."

@@ -56,9 +56,16 @@ from pathlib import Path as _Path
 path = Struct()
 path.home = str(_Path.home()) # path.home = os.path.expanduser("~")
 path.root = os.path.dirname(os.path.abspath(__file__))
-path.lib = os.path.join(path.root,"lib")
 path.auxil = os.path.join(path.root,"auxil")
 path.download = os.path.join(path.root,"download")
+
+path.lib = Struct()
+path.lib.root = os.path.join(path.root,"lib")
+path.lib.x64 = Struct()
+path.lib.x64.root = os.path.join(path.lib.root,"lib")
+path.lib.x64.so = os.path.join(path.lib.x64.root,"so")
+path.lib.x64.dll = os.path.join(path.lib.x64.root,"dll")
+path.lib.x64.dylib = os.path.join(path.lib.x64.root,"dylib")
 
 path.archive = os.path.join(path.download,"paramonte-main")
 """path to the directory of uncompressed paramonte archive."""

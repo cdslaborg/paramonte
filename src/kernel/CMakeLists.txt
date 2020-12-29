@@ -280,7 +280,7 @@ elseif (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
     if (APPLE)
         set_target_properties(${PMLIB_NAME} PROPERTIES INSTALL_RPATH "@loader_path")
     elseif(UNIX)
-        set_target_properties(${PMLIB_NAME} PROPERTIES INSTALL_RPATH "$ORIGIN")
+        set_target_properties(${PMLIB_NAME} PROPERTIES INSTALL_RPATH "$ORIGIN:$ORIGIN/..")
     endif()
 
     #if (gnu_compiler)
