@@ -143,19 +143,25 @@ function runSampler(self,ndim,getLogFunc,varargin)
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     cstype = [];
+    parallelism = [];
     errorOccurred = ~ischar(self.buildMode) && ~isstring(self.buildMode);
     if ~errorOccurred
         self.buildMode = string(self.buildMode);
         buildModeSplitList = strsplit(lower(self.buildMode),"-");
-        if strcmp(buildModeSplitList(1),"release") || strcmp(buildModeSplitList(1),"testing") || strcmp(buildModeSplitList(1),"debug")
-            if length(buildModeSplitList) > 1
-                cstype = buildModeSplitList(2);
-                errorOccurred = ~( strcmp(cstype,"gnu") || strcmp(cstype,"intel") );
+        for i = 1:length(buildModeSplitList)
+            if strcmp(buildModeSplitList(i),"release") || strcmp(buildModeSplitList(i),"testing") || strcmp(buildModeSplitList(i),"debug")
+                buildMode = buildModeSplitList(i);
+            elseif strcmp(buildModeSplitList(i),"impi") || strcmp(buildModeSplitList(i),"mpich") || strcmp(buildModeSplitList(i),"openmpi")
+                parallelism = "_" + buildModeSplitList(i);
+            elseif strcmp(buildModeSplitList(i),"intel") || strcmp(buildModeSplitList(i),"gnu")
+                cstype = buildModeSplitList(i);
+            else
+                errorOccurred = true;
+                break
             end
-        else
-            errorOccurred = true;
         end
     end
+
     if errorOccurred
         self.Err.msg    = "The attribute " + self.objectName + ".buildMode must be of type string. " + newline ...
                         + "It is an optional string argument with default value ""release"" ." + newline ...
@@ -170,61 +176,51 @@ function runSampler(self,ndim,getLogFunc,varargin)
         self.Err.abort();
     end
 
-    %%%% set the MPI library name. @todo: The MPI runtime library determination here needs improvement. This must be moved out of this method.
+    %%%% determine the mpi library brand. @todo: This could be later moved to pmreqs as it does not need to be executed every time.
 
-    if self.mpiEnabled
-
-        [status,cmdout] = system("mpiexec --version");
-        if status==0 || ischar(cmdout) || isstring(cmdout)
-            cmdout = lower(string(cmdout));
-        else
-            cmdout = "";
-        end
-
-        if contains(cmdout,"openrte") || contains(cmdout,"open-mpi") || contains(cmdout,"openmpi")
-            parallelism = "_openmpi";
-        elseif contains(cmdout,"hydra") || contains(cmdout,"mpich")
-            parallelism = "_mpich";
-        elseif contains(cmdout,"intel")
-            parallelism = "_impi";
-        else
-            if self.platform.isWin32 || self.platform.isLinux
-                parallelism = "_impi";
-            elseif self.platform.isMacOS
-                parallelism = "_openmpi";
-            end
-        end
-
-        if isempty(cstype)
-            if strcmp(parallelism,"_impi")
-                cstype = "intel";
+    if isempty(parallelism)
+        if self.mpiEnabled
+            [status,cmdout] = system("mpiexec --version");
+            if status==0 || ischar(cmdout) || isstring(cmdout)
+                cmdout = lower(string(cmdout));
             else
-                cstype = "gnu";
+                cmdout = "";
             end
-        end
 
-    else
-
-        parallelism = "";
-        if ~self.mpiEnabled
-            if self.reportEnabled
-                self.Err.msg    = "Running the ParaDRAM sampler in serial mode..." + newline ...
-                                + "To run the ParaDRAM sampler in parallel visit:" + newline ...
-                                + newline ...
-                                + "    " + href(self.website.home.url) ...
-                                ;
-                % the simulation progress is funneled to the MATLAB session on Windows, so need for the following message.
-                if ~self.platform.isWin32
-                self.Err.msg    = self.Err.msg + newline ...
-                                + newline ...
-                                + "For realtime simulation progress report," + newline ...
-                                + "check the bash terminal from which you started your MATLAB session." ...
-                                ;
+            if contains(cmdout,"openrte") || contains(cmdout,"open-mpi") || contains(cmdout,"openmpi")
+                parallelism = "_openmpi";
+            elseif contains(cmdout,"hydra") || contains(cmdout,"mpich")
+                parallelism = "_mpich";
+            elseif contains(cmdout,"intel")
+                parallelism = "_impi";
+            else
+                if self.platform.isWin32 || self.platform.isLinux
+                    parallelism = "_impi";
+                elseif self.platform.isMacOS
+                    parallelism = "_openmpi";
                 end
-                self.Err.note();
+            end
+        else
+            parallelism = "";
+            if ~self.mpiEnabled
+                if self.reportEnabled
+                    self.Err.msg    = "Running the ParaDRAM sampler in serial mode..." + newline ...
+                                    + "To run the ParaDRAM sampler in parallel visit:" + newline ...
+                                    + newline ...
+                                    + "    " + href(self.website.home.url) ...
+                                    ;
+                    % the simulation progress is funneled to the MATLAB session on Windows, so need for the following message.
+                    if ~self.platform.isWin32
+                    self.Err.msg    = self.Err.msg + newline ...
+                                    + newline ...
+                                    + "For realtime simulation progress report," + newline ...
+                                    + "check the bash terminal from which you started your MATLAB session." ...
+                                    ;
+                    end
+                    self.Err.note();
+                end
             end
         end
-
     end
 
     %%%% set build mode
@@ -241,7 +237,14 @@ function runSampler(self,ndim,getLogFunc,varargin)
 
     pmcsListRef = ["intel","gnu"];
     pmcsList = pmcsListRef;
-    if ~isempty(cstype)
+
+    if isempty(cstype)
+        if strcmp(parallelism,"_impi")
+            cstype = "intel";
+        else
+            cstype = "gnu";
+        end
+    else
         pmcsList = [cstype];
         for pmcs = pmcsListRef
             if ~strcmp(pmcs,cstype)
@@ -335,7 +338,7 @@ function runSampler(self,ndim,getLogFunc,varargin)
                              + newline ...
                              + "to get help on resolving the error." ...
                              ;
-                
+
             end
         else
            if self.mpiEnabled
