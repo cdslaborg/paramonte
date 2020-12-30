@@ -642,11 +642,11 @@ classdef paramonte %< dynamicprops
                     return;
                 end
 
-                % ensure 64-bit architecture
+                %%%% ensure 64-bit architecture
 
                 if strcmpi(getArch(),"x64") && (self.platform.isWin32 || self.platform.isLinux || self.platform.isMacOS)
 
-                    % set up library path
+                    %%%% set up library path
 
                     if ~self.platform.isWin32
                         % save a copy of the original bashrc contents. will be used in installParaMonte().
@@ -654,15 +654,15 @@ classdef paramonte %< dynamicprops
                         %self.setupUnixPath(); % This is too aggressive and not needed naymore.
                     end
 
-                    % install library
+                    %%%% install library: This is too aggressive and not needed anymore, as of ParaMonte kernel version 1.5.1
 
-                    self.installParaMonte();
+                    % self.installParaMonte();
 
-                    % get the dependency list
+                    %%%% get the dependency list
 
                     self.prereqs = self.getPrereqs(false); % sets the self.prereqs component.
 
-                    % search for the MPI library
+                    %%%% search for the MPI library
 
                     mpi = self.findMPI();
 
@@ -875,22 +875,16 @@ classdef paramonte %< dynamicprops
             if isunix
 
                 %pmLocalFileList = getFileNameList(self.path.lib.root);
-                if self.platform.isLinux; filePath = "*so"; end
-                if self.platform.isMacOS; filePath = "*dylib"; end
+                if self.platform.isLinux; filePath = "libparamonte_*.so"; end
+                if self.platform.isMacOS; filePath = "libparamonte_*.dylib"; end
 
                 libDirList = [ self.path.lib.x64.gnu, self.path.lib.x64.intel ];
+                libDirListAllMissing = true;
                 for libDir = libDirList
 
                     fileList = dir(fullfile(libDir,filePath));
                     fileListLen = length(fileList);
-                    if fileListLen==0
-                        self.Err.msg    = "Failed to locally detect the ParaMonte library files on your system. " ...
-                                        + "The ParaMonte library folder appears to be empty. Please build a " ...
-                                        + "fresh copy of the library or download it from, "  + newline + newline ...
-                                        + "    " + href(self.website.github.release.url) ...
-                                        ;
-                        self.Err.abort();
-                    end
+                    libDirListAllMissing = libDirListAllMissing && fileListLen==0;
 
                     self.pmInstallFailed = true;
                     installRootDirList = ["/usr/local/lib64","/usr/lib64","/usr/local/lib","/usr/lib"];
@@ -957,6 +951,15 @@ classdef paramonte %< dynamicprops
                         if ~self.pmInstallFailed; break; end
                     end
 
+                end
+
+                if libDirListAllMissing
+                    self.Err.msg    = "Failed to locally detect the ParaMonte library files on your system. " ...
+                                    + "The ParaMonte library folder appears to be empty. Please build a " ...
+                                    + "fresh copy of the library or download it from, "  + newline + newline ...
+                                    + "    " + href(self.website.github.release.url) ...
+                                    ;
+                    self.Err.abort();
                 end
 
                 self.Err.prefix = self.names.paramonte;
