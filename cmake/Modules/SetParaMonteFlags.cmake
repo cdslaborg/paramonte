@@ -222,24 +222,27 @@ endif()
 
 if(WIN32)
     set(INTEL_Fortran_RELEASE_FLAGS
-    /O3                       # set the optimizations level
-    /Qip                      # determines whether additional interprocedural optimizations for single-file compilation are enabled.
-    /Qipo                     # enable interprocedural optimization between files.
-    /Qunroll                  # [:n] set the maximum number of times to unroll loops (no number n means automatic).
-    /Qunroll-aggressive       # use more aggressive unrolling for certain loops.
-    /Qvec                     # enable vectorization.
+    /O3                         # set the optimizations level
+    /Qip                        # determines whether additional interprocedural optimizations for single-file compilation are enabled.
+    /Qipo                       # enable interprocedural optimization between files.
+    /Qunroll                    # [:n] set the maximum number of times to unroll loops (no number n means automatic).
+    /Qunroll-aggressive         # use more aggressive unrolling for certain loops.
+    /Qvec                       # enable vectorization.
+    /Qopt-report:2              # generate optimization report. Level 2 is the default. Use 5 for the greatest details and 0 for no report.
+    /Qguide-vec:4               # enable guidance for auto-vectorization, causing the compiler to generate messages suggesting ways to improve optimization. The default is 4 (highest level).
     )
 else()
     set(INTEL_Fortran_RELEASE_FLAGS
-    -O3                       # set the optimizations level
-    -ip                       # determines whether additional interprocedural optimizations for single-file compilation are enabled.
-   #-ipo                      # enable interprocedural optimization between files.
-    -unroll                   # [=n] set the maximum number of times to unroll loops (no number n means automatic).
-    -unroll-aggressive        # use more aggressive unrolling for certain loops.
-    -finline-functions        # enables function inlining for single file compilation.
-    -diag-disable=10346       # optimization reporting will be enabled at link time when performing interprocedural optimizations.
-    -diag-disable=10397       # optimization reporting will be enabled at link time when performing interprocedural optimizations.
-    #-vec                      # enable vectorization.
+    -O3                         # set the optimizations level
+    -ip                         # determines whether additional interprocedural optimizations for single-file compilation are enabled.
+   #-ipo                        # enable interprocedural optimization between files.
+    -unroll                     # [=n] set the maximum number of times to unroll loops (no number n means automatic).
+    -unroll-aggressive          # use more aggressive unrolling for certain loops.
+    -finline-functions          # enables function inlining for single file compilation.
+    -diag-disable=10346         # optimization reporting will be enabled at link time when performing interprocedural optimizations.
+    -diag-disable=10397         # optimization reporting will be enabled at link time when performing interprocedural optimizations.
+    -qopt-report=2              # generate optimization report. Level 2 is the default. Use 5 for the greatest details and 0 for no report.
+    -guide-vec=4                # enable guidance for auto-vectorization, causing the compiler to generate messages suggesting ways to improve optimization. The default is 4 (highest level).
     )
     set(GNU_Fortran_RELEASE_FLAGS -fopt-info-all=GFortranOptReport.txt )
     if(APPLE)
@@ -854,23 +857,13 @@ if (intel_compiler)
         endif()
     elseif (CMAKE_BUILD_TYPE MATCHES "Release|RELEASE|release")
         if (WIN32)
-            set(FCL_BUILD_FLAGS
-            "${INTEL_Fortran_RELEASE_FLAGS}"
-            /Qopt-report:2 
-            )
-            set(CCL_BUILD_FLAGS
-            "${INTEL_CXX_RELEASE_FLAGS}"
-            )
-            set(FL_FLAGS "${FL_FLAGS} /Qopt-report:2" ) # set Fortran linker flags for release mode
+            set(FCL_BUILD_FLAGS "${INTEL_Fortran_RELEASE_FLAGS}")
+            set(CCL_BUILD_FLAGS "${INTEL_CXX_RELEASE_FLAGS}")
+            #set(FL_FLAGS "${FL_FLAGS} /Qopt-report:2" ) # set Fortran linker flags for release mode
         else()
-            set(FCL_BUILD_FLAGS
-            "${INTEL_Fortran_RELEASE_FLAGS}"
-            -qopt-report=2 
-            )
-            set(CCL_BUILD_FLAGS
-            "${INTEL_CXX_RELEASE_FLAGS}"
-            )
-            set(FL_FLAGS "${FL_FLAGS} -qopt-report=2" ) # set Fortran linker flags for release mode
+            set(FCL_BUILD_FLAGS "${INTEL_Fortran_RELEASE_FLAGS}")
+            set(CCL_BUILD_FLAGS "${INTEL_CXX_RELEASE_FLAGS}")
+            #set(FL_FLAGS "${FL_FLAGS} -qopt-report=2" ) # set Fortran linker flags for release mode
         endif()
         #/Qipo-c:
         #   Tells the compiler to optimize across multiple files and generate a single object file ipo_out.obj without linking
