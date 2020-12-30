@@ -1673,9 +1673,17 @@ def build(flags=""):
             currentDir = os.getcwd()
 
             pmGitTarPath = os.path.join( pm.path.download, pm.website.github.archive.current._name + ".tar.gz" )
-            download( url = pm.website.github.archive.current.tar.url
-                    , filePath = pmGitTarPath
-                    )
+
+            if "--fresh" in flags or "-F" in flags or not os.path.isfile(pmGitTarPath):
+                pm.note ( msg   = "Downloading the ParaMonte tarball from: " + newline
+                                + "    " + pm.website.github.archive.current.tar.url
+                        , methodName = pm.names.paramonte
+                        , marginTop = 1
+                        , marginBot = 1
+                        )
+                download( url = pm.website.github.archive.current.tar.url
+                        , filePath = pmGitTarPath
+                        )
 
             try:
 
@@ -1725,11 +1733,12 @@ def build(flags=""):
             import subprocess
             try:
                 os.system( "find " + pm.path.archive.root + " -type f -iname \"*.sh\" -exec chmod +x {} \;" )
-                if not ("--yes-to-all " in flags or "-y " in flags): flags += ' --yes-to-all'
-                if not ("--build " in flags or "-b " in flags): flags += ' --build "release"'
-                if not ("--lang " in flags or "-L " in flags): flags += ' --lang python'
-                if not ("--lib " in flags or "-l " in flags): flags += ' --lib dynamic'
-                if not ("--par " in flags or "-p " in flags): flags += ' --par "none"'
+                if not ("--yes-to-all" in flags or "-y " in flags): flags += ' --yes-to-all'
+                if not ("--deploy" in flags or "-D " in flags): flags += ' --deploy'
+                if not ("--build" in flags or "-b " in flags): flags += ' --build "release"'
+                if not ("--lang" in flags or "-L " in flags): flags += ' --lang python'
+                if not ("--lib" in flags or "-l " in flags): flags += ' --lib dynamic'
+                if not ("--par" in flags or "-p " in flags): flags += ' --par "none"'
                 os.system( pmGitInstallScriptPath + flags )
             except Exception as e:
                 print(str(e))
@@ -1753,7 +1762,7 @@ def build(flags=""):
 
             if not os.path.isdir(pm.path.archive.install.lib):
 
-                pm.abort( msg   = "ParaMonte kernel libraries build and installation " + newline
+                pm.abort( msg   = "The ParaMonte kernel libraries build and installation " + newline
                                 + "appears to have failed. You can check this path:" + newline
                                 + newline
                                 + "    " + pm.path.archive.install.lib + newline
@@ -1770,14 +1779,14 @@ def build(flags=""):
 
             else:
 
-                pm.note ( msg   = "ParaMonte kernel libraries build appears to have succeeded. " + newline
+                pm.note ( msg   = "The ParaMonte kernel libraries build appears to have succeeded. " + newline
                                 + "copying the kernel files to the ParaMonte Python module directory..."
                         , methodName = pm.names.paramonte
                         , marginTop = 1
                         , marginBot = 1
                         )
 
-                dstdir = os.path.join(currentDir,"lib")
+                dstdir = os.path.join(pm.path.root,"lib")
 
                 try:
 
@@ -1803,6 +1812,10 @@ def build(flags=""):
                     try:
 
                         shutil.rmtree(path = dstdir, ignore_errors = False)
+                        shutil.copytree ( src = pm.path.archive.install.lib
+                                        , dst = dstdir
+                                        , dirs_exist_ok = True
+                                        )
 
                     except Exception as e:
 
@@ -1830,7 +1843,7 @@ def build(flags=""):
 
                 #### the library installation and copying succeeded.
 
-                pm.note ( msg = "ParaMonte kernel libraries should be now usable on your system."
+                pm.note ( msg = "The ParaMonte kernel libraries should be now usable on your system."
                         , methodName = pm.names.paramonte
                         , marginTop = 1
                         , marginBot = 1

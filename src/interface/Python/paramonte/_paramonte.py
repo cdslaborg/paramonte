@@ -242,8 +242,8 @@ website.github.archive.current.tar = Struct()
 website.github.archive.current._name = "v" + version.kernel.dump()
 # comment the above line and uncomment the line below for testing unpublished versions
 website.github.archive.current._name = "dev"
-website.github.archive.current.zip.url = website.github.archive._url + website.github.archive.current._name + ".zip"
-website.github.archive.current.tar.url = website.github.archive._url + website.github.archive.current._name + ".tar.gz"
+website.github.archive.current.zip.url = website.github.archive._url + "/" + website.github.archive.current._name + ".zip"
+website.github.archive.current.tar.url = website.github.archive._url + "/" + website.github.archive.current._name + ".tar.gz"
 
 # GitHub examples
 
@@ -271,7 +271,8 @@ website.openmpi.home.url = "https://www.open-mpi.org/"
 ####################################################################################################################################
 
 path.archive = Struct()
-path.archive.root = os.path.join(path.download, "paramonte-" + website.github.archive.current._name[1:]) # "paramonte-main")
+vname = website.github.archive.current._name[1:] if website.github.archive.current._name[0]=="v" else website.github.archive.current._name
+path.archive.root = os.path.join(path.download, "paramonte-" + vname)
 path.archive.install = Struct()
 path.archive.install.root = os.path.join(path.archive.root,"bin","libparamonte_Python")
 path.archive.install.lib = os.path.join(path.archive.install.root,"paramonte","lib")
