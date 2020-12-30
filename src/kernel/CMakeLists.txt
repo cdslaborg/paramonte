@@ -274,21 +274,6 @@ elseif (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
 
     add_library(${PMLIB_NAME} SHARED ${ParaMonte_SOURCE_FILES})
 
-    set_target_properties(${PMLIB_NAME} PROPERTIES BUILD_WITH_INSTALL_RPATH ON)
-    set_target_properties(${PMLIB_NAME} PROPERTIES BUILD_RPATH_USE_ORIGIN ON)
-
-    if (APPLE)
-        set(RPATH_PROP "@loader_path")
-    elseif(UNIX)
-        set(RPATH_PROP "$ORIGIN")
-    endif()
-
-    if (DEFINED MPILIB_NAME)
-        set(RPATH_PROP "${RPATH_PROP}:${RPATH_PROP}/${MPILIB_NAME}")
-    endif()
-
-    set_target_properties(${PMLIB_NAME} PROPERTIES INSTALL_RPATH "${RPATH_PROP}")
-
     #if (gnu_compiler)
         #set_target_properties( ${PMLIB_NAME} PROPERTIES COMPILE_FLAGS "-static-libgfortran" )
         #set_target_properties( ${PMLIB_NAME} PROPERTIES LINK_FLAGS "-static-libgfortran" )
@@ -307,15 +292,6 @@ elseif (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
         #set_target_properties( ${PMLIB_NAME} PROPERTIES INSTALL_RPATH "./") # the RPATH to be used when installing the library
         #set_target_properties( ${PMLIB_NAME} PROPERTIES LINK_FLAGS "-Wl,-rpath,'$ORIGIN'" ) # if uncommented, this will override all of the above!
     #endif()
-
-    if(intel_compiler)
-        if (UNIX OR APPLE)
-            set_target_properties( ${PMLIB_NAME} PROPERTIES LINK_FLAGS "-static-intel" )
-        endif()
-        if (UNIX)
-            set_target_properties( ${PMLIB_NAME} PROPERTIES LINK_FLAGS "-static-intel -static-libgcc -static-libstdc++" )
-        endif()
-    endif()
 
    #if (gnu_compiler)
    #    find_static_library(libgfortran LIBGFORTRAN_PATH)
@@ -337,16 +313,38 @@ elseif (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
    #endif()
 
 else()
-
     message ( FATAL_ERROR 
-            " \n"
-            "${pmfatal}\n"
-            "   Unrecognized library type specified for building ParaMonte library:\n"
-            " \n"
-            "   LTYPE=${LTYPE}\n"
-            " \n"
+            "\n"
+            "${pmfatal} Unrecognized library type specified for building ParaMonte library:\n"
+            "${pmfatal}     LTYPE=${LTYPE}\n"
+            "\n"
             )    
+endif()
 
+set_target_properties(${PMLIB_NAME} PROPERTIES BUILD_WITH_INSTALL_RPATH ON)
+set_target_properties(${PMLIB_NAME} PROPERTIES BUILD_RPATH_USE_ORIGIN ON)
+
+if (APPLE)
+    set(RPATH_PROP "@loader_path")
+elseif(UNIX)
+    set(RPATH_PROP "$ORIGIN")
+endif()
+
+if (DEFINED MPILIB_NAME)
+    set(RPATH_PROP "${RPATH_PROP}:${RPATH_PROP}/${MPILIB_NAME}")
+endif()
+
+set_target_properties(${PMLIB_NAME} PROPERTIES INSTALL_RPATH "${RPATH_PROP}")
+
+if(gnu_compiler)
+    set_target_properties( ${PMLIB_NAME} PROPERTIES LINK_FLAGS "-static-libgfortran -static-libgcc" )
+elseif(intel_compiler)
+    if (UNIX OR APPLE)
+        set_target_properties( ${PMLIB_NAME} PROPERTIES LINK_FLAGS "-static-intel" )
+    endif()
+    if (UNIX)
+        set_target_properties( ${PMLIB_NAME} PROPERTIES LINK_FLAGS "-static-intel -static-libgcc -static-libstdc++" )
+    endif()
 endif()
 
 if (MPI_ENABLED)

@@ -241,6 +241,7 @@ else()
     -diag-disable=10397       # optimization reporting will be enabled at link time when performing interprocedural optimizations.
     #-vec                      # enable vectorization.
     )
+    set(GNU_Fortran_RELEASE_FLAGS -fopt-info-all=GFortranOptReport.txt )
     if(APPLE)
         # GNU 9.3 -O results in runtime crashes of the examples on Mac (except -O0)
         set(GNU_Fortran_RELEASE_FLAGS "${GNU_Fortran_RELEASE_FLAGS}"
@@ -821,10 +822,10 @@ if (intel_compiler)
         if (MT_ENABLED)
             set(FCL_FLAGS_DEFAULT "${FCL_FLAGS_DEFAULT}" -threads )
         endif()
-        set(FL_FLAGS "${FL_FLAGS} -static-intel" )
-        if (UNIX AND NOT APPLE)
-            set(FL_FLAGS "${FL_FLAGS} -static-libgcc -static-libstdc++" )
-        endif()
+        #set(FL_FLAGS "${FL_FLAGS} -static-intel" )
+        #if (UNIX AND NOT APPLE)
+        #    set(FL_FLAGS "${FL_FLAGS} -static-libgcc -static-libstdc++" )
+        #endif()
     endif()
 
     if (CODECOV_ENABLED)
@@ -890,11 +891,7 @@ elseif (gnu_compiler)
     set(FCL_FLAGS_DEFAULT -std=legacy -ffree-line-length-none ) # CACHE STRING "GNU Fortran default compiler flags" )
     set(CCL_FLAGS_DEFAULT -ffree-line-length-none )# CACHE STRING "GNU CXX default compiler flags" )
 
-    set(FL_FLAGS "${FL_FLAGS} -static-libgfortran -static-libgcc" )
-
-    if (CMAKE_BUILD_TYPE MATCHES "Release|RELEASE|release")
-        set(FL_FLAGS "${FL_FLAGS} -fopt-info-all=GFortranOptReport.txt" )
-    endif()
+    #set(FL_FLAGS "${FL_FLAGS} -static-libgfortran -static-libgcc" )
 
     if (MT_ENABLED)
         set(FCL_FLAGS_DEFAULT "${FCL_FLAGS_DEFAULT}" -pthread )
@@ -904,7 +901,7 @@ elseif (gnu_compiler)
     if (CODECOV_ENABLED)
         set(FCL_FLAGS_DEFAULT "${FCL_FLAGS_DEFAULT}" --coverage -fprofile-arcs -ftest-coverage ) # -static-libgcc -fcf-protection=full
         set(CCL_FLAGS_DEFAULT "${CCL_FLAGS_DEFAULT}" --coverage -fprofile-arcs -ftest-coverage ) # -static-libgcc -fcf-protection=full
-        set(FL_FLAGS "${FL_FLAGS}" --coverage -fprofile-arcs -ftest-coverage -lgcov -static-libgcc -fcf-protection=full )
+        set(FL_FLAGS --coverage -fprofile-arcs -ftest-coverage -lgcov -static-libgcc -fcf-protection=full )
     endif()
 
     if (CMAKE_BUILD_TYPE MATCHES "Debug|DEBUG|debug")
