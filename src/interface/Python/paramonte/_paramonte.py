@@ -66,17 +66,13 @@ path.lib["x64"]["root"] = os.path.join(path.lib["root"],"x64")
 path.lib["x64"]["gnu"] = os.path.join(path.lib["x64"]["root"],"gnu")
 path.lib["x64"]["intel"] = os.path.join(path.lib["x64"]["root"],"intel")
 
-path.archive = Struct()
-path.archive.root = os.path.join(path.download,"paramonte-main")
-path.archive.install = Struct()
-path.archive.install.root = os.path.join(path.archive.root,"bin","libparamonte_Python")
-path.archive.install.lib = os.path.join(path.archive.install.root,"paramonte","lib")
-"""path to the directory of uncompressed paramonte archive."""
-
-path.localInstall = os.path.join( path.archive.root , "build", "prerequisites", "prerequisites", "installations" )
-"""path to the directory of the local installation of the paramonte kernel."""
-
 sys.path.append(path.root)
+
+####################################################################################################################################
+
+from _Version import Version
+version = Struct()
+for versionType in ["interface","kernel"]: setattr(version,versionType,Version(path.auxil,versionType))
 
 ####################################################################################################################################
 
@@ -230,13 +226,24 @@ website.github.release = Struct()
 website.github.release.url = website.github.url + "/releases"
 website.github.release.latest = Struct()
 website.github.release.latest.url = website.github.release.url + "/latest"
+
 website.github.archive = Struct()
 website.github.archive._url = website.github.url + "/archive"
-website.github.archive.main = Struct()
-website.github.archive.main.zip = Struct()
-website.github.archive.main.tar = Struct()
-website.github.archive.main.zip.url = website.github.archive._url + "/main.zip"
-website.github.archive.main.tar.url = website.github.archive._url + "/main.tar.gz"
+
+website.github.archive.latest = Struct()
+website.github.archive.latest.zip = Struct()
+website.github.archive.latest.tar = Struct()
+website.github.archive.latest.zip.url = website.github.archive._url + "/main.zip"
+website.github.archive.latest.tar.url = website.github.archive._url + "/main.tar.gz"
+
+website.github.archive.current = Struct()
+website.github.archive.current.zip = Struct()
+website.github.archive.current.tar = Struct()
+website.github.archive.current._name = "v" + version.kernel.dump()
+# comment the above line and uncomment the line below for testing unpublished versions
+website.github.archive.current._name = "dev"
+website.github.archive.current.zip.url = website.github.archive._url + website.github.archive.current._name + ".zip"
+website.github.archive.current.tar.url = website.github.archive._url + website.github.archive.current._name + ".tar.gz"
 
 # GitHub examples
 
@@ -260,6 +267,18 @@ website.intel.mpi.windows.url = "https://software.intel.com/en-us/get-started-wi
 website.openmpi = Struct()
 website.openmpi.home = Struct()
 website.openmpi.home.url = "https://www.open-mpi.org/"
+
+####################################################################################################################################
+
+path.archive = Struct()
+path.archive.root = os.path.join(path.download, "paramonte-" + website.github.archive.current._name[1:]) # "paramonte-main")
+path.archive.install = Struct()
+path.archive.install.root = os.path.join(path.archive.root,"bin","libparamonte_Python")
+path.archive.install.lib = os.path.join(path.archive.install.root,"paramonte","lib")
+"""path to the directory of uncompressed paramonte archive."""
+
+path.localInstall = os.path.join( path.archive.root , "build", "prerequisites", "prerequisites", "installations" )
+"""path to the directory of the local installation of the paramonte kernel."""
 
 ####################################################################################################################################
 
@@ -331,12 +350,6 @@ def cite(): print(website.home.overview.preface.url + "/#how-to-acknowledge-the-
 #          adsnote = {Provided by the SAO/NASA Astrophysics Data System}
 #}
 #"""
-
-####################################################################################################################################
-
-from _Version import Version
-version = Struct()
-for versionType in ["interface","kernel"]: setattr(version,versionType,Version(path.auxil,versionType))
 
 ####################################################################################################################################
 

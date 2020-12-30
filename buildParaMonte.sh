@@ -2119,7 +2119,7 @@ echo >&2 "-- ${BUILD_NAME}Compiler - Fortran compiler path: ${Fortran_COMPILER_P
 echo >&2 "-- ${BUILD_NAME}Compiler - MPI mpiexec path: ${MPIEXEC_PATH}"
 echo >&2
 
-if [ "${PMCS}" = "gnu" ] || [ "${COMPILER_VERSION}" = "unknown" ]; then
+if ! [ -z "${Fortran_COMPILER_PATH+x}" ] && [ "${PMCS}" = "gnu" ] || [ "${COMPILER_VERSION}" = "unknown" ]; then
 
     #cd ./auxil/
 
@@ -2197,7 +2197,7 @@ fi
 if [ -z ${MPILIB_NAME+x} ] && [ "${MPI_ENABLED}" = "true" ]; then
     MPILIB_NAME="mpi"
     echo >&2
-    echo >&2 "${pmwarn} The make of the MPI library could be identified."
+    echo >&2 "${pmwarn} The make of the MPI library could not be identified."
     echo >&2 "${pmwarn} The MPI library's behavior does not match the Intel, MPICH, or OpenMPI libraries."
     echo >&2 "${pmwarn} The ParaMonte library name will be suffixed with the generic \"${MPILIB_NAME}\" label."
     echo >&2

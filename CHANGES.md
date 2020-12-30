@@ -11,7 +11,7 @@ See also,
 
 ## **Version 1.x.x**  
 
-### **Version 1.5.1** -- Dec 29, 2020
+### **Version 1.5.1** -- Dec 30, 2020
 
 **Minor Enhancements**  
 

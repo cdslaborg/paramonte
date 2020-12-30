@@ -5,7 +5,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 2.x.x**  
 
-### Version  2.5.0 -- December 29, 2020  
+### Version  2.5.0 -- December 30, 2020  
 
 **Major enhancements**  
 
@@ -21,6 +21,8 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 +   The ParaMonte kernel routines are now capable of handling user-input 
     file paths that contain white-space (blank) or other exotic characters.  
+
++   Enhancements to the `build()` function of the paramonte module.  
 
 **Minor enhancements**  
 

@@ -202,7 +202,8 @@ if !INTERFACE_LANGUAGE!==r set FPP_LANG_FLAG=/define:R_ENABLED
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :: echo. operating system
-echo. -- !BUILD_SCRIPT_NAME! - operating system / platform: !OS! / !PLATFORM!
+set ARCHITECTURE=!PLATFORM!
+echo. -- !BUILD_SCRIPT_NAME! - operating system / platform: !OS! / !ARCHITECTURE!
 
 :: set compiler suite
 echo. -- !BUILD_SCRIPT_NAME! - COMPILER_SUITE=!COMPILER_SUITE!

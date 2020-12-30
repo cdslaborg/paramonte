@@ -1571,7 +1571,7 @@ def build(flags=""):
 
         **Parameters**
 
-            flags
+            flags (optional)
 
                 A string containing any of the ParaMonte install script flags.
                 If the operating system is Unix-based (e.g., Linux or macOS) then
@@ -1580,7 +1580,22 @@ def build(flags=""):
                 on GitHub. If the operating system is Windows, then the value
                 of ``flags`` must conform to the rules and syntax of the flags
                 of the Batch install script of the ParaMonte library on GitHub.
-                The default value is an empty string ``""``.
+                The default value is an empty string ``""``. For more information
+                on the possible values of ``flags``, visit:
+
+                https://github.com/cdslaborg/paramonte/blob/main/install.sh.usage.txt
+
+        **Example usage**:
+
+            .. code-block:: python
+                :linenos:
+
+                import paramonte as pm
+                pm.build(flags = '--lang python --par none --build "debug release"')
+
+        **Returns**
+
+            An object of class ``DensityPlot``.
 
     """
 
@@ -1657,8 +1672,8 @@ def build(flags=""):
 
             currentDir = os.getcwd()
 
-            pmGitTarPath = os.path.join( pm.path.download, "main.tar.gz" )
-            download( url = pm.website.github.archive.main.tar.url
+            pmGitTarPath = os.path.join( pm.path.download, pm.website.github.archive.current._name + ".tar.gz" )
+            download( url = pm.website.github.archive.current.tar.url
                     , filePath = pmGitTarPath
                     )
 
@@ -1714,7 +1729,7 @@ def build(flags=""):
                 if not ("--build " in flags or "-b " in flags): flags += ' --build "release"'
                 if not ("--lang " in flags or "-L " in flags): flags += ' --lang python'
                 if not ("--lib " in flags or "-l " in flags): flags += ' --lib dynamic'
-                if not ("--par " in flags or "-p " in flags): flags += ' --par "none mpi"'
+                if not ("--par " in flags or "-p " in flags): flags += ' --par "none"'
                 os.system( pmGitInstallScriptPath + flags )
             except Exception as e:
                 print(str(e))

@@ -182,9 +182,7 @@ for %%e in (!EXAM_LIST!) do (
     REM The ParaMonte library kernel files
 
     set ParaMonteExample_LIB_DIR_CURRENT=!ParaMonteExample_BLD_DIR_CURRENT!
-    if !LANG_IS_MATLAB!==true set ParaMonteExample_LIB_DIR_CURRENT=!ParaMonteExample_LIB_DIR_CURRENT!\paramonte\lib
-    if !LANG_IS_Python!==true set ParaMonteExample_LIB_DIR_CURRENT=!ParaMonteExample_LIB_DIR_CURRENT!\paramonte
-    if !LANG_IS_R!==true set ParaMonteExample_LIB_DIR_CURRENT=!ParaMonteExample_LIB_DIR_CURRENT!\paramonte\lib
+    if !LANG_IS_DYNAMIC!==true set ParaMonteExample_LIB_DIR_CURRENT=!ParaMonteExample_LIB_DIR_CURRENT!\paramonte\lib\!PLATFORM!\!COMPILER_SUITE!
 
     echo.-- ParaMonteExample!LANG_NAME! - copying the ParaMonte library files...
     echo.-- ParaMonteExample!LANG_NAME! - from: !ParaMonte_LIB_DIR!                %= no need for final slash here =%
