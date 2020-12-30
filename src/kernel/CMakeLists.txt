@@ -379,7 +379,7 @@ target_compile_options( ${PMLIB_NAME} BEFORE PRIVATE "${FCL_FLAGS}" "${FC_LIB_FL
 #message( STATUS "${pmattn} ParaMonte library build linker flags: ${${FCL_FLAGS}${FL_LIB_FLAGS}}${MATLAB_LINKER_FLAGS}" )
 #target_link_options( ${PMLIB_NAME} BEFORE PRIVATE ${${FCL_FLAGS}${FL_LIB_FLAGS}}${MATLAB_LINKER_FLAGS} )
 message( STATUS "${pmattn} ParaMonte library build linker flags: ${FCL_FLAGS} ${FL_LIB_FLAGS}" )
-target_link_options( ${PMLIB_NAME} BEFORE PRIVATE ${${FCL_FLAGS}${FL_LIB_FLAGS}} )
+target_link_options( ${PMLIB_NAME} BEFORE PRIVATE ${${FCL_FLAGS} ${FL_FLAGS} ${FL_LIB_FLAGS}} )
 
 if (CODECOV_ENABLED AND gnu_compiler)
     target_link_libraries(${PMLIB_NAME} PUBLIC gcov)

@@ -72,7 +72,7 @@ buildInstructionNoteUnix    = ("If your platform is non-Windows and is compatibl
 def verify(reset = True):
     """
 
-    checks (or rechecks) the requirements of the installed ParaMonte library.
+    Checks (or rechecks) the requirements of the installed ParaMonte library.
 
         **Usage**
 

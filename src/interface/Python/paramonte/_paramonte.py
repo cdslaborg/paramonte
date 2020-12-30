@@ -242,7 +242,7 @@ website.github.archive.current.zip = Struct()
 website.github.archive.current.tar = Struct()
 website.github.archive.current._name = "v" + version.kernel.dump()
 # comment the above line and uncomment the line below for testing unpublished versions
-website.github.archive.current._name = "dev"
+#website.github.archive.current._name = "dev"
 website.github.archive.current.zip.url = website.github.archive._url + "/" + website.github.archive.current._name + ".zip"
 website.github.archive.current.tar.url = website.github.archive._url + "/" + website.github.archive.current._name + ".tar.gz"
 

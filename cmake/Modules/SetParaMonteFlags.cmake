@@ -103,7 +103,7 @@ unset(FPP_FLAGS)
 unset(FL_FLAGS)
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-# Fortran compiler/linker debug build flags. Will be used only when build mode is set to debug
+# Fortran compiler/linker DEBUG build flags. Will be used only when build mode is set to debug
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 if (WIN32)
@@ -177,15 +177,44 @@ else()
     #-Wundefined-do-loop
     )
 endif()
+
 if (DEFINED INTEL_Fortran_DEBUG_FLAGS)
     set(INTEL_Fortran_DEBUG_FLAGS "${INTEL_Fortran_DEBUG_FLAGS}" CACHE STRING "Intel Fortran compiler/linker debug build flags" FORCE)
 endif()
+
 if (DEFINED GNU_Fortran_DEBUG_FLAGS)
     set(GNU_Fortran_DEBUG_FLAGS "${GNU_Fortran_DEBUG_FLAGS}" CACHE STRING "GNU Fortran compiler/linker debug build flags" FORCE)
 endif()
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-# Intel Fortran compiler/linker release build flags. Will be used only when compiler is intel and build mode is set to release
+# Intel Fortran compiler/linker TESTING build flags. Will be used only when compiler is intel and build mode is set to testing
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+if(WIN32)
+    set(INTEL_Fortran_TESTING_FLAGS 
+    /Od  # disable optimization
+    )
+    unset(GNU_Fortran_TESTING_FLAGS)
+else()
+    set(INTEL_Fortran_TESTING_FLAGS 
+    -O0  # disable optimization
+    )
+    set(GNU_Fortran_TESTING_FLAGS 
+    #-static-libgfortran -static-libgcc 
+    -O0  # disable optimization
+    )
+endif()
+
+if (DEFINED INTEL_Fortran_TESTING_FLAGS)
+    set(INTEL_Fortran_TESTING_FLAGS "${INTEL_Fortran_TESTING_FLAGS}" CACHE STRING "Intel Fortran compiler/linker testing build flags" FORCE)
+endif()
+
+if (DEFINED GNU_Fortran_TESTING_FLAGS)
+    set(GNU_Fortran_TESTING_FLAGS "${GNU_Fortran_TESTING_FLAGS}" CACHE STRING "GNU Fortran compiler/linker testing build flags" FORCE)
+endif()
+
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# Intel Fortran compiler/linker RELEASE build flags. Will be used only when compiler is intel and build mode is set to release
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 # /Qipo-c generates a single object file, containing all object files.
@@ -321,36 +350,13 @@ else()
         )
     endif()
 endif()
+
 if (DEFINED INTEL_Fortran_RELEASE_FLAGS)
     set(INTEL_Fortran_RELEASE_FLAGS "${INTEL_Fortran_RELEASE_FLAGS}" CACHE STRING "Intel Fortran compiler/linker release build flags" FORCE)
 endif()
+
 if (DEFINED GNU_Fortran_RELEASE_FLAGS)
     set(GNU_Fortran_RELEASE_FLAGS "${GNU_Fortran_RELEASE_FLAGS}" CACHE STRING "GNU Fortran compiler/linker release build flags" FORCE)
-endif()
-
-#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-# Intel Fortran compiler/linker testing build flags. Will be used only when compiler is intel and build mode is set to testing
-#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-if(WIN32)
-    set(INTEL_Fortran_TESTING_FLAGS 
-    /Od  # disable optimization
-    )
-    unset(GNU_Fortran_TESTING_FLAGS)
-else()
-    set(INTEL_Fortran_TESTING_FLAGS 
-    -O0  # disable optimization
-    )
-    set(GNU_Fortran_TESTING_FLAGS 
-    #-static-libgfortran -static-libgcc 
-    -O0  # disable optimization
-    )
-endif()
-if (DEFINED INTEL_Fortran_TESTING_FLAGS)
-    set(INTEL_Fortran_TESTING_FLAGS "${INTEL_Fortran_TESTING_FLAGS}" CACHE STRING "Intel Fortran compiler/linker testing build flags" FORCE)
-endif()
-if (DEFINED GNU_Fortran_TESTING_FLAGS)
-    set(GNU_Fortran_TESTING_FLAGS "${GNU_Fortran_TESTING_FLAGS}" CACHE STRING "GNU Fortran compiler/linker testing build flags" FORCE)
 endif()
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -363,7 +369,7 @@ endif()
 # set( INTEL_Fortran_PREPROCESSOR_MACROS "" CACHE STRING "Intel Fortran compiler preprocessor definitions" )
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-# Intel C++ compiler/linker debug build flags. Will be used only when compiler is intel and build mode is set to Debug
+# Intel C++ compiler/linker DEBUG build flags. Will be used only when compiler is intel and build mode is set to Debug
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 if(WIN32)
@@ -405,12 +411,43 @@ else()
                                           # -Wline-truncation, -Wtarget-lifetime, -Winteger-division, -Wreal-q-constant, -Wunused, -Wundefined-do-loop
     )
 endif()
+
 if (DEFINED INTEL_CXX_DEBUG_FLAGS)
     set(INTEL_CXX_DEBUG_FLAGS "${INTEL_CXX_DEBUG_FLAGS}" CACHE STRING "Intel C/C++ compiler/linker debug build flags" FORCE)
 endif()
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-# Intel Fortran compiler/linker release build flags. Will be used only when compiler is intel and build mode is set to Release
+# Intel C++ compiler/linker TESTING build flags. Will be used only when compiler is intel and build mode is set to testing/RelWithDebInfo.
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+if(WIN32)
+    if (intel_compiler)
+        set(INTEL_CXX_TESTING_FLAGS 
+        /Od
+        )
+    endif()
+else()
+    if (intel_compiler)
+        set(INTEL_CXX_TESTING_FLAGS 
+        -O0
+        )
+    elseif(gnu_compiler)
+        set(GNU_CXX_TESTING_FLAGS 
+        -O0
+        )
+    endif()
+endif()
+
+if (DEFINED INTEL_CXX_TESTING_FLAGS)
+    set(INTEL_CXX_TESTING_FLAGS "${INTEL_CXX_TESTING_FLAGS}" CACHE STRING "Intel C/C++ compiler/linker testing build flags" FORCE)
+endif()
+
+if (DEFINED GNU_CXX_TESTING_FLAGS)
+    set(GNU_CXX_TESTING_FLAGS "${GNU_CXX_TESTING_FLAGS}" CACHE STRING "GNU C/C++ compiler/linker testing build flags" FORCE)
+endif()
+
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# Intel C++ compiler/linker RELEASE build flags. Will be used only when compiler is intel and build mode is set to Release
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 if(WIN32)
@@ -442,39 +479,13 @@ else()
     -ftree-vectorize          # perform vectorization on trees. enables -ftree-loop-vectorize and -ftree-slp-vectorize. 
     )
 endif()
+
 if (DEFINED INTEL_CXX_RELEASE_FLAGS)
     set(INTEL_CXX_RELEASE_FLAGS "${INTEL_CXX_RELEASE_FLAGS}" CACHE STRING "Intel C/C++ compiler/linker release build flags" FORCE)
 endif()
+
 if (DEFINED GNU_CXX_RELEASE_FLAGS)
     set(GNU_CXX_RELEASE_FLAGS "${GNU_CXX_RELEASE_FLAGS}" CACHE STRING "GNU C/C++ compiler/linker release build flags" FORCE)
-endif()
-
-#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-# Intel C++ compiler/linker testing build flags. Will be used only when compiler is intel and build mode is set to testing/RelWithDebInfo.
-#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-if(WIN32)
-    if (intel_compiler)
-        set(INTEL_CXX_TESTING_FLAGS 
-        /Od
-        )
-    endif()
-else()
-    if (intel_compiler)
-        set(INTEL_CXX_TESTING_FLAGS 
-        -O0
-        )
-    elseif(gnu_compiler)
-        set(GNU_CXX_TESTING_FLAGS 
-        -O0
-        )
-    endif()
-endif()
-if (DEFINED INTEL_CXX_TESTING_FLAGS)
-    set(INTEL_CXX_TESTING_FLAGS "${INTEL_CXX_TESTING_FLAGS}" CACHE STRING "Intel C/C++ compiler/linker testing build flags" FORCE)
-endif()
-if (DEFINED GNU_CXX_TESTING_FLAGS)
-    set(GNU_CXX_TESTING_FLAGS "${GNU_CXX_TESTING_FLAGS}" CACHE STRING "GNU C/C++ compiler/linker testing build flags" FORCE)
 endif()
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -525,10 +536,18 @@ elseif (${INTERFACE_LANGUAGE} STREQUAL "c++" OR ${INTERFACE_LANGUAGE} STREQUAL "
     set( FPP_LANG_FLAG -DCPP_ENABLED  CACHE STRING "C++ language interface enabled" )
 elseif (${INTERFACE_LANGUAGE} MATCHES "[fF][oO][rR][tT][rR][aA][nN]")
     set( FPP_LANG_FLAG -DFORTRAN_ENABLED  CACHE STRING "Fortran language interface enabled" )
+elseif (${INTERFACE_LANGUAGE} MATCHES "[jJ][aA][vV][aA]")
+    set( FPP_LANG_FLAG -DMATLAB_ENABLED  CACHE STRING "Java language interface enabled" )
+elseif (${INTERFACE_LANGUAGE} MATCHES "[jJ][uU][lL][iI][aA]")
+    set( FPP_LANG_FLAG -DMATLAB_ENABLED  CACHE STRING "Julia language interface enabled" )
+elseif (${INTERFACE_LANGUAGE} MATCHES "[mM][aA][tT][hH][eE][mM][aA][tT][iI][cC][aA]")
+    set( FPP_LANG_FLAG -DMATLAB_ENABLED  CACHE STRING "Mathematica language interface enabled" )
 elseif (${INTERFACE_LANGUAGE} MATCHES "[mM][aA][tT][lL][aA][bB]")
     set( FPP_LANG_FLAG -DMATLAB_ENABLED  CACHE STRING "MATLAB language interface enabled" )
 elseif (${INTERFACE_LANGUAGE} MATCHES "[pP][yY][tT][hH][oO][nN]")
     set( FPP_LANG_FLAG -DPYTHON_ENABLED  CACHE STRING "Python language interface enabled" )
+elseif (${INTERFACE_LANGUAGE} MATCHES "[rR]")
+    set( FPP_LANG_FLAG -DR_ENABLED  CACHE STRING "R language interface enabled" )
 else()
     message (FATAL_ERROR
             " \n"
@@ -563,7 +582,6 @@ if (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
 
         set(FL_LIB_FLAGS 
             -fPIC -shared
-            -static-libgfortran -static-libgcc
             # ATTN: The rpath is now set specifically for ${PMLIB_NAME} target. So no need to override it by the following flag.
             # ATTN: It seems like static linking with GCC/GFortran can only be a wishful dream.
             # ATTN: It works on neither Linux nor macOS.
@@ -576,13 +594,13 @@ if (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
             set(FC_LIB_FLAGS 
                 -fpic -dynamiclib -noall_load # -weak_references_mismatches non-weak -threads -arch_only i386
                 CACHE STRING "Intel Mac Fortran compiler dynamic library flags" )
-            set(FL_LIB_FLAGS
-                "-shared -dynamiclib -noall_load -weak_references_mismatches"
-                # non-weak -threads -arch_only i386
-                # -Wl,-rpath,@loader_path
-                # The above rpath is now set specifically for the PM_LIB target
-                CACHE STRING "Intel Apple Fortran linker dynamic library flags" )
-                # https://software.intel.com/en-us/fortran-compiler-developer-guide-and-reference-creating-shared-libraries
+            #set(FL_LIB_FLAGS
+            #    "-shared -dynamiclib -noall_load -weak_references_mismatches"
+            #    # non-weak -threads -arch_only i386
+            #    # -Wl,-rpath,@loader_path
+            #    # The above rpath is now set specifically for the PM_LIB target
+            #    CACHE STRING "Intel Apple Fortran linker dynamic library flags" )
+            #    # https://software.intel.com/en-us/fortran-compiler-developer-guide-and-reference-creating-shared-libraries
         elseif(WIN32)
             set(FC_LIB_FLAGS 
                 /libs:dll #/threads " # these flags are actually included by default in recent ifort implementations
@@ -872,7 +890,11 @@ elseif (gnu_compiler)
     set(FCL_FLAGS_DEFAULT -std=legacy -ffree-line-length-none ) # CACHE STRING "GNU Fortran default compiler flags" )
     set(CCL_FLAGS_DEFAULT -ffree-line-length-none )# CACHE STRING "GNU CXX default compiler flags" )
 
-    set(FL_FLAGS "${FL_FLAGS} -fopt-info-all=GFortranOptReport.txt" )
+    set(FL_FLAGS "${FL_FLAGS} -static-libgfortran -static-libgcc" )
+
+    if (CMAKE_BUILD_TYPE MATCHES "Release|RELEASE|release")
+        set(FL_FLAGS "${FL_FLAGS} -fopt-info-all=GFortranOptReport.txt" )
+    endif()
 
     if (MT_ENABLED)
         set(FCL_FLAGS_DEFAULT "${FCL_FLAGS_DEFAULT}" -pthread )
