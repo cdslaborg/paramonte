@@ -252,7 +252,7 @@ classdef paramonte %< dynamicprops
             self.path.lib.x64.gnu = string(fullfile(self.path.lib.x64.root, "gnu"));
             self.path.lib.x64.intel = string(fullfile(self.path.lib.x64.root, "intel"));
 
-            self.path.download = self.path.lib.root
+            self.path.download = self.path.lib.root;
             [status, msg, msgID] = mkdir(self.path.download);
 
             for versionType = ["interface","kernel"]
@@ -879,7 +879,7 @@ classdef paramonte %< dynamicprops
                 if self.platform.isMacOS; filePath = "*dylib"; end
 
                 libDirList = [ self.path.lib.x64.gnu, self.path.lib.x64.intel ];
-                for libDir = dirList
+                for libDir = libDirList
 
                     fileList = dir(fullfile(libDir,filePath));
                     fileListLen = length(fileList);
