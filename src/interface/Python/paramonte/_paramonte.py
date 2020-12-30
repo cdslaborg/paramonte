@@ -95,6 +95,7 @@ platform.osname = "windows" if platform.isWin32 else platform.name
 platform.isWSL = False
 if platform.isLinux:
     try:
+        import subprocess
         cmdout = subprocess.getoutput("uname -a").lower()
         platform.isWSL = "microsoft" in cmdout
     except:

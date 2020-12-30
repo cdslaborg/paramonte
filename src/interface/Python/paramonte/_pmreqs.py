@@ -929,7 +929,33 @@ def getDependencyList():
 
 def installMPI():
 
-    if pm.platform.isWin32 or pm.platform.isLinux:
+    if pm.platform.isWSL:
+
+        pm.note ( msg   = "It appears that the current platform is a Microsoft Subsystem for Linux (WSL)." + newline
+                        + "The Intel MPI libraries currently do not support the WSL platforms." + newline
+                        + "If this is a Debian, Ubuntu, or similar Linux system, you can" + newline
+                        + "use the following commands to install the MPICH MPI library:" + newline
+                        + newline
+                        + "    sudo apt update" + newline
+                        + "    sudo apt install mpich" + newline
+                        + "    sudo apt install libmpich-dev" + newline
+                        + newline
+                        + "or use the following commands to install the OpenMPI library:" + newline
+                        + newline
+                        + "    sudo apt update" + newline
+                        + "    sudo apt install openmpi-bin" + newline
+                        + "    sudo apt install libopenmpi-dev" + newline
+                        + newline
+                        + "Otherwise, follow the guidelines provided by your Operating System" + newline
+                        + "to install the MPICH or OpenMPI runtime MPI libraries on your system."
+                , methodName = pm.names.paramonte
+                , marginTop = 1
+                , marginBot = 1
+                )
+
+        return
+
+    elif pm.platform.isWin32 or pm.platform.isLinux:
 
         pm.note ( msg = "Downloading the ParaMonte parallel library prerequisites... " + newline
                       + "Please make sure your firewall allows access to the Internet. "
@@ -1595,7 +1621,7 @@ def build(flags=""):
 
         **Returns**
 
-            An object of class ``DensityPlot``.
+            None.
 
     """
 
