@@ -406,7 +406,7 @@ classdef paramonte %< dynamicprops
             if self.platform.isLinux
                 [errorOccurred, cmdout] = system("uname -a");
                 if ~errorOccurred
-                    self.platform.isWSL = contains(cmdout, "microsoft")
+                    self.platform.isWSL = contains(cmdout, "microsoft");
                 end
             end
 
