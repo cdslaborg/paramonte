@@ -278,10 +278,16 @@ elseif (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
     set_target_properties(${PMLIB_NAME} PROPERTIES BUILD_RPATH_USE_ORIGIN ON)
 
     if (APPLE)
-        set_target_properties(${PMLIB_NAME} PROPERTIES INSTALL_RPATH "@loader_path")
+        set(RPATH_PROP "@loader_path")
     elseif(UNIX)
-        set_target_properties(${PMLIB_NAME} PROPERTIES INSTALL_RPATH "$ORIGIN:$ORIGIN/..")
+        set(RPATH_PROP "$ORIGIN")
     endif()
+
+    if (DEFINED MPILIB_NAME)
+        set(RPATH_PROP "${RPATH_PROP}:${RPATH_PROP}/${MPILIB_NAME}")
+    endif()
+
+    set_target_properties(${PMLIB_NAME} PROPERTIES INSTALL_RPATH "${RPATH_PROP}")
 
     #if (gnu_compiler)
         #set_target_properties( ${PMLIB_NAME} PROPERTIES COMPILE_FLAGS "-static-libgfortran" )

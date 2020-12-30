@@ -57,20 +57,23 @@ path = Struct()
 path.home = str(_Path.home()) # path.home = os.path.expanduser("~")
 path.root = os.path.dirname(os.path.abspath(__file__))
 path.auxil = os.path.join(path.root,"auxil")
-path.download = os.path.join(path.root,"download")
+path.download = path.auxil # os.path.join(path.root,"download")
 
-path.lib = Struct()
-path.lib.root = os.path.join(path.root,"lib")
-path.lib.x64 = Struct()
-path.lib.x64.root = os.path.join(path.lib.root,"lib")
-path.lib.x64.so = os.path.join(path.lib.x64.root,"so")
-path.lib.x64.dll = os.path.join(path.lib.x64.root,"dll")
-path.lib.x64.dylib = os.path.join(path.lib.x64.root,"dylib")
+path.lib = dict()
+path.lib["root"] = os.path.join(path.root,"lib")
+path.lib["x64"] = dict()
+path.lib["x64"]["root"] = os.path.join(path.lib["root"],"x64")
+path.lib["x64"]["gnu"] = os.path.join(path.lib["x64"]["root"],"gnu")
+path.lib["x64"]["intel"] = os.path.join(path.lib["x64"]["root"],"intel")
 
-path.archive = os.path.join(path.download,"paramonte-main")
+path.archive = Struct()
+path.archive.root = os.path.join(path.download,"paramonte-main")
+path.archive.install = Struct()
+path.archive.install.root = os.path.join(path.archive.root,"bin","libparamonte_Python")
+path.archive.install.lib = os.path.join(path.archive.install.root,"paramonte","lib")
 """path to the directory of uncompressed paramonte archive."""
 
-path.localInstall = os.path.join( path.archive , "build", "prerequisites", "prerequisites", "installations" )
+path.localInstall = os.path.join( path.archive.root , "build", "prerequisites", "prerequisites", "installations" )
 """path to the directory of the local installation of the paramonte kernel."""
 
 sys.path.append(path.root)
@@ -257,6 +260,54 @@ website.intel.mpi.windows.url = "https://software.intel.com/en-us/get-started-wi
 website.openmpi = Struct()
 website.openmpi.home = Struct()
 website.openmpi.home.url = "https://www.open-mpi.org/"
+
+####################################################################################################################################
+
+#### setup env
+
+if "PATH" not in os.environ: os.environ["PATH"] = os.getcwd()
+
+if platform.isWin32:
+
+    pathList = os.environ["PATH"].split(";")
+    for path in pathList:
+        pathLower = path.lower().replace("\\","")
+        if ("mpiintel64bin" in pathLower):
+            mpiPath = os.path.join(path,"release")
+            os.environ["PATH"] = mpiPath + os.pathsep + os.environ["PATH"]
+            libfabricPath = os.path.join(os.path.dirname(path),"libfabric","bin")
+            os.environ["PATH"] = libfabricPath + os.pathsep + os.environ["PATH"]
+            break
+
+    if platform.arch=="x64":
+        if platform.isWin32: os.environ["PATH"] = path.lib["x64"]["root"] \
+                                                + os.pathsep \
+                                                + path.lib["x64"]["intel"] \
+                                                + os.pathsep \
+                                                + path.lib["x64"]["gnu"] \
+                                                + os.pathsep \
+                                                + os.environ["PATH"]
+
+else:
+
+    if "LD_LIBRARY_PATH" not in os.environ: os.environ["LD_LIBRARY_PATH"] = "."
+
+    libdir = "/usr/lib"
+    if os.path.isdir(libdir): os.environ["LD_LIBRARY_PATH"]  = libdir + os.pathsep + os.environ["LD_LIBRARY_PATH"]
+
+    libdir = "/usr/local/lib"
+    if os.path.isdir(libdir): os.environ["LD_LIBRARY_PATH"]  = libdir + os.pathsep + os.environ["LD_LIBRARY_PATH"]
+
+    libdir = "/usr/lib64"
+    if os.path.isdir(libdir): os.environ["LD_LIBRARY_PATH"]  = libdir + os.pathsep + os.environ["LD_LIBRARY_PATH"]
+
+    libdir = "/usr/local/lib64"
+    if os.path.isdir(libdir): os.environ["LD_LIBRARY_PATH"]  = libdir + os.pathsep + os.environ["LD_LIBRARY_PATH"]
+
+    pathlibs = ""
+    if platform.arch=="x64": pathlibs = path.lib["x64"]["gnu"] + os.pathsep + path.lib["x64"]["intel"] + os.pathsep
+    os.environ["LD_LIBRARY_PATH"] = pathlibs + os.environ["LD_LIBRARY_PATH"]
+
 
 ####################################################################################################################################
 

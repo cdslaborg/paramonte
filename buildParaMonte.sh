@@ -2176,7 +2176,7 @@ fi
 ####################################################################################################################################
 
 unset MPILIB_NAME
-if [ -f "${MPIEXEC_PATH}" ]; then
+if [ "${MPI_ENABLED}" = "true" ] && [ -f "${MPIEXEC_PATH}" ]; then
 
     mpiVersionInfo="$(${MPIEXEC_PATH} --version)"
 
@@ -2202,6 +2202,11 @@ if [ -z ${MPILIB_NAME+x} ] && [ "${MPI_ENABLED}" = "true" ]; then
     echo >&2 "${pmwarn} The ParaMonte library name will be suffixed with the generic \"${MPILIB_NAME}\" label."
     echo >&2
 fi
+
+if ! [ -z ${MPILIB_NAME+x} ]; then
+    MPILIB_NAME_FLAG="-DMPILIB_NAME=${MPILIB_NAME}"
+fi
+
 export MPILIB_NAME
 
 ####################################################################################################################################
@@ -2567,6 +2572,7 @@ if [ "${DRYRUN_ENABLED}" != "true" ]; then
     -DHEAP_ARRAY_ENABLED=${HEAP_ARRAY_ENABLED} \
     -DCFI_ENABLED=${CFI_ENABLED} \
     -DOMP_ENABLED=${OMP_ENABLED} \
+    ${MPILIB_NAME_FLAG} \
     ${SAMPLER_TEST_ENABLED_FLAG} \
     ${BASIC_TEST_ENABLED_FLAG} \
     ${CODECOV_ENABLED_FLAG} \

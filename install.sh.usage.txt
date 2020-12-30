@@ -61,6 +61,10 @@
                                   the default will be automatically determined.
         -F | --fresh            : enables a fresh installation of all of the prerequisites of ParaMonte library. Applicable only to GNU compiler suite.
         -o | --local            : prefer a build with the local installation of the prerequisites by ParaMonte (if they exist) over the default system settings.
+        -D | --deploy           : Copy also the library dependencies to the install directory of the library. 
+                                  This is a low level option and mostly useful for the developers of the ParaMonte library.
+                                  Note for the developers: When building the ParaMonte library for dynamic programming languages for multiple build types
+                                  with the --deploy flag, we recommend specifying the build types in this order: "debug testing release".
         -y | --yes-to-all       : if a fresh installation of all of the prerequisites is needed, automatically answer yes to all permission requests.
         -B | --bootstrap        : enables robust bootstrap build when building the required GCC version with an old GCC version. Applicable only to GNU compiler suite.
         -c | --codecov          : perform code coverage analysis. This option will disable the ParaMonte examples builds and runs and the ParaMonte library installation.

@@ -797,13 +797,13 @@ if (intel_compiler)
         endif()
     else()
         set(FCL_FLAGS_DEFAULT
-        -static-intel 
         -nologo               # no logo
         -standard-semantics   # determines whether the current Fortran Standard behavior of the compiler is fully implemented.
         )
         if (MT_ENABLED)
             set(FCL_FLAGS_DEFAULT "${FCL_FLAGS_DEFAULT}" -threads )
         endif()
+        set(FL_FLAGS "${FL_FLAGS} -static-intel" )
         if (UNIX AND NOT APPLE)
             set(FL_FLAGS "${FL_FLAGS} -static-libgcc -static-libstdc++" )
         endif()
@@ -842,7 +842,7 @@ if (intel_compiler)
             set(CCL_BUILD_FLAGS
             "${INTEL_CXX_RELEASE_FLAGS}"
             )
-            set(FL_FLAGS /Qopt-report:2 ) # set Fortran linker flags for release mode
+            set(FL_FLAGS "${FL_FLAGS} /Qopt-report:2" ) # set Fortran linker flags for release mode
         else()
             set(FCL_BUILD_FLAGS
             "${INTEL_Fortran_RELEASE_FLAGS}"
@@ -851,7 +851,7 @@ if (intel_compiler)
             set(CCL_BUILD_FLAGS
             "${INTEL_CXX_RELEASE_FLAGS}"
             )
-            set(FL_FLAGS -qopt-report=2 ) # set Fortran linker flags for release mode
+            set(FL_FLAGS "${FL_FLAGS} -qopt-report=2" ) # set Fortran linker flags for release mode
         endif()
         #/Qipo-c:
         #   Tells the compiler to optimize across multiple files and generate a single object file ipo_out.obj without linking
@@ -872,7 +872,7 @@ elseif (gnu_compiler)
     set(FCL_FLAGS_DEFAULT -std=legacy -ffree-line-length-none ) # CACHE STRING "GNU Fortran default compiler flags" )
     set(CCL_FLAGS_DEFAULT -ffree-line-length-none )# CACHE STRING "GNU CXX default compiler flags" )
 
-    set(FL_FLAGS -fopt-info-all=GFortranOptReport.txt )
+    set(FL_FLAGS "${FL_FLAGS} -fopt-info-all=GFortranOptReport.txt" )
 
     if (MT_ENABLED)
         set(FCL_FLAGS_DEFAULT "${FCL_FLAGS_DEFAULT}" -pthread )
@@ -932,11 +932,11 @@ message( STATUS "${pmattn} C/C++ compiler/linker default flags: ${CCL_FLAGS_DEFA
 message( STATUS "${pmattn} C/C++ compiler/linker flags: ${CCL_FLAGS}" )
 
 message( STATUS "${pmattn} Fortran compiler/linker flags in ${CMAKE_BUILD_TYPE} build mode: " "${FCL_BUILD_FLAGS}" )
-message( STATUS "${pmattn} Fortran compiler/linker default flags: " "${FCL_FLAGS_DEFAULT}" )
-message( STATUS "${pmattn} Fortran compiler/linker dynamic library flags: " "${FC_LIB_FLAGS}" )
-message( STATUS "${pmattn} Fortran compiler/linker flags: " "${FCL_FLAGS}" )
-message( STATUS "${pmattn} Fortran linker flags: " "${FL_FLAGS}" )
-message( STATUS "${pmattn} Fortran preprocessor flags: " "${FPP_FLAGS}" )
+message( STATUS "${pmattn} Fortran compiler/linker default flags - FCL_FLAGS_DEFAULT: " "${FCL_FLAGS_DEFAULT}" )
+message( STATUS "${pmattn} Fortran compiler/linker dynamic library flags - FC_LIB_FLAGS: " "${FC_LIB_FLAGS}" )
+message( STATUS "${pmattn} Fortran compiler/linker flags - FCL_FLAGS: " "${FCL_FLAGS}" )
+message( STATUS "${pmattn} Fortran linker flags - FL_FLAGS: " "${FL_FLAGS}" )
+message( STATUS "${pmattn} Fortran preprocessor flags - FPP_FLAGS: " "${FPP_FLAGS}" )
 
 #set(CMAKE_C_FLAGS ${CCL_FLAGS} CACHE STRING "C compiler/linker flags" FORCE)
 #set(CMAKE_CXX_FLAGS ${CCL_FLAGS} CACHE STRING "C++ compiler/linker flags" FORCE)

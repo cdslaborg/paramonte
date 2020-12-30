@@ -344,7 +344,7 @@ def getBashProfileContents():
 def setupUnixPath():
 
     bashrcContents = getBashrcContents()
-    dlibcmd = "export LD_LIBRARY_PATH=" + pm.path.lib + ":$LD_LIBRARY_PATH"
+    dlibcmd = "export LD_LIBRARY_PATH=" + pm.path.lib[pm.platform.arch] + ":$LD_LIBRARY_PATH"
     if dlibcmd not in bashrcContents:
         os.system( "chmod 777 ~/.bashrc")
         os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
@@ -879,7 +879,7 @@ def getPrereqs(DependencyList = None):
         return prereqs
 
     for dependency in prereqs.list:
-        fullFilePath = os.path.join( pm.path.lib, dependency )
+        fullFilePath = os.path.join( pm.path.download, dependency )
         if intelMpiFilePrefix in dependency and intelMpiFileSuffix in dependency:
             prereqs.mpi.intel.fullFileName = dependency
             prereqs.mpi.intel.fullFilePath = fullFilePath
@@ -942,7 +942,7 @@ def installMPI():
 
         for dependency in prereqs.list:
 
-            fullFilePath = os.path.join(pm.path.lib, dependency)
+            fullFilePath = os.path.join(pm.path.download, dependency)
             thisVersion = pm.version.kernel.dump()
             while thisVersion is not None:
                 try:
@@ -1017,8 +1017,8 @@ def installMPI():
 
                 import tarfile
                 tf = tarfile.open(prereqs.mpi.intel.fullFilePath)
-                tf.extractall(path=pm.path.lib)
-                mpiExtractDir = os.path.join(pm.path.lib, prereqs.mpi.intel.fileName)
+                tf.extractall(path=pm.path.download)
+                mpiExtractDir = os.path.join(pm.path.download, prereqs.mpi.intel.fileName)
 
                 pm.note ( msg   = "If this is your personal computer and you have opened your Python " + newline
                                 + "session with superuser (sudo) privileges, then you can choose " + newline
@@ -1666,9 +1666,9 @@ def build(flags=""):
 
                 import tarfile
                 tf = tarfile.open(pmGitTarPath)
-                tf.extractall(path = pm.path.download) # path=pm.path.archive)
+                tf.extractall(path = pm.path.download) # path=pm.path.archive.root)
 
-                pmGitInstallScriptPath = os.path.join( pm.path.archive, "install.sh" )
+                pmGitInstallScriptPath = os.path.join( pm.path.archive.root, "install.sh" )
                 if not os.path.exists(pmGitInstallScriptPath):
                     pm.abort( msg   = "Internal error occurred." + newline
                                     + "Failed to detect the ParaMonte installation Bash script. " + newline
@@ -1705,12 +1705,17 @@ def build(flags=""):
                         , marginBot = 1
                         )
 
-            os.chdir(pm.path.archive)
+            os.chdir(pm.path.archive.root)
 
             import subprocess
             try:
-                os.system( "find " + pm.path.archive + " -type f -iname \"*.sh\" -exec chmod +x {} \;" )
-                os.system( pmGitInstallScriptPath + " --lang python --test_enabled true --exam_enabled false --yes-to-all " + flags )
+                os.system( "find " + pm.path.archive.root + " -type f -iname \"*.sh\" -exec chmod +x {} \;" )
+                if not ("--yes-to-all " in flags or "-y " in flags): flags += ' --yes-to-all'
+                if not ("--build " in flags or "-b " in flags): flags += ' --build "release"'
+                if not ("--lang " in flags or "-L " in flags): flags += ' --lang python'
+                if not ("--lib " in flags or "-l " in flags): flags += ' --lib dynamic'
+                if not ("--par " in flags or "-p " in flags): flags += ' --par "none mpi"'
+                os.system( pmGitInstallScriptPath + flags )
             except Exception as e:
                 print(str(e))
                 pm.abort   ( msg   = "The Local installation of ParaMonte failed." + newline
@@ -1728,15 +1733,15 @@ def build(flags=""):
 
             from glob import glob
             import shutil
-            pythonBinDir = os.path.join( pm.path.archive , "bin" , "libparamonte_Python" , "paramonte" )
-            fileList = glob( os.path.join( pythonBinDir , "libparamonte_*" ) )
+            #pythonBinDir = os.path.join( pm.path.archive.root , "bin" , "libparamonte_Python" , "paramonte" )
+            #fileList = glob( os.path.join( pythonBinDir , "libparamonte_*" ) )
 
-            if len(fileList)==0:
+            if not os.path.isdir(pm.path.archive.install.lib):
 
                 pm.abort( msg   = "ParaMonte kernel libraries build and installation " + newline
                                 + "appears to have failed. You can check this path:" + newline
                                 + newline
-                                + "    " + pythonBinDir + newline
+                                + "    " + pm.path.archive.install.lib + newline
                                 + newline
                                 + "to find out if any shared objects with the prefix " + newline
                                 + "'libparamonte_' have been generated or not. " + newline
@@ -1757,13 +1762,58 @@ def build(flags=""):
                         , marginBot = 1
                         )
 
-                for file in fileList:
-                    pm.note ( msg = "file: " + file
-                            , methodName = pm.names.paramonte
-                            , marginTop = 0
-                            , marginBot = 0
-                            )
-                    shutil.copy(file, pm.path.lib)
+                dstdir = os.path.join(currentDir,"lib")
+
+                try:
+
+                    shutil.copytree ( src = pm.path.archive.install.lib
+                                    , dst = dstdir
+                                    , dirs_exist_ok = True
+                                    )
+
+                except Exception as e:
+
+                    import logging
+                    logger = logging.Logger("catch_all")
+                    logger.warning(e, exc_info=True)
+
+                    if "dirs_exist_ok" in e and sys.version_info < (3,9):
+                        pm.warn ( msg   = "It seems like you do not have the latest version of Python." + newline
+                                        + "Please upgrade to Python version 3.9 or newer..."
+                                , methodName = pm.names.paramonte
+                                , marginTop = 1
+                                , marginBot = 1
+                                )
+
+                    try:
+
+                        shutil.rmtree(path = dstdir, ignore_errors = False)
+
+                    except Exception as e:
+
+                        import logging
+                        logger = logging.Logger("catch_all")
+                        logger.warning(e, exc_info=True)
+
+                        pm.abort( msg   = "Failed to copy the installed libraries to the paramonte module folder." + newline
+                                        + "Please check the contents of this folder: " + newline
+                                        + newline
+                                        + "   " + pm.path.archive.install.lib + newline
+                                        + newline
+                                        + "If this folder and its contents exist, manually copy them to: " + newline
+                                        + newline
+                                        + "   " + dstdir + newline
+                                        + newline
+                                        + "Otherwise, if it is empty and you cannot figure out the source of error," + newline
+                                        + "please report this issue at:" + newline
+                                        + newline
+                                        + "    " + pm.website.github.issues.url
+                                , methodName = pm.names.paramonte
+                                , marginTop = 1
+                                , marginBot = 1
+                                )
+
+                #### the library installation and copying succeeded.
 
                 pm.note ( msg = "ParaMonte kernel libraries should be now usable on your system."
                         , methodName = pm.names.paramonte

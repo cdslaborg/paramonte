@@ -218,7 +218,7 @@ do
 
     ParaMonteExample_LIB_DIR_CURRENT="${ParaMonteExample_BLD_DIR_CURRENT}"
     if [ "${LANG_IS_DYNAMIC}" = "true" ]; then
-        ParaMonteExample_LIB_DIR_CURRENT="${ParaMonteExample_LIB_DIR_CURRENT}/paramonte/lib/${ARCHITECTURE}/${sharedFileExt}/${MPILIB_NAME}"
+        ParaMonteExample_LIB_DIR_CURRENT="${ParaMonteExample_LIB_DIR_CURRENT}/paramonte/lib/${ARCHITECTURE}/${PMCS}"
     fi
 
     if [[ -d "${ParaMonteExample_LIB_DIR_CURRENT}" ]]; then
@@ -233,7 +233,7 @@ do
     echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library files..."
     echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${PMLIB_FULL_PATH}"
     echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_LIB_DIR_CURRENT}/"
-    cp -R "${ParaMonte_LIB_DIR}/"libparamonte_* "${ParaMonteExample_LIB_DIR_CURRENT}/" || printCopyFailMsg
+    cp -af "${ParaMonte_LIB_DIR}/"libparamonte_* "${ParaMonteExample_LIB_DIR_CURRENT}/" || printCopyFailMsg
 
     # Copy the ParaMonte library dll dependency files
 
@@ -262,7 +262,7 @@ do
 
         #### gnu compilers
 
-        if [ "${PMCS}" = "gnu" ] && ! [ "${CAF_ENABLED}" = "true" ]; then
+        if ! [ "${CAF_ENABLED}" = "true" ]; then # [ "${PMCS}" = "gnu" ] && 
 
             #### first create the dependencies list
 
@@ -304,8 +304,6 @@ do
 
                         # copy dependencyFilePath only if they are GNU shared files and are not MPI-related.
 
-                        #   [[ "${dependencyFilePath}" =~ .*"gnu".* ]] || \
-                        #   [[ "${dependencyFilePath}" =~ .*"gcc".* ]] || \
                         #   ATTN: @todo: point of weakness: Some gcc libraries do not seem to be portable.
                         #   ATTN: @todo: On WSL Ubuntu 20, there is a dependency on libc.so.6, which is not
                         #   ATTN: @todo: portable across other linux distros like Debian, Opensuse and causes segfault.
@@ -313,6 +311,12 @@ do
                         #   ATTN: @todo: For now, the best strategy seems to be to avoid all basic C library dependencies
                         #   ATTN: @todo: which currently includes three shared files: libc, libm, libpthread.
                         #   ATTN: @todo: See: https://stackoverflow.com/questions/54054925/what-functions-is-the-libm-intended-for
+                        #   || \
+                        #   [[ "${dependencyFilePath}" =~ .*"mpich".* ]] \
+                        #   || \
+                        #   [[ "${dependencyFilePath}" =~ .*"open-mpi".* ]] \
+                        #   || \
+                        #   [[ "${dependencyFilePath}" =~ .*"openmpi".* ]] \
 
                         if  [ -f "${dependencyFilePath}" ] && \
                             ( \
@@ -323,19 +327,21 @@ do
                                 [[ "${dependencyFilePath}" =~ .*"gfortran".* ]] \
                                 || \
                                 [[ "${dependencyFilePath}" =~ .*"quadmath".* ]] \
+                                || \
+                                [[ "${dependencyFilePath}" =~ .*"libmpi".* ]] \
+                                || \
+                                [[ "${dependencyFilePath}" =~ .*"libmpifort".* ]] \
                             ) && \
                             ! ( \
-                                [[ "${dependencyFilePath}" =~ .*"libc.so".* ]] \
+                                [[ "${dependencyFilePath}" =~ .*"libc.".* ]] \
                                 || \
-                                [[ "${dependencyFilePath}" =~ .*"libm.so".* ]] \
+                                [[ "${dependencyFilePath}" =~ .*"libm.".* ]] \
                                 || \
-                                [[ "${dependencyFilePath}" =~ .*"libpthread.so".* ]] \
+                                [[ "${dependencyFilePath}" =~ .*"libdl.".* ]] \
                                 || \
-                                [[ "${dependencyFilePath}" =~ .*"mpich".* ]] \
+                                [[ "${dependencyFilePath}" =~ .*"librt.".* ]] \
                                 || \
-                                [[ "${dependencyFilePath}" =~ .*"open-mpi".* ]] \
-                                || \
-                                [[ "${dependencyFilePath}" =~ .*"openmpi".* ]] \
+                                [[ "${dependencyFilePath}" =~ .*"libpthread.".* ]] \
                             ); then
                             #if ! [ "${isMacOS}" = "true" ] || ( [ "${isMacOS}" = "true" ] && ! [[ "${dependencyFilePath}" =~ .*"/usr/lib/".* ]] ); then
                                 echo >&2 "-- ParaMonteExample${LANG_NAME} - dependency detected: ${dependencyFilePath}"
@@ -385,7 +391,16 @@ do
 
                             #### copy and work on the dependency file only if it does not already exist in the folder.
 
-                            dependencyPathDestin="${ParaMonteExample_LIB_DIR_CURRENT}/${dependencyName}"
+                            dependencyDirDestin="${ParaMonteExample_LIB_DIR_CURRENT}"
+                            # put the serial shared files in the parent directory to save space and avoid redundancy.
+                            if [ "${LANG_IS_DYNAMIC}" = "true" ] && [[ "${dependencyName}" =~ .*"libmpi".* ]]; then
+                                dependencyDirDestin="${ParaMonteExample_LIB_DIR_CURRENT}/${MPILIB_NAME}"
+                            fi
+                            if ! [ -d "{dependencyDirDestin}" ]; then
+                                mkdir -p "${dependencyDirDestin}"
+                                verify $? "recursive dependencyDirDestin creation"
+                            fi
+                            dependencyPathDestin="${dependencyDirDestin}/${dependencyName}"
 
                             if [ -f "${dependencyPathDestin}" ]; then
 
@@ -401,7 +416,7 @@ do
                                 #### copy the dependency file to the destination folder.
                                 #### note that -a and -r for cp are inconsistent with each other on macOS as -a contains -R.
 
-                                (yes | \cp -af "${dependencyPathTarget}" "${ParaMonteExample_LIB_DIR_CURRENT}"/) >/dev/null 2>&1 || {
+                                (yes | \cp -af "${dependencyPathTarget}" "${dependencyDirDestin}"/) >/dev/null 2>&1 || {
                                     echo >&2
                                     echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: The dependency file copy attempt failed at: ${dependencyPath}"
                                     echo >&2
@@ -413,10 +428,10 @@ do
 
                                 if ! [ "${dependencyName}" = "${dependencyNameTarget}" ]; then
 
-                                    mv "${ParaMonteExample_LIB_DIR_CURRENT}/${dependencyNameTarget}" "${dependencyPathDestin}" || {
+                                    mv "${dependencyDirDestin}/${dependencyNameTarget}" "${dependencyPathDestin}" || {
                                         echo >&2
                                         echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: The dependency renaming failed:"
-                                        echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: from: ${ParaMonteExample_LIB_DIR_CURRENT}/${dependencyNameTarget}"
+                                        echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: from: ${dependencyDirDestin}/${dependencyNameTarget}"
                                         echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL:   to: ${dependencyPathDestin}"
                                         echo >&2
                                         exit 1

@@ -124,7 +124,6 @@
 
 module ParaMonte_mod
 
-    use System_mod, only: SystemInfo_type ! LCOV_EXCL_LINE
     use Parallelism_mod, only: Image_type
     use Decoration_mod, only: Decoration_type
     use Constants_mod, only: RK, IK, HUGE_IK, HUGE_RK
@@ -232,8 +231,6 @@ module ParaMonte_mod
         type(SpecBase_type)             :: SpecBase                 !< An object of class [SpecBase_type](@ref specbase_mod::specbase_type) containing information
                                                                     !< about the basic simulation specification properties.
         !type(ParaMonteStatistics_type) :: Stats
-        type(SystemInfo_type)           :: SystemInfo               !< An object of class [SystemInfo_type](@ref system_mod::systeminfo_type) containing
-                                                                    !< information about the operating system and platform.
         type(Timer_type)                :: Timer                    !< An object of class [Timer_type](@ref timer_mod::timer_type) used for timing of the simulation.
         type(File_type)                 :: InputFile                !< An object of class [File_type](@ref file_mod::file_type) containing information about the simulation input file.
         type(LogFile_type)              :: LogFile                  !< An object of class [LogFile_type](@ref logfile_type) containing information about the simulation report file.
@@ -495,10 +492,13 @@ contains
         !DEC$ ATTRIBUTES DLLEXPORT :: addCompilerPlatformInfo
 #endif
         use, intrinsic :: iso_fortran_env, only: compiler_version, compiler_options
+        use System_mod, only: SystemInfo_type ! LCOV_EXCL_LINE
         use Constants_mod, only: NLC
         implicit none
-        class(ParaMonte_type), intent(inout)    :: self
         integer(IK)                             :: i, j
+        class(ParaMonte_type), intent(inout)    :: self
+        type(SystemInfo_type)                   :: SystemInfo   !< An object of class [SystemInfo_type](@ref system_mod::systeminfo_type)
+                                                                !< containing information about the operating system and platform.
 
         character(*), parameter                 :: PROCEDURE_NAME = MODULE_NAME//"@addCompilerPlatformInfo()"
 
@@ -567,10 +567,10 @@ contains
         ! the creation of thousands of files on the system, simultaneously.
         ! this is not needed by any process other than the leader images.
 
-        self%SystemInfo = SystemInfo_type(OS = self%OS, path = self%SpecBase%SystemInfoFilePath%val)
-        if (self%SystemInfo%Err%occurred) then
+        SystemInfo = SystemInfo_type(OS = self%OS, path = self%SpecBase%SystemInfoFilePath%val)
+        if (SystemInfo%Err%occurred) then
         ! LCOV_EXCL_START
-            self%Err = self%SystemInfo%Err
+            self%Err = SystemInfo%Err
             self%Err%msg = PROCEDURE_NAME//": Error occurred while collecting system info."//NLC//self%Err%msg
             call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
             return
@@ -579,8 +579,8 @@ contains
 
         ! write the system info to the output file
 
-        do j = 1, self%SystemInfo%nRecord
-            self%Decor%List = self%Decor%wrapText( self%SystemInfo%Records(j)%record , 132 )
+        do j = 1, SystemInfo%nRecord
+            self%Decor%List = self%Decor%wrapText( SystemInfo%Records(j)%record , 132 )
             do i = 1,size(self%Decor%List)
                 write(self%LogFile%unit,"(A)") self%Decor%List(i)%record
             end do
