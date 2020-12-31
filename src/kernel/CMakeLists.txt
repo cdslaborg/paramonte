@@ -337,14 +337,30 @@ endif()
 set_target_properties(${PMLIB_NAME} PROPERTIES INSTALL_RPATH "${RPATH_PROP}")
 
 if(gnu_compiler)
-    set_target_properties( ${PMLIB_NAME} PROPERTIES LINK_FLAGS "-static-libgfortran -static-libgcc" )
+
+    if (deploy_enabled)
+        set_target_properties( ${PMLIB_NAME} PROPERTIES LINK_FLAGS "-static-libgfortran -static-libgcc" )
+    endif()
+
 elseif(intel_compiler)
+
     if (UNIX OR APPLE)
         set_target_properties( ${PMLIB_NAME} PROPERTIES LINK_FLAGS "-static-intel" )
     endif()
-    if (UNIX)
+
+    if (UNIX AND deploy_enabled)
         set_target_properties( ${PMLIB_NAME} PROPERTIES LINK_FLAGS "-static-intel -static-libgcc -static-libstdc++" )
     endif()
+
+    #### Include MKL
+
+    #if (CMAKE_BUILD_TYPE MATCHES "Release|RELEASE|release")
+    #    #find_package(MKL REQUIRED)
+    #    target_link_directories(${PMLIB_NAME} PUBLIC ${MKL_LIBRARIES})
+    #    target_include_directories(${PMLIB_NAME} PUBLIC ${MKL_INCLUDE_DIRS})
+    #    target_link_libraries(${PMLIB_NAME} PUBLIC mkl_intel_lp64 mkl_sequential mkl_core)
+    #endif()
+
 endif()
 
 if (MPI_ENABLED)

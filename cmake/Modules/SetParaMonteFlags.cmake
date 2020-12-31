@@ -244,7 +244,7 @@ else()
     -diag-disable=10397         # optimization reporting will be enabled at link time when performing interprocedural optimizations.
     -qopt-report=2              # generate optimization report. Level 2 is the default. Use 5 for the greatest details and 0 for no report.
    #-guide-vec=4                # enable guidance for auto-vectorization, causing the compiler to generate messages suggesting ways to improve optimization. The default is 4 (highest level).
-    -parallel                   # generate multithreaded code for loops that can be safely executed in parallel.
+   #-parallel                   # generate multithreaded code for loops that can be safely executed in parallel. This option requires MKL libraries.
     )
     set(GNU_Fortran_RELEASE_FLAGS -fopt-info-all=GFortranOptReport.txt )
     if(APPLE)

@@ -2555,6 +2555,12 @@ if [ "${DRYRUN_ENABLED}" != "true" ]; then
         OS_IS_WSL_FLAG=""
     fi
 
+    if [ "${deploy_enabled}" = "true" ]; then
+        DEPLOY_ENABLED_FLAG="-Ddeploy_enabled=${deploy_enabled}"
+    else
+        DEPLOY_ENABLED_FLAG=""
+    fi
+
     (cd ${ParaMonte_BLD_DIR} && \
     ${CAF_LOCAL_INSTALLATION_SETUP_FILE_CMD} && \
     cmake \
@@ -2573,6 +2579,7 @@ if [ "${DRYRUN_ENABLED}" != "true" ]; then
     -DCFI_ENABLED=${CFI_ENABLED} \
     -DOMP_ENABLED=${OMP_ENABLED} \
     ${MPILIB_NAME_FLAG} \
+    ${DEPLOY_ENABLED_FLAG} \
     ${SAMPLER_TEST_ENABLED_FLAG} \
     ${BASIC_TEST_ENABLED_FLAG} \
     ${CODECOV_ENABLED_FLAG} \
