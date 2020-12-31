@@ -245,6 +245,7 @@ else()
     -qopt-report=2              # generate optimization report. Level 2 is the default. Use 5 for the greatest details and 0 for no report.
    #-guide-vec=4                # enable guidance for auto-vectorization, causing the compiler to generate messages suggesting ways to improve optimization. The default is 4 (highest level).
    #-parallel                   # generate multithreaded code for loops that can be safely executed in parallel. This option requires MKL libraries.
+   #-qopt-subscript-in-range    # assumes there are no "large" integers being used or being computed inside loops. A "large" integer is typically > 2^31.
     )
     set(GNU_Fortran_RELEASE_FLAGS -fopt-info-all=GFortranOptReport.txt )
     if(APPLE)

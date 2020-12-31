@@ -237,7 +237,7 @@ do
 
     # Copy the ParaMonte library dll dependency files
 
-    if [ "${deploy_enabled}" = "true" ]; then
+    if [ "${deploy_enabled}" = "true" ] && [ "${LTYPE}" = "dynamic" ]; then
 
         #### all compilers
 
