@@ -2535,7 +2535,7 @@ fi
 
 if [ "${isMacOS}" = "true" ]; then
     # target all OSX newer than 10.7 x86_64
-    MACOSX_DEPLOYMENT_TARGET="10.7"
+    MACOSX_DEPLOYMENT_TARGET="10.10"
     export MACOSX_DEPLOYMENT_TARGET
 fi
 

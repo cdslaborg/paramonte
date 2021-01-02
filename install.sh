@@ -354,7 +354,7 @@ if ! [ -z ${PARALLELISM_LIST+x} ]; then
             && $PARALLELISM != [cC][aA][fF][dD][iI][sS][tT][rR][iI][bB][uU][tT][eE][dD] 
             && $PARALLELISM != [mM][pP][iI] 
             ]]; then
-            reportBadValue "-p or --parallelism" $PARALLELISM
+            reportBadValue "-p or --par" $PARALLELISM
         fi
     done
     if [ "${PARALLELISM_LIST}" = "" ]; then

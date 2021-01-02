@@ -414,7 +414,7 @@ set_target_properties( ${PMLIB_NAME} PROPERTIES Fortran_MODULE_DIRECTORY "${Para
 
 #string(REPLACE ";" " " FCL_FLAGS ${FCL_FLAGS})
 #message(STATUS "${pmattn} ParaMonte library build flags: ${FPP_FLAGS} ${FCL_FLAGS}")
-target_compile_options(${PMLIB_NAME} BEFORE PRIVATE "${FPP_FLAGS}" "${FCL_FLAGS}")
+target_compile_options(${PMLIB_NAME} BEFORE PRIVATE "${FPP_FLAGS}" "${FC_FLAGS}" "${FCL_FLAGS}")
 
 #message( STATUS "${pmattn} ParaMonte library build linker flags: ${${FCL_FLAGS}${FL_FLAGS_PMLIB}}${MATLAB_LINKER_FLAGS}" )
 #target_link_options( ${PMLIB_NAME} BEFORE PRIVATE ${${FCL_FLAGS}${FL_FLAGS_PMLIB}}${MATLAB_LINKER_FLAGS} )

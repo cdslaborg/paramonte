@@ -87,6 +87,7 @@ message(STATUS "${pmattn} Default CMAKE_C_FLAGS:       ${CMAKE_C_FLAGS}")
 message(STATUS "${pmattn} Default CMAKE_CXX_FLAGS:     ${CMAKE_CXX_FLAGS}")
 message(STATUS "${pmattn} Default CMAKE_Fortran_FLAGS: ${CMAKE_Fortran_FLAGS}")
 
+unset(FC_FLAGS)
 unset(FL_FLAGS)
 unset(FPP_FLAGS)
 unset(CCL_FLAGS)
@@ -702,42 +703,6 @@ elseif (intel_compiler)
 endif()
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-# set shared library Fortran linker flags
-#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-if (pmlib_shared)
-
-    if (gnu_compiler)
-
-        set(FCL_FLAGS "${FCL_FLAGS}"
-        -shared
-        -fPIC
-        )
-
-    else(intel_compiler)
-
-        if(WIN32)
-            set(FCL_FLAGS "${FCL_FLAGS}"
-            #/threads " # these flags are actually included by default in recent ifort implementations
-            /libs:dll
-            )
-        elseif(UNIX)
-            set(FCL_FLAGS "${FCL_FLAGS}"
-            -fpic # Request compiler to generate position-independent code.
-            )
-            if (APPLE)
-                set(FCL_FLAGS "${FCL_FLAGS}"
-                -noall_load
-                # -weak_references_mismatches non-weak -threads -arch_only i386
-                )
-            endif()
-        endif()
-
-    endif()
-
-endif()
-
-#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 #: set up coarray flags
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -804,19 +769,21 @@ endif()
 #: set memory allocation type
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
+# not recognized by the linker on macOS. Thus needs a separate variable.
+
 if (HEAP_ARRAY_ENABLED)
     if (intel_compiler)
         if (WIN32)
-            set(FCL_FLAGS "${FCL_FLAGS}"
+            set(FC_FLAGS "${FC_FLAGS}"
             /heap-arrays:10
             )
         else()
-            set(FCL_FLAGS "${FCL_FLAGS}"
+            set(FC_FLAGS "${FC_FLAGS}"
             -heap-arrays=10
             )
         endif()
     elseif(gnu_compiler)
-        set(FCL_FLAGS "${FCL_FLAGS}"
+        set(FC_FLAGS "${FC_FLAGS}"
         -fmax-stack-var-size=10
         # -frecursive overwrites -fmax-stack-var-size=10 and causes all allocations to happen on stack.
         )
@@ -827,6 +794,42 @@ if (HEAP_ARRAY_ENABLED)
         # See also this thread: https://comp.lang.fortran.narkive.com/WApl1KMt/gfortran-stack-size-warning#post4
         # Perhaps adding `non_recursive` to functions would fix this warning message.
     endif()
+endif()
+
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# set shared library Fortran linker flags
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+if (pmlib_shared)
+
+    if (gnu_compiler)
+
+        set(FCL_FLAGS "${FCL_FLAGS}"
+        -shared
+        -fPIC
+        )
+
+    else(intel_compiler)
+
+        if(WIN32)
+            set(FCL_FLAGS "${FCL_FLAGS}"
+            #/threads " # these flags are actually included by default in recent ifort implementations
+            /libs:dll
+            )
+        elseif(UNIX)
+            set(FCL_FLAGS "${FCL_FLAGS}"
+            -fpic # Request compiler to generate position-independent code.
+            )
+            if (APPLE)
+                set(FCL_FLAGS "${FCL_FLAGS}"
+                -noall_load
+                # -weak_references_mismatches non-weak -threads -arch_only i386
+                )
+            endif()
+        endif()
+
+    endif()
+
 endif()
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
