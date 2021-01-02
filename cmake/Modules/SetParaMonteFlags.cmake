@@ -87,6 +87,7 @@ message(STATUS "${pmattn} Default CMAKE_C_FLAGS:       ${CMAKE_C_FLAGS}")
 message(STATUS "${pmattn} Default CMAKE_CXX_FLAGS:     ${CMAKE_CXX_FLAGS}")
 message(STATUS "${pmattn} Default CMAKE_Fortran_FLAGS: ${CMAKE_Fortran_FLAGS}")
 
+unset(FC_FLAGS)
 unset(FL_FLAGS)
 unset(FPP_FLAGS)
 unset(CCL_FLAGS)
@@ -768,19 +769,21 @@ endif()
 #: set memory allocation type
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
+# not recognized by the linker on macOS. Thus needs a separate variable.
+
 if (HEAP_ARRAY_ENABLED)
     if (intel_compiler)
         if (WIN32)
-            set(FCL_FLAGS "${FCL_FLAGS}"
+            set(FC_FLAGS "${FC_FLAGS}"
             /heap-arrays:10
             )
         else()
-            set(FCL_FLAGS "${FCL_FLAGS}"
+            set(FC_FLAGS "${FC_FLAGS}"
             -heap-arrays=10
             )
         endif()
     elseif(gnu_compiler)
-        set(FCL_FLAGS "${FCL_FLAGS}"
+        set(FC_FLAGS "${FC_FLAGS}"
         -fmax-stack-var-size=10
         # -frecursive overwrites -fmax-stack-var-size=10 and causes all allocations to happen on stack.
         )
