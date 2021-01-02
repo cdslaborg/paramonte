@@ -118,7 +118,7 @@ class ParaDRAM(ParaMonteSampler):
         :linenos:
 
         ##################################
-        with open("main.py", "w") as file:
+        with open("main_mpi.py", "w") as file:
             file.write  ('''
         import numpy as np
         import paramonte as pm
@@ -168,7 +168,7 @@ class ParaDRAM(ParaMonteSampler):
 
         .. code-block:: bash
 
-            !mpiexec -n 3 python main.py
+            !mpiexec -n 3 python main_mpi.py
 
     2.  outside of Python environment,
         from within a Bash shell (on Linux or Mac) or,
@@ -177,7 +177,7 @@ class ParaDRAM(ParaMonteSampler):
 
         .. code-block:: bash
 
-            mpiexec -n 3 python main.py
+            mpiexec -n 3 python main_mpi.py
 
     **Note:**
 
@@ -186,7 +186,7 @@ class ParaDRAM(ParaMonteSampler):
 
     .. code-block:: bash
 
-        mpiexec -localonly -n 3 python main.py
+        mpiexec -localonly -n 3 python main_mpi.py
 
     This will cause the simulations to run in parallel only on a single node,
     but more importantly, it will also prevent the use of Hydra service and
@@ -262,14 +262,14 @@ class ParaDRAM(ParaMonteSampler):
             than physically available on your system will only slow down
             your simulation.
 
-    Once the above script is saved in the file ``main.py``, open a Python-aware and
+    Once the above script is saved in the file ``main_mpi.py``, open a Python-aware and
     MPI-aware command prompt to run the simulation in parallel via the MPI launcher,
 
     .. code-block:: bash
 
-        mpiexec -n 3 python main.py
+        mpiexec -n 3 python main_mpi.py
 
-    This will execute the Python script ``main.py`` on three processes (images).
+    This will execute the Python script ``main_mpi.py`` on three processes (images).
     Keep in mind that on Windows systems you may need to define MPI environmental
     variables before a parallel simulation, as described in the above.
 
