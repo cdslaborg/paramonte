@@ -331,9 +331,11 @@ if ! [ -z ${BTYPE_LIST+x} ]; then
 fi
 
 if ! [ -z ${LTYPE_LIST+x} ]; then
+    LTYPE_LIST=${LTYPE_LIST/dynamic/shared}
     for LTYPE in $LTYPE_LIST; do
-        if  [[ $LTYPE != [dD][yY][nN][aA][mM][iI][cC] 
-            && $LTYPE != [sS][tT][aA][tT][iI][cC] ]]; then
+        if  [[ $LTYPE != [sS][tT][aA][tT][iI][cC] 
+            && $LTYPE != [sS][hH][aA][rR][eE][dD] 
+            ]]; then
             reportBadValue "-l or --lib" $LTYPE
         fi
     done
