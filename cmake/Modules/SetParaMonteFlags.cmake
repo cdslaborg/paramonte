@@ -702,42 +702,6 @@ elseif (intel_compiler)
 endif()
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-# set shared library Fortran linker flags
-#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-if (pmlib_shared)
-
-    if (gnu_compiler)
-
-        set(FCL_FLAGS "${FCL_FLAGS}"
-        -shared
-        -fPIC
-        )
-
-    else(intel_compiler)
-
-        if(WIN32)
-            set(FCL_FLAGS "${FCL_FLAGS}"
-            #/threads " # these flags are actually included by default in recent ifort implementations
-            /libs:dll
-            )
-        elseif(UNIX)
-            set(FCL_FLAGS "${FCL_FLAGS}"
-            -fpic # Request compiler to generate position-independent code.
-            )
-            if (APPLE)
-                set(FCL_FLAGS "${FCL_FLAGS}"
-                -noall_load
-                # -weak_references_mismatches non-weak -threads -arch_only i386
-                )
-            endif()
-        endif()
-
-    endif()
-
-endif()
-
-#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 #: set up coarray flags
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -827,6 +791,42 @@ if (HEAP_ARRAY_ENABLED)
         # See also this thread: https://comp.lang.fortran.narkive.com/WApl1KMt/gfortran-stack-size-warning#post4
         # Perhaps adding `non_recursive` to functions would fix this warning message.
     endif()
+endif()
+
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# set shared library Fortran linker flags
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+if (pmlib_shared)
+
+    if (gnu_compiler)
+
+        set(FCL_FLAGS "${FCL_FLAGS}"
+        -shared
+        -fPIC
+        )
+
+    else(intel_compiler)
+
+        if(WIN32)
+            set(FCL_FLAGS "${FCL_FLAGS}"
+            #/threads " # these flags are actually included by default in recent ifort implementations
+            /libs:dll
+            )
+        elseif(UNIX)
+            set(FCL_FLAGS "${FCL_FLAGS}"
+            -fpic # Request compiler to generate position-independent code.
+            )
+            if (APPLE)
+                set(FCL_FLAGS "${FCL_FLAGS}"
+                -noall_load
+                # -weak_references_mismatches non-weak -threads -arch_only i386
+                )
+            endif()
+        endif()
+
+    endif()
+
 endif()
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
