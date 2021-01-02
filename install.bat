@@ -160,6 +160,7 @@ if not "%1"=="" (
             set DUMMY=%%~a
             if !DUMMY!==dynamic (
                 set LTYPE_LIST=!LTYPE_LIST!!DELIM!shared
+                set DUMMY=shared
             ) else (
                 set LTYPE_LIST=!LTYPE_LIST!!DELIM!!DUMMY!
             )
