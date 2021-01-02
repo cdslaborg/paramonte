@@ -82,7 +82,7 @@ for /f tokens^=* %%a in ('where .:libparamonte_*.dll') do (
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 if defined ParaMonte_LIB_NAME (
-    set LTYPE=dynamic
+    set LTYPE=shared
 ) else (
     for /f tokens^=* %%a in ('where .:libparamonte_*.lib') do (
         set ParaMonte_LIB_NAME=%%~na
@@ -280,7 +280,7 @@ if !TARGET_LANG_IS_CCPP!==true (
     if !BTYPE!==debug   set COMPILER_FLAGS=/debug:full /Od /Wall /traceback /Qcheck-pointers:rw /Qcheck-pointers-undimensioned /Qdiag-error-limit:10 /Qtrapuv
     if !BTYPE!==release set COMPILER_FLAGS=/O3 /Qip /Qipo /Qunroll /Qunroll-aggressive /Ob2 /Qparallel /Qinline-dllimport
     if !BTYPE!==testing set COMPILER_FLAGS=/Od
-    if !LTYPE!==dynamic set COMPILER_FLAGS=!COMPILER_FLAGS! /DDLL_ENABLED
+    if !LTYPE!==shared  set COMPILER_FLAGS=!COMPILER_FLAGS! /DDLL_ENABLED
 
     if "%1"=="msvc" (
 
@@ -293,7 +293,7 @@ if !TARGET_LANG_IS_CCPP!==true (
         if !BTYPE!==debug   set COMPILER_FLAGS=/Od /Z7
         if !BTYPE!==release set COMPILER_FLAGS=/O2
         if !BTYPE!==testing set COMPILER_FLAGS=/Od
-        if !LTYPE!==dynamic set COMPILER_FLAGS=!COMPILER_FLAGS! /DDLL_ENABLED
+        if !LTYPE!==shared  set COMPILER_FLAGS=!COMPILER_FLAGS! /DDLL_ENABLED
 
     )
 

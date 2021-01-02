@@ -157,9 +157,13 @@ if not "%1"=="" (
         for %%a in ("!VALUE:/=" "!") do (
             set DELIM=
             if defined LTYPE_LIST set DELIM=/
-            set LTYPE_LIST=!LTYPE_LIST!!DELIM!%%~a
+            if %%~a==dynamic (
+                set LTYPE_LIST=!LTYPE_LIST!!DELIM!shared
+            ) else (
+                set LTYPE_LIST=!LTYPE_LIST!!DELIM!%%~a
+            )
             set VALUE_SUPPORTED=false
-            for %%V in ( "dynamic" "static" ) do ( if /I "%%~a"=="%%~V" set "VALUE_SUPPORTED=true" )
+            for %%V in ( "static" "shared" ) do ( if /I "%%~a"=="%%~V" set "VALUE_SUPPORTED=true" )
             if not !VALUE_SUPPORTED!==true goto LABEL_REPORT_ERR
         )
         shift
@@ -267,7 +271,7 @@ if not "%1"=="" (
     REM pass /P or /preprocess-only in case of Intel compiler choice.
     REM For example,
     REM
-    REM     install.bat --lang c --lib dynamic --par mpi --build testing --fpp /P
+    REM     install.bat --lang c --lib shared --par mpi --build testing --fpp /P
 
     if "!FLAG!"=="--fpp" (
         set FLAG_SUPPORTED=true
@@ -377,7 +381,7 @@ if defined PARALLELISM_LIST (
                 for %%L in ("!LTYPE_LIST:/=" "!") do (
                     echo.
                     echo.-- !INSTALL_SCRIPT_NAME! - WARNING: The Coarray parallelism flag "--par %%~P" cannot be
-                    echo.-- !INSTALL_SCRIPT_NAME! - WARNING: specified along with the dynamic library build flag "--lib %%~L".
+                    echo.-- !INSTALL_SCRIPT_NAME! - WARNING: specified along with the shared library build flag "--lib %%~L".
                     echo.-- !INSTALL_SCRIPT_NAME! - WARNING: This configuration will be ignored at build time.
                     REM goto LABEL_ERR
                 )
@@ -397,7 +401,7 @@ if defined LANG_LIST (
                 for %%L in ("!LTYPE_LIST:/=" "!") do (
                     if %%~L==static (
                         echo.
-                        echo.-- !INSTALL_SCRIPT_NAME! - WARNING: The dynamic library option "--lib %%~L" cannot be
+                        echo.-- !INSTALL_SCRIPT_NAME! - WARNING: The shared library option "--lib %%~L" cannot be
                         echo.-- !INSTALL_SCRIPT_NAME! - WARNING: specified along with the %%~G language "--lang %%~G".
                         echo.-- !INSTALL_SCRIPT_NAME! - WARNING: This configuration will be ignored at build time.
                         REM goto LABEL_ERR
@@ -413,10 +417,10 @@ if defined LTYPE_LIST (
         for %%L in ("!LTYPE_LIST:/=" "!") do (
             for %%M in ("!MEMORY_LIST:/=" "!") do (
                 if %%~M==stack (
-                    if %%~L==dynamic (
+                    if %%~L==shared (
                         echo.
                         echo.-- !INSTALL_SCRIPT_NAME! - WARNING: The stack memory allocation option "--mem %%~M" cannot be
-                        echo.-- !INSTALL_SCRIPT_NAME! - WARNING: specified along with the dynamic library build "--lib %%~L".
+                        echo.-- !INSTALL_SCRIPT_NAME! - WARNING: specified along with the shared library build "--lib %%~L".
                         echo.-- !INSTALL_SCRIPT_NAME! - WARNING: This configuration will be ignored at build time.
                         REM goto LABEL_ERR
                     )
@@ -432,13 +436,13 @@ echo.
 
 REM if not defined LANG_LIST        set LANG_LIST=c/c++/fortran/matlab/python/r
 REM if not defined BTYPE_LIST       set BTYPE_LIST=release/testing/debug
-REM if not defined LTYPE_LIST       set LTYPE_LIST=static/dynamic
+REM if not defined LTYPE_LIST       set LTYPE_LIST=static/shared
 REM if not defined MEMORY_LIST      set MEMORY_LIST=stack/heap
 REM if not defined PARALLELISM_LIST set PARALLELISM_LIST=none/mpi/cafsingle/cafshared
 
 if not defined LANG_LIST        set LANG_LIST=c/c++/fortran/matlab/python
 if not defined BTYPE_LIST       set BTYPE_LIST=release/debug
-if not defined LTYPE_LIST       set LTYPE_LIST=dynamic
+if not defined LTYPE_LIST       set LTYPE_LIST=shared
 if not defined MEMORY_LIST      set MEMORY_LIST=heap
 if not defined PARALLELISM_LIST set PARALLELISM_LIST=none/mpi
 
@@ -601,7 +605,7 @@ for %%G in ("!LANG_LIST:/=" "!") do (
                         set CAFTYPE=!PARALLELISM:~3!
                     )
 
-                    if !LTYPE!==dynamic (
+                    if !LTYPE!==shared (
                         if !HEAP_ARRAY_ENABLED!==false set BENABLED=false
                         if !CAF_ENABLED!==true set BENABLED=false
                     )
@@ -619,21 +623,21 @@ for %%G in ("!LANG_LIST:/=" "!") do (
 
                     if %%~G==matlab (
                         if !LTYPE!==static set BENABLED=false
-                        if !LTYPE! NEQ dynamic set BENABLED=false
+                        if !LTYPE! NEQ shared set BENABLED=false
                         if !CAF_ENABLED!==true set BENABLED=false
                         if !HEAP_ARRAY_ENABLED!==false set BENABLED=false
                     )
 
                     if %%~G==python (
                         if !LTYPE!==static set BENABLED=false
-                        if !LTYPE! NEQ dynamic set BENABLED=false
+                        if !LTYPE! NEQ shared set BENABLED=false
                         if !CAF_ENABLED!==true set BENABLED=false
                         if !HEAP_ARRAY_ENABLED!==false set BENABLED=false
                     )
 
                     if %%~G==r (
                         if !LTYPE!==static set BENABLED=false
-                        if !LTYPE! NEQ dynamic set BENABLED=false
+                        if !LTYPE! NEQ shared set BENABLED=false
                         if !CAF_ENABLED!==true set BENABLED=false
                         if !HEAP_ARRAY_ENABLED!==false set BENABLED=false
                     )

@@ -63,7 +63,7 @@ echo.
 set MEMORY_ALLOCATION=stack
 if !HEAP_ARRAY_ENABLED!==true set MEMORY_ALLOCATION=heap
 
-:: define ParaMonte_BLD_DIR (win64, win32), compiler (intel), build type (debug, release, testing), lib type (static, dynamic), parallelization mode
+:: define ParaMonte_BLD_DIR (win64, win32), compiler (intel), build type (debug, release, testing), lib type (static, shared), parallelization mode
 
 set ParaMonte_BLD_DIR=!ParaMonte_BLD_ROOT_DIR!\build\win!PLATFORM!\!COMPILER_SUITE!\!COMPILER_VERSION!\!BTYPE!\!LTYPE!\!MEMORY_ALLOCATION!\!PARALLELIZATION_DIR!
 
@@ -243,7 +243,7 @@ if !MPI_ENABLED!==true (
 )
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-:: generate dynamic library files if requested
+:: generate shared library files if requested
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :LABEL_ParaMonte_LIB_ENABLED
@@ -271,7 +271,7 @@ if !OMP_ENABLED!==true set PMLIB_NAME=!PMLIB_NAME!_omp
 :: if not !ParaMonte_LIB_ENABLED!==true goto LABEL_ParaMonteTest_OBJ_ENABLED
 if not !ParaMonte_LIB_ENABLED!==true goto LABEL_EOF
 
-REM if not !LTYPE!==dynamic goto LABEL_EOF
+REM if not !LTYPE!==shared goto LABEL_EOF
 
 cd !ParaMonte_LIB_DIR! && del *.exp *.lib *.dll *.pdb *.obj *.mexw64 *.optrpt
 echo.
@@ -279,7 +279,7 @@ echo. -- ParaMonte - building ParaMonte !LTYPE! library files at: !ParaMonte_LIB
 echo. -- ParaMonte - !LTYPE! library filename: !PMLIB_NAME!
 echo.
 
-if !LTYPE!==dynamic (
+if !LTYPE!==shared (
 
     !FCL! !FCL_FLAGS! !FL_FLAGS! !FL_LIB_FLAGS! ^
     /module:!ParaMonte_MOD_DIR!                         %=path to output ParaMonte example module files=% ^
@@ -315,7 +315,7 @@ if !LTYPE!==dynamic (
 if !ERRORLEVEL!==0 goto LABEL_EOF
 
 echo. 
-echo. -- ParaMonte - Fatal Error: ParaMonte dynamic library (DLL) generation failed.
+echo. -- ParaMonte - Fatal Error: ParaMonte shared library (DLL) generation failed.
 echo. -- ParaMonte - build failed. exiting...
 echo. 
 cd %~dp0

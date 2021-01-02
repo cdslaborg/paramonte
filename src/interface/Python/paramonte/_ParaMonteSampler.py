@@ -535,7 +535,7 @@ class ParaMonteSampler:
 
                 #### Build the library name
 
-                libName = libNamePrefix + pmcs + "_" + buildMode + "_dynamic_heap" + parallelism + libNameSuffix
+                libName = libNamePrefix + pmcs + "_" + buildMode + "_shared_heap" + parallelism + libNameSuffix
                 libPath = find_library(libName)
                 if libPath is None: libPath = os.path.join( pm.path.lib[pm.platform.arch][pmcs], libName )
                 libFound = os.path.isfile(libPath)
@@ -547,8 +547,8 @@ class ParaMonteSampler:
                 break
             #else:
             #    if self.reportEnabled:
-            #        pm.warn( msg   = "ParaMonte dynamic library for the requested build mode " + buildMode + " not found." + newline
-            #                        + "Searching for ParaMonte dynamic library in other build modes..."
+            #        pm.warn( msg   = "The ParaMonte shared library for the requested build mode " + buildMode + " not found." + newline
+            #                        + "Searching for the ParaMonte shared library in other build modes..."
             #                , methodName = self._methodName
             #                , marginTop = 1
             #                , marginBot = 1
@@ -582,7 +582,7 @@ class ParaMonteSampler:
             else:
                 parallelMsg = "Please report this issue at:" + newline
 
-            pm.abort( msg   = "Exhausted all possible ParaMonte dynamic library search" + newline
+            pm.abort( msg   = "Exhausted all possible ParaMonte shared library search" + newline
                             + "names but could not find any compatible library." + newline
                             #+ "Last search:" + newline
                             #+ newline

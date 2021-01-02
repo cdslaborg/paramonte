@@ -42,7 +42,7 @@
 ####################################################################################################################################
 #
 # NOTE: Do not change the contents of this file unless you know what the consequences are.
-# This is the Bash script file that builds objects, dynamic libraries,
+# This is the Bash script file that builds objects, shared libraries,
 # as well as the test and example binaries of the ParaMonte library on non-Windows systems.
 # Upon invocation of this file from a Bash command-line interface,
 # this file will first call the configuration file configParaMonte.bat to read the user's
@@ -362,7 +362,7 @@ cat << EndOfMessage
         -L <language: C/C++/Fortran/MATLAB/Python>
         -s <compiler suite: intel/gnu>
         -b <build mode: release/testing/debug>
-        -l <library type: static/dynamic>
+        -l <library type: static/shared>
         -c <coarray: none/single/shared/distributed>
         -m <mpi enabled: true/false>
         -i <C-Fortran interface enabled: true/false>
@@ -380,14 +380,14 @@ cat << EndOfMessage
 
     example:
 
-        buildParaMonte.sh -b release -l dynamic -c none -m true -i true -d true -n 3
+        buildParaMonte.sh -b release -l shared -c none -m true -i true -d true -n 3
 
     flag definitions:
 
         -L | --lang             : the ParaMonte library interface programming language: C, C++, Fortran, MATLAB, Python
         -s | --compiler_suite   : the ParaMonte library build compiler suite: intel, gnu
         -b | --build            : the ParaMonte library build type: release, testing, debug
-        -l | --lib              : the ParaMonte library type: static, dynamic
+        -l | --lib              : the ParaMonte library type: static, shared
         -c | --caf              : the ParaMonte library Coarray Fortran parallelism type: none, single, shared, distributed
         -m | --mpi_enabled      : the ParaMonte library MPI parallelism enabled?: true, false
         -i | --cfi_enabled      : the ParaMonte library C-Fortran interface enabled? must be true if the library is to be called from non-Fortran languages: true, false
@@ -600,13 +600,13 @@ if [ "${MPI_ENABLED}" = "true" ]; then
     fi
 fi
 
-if [ "${LTYPE}" = "dynamic" ]; then
+if [ "${LTYPE}" = "shared" ]; then
     if [ "${CAFTYPE}" = "shared" ] || [ "${CAFTYPE}" = "distributed" ]; then
         echo >&2
         echo >&2 "-- ${BUILD_NAME} - FATAL: incompatible input flags specified by the user:"
         echo >&2 "-- ${BUILD_NAME} - FATAL:     -l | --lib : ${LTYPE}"
         echo >&2 "-- ${BUILD_NAME} - FATAL:     -c | --caf : ${CAFTYPE}"
-        echo >&2 "-- ${BUILD_NAME} - FATAL: ParaMonte dynamic library build with coarray parallelism currently unsupported."
+        echo >&2 "-- ${BUILD_NAME} - FATAL: ParaMonte shared library build with coarray parallelism currently unsupported."
         echo >&2
         echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
         echo >&2
@@ -1915,7 +1915,7 @@ if [ "${PMCS}" = "gnu" ] && ( [[ "${Fortran_COMPILER_PATH}" =~ .*"build/prerequi
             echo "source ${CAF_LOCAL_INSTALLATION_SETUP_FILE}"
             echo ""
         } >> ${SETUP_FILE_PATH}
-        if [ "${LTYPE}" = "dynamic" ]; then
+        if [ "${LTYPE}" = "shared" ]; then
             {
             echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
             echo "    LD_LIBRARY_PATH=."
@@ -2326,7 +2326,7 @@ export ParaMonteInterfaceFortran_SRC_DIR
 
 unset MATLAB_ROOT_DIR_OPTION # it is imperative to nullify this MATLAB variable for all language builds at all times
 
-if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${CFI_ENABLED}" = "true" ]; then
+if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "shared" ] && [ "${CFI_ENABLED}" = "true" ]; then
 
     echo >&2
     echo >&2 "-- ${BUILD_NAME}MATLAB - searching for a MATLAB installation on your system..."
@@ -2423,7 +2423,7 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
         fi
         if [ "${answer}" = "y" ]; then
             echo >&2
-            echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: skipping the ParaMonte MATLAB dynamic library build..."
+            echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: skipping the ParaMonte MATLAB shared library build..."
             echo >&2
         else
             echo >&2
@@ -2555,7 +2555,7 @@ if [ "${DRYRUN_ENABLED}" != "true" ]; then
         OS_IS_WSL_FLAG=""
     fi
 
-    if [ "${deploy_enabled}" = "true" ] && [ "${LTYPE}" = "dynamic" ]; then
+    if [ "${deploy_enabled}" = "true" ] && [ "${LTYPE}" = "shared" ]; then
         DEPLOY_ENABLED_FLAG="-Ddeploy_enabled=${deploy_enabled}"
     else
         DEPLOY_ENABLED_FLAG=""
@@ -2729,7 +2729,7 @@ unset MATLAB_LIBMAT_FILE
 unset MATLAB_VERSION_FILE
 # set "MATLAB_INC_DIR_FLAG="
 
-if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${CFI_ENABLED}" = "true" ]; then
+if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "shared" ] && [ "${CFI_ENABLED}" = "true" ]; then
 
     #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
     #: check MATLAB's existence
@@ -2830,7 +2830,7 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
         fi
         if [ "${answer}" = "y" ]; then
             echo >&2
-            echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: skipping the ParaMonte MATLAB dynamic library build..."
+            echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: skipping the ParaMonte MATLAB shared library build..."
             echo >&2
         else
             echo >&2
@@ -2882,7 +2882,7 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
                 LDFLAGS+=' -O3'
                 CFLAGS+=' -O3'
             fi
-            echo >&2 "-- ${BUILD_NAME}MATLAB - generating the ParaMonte MATLAB dynamic library: ${ParaMonteMATLAB_BLD_LIB_DIR}${PMLIB_MATLAB_NAME}"
+            echo >&2 "-- ${BUILD_NAME}MATLAB - generating the ParaMonte MATLAB shared library: ${ParaMonteMATLAB_BLD_LIB_DIR}${PMLIB_MATLAB_NAME}"
             echo >&2 "-- ${BUILD_NAME}MATLAB - compiler command: ${MATLAB_BIN_DIR}/mex ${MEX_FLAGS} CFLAGS=${CFLAGS} LDFLAGS=${LDFLAGS} ${ParaMonteKernel_SRC_DIR}/paramonte.m.c ${PMLIB_FULL_PATH} -output ${PMLIB_MATLAB_NAME}"
             #echo >&2 "-- ${BUILD_NAME}MATLAB - compiler options: ${MATLAB_BUILD_FLAGS}"
             # CC=icl CFLAGS="${MATLAB_BUILD_FLAGS}"
@@ -2891,7 +2891,7 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
             "${ParaMonteKernel_SRC_DIR}/paramonte.m.c" ${PMLIB_FULL_PATH} -output ${PMLIB_MATLAB_NAME}
             if [ $? -eq 0 ]; then
                 echo >&2
-                echo >&2 "-- ${BUILD_NAME}MATLAB - ${BoldGreen}The ParaMonte MATLAB dynamic library build appears to have succeeded.${ColorReset}"
+                echo >&2 "-- ${BUILD_NAME}MATLAB - ${BoldGreen}The ParaMonte MATLAB shared library build appears to have succeeded.${ColorReset}"
                 echo >&2
             else
                 echo >&2
@@ -2964,7 +2964,7 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
     cp -R "${ParaMonteInterface_SRC_DIR}/auxil" "${ParaMonteMATLABTest_BLD_DIR}/paramonte/"
     echo >&2
 
-    # copy necessary ParaMonte MATLAB dynamic library files in MATLAB's directory
+    # copy necessary ParaMonte MATLAB shared library files in MATLAB's directory
 
     if [ -d "${ParaMonteMATLABTest_BLD_DIR}/paramonte/lib" ]; then
         echo >&2 "-- ${BUILD_NAME}MATLABTest - ${ParaMonteMATLABTest_BLD_DIR}/paramonte/lib already exists. skipping..."
@@ -3001,7 +3001,7 @@ fi
 # build ParaMonte Python test
 ####################################################################################################################################
 
-if [ "${INTERFACE_LANGUAGE}" = "python" ] && [ "${LTYPE}" = "dynamic" ] && [ "${CFI_ENABLED}" = "true" ]; then
+if [ "${INTERFACE_LANGUAGE}" = "python" ] && [ "${LTYPE}" = "shared" ] && [ "${CFI_ENABLED}" = "true" ]; then
 
     echo >&2
     echo >&2 "-- ${BUILD_NAME}PythonTest - building ParaMonte Python test..."

@@ -42,7 +42,7 @@
 
 %C:\Users\<username>\AppData\Roaming\MathWorks\MATLAB
 %cd D:\Dropbox\Projects\20180101_ParaMonte\git\src\interface\MATLAB\bin
-%mex -nojvm CC=icl paramonte.c libparamonte_dynamic_heap_testing_intel_c_windows_x64_mt.lib -output libparamonte_dynamic_heap_testing_intel_windows_x64_mt
+%mex -nojvm CC=icl paramonte.c libparamonte_shared_heap_testing_intel_c_windows_x64_mt.lib -output libparamonte_shared_heap_testing_intel_windows_x64_mt
 %[status,cmdout] = system('matlab -nosplash -nojvm -r "testParaMonte,exit"','-echo');
 %clc;
 clear all;

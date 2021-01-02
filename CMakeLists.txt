@@ -379,11 +379,11 @@ set ( INTERFACE_LANGUAGE "c" CACHE STRING "Select the build interface language (
 # define library linking type
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-# dynamic:      Use this flag when you have R/Python/MATLAB/Julia code to which you need to link the ParaMonte library dynamically, using DLL files. 
+#  shared:      Use this flag when you have R/Python/MATLAB/Julia code to which you need to link the ParaMonte library dynamically, using DLL files. 
 #  static:      Use this flag when you have Fortran/C/C++ code to which you want to link the ParaMonte library statically.
-#               You can also link dynamically your Fortran/C/C++ codes using DLL files by specifying LTYPE=dynamic flag instead.
+#               You can also link dynamically your Fortran/C/C++ codes using DLL files by specifying LTYPE=shared flag instead.
 
-set ( LTYPE "static" CACHE STRING "Select which configuration to build (static/dynamic)" )
+set ( LTYPE "static" CACHE STRING "Select which configuration to build (static/shared)" )
 
 if (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]" OR ${LTYPE} MATCHES "[sS][hH][aA][rR][eE][dD]")
     set(pmlib_shared TRUE)
@@ -588,7 +588,7 @@ if (NOT EXISTS "${ParaMonteTest_BIN_INPUT_DIR}/")
 endif()
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-#: generate ParaMonte library build directories, object files, and dynamic libraries
+#: generate ParaMonte library build directories, object files, and shared libraries
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 #include_directories(BEFORE ${ParaMonte_LIB_DIR})

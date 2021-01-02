@@ -1763,7 +1763,7 @@ def build(flags=""):
                 if not ("--deploy" in flags or "-D " in flags): flags += ' --deploy'
                 if not ("--build" in flags or "-b " in flags): flags += ' --build "release"'
                 if not ("--lang" in flags or "-L " in flags): flags += ' --lang python'
-                if not ("--lib" in flags or "-l " in flags): flags += ' --lib dynamic'
+                if not ("--lib" in flags or "-l " in flags): flags += ' --lib shared'
                 if not ("--par" in flags or "-p " in flags): flags += ' --par "none"'
                 os.system( pmGitInstallScriptPath + flags )
             except Exception as e:

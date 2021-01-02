@@ -63,10 +63,10 @@ set FPP_FLAGS_TESTING=/fpp /DTESTING_ENABLED
 
 :: copy necessary lib files in the executable's directory
 
-if !LTYPE!==dynamic (
+if !LTYPE!==shared (
 
     echo. 
-    echo. -- ParaMonteTest - testing ParaMonte library in dynamic build mode is currently unsupported...
+    echo. -- ParaMonteTest - testing the ParaMonte library in shared build mode is currently unsupported...
     echo. -- ParaMonteTest - skipping ...
     echo. 
     cd %~dp0

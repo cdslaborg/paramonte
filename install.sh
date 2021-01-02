@@ -42,7 +42,7 @@
 ####################################################################################################################################
 #
 #   NOTE: Do not change the contents of this file unless you know what the consequences are.
-#   This is the Bash script file that builds objects, dynamic libraries, 
+#   This is the Bash script file that builds objects, shared libraries, 
 #   as well as the test and example binaries of the ParaMonte library on non-Windows systems.
 #   Upon invocation of this file from a Bash command-line interface, 
 #   this script will parse the user-provided flags and their values 
@@ -458,8 +458,8 @@ if ! [ -z ${PARALLELISM_LIST+x} ]; then
                 reportConflict "Coarray Fortran parallelism cannot be mixed with MPI."
             fi
             for LTYPE in $LTYPE_LIST; do
-                if  [ "${LTYPE}" = "dynamic" ]; then
-                    reportConflict "Coarray Fortran parallelism cannot be used with dynamic library build option."
+                if  [ "${LTYPE}" = "shared" ]; then
+                    reportConflict "Coarray Fortran parallelism cannot be used with shared library build option."
                 fi
             done
         fi
@@ -512,8 +512,8 @@ if [ -z ${BTYPE_LIST+x} ]; then
     BTYPE_LIST="release debug"
 fi
 if [ -z ${LTYPE_LIST+x} ]; then
-    #LTYPE_LIST="static dynamic"
-    LTYPE_LIST="dynamic"
+    #LTYPE_LIST="static shared"
+    LTYPE_LIST="shared"
 fi
 if [ -z ${PARALLELISM_LIST+x} ]; then
     PARALLELISM_LIST="none mpi cafsingle cafshared cafdistributed"
@@ -531,7 +531,7 @@ fi
 
 if [ "${LANG_LIST}" = "matlab" ] || [ "${LANG_LIST}" = "python" ]; then
     MEMORY_LIST="heap"
-    LTYPE_LIST="dynamic"
+    LTYPE_LIST="shared"
     if [ -z ${PARALLELISM_LIST+x} ]; then PARALLELISM_LIST="none mpi"; fi
 fi
 
@@ -596,14 +596,14 @@ for PMCS in $PMCS_LIST; do
                         # avoid caf library builds for non-Fortran languages
 
                         if [[ "${PARALLELISM}" =~ .*"caf".* ]]; then
-                            if [ "${CFI_ENABLED}" = "true" ] || [ "${LTYPE}" = "dynamic" ]; then
+                            if [ "${CFI_ENABLED}" = "true" ] || [ "${LTYPE}" = "shared" ]; then
                                 BENABLED=false
                             fi
                         fi
 
-                        # avoid stack memory allocations for dynamic library builds
+                        # avoid stack memory allocations for shared library builds
 
-                        if [ "${LTYPE}" = "dynamic" ]; then
+                        if [ "${LTYPE}" = "shared" ]; then
                             if [ "${MEMORY}" = "stack" ]; then BENABLED=false; fi
                         else
                             if [ "${INTERFACE_LANGUAGE}" = "matlab" ] || [ "${INTERFACE_LANGUAGE}" = "python" ]; then BENABLED=false; fi

@@ -404,8 +404,8 @@ echo >&2 "-- ParaMonteExample${pmExamLang} - ParaMonte build type: ${pmBuildType
 # library type
 ####################################################################################################################################
 
-if [[ "${pmLibFullName}" =~ .*"dynamic".* ]]; then
-    pmLibType=dynamic
+if [[ "${pmLibFullName}" =~ .*"shared".* ]]; then
+    pmLibType=shared
 else
     pmLibType=static
 fi

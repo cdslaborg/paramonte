@@ -27,6 +27,9 @@ See also,
 +   The Bash build script for the ParaMonte C/C++/Fortran examples can now handle
     file paths that contain white-space (blank) or other exotic characters.
 
++   The shared (dynamic) library file naming convention is now changed from
+    using "dynamic" in the file name to using "shared" in the file name.
+
 **Minor Enhancements**  
 
 +   Typo-fixes in the documentation of the library.

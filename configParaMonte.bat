@@ -70,10 +70,10 @@ if not defined                          INTERFACE_LANGUAGE set       INTERFACE_L
 if not defined                              BTYPE set                             BTYPE=debug
 
 :: define linking type:
-::                   dynamic:   Use this flag when you have R/Python/MATLAB/Julia code to which you need to link the ParaMonte library dynamically, using DLL files. 
+::                    shared:   Use this flag when you have R/Python/MATLAB/Julia code to which you need to link the ParaMonte library dynamically, using DLL files. 
 ::                    static:   Use this flag when you have Fortran/C/C++ code to which you want to link the ParaMonte library statically.
-::                              You can also link dynamically your Fortran/C/C++ codes using DLL files by specifying LTYPE=dynamic flag instead.
-if not defined                              LTYPE set                             LTYPE=dynamic
+::                              You can also link dynamically your Fortran/C/C++ codes using DLL files by specifying LTYPE=shared flag instead.
+if not defined                              LTYPE set                             LTYPE=shared
 
 :: set Fortran/C array allocation resource.
 ::                      true:   All automatic and stack arrays will be allocated on the heap. Use this when calling ParaMonte from other languages.
