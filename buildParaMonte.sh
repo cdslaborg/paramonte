@@ -387,7 +387,7 @@ cat << EndOfMessage
         -L | --lang             : the ParaMonte library interface programming language: C, C++, Fortran, MATLAB, Python
         -s | --compiler_suite   : the ParaMonte library build compiler suite: intel, gnu
         -b | --build            : the ParaMonte library build type: release, testing, debug
-        -l | --lib              : the ParaMonte library type: static, shared
+        -l | --lib              : the ParaMonte library type: static, shared (or equivalently, dynamic)
         -c | --caf              : the ParaMonte library Coarray Fortran parallelism type: none, single, shared, distributed
         -m | --mpi_enabled      : the ParaMonte library MPI parallelism enabled?: true, false
         -i | --cfi_enabled      : the ParaMonte library C-Fortran interface enabled? must be true if the library is to be called from non-Fortran languages: true, false
@@ -459,7 +459,7 @@ while [ "$1" != "" ]; do
                                 BTYPE=$1; export BTYPE
                                 ;;
         -l | --lib )            shift
-                                LTYPE=$1; export LTYPE
+                                LTYPE=$1; if [ "${LTYPE}" = "dynamic" ]; then LTYPE=shared; fi; export LTYPE
                                 ;;
         -c | --caf )            shift
                                 CAFTYPE=$1; export CAFTYPE
