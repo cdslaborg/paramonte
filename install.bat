@@ -157,13 +157,15 @@ if not "%1"=="" (
         for %%a in ("!VALUE:/=" "!") do (
             set DELIM=
             if defined LTYPE_LIST set DELIM=/
-            if %%~a==dynamic (
+            set DUMMY=%%~a
+            if !DUMMY!==dynamic (
                 set LTYPE_LIST=!LTYPE_LIST!!DELIM!shared
+                set DUMMY=shared
             ) else (
-                set LTYPE_LIST=!LTYPE_LIST!!DELIM!%%~a
+                set LTYPE_LIST=!LTYPE_LIST!!DELIM!!DUMMY!
             )
             set VALUE_SUPPORTED=false
-            for %%V in ( "static" "shared" ) do ( if /I "%%~a"=="%%~V" set "VALUE_SUPPORTED=true" )
+            for %%V in ( "static" "shared" ) do ( if /I !DUMMY!==%%~V set "VALUE_SUPPORTED=true" )
             if not !VALUE_SUPPORTED!==true goto LABEL_REPORT_ERR
         )
         shift
