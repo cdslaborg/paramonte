@@ -385,6 +385,20 @@ set ( INTERFACE_LANGUAGE "c" CACHE STRING "Select the build interface language (
 
 set ( LTYPE "static" CACHE STRING "Select which configuration to build (static/dynamic)" )
 
+if (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]" OR ${LTYPE} MATCHES "[sS][hH][aA][rR][eE][dD]")
+    set(pmlib_shared TRUE)
+elseif (${LTYPE} MATCHES "[sS][tT][aA][tT][iI][cC]")
+    set(pmlib_shared FALSE)
+else()
+    message (FATAL_ERROR
+            "\n"
+            "${pmfatal}\n"
+            "${pmfatal} Unrecognized built type: ${CMAKE_BUILD_TYPE}.\n"
+            "${pmfatal} possible values are: debug/testing/release.\n"
+            "\n"
+            )
+endif()
+
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # set Fortran/C array allocation resource
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

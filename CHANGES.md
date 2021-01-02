@@ -11,7 +11,7 @@ See also,
 
 ## **Version 1.x.x**  
 
-### **Version 1.5.1** -- Dec 30, 2020
+### **Version 1.5.1** -- January 1, 2020
 
 **Minor Enhancements**  
 
@@ -31,7 +31,7 @@ See also,
 
 +   Typo-fixes in the documentation of the library.
 
-### **Version 1.5.0** -- Dec 17, 2020
+### **Version 1.5.0** -- December 17, 2020
 
 **Major Enhancements**  
 

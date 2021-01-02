@@ -9,30 +9,30 @@
 ####
 ####   This file is part of the ParaMonte library.
 ####
-####   Permission is hereby granted, free of charge, to any person obtaining a 
-####   copy of this software and associated documentation files (the "Software"), 
-####   to deal in the Software without restriction, including without limitation 
-####   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-####   and/or sell copies of the Software, and to permit persons to whom the 
+####   Permission is hereby granted, free of charge, to any person obtaining a
+####   copy of this software and associated documentation files (the "Software"),
+####   to deal in the Software without restriction, including without limitation
+####   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+####   and/or sell copies of the Software, and to permit persons to whom the
 ####   Software is furnished to do so, subject to the following conditions:
 ####
-####   The above copyright notice and this permission notice shall be 
+####   The above copyright notice and this permission notice shall be
 ####   included in all copies or substantial portions of the Software.
 ####
-####   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-####   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-####   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-####   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-####   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-####   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+####   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+####   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+####   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+####   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+####   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+####   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 ####   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ####
 ####   ACKNOWLEDGMENT
 ####
 ####   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-####   As per the ParaMonte library license agreement terms, if you use any parts of 
-####   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-####   work (education/research/industry/development/...) by citing the ParaMonte 
+####   As per the ParaMonte library license agreement terms, if you use any parts of
+####   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+####   work (education/research/industry/development/...) by citing the ParaMonte
 ####   library as described on this page:
 ####
 ####       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md
@@ -233,7 +233,7 @@ function(find_static_library LIB_NAME OUT)
         set(CMAKE_FIND_LIBRARY_SUFFIXES ".lib")
     elseif (UNIX)
         set(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
-    endif()      
+    endif()
 
     find_library(
         FOUND_${LIB_NAME}_STATIC
@@ -255,15 +255,15 @@ function(find_static_library LIB_NAME OUT)
 
 endfunction()
 
-# Have the .mod files placed in the lib folder
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+#: Have the .mod files placed in the lib folder
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-if (${LTYPE} MATCHES "[Ss][Tt][Aa][Tt][Ii][Cc]")
+unset(FL_FLAGS_PMLIB)
 
-    add_library(${PMLIB_NAME} STATIC ${ParaMonte_SOURCE_FILES})
+if (pmlib_shared)
 
-elseif (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
-
-    # The following does not seem to work. 
+    # The following does not seem to work.
 
     #if (gnu_compiler AND UNIX AND NOT APPLE)
     #    #set(CMAKE_SKIP_RPATH ON CACHE BOOL "Skip adding a build-dir rpath")
@@ -312,54 +312,79 @@ elseif (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
    #    endif()
    #endif()
 
-else()
-    message ( FATAL_ERROR 
-            "\n"
-            "${pmfatal} Unrecognized library type specified for building ParaMonte library:\n"
-            "${pmfatal}     LTYPE=${LTYPE}\n"
-            "\n"
-            )    
-endif()
+    set_target_properties(${PMLIB_NAME} PROPERTIES BUILD_WITH_INSTALL_RPATH ON)
+    set_target_properties(${PMLIB_NAME} PROPERTIES BUILD_RPATH_USE_ORIGIN ON)
 
-set_target_properties(${PMLIB_NAME} PROPERTIES BUILD_WITH_INSTALL_RPATH ON)
-set_target_properties(${PMLIB_NAME} PROPERTIES BUILD_RPATH_USE_ORIGIN ON)
-
-if (APPLE)
-    set(RPATH_PROP "@loader_path")
-elseif(UNIX)
-    set(RPATH_PROP "$ORIGIN")
-endif()
-
-if (DEFINED MPILIB_NAME)
-    set(RPATH_PROP "${RPATH_PROP}:${RPATH_PROP}/${MPILIB_NAME}")
-endif()
-
-set_target_properties(${PMLIB_NAME} PROPERTIES INSTALL_RPATH "${RPATH_PROP}")
-
-if(gnu_compiler)
-
-    if (deploy_enabled)
-        set_target_properties( ${PMLIB_NAME} PROPERTIES LINK_FLAGS "-static-libgfortran -static-libgcc" )
+    if (APPLE)
+        set(RPATH_PROP "@loader_path")
+    elseif(UNIX)
+        set(RPATH_PROP "$ORIGIN")
     endif()
 
-elseif(intel_compiler)
-
-    if (UNIX OR APPLE)
-        set_target_properties( ${PMLIB_NAME} PROPERTIES LINK_FLAGS "-static-intel" )
+    if (DEFINED MPILIB_NAME)
+        set(RPATH_PROP "${RPATH_PROP}:${RPATH_PROP}/${MPILIB_NAME}")
     endif()
 
-    if (UNIX AND deploy_enabled)
-        set_target_properties( ${PMLIB_NAME} PROPERTIES LINK_FLAGS "-static-intel -static-libgcc -static-libstdc++" )
+    set_target_properties(${PMLIB_NAME} PROPERTIES INSTALL_RPATH "${RPATH_PROP}")
+
+    #### set up the library-specific compile link flags
+
+    if(gnu_compiler)
+
+        set(FL_FLAGS_PMLIB "${FL_FLAGS_PMLIB}"
+        -shared
+        )
+
+        if (deploy_enabled)
+            set(FL_FLAGS_PMLIB "${FL_FLAGS_PMLIB}"
+            -static-libgfortran
+            -static-libgcc
+            )
+        endif()
+
+    elseif(intel_compiler)
+
+        if (WIN32)
+            set(FL_FLAGS_PMLIB "${FL_FLAGS_PMLIB}"
+            /dll
+            )
+        elseif(UNIX)
+            set(FL_FLAGS_PMLIB "${FL_FLAGS_PMLIB}"
+            -qopenmp-link=static
+            -static-intel
+            )
+            if (deploy_enabled)
+                set(FL_FLAGS_PMLIB "${FL_FLAGS_PMLIB}"
+                -static-libstdc++
+                -static-libgcc
+                )
+            endif()
+            if(APPLE)
+                set(FL_FLAGS_PMLIB "${FL_FLAGS_PMLIB}"
+                -noall_load
+                -dynamiclib
+                )
+            else()
+                set(FL_FLAGS_PMLIB "${FL_FLAGS_PMLIB}"
+                -shared
+                )
+            endif()
+        endif()
+
+        #### Include MKL
+
+        #if (CMAKE_BUILD_TYPE MATCHES "Release|RELEASE|release")
+        #    #find_package(MKL REQUIRED)
+        #    target_link_directories(${PMLIB_NAME} PUBLIC ${MKL_LIBRARIES})
+        #    target_include_directories(${PMLIB_NAME} PUBLIC ${MKL_INCLUDE_DIRS})
+        #    target_link_libraries(${PMLIB_NAME} PUBLIC mkl_intel_lp64 mkl_sequential mkl_core)
+        #endif()
+
     endif()
 
-    #### Include MKL
+else() # static lib
 
-    #if (CMAKE_BUILD_TYPE MATCHES "Release|RELEASE|release")
-    #    #find_package(MKL REQUIRED)
-    #    target_link_directories(${PMLIB_NAME} PUBLIC ${MKL_LIBRARIES})
-    #    target_include_directories(${PMLIB_NAME} PUBLIC ${MKL_INCLUDE_DIRS})
-    #    target_link_libraries(${PMLIB_NAME} PUBLIC mkl_intel_lp64 mkl_sequential mkl_core)
-    #endif()
+    add_library(${PMLIB_NAME} STATIC ${ParaMonte_SOURCE_FILES})
 
 endif()
 
@@ -372,7 +397,7 @@ endif()
 #if (NOT WIN32)
 #    if (DEFINED MATLAB_ROOT_DIR)
 #        target_include_directories(${PMLIB_NAME} PUBLIC "${MATLAB_ROOT_DIR}/extern/include")
-#        target_link_directories(${PMLIB_NAME} BEFORE 
+#        target_link_directories(${PMLIB_NAME} BEFORE
 #        PUBLIC "$(MATLAB_ROOT_DIR)/bin/${MATLAB_PLATFORM_SUBDIR}"
 #        PUBLIC "$(MATLAB_ROOT_DIR)/extern/bin/${MATLAB_PLATFORM_SUBDIR}"
 #        )
@@ -388,15 +413,14 @@ set_target_properties( ${PMLIB_NAME} PROPERTIES Fortran_MODULE_DIRECTORY "${Para
 # target_compile_definitions( ${PMLIB_NAME} INTERFACE "${FPP_FLAGS}" ) # cmake currently does not add preprocessor automatically
 
 #string(REPLACE ";" " " FCL_FLAGS ${FCL_FLAGS})
-#string(REPLACE ";" " " FC_LIB_FLAGS ${FC_LIB_FLAGS})
-message( STATUS "${pmattn} ParaMonte library build compile flags: ${FCL_FLAGS} ${FC_LIB_FLAGS}" )
-#target_compile_options( ${PMLIB_NAME} BEFORE PRIVATE "${FCL_FLAGS}" "${FC_LIB_FLAGS}" )
-target_compile_options( ${PMLIB_NAME} BEFORE PRIVATE "${FCL_FLAGS}" "${FC_LIB_FLAGS}" )
+#message(STATUS "${pmattn} ParaMonte library build flags: ${FPP_FLAGS} ${FCL_FLAGS}")
+target_compile_options(${PMLIB_NAME} BEFORE PRIVATE "${FPP_FLAGS} ${FCL_FLAGS}")
 
-#message( STATUS "${pmattn} ParaMonte library build linker flags: ${${FCL_FLAGS}${FL_LIB_FLAGS}}${MATLAB_LINKER_FLAGS}" )
-#target_link_options( ${PMLIB_NAME} BEFORE PRIVATE ${${FCL_FLAGS}${FL_LIB_FLAGS}}${MATLAB_LINKER_FLAGS} )
-message( STATUS "${pmattn} ParaMonte library build linker flags: ${FCL_FLAGS} ${FL_LIB_FLAGS}" )
-target_link_options( ${PMLIB_NAME} BEFORE PRIVATE ${${FCL_FLAGS}${FL_FLAGS}${FL_LIB_FLAGS}} )
+#message( STATUS "${pmattn} ParaMonte library build linker flags: ${${FCL_FLAGS}${FL_FLAGS_PMLIB}}${MATLAB_LINKER_FLAGS}" )
+#target_link_options( ${PMLIB_NAME} BEFORE PRIVATE ${${FCL_FLAGS}${FL_FLAGS_PMLIB}}${MATLAB_LINKER_FLAGS} )
+#message( STATUS "${pmattn} ParaMonte library build linker flags: ${FCL_FLAGS} ${FL_FLAGS_PMLIB}" )
+#target_link_options( ${PMLIB_NAME} BEFORE PRIVATE ${${FCL_FLAGS}${FL_FLAGS}${FL_FLAGS_PMLIB}} )
+target_link_options( ${PMLIB_NAME} BEFORE PRIVATE "${FCL_FLAGS} ${FL_FLAGS} ${FL_FLAGS_PMLIB}" )
 
 get_target_property(PMLIB_INCLUDE_DIRECTORIES   ${PMLIB_NAME} INCLUDE_DIRECTORIES)
 get_target_property(PMLIB_COMPILE_DEFINITIONS   ${PMLIB_NAME} COMPILE_DEFINITIONS)
@@ -408,25 +432,21 @@ get_target_property(PMLIB_INSTALL_NAME_DIR  ${PMLIB_NAME} INSTALL_NAME_DIR)
 get_target_property(PMLIB_LINK_OPTIONS      ${PMLIB_NAME} LINK_OPTIONS)
 get_target_property(PMLIB_LINK_FLAGS        ${PMLIB_NAME} LINK_FLAGS)
 
-message( STATUS "${pmnote} " )
-message( STATUS "${pmattn} target build configuration properties:" )
-message( STATUS "${pmattn} ParaMonte library include directories: ${PMLIB_INCLUDE_DIRECTORIES}" )
-message( STATUS "${pmattn} ParaMonte library compile definitions: ${PMLIB_COMPILE_DEFINITIONS}" )
-message( STATUS "${pmattn} ParaMonte library compile options    : ${PMLIB_COMPILE_OPTIONS}" )
-message( STATUS "${pmattn} ParaMonte library compile flags      : ${PMLIB_COMPILE_FLAGS}" )
-message( STATUS "${pmattn} " )
-message( STATUS "${pmattn} ParaMonte library link directories: ${PMLIB_LINK_DIRECTORIES}" )
-message( STATUS "${pmattn} ParaMonte library install name dir: ${PMLIB_INSTALL_NAME_DIR}" )
-message( STATUS "${pmattn} ParaMonte library link options    : ${PMLIB_LINK_OPTIONS}" )
-message( STATUS "${pmattn} ParaMonte library link flags      : ${PMLIB_LINK_FLAGS}" )
-message( STATUS "${pmattn} " )
+message( STATUS "${pmattn} target include directories: ${PMLIB_INCLUDE_DIRECTORIES}" )
+message( STATUS "${pmattn} target compile definitions: ${PMLIB_COMPILE_DEFINITIONS}" )
+message( STATUS "${pmattn} target compile options    : ${PMLIB_COMPILE_OPTIONS}" )
+message( STATUS "${pmattn} target compile flags      : ${PMLIB_COMPILE_FLAGS}" )
+message( STATUS "${pmattn} target link directories: ${PMLIB_LINK_DIRECTORIES}" )
+message( STATUS "${pmattn} target install name dir: ${PMLIB_INSTALL_NAME_DIR}" )
+message( STATUS "${pmattn} target link options    : ${PMLIB_LINK_OPTIONS}" )
+message( STATUS "${pmattn} target link flags      : ${PMLIB_LINK_FLAGS}" )
 
 
 if (CODECOV_ENABLED AND gnu_compiler)
     target_link_libraries(${PMLIB_NAME} PUBLIC gcov)
 endif()
 
-install(TARGETS ${PMLIB_NAME} 
+install(TARGETS ${PMLIB_NAME}
         CONFIGURATIONS "${CMAKE_BUILD_TYPE}"
         DESTINATION "${ParaMonte_LIB_DIR}/"
         )
