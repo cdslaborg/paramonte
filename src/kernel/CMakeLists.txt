@@ -335,12 +335,12 @@ if (pmlib_shared)
         -shared
         )
 
-        if (deploy_enabled)
-            set(FL_FLAGS_PMLIB "${FL_FLAGS_PMLIB}"
-            -static-libgfortran
-            -static-libgcc
-            )
-        endif()
+        #if (deploy_enabled)
+        #    set(FL_FLAGS_PMLIB "${FL_FLAGS_PMLIB}"
+        #    -static-libgfortran
+        #    -static-libgcc
+        #    )
+        #endif()
 
     elseif(intel_compiler)
 
