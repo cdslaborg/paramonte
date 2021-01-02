@@ -2555,7 +2555,7 @@ if [ "${DRYRUN_ENABLED}" != "true" ]; then
         OS_IS_WSL_FLAG=""
     fi
 
-    if [ "${deploy_enabled}" = "true" ]; then
+    if [ "${deploy_enabled}" = "true" ] && [ "${LTYPE}" = "dynamic" ]; then
         DEPLOY_ENABLED_FLAG="-Ddeploy_enabled=${deploy_enabled}"
     else
         DEPLOY_ENABLED_FLAG=""
