@@ -123,7 +123,7 @@ export isWSL
 LANG_LIST="c cpp fortran python matlab"
 BTYPE_LIST="debug release"
 LTYPE_LIST="shared"
-PARALLELISM_LIST="impi mpich openmpi"
+PARALLELISM_LIST="none impi mpich openmpi"
 PMCS_LIST="gnu intel"
 MEMORY_LIST="heap"
 pmReleaseLink="https://github.com/cdslaborg/paramonte/releases/latest/download"
@@ -211,7 +211,12 @@ for PMCS in $PMCS_LIST; do
             for LTYPE in $LTYPE_LIST; do
                 for MEMORY in $MEMORY_LIST; do
                     for PARALLELISM in $PARALLELISM_LIST; do
-                        pmLibName="libparamonte_${LANG}_${PLATFORM}_${ARCHITECTURE}_${PMCS}_${BTYPE}_${LTYPE}_${MEMORY_ALLOCATION}"
+                        if [ "${PARALLELISM}" = "none" ]; then
+                            parSuffix=""
+                        else
+                            parSuffix="_${PARALLELISM}"
+                        fi
+                        pmLibName="libparamonte_${LANG}_${PLATFORM}_${ARCHITECTURE}_${PMCS}_${BTYPE}_${LTYPE}_${MEMORY}${parSuffix}"
                         compressedFileExt=".tar.gz"
                         if [ "${isMacOS}" = "true" ]; then
                             fetch="curl -OL"
