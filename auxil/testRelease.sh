@@ -306,13 +306,6 @@ if command -v matlab >/dev/null 2>&1; then
         fetch+=" ${pmReleaseLink}/${compressedFileName}"
 
         cmd=(matlab -batch main)
-        if [[ "${PARALLELISM}" =~ .*"impi".* ]] || [[ "${PARALLELISM}" =~ .*"mpich".* ]] || [[ "${PARALLELISM}" =~ .*"openmpi".* ]]; then
-            if [ "${PLATFORM}" = "windows" ]; then
-                cmd+=(&& mpiexec -localonly -n 3 matlab -batch main_mpi)
-            else
-                cmd+=(&& mpiexec -n 3 matlab -batch main_mpi)
-            fi
-        fi
 
         echo >&2 && echo >&2 "-- ${BUILD_NAME} - ${fetch}" && echo >&2 && $(${fetch}) \
         && \
@@ -321,7 +314,17 @@ if command -v matlab >/dev/null 2>&1; then
         ls "${tempDir}/" && cd "${tempDir}/${pmLibName}" \
         && \
         echo >&2 && echo >&2 "-- ${BUILD_NAME} - ${cmd[@]}" && echo >&2 && "${cmd[@]}" \
-        || {
+        && \
+        {
+        if [[ "${PARALLELISM}" =~ .*"impi".* ]] || [[ "${PARALLELISM}" =~ .*"mpich".* ]] || [[ "${PARALLELISM}" =~ .*"openmpi".* ]]; then
+            if [ "${PLATFORM}" = "windows" ]; then
+                cmd=(mpiexec -localonly -n 3 matlab -batch main_mpi)
+            else
+                cmd=(mpiexec -n 3 matlab -batch main_mpi)
+            fi
+        fi
+        echo >&2 && echo >&2 "-- ${BUILD_NAME} - ${cmd[@]}" && echo >&2 && "${cmd[@]}"
+        } || {
             echo >&2
             echo >&2 "-- ${BUILD_NAME} - test FAILED for ${pmLibName}."
             echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
