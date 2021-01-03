@@ -331,9 +331,19 @@ do
                                 || \
                                 [[ "${dependencyFilePath}" =~ .*"libmpi".* ]] \
                                 || \
+                                [[ "${dependencyFilePath}" =~ .*"libmpifort".* ]] \
+                                || \
                                 [[ "${dependencyFilePath}" =~ .*"libfabric".* ]] \
                                 || \
-                                [[ "${dependencyFilePath}" =~ .*"libmpifort".* ]] \
+                                [[ "${dependencyFilePath}" =~ .*"libpsm2".* ]] \
+                                || \
+                                [[ "${dependencyFilePath}" =~ .*"librdmacm".* ]] \
+                                || \
+                                [[ "${dependencyFilePath}" =~ .*"libibverbs".* ]] \
+                                || \
+                                [[ "${dependencyFilePath}" =~ .*"libnl-route-3".* ]] \
+                                || \
+                                [[ "${dependencyFilePath}" =~ .*"libnl-3".* ]] \
                             ) && \
                             ! ( \
                                 [[ "${dependencyFilePath}" =~ .*"libc.".* ]] \
