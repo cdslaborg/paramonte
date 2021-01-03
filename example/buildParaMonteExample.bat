@@ -106,11 +106,6 @@ if !INTERFACE_LANGUAGE!==matlab (
     set LANG_IS_MATLAB=true
     set LANG_FILE_EXT=m
     set LANG_NAME=MATLAB
-    REM set ParaMonteMATLAB_BIN_ROOT_DIR=!ParaMonte_BIN_DIR!\libparamonte_MATLAB
-    REM echo.-- ParaMonte - The ParaMonte MATLAB binaries root directory: !ParaMonteMATLAB_BIN_ROOT_DIR!
-    REM if not exist !ParaMonteMATLAB_BIN_ROOT_DIR! (
-    REM     mkdir "!ParaMonteMATLAB_BIN_ROOT_DIR!\"
-    REM )
 )
 
 if !INTERFACE_LANGUAGE!==python (
@@ -118,11 +113,6 @@ if !INTERFACE_LANGUAGE!==python (
     set LANG_IS_Python=true
     set LANG_FILE_EXT=py
     set LANG_NAME=Python
-    REM set ParaMontePython_BIN_ROOT_DIR=!ParaMonte_BIN_DIR!\libparamonte_Python
-    REM echo.-- ParaMonte - The ParaMonte Python binaries root directory: !ParaMontePython_BIN_ROOT_DIR!
-    REM if not exist !ParaMontePython_BIN_ROOT_DIR! (
-    REM     mkdir "!ParaMontePython_BIN_ROOT_DIR!\"
-    REM )
 )
 
 if !INTERFACE_LANGUAGE!==r (
@@ -130,11 +120,6 @@ if !INTERFACE_LANGUAGE!==r (
     set LANG_IS_R=true
     set LANG_FILE_EXT=R
     set LANG_NAME=R
-    REM set ParaMonteR_BIN_ROOT_DIR=!ParaMonte_BIN_DIR!\libparamonte_R
-    REM echo.-- ParaMonte - The ParaMonte R binaries root directory: !ParaMonteR_BIN_ROOT_DIR!
-    REM if not exist !ParaMonteR_BIN_ROOT_DIR! (
-    REM     mkdir "!ParaMonteR_BIN_ROOT_DIR!\"
-    REM )
 )
 
 if not defined LANG_NAME (
@@ -347,7 +332,7 @@ if %ERRORLEVEL%==0 (
 set ParaMonteExample_BLD_DIR_CURRENT=!ParaMonteExample_BLD_DIR!\mvn
 
 if !LANG_IS_DYNAMIC!==true (
-    set ParaMonteExample_BIN_DIR_CURRENT=!ParaMonte_BIN_DIR!\libparamonte_!LANG_NAME!
+    set ParaMonteExample_BIN_DIR_CURRENT=!ParaMonte_BIN_DIR!\libparamonte_!INTERFACE_LANGUAGE!_windows_!PLATFORM!
 ) else (
     set ParaMonteExample_BIN_DIR_CURRENT=!ParaMonte_BIN_DIR!\!PMLIB_NAME!
 )

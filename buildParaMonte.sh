@@ -3463,12 +3463,8 @@ mkdir -p ${ParaMonte_BIN_DIR}
 ####################################################################################################################################
 
 ParaMonte_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR}"
-if [ "${INTERFACE_LANGUAGE}" = "python" ]; then
-    ParaMonte_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR_CURRENT}/libparamonte_Python"
-elif [ "${INTERFACE_LANGUAGE}" = "matlab" ]; then
-    ParaMonte_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR_CURRENT}/libparamonte_MATLAB"
-elif [ "${INTERFACE_LANGUAGE}" = "matdram" ]; then
-    ParaMonte_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR_CURRENT}/libparamonte_MatDRAM"
+if [ "${INTERFACE_LANGUAGE}" = "python" ] || [ "${INTERFACE_LANGUAGE}" = "matlab" ]; then
+    ParaMonte_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR_CURRENT}/libparamonte_${INTERFACE_LANGUAGE}_${PLATFORM}_${ARCHITECTURE}"
 else
     ParaMonte_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR_CURRENT}/${PMLIB_BASE_NAME}"
 fi

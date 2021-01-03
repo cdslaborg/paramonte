@@ -128,7 +128,7 @@ EXAM_LIST="mvn"
 
 # set and make example directories
 
-MatDRAM_BLD_DIR="${ParaMonte_ROOT_DIR}/build/libparamonte_MatDRAM"
+MatDRAM_BLD_DIR="${ParaMonte_ROOT_DIR}/build/libparamonte_matdram"
 MatDRAM_EXP_DIR="${MatDRAM_BLD_DIR}/example"
 
 ParaMonteInterface_SRC_DIR_CURRENT="${ParaMonteInterface_SRC_DIR}/${LANG_NAME}"
@@ -189,7 +189,7 @@ do
     # The MatDRAM library interface files
 
     echo >&2
-    echo >&2 "-- ${BUILD_NAME} - from: ${ParaMonteInterface_SRC_DIR_CURRENT}/libparamonte_MatDRAM"
+    echo >&2 "-- ${BUILD_NAME} - from: ${ParaMonteInterface_SRC_DIR_CURRENT}/libparamonte_matdram"
     echo >&2 "-- ${BUILD_NAME} -   to: ${MatDRAM_BLD_DIR_CURRENT}/paramonte/"
     cp -R "${ParaMonteInterface_SRC_DIR_CURRENT}/paramonte" "${MatDRAM_BLD_DIR_CURRENT}/paramonte/" || printCopyFailMsg
 
@@ -292,7 +292,7 @@ echo >&2
 
 MatDRAM_BLD_DIR_CURRENT="${MatDRAM_EXP_DIR}/mvn"
 
-MatDRAMExample_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR}/libparamonte_MatDRAM"
+MatDRAMExample_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR}/libparamonte_matdram"
 
 echo >&2 "-- ${BUILD_NAME} - The MatDRAM ${LANG_NAME} library binary directory: ${MatDRAMExample_BIN_DIR_CURRENT}"
 

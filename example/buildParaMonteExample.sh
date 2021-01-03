@@ -795,7 +795,7 @@ if ! [ -d "${ParaMonte_BIN_DIR}" ]; then
 fi
 
 ParaMonteExample_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR}/${PMLIB_BASE_NAME}"
-if [ "${LANG_IS_DYNAMIC}" = "true" ]; then ParaMonteExample_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR}/libparamonte_${LANG_ABBR}"; fi
+if [ "${LANG_IS_DYNAMIC}" = "true" ]; then ParaMonteExample_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR}/libparamonte_${LANG_ABBR}_${PLATFORM}_${ARCHITECTURE}"; fi
 if ! [ -d "${ParaMonteExample_BIN_DIR_CURRENT}" ]; then
     mkdir "${ParaMonteExample_BIN_DIR_CURRENT}/";
     verify $? "recursive directory creation"
