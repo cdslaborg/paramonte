@@ -291,7 +291,7 @@ if command -v matlab >/dev/null 2>&1; then
 
         compressedFileName="${pmLibName}"
         if [ "${isWindows}" = "true" ]; then
-            fetch="${srcFileDir}/wget"
+            fetch="${srcFileDir}/wget.exe"
             compressedFileName+=".zip"
             untar=("${srcFileDir}/7z" -Y e "${tempDir}/${compressedFileName}" -o"${tempDir}/${pmLibName}")
         else
