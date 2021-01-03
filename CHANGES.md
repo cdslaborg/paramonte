@@ -34,6 +34,24 @@ See also,
 
 +   Typo-fixes in the documentation of the library.
 
+**Compiler Compatibility**  
+  
+| Compiler Suite                    | Windows (64bit) | Linux | macOS |  
+|----------------------------------:|:---------------:|:-----:|:-----:|  
+| GNU Compiler Collection > 8.4     | ✅              | ✅    | ✅    |  
+| Intel Parallel Studio > 19.1.1    | ✅              | ✅    | ✅    |  
+| Microsoft C/C++ Compiler > 16.0.0 | ✅              | ❌    | ❌    |  
+
+**Compiler / MPI library used for this binary release**  
+
++   **Windows**: Intel Parallel Studio Version 19.1.1.216 Build 20200306 / Intel(R) MPI Library 2019 Update 7 for Windows  
++   **Linux**: Intel Parallel Studio Version 19.1.1.217 20200306 / Intel(R) MPI Library for Linux OS, Version 2019 Update 7 Build 20200312
++   **Linux**: GNU 10.1.0 / Open-MPI 4.0.3  
++   **Linux**: GNU 10.1.0 / MPICH 3.2  
++   **macOS**: Intel Parallel Studio Version 19.1.0.216 20200306  
++   **macOS**: GNU 10.2.0 / Open-MPI 4.0.5  
++   **macOS**: GNU 10.2.0 / MPICH 3.3.2  
+
 ### **Version 1.5.0** -- December 17, 2020
 
 **Major Enhancements**  
