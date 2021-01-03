@@ -361,6 +361,12 @@ do
                         if  [ "${MPILIB_NAME}" = "openmpi" ] \
                             && ( \
                                 [[ "${dependencyFilePath}" =~ .*"libmpi".* ]] \
+                                || \
+                                [[ "${dependencyFilePath}" =~ .*"libmca".* ]] \
+                                || \
+                                [[ "${dependencyFilePath}" =~ .*"libompi".* ]] \
+                                || \
+                                [[ "${dependencyFilePath}" =~ .*"libopen".* ]] \
                             ); then \
                             mpiDepDetected=true
                         fi
@@ -380,19 +386,17 @@ do
                         fi
 
                         if [ "${depAllowed}" = "true" ]; then
-                            if [ -f "${dependencyFilePath}" ]; then
-                                if [ "${gnuDepDetected}" = "true" ] || [ "${mpiDepDetected}" = "true" ]; then
-                                    dependencyDetected=true
-                                fi
+                            if [ -f "${dependencyFilePath}" ] && ([ "${gnuDepDetected}" = "true" ] || [ "${mpiDepDetected}" = "true" ]); then
+                                dependencyDetected=true
                             elif [ "${mpiDepDetected}" = "true" ] && [ -f "${MPIEXEC_PATH}" ]; then
                                 depFileName="${dependencyFilePath##*/}"
                                 mpiexecBinDir="$(dirname "${MPIEXEC_PATH}")"
                                 libDirList="lib:lib64"
                                 for libDir in ${libDirList//:/ }; do
                                     # echo >&2 "${mpiexecBinDir}/../${libDir}/${depFileName}"
-                                    dummFilePath="${mpiexecBinDir}/../${libDir}/${depFileName}"
-                                    if [ -f "${dummFilePath}" ]; then
-                                        dependencyFilePath="${dummFilePath}"
+                                    dummyFilePath="${mpiexecBinDir}/../${libDir}/${depFileName}"
+                                    if [ -f "${dummyFilePath}" ]; then
+                                        dependencyFilePath="${dummyFilePath}"
                                         dependencyDetected=true
                                         break
                                     fi
@@ -436,13 +440,9 @@ do
                             dependencyPathTarget="${dependencyPath}"
                             dependencyNameTarget="${dependencyName}"
 
-                            if [ "${isMacOS}" = "true" ]; then
-                                echo >&2 "-- ParaMonteExample${LANG_NAME} - macOS symlink handling not supported yet. skipping!"
-                            else
-                                if [ -L "${dependencyPath}" ]; then
-                                    dependencyPathTarget="$(readlink -f "${dependencyPath}")"
-                                    dependencyNameTarget="$(basename "${dependencyPathTarget}")"
-                                fi
+                            if [ -L "${dependencyPath}" ]; then
+                                dependencyPathTarget="$(readlink -f "${dependencyPath}")"
+                                dependencyNameTarget="$(basename "${dependencyPathTarget}")"
                             fi
 
                             #### copy and work on the dependency file only if it does not already exist in the folder.
@@ -502,33 +502,34 @@ do
 
                             fi
 
-                                echo >&2 "-- ParaMonteExample${LANG_NAME} - setting the install name for the dependency file..."
-                                if [ "${isMacOS}" = "true" ]; then
-                                    chmod a+w "${sharedFilePath}" \
-                                    && \
-                                    install_name_tool -change "${dependencyPath}" "@rpath/${dependencyName}" "${sharedFilePath}" \
-                                    || {
-                                        echo >&2
-                                        echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: Changing the install name of the dependency file failed."
-                                        echo >&2
-                                        exit 1
-                                        #if [ "$BASH_SOURCE" == "$0" ]; then exit 30; else return 88; fi # return with an error message
-                                    }
-                                elif [ "${isLinux}" = "true" ] &&  ! [[ "${sharedFilePath}" =~ .*"libparamonte".* ]]; then
-                                    # echo >&2 "${ParaMonte_ROOT_DIR}/auxil/patchelf --set-rpath \$ORIGIN ${sharedFilePath}"
-                                    "${ParaMonte_ROOT_DIR}/auxil/"patchelf --set-rpath \$ORIGIN "${sharedFilePath}" \
-                                    || {
-                                        echo >&2
-                                        echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: install_name setting of the dependency file failed."
-                                        echo >&2
-                                        exit 1
-                                        #if [ "$BASH_SOURCE" == "$0" ]; then exit 30; else return 88; fi # return with an error message
-                                    }
-                                fi
-                                echo >&2
+                            echo >&2 "-- ParaMonteExample${LANG_NAME} - setting the install name for the dependency file..."
+                            if [ "${isMacOS}" = "true" ]; then
+                                chmod a+w "${sharedFilePath}" \
+                                && \
+                                install_name_tool -change "${dependencyPath}" "@rpath/${dependencyName}" "${sharedFilePath}" \
+                                || {
+                                    echo >&2
+                                    echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: Changing the install name of the dependency file failed."
+                                    echo >&2
+                                    exit 1
+                                    #if [ "$BASH_SOURCE" == "$0" ]; then exit 30; else return 88; fi # return with an error message
+                                }
+                            elif [ "${isLinux}" = "true" ] &&  ! [[ "${sharedFilePath}" =~ .*"libparamonte".* ]]; then
+                                # echo >&2 "${ParaMonte_ROOT_DIR}/auxil/patchelf --set-rpath \$ORIGIN ${sharedFilePath}"
+                                "${ParaMonte_ROOT_DIR}/auxil/"patchelf --set-rpath \$ORIGIN "${sharedFilePath}" \
+                                || {
+                                    echo >&2
+                                    echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: install_name setting of the dependency file failed."
+                                    echo >&2
+                                    exit 1
+                                    #if [ "$BASH_SOURCE" == "$0" ]; then exit 30; else return 88; fi # return with an error message
+                                }
+                            fi
+                            echo >&2
 
                         done
-
+                        #echo >&2 "${sharedFilePath}"
+                        #readelf -d "${sharedFilePath}"
                     fi
 
                     sharedFilePathListLen=${#sharedFilePathList[@]}
