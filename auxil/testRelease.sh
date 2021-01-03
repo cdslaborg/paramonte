@@ -224,6 +224,7 @@ for PMCS in $PMCS_LIST; do
                         else
                             parSuffix="_${PARALLELISM}"
                             if ([ "${PMCS}" = "intel" ] && ([ "${PARALLELISM}" = "openmpi" ] || [ "${PARALLELISM}" = "mpich" ])) \
+                            || ([ "${PMCS}" = "intel" ] && [ "${PARALLELISM}" = "impi" ] && [ "${isMacOS}" = "true" ]) \
                             || ([ "${PMCS}" = "gnu" ] && [ "${PARALLELISM}" = "impi" ]) \
                             then
                                 BENABLED=false
