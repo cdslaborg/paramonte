@@ -244,7 +244,6 @@ for PMCS in $PMCS_LIST; do
                             fi
                             fetch+=" ${pmReleaseLink}/${pmLibName}${compressedFileExt}"
 
-
                             tempDir=$(mktemp -d "${TMPDIR:-/tmp}/cversion.XXXXXXXXX")
                             echo >&2 "-- ${BUILD_NAME} - changing directory to: ${tempDir}"
 
@@ -274,5 +273,70 @@ for PMCS in $PMCS_LIST; do
         done
     done
 done
+
+####################################################################################################################################
+#### test matlab
+####################################################################################################################################
+
+LANG=matlab
+if command -v matlab >/dev/null 2>&1; then
+    if [[ "${LANG_LIST}" =~ .*"${LANG}".* ]]; then
+
+        for PARALLELISM in $PARALLELISM_LIST; do
+
+            pmLibName="libparamonte_${LANG}_${PLATFORM}_${ARCHITECTURE}"
+
+            if [ "${PLATFORM}" = "windows" ]; then
+                compressedFileExt=".zip"
+            else
+                compressedFileExt=".tar.gz"
+            fi
+
+            untar=(tar xvzf "${pmLibName}${compressedFileExt}")
+
+            if [ "${isMacOS}" = "true" ]; then
+                fetch="curl -OL"
+            else
+                fetch="wget"
+            fi
+            fetch+=" ${pmReleaseLink}/${pmLibName}${compressedFileExt}"
+
+            if [ "${PARALLELISM}" = "none" ]; then
+                cmd=(matlab -batch main)
+            else
+                if [ "${PLATFORM}" = "windows" ]; then
+                    cmd=(mpiexec -localonly -n 3 matlab -batch main_mpi)
+                else
+                    cmd=(mpiexec -n 3 matlab -batch main_mpi)
+                fi
+            fi
+
+            tempDir=$(mktemp -d "${TMPDIR:-/tmp}/cversion.XXXXXXXXX")
+            echo >&2 "-- ${BUILD_NAME} - changing directory to: ${tempDir}"
+
+            cd "${tempDir}" \
+            && \
+            echo >&2 && echo >&2 "-- ${BUILD_NAME} - ${fetch}" && echo >&2 && $(${fetch}) \
+            && \
+            echo >&2 && echo >&2 "-- ${BUILD_NAME} - ${untar[@]}" && echo >&2 && "${untar[@]}" \
+            && \
+            cd ${pmLibName} \
+            && \
+            echo >&2 && echo >&2 "-- ${BUILD_NAME} - ${cmd[@]}" && echo >&2 && "${cmd[@]}" \
+            || {
+                echo >&2
+                echo >&2 "-- ${BUILD_NAME} - test FAILED for ${pmLibName}."
+                echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
+                echo >&2
+                cd "${workingDir}"
+                exit 1
+            }
+
+        done
+
+    fi
+fi
+
+####################################################################################################################################
 
 cd "${workingDir}"
