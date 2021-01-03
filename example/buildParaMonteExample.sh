@@ -213,8 +213,8 @@ do
     mkdir -p "${ParaMonteExample_BLD_DIR_CURRENT}/"
     verify $? "recursive directory creation"
 
-    #### The ParaMonte library kernel files. 
-    #### The library directory of ParaMonte Python must be root directory. 
+    #### The ParaMonte library kernel files.
+    #### The library directory of ParaMonte Python must be root directory.
     #### This is essential for the correct functionality of ctypes module.
 
     ParaMonteExample_LIB_DIR_CURRENT="${ParaMonteExample_BLD_DIR_CURRENT}"
@@ -263,7 +263,7 @@ do
 
         #### gnu compilers
 
-        if ! [ "${CAF_ENABLED}" = "true" ]; then # [ "${PMCS}" = "gnu" ] && 
+        if ! [ "${CAF_ENABLED}" = "true" ]; then # [ "${PMCS}" = "gnu" ] &&
 
             #### first create the dependencies list
 
@@ -319,17 +319,23 @@ do
                         #   || \
                         #   [[ "${dependencyFilePath}" =~ .*"openmpi".* ]] \
 
-                        if  [ -f "${dependencyFilePath}" ] && \
-                            ( \
-                                [[ "${dependencyFilePath}" =~ .*"gnu".* ]] \
+                        if  [ -f "${dependencyFilePath}" ]; then
+
+                            gnuDepDetected=false
+                            mpiDepDetected=false
+
+                            if  [[ "${dependencyFilePath}" =~ .*"gnu".* ]] \
                                 || \
                                 [[ "${dependencyFilePath}" =~ .*"gcc".* ]] \
                                 || \
                                 [[ "${dependencyFilePath}" =~ .*"gfortran".* ]] \
                                 || \
                                 [[ "${dependencyFilePath}" =~ .*"quadmath".* ]] \
-                                || \
-                                [[ "${dependencyFilePath}" =~ .*"libmpi".* ]] \
+                                ; then \
+                                gnuDepDetected=true
+                            fi
+
+                            if  [[ "${dependencyFilePath}" =~ .*"libmpi".* ]] \
                                 || \
                                 [[ "${dependencyFilePath}" =~ .*"libmpifort".* ]] \
                                 || \
@@ -344,22 +350,30 @@ do
                                 [[ "${dependencyFilePath}" =~ .*"libnl-route-3".* ]] \
                                 || \
                                 [[ "${dependencyFilePath}" =~ .*"libnl-3".* ]] \
-                            ) && \
-                            ! ( \
-                                [[ "${dependencyFilePath}" =~ .*"libc.".* ]] \
                                 || \
-                                [[ "${dependencyFilePath}" =~ .*"libm.".* ]] \
-                                || \
-                                [[ "${dependencyFilePath}" =~ .*"libdl.".* ]] \
-                                || \
-                                [[ "${dependencyFilePath}" =~ .*"librt.".* ]] \
-                                || \
-                                [[ "${dependencyFilePath}" =~ .*"libpthread.".* ]] \
-                            ); then
-                            #if ! [ "${isMacOS}" = "true" ] || ( [ "${isMacOS}" = "true" ] && ! [[ "${dependencyFilePath}" =~ .*"/usr/lib/".* ]] ); then
-                                echo >&2 "-- ParaMonteExample${LANG_NAME} - dependency detected: ${dependencyFilePath}"
-                                dependencyList+=("${dependencyFilePath}")
-                            #fi
+                                [[ "${dependencyFilePath}" =~ .*"libopen-pal".* ]] \
+                                ; then \
+                                # impi / mpich
+                                mpiDepDetected=true
+                            fi
+
+                            if  ( [ "${gnuDepDetected}" = "true" ] || [ "${mpiDepDetected}" = "true" ] ) && \
+                                ! ( \
+                                    [[ "${dependencyFilePath}" =~ .*"libc.".* ]] \
+                                    || \
+                                    [[ "${dependencyFilePath}" =~ .*"libm.".* ]] \
+                                    || \
+                                    [[ "${dependencyFilePath}" =~ .*"libdl.".* ]] \
+                                    || \
+                                    [[ "${dependencyFilePath}" =~ .*"librt.".* ]] \
+                                    || \
+                                    [[ "${dependencyFilePath}" =~ .*"libpthread.".* ]] \
+                                ); then
+                                #if ! [ "${isMacOS}" = "true" ] || ( [ "${isMacOS}" = "true" ] && ! [[ "${dependencyFilePath}" =~ .*"/usr/lib/".* ]] ); then
+                                    echo >&2 "-- ParaMonteExample${LANG_NAME} - dependency detected: ${dependencyFilePath}"
+                                    dependencyList+=("${dependencyFilePath}")
+                                #fi
+                            fi
                         fi
 
                     done
@@ -406,7 +420,7 @@ do
 
                             dependencyDirDestin="${ParaMonteExample_LIB_DIR_CURRENT}"
                             # put the serial shared files in the parent directory to save space and avoid redundancy.
-                            if [ "${LANG_IS_DYNAMIC}" = "true" ] && [[ "${dependencyName}" =~ .*"libmpi".* ]]; then
+                            if [ "${LANG_IS_DYNAMIC}" = "true" ] && [ "${mpiDepDetected}" = "true" ]; then
                                 dependencyDirDestin="${ParaMonteExample_LIB_DIR_CURRENT}/${MPILIB_NAME}"
                             fi
                             if ! [ -d "{dependencyDirDestin}" ]; then
@@ -466,7 +480,16 @@ do
                                 install_name_tool -change "${dependencyPath}" "@rpath/${dependencyName}" "${sharedFilePath}" \
                                 || {
                                     echo >&2
-                                    echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: Changing the install_name of the dependency file to @rpath failed."
+                                    echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: Changing the install_name of the dependency file failed."
+                                    echo >&2
+                                    exit 1
+                                    #if [ "$BASH_SOURCE" == "$0" ]; then exit 30; else return 88; fi # return with an error message
+                                }
+                            elif [ "${isLinux}" = "true" ]; then
+                                "${ParaMonte_ROOT_DIR}/auxil/patchelf" --set-rpath \$ORIGIN "${sharedFilePath}" \
+                                || {
+                                    echo >&2
+                                    echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: install_name setting of the dependency file failed."
                                     echo >&2
                                     exit 1
                                     #if [ "$BASH_SOURCE" == "$0" ]; then exit 30; else return 88; fi # return with an error message
