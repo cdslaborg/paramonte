@@ -76,6 +76,7 @@ matrix:
             - cmake
             - gfortran-9
             - libmpich-dev
+            - python3
             - mpich
       script:
         - pmRootDir="$(pwd)"
