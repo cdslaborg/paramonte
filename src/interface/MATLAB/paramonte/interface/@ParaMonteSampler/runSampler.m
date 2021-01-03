@@ -287,20 +287,15 @@ function runSampler(self,ndim,getLogFunc,varargin)
     end
     getLogFuncSpec = functions(getLogFunc);
 
-    try
-        iscmd = isdeployed() || batchStartupOptionUsed; % batchStartupOptionUsed is introduced in R2019a and not supported in older versions of MATLAB
-    catch
-        iscmd = isdeployed();
-    end
-    if ~(self.reportEnabled || iscmd || self.platform.isWin32)
+    if ~(self.reportEnabled || self.platform.iscmd || self.platform.isWin32)
         self.Err.msg = "check the Bash terminal (from which you opened MATLAB) for realtime simulation progress and report.";
         self.Err.note();
     end
 
     if strcmp(getLogFuncSpec.type,"simple") && strcmp(getLogFuncSpec.function,"getLogFunc")
-        expression = string(self.libName + "(iscmd,ndim,inputFile)");
+        expression = string(self.libName + "(self.platform.iscmd,ndim,inputFile)");
     else
-        expression = string(self.libName + "(iscmd,ndim,inputFile,@getLogFuncNested)");
+        expression = string(self.libName + "(self.platform.iscmd,ndim,inputFile,@getLogFuncNested)");
     end
 
     isGNU = contains(self.libName,"gnu");

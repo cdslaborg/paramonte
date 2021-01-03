@@ -417,6 +417,13 @@ classdef paramonte %< dynamicprops
                 end
             end
 
+            try
+                % batchStartupOptionUsed is introduced in R2019a and not supported in older versions of MATLAB
+                self.platform.iscmd = isdeployed() || batchStartupOptionUsed;
+            catch
+                self.platform.iscmd = isdeployed();
+            end
+
             self.platform.systemInfoFilePrefix = fullfile(self.path.auxil, ".systemInfo_");
             self.platform.systemInfoFilePath = self.platform.systemInfoFilePrefix + string(strrep(date,"-","_"));
             if ~isfile(self.platform.systemInfoFilePath)
@@ -712,10 +719,15 @@ classdef paramonte %< dynamicprops
 
                         if verificationEnabledString=="True"
 
-                            isYes = getUserResponse ( newline ...
-                                                    + "    Do you wish to download and install the MPI runtime library" + newline ...
-                                                    + "    (only needed for parallel simulations) on your system now (y/n)? " ...
-                                                    );
+                            if self.platform.iscmd
+                                isYes = false;
+                            else
+                                isYes = getUserResponse ( newline ...
+                                                        + "    Do you wish to download and install the MPI runtime library" + newline ...
+                                                        + "    (only needed for parallel simulations) on your system now (y/n)? " ...
+                                                        );
+                            end
+
                             if isYes
                                 succeeded = self.installMPI();
                                 if succeeded
