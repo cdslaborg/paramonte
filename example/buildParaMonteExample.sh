@@ -331,6 +331,8 @@ do
                                 || \
                                 [[ "${dependencyFilePath}" =~ .*"libmpi".* ]] \
                                 || \
+                                [[ "${dependencyFilePath}" =~ .*"libfabric".* ]] \
+                                || \
                                 [[ "${dependencyFilePath}" =~ .*"libmpifort".* ]] \
                             ) && \
                             ! ( \
