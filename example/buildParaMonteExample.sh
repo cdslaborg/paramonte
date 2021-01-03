@@ -319,23 +319,25 @@ do
                         #   || \
                         #   [[ "${dependencyFilePath}" =~ .*"openmpi".* ]] \
 
-                        if  [ -f "${dependencyFilePath}" ]; then
+                        dependencyDetected=false
+                        gnuDepDetected=false
+                        mpiDepDetected=false
+                        depAllowed=false
 
-                            gnuDepDetected=false
-                            mpiDepDetected=false
+                        if  [[ "${dependencyFilePath}" =~ .*"gnu".* ]] \
+                            || \
+                            [[ "${dependencyFilePath}" =~ .*"gcc".* ]] \
+                            || \
+                            [[ "${dependencyFilePath}" =~ .*"gfortran".* ]] \
+                            || \
+                            [[ "${dependencyFilePath}" =~ .*"quadmath".* ]] \
+                            ; then \
+                            gnuDepDetected=true
+                        fi
 
-                            if  [[ "${dependencyFilePath}" =~ .*"gnu".* ]] \
-                                || \
-                                [[ "${dependencyFilePath}" =~ .*"gcc".* ]] \
-                                || \
-                                [[ "${dependencyFilePath}" =~ .*"gfortran".* ]] \
-                                || \
-                                [[ "${dependencyFilePath}" =~ .*"quadmath".* ]] \
-                                ; then \
-                                gnuDepDetected=true
-                            fi
-
-                            if  [[ "${dependencyFilePath}" =~ .*"libmpi".* ]] \
+                        if  ( [ "${MPILIB_NAME}" = "impi" ] || [ "${MPILIB_NAME}" = "mpich" ] ) \
+                            && ( \
+                                [[ "${dependencyFilePath}" =~ .*"libmpi".* ]] \
                                 || \
                                 [[ "${dependencyFilePath}" =~ .*"libmpifort".* ]] \
                                 || \
@@ -352,28 +354,55 @@ do
                                 [[ "${dependencyFilePath}" =~ .*"libnl-3".* ]] \
                                 || \
                                 [[ "${dependencyFilePath}" =~ .*"libopen-pal".* ]] \
-                                ; then \
-                                # impi / mpich
-                                mpiDepDetected=true
-                            fi
+                            ); then \
+                            mpiDepDetected=true
+                        fi
 
-                            if  ( [ "${gnuDepDetected}" = "true" ] || [ "${mpiDepDetected}" = "true" ] ) && \
-                                ! ( \
-                                    [[ "${dependencyFilePath}" =~ .*"libc.".* ]] \
-                                    || \
-                                    [[ "${dependencyFilePath}" =~ .*"libm.".* ]] \
-                                    || \
-                                    [[ "${dependencyFilePath}" =~ .*"libdl.".* ]] \
-                                    || \
-                                    [[ "${dependencyFilePath}" =~ .*"librt.".* ]] \
-                                    || \
-                                    [[ "${dependencyFilePath}" =~ .*"libpthread.".* ]] \
-                                ); then
-                                #if ! [ "${isMacOS}" = "true" ] || ( [ "${isMacOS}" = "true" ] && ! [[ "${dependencyFilePath}" =~ .*"/usr/lib/".* ]] ); then
-                                    echo >&2 "-- ParaMonteExample${LANG_NAME} - dependency detected: ${dependencyFilePath}"
-                                    dependencyList+=("${dependencyFilePath}")
-                                #fi
+                        if  [ "${MPILIB_NAME}" = "openmpi" ] \
+                            && ( \
+                                [[ "${dependencyFilePath}" =~ .*"libmpi".* ]] \
+                            ); then \
+                            mpiDepDetected=true
+                        fi
+
+                        if ! ( \
+                            [[ "${dependencyFilePath}" =~ .*"libc.so".* ]] \
+                            || \
+                            [[ "${dependencyFilePath}" =~ .*"libm.so".* ]] \
+                            || \
+                            [[ "${dependencyFilePath}" =~ .*"libdl.so".* ]] \
+                            || \
+                            [[ "${dependencyFilePath}" =~ .*"librt.so".* ]] \
+                            || \
+                            [[ "${dependencyFilePath}" =~ .*"libpthread.so".* ]] \
+                            ); then
+                            depAllowed=true
+                        fi
+
+                        if [ "${depAllowed}" = "true" ]; then
+                            if [ -f "${dependencyFilePath}" ]; then
+                                if [ "${gnuDepDetected}" = "true" ] || [ "${mpiDepDetected}" = "true" ]; then
+                                    dependencyDetected=true
+                                fi
+                            elif [ "${mpiDepDetected}" = "true" ] && [ -f "${MPIEXEC_PATH}" ]; then
+                                depFileName="${dependencyFilePath##*/}"
+                                mpiexecBinDir="$(dirname "${MPIEXEC_PATH}")"
+                                libDirList="lib:lib64"
+                                for libDir in ${libDirList//:/ }; do
+                                    # echo >&2 "${mpiexecBinDir}/../${libDir}/${depFileName}"
+                                    dummFilePath="${mpiexecBinDir}/../${libDir}/${depFileName}"
+                                    if [ -f "${dummFilePath}" ]; then
+                                        dependencyFilePath="${dummFilePath}"
+                                        dependencyDetected=true
+                                        break
+                                    fi
+                                done
                             fi
+                        fi
+
+                        if [ "${dependencyDetected}" = "true" ]; then
+                            echo >&2 "-- ParaMonteExample${LANG_NAME} - dependency detected: ${dependencyFilePath}"
+                            dependencyList+=("${dependencyFilePath}")
                         fi
 
                     done
@@ -486,8 +515,8 @@ do
                                         #if [ "$BASH_SOURCE" == "$0" ]; then exit 30; else return 88; fi # return with an error message
                                     }
                                 elif [ "${isLinux}" = "true" ] &&  ! [[ "${sharedFilePath}" =~ .*"libparamonte".* ]]; then
-                                    echo >&2 "${ParaMonte_ROOT_DIR}/auxil/patchelf --set-rpath \$ORIGIN ${sharedFilePath}"
-                                    "${ParaMonte_ROOT_DIR}/auxil/patchelf" --set-rpath '\$ORIGIN' "${sharedFilePath}" \
+                                    # echo >&2 "${ParaMonte_ROOT_DIR}/auxil/patchelf --set-rpath \$ORIGIN ${sharedFilePath}"
+                                    "${ParaMonte_ROOT_DIR}/auxil/"patchelf --set-rpath \$ORIGIN "${sharedFilePath}" \
                                     || {
                                         echo >&2
                                         echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: install_name setting of the dependency file failed."
