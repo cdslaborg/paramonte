@@ -42,7 +42,7 @@
 ####################################################################################################################################
 #
 # NOTE: Do not change the contents of this file unless you know what the consequences are.
-# This is the Bash script file that builds objects, dynamic libraries,
+# This is the Bash script file that builds objects, shared libraries,
 # as well as the test and example binaries of the ParaMonte library on non-Windows systems.
 # Upon invocation of this file from a Bash command-line interface,
 # this file will first call the configuration file configParaMonte.bat to read the user's
@@ -362,7 +362,7 @@ cat << EndOfMessage
         -L <language: C/C++/Fortran/MATLAB/Python>
         -s <compiler suite: intel/gnu>
         -b <build mode: release/testing/debug>
-        -l <library type: static/dynamic>
+        -l <library type: static/shared>
         -c <coarray: none/single/shared/distributed>
         -m <mpi enabled: true/false>
         -i <C-Fortran interface enabled: true/false>
@@ -380,21 +380,21 @@ cat << EndOfMessage
 
     example:
 
-        buildParaMonte.sh -b release -l dynamic -c none -m true -i true -d true -n 3
+        buildParaMonte.sh -b release -l shared -c none -m true -i true -d true -n 3
 
     flag definitions:
 
         -L | --lang             : the ParaMonte library interface programming language: C, C++, Fortran, MATLAB, Python
         -s | --compiler_suite   : the ParaMonte library build compiler suite: intel, gnu
         -b | --build            : the ParaMonte library build type: release, testing, debug
-        -l | --lib              : the ParaMonte library type: static, dynamic
+        -l | --lib              : the ParaMonte library type: static, shared (or equivalently, dynamic)
         -c | --caf              : the ParaMonte library Coarray Fortran parallelism type: none, single, shared, distributed
         -m | --mpi_enabled      : the ParaMonte library MPI parallelism enabled?: true, false
         -i | --cfi_enabled      : the ParaMonte library C-Fortran interface enabled? must be true if the library is to be called from non-Fortran languages: true, false
         -e | --heap_enabled     : the ParaMonte library heap array allocation enabled?: true, false
         -t | --test             : the ParaMonte library test run enabled?: none, all, pm, nopm
         -x | --exam_enabled     : the ParaMonte library examples run enabled?: true, false
-        -S | --shared_enabled   : release the shared library dependencies in the binary release of the ParaMonte library: true, false
+        -D | --deploy           : release the shared library dependencies in the binary release of the ParaMonte library (this is mostly useful for the library developers)
         -f | --fortran          : path to Fortran compiler. If provided, the ParaMonte library will be built via the specified compiler.
         -M | --mpiexec          : path to mpiexec routine. If provided, it will be used to find the MPI library.
         -F | --fresh            : enables a fresh installation of all of the prerequisites of ParaMonte library. Applicable only to GNU compiler suite.
@@ -436,7 +436,7 @@ freshInstallEnabled=false
 YES_TO_ALL_DISABLED=true
 CODECOV_ENABLED=false
 DRYRUN_ENABLED=false
-shared_enabled=true
+deploy_enabled=false
 CLEAN=false
 
 chmod a+x ./configParaMonte.sh
@@ -459,7 +459,7 @@ while [ "$1" != "" ]; do
                                 BTYPE=$1; export BTYPE
                                 ;;
         -l | --lib )            shift
-                                LTYPE=$1; export LTYPE
+                                LTYPE=$1; if [ "${LTYPE}" = "dynamic" ]; then LTYPE=shared; fi; export LTYPE
                                 ;;
         -c | --caf )            shift
                                 CAFTYPE=$1; export CAFTYPE
@@ -479,8 +479,7 @@ while [ "$1" != "" ]; do
         -x | --exam_enabled )   shift
                                 ParaMonteExample_RUN_ENABLED=$1; export ParaMonteExample_RUN_ENABLED
                                 ;;
-        -S | --shared_enabled ) shift
-                                shared_enabled=$1; export shared_enabled
+        -D | --deploy )         deploy_enabled=true; export deploy_enabled
                                 ;;
         -f | --fortran )        shift
                                 Fortran_COMPILER_PATH_USER=$1; export Fortran_COMPILER_PATH_USER
@@ -601,13 +600,13 @@ if [ "${MPI_ENABLED}" = "true" ]; then
     fi
 fi
 
-if [ "${LTYPE}" = "dynamic" ]; then
+if [ "${LTYPE}" = "shared" ]; then
     if [ "${CAFTYPE}" = "shared" ] || [ "${CAFTYPE}" = "distributed" ]; then
         echo >&2
         echo >&2 "-- ${BUILD_NAME} - FATAL: incompatible input flags specified by the user:"
         echo >&2 "-- ${BUILD_NAME} - FATAL:     -l | --lib : ${LTYPE}"
         echo >&2 "-- ${BUILD_NAME} - FATAL:     -c | --caf : ${CAFTYPE}"
-        echo >&2 "-- ${BUILD_NAME} - FATAL: ParaMonte dynamic library build with coarray parallelism currently unsupported."
+        echo >&2 "-- ${BUILD_NAME} - FATAL: ParaMonte shared library build with coarray parallelism currently unsupported."
         echo >&2
         echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
         echo >&2
@@ -1376,8 +1375,6 @@ if ! [ -z ${MPIEXEC_PATH_USER+x} ]; then
             echo >&2 "-- ${BUILD_NAME} - ${warning}: user-specified mpiexec path: ${MPIEXEC_PATH_USER}"
             echo >&2 "-- ${BUILD_NAME} - ${warning}:       inferred mpiexec path: ${MPIEXEC_PATH}"
             echo >&2
-            echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
-            echo >&2
         fi
         MPIEXEC_PATH="${MPIEXEC_PATH_USER}"
     else
@@ -1610,155 +1607,159 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
         fi
 
         ############################################################################################################################
-        #### check mpi installation
+        #### check mpi installation, only if the user has not specified the mpiexec path
         ############################################################################################################################
 
-        localMpiInstallationDetected=false
-        if [ "${isMacOS}" = "true" ]; then
-            CURRENT_PKG="the Open-MPI library"
-            echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
-            echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
-            (brew install open-mpi && brew link open-mpi )
-            (command -v mpiexec >/dev/null 2>&1 )
-            verify $? "installation of ${CURRENT_PKG}"
-            MPIEXEC_PATH="$(command -v mpiexec)"
-        else
-            CURRENT_PKG="the MPICH library"
-            if [ "${mpiInstallEnabled}" = "true" ]; then
-                MPIEXEC_PATH="${MPI_LOCAL_INSTALLATION_BIN_DIR}/mpiexec"
-                if [[ -f "${MPIEXEC_PATH}" ]]; then
-                    echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected: ${MPI_LOCAL_INSTALLATION_BIN_DIR}"
-                    localMpiInstallationDetected=true
-                    if [[ ":$PATH:" != *":${MPI_LOCAL_INSTALLATION_BIN_DIR}:"* ]]; then
-                        PATH="${MPI_LOCAL_INSTALLATION_BIN_DIR}:${PATH}"
-                    fi
-                    if [[ ":$LD_LIBRARY_PATH:" != *":${MPI_LOCAL_INSTALLATION_LIB_DIR}:"* ]]; then
-                        LD_LIBRARY_PATH="${MPI_LOCAL_INSTALLATION_LIB_DIR}:${LD_LIBRARY_PATH}"
-                        export LD_LIBRARY_PATH
-                    fi
-                    PATH="${MPI_LOCAL_INSTALLATION_LIB_DIR}:${PATH}"
-                    export PATH
-                else
-                    ##########################################################################
-                    echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
-                    echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
-                    chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all --package mpich --install-version ${mpichVersionOpenCoarrays} ) ||
-                    {
-                        if [ -z ${GCC_BOOTSTRAP+x} ]; then
-                            if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
-                                answerNotGiven=true
-                                while [ "${answerNotGiven}" = "true" ]; do
+        if [ -z ${MPIEXEC_PATH_USER+x} ]; then
+            localMpiInstallationDetected=false
+            if [ "${isMacOS}" = "true" ]; then
+                CURRENT_PKG="the Open-MPI library"
+                echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
+                echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
+                (brew install open-mpi && brew link open-mpi )
+                (command -v mpiexec >/dev/null 2>&1 )
+                verify $? "installation of ${CURRENT_PKG}"
+                MPIEXEC_PATH="$(command -v mpiexec)"
+            else
+                CURRENT_PKG="the MPICH library"
+                if [ "${mpiInstallEnabled}" = "true" ]; then
+                    MPIEXEC_PATH="${MPI_LOCAL_INSTALLATION_BIN_DIR}/mpiexec"
+                    if [[ -f "${MPIEXEC_PATH}" ]]; then
+                        echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected: ${MPI_LOCAL_INSTALLATION_BIN_DIR}"
+                        localMpiInstallationDetected=true
+                        if [[ ":$PATH:" != *":${MPI_LOCAL_INSTALLATION_BIN_DIR}:"* ]]; then
+                            PATH="${MPI_LOCAL_INSTALLATION_BIN_DIR}:${PATH}"
+                        fi
+                        if [[ ":$LD_LIBRARY_PATH:" != *":${MPI_LOCAL_INSTALLATION_LIB_DIR}:"* ]]; then
+                            LD_LIBRARY_PATH="${MPI_LOCAL_INSTALLATION_LIB_DIR}:${LD_LIBRARY_PATH}"
+                            export LD_LIBRARY_PATH
+                        fi
+                        PATH="${MPI_LOCAL_INSTALLATION_LIB_DIR}:${PATH}"
+                        export PATH
+                    else
+                        ##########################################################################
+                        echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
+                        echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
+                        chmod +x "${ParaMonte_REQ_DIR}/install.sh"
+                        (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all --package mpich --install-version ${mpichVersionOpenCoarrays} ) ||
+                        {
+                            if [ -z ${GCC_BOOTSTRAP+x} ]; then
+                                if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
+                                    answerNotGiven=true
+                                    while [ "${answerNotGiven}" = "true" ]; do
+                                        echo >&2
+                                        read -p "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer
+                                        echo >&2
+                                        if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
+                                            answer=y
+                                            answerNotGiven=false
+                                        fi
+                                        if [[ $answer == [nN] || $answer == [nN][oO] ]]; then
+                                            answer=n
+                                            answerNotGiven=false
+                                        fi
+                                        if [ "${answerNotGiven}" = "true" ]; then
+                                            echo >&2 "-- ${BUILD_NAME} - please enter either y or n"
+                                        fi
+                                    done
+                                else
                                     echo >&2
-                                    read -p "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer
+                                    echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? y"
                                     echo >&2
-                                    if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
-                                        answer=y
-                                        answerNotGiven=false
-                                    fi
-                                    if [[ $answer == [nN] || $answer == [nN][oO] ]]; then
-                                        answer=n
-                                        answerNotGiven=false
-                                    fi
-                                    if [ "${answerNotGiven}" = "true" ]; then
-                                        echo >&2 "-- ${BUILD_NAME} - please enter either y or n"
-                                    fi
-                                done
-                            else
+                                    answer=y
+                                fi
                                 echo >&2
-                                echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? y"
-                                echo >&2
-                                answer=y
-                            fi
-                            echo >&2
-                            if [ "${answer}" = "y" ]; then
-                                GCC_BOOTSTRAP="--bootstrap"
-                                chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                                (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} )
-                                verify $? "installation of ${CURRENT_PKG}"
+                                if [ "${answer}" = "y" ]; then
+                                    GCC_BOOTSTRAP="--bootstrap"
+                                    chmod +x "${ParaMonte_REQ_DIR}/install.sh"
+                                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} )
+                                    verify $? "installation of ${CURRENT_PKG}"
+                                else
+                                    verify 1 "installation of ${CURRENT_PKG}"
+                                fi
                             else
                                 verify 1 "installation of ${CURRENT_PKG}"
                             fi
-                        else
-                            verify 1 "installation of ${CURRENT_PKG}"
-                        fi
-                    }
-                    ##########################################################################
+                        }
+                        ##########################################################################
+                    fi
                 fi
             fi
         fi
 
         ############################################################################################################################
-        #### check gnu
+        #### check the gnu installation, only if the user has not specified the gfortran path
         ############################################################################################################################
 
-        CURRENT_PKG="the GNU compiler collection"
-        if [ "${gnuInstallEnabled}" = "true" ]; then # || [ "${localMpiInstallationDetected}" = "false" ]); then
-            Fortran_COMPILER_PATH="${GNU_LOCAL_INSTALLATION_BIN_DIR}/gfortran"
-            if [[ -f "${Fortran_COMPILER_PATH}" ]]; then
-                echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected: ${GNU_LOCAL_INSTALLATION_BIN_DIR}"
-                if [[ ":$PATH:" != *":${GNU_LOCAL_INSTALLATION_LIB_DIR}:"* ]]; then
-                    PATH="${GNU_LOCAL_INSTALLATION_LIB_DIR}:${PATH}"
-                    export PATH
-                fi
-                if [[ ":$LD_LIBRARY_PATH:" != *":${GNU_LOCAL_INSTALLATION_LIB_DIR}:"* ]]; then
-                    LD_LIBRARY_PATH="${GNU_LOCAL_INSTALLATION_LIB_DIR}:${LD_LIBRARY_PATH}"
-                    export LD_LIBRARY_PATH
-                fi
-                #gnuInstallEnabled=false
-            else
-                ##########################################################################
-                echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
-                echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
-                if [ "${isMacOS}" = "true" ]; then
-                    (brew install gcc && brew link gcc )
-                    (command -v gfortran >/dev/null 2>&1 )
-                    verify $? "installation of ${CURRENT_PKG}"
-                    Fortran_COMPILER_PATH="$(command -v gfortran)"
+        if [ -z ${Fortran_COMPILER_PATH_USER+x} ]; then
+            CURRENT_PKG="the GNU compiler collection"
+            if [ "${gnuInstallEnabled}" = "true" ]; then # || [ "${localMpiInstallationDetected}" = "false" ]); then
+                Fortran_COMPILER_PATH="${GNU_LOCAL_INSTALLATION_BIN_DIR}/gfortran"
+                if [[ -f "${Fortran_COMPILER_PATH}" ]]; then
+                    echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected: ${GNU_LOCAL_INSTALLATION_BIN_DIR}"
+                    if [[ ":$PATH:" != *":${GNU_LOCAL_INSTALLATION_LIB_DIR}:"* ]]; then
+                        PATH="${GNU_LOCAL_INSTALLATION_LIB_DIR}:${PATH}"
+                        export PATH
+                    fi
+                    if [[ ":$LD_LIBRARY_PATH:" != *":${GNU_LOCAL_INSTALLATION_LIB_DIR}:"* ]]; then
+                        LD_LIBRARY_PATH="${GNU_LOCAL_INSTALLATION_LIB_DIR}:${LD_LIBRARY_PATH}"
+                        export LD_LIBRARY_PATH
+                    fi
+                    #gnuInstallEnabled=false
                 else
-                    chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} ) ||
-                    {
-                        if [ -z ${GCC_BOOTSTRAP+x} ]; then
-                            if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
-                                answerNotGiven=true
-                                while [ "${answerNotGiven}" = "true" ]; do
+                    ##########################################################################
+                    echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
+                    echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
+                    if [ "${isMacOS}" = "true" ]; then
+                        (brew install gcc && brew link gcc )
+                        (command -v gfortran >/dev/null 2>&1 )
+                        verify $? "installation of ${CURRENT_PKG}"
+                        Fortran_COMPILER_PATH="$(command -v gfortran)"
+                    else
+                        chmod +x "${ParaMonte_REQ_DIR}/install.sh"
+                        (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} ) ||
+                        {
+                            if [ -z ${GCC_BOOTSTRAP+x} ]; then
+                                if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
+                                    answerNotGiven=true
+                                    while [ "${answerNotGiven}" = "true" ]; do
+                                        echo >&2
+                                        read -p "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer
+                                        echo >&2
+                                        if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
+                                            answer=y
+                                            answerNotGiven=false
+                                        fi
+                                        if [[ $answer == [nN] || $answer == [nN][oO] ]]; then
+                                            answer=n
+                                            answerNotGiven=false
+                                        fi
+                                        if [ "${answerNotGiven}" = "true" ]; then
+                                            echo >&2 "-- ${BUILD_NAME} - please enter either y or n"
+                                        fi
+                                    done
+                                else
                                     echo >&2
-                                    read -p "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer
+                                    echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? y"
                                     echo >&2
-                                    if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
-                                        answer=y
-                                        answerNotGiven=false
-                                    fi
-                                    if [[ $answer == [nN] || $answer == [nN][oO] ]]; then
-                                        answer=n
-                                        answerNotGiven=false
-                                    fi
-                                    if [ "${answerNotGiven}" = "true" ]; then
-                                        echo >&2 "-- ${BUILD_NAME} - please enter either y or n"
-                                    fi
-                                done
-                            else
+                                    answer=y
+                                fi
                                 echo >&2
-                                echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? y"
-                                echo >&2
-                                answer=y
-                            fi
-                            echo >&2
-                            if [ "${answer}" = "y" ]; then
-                                GCC_BOOTSTRAP="--bootstrap"
-                                chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                                (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} )
-                                verify $? "installation of ${CURRENT_PKG}"
+                                if [ "${answer}" = "y" ]; then
+                                    GCC_BOOTSTRAP="--bootstrap"
+                                    chmod +x "${ParaMonte_REQ_DIR}/install.sh"
+                                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} )
+                                    verify $? "installation of ${CURRENT_PKG}"
+                                else
+                                    verify 1 "installation of ${CURRENT_PKG}"
+                                fi
                             else
                                 verify 1 "installation of ${CURRENT_PKG}"
                             fi
-                        else
-                            verify 1 "installation of ${CURRENT_PKG}"
-                        fi
-                    }
+                        }
+                    fi
+                    ##########################################################################
                 fi
-                ##########################################################################
             fi
         fi
 
@@ -1766,78 +1767,79 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
         #### check caf
         ############################################################################################################################
 
-        CURRENT_PKG="the OpenCoarrays compiler wrapper"
-        if [ "${CAF_ENABLED}" = "true" ] && [ "${cafInstallEnabled}" = "true" ]; then
-            if [[ -f "${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}" ]]; then
-                echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected: ${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}"
-            else
-                ##########################################################################
-                echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
-                echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
-                if [ "${isMacOS}" = "true" ]; then
-                    (brew install opencoarrays && brew link opencoarrays )
-                    (command -v caf >/dev/null 2>&1 )
-                    verify $? "installation of ${CURRENT_PKG}"
-                    CAF_LOCAL_INSTALLATION_WRAPPER_PATH="$(command -v caf)"
+        if [ -z ${Fortran_COMPILER_PATH_USER+x} ]; then
+            CURRENT_PKG="the OpenCoarrays compiler wrapper"
+            if [ "${CAF_ENABLED}" = "true" ] && [ "${cafInstallEnabled}" = "true" ]; then
+                if [[ -f "${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}" ]]; then
+                    echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected: ${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}"
                 else
-                    chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh ${GCC_BOOTSTRAP} --yes-to-all) ||
-                    {
-                        if [ -z ${GCC_BOOTSTRAP+x} ]; then
-                            if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
-                                answerNotGiven=true
-                                while [ "${answerNotGiven}" = "true" ]; do
+                    ##########################################################################
+                    echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
+                    echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
+                    if [ "${isMacOS}" = "true" ]; then
+                        (brew install opencoarrays && brew link opencoarrays )
+                        (command -v caf >/dev/null 2>&1 )
+                        verify $? "installation of ${CURRENT_PKG}"
+                        CAF_LOCAL_INSTALLATION_WRAPPER_PATH="$(command -v caf)"
+                    else
+                        chmod +x "${ParaMonte_REQ_DIR}/install.sh"
+                        (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh ${GCC_BOOTSTRAP} --yes-to-all) ||
+                        {
+                            if [ -z ${GCC_BOOTSTRAP+x} ]; then
+                                if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
+                                    answerNotGiven=true
+                                    while [ "${answerNotGiven}" = "true" ]; do
+                                        echo >&2
+                                        read -p "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer
+                                        echo >&2
+                                        if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
+                                            answer=y
+                                            answerNotGiven=false
+                                        fi
+                                        if [[ $answer == [nN] || $answer == [nN][oO] ]]; then
+                                            answer=n
+                                            answerNotGiven=false
+                                        fi
+                                        if [ "${answerNotGiven}" = "true" ]; then
+                                            echo >&2 "-- ${BUILD_NAME} - please enter either y or n"
+                                        fi
+                                    done
+                                else
                                     echo >&2
-                                    read -p "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer
+                                    echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? y"
                                     echo >&2
-                                    if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
-                                        answer=y
-                                        answerNotGiven=false
-                                    fi
-                                    if [[ $answer == [nN] || $answer == [nN][oO] ]]; then
-                                        answer=n
-                                        answerNotGiven=false
-                                    fi
-                                    if [ "${answerNotGiven}" = "true" ]; then
-                                        echo >&2 "-- ${BUILD_NAME} - please enter either y or n"
-                                    fi
-                                done
-                            else
+                                    answer=y
+                                fi
                                 echo >&2
-                                echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? y"
-                                echo >&2
-                                answer=y
-                            fi
-                            echo >&2
-                            if [ "${answer}" = "y" ]; then
-                                GCC_BOOTSTRAP="--bootstrap"
-                                chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                                (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} )
-                                verify $? "installation of ${CURRENT_PKG}"
+                                if [ "${answer}" = "y" ]; then
+                                    GCC_BOOTSTRAP="--bootstrap"
+                                    chmod +x "${ParaMonte_REQ_DIR}/install.sh"
+                                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} )
+                                    verify $? "installation of ${CURRENT_PKG}"
+                                else
+                                    verify 1 "installation of ${CURRENT_PKG}"
+                                fi
                             else
                                 verify 1 "installation of ${CURRENT_PKG}"
                             fi
-                        else
-                            verify 1 "installation of ${CURRENT_PKG}"
-                        fi
-                    }
+                        }
+                    fi
+                    ##########################################################################
                 fi
-                ##########################################################################
+                Fortran_COMPILER_PATH="${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}"
             fi
-            Fortran_COMPILER_PATH="${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}"
+            if [ -f "${CAF_LOCAL_INSTALLATION_SETUP_FILE}" ]; then
+                source "${CAF_LOCAL_INSTALLATION_SETUP_FILE}"
+                # source "${SETUP_FILE_PATH}"
+                # echo "" >> ${SETUP_FILE_PATH}
+                # echo "source ${CAF_LOCAL_INSTALLATION_SETUP_FILE}" >> ${SETUP_FILE_PATH}
+                # echo "" >> ${SETUP_FILE_PATH}
+            fi
         fi
 
-        if [ -f "${CAF_LOCAL_INSTALLATION_SETUP_FILE}" ]; then
-            source "${CAF_LOCAL_INSTALLATION_SETUP_FILE}"
-            # source "${SETUP_FILE_PATH}"
-            # echo "" >> ${SETUP_FILE_PATH}
-            # echo "source ${CAF_LOCAL_INSTALLATION_SETUP_FILE}" >> ${SETUP_FILE_PATH}
-            # echo "" >> ${SETUP_FILE_PATH}
-        fi
+    fi # block user permission for prereqs installation
 
-    fi
-
-fi
+fi # block prereqs installation enabled
 
 # check one last time if Fortran compiler path exists, if not unset
 
@@ -1913,7 +1915,7 @@ if [ "${PMCS}" = "gnu" ] && ( [[ "${Fortran_COMPILER_PATH}" =~ .*"build/prerequi
             echo "source ${CAF_LOCAL_INSTALLATION_SETUP_FILE}"
             echo ""
         } >> ${SETUP_FILE_PATH}
-        if [ "${LTYPE}" = "dynamic" ]; then
+        if [ "${LTYPE}" = "shared" ]; then
             {
             echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
             echo "    LD_LIBRARY_PATH=."
@@ -2117,7 +2119,7 @@ echo >&2 "-- ${BUILD_NAME}Compiler - Fortran compiler path: ${Fortran_COMPILER_P
 echo >&2 "-- ${BUILD_NAME}Compiler - MPI mpiexec path: ${MPIEXEC_PATH}"
 echo >&2
 
-if [ "${PMCS}" = "gnu" ] || [ "${COMPILER_VERSION}" = "unknown" ]; then
+if ! [ -z "${Fortran_COMPILER_PATH+x}" ] && [ "${PMCS}" = "gnu" ] || [ "${COMPILER_VERSION}" = "unknown" ]; then
 
     #cd ./auxil/
 
@@ -2174,7 +2176,7 @@ fi
 ####################################################################################################################################
 
 unset MPILIB_NAME
-if [ -f "${MPIEXEC_PATH}" ]; then
+if [ "${MPI_ENABLED}" = "true" ] && [ -f "${MPIEXEC_PATH}" ]; then
 
     mpiVersionInfo="$(${MPIEXEC_PATH} --version)"
 
@@ -2195,11 +2197,16 @@ fi
 if [ -z ${MPILIB_NAME+x} ] && [ "${MPI_ENABLED}" = "true" ]; then
     MPILIB_NAME="mpi"
     echo >&2
-    echo >&2 "${pmwarn} The make of the MPI library could be identified."
+    echo >&2 "${pmwarn} The make of the MPI library could not be identified."
     echo >&2 "${pmwarn} The MPI library's behavior does not match the Intel, MPICH, or OpenMPI libraries."
     echo >&2 "${pmwarn} The ParaMonte library name will be suffixed with the generic \"${MPILIB_NAME}\" label."
     echo >&2
 fi
+
+if ! [ -z ${MPILIB_NAME+x} ]; then
+    MPILIB_NAME_FLAG="-DMPILIB_NAME=${MPILIB_NAME}"
+fi
+
 export MPILIB_NAME
 
 ####################################################################################################################################
@@ -2319,7 +2326,7 @@ export ParaMonteInterfaceFortran_SRC_DIR
 
 unset MATLAB_ROOT_DIR_OPTION # it is imperative to nullify this MATLAB variable for all language builds at all times
 
-if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${CFI_ENABLED}" = "true" ]; then
+if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "shared" ] && [ "${CFI_ENABLED}" = "true" ]; then
 
     echo >&2
     echo >&2 "-- ${BUILD_NAME}MATLAB - searching for a MATLAB installation on your system..."
@@ -2416,7 +2423,7 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
         fi
         if [ "${answer}" = "y" ]; then
             echo >&2
-            echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: skipping the ParaMonte MATLAB dynamic library build..."
+            echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: skipping the ParaMonte MATLAB shared library build..."
             echo >&2
         else
             echo >&2
@@ -2526,6 +2533,12 @@ else
     CODECOV_ENABLED_FLAG=""
 fi
 
+if [ "${isMacOS}" = "true" ]; then
+    # target all OSX newer than 10.7 x86_64
+    MACOSX_DEPLOYMENT_TARGET="10.10"
+    export MACOSX_DEPLOYMENT_TARGET
+fi
+
 if [ "${DRYRUN_ENABLED}" != "true" ]; then
 
     # determine whether the current system is a Windows Subsystem for Linux (WSL).
@@ -2540,6 +2553,12 @@ if [ "${DRYRUN_ENABLED}" != "true" ]; then
         OS_IS_WSL_FLAG="-DOS_IS_WSL=${isWSL}"
     else
         OS_IS_WSL_FLAG=""
+    fi
+
+    if [ "${deploy_enabled}" = "true" ] && [ "${LTYPE}" = "shared" ]; then
+        DEPLOY_ENABLED_FLAG="-Ddeploy_enabled=${deploy_enabled}"
+    else
+        DEPLOY_ENABLED_FLAG=""
     fi
 
     (cd ${ParaMonte_BLD_DIR} && \
@@ -2559,6 +2578,8 @@ if [ "${DRYRUN_ENABLED}" != "true" ]; then
     -DHEAP_ARRAY_ENABLED=${HEAP_ARRAY_ENABLED} \
     -DCFI_ENABLED=${CFI_ENABLED} \
     -DOMP_ENABLED=${OMP_ENABLED} \
+    ${MPILIB_NAME_FLAG} \
+    ${DEPLOY_ENABLED_FLAG} \
     ${SAMPLER_TEST_ENABLED_FLAG} \
     ${BASIC_TEST_ENABLED_FLAG} \
     ${CODECOV_ENABLED_FLAG} \
@@ -2579,8 +2600,13 @@ fi
 #### Test the ParaMonte library if requested
 ####################################################################################################################################
 
-LD_LIBRARY_PATH=${ParaMonte_BLD_DIR}/lib:${LD_LIBRARY_PATH}
-export LD_LIBRARY_PATH
+if [ "${isMacOS}" = "true" ]; then
+    DYLD_LIBRARY_PATH=${ParaMonte_BLD_DIR}/lib:${DYLD_LIBRARY_PATH}
+    export DYLD_LIBRARY_PATH
+else
+    LD_LIBRARY_PATH=${ParaMonte_BLD_DIR}/lib:${LD_LIBRARY_PATH}
+    export LD_LIBRARY_PATH
+fi
 
 # set test object/module/lib files directories
 
@@ -2703,7 +2729,7 @@ unset MATLAB_LIBMAT_FILE
 unset MATLAB_VERSION_FILE
 # set "MATLAB_INC_DIR_FLAG="
 
-if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${CFI_ENABLED}" = "true" ]; then
+if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "shared" ] && [ "${CFI_ENABLED}" = "true" ]; then
 
     #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
     #: check MATLAB's existence
@@ -2804,7 +2830,7 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
         fi
         if [ "${answer}" = "y" ]; then
             echo >&2
-            echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: skipping the ParaMonte MATLAB dynamic library build..."
+            echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: skipping the ParaMonte MATLAB shared library build..."
             echo >&2
         else
             echo >&2
@@ -2840,18 +2866,33 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
             # if ${BTYPE}==testing set "MATLAB_BUILD_FLAGS=!MATLAB_BUILD_FLAGS!!INTEL_CPP_TESTING_FLAGS!"
             # if ${BTYPE}==release set "MATLAB_BUILD_FLAGS=!MATLAB_BUILD_FLAGS!!INTEL_CPP_RELEASE_FLAGS!"
             MEX_FLAGS="-v -nojvm"
-            CFLAGS="COMPFLAGS='-fPIC -shared -Wl,-rpath=.'"
-            LINKFLAGS="LINKFLAGS='-fPIC -shared -Wl,-rpath=.'"
-            if [ "${BTYPE}" = "debug" ]; then MEX_FLAGS="${MEX_FLAGS} -g"; fi
-            if [ "${BTYPE}" = "release" ]; then MEX_FLAGS="${MEX_FLAGS} -O"; fi
-            echo >&2 "-- ${BUILD_NAME}MATLAB - generating the ParaMonte MATLAB dynamic library: ${ParaMonteMATLAB_BLD_LIB_DIR}${PMLIB_MATLAB_NAME}"
-            echo >&2 "-- ${BUILD_NAME}MATLAB - compiler options: ${MATLAB_BUILD_FLAGS}"
-            echo >&2 "-- ${BUILD_NAME}MATLAB - compiler command: ${MATLAB_BIN_DIR}/mex ${MEX_FLAGS} ${CFLAGS} ${LINKFLAGS} ${ParaMonteKernel_SRC_DIR}/paramonte.m.c ${PMLIB_FULL_PATH} -output ${PMLIB_MATLAB_NAME}"
-            # CC=icl COMPFLAGS="${MATLAB_BUILD_FLAGS}"
+            # use COMPFLAGS and LINKFLAGS on Windows systems instead of CFLAGS and LDFLAGS.
+            CFLAGS='-fPIC -shared'
+            LDFLAGS='-fPIC -shared'
+            if [ "isMacOS"  = "true" ]; then
+                LDFLAGS+=' -Wl,-rpath,@rpath -Wl,-rpath,@loader_path'
+            else
+                LDFLAGS+=' -Wl,-rpath,\$ORIGIN'
+            fi
+            if [ "${BTYPE}" = "debug" ]; then
+                MEX_FLAGS="${MEX_FLAGS} -g"
+            elif [ "${BTYPE}" = "release" ]; then
+                # -O is the release mode for mex. -O3 does not exist.
+                MEX_FLAGS="${MEX_FLAGS} -O"
+                LDFLAGS+=' -O3'
+                CFLAGS+=' -O3'
+            fi
+            echo >&2 "-- ${BUILD_NAME}MATLAB - generating the ParaMonte MATLAB shared library: ${ParaMonteMATLAB_BLD_LIB_DIR}${PMLIB_MATLAB_NAME}"
+            echo >&2 "-- ${BUILD_NAME}MATLAB - compiler command: ${MATLAB_BIN_DIR}/mex ${MEX_FLAGS} CFLAGS=${CFLAGS} LDFLAGS=${LDFLAGS} ${ParaMonteKernel_SRC_DIR}/paramonte.m.c ${PMLIB_FULL_PATH} -output ${PMLIB_MATLAB_NAME}"
+            #echo >&2 "-- ${BUILD_NAME}MATLAB - compiler options: ${MATLAB_BUILD_FLAGS}"
+            # CC=icl CFLAGS="${MATLAB_BUILD_FLAGS}"
             cd "${ParaMonteMATLAB_BLD_LIB_DIR}"
-            "${MATLAB_BIN_DIR}/mex" ${MEX_FLAGS} "${CFLAGS}" "${LINKFLAGS}" "${ParaMonteKernel_SRC_DIR}/paramonte.m.c" ${PMLIB_FULL_PATH} -output ${PMLIB_MATLAB_NAME}
+            "${MATLAB_BIN_DIR}/mex" ${MEX_FLAGS} CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" \
+            "${ParaMonteKernel_SRC_DIR}/paramonte.m.c" ${PMLIB_FULL_PATH} -output ${PMLIB_MATLAB_NAME}
             if [ $? -eq 0 ]; then
-                echo >&2 "-- ${BUILD_NAME}MATLAB - ${BoldGreen}The ParaMonte MATLAB dynamic library build appears to have succeeded.${ColorReset}"
+                echo >&2
+                echo >&2 "-- ${BUILD_NAME}MATLAB - ${BoldGreen}The ParaMonte MATLAB shared library build appears to have succeeded.${ColorReset}"
+                echo >&2
             else
                 echo >&2
                 echo >&2 "-- ${BUILD_NAME}MATLAB - ${BoldRed}Fatal Error${ColorReset}: The ParaMonte MATLAB library build failed."
@@ -2923,7 +2964,7 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
     cp -R "${ParaMonteInterface_SRC_DIR}/auxil" "${ParaMonteMATLABTest_BLD_DIR}/paramonte/"
     echo >&2
 
-    # copy necessary ParaMonte MATLAB dynamic library files in MATLAB's directory
+    # copy necessary ParaMonte MATLAB shared library files in MATLAB's directory
 
     if [ -d "${ParaMonteMATLABTest_BLD_DIR}/paramonte/lib" ]; then
         echo >&2 "-- ${BUILD_NAME}MATLABTest - ${ParaMonteMATLABTest_BLD_DIR}/paramonte/lib already exists. skipping..."
@@ -2960,7 +3001,7 @@ fi
 # build ParaMonte Python test
 ####################################################################################################################################
 
-if [ "${INTERFACE_LANGUAGE}" = "python" ] && [ "${LTYPE}" = "dynamic" ] && [ "${CFI_ENABLED}" = "true" ]; then
+if [ "${INTERFACE_LANGUAGE}" = "python" ] && [ "${LTYPE}" = "shared" ] && [ "${CFI_ENABLED}" = "true" ]; then
 
     echo >&2
     echo >&2 "-- ${BUILD_NAME}PythonTest - building ParaMonte Python test..."
@@ -3422,12 +3463,8 @@ mkdir -p ${ParaMonte_BIN_DIR}
 ####################################################################################################################################
 
 ParaMonte_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR}"
-if [ "${INTERFACE_LANGUAGE}" = "python" ]; then
-    ParaMonte_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR_CURRENT}/libparamonte_Python"
-elif [ "${INTERFACE_LANGUAGE}" = "matlab" ]; then
-    ParaMonte_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR_CURRENT}/libparamonte_MATLAB"
-elif [ "${INTERFACE_LANGUAGE}" = "matdram" ]; then
-    ParaMonte_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR_CURRENT}/libparamonte_MatDRAM"
+if [ "${INTERFACE_LANGUAGE}" = "python" ] || [ "${INTERFACE_LANGUAGE}" = "matlab" ]; then
+    ParaMonte_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR_CURRENT}/libparamonte_${INTERFACE_LANGUAGE}_${PLATFORM}_${ARCHITECTURE}"
 else
     ParaMonte_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR_CURRENT}/${PMLIB_BASE_NAME}"
 fi

@@ -120,13 +120,13 @@ echo "                     Build type: $BTYPE"
 ####################################################################################################################################
 
 # define linking type:
-#                   dynamic:   Use this flag when you have R/Python/MATLAB/Julia code to which you need to link the ParaMonte library dynamically, using DLL files. 
-#                    static:   Use this flag when you have Fortran/C/C++ code to which you want to link the ParaMonte library statically.
-#                              You can also link dynamically your Fortran/C/C++ codes using DLL files by specifying LTYPE=dynamic flag instead.
+#                    shared:   Use this flag when you have R/Python/MATLAB/Julia code to which you need to link the ParaMonte library dynamically, using DLL files. 
+#                    static:   Use this flag when you have C/C++/Fortran code to which you want to link the ParaMonte library statically.
+#                              You can also dynamically link your C/C++/Fortran codes using DLL files by specifying LTYPE=shared flag instead.
 
 if [ -z ${LTYPE+x} ]; then
     ############################################################
-    LTYPE=dynamic
+    LTYPE=shared
     ############################################################
     export LTYPE
 fi

@@ -9,30 +9,30 @@
 ####
 ####   This file is part of the ParaMonte library.
 ####
-####   Permission is hereby granted, free of charge, to any person obtaining a 
-####   copy of this software and associated documentation files (the "Software"), 
-####   to deal in the Software without restriction, including without limitation 
-####   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-####   and/or sell copies of the Software, and to permit persons to whom the 
+####   Permission is hereby granted, free of charge, to any person obtaining a
+####   copy of this software and associated documentation files (the "Software"),
+####   to deal in the Software without restriction, including without limitation
+####   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+####   and/or sell copies of the Software, and to permit persons to whom the
 ####   Software is furnished to do so, subject to the following conditions:
 ####
-####   The above copyright notice and this permission notice shall be 
+####   The above copyright notice and this permission notice shall be
 ####   included in all copies or substantial portions of the Software.
 ####
-####   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-####   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-####   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-####   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-####   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-####   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+####   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+####   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+####   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+####   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+####   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+####   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 ####   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ####
 ####   ACKNOWLEDGMENT
 ####
 ####   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-####   As per the ParaMonte library license agreement terms, if you use any parts of 
-####   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-####   work (education/research/industry/development/...) by citing the ParaMonte 
+####   As per the ParaMonte library license agreement terms, if you use any parts of
+####   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+####   work (education/research/industry/development/...) by citing the ParaMonte
 ####   library as described on this page:
 ####
 ####       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md
@@ -54,12 +54,25 @@ from _pmutils import Struct, newline, creturn
 from pathlib import Path as _Path
 
 path = Struct()
+path.home = str(_Path.home()) # path.home = os.path.expanduser("~")
 path.root = os.path.dirname(os.path.abspath(__file__))
 path.auxil = os.path.join(path.root,"auxil")
-path.home = str(_Path.home()) # path.home = os.path.expanduser("~")
-path.lib = path.root
+path.download = path.auxil # os.path.join(path.root,"download")
+
+path.lib = dict()
+path.lib["root"] = os.path.join(path.root,"lib")
+path.lib["x64"] = dict()
+path.lib["x64"]["root"] = os.path.join(path.lib["root"],"x64")
+path.lib["x64"]["gnu"] = os.path.join(path.lib["x64"]["root"],"gnu")
+path.lib["x64"]["intel"] = os.path.join(path.lib["x64"]["root"],"intel")
 
 sys.path.append(path.root)
+
+####################################################################################################################################
+
+from _Version import Version
+version = Struct()
+for versionType in ["interface","kernel"]: setattr(version,versionType,Version(path.auxil,versionType))
 
 ####################################################################################################################################
 
@@ -79,6 +92,14 @@ platform.isWin32 = True if platform.name=="win32" else False
 platform.isLinux = True if platform.name=="linux" else False
 platform.isMacOS = True if platform.name=="darwin" else False
 platform.osname = "windows" if platform.isWin32 else platform.name
+platform.isWSL = False
+if platform.isLinux:
+    try:
+        import subprocess
+        cmdout = subprocess.getoutput("uname -a").lower()
+        platform.isWSL = "microsoft" in cmdout
+    except:
+        pass
 
 from datetime import datetime as _dt
 dt = _dt.now()
@@ -206,13 +227,24 @@ website.github.release = Struct()
 website.github.release.url = website.github.url + "/releases"
 website.github.release.latest = Struct()
 website.github.release.latest.url = website.github.release.url + "/latest"
+
 website.github.archive = Struct()
 website.github.archive._url = website.github.url + "/archive"
-website.github.archive.main = Struct()
-website.github.archive.main.zip = Struct()
-website.github.archive.main.tar = Struct()
-website.github.archive.main.zip.url = website.github.archive._url + "/main.zip"
-website.github.archive.main.tar.url = website.github.archive._url + "/main.tar.gz"
+
+website.github.archive.latest = Struct()
+website.github.archive.latest.zip = Struct()
+website.github.archive.latest.tar = Struct()
+website.github.archive.latest.zip.url = website.github.archive._url + "/main.zip"
+website.github.archive.latest.tar.url = website.github.archive._url + "/main.tar.gz"
+
+website.github.archive.current = Struct()
+website.github.archive.current.zip = Struct()
+website.github.archive.current.tar = Struct()
+website.github.archive.current._name = "v" + version.kernel.dump()
+# comment the above line and uncomment the line below for testing unpublished versions
+#website.github.archive.current._name = "dev"
+website.github.archive.current.zip.url = website.github.archive._url + "/" + website.github.archive.current._name + ".zip"
+website.github.archive.current.tar.url = website.github.archive._url + "/" + website.github.archive.current._name + ".tar.gz"
 
 # GitHub examples
 
@@ -239,6 +271,67 @@ website.openmpi.home.url = "https://www.open-mpi.org/"
 
 ####################################################################################################################################
 
+path.archive = Struct()
+vname = website.github.archive.current._name[1:] if website.github.archive.current._name[0]=="v" else website.github.archive.current._name
+path.archive.root = os.path.join(path.download, "paramonte-" + vname)
+path.archive.install = Struct()
+path.archive.install.root = os.path.join(path.archive.root,"bin","libparamonte_Python")
+path.archive.install.lib = os.path.join(path.archive.install.root,"paramonte","lib")
+"""path to the directory of uncompressed paramonte archive."""
+
+path.localInstall = os.path.join( path.archive.root , "build", "prerequisites", "prerequisites", "installations" )
+"""path to the directory of the local installation of the paramonte kernel."""
+
+####################################################################################################################################
+
+#### setup env
+
+if "PATH" not in os.environ: os.environ["PATH"] = os.getcwd()
+
+if platform.isWin32:
+
+    pathList = os.environ["PATH"].split(";")
+    for path in pathList:
+        pathLower = path.lower().replace("\\","")
+        if ("mpiintel64bin" in pathLower):
+            mpiPath = os.path.join(path,"release")
+            os.environ["PATH"] = mpiPath + os.pathsep + os.environ["PATH"]
+            libfabricPath = os.path.join(os.path.dirname(path),"libfabric","bin")
+            os.environ["PATH"] = libfabricPath + os.pathsep + os.environ["PATH"]
+            break
+
+    if platform.arch=="x64":
+        if platform.isWin32: os.environ["PATH"] = path.lib["x64"]["root"] \
+                                                + os.pathsep \
+                                                + path.lib["x64"]["intel"] \
+                                                + os.pathsep \
+                                                + path.lib["x64"]["gnu"] \
+                                                + os.pathsep \
+                                                + os.environ["PATH"]
+
+else:
+
+    if "LD_LIBRARY_PATH" not in os.environ: os.environ["LD_LIBRARY_PATH"] = "."
+
+    libdir = "/usr/lib"
+    if os.path.isdir(libdir): os.environ["LD_LIBRARY_PATH"]  = libdir + os.pathsep + os.environ["LD_LIBRARY_PATH"]
+
+    libdir = "/usr/local/lib"
+    if os.path.isdir(libdir): os.environ["LD_LIBRARY_PATH"]  = libdir + os.pathsep + os.environ["LD_LIBRARY_PATH"]
+
+    libdir = "/usr/lib64"
+    if os.path.isdir(libdir): os.environ["LD_LIBRARY_PATH"]  = libdir + os.pathsep + os.environ["LD_LIBRARY_PATH"]
+
+    libdir = "/usr/local/lib64"
+    if os.path.isdir(libdir): os.environ["LD_LIBRARY_PATH"]  = libdir + os.pathsep + os.environ["LD_LIBRARY_PATH"]
+
+    pathlibs = ""
+    if platform.arch=="x64": pathlibs = path.lib["x64"]["gnu"] + os.pathsep + path.lib["x64"]["intel"] + os.pathsep
+    os.environ["LD_LIBRARY_PATH"] = pathlibs + os.environ["LD_LIBRARY_PATH"]
+
+
+####################################################################################################################################
+
 def cite(): print(website.home.overview.preface.url + "/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work")
 #citation.kernel = Struct()
 #citation.kernel.paradram = Struct()
@@ -259,12 +352,6 @@ def cite(): print(website.home.overview.preface.url + "/#how-to-acknowledge-the-
 #          adsnote = {Provided by the SAO/NASA Astrophysics Data System}
 #}
 #"""
-
-####################################################################################################################################
-
-from _Version import Version
-version = Struct()
-for versionType in ["interface","kernel"]: setattr(version,versionType,Version(path.auxil,versionType))
 
 ####################################################################################################################################
 

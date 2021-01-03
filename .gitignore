@@ -87,7 +87,7 @@ Thumbs.db
 *.gch
 *.pch
 
-# Compiled Dynamic libraries
+# Compiled shared libraries
 *.so
 *.dylib
 *.dll

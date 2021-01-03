@@ -245,8 +245,15 @@ classdef paramonte %< dynamicprops
             [self.path.root,~,~] = fileparts(self.path.root);
             self.path.root = string( getFullPath(fullfile(self.path.root,"..",".."),'lean') );
             addpath(genpath(self.path.root),'-begin');
-            self.path.lib = string(fullfile(self.path.root, "lib"));
             self.path.auxil = string(fullfile(self.path.root, "auxil"));
+
+            self.path.lib.root = string(fullfile(self.path.root, "lib"));
+            self.path.lib.x64.root = string(fullfile(self.path.lib.root, "x64"));
+            self.path.lib.x64.gnu = string(fullfile(self.path.lib.x64.root, "gnu"));
+            self.path.lib.x64.intel = string(fullfile(self.path.lib.x64.root, "intel"));
+
+            self.path.download = self.path.lib.root;
+            [status, msg, msgID] = mkdir(self.path.download);
 
             for versionType = ["interface","kernel"]
                 self.version.(versionType) = Version_class(self.path.auxil,versionType);
@@ -396,12 +403,19 @@ classdef paramonte %< dynamicprops
 
             self.isGUI = isGUI(); 
 
+            self.platform.isWSL = false;
             self.platform.isWin32 = ispc;
             self.platform.isMacOS = ismac;
             self.platform.isLinux = isunix && ~ismac;
             if self.platform.isWin32; self.platform.osname = "Windows"; end
             if self.platform.isMacOS; self.platform.osname = "Darwin"; end % do NOT set this to macOS !
             if self.platform.isLinux; self.platform.osname = "Linux"; end
+            if self.platform.isLinux
+                [errorOccurred, cmdout] = system("uname -a");
+                if ~errorOccurred
+                    self.platform.isWSL = contains(cmdout, "microsoft");
+                end
+            end
 
             self.platform.systemInfoFilePrefix = fullfile(self.path.auxil, ".systemInfo_");
             self.platform.systemInfoFilePath = self.platform.systemInfoFilePrefix + string(strrep(date,"-","_"));
@@ -454,7 +468,7 @@ classdef paramonte %< dynamicprops
             matlabKernelName = "matdram";
             matlabInterfName = "interface";
             if nargin==0
-                self.matdramKernelEnabled = true; if isfolder(self.path.lib); self.matdramKernelEnabled = false; end
+                self.matdramKernelEnabled = true; if isfolder(self.path.lib.root); self.matdramKernelEnabled = false; end
             elseif nargin==1
                 if isa(varargin{1},"char") || isa(varargin{1},"string")
                     if strcmpi(string(varargin{1}),matlabKernelName)
@@ -501,7 +515,7 @@ classdef paramonte %< dynamicprops
             if ~self.platform.isWin32
                 LD_LIBRARY_PATH = getenv("LD_LIBRARY_PATH");
                 if isempty(LD_LIBRARY_PATH); LD_LIBRARY_PATH = ""; end
-                setenv("LD_LIBRARY_PATH",self.path.lib+":"+LD_LIBRARY_PATH);
+                setenv("LD_LIBRARY_PATH",self.path.lib.root+":"+LD_LIBRARY_PATH);
             end
 
         end
@@ -628,27 +642,27 @@ classdef paramonte %< dynamicprops
                     return;
                 end
 
-                % ensure 64-bit architecture
+                %%%% ensure 64-bit architecture
 
                 if strcmpi(getArch(),"x64") && (self.platform.isWin32 || self.platform.isLinux || self.platform.isMacOS)
 
-                    % set up library path
+                    %%%% set up library path
 
                     if ~self.platform.isWin32
                         % save a copy of the original bashrc contents. will be used in installParaMonte().
                         self.bashrcContentsBeforeParaMonteInstall = getBashrcContents();
-                        self.setupUnixPath();
+                        %self.setupUnixPath(); % This is too aggressive and not needed naymore.
                     end
 
-                    % install library
+                    %%%% install library: This is too aggressive and not needed anymore, as of ParaMonte kernel version 1.5.1
 
-                    self.installParaMonte();
+                    % self.installParaMonte();
 
-                    % get the dependency list
+                    %%%% get the dependency list
 
                     self.prereqs = self.getPrereqs(false); % sets the self.prereqs component.
 
-                    % search for the MPI library
+                    %%%% search for the MPI library
 
                     mpi = self.findMPI();
 
@@ -860,12 +874,86 @@ classdef paramonte %< dynamicprops
 
             if isunix
 
-                %pmLocalFileList = getFileNameList(self.path.lib);
-                if self.platform.isLinux; filePath = "*so"; end
-                if self.platform.isMacOS; filePath = "*dylib"; end
-                fileList = dir(fullfile(self.path.lib,filePath));
-                fileListLen = length(fileList);
-                if fileListLen==0
+                %pmLocalFileList = getFileNameList(self.path.lib.root);
+                if self.platform.isLinux; filePath = "libparamonte_*.so"; end
+                if self.platform.isMacOS; filePath = "libparamonte_*.dylib"; end
+
+                libDirList = [ self.path.lib.x64.gnu, self.path.lib.x64.intel ];
+                libDirListAllMissing = true;
+                for libDir = libDirList
+
+                    fileList = dir(fullfile(libDir,filePath));
+                    fileListLen = length(fileList);
+                    libDirListAllMissing = libDirListAllMissing && fileListLen==0;
+
+                    self.pmInstallFailed = true;
+                    installRootDirList = ["/usr/local/lib64","/usr/lib64","/usr/local/lib","/usr/lib"];
+
+                    for installRootDir = installRootDirList
+                        if isfolder(installRootDir)
+                            errorOccurred = false;
+                            %pmInstallDir = fullfile(installRootDir,"paramonte");
+                            %if ~isfolder(pmInstallDir)
+                            %    [status, errMsg, msgID] = mkdir(pmInstallDir);
+                            %    if status~=1; errorOccurred = true; end
+                            %end
+                            %if ~errorOccurred
+                                %filePath = "*";
+                                dummy1 = self.Err.marginTop;
+                                dummy2 = self.Err.marginBot;
+                                self.Err.marginTop = 0;
+                                self.Err.marginBot = 0;
+                                for i = 1:fileListLen
+                                    fullFilePath = fullfile(fileList(i).folder,fileList(i).name);
+                                    %[status, errMsg] = system("sudo cp -rf " + fullFilePath + installRootDir + " &")
+                                    [status, errMsg, msgID] = copyfile(fullFilePath, installRootDir, "f");
+                                    if status==0 % && self.pmInstallFailed
+                                        errorOccurred = true;
+                                    else
+                                        self.pmInstallFailed = false;
+                                        self.Err.msg = "The local installation of the ParaMonte library succeeded.";
+                                        self.Err.note();
+                                    end
+                                end
+                                self.Err.marginTop = dummy1;
+                                self.Err.marginBot = dummy2;
+                                if errorOccurred && contains(installRootDir,"local")
+                                    self.Err.msg    = "An attempt to locally install the ParaMonte library on your system failed with the following message: " + newline ...
+                                                    + string(errMsg) + " Error flag: " + string(msgID) + newline ...
+                                                    + "This will likely be fine. But if the simulation fails, please report it at:" + newline ...
+                                                    + "    " + href(self.website.github.issues.url) ...
+                                                    ;
+                                    self.Err.warn();
+                                %else
+                                %    self.pmInstallFailed = false;
+                                %    break;
+                                end
+                                %[status, errMsg, msgID] = copyfile(fullfile(self.path.lib.root,filePath), installRootDir, "f");
+                                %if status~=0; errorOccurred = true; end
+                                %pmInstallFileList = getFileNameList(pmInstallDir);
+                                %for localFile = pmLocalFileList
+                                %    if ~any(strcmp(pmInstallFileList, localFile))
+                                %        [status, errMsg, msgID] = copyfile(fullfile(self.path.lib.root,localFile), pmInstallDir, "f");
+                                %        if status~=0; errorOccurred = true; break; end
+                                %    end
+                                %end
+                            %end
+                            % if errorOccurred && contains(installRootDir,"local")
+                            %     self.Err.msg    = "An attempt to locally install the ParaMonte library on your system failed with the following message: " + newline  + newline ...
+                            %                     + string(errMsg) + " Error flag: " + string(msgID) + newline  + newline ...
+                            %                     + "Continuing at the risk of not being able to use the ParaMonte kernel samplers.";
+                            %     self.Err.warn();
+                            % %else
+                            %     self.pmInstallFailed = false;
+                            % %    break;
+                            % end
+                        end
+                        if ~self.pmInstallFailed; break; end
+                    end
+
+                end
+
+                if libDirListAllMissing
                     self.Err.msg    = "Failed to locally detect the ParaMonte library files on your system. " ...
                                     + "The ParaMonte library folder appears to be empty. Please build a " ...
                                     + "fresh copy of the library or download it from, "  + newline + newline ...
@@ -874,74 +962,14 @@ classdef paramonte %< dynamicprops
                     self.Err.abort();
                 end
 
-                self.pmInstallFailed = true;
-                installRootDirList = ["/usr/local/lib64","/usr/lib64","/usr/local/lib","/usr/lib"];
-
-                for installRootDir = installRootDirList
-                    if isfolder(installRootDir)
-                        errorOccurred = false;
-                        %pmInstallDir = fullfile(installRootDir,"paramonte");
-                        %if ~isfolder(pmInstallDir)
-                        %    [status, errMsg, msgID] = mkdir(pmInstallDir);
-                        %    if status~=1; errorOccurred = true; end
-                        %end
-                        %if ~errorOccurred
-                            %filePath = "*";
-                            dummy1 = self.Err.marginTop;
-                            dummy2 = self.Err.marginBot;
-                            self.Err.marginTop = 0;
-                            self.Err.marginBot = 0;
-                            for i = 1:fileListLen
-                                fullFilePath = fullfile(fileList(i).folder,fileList(i).name);
-                                %[status, errMsg] = system("sudo cp -rf " + fullFilePath + installRootDir + " &")
-                                [status, errMsg, msgID] = copyfile(fullFilePath, installRootDir, "f");
-                                if status==0 % && self.pmInstallFailed
-                                    errorOccurred = true;
-                                else
-                                    self.pmInstallFailed = false;
-                                    self.Err.msg = "The local installation of the ParaMonte library succeeded.";
-                                    self.Err.note();
-                                end
-                            end
-                            self.Err.marginTop = dummy1;
-                            self.Err.marginBot = dummy2;
-                            if errorOccurred && contains(installRootDir,"local")
-                                self.Err.msg    = "An attempt to locally install the ParaMonte library on your system failed with the following message: " + newline  + newline ...
-                                                + string(errMsg) + " Error flag: " + string(msgID) + newline  + newline ...
-                                                + "Continuing at the risk of not being able to use the ParaMonte kernel samplers...";
-                                self.Err.warn();
-                            %else
-                            %    self.pmInstallFailed = false;
-                            %    break;
-                            end
-                            %[status, errMsg, msgID] = copyfile(fullfile(self.path.lib,filePath), installRootDir, "f");
-                            %if status~=0; errorOccurred = true; end
-                            %pmInstallFileList = getFileNameList(pmInstallDir);
-                            %for localFile = pmLocalFileList
-                            %    if ~any(strcmp(pmInstallFileList, localFile))
-                            %        [status, errMsg, msgID] = copyfile(fullfile(self.path.lib,localFile), pmInstallDir, "f");
-                            %        if status~=0; errorOccurred = true; break; end
-                            %    end
-                            %end
-                        %end
-                        % if errorOccurred && contains(installRootDir,"local")
-                        %     self.Err.msg    = "An attempt to locally install the ParaMonte library on your system failed with the following message: " + newline  + newline ...
-                        %                     + string(errMsg) + " Error flag: " + string(msgID) + newline  + newline ...
-                        %                     + "Continuing at the risk of not being able to use the ParaMonte kernel samplers.";
-                        %     self.Err.warn();
-                        % %else
-                        %     self.pmInstallFailed = false;
-                        % %    break;
-                        % end
-                    end
-                    if ~self.pmInstallFailed; break; end
-                end
-
                 self.Err.prefix = self.names.paramonte;
                 self.Err.marginTop = 1;
                 self.Err.marginBot = 1;
                 if self.pmInstallFailed
-                    self.Err.msg    = "Failed to locally install the ParaMonte library on this system. This is highly unusual. " ...
+                    self.Err.msg    = "Failed to locally install the ParaMonte library on your system. " ...
+                                    + "Such failure is unusual but not necessarily fatal. " ...
+                                    + "However, if your subsequent ParaMonte simulations fail, follow the instructions below: " + newline ...
+                                    + newline ...
                                     + "If you have already successfully installed the ParaMonte library files locally on your system " ...
                                     + "through the following procedure, you can safely ignore this warning message and the subsequent " ...
                                     + "request for reinstallation given below. Otherwise, if you have administrator previlages on this system " ...
@@ -961,7 +989,7 @@ classdef paramonte %< dynamicprops
                                     ;
                     warningEnabled = true;
                     if self.platform.isLinux
-                        if contains(self.bashrcContentsBeforeParaMonteInstall,self.path.lib)
+                        if contains(self.bashrcContentsBeforeParaMonteInstall, self.path.lib.root)
                             warningEnabled = false;
                         else
                             self.Err.msg    = self.Err.msg ...
@@ -980,7 +1008,10 @@ classdef paramonte %< dynamicprops
                         question    = newline + "    Shall we quit this MATLAB session now so that you can " ...
                                     + newline + "    perform the suggested solution in the above (y/n)? "; % should be used only on macOS
                     end
-                    if warningEnabled
+                    % As of v1.5.1, there is no need to ask this question anymore as the library dependencies are now automatically managed.
+                    % As such, the condition `false` has been added to the following if-block 
+                    % to skip this question from the user for the foreseeable future.
+                    if false && warningEnabled
                         self.Err.warn();
                         matlabExitRequested = getUserResponse( question );
                         if matlabExitRequested
@@ -1055,12 +1086,12 @@ classdef paramonte %< dynamicprops
                         self.buildParaMontePrereqsForMac();
                     end
 
-                    pmGitTarPath = fullfile( self.path.lib, "main.tar.gz" );
+                    pmGitTarPath = fullfile( self.path.download, "main.tar.gz" );
                     pmGitTarPath = websave(pmGitTarPath,"https://github.com/cdslaborg/paramonte/archive/main.tar.gz");
-                    pmGitRootDir = fullfile(self.path.lib, "paramonte-main");
+                    pmGitRootDir = fullfile(self.path.download, "paramonte-main");
 
                     try
-                        untar(pmGitTarPath,self.path.lib);
+                        untar(pmGitTarPath,self.path.download);
                         pmGitInstallScriptPath = fullfile(pmGitRootDir, "install.sh");
                         if ~isfile(pmGitInstallScriptPath)
                             self.Err.msg    = "Internal error occurred." + newline ...
@@ -1102,15 +1133,14 @@ classdef paramonte %< dynamicprops
 
                     % copy files to the library folder
 
-                    matlabBinDir = string(fullfile( pmGitRootDir , "bin" , "MATLAB" , "paramonte" ));
-                    fileList = dir( fullfile( matlabBinDir , "libparamonte_*" ) );
+                    localBuildLibDir = string(fullfile( pmGitRootDir , "bin" , "libparamonte_MATLAB" , "paramonte", "lib" ));
 
-                    if isempty(fileList)
+                    if ~ isfolder(localBuildLibDir)
 
-                        self.Err.msg    = "ParaMonte kernel libraries build and installation appears to have failed. " + newline ...
+                        self.Err.msg    = "The ParaMonte kernel libraries build and installation appears to have failed. " + newline ...
                                         + "You can check this path:" + newline + newline ...
-                                        ... + string(strrep(matlabBinDir,'\','\\')) + newline + newline ...
-                                        + matlabBinDir + newline + newline ...
+                                        ... + string(strrep(localBuildLibDir,'\','\\')) + newline + newline ...
+                                        + localBuildLibDir + newline + newline ...
                                         + "to find out if any shared objects with the prefix 'libparamonte_' have been generated or not." + newline ...
                                         + "Please report this issue at " + newline + newline ...
                                         + "    " + href(self.website.github.issues.url);
@@ -1118,20 +1148,17 @@ classdef paramonte %< dynamicprops
 
                     else
 
-                        self.Err.msg    = "ParaMonte kernel libraries build appears to have succeeded. " + newline ...
+                        self.Err.msg    = "The ParaMonte kernel libraries build appears to have succeeded. " + newline ...
                                         + "copying the kernel files to the paramonte MATLAB module directory...";
                         self.Err.note();
 
-                        for file = string({fileList(:).name})
-                            %self.Err.msg = "file: " + string(strrep(file,'\','\\'));
-                            self.Err.msg = "file: " + file;
-                            self.Err.marginTop = 0;
-                            self.Err.marginBot = 0;
-                            self.Err.note();
-                            shutil.copy(file, self.path.lib);
-                        end
+                        self.Err.msg = "local build folder: " + localBuildLibDir;
+                        self.Err.marginTop = 0;
+                        self.Err.marginBot = 0;
+                        self.Err.note();
+                        shutil.copy(localBuildLibDir, self.path.root);
 
-                        self.Err.msg = "ParaMonte kernel libraries should be now usable on your system.";
+                        self.Err.msg = "The ParaMonte kernel libraries should be now usable on your system.";
                         self.Err.marginTop = 1;
                         self.Err.marginBot = 1;
                         self.Err.note();
@@ -1202,11 +1229,53 @@ classdef paramonte %< dynamicprops
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+        %
+        %   setupUnixPath(self)
+        %
+        %   Setup the PATH and LD_LIBRARY_PATH environmental variables such that
+        %   they point to the ParaMonte library's current installation folder.
+        %   Then check if these variable modifications are already defined in bashrc.
+        %   If not, then add a bash script to the bashrc such that the environmental variables 
+        %   get updated automatically every time a bash terminal is opened.
+        %
+        %       WARNING
+        %
+        %           This method results in aggressive modification of the bashrc file, 
+        %           which could lead to undesirable behavioral changes to the user's system.
+        %           For example, the paramonte library folder commonly keeps private copies of 
+        %           the generic runtime libraries that it needs, such as libgfortran, libgcc, ...
+        %           Adding the ParaMonte library directory to these environmental variables would 
+        %           then cause all usages of these generic libraries to be pointed to this folder
+        %           which contains a private copy of them. This can subsequently lead to linking
+        %           failures as these libraries contain different version of gcc and gfortran
+        %           even though they might be similarly named. For example, libgfortran.so.5
+        %           may contain symlinks to GFORTRAN8 or GFORTRAN10, depending on the GNU
+        %           compiler version to which it belongs.
+        %
+        %           BOTTOM LINE:
+        %
+        %           Calling this method should be avoided. As of version 1.5.1 of
+        %           the ParaMonte kernel routines, such global environmental 
+        %           variable modifications are not needed anymore.
+        %
+        %   Parameters
+        %   ----------
+        %
+        %       self
+        %
+        %           An object of class paramonte, to which this method belongs.
+        %
+        %   Returns
+        %   -------
+        %
+        %       None
+        %
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %
         function setupUnixPath(self)
 
             bashrcContents = getBashrcContents();
-            dlibcmd = "export LD_LIBRARY_PATH=" + self.path.lib + ":$LD_LIBRARY_PATH";
+            dlibcmd = "export LD_LIBRARY_PATH=" + self.path.lib.x64.intel + ":" + self.path.lib.x64.gnu + ":$LD_LIBRARY_PATH";
             if ~contains(bashrcContents,dlibcmd)
                 [~,~] = system( "chmod 777 ~/.bashrc", "-echo");
                 [~,~] = system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc", "-echo" );
@@ -1322,7 +1391,7 @@ classdef paramonte %< dynamicprops
             localInstallDir.caf.bin = [];
             localInstallDir.caf.lib = [];
 
-            pmGitRootDir = fullfile( self.path.lib , "paramonte-main" );
+            pmGitRootDir = fullfile( self.path.download , "paramonte-main" );
 
             if isfolder(pmGitRootDir)
 
@@ -1447,13 +1516,14 @@ classdef paramonte %< dynamicprops
                             self.Err.prefix = self.names.paramonte;
                             self.Err.note();
 
-                            setupFilePath = fullfile(self.path.lib, "setup.bat");
+                            setupFilePath = fullfile(self.path.download, "setup.bat");
                             fid = fopen(setupFilePath,"w");
                             fprintf(fid,"@echo off\n");
                             %fprintf(fid,"cd " + string(strrep(mpi.install.bin.path, '\', '\\')) + " && mpivars.bat quiet\n");
-                            %fprintf(fid,"cd " + string(strrep(self.path.lib, '\', '\\')) + "\n");
+                            %fprintf(fid,"cd " + string(strrep(self.path.lib.x64.intel, '\', '\\')) + "\n");
+                            %fprintf(fid,"cd " + string(strrep(self.path.lib.x64.gnu, '\', '\\')) + "\n");
                             fprintf(fid, "%s\n", "cd " + mpi.install.bin.path + " && mpivars.bat quiet");
-                            fprintf(fid, "%s\n", "cd " + self.path.lib);
+                            %fprintf(fid, "%s\n", "cd " + self.path.lib.root);
                             fprintf(fid,"@echo on\n");
                             fclose(fid);
 
@@ -1519,7 +1589,7 @@ classdef paramonte %< dynamicprops
                             self.Err.note();
 
                             try
-                                setupFilePath = fullfile(self.path.lib, "setup.sh");
+                                setupFilePath = fullfile(self.path.lib.root, "setup.sh");
                                 fid = fopen(setupFilePath,"w");
                                 %fprintf(fid,"source " + string(strrep(mpivarsCommand, '\', '\\')));
                                 fprintf(fid, "%s\n", "source " + mpivarsCommand);
@@ -1737,7 +1807,7 @@ classdef paramonte %< dynamicprops
 
             for dependency = prereqs.list
 
-                fullFilePath = fullfile( self.path.lib, dependency );
+                fullFilePath = fullfile( self.path.download, dependency );
 
                 if downloadEnabled
 
@@ -1852,8 +1922,8 @@ classdef paramonte %< dynamicprops
 
                 if self.platform.isLinux
 
-                    %untar(self.prereqs.mpi.intel.fullFilePath,self.path.lib);
-                    mpiExtractDir = fullfile(self.path.lib, self.prereqs.mpi.intel.fileName);
+                    %untar(self.prereqs.mpi.intel.fullFilePath,self.path.download);
+                    mpiExtractDir = fullfile(self.path.download, self.prereqs.mpi.intel.fileName);
                     mpiExtractDirExists = isfolder(mpiExtractDir);
                     if mpiExtractDirExists
                         %[errorOccurred, output] = system("rm -rf " + mpiExtractDir, "-echo");
@@ -1865,8 +1935,8 @@ classdef paramonte %< dynamicprops
                     if mpiExtractDirExists
                         errorOccurred = false;
                     else
-                        disp("untarring " + self.prereqs.mpi.intel.fullFilePath + " at " + self.path.lib);
-                        [errorOccurred, output] = system("cd " + self.path.lib + " && tar zxvf " + self.prereqs.mpi.intel.fullFileName, "-echo");
+                        disp("untarring " + self.prereqs.mpi.intel.fullFilePath + " at " + self.path.download);
+                        [errorOccurred, output] = system("cd " + self.path.download + " && tar zxvf " + self.prereqs.mpi.intel.fullFileName, "-echo");
                     end
                     %try
                     %catch
@@ -1937,7 +2007,7 @@ classdef paramonte %< dynamicprops
                                     + "Searching for the MPI runtime environment setup file...";
                     self.Err.note();
 
-                    % setupFilePath = fullfile( self.path.lib, "setup.sh" );
+                    % setupFilePath = fullfile( self.path.lib.root, "setup.sh" );
 
                     defaultIntelLinuxMpiPath = self.getDefaultIntelLinuxMpiPath();
                     if defaultIntelLinuxMpiPath.mpiRootDirNotFound
@@ -2052,7 +2122,7 @@ classdef paramonte %< dynamicprops
             mpiLibDir = string(fullfile(defaultIntelLinuxMpiPath.mpiDefaultRootDirList(end), "lib"));
             mpivarsFilePath = string(fullfile(mpiBinDir, "mpivars.sh"));
             if isfile(mpivarsFilePath)
-                setupFilePath = fullfile( self.path.lib, "setup.sh" );
+                setupFilePath = fullfile( self.path.lib.root, "setup.sh" );
                 try
                     fid = fopen(setupFilePath,"w");
                     %fprintf(fid,string(strrep(mpiBinDir,'\','\\'))+"\n");

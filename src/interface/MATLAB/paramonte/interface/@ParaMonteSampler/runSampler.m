@@ -143,19 +143,25 @@ function runSampler(self,ndim,getLogFunc,varargin)
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     cstype = [];
+    parallelism = [];
     errorOccurred = ~ischar(self.buildMode) && ~isstring(self.buildMode);
     if ~errorOccurred
         self.buildMode = string(self.buildMode);
         buildModeSplitList = strsplit(lower(self.buildMode),"-");
-        if strcmp(buildModeSplitList(1),"release") || strcmp(buildModeSplitList(1),"testing") || strcmp(buildModeSplitList(1),"debug")
-            if length(buildModeSplitList) > 1
-                cstype = buildModeSplitList(2);
-                errorOccurred = ~( strcmp(cstype,"gnu") || strcmp(cstype,"intel") );
+        for i = 1:length(buildModeSplitList)
+            if strcmp(buildModeSplitList(i),"release") || strcmp(buildModeSplitList(i),"testing") || strcmp(buildModeSplitList(i),"debug")
+                buildMode = buildModeSplitList(i);
+            elseif strcmp(buildModeSplitList(i),"impi") || strcmp(buildModeSplitList(i),"mpich") || strcmp(buildModeSplitList(i),"openmpi")
+                parallelism = "_" + buildModeSplitList(i);
+            elseif strcmp(buildModeSplitList(i),"intel") || strcmp(buildModeSplitList(i),"gnu")
+                cstype = buildModeSplitList(i);
+            else
+                errorOccurred = true;
+                break
             end
-        else
-            errorOccurred = true;
         end
     end
+
     if errorOccurred
         self.Err.msg    = "The attribute " + self.objectName + ".buildMode must be of type string. " + newline ...
                         + "It is an optional string argument with default value ""release"" ." + newline ...
@@ -170,50 +176,51 @@ function runSampler(self,ndim,getLogFunc,varargin)
         self.Err.abort();
     end
 
-    %%%% set the MPI library name. @todo: The MPI runtime library determination here needs improvement. This must be moved out of this method.
+    %%%% determine the mpi library brand. @todo: This could be later moved to pmreqs as it does not need to be executed every time.
 
-    if self.mpiEnabled
-
-        [status,cmdout] = system("mpiexec --version");
-        if status==0 || ischar(cmdout) || isstring(cmdout)
-            cmdout = lower(string(cmdout));
-        else
-            cmdout = "";
-        end
-
-        if contains(cmdout,"openrte") || contains(cmdout,"open-mpi") || contains(cmdout,"openmpi")
-            parallelism = "_openmpi";
-        elseif contains(cmdout,"hydra") || contains(cmdout,"mpich")
-            parallelism = "_mpich";
-        elseif contains(cmdout,"intel")
-            parallelism = "_impi";
-        else
-            if self.platform.isWin32 || self.platform.isLinux
-                parallelism = "_impi";
-            elseif self.platform.isMacOS
-                parallelism = "_openmpi";
-            end
-        end
-
-        if isempty(cstype)
-            if strcmp(parallelism,"_impi")
-                cstype = "intel";
+    if isempty(parallelism)
+        if self.mpiEnabled
+            [status,cmdout] = system("mpiexec --version");
+            if status==0 || ischar(cmdout) || isstring(cmdout)
+                cmdout = lower(string(cmdout));
             else
-                cstype = "gnu";
+                cmdout = "";
+            end
+
+            if contains(cmdout,"openrte") || contains(cmdout,"open-mpi") || contains(cmdout,"openmpi")
+                parallelism = "_openmpi";
+            elseif contains(cmdout,"hydra") || contains(cmdout,"mpich")
+                parallelism = "_mpich";
+            elseif contains(cmdout,"intel")
+                parallelism = "_impi";
+            else
+                if self.platform.isWin32 || self.platform.isLinux
+                    parallelism = "_impi";
+                elseif self.platform.isMacOS
+                    parallelism = "_openmpi";
+                end
+            end
+        else
+            parallelism = "";
+            if ~self.mpiEnabled
+                if self.reportEnabled
+                    self.Err.msg    = "Running the ParaDRAM sampler in serial mode..." + newline ...
+                                    + "To run the ParaDRAM sampler in parallel visit:" + newline ...
+                                    + newline ...
+                                    + "    " + href(self.website.home.url) ...
+                                    ;
+                    % the simulation progress is funneled to the MATLAB session on Windows, so need for the following message.
+                    if ~self.platform.isWin32
+                    self.Err.msg    = self.Err.msg + newline ...
+                                    + newline ...
+                                    + "For realtime simulation progress report," + newline ...
+                                    + "check the bash terminal from which you started your MATLAB session." ...
+                                    ;
+                    end
+                    self.Err.note();
+                end
             end
         end
-
-    else
-
-        parallelism = "";
-        if ~self.mpiEnabled
-            if self.reportEnabled
-                self.Err.msg    = "Running the ParaDRAM sampler in serial mode..." + newline ...
-                                + "To run the ParaDRAM sampler in parallel mode visit: cdslab.org/pm";
-                self.Err.note();
-            end
-        end
-
     end
 
     %%%% set build mode
@@ -230,7 +237,14 @@ function runSampler(self,ndim,getLogFunc,varargin)
 
     pmcsListRef = ["intel","gnu"];
     pmcsList = pmcsListRef;
-    if ~isempty(cstype)
+
+    if isempty(cstype)
+        if strcmp(parallelism,"_impi")
+            cstype = "intel";
+        else
+            cstype = "gnu";
+        end
+    else
         pmcsList = [cstype];
         for pmcs = pmcsListRef
             if ~strcmp(pmcs,cstype)
@@ -246,7 +260,7 @@ function runSampler(self,ndim,getLogFunc,varargin)
     for buildMode = buildModeList
         for pmcs = pmcsList
 
-            libName = libNamePrefix + pmcs + "_" + buildMode + "_dynamic_heap" + parallelism;
+            libName = libNamePrefix + pmcs + "_" + buildMode + "_shared_heap" + parallelism;
             if exist(libName,'file')==3; libFound = true; break; end
 
         end
@@ -255,10 +269,10 @@ function runSampler(self,ndim,getLogFunc,varargin)
     self.libName = libName;
 
     if ~libFound
-        self.Err.msg    = "Exhausted all possible ParaMonte dynamic library search" + newline ...
+        self.Err.msg    = "Exhausted all possible ParaMonte shared library search" + newline ...
                         + "names but could not find any compatible library." + newline ...
                         + "It appears your ParaMonte MATLAB interface is missing" + newline ...
-                        + "the dynamic libraries. Please report this issue at:" + newline + newline ...
+                        + "the shared libraries. Please report this issue at:" + newline + newline ...
                         + "    <a href=""https://github.com/cdslaborg/paramonte/issues"">https://github.com/cdslaborg/paramonte/issues</a>" + newline + newline ...
                         + "Visit <a href=""https://www.cdslab.org/paramonte/"">https://www.cdslab.org/paramonte/</a> for instructions" + newline ...
                         + "to build ParaMonte object files on your system."; %...+ newline ...
@@ -297,30 +311,43 @@ function runSampler(self,ndim,getLogFunc,varargin)
     end
     munlock(self.libName)
     eval("clear "+self.libName);
-    simFailed = false;
-    %eval(expression);
+
     try
         eval(expression);
     catch ME
         self.Err.msg = "Error occurred: " + string(ME.message) + newline + newline;
-        if ismac && strcmpi(ME.identifier,'MATLAB:mex:ErrInvalidMEXFile')
-            self.Err.msg = self.Err.msg ...
-                         + "This error is most likely due to the ""System Integrity Protection"" (SIP) of your Mac interfering with the ParaMonte MATLAB files." + newline ...
-                         + "Follow the directions given on this website to resolve this error:" + newline ...
-                         + newline ...
-                         + "    " + href(self.website.home.url + "/notes/troubleshooting/macos-developer-cannot-be-verified/") + newline ...
-                         + newline ...
-                         + "If the problem persists even after following the guidelines in the above page, please report this issue at," + newline ...
-                         + newline ...
-                         + "    " + href(self.website.github.issues.url) ...
-                         ;
+        if strcmpi(ME.identifier,'MATLAB:mex:ErrInvalidMEXFile')
+            if self.platform.isMacOS
+                self.Err.msg = self.Err.msg ...
+                             + "This error is most likely due to the ""System Integrity Protection"" (SIP) of your Mac interfering with the ParaMonte MATLAB files." + newline ...
+                             + "Follow the directions given on this website to resolve this error:" + newline ...
+                             + newline ...
+                             + "    " + href(self.website.home.url + "/notes/troubleshooting/macos-developer-cannot-be-verified/") + newline ...
+                             + newline ...
+                             + "If the problem persists even after following the guidelines in the above page, please report this issue at," + newline ...
+                             + newline ...
+                             + "    " + href(self.website.github.issues.url) + newline ...
+                             + newline ...
+                             + "to get help on resolving the error." ...
+                             ;
+            else
+                self.Err.msg = self.Err.msg ...
+                             + "If the problem persists, please report this issue at," + newline ...
+                             + newline ...
+                             + "    " + href(self.website.github.issues.url) + newline ...
+                             + newline ...
+                             + "to get help on resolving the error." ...
+                             ;
+
+            end
         else
            if self.mpiEnabled
                 reportFileSuffix = "_process_*_report.txt";
             else
                 reportFileSuffix = "_process_1_report.txt";
             end
-            self.Err.msg    = "The " + self.methodName + " simulation failed. Please see the contents of the simulation's output report file(s) for potential diagnostic messages:" + newline + newline ...
+            self.Err.msg    = self.Err.msg ...
+                            + "The " + self.methodName + " simulation failed. Please see the contents of the simulation's output report file(s) for potential diagnostic messages:" + newline + newline ...
                             + "    " + strrep(self.spec.outputFileName+reportFileSuffix,'\','\\') ...
                             ;
         end

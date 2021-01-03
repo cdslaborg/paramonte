@@ -97,6 +97,14 @@ printCopyFailMsg() {
     exit 1
 }
 
+if [ "${isMacOS}" = "true" ]; then
+    sharedFileExt="dylib"
+elif [ "${isMinGW}" = "true" ] || [ "${isCygwin}" = "true" ]; then
+    sharedFileExt="dll"
+else
+    sharedFileExt="so"
+fi
+
 unset LANG_NAME
 LANG_IS_C=false
 LANG_IS_CPP=false
@@ -141,13 +149,14 @@ if [ "${INTERFACE_LANGUAGE}" = "c" ]; then
     LANG_NAME=C
 fi
 
-if [ -z ${LANG_NAME+x} ]; then
+if [ -z ${LANG_NAME+x} ] || [ -z ${LANG_ABBR+x} ]; then
     echo >&2
     echo >&2 "-- ParaMonteExample - Fatal Error: unrecognized or no language specified. exiting..."
     echo >&2
     exit 1
-else
-    LANG_ABBR="${LANG_NAME//+/p}"
+#else
+     # Capitalize INTERFACE_LANGUAGE
+#    LANG_ABBR="${LANG_NAME//+/p}"
 #    if [ "${INTERFACE_LANGUAGE}" = "c++" ]; then
 #        LANG_ABBR="cpp"
 #    else
@@ -204,11 +213,14 @@ do
     mkdir -p "${ParaMonteExample_BLD_DIR_CURRENT}/"
     verify $? "recursive directory creation"
 
-    # The ParaMonte library kernel files
+    #### The ParaMonte library kernel files. 
+    #### The library directory of ParaMonte Python must be root directory. 
+    #### This is essential for the correct functionality of ctypes module.
 
     ParaMonteExample_LIB_DIR_CURRENT="${ParaMonteExample_BLD_DIR_CURRENT}"
-    if [ "${LANG_IS_Python}" = "true" ]; then ParaMonteExample_LIB_DIR_CURRENT="${ParaMonteExample_LIB_DIR_CURRENT}/paramonte"; fi
-    if [ "${LANG_IS_MATLAB}" = "true" ]; then ParaMonteExample_LIB_DIR_CURRENT="${ParaMonteExample_LIB_DIR_CURRENT}/paramonte/lib"; fi
+    if [ "${LANG_IS_DYNAMIC}" = "true" ]; then
+        ParaMonteExample_LIB_DIR_CURRENT="${ParaMonteExample_LIB_DIR_CURRENT}/paramonte/lib/${ARCHITECTURE}/${PMCS}"
+    fi
 
     if [[ -d "${ParaMonteExample_LIB_DIR_CURRENT}" ]]; then
         echo >&2 "-- ParaMonteExample${LANG_NAME} - ParaMonte ${EXAM_NAME} example library directory already exists. skipping..."
@@ -222,17 +234,259 @@ do
     echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library files..."
     echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${PMLIB_FULL_PATH}"
     echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_LIB_DIR_CURRENT}/"
-    cp -R "${ParaMonte_LIB_DIR}/"libparamonte_* "${ParaMonteExample_LIB_DIR_CURRENT}/" || printCopyFailMsg
+    cp -af "${ParaMonte_LIB_DIR}/"libparamonte_* "${ParaMonteExample_LIB_DIR_CURRENT}/" || printCopyFailMsg
 
-    # The ParaMonte library dll dependency files
+    # Copy the ParaMonte library dll dependency files
 
-    if [ "${shared_enabled}" = "true" ]; then
+    if [ "${deploy_enabled}" = "true" ] && [ "${LTYPE}" = "shared" ]; then
 
-        #### GNU
+        #### all compilers
 
-        if [ "${PMCS}" = "gnu" ] && ! [ "${CAF_ENABLED}" = "true" ] && ! [ "${isMacOS}" = "true" ]; then # caf does not have lib dependency
+        sharedFilePathList=()
 
-            #### copy Fortran compiler shared library files
+        if [ "${isMacOS}" = "true" ] && [ "${INTERFACE_LANGUAGE}" = "matlab" ]; then
+            # define rpath for mex files.
+            sharedFilePathList+=($(ls "${ParaMonteExample_LIB_DIR_CURRENT}"/libparamonte_*.mexmaci*))
+            sharedFilePathListLen=${#sharedFilePathList[@]}
+            for ((ishared=0; ishared<${sharedFilePathListLen}; ishared++)); do
+                echo >&2
+                echo >&2 "-- ParaMonteExample${LANG_NAME} - Adding rpath to the shared file: ${sharedFilePathList[$ishared]}"
+                echo >&2
+                install_name_tool -add_rpath "@loader_path" "${sharedFilePathList[$ishared]}" || {
+                    echo >&2
+                    echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: Failed to define rpath for shared file: ${sharedFilePathList[$ishared]}"
+                    echo >&2
+                    exit 1
+                }
+            done
+        fi
+
+        #### gnu compilers
+
+        if ! [ "${CAF_ENABLED}" = "true" ]; then # [ "${PMCS}" = "gnu" ] && 
+
+            #### first create the dependencies list
+
+            unset inspector
+            if [ "${isMacOS}" = "true" ] && command -v otool >/dev/null 2>&1 && command -v install_name_tool >/dev/null 2>&1; then
+                inspector="otool -L"
+            elif ! [ "${isMacOS}" = "true" ] && command -v ldd >/dev/null 2>&1; then # other unix-like
+                inspector="ldd"
+            fi
+
+            if [ -z ${inspector+x} ]; then
+
+                echo >&2
+                echo >&2 "-- ParaMonteExample${LANG_NAME} - WARNING: The ldd (Linux) or otool/install_name_tool (macOS) could not be found."
+                echo >&2 "-- ParaMonteExample${LANG_NAME} - WARNING: Skipping the shared library file copying..."
+                echo >&2
+
+            else
+
+                #### loop over all existing shared files, and their dependencies recursively
+
+                ishared=0
+                sharedFilePathList+=($(ls "${ParaMonteExample_LIB_DIR_CURRENT}"/libparamonte_*.${sharedFileExt}))
+                sharedFilePathListLen=${#sharedFilePathList[@]}
+
+                while [ "$ishared" -lt "${sharedFilePathListLen}" ]; do
+
+                    sharedFilePath="${sharedFilePathList[$ishared]}"
+
+                    echo >&2
+                    echo >&2 "-- ParaMonteExample${LANG_NAME} - checking the dependencies of ${sharedFilePath}"
+
+                    # @todo: point of weakness: The following for-loop assumes no white space in the dependency paths.
+
+                    dependencyList=()
+                    for dependencyFilePath in $(${inspector} "${sharedFilePath}"); do
+
+                        dependencyFileName="$(basename "${dependencyFilePath}")"
+
+                        # copy dependencyFilePath only if they are GNU shared files and are not MPI-related.
+
+                        #   ATTN: @todo: point of weakness: Some gcc libraries do not seem to be portable.
+                        #   ATTN: @todo: On WSL Ubuntu 20, there is a dependency on libc.so.6, which is not
+                        #   ATTN: @todo: portable across other linux distros like Debian, Opensuse and causes segfault.
+                        #   ATTN: @todo: Conversely, another dependency libm.so.6 seems to be needed and portable.
+                        #   ATTN: @todo: For now, the best strategy seems to be to avoid all basic C library dependencies
+                        #   ATTN: @todo: which currently includes three shared files: libc, libm, libpthread.
+                        #   ATTN: @todo: See: https://stackoverflow.com/questions/54054925/what-functions-is-the-libm-intended-for
+                        #   || \
+                        #   [[ "${dependencyFilePath}" =~ .*"mpich".* ]] \
+                        #   || \
+                        #   [[ "${dependencyFilePath}" =~ .*"open-mpi".* ]] \
+                        #   || \
+                        #   [[ "${dependencyFilePath}" =~ .*"openmpi".* ]] \
+
+                        if  [ -f "${dependencyFilePath}" ] && \
+                            ( \
+                                [[ "${dependencyFilePath}" =~ .*"gnu".* ]] \
+                                || \
+                                [[ "${dependencyFilePath}" =~ .*"gcc".* ]] \
+                                || \
+                                [[ "${dependencyFilePath}" =~ .*"gfortran".* ]] \
+                                || \
+                                [[ "${dependencyFilePath}" =~ .*"quadmath".* ]] \
+                                || \
+                                [[ "${dependencyFilePath}" =~ .*"libmpi".* ]] \
+                                || \
+                                [[ "${dependencyFilePath}" =~ .*"libmpifort".* ]] \
+                            ) && \
+                            ! ( \
+                                [[ "${dependencyFilePath}" =~ .*"libc.".* ]] \
+                                || \
+                                [[ "${dependencyFilePath}" =~ .*"libm.".* ]] \
+                                || \
+                                [[ "${dependencyFilePath}" =~ .*"libdl.".* ]] \
+                                || \
+                                [[ "${dependencyFilePath}" =~ .*"librt.".* ]] \
+                                || \
+                                [[ "${dependencyFilePath}" =~ .*"libpthread.".* ]] \
+                            ); then
+                            #if ! [ "${isMacOS}" = "true" ] || ( [ "${isMacOS}" = "true" ] && ! [[ "${dependencyFilePath}" =~ .*"/usr/lib/".* ]] ); then
+                                echo >&2 "-- ParaMonteExample${LANG_NAME} - dependency detected: ${dependencyFilePath}"
+                                dependencyList+=("${dependencyFilePath}")
+                            #fi
+                        fi
+
+                    done
+
+                    dependencyListLen=${#dependencyList[@]}
+
+                    if [ ${dependencyListLen} -eq 0 ]; then
+
+                        echo >&2
+                        echo >&2 "-- ParaMonteExample${LANG_NAME} - NOTE: No shared file dependencies were detected in the shared library file: ${sharedFilePath}"
+                        echo >&2 "-- ParaMonteExample${LANG_NAME} - NOTE: Skipping the shared library file copying..."
+                        echo >&2
+
+                    else
+
+                        echo >&2
+                        echo >&2 "-- ParaMonteExample${LANG_NAME} - ${dependencyListLen} shared library file dependencies were detected."
+                        echo >&2
+
+                        #### loop over the dependencies in the current shared file,
+                        #### copy those missing to the install folder,
+                        #### and change their install_path in the shared files, if OS is macOS.
+
+                        for ((idep=0; idep<${dependencyListLen}; idep++)); do
+
+                            dependencyPath="${dependencyList[idep]}"
+                            dependencyName="$(basename "${dependencyPath}")"
+
+                            #### If the source file is symlink, copy the target to the new folder and rename it to the symlink's name instead.
+
+                            dependencyPathTarget="${dependencyPath}"
+                            dependencyNameTarget="${dependencyName}"
+
+                            if [ "${isMacOS}" = "true" ]; then
+                                echo >&2 "-- ParaMonteExample${LANG_NAME} - macOS symlink handling not supported yet. skipping!"
+                            else
+                                if [ -L "${dependencyPath}" ]; then
+                                    dependencyPathTarget="$(readlink -f "${dependencyPath}")"
+                                    dependencyNameTarget="$(basename "${dependencyPathTarget}")"
+                                fi
+                            fi
+
+                            #### copy and work on the dependency file only if it does not already exist in the folder.
+
+                            dependencyDirDestin="${ParaMonteExample_LIB_DIR_CURRENT}"
+                            # put the serial shared files in the parent directory to save space and avoid redundancy.
+                            if [ "${LANG_IS_DYNAMIC}" = "true" ] && [[ "${dependencyName}" =~ .*"libmpi".* ]]; then
+                                dependencyDirDestin="${ParaMonteExample_LIB_DIR_CURRENT}/${MPILIB_NAME}"
+                            fi
+                            if ! [ -d "{dependencyDirDestin}" ]; then
+                                mkdir -p "${dependencyDirDestin}"
+                                verify $? "recursive dependencyDirDestin creation"
+                            fi
+                            dependencyPathDestin="${dependencyDirDestin}/${dependencyName}"
+
+                            if [ -f "${dependencyPathDestin}" ]; then
+
+                                echo >&2 "-- ParaMonteExample${LANG_NAME} - the dependency already exists in the build tree: ${dependencyPathDestin}"
+                                echo >&2 "-- ParaMonteExample${LANG_NAME} - skipping the copy action for ${dependencyName}"
+
+                            else
+
+                                echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library dependency shared file..."
+                                echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${dependencyPathTarget}"
+                                echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${dependencyPathDestin}"
+
+                                #### copy the dependency file to the destination folder.
+                                #### note that -a and -r for cp are inconsistent with each other on macOS as -a contains -R.
+
+                                (yes | \cp -af "${dependencyPathTarget}" "${dependencyDirDestin}"/) >/dev/null 2>&1 || {
+                                    echo >&2
+                                    echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: The dependency file copy attempt failed at: ${dependencyPath}"
+                                    echo >&2
+                                    exit 1
+                                    #if [ "$BASH_SOURCE" == "$0" ]; then exit 30; else return 88; fi # return with an error message
+                                }
+
+                                #### If the dependency is symlink, rename the target to the symlink's name in the destination folder
+
+                                if ! [ "${dependencyName}" = "${dependencyNameTarget}" ]; then
+
+                                    mv "${dependencyDirDestin}/${dependencyNameTarget}" "${dependencyPathDestin}" || {
+                                        echo >&2
+                                        echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: The dependency renaming failed:"
+                                        echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: from: ${dependencyDirDestin}/${dependencyNameTarget}"
+                                        echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL:   to: ${dependencyPathDestin}"
+                                        echo >&2
+                                        exit 1
+                                    }
+
+                                fi
+
+                                #### Add the new shared file for subsequent scanning
+
+                                echo >&2 "-- ParaMonteExample${LANG_NAME} - appending the shared file list with the dependency: ${dependencyPathDestin}"
+                                sharedFilePathList+=("${dependencyPathDestin}")
+
+                            fi
+
+                            if [ "${isMacOS}" = "true" ]; then
+                                echo >&2 "-- ParaMonteExample${LANG_NAME} - changing the install_name to @rpath for the dependency file..."
+                                chmod a+w "${sharedFilePath}" \
+                                && \
+                                install_name_tool -change "${dependencyPath}" "@rpath/${dependencyName}" "${sharedFilePath}" \
+                                || {
+                                    echo >&2
+                                    echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: Changing the install_name of the dependency file to @rpath failed."
+                                    echo >&2
+                                    exit 1
+                                    #if [ "$BASH_SOURCE" == "$0" ]; then exit 30; else return 88; fi # return with an error message
+                                }
+                            fi
+                            echo >&2
+
+                        done
+
+                    fi
+
+                    sharedFilePathListLen=${#sharedFilePathList[@]}
+                    ishared=$((ishared+1))
+
+                    echo >&2
+                    echo >&2 "-- ParaMonteExample${LANG_NAME} - The updated shared file list:"
+                    printf   '%s\n' "${sharedFilePathList[@]}"
+                    echo >&2 "-- ParaMonteExample${LANG_NAME} - The length of the shared file list: ${sharedFilePathListLen}"
+                    echo >&2 "-- ParaMonteExample${LANG_NAME} - The current index through the list: ${ishared}"
+                    echo >&2
+
+                done # with while loop
+
+            fi
+
+        fi
+
+        #### no need to execute the following anymore. The above block takes care of the shared files in a more robust way.
+
+        if [ "false" = "true" ] && [ "${PMCS}" = "gnu" ] && ! [ "${CAF_ENABLED}" = "true" ] && ! [ "${isMacOS}" = "true" ]; then # caf does not have lib dependency
+
+            ########################################################################################################################
 
             # On macOS, simply copying the dependencies does not work.
             # @todo A better strategy is to ask the user to install the relevant GFortran version on their system on their behalf via the build script.
@@ -241,9 +495,9 @@ do
 
                 if [ "${isMacOS}" = "true" ]; then
                     Fortran_COMPILER_LIB_DIR_LIST="/usr/local/gfortran/lib"
-                    sharedLibExt="dylib"
+                    sharedFileExt="dylib"
                 else
-                    sharedLibExt="so"
+                    sharedFileExt="so"
                     Fortran_COMPILER_DIR=$(dirname "${Fortran_COMPILER_PATH}")
                     FortranCompilerVersion=$("${Fortran_COMPILER_PATH}" -dumpversion)
                     FortranCompilerMajorVersion="$(cut -d '.' -f 1 <<< "$FortranCompilerVersion")"
@@ -258,7 +512,7 @@ do
                     for Fortran_COMPILER_LIB_DIR in ${Fortran_COMPILER_LIB_DIR_LIST//:/ }
                     do
                         if [ -d "${Fortran_COMPILER_LIB_DIR}" ]; then
-                            flist=$(( IFS=:; unset lsout; lsout=$(ls -dm "${Fortran_COMPILER_LIB_DIR}/${FILE}"*.${sharedLibExt}*); if ! [[ -z "${lsout// }" ]]; then echo "${lsout}, "; fi) 2>/dev/null)
+                            flist=$(( IFS=:; unset lsout; lsout=$(ls -dm "${Fortran_COMPILER_LIB_DIR}/${FILE}"*.${sharedFileExt}*); if ! [[ -z "${lsout// }" ]]; then echo "${lsout}, "; fi) 2>/dev/null)
                             for fpath in $(echo $flist | sed "s/,/ /g"); do
                                 echo >&2
                                 echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library dll dependency file..."
@@ -274,23 +528,13 @@ do
                         fi
                     done
                 done
-                #if [ "${copySucceeded}" = "true" ]; then break; fi
-                #if [ "${copySucceeded}" = "false" ]; then
-                #    echo >&2
-                #    echo >&2 "-- ParaMonteExample${LANG_NAME} - WARNING: Failed to copy the libgfortran shared library dependency files."
-                #    echo >&2 "-- ParaMonteExample${LANG_NAME} - WARNING: Ensure the path to the necessary shared files is defined in your terminal"
-                #    echo >&2 "-- ParaMonteExample${LANG_NAME} - WARNING: before attempting to compile the ParaMonte ${LANG_NAME} example."
-                #    echo >&2 "-- ParaMonteExample${LANG_NAME} - WARNING: If the ParaMonte example compilations are unsuccessful, please"
-                #    echo >&2 "-- ParaMonteExample${LANG_NAME} - WARNING: report the issue at the following link for further help,"
-                #    echo >&2 "-- ParaMonteExample${LANG_NAME} - WARNING: please report the issue at,"
-                #    echo >&2 "-- ParaMonteExample${LANG_NAME} - WARNING: "
-                #    echo >&2 "-- ParaMonteExample${LANG_NAME} - WARNING:     https://github.com/cdslaborg/paramonte/issues"
-                #    echo >&2
-                #fi
+
             else
+
                 echo >&2
-                echo >&2 "-- ParaMonteExample${LANG_NAME} - WARNING: the ParaMonte shared library dependency files could not be found."
+                echo >&2 "-- ParaMonteExample${LANG_NAME} - WARNING: The ParaMonte shared library dependency files could not be found."
                 echo >&2
+
             fi
 
             #### copy MPI shared library files. UPDATE: Not a good idea to copy MPI installation files. It only creates a mess in the binary folders and rarely works.
@@ -371,9 +615,9 @@ do
 
         fi
 
-        #### intel
+        #### intel - UPDATE: Not a good idea to copy MPI installation files. It only creates a mess in the binary folders and rarely works.
 
-        if [ "${PMCS}" = "intel" ] && ! [ -z ${MPIEXEC_PATH+x} ] && [ "${MPI_ENABLED}" = "true" ]; then
+        if [ "false" = "true" ] && [ "${PMCS}" = "intel" ] && ! [ -z ${MPIEXEC_PATH+x} ] && [ "${MPI_ENABLED}" = "true" ]; then
             #echo >&2
             #echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the the mpiexec executable file..."
             #echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${MPIEXEC_PATH}*"
@@ -552,7 +796,7 @@ if ! [ -d "${ParaMonte_BIN_DIR}" ]; then
 fi
 
 ParaMonteExample_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR}/${PMLIB_BASE_NAME}"
-if [ "${LANG_IS_DYNAMIC}" = "true" ]; then ParaMonteExample_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR}/libparamonte_${LANG_ABBR}"; fi
+if [ "${LANG_IS_DYNAMIC}" = "true" ]; then ParaMonteExample_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR}/libparamonte_${LANG_ABBR}_${PLATFORM}_${ARCHITECTURE}"; fi
 if ! [ -d "${ParaMonteExample_BIN_DIR_CURRENT}" ]; then
     mkdir "${ParaMonteExample_BIN_DIR_CURRENT}/";
     verify $? "recursive directory creation"
@@ -571,7 +815,7 @@ fi
 echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library files to the install directory..."
 echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteExample_BLD_DIR_CURRENT}"
 echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BIN_DIR_CURRENT}"
-cp -R "${ParaMonteExample_BLD_DIR_CURRENT}"/* "${ParaMonteExample_BIN_DIR_CURRENT}" || printCopyFailMsg
+cp -rf "${ParaMonteExample_BLD_DIR_CURRENT}"/* "${ParaMonteExample_BIN_DIR_CURRENT}" || printCopyFailMsg
 
 #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # The ParaMonte library example build and run if requested

@@ -370,19 +370,26 @@ class ParaMonteSampler:
 
         cstype = None
         dummyList = None
+        parallelism = None
         errorOccurred = True
         if isinstance(buildMode,str):
             errorOccurred = False
             if "-" in buildMode:
-                dummyList = buildMode.split("-")
-                buildMode = dummyList[0] # build type
-                cstype = dummyList[1] # compiler suite
+                dummyList = buildMode.lower().split("-")
+                for item in dummyList:
+                    if item in ["debug","testing","release"]:
+                        buildMode = item
+                    elif item in ["impi","mpich","openmpi"]:
+                        parallelism = "_" + item
+                    elif item in ["intel","gnu"]:
+                        cstype = item
+                    else:
+                        errorOccurred = True
+                        break
 
-        if not errorOccurred: errorOccurred = buildMode not in ["release", "testing", "debug"]
-        if not errorOccurred and cstype is not None: errorOccurred = not (cstype=="gnu" or cstype=="intel")
         if errorOccurred:
             if dummyList is not None: buildMode = "-".join(dummyList)
-            pm.abort( msg   = "The object attribute ``buildMode`` must be of type ``str``." + newline
+            pm.abort( msg   = "The object's attribute ``buildMode`` must be of type ``str``." + newline
                             + "It is an optional string argument with default value \"release\"." + newline
                             + "possible choices are:" + newline
                             + newline
@@ -448,106 +455,52 @@ class ParaMonteSampler:
 
         sys.stdout.flush()
 
-        #### setup env
+        #if pm.platform.isLinux:
+        #    from _pmreqs import getLocalInstallDir
+        #    localInstallDir = getLocalInstallDir()
+        #
+        #    if localInstallDir.gnu.root is not None:
+        #        for object in os.scandir(localInstallDir.gnu.root):
+        #            if object.is_dir() and ("lib" in object.name) and object not in os.environ["LD_LIBRARY_PATH"]:
+        #                os.environ["LD_LIBRARY_PATH"] = object.path + os.pathsep + os.environ["LD_LIBRARY_PATH"]
+        #    if localInstallDir.mpi.root is not None:
+        #        if localInstallDir.mpi.bin is not None:
+        #            if localInstallDir.mpi.bin not in os.environ["PATH"]: os.environ["PATH"] = localInstallDir.mpi.bin + os.pathsep + os.environ["PATH"]
+        #        for object in os.scandir(localInstallDir.mpi.root):
+        #            if object.is_dir() and ("lib" in object.name):
+        #                os.environ["LD_LIBRARY_PATH"] = object.path + os.pathsep + os.environ["LD_LIBRARY_PATH"]
+        #        if localInstallDir.mpi.lib is not None: os.environ["LD_LIBRARY_PATH"] = localInstallDir.mpi.lib + os.pathsep + os.environ["LD_LIBRARY_PATH"]
 
-        if pm.platform.isWin32:
+        #### determine the mpi library brand. @todo: This could be later moved to pmreqs as it does not need to be executed every time.
 
-            if "PATH" in os.environ:
-                os.environ["PATH"] = pm.path.root + os.pathsep + os.environ["PATH"]
-            else:
-                os.environ["PATH"] = pm.path.root
-
-            #mpiFound = False
-            pathList = os.environ["PATH"].split(";")
-            for path in pathList:
-                pathLower = path.lower().replace("\\","")
-                if ("mpiintel64bin" in pathLower):
-                    #mpiFound = True
-                    #bldMode = buildMode
-                    #if bldMode=="testing": bldMode = "release"
-                    mpiPath = os.path.join(path,"release")
-                    os.environ["PATH"] = mpiPath + os.pathsep + os.environ["PATH"]
-                    libfabricPath = os.path.join(os.path.dirname(path),"libfabric","bin")
-                    os.environ["PATH"] = libfabricPath + os.pathsep + os.environ["PATH"]
-                    break
-
-        else:
-
-            if "LD_LIBRARY_PATH" not in os.environ:
-                os.environ["LD_LIBRARY_PATH"] = "."
-                #if self.reportEnabled and pm.platform.isLinux:
-                #    pm.warn( msg   = "LD_LIBRARY_PATH environmental variable is not defined in " + newline
-                #                    + "your Python session. Consider running the following command " + newline
-                #                    + "in your Bash shell before reopening Python and using ParaMonte: " + newline
-                #                    + newline
-                #                    + "    export LD_LIBRARY_PATH=."
-                #            , methodName = self._methodName
-                #            , marginTop = 1
-                #            , marginBot = 1
-                #            )
-            libdir = "/usr/lib"
-            if os.path.isdir(libdir):
-                os.environ["LD_LIBRARY_PATH"]  = libdir + os.pathsep + os.environ["LD_LIBRARY_PATH"]
-            libdir = "/usr/local/lib"
-            if os.path.isdir(libdir):
-                os.environ["LD_LIBRARY_PATH"]  = libdir + os.pathsep + os.environ["LD_LIBRARY_PATH"]
-            libdir = "/usr/lib64"
-            if os.path.isdir(libdir):
-                os.environ["LD_LIBRARY_PATH"]  = libdir + os.pathsep + os.environ["LD_LIBRARY_PATH"]
-            libdir = "/usr/local/lib64"
-            if os.path.isdir(libdir):
-                os.environ["LD_LIBRARY_PATH"]  = libdir + os.pathsep + os.environ["LD_LIBRARY_PATH"]
-            os.environ["LD_LIBRARY_PATH"]  = pm.path.root + os.pathsep + os.environ["LD_LIBRARY_PATH"]
-
-            from _pmreqs import getLocalInstallDir
-            localInstallDir = getLocalInstallDir()
-
-            if localInstallDir.gnu.root is not None:
-                for object in os.scandir(localInstallDir.gnu.root):
-                    if object.is_dir() and ("lib" in object.name):
-                        os.environ["LD_LIBRARY_PATH"] = object.path + os.pathsep + os.environ["LD_LIBRARY_PATH"]
-
-            if localInstallDir.mpi.root is not None:
-                if localInstallDir.mpi.bin is not None: os.environ["PATH"] = localInstallDir.mpi.bin + os.pathsep + os.environ["PATH"]
-                for object in os.scandir(localInstallDir.mpi.root):
-                    if object.is_dir() and ("lib" in object.name):
-                        os.environ["LD_LIBRARY_PATH"] = object.path + os.pathsep + os.environ["LD_LIBRARY_PATH"]
-                if localInstallDir.mpi.lib is not None: os.environ["LD_LIBRARY_PATH"] = localInstallDir.mpi.lib + os.pathsep + os.environ["LD_LIBRARY_PATH"]
-
-        #### determine the mpi library brand. @todo: This must be later moved to pmreqs as it does not need to be executed every time.
-
-        if self.mpiEnabled:
-            import subprocess
-            cmdout = subprocess.getoutput("mpiexec --version").lower()
-            if "intel" in cmdout:
-                parallelism = "_impi"
-            elif "hydra" in cmdout or "mpich" in cmdout:
-                parallelism = "_mpich"
-            elif "openrte" in cmdout or "open-mpi" in cmdout or "openmpi" in cmdout:
-                parallelism = "_openmpi"
-            else: # assume defaults
-                if self.platform.isWin32 or self.platform.isLinux:
+        if parallelism is None:
+            if self.mpiEnabled: 
+                import subprocess
+                cmdout = subprocess.getoutput("mpiexec --version").lower()
+                if "intel" in cmdout:
                     parallelism = "_impi"
-                elif self.platform.isMacOS:
+                elif "hydra" in cmdout or "mpich" in cmdout:
+                    parallelism = "_mpich"
+                elif "openrte" in cmdout or "open-mpi" in cmdout or "openmpi" in cmdout:
                     parallelism = "_openmpi"
-            if cstype is None:
-                if parallelism=="_impi":
-                    cstype = "intel"
-                else:
-                    cstype = "gnu"
-        else:
-            parallelism = ""
-            pm.note( msg   = "Running the " + self._methodName + " sampler in serial mode..." + newline
-                            + "To run the " + self._methodName + " sampler in parallel mode visit:" + newline
-                            + newline
-                            + "    " + pm.website.home.url + newline
-                            + newline
-                            + "If you are using Jupyter notebook, check the Jupyter's " + newline
-                            + "terminal window for realtime simulation progress and report."
-                    , methodName = self._methodName
-                    , marginTop = 1
-                    , marginBot = 1
-                    )
+                else: # assume defaults
+                    if self.platform.isWin32 or self.platform.isLinux:
+                        parallelism = "_impi"
+                    elif self.platform.isMacOS:
+                        parallelism = "_openmpi"
+            else:
+                parallelism = ""
+                pm.note( msg    = "Running the " + self._methodName + " sampler in serial mode..." + newline
+                                + "To run the " + self._methodName + " sampler in parallel mode visit:" + newline
+                                + newline
+                                + "    " + pm.website.home.url + newline
+                                + newline
+                                + "If you are using Jupyter notebook, check the Jupyter's " + newline
+                                + "terminal window for realtime simulation progress and report."
+                        , methodName = self._methodName
+                        , marginTop = 1
+                        , marginBot = 1
+                        )
 
         # import ParaMonte dll define result (None) AND argument (pointer to a c function) type
 
@@ -556,14 +509,20 @@ class ParaMonteSampler:
         buildModeList.insert(0,buildMode)
         pmcsList = ["intel","gnu"]
 
-        if cstype is not None:
+        if cstype is None:
+            if parallelism=="_impi":
+                cstype = "intel"
+            else:
+                cstype = "gnu"
+        else:
             pmcsList.pop(pmcsList.index(cstype))
             pmcsList.insert(0,cstype)
 
         libNameSuffix = { "windows" : ".dll"
                         , "cygwin"  : ".dll"
-                        , "darwin"  : ".dylib"
+                        , "mingw"   : ".dll"
                         , "linux"   : ".so"
+                        , "darwin"  : ".dylib"
                         }.get(pm.platform.osname, ".so")
 
         libPath = None
@@ -576,19 +535,20 @@ class ParaMonteSampler:
 
                 #### Build the library name
 
-                libName = libNamePrefix + pmcs + "_" + buildMode + "_dynamic_heap" + parallelism + libNameSuffix
+                libName = libNamePrefix + pmcs + "_" + buildMode + "_shared_heap" + parallelism + libNameSuffix
                 libPath = find_library(libName)
-                if libPath is None: libPath = os.path.join( pm.path.root, libName )
-
+                if libPath is None: libPath = os.path.join( pm.path.lib[pm.platform.arch][pmcs], libName )
                 libFound = os.path.isfile(libPath)
                 if libFound: break
 
-            if libFound: # check if lib file exists
+            # exist the loop if the library has been found
+
+            if libFound: 
                 break
             #else:
             #    if self.reportEnabled:
-            #        pm.warn( msg   = "ParaMonte dynamic library for the requested build mode " + buildMode + " not found." + newline
-            #                        + "Searching for ParaMonte dynamic library in other build modes..."
+            #        pm.warn( msg   = "The ParaMonte shared library for the requested build mode " + buildMode + " not found." + newline
+            #                        + "Searching for the ParaMonte shared library in other build modes..."
             #                , methodName = self._methodName
             #                , marginTop = 1
             #                , marginBot = 1
@@ -622,7 +582,7 @@ class ParaMonteSampler:
             else:
                 parallelMsg = "Please report this issue at:" + newline
 
-            pm.abort( msg   = "Exhausted all possible ParaMonte dynamic library search" + newline
+            pm.abort( msg   = "Exhausted all possible ParaMonte shared library search" + newline
                             + "names but could not find any compatible library." + newline
                             #+ "Last search:" + newline
                             #+ newline
@@ -768,7 +728,11 @@ class ParaMonteSampler:
            #while isLoaded(libPath):
            #    dlclose(pmdll._handle)
             try:
-                ct.dlclose(pmdll._handle)
+                #ct.dlclose(pmdll._handle)
+                _dlclose_func = ct.cdll.LoadLibrary('').dlclose
+                _dlclose_func.argtypes = [ct.c_void_p]
+                _dlclose_func(pmdll._handle)
+                del pmdll
             except:
                 if self.reportEnabled:
                     pm.warn ( msg   = "Failed to properly close the ParaMonte shared library file. " + newline

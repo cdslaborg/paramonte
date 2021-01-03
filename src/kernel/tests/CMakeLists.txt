@@ -118,7 +118,7 @@ if (BASIC_TEST_ENABLED OR SAMPLER_TEST_ENABLED OR CODECOV_ENABLED)
     set_target_properties(${ParaMonteTest_EXE_NAME} PROPERTIES Fortran_MODULE_DIRECTORY "${ParaMonteTest_MOD_DIR}" )
     target_include_directories(${ParaMonteTest_EXE_NAME} PRIVATE "${ParaMonte_MOD_DIR}" PRIVATE "${ParaMonteTest_MOD_DIR}" )
     set_target_properties(${ParaMonteTest_EXE_NAME} PROPERTIES LINKER_LANGUAGE "Fortran")
-    target_compile_options(${ParaMonteTest_EXE_NAME} BEFORE PRIVATE "${FCL_FLAGS}" )
+    target_compile_options(${ParaMonteTest_EXE_NAME} BEFORE PRIVATE "${FPP_FLAGS}" "${FC_FLAGS}" "${FCL_FLAGS}")
     target_link_options(${ParaMonteTest_EXE_NAME} BEFORE PRIVATE "${FCL_FLAGS}" "${FL_FLAGS}" )
 
     # set up BLAS and LAPACK if needed

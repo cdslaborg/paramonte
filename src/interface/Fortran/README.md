@@ -10,6 +10,9 @@
 <a href="https://travis-ci.org/cdslaborg/paramonte" target="_blank"><img src="https://travis-ci.org/cdslaborg/paramonte.svg?branch=main&style=flat-square" alt="Build Status" /></a> 
 <a href="https://github.com/cdslaborg/paramonte/releases" target="_blank"><img src="https://img.shields.io/pypi/status/paramonte?style=flat-square" alt="PyPI - Status" /></a>
 <a href="https://lgtm.com/projects/g/cdslaborg/paramonte/?mode=list" target="_blank"><img src="https://img.shields.io/lgtm/grade/python/github/cdslaborg/paramonte?label=code%20quality&style=flat-square&color=brightgreen" alt="LGTM Grade" /></a>
+<a href="https://cdslaborg.github.io/paramonte-codecov/kernel/serial/" target="_blank"><img src="https://img.shields.io/badge/code%20coverage-serial%20kernel-brightgreen?style=flat-square" alt="kernel code coverage - serial" /></a>
+<a href="https://cdslaborg.github.io/paramonte-codecov/kernel/mpi/"    target="_blank"><img src="https://img.shields.io/badge/code%20coverage-MPI%20kernel-brightgreen?style=flat-square" alt="kernel code coverage - MPI" /></a>
+<a href="https://cdslaborg.github.io/paramonte-codecov/kernel/caf/"    target="_blank"><img src="https://img.shields.io/badge/code%20coverage-Coarray%20kernel-brightgreen?style=flat-square" alt="kernel code coverage - Coarray" /></a>
 <a href="https://www.openhub.net/p/paramonte" target="_blank"><img src="https://img.shields.io/badge/Open%20Hub-stats?color=brightgreen&label=stats&message=Open%20Hub&style=flat-square" alt="stats - Open Hub" /></a>
 <a href="https://github.com/cdslaborg/paramonte/issues" target="_blank"><img src="https://img.shields.io/github/issues/cdslaborg/paramonte?style=flat-square" alt="GitHub issues" /></a>
 <a href="https://github.com/cdslaborg/paramonte/tree/main/src/interface" target="_blank"><img src="https://img.shields.io/badge/available%20in-C%20%2F%20C%2B%2B%20%2F%20Fortran%20%2F%20MATLAB%20%2F%20Python-brightgreen?style=flat-square" alt="supported languages" /></a>
@@ -110,8 +113,14 @@ If the automatic installation is unsuccessful, you can also install the librarie
 
 +   On **Windows** and **Linux** operating systems, we highly recommend downloading and installing the 
     [Intel MPI runtime libraries](https://software.intel.com/en-us/mpi-library), 
-    which is available to the public free of charge.  
-+   On **macOS**, we recommend [Open-MPI](https://www.open-mpi.org/) since the Intel MPI library does not support macOS. 
+    which is available to the public free of charge, also available in the latest release of the 
+    ParaMonte library on the [GitHub release page](https://github.com/cdslaborg/paramonte/releases) 
+    (For Windows, look for the executable file that ends with `.exe`. For Linux, look for the file 
+    that ends with `.tgz`, like `l_mpi-rt_2018.2.199.tgz`).
++   On **macOS**, the Intel MPI library is not available. Therefore, we recommend installing either 
+    [Open-MPI](https://www.open-mpi.org/) or [MPICH](https://www.mpich.org/) MPI runtime libraries 
+    depending the prebuilt version of the ParaMonte library that you have downloaded or 
+    the configuration with which you intend to build the library.  
 
 For more information, visit [https://www.cdslab.org/paramonte/](https://www.cdslab.org/paramonte/).  
 

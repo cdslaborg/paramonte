@@ -125,7 +125,7 @@ if defined MATLAB_BIN_DIR (
     set "MEX_FLAGS=-v -nojvm"
     if !BTYPE!==debug set "MEX_FLAGS=!MEX_FLAGS! -g"
     if !BTYPE!==release set "MEX_FLAGS=!MEX_FLAGS! -O"
-    echo. -- ParaMonteMATLAB - generating the ParaMonte MATLAB dynamic library: !ParaMonteMATLAB_BLD_LIB_DIR!\!PMLIB_MATLAB_NAME!
+    echo. -- ParaMonteMATLAB - generating the ParaMonte MATLAB shared library: !ParaMonteMATLAB_BLD_LIB_DIR!\!PMLIB_MATLAB_NAME!
     echo. -- ParaMonteMATLAB - compiler options: !MATLAB_BUILD_FLAGS!
     echo. -- ParaMonteMATLAB - compiler command: "!MATLAB_BIN_DIR!\mex.bat" !MEX_FLAGS! "!ParaMonteKernel_SRC_DIR!\paramonte.m.c" !PMLIB_NAME!.lib -output !PMLIB_MATLAB_NAME!
     cd !ParaMonteMATLAB_BLD_LIB_DIR!
@@ -134,7 +134,7 @@ if defined MATLAB_BIN_DIR (
         call "!MATLAB_BIN_DIR!\mex.bat" !MEX_FLAGS! "!ParaMonteKernel_SRC_DIR!\paramonte.m.c" !PMLIB_NAME!.lib -output !PMLIB_MATLAB_NAME! && (
         REM if !ERRORLEVEL!==0 (
             echo.
-            echo. -- ParaMonteMATLAB - the ParaMonte MATLAB dynamic library build appears to have succeeded.
+            echo. -- ParaMonteMATLAB - the ParaMonte MATLAB shared library build appears to have succeeded.
             echo.
         ) || (
         REM ) else (
@@ -176,7 +176,7 @@ if defined MATLAB_BIN_DIR (
             exit /B 1
         )
     ) else (
-        echo. -- ParaMonteMATLAB - dryrun mode enabled. skippting the MATLAB dynamic library build...
+        echo. -- ParaMonteMATLAB - dryrun mode enabled. skippting the MATLAB shared library build...
     )
     cd %~dp0
 )

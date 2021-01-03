@@ -42,7 +42,7 @@
 ####################################################################################################################################
 #
 #   NOTE: Do not change the contents of this file unless you know what the consequences are.
-#   This is the Bash script file that builds objects, dynamic libraries, 
+#   This is the Bash script file that builds objects, shared libraries, 
 #   as well as the test and example binaries of the ParaMonte library on non-Windows systems.
 #   Upon invocation of this file from a Bash command-line interface, 
 #   this script will parse the user-provided flags and their values 
@@ -94,9 +94,9 @@ yes_to_all_flag=""
 gcc_bootstrap_flag=""
 FOR_COARRAY_NUM_IMAGES=3
 MatDRAM_ENABLED="false"
-shared_enabled="true"
 codecov_flag=""
 dryrun_flag=""
+deploy_flag=""
 TTYPE=""
 
 while [ "$1" != "" ]; do
@@ -125,8 +125,7 @@ while [ "$1" != "" ]; do
         -x | --exam_enabled )   shift
                                 ParaMonteExample_RUN_ENABLED="$1"
                                 ;;
-        -S | --shared_enabled ) shift
-                                shared_enabled="$1"
+        -D | --deploy )         deploy_flag="--deploy"
                                 ;;
         -f | --fortran )        shift
                                 Fortran_COMPILER_PATH="$1"
@@ -332,9 +331,11 @@ if ! [ -z ${BTYPE_LIST+x} ]; then
 fi
 
 if ! [ -z ${LTYPE_LIST+x} ]; then
+    LTYPE_LIST=${LTYPE_LIST/dynamic/shared}
     for LTYPE in $LTYPE_LIST; do
-        if  [[ $LTYPE != [dD][yY][nN][aA][mM][iI][cC] 
-            && $LTYPE != [sS][tT][aA][tT][iI][cC] ]]; then
+        if  [[ $LTYPE != [sS][tT][aA][tT][iI][cC] 
+            && $LTYPE != [sS][hH][aA][rR][eE][dD] 
+            ]]; then
             reportBadValue "-l or --lib" $LTYPE
         fi
     done
@@ -353,7 +354,7 @@ if ! [ -z ${PARALLELISM_LIST+x} ]; then
             && $PARALLELISM != [cC][aA][fF][dD][iI][sS][tT][rR][iI][bB][uU][tT][eE][dD] 
             && $PARALLELISM != [mM][pP][iI] 
             ]]; then
-            reportBadValue "-p or --parallelism" $PARALLELISM
+            reportBadValue "-p or --par" $PARALLELISM
         fi
     done
     if [ "${PARALLELISM_LIST}" = "" ]; then
@@ -459,8 +460,8 @@ if ! [ -z ${PARALLELISM_LIST+x} ]; then
                 reportConflict "Coarray Fortran parallelism cannot be mixed with MPI."
             fi
             for LTYPE in $LTYPE_LIST; do
-                if  [ "${LTYPE}" = "dynamic" ]; then
-                    reportConflict "Coarray Fortran parallelism cannot be used with dynamic library build option."
+                if  [ "${LTYPE}" = "shared" ]; then
+                    reportConflict "Coarray Fortran parallelism cannot be used with shared library build option."
                 fi
             done
         fi
@@ -513,8 +514,8 @@ if [ -z ${BTYPE_LIST+x} ]; then
     BTYPE_LIST="release debug"
 fi
 if [ -z ${LTYPE_LIST+x} ]; then
-    #LTYPE_LIST="static dynamic"
-    LTYPE_LIST="dynamic"
+    #LTYPE_LIST="static shared"
+    LTYPE_LIST="shared"
 fi
 if [ -z ${PARALLELISM_LIST+x} ]; then
     PARALLELISM_LIST="none mpi cafsingle cafshared cafdistributed"
@@ -532,7 +533,7 @@ fi
 
 if [ "${LANG_LIST}" = "matlab" ] || [ "${LANG_LIST}" = "python" ]; then
     MEMORY_LIST="heap"
-    LTYPE_LIST="dynamic"
+    LTYPE_LIST="shared"
     if [ -z ${PARALLELISM_LIST+x} ]; then PARALLELISM_LIST="none mpi"; fi
 fi
 
@@ -565,7 +566,6 @@ for PMCS in $PMCS_LIST; do
 
                         #test_enabled_flag="--test_enabled ${ParaMonteTest_RUN_ENABLED}"
                         exam_enabled_flag="--exam_enabled ${ParaMonteExample_RUN_ENABLED}"
-                        shared_enabled_flag="--shared_enabled ${shared_enabled}"
 
                         if [ "${PMCS}" = "none" ]; then
                            compiler_suite_flag=""
@@ -598,14 +598,14 @@ for PMCS in $PMCS_LIST; do
                         # avoid caf library builds for non-Fortran languages
 
                         if [[ "${PARALLELISM}" =~ .*"caf".* ]]; then
-                            if [ "${CFI_ENABLED}" = "true" ] || [ "${LTYPE}" = "dynamic" ]; then
+                            if [ "${CFI_ENABLED}" = "true" ] || [ "${LTYPE}" = "shared" ]; then
                                 BENABLED=false
                             fi
                         fi
 
-                        # avoid stack memory allocations for dynamic library builds
+                        # avoid stack memory allocations for shared library builds
 
-                        if [ "${LTYPE}" = "dynamic" ]; then
+                        if [ "${LTYPE}" = "shared" ]; then
                             if [ "${MEMORY}" = "stack" ]; then BENABLED=false; fi
                         else
                             if [ "${INTERFACE_LANGUAGE}" = "matlab" ] || [ "${INTERFACE_LANGUAGE}" = "python" ]; then BENABLED=false; fi
@@ -631,7 +631,7 @@ for PMCS in $PMCS_LIST; do
                             echo >&2 "                          ${caftype_flag} \ "
                             echo >&2 "                          ${test_type_flag} \ "
                             echo >&2 "                          ${exam_enabled_flag} \ "
-                            echo >&2 "                          ${shared_enabled_flag} \ "
+                            echo >&2 "                          ${deploy_flag} \ "
                             if ! [ "${yes_to_all_flag}" = "" ]; then
                             echo >&2 "                          ${yes_to_all_flag} \ "
                             fi
@@ -677,10 +677,10 @@ for PMCS in $PMCS_LIST; do
                             ${caftype_flag} \
                             ${test_type_flag} \
                             ${exam_enabled_flag} \
-                            ${shared_enabled_flag} \
                             ${yes_to_all_flag} \
                             ${fresh_flag} \
                             ${local_flag} \
+                            ${deploy_flag} \
                             ${dryrun_flag} \
                             ${codecov_flag} \
                             ${gcc_bootstrap_flag} \

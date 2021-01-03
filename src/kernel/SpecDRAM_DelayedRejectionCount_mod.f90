@@ -99,8 +99,8 @@ contains
         &    delayedRejectionCount > 0\n\n&
         &            which implies a maximum delayedRejectionCount number of rejections will be tolerated.\n\n&
         &For example, delayedRejectionCount = 1, means that at any point during the sampling, if a proposal is rejected, "&
-        //methodName//" will not go back to the last sampled state. Instead, it will continue to propose a new from the current &
-        &rejected state. If the new state is again rejected based on the rules of "//methodName//", then the algorithm will not &
+        //methodName//" will not go back to the last sampled state. Instead, it will continue to propose a new state from the last &
+        &rejected proposal. If the new state is again rejected based on the rules of "//methodName//", then the algorithm will not &
         &tolerate further rejections, because the maximum number of rejections to be tolerated has been set by the user to be &
         &delayedRejectionCount = 1. The algorithm then goes back to the original last-accepted state and will begin proposing &
         &new states from that location. &

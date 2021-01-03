@@ -272,8 +272,14 @@ If the automatic installation is unsuccessful, you can also install the librarie
 
 +   On **Windows** and **Linux** operating systems, we highly recommend downloading and installing the 
     [Intel MPI runtime libraries](https://software.intel.com/en-us/mpi-library), 
-    which is available to the public free of charge.  
-+   On **macOS**, we recommend [Open-MPI](https://www.open-mpi.org/) since the Intel MPI library does not support macOS. 
+    which is available to the public free of charge, also available in the latest release of the 
+    ParaMonte library on the [GitHub release page](https://github.com/cdslaborg/paramonte/releases) 
+    (For Windows, look for the executable file that ends with `.exe`. For Linux, look for the file 
+    that ends with `.tgz`, like `l_mpi-rt_2018.2.199.tgz`).
++   On **macOS**, the Intel MPI library is not available. Therefore, we recommend installing either 
+    [Open-MPI](https://www.open-mpi.org/) or [MPICH](https://www.mpich.org/) MPI runtime libraries 
+    depending the prebuilt version of the ParaMonte library that you have downloaded or 
+    the configuration with which you intend to build the library.  
 
 For more information, visit [https://www.cdslab.org/paramonte/](https://www.cdslab.org/paramonte/).  
 """

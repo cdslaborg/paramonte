@@ -274,7 +274,7 @@ if %ERRORLEVEL%==0 (
 
 set MatDRAM_BLD_DIR_CURRENT=!MatDRAM_EXP_DIR!\mvn
 
-set MatDRAMExample_BIN_DIR_CURRENT=!ParaMonte_BIN_DIR!\libparamonte_MatDRAM
+set MatDRAMExample_BIN_DIR_CURRENT=!ParaMonte_BIN_DIR!\libparamonte_matdram
 
 echo. -- MatDRAM - The MatDRAM !LANG_NAME! library binary directory: !MatDRAMExample_BIN_DIR_CURRENT!
 

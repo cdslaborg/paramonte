@@ -41,13 +41,13 @@
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :: NOTE: Do not change the contents of this file unless you know what the consequences are.
-:: This is the batch file that builds objects, dynamic libraries, as well as the test and example binaries of the ParaMonte library on Windows systems.
+:: This is the batch file that builds objects, shared libraries, as well as the test and example binaries of the ParaMonte library on Windows systems.
 :: Upon invocation of this file from Intel Parallel Studio's Windows command line (Intel's cmd.exe, which is provided via Microsoft Visual Studio,
 :: and is preloaded with Intel suite environmental flags), this file will first call the configuration file configParaMonte.bat to read the user's
 :: requested configuration for building the ParaMonte library.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-:: set build type: release, debug, testing :: set library type: static, dynamic
+:: set build type: release, debug, testing :: set library type: static, shared
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :: setlocal EnableDelayedExpansion
@@ -145,17 +145,17 @@ if !ERRORLEVEL!==1 (
 cd %~dp0
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-:: check for dynamic caf parallelism
+:: check for shared caf parallelism
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 setlocal EnableDelayedExpansion
-set TEMP_DYNAMIC_OR_CFI=
-if !LTYPE!==dynamic set TEMP_DYNAMIC_OR_CFI=true
-if !CFI_ENABLED!==true set TEMP_DYNAMIC_OR_CFI=true
-if !TEMP_DYNAMIC_OR_CFI!==true (
+set TEMP_SHARED_OR_CFI=
+if !LTYPE!==shared set TEMP_SHARED_OR_CFI=true
+if !CFI_ENABLED!==true set TEMP_SHARED_OR_CFI=true
+if !TEMP_SHARED_OR_CFI!==true (
     if !CAFTYPE! NEQ none (
         echo. 
-        echo. -- !BUILD_SCRIPT_NAME! - ParaMonte CAF parallelism with dynamic library build or C-interface is not supported.
+        echo. -- !BUILD_SCRIPT_NAME! - ParaMonte CAF parallelism with shared library build or C-interface is not supported.
         echo. -- !BUILD_SCRIPT_NAME! - skipping...
         echo. 
         cd %~dp0
@@ -202,7 +202,8 @@ if !INTERFACE_LANGUAGE!==r set FPP_LANG_FLAG=/define:R_ENABLED
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :: echo. operating system
-echo. -- !BUILD_SCRIPT_NAME! - operating system / platform: !OS! / !PLATFORM!
+set ARCHITECTURE=!PLATFORM!
+echo. -- !BUILD_SCRIPT_NAME! - operating system / platform: !OS! / !ARCHITECTURE!
 
 :: set compiler suite
 echo. -- !BUILD_SCRIPT_NAME! - COMPILER_SUITE=!COMPILER_SUITE!
@@ -262,7 +263,7 @@ echo.!FL_LIB_FLAGS! | find /I "threads">Nul && ( set "MULTITHREADING=mt" ) || (
 )
 
 if !ParaMonte_LIB_ENABLED!==true (
-    if !LTYPE!==dynamic (
+    if !LTYPE!==shared (
         set FPP_DLL_FLAGS=/define:DLL_ENABLED
         REM set FC_LIB_FLAGS=!FC_LIB_FLAGS! /libs:dll
         set FL_LIB_FLAGS=!FL_LIB_FLAGS! /dll
@@ -577,7 +578,7 @@ REM exit /B 1
 :LABEL_continue
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-:: generate ParaMonte library build directories, object files, and dynamic libraries
+:: generate ParaMonte library build directories, object files, and shared libraries
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :LABEL_BUILD_ParaMonte

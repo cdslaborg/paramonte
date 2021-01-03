@@ -72,7 +72,7 @@ buildInstructionNoteUnix    = ("If your platform is non-Windows and is compatibl
 def verify(reset = True):
     """
 
-    checks (or rechecks) the requirements of the installed ParaMonte library.
+    Checks (or rechecks) the requirements of the installed ParaMonte library.
 
         **Usage**
 
@@ -151,9 +151,9 @@ def verify(reset = True):
 
             # verifyDependencyVersion()
 
-            #### library path
+            #### library path: This is too aggressive and not needed anymore as of ParaMonte kernel version 1.5.0
 
-            if not pm.platform.isWin32: setupUnixPath()
+            # if not pm.platform.isWin32: setupUnixPath()
 
             #### search for the MPI library
 
@@ -344,7 +344,7 @@ def getBashProfileContents():
 def setupUnixPath():
 
     bashrcContents = getBashrcContents()
-    dlibcmd = "export LD_LIBRARY_PATH=" + pm.path.lib + ":$LD_LIBRARY_PATH"
+    dlibcmd = "export LD_LIBRARY_PATH=" + pm.path.lib[pm.platform.arch] + ":$LD_LIBRARY_PATH"
     if dlibcmd not in bashrcContents:
         os.system( "chmod 777 ~/.bashrc")
         os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
@@ -364,6 +364,7 @@ def setupUnixPath():
         dlibcmd = None
         if localInstallDir.gnu.bin is not None: pathcmd = "export PATH=" + localInstallDir.gnu.bin + ":$PATH"
         if localInstallDir.gnu.lib is not None: dlibcmd = "export LD_LIBRARY_PATH=" + localInstallDir.gnu.lib + ":$LD_LIBRARY_PATH"
+        if localInstallDir.gnu.lib64 is not None: dlibcmd = "export LD_LIBRARY_PATH=" + localInstallDir.gnu.lib64 + ":$LD_LIBRARY_PATH"
         if (pathcmd is not None) or (dlibcmd is not None):
             if (pathcmd not in bashrcContents) or (dlibcmd not in bashrcContents):
                 os.system( "chmod 777 ~/.bashrc")
@@ -390,6 +391,7 @@ def setupUnixPath():
         dlibcmd = None
         if localInstallDir.mpi.bin is not None: pathcmd = "export PATH=" + localInstallDir.mpi.bin + ":$PATH"
         if localInstallDir.mpi.lib is not None: dlibcmd = "export LD_LIBRARY_PATH=" + localInstallDir.mpi.lib + ":$LD_LIBRARY_PATH"
+        if localInstallDir.mpi.lib64 is not None: dlibcmd = "export LD_LIBRARY_PATH=" + localInstallDir.mpi.lib64 + ":$LD_LIBRARY_PATH"
         if (pathcmd is not None) or (dlibcmd is not None):
             if (pathcmd not in bashrcContents) or (dlibcmd not in bashrcContents):
                 os.system( "chmod 777 ~/.bashrc")
@@ -427,53 +429,73 @@ def getLocalInstallDir():
     localInstallDir.mpi.root = None
     localInstallDir.mpi.bin = None
     localInstallDir.mpi.lib = None
+    localInstallDir.mpi.lib64 = None
 
     localInstallDir.gnu = Struct()
     localInstallDir.gnu.root = None
     localInstallDir.gnu.bin = None
     localInstallDir.gnu.lib = None
+    localInstallDir.gnu.lib64 = None
 
     localInstallDir.caf = Struct()
     localInstallDir.caf.root = None
     localInstallDir.caf.bin = None
     localInstallDir.caf.lib = None
+    localInstallDir.caf.lib64 = None
 
+    if os.path.isdir(pm.path.localInstall):
 
-    pmGitRootDir = os.path.join( pm.path.root , "paramonte-main" )
+        localInstallDir.root = pm.path.localInstall
 
-    if os.path.isdir(pmGitRootDir):
+        from glob import glob
 
-        localInstallDir.root = pmGitRootDir
+        # mpich
 
-        # mpi
-
-        _ = os.path.join( localInstallDir.root, "build", "prerequisites", "prerequisites", "installations", "mpich", "3.2" )
-        if os.path.isdir(_):
-            localInstallDir.mpi.root = _
-            _ = os.path.join( localInstallDir.mpi.root, "bin" )
-            if os.path.isdir(_): localInstallDir.mpi.bin = _
-            _ = os.path.join( localInstallDir.mpi.root, "lib" )
-            if os.path.isdir(_): localInstallDir.mpi.lib = _
+        pathList = [ "", "mpich", os.path.join("mpich","*") ]
+        for path in pathList:
+            targetPath = glob( os.path.join(localInstallDir.root, path, "bin", "mpiexec") )
+            if targetPath:
+                targetPath = targetPath[-1]
+                if os.path.isfile(targetPath):
+                    localInstallDir.mpi.bin = os.path.dirname(targetPath)
+                    localInstallDir.mpi.root = os.path.join(localInstallDir.mpi.bin, "..")
+                    _ = os.path.join(localInstallDir.mpi.root, "lib64")
+                    if os.path.isdir(_): localInstallDir.mpi.lib64 = _
+                    _ = os.path.join(localInstallDir.mpi.root, "lib")
+                    if os.path.isdir(_): localInstallDir.mpi.lib = _
+                    break
 
         # gnu
 
-        _ = os.path.join( localInstallDir.root, "build", "prerequisites", "prerequisites", "installations", "gnu", "8.3.0" )
-        if os.path.isdir(_):
-            localInstallDir.gnu.root = _
-            _ = os.path.join( localInstallDir.gnu.root, "bin" )
-            if os.path.isdir(_): localInstallDir.gnu.bin = _
-            _ = os.path.join( localInstallDir.gnu.root, "lib64" )
-            if os.path.isdir(_): localInstallDir.gnu.lib = _
+        pathList = [ "", "gnu", os.path.join("gnu","*") ]
+        for path in pathList:
+            targetPath = glob( os.path.join(localInstallDir.root, path, "bin", "gfortran") )
+            if targetPath:
+                targetPath = targetPath[-1]
+                if os.path.isfile(targetPath):
+                    localInstallDir.gnu.bin = os.path.dirname(targetPath)
+                    localInstallDir.gnu.root = os.path.join(localInstallDir.gnu.bin, "..")
+                    _ = os.path.join(localInstallDir.gnu.root, "lib64")
+                    if os.path.isdir(_): localInstallDir.gnu.lib64 = _
+                    _ = os.path.join(localInstallDir.gnu.root, "lib")
+                    if os.path.isdir(_): localInstallDir.gnu.lib = _
+                    break
 
         # caf
 
-        _ = os.path.join( localInstallDir.root, "build", "prerequisites", "prerequisites", "installations", "opencoarrays", "2.8.0" )
-        if os.path.isdir(_):
-            localInstallDir.caf.root = _
-            _ = os.path.join( localInstallDir.caf.root, "bin" )
-            if os.path.isdir(_): localInstallDir.caf.bin = _
-            _ = os.path.join( localInstallDir.caf.root, "lib64" )
-            if os.path.isdir(_): localInstallDir.caf.lib = _
+        pathList = [ "", "opencoarrays", os.path.join("opencoarrays","*") ]
+        for path in pathList:
+            targetPath = glob( os.path.join(localInstallDir.root, path, "bin", "caf") )
+            if targetPath:
+                targetPath = targetPath[-1]
+                if os.path.isfile(targetPath):
+                    localInstallDir.caf.bin = os.path.dirname(targetPath)
+                    localInstallDir.caf.root = os.path.join(localInstallDir.caf.bin, "..")
+                    _ = os.path.join(localInstallDir.caf.root, "lib64")
+                    if os.path.isdir(_): localInstallDir.caf.lib64 = _
+                    _ = os.path.join(localInstallDir.caf.root, "lib")
+                    if os.path.isdir(_): localInstallDir.caf.lib = _
+                    break
 
     return localInstallDir
 
@@ -485,12 +507,21 @@ def findMPI():
     """
 
     Return a structure containing the paths to
-    different components of the MPI library.
+    the different components of the MPI library.
+
+        WARNING
+
+            No ``return`` must be specified in this routine,
+            except at the very end of the function.
 
     """
 
     mpi = Struct()
     mpi.path = Struct()
+    mpi.name = ""
+    mpi.isIntel = False
+    mpi.isMPICH = False
+    mpi.isOpenMPI = False
     mpi.install = Struct()
     mpi.install.bin = Struct()
     mpi.install.bin.mpiexec = Struct()
@@ -498,14 +529,16 @@ def findMPI():
 
     mpi.path.broken = False
     mpi.install.found = False
-    mpi.install.bin.found = False
     mpi.install.bin.path = None
+    mpi.install.bin.found = False
     mpi.install.bin.mpiexec.found = False
     mpi.install.bin.mpiexec.path = None
     mpi.install.bin.mpivars.found = False
     mpi.install.bin.mpivars.path = None
 
     if pm.platform.isWin32:
+
+        #### Windows: check for the existence of Intel MPI
 
         pathList = os.environ['PATH'].split(";")
         for thisPath in pathList:
@@ -539,19 +572,21 @@ def findMPI():
                                     + newline
                                     + "    " + mpivarsCommand + newline
                                     + newline
-                                    + "    mpiexec -localonly -n NUM_PROCESSES python main.py" + newline
+                                    + "    mpiexec -localonly -n 2 python main_mpi.py" + newline
                                     + newline
                                     + "where, " + newline
                                     + newline
                                     + "    0.   the first command defines the essential environment variables, " + newline
                                     + "         and the second command runs in the simulation in parallel, where, " + newline
-                                    + "    1.   you should replace NUM_PROCESSES with the number of processors " + newline
+                                    + "    1.   you should replace the number 2 with the desired processor count " + newline
                                     + "         you wish to assign to your simulation task and, " + newline
                                     + "    2.   the flag '-localonly' indicates a parallel simulation on only " + newline
                                     + "         a single node (this flag will obviate the need for the MPI " + newline
                                     + "         library credentials registration). For more information, visit: " + newline
                                     + "         " + pm.website.intel.mpi.windows.url + " " + newline
-                                    + "    3.   main.py is the Python file which serves as the entry point to " + newline
+                                    + "    3.   python is the name of the Python software installed on your system." + newline
+                                    + "         If python is not recognized on your command line, use python3 instead." + newline
+                                    + "    4.   main_mpi.py is the Python file which serves as the entry point to " + newline
                                     + "         your simulation, where you call the ParaMonte sampler routines. " + newline
                                     + newline
                                     + "Note that the above two commands must be executed on a command-line that " + newline
@@ -574,9 +609,49 @@ def findMPI():
                         setupFile.write("@echo on\n")
 
                     mpi.install.found = mpi.install.bin.found and mpi.install.bin.mpiexec.found and mpi.install.bin.mpivars.found
-                    if mpi.install.found: break
+                    if mpi.install.found:
+                        mpi.isIntel = True
+                        break
+
+        #### Windows: one last try to find the Intel MPI library if not found yet.
+
+        if not mpi.install.found:
+
+            mpi.path.broken = True
+
+            pm.warn ( msg   = "Failed to detect the Intel MPI library for 64-bit architecture." + newline
+                            + "Now searching through the installed applications..." + newline
+                            + "This may take some time..."
+                    , marginTop = 1
+                    , marginBot = 1
+                    , methodName = pm.names.paramonte
+                    )
+
+            import subprocess
+           #installedApp = str(subprocess.run(args=["wmic","product","get","Name,","Version,","installlocation"],capture_output=True).stdout)
+            installedApp = str(subprocess.run(args=["wmic","product","get","Name,","Version"],capture_output=True).stdout)
+
+            if "Intel MPI" in installedApp:
+                mpi.install.found = True
+                mpi.isIntel = True
+                pm.note ( msg = "Possible Intel MPI installation detected:"
+                        , marginTop = 0
+                        , marginBot = 1
+                        , methodName = pm.names.paramonte
+                        )
+                installedAppList = str(installedApp).replace("\\r","").split("\\n")
+                for app in installedAppList:
+                    appClean = app.replace(chr(13),"").replace(chr(10),"") # remove cr, nl
+                    if "Intel MPI" in appClean:
+                        pm.note ( msg = appClean
+                                , marginTop = 0
+                                , marginBot = 0
+                                , methodName = pm.names.paramonte
+                                )
 
     elif pm.platform.isLinux:
+
+        #### Linux: check for the existence of Intel MPI
 
         pathList = os.environ['PATH'].split(":")
         for thisPath in pathList:
@@ -609,16 +684,18 @@ def findMPI():
                                     + newline
                                     + "    source " + mpivarsCommand + newline
                                     + newline
-                                    + "    mpiexec -n NUM_PROCESSES python main.py" + newline
+                                    + "    mpiexec -n 2 python main_mpi.py" + newline
                                     + newline
                                     + "where, " + newline
                                     + newline
                                     + "    0.   the first command defines the essential environment variables" + newline
                                     + "         and the second command runs in the simulation in parallel, where," + newline
-                                    + "    1.   you should replace NUM_PROCESSES with the number of processors " + newline
-                                    + "         you wish to assign to your simulation task, " + newline
-                                    + "    2.   main.py is the Python file which serves as the entry point to " + newline
-                                    + "         your simulation, where you call ParaMonte sampler routines. " + newline
+                                    + "    1.   you should replace the number 2 with the desired processor count " + newline
+                                    + "         that you wish to assign to your simulation task, " + newline
+                                    + "    2.   python is the name of the Python software installed on your system." + newline
+                                    + "         If python is not recognized on your command line, use python3 instead." + newline
+                                    + "    3.   main_mpi.py is the Python file which serves as the entry point to " + newline
+                                    + "         your simulation, where you call the ParaMonte sampler routines. " + newline
                                     + newline
                                     + "For more information on how to install and use and run parallel " + newline
                                     + "ParaMonte simulations on Linux systems, visit: " + newline
@@ -643,92 +720,20 @@ def findMPI():
                                 )
 
                     mpi.install.found = mpi.install.bin.found and mpi.install.bin.mpiexec.found and mpi.install.bin.mpivars.found
-                    if mpi.install.found: break
+                    if mpi.install.found:
+                        mpi.isIntel = True
+                        break
 
-    elif pm.platform.isMacOS:
+        #### Linux: one last try to find the Intel MPI library if not found yet
 
-        import shutil
+        if not mpi.install.found:
 
-        gfortranPath = None
-        try:
-            import subprocess
-            gfortranVersion = subprocess.run(args=["gfortran", "--version"],capture_output=True)
-            if "GCC 10." in str(gfortranVersion.stdout): gfortranPath = shutil.which("gfortran")
-        except:
-            warnings.warn("Failed to capture the GNU Compiler Collection version...")
-
-        mpi.install.bin.mpiexec.path = None
-        try:
-            import subprocess
-            mpiexecVersion = subprocess.run(args=["mpiexec", "--version"],capture_output=True)
-            if "open-mpi" in str(mpiexecVersion.stdout): mpi.install.bin.mpiexec.path = shutil.which("mpiexec")
-        except:
-            warnings.warn("Failed to capture the mpiexec version...")
-
-        if (mpi.install.bin.mpiexec.path is not None) and (gfortranPath is not None):
-            mpi.install.bin.found = True
-            mpi.install.bin.mpiexec.found = True
-            mpi.install.bin.mpivars.found = True # dummy
-            mpi.install.bin.path = os.path.dirname(mpi.install.bin.mpiexec.path)
-            pm.note ( msg   = "MPI runtime libraries detected at: " + newline
-                            + newline
-                            + "    " + mpi.install.bin.path + newline
-                            + newline
-                            + "To perform ParaMonte simulations in parallel on a single node, " + newline
-                            + "run the following command, in the form and order specified, " + newline
-                            + "in a Bash shell (terminal), " + newline
-                            + newline
-                            + "    mpiexec -n NUM_PROCESSES python main.py" + newline
-                            + newline
-                            + "where, " + newline
-                            + newline
-                            + "    0.   the first command defines the essential environment variables " + newline
-                            + "         and the second command runs in the simulation in parallel, where, " + newline
-                            + "    1.   you should replace NUM_PROCESSES with the number of processors " + newline
-                            + "         you wish to assign to your simulation task, " + newline
-                            + "    2.   main.py is the Python file which serves as the entry point to " + newline
-                            + "         your simulation, where you call the ParaMonte sampler routines. " + newline
-                            + newline
-                            + "For more information on how to install and use and run parallel ParaMonte " + newline
-                            + "simulations on the macOS (Darwin) operating systems, visit:" + newline
-                            + newline
-                            + pm.website.home.url
-            , marginTop = 1
-            , marginBot = 1
-            , methodName = pm.names.paramonte
-            )
-
-        mpi.install.found = mpi.install.bin.found and mpi.install.bin.mpiexec.found and mpi.install.bin.mpivars.found
-
-    else:
-
-        LocalInstallDir = getLocalInstallDir()
-        if (LocalInstallDir.mpi.bin is not None) and (LocalInstallDir.mpi.lib is not None):
-
-            mpi.install.bin.found = True
-            mpi.install.bin.path = LocalInstallDir.mpi.bin
-
-            mpiexecFilePath = os.path.join(mpi.install.bin.path,"mpiexec")
-            if os.path.isfile(mpiexecFilePath):
-                mpi.install.bin.mpiexec.found = True
-                mpi.install.bin.mpiexec.path = mpiexecFilePath
-
-        mpi.install.bin.mpivars.found = mpi.install.bin.found and mpi.install.bin.mpiexec.found # dummy
-        mpi.install.found = mpi.install.bin.found and mpi.install.bin.mpiexec.found and mpi.install.bin.mpivars.found
-
-    #### one last try to find the MPI library if not found yet
-
-    if not mpi.install.found:
-
-        mpi.path.broken = True
-
-        if pm.platform.isLinux:
+            mpi.path.broken = True
 
             defaultIntelLinuxMpiPath = getDefaultIntelLinuxMpiPath()
-            if defaultIntelLinuxMpiPath.mpiRootDirNotFound:
-                return mpi
-            else:
+            if not defaultIntelLinuxMpiPath.mpiRootDirNotFound:
                 mpi.install.found = True
+                mpi.isIntel = True
                 pm.warn ( msg   = "The PATH environmental variable of your Bash terminal does not point to " + newline
                                 + "any current installation of the Intel MPI runtime libraries on your system, " + newline
                                 + "however, ParaMonte has detected a hidden installation of the Intel MPI " + newline
@@ -744,35 +749,114 @@ def findMPI():
                         )
                 # mpi.install.bin.path = setupIntelLinuxMpiPath(defaultIntelLinuxMpiPath)
 
-        elif pm.platform.isWin32:
+    elif not pm.platform.isMacOS: #### any other non-windows non-linux non-macos platform: find MPI in a local installation of ParaMonte from source
 
-            pm.warn ( msg   = "Failed to detect the Intel MPI library for 64-bit architecture." + newline
-                            + "Now searching through the installed applications..." + newline
-                            + "This may take some time..."
-                    , marginTop = 1
-                    , marginBot = 1
-                    , methodName = pm.names.paramonte
-                    )
+        LocalInstallDir = getLocalInstallDir()
+        if (LocalInstallDir.mpi.bin is not None) and ( (LocalInstallDir.mpi.lib is not None) or (LocalInstallDir.mpi.lib64 is not None) ):
 
+            mpi.install.bin.found = True
+            mpi.install.bin.path = LocalInstallDir.mpi.bin
+
+            mpiexecFilePath = os.path.join(mpi.install.bin.path,"mpiexec")
+            if os.path.isfile(mpiexecFilePath):
+                mpi.install.bin.mpiexec.found = True
+                mpi.install.bin.mpiexec.path = mpiexecFilePath
+
+        mpi.install.bin.mpivars.found = mpi.install.bin.found and mpi.install.bin.mpiexec.found # dummy
+        mpi.install.found = mpi.install.bin.found and mpi.install.bin.mpiexec.found and mpi.install.bin.mpivars.found
+        if mpi.install.found: mpi.isMPICH = True # @todo: point of weakness, this needs update in the future to consider openMPI and Intel MPI as well in the future.
+
+    #### Linux / macOS: find MPICH or OpenMPI
+
+    if (pm.platform.isMacOS or pm.platform.isLinux) and not mpi.install.found:
+
+        import shutil
+
+        # GFortran / GCC are not needed anymore in ParaMonte Python version 2.5.0.
+
+        #gfortranPath = None
+        #try:
+        #    import subprocess
+        #    gfortranVersion = subprocess.run(args=["gfortran", "--version"],capture_output=True)
+        #    if "GCC 10." in str(gfortranVersion.stdout): gfortranPath = shutil.which("gfortran")
+        #except:
+        #    warnings.warn("Failed to capture the GNU Compiler Collection version...")
+
+        mpi.install.bin.mpiexec.path = None
+        try:
             import subprocess
-            installedApp = str(subprocess.run(args=["wmic","product","get","Name,","Version"],capture_output=True).stdout)
+           #cmdout = str(subprocess.run(args=["mpiexec", "--version"],capture_output=True).stdout)
+            cmdout = subprocess.getoutput("mpiexec --version").lower()
+            mpi.isIntel = "intel" in cmdout
+            mpi.isMPICH = "mpich" in cmdout
+            mpi.isOpenMPI = "openrte" in cmdout or "openmpi" in cmdout or "open-mpi" in cmdout
+            mpi.install.bin.mpiexec.path = shutil.which("mpiexec")
+            if mpi.install.bin.mpiexec.path is not None and not (mpi.isOpenMPI or mpi.isMPICH or mpi.isIntel):
+                try:
+                    #mpi.isMPICH = "mpich" in str(subprocess.run(args=["mpichversion"],capture_output=True).stdout)
+                    mpi.isMPICH = "mpich" in subprocess.getoutput("mpiexec --version").lower()
+                    # If the MPI library is neither Intel nor MPICH nor OpenMPI, then assume no MPI library exists.
+                except:
+                    warnings.warn("Failed to capture the MPICH MPI library version. skipping...")
+        except:
+            warnings.warn("Failed to capture the mpiexec version. skipping...")
 
-            if "Intel MPI" in installedApp:
-                mpi.install.found = True
-                pm.note ( msg = "Possible Intel MPI installation detected:"
-                        , marginTop = 0
-                        , marginBot = 1
-                        , methodName = pm.names.paramonte
-                        )
-                installedAppList = str(installedApp).replace("\\r","").split("\\n")
-                for app in installedAppList:
-                    appClean = app.replace(chr(13),"").replace(chr(10),"") # remove cr, nl
-                    if "Intel MPI" in appClean:
-                        pm.note ( msg = appClean
-                                , marginTop = 0
-                                , marginBot = 0
-                                , methodName = pm.names.paramonte
-                                )
+        if not (mpi.isOpenMPI or mpi.isMPICH or mpi.isIntel): mpi.install.bin.mpiexec.path = None
+
+        if mpi.install.bin.mpiexec.path is not None: # and (gfortranPath is not None):
+
+            mpiName = ""
+            if mpi.isIntel  : mpiName = "The Intel "
+            if mpi.isMPICH  : mpiName = "The MPICH "
+            if mpi.isOpenMPI: mpiName = "The OpenMPI "
+
+            mpi.install.bin.found = True
+            mpi.install.bin.mpiexec.found = True
+            mpi.install.bin.path = os.path.dirname(mpi.install.bin.mpiexec.path)
+            mpi.install.bin.mpivars.found = True
+            # mpi.install.bin.mpivars.found = os.path.isfile( os.path.join(mpi.install.bin.path, "mpivars") )
+            # On macOS mpivars files is neither so easy to find, nor is essential. So skip checking its existence.
+
+            pm.note ( msg   = mpiName + "MPI launcher and runtime libraries detected at: " + newline
+                            + newline
+                            + "    " + mpi.install.bin.path + newline
+                            + newline
+                            + "To perform ParaMonte simulations in parallel, invoke the mpiexec MPI launcher" + newline
+                            + "in the form and order specified, in a Bash shell (terminal)" + newline
+                            + newline
+                            + "    mpiexec -n 2 python main_mpi.py" + newline
+                            + newline
+                            + "where, " + newline
+                            + newline
+                            + "    0.   mpiexec is the common name of the MPI launcher. On some " + newline
+                            + "         specific platforms like supercomputers, a different MPI " + newline
+                            + "         launcher might be necessary, such as ibrun, mpirun, etc." + newline
+                            + "    1.   you should replace the number 2 with your desired processor " + newline
+                            + "         count that you wish to assign to your parallel simulation task, " + newline
+                            + "    2.   python is the name of the Python software installed on your system." + newline
+                            + "         If python is not recognized on your command line, use python3 instead." + newline
+                            + "    3.   main_mpi.py is the Python file that serves as the entry point to " + newline
+                            + "         your simulation, where you call the ParaMonte sampler routines. " + newline
+                            + "         Change this file name to your simulation's main file as needed. " + newline
+                            + newline
+                            + "For more information on how to install and use and run parallel ParaMonte " + newline
+                            + "simulations on Linux or macOS (Darwin) operating systems, visit:" + newline
+                            + newline
+                            + "    " + pm.website.home.url
+            , marginTop = 1
+            , marginBot = 1
+            , methodName = pm.names.paramonte
+            )
+
+        mpi.install.found = mpi.install.bin.found and mpi.install.bin.mpiexec.found and mpi.install.bin.mpivars.found
+        if mpi.install.found: mpi.path.broken = False
+
+    #### return the search results
+
+    if mpi.isIntel: mpi.name = "Intel"
+    if mpi.isMPICH: mpi.name = "MPICH"
+    if mpi.isOpenMPI: mpi.name = "OpenMPI"
+
     return mpi
 
 ####################################################################################################################################
@@ -795,7 +879,7 @@ def getPrereqs(DependencyList = None):
         return prereqs
 
     for dependency in prereqs.list:
-        fullFilePath = os.path.join( pm.path.lib, dependency )
+        fullFilePath = os.path.join( pm.path.download, dependency )
         if intelMpiFilePrefix in dependency and intelMpiFileSuffix in dependency:
             prereqs.mpi.intel.fullFileName = dependency
             prereqs.mpi.intel.fullFilePath = fullFilePath
@@ -845,7 +929,33 @@ def getDependencyList():
 
 def installMPI():
 
-    if pm.platform.isWin32 or pm.platform.isLinux:
+    if pm.platform.isWSL:
+
+        pm.note ( msg   = "It appears that the current platform is a Microsoft Subsystem for Linux (WSL)." + newline
+                        + "The Intel MPI libraries currently do not support the WSL platforms." + newline
+                        + "If this is a Debian, Ubuntu, or similar Linux system, you can" + newline
+                        + "use the following commands to install the MPICH MPI library:" + newline
+                        + newline
+                        + "    sudo apt update" + newline
+                        + "    sudo apt install mpich" + newline
+                        + "    sudo apt install libmpich-dev" + newline
+                        + newline
+                        + "or use the following commands to install the OpenMPI library:" + newline
+                        + newline
+                        + "    sudo apt update" + newline
+                        + "    sudo apt install openmpi-bin" + newline
+                        + "    sudo apt install libopenmpi-dev" + newline
+                        + newline
+                        + "Otherwise, follow the guidelines provided by your Operating System" + newline
+                        + "to install the MPICH or OpenMPI runtime MPI libraries on your system."
+                , methodName = pm.names.paramonte
+                , marginTop = 1
+                , marginBot = 1
+                )
+
+        return
+
+    elif pm.platform.isWin32 or pm.platform.isLinux:
 
         pm.note ( msg = "Downloading the ParaMonte parallel library prerequisites... " + newline
                       + "Please make sure your firewall allows access to the Internet. "
@@ -858,7 +968,7 @@ def installMPI():
 
         for dependency in prereqs.list:
 
-            fullFilePath = os.path.join(pm.path.lib, dependency)
+            fullFilePath = os.path.join(pm.path.download, dependency)
             thisVersion = pm.version.kernel.dump()
             while thisVersion is not None:
                 try:
@@ -933,8 +1043,8 @@ def installMPI():
 
                 import tarfile
                 tf = tarfile.open(prereqs.mpi.intel.fullFilePath)
-                tf.extractall(path=pm.path.lib)
-                mpiExtractDir = os.path.join(pm.path.lib, prereqs.mpi.intel.fileName)
+                tf.extractall(path=pm.path.download)
+                mpiExtractDir = os.path.join(pm.path.download, prereqs.mpi.intel.fileName)
 
                 pm.note ( msg   = "If this is your personal computer and you have opened your Python " + newline
                                 + "session with superuser (sudo) privileges, then you can choose " + newline
@@ -1447,7 +1557,13 @@ def dispFinalMessage():
                     + "To get started, type the following on the Python command-line," + newline
                     + newline
                     + "    import paramonte as pm" + newline
-                    + "    pm.helpme()"
+                    + "    pm.helpme()" + newline
+                    + newline
+                    + "To get help on individual components of the paramonte modules," + newline
+                    + "pass the name of the components to `helpme()`. For example," + newline
+                    + newline
+                    + "    import paramonte as pm" + newline
+                    + "    pm.helpme(\"ParaDRAM\")"
             , methodName = pm.names.paramonte
             , marginTop = 1
             , marginBot = 1
@@ -1481,7 +1597,7 @@ def build(flags=""):
 
         **Parameters**
 
-            flags
+            flags (optional)
 
                 A string containing any of the ParaMonte install script flags.
                 If the operating system is Unix-based (e.g., Linux or macOS) then
@@ -1490,7 +1606,22 @@ def build(flags=""):
                 on GitHub. If the operating system is Windows, then the value
                 of ``flags`` must conform to the rules and syntax of the flags
                 of the Batch install script of the ParaMonte library on GitHub.
-                The default value is an empty string ``""``.
+                The default value is an empty string ``""``. For more information
+                on the possible values of ``flags``, visit:
+
+                https://github.com/cdslaborg/paramonte/blob/main/install.sh.usage.txt
+
+        **Example usage**:
+
+            .. code-block:: python
+                :linenos:
+
+                import paramonte as pm
+                pm.build(flags = '--lang python --par none --build "debug release"')
+
+        **Returns**
+
+            None.
 
     """
 
@@ -1520,9 +1651,9 @@ def build(flags=""):
                         + "The kernel library build requires ParaMonte-compatible versions of the " + newline
                         + "following compilers and parallelism libraries installed on your system: " + newline
                         + newline
-                        + "    GNU compiler collection (GCC >8.3)" + newline
-                        + "    MPI library (MPICH >3.2) on Linux OS or Open-MPI on Darwin OS" + newline
-                        + "    OpenCoarrays >2.8" + newline
+                        + "    A recent version of the GNU compiler collection (GCC)" + newline
+                        + "    A recent version of the MPICH MPI library on Linux or Open-MPI on Darwin" + newline
+                        + "    A recent version of the OpenCoarrays library" + newline
                         + newline
                         + "The full installation of these software could require 4 to 5 Gb of free " + newline
                         + "space on your system (where the ParaMonte library is already installed)." + newline
@@ -1567,20 +1698,26 @@ def build(flags=""):
 
             currentDir = os.getcwd()
 
-            pmGitTarPath = os.path.join( pm.path.root, "main.tar.gz" )
-            download( url = pm.website.github.archive.main.tar.url
-                    , filePath = pmGitTarPath
-                    )
+            pmGitTarPath = os.path.join( pm.path.download, pm.website.github.archive.current._name + ".tar.gz" )
 
-            pmGitRootDir = os.path.join( pm.path.root, "paramonte-main" )
+            if "--fresh" in flags or "-F" in flags or not os.path.isfile(pmGitTarPath):
+                pm.note ( msg   = "Downloading the ParaMonte tarball from: " + newline
+                                + "    " + pm.website.github.archive.current.tar.url
+                        , methodName = pm.names.paramonte
+                        , marginTop = 1
+                        , marginBot = 1
+                        )
+                download( url = pm.website.github.archive.current.tar.url
+                        , filePath = pmGitTarPath
+                        )
 
             try:
 
                 import tarfile
                 tf = tarfile.open(pmGitTarPath)
-                tf.extractall(path=pm.path.root) # path=pmGitRootDir)
+                tf.extractall(path = pm.path.download) # path=pm.path.archive.root)
 
-                pmGitInstallScriptPath = os.path.join( pmGitRootDir, "install.sh" )
+                pmGitInstallScriptPath = os.path.join( pm.path.archive.root, "install.sh" )
                 if not os.path.exists(pmGitInstallScriptPath):
                     pm.abort( msg   = "Internal error occurred." + newline
                                     + "Failed to detect the ParaMonte installation Bash script. " + newline
@@ -1617,12 +1754,18 @@ def build(flags=""):
                         , marginBot = 1
                         )
 
-            os.chdir(pmGitRootDir)
+            os.chdir(pm.path.archive.root)
 
             import subprocess
             try:
-                os.system( "find " + pmGitRootDir + " -type f -iname \"*.sh\" -exec chmod +x {} \;" )
-                os.system( pmGitInstallScriptPath + " --lang python --test_enabled true --exam_enabled false --yes-to-all " + flags )
+                os.system( "find " + pm.path.archive.root + " -type f -iname \"*.sh\" -exec chmod +x {} \;" )
+                if not ("--yes-to-all" in flags or "-y " in flags): flags += ' --yes-to-all'
+                if not ("--deploy" in flags or "-D " in flags): flags += ' --deploy'
+                if not ("--build" in flags or "-b " in flags): flags += ' --build "release"'
+                if not ("--lang" in flags or "-L " in flags): flags += ' --lang python'
+                if not ("--lib" in flags or "-l " in flags): flags += ' --lib shared'
+                if not ("--par" in flags or "-p " in flags): flags += ' --par "none"'
+                os.system( pmGitInstallScriptPath + flags )
             except Exception as e:
                 print(str(e))
                 pm.abort   ( msg   = "The Local installation of ParaMonte failed." + newline
@@ -1636,19 +1779,19 @@ def build(flags=""):
 
             os.chdir(currentDir)
 
-            # copy files to module folder
+            #### copy the binary files to the paramonte module folder
 
-            import glob
+            from glob import glob
             import shutil
-            pythonBinDir = os.path.join( pmGitRootDir , "bin" , "Python" , "paramonte" )
-            fileList = glob.glob( os.path.join( pythonBinDir , "libparamonte_*" ) )
+            #pythonBinDir = os.path.join( pm.path.archive.root , "bin" , "libparamonte_Python" , "paramonte" )
+            #fileList = glob( os.path.join( pythonBinDir , "libparamonte_*" ) )
 
-            if len(fileList)==0:
+            if not os.path.isdir(pm.path.archive.install.lib):
 
-                pm.abort( msg   = "ParaMonte kernel libraries build and installation " + newline
+                pm.abort( msg   = "The ParaMonte kernel libraries build and installation " + newline
                                 + "appears to have failed. You can check this path:" + newline
                                 + newline
-                                + "    " + pythonBinDir + newline
+                                + "    " + pm.path.archive.install.lib + newline
                                 + newline
                                 + "to find out if any shared objects with the prefix " + newline
                                 + "'libparamonte_' have been generated or not. " + newline
@@ -1662,28 +1805,79 @@ def build(flags=""):
 
             else:
 
-                pm.note ( msg   = "ParaMonte kernel libraries build appears to have succeeded. " + newline
+                pm.note ( msg   = "The ParaMonte kernel libraries build appears to have succeeded. " + newline
                                 + "copying the kernel files to the ParaMonte Python module directory..."
                         , methodName = pm.names.paramonte
                         , marginTop = 1
                         , marginBot = 1
                         )
 
-                for file in fileList:
-                    pm.note ( msg = "file: " + file
-                            , methodName = pm.names.paramonte
-                            , marginTop = 0
-                            , marginBot = 0
-                            )
-                    shutil.copy(file, pm.path.lib)
+                dstdir = os.path.join(pm.path.root,"lib")
 
-                pm.note ( msg = "ParaMonte kernel libraries should be now usable on your system."
+                try:
+
+                    shutil.copytree ( src = pm.path.archive.install.lib
+                                    , dst = dstdir
+                                    , dirs_exist_ok = True
+                                    )
+
+                except Exception as e:
+
+                    import logging
+                    logger = logging.Logger("catch_all")
+                    logger.warning(e, exc_info=True)
+
+                    if "dirs_exist_ok" in e and sys.version_info < (3,9):
+                        pm.warn ( msg   = "It seems like you do not have the latest version of Python." + newline
+                                        + "Please upgrade to Python version 3.9 or newer..."
+                                , methodName = pm.names.paramonte
+                                , marginTop = 1
+                                , marginBot = 1
+                                )
+
+                    try:
+
+                        shutil.rmtree(path = dstdir, ignore_errors = False)
+                        shutil.copytree ( src = pm.path.archive.install.lib
+                                        , dst = dstdir
+                                        , dirs_exist_ok = True
+                                        )
+
+                    except Exception as e:
+
+                        import logging
+                        logger = logging.Logger("catch_all")
+                        logger.warning(e, exc_info=True)
+
+                        pm.abort( msg   = "Failed to copy the installed libraries to the paramonte module folder." + newline
+                                        + "Please check the contents of this folder: " + newline
+                                        + newline
+                                        + "   " + pm.path.archive.install.lib + newline
+                                        + newline
+                                        + "If this folder and its contents exist, manually copy them to: " + newline
+                                        + newline
+                                        + "   " + dstdir + newline
+                                        + newline
+                                        + "Otherwise, if it is empty and you cannot figure out the source of error," + newline
+                                        + "please report this issue at:" + newline
+                                        + newline
+                                        + "    " + pm.website.github.issues.url
+                                , methodName = pm.names.paramonte
+                                , marginTop = 1
+                                , marginBot = 1
+                                )
+
+                #### the library installation and copying succeeded.
+
+                pm.note ( msg = "The ParaMonte kernel libraries should be now usable on your system."
                         , methodName = pm.names.paramonte
                         , marginTop = 1
                         , marginBot = 1
                         )
 
-                setupFilePath = os.path.join( pmGitRootDir , "build", "prerequisites", "prerequisites", "installations", "opencoarrays", "2.8.0", "setup.sh" )
+                setupFilePath = os.path.join( pm.path.localInstall, "opencoarrays", "*", "setup.sh" )
+                setupFilePathList = glob(setupFilePath)
+                if setupFilePathList: setupFilePath = setupFilePath[-1]
 
                 if os.path.exists(setupFilePath):
 
@@ -1698,7 +1892,7 @@ def build(flags=""):
                         os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
                         os.system( "chmod 777 ~/.bashrc && sh ~/.bashrc" )
 
-                    pm.warn ( msg    = "Whenever you intend to use ParaMonte in the future, " + newline
+                    pm.warn ( msg   = "Whenever you intend to use ParaMonte in the future, " + newline
                                     + "before opening your Python session, please execute " + newline
                                     + "the following command in your Bash shell to ensure " + newline
                                     + "all required paths are properly defined in your " + newline
@@ -1771,7 +1965,7 @@ dependencyVersionDict = { "numpy": '1.19.2'
 def getDependencyVersion( pkg : tp.Optional[ str ] = None ):
     """
 
-    Return the minimum required version of the Python library 
+    Return the minimum required version of the Python library
     for the successful use of the ParaMonte library visualization
     and post-processing tools.
 
@@ -1779,15 +1973,15 @@ def getDependencyVersion( pkg : tp.Optional[ str ] = None ):
 
             pkg
 
-                An optional string representing the name of the 
+                An optional string representing the name of the
                 Python package whose version is being inquired.
 
         **Returns**
 
-            A string representing the required minimum version 
-            of the input ``pkg``. If ``pkg`` is missing or the 
-            package dependency does not exist within the ParaMonte 
-            library, the dictionary of all dependencies will 
+            A string representing the required minimum version
+            of the input ``pkg``. If ``pkg`` is missing or the
+            package dependency does not exist within the ParaMonte
+            library, the dictionary of all dependencies will
             be returned.
 
     """
@@ -1795,7 +1989,7 @@ def getDependencyVersion( pkg : tp.Optional[ str ] = None ):
         try:
             version = dependencyVersionDict[ pkg ]
         except:
-            version = dependencyVersionDict 
+            version = dependencyVersionDict
     else:
         version = dependencyVersionDict
     return version
@@ -1813,9 +2007,10 @@ def displayDependencyVersionMessage():
                     + indentedNewLine.join("{} : {}".format(key, val) for key, val in dependencyVersionDict.items()) + newline
                     + newline
                     + "If you do not intend to use the postprocessing and visualization tools, " + newline
-                    + "you can ignore this message. Otherwise, UPDATE THE ABOVE PACKAGES TO " + newline
-                    + "THE REQUESTED VERSIONS OR NEWER, SO THAT THE VISUALIZATION TOOLS " + newline
-                    + "OF THE ParaMonte::Python LIBRARY FUNCTION PROPERLY."
+                    + "you can ignore this message. Otherwise, " + newline
+                    + newline
+                    + "    UPDATE THE ABOVE PACKAGES TO THE REQUESTED VERSIONS OR NEWER TO ENABLE" + newline
+                    + "    THE VISUALIZATION AND POSTPROCESSING TOOLS OF THE ParaMonte LIBRARY."
             , methodName = pm.names.paramonte
             , marginTop = 1
             , marginBot = 1
@@ -1828,7 +2023,7 @@ def displayDependencyVersionMessage():
 def verifyDependencyVersion():
     """
 
-    Verify the existence of the required Python packages and 
+    Verify the existence of the required Python packages and
     their minimum versions on the current system.
 
         **Parameters**

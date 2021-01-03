@@ -240,7 +240,7 @@ if [[ "${pmLibFullName}" =~ .*"_c_".* ]]; then
 
     clist="gcc"
 
-    if command -v ${cIntelCompilerName} >/dev/null 2>&1; then
+    if command -v "${cIntelCompilerName}" >/dev/null 2>&1; then
         iccIntelCompilerDetected=true
         declare -a compilerList=("${cIntelCompilerName}" "${clist}")
     else
@@ -255,7 +255,7 @@ elif [[ "${pmLibFullName}" =~ .*"_cpp_".* ]]; then
     cpattern="g++"
     clist=$(( IFS=:; for p in $PATH; do unset lsout; lsout=$(ls -dm "$p"/${cpattern}*); if ! [[ -z "${lsout// }" ]]; then echo "${lsout}, "; fi; done ) 2>/dev/null)
 
-    if command -v ${cppIntelCompilerName} >/dev/null 2>&1; then
+    if command -v "${cppIntelCompilerName}" >/dev/null 2>&1; then
         icpcIntelCompilerDetected=true
         declare -a compilerList=("${cppIntelCompilerName}" "${clist}")
     else
@@ -404,8 +404,8 @@ echo >&2 "-- ParaMonteExample${pmExamLang} - ParaMonte build type: ${pmBuildType
 # library type
 ####################################################################################################################################
 
-if [[ "${pmLibFullName}" =~ .*"dynamic".* ]]; then
-    pmLibType=dynamic
+if [[ "${pmLibFullName}" =~ .*"shared".* ]]; then
+    pmLibType=shared
 else
     pmLibType=static
 fi
@@ -424,7 +424,7 @@ echo >&2 "-- ParaMonteExample${pmExamLang} - MPI_ENABLED: ${MPI_ENABLED}"
 if [ "${MPI_ENABLED}" = "true" ] && [ "${pmLibType}" = "static" ]; then
     compilerListTemp=()
     if [ "${pmExamLang}" = "C" ]; then
-        if command -v ${cIntelMPIWrapperName} >/dev/null 2>&1; then
+        if command -v "${cIntelMPIWrapperName}" >/dev/null 2>&1; then
             compilerListTemp+=("${cIntelMPIWrapperName}")
         fi
         if command -v mpicc >/dev/null 2>&1; then
@@ -432,7 +432,7 @@ if [ "${MPI_ENABLED}" = "true" ] && [ "${pmLibType}" = "static" ]; then
         fi
     fi
     if [ "${pmExamLang}" = "C++" ]; then
-        if command -v ${cppIntelMPIWrapperName} >/dev/null 2>&1; then
+        if command -v "${cppIntelMPIWrapperName}" >/dev/null 2>&1; then
             compilerListTemp+=("${cppIntelMPIWrapperName}")
         fi
         if command -v mpicxx >/dev/null 2>&1; then
@@ -512,11 +512,15 @@ echo >&2 "-- ParaMonteExample${pmExamLang} - ParaMonte library's compiler suite:
 echo >&2 "-- ParaMonteExample${pmExamLang} - inferred compiler choice(s):"
 echo >&2 "-- ParaMonteExample${pmExamLang} - "
 compilerListLen=${#compilerList[@]}
-compilerListLenMinusOne="$(($compilerListLen-1))"
-for i in $(seq 0 $compilerListLenMinusOne)
+# compilerListLenMinusOne="$(($compilerListLen-1))"
+# for i in $(seq 0 $compilerListLenMinusOne)
+# The following appears to be more generic and cross-platform
+for ((i=0; i<${compilerListLen}; i++))
 do
     csvCompilerList="${compilerList[$i]}"
-    for COMPILER in $(echo ${csvCompilerList} | sed "s/,/ /g")
+    #for COMPILER in $(echo ${csvCompilerList} | sed "s/,/ /g")
+    # The following is more generic and works on Ubuntu, Debian, and Opensuse.
+    for COMPILER in ${csvCompilerList//,/ }
     do
         echo >&2 "-- ParaMonteExample${pmExamLang} -     ${COMPILER}"
     done
@@ -554,15 +558,18 @@ export LD_LIBRARY_PATH
 BUILD_SUCCEEDED=false
 RUN_FILE_NAME="run.sh"
 
-#for COMPILER in ${compilerList}
 compilerListLen=${#compilerList[@]}
-compilerListLenMinusOne="$(($compilerListLen-1))"
-for i in $(seq 0 $compilerListLenMinusOne)
+
+# for i in $(seq 0 $compilerListLenMinusOne)
+# The following appears to be more generic and cross-platform
+for ((i=0; i<${compilerListLen}; i++))
 do
 
     csvCompilerList="${compilerList[$i]}"
 
-    for COMPILER in $(echo ${csvCompilerList} | sed "s/,/ /g")
+    # for COMPILER in $(echo ${csvCompilerList} | sed "s/,/ /g")
+    # The following appears to be more generic and cross-platform
+    for COMPILER in ${csvCompilerList//,/ }
     do
 
         #### Infer the compiler flags
@@ -643,7 +650,9 @@ do
                 fi
             fi
 
-            for LINKER in $(echo ${csvLinkerList} | sed "s/,/ /g")
+            #for LINKER in $(echo ${csvLinkerList} | sed "s/,/ /g")
+            # The following is more generic and works on Ubuntu, Debian, and Opensuse.
+            for LINKER in ${csvLinkerList//,/ }
             do
 
                 echo >&2
@@ -724,7 +733,7 @@ do
                     echo "fi"
                     echo "export LD_LIBRARY_PATH"
                     echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
-                    echo "    LD_LIBRARY_PATH=${FILE_DIR}"
+                    echo "    LD_LIBRARY_PATH=\"${FILE_DIR}\""
                     echo "else"
                     echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${FILE_DIR}:\"* ]]; then"
                     echo "        LD_LIBRARY_PATH=\"${FILE_DIR}:\${LD_LIBRARY_PATH}\""
@@ -741,7 +750,7 @@ do
                     } >> ${RUN_FILE_NAME}
 
                     if [ -f "${FILE_DIR}/setup.sh" ]; then
-                        echo "source ${FILE_DIR}/setup.sh" >> ${RUN_FILE_NAME}
+                        echo "source \"${FILE_DIR}\"/setup.sh" >> ${RUN_FILE_NAME}
                         echo "" >> ${RUN_FILE_NAME}
                     fi
 

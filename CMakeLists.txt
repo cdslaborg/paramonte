@@ -48,7 +48,6 @@
 # make
 # make install
 
- 
 cmake_minimum_required(VERSION 3.10)
 
 cmake_policy(VERSION 3.10...3.14)
@@ -147,10 +146,6 @@ endif()
 if(DEFINED ENV{SOURCE_DATE_EPOCH})
     set(SOURCE_DATE_EPOCH "$ENV{SOURCE_DATE_EPOCH}")
 endif()
-
-set(CMAKE_SKIP_RPATH ON CACHE BOOL "Skip adding a build-dir rpath")
-set(CMAKE_BUILD_WITH_INSTALL_RPATH ON CACHE BOOL "Build using the install rpath")
-set(CMAKE_BUILD_RPATH_USE_ORIGIN ON CACHE BOOL "Use relative rpaths")
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # Add our local modules to the module path
@@ -384,11 +379,25 @@ set ( INTERFACE_LANGUAGE "c" CACHE STRING "Select the build interface language (
 # define library linking type
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-# dynamic:      Use this flag when you have R/Python/MATLAB/Julia code to which you need to link the ParaMonte library dynamically, using DLL files. 
+#  shared:      Use this flag when you have R/Python/MATLAB/Julia code to which you need to link the ParaMonte library dynamically, using DLL files. 
 #  static:      Use this flag when you have Fortran/C/C++ code to which you want to link the ParaMonte library statically.
-#               You can also link dynamically your Fortran/C/C++ codes using DLL files by specifying LTYPE=dynamic flag instead.
+#               You can also link dynamically your Fortran/C/C++ codes using DLL files by specifying LTYPE=shared flag instead.
 
-set ( LTYPE "static" CACHE STRING "Select which configuration to build (static/dynamic)" )
+set ( LTYPE "static" CACHE STRING "Select which configuration to build (static/shared)" )
+
+if (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]" OR ${LTYPE} MATCHES "[sS][hH][aA][rR][eE][dD]")
+    set(pmlib_shared TRUE)
+elseif (${LTYPE} MATCHES "[sS][tT][aA][tT][iI][cC]")
+    set(pmlib_shared FALSE)
+else()
+    message (FATAL_ERROR
+            "\n"
+            "${pmfatal}\n"
+            "${pmfatal} Unrecognized built type: ${CMAKE_BUILD_TYPE}.\n"
+            "${pmfatal} possible values are: debug/testing/release.\n"
+            "\n"
+            )
+endif()
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # set Fortran/C array allocation resource
@@ -579,7 +588,7 @@ if (NOT EXISTS "${ParaMonteTest_BIN_INPUT_DIR}/")
 endif()
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-#: generate ParaMonte library build directories, object files, and dynamic libraries
+#: generate ParaMonte library build directories, object files, and shared libraries
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 #include_directories(BEFORE ${ParaMonte_LIB_DIR})
@@ -598,11 +607,14 @@ if (NOT DEFINED PMLIB_NAME)
     message ( WARNING 
             " \n"
             " ${pmwarn} The ParaMonte Library name is not predefined.\n"
-            " ${pmwarn} This is highly unusual and should not happen.\n"
-            " ${pmwarn} Normally, the library name is defined by the ParaMonte installer \n"
-            " ${pmwarn} or passed to cmake for abuild via cmake. The most likely cause of this\n"
-            " ${pmwarn} warning message is that you are either building the library directly via\n"
+            " ${pmwarn} This is highly unusual and and the name must exist in PMLIB_NAME.\n"
+            " ${pmwarn} Normally, the value of PMLIB_NAME is defined by the ParaMonte installer\n"
+            " ${pmwarn} script or passed to cmake for abuild via cmake. The most likely cause of\n"
+            " ${pmwarn} this warning message is that you are either building the library directly via\n"
             " ${pmwarn} cmake and forgot to predefine the library name or, the Bash installation that you\n"
+            " ${pmwarn} are using is corrupted. It is also equally possible that that you might have changed\n"
+            " ${pmwarn} the existing CMake configurations that are causing conflicts. If this is the case, remove\n"
+            " ${pmwarn} the build directory corresponding to this CMake build and start fresh. Otherwise, report this at:\n"
             " ${pmwarn} are using is corrupted. If the latter is the case, please report the issue at:\n"
             " ${pmwarn} \n"
             " ${pmwarn} https://github.com/cdslaborg/paramonte/issues,\n"

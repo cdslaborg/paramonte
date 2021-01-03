@@ -586,7 +586,7 @@ contains
             call OS%query()
             if (OS%Err%occurred) then
                 ! LCOV_EXCL_START
-                command = "mkdir "//dirPath
+                command = 'mkdir "'//dirPath//'"'
                 ! LCOV_EXCL_STOP
             else
                 isUnixShellDefault = OS%Shell%isUnix
@@ -595,7 +595,7 @@ contains
 
         if (.not. allocated(command)) then
             if (isUnixShellDefault) then
-                command = "mkdir -p "//dirPath//" > /dev/null 2>&1" ! -p enables nested mkdir
+                command = 'mkdir -p "'//dirPath//'" > /dev/null 2>&1' ! -p enables nested mkdir
 #if defined OS_IS_WINDOWS
             else
                 command = 'mkdir "'//dirPath//'" >nul 2>&1' ! WARNING: path has to be enclosed with "" to allow nested mkdir
