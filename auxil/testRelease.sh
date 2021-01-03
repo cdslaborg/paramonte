@@ -41,6 +41,7 @@
 ####################################################################################################################################
 ####################################################################################################################################
 
+BUILD_NAME="ReleaseTest"
 workingDir="$(pwd)"
 
 ####################################################################################################################################
@@ -211,32 +212,61 @@ for PMCS in $PMCS_LIST; do
             for LTYPE in $LTYPE_LIST; do
                 for MEMORY in $MEMORY_LIST; do
                     for PARALLELISM in $PARALLELISM_LIST; do
+
+                        if [ "${LANG}" = "matlab" ] || [ "${LANG}" = "python" ]; then
+                            BENABLED=false
+                        else
+                            BENABLED=true
+                        fi
+
                         if [ "${PARALLELISM}" = "none" ]; then
                             parSuffix=""
                         else
                             parSuffix="_${PARALLELISM}"
+                            if ([ "${PMCS}" = "intel" ] && ([ "${PARALLELISM}" = "mpich" ] || [ "${PARALLELISM}" = "mpich" ])) \
+                            || ([ "${PMCS}" = "gnu" ] && [ "${PARALLELISM}" = "impi" ]) \
+                            then
+                                BENABLED=false
+                            fi
                         fi
-                        pmLibName="libparamonte_${LANG}_${PLATFORM}_${ARCHITECTURE}_${PMCS}_${BTYPE}_${LTYPE}_${MEMORY}${parSuffix}"
-                        compressedFileExt=".tar.gz"
-                        if [ "${isMacOS}" = "true" ]; then
-                            fetch="curl -OL"
-                        else
-                            fetch="wget"
+
+                        if [ "${BENABLED}" = "true" ]; then
+
+                            pmLibName="libparamonte_${LANG}_${PLATFORM}_${ARCHITECTURE}_${PMCS}_${BTYPE}_${LTYPE}_${MEMORY}${parSuffix}"
+                            compressedFileExt=".tar.gz"
+                            untar=(tar xvzf "${pmLibName}${compressedFileExt}")
+
+                            if [ "${isMacOS}" = "true" ]; then
+                                fetch="curl -OL"
+                            else
+                                fetch="wget"
+                            fi
+                            fetch+=" ${pmReleaseLink}/${pmLibName}${compressedFileExt}"
+
+
+                            tempDir=$(mktemp -d "${TMPDIR:-/tmp}/cversion.XXXXXXXXX")
+                            echo >&2 "-- ${BUILD_NAME} - changing directory to: ${tempDir}"
+
+                            cd "${tempDir}" \
+                            && \
+                            echo >&2 && echo >&2 "-- ${BUILD_NAME} - ${fetch}" && echo >&2 && $(${fetch}) \
+                            && \
+                            echo >&2 && echo >&2 "-- ${BUILD_NAME} - ${untar[@]}" && echo >&2 && "${untar[@]}" \
+                            && \
+                            cd ${pmLibName} \
+                            && \
+                            ./build.sh && ./run.sh \
+                            || {
+                                echo >&2
+                                echo >&2 "-- ${BUILD_NAME} - test FAILED for ${pmLibName}."
+                                echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
+                                echo >&2
+                                cd "${workingDir}"
+                                exit 1
+                            }
+
                         fi
-                        tempDir=$(mktemp -d "${TMPDIR:-/tmp}/cversion.XXXXXXXXX")
-                        echo >&2 "-- ${BUILD_NAME}Compiler - changing directory to: ${tempDir}"
-                        cd "${tempDir}" && \
-                        "${fetch}" "${pmReleaseLink}/${pmLibName}" && \
-                        tar xvzf ${pmLibName}${compressedFileExt} && \
-                        cd ${pmLibName} && \
-                        ./build.sh && \
-                        ./run.sh || {
-                            echo >&2
-                            echo >&2 "-- ${BUILD_NAME} - test FAILED for ${pmLibName}."
-                            echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
-                            echo >&2
-                            exit 1
-                        }
+
                     done
                 done
             done
