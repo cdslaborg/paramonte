@@ -322,7 +322,7 @@ do
                         dependencyDetected=false
                         gnuDepDetected=false
                         mpiDepDetected=false
-                        depAllowed=false
+                        depAllowed=true
 
                         if  [[ "${dependencyFilePath}" =~ .*"gnu".* ]] \
                             || \
@@ -368,10 +368,11 @@ do
                                 || \
                                 [[ "${dependencyFilePath}" =~ .*"libopen".* ]] \
                             ); then \
-                            mpiDepDetected=true
+                            #mpiDepDetected=true
+                            depAllowed=false
                         fi
 
-                        if ! ( \
+                        if ( \
                             [[ "${dependencyFilePath}" =~ .*"libc.so".* ]] \
                             || \
                             [[ "${dependencyFilePath}" =~ .*"libm.so".* ]] \
@@ -382,7 +383,7 @@ do
                             || \
                             [[ "${dependencyFilePath}" =~ .*"libpthread.so".* ]] \
                             ); then
-                            depAllowed=true
+                            depAllowed=false
                         fi
 
                         if [ "${depAllowed}" = "true" ]; then
@@ -449,7 +450,21 @@ do
 
                             dependencyDirDestin="${ParaMonteExample_LIB_DIR_CURRENT}"
                             # put the serial shared files in the parent directory to save space and avoid redundancy.
-                            if [ "${LANG_IS_DYNAMIC}" = "true" ] && [ "${mpiDepDetected}" = "true" ]; then
+                            if  [ "${LANG_IS_DYNAMIC}" = "true" ] \
+                                && \
+                                ! ( \
+                                    [ -z ${MPILIB_NAME+x} ] \
+                                    || \
+                                    [ "${MPILIB_NAME}" = "" ] \
+                                    || \
+                                    [[ "${dependencyName}" =~ .*"gnu".* ]] \
+                                    || \
+                                    [[ "${dependencyName}" =~ .*"gcc".* ]] \
+                                    || \
+                                    [[ "${dependencyName}" =~ .*"gfortran".* ]] \
+                                    || \
+                                    [[ "${dependencyName}" =~ .*"quadmath".* ]] \
+                                ); then
                                 dependencyDirDestin="${ParaMonteExample_LIB_DIR_CURRENT}/${MPILIB_NAME}"
                             fi
                             if ! [ -d "{dependencyDirDestin}" ]; then
