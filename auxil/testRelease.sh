@@ -214,10 +214,14 @@ for PMCS in $PMCS_LIST; do
                 for MEMORY in $MEMORY_LIST; do
                     for PARALLELISM in $PARALLELISM_LIST; do
 
+                        BENABLED=true
+
+                        if [ "${isWindows}" = "true" ] && ([ "${PMCS}" = "gnu" ] || [ "${PARALLELISM}" = "mpich" ] || [ "${PARALLELISM}" = "openmpi" ]); then
+                            BENABLED=false
+                        fi
+
                         if [ "${LANG}" = "matlab" ] || [ "${LANG}" = "python" ]; then
                             BENABLED=false
-                        else
-                            BENABLED=true
                         fi
 
                         if [ "${PARALLELISM}" = "none" ]; then
@@ -234,22 +238,30 @@ for PMCS in $PMCS_LIST; do
 
                         if [ "${BENABLED}" = "true" ]; then
 
+                            tempDir=$(mktemp -d "${TMPDIR:-/tmp}/cversion.XXXXXXXXX")
+                            echo >&2 "-- ${BUILD_NAME} - changing directory to: ${tempDir}"
+                            cd "${tempDir}"
+
                             pmLibName="libparamonte_${LANG}_${PLATFORM}_${ARCHITECTURE}_${PMCS}_${BTYPE}_${LTYPE}_${MEMORY}${parSuffix}"
                             compressedFileExt=".tar.gz"
                             untar=(tar xvzf "${pmLibName}${compressedFileExt}")
 
-                            if [ "${isMacOS}" = "true" ]; then
-                                fetch="curl -OL"
+                            compressedFileName="${pmLibName}"
+                            if [ "${isWindows}" = "true" ]; then
+                                fetch="${srcFileDir}/wget"
+                                compressedFileName+=".zip"
+                                untar=("${srcFileDir}/7z" -Y e "${tempDir}/${compressedFileName}" -o"${tempDir}/${pmLibName}")
                             else
-                                fetch="wget"
+                                compressedFileName+=".tar.gz"
+                                untar=(tar xvzf "${tempDir}/${compressedFileName}")
+                                if [ "${isMacOS}" = "true" ]; then
+                                    fetch="curl -OL"
+                                else
+                                    fetch="wget"
+                                fi
                             fi
-                            fetch+=" ${pmReleaseLink}/${pmLibName}${compressedFileExt}"
+                            fetch+=" ${pmReleaseLink}/${compressedFileName}"
 
-                            tempDir=$(mktemp -d "${TMPDIR:-/tmp}/cversion.XXXXXXXXX")
-                            echo >&2 "-- ${BUILD_NAME} - changing directory to: ${tempDir}"
-
-                            cd "${tempDir}" \
-                            && \
                             echo >&2 && echo >&2 "-- ${BUILD_NAME} - ${fetch}" && echo >&2 && $(${fetch}) \
                             && \
                             echo >&2 && echo >&2 "-- ${BUILD_NAME} - ${untar[@]}" && echo >&2 && "${untar[@]}" \
@@ -283,15 +295,29 @@ for LANG in $LANG_LIST; do
 
     if [ "${LANG}" = "matlab" ] || [ "${LANG}" = "python" ]; then
 
+        unset plexe
         if [ "${LANG}" = "matlab" ]; then
             plexe=matlab
             cmd=(${plexe} -batch main)
         elif [ "${LANG}" = "python" ]; then
-            plexe=python3
-            cmd=(${plexe} main.py)
+            for plexe in python python3; do
+                if command -v ${plexe} >/dev/null 2>&1; then
+                    pythonPath="$(command -v ${plexe})"
+                    if ! [[ "${pythonPath}" =~ .*"Microsoft".* ]]; then
+                        pythonVersion="$(${plexe} --version || echo echo >&2 "error occurred while capturing ${plexe} version. skipping...")"
+                        if [[ "${pythonVersion}" =~ .*"3.".* ]]; then
+                            break
+                        fi
+                    fi
+                    unset pythonPath
+                fi
+            done
+            if ! [ -z ${pythonPath+x} ]; then
+                cmd=(${plexe} main.py)
+            fi
         fi
 
-        if command -v "${plexe}" >/dev/null 2>&1; then
+        if ! [ -z ${plexe+x} ]; then
 
             tempDir=$(mktemp -d "${TMPDIR:-/tmp}/cversion.XXXXXXXXX")
             echo >&2 "-- ${BUILD_NAME} - changing directory to: ${tempDir}"
