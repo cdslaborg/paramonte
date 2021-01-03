@@ -335,7 +335,7 @@ do
                             gnuDepDetected=true
                         fi
 
-                        if  ( [ "${MPILIB_NAME}" = "impi" ] || [ "${MPILIB_NAME}" = "mpich" ] ) \
+                        if  ( [ "${MPILIB_NAME}" = "impi" ] ) \
                             && ( \
                                 [[ "${dependencyFilePath}" =~ .*"libmpi".* ]] \
                                 || \
@@ -356,6 +356,19 @@ do
                                 [[ "${dependencyFilePath}" =~ .*"libopen-pal".* ]] \
                             ); then \
                             mpiDepDetected=true
+                            depAllowed=false
+                        fi
+
+                        # except mpich, carrying MPI dependencies around does not seem to be a good idea.
+
+                        if  ( [ "${MPILIB_NAME}" = "mpich" ] ) \
+                            && ( \
+                                [[ "${dependencyFilePath}" =~ .*"libmpi".* ]] \
+                                || \
+                                [[ "${dependencyFilePath}" =~ .*"libmpifort".* ]] \
+                            ); then \
+                            mpiDepDetected=true
+                            depAllowed=true
                         fi
 
                         if  [ "${MPILIB_NAME}" = "openmpi" ] \
@@ -368,7 +381,7 @@ do
                                 || \
                                 [[ "${dependencyFilePath}" =~ .*"libopen".* ]] \
                             ); then \
-                            #mpiDepDetected=true
+                            mpiDepDetected=true
                             depAllowed=false
                         fi
 
