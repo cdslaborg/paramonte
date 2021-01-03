@@ -279,62 +279,78 @@ done
 #### test matlab
 ####################################################################################################################################
 
-LANG=matlab
-if command -v matlab >/dev/null 2>&1; then
-    if [[ "${LANG_LIST}" =~ .*"${LANG}".* ]]; then
+for LANG in $LANG_LIST; do
 
-        tempDir=$(mktemp -d "${TMPDIR:-/tmp}/cversion.XXXXXXXXX")
-        echo >&2 "-- ${BUILD_NAME} - changing directory to: ${tempDir}"
-        cd "${tempDir}"
+    if [ "${LANG}" = "matlab" ] || [ "${LANG}" = "python" ]; then
 
-        pmLibName="libparamonte_${LANG}_${PLATFORM}_${ARCHITECTURE}"
-
-        compressedFileName="${pmLibName}"
-        if [ "${isWindows}" = "true" ]; then
-            fetch="${srcFileDir}/wget.exe"
-            compressedFileName+=".zip"
-            untar=("${srcFileDir}/7z" -Y e "${tempDir}/${compressedFileName}" -o"${tempDir}/${pmLibName}")
-        else
-            compressedFileName+=".tar.gz"
-            untar=(tar xvzf "${tempDir}/${compressedFileName}")
-            if [ "${isMacOS}" = "true" ]; then
-                fetch="curl -OL"
-            else
-                fetch="wget"
-            fi
+        if [ "${LANG}" = "matlab" ]; then
+            plexe=matlab
+            cmd=(${plexe} -batch main)
+        elif [ "${LANG}" = "python" ]; then
+            plexe=python3
+            cmd=(${plexe} main.py)
         fi
-        fetch+=" ${pmReleaseLink}/${compressedFileName}"
 
-        cmd=(matlab -batch main)
+        if command -v "${plexe}" >/dev/null 2>&1; then
 
-        echo >&2 && echo >&2 "-- ${BUILD_NAME} - ${fetch}" && echo >&2 && $(${fetch}) \
-        && \
-        echo >&2 && echo >&2 "-- ${BUILD_NAME} - ${untar[@]}" && echo >&2 && "${untar[@]}" \
-        && \
-        ls "${tempDir}/" && cd "${tempDir}/${pmLibName}" \
-        && \
-        echo >&2 && echo >&2 "-- ${BUILD_NAME} - ${cmd[@]}" && echo >&2 && "${cmd[@]}" \
-        && \
-        {
-        if [[ "${PARALLELISM}" =~ .*"impi".* ]] || [[ "${PARALLELISM}" =~ .*"mpich".* ]] || [[ "${PARALLELISM}" =~ .*"openmpi".* ]]; then
-            if [ "${PLATFORM}" = "windows" ]; then
-                cmd=(mpiexec -localonly -n 3 matlab -batch main_mpi)
+            tempDir=$(mktemp -d "${TMPDIR:-/tmp}/cversion.XXXXXXXXX")
+            echo >&2 "-- ${BUILD_NAME} - changing directory to: ${tempDir}"
+            cd "${tempDir}"
+
+            pmLibName="libparamonte_${LANG}_${PLATFORM}_${ARCHITECTURE}"
+
+            compressedFileName="${pmLibName}"
+            if [ "${isWindows}" = "true" ]; then
+                fetch="${srcFileDir}/wget"
+                compressedFileName+=".zip"
+                untar=("${srcFileDir}/7z" -Y e "${tempDir}/${compressedFileName}" -o"${tempDir}/${pmLibName}")
             else
-                cmd=(mpiexec -n 3 matlab -batch main_mpi)
+                compressedFileName+=".tar.gz"
+                untar=(tar xvzf "${tempDir}/${compressedFileName}")
+                if [ "${isMacOS}" = "true" ]; then
+                    fetch="curl -OL"
+                else
+                    fetch="wget"
+                fi
             fi
+            fetch+=" ${pmReleaseLink}/${compressedFileName}"
+
+            echo >&2 && echo >&2 "-- ${BUILD_NAME} - ${fetch}" && echo >&2 && $(${fetch}) \
+            && \
+            echo >&2 && echo >&2 "-- ${BUILD_NAME} - ${untar[@]}" && echo >&2 && "${untar[@]}" \
+            && \
+            ls "${tempDir}/" && cd "${tempDir}/${pmLibName}" \
+            && \
+            echo >&2 && echo >&2 "-- ${BUILD_NAME} - ${cmd[@]}" && echo >&2 && "${cmd[@]}" \
+            && \
+            {
+            if [[ "${PARALLELISM}" =~ .*"impi".* ]] || [[ "${PARALLELISM}" =~ .*"mpich".* ]] || [[ "${PARALLELISM}" =~ .*"openmpi".* ]]; then
+                cmd=(mpiexec)
+                if [ "${PLATFORM}" = "windows" ]; then
+                    cmd+=(-localonly)
+                fi
+                cmd+=(-n 2 ${plexe})
+                if [ "${LANG}" = "matlab" ]; then
+                    cmd+=(-batch main_mpi)
+                elif [ "${LANG}" = "python" ]; then
+                    cmd+=(main_mpi.py)
+                fi
+            fi
+            echo >&2 && echo >&2 "-- ${BUILD_NAME} - ${cmd[@]}" && echo >&2 && "${cmd[@]}"
+            } || {
+                echo >&2
+                echo >&2 "-- ${BUILD_NAME} - test FAILED for ${pmLibName}."
+                echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
+                echo >&2
+                cd "${workingDir}"
+                exit 1
+            }
+
         fi
-        echo >&2 && echo >&2 "-- ${BUILD_NAME} - ${cmd[@]}" && echo >&2 && "${cmd[@]}"
-        } || {
-            echo >&2
-            echo >&2 "-- ${BUILD_NAME} - test FAILED for ${pmLibName}."
-            echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
-            echo >&2
-            cd "${workingDir}"
-            exit 1
-        }
 
     fi
-fi
+
+done
 
 ####################################################################################################################################
 
