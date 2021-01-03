@@ -542,6 +542,11 @@ fi
 # build the example
 ####################################################################################################################################
 
+dependencies=""
+for lib in libgfortran*; do
+    dependencies="${dependencies} ${lib}"
+done
+
 if [ -f "${FILE_DIR}/setup.sh" ]; then
     source "${FILE_DIR}/setup.sh"
 fi
@@ -618,7 +623,7 @@ do
         #fi
         #${CVERSION} >/dev/null 2>&1 && \
 
-        ${COMPILER} ${COMPILER_FLAGS} ${pmSrcFiles} -c >/dev/null 2>&1 && \
+        "${COMPILER}" ${COMPILER_FLAGS} ${pmSrcFiles} -c >/dev/null 2>&1 && \
         {
 
             echo >&2 "-- ParaMonteExample${pmExamLang} - The example's source file compilation appears to have succeeded."
@@ -655,10 +660,6 @@ do
             for LINKER in ${csvLinkerList//,/ }
             do
 
-                echo >&2
-                echo >&2 "-- ParaMonteExample${pmExamLang} - The ParaMonte example's compilation command:"
-                echo >&2 "-- ParaMonteExample${pmExamLang} -     ${LINKER} ${COMPILER_FLAGS} ${LINKER_FLAGS} ${pmSrcFiles//.$pmSrcExt/.o} ${pmLibFullName} -o ${PM_EXAM_EXE_NAME}"
-
                 # Intel compiler does not support -dumpversion
                 #${LINKER} -dumpversion >/dev/null 2>&1 && \
 
@@ -671,7 +672,11 @@ do
                     pmObjExt="o"
                 fi
 
-                ${LINKER} ${COMPILER_FLAGS} ${LINKER_FLAGS} ${pmSrcFiles//.$pmSrcExt/.$pmObjExt} "${pmLibFullNameCurrent}" -o ${PM_EXAM_EXE_NAME} >/dev/null 2>&1 && \
+                echo >&2
+                echo >&2 "-- ParaMonteExample${pmExamLang} - The ParaMonte example's compilation command:"
+                echo >&2 "-- ParaMonteExample${pmExamLang} -     ${LINKER} ${COMPILER_FLAGS} ${LINKER_FLAGS} ${pmSrcFiles//.$pmSrcExt/.$pmObjExt} ${pmLibFullNameCurrent} ${dependencies} -o ${PM_EXAM_EXE_NAME}"
+
+                "${LINKER}" ${COMPILER_FLAGS} ${LINKER_FLAGS} ${pmSrcFiles//.$pmSrcExt/.$pmObjExt} ${pmLibFullNameCurrent} ${dependencies} -o ${PM_EXAM_EXE_NAME} >/dev/null 2>&1 && \
                 {
                 #if [ $? -eq 0 ]; then
 
@@ -794,7 +799,7 @@ do
 
         } || {
 
-            echo >&2 "-- ParaMonteExample${pmExamLang} - The example's source files compilation and linking appear to have failed. skipping..."
+            echo >&2 "-- ParaMonteExample${pmExamLang} - The example's source files compilation appear to have failed. skipping..."
             echo >&2 "-- ParaMonteExample${pmExamLang} - If the compiler is missing or unidentified, you can pass the path to the compiler to the build script."
             echo >&2 "-- ParaMonteExample${pmExamLang} - For instructions, type on the command line:"
             echo >&2 "-- ParaMonteExample${pmExamLang} - "
