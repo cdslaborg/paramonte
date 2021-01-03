@@ -24,22 +24,30 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 **Minor enhancements**  
 
-+   Typo-fixes in the documentation of the library.
++   As of this version, when the `ParaMonte::MATLAB` library is called in MATLAB 
+    `-batch` mode (from the command line) for the first time, the library avoids 
+    asking the user's response to the question of installing an MPI library if it 
+    is missing on the user's system. This will prevent undesired crashes of the 
+    simulations for the first time when the simulation is run from outside the 
+    MATLAB session. However, the onus will be on the user to ensure an MPICH 
+    library exists on the system if they intend to run simulations in parallel.  
 
 +   The `ParaMonte::MATLAB` library packages for different Operating systems and 
-    processor architecture are now separate from each other. This change was made
+    processor architecture are now separate from each other. This change was made 
     to lower the overall size of `ParaMonte::MATLAB` by only keeping the relevant 
     files in each packaging of the library. The current release contains three 
-    separate packages for `ParaMonte::MATLAB`,
+    separate packages for `ParaMonte::MATLAB`,  
     +   `libparamonte_matlab_windows_x64`,  
     +   `libparamonte_matlab_darwin_x64`,  
     +   `libparamonte_matlab_linux_x64`.  
 
++   Typo-fixes in the documentation of the library.  
+
 **MATLAB versions used for this release**  
 
-+   **Windows**: `MATLAB 9.6.0.1072779 (R2019a)`
-+     **Linux**: `MATLAB 9.8.0.1323502 (R2020a)`
-+     **macOS**: `MATLAB 9.8.0.1323502 (R2020a)`
++   **Windows**: `MATLAB 9.6.0.1072779 (R2019a)`  
++     **Linux**: `MATLAB 9.8.0.1323502 (R2020a)`  
++     **macOS**: `MATLAB 9.8.0.1323502 (R2020a)`  
 
 **MATLAB version compatibility**  
 
