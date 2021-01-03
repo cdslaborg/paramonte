@@ -43,6 +43,7 @@
 
 BUILD_NAME="ReleaseTest"
 workingDir="$(pwd)"
+srcFileDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 ####################################################################################################################################
 #### determine the architecture
@@ -284,22 +285,27 @@ if command -v matlab >/dev/null 2>&1; then
 
         for PARALLELISM in $PARALLELISM_LIST; do
 
+            tempDir=$(mktemp -d "${TMPDIR:-/tmp}/cversion.XXXXXXXXX")
+            echo >&2 "-- ${BUILD_NAME} - changing directory to: ${tempDir}"
+            cd "${tempDir}"
+
             pmLibName="libparamonte_${LANG}_${PLATFORM}_${ARCHITECTURE}"
 
-            if [ "${PLATFORM}" = "windows" ]; then
-                compressedFileExt=".zip"
+            compressedFileName="${pmLibName}"
+            if [ "${isWindows}" = "true" ]; then
+                fetch="${srcFileDir}/wget"
+                compressedFileName+=".zip"
+                untar=("${srcFileDir}/7z" -Y e "${tempDir}/${compressedFileName}" -o"${tempDir}/${pmLibName}")
             else
-                compressedFileExt=".tar.gz"
+                compressedFileName+=".tar.gz"
+                untar=(tar xvzf "${tempDir}/${compressedFileName}")
+                if [ "${isMacOS}" = "true" ]; then
+                    fetch="curl -OL"
+                else
+                    fetch="wget"
+                fi
             fi
-
-            untar=(tar xvzf "${pmLibName}${compressedFileExt}")
-
-            if [ "${isMacOS}" = "true" ]; then
-                fetch="curl -OL"
-            else
-                fetch="wget"
-            fi
-            fetch+=" ${pmReleaseLink}/${pmLibName}${compressedFileExt}"
+            fetch+=" ${pmReleaseLink}/${compressedFileName}"
 
             if [ "${PARALLELISM}" = "none" ]; then
                 cmd=(matlab -batch main)
@@ -311,16 +317,11 @@ if command -v matlab >/dev/null 2>&1; then
                 fi
             fi
 
-            tempDir=$(mktemp -d "${TMPDIR:-/tmp}/cversion.XXXXXXXXX")
-            echo >&2 "-- ${BUILD_NAME} - changing directory to: ${tempDir}"
-
-            cd "${tempDir}" \
-            && \
             echo >&2 && echo >&2 "-- ${BUILD_NAME} - ${fetch}" && echo >&2 && $(${fetch}) \
             && \
             echo >&2 && echo >&2 "-- ${BUILD_NAME} - ${untar[@]}" && echo >&2 && "${untar[@]}" \
             && \
-            cd ${pmLibName} \
+            ls "${tempDir}/" && cd "${tempDir}/${pmLibName}" \
             && \
             echo >&2 && echo >&2 "-- ${BUILD_NAME} - ${cmd[@]}" && echo >&2 && "${cmd[@]}" \
             || {
