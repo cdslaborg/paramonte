@@ -544,7 +544,9 @@ fi
 
 dependencies=""
 for lib in libgfortran*; do
-    dependencies="${dependencies} ${lib}"
+    if [ -f "${lib}" ]; then
+        dependencies="${dependencies} ${lib}"
+    fi
 done
 
 if [ -f "${FILE_DIR}/setup.sh" ]; then
