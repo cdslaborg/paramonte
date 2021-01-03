@@ -283,57 +283,52 @@ LANG=matlab
 if command -v matlab >/dev/null 2>&1; then
     if [[ "${LANG_LIST}" =~ .*"${LANG}".* ]]; then
 
-        for PARALLELISM in $PARALLELISM_LIST; do
+        tempDir=$(mktemp -d "${TMPDIR:-/tmp}/cversion.XXXXXXXXX")
+        echo >&2 "-- ${BUILD_NAME} - changing directory to: ${tempDir}"
+        cd "${tempDir}"
 
-            tempDir=$(mktemp -d "${TMPDIR:-/tmp}/cversion.XXXXXXXXX")
-            echo >&2 "-- ${BUILD_NAME} - changing directory to: ${tempDir}"
-            cd "${tempDir}"
+        pmLibName="libparamonte_${LANG}_${PLATFORM}_${ARCHITECTURE}"
 
-            pmLibName="libparamonte_${LANG}_${PLATFORM}_${ARCHITECTURE}"
-
-            compressedFileName="${pmLibName}"
-            if [ "${isWindows}" = "true" ]; then
-                fetch="${srcFileDir}/wget"
-                compressedFileName+=".zip"
-                untar=("${srcFileDir}/7z" -Y e "${tempDir}/${compressedFileName}" -o"${tempDir}/${pmLibName}")
+        compressedFileName="${pmLibName}"
+        if [ "${isWindows}" = "true" ]; then
+            fetch="${srcFileDir}/wget"
+            compressedFileName+=".zip"
+            untar=("${srcFileDir}/7z" -Y e "${tempDir}/${compressedFileName}" -o"${tempDir}/${pmLibName}")
+        else
+            compressedFileName+=".tar.gz"
+            untar=(tar xvzf "${tempDir}/${compressedFileName}")
+            if [ "${isMacOS}" = "true" ]; then
+                fetch="curl -OL"
             else
-                compressedFileName+=".tar.gz"
-                untar=(tar xvzf "${tempDir}/${compressedFileName}")
-                if [ "${isMacOS}" = "true" ]; then
-                    fetch="curl -OL"
-                else
-                    fetch="wget"
-                fi
+                fetch="wget"
             fi
-            fetch+=" ${pmReleaseLink}/${compressedFileName}"
+        fi
+        fetch+=" ${pmReleaseLink}/${compressedFileName}"
 
-            if [ "${PARALLELISM}" = "none" ]; then
-                cmd=(matlab -batch main)
+        cmd=(matlab -batch main)
+        if [[ "${PARALLELISM}" =~ .*"impi".* ]] || [[ "${PARALLELISM}" =~ .*"mpich".* ]] || [[ "${PARALLELISM}" =~ .*"openmpi".* ]]; then
+            if [ "${PLATFORM}" = "windows" ]; then
+                cmd+=(&& mpiexec -localonly -n 3 matlab -batch main_mpi)
             else
-                if [ "${PLATFORM}" = "windows" ]; then
-                    cmd=(mpiexec -localonly -n 3 matlab -batch main_mpi)
-                else
-                    cmd=(mpiexec -n 3 matlab -batch main_mpi)
-                fi
+                cmd+=(&& mpiexec -n 3 matlab -batch main_mpi)
             fi
+        fi
 
-            echo >&2 && echo >&2 "-- ${BUILD_NAME} - ${fetch}" && echo >&2 && $(${fetch}) \
-            && \
-            echo >&2 && echo >&2 "-- ${BUILD_NAME} - ${untar[@]}" && echo >&2 && "${untar[@]}" \
-            && \
-            ls "${tempDir}/" && cd "${tempDir}/${pmLibName}" \
-            && \
-            echo >&2 && echo >&2 "-- ${BUILD_NAME} - ${cmd[@]}" && echo >&2 && "${cmd[@]}" \
-            || {
-                echo >&2
-                echo >&2 "-- ${BUILD_NAME} - test FAILED for ${pmLibName}."
-                echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
-                echo >&2
-                cd "${workingDir}"
-                exit 1
-            }
-
-        done
+        echo >&2 && echo >&2 "-- ${BUILD_NAME} - ${fetch}" && echo >&2 && $(${fetch}) \
+        && \
+        echo >&2 && echo >&2 "-- ${BUILD_NAME} - ${untar[@]}" && echo >&2 && "${untar[@]}" \
+        && \
+        ls "${tempDir}/" && cd "${tempDir}/${pmLibName}" \
+        && \
+        echo >&2 && echo >&2 "-- ${BUILD_NAME} - ${cmd[@]}" && echo >&2 && "${cmd[@]}" \
+        || {
+            echo >&2
+            echo >&2 "-- ${BUILD_NAME} - test FAILED for ${pmLibName}."
+            echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
+            echo >&2
+            cd "${workingDir}"
+            exit 1
+        }
 
     fi
 fi
