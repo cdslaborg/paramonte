@@ -223,7 +223,8 @@ for PMCS in $PMCS_LIST; do
                             parSuffix=""
                         else
                             parSuffix="_${PARALLELISM}"
-                            if ([ "${PMCS}" = "intel" ] && ([ "${PARALLELISM}" = "mpich" ] || [ "${PARALLELISM}" = "mpich" ])) \
+                            if ([ "${PMCS}" = "intel" ] && ([ "${PARALLELISM}" = "openmpi" ] || [ "${PARALLELISM}" = "mpich" ])) \
+                            || ([ "${PMCS}" = "intel" ] && [ "${PARALLELISM}" = "impi" ] && [ "${isMacOS}" = "true" ]) \
                             || ([ "${PMCS}" = "gnu" ] && [ "${PARALLELISM}" = "impi" ]) \
                             then
                                 BENABLED=false
