@@ -268,7 +268,7 @@ for PMCS in $PMCS_LIST; do
                             && \
                             cd ${pmLibName} \
                             && \
-                            ./build.sh && ./run.sh \
+                            ./build.sh && ./run.sh --nproc 2 \
                             || {
                                 echo >&2
                                 echo >&2 "-- ${BUILD_NAME} - test FAILED for ${pmLibName}."
