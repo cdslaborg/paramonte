@@ -473,29 +473,30 @@ do
 
                             fi
 
-                            if [ "${isMacOS}" = "true" ]; then
-                                echo >&2 "-- ParaMonteExample${LANG_NAME} - changing the install_name to @rpath for the dependency file..."
-                                chmod a+w "${sharedFilePath}" \
-                                && \
-                                install_name_tool -change "${dependencyPath}" "@rpath/${dependencyName}" "${sharedFilePath}" \
-                                || {
-                                    echo >&2
-                                    echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: Changing the install_name of the dependency file failed."
-                                    echo >&2
-                                    exit 1
-                                    #if [ "$BASH_SOURCE" == "$0" ]; then exit 30; else return 88; fi # return with an error message
-                                }
-                            elif [ "${isLinux}" = "true" ]; then
-                                "${ParaMonte_ROOT_DIR}/auxil/patchelf" --set-rpath \$ORIGIN "${sharedFilePath}" \
-                                || {
-                                    echo >&2
-                                    echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: install_name setting of the dependency file failed."
-                                    echo >&2
-                                    exit 1
-                                    #if [ "$BASH_SOURCE" == "$0" ]; then exit 30; else return 88; fi # return with an error message
-                                }
-                            fi
-                            echo >&2
+                                echo >&2 "-- ParaMonteExample${LANG_NAME} - setting the install name for the dependency file..."
+                                if [ "${isMacOS}" = "true" ]; then
+                                    chmod a+w "${sharedFilePath}" \
+                                    && \
+                                    install_name_tool -change "${dependencyPath}" "@rpath/${dependencyName}" "${sharedFilePath}" \
+                                    || {
+                                        echo >&2
+                                        echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: Changing the install name of the dependency file failed."
+                                        echo >&2
+                                        exit 1
+                                        #if [ "$BASH_SOURCE" == "$0" ]; then exit 30; else return 88; fi # return with an error message
+                                    }
+                                elif [ "${isLinux}" = "true" ] &&  ! [[ "${sharedFilePath}" =~ .*"libparamonte".* ]]; then
+                                    echo >&2 "${ParaMonte_ROOT_DIR}/auxil/patchelf --set-rpath \$ORIGIN ${sharedFilePath}"
+                                    "${ParaMonte_ROOT_DIR}/auxil/patchelf" --set-rpath '\$ORIGIN' "${sharedFilePath}" \
+                                    || {
+                                        echo >&2
+                                        echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: install_name setting of the dependency file failed."
+                                        echo >&2
+                                        exit 1
+                                        #if [ "$BASH_SOURCE" == "$0" ]; then exit 30; else return 88; fi # return with an error message
+                                    }
+                                fi
+                                echo >&2
 
                         done
 
