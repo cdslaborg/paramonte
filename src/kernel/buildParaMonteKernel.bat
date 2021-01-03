@@ -81,7 +81,7 @@ if exist !ParaMonte_BLD_DIR! (
     mkdir !ParaMonte_BLD_DIR!
 )
 echo. -- ParaMonte - all generated build files will be stored at:
-echo. -- ParaMonte -     %~dp0!ParaMonte_BLD_DIR!
+echo. -- ParaMonte - !ParaMonte_BLD_DIR!
 
 :: generate object files directory
 set ParaMonte_OBJ_DIR=!ParaMonte_BLD_DIR!\obj

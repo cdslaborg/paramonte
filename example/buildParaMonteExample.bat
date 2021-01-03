@@ -9,30 +9,30 @@
 ::::
 ::::   This file is part of the ParaMonte library.
 ::::
-::::   Permission is hereby granted, free of charge, to any person obtaining a 
-::::   copy of this software and associated documentation files (the "Software"), 
-::::   to deal in the Software without restriction, including without limitation 
-::::   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-::::   and/or sell copies of the Software, and to permit persons to whom the 
+::::   Permission is hereby granted, free of charge, to any person obtaining a
+::::   copy of this software and associated documentation files (the "Software"),
+::::   to deal in the Software without restriction, including without limitation
+::::   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+::::   and/or sell copies of the Software, and to permit persons to whom the
 ::::   Software is furnished to do so, subject to the following conditions:
 ::::
-::::   The above copyright notice and this permission notice shall be 
+::::   The above copyright notice and this permission notice shall be
 ::::   included in all copies or substantial portions of the Software.
 ::::
-::::   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-::::   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-::::   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-::::   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-::::   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-::::   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+::::   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+::::   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+::::   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+::::   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+::::   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+::::   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 ::::   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ::::
 ::::   ACKNOWLEDGMENT
 ::::
 ::::   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-::::   As per the ParaMonte library license agreement terms, if you use any parts of 
-::::   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-::::   work (education/research/industry/development/...) by citing the ParaMonte 
+::::   As per the ParaMonte library license agreement terms, if you use any parts of
+::::   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+::::   work (education/research/industry/development/...) by citing the ParaMonte
 ::::   library as described on this page:
 ::::
 ::::       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md
@@ -123,13 +123,65 @@ if !INTERFACE_LANGUAGE!==r (
 )
 
 if not defined LANG_NAME (
-    echo. 
+    echo.
     echo.-- ParaMonteExample - Fatal Error: unrecognized or no language specified. exiting...
-    echo. 
+    echo.
     cd %~dp0
     set ERRORLEVEL=1
     exit /B 1
 )
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: find dependencies if requested
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+set allFilesFound=true
+set "depFilePathList="
+if !DEPLOY_ENABLED!==true (
+    if !MPI_ENABLED!==true (
+        if !COMPILER_SUITE!==intel (
+            for %%a in ("%path:;=";"%") do (
+                REM echo. "searching path: %%~a"
+                set "MPIEXEC_PATH=%%~a\mpiexec.exe"
+                if exist "!MPIEXEC_PATH!" (
+                    set /a count = 0
+                    set "searchPathList=%%~a\release\impi.dll;%%~a\..\libfabric\bin\libfabric.dll"
+                    echo. "searchPathList=!searchPathList!"
+                    for %%b in ("!searchPathList:;=";"!") do (
+                        if exist "%%~b" (
+                            set /a count += 1
+                            echo. "dependency file detected at: %%~b"
+                            if defined depFilePathList (
+                                set "depFilePathList=%%~b;!depFilePathList!"
+                            ) else (
+                                set "depFilePathList=%%~b"
+                            )
+                        )
+                    )
+                    if !count!==2 (
+                        set allFilesFound=true
+                        goto LABEL_impiDepFound
+                    ) else (
+                        if !count!==1 (
+                            set allFilesFound=false
+                            goto LABEL_impiDepFound
+                        )
+                    )
+                )
+            )
+        )
+    )
+    :LABEL_impiDepFound
+    if !allFilesFound! NEQ true (
+        echo.
+        echo.-- ParaMonteExample!LANG_NAME! - Fatal Error: The ParaMonte library dependency shared files were not found. exiting...
+        echo.
+        cd %~dp0
+        set ERRORLEVEL=1
+        exit /B 1
+    )
+)
+
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: build examples
@@ -144,11 +196,11 @@ set EXAM_LIST=mvn
 set ParaMonteExample_BLD_DIR=!ParaMonte_BLD_DIR!\example
 set ParaMonteInterface_SRC_DIR_CURRENT=!ParaMonteInterface_SRC_DIR!\!LANG_NAME!
 
-echo. 
+echo.
 echo.-- ParaMonteExample!LANG_NAME! - generating the ParaMonte library examples in !LANG_NAME! language...
 echo.-- ParaMonteExample!LANG_NAME! - The ParaMonte !LANG_NAME! examples directory: !ParaMonteExample_BLD_DIR!
 
-for %%e in (!EXAM_LIST!) do ( 
+for %%e in (!EXAM_LIST!) do (
 
     set EXAM_NAME=%%e
 
@@ -194,6 +246,20 @@ for %%e in (!EXAM_LIST!) do (
     echo.-- ParaMonteExample!LANG_NAME! - from: !ParaMonte_ROOT_DIR!\LICENSE.md
     echo.-- ParaMonteExample!LANG_NAME! -   to: !ParaMonteExample_BLD_DIR_CURRENT!\LICENSE.md
     copy "!ParaMonte_ROOT_DIR!\LICENSE.md" "!ParaMonteExample_BLD_DIR_CURRENT!\LICENSE.md" || goto LABEL_copyErrorOccured
+
+    if !DEPLOY_ENABLED!==true (
+        if defined depFilePathList (
+            echo.-- ParaMonteExample!LANG_NAME! - copying the ParaMonte library dependency shared files...
+            REM for /F "delims=;" %%A in ("!depFilePathList!") do (
+            for %%a in ("!depFilePathList:;=";"!") do (
+                set depFileExt=%%~xa
+                set depFileName=%%~na
+                echo.-- ParaMonteExample!LANG_NAME! - from: %%~a
+                echo.-- ParaMonteExample!LANG_NAME! -   to: !ParaMonteExample_LIB_DIR_CURRENT!\!depFileName!
+                copy "%%~a" "!ParaMonteExample_LIB_DIR_CURRENT!\!depFileName!!depFileExt!" || goto LABEL_copyErrorOccured
+            )
+        )
+    )
 
     if !LANG_IS_COMPILED!==true (
 
@@ -308,12 +374,12 @@ for %%e in (!EXAM_LIST!) do (
 
 )
 
-echo. 
+echo.
 
 if %ERRORLEVEL%==1 (
-    echo. 
+    echo.
     echo.-- ParaMonteExample!LANG_NAME! - Fatal Error: build failed. exiting...
-    echo. 
+    echo.
     cd %~dp0
     set ERRORLEVEL=1
     exit /B 1
@@ -321,7 +387,7 @@ if %ERRORLEVEL%==1 (
 if %ERRORLEVEL%==0 (
     echo.
     echo.
-    echo.-- ParaMonteExample!LANG_NAME! - The ParaMonte library example build successful. 
+    echo.-- ParaMonteExample!LANG_NAME! - The ParaMonte library example build successful.
     echo.
 )
 
@@ -344,7 +410,7 @@ echo.-- ParaMonteExample!LANG_NAME! - The ParaMonte !LANG_NAME! library binary d
 
 if not exist !ParaMonteExample_BIN_DIR_CURRENT! (
     REM echo.-- ParaMonteExample!LANG_NAME! - previous binary directory detected. deleting the old contents...
-    REM rmdir /S /Q !ParaMonteExample_BLD_DIR_CURRENT! 
+    REM rmdir /S /Q !ParaMonteExample_BLD_DIR_CURRENT!
     REM rd /S /Q !ParaMonteExample_BLD_DIR_CURRENT!
     REM REM /S  Removes all directories and files in the specified directory in addition to the directory itself. Used to remove a directory tree.
     REM REM /Q  Quiet mode, do not ask if ok to remove a directory tree with /S
@@ -359,16 +425,16 @@ REM /s: Specifies to include subdirectories. Excludes empty subdirectories
 REM /e: Copies all subdirectories, even if they are empty
 REM /i: specifies the destination is a folder (Otherwise it prompts you)
 xcopy /s /Y /e /v /i "!ParaMonteExample_BLD_DIR_CURRENT!" "!ParaMonteExample_BIN_DIR_CURRENT!" && (
-    echo. 
-    echo. 
+    echo.
+    echo.
     echo.-- ParaMonteExample!LANG_NAME! - the ParaMonte !LANG_NAME! !EXAM_NAME! example build  path: !ParaMonteExample_BLD_DIR_CURRENT!
     echo.-- ParaMonteExample!LANG_NAME! - the ParaMonte !LANG_NAME! !EXAM_NAME! library binary path: !ParaMonteExample_BIN_DIR_CURRENT!
 ) || goto LABEL_copyErrorOccured
 
 if %ERRORLEVEL%==1 (
-    echo. 
+    echo.
     echo.-- ParaMonteExample!LANG_NAME! - Fatal Error: build failed. exiting...
-    echo. 
+    echo.
     cd %~dp0
     set ERRORLEVEL=1
     exit /B 1
@@ -376,7 +442,7 @@ if %ERRORLEVEL%==1 (
 if %ERRORLEVEL%==0 (
     echo.
     echo.
-    echo.-- ParaMonteExample!LANG_NAME! - The ParaMonte library example build successful. 
+    echo.-- ParaMonteExample!LANG_NAME! - The ParaMonte library example build successful.
     echo.
 )
 
@@ -384,7 +450,7 @@ if %ERRORLEVEL%==0 (
 :: build/run the examples
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-for %%e in (!EXAM_LIST!) do ( 
+for %%e in (!EXAM_LIST!) do (
 
     set EXAM_NAME=%%e
     echo.-- ParaMonteExample!LANG_NAME! - Building/running the ParaMonte library's !EXAM_NAME! example.
@@ -397,9 +463,9 @@ for %%e in (!EXAM_LIST!) do (
         cd !ParaMonteExample_BLD_DIR_CURRENT!
         if !LANG_IS_COMPILED!==true (
             call build.bat || (
-                echo. 
+                echo.
                 echo.-- ParaMonteExample!LANG_NAME! - Fatal Error: The ParaMonte library example build/run failed. exiting...
-                echo. 
+                echo.
                 cd %~dp0
                 set ERRORLEVEL=1
                 exit /B 1
@@ -411,9 +477,9 @@ for %%e in (!EXAM_LIST!) do (
 )
 
 if %ERRORLEVEL%==1 (
-    echo. 
+    echo.
     echo.-- ParaMonteExample!LANG_NAME! - Fatal Error: The ParaMonte library example build/run failed. exiting...
-    echo. 
+    echo.
     cd %~dp0
     set ERRORLEVEL=1
     exit /B 1
@@ -435,18 +501,18 @@ exit /B 0
 
 :LABEL_copyErrorOccured
 
-echo. 
+echo.
 echo.-- ParaMonteExample!LANG_NAME! - Fatal Error: failed to copy contents. exiting...
-echo. 
+echo.
 cd %~dp0
 set ERRORLEVEL=1
 exit /B 1
 
 :LABEL_rmdirErrorOccured
 
-echo. 
+echo.
 echo.-- ParaMonteExample!LANG_NAME! - Fatal Error: failed to delete old contents. exiting...
-echo. 
+echo.
 cd %~dp0
 set ERRORLEVEL=1
 exit /B 1

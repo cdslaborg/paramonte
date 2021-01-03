@@ -94,6 +94,7 @@ set FAST_ENABLED=false
 set CODECOV_ENALBED=false
 set FPP_ONLY_ENABLED=false
 set MatDRAM_ENABLED=false
+set DEPLOY_ENABLED=false
 
 echo.
 type .\auxil\.ParaMonteBanner
@@ -245,6 +246,13 @@ if not "%1"=="" (
     if "!FLAG!"=="--matdram" (
         set FLAG_SUPPORTED=true
         set MatDRAM_ENABLED=true
+    )
+
+    REM --matdram
+
+    if "!FLAG!"=="--deploy" (
+        set FLAG_SUPPORTED=true
+        set DEPLOY_ENABLED=true
     )
 
     REM --nproc
