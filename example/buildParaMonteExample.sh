@@ -149,12 +149,12 @@ if [ "${INTERFACE_LANGUAGE}" = "c" ]; then
     LANG_NAME=C
 fi
 
-if [ -z ${LANG_NAME+x} ]; then
+if [ -z ${LANG_NAME+x} ] || [ -z ${LANG_ABBR+x} ]; then
     echo >&2
     echo >&2 "-- ParaMonteExample - Fatal Error: unrecognized or no language specified. exiting..."
     echo >&2
     exit 1
-else
+#else
      # Capitalize INTERFACE_LANGUAGE
 #    LANG_ABBR="${LANG_NAME//+/p}"
 #    if [ "${INTERFACE_LANGUAGE}" = "c++" ]; then

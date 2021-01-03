@@ -26,6 +26,15 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 +   Typo-fixes in the documentation of the library.
 
++   The `ParaMonte::MATLAB` library packages for different Operating systems and 
+    processor architecture are now separate from each other. This change was made
+    to lower the overall size of `ParaMonte::MATLAB` by only keeping the relevant 
+    files in each packaging of the library. The current release contains three 
+    separate packages for `ParaMonte::MATLAB`,
+    +   `libparamonte_matlab_windows_x64`,  
+    +   `libparamonte_matlab_darwin_x64`,  
+    +   `libparamonte_matlab_linux_x64`.  
+
 **MATLAB versions used for this release**  
 
 +   **Windows**: `MATLAB 9.6.0.1072779 (R2019a)`
