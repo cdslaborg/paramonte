@@ -155,6 +155,7 @@ Thumbs.db
 ___*___.*
 
 copyFiles.sh
+bpp.sh
 
 #########################
 # CMake
