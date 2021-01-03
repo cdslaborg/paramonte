@@ -155,7 +155,8 @@ if [ -z ${LANG_NAME+x} ]; then
     echo >&2
     exit 1
 else
-    LANG_ABBR="${LANG_NAME//+/p}"
+     # Capitalize INTERFACE_LANGUAGE
+#    LANG_ABBR="${LANG_NAME//+/p}"
 #    if [ "${INTERFACE_LANGUAGE}" = "c++" ]; then
 #        LANG_ABBR="cpp"
 #    else
