@@ -41,6 +41,7 @@
 ####################################################################################################################################
 ####################################################################################################################################
 
+workingDir="$(pwd)"
 
 ####################################################################################################################################
 #### determine the architecture
@@ -204,7 +205,6 @@ done
 #### download libraries and run tests
 ####################################################################################################################################
 
-
 for PMCS in $PMCS_LIST; do
     for LANG in $LANG_LIST; do
         for BTYPE in $BTYPE_LIST; do
@@ -218,12 +218,14 @@ for PMCS in $PMCS_LIST; do
                         else
                             fetch="wget"
                         fi
+                        tempDir=$(mktemp -d "${TMPDIR:-/tmp}/cversion.XXXXXXXXX")
+                        echo >&2 "-- ${BUILD_NAME}Compiler - changing directory to: ${tempDir}"
+                        cd "${tempDir}" && \
                         "${fetch}" "${pmReleaseLink}/${pmLibName}" && \
                         tar xvzf ${pmLibName}${compressedFileExt} && \
                         cd ${pmLibName} && \
                         ./build.sh && \
-                        ./run.sh && \
-                        cd .. || {
+                        ./run.sh || {
                             echo >&2
                             echo >&2 "-- ${BUILD_NAME} - test FAILED for ${pmLibName}."
                             echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
@@ -236,3 +238,5 @@ for PMCS in $PMCS_LIST; do
         done
     done
 done
+
+cd "${workingDir}"
