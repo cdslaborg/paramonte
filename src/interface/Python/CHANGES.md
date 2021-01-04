@@ -5,6 +5,10 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 2.x.x**  
 
+### Version  2.5.1 -- January 3, 2020  
+
++   Minor enhancements and bug fixes.
+
 ### Version  2.5.0 -- January 1, 2020  
 
 **Major enhancements**  

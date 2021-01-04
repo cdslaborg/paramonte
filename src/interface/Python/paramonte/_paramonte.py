@@ -291,12 +291,12 @@ if "PATH" not in os.environ: os.environ["PATH"] = os.getcwd()
 if platform.isWin32:
 
     pathList = os.environ["PATH"].split(";")
-    for path in pathList:
-        pathLower = path.lower().replace("\\","")
+    for thisPath in pathList:
+        pathLower = thisPath.lower().replace("\\","")
         if ("mpiintel64bin" in pathLower):
-            mpiPath = os.path.join(path,"release")
+            mpiPath = os.path.join(thisPath,"release")
             os.environ["PATH"] = mpiPath + os.pathsep + os.environ["PATH"]
-            libfabricPath = os.path.join(os.path.dirname(path),"libfabric","bin")
+            libfabricPath = os.path.join(os.path.dirname(thisPath),"libfabric","bin")
             os.environ["PATH"] = libfabricPath + os.pathsep + os.environ["PATH"]
             break
 
