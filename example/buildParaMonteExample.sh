@@ -240,8 +240,6 @@ do
 
     if [ "${deploy_enabled}" = "true" ] && [ "${LTYPE}" = "shared" ]; then
 
-        #### all compilers
-
         sharedFilePathList=()
 
         if [ "${isMacOS}" = "true" ] && [ "${INTERFACE_LANGUAGE}" = "matlab" ]; then
@@ -260,8 +258,6 @@ do
                 }
             done
         fi
-
-        #### gnu compilers
 
         if ! [ "${CAF_ENABLED}" = "true" ]; then # [ "${PMCS}" = "gnu" ] &&
 
@@ -283,7 +279,7 @@ do
 
             else
 
-                #### loop over all existing shared files, and their dependencies recursively
+                #### loop over all existing shared files and their dependencies recursively
 
                 ishared=0
                 sharedFilePathList+=($(ls "${ParaMonteExample_LIB_DIR_CURRENT}"/libparamonte_*.${sharedFileExt}))

@@ -95,7 +95,7 @@ matrix:
         - pip3 install --user --upgrade pandas
         - cd "${pmAuxilDir}" && ./testRelease.sh --par "none mpich" --build "debug release" --lang "c cpp"
         - cd "${pmAuxilDir}" && ./testRelease.sh --par "none" --build "debug release" --lang "fortran" -s intel
-        - cd "${pmAuxilDir}" && ./testRelease.sh --par "none" --build "debug release" --lang "fortran" -s gnu
+        #- cd "${pmAuxilDir}" && ./testRelease.sh --par "none" --build "debug release" --lang "fortran" -s gnu
         #- "wget https://github.com/cdslaborg/paramonte/releases/latest/download/libparamonte_c_linux_x64_gnu_release_shared_heap_mpich.tar.gz"
         #- "wget https://github.com/cdslaborg/paramonte/releases/latest/download/libparamonte_cpp_linux_x64_gnu_release_shared_heap_mpich.tar.gz"
         #- "wget https://github.com/cdslaborg/paramonte/releases/latest/download/libparamonte_fortran_linux_x64_gnu_release_shared_heap_mpich.tar.gz"
