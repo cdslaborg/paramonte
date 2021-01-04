@@ -90,9 +90,9 @@ matrix:
         - MPIEXEC_PATH="$(dpkg -L mpich | egrep bin/mpiexec.mpich)"
         - MPI_BIN_DIR="$(dirname "${MPIEXEC_PATH}")"
         - PATH="${MPI_BIN_DIR}:${PATH}"
-        - sudo apt install python3-pip
-        - pip3 install --user --upgrade numpy
-        - pip3 install --user --upgrade pandas
+        #- sudo apt install python3-pip
+        #- pip3 install --user --upgrade numpy
+        #- pip3 install --user --upgrade pandas
         - cd "${pmAuxilDir}" && ./testRelease.sh --par "none mpich" --build "debug release" --lang "c cpp"
         - cd "${pmAuxilDir}" && ./testRelease.sh --par "none" --build "debug release" --lang "fortran" -s intel
         #- cd "${pmAuxilDir}" && ./testRelease.sh --par "none" --build "debug release" --lang "fortran" -s gnu
