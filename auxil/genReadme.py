@@ -204,9 +204,30 @@ readme["installation"]["cpp"] = readme["installation"]["main"]
 readme["installation"]["fortran"] = readme["installation"]["main"]
 
 readme["installation"]["matlab"] = readme["installation"]["title"] + """
-The latest release of the ParaMonte MATLAB library can be downloaded from the release page of the library's repository on GitHub:  
++   **Windows**  
+    The latest release of the ParaMonte MATLAB library can be downloaded from the release page of the library's repository on GitHub:  
+    [https://github.com/cdslaborg/paramonte/releases/latest/](https://github.com/cdslaborg/paramonte/releases/latest/)  
 
-[https://github.com/cdslaborg/paramonte/releases/latest/](https://github.com/cdslaborg/paramonte/releases/latest/)  
++   **Linux**  
+    The latest release of the ParaMonte MATLAB library can be downloaded from the release page of the library's repository on GitHub:  
+    [https://github.com/cdslaborg/paramonte/releases/latest/](https://github.com/cdslaborg/paramonte/releases/latest/)  
+    Alternatively, you can download the library to your local system directly by calling the `wget` Linux application from the command line,  
+    ```bash  
+    libname=libparamonte_matlab_linux_x64
+    wget https://github.com/cdslaborg/paramonte/releases/latest/download/$libname.tar.gz
+    tar xvzf $libname.tar.gz && cd $libname
+    matlab # run matlab from the command line, then call the supplied "main" example script 
+    ```  
+
++   **macOS (darwin)**  
+    We **strongly advise you** to download the ParaMonte library for macOS via the following commands in a `bash` / `zsh` terminal, 
+    instead of downloading the library directly from the GitHub release page,  
+    ```bash  
+    libname=libparamonte_matlab_darwin_x64
+    curl -OL https://github.com/cdslaborg/paramonte/releases/latest/download/$libname.tar.gz
+    tar xvzf $libname.tar.gz && cd $libname
+    matlab # run matlab from the command line, then call the supplied "main" example script 
+    ```  
 """
 
 readme["installation"]["python"] = readme["installation"]["title"] + """
@@ -670,25 +691,24 @@ readme["examples"]["matlab"] = readme["examples"]["title"] + """
 +   **Install a MATLAB >2017b distribution**, preferably, the the latest MATLAB. 
     Note that ParaMonte MATLAB library have been tested only with MATLAB version 2018b and newer.  
 
-+   **Optionally install a compatible MPI library** (or let the ParaMonte library take care of the installation 
++   **Optionally install a compatible MPI library** (or let the ParaMonte library take care of the MPI installation 
     when you call the library for the first time). For parallel simulations (via MPI), you will need an MPI library 
     already installed on your system. If you choose to install the library by yourself, we recommend the Intel MPI 
-    library which is available for free from the Intel website. On macOS, the OpenMPI library can be used 
-    in place of the Intel MPI library which currently does not support macOS.  
+    library which is available for free from the Intel website or from [the ParaMonte GitHub release page](https://github.com/cdslaborg/paramonte/releases/tag/v1.5.1).  
+    On macOS, the OpenMPI (or MPICH) MPI library can be used in place of the Intel MPI library which currently does not support macOS.  
 
 +   **Calling the ParaMonte library for the first time**  
-    +   **Windows**  
-        Nothing special needs to be done. You are all set! Follow the instructions below on how to run your ParaMonte-enabled simulations.  
-    +   **Linux/macOS**  
-        For the first time, before running any ParaMonte-enabled simulations, we **highly recommend** you to run MATLAB as an 
-        administrator on your system if you can (for example, if you own the system). This can be done from a Bash terminal via,  
-        ```bash  
-        sudo matlab
-        ```  
-        **The superuser (`sudo`) permission is only required for the installation of the ParaMonte library and not the MPI libraries**.  
-        If `matlab` is not recognized on your command line as an application, seek help from 
-        [this ParaMonte documentation page](https://www.cdslab.org/paramonte/notes/troubleshooting/bash-matlab-command-not-found/). 
-        Once the MATLAB interactive environment opens, navigate to the root folder of the ParaMonte library (where the LICENSE file exists) 
+    +   Depending on your platform,  
+        +   **Windows**  
+            Nothing special needs to be done. You are all set! Follow the instructions below on how to call the ParaMonte library for the first time.  
+        +   **Linux/macOS**  
+            Open a `Bash` or `zsh` terminal and open MATLAB from the command line by calling its name,  
+            ```bash  
+            matlab
+            ```  
+            If `matlab` is not recognized on your command line as an application, seek help from 
+            [this ParaMonte documentation page](https://www.cdslab.org/paramonte/notes/troubleshooting/bash-matlab-command-not-found/). 
+    +   Once the MATLAB interactive environment opens, navigate to the root folder of the ParaMonte library (where the LICENSE file exists) 
         and call the ParaMonte library for the first time via the following commands (simply type the commands on the MATLAB command prompt),  
         ```matlab  
         addpath(genpath("./"),"-begin"); % add the ParaMonte library directories to MATLAB's list of search paths.
@@ -697,25 +717,14 @@ readme["examples"]["matlab"] = readme["examples"]["title"] + """
         ```  
         If needed, follow any extra instructions provided by the library on your MATLAB command prompt.  
         **If you do not intend to run simulations in parallel, you can say NO (`n`) to any MPI library installation requests via ParaMonte**.  
-        Before beginning to use the ParaMonte library, we strongly recommend that you close your current MATLAB 
-        session and the Bash terminal from which you initiated the MATLAB session in **sudo** mode, **entirely**. 
-        Then follow the instructions below on how to run your ParaMonte-enabled simulations.  
-        <br>
-        **Note (for MPI parallel library installation on macOS):**  
-        On **macOS**, if you intend to install the MPI parallelization libraries via ParaMonte, 
-        we highly recommended that you first quit your current sudo-mode MATLAB session, 
-        then open a new Bash command prompt and open a MATLAB session from the Bash terminal, 
-        this time in normal (non-sudo) mode, then type the following commands in your MATLAB session,  
-        ```matlab  
-        addpath(genpath("./"),"-begin"); % add the ParaMonte library root directory to MATLAB's list of search paths.
-        pm = paramonte(); % instantiate an object of class paramonte.
-        pm.verify(); % verify the integrity of the ParaMonte library on your system.
-        ```  
-        Then, answer YES (`y`) to any permission requests by the ParaMonte library to install the MPI libraries on your system.  
-
+        If you do not intend to run simulations in parallel, answer YES (`y`) to any permission requests by 
+        the ParaMonte library to install the MPI libraries on your system.  
 +   **Running the ParaMonte simulations**  
     For complete up-to-date detailed instructions, visit: https://www.cdslab.org/paramonte/notes/run/matlab/
     +   Open the MATLAB software. On **Linux** and **macOS**, call the matlab executable from a Bash command line.  
+    +   The ParaMonte library typically ships with example scripts. If you see a file named `main.m` at the root directory of 
+        your ParaMonte library, then simply call this MATLAB script to run the example simulation provided with the library. 
+        If no such file exists, or if you intend to do simulations in parallel, then follow the rest of the instructions below.  
     +   Suppose your mathematical objective function is a multivariate Normal distribution as implemented in this 
         [logfunc.m](https://raw.githubusercontent.com/cdslaborg/paramonte/main/example/mvn/MATLAB/logfunc.m) file.  
     +   For **serial** simulations, download this example generic serial 
@@ -728,15 +737,15 @@ readme["examples"]["matlab"] = readme["examples"]["title"] + """
         Then, simply invoke the MPI launcher followed by the name of the MATLAB main script on a 
         MATLAB-aware MPI-aware Windows or Bash command prompt, similar to the following,  
         +   on **Windows** (preferably, on an Intel Parallel Studio command prompt or, the Microsoft Visual Studio's command prompt or, 
-            some other command prompt that recognizes both `mpiexec` and `matlab` software),  
+            some other command prompt that recognizes both `matlab` and the Intel's `mpiexec` software),  
             ```  
-            mpiexec -localonly -n 3 matlab -batch 'main_mpi'
+            mpiexec -localonly -n 3 matlab -batch main_mpi
             ```  
             where the `-localonly` flag is needed only if you are using the Intel MPI runtime libraries 
             (which is the default MPI library used to build the ParaMonte libraries on Windows).  
         +   on **Linux** or **macOS** (within a Bash terminal),  
             ```  
-            mpiexec -n 3 matlab -batch 'main_mpi'
+            mpiexec -n 3 matlab -batch main_mpi
             ```  
         Here, the parallel simulations are performed on 3 processes. Change the number 3 to any number of processes you wish to use, 
         but do not go beyond the maximum number of physical processes available on your system, otherwise, it will only degrade 
