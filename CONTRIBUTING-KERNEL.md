@@ -97,9 +97,8 @@ integer :: imageID
 Any code section that must be activated for a particular library build type (`static` vs. `shared`) must be fenced with appropriate preprocessing macros.  
 
 1.  The `DLL_ENABLED` preprocessor macro must be defined for any code section that exclusively belongs to shared library builds. Although `DLL` is reminiscent of Windows shared library files, the ParaMonte build scripts define this preprocessor macro for all shared library builds irrespective of the platform (Windows, Linux, macOS, ...).  
-
-> **IMPORTANT**  
-> Use this preprocessor macro in combination with **`IFORT_ENABLED`** to enable DLL symbol export by the Intel **`ifort`** compiler on macOS and Windows operating systems.  
+    > **IMPORTANT**  
+    > Use this preprocessor macro in combination with **`IFORT_ENABLED`** to enable DLL symbol export by the Intel **`ifort`** compiler on macOS and Windows operating systems.  
 
 #### Library build preprocessor directives  
 
@@ -107,9 +106,8 @@ Occasionally, it is necessary to define sections of code that should run only in
 
 1.  The `DEBUG_ENABLED` preprocessor macro must be defined for any code section that exclusively belongs to the `debug` library builds. Use this macro to fence sections of code that help with the debugging of the code.
 1.  The `TESTING_ENABLED` preprocessor macro must be defined for any code section that exclusively belongs to the `testing` library builds. Use this macro to fence sections of code that must be activated during the testing of the library.
-
-> **TIP**  
-> The `TESTING_ENABLED` preprocessor macro often appears together with `DEBUG_ENABLED` and `CODECOV_ENABLED`. The testing mode deactivates all compiler optimizations, but also prevents the addition of the debugging symbols to the object files. This leads to faster compilation of the source files which is often desired for testing purposes.  
+    > **TIP**  
+    > The `TESTING_ENABLED` preprocessor macro often appears together with `DEBUG_ENABLED` and `CODECOV_ENABLED`. The testing mode deactivates all compiler optimizations, but also prevents the addition of the debugging symbols to the object files. This leads to faster compilation of the source files which is often desired for testing purposes.  
 
 #### Library interface preprocessor directives  
 
@@ -166,9 +164,9 @@ If you do not follows these rules in your contribution, please provide an explan
 
 +   If a module has submodules, the name of the submodule file should follow the module name after `@`. For example the following submodule,  
     ```fortran  
-    module (Decoration_mod) Routines_smod
+    submodule (Decoration_mod) Routines_smod
     ...
-    end module Routines_smod
+    end submodule Routines_smod
     ```  
     will have to be stored in a source file with the name `Decoration_mod@Routines_smod.f90`.  
 
