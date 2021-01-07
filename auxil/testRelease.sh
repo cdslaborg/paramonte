@@ -122,6 +122,7 @@ export isWSL
 #### fetch options
 ####################################################################################################################################
 
+FOR_COARRAY_NUM_IMAGES=2
 LANG_LIST="c cpp fortran python matlab"
 BTYPE_LIST="debug release"
 LTYPE_LIST="shared"
@@ -228,8 +229,8 @@ for PMCS in $PMCS_LIST; do
                             nproc_flag=""
                             parSuffix=""
                         else
-                            nproc_flag="--nproc 2"
                             parSuffix="_${PARALLELISM}"
+                            nproc_flag="--nproc ${FOR_COARRAY_NUM_IMAGES}"
                             if ([ "${PMCS}" = "intel" ] && ([ "${PARALLELISM}" = "openmpi" ] || [ "${PARALLELISM}" = "mpich" ])) \
                             || ([ "${PMCS}" = "intel" ] && [ "${PARALLELISM}" = "impi" ] && [ "${isMacOS}" = "true" ]) \
                             || ([ "${PMCS}" = "gnu" ] && [ "${PARALLELISM}" = "impi" ]) \
@@ -270,7 +271,7 @@ for PMCS in $PMCS_LIST; do
                             && \
                             cd ${pmLibName} \
                             && \
-                            ./build.sh && ./run.sh "${nproc_flag}" \
+                            ./build.sh && ./run.sh ${nproc_flag} \
                             || {
                                 echo >&2
                                 echo >&2 "-- ${BUILD_NAME} - test FAILED for ${pmLibName}."
