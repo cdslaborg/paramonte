@@ -181,6 +181,6 @@ If you do not follows these rules in your contribution, please provide an explan
 
 Once you have implemented your contributions,  
 
-+   do not forget to test your contributions by adding new kernel tests to the unit-testing framework of the library.  
++   Do not forget to test your contributions by adding new kernel tests to the unit-testing framework of the library.  
 +   Also, generate code coverage report to ensure your contributions do not lower the overall code coverage of the kernel routines.  
 +   Follow the [generic contribution guidelines](CONTRIBUTING.md/#all-contributors) to submit and merge your contributions with the main branch of the library on GitHub. 
