@@ -225,8 +225,10 @@ for PMCS in $PMCS_LIST; do
                         fi
 
                         if [ "${PARALLELISM}" = "none" ]; then
+                            nproc_flag=""
                             parSuffix=""
                         else
+                            nproc_flag="--nproc 2"
                             parSuffix="_${PARALLELISM}"
                             if ([ "${PMCS}" = "intel" ] && ([ "${PARALLELISM}" = "openmpi" ] || [ "${PARALLELISM}" = "mpich" ])) \
                             || ([ "${PMCS}" = "intel" ] && [ "${PARALLELISM}" = "impi" ] && [ "${isMacOS}" = "true" ]) \
@@ -268,7 +270,7 @@ for PMCS in $PMCS_LIST; do
                             && \
                             cd ${pmLibName} \
                             && \
-                            ./build.sh && ./run.sh --nproc 2 \
+                            ./build.sh && ./run.sh "${nproc_flag}" \
                             || {
                                 echo >&2
                                 echo >&2 "-- ${BUILD_NAME} - test FAILED for ${pmLibName}."
