@@ -95,7 +95,7 @@
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    !> The ParaDRAM_type and ParaDISE_type classes.
+    !> The `ParaDRAM_type` and `ParaDISE_type` classes.
     type, extends(ParaMCMC_type)                    :: ParaDXXX_type
         type(SpecDRAM_type)                         :: SpecDRAM     !< Object of [SpecDRAM_type](@ref specdram_type) class containing DRAM simulation specs.
         type(Statistics_type)                       :: Stats        !< Object of [Statistics_type](@ref statistics_type) class containing simulation statistics.

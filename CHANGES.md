@@ -30,7 +30,7 @@ See also,
 +   The shared (dynamic) library file naming convention is now changed from
     using "dynamic" in the file name to using "shared" in the file name.
 
-**Minor Enhancements**  
++   Improved error-handling messages in the examples' build and run scripts.
 
 +   Typo-fixes in the documentation of the library.
 
