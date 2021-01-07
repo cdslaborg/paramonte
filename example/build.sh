@@ -78,7 +78,7 @@ However, the onus on you to ensure compiler/library availability and compatibili
                                 : If multiple space-delimited flags are passed, enclose all with "".
         -n | --nproc            : the default number of processes (coarray images) on which the ParaMonte 
                                 : examples/tests (if any) will be run: positive integer
-                                : If not provided, the default is 3.
+                                : If not provided, the default is 2.
         -h | --help             : help with the script usage
 
 NOTE: ALL FLAGS ARE OPTIONAL. If not provided, appropriate values will be set for each missing flag.
@@ -180,7 +180,7 @@ PM_EXAM_EXE_NAME="main.exe"
 export PM_EXAM_EXE_NAME
 
 if [ -z ${FOR_COARRAY_NUM_IMAGES+x} ]; then
-    FOR_COARRAY_NUM_IMAGES=3
+    FOR_COARRAY_NUM_IMAGES=2
 fi
 export FOR_COARRAY_NUM_IMAGES
 
@@ -693,23 +693,45 @@ do
                     } > ${RUN_FILE_NAME}
                     if [ "${MPI_ENABLED}" = "true" ] || [ "${CAF_ENABLED}" = "true" ]; then
                         {
-                        echo "# usage:"
-                        echo "# "
-                        echo "#     ./${RUN_FILE_NAME} -n number_of_processors"
-                        echo "# "
-                        echo "# or,"
-                        echo "# "
-                        echo "#     source ./${RUN_FILE_NAME} -n number_of_processors"
-                        echo "# "
-                        echo "# where number_of_processors is an integer representing the number"
-                        echo "# of physical processors on which the example will be run."
+                        echo "usage()"
+                        echo "{"
+                        echo "cat << EndOfMessage"
+                        echo ""
+                        echo "    This is a simple standalone Bash script for running C/C++/Fortran MPI/Coarray"
+                        echo "    parallel applications that use the ParaMonte library on Unix-like platforms."
+                        echo ""
+                        echo "        usage:"
+                        echo ""
+                        echo "            ./${RUN_FILE_NAME} -n number_of_processors"
+                        echo ""
+                        echo "        example:"
+                        echo ""
+                        echo "            ./${RUN_FILE_NAME} -n 3"
+                        echo ""
+                        echo "        flag definitions:"
+                        echo ""
+                        echo "            -n | --nproc          : the default number of processes (coarray images) on which the ParaMonte "
+                        echo "                                  : examples/tests will be run. It must be a positive integer."
+                        echo "                                  : If not provided, the default value is 2."
+                        echo "            -h | --help           : help with the script usage"
+                        echo ""
+                        echo "    NOTE: ALL FLAGS ARE OPTIONAL. If not provided, appropriate values will be set for each missing flag."
+                        echo ""
+                        echo "EndOfMessage"
+                        echo "}"
                         echo ""
                         echo "while [ \"\$1\" != \"\" ]; do"
                         echo "    case \$1 in"
                         echo "        -n | --nproc )        shift"
                         echo "                              FOR_COARRAY_NUM_IMAGES=\$1"
                         echo "                              ;;"
-                        echo "        * )                   echo >\&2 \"-- ParaMonteExampleRunScript - FATAL: the input flag is not recognized: \$1\""
+                        echo "        -h | --help )         usage"
+                        echo "                              exit"
+                        echo "                              ;;"
+                        echo "        * )                   usage"
+                        echo "                              echo >&2"
+                        echo "                              echo >&2 \"-- ParaMonteExampleRunScript - FATAL: the input flag is not recognized: \$1\""
+                        echo "                              echo >&2"
                         echo "                              exit 1"
                         echo "    esac"
                         echo "    shift"
@@ -718,13 +740,41 @@ do
                         } >> ${RUN_FILE_NAME}
                     else
                         {
-                        echo "# usage:"
-                        echo "# "
-                        echo "#     ./${RUN_FILE_NAME}"
-                        echo "# "
-                        echo "# or,"
-                        echo "# "
-                        echo "#     source ./${RUN_FILE_NAME}"
+                        echo "usage()"
+                        echo "{"
+                        echo "cat << EndOfMessage"
+                        echo ""
+                        echo "    This is a simple standalone Bash script for running C/C++/Fortran serial"
+                        echo "    applications that use the ParaMonte library on Unix-like platforms."
+                        echo ""
+                        echo "        usage:"
+                        echo ""
+                        echo "            ./${RUN_FILE_NAME}"
+                        echo ""
+                        echo "        example:"
+                        echo ""
+                        echo "            ./${RUN_FILE_NAME}"
+                        echo ""
+                        echo "        flag definitions:"
+                        echo ""
+                        echo "            -h | --help           : help with the script usage"
+                        echo ""
+                        echo "EndOfMessage"
+                        echo "}"
+                        echo ""
+                        echo "while [ \"\$1\" != \"\" ]; do"
+                        echo "    case \$1 in"
+                        echo "        -h | --help )         usage"
+                        echo "                              exit"
+                        echo "                              ;;"
+                        echo "        * )                   usage"
+                        echo "                              echo >&2"
+                        echo "                              echo >&2 \"-- ParaMonteExampleRunScript - FATAL: the input flag is not recognized: \$1\""
+                        echo "                              echo >&2"
+                        echo "                              exit 1"
+                        echo "    esac"
+                        echo "    shift"
+                        echo "done"
                         echo ""
                         } >> ${RUN_FILE_NAME}
                     fi
