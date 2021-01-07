@@ -74,8 +74,8 @@ The following coding style are enforced within all ParaMonte source files in any
 +   [**camelCase**](https://en.wikipedia.org/wiki/Camel_case) writing style is enforced in the entire ParaMonte library (except for constants), like, `sampleSize`, `domainUpperLimitVec`, ... .  Sometimes this convention may be against the common convention used within a particular language, for example, Python or Fortran. However, this deviation from the common practice is needed to bring homogeneity to the ParaMonte library across all programming languages. There are two advantages with using the `camelCase` naming convention:  
     +   The `camelCase` style naturally distinguishes some programming languages' intrinsic entities (for example, Python and Fortran) from the ParaMonte developer’s.  
     +   The `camelCase` style allows extremely long multi-segment variable names within the 63 character limits of many of the programming languages supported in ParaMonte.  
-    > **NOTE**  
-    > It is understandable that occasionally the `camelCase` style may be hard to follow and enforce in isolated locations in the library. In such cases, it is a good idea to briefly explain the reason for the deviation from the syntax rules of the library where the entity is defined for the first time in the code.  
+        > **NOTE**  
+        > It is understandable that occasionally the `camelCase` style may be hard to follow and enforce in isolated locations in the library. In such cases, it is a good idea to briefly explain the reason for the deviation from the syntax rules of the library where the entity is defined for the first time in the code.  
 +   Functions / subroutines / procedures in any programming language always begin with a verb. Example: `getCovarianceMatrix()` or, `getCorMatFromCovMat()`.  
 +   All static functions or methods of classes begin with a lowercase verb.
 +   Logical functions always begin with `is`. Example: `isDigit()`.  
