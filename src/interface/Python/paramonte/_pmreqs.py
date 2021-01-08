@@ -2142,17 +2142,88 @@ def verifyDependencyVersion():
 ####################################################################################################################################
 
 def checkForUpdate(package = "paramonte"):
+    """
+
+    Check whether a new version of the input package name
+    (presumably, ``"paramonte"``) is available for download
+    from the PyPI repository. This is done via the ``pip`` tool.
+    Depending on whether a new version of the package is available,
+    display an appropriate message with instructions on how to install
+    the latest version.
+
+        **Parameters**
+
+            package (optional)
+
+                The name of the Python package on PyPI repository
+                whose laest version will be checked against the current
+                version.
+
+        **Returns**
+
+            None
+
+    """
+
     import subprocess
     import sys
-    latestVersion = str(subprocess.run([sys.executable, '-m', 'pip', 'install', '{}==random'.format(package)], capture_output=True, text=True))
-    latestVersion = latestVersion[latestVersion.find('(from versions:')+15:]
-    latestVersion = latestVersion[:latestVersion.find(')')]
-    latestVersion = latestVersion.replace(' ','').split(',')[-1]
 
+    #latestVersion = str(subprocess.run([sys.executable, '-m', 'pip', 'install', '{}==random'.format(package)], capture_output=True, text=True))
+    #latestVersion = subprocess.run([sys.executable, "-m", "pip", "install", "{}==latest".format(package)], stdout=subprocess.PIPE).stdout.decode("utf-8")
+    #latestVersion = latestVersion[latestVersion.find('(from versions:')+15:]
+    #latestVersion = latestVersion[:latestVersion.find(')')]
+    #latestVersion = latestVersion.replace(' ','').split(',')[-1]
     #currentVersion = str(subprocess.run([sys.executable, '-m', 'pip', 'show', '{}'.format(package)], capture_output=True, text=True))
     #currentVersion = currentVersion[currentVersion.find('Version:')+8:]
     #currentVersion = currentVersion[:currentVersion.find('\\n')].replace(' ','')
+
+    latestVersion = ""
     currentVersion = pm.version.interface.dump()
+
+    if isinstance(package, str):
+
+        try:
+
+            import requests
+            response = requests.get(f'https://pypi.org/pypi/{package}/json')
+            latestVersion = response.json()['info']['version']
+
+        except:
+
+            msg = "It appears that the `requests` package is not installed on the system or," + newline \
+                + "the Python package (" + package + ") does not exist on the PyPI repository."
+
+            if package=="paramonte":
+
+                url = "https://raw.githubusercontent.com/cdslaborg/paramonte/main/src/interface/Python/.VERSION"
+                pm.note ( msg   = msg + newline
+                                + "Attempting to fetch the latest version number from the GitHub repository:" + newline
+                                + newline
+                                + "    " + url
+                        , methodName = pm.names.paramonte
+                        , marginTop = 1
+                        , marginBot = 1
+                        )
+
+                import urllib
+                latestVersion = urllib.request.urlopen(url).readlines()[0].decode("utf-8").strip("\n")
+
+            else:
+
+                pm.abort( msg = msg
+                        , methodName = pm.names.paramonte
+                        , marginTop = 1
+                        , marginBot = 1
+                        )
+
+    else:
+
+        pm.abort( msg   = "The input package name must be of string type and must" + newline
+                        + "correspond to the name of package on the PyPI repository." + newline
+                , methodName = pm.names.paramonte
+                , marginTop = 1
+                , marginBot = 1
+                )
 
     if latestVersion == currentVersion:
 
@@ -2160,10 +2231,10 @@ def checkForUpdate(package = "paramonte"):
                         + "To see the most recent changes to the library, visit, " + newline
                         + newline
                         + "    " + pm.website.home.overview.changes.python.url
-        , methodName = pm.names.paramonte
-        , marginTop = 1
-        , marginBot = 1
-        )
+                , methodName = pm.names.paramonte
+                , marginTop = 1
+                , marginBot = 1
+                )
 
     else:
 
