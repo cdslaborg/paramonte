@@ -366,29 +366,30 @@ class ParaMonteSampler:
 
         #### verify buildMode
 
-        buildMode = "release" if self.buildMode is None else self.buildMode
-
         cstype = None
         dummyList = None
         parallelism = None
         errorOccurred = True
-        if isinstance(buildMode,str):
+        memList = ["heap", "stack"]
+        btypeList = ["release","testing","debug"]
+        if isinstance(self.buildMode,str):
             errorOccurred = False
-            if "-" in buildMode:
-                dummyList = buildMode.lower().split("-")
-                for item in dummyList:
-                    if item in ["debug","testing","release"]:
-                        buildMode = item
-                    elif item in ["impi","mpich","openmpi"]:
-                        parallelism = "_" + item
-                    elif item in ["intel","gnu"]:
-                        cstype = item
-                    else:
-                        errorOccurred = True
-                        break
+            dummyList = self.buildMode.lower().split("-")
+            for item in dummyList:
+                if item in ["debug","testing","release"]:
+                    btypeList.pop(btypeList.index(item))
+                    btypeList.insert(0,item)
+                elif item in ["impi","mpich","openmpi"]:
+                    parallelism = "_" + item
+                elif item in ["stack","heap"]:
+                    memList = [item]
+                elif item in ["intel","gnu"]:
+                    cstype = item
+                else:
+                    errorOccurred = True
+                    break
 
         if errorOccurred:
-            if dummyList is not None: buildMode = "-".join(dummyList)
             pm.abort( msg   = "The object's attribute ``buildMode`` must be of type ``str``." + newline
                             + "It is an optional string argument with default value \"release\"." + newline
                             + "possible choices are:" + newline
@@ -403,7 +404,7 @@ class ParaMonteSampler:
                             + "        to be used in all other normal scenarios" + newline
                             + "        for maximum runtime efficiency." + newline
                             + newline
-                            + "You have entered buildMode = " + str(buildMode)
+                            + "You have entered buildMode = " + str(self.buildMode)
                     , methodName = self._methodName
                     , marginTop = 1
                     , marginBot = 1
@@ -504,9 +505,6 @@ class ParaMonteSampler:
 
         # import ParaMonte dll define result (None) AND argument (pointer to a c function) type
 
-        buildModeList = ["release","testing","debug"]
-        buildModeList.pop(buildModeList.index(buildMode))
-        buildModeList.insert(0,buildMode)
         pmcsList = ["intel","gnu"]
 
         if cstype is None:
@@ -529,16 +527,19 @@ class ParaMonteSampler:
         libFound = False
         libNamePrefix = "libparamonte_python_" + pm.platform.osname.lower() + "_" + pm.platform.arch + "_"
         from ctypes.util import find_library
-        for buildMode in buildModeList:
+        for btype in btypeList:
 
             for pmcs in pmcsList:
 
                 #### Build the library name
 
-                libName = libNamePrefix + pmcs + "_" + buildMode + "_shared_heap" + parallelism + libNameSuffix
-                libPath = find_library(libName)
-                if libPath is None: libPath = os.path.join( pm.path.lib[pm.platform.arch][pmcs], libName )
-                libFound = os.path.isfile(libPath)
+                for mem in memList:
+                    libName = libNamePrefix + pmcs + "_" + btype + "_shared_" + mem + parallelism + libNameSuffix
+                    libPath = find_library(libName)
+                    if libPath is None: libPath = os.path.join( pm.path.lib[pm.platform.arch][pmcs], libName )
+                    libFound = os.path.isfile(libPath)
+                    if libFound: break
+
                 if libFound: break
 
             # exist the loop if the library has been found
@@ -547,14 +548,14 @@ class ParaMonteSampler:
                 break
             #else:
             #    if self.reportEnabled:
-            #        pm.warn( msg   = "The ParaMonte shared library for the requested build mode " + buildMode + " not found." + newline
+            #        pm.warn( msg   = "The ParaMonte shared library for the requested build mode " + btype + " not found." + newline
             #                        + "Searching for the ParaMonte shared library in other build modes..."
             #                , methodName = self._methodName
             #                , marginTop = 1
             #                , marginBot = 1
             #                )
-            #    #libName = libName.replace(buildMode,mode)
-            #    #buildMode = mode
+            #    #libName = libName.replace(btype,mode)
+            #    #btype = mode
 
         if pm.platform.isWin32:
             from _pmreqs import buildInstructionNoteWindows

@@ -16,6 +16,7 @@
   Test_FileContents_mod.f90
   Test_FileList_mod.f90
   Test_Integration_mod.f90
+  Test_Kmeans_mod.f90
   Test_Math_mod.f90
   Test_Matrix_mod.f90
   Test_Misc_mod.f90

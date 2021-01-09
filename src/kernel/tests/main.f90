@@ -71,35 +71,36 @@ use Test_mod, only: setup, finalize
 call setup()
 
 #if defined BASIC_TEST_ENABLED
-block; use Test_BandSpectrum_mod; call test_BandSpectrum(); end block
-block; use Test_Batse_mod; call test_Batse(); end block
-block; use Test_Constants_mod; call test_Constants(); end block
-block; use Test_CorrCoef_mod; call test_CorrCoef(); end block
-block; use Test_Cosmology_mod; call test_Cosmology(); end block
-block; use Test_CrossCorr_mod; call test_CrossCorr(); end block
-block; use Test_DateTime_mod; call test_DateTime(); end block
-block; use Test_Decoration_mod; call test_Decoration(); end block
-block; use Test_Err_mod; call test_Err(); end block
-block; use Test_File_mod; call test_File(); end block
-block; use Test_FileContents_mod; call test_FileContents(); end block
-block; use Test_FileList_mod; call test_FileList(); end block
-block; use Test_Integration_mod; call test_Integration(); end block
-block; use Test_Math_mod; call test_Math(); end block
-block; use Test_Matrix_mod; call test_Matrix(); end block
-block; use Test_Misc_mod; call test_Misc(); end block
-block; use Test_Optimization_mod; call test_Optimization(); end block
-block; use Test_Parallelism_mod; call test_Parallelism(); end block
-block; use Test_Path_mod; call test_Path(); end block
-block; use Test_RandomSeed_mod; call test_RandomSeed(); end block
-block; use Test_Sort_mod; call test_Sort(); end block
-block; use Test_StarFormation_mod; call test_StarFormation(); end block
-block; use Test_Statistics_mod; call test_Statistics(); end block
-block; use Test_GeoCyclicFit_mod; call test_GeoCyclicFit(); end block
-block; use Test_String_mod; call test_String(); end block
-block; use Test_System_mod; call test_System(); end block
-block; use Test_Timer_mod; call test_Timer(); end block
-block; use Test_TimerCPU_mod; call test_TimerCPU(); end block
-block; use Test_TranGaus_mod; call test_TranGaus(); end block
+!block; use Test_BandSpectrum_mod; call test_BandSpectrum(); end block
+!block; use Test_Batse_mod; call test_Batse(); end block
+!block; use Test_Constants_mod; call test_Constants(); end block
+!block; use Test_CorrCoef_mod; call test_CorrCoef(); end block
+!block; use Test_Cosmology_mod; call test_Cosmology(); end block
+!block; use Test_CrossCorr_mod; call test_CrossCorr(); end block
+!block; use Test_DateTime_mod; call test_DateTime(); end block
+!block; use Test_Decoration_mod; call test_Decoration(); end block
+!block; use Test_Err_mod; call test_Err(); end block
+!block; use Test_File_mod; call test_File(); end block
+!block; use Test_FileContents_mod; call test_FileContents(); end block
+!block; use Test_FileList_mod; call test_FileList(); end block
+!block; use Test_Integration_mod; call test_Integration(); end block
+block; use Test_Kmeans_mod; call test_Kmeans(); end block
+!block; use Test_Math_mod; call test_Math(); end block
+!block; use Test_Matrix_mod; call test_Matrix(); end block
+!block; use Test_Misc_mod; call test_Misc(); end block
+!block; use Test_Optimization_mod; call test_Optimization(); end block
+!block; use Test_Parallelism_mod; call test_Parallelism(); end block
+!block; use Test_Path_mod; call test_Path(); end block
+!block; use Test_RandomSeed_mod; call test_RandomSeed(); end block
+!block; use Test_Sort_mod; call test_Sort(); end block
+!block; use Test_StarFormation_mod; call test_StarFormation(); end block
+!block; use Test_Statistics_mod; call test_Statistics(); end block
+!block; use Test_GeoCyclicFit_mod; call test_GeoCyclicFit(); end block
+!block; use Test_String_mod; call test_String(); end block
+!block; use Test_System_mod; call test_System(); end block
+!block; use Test_Timer_mod; call test_Timer(); end block
+!block; use Test_TimerCPU_mod; call test_TimerCPU(); end block
+!block; use Test_TranGaus_mod; call test_TranGaus(); end block
 #endif
 
 #if defined SAMPLER_TEST_ENABLED

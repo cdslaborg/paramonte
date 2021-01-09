@@ -56,6 +56,7 @@ set(ParaMonteTest_SOURCE_FILES
     ${ParaMonteTest_SRC_DIR}/Test_FileContents_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_FileList_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Integration_mod.f90
+    ${ParaMonteTest_SRC_DIR}/Test_Kmeans_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Math_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Matrix_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Misc_mod.f90

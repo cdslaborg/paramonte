@@ -532,7 +532,7 @@ if [ -z ${ParaMonteExample_RUN_ENABLED+x} ]; then
 fi
 
 if [ "${LANG_LIST}" = "matlab" ] || [ "${LANG_LIST}" = "python" ]; then
-    MEMORY_LIST="heap"
+    #MEMORY_LIST="heap"
     LTYPE_LIST="shared"
     if [ -z ${PARALLELISM_LIST+x} ]; then PARALLELISM_LIST="none mpi"; fi
 fi
@@ -605,9 +605,10 @@ for PMCS in $PMCS_LIST; do
 
                         # avoid stack memory allocations for shared library builds
 
-                        if [ "${LTYPE}" = "shared" ]; then
-                            if [ "${MEMORY}" = "stack" ]; then BENABLED=false; fi
-                        else
+                        if ! [ "${LTYPE}" = "shared" ]; then
+                        #if [ "${LTYPE}" = "shared" ]; then
+                        #    if [ "${MEMORY}" = "stack" ]; then BENABLED=false; fi
+                        #else
                             if [ "${INTERFACE_LANGUAGE}" = "matlab" ] || [ "${INTERFACE_LANGUAGE}" = "python" ]; then BENABLED=false; fi
                         fi
 
