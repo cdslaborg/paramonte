@@ -74,12 +74,83 @@ module Kmeans_mod
     end type Kmeans_type
 
     interface Kmeans_type
-        module procedure :: runKmeans
+        module procedure :: runKmeans, optimizeKmeans
     end interface Kmeans_type
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 contains
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Perform the Kmeans clustering for `ntry` on the input data set represented by the array `Point(nd, np)`
+    !> and return the clustering that yields the least potential.
+    !>
+    !> \param[in]       nc          :   The number of clusters to be found via the Kmeans algorithm.
+    !> \param[in]       nd          :   The number of dimensions (features) of the input data array `Point`.
+    !> \param[in]       np          :   The number of observations in the input data array `Point`.
+    !> \param[in]       Point       :   The input array of size `(nd,np)` of the points to be clustered via the Kmeans algorithm.
+    !> \param[in]       ntry        :   An integer representing the number of times independent instances of Kmeans will be run.
+    !> \param[in]       InitCenter  :   An input array of size `(nd,nc)` representing the initial centers of the Kmeans clusters (**optional**).
+    !>                                  If not provided, the cluster centers will be initialized via the Kmeans++ algorithm.
+    !> \param[in]       niterMax    :   The maximum number of iterations beyond which it a lack of converge is assumed (**optional**, default = 1000).
+    !> \param[in]       nszciMax    :   The maximum number of zero-sized cluster iterations beyond which it a lack of converge is assumed (**optional**, default = 10).
+    !> \param[in]       reltolSq    :   The relative tolerance squared. If all newly computed cluster centers change by less than `sqrt(reltolSq)`,
+    !>                                  then convergence is assumed (**optional**, default = 1.e-8).
+    !>
+    !> \return
+    !> `Kmeans` :   An object of type [KmeansCluster_type](@ref kmeanscluster_type) containing the properties of the identified clusters.
+    !>              The `Err%stat` component of the output `Kmeans` will be set to `1` if the number of iterations reaches the input
+    !>              `niterMax` or its default value before convergence occurs.
+    !>              The `Err%stat` component of the output `Kmeans` will be set to `2` if more than `nzsciMax` clustering tries
+    !>              result in clusters with zero members.
+    !>              In both cases in the above, `Err%occurred = .true.` upon exiting the procedure.
+    !>
+    !> \warning
+    !> The input value for `ntry` must be at least 1, otherwise it will lead to a runtime error or at best, the output will be undefined.
+    !>
+    !> \warning
+    !> The input value for `niterMax` must be larger than 0 since at least one iteration will be performed by the procedure.
+    !>
+    !> \warning
+    !> This algorithm does not check for the consistency of the input values for `nc`, `nd`, and `np`.
+    !> It is currently the user's responsibility to ensure that these input values are logical and sensible.
+    !>
+    !> \author
+    ! Amir Shahmoradi, April 03, 2017, 2:16 PM, ICES, UTEXAS
+    function optimizeKmeans(nc, nd, np, Point, ntry, InitCenter, niterMax, nzsciMax, reltolSq) result(Kmeans)
+
+        use Constants_mod, only: IK, RK, HUGE_RK
+
+        implicit none
+
+        integer(IK) , intent(in)            :: nc, nd, np
+        real(RK)    , intent(in)            :: Point(nd,np)
+        integer(IK) , intent(in)            :: ntry
+        real(RK)    , intent(in), optional  :: InitCenter(nd,nc)
+        integer(IK) , intent(in), optional  :: niterMax, nzsciMax
+        real(RK)    , intent(in), optional  :: reltolSq
+        type(Kmeans_type)                   :: Kmeans
+        type(Kmeans_type), allocatable      :: KmeansTry(:)
+        real(RK)                            :: potential
+        integer(IK)                         :: itry, itryLeastPotential
+
+        if (allocated(KmeansTry)) deallocate(KmeansTry) ! LCOV_EXCL_LINE
+        allocate(KmeansTry(ntry))
+        potential = HUGE_RK
+
+        do itry = 1, ntry
+            KmeansTry(itry) = Kmeans_type(nc, nd, np, Point, InitCenter, niterMax, nzsciMax, reltolSq)
+            if (KmeansTry(itry)%potential < potential) then
+                potential = KmeansTry(itry)%potential
+                itryLeastPotential = itry
+            end if
+        end do
+
+        Kmeans = KmeansTry(itryLeastPotential)
+
+    end function optimizeKmeans
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -106,6 +177,9 @@ contains
     !>              In both cases in the above, `Err%occurred = .true.` upon exiting the procedure.
     !>
     !> \warning
+    !> The input value for `niterMax` must be larger than 0 since at least one iteration will be performed by the procedure.
+    !>
+    !> \warning
     !> This algorithm does not check for the consistency of the input values for `nc`, `nd`, and `np`.
     !> It is currently the user's responsibility to ensure that these input values are logical and sensible.
     !>
@@ -127,7 +201,7 @@ contains
         character(*), parameter :: PROCEDURE_NAME = MODULE_NAME//"@runKmeans()"
         integer(IK) , parameter :: MAX_NITER = 1e3_IK       ! The maximum possible number of iterations for kmeans to converge.
         integer(IK) , parameter :: MAX_NZSCI = 1e1_IK       ! The maximum possible number of iterations for which clusters of zero-size are identified.
-        real(RK)    , parameter :: RELTOL_SQ = 1.e-8_RK     ! if the relative change in all Centers is less than this value, the algorithm has converged.
+        real(RK)    , parameter :: RELTOL_SQ = 1.e-4_RK     ! if the relative change in all Centers is less than this value, the algorithm has converged.
 
         real(RK)                :: potential                ! The sum of all minimum distances squared.
         real(RK)                :: distanceSq               ! distance of each point ip from a given cluster center.
@@ -271,27 +345,31 @@ contains
 
             end if
 
-            ! If convergence has occurred, return.
+            ! if `niterMax` has reached, quit.
 
-            if (convergenceOccurred .or. abs(Kmeans%potential-potential)/Kmeans%potential < relTolSqDefault) exit loopCenterRefinement
+            if (Kmeans%niter < niterMaxDefault) then
 
-            ! Otherwise, continue refining the centers
-            
-            Kmeans%niter = Kmeans%niter + 1_IK
+                ! If convergence has occurred, return.
 
-            if (Kmeans%niter > niterMaxDefault) then
+                if (convergenceOccurred .or. abs(Kmeans%potential-potential)/Kmeans%potential < relTolSqDefault) return
+
+                Kmeans%niter = Kmeans%niter + 1_IK
+
+                do ip = 1, np
+                    SumPoint(1:nd,Membership(ip)) = SumPoint(1:nd,Membership(ip)) - Point(1:nd,ip)
+                    SumPoint(1:nd,Kmeans%Membership(ip)) = SumPoint(1:nd,Kmeans%Membership(ip)) + Point(1:nd,ip)
+                    Membership(ip) = Kmeans%Membership(ip)
+                end do
+                potential = Kmeans%potential
+
+            else
+
                 !Kmeans%Err%msg = "Kmeans%niter > niterMaxDefault"
                 Kmeans%Err%occurred = .true.
                 Kmeans%Err%stat = 1_IK
                 return
-            end if
 
-            do ip = 1, np
-                SumPoint(1:nd,Membership(ip)) = SumPoint(1:nd,Membership(ip)) - Point(1:nd,ip)
-                SumPoint(1:nd,Kmeans%Membership(ip)) = SumPoint(1:nd,Kmeans%Membership(ip)) + Point(1:nd,ip)
-                Membership(ip) = Kmeans%Membership(ip)
-            end do
-            potential = Kmeans%potential
+            end if
 
         end do loopCenterRefinement
 
