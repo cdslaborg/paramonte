@@ -94,6 +94,7 @@ yes_to_all_flag=""
 gcc_bootstrap_flag=""
 FOR_COARRAY_NUM_IMAGES=3
 MatDRAM_ENABLED="false"
+perfprof_flag=""
 codecov_flag=""
 dryrun_flag=""
 deploy_flag=""
@@ -146,6 +147,8 @@ while [ "$1" != "" ]; do
         -a | --matdram )        MatDRAM_ENABLED="true"
                                 ;;
         -c | --codecov )        codecov_flag="--codecov"
+                                ;;
+        -P | --perfprof )       perfprof_flag="--perfprof"
                                 ;;
         -n | --nproc )          shift
                                 FOR_COARRAY_NUM_IMAGES="$1"
@@ -648,6 +651,9 @@ for PMCS in $PMCS_LIST; do
                             if ! [ "${codecov_flag}" = "" ]; then
                             echo >&2 "                          ${codecov_flag} \ "
                             fi
+                            if ! [ "${perfprof_flag}" = "" ]; then
+                            echo >&2 "                          ${perfprof_flag} \ "
+                            fi
                             if ! [ "${gcc_bootstrap_flag}" = "" ]; then
                             echo >&2 "                          ${gcc_bootstrap_flag} \ "
                             fi
@@ -684,6 +690,7 @@ for PMCS in $PMCS_LIST; do
                             ${deploy_flag} \
                             ${dryrun_flag} \
                             ${codecov_flag} \
+                            ${perfprof_flag} \
                             ${gcc_bootstrap_flag} \
                             ${fortran_flag} \
                             ${mpiexec_flag} \

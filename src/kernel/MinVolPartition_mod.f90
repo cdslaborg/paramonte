@@ -54,24 +54,11 @@ module MinVolPartition_mod
 
     character(*), parameter :: MODULE_NAME = "@MinVolPartition_mod"
 
-    type :: Ellipsoid_type
-        real(RK), allocatable :: Center(:,:)                    !< An array of size `(nd,ndiv)` containing the cluster centers.
-        real(RK), allocatable :: MahalSq(:,:)                   !< An array of size `(np,ndiv)` containing the maximum Mahalanobis distances of all points with respect to each bounding ellipsoids.
-        real(RK), allocatable :: NormData(:,:)                  !< An array of size `(nd,np,ndiv)` containing the cluster members normalized with respect to their corresponding cluster centers.
-        real(RK), allocatable :: InvCovMat(:,:,:)               !< An array of size `(nd,nd,ndiv)` containing the full symmetric inverse covariance matrices of the bounding ellipsoids.
-        real(RK), allocatable :: CholDiagLower(:,:,:)           !< An array of size `(nd,0:nd,ndiv)` the Cholesky lower triangle, diagonal, and covariance matrices of the bounding ellipsoids.
-        real(RK), allocatable :: LogVolNormed(:)                !< An array of size `(ndiv)` containing the log volumes of the bounding ellipsoids.
-        real(RK), allocatable :: ScaleFacSq(:)                  !< An array of size `(ndiv)` containing the square of `ScaleFacSq`.
-        real(RK), allocatable :: ScaleFac(:)                    !< An array of size `(ndiv)` containing the factors by which the determinants of the the bounding
-                                                                !< ellipsoids must be multiplied in order for the ellipsoid to become a bounding ellipsoid.
-    end type Ellipsoid_type
+    implicit none
 
     !> The `MinVolPartition_type` class. Partitions an input array `Point(nd,np)` with `nd` attributes and `np` observations (points).
     type :: MinVolPartition_type
-        integer(IK)                 :: ndiv                     !< The number of sample division (clusters) at each level of partitioning. A default value would be `2`.
-        integer(IK)                 :: neMax                    !< The maximum possible number of clusters.
         integer(IK)                 :: neOptimal                !< The predicted optimal number of clusters.
-        integer(IK)                 :: convergenceFailureCount  !< The number of times the algorithm has failed to converge.
         type(Ellipsoid_type)        :: Backup
         integer(IK) , allocatable   :: Membership(:)            !< An array of size `(np)` representing the bounding-ellipsoid membership IDs of the corresponding data points.
         integer(IK) , allocatable   :: PointIndex(:)            !< An array of size `(np)` representing the indices of the original data points before partitioning.
@@ -83,8 +70,6 @@ module MinVolPartition_mod
         real(RK)    , allocatable   :: CholDiagLower(:,:,:)     !< An array of size `(nd,0:nd,neMax)` representing the Cholesky lower triangle, diagonal, and covariance matrices of the bounding ellipsoids.
                                                                 !< The zeroth index of the second dimension contains the Cholesky diagonal elements.
         type(Err_type)              :: Err                      !< An object of class [Err_type](@ref err_mod::err_type) containing information about error occurrence.
-    contains
-        procedure, pass         :: get => getMinVolPartition
     end type MinVolPartition_type
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -93,549 +78,536 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    !> \brief
-    !> Construct and return an object of class [MinVolPartition_type](@ref minvolpartition_type) to be later used for (repeated)
-    !> partitioning of a data array of size `Point(nd,np)` with `nd` attributes and `np` observations. This constructor solely
-    !> computes the maximum number of possible bounding ellipsoids (`neMax`) and allocates the components of the object.
-    !>
-    !> \param[in]       nd                      :   The number of dimensions (features) of the input data array `Point`.
-    !> \param[in]       npMax                   :   The maximum conceivable number of observations in the input data array `Point` (`np <= npMax`).
-    !> \param[in]       stabilizationRequested  :   A logical flag indicating whether stabilization of the volumes of ellipsoids must be performed.
-    !> \param[in]       maxAllowedLoopRecursion :   A logical flag representing the maximum allowed number of recursions before convergence occurs.
-    !> \param[in]       maxAllowedKmeansFailure :   A logical flag representing the maximum number of times the kmeans clustering returns a cluster with `size <= nd`.
-    !> \param[in]       mahalSqWeightExponent   :   The positive real value to be used to assign weights the Mahalanobis distances of the points.
-    !> \param[in]       inclusionFraction       :   The fraction of non-cluster-member points that ARE inside the cluster, to be considered in the estimation of the true volume of the cluster.
-    !> \param[in]       tightness               :   The factor determining how large the bounding ellipsoid can be compared to the true volume of the ellipsoid.
-    !>
-    !> \return
-    !> `self` : An object of class [MinVolPartition_type](@ref minvolpartition_type) to be used for partitioning of the points.
-    !>
-    !> \warning
-    !> This algorithm does not check for the consistency of the input values for `nd` and `npMax`.
-    !> It is currently the user's responsibility to ensure that these input values are logical and sensible.
-    !>
-    !> \author
-    ! Amir Shahmoradi, April 03, 2017, 2:16 PM, ICES, UTEXAS
-    function constructMinVolPartition   ( nd, npMax, ndiv           &
-                                        , stabilizationRequested    &
-                                        , maxAllowedLoopRecursion   &
-                                        , maxAllowedKmeansFailure   &
-                                        , maxAllowedMinVolFailure   &
-                                        , mahalSqWeightExponent     &
-                                        , inclusionFraction         &
-                                        , tightness                 &
-                                        ) result(self)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructMinVolPartition
-#endif
-        use Constants_mod, only: IK, RK
-
+    function getMinVolPartition ( neMax, nd, np             &
+                                , stabilizationRequested    &
+                                , maxKvolumeLoopRecursion   &
+                                , maxAllowedKmeansFailure   &
+                                , maxAllowedMinVolFailure   &
+                                , mahalSqWeightExponent     &
+                                , tightness                 &
+                                , inclusionFraction         &
+                                , parLogVol                 &
+                                , Point                     &
+                                , ncOptimal                 &
+                                , CCenter                   &
+                                , CSize                     &
+                                , CBEInvCovMat              &
+                                , CBECholDiagLower          &
+                                , CBEVolNormed              &
+                                , CMembership               &
+                                , PointIndex                &
+                                , convergenceFailureCount &
+                                )
+        use Matrix_mod     , only: getInvMatFromCholFac
+        use Statistics_mod , only: getSamCholFac, getMahalSq
         implicit none
+        integer , intent(in)    :: neMax,nd,np                 ! maximum number of clusters, number of dimensions, number of points
+        logical , intent(in)    :: stabilizationRequested
+        integer , intent(in)    :: maxKvolumeLoopRecursion
+        integer , intent(in)    :: maxAllowedKmeansFailure
+        integer , intent(in)    :: maxAllowedMinVolFailure
+        real(RK), intent(in)    :: mahalSqWeightExponent
+        real(RK), intent(in)    :: tightness                        ! the factor deremining how large the bounding ellipsoid can be, compared to the true volume of the ellipsoid.
+        real(RK), intent(in)    :: inclusionFraction                ! the fraction of non-cluster-member points that ARE inside the cluster, to be considered in the estimation of the true volume of the cluster.
+        real(RK), intent(in)    :: parLogVol                        ! input log-estimate of the total volume of the points.
+        real(RK), intent(inout) :: Point(nd,np)                     ! the input data (points) to be clustered. on output, it is ordered.
+        real(RK), intent(out)   :: CCenter(nd,neMax)                ! Centers of the clusters (nd,neMax)
+        real(RK), intent(out)   :: CBEInvCovMat(nd,nd,neMax)        ! CBE: Cluster Bounding Ellipsoid - On output: Full symmetric Inverse Covariance Matrices of the Bounding Ellipsoids of all clusters.
+        real(RK), intent(out)   :: CBECholDiagLower(nd,0:nd,neMax)  ! CBE: Cluster Bounding Ellipsoid - On output: The lower triangle contains the Cholesky factor of the covariance matrix of the input points, the upper triangle maybe the CovMat itself (not needed). On output contains in the lower triangle, the Cholesky factor of all clusters found.
+        real(RK), intent(out)   :: CBEVolNormed(neMax)              ! CBE: Cluster Bounding Ellipsoid - On output: Each element of the array contains the volume of the corresponding Cluster Bounding Ellipsoid.
+        integer , intent(out)   :: ncOptimal                        ! this variable is saved throughout recursive iterations of subroutine
+        integer , intent(out)   :: CSize(neMax)                     ! cluster sizes (neMax)
+        integer , intent(out)   :: CMembership(np)                  ! the CMembership id of each point (representing the cluster number to which the point belongs)
+        integer , intent(out)   :: PointIndex(np)                   ! Vector containing the scrambled indices of Point elements. It represent the mapping from the input Point elements to output scrambled Point vector.
+        integer , intent(inout) :: convergenceFailureCount        ! number of times the algorithm failed to converge.
+        real(RK)                :: parVolNormed                     ! The normalized volume of the parent ellipsoid
+        real(RK)                :: logNormFac
+        real(RK)                :: scaleFac
+        integer                 :: i,j
+        !neMax = np/(nd+1)
 
-        integer(IK) , intent(in)    :: nd, npMax, ndiv
-        logical     , intent(in)    :: stabilizationRequested
-        integer     , intent(in)    :: maxAllowedLoopRecursion
-        integer     , intent(in)    :: maxAllowedKmeansFailure
-        integer     , intent(in)    :: maxAllowedMinVolFailure
-        real(RK)    , intent(in)    :: mahalSqWeightExponent
-        real(RK)    , intent(in)    :: inclusionFraction
-        real(RK)    , intent(in)    :: tightness
-        type(MinVolPartition_type)  :: self
+        CCenter(1:nd,1) = 0._RK
+        do j = 1,np
+            CCenter(1:nd,1) = CCenter(1:nd,1) + Point(1:nd,j)
+            PointIndex(j) = j
+        end do
+        CCenter(1:nd,1) = CCenter(1:nd,1) / real(np,kind=RK)
 
-        self%ndiv = ndiv
-        self%neMax = npMax / (nd + 1)
-        self%Err%occurred = .false.
+        call getSamCholFac( nd, np, CCenter(1:nd,1), Point, CBECholDiagLower(1:nd,1:nd,1), CBECholDiagLower(1:nd,0,1) )   ! get Cholesky Factor of cluster samples
+        if (CBECholDiagLower(1,0,1)<0._RK) then
+            write(*,*) 'getCholeskyFactor() failed in getSamCholFac() in getMinVolPartition()'
+            write(*,*) 'Max cluster number, dimension, total points:'
+            write(*,*) neMax, nd, np
+            stop
+        end if
+        CBEInvCovMat(1:nd,1:nd,1) = getInvMatFromCholFac(nd,CBECholDiagLower(1:nd,1:nd,1),CBECholDiagLower(1:nd,0,1))
+        scaleFac = sqrt( maxval(getMahalSq(nd, np, CCenter(1:nd,1), CBEInvCovMat(1:nd,1:nd,1), Point)) )
+        CBEVolNormed(1) = sum(log(CBECholDiagLower(1:nd,0,1))) + nd*log(scaleFac)   ! Get the LogVolume of the first cluster. This will be used to normalize the volumes of all child clusters.
+        if (CBEVolNormed(1)>parLogVol) then
+            logNormFac = CBEVolNormed(1)
+            CBEVolNormed(1) = 1._RK
+            parVolNormed = exp( parLogVol - logNormFac )
+        else    ! enlarge the bounding ellipsoid
+            !write(*,*) 'no no no no!'
+            logNormFac = parLogVol
+            !scaleFac = scaleFac * exp( 0.5_RK*(logNormFac-CBEVolNormed(1))/nd )
+            scaleFac = scaleFac * exp( (logNormFac-CBEVolNormed(1))/nd )
+            CBEVolNormed(1) = 1._RK
+            parVolNormed = 1._RK
+        end if
 
-        allocate(self%Membership(nd,npMax))
-        allocate(self%PointIndex(nd,npMax))
-        allocate(self%Size(self%neMax))
-        allocate(self%Center(nd,self%neMax))
-        allocate(self%EllIndex(self%neMax))
-        allocate(self%LogVolNormed(self%neMax))
-        allocate(self%InvCovMat(nd,nd,self%neMax))
-        allocate(self%CholDiagLower(nd,0:nd,self%neMax))
+        if (neMax > 1 .and. CBEVolNormed(1)>tightness*parVolNormed) then
+            !convergenceFailureCount = 0
+            call runMinVolKernel( neMax, nd, np             &
+                                , stabilizationRequested    &
+                                , maxKvolumeLoopRecursion   &
+                                , maxAllowedKmeansFailure   &
+                                , maxAllowedMinVolFailure   &
+                                , mahalSqWeightExponent     &
+                                , tightness                 &
+                                , inclusionFraction         &
+                                , parVolNormed              &
+                                , logNormFac                &
+                                , Point                     &
+                                , ncOptimal                 &
+                                , CCenter                   &
+                                , CSize                     &
+                                , CBEInvCovMat              &
+                                , CBECholDiagLower          &
+                                , CBEVolNormed              &
+                                , CMembership               &
+                                , PointIndex                &
+                                , convergenceFailureCount &
+                                )
+            else ! There is only one cluster
+                ncOptimal = 1
+            end if
 
-        ! allocate the stabilization backup variables
+        if (ncOptimal==1) then
+            do j = 1,nd-1 ! Now rescale Cholesky factor and its diagonals, such that they describe the bounding ellipsoid of the cluster
+                CBECholDiagLower(j,0,1) = CBECholDiagLower(j,0,1) * scaleFac
+                do i = j+1,nd
+                    CBECholDiagLower(i,j,1) = CBECholDiagLower(i,j,1) * scaleFac
+                end do
+            end do
+            CBECholDiagLower(nd,0,1) = CBECholDiagLower(nd,0,1) * scaleFac
+            CBEInvCovMat(1:nd,1:nd,1) = CBEInvCovMat(1:nd,1:nd,1) / scaleFac**2
+        end if
 
-        allocate(self%Backup%Center(nd,ndiv))
-        allocate(self%Backup%MahalSq(npMax,ndiv))
-        allocate(self%Backup%InvCovMat(nd,nd,ndiv))
-        allocate(self%Backup%NormData(nd,npMax,ndiv))
-        allocate(self%Backup%CholDiagLower(nd,0:nd,ndiv))
-        allocate(self%Backup%LogVolNormed(ndiv))
-        allocate(self%Backup%ScaleFacSq(ndiv))
-        allocate(self%Backup%ScaleFac(ndiv))
-
-    end function constructMinVolPartition
+    end function getMinVolPartition
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    !> \brief
-    !> This function is a method of the class [MinVolPartition_type](@ref minvolpartition_type).
-    !> Perform the minimum-bounding-volume partitioning of the input set of `Point(nd,np)`.
-    !> The partitioning result will be stored in the components of `self` upon exit.
-    !>
-    !> \param[inout]    self        :   An object of class [MinVolPartition_type](@ref minvolpartition_type) that will contain the partitioning information.
-    !> \param[in]       nd          :   The number of dimensions (features) of the input data array `Point`.
-    !> \param[in]       np          :   The number of observations in the input data array `Point`.
-    !> \param[in]       parLogVol   :   The input log-estimate of the total volume of the points (the PARent ellipsoid's LOG-VOLume).
-    !> \param[inout]    Point       :   The input array of size `(nd,np)` to be partitioned. On output, it is reordered.
-    !>
-    !> \warning
-    !> The input value `np` must be always smaller than the value passed for `npMax` when constructing the parent object of this method.
-    !>
-    !> \author
-    ! Amir Shahmoradi, April 03, 2017, 2:16 PM, ICES, UTEXAS
-    subroutine getMinVolPartition(self, nd, np, parLogVol, Point)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getMinVolPartition
-#endif
-        use Statistics_mod , only: getSamCholFac, getMahalSq
-        use Matrix_mod, only: getInvMatFromCholFac
-        use Kmeans_mod, only: Kmeans_type
-        use Constants_mod, only: IK, RK
-        use String_mod, only: num2str
-        use Err_mod, only: abort
+    ! This code assumes that neMax > 1 on input.
+    ! important input requirements:
+    recursive subroutine runMinVolKernel    ( neMax, nd, np             &
+                                            , stabilizationRequested    &
+                                            , maxKvolumeLoopRecursion   &
+                                            , maxAllowedKmeansFailure   &
+                                            , maxAllowedMinVolFailure   &
+                                            , mahalSqWeightExponent     &
+                                            , tightness                 &
+                                            , inclusionFraction         &
+                                            , parVolNormed              &
+                                            , logNormFac                &
+                                            , Point                     &
+                                            , ncOptimal                 &
+                                            , CCenter                   &
+                                            , CSize                     &
+                                            , CBEInvCovMat              &
+                                            , CBECholDiagLower          &
+                                            , CBEVolNormed              &
+                                            , CMembership               &
+                                            , PointIndex                &
+                                            , convergenceFailureCount &
+                                            )
+
+        use Statistics_mod  , only: getSamCholFac, getMahalSq     !, getRandPointOnEllipsoid    ! last one is for debugging
+        use Matrix_mod      , only: getInvMatFromCholFac
 
         implicit none
 
-        type(MinVolPartition_type)  , intent(inout) :: self
-        integer(IK)                 , intent(in)    :: nd, np
-        real(RK)                    , intent(in)    :: parLogVol
-        real(RK)                    , intent(inout) :: Point(nd,np)
+        integer , save          :: ncall = 0
+        integer , intent(in)    :: neMax                            ! maximum number of clusters determined from the nd and np
+        integer , intent(in)    :: nd,np                            ! number of dimensions, number of points
+        logical , intent(in)    :: stabilizationRequested
+        integer , intent(in)    :: maxKvolumeLoopRecursion
+        integer , intent(in)    :: maxAllowedKmeansFailure
+        integer , intent(in)    :: maxAllowedMinVolFailure
+        real(RK), intent(in)    :: mahalSqWeightExponent
+        real(RK), intent(in)    :: tightness                        ! the factor deremining how large the bounding ellipsoid can be, compared to the true volume of the ellipsoid.
+        real(RK), intent(in)    :: inclusionFraction                ! the fraction of non-cluster-member points that ARE inside the cluster, to be considered in the estimation of the true volume of the cluster.
+        real(RK), intent(in)    :: parVolNormed                     ! parent's sqrt(det(invCovMat)), where invCovMat is the inverse covariance matrix of the bounding ellipsoid of the input points.
+        real(RK), intent(in)    :: logNormFac                       ! parent's sqrt(det(invCovMat)), where invCovMat is the inverse covariance matrix of the bounding ellipsoid of the input points.
+        real(RK), intent(in)    :: Point(nd,np)                     ! the input data (points) to be clustered.
+        integer , intent(out)   :: ncOptimal                        ! this variable is saved throughout recursive iterations of subroutine
+        integer , intent(out)   :: CSize(neMax)                     ! cluster sizes (neMax)
+        integer , intent(inout) :: convergenceFailureCount          ! returns the number of times the algorithm failed to converge.
+        integer , intent(inout) :: CMembership(np)                  ! the CMembership id of each point (representing the cluster number to which the point belongs)
+        real(RK), intent(inout) :: CCenter(nd,neMax)                ! Centers of the clusters (nd,neMax)
+        real(RK), intent(inout) :: CBECholDiagLower(nd,0:nd,neMax)  ! CBE: Cluster Bounding Ellipsoid - On input: The lower triangle contains the Cholesky factor of the covariance matrix of the input points, the upper triangle maybe the CovMat itself (not needed). On output contains in the lower triangle, the Cholesky factor of all clusters found.
+        real(RK), intent(inout) :: CBEInvCovMat(nd,nd,neMax)        ! CBE: Cluster Bounding Ellipsoid - On input: The lower triangle contains the Cholesky factor of the covariance matrix of the input points, the upper triangle maybe the CovMat itself (not needed). On output contains in the lower triangle, the Cholesky factor of all clusters found.
+        real(RK), intent(inout) :: CBEVolNormed(neMax)              ! CBE: Cluster Bounding Ellipsoid - On input: The volume of the Bounding Ellipsoid of the parent cluster. On output: The Bounding volume of all child clusters.
 
-        character(*), parameter :: PROCEDURE_NAME = MODULE_NAME//"@getMinVolPartition()"
+        real(RK)                :: CKBECholDiagLower(nd,0:nd,2)     ! Covariance Matrices of the bounding ellipsoid of the Kmeans' 2 clusters, reported in the upper triangle. The lower triangle contains the Cholesky factors
+        real(RK)                :: CKBEInvCovMat(nd,nd,2)           ! Inverse of the Covariance Matrices of the bounding ellipsoid of the Kmeans' 2 clusters.
+        real(RK)                :: CKMahalSq(np,2)                  ! Vector of Maximum Mahalanobis distances for each cluster
+        real(RK)                :: CKBEVolNormed(2)                 ! New Cluster Bounding Ellisoid Volumes
+        real(RK)                :: CKParVolNormed(2)                ! New Cluster Volume estimates
+        real(RK)                :: ScaleFacSq(2),ScaleFac(2)        ! The factor by which determinant must be multiplied in order for the ellipsoid to become a bounding ellipsoid.
+        real(RK)                :: MahalSqWeight(2)                 ! MahalSqWeight definition of Lu et al 2007
+        integer                 :: CKPointIndex(np)                 ! Vector containing the scrambled indices of Point elements. It represent the mapping from the input Point elements to output scrambled Point vector.
+        integer                 :: NumPointInCK(2)                  ! cluster sizes for nc=2 Kmeans algorithm
+        integer                 :: CKSizeDummy(2)                   ! cluster sizes for nc=2 Kmeans algorithm
+        integer                 :: CKneMax(2)                       ! maximum allowed number of potential clusters in each of the two K-means clusters.
+        integer                 :: CKncOptimal(2)                   ! optimal number of clusters in each of the child clusters
+        integer                 :: CMemberCounter(2)                ! cluster member counter
+        integer                 :: IpStart(2),IpEnd(2)
+        integer                 :: i,j,ip,ic,icOther,ndEffective
+        integer                 :: icStart,icEnd,recursionCount,kmeansFailureCount,minVolFailureCount
+        logical                 :: reclusteringNeeded
+        integer                 :: minClusterSize
 
-        real(RK)    :: parLogVolNormed      ! Normalized log(volume) of the parent ellipsoid
-        real(RK)    :: logNormFac, scaleFac
+        ! stabilization variables:
 
-        integer(IK) :: ipend
-        integer(IK) :: ipstart
-        integer(IK) :: npCurrent
-        integer(IK) :: ndPlusOne
-        integer(IK) :: ndEffective
-        integer(IK) :: recursionCounter
-        integer(IK) :: loopPartitionCounter
-        integer(IK) :: kmeansFailureCounter
-        integer(IK) :: minVolFailureCounter
-        integer(IK) :: i, j, ic, ip
+        real(RK)                :: CKCenterOld(nd,2)                ! Cluster Centers for nc=2 Kmeans algorithm
+        real(RK)                :: CKBECholDiagLowerOld(nd,0:nd,2)  ! Covariance Matrices of the bounding ellipsoid of the Kmeans' 2 clusters, reported in the upper triangle. The lower triangle contains the Cholesky factors
+        real(RK)                :: CKBEInvCovMatOld(nd,nd,2)        ! Inverse of the Covariance Matrices of the bounding ellipsoid of the Kmeans' 2 clusters.
+        real(RK)                :: CKBECholDiagOld(nd,2)            ! determinants of the inverse covariance matrices of the bounding ellipsoids of the Kmeans' 2 clusters.
+        real(RK)                :: CKMahalSqOld(np,2)               ! Vector of Maximum Mahalanobis distances for each cluster
+        real(RK)                :: CKBEVolNormedOld(2)              ! New Cluster Bounding Ellisoid Volumes
+        real(RK)                :: ScaleFacSqOld(2),ScaleFacOld(2)  ! The factor by which determinant must be multiplied in order for the ellipsoid to become a bounding ellipsoid.
 
-        self%Center(1:nd,1) = 0._RK
-        do j = 1, np
-            self%PointIndex(j) = j
-            self%Center(1:nd,1) = self%Center(1:nd,1) + Point(1:nd,j)
-        end do
-        self%Center(1:nd,1) = self%Center(1:nd,1) / real(np,kind=RK)
+        minClusterSize = nd + 1
+        ndEffective = np / neMax + 1
+        ncall = ncall + 1
 
-        ! Get the Cholesky Factor of the partitioning sample.
-        ! @todo: There is room to improve the efficiency of computing `CholDiagLower` via a recursive update.
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        ! Partition the current sample into ndiv clusters.
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        call getSamCholFac  ( nd = nd                                           & ! LCOV_EXCL_LINE
-                            , np = np                                           & ! LCOV_EXCL_LINE
-                            , Mean = self%Center(1:nd,1)                        & ! LCOV_EXCL_LINE
-                            , Point = Point                                     & ! LCOV_EXCL_LINE
-                            , CholeskyLower = self%CholDiagLower(1:nd,1:nd,1)   & ! LCOV_EXCL_LINE
-                            , CholeskyDiago = self%CholDiagLower(1:nd,0,1)      & ! LCOV_EXCL_LINE
-                            )
-        if (self%CholDiagLower(1,0,1)<0._RK) then
-            self%Err%msg = PROCEDURE_NAME//": Cholesky factorization failed. nd, np, neMax = "//num2str(nd)//", "//num2str(np)//", "//num2str(neMax)
-            self%Err%occurred = .true.
-            call abort(self%Err)
-            return
-        end if
+        kmeansFailureCount = -1
+        loopKmeans: do
+            Kmeans = Kmeans_type( nc = 2_IK
+                                , nd = nd
+                                , np = np
+                                , Point = Point
+                                !, InitCenter
+                                !, niterMax
+                                !, nzsciMax
+                                !, reltolSq
+                                )
+            if ( Kmeans%Err%occurred .or. any(Kmeans%Size < minClusterSize) ) then
+                kmeansFailureCount = kmeansFailureCount + 1
+                if (kmeansFailureCount < self%maxAllowedKmeansFailure) cycle loopKmeans
+                ncOptimal = 1
+                CMembership = 1
+                CSize(1) = np
+                convergenceFailureCount = convergenceFailureCount + 1
+                return
+            end if
+            exit loopKmeans
+        end do loopKmeans
 
-        ! Get the LogVolume of the first cluster for normalizing the volumes of children clusters.
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        ! find two approximately minimum-volume sub-cllusters recursively
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        self%InvCovMat(1:nd,1:nd,1) = getInvMatFromCholFac(nd, self%CholDiagLower(1:nd,1:nd,1), self%CholDiagLower(1:nd,0,1))
-        scaleFacSq = maxval( getMahalSq(nd, np, self%Center(1:nd,1), self%InvCovMat(1:nd,1:nd,1), Point) )
-        scaleFac = sqrt(scaleFacSq)
+        recursionCount = 0
+        minVolFailureCount = 0
+        CKBEVolNormedOld = huge(0._RK)
 
-        self%LogVolNormed(1) = sum(log( self%CholDiagLower(1:nd,0,1) )) + nd * log(scaleFac)
+        loopRecursiveRunMinVolKernel: do
 
-        if (self%LogVolNormed(1) > parLogVol) then
-            logNormFac = self%LogVolNormed(1)
-            self%LogVolNormed(1) = 1._RK
-            parLogVolNormed = exp( parLogVol - logNormFac )
-        else ! enlarge the bounding ellipsoid
-            !write(*,*) 'no no no no!'
-            logNormFac = parLogVol
-            scaleFac = scaleFac * exp( ( logNormFac - self%LogVolNormed(1) ) / nd )
-            scaleFacSq = scaleFac**2
-            self%LogVolNormed(1) = 1._RK
-            parLogVolNormed = 1._RK
-        end if
+            recursionCount = recursionCount + 1
+            if(recursionCount>maxKvolumeLoopRecursion) then
+                write(*,*) 'recursionCount: ', recursionCount
+                CSize(1) = np
+                ncOptimal = 1
+                CMembership = 1
+                convergenceFailureCount = convergenceFailureCount + 1
+                return
+            end if
 
-        blockPartition: if (self%neMax > 1 .and. self%LogVolNormed(1) > self%tightness * parLogVolNormed) then
+            CMemberCounter(1) = 0
+            CMemberCounter(2) = Kmeans%Size(1)
+            do ip = 1, np
+                if (CMembership(ip)==1) then
+                    CMemberCounter(1) = CMemberCounter(1) + 1
+                    CKPoint(1:nd,CMemberCounter(1)) = Point(1:nd,ip)
+                    CKPointIndex(CMemberCounter(1)) = PointIndex(ip)
+                else
+                    CMemberCounter(2) = CMemberCounter(2) + 1
+                    CKPoint(1:nd,CMemberCounter(2)) = Point(1:nd,ip)
+                    CKPointIndex(CMemberCounter(2)) = PointIndex(ip)
+                end if
+            end do
+            Point = CKPoint           ! Point is now ordered
+            PointIndex = CKPointIndex ! PointIndex is now ordered
+
+            IpStart(1) = 1             ; IpEnd(1) = Kmeans%Size(1)
+            IpStart(2) = Kmeans%Size(1) + 1 ; IpEnd(2) = np
 
             !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-            ! begin loopPartition
+            ! Get the scaled Mahalanobis distances
             !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            ipend = np
-            ipstart = 1
-            ndPlusOne = nd + 1
-            ndEffective = np / neMax + 1
+            do ic = 1,2
 
-            loopPartition: do
+                icOther = 3 - ic
+                ! get Cholesky Factor of cluster samples
+                call getSamCholFac  ( nd                                &
+                                    , Kmeans%Size(ic)                        &
+                                    , Kmeans%Center(1:nd,ic)                 &
+                                    , Point(1:nd,IpStart(ic):IpEnd(ic)) &
+                                    , CKBECholDiagLower(1:nd,1:nd,ic)   &
+                                    , CKBECholDiagLower(1:nd,0,ic)      &
+                                    )
+                if (CKBECholDiagLower(1,0,ic)<0._RK) then
+                    write(*,*) "    FATAL: runMinVolKernel() @ getSamCholFac() @ getCholeskyFactor() failed."
+                    write(*,*) "           Cluster id, dimension, size:"
+                    write(*,*) ic, nd, Kmeans%Size(ic)
+                    stop
+                end if
 
-                npCurrent = ipend - ipstart + 1
-                loopPartitionCounter = loopPartitionCounter + 1
+                CKBEInvCovMat(1:nd,1:nd,ic) = getInvMatFromCholFac( nd, CKBECholDiagLower(1:nd,1:nd,ic), CKBECholDiagLower(1:n,0,ic) )
+                CKMahalSq(1:np,ic) = getMahalSq( nd, np, Kmeans%Center(1:nd,ic), CKBEInvCovMat(1:nd,1:nd,ic), Point )
+                ScaleFacSq(ic) = maxval(CKMahalSq(IpStart(ic):IpEnd(ic),ic))
+                ScaleFac(ic) = sqrt( ScaleFacSq(ic) )
+                CKMahalSq(1:np,ic) = CKMahalSq(1:np,ic) / ScaleFacSq(ic)
+                CKBEVolNormed(ic) = exp( nd*log(ScaleFac(ic)) + sum(log(CKBECholDiagLower(1:nd,0,ic))) - logNormFac ) ! Get the LogVolume of the cluster
+                NumPointInCK(ic) = Kmeans%Size(ic) + inclusionFraction*count(CKMahalSq(IpStart(icOther):IpEnd(icOther),ic)<1._RK)
+                CKParVolNormed(ic) = real(NumPointInCK(ic),kind=RK) * parVolNormed / real(np,kind=RK)
 
-                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                ! Partition the current sample into ndiv clusters.
-                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                blockStabilityCheck: if (stabilizationRequested) then
 
-                kmeansFailureCounter = -1
-                loopKmeans: do
-                    kmeansFailureCounter = kmeansFailureCounter + 1
-                    Kmeans = Kmeans_type( nc = self%ndiv
-                                        , nd = nd
-                                        , np = npCurrent
-                                        , Point = Point(ipstart:ipend)
-                                        !, InitCenter
-                                        !, niterMax
-                                        !, nzsciMax
-                                        !, reltolSq
-                                        )
-                    if ( Kmeans%Err%occurred .or. any(Kmeans%Size < ndPlusOne) ) then
-                        if (kmeansFailureCounter < self%maxAllowedKmeansFailure) cycle loopKmeans
-                        call setSingleTerminalEllipsoid()
-                        cycle loopPartition
-                    end if
-                    exit loopKmeans
-                end do loopKmeans
+                    if ( CKBEVolNormed(ic) > CKBEVolNormedOld(ic) ) then    ! This is to ensure the convergence of the algorithm
 
-                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                ! Find ndiv approximately minimum-volume sub-cllusters recursively.
-                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                        Kmeans%Center(1:nd,ic) = CKCenterOld(1:nd,ic)
+                        CKBECholDiagLower(1:nd,0:nd,ic) = CKBECholDiagLowerOld(1:nd,0:nd,ic)
+                        CKBEInvCovMat(1:nd,1:nd,ic) = CKBEInvCovMatOld(1:nd,1:nd,ic)
+                        ScaleFacSq(ic) = ScaleFacSqOld(ic)
+                        ScaleFac(ic) = ScaleFacOld(ic)
+                        CKBEVolNormed(ic) = CKBEVolNormedOld(ic)
 
-                recursionCounter = 0
-                minVolFailureCounter = 0
-                self%Backup%LogVolNormed = huge(0._RK)
-
-                loopRecursiveRunMinVolKernel: do
-
-                    recursionCounter = recursionCounter + 1
-                    if(recursionCounter > maxAllowedLoopRecursion) then
-                        call setSingleTerminalEllipsoid()
-                        cycle loopPartition
-                    end if
-
-                    ! Compute the clusters' properties including the scaled Mahalanobis distances
-
-                    do ip = ipstart, ipend
-                        self%Backup%NormData(1:nd,ip,ic) = Point(1:nd,ip) - Kmeans%Center(ic)
-                    end do
-
-                    do ic = 1, self%ndiv
-
-                        ! compute the Cholesky Factor of cluster samples
-
-                        ! Only upper half of CovMat is needed
-                        npMinusOneInverse = 1._RK / real(Kmeans%Size(ic)-1,kind=RK)
-                        do j = 1,nd
-                            do i = 1,j
-                                ! Get the covariance matrix elements: only the upper half of CovMat is needed
-                                Kmeans%Size(ic) = 
-                                CholeskyLower(i,j) = dot_product( NormData(1:Kmeans%Size(ic),i) , NormData(1:np,j) ) * npMinusOneInverse
-                            end do
+                        CMemberCounter(1) = 0
+                        CMemberCounter(2) = Kmeans%Size(1)
+                        do ip = 1,np
+                            if (CMembership(ip)==1) then
+                                CMemberCounter(1) = CMemberCounter(1) + 1
+                                CKMahalSq(CMemberCounter(1),ic) = CKMahalSqOld(ip,ic)
+                            else
+                                CMemberCounter(2) = CMemberCounter(2) + 1
+                                CKMahalSq(CMemberCounter(2),ic) = CKMahalSqOld(ip,ic)
+                            end if
                         end do
+                        CKMahalSqOld(1:np,ic) = CKMahalSq(1:np,ic)
 
-                        ! @todo: The efficiency can be improved by merging it with the above loops
-                        call getCholeskyFactor(nd, CholeskyLower, CholeskyDiago)
+                    else  ! no stability correction is required. Everything just fine...
 
-                        call getSamCholFac  ( nd                                  &
-                                            , CKSize(ic)                          &
-                                            , CKCenter(1:nd,ic)                   &
-                                            , Point(1:nd,IpStart(ic):IpEnd(ic))   &
-                                            , CKBECholDiagLower(1:nd,1:nd,ic)     &
-                                            , CKBECholDiag(1:nd,ic)               &
-                                            )
-                        if (CKBECholDiag(1,ic)<0._RK) then
-                            write(*,*) "    FATAL: runMinVolKernel() @ getSamCholFac() @ getCholeskyFactor() failed."
-                            write(*,*) "           Cluster id, dimension, size:"
-                            write(*,*) ic, nd, CKSize(ic)
-                            stop
-                        end if
+                        CKCenterOld(1:nd,ic) = Kmeans%Center(1:nd,ic)
+                        CKBECholDiagLowerOld(1:nd,0:nd,ic) = CKBECholDiagLower(1:nd,0:nd,ic)
+                        CKBEInvCovMatOld(1:nd,1:nd,ic) = CKBEInvCovMat(1:nd,1:nd,ic)
+                        CKMahalSqOld(1:np,ic) = CKMahalSq(1:np,ic)
+                        ScaleFacSqOld(ic) = ScaleFacSq(ic)
+                        ScaleFacOld(ic) = ScaleFac(ic)
+                        CKBEVolNormedOld(ic) = CKBEVolNormed(ic)
 
-                        CKBEInvCovMat(1:nd,1:nd,ic) = getInvMatFromCholFac( nd, CKBECholDiagLower(1:nd,1:nd,ic), CKBECholDiag(1:nd,ic) )
-                        CKMahalSq(1:np,ic) = getMahalSq( nd, np, CKCenter(1:nd,ic), CKBEInvCovMat(1:nd,1:nd,ic), Point )
-                        ScaleFacSq(ic) = maxval(CKMahalSq(IpStart(ic):IpEnd(ic),ic))
-                        ScaleFac(ic) = sqrt( ScaleFacSq(ic) )
-                        CKMahalSq(1:np,ic) = CKMahalSq(1:np,ic) / ScaleFacSq(ic)
-                        CKBELogVolNormed(ic) = exp( nd*log(ScaleFac(ic)) + sum(log(CKBECholDiag(1:nd,ic))) - logNormFac ) ! Get the LogVolume of the cluster
-                        NumPointInCK(ic) = CKSize(ic) + inclusionFraction*count(CKMahalSq(IpStart(icOther):IpEnd(icOther),ic)<1._RK)
-                        CKParLogVolNormed(ic) = real(NumPointInCK(ic),kind=RK) * parLogVolNormed / real(np,kind=RK)
+                    end if
 
-                        blockStabilityCheck: if (stabilizationRequested) then
+                end if blockStabilityCheck
 
-                            if ( CKBELogVolNormed(ic) > self%Backup%LogVolNormed(ic) ) then    ! This is to ensure the convergence of the algorithm
+                !if (CKBEVolNormed(ic)<CKParVolNormed(ic)) then  ! enlarge the bounding ellipsoid
+                !  !write(*,*) 'enlargement happening...'
+                !  scaleFacSq(ic) = scaleFacSq(ic) * (CKParVolNormed(ic)/CKBEVolNormed(ic))**(2._RK/nd)  ! ATTN: (1._RK/nd) this should likely be (2._RK/nd)
+                !  scaleFac(ic) = sqrt(scaleFacSq(ic))
+                !  CKBEVolNormed(ic) = CKParVolNormed(ic)
+                !end if
 
-                                CKCenter(1:nd,ic) = CKCenterOld(1:nd,ic)
-                                CKBECholDiagLower(1:nd,1:nd,ic) = CKBECholDiagLowerOld(1:nd,1:nd,ic)
-                                CKBECholDiag(1:nd,ic) = CKBECholDiagOld(1:nd,ic)
-                                CKBEInvCovMat(1:nd,1:nd,ic) = CKBEInvCovMatOld(1:nd,1:nd,ic)
-                                ScaleFacSq(ic) = ScaleFacSqOld(ic)
-                                ScaleFac(ic) = ScaleFacOld(ic)
-                                CKBELogVolNormed(ic) = self%Backup%LogVolNormed(ic)
+#if defined DEBUG_ENABLED
+                debugVolNorm: block
+                    real(RK) :: dummy
+                    dummy = real(Kmeans%Size(ic),kind=RK)*parVolNormed/real(np,kind=RK)
+                    if ( CKBEVolNormed(ic) < dummy ) then  ! enlarge the bounding ellipsoid
+                        !write(*,*) 'enlargement happening...'
+                        scaleFacSq(ic) = scaleFacSq(ic) * (dummy/CKBEVolNormed(ic))**(2._RK/nd)  ! ATTN: (1._RK/nd) this should likely be (2._RK/nd)
+                        scaleFac(ic) = sqrt(scaleFacSq(ic))
+                        CKBEVolNormed(ic) = dummy
+                    end if
+                end block debugVolNorm
+#endif
 
-                                CMemberCounter(1) = 0
-                                CMemberCounter(2) = CKSize(1)
-                                do ip = 1,np
-                                    if (CMembership(ip)==1) then
-                                        CMemberCounter(1) = CMemberCounter(1) + 1
-                                        CKMahalSq(CMemberCounter(1),ic) = CKMahalSqOld(ip,ic)
-                                    else
-                                        CMemberCounter(2) = CMemberCounter(2) + 1
-                                        CKMahalSq(CMemberCounter(2),ic) = CKMahalSqOld(ip,ic)
-                                    end if
-                                end do
-                                CKMahalSqOld(1:np,ic) = CKMahalSq(1:np,ic)
+            end do
 
-                            else  ! no stability correction is required. Everything just fine...
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-                                CKCenterOld(1:nd,ic) = CKCenter(1:nd,ic)
-                                CKBECholDiagLowerOld(1:nd,1:nd,ic) = CKBECholDiagLower(1:nd,1:nd,ic)
-                                CKBECholDiagOld(1:nd,ic) = CKBECholDiag(1:nd,ic)
-                                CKBEInvCovMatOld(1:nd,1:nd,ic) = CKBEInvCovMat(1:nd,1:nd,ic)
-                                CKMahalSqOld(1:np,ic) = CKMahalSq(1:np,ic)
-                                ScaleFacSqOld(ic) = ScaleFacSq(ic)
-                                ScaleFacOld(ic) = ScaleFac(ic)
-                                self%Backup%LogVolNormed(ic) = CKBELogVolNormed(ic)
+            ! Reassign points to clusters if needed
+            MahalSqWeight = ( CKBEVolNormed / CKParVolNormed )**mahalSqWeightExponent
+            reclusteringNeeded = .false.
+            Kmeans%Center(1:nd,1) = Kmeans%Center(1:nd,1) * Kmeans%Size(1)  ! Now it is sum instead of mean
+            Kmeans%Center(1:nd,2) = Kmeans%Center(1:nd,2) * Kmeans%Size(2)  ! Now it is sum instead of mean
+            ic = 1
+            icOther = 2
+            do ip = IpStart(ic),IpEnd(ic)
+                CMembership(ip) = ic    ! This has not been assigned correctly in the past, here is the first attempt
+                if ( MahalSqWeight(ic)*CKMahalSq(ip,ic) >= MahalSqWeight(icOther)*CKMahalSq(ip,icOther) ) then
+                    CMembership(ip) = icOther
+                    Kmeans%Size(ic) = Kmeans%Size(ic) - 1
+                    Kmeans%Size(icOther) = Kmeans%Size(icOther) + 1
+                    Kmeans%Center(1:nd,ic) = Kmeans%Center(1:nd,ic) - Point(1:nd,ip)
+                    Kmeans%Center(1:nd,icOther) = Kmeans%Center(1:nd,icOther) + Point(1:nd,ip)
+                    reclusteringNeeded = .true.
+                end if
+            end do
 
-                            end if
+            ic = 2
+            icOther = 1
+            do ip = IpStart(ic),IpEnd(ic)
+                CMembership(ip) = ic    ! This has not been assigned correctly in the past, here is the first attempt
+                if ( MahalSqWeight(ic)*CKMahalSq(ip,ic) > MahalSqWeight(icOther)*CKMahalSq(ip,icOther) ) then
+                    CMembership(ip) = icOther
+                    Kmeans%Size(ic) = Kmeans%Size(ic) - 1
+                    Kmeans%Size(icOther) = Kmeans%Size(icOther) + 1
+                    Kmeans%Center(1:nd,ic) = Kmeans%Center(1:nd,ic) - Point(1:nd,ip)
+                    Kmeans%Center(1:nd,icOther) = Kmeans%Center(1:nd,icOther) + Point(1:nd,ip)
+                    reclusteringNeeded = .true.
+                end if
+            end do
 
-                        end if blockStabilityCheck
+            blockReclusteringNeeded: if (reclusteringNeeded) then  ! perform reassignment
 
-                        !if (CKBELogVolNormed(ic)<CKParLogVolNormed(ic)) then  ! enlarge the bounding ellipsoid
-                        !  !write(*,*) 'enlargement happening...'
-                        !  scaleFacSq(ic) = scaleFacSq(ic) * (CKParLogVolNormed(ic)/CKBELogVolNormed(ic))**(2._RK/nd)  ! ATTN: (1._RK/nd) this should likely be (2._RK/nd)
-                        !  scaleFac(ic) = sqrt(scaleFacSq(ic))
-                        !  CKBELogVolNormed(ic) = CKParLogVolNormed(ic)
-                        !end if
+                blockIllegalClusterSize: if ( any(Kmeans%Size<minClusterSize) ) then
 
-                        debugVolNorm: block
-                            real(RK) :: dummy
-                            dummy = real(CKSize(ic),kind=RK)*parLogVolNormed/real(np,kind=RK)
-                            if ( CKBELogVolNormed(ic) < dummy ) then  ! enlarge the bounding ellipsoid
-                                !write(*,*) 'enlargement happening...'
-                                scaleFacSq(ic) = scaleFacSq(ic) * (dummy/CKBELogVolNormed(ic))**(2._RK/nd)  ! ATTN: (1._RK/nd) this should likely be (2._RK/nd)
-                                scaleFac(ic) = sqrt(scaleFacSq(ic))
-                                CKBELogVolNormed(ic) = dummy
-                            end if
-                        end block debugVolNorm
+                    minVolFailureCount = minVolFailureCount + 1
+                    if (minVolFailureCount>maxAllowedMinVolFailure) then
+                        ncOptimal = 1
+                        CMembership = 1
+                        CSize(1) = np
+                        convergenceFailureCount = convergenceFailureCount + 1
+                        !debugMinVolFailureCounter: block
+                        !  write(*,*) 'minVolFailureCount: ', minVolFailureCount
+                        !end block debugMinVolFailureCounter
+                        return
+                    end if
 
-                        !end if blockStabilityCheck
-
-                    end do
-
-                    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-                    ! Reassign points to clusters if needed
-                    MahalSqWeight = ( CKBELogVolNormed / CKParLogVolNormed )**mahalSqWeightExponent
-                    reclusteringNeeded = .false.
-                    CKCenter(1:nd,1) = CKCenter(1:nd,1) * CKSize(1)  ! Now it is sum instead of mean
-                    CKCenter(1:nd,2) = CKCenter(1:nd,2) * CKSize(2)  ! Now it is sum instead of mean
-                    ic = 1
-                    icOther = 2
-                    do ip = IpStart(ic),IpEnd(ic)
-                        CMembership(ip) = ic    ! This has not been assigned correctly in the past, here is the first attempt
-                        if ( MahalSqWeight(ic)*CKMahalSq(ip,ic) >= MahalSqWeight(icOther)*CKMahalSq(ip,icOther) ) then
-                            CMembership(ip) = icOther
-                            CKSize(ic) = CKSize(ic) - 1
-                            CKSize(icOther) = CKSize(icOther) + 1
-                            CKCenter(1:nd,ic) = CKCenter(1:nd,ic) - Point(1:nd,ip)
-                            CKCenter(1:nd,icOther) = CKCenter(1:nd,icOther) + Point(1:nd,ip)
-                            reclusteringNeeded = .true.
-                        end if
-                    end do
-
-                    ic = 2
-                    icOther = 1
-                    do ip = IpStart(ic),IpEnd(ic)
-                        CMembership(ip) = ic    ! This has not been assigned correctly in the past, here is the first attempt
-                        if ( MahalSqWeight(ic)*CKMahalSq(ip,ic) > MahalSqWeight(icOther)*CKMahalSq(ip,icOther) ) then
-                            CMembership(ip) = icOther
-                            CKSize(ic) = CKSize(ic) - 1
-                            CKSize(icOther) = CKSize(icOther) + 1
-                            CKCenter(1:nd,ic) = CKCenter(1:nd,ic) - Point(1:nd,ip)
-                            CKCenter(1:nd,icOther) = CKCenter(1:nd,icOther) + Point(1:nd,ip)
-                            reclusteringNeeded = .true.
-                        end if
-                    end do
-
-                    blockReclusteringNeeded: if (reclusteringNeeded) then  ! perform reassignment
-
-                        blockIllegalClusterSize: if ( any(CKSize<ndPlusOne) ) then
-
-                            minVolFailureCounter = minVolFailureCounter + 1
-                            if (minVolFailureCounter>maxAllowedMinVolFailure) then
-                                neOptimal = 1
+                    kmeansFailureCount = 0
+                    loopRunKmeans: do
+                        call runKmeans(.true.,2,nd,np,Point,Kmeans%Center,Kmeans%Size,CMembership)
+                        if ( any(Kmeans%Size<minClusterSize) ) then
+                            kmeansFailureCount = kmeansFailureCount + 1
+                            if (kmeansFailureCount>maxAllowedKmeansFailure) then
+                                ncOptimal = 1
                                 CMembership = 1
                                 CSize(1) = np
                                 convergenceFailureCount = convergenceFailureCount + 1
-                                !debugMinVolFailureCounter: block
-                                !  write(*,*) 'minVolFailureCounter: ', minVolFailureCounter
-                                !end block debugMinVolFailureCounter
+                                !debugKmeansFailureCounter: block
+                                !  write(*,*) 'kmeansFailureCount: ', kmeansFailureCount
+                                !end block debugKmeansFailureCounter
                                 return
                             end if
-
-                            kmeansFailureCounter = 0
-                            loopRunKmeans: do
-                                call runKmeans(.true.,2,nd,np,Point,CKCenter,CKSize,CMembership,iteration,zcsIteration)
-                                if ( any(CKSize<ndPlusOne) ) then
-                                    kmeansFailureCounter = kmeansFailureCounter + 1
-                                    if (kmeansFailureCounter>maxAllowedKmeansFailure) then
-                                        neOptimal = 1
-                                        CMembership = 1
-                                        CSize(1) = np
-                                        convergenceFailureCount = convergenceFailureCount + 1
-                                        !debugKmeansFailureCounter: block
-                                        !  write(*,*) 'kmeansFailureCounter: ', kmeansFailureCounter
-                                        !end block debugKmeansFailureCounter
-                                        return
-                                    end if
-                                    cycle loopRunKmeans
-                                end if
-                                exit loopRunKmeans
-                            end do loopRunKmeans
-
-                            self%Backup%LogVolNormed = huge(0._RK)
-                            cycle loopRecursiveRunMinVolKernel
-
-                        end if blockIllegalClusterSize
-
-                        CKCenter(1:nd,1) = CKCenter(1:nd,1) / CKSize(1)  ! Now it is sum instead of mean
-                        CKCenter(1:nd,2) = CKCenter(1:nd,2) / CKSize(2)  ! Now it is sum instead of mean
-
-                        cycle loopRecursiveRunMinVolKernel
-
-                    end if blockReclusteringNeeded
-
-                    CKCenter(1:nd,1) = CKCenter(1:nd,1) / CKSize(1)  ! Now it is sum instead of mean
-                    CKCenter(1:nd,2) = CKCenter(1:nd,2) / CKSize(2)  ! Now it is sum instead of mean
-
-                    exit loopRecursiveRunMinVolKernel
-
-                end do loopRecursiveRunMinVolKernel
-
-                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                ! check whether the identified bounding ellipsoids are terminal
-                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-                furtherClusteringCheck: if (sum(CKBELogVolNormed)<CBELogVolNormed(1) .or. CBELogVolNormed(1)>tightness*parLogVolNormed) then
-
-                    ! at least two clusters is better than one. now search for more child clusters
-                    CKneMax(1) = max( CKSize(1)/(ndEffective+1) , 1 )
-                    CKneMax(2) = max( CKSize(2)/(ndEffective+1) , 1 )
-
-                    IpStart(1) = 1             ; IpEnd(1) = CKSize(1)
-                    IpStart(2) = CKSize(1) + 1 ; IpEnd(2) = np
-
-                    do ic = 1,2   ! Search for more grand-child clusters
-
-                        if (ic==1) then
-                            icStart = 1
-                            icEnd = CKneMax(1)
-                        else
-                            icStart = CKneOptimal(1) + 1
-                            icEnd = CKneOptimal(1) + CKneMax(2)
+                            cycle loopRunKmeans
                         end if
+                        exit loopRunKmeans
+                    end do loopRunKmeans
 
-                        CBELogVolNormed(icStart) = CKBELogVolNormed(ic)
-                        if (CKneMax(ic)>1) then ! .and. CKBELogVolNormed(ic)>1.1_RK*CKParLogVolNormed(ic)) then
-                            call runMinVolKernel( CKneMax(ic), nd, CKSize(ic)               &
-                                                , stabilizationRequested                    &
-                                                , maxAllowedLoopRecursion                   &
-                                                , maxAllowedKmeansFailure                   &
-                                                , maxAllowedMinVolFailure                   &
-                                                , mahalSqWeightExponent                     &
-                                                , tightness                                 &
-                                                , inclusionFraction                         &
-                                                , CKParLogVolNormed(ic)                        &
-                                                , logNormFac                                &
-                                                , Point(1:nd,IpStart(ic):IpEnd(ic))         &
-                                                , CKneOptimal(ic)                           &
-                                                , CCenter(1:nd,icStart:icEnd)               &
-                                                , CSize(icStart:icEnd)                      &
-                                                , CBEInvCovMat(1:nd,1:nd,icStart:icEnd)     &
-                                                , CBECholDiagLower(1:nd,1:nd,icStart:icEnd)       &
-                                                , CBECholDiag(1:nd,icStart:icEnd)           &
-                                                , CBELogVolNormed(icStart:icEnd)               &
-                                                , CMembership(IpStart(ic):IpEnd(ic))        &
-                                                , PointIndex(IpStart(ic):IpEnd(ic))         &
-                                                , convergenceFailureCount                 &
-                                                )
-                            if (ic==2) CMembership(IpStart(ic):IpEnd(ic)) = CMembership(IpStart(ic):IpEnd(ic)) + icStart - 1
-                        else
-                            CKneOptimal(ic)=1
-                        end if
+                    CKBEVolNormedOld = huge(0._RK)
+                    cycle loopRecursiveRunMinVolKernel
 
-                        if ( CKneOptimal(ic)==1 .or. CKneMax(ic)==1 ) then ! There is only one cluster here
-                            CKneOptimal(ic) = 1
-                            CCenter(1:nd,icStart) = CKCenter(1:nd,ic)
-                            CSize(icStart) = CKSize(ic)
-                            CBEInvCovMat(1:nd,1:nd,icStart) = CKBEInvCovMat(1:nd,1:nd,ic) / ScaleFacSq(ic)
-                            CBECholDiagLower(1:nd,1:nd,icStart) = CKBECholDiagLower(1:nd,1:nd,ic)
-                            CBECholDiag(1:nd,icStart) = CKBECholDiag(1:nd,ic)
-                            ! Now rescale Cholesky factor and its diagonals, such that they describe the bounding ellipsoid of the cluster
-                            do j = 1,nd-1
-                                CBECholDiag(j,icStart) = CBECholDiag(j,icStart) * ScaleFac(ic)
-                                do i = j+1,nd
-                                    CBECholDiagLower(i,j,icStart) = CBECholDiagLower(i,j,icStart) * ScaleFac(ic)
-                                end do
-                            end do
-                            CBECholDiag(nd,icStart) = CBECholDiag(nd,icStart) * ScaleFac(ic)
-                        end if
+                end if blockIllegalClusterSize
 
+                Kmeans%Center(1:nd,1) = Kmeans%Center(1:nd,1) / Kmeans%Size(1)  ! Now it is sum instead of mean
+                Kmeans%Center(1:nd,2) = Kmeans%Center(1:nd,2) / Kmeans%Size(2)  ! Now it is sum instead of mean
+
+                cycle loopRecursiveRunMinVolKernel
+
+            end if blockReclusteringNeeded
+
+            Kmeans%Center(1:nd,1) = Kmeans%Center(1:nd,1) / Kmeans%Size(1)  ! Now it is sum instead of mean
+            Kmeans%Center(1:nd,2) = Kmeans%Center(1:nd,2) / Kmeans%Size(2)  ! Now it is sum instead of mean
+
+            exit loopRecursiveRunMinVolKernel
+
+        end do loopRecursiveRunMinVolKernel
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        furtherClusteringCheck: if (sum(CKBEVolNormed)<CBEVolNormed(1) .or. CBEVolNormed(1)>tightness*parVolNormed) then
+
+            ! at least two clusters is better than one. now search for more child clusters
+            CKneMax(1) = max( Kmeans%Size(1)/(ndEffective+1) , 1 )
+            CKneMax(2) = max( Kmeans%Size(2)/(ndEffective+1) , 1 )
+
+            IpStart(1) = 1             ; IpEnd(1) = Kmeans%Size(1)
+            IpStart(2) = Kmeans%Size(1) + 1 ; IpEnd(2) = np
+
+            do ic = 1,2   ! Search for more grand-child clusters
+
+                if (ic==1) then
+                    icStart = 1
+                    icEnd = CKneMax(1)
+                else
+                    icStart = CKncOptimal(1) + 1
+                    icEnd = CKncOptimal(1) + CKneMax(2)
+                end if
+
+                CBEVolNormed(icStart) = CKBEVolNormed(ic)
+                if (CKneMax(ic)>1) then ! .and. CKBEVolNormed(ic)>1.1_RK*CKParVolNormed(ic)) then
+                    call runMinVolKernel( CKneMax(ic), nd, Kmeans%Size(ic)               &
+                                        , stabilizationRequested                    &
+                                        , maxKvolumeLoopRecursion                   &
+                                        , maxAllowedKmeansFailure                   &
+                                        , maxAllowedMinVolFailure                   &
+                                        , mahalSqWeightExponent                     &
+                                        , tightness                                 &
+                                        , inclusionFraction                         &
+                                        , CKParVolNormed(ic)                        &
+                                        , logNormFac                                &
+                                        , Point(1:nd,IpStart(ic):IpEnd(ic))         &
+                                        , CKncOptimal(ic)                           &
+                                        , CCenter(1:nd,icStart:icEnd)               &
+                                        , CSize(icStart:icEnd)                      &
+                                        , CBEInvCovMat(1:nd,1:nd,icStart:icEnd)     &
+                                        , CBECholDiagLower(1:nd,0:nd,icStart:icEnd) &
+                                        , CBEVolNormed(icStart:icEnd)               &
+                                        , CMembership(IpStart(ic):IpEnd(ic))        &
+                                        , PointIndex(IpStart(ic):IpEnd(ic))         &
+                                        , convergenceFailureCount                 &
+                                        )
+                    if (ic==2) CMembership(IpStart(ic):IpEnd(ic)) = CMembership(IpStart(ic):IpEnd(ic)) + icStart - 1
+                else
+                    CKncOptimal(ic)=1
+                end if
+
+                if ( CKncOptimal(ic)==1 .or. CKneMax(ic)==1 ) then ! There is only one cluster here
+                    CKncOptimal(ic) = 1
+                    CCenter(1:nd,icStart) = Kmeans%Center(1:nd,ic)
+                    CSize(icStart) = Kmeans%Size(ic)
+                    CBEInvCovMat(1:nd,1:nd,icStart) = CKBEInvCovMat(1:nd,1:nd,ic) / ScaleFacSq(ic)
+                    CBECholDiagLower(1:nd,0:nd,icStart) = CKBECholDiagLower(1:nd,0:nd,ic)
+                    ! Now rescale Cholesky factor and its diagonals, such that they describe the bounding ellipsoid of the cluster
+                    do j = 1,nd-1
+                        CBECholDiagLower(j,0,icStart) = CBECholDiagLower(j,0,icStart) * ScaleFac(ic)
+                        do i = j+1,nd
+                            CBECholDiagLower(i,j,icStart) = CBECholDiagLower(i,j,icStart) * ScaleFac(ic)
+                        end do
                     end do
+                    CBECholDiagLower(nd,0,icStart) = CBECholDiagLower(nd,0,icStart) * ScaleFac(ic)
+                end if
 
-                    neOptimal = sum(CKneOptimal)
-
-                else furtherClusteringCheck  ! one cluster is better
-
-                    neOptimal = 1
-                    CMembership = 1
-                    CSize(1) = np
-
-                end if furtherClusteringCheck
-
-
-            end do loopPartition
-
-            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-            !%%%% end loopPartition
-            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-        else blockPartition ! There is only one cluster
-
-            neOptimal = 1
-
-        end if blockPartition
-
-        if (neOptimal==1) then
-            do j = 1,nd-1 ! Now rescale Cholesky factor and its diagonals, such that they describe the bounding ellipsoid of the cluster
-                self%CholDiagLower(j,0,1) = self%CholDiagLower(j,0,1) * scaleFac
-                do i = j+1,nd
-                    self%CholDiagLower(i,j,1) = self%CholDiagLower(i,j,1) * scaleFac
-                end do
             end do
-            self%CholDiagLower(nd,0,1) = self%CholDiagLower(nd,0,1) * scaleFac
-            self%InvCovMat(1:nd,1:nd,1) = self%InvCovMat(1:nd,1:nd,1) / scaleFac**2
-        end if
 
-    contains
+            ncOptimal = sum(CKncOptimal)
 
-        function setSingleTerminalEllipsoid()
-            implicit none
-            self%Size(1) = npCurrent
-            self%Membership = self%neOptimal
-            self%neOptimal = self%neOptimal + 1
-            self%convergenceFailureCount = self%convergenceFailureCount + 1
-        end function setSingleTerminalEllipsoid
+        else furtherClusteringCheck  ! one cluster is better
 
-    end subroutine getMinVolPartition
+            ncOptimal = 1
+            CMembership = 1
+            CSize(1) = np
+
+        end if furtherClusteringCheck
+
+    end subroutine runMinVolKernel
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module MinVolPartition_mod ! LCOV_EXCL_LINE
+end submodule MinVolPartition_mod ! LCOV_EXCL_LINE

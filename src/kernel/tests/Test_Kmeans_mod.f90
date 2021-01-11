@@ -339,14 +339,14 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    !> The function `runKmeans()` must function properly for reasonable optional input values of `nzsciMax` and `reltolSq`.
+    !> The function `runKmeans()` must function properly for reasonable optional input values of `nzsciMax` and `relTol`.
     function test_runKmeans_4() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         integer(IK) , parameter     :: nc = 3_IK
         integer(IK) , parameter     :: nzsciMax = 100_IK
-        real(RK)    , parameter     :: reltolSq = 1.e-8_RK
+        real(RK)    , parameter     :: relTol = 1.e-8_RK
         real(RK)    , allocatable   :: InitCenter(:,:)
         logical                     :: assertion
         type(Kmeans_type)           :: Kmeans
@@ -359,7 +359,7 @@ contains
                             , np = TestData%np & ! LCOV_EXCL_LINE
                             , Point = TestData%Point & ! LCOV_EXCL_LINE
                             , nzsciMax = nzsciMax & ! LCOV_EXCL_LINE
-                            , reltolSq = reltolSq & ! LCOV_EXCL_LINE
+                            , relTol = relTol & ! LCOV_EXCL_LINE
                             )
 
         ! write data to output for further investigation
@@ -504,7 +504,7 @@ contains
         implicit none
         integer(IK) , parameter     :: ncMax = 3_IK
         integer(IK) , parameter     :: nzsciMax = 100_IK
-        real(RK)    , parameter     :: reltolSq = 1.e-8_RK
+        real(RK)    , parameter     :: relTol = 1.e-8_RK
         real(RK)    , allocatable   :: InitCenter(:,:)
         logical                     :: assertion
 
@@ -515,14 +515,14 @@ contains
 
         do i = 1, 1000
 
-            nc = getRandInt(2,ncMax)
-            np = getRandInt(100,TestData%np)
-            Kmeans = Kmeans_type( nc = nc                                   & ! LCOV_EXCL_LINE
-                                , nd = TestData%nd                          & ! LCOV_EXCL_LINE
-                                , np = np                                   & ! LCOV_EXCL_LINE
+            nc = ncMax ! getRandInt(2,ncMax)
+            np = TestData%np ! getRandInt(100,TestData%np)
+            Kmeans = Kmeans_type( nc = nc & ! LCOV_EXCL_LINE
+                                , nd = TestData%nd & ! LCOV_EXCL_LINE
+                                , np = np & ! LCOV_EXCL_LINE
                                 , Point = TestData%Point(1:TestData%nd,1:np)& ! LCOV_EXCL_LINE
-                                , nzsciMax = nzsciMax                       & ! LCOV_EXCL_LINE
-                                , reltolSq = reltolSq                       & ! LCOV_EXCL_LINE
+                                , nzsciMax = nzsciMax & ! LCOV_EXCL_LINE
+                                , relTol = relTol & ! LCOV_EXCL_LINE
                                 )
 
             assertion = assertion .and. .not. Kmeans%Err%occurred
@@ -555,4 +555,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module Test_Kmeans_mod
+end module Test_Kmeans_mod ! LCOV_EXCL_LINE

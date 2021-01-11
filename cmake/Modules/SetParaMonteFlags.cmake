@@ -276,6 +276,15 @@ if (intel_compiler)
         set(FL_FLAGS "${FL_FLAGS}" -prof-gen=srcpos)
     endif()
 
+    if (PERFPROF_ENABLED)
+        message ( FATAL_ERROR
+                " \n"
+                " ${pmwarn}\n"
+                " ${pmattn} Performance profiling with Intel compilers is currently not supported.\n"
+                " ${pmattn}\n"
+                )
+    endif()
+
 elseif (gnu_compiler)
 
     # -std=legacy is required to bypass the new gfortran 10 error on argument-mismatch.
@@ -318,6 +327,12 @@ elseif (gnu_compiler)
         --coverage 
         -lgcov 
         )
+    endif()
+
+    if (PERFPROF_ENABLED)
+        set(FCL_FLAGS "${FCL_FLAGS}" -pg -g) # enable profiling + enable debugging which is required for line-by-line profiling with gprof
+        set(CCL_FLAGS "${CCL_FLAGS}" -pg -g) # enable profiling + enable debugging which is required for line-by-line profiling with gprof
+        set(FL_FLAGS "${FL_FLAGS}" -pg -g)   # enable profiling + enable debugging which is required for line-by-line profiling with gprof
     endif()
 
 endif()

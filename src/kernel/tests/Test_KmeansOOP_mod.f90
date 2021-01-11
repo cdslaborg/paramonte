@@ -526,8 +526,8 @@ contains
         Kmeans = KmeansOOP_type(TestData%nd, TestData%np, ncMax, ntMax)
         do i = 1, 1000
 
-            nc = getRandInt(2,ncMax)
-            np = getRandInt(100,TestData%np)
+            nc = ncMax ! getRandInt(2,ncMax)
+            np = TestData%np ! getRandInt(100,TestData%np)
             call Kmeans%run ( nd = TestData%nd                          & ! LCOV_EXCL_LINE
                             , np = np                                   & ! LCOV_EXCL_LINE
                             , nc = nc                                   & ! LCOV_EXCL_LINE
