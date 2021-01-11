@@ -784,7 +784,31 @@ if (HEAP_ARRAY_ENABLED)
         endif()
     elseif(gnu_compiler)
         set(FC_FLAGS "${FC_FLAGS}"
-        -fmax-stack-var-size=10
+        -fmax-stack-var-size=10 # in bytes
+        # -frecursive overwrites -fmax-stack-var-size=10 and causes all allocations to happen on stack.
+        )
+        # @todo:
+        # Strangely, -frecursive flag causes deadlock with sampler tests in Coarray mode.
+        # Therefore, the -frecursive flag is reversed to -fmax-stack-var-size=10 until the behavior is understood.
+        # The use of -frecursive was based on the GFortran-10 warning message about unsafe storage move from stack to static storage.
+        # See also this thread: https://comp.lang.fortran.narkive.com/WApl1KMt/gfortran-stack-size-warning#post4
+        # Perhaps adding `non_recursive` to functions would fix this warning message.
+    endif()
+else()
+    if (intel_compiler)
+        #if (WIN32)
+        #    set(FC_FLAGS "${FC_FLAGS}"
+        #    /heap-arrays:10
+        #    )
+        #else()
+        #    set(FC_FLAGS "${FC_FLAGS}"
+        #    -heap-arrays=10
+        #    )
+        #endif()
+    elseif(gnu_compiler)
+        set(FC_FLAGS "${FC_FLAGS}"
+        -fstack-arrays # applies to only the local variables
+        #-fautomatic
         # -frecursive overwrites -fmax-stack-var-size=10 and causes all allocations to happen on stack.
         )
         # @todo:

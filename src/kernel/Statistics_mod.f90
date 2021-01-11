@@ -983,7 +983,7 @@ contains
     !> \brief
     !> Return the lower triangle Cholesky Factor of the covariance matrix of a set of points in the lower part of `CholeskyLower`.
     ! The upper part of `CholeskyLower`, including the diagonal elements of it, will contain the covariance matrix of the sample.
-    ! The output argument `Diagonal`, contains the diagonal terms of Cholesky Factor.
+    ! The output argument `CholeskyDiago`, contains the diagonal terms of Cholesky Factor.
     !>
     !> \param[in]       nd              :   The number of dimensions of the input sample.
     !> \param[in]       np              :   The number of points in the sample.
@@ -991,11 +991,11 @@ contains
     !> \param[in]       Point           :   The array of shape `(nd,np)` containing the sample.
     !> \param[out]      CholeskyLower   :   The output matrix of shape `(nd,nd)` whose lower triangle contains elements of the Cholesky factor.
     !>                                      The upper triangle of the matrix contains the covariance matrix of the sample.
-    !> \param[out]      Diagonal        :   The diagonal elements of the Cholesky factor.
+    !> \param[out]      CholeskyDiago   :   The diagonal elements of the Cholesky factor.
     !>
     !> \todo
     !> The efficiency of this code can be further improved.
-    subroutine getSamCholFac(nd,np,Mean,Point,CholeskyLower,Diagonal)
+    subroutine getSamCholFac(nd,np,Mean,Point,CholeskyLower,CholeskyDiago)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSamCholFac
 #endif
@@ -1005,7 +1005,7 @@ contains
         real(RK)   , intent(in)  :: Mean(nd)               ! Mean vector
         real(RK)   , intent(in)  :: Point(nd,np)           ! Point is the matrix of the data, CovMat contains the elements of the sample covariance matrix
         real(RK)   , intent(out) :: CholeskyLower(nd,nd)   ! Lower Cholesky Factor of the covariance matrix
-        real(RK)   , intent(out) :: Diagonal(nd)           ! Diagonal elements of the Cholesky factorization
+        real(RK)   , intent(out) :: CholeskyDiago(nd)       ! Diagonal elements of the Cholesky factorization
         real(RK)                 :: NormData(np,nd), npMinusOneInverse
         integer(IK)              :: i,j
 
@@ -1022,8 +1022,8 @@ contains
             end do
         end do
 
-        ! XXX: The efficiency can be improved by merging it with the above loops
-        call getCholeskyFactor(nd,CholeskyLower,Diagonal)
+        ! @todo: The efficiency can be improved by merging it with the above loops
+        call getCholeskyFactor(nd, CholeskyLower, CholeskyDiago)
 
   end subroutine getSamCholFac
 

@@ -224,7 +224,7 @@ contains
         assertion = assertion .and. File%Err%occurred   .eqv. .false.
         assertion = assertion .and. File%Err%msg        == ""
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "File%Path%original  : ", File%Path%original
@@ -326,7 +326,7 @@ contains
         assertion = assertion .and. File%Err%occurred   .eqv. .false.
         assertion = assertion .and. File%Err%msg        == ""
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "File%Path%original  : ", File%Path%original
@@ -430,7 +430,7 @@ contains
         assertion = assertion .and. File%Err%occurred   .eqv. .false.
         assertion = assertion .and. File%Err%msg        == ""
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "File%Path%original  : ", File%Path%original
@@ -1908,7 +1908,7 @@ contains
         character(:), allocatable :: blank
         call getBlank(blank, Err, unit = 124)
         assertion = .not. Err%occurred .and. blank == "undefined"
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "Err%occurred : ", Err%occurred
@@ -1930,7 +1930,7 @@ contains
         character(:), allocatable :: blank
         call getBlank(blank, Err, file = "nonexisting.file")
         assertion = .not. Err%occurred .and. blank == "undefined"
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "Err%occurred : ", Err%occurred
@@ -1980,7 +1980,7 @@ contains
         character(:), allocatable :: position
         call getPosition(position, Err, unit = 124)
         assertion = .not. Err%occurred .and. position == "undefined"
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
             ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "Err%occurred : ", Err%occurred
@@ -2002,7 +2002,7 @@ contains
         character(:), allocatable :: position
         call getPosition(position, Err, file = "nonexisting.file")
         assertion = .not. Err%occurred .and. position == "undefined"
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
             ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "Err%occurred : ", Err%occurred
@@ -2052,7 +2052,7 @@ contains
         character(:), allocatable :: action
         call getAction(action, Err, unit = 124)
         assertion = .not. Err%occurred .and. action == "undefined"
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "Err%occurred : ", Err%occurred
@@ -2074,7 +2074,7 @@ contains
         character(:), allocatable :: action
         call getAction(action, Err, file = "nonexisting.file")
         assertion = .not. Err%occurred !.and. action == "undefined"
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "Err%occurred : ", Err%occurred
@@ -2124,7 +2124,7 @@ contains
         character(:), allocatable :: delim
         call getDelim(delim, Err, unit = 124)
         assertion = .not. Err%occurred .and. delim == "undefined"
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "Err%occurred : ", Err%occurred
@@ -2146,7 +2146,7 @@ contains
         character(:), allocatable :: delim
         call getDelim(delim, Err, file = "nonexisting.file")
         assertion = .not. Err%occurred !.and. delim == "undefined"
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "Err%occurred : ", Err%occurred

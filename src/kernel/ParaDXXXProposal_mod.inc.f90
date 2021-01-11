@@ -993,7 +993,7 @@ contains
             ! WARNING: Setting the boundaries forces the compiler to generate a temporary array.
             mv_InvCovMat(1:mc_ndim,1:mc_ndim,istage) = getInvMatFromCholFac ( nd = mc_ndim & ! LCOV_EXCL_LINE
                                                                             , CholeskyLower = comv_CholDiagLower(:,1:mc_ndim,istage) & ! LCOV_EXCL_LINE
-                                                                            , Diagonal = comv_CholDiagLower(1:mc_ndim,0,istage) & ! LCOV_EXCL_LINE
+                                                                            , CholeskyDiago = comv_CholDiagLower(1:mc_ndim,0,istage) & ! LCOV_EXCL_LINE
                                                                             )
             mv_logSqrtDetInvCovMat(istage) = -sum(log( comv_CholDiagLower(1:mc_ndim,0,istage) ))
         end do

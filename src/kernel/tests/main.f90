@@ -85,6 +85,7 @@ call setup()
 !block; use Test_FileList_mod; call test_FileList(); end block
 !block; use Test_Integration_mod; call test_Integration(); end block
 block; use Test_Kmeans_mod; call test_Kmeans(); end block
+block; use Test_KmeansOOP_mod; call test_KmeansOOP(); end block
 !block; use Test_Math_mod; call test_Math(); end block
 !block; use Test_Matrix_mod; call test_Matrix(); end block
 !block; use Test_Misc_mod; call test_Misc(); end block

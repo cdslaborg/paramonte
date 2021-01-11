@@ -115,7 +115,7 @@ contains
         Difference = abs(Eye - Eye_ref)
         assertion = all(Difference==0._RK)
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "Eye_ref    = ", Eye_ref
@@ -147,7 +147,7 @@ contains
         Difference = abs(Eye - Eye_ref)
         assertion = all(Difference==0._RK)
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "Eye_ref    = ", Eye_ref
@@ -190,7 +190,7 @@ contains
         CholeskyDiagonal_diff = abs(CholeskyDiagonal - CholeskyDiagonal_ref)
         assertion = all(CholeskyLower_diff < tolerance) .and. all(CholeskyDiagonal_diff < tolerance)
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "CholeskyLower_ref  = ", CholeskyLower_ref
@@ -220,7 +220,7 @@ contains
         CholeskyLower = PosDefMat
         call getCholeskyFactor(nd = nd, PosDefMat = CholeskyLower, Diagonal = CholeskyDiagonal)
         assertion = CholeskyDiagonal(1) < 0._RK
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "CholeskyLower      = ", CholeskyLower
@@ -264,7 +264,7 @@ contains
 
         assertion = all(MatInvMat_diff < tolerance) .and. sqrtDetInvPosDefMat_diff < tolerance
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "MatInvMat_ref  = ", MatInvMat_ref
@@ -298,7 +298,7 @@ contains
 
         assertion = sqrtDetInvPosDefMat < 0._RK
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "MatInvMat              = ", MatInvMat
@@ -335,7 +335,7 @@ contains
 
         assertion = all(MatInvMat_diff < tolerance) .and. sqrtDetInvPosDefMat_diff < tolerance
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "MatInvMat_ref  = ", MatInvMat_ref
@@ -376,7 +376,7 @@ contains
         real(RK)                :: InvMatFromCholFac(nd,nd)
         real(RK), allocatable   :: InvMatFromCholFac_diff(:,:)
 
-        InvMatFromCholFac = getInvMatFromCholFac(nd = nd, CholeskyLower = CholeskyLower, Diagonal = CholeskyDiagonal)
+        InvMatFromCholFac = getInvMatFromCholFac(nd = nd, CholeskyLower = CholeskyLower, CholeskyDiago = CholeskyDiagonal)
 
         ! Gfortran 7.1 fails to automatically reallocate this array. This is not implemented in Gfortran 7.0.0
         if (allocated(InvMatFromCholFac_diff)) deallocate(InvMatFromCholFac_diff); allocate(InvMatFromCholFac_diff, mold = InvMatFromCholFac)
@@ -385,7 +385,7 @@ contains
 
         assertion = all(InvMatFromCholFac_diff < tolerance)
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "InvMatFromCholFac_ref  = ", InvMatFromCholFac_ref
@@ -425,7 +425,7 @@ contains
 
         assertion = all(MatInvMat_diff < tolerance)
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "MatInvMat_ref  = ", MatInvMat_ref
@@ -455,7 +455,7 @@ contains
 
         assertion = MatInvMat(1,1) < 0._RK
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "MatInvMat      = ", MatInvMat
@@ -506,7 +506,7 @@ contains
 
         assertion = all(MatInvMat_diff < tolerance) .and. detInvMat_diff < tolerance
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "MatrixLU_ref  = ", MatrixLU_ref
@@ -555,7 +555,7 @@ contains
 
         assertion = all(InverseMatrix_diff < tolerance)
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "InverseMatrix_ref  = ", InverseMatrix_ref
@@ -594,7 +594,7 @@ contains
 
         assertion = all(MatrixProduct_diff < tolerance)
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "MatrixProduct_ref  = ", MatrixProduct_ref
@@ -628,7 +628,7 @@ contains
 
         assertion = determinant_diff < tolerance
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "determinant_ref  = ", determinant_ref
@@ -662,7 +662,7 @@ contains
 
         assertion = sqrtDetPosDefMat_diff < tolerance
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "sqrtDetPosDefMat_ref  = ", sqrtDetPosDefMat_ref
@@ -693,7 +693,7 @@ contains
 
         assertion = sqrtDetPosDefMat < 0._RK
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "sqrtDetPosDefMat      = ", sqrtDetPosDefMat
@@ -732,7 +732,7 @@ contains
 
         assertion = logSqrtDetPosDefMat_diff < tolerance
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "logSqrtDetPosDefMat_ref  = ", logSqrtDetPosDefMat_ref
@@ -822,7 +822,7 @@ contains
         call symmetrizeUpperSquareMatrix(nd,UpperSquareMatrix)
         assertion = all( abs(UpperSquareMatrix-UpperSquareMatrix_ref) < 1.e-14_RK )
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "UpperSquareMatrix_ref  = ", UpperSquareMatrix_ref
@@ -857,7 +857,7 @@ contains
 
         assertion = all(OuterProduct_diff < tolerance)
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "OuterProduct_ref  = ", OuterProduct_ref
@@ -910,7 +910,7 @@ contains
             end do
         end do
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
 
             write(Test%outputUnit,"(*(g0))")
@@ -986,7 +986,7 @@ contains
             end do
         end do
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "Original Covariance Matrix:"
@@ -1017,7 +1017,7 @@ contains
             end do
         end do
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             do i = 1,rankS11
                 do j = 1,rankS11

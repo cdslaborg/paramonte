@@ -199,7 +199,7 @@ contains
         end do
 
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))") 
             write(Test%outputUnit,"(*(g0,:,', '))") "DataUnsorted, DataSorted"
             do i = 1, ndata
@@ -233,7 +233,7 @@ contains
         end do
 
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))") 
             write(Test%outputUnit,"(*(g0,:,', '))") "DataUnsorted, DataSorted"
             do i = 1, ndata
@@ -269,7 +269,7 @@ contains
         end do
 
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))") 
             write(Test%outputUnit,"(*(g0,:,', '))") "LeaderUnsorted, LeaderSorted"
             do i = 1, ndata
@@ -284,7 +284,7 @@ contains
         end do
 
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))") 
             write(Test%outputUnit,"(*(g0,:,', '))") "RooterUnsorted, RooterSorted"
             do i = 1, ndata
@@ -320,7 +320,7 @@ contains
         end do
 
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))") 
             write(Test%outputUnit,"(*(g0,:,', '))") "LeaderUnsorted, LeaderSorted"
             do i = 1, ndata
@@ -335,7 +335,7 @@ contains
         end do
 
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))") 
             write(Test%outputUnit,"(*(g0,:,', '))") "RooterUnsorted, RooterSorted"
             do i = 1, ndata
@@ -366,7 +366,7 @@ contains
         assertion = median == median_ref
 
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))") 
             write(Test%outputUnit,"(*(g0,:,' '))") "median_ref  =", median_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "median      =", median
@@ -395,7 +395,7 @@ contains
         assertion = median == median_ref
 
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))") 
             write(Test%outputUnit,"(*(g0,:,' '))") "median_ref  =", median_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "median      =", median

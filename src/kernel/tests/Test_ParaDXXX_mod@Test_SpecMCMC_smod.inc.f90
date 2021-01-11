@@ -771,7 +771,7 @@ contains
                             , inputFile = ParaDXXX_NML//" randomStartPointRequested = true /" &
                             )
         assertion = assertion .and. PD%Err%occurred .and. PD%SpecMCMC%RandomStartPointRequested%val
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "PD%Err%occurred :", PD%Err%occurred
@@ -1482,7 +1482,7 @@ contains
                             , chainSize = 100_IK &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. all( abs(PD%SpecMCMC%StartPointVec%Val-0.5_RK*(DomainLowerLimitVec+DomainUpperLimitVec)) < 1.e-12_RK )
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "PD%Err%occurred", PD%Err%occurred
@@ -1521,7 +1521,7 @@ contains
                             , chainSize = 100_IK &
                             )
         assertion = assertion .and. PD%Err%occurred .and. all(PD%SpecMCMC%StartPointVec%Val==StartPointVec)
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "PD%Err%occurred", PD%Err%occurred

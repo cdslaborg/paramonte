@@ -59,6 +59,7 @@ module Kmeans_mod
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> The `Kmeans_type` class.
+    !> The inclusion of the component `NormedPoint` adds ~50% to the computational cost of performing Kmeans
     type :: Kmeans_type
         integer(IK)                 :: nzsci                !< The number of Zero-Sized Clusters Iterations.
         integer(IK)                 :: niter                !< The number of iterations to reach convergence.
@@ -66,6 +67,8 @@ module Kmeans_mod
         integer(IK) , allocatable   :: Size(:)              !< A vector of size `nc` (the number of clusters) containing the sizes of the individual clusters identified.
         real(RK)    , allocatable   :: Center(:,:)          !< An array of size `(nd,nc)` containing the centers of the individual clusters identified.
                                                             !< Here `nd` represents the number of attributes in the data points that have been clustered.
+        real(RK)    , allocatable   :: NormedPoint(:,:,:)   !< An array of size `(nd,np,nc)` containing `nc` copies of the input array `Point(nd,np)` 
+                                                            !< each copy of which is normalized with respect to the corresponding cluster center.
         real(RK)    , allocatable   :: MinDistanceSq(:)     !< An array of size `(np)` containing the minimum distances of the points from the cluster centers.
                                                             !< Here `np` represents the number of data points to be clustered.
         integer(IK) , allocatable   :: Membership(:)        !< A vector of size `np` each element of which represents the cluster ID to which the point belongs.
@@ -120,7 +123,9 @@ contains
     !> \author
     ! Amir Shahmoradi, April 03, 2017, 2:16 PM, ICES, UTEXAS
     function optimizeKmeans(nc, nd, np, Point, ntry, InitCenter, niterMax, nzsciMax, reltolSq) result(Kmeans)
-
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: optimizeKmeans
+#endif
         use Constants_mod, only: IK, RK, HUGE_RK
 
         implicit none
@@ -157,16 +162,16 @@ contains
     !> \brief
     !> Perform the Kmeans clustering on the input data set represented by the array `Point(nd, np)`
     !>
-    !> \param[in]       nc          :   The number of clusters to be found via the Kmeans algorithm.
-    !> \param[in]       nd          :   The number of dimensions (features) of the input data array `Point`.
-    !> \param[in]       np          :   The number of observations in the input data array `Point`.
-    !> \param[in]       Point       :   The input array of size `(nd,np)` of the points to be clustered via the Kmeans algorithm.
-    !> \param[in]       InitCenter  :   An input array of size `(nd,nc)` representing the initial centers of the Kmeans clusters (**optional**).
-    !>                                  If not provided, the cluster centers will be initialized via the Kmeans++ algorithm.
-    !> \param[in]       niterMax    :   The maximum number of iterations beyond which it a lack of converge is assumed (**optional**, default = 1000).
-    !> \param[in]       nszciMax    :   The maximum number of zero-sized cluster iterations beyond which it a lack of converge is assumed (**optional**, default = 10).
-    !> \param[in]       reltolSq    :   The relative tolerance squared. If all newly computed cluster centers change by less than `sqrt(reltolSq)`,
-    !>                                  then convergence is assumed (**optional**, default = 1.e-8).
+    !> \param[in]       nc                      :   The number of clusters to be found via the Kmeans algorithm.
+    !> \param[in]       nd                      :   The number of dimensions (features) of the input data array `Point`.
+    !> \param[in]       np                      :   The number of observations in the input data array `Point`.
+    !> \param[in]       Point                   :   The input array of size `(nd,np)` of the points to be clustered via the Kmeans algorithm.
+    !> \param[in]       InitCenter              :   An input array of size `(nd,nc)` representing the initial centers of the Kmeans clusters (**optional**).
+    !>                                              If not provided, the cluster centers will be initialized via the Kmeans++ algorithm.
+    !> \param[in]       niterMax                :   The maximum number of iterations beyond which it a lack of converge is assumed (**optional**, default = 1000).
+    !> \param[in]       nszciMax                :   The maximum number of zero-sized cluster iterations beyond which it a lack of converge is assumed (**optional**, default = 10).
+    !> \param[in]       reltolSq                :   The relative tolerance squared. If all newly computed cluster centers change by less than `sqrt(reltolSq)`,
+    !>                                              then convergence is assumed (**optional**, default = 1.e-8).
     !>
     !> \return
     !> `Kmeans` :   An object of type [KmeansCluster_type](@ref kmeanscluster_type) containing the properties of the identified clusters.
@@ -186,7 +191,9 @@ contains
     !> \author
     ! Amir Shahmoradi, April 03, 2017, 2:16 PM, ICES, UTEXAS
     function runKmeans(nc, nd, np, Point, InitCenter, niterMax, nzsciMax, reltolSq) result(Kmeans)
-
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: runKmeans
+#endif
         use Constants_mod, only: IK, RK, HUGE_RK
 
         implicit none
@@ -220,6 +227,7 @@ contains
         allocate(Kmeans%Size(nc), source = 0_IK)
         allocate(Kmeans%Center(nd,nc), source = 0._RK)
         allocate(Kmeans%Membership(np), source = 0_IK)
+        allocate(Kmeans%NormedPoint(nd,np,nc), source = 0._RK)
         allocate(Kmeans%MinDistanceSq(np), source = 0._RK)
 
         relTolSqDefault = RELTOL_SQ; if (present(reltolSq)) relTolSqDefault = reltolSq
@@ -281,14 +289,16 @@ contains
             ic = 1
             Kmeans%Center(1:nd,ic) = SumPoint(1:nd,ic) / real(Kmeans%Size(ic), kind = RK)
             do ip = 1, np
-                Kmeans%MinDistanceSq(ip) = sum( (Kmeans%Center(1:nd,ic) - Point(1:nd,ip))**2 )
+                Kmeans%NormedPoint(1:nd,ip,ic) = Kmeans%Center(1:nd,ic) - Point(1:nd,ip)
+                Kmeans%MinDistanceSq(ip) = sum( Kmeans%NormedPoint(1:nd,ip,ic)**2 )
                 Kmeans%Membership(ip) = ic
             end do
             !%%%%%%%%%%%%%%%%%%%
             do ic = 2, nc - 1
                 Kmeans%Center(1:nd,ic) = SumPoint(1:nd,ic) / real(Kmeans%Size(ic), kind = RK)
                 do ip = 1, np
-                    distanceSq = sum( (Kmeans%Center(1:nd,ic) - Point(1:nd,ip))**2 )
+                    Kmeans%NormedPoint(1:nd,ip,ic) = Kmeans%Center(1:nd,ic) - Point(1:nd,ip)
+                    distanceSq = sum( Kmeans%NormedPoint(1:nd,ip,ic)**2 )
                     if (distanceSq < Kmeans%MinDistanceSq(ip)) then
                         Kmeans%MinDistanceSq(ip) = distanceSq
                         Kmeans%Membership(ip) = ic
@@ -301,7 +311,8 @@ contains
             Kmeans%potential = 0._RK
             Kmeans%Center(1:nd,ic) = SumPoint(1:nd,ic) / real(Kmeans%Size(ic), kind = RK)
             do ip = 1, np
-                distanceSq = sum( (Kmeans%Center(1:nd,ic) - Point(1:nd,ip))**2 )
+                Kmeans%NormedPoint(1:nd,ip,ic) = Kmeans%Center(1:nd,ic) - Point(1:nd,ip)
+                distanceSq = sum( Kmeans%NormedPoint(1:nd,ip,ic)**2 )
                 if (distanceSq < Kmeans%MinDistanceSq(ip)) then
                     Kmeans%MinDistanceSq(ip) = distanceSq
                     Kmeans%Membership(ip) = ic
@@ -339,7 +350,7 @@ contains
                     use Err_mod, only: abort
                     Kmeans%Err%msg = PROCEDURE_NAME//": Internal error occurred - Kmeans%Size < 0. Please report this issue along with circumstances to the developers."
                     call abort(Kmeans%Err)
-                    error stop
+                    return
                 end block
 #endif
 
@@ -402,7 +413,9 @@ contains
     !> \author
     ! Amir Shahmoradi, April 03, 2017, 2:16 PM, ICES, UTEXAS
     subroutine runKPP(nc, nd, np, Point, SumPoint, Membership, Size, potential)
-
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: runKPP
+#endif
         use Statistics_mod, only: getRandInt
 
         implicit none
@@ -474,4 +487,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module Kmeans_mod
+end module Kmeans_mod ! LCOV_EXCL_LINE

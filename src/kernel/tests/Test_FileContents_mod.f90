@@ -85,7 +85,7 @@ contains
         assertion = .not. RandomFileName%Err%occurred
         if (.not. assertion) then
             ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0))") "RandomFileName%Err%occurred = ", RandomFileName%Err%occurred
                 write(Test%outputUnit,"(*(g0))") "RandomFileName%Err%stat = ", RandomFileName%Err%stat
                 write(Test%outputUnit,"(*(g0))") "RandomFileName%Err%msg = ", RandomFileName%Err%msg
@@ -102,7 +102,7 @@ contains
         assertion = iostat == 0
         if (.not. assertion) then
             ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0))") "iostat = ", iostat, " <= 0"
             end if
             return
@@ -118,7 +118,7 @@ contains
         assertion = .not. FileContents%Err%occurred
         if (.not. assertion) then
             ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0))") "FileContents%Err%occurred = ", FileContents%Err%occurred
                 write(Test%outputUnit,"(*(g0))") "FileContents%Err%stat = ", FileContents%Err%stat
                 write(Test%outputUnit,"(*(g0))") "FileContents%Err%msg = ", FileContents%Err%msg
@@ -131,7 +131,7 @@ contains
         assertion = .not. OS%Err%occurred
         if (.not. assertion) then
             ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0))")
                 write(Test%outputUnit,"(*(g0))") "OS query failed."
                 write(Test%outputUnit,"(*(g0))") "OS%Err%occurred = ", OS%Err%occurred
@@ -145,7 +145,7 @@ contains
         assertion = .not. OS%Err%occurred
         if (.not. assertion) then
             ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0))")
                 write(Test%outputUnit,"(*(g0))") "File removal failed.", OS%Err%occurred
                 write(Test%outputUnit,"(*(g0))") "OS%Err%occurred = ", OS%Err%occurred
@@ -158,7 +158,7 @@ contains
         assertion = assertion .and. FileContents%numRecord==4
         if (.not. assertion) then
             ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0))") "FileContents%numRecord = ", FileContents%numRecord, " /= ", 4
             end if
             return
@@ -170,7 +170,7 @@ contains
         assertion = assertion .and. FileContents%Line(3)%record==""
         assertion = assertion .and. FileContents%Line(4)%record==""
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "numRecord  : ", num2str(FileContents%numRecord)
@@ -201,7 +201,7 @@ contains
         assertion = .not. RandomFileName%Err%occurred
         if (.not. assertion) then
             ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0))") "RandomFileName%Err%occurred = ", RandomFileName%Err%occurred
                 write(Test%outputUnit,"(*(g0))") "RandomFileName%Err%stat = ", RandomFileName%Err%stat
                 write(Test%outputUnit,"(*(g0))") "RandomFileName%Err%msg = ", RandomFileName%Err%msg
@@ -218,7 +218,7 @@ contains
         assertion = iostat == 0
         if (.not. assertion) then
             ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0))") "iostat = ", iostat, " <= 0"
             end if
             return
@@ -234,7 +234,7 @@ contains
         assertion = .not. FileContents%Err%occurred
         if (.not. assertion) then
             ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0))") "FileContents%Err%occurred = ", FileContents%Err%occurred
                 write(Test%outputUnit,"(*(g0))") "FileContents%Err%stat = ", FileContents%Err%stat
                 write(Test%outputUnit,"(*(g0))") "FileContents%Err%msg = ", FileContents%Err%msg
@@ -247,7 +247,7 @@ contains
         assertion = .not. OS%Err%occurred
         if (.not. assertion) then
             ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0))")
                 write(Test%outputUnit,"(*(g0))") "OS query failed."
                 write(Test%outputUnit,"(*(g0))") "OS%Err%occurred = ", OS%Err%occurred
@@ -261,7 +261,7 @@ contains
         assertion = .not. exist
         if (.not. assertion) then
             ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0))") "delEnabled = ", .true.
                 write(Test%outputUnit,"(*(g0))") "exist = ", exist
             end if
@@ -272,7 +272,7 @@ contains
         assertion = assertion .and. FileContents%numRecord==4
         if (.not. assertion) then
             ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0))") "FileContents%numRecord = ", FileContents%numRecord, " /= ", 4
             end if
             return
@@ -284,7 +284,7 @@ contains
         assertion = assertion .and. FileContents%Line(3)%record==""
         assertion = assertion .and. FileContents%Line(4)%record==""
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "numRecord  : ", num2str(FileContents%numRecord)

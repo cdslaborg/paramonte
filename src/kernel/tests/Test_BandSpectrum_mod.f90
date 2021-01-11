@@ -168,7 +168,7 @@ contains
         difference = 2._RK * abs(ebrk - BAND_SPEC1%ebrk) / (ebrk + BAND_SPEC1%ebrk)
         assertion = difference < 1.e-7_RK
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "Ebreak, Reference Ebreak, difference"
             write(Test%outputUnit,"(*(g0,:,', '))") ebrk, BAND_SPEC1%ebrk, difference
@@ -203,7 +203,7 @@ contains
         difference = abs( (ebrk - ebrk_ref) / ebrk_ref )
         assertion = difference < tolerance
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "ebrk_ref   ", ebrk_ref
@@ -216,7 +216,7 @@ contains
         difference = abs( (coef - coef_ref) / coef_ref )
         assertion = difference < tolerance
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "coef_ref   ", coef_ref
@@ -229,7 +229,7 @@ contains
         difference = abs( (alphaPlusTwo - alphaPlusTwo_ref) / alphaPlusTwo_ref )
         assertion = difference < tolerance
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "alphaPlusTwo_ref   ", alphaPlusTwo_ref
@@ -269,7 +269,7 @@ contains
         difference = abs( (photonFluxLower - photonFluxLower_ref) / photonFluxLower_ref )
         assertion = assertion .and. difference < tolerance
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photonFluxLower_ref", photonFluxLower_ref
@@ -308,7 +308,7 @@ contains
         difference = abs( (photonFlux - photonFlux_ref) / photonFlux_ref )
         assertion = assertion .and. difference < tolerance
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photonFlux_ref ", photonFlux_ref
@@ -347,7 +347,7 @@ contains
         difference = abs( (photonFlux - photonFlux_ref) / photonFlux_ref )
         assertion = assertion .and. difference < tolerance
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photonFlux_ref ", photonFlux_ref
@@ -381,7 +381,7 @@ contains
         photonFlux = getPhotonFlux(energy,epk,alpha,beta,ebrk,coef,alphaPlusTwo)
         assertion = photonFlux < 0._RK
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photonFlux     ", photonFlux
@@ -413,7 +413,7 @@ contains
         photonFlux = getPhotonFlux(energy,epk,alpha,beta,ebrk,coef,alphaPlusTwo)
         assertion = photonFlux < 0._RK
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photonFlux     ", photonFlux
@@ -445,7 +445,7 @@ contains
                                 )
         difference = 2._RK * abs( photonFluence - BAND_SPEC3%photonFluence ) / ( photonFluence + BAND_SPEC3%photonFluence )
         assertion = difference < BAND_SPEC3%tolerance
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
@@ -478,7 +478,7 @@ contains
                                 )
         difference = abs( photonFluence - 0._RK )
         assertion = difference < tolerance
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
@@ -509,7 +509,7 @@ contains
                                 , Err           = Err                   &
                                 )
         assertion = abs(photonFluence - 0._RK) < 1.e-12_RK
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence", photonFluence
@@ -539,7 +539,7 @@ contains
                                 , Err           = Err                   &
                                 )
         assertion = Err%occurred .and. photonFluence < 0._RK
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence", photonFluence
@@ -569,7 +569,7 @@ contains
                                 , Err           = Err                   &
                                 )
         assertion = Err%occurred .and. photonFluence < 0._RK
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
@@ -601,7 +601,7 @@ contains
                                 )
         difference = 2._RK * abs( energyFluence - BAND_SPEC3%energyFluence ) / ( energyFluence + BAND_SPEC3%energyFluence )
         assertion = difference < BAND_SPEC3%tolerance
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
@@ -632,7 +632,7 @@ contains
                                 , Err           = Err                   &
                                 )
         assertion = abs(EnergyFluence - 0._RK) < 1.e-12_RK
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "EnergyFluence", EnergyFluence
@@ -662,7 +662,7 @@ contains
                                 , Err           = Err                   &
                                 )
         assertion = Err%occurred .and. EnergyFluence < 0._RK
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "EnergyFluence", EnergyFluence
@@ -692,7 +692,7 @@ contains
                                 , Err           = Err                   &
                                 )
         assertion = Err%occurred .and. EnergyFluence < 0._RK
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "EnergyFluence", EnergyFluence
@@ -723,7 +723,7 @@ contains
                                                 , Err           = Err                       &
                                                 )
         assertion = abs(photonFluence - 0._RK) < 1.e-12_RK
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photonFluence", photonFluence
@@ -754,7 +754,7 @@ contains
                                                 , Err           = Err                       &
                                                 )
         assertion = Err%occurred .and. photonFluence < 0._RK
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photonFluence", photonFluence
@@ -785,7 +785,7 @@ contains
                                                 , Err           = Err                       &
                                                 )
         assertion = Err%occurred .and. photonFluence < 0._RK
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photonFluence", photonFluence
@@ -818,7 +818,7 @@ contains
                                 )
         difference = 2._RK * abs( photonFluence - BAND_SPEC1%photonFluence ) / ( photonFluence + BAND_SPEC1%photonFluence )
         assertion = difference < BAND_SPEC1%tolerance
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
@@ -850,7 +850,7 @@ contains
                                 )
         difference = 2._RK * abs( photonFluence - BAND_SPEC2%photonFluence ) / ( photonFluence + BAND_SPEC2%photonFluence )
         assertion = difference < BAND_SPEC2%tolerance
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
@@ -883,7 +883,7 @@ contains
                                 )
         difference = 2._RK * abs( photonFluence - BAND_SPEC4%photonFluence ) / ( photonFluence + BAND_SPEC4%photonFluence )
         assertion = difference < BAND_SPEC4%tolerance
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
@@ -913,7 +913,7 @@ contains
                                 )
         difference = 2._RK * abs( energyFluence - BAND_SPEC1%energyFluence ) / ( energyFluence + BAND_SPEC1%energyFluence )
         assertion = difference < BAND_SPEC1%tolerance
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
@@ -945,7 +945,7 @@ contains
                                 )
         difference = 2._RK * abs( energyFluence - BAND_SPEC2%energyFluence ) / ( energyFluence + BAND_SPEC2%energyFluence )
         assertion = difference < BAND_SPEC2%tolerance
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
@@ -977,7 +977,7 @@ contains
                                 )
         difference = 2._RK * abs( energyFluence - BAND_SPEC4%energyFluence ) / ( energyFluence + BAND_SPEC4%energyFluence )
         assertion = difference < BAND_SPEC4%tolerance
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
@@ -1008,7 +1008,7 @@ contains
                                                 )
         difference = 2._RK * abs( photonFluence - BAND_SPEC1%photonFluence ) / ( photonFluence + BAND_SPEC1%photonFluence )
         assertion = difference < BAND_SPEC1%tolerance
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
@@ -1039,7 +1039,7 @@ contains
                                                 )
         difference = 2._RK * abs( photonFluence - BAND_SPEC2%photonFluence ) / ( photonFluence + BAND_SPEC2%photonFluence )
         assertion = difference < BAND_SPEC2%tolerance
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
@@ -1070,7 +1070,7 @@ contains
                                                 )
         difference = 2._RK * abs( photonFluence - BAND_SPEC3%photonFluence ) / ( photonFluence + BAND_SPEC3%photonFluence )
         assertion = difference < BAND_SPEC3%tolerance
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
@@ -1101,7 +1101,7 @@ contains
                                                 )
         difference = 2 * abs( photonFluence - BAND_SPEC4%photonFluence ) / ( photonFluence + BAND_SPEC4%photonFluence )
         assertion = difference < BAND_SPEC4%tolerance
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
@@ -1134,7 +1134,7 @@ contains
                                                 )
         difference = 2._RK * abs( photonFluence - BAND_SPEC2%photonFluence ) / ( photonFluence + BAND_SPEC2%photonFluence )
         assertion = difference < BAND_SPEC4%tolerance
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"

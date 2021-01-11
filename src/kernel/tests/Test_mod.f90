@@ -72,9 +72,9 @@ module Test_mod
 
     type :: Test_type
 #if defined DEBUG_ENABLED || defined TESTING_ENABLD || defined CODECOV_ENABLD
-        logical                     :: isDebugMode = .true.
+        logical                     :: isVerboseMode = .true.
 #else
-        logical                     :: isDebugMode = .false.
+        logical                     :: isVerboseMode = .false.
 #endif
         integer(IK)                 :: outputUnit
         character(:), allocatable   :: moduleName

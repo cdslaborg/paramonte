@@ -95,7 +95,7 @@ contains
         assertion = difference < tolerance
 
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0.15))")
             write(Test%outputUnit,"(*(g0.15))") "logdvdz_ref   = ", logdvdz_ref
             write(Test%outputUnit,"(*(g0.15))") "logdvdz       = ", logdvdz
@@ -126,7 +126,7 @@ contains
         assertion = difference < tolerance
 
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0.15))")
             write(Test%outputUnit,"(*(g0.15))") "lumDisWicMpc_ref  = ", lumDisWicMpc_ref
             write(Test%outputUnit,"(*(g0.15))") "lumDisWicMpc      = ", lumDisWicMpc
@@ -157,7 +157,7 @@ contains
         assertion = difference < tolerance
 
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0.15))")
             write(Test%outputUnit,"(*(g0.15))") "logLumDisWicMpc_ref   = ", logLumDisWicMpc_ref
             write(Test%outputUnit,"(*(g0.15))") "logLumDisWicMpc       = ", logLumDisWicMpc
@@ -190,7 +190,7 @@ contains
         assertion = difference < tolerance
 
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0.15))")
             write(Test%outputUnit,"(*(g0.15))") "lookBackTime_ref  = ", lookBackTime_ref
             write(Test%outputUnit,"(*(g0.15))") "lookBackTime      = ", lookBackTime
@@ -221,7 +221,7 @@ contains
         assertion = difference < tolerance
 
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0.15))")
             write(Test%outputUnit,"(*(g0.15))") "lookBackTime_ref  = ", lookBackTime_ref
             write(Test%outputUnit,"(*(g0.15))") "lookBackTime      = ", lookBackTime
@@ -252,7 +252,7 @@ contains
         assertion = difference < tolerance
 
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0.15))")
             write(Test%outputUnit,"(*(g0.15))") "universeAgeDerivative_ref = ", universeAgeDerivative_ref
             write(Test%outputUnit,"(*(g0.15))") "universeAgeDerivative     = ", universeAgeDerivative

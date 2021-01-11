@@ -204,7 +204,7 @@ contains
             assertion = abs(LOG10EPK_LOG10PH(2,ip)-getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL))<tolerance
             if (assertion) cycle
             ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(*,"(A)") "The error with respect to reference value is larger than the tolerance.", new_line("a") &
                              , "tolerance, ip, LOG10EPK_LOG10PH(2,ip), getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL): " &
                              , tolerance, ip, LOG10EPK_LOG10PH(2,ip), getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL)
@@ -229,7 +229,7 @@ contains
             assertion = abs( getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL) - getLogPF53(LOG10EPK_LOG10PH(1,ip)*LN10,LOG10PBOL)/LN10 ) < tolerance
             if (assertion) cycle
             ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(*,"(A)") "The error with respect to reference value is larger than the tolerance.", new_line("a") &
                              , "tolerance, ip, LOG10EPK_LOG10PH(2,ip), getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL): " &
                              , tolerance, ip, LOG10EPK_LOG10PH(2,ip), getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL)
@@ -258,7 +258,7 @@ contains
                             ) < tolerance
             if (assertion) cycle
             ! LCOV_EXCL_START
-            if (Test%isDebugMode .and. .not. assertion) then
+            if (Test%isVerboseMode .and. .not. assertion) then
                 write(*,"(A)") "The error with respect to reference value is larger than the tolerance.", new_line("a") &
                              , "tolerance, ip, LOG10EPK_LOG10PH(2,ip), getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL): " &
                              , tolerance, ip, LOG10EPK_LOG10PH(2,ip), getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL)
@@ -282,7 +282,7 @@ contains
         difference = abs(logEffectivePeakPhotonFlux - logEffectivePeakPhotonFlux_ref)
         assertion = difference < tolerance
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "logEffectivePeakPhotonFlux_ref    = ", logEffectivePeakPhotonFlux_ref
             write(Test%outputUnit,"(*(g0))") "logEffectivePeakPhotonFlux        = ", logEffectivePeakPhotonFlux
@@ -306,7 +306,7 @@ contains
         difference = abs(logEffectivePeakPhotonFlux - logEffectivePeakPhotonFlux_ref)
         assertion = difference < tolerance
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "logEffectivePeakPhotonFlux_ref    = ", logEffectivePeakPhotonFlux_ref
             write(Test%outputUnit,"(*(g0))") "logEffectivePeakPhotonFlux        = ", logEffectivePeakPhotonFlux
@@ -330,7 +330,7 @@ contains
         difference = abs(logEffectivePeakPhotonFluxCorrection - logEffectivePeakPhotonFluxCorrection_ref)
         assertion = difference < tolerance
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "logEffectivePeakPhotonFluxCorrection_ref  = ", logEffectivePeakPhotonFluxCorrection_ref
             write(Test%outputUnit,"(*(g0))") "logEffectivePeakPhotonFluxCorrection      = ", logEffectivePeakPhotonFluxCorrection
@@ -354,7 +354,7 @@ contains
         difference = abs(logEffectivePeakPhotonFluxCorrection - logEffectivePeakPhotonFluxCorrection_ref)
         assertion = difference < tolerance
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "logEffectivePeakPhotonFluxCorrection_ref  = ", logEffectivePeakPhotonFluxCorrection_ref
             write(Test%outputUnit,"(*(g0))") "logEffectivePeakPhotonFluxCorrection      = ", logEffectivePeakPhotonFluxCorrection

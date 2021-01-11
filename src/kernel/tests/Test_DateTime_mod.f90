@@ -83,7 +83,7 @@ contains
 
         call DateTime%query()
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "           date:", DateTime%date
@@ -121,7 +121,7 @@ contains
         niceDateTime = getNiceDateTime()
         assertion = niceDateTime == DateTime%fancyStyleBasic
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "       getNiceDateTime():", niceDateTime

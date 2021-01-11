@@ -137,7 +137,7 @@ contains
             assertionCurrent = OutputList(i)%record == OutputList_ref(i)%record
             assertion = assertion .and. assertionCurrent
 
-            if (Test%isDebugMode .and. .not. assertionCurrent) then
+            if (Test%isVerboseMode .and. .not. assertionCurrent) then
             ! LCOV_EXCL_START
                 write(Test%outputUnit,"(*(g0))")
                 write(Test%outputUnit,"(*(g0))") "OutputList_ref(",num2str(i),")%record = ", OutputList_ref(i)%record
@@ -203,7 +203,7 @@ contains
             assertionCurrent = OutputList(i)%record == OutputList_ref(i)%record
             assertion = assertion .and. assertionCurrent
 
-            if (Test%isDebugMode .and. .not. assertionCurrent) then
+            if (Test%isVerboseMode .and. .not. assertionCurrent) then
             ! LCOV_EXCL_START
                 write(Test%outputUnit,"(*(g0))")
                 write(Test%outputUnit,"(*(g0))") "OutputList_ref(",num2str(i),")%record = ", OutputList_ref(i)%record
@@ -270,7 +270,7 @@ contains
             assertionCurrent = OutputList(i)%record == OutputList_ref(i)%record
             assertion = assertion .and. assertionCurrent
 
-            if (Test%isDebugMode .and. .not. assertionCurrent) then
+            if (Test%isVerboseMode .and. .not. assertionCurrent) then
             ! LCOV_EXCL_START
                 write(Test%outputUnit,"(*(g0))")
                 write(Test%outputUnit,"(*(g0))") "OutputList_ref(",num2str(i),")%record = ", OutputList_ref(i)%record
@@ -336,7 +336,7 @@ contains
             assertionCurrent = OutputList(i)%record == OutputList_ref(i)%record
             assertion = assertion .and. assertionCurrent
 
-            if (Test%isDebugMode .and. .not. assertionCurrent) then
+            if (Test%isVerboseMode .and. .not. assertionCurrent) then
             ! LCOV_EXCL_START
                 write(Test%outputUnit,"(*(g0))")
                 write(Test%outputUnit,"(*(g0))") "OutputList_ref(",num2str(i),")%record = ", OutputList_ref(i)%record
@@ -406,7 +406,7 @@ contains
             assertionCurrent = OutputList(i)%record == OutputList_ref(i)%record
             assertion = assertion .and. assertionCurrent
 
-            if (Test%isDebugMode .and. .not. assertionCurrent) then
+            if (Test%isVerboseMode .and. .not. assertionCurrent) then
             ! LCOV_EXCL_START
                 write(Test%outputUnit,"(*(g0))")
                 write(Test%outputUnit,"(*(g0))") "OutputList_ref(",num2str(i),")%record = ", OutputList_ref(i)%record
@@ -478,7 +478,7 @@ contains
             assertionCurrent = OutputList(i)%record == OutputList_ref(i)%record
             assertion = assertion .and. assertionCurrent
 
-            if (Test%isDebugMode .and. .not. assertionCurrent) then
+            if (Test%isVerboseMode .and. .not. assertionCurrent) then
             ! LCOV_EXCL_START
                 write(Test%outputUnit,"(*(g0))")
                 write(Test%outputUnit,"(*(g0))") "OutputList_ref(",num2str(i),")%record = '", OutputList_ref(i)%record, "'"

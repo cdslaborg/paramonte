@@ -104,7 +104,7 @@ contains
         assertion = assertion .and. Timer%Time%delta > 0.9_RK * seconds
 
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "Timer%Count%start: ", Timer%Count%start
             write(Test%outputUnit,"(*(g0))")   "Timer%Count%rate : ", Timer%Count%rate
@@ -143,7 +143,7 @@ contains
         assertion = assertion .and. Timer%total() > 0.9_RK * seconds
 
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "Timer%Count%start: ", Timer%Count%start
             write(Test%outputUnit,"(*(g0))")   "Timer%Count%rate : ", Timer%Count%rate
@@ -182,7 +182,7 @@ contains
         assertion = assertion .and. Timer%delta() > 0.9_RK * seconds
 
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "Timer%Count%start: ", Timer%Count%start
             write(Test%outputUnit,"(*(g0))")   "Timer%Count%rate : ", Timer%Count%rate

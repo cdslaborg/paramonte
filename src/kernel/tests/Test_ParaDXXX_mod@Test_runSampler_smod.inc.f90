@@ -90,7 +90,7 @@ contains
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. PD%SpecBase%RandomSeed%userSeed==userSeed_ref .and. PD%SpecMCMC%ChainSize%val==chainSize_ref
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "Image%id, PD%Err%occurred                   = ", PD%Image%id, PD%Err%occurred
             write(Test%outputUnit,"(*(g0))") "Image%id, PD%Err%msg                        = ", PD%Image%id, PD%Err%msg
@@ -191,7 +191,7 @@ contains
 
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD1%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
                 write(Test%outputUnit,"(*(g0,:,' '))")
@@ -225,7 +225,7 @@ contains
 
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD2%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
                 write(Test%outputUnit,"(*(g0,:,' '))")
@@ -238,7 +238,7 @@ contains
         ! LCOV_EXCL_START
             assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-12_RK ) ! by default, the output precision is only 8 digits
             if (.not. assertion) then
-                if (Test%isDebugMode) then
+                if (Test%isVerboseMode) then
                     write(Test%outputUnit,"(*(g0,:,' '))")
                     write(Test%outputUnit,"(*(g0,:,' '))")   "process, Difference:", Test%Image%id, abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState)
                     write(Test%outputUnit,"(*(g0,:,' '))")
@@ -320,7 +320,7 @@ contains
 
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD1%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
                 write(Test%outputUnit,"(*(g0,:,' '))")
@@ -347,7 +347,7 @@ contains
 
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD1%Err%occurred(2)", Test%Image%id, PD1%Err%occurred
                 write(Test%outputUnit,"(*(g0,:,' '))")
@@ -381,7 +381,7 @@ contains
 
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))") "process, PD2%Err%occurred", Test%Image%id, PD2%Err%occurred
                 write(Test%outputUnit,"(*(g0,:,' '))")
@@ -396,7 +396,7 @@ contains
             assertion = assertion .and. all(shape(PD2%RefinedChain%LogFuncState) == shape(PD1%RefinedChain%LogFuncState))
 
             if (.not. assertion) then
-                if (Test%isDebugMode) then
+                if (Test%isVerboseMode) then
                     write(*,"(10(g0,:,', '))")
                     write(*,"(10(g0,:,', '))") "shape(PD1%RefinedChain%LogFuncState)", shape(PD1%RefinedChain%LogFuncState)
                     write(*,"(10(g0,:,', '))") "shape(PD2%RefinedChain%LogFuncState)", shape(PD2%RefinedChain%LogFuncState)
@@ -408,7 +408,7 @@ contains
             assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-6_RK ) ! by default, the output precision is only 8 digits
 
             if (.not. assertion) then
-                if (Test%isDebugMode) then
+                if (Test%isVerboseMode) then
                     write(Test%outputUnit,"(*(g0,:,' '))")
                     write(Test%outputUnit,"(*(g0,:,' '))")   "process, Difference:", Test%Image%id, abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState)
                     write(Test%outputUnit,"(*(g0,:,' '))")
@@ -726,7 +726,7 @@ contains
             assertion = assertion .and. RefinedChain%numRefinement == 0_IK
 
             if (.not. assertion) then
-                if (Test%isDebugMode) then
+                if (Test%isVerboseMode) then
                     write(*,"(10(g0,:,', '))")
                     write(*,"(10(g0,:,', '))") "RefinedChain%numRefinement", RefinedChain%numRefinement
                     write(*,"(10(g0,:,', '))")
@@ -739,7 +739,7 @@ contains
             assertion = assertion .and. all( shape(FlattenedLogFuncState) == shape(RefinedChain%LogFuncState) )
 
             if (.not. assertion) then
-                if (Test%isDebugMode) then
+                if (Test%isVerboseMode) then
                     write(*,"(10(g0,:,', '))")
                     write(*,"(10(g0,:,', '))") "shape(PD%RefinedChain%LogFuncState) ", shape(PD%RefinedChain%LogFuncState)
                     write(*,"(10(g0,:,', '))") "shape(RefinedChain%LogFuncState)    ", shape(RefinedChain%LogFuncState)
@@ -755,7 +755,7 @@ contains
             assertion = assertion .and. all(Difference < tolerance)
 
             if (.not. assertion) then
-                if (Test%isDebugMode) then
+                if (Test%isVerboseMode) then
                     write(*,"(10(g0,:,', '))")
                     write(*,"(10(g0,:,', '))") "PD%RefinedChain%LogFuncState", PD%RefinedChain%LogFuncState
                     write(*,"(10(g0,:,', '))") "RefinedChain%LogFuncState   ", RefinedChain%LogFuncState
@@ -798,7 +798,7 @@ contains
 
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD1%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
                 write(Test%outputUnit,"(*(g0,:,' '))")
@@ -833,7 +833,7 @@ contains
 
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD2%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
                 write(Test%outputUnit,"(*(g0,:,' '))")
@@ -847,7 +847,7 @@ contains
             assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-12_RK ) ! by default, the output precision is only 8 digits
             if (.not. assertion) then
             ! LCOV_EXCL_START
-                if (Test%isDebugMode) then
+                if (Test%isVerboseMode) then
                     write(Test%outputUnit,"(*(g0,:,' '))")
                     write(Test%outputUnit,"(*(g0,:,' '))")   "process, Difference:", Test%Image%id, abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState)
                     write(Test%outputUnit,"(*(g0,:,' '))")
@@ -895,7 +895,7 @@ contains
 
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD1%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
                 write(Test%outputUnit,"(*(g0,:,' '))")
@@ -935,7 +935,7 @@ contains
 
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD2%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
                 write(Test%outputUnit,"(*(g0,:,' '))")
@@ -949,7 +949,7 @@ contains
             assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-12_RK ) ! by default, the output precision is only 8 digits
             if (.not. assertion) then
             ! LCOV_EXCL_START
-                if (Test%isDebugMode) then
+                if (Test%isVerboseMode) then
                     write(Test%outputUnit,"(*(g0,:,' '))")
                     write(Test%outputUnit,"(*(g0,:,' '))")   "process, Difference:", Test%Image%id, abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState)
                     write(Test%outputUnit,"(*(g0,:,' '))")
@@ -999,7 +999,7 @@ contains
 
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD1%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
                 write(Test%outputUnit,"(*(g0,:,' '))")
@@ -1040,7 +1040,7 @@ contains
 
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD2%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
                 write(Test%outputUnit,"(*(g0,:,' '))")
@@ -1054,7 +1054,7 @@ contains
             assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-12_RK ) ! by default, the output precision is only 8 digits
             if (.not. assertion) then
             ! LCOV_EXCL_START
-                if (Test%isDebugMode) then
+                if (Test%isVerboseMode) then
                     write(Test%outputUnit,"(*(g0,:,' '))")
                     write(Test%outputUnit,"(*(g0,:,' '))")   "process, Difference:", Test%Image%id, abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState)
                     write(Test%outputUnit,"(*(g0,:,' '))")
@@ -1106,7 +1106,7 @@ contains
 
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD1%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
                 write(Test%outputUnit,"(*(g0,:,' '))")
@@ -1148,7 +1148,7 @@ contains
 
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD2%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
                 write(Test%outputUnit,"(*(g0,:,' '))")
@@ -1162,7 +1162,7 @@ contains
             assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-12_RK ) ! by default, the output precision is only 8 digits
             if (.not. assertion) then
             ! LCOV_EXCL_START
-                if (Test%isDebugMode) then
+                if (Test%isVerboseMode) then
                     write(Test%outputUnit,"(*(g0,:,' '))")
                     write(Test%outputUnit,"(*(g0,:,' '))")   "process, Difference:", Test%Image%id, abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState)
                     write(Test%outputUnit,"(*(g0,:,' '))")
@@ -1214,7 +1214,7 @@ contains
 
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD1%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
                 write(Test%outputUnit,"(*(g0,:,' '))")
@@ -1256,7 +1256,7 @@ contains
 
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD2%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
                 write(Test%outputUnit,"(*(g0,:,' '))")
@@ -1270,7 +1270,7 @@ contains
             assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-12_RK ) ! by default, the output precision is only 8 digits
             if (.not. assertion) then
             ! LCOV_EXCL_START
-                if (Test%isDebugMode) then
+                if (Test%isVerboseMode) then
                     write(Test%outputUnit,"(*(g0,:,' '))")
                     write(Test%outputUnit,"(*(g0,:,' '))")   "process, Difference:", Test%Image%id, abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState)
                     write(Test%outputUnit,"(*(g0,:,' '))")
@@ -1334,7 +1334,7 @@ contains
 
             if (.not. assertion) then
             ! LCOV_EXCL_START
-                if (Test%isDebugMode) then
+                if (Test%isVerboseMode) then
                     write(*,"(10(g0,:,', '))")
                     write(*,"(10(g0,:,', '))") "RefinedChain%numRefinement", RefinedChain%numRefinement
                     write(*,"(10(g0,:,', '))")
@@ -1349,7 +1349,7 @@ contains
 
             if (.not. assertion) then
             ! LCOV_EXCL_START
-                if (Test%isDebugMode) then
+                if (Test%isVerboseMode) then
                     write(*,"(10(g0,:,', '))")
                     write(*,"(10(g0,:,', '))") "shape(PD%RefinedChain%LogFuncState) ", shape(PD%RefinedChain%LogFuncState)
                     write(*,"(10(g0,:,', '))") "shape(RefinedChain%LogFuncState)    ", shape(RefinedChain%LogFuncState)
@@ -1367,7 +1367,7 @@ contains
 
             if (.not. assertion) then
             ! LCOV_EXCL_START
-                if (Test%isDebugMode) then
+                if (Test%isVerboseMode) then
                     write(*,"(10(g0,:,', '))")
                     write(*,"(10(g0,:,', '))") "PD%RefinedChain%LogFuncState", PD%RefinedChain%LogFuncState
                     write(*,"(10(g0,:,', '))") "RefinedChain%LogFuncState   ", RefinedChain%LogFuncState
@@ -1431,7 +1431,7 @@ contains
             if (.not. assertion) return ! LCOV_EXCL_LINE
 
             if (.not. assertion) then
-                if (Test%isDebugMode) then
+                if (Test%isVerboseMode) then
                     write(*,"(10(g0,:,', '))")
                     write(*,"(10(g0,:,', '))") "Test%Image%id, RefinedChain%numRefinement", RefinedChain%numRefinement
                     write(*,"(10(g0,:,', '))") "Test%Image%id, RefinedChain%IAC", RefinedChain%IAC

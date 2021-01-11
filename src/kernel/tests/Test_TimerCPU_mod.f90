@@ -99,7 +99,7 @@ contains
         assertion = assertion .and. TimerCPU%Time%start <= TimerCPU%Time%stop
 
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "TimerCPU%Time%start : ", TimerCPU%Time%start
             write(Test%outputUnit,"(*(g0))")   "TimerCPU%Time%stop  : ", TimerCPU%Time%stop

@@ -164,7 +164,7 @@ contains
         call EnvVar%get(EnvVar%name,EnvVar%value,EnvVar%length,EnvVar%Err)
         !assertion = .not. EnvVar%Err%occurred .and. allocated(EnvVar%name) .and. allocated(EnvVar%value)
 
-        !if (Test%isDebugMode .and. .not. assertion) then
+        !if (Test%isVerboseMode .and. .not. assertion) then
         !! LCOV_EXCL_START
         !    write(Test%outputUnit,"(2A)")
         !    write(Test%outputUnit,"(2A)")   "EnvVar%name     : ", EnvVar%name
@@ -223,7 +223,7 @@ contains
         assertion = .not. CmdArg%Err%occurred
         !if (.not. assertion) return
 
-        !if (Test%isDebugMode .and. .not. assertion) then
+        !if (Test%isVerboseMode .and. .not. assertion) then
         !! LCOV_EXCL_START
         !    write(Test%outputUnit,"(2A)")
         !    write(Test%outputUnit,"(2A)")   "CmdArg%cmd      : ", CmdArg%cmd
@@ -263,7 +263,7 @@ contains
         !assertion = .not. OS%Err%occurred .and. .not. OS%Shell%Err%occurred
         !if (.not. assertion) return
 
-        !if (Test%isDebugMode .and. .not. assertion) then
+        !if (Test%isVerboseMode .and. .not. assertion) then
         !! LCOV_EXCL_START
         !    write(Test%outputUnit,"(2A)")
         !    write(Test%outputUnit,"(2A)")   "OS%name     : ", OS%name
@@ -303,7 +303,7 @@ contains
         call queryRuntimeShell(OS%Shell)
         !assertion = assertion .and. .not. OS%Shell%Err%occurred
 
-        !if (Test%isDebugMode .and. .not. assertion) then
+        !if (Test%isVerboseMode .and. .not. assertion) then
         !! LCOV_EXCL_START
         !    write(Test%outputUnit,"(2A)")
         !    write(Test%outputUnit,"(2A)")   "OS%name           : ", OS%name
@@ -322,7 +322,7 @@ contains
         call OS%query()
         !assertion = assertion .and. .not. OS%Err%occurred .and. .not. OS%Shell%Err%occurred
 
-        !if (Test%isDebugMode .and. .not. assertion) then
+        !if (Test%isVerboseMode .and. .not. assertion) then
         !! LCOV_EXCL_START
         !    write(Test%outputUnit,"(2A)")
         !    write(Test%outputUnit,"(2A)")   "OS%name           : ", OS%name
@@ -365,7 +365,7 @@ contains
         call OS%query(shellQueryEnabled = .false.)
         !assertion = assertion .and. .not. OS%Shell%Err%occurred
 
-        !if (Test%isDebugMode .and. .not. assertion) then
+        !if (Test%isVerboseMode .and. .not. assertion) then
         !! LCOV_EXCL_START
         !    write(Test%outputUnit,"(2A)")
         !    write(Test%outputUnit,"(2A)")   "OS%name           : ", OS%name
@@ -384,7 +384,7 @@ contains
         call OS%query(shellQueryEnabled = .true.)
         !assertion = assertion .and. .not. OS%Err%occurred .and. .not. OS%Shell%Err%occurred
 
-        !if (Test%isDebugMode .and. .not. assertion) then
+        !if (Test%isVerboseMode .and. .not. assertion) then
         !! LCOV_EXCL_START
         !    write(Test%outputUnit,"(2A)")
         !    write(Test%outputUnit,"(2A)")   "OS%name           : ", OS%name
@@ -539,7 +539,7 @@ contains
         assertion = assertion .and. RFN%key == "test_RandomFileName_type"  !  // "_image_" // num2str(this_image())
         assertion = assertion .and. RFN%ext == ".rfn"
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(2A)")
             write(Test%outputUnit,"(2A)")   "RFN%path     : ", RFN%path
