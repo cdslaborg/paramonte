@@ -119,9 +119,9 @@ contains
 
         assertion = .true.
 
-        Kmeans = Kmeans_type( nc = nc & ! LCOV_EXCL_LINE
-                            , nd = TestData%nd & ! LCOV_EXCL_LINE
+        Kmeans = Kmeans_type( nd = TestData%nd & ! LCOV_EXCL_LINE
                             , np = TestData%np & ! LCOV_EXCL_LINE
+                            , nc = nc & ! LCOV_EXCL_LINE
                             , Point = TestData%Point & ! LCOV_EXCL_LINE
                             )
 
@@ -197,9 +197,9 @@ contains
 
         InitCenter = reshape([4.7_RK, 4.7_RK, 6.4_RK, 6.1_RK, 9.5_RK, 8.6_RK], shape = [TestData%nd,nc])
 
-        Kmeans = Kmeans_type( nc = nc & ! LCOV_EXCL_LINE
-                            , nd = TestData%nd & ! LCOV_EXCL_LINE
+        Kmeans = Kmeans_type( nd = TestData%nd & ! LCOV_EXCL_LINE
                             , np = TestData%np & ! LCOV_EXCL_LINE
+                            , nc = nc & ! LCOV_EXCL_LINE
                             , Point = TestData%Point & ! LCOV_EXCL_LINE
                             , InitCenter = InitCenter & ! LCOV_EXCL_LINE
                             )
@@ -276,9 +276,9 @@ contains
 
         assertion = .true.
 
-        Kmeans = Kmeans_type( nc = nc & ! LCOV_EXCL_LINE
-                            , nd = TestData%nd & ! LCOV_EXCL_LINE
+        Kmeans = Kmeans_type( nd = TestData%nd & ! LCOV_EXCL_LINE
                             , np = TestData%np & ! LCOV_EXCL_LINE
+                            , nc = nc & ! LCOV_EXCL_LINE
                             , Point = TestData%Point & ! LCOV_EXCL_LINE
                             , niterMax = niterMax & ! LCOV_EXCL_LINE
                             )
@@ -354,9 +354,9 @@ contains
 
         assertion = .true.
 
-        Kmeans = Kmeans_type( nc = nc & ! LCOV_EXCL_LINE
-                            , nd = TestData%nd & ! LCOV_EXCL_LINE
+        Kmeans = Kmeans_type( nd = TestData%nd & ! LCOV_EXCL_LINE
                             , np = TestData%np & ! LCOV_EXCL_LINE
+                            , nc = nc & ! LCOV_EXCL_LINE
                             , Point = TestData%Point & ! LCOV_EXCL_LINE
                             , nzsciMax = nzsciMax & ! LCOV_EXCL_LINE
                             , relTol = relTol & ! LCOV_EXCL_LINE
@@ -424,7 +424,7 @@ contains
         use String_mod, only: num2str
         implicit none
         integer(IK) , parameter     :: nc = 3_IK
-        integer(IK) , parameter     :: ntry = 2_IK + nint(log(real(nc)))
+        integer(IK) , parameter     :: nt = 2_IK + nint(log(real(nc)))
         real(RK)    , allocatable   :: InitCenter(:,:)
         logical                     :: assertion
         type(Kmeans_type)           :: Kmeans
@@ -434,12 +434,12 @@ contains
 
         InitCenter = reshape([4.7_RK, 4.7_RK, 6.4_RK, 6.1_RK, 9.5_RK, 8.6_RK], shape = [TestData%nd,nc])
 
-        Kmeans = Kmeans_type( nc = nc & ! LCOV_EXCL_LINE
-                            , nd = TestData%nd & ! LCOV_EXCL_LINE
+        Kmeans = Kmeans_type( nd = TestData%nd & ! LCOV_EXCL_LINE
                             , np = TestData%np & ! LCOV_EXCL_LINE
+                            , nc = nc & ! LCOV_EXCL_LINE
+                            , nt = nt & ! LCOV_EXCL_LINE
                             , Point = TestData%Point & ! LCOV_EXCL_LINE
                             , InitCenter = InitCenter & ! LCOV_EXCL_LINE
-                            , ntry = ntry & ! LCOV_EXCL_LINE
                             )
 
         ! write data to output for further investigation
@@ -517,9 +517,9 @@ contains
 
             nc = ncMax ! getRandInt(2,ncMax)
             np = TestData%np ! getRandInt(100,TestData%np)
-            Kmeans = Kmeans_type( nc = nc & ! LCOV_EXCL_LINE
-                                , nd = TestData%nd & ! LCOV_EXCL_LINE
+            Kmeans = Kmeans_type( nd = TestData%nd & ! LCOV_EXCL_LINE
                                 , np = np & ! LCOV_EXCL_LINE
+                                , nc = nc & ! LCOV_EXCL_LINE
                                 , Point = TestData%Point(1:TestData%nd,1:np)& ! LCOV_EXCL_LINE
                                 , nzsciMax = nzsciMax & ! LCOV_EXCL_LINE
                                 , relTol = relTol & ! LCOV_EXCL_LINE

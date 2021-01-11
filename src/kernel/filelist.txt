@@ -27,6 +27,7 @@
   Statistics_mod.f90
   Kmeans_mod.f90
   KmeansOOP_mod.f90
+  MinVolPartition_mod.f90
   GeoCyclicFit_mod.f90
   Parallelism_mod.f90
   CorrCoef_mod.f90
