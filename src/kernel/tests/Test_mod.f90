@@ -378,6 +378,18 @@ contains
             call sleep(0.02_RK, Err)
         end block
 
+#if defined CODECOV_ENABLED || DEBUG_ENABLED || TESTING_ENABLED
+        if (.not. assertion) then
+            Test%Err%occurred = .true.
+            Test%Err%msg = "The test assertion is FALSE."
+            call abort  ( Err = Test%Err &
+                        , prefix = "ParaMonteCodeCov" &
+                        , newline = "\n" &
+                        , outputUnit = Test%outputUnit &
+                        )
+        end if
+#endif
+
     end subroutine runTest
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
