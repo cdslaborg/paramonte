@@ -50,6 +50,6 @@
 
 submodule (ParaDRAM_mod) Input_smod
 #define PARADRAM ParaDRAM
-#include "ParaDXXX_mod@Input_smod.inc.f90"
+#include "ParaXXXX_mod@Input_smod.inc.f90"
 #undef PARADRAM
 end submodule Input_smod ! LCOV_EXCL_LINE

@@ -50,7 +50,7 @@
 
 submodule (ParaDRAM_mod) Setup_smod
 #define PARADRAM ParaDRAM
-#include "ParaDXXX_mod@Setup_smod.inc.f90"
+#include "ParaXXXX_mod@Setup_smod.inc.f90"
 #undef PARADRAM
 end submodule Setup_smod
 

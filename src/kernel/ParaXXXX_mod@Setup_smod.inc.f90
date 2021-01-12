@@ -50,21 +50,29 @@
 
 #if defined PARADRAM
 
-#define ParaDXXX ParaDRAM
-#define ParaDXXX_type ParaDRAM_type
-#define ParaDXXXProposalAbstract_mod ParaDRAMProposalAbstract_mod
+#define ParaXXXX ParaDRAM
+#define ParaXXXX_type ParaDRAM_type
+#define ParaXXXXProposalAbstract_mod ParaDRAMProposalAbstract_mod
 
 #elif defined PARADISE
 
-#define ParaDXXX ParaDISE
-#define ParaDXXX_type ParaDISE_type
-#define ParaDXXXProposalAbstract_mod ParaDISEProposalAbstract_mod
+#define ParaXXXX ParaDISE
+#define ParaXXXX_type ParaDISE_type
+#define ParaXXXXProposalAbstract_mod ParaDISEProposalAbstract_mod
+
+#elif defined PARANEST
+
+#define ParaXXXX ParaNest
+#define ParaXXXX_type ParaNest_type
+#define ParaXXXXProposalAbstract_mod ParaNestProposalAbstract_mod
 
 #else
-#error "Unrecognized sampler in ParaDXXX_mod@Setup_mod.inc.f90"
+#error "Unrecognized sampler in ParaXXXX_mod@Setup_mod.inc.f90"
 #endif
 
 !submodule (ParaDRAM_mod) Setup_smod
+!submodule (ParaDISE_mod) Setup_smod
+!submodule (ParaNest_mod) Setup_smod
 
     !use Constants_mod, only: IK, RK ! gfortran 9.3 compile crashes with this line
     implicit none
@@ -123,6 +131,7 @@ contains
                                 , mpiFinalizeRequested                  &
                                 , maxNumDomainCheckToWarn               &
                                 , maxNumDomainCheckToStop               &
+#if defined PARADRAM || defined PARADISE
                                 ! ParaMCMC variables
                                 , chainSize                             &
                                 , startPointVec                         &
@@ -143,9 +152,9 @@ contains
                                 , delayedRejectionCount                 &
                                 , burninAdaptationMeasure               &
                                 , delayedRejectionScaleFactorVec        &
-                                ) !  result(self)
+#endif
+                                )
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
-        !!DEC$ ATTRIBUTES DLLEXPORT :: ParaDXXX_type
         !DEC$ ATTRIBUTES DLLEXPORT :: runSampler
 #endif
         use, intrinsic :: iso_fortran_env, only: output_unit, stat_stopped_image
@@ -155,6 +164,8 @@ contains
 #elif defined PARADISE
         use ParaDISEProposalUniform_mod, only: ProposalUniform_type => Proposal_type
         use ParaDISEProposalNormal_mod, only: ProposalNormal_type => Proposal_type
+#elif defined PARANEST
+        use ParaNestProposalRejection_mod, only: ProposalRejection_type => Proposal_type
 #endif
         use ParaMonteLogFunc_mod, only: getLogFunc_proc
         use Decoration_mod, only: GENERIC_OUTPUT_FORMAT
@@ -174,7 +185,7 @@ contains
         implicit none
 
         ! self
-        class(ParaDXXX_type), intent(inout) :: self
+        class(ParaXXXX_type), intent(inout) :: self
 
         ! mandatory variables
         integer(IK) , intent(in)            :: ndim
@@ -204,6 +215,7 @@ contains
         integer(IK) , intent(in), optional  :: maxNumDomainCheckToWarn
         integer(IK) , intent(in), optional  :: maxNumDomainCheckToStop
 
+#if defined PARADRAM || defined PARADISE
         ! ParaMCMC variables
         integer(IK) , intent(in), optional  :: chainSize
         real(RK)    , intent(in), optional  :: startPointVec(ndim)
@@ -225,6 +237,7 @@ contains
         integer(IK) , intent(in), optional  :: delayedRejectionCount
         real(RK)    , intent(in), optional  :: burninAdaptationMeasure
         real(RK)    , intent(in), optional  :: delayedRejectionScaleFactorVec(:)
+#endif
 
         character(*), parameter             :: PROCEDURE_NAME = SUBMODULE_NAME // "@runSampler()"
 
@@ -240,7 +253,7 @@ contains
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         call self%setupParaMonte( nd = ndim             &
-                                , name = PMSM%ParaDXXX  &
+                                , name = PMSM%ParaXXXX  &
                                 , inputFile = inputFile &
                                 )
 #if (defined MPI_ENABLED || defined CAF_ENABLED) && (defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED)
@@ -262,7 +275,7 @@ contains
         call self%setupParaMCMC()
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        ! Initialize ParaDXXX variables
+        ! Initialize ParaXXXX variables
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         self%SpecDRAM = SpecDRAM_type( self%nd%val, self%name ) ! , self%SpecMCMC%ChainSize%def )
@@ -503,9 +516,9 @@ contains
 #if (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED
             block
 #if defined PARADRAM
-                use ParaDXXXProposalAbstract_mod, only: ProposalErr
+                use ParaXXXXProposalAbstract_mod, only: ProposalErr
 #elif defined PARADISE
-                use ParaDXXXProposalAbstract_mod, only: ProposalErr
+                use ParaXXXXProposalAbstract_mod, only: ProposalErr
 #endif
 
 #if (defined MPI_ENABLED || defined CAF_ENABLED) && (defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED)
@@ -521,7 +534,7 @@ contains
 #endif
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        ! run ParaDXXX kernel
+        ! run ParaXXXX kernel
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         if (self%isFreshRun .and. self%Image%isLeader) then
@@ -552,10 +565,10 @@ contains
         end if
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        ! start ParaDXXX post-processing
+        ! start ParaXXXX post-processing
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        ! WARNING: For any error that happens within the leader if block below, the control must be passed to after the block
+        ! WARNING: For any error that happens within the leader if-block below, the control must be passed to after the block
         ! WARNING: This is essential for error handling during testing in parallel mode.
 
         blockLeaderPostProcessing: if (self%Image%isLeader) then
@@ -1794,6 +1807,6 @@ contains
 
 !end submodule Setup_smod
 
-#undef ParaDXXXProposalAbstract_mod
-#undef ParaDXXX_type
-#undef ParaDXXX
+#undef ParaXXXXProposalAbstract_mod
+#undef ParaXXXX_type
+#undef ParaXXXX

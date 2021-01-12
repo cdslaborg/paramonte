@@ -25,10 +25,10 @@
   Test_Path_mod.f90
   Test_ParaDRAM_mod.f90
   Test_ParaDISE_mod.f90
-  Test_ParaDXXX_mod@Test_SpecBase_smod.f90
-  Test_ParaDXXX_mod@Test_SpecMCMC_smod.f90
-  Test_ParaDXXX_mod@Test_SpecDRAM_smod.f90
-  Test_ParaDXXX_mod@Test_runSampler_smod.f90
+  Test_ParaXXXX_mod@Test_SpecBase_smod.f90
+  Test_ParaXXXX_mod@Test_SpecMCMC_smod.f90
+  Test_ParaXXXX_mod@Test_SpecDRAM_smod.f90
+  Test_ParaXXXX_mod@Test_runSampler_smod.f90
   Test_Parallelism_mod.f90
   Test_ParaMCMCRefinedChain_mod.f90
   Test_ParaMonteChainFileContents_mod.f90

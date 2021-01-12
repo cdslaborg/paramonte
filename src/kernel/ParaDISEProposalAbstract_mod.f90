@@ -50,6 +50,6 @@
 
 module ParaDISEProposalAbstract_mod
 #define PARADISE ParaDISE
-#include "ParaDXXXProposalAbstract_mod.inc.f90"
+#include "ParaXXXXProposalAbstract_mod.inc.f90"
 #undef ParaDISE
 end module ParaDISEProposalAbstract_mod ! LCOV_EXCL_LINE

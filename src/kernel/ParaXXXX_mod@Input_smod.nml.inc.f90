@@ -1,4 +1,4 @@
-! The MACRO variable "NAMELIST" will have to be replaced by the sampler name: ParaDRAM, ParaDISE, ParaDXXX
+! The MACRO variable "NAMELIST" will have to be replaced by the sampler name: ParaDRAM, ParaDISE, ParaXXXX
 
         ! ParaMonte variables
         namelist /NAMELIST/ sampleSize

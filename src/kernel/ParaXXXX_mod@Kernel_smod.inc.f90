@@ -50,24 +50,24 @@
 
 #if defined PARADRAM
 
-#define ParaDXXX_type ParaDRAM_type
-#define ParaDXXXProposalAbstract_mod ParaDRAMProposalAbstract_mod
+#define ParaXXXX_type ParaDRAM_type
+#define ParaXXXXProposalAbstract_mod ParaDRAMProposalAbstract_mod
 
 #elif defined PARADISE
 
-#define ParaDXXX_type ParaDISE_type
-#define ParaDXXXProposalAbstract_mod ParaDISEProposalAbstract_mod
+#define ParaXXXX_type ParaDISE_type
+#define ParaXXXXProposalAbstract_mod ParaDISEProposalAbstract_mod
 
 #else
 
-#error "Unrecognized sampler in ParaDXXX_mod.inc.f90"
+#error "Unrecognized sampler in ParaXXXX_mod.inc.f90"
 
 #endif
 
     use, intrinsic :: iso_fortran_env, only: output_unit
     !use Constants_mod, only: IK, RK ! gfortran 9.3 compile crashes with this line
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED || ( (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED )
-    use ParaDXXXProposalAbstract_mod, only: ProposalErr
+    use ParaXXXXProposalAbstract_mod, only: ProposalErr
 #endif
 
 #if defined MPI_ENABLED
@@ -115,7 +115,7 @@ contains
         character(*), parameter             :: PROCEDURE_NAME = SUBMODULE_NAME//"@runKernel()"
         integer(IK) , parameter             :: CHAIN_RESTART_OFFSET = 2_IK
 
-        class(ParaDXXX_type), intent(inout) :: self
+        class(ParaXXXX_type), intent(inout) :: self
         procedure(getLogFunc_proc)          :: getLogFunc
 
 #if defined CAF_ENABLED
@@ -790,11 +790,11 @@ contains
 #if defined CAF_ENABLED || defined MPI_ENABLED
             blockSingleChainParallelism: if (self%SpecBase%ParallelizationModel%isSinglChain) then
 #define SINGLCHAIN_PARALLELISM
-#include "ParaDXXX_mod@Kernel_smod@nextMove.inc.f90"
+#include "ParaXXXX_mod@Kernel_smod@nextMove.inc.f90"
 #undef SINGLCHAIN_PARALLELISM
             else blockSingleChainParallelism
 #endif
-#include "ParaDXXX_mod@Kernel_smod@nextMove.inc.f90"
+#include "ParaXXXX_mod@Kernel_smod@nextMove.inc.f90"
 #if defined CAF_ENABLED || defined MPI_ENABLED
             end if blockSingleChainParallelism
 #endif
@@ -1074,5 +1074,5 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#undef ParaDXXX_type
-#undef ParaDXXXProposalAbstract_mod
+#undef ParaXXXX_type
+#undef ParaXXXXProposalAbstract_mod

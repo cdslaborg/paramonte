@@ -75,7 +75,7 @@
 #if (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED
                     if(ProposalErr%occurred) then; self%Err%occurred = .true.; self%Err%msg = ProposalErr%msg; return; end if
 #elif defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
-                    ! This block is exclusively used to test the deterministic restart functionality of ParaDXXX samplers. 
+                    ! This block is exclusively used to test the deterministic restart functionality of ParaXXXX samplers. 
                     ! This block must not be activated under any other circumstances.
                     ! This block must be executed by all images.
                     self%testSamplingCounter = self%testSamplingCounter + 1_IK

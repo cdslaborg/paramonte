@@ -40,43 +40,35 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-!>  \brief These submodules contain tests of the modules [ParaDRAM_mod](@ref paradram_mod) and [ParaDISE_mod](@ref paradise_mod).
-!>  \author Amir Shahmoradi
+#define NORMAL
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!> \brief
+!> This module implements the body of the `ParaDRAMProposalNormal_mod` module of the `ParaDRAM` sampler.
+!>
+!> \remark
+!> This module requires preprocessing prior to compilation.
+!>
+!> \author Amir Shahmoradi
 
-#define ParaDXXX_mod ParaDRAM_mod
-#define ParaDXXX_type ParaDRAM_type
-#define test_ParaDXXX test_ParaDRAM
-#define ParaDXXX_NML "&ParaDRAM"
-#define ParaDXXX ParaDRAM
+module ParaDRAMProposalNormal_mod
+!use Statistics_mod
+#define PARADRAM ParaDRAM
+#include "ParaXXXXProposal_mod.inc.f90"
+#undef PARADRAM
+end module ParaDRAMProposalNormal_mod ! LCOV_EXCL_LINE
 
-submodule (Test_ParaDRAM_mod) Test_SpecMCMC_smod
-#include "Test_ParaDXXX_mod@Test_SpecMCMC_smod.inc.f90"
-end submodule Test_SpecMCMC_smod
+!> \brief
+!> This module implements the body of the `ParaDISEProposalNormal_mod` module of the `ParaDISE` sampler.
+!>
+!> \remark
+!> This module requires preprocessing prior to compilation.
+!>
+!> \author Amir Shahmoradi
 
-#undef ParaDXXX_mod
-#undef ParaDXXX_type
-#undef test_ParaDXXX
-#undef ParaDXXX_NML
-#undef ParaDXXX
+module ParaDISEProposalNormal_mod
+#define PARADISE ParaDISE
+#include "ParaXXXXProposal_mod.inc.f90"
+#undef PARADISE
+end module ParaDISEProposalNormal_mod ! LCOV_EXCL_LINE
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-#define ParaDXXX_mod ParaDISE_mod
-#define ParaDXXX_type ParaDISE_type
-#define test_ParaDXXX test_ParaDISE
-#define ParaDXXX_NML "&ParaDISE"
-#define ParaDXXX ParaDISE
-
-submodule (Test_ParaDISE_mod) Test_SpecMCMC_smod
-#include "Test_ParaDXXX_mod@Test_SpecMCMC_smod.inc.f90"
-end submodule Test_SpecMCMC_smod
-
-#undef ParaDXXX_mod
-#undef ParaDXXX_type
-#undef test_ParaDXXX
-#undef ParaDXXX_NML
-#undef ParaDXXX
-
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#undef NORMAL

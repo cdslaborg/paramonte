@@ -40,34 +40,43 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-#define UNIFORM
+!>  \brief These submodules contain tests of the modules [ParaDRAM_mod](@ref paradram_mod) and [ParaDISE_mod](@ref paradise_mod).
+!>  \author Amir Shahmoradi
 
-!> \brief
-!> This module implements the body of the `ParaDRAMProposalUniform_mod` module of the `ParaDRAM` sampler.
-!>
-!> \remark
-!> This module requires preprocessing prior to compilation.
-!>
-!> \author Amir Shahmoradi
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-module ParaDRAMProposalUniform_mod
-#define PARADRAM ParaDRAM
-#include "ParaDXXXProposal_mod.inc.f90"
-#undef PARADRAM
-end module ParaDRAMProposalUniform_mod ! LCOV_EXCL_LINE
+#define ParaXXXX_mod ParaDRAM_mod
+#define ParaXXXX_type ParaDRAM_type
+#define test_ParaXXXX test_ParaDRAM
+#define ParaXXXX_NML "&ParaDRAM"
+#define ParaXXXX ParaDRAM
 
-!> \brief
-!> This module implements the body of the `ParaDISEProposalUniform_mod` module of the `ParaDISE` sampler.
-!>
-!> \remark
-!> This module requires preprocessing prior to compilation.
-!>
-!> \author Amir Shahmoradi
+submodule (Test_ParaDRAM_mod) Test_SpecDRAM_smod
+#include "Test_ParaXXXX_mod@Test_SpecDRAM_smod.inc.f90"
+end submodule Test_SpecDRAM_smod
 
-module ParaDISEProposalUniform_mod
-#define PARADISE ParaDISE
-#include "ParaDXXXProposal_mod.inc.f90"
-#undef PARADISE
-end module ParaDISEProposalUniform_mod ! LCOV_EXCL_LINE
+#undef ParaXXXX_mod
+#undef ParaXXXX_type
+#undef test_ParaXXXX
+#undef ParaXXXX_NML
+#undef ParaXXXX
 
-#undef UNIFORM
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+#define ParaXXXX_mod ParaDISE_mod
+#define ParaXXXX_type ParaDISE_type
+#define test_ParaXXXX test_ParaDISE
+#define ParaXXXX_NML "&ParaDISE"
+#define ParaXXXX ParaDISE
+
+submodule (Test_ParaDISE_mod) Test_SpecDRAM_smod
+#include "Test_ParaXXXX_mod@Test_SpecDRAM_smod.inc.f90"
+end submodule Test_SpecDRAM_smod
+
+#undef ParaXXXX_mod
+#undef ParaXXXX_type
+#undef test_ParaXXXX
+#undef ParaXXXX_NML
+#undef ParaXXXX
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

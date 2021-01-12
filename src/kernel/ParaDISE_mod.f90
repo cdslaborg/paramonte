@@ -50,6 +50,6 @@
 
 module ParaDISE_mod
 #define PARADISE ParaDISE
-#include "ParaDXXX_mod.inc.f90"
+#include "ParaXXXX_mod.inc.f90"
 #undef PARADISE
 end module ParaDISE_mod ! LCOV_EXCL_LINE

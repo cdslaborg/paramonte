@@ -41,15 +41,15 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !> \brief
-!> This submodule contains the kernel procedures and routines of the ParaDRAM sampler.
+!> This module contains procedures and routines for the ParaNest sampler.
 !>
 !> \remark
 !> This module requires preprocessing, prior to compilation.
 !>
 !> \author Amir Shahmoradi
 
-submodule (ParaDRAM_mod) Kernel_smod
-#define PARADRAM ParaDRAM
-#include "ParaXXXX_mod@Kernel_smod.inc.f90"
-#undef PARADRAM
-end submodule Kernel_smod ! LCOV_EXCL_LINE
+module ParaNest_mod
+#define PARANEST ParaNest
+#include "ParaXXXX_mod.inc.f90"
+#undef PARANEST
+end module ParaNest_mod ! LCOV_EXCL_LINE
