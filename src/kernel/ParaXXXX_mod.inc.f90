@@ -114,6 +114,7 @@
         procedure, pass, private                    :: getSpecFromInputFile
         procedure, pass, public                     :: runSampler
         procedure, pass, private                    :: runKernel
+        procedure, pass, private                    :: postprocess
     end type ParaXXXX_type ! ParaDRAM_type or ParaDISE_type
 #endif
 
@@ -258,6 +259,17 @@
 #endif
 
     end subroutine runSampler
+    end interface
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    interface
+    module subroutine postprocess(self)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: postprocess
+#endif
+        class(ParaXXXX_type), intent(inout) :: self
+    end subroutine postprocess
     end interface
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
