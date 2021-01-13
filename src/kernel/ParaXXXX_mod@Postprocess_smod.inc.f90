@@ -126,6 +126,7 @@ contains
 
         ndim = self%nd%val
 
+        ! @todo: Ever sinze postprocessing has become a separate submodule, is the following WARNING relevant anymore?
         ! WARNING: For any error that happens within the leader if-block below, the control must be passed to after the block
         ! WARNING: This is essential for error handling during testing in parallel mode.
 

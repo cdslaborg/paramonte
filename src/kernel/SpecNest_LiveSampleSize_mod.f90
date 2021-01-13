@@ -41,39 +41,33 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !> \brief
-!> This module contains the classes and procedures for setting up the `proposalModel` attribute of samplers of class [ParaMCMC_type](@ref paramcmc_mod::paramcmc_type).
+!> This module contains the classes and procedures for setting up the `liveSampleSize` attribute of samplers of class [ParaNest_type](@ref paranest_mod::paranest_type).
 !> For more information, see the description of this attribute in the body of the module.
 !> \author Amir Shahmoradi
 
-module SpecMCMC_ProposalModel_mod
+module SpecNest_LiveSampleSize_mod
 
     use Constants_mod, only: IK
     implicit none
 
-    character(*), parameter         :: MODULE_NAME = "@SpecMCMC_ProposalModel_mod"
+    character(*), parameter         :: MODULE_NAME = "@SpecNest_LiveSampleSize_mod"
 
-    integer(IK), parameter          :: MAX_LEN_PROPOSAL_MODEL = 63_IK
+    integer(IK)                     :: liveSampleSize ! namelist input
 
-    character(:), allocatable       :: proposalModel ! namelist input
-
-    type                            :: ProposalModel_type
-        logical                     :: isUniform
-        logical                     :: isNormal
-        character(7)                :: uniform
-        character(6)                :: normal
-        character(:), allocatable   :: val
-        character(:), allocatable   :: def
-        character(:), allocatable   :: null
+    type                            :: LiveSampleSize_type
+        integer(IK)                 :: val
+        integer(IK)                 :: def
+        integer(IK)                 :: null
         character(:), allocatable   :: desc
     contains
-        procedure, pass             :: set => setProposalModel, checkForSanity, nullifyNameListVar
-    end type ProposalModel_type
+        procedure, pass             :: set, checkForSanity, nullifyNameListVar
+    end type LiveSampleSize_type
 
-    interface ProposalModel_type
-        module procedure            :: constructProposalModel
-    end interface ProposalModel_type
+    interface LiveSampleSize_type
+        module procedure            :: construct
+    end interface LiveSampleSize_type
 
-    private :: constructProposalModel, setProposalModel, checkForSanity, nullifyNameListVar
+    private :: construct, set, checkForSanity, nullifyNameListVar
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -81,86 +75,82 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function constructProposalModel() result(ProposalModelObj)
+    pure function construct(nd,methodName) result(self)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructProposalModel
+        !DEC$ ATTRIBUTES DLLEXPORT :: construct
 #endif
-        use Decoration_mod, only: TAB
-        use Constants_mod, only: NULL_SK, IK
+        use Constants_mod, only: IK, NULL_IK, POSINF_IK
         use String_mod, only: num2str
         implicit none
-        type(ProposalModel_type)    :: ProposalModelObj
-        ProposalModelObj%isUniform  = .false.
-        ProposalModelObj%isNormal   = .false.
-        ProposalModelObj%uniform    = "uniform"
-        ProposalModelObj%normal     = "normal"
-        ProposalModelObj%def        = ProposalModelObj%normal
-        ProposalModelObj%null       = repeat(NULL_SK, MAX_LEN_PROPOSAL_MODEL)
-        ProposalModelObj%desc       = &
-        "proposalModel is a string variable containing the name of the proposal distribution for the MCMC sampler. &
-        &The string value must be enclosed by either single or double quotation marks when provided as input. &
-        &Options that are currently supported include:\n\n" // &
-        "    proposalModel = '" // ProposalModelObj%normal // "'\n\n" // &
-        "            This is equivalent to the multivariate normal distribution&
-                     &, which is the most widely-used proposal model along with MCMC samplers.\n\n&
-        &    proposalModel = '" // ProposalModelObj%uniform // "'\n\n" // &
-        "            The proposals will be drawn uniformly from within a ndim-dimensional ellipsoid whose covariance matrix &
-                     &and scale are initialized by the user and optionally adaptively updated throughout the simulation.\n\n&
-        &The default value is '" // ProposalModelObj%def // "'."
-    end function constructProposalModel
+        integer(IK), intent(in)     :: nd
+        character(*), intent(in)    :: methodName
+        type(LiveSampleSize_type)   :: self
+        self%def  = 2000_IK ! @todo: perhaps an intelligent setting strategy here would be useful.
+        self%null = NULL_IK
+        self%desc = &
+        "liveSampleSize is a positive 32bit integer representing the number of live (active) points that are initially sampled &
+        &uniformly from the domain of the objective function. New points will be subsequently added to this sample throughout the &
+        &simulation and the lowest-value will be removed such that the size of the live (active) sample of points at any stage &
+        &during the simulation remains fixed as specified by the input simulation specification liveSampleSize. &
+        &The value of liveSampleSize must be at least larger than nd + 1, where nd is number of dimensions of the domain of the &
+        &objective function. It should be preferably an integer on the order of hundreds or thousands. The higher the value of &
+        &liveSampleSize is, the better the odd of capturing all modes of the objective function will be. &
+        &Essentially, the number of live (active) points acts as a random mesh on the integration domain of objective function. &
+        &Therefore, a larger live sample size means a finer mesh for the integration, thus yielding more accurate results. &
+        &In general, the higher the number of dimensions of the domain of the objective function, the larger the value of &
+        &liveSampleSize should be. The default value is " // num2str(self%def) // "."
+    end function construct
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine nullifyNameListVar(ProposalModelObj)
+    subroutine nullifyNameListVar(self)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar
 #endif
         implicit none
-        class(ProposalModel_type), intent(in) :: ProposalModelObj
-        proposalModel = ProposalModelObj%null
+        class(LiveSampleSize_type), intent(in)  :: self
+        liveSampleSize = self%null
     end subroutine nullifyNameListVar
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine setProposalModel(ProposalModelObj,proposalModel)
+    pure subroutine set(self,liveSampleSize)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setProposalModel
+        !DEC$ ATTRIBUTES DLLEXPORT :: set
 #endif
-        use String_mod, only: getLowerCase
+        use Constants_mod, only: IK
         implicit none
-        class(ProposalModel_type), intent(inout)    :: ProposalModelObj
-        character(*), intent(in)                    :: proposalModel
-        ProposalModelObj%val = getLowerCase( trim(adjustl(proposalModel)) )
-        if (ProposalModelObj%val==ProposalModelObj%null) ProposalModelObj%val = ProposalModelObj%def
-        ProposalModelObj%isNormal   = ProposalModelObj%val == ProposalModelObj%normal
-        ProposalModelObj%isUniform  = ProposalModelObj%val == ProposalModelObj%uniform
-    end subroutine setProposalModel
+        class(LiveSampleSize_type), intent(inout)  :: self
+        integer(IK), intent(in)                         :: liveSampleSize
+        self%val = liveSampleSize
+        if ( self%val==self%null ) self%val = self%def
+    end subroutine set
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine checkForSanity(ProposalModelObj,Err,methodName)
+    pure subroutine checkForSanity(self,Err,methodName,nd)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity
 #endif
+        use Constants_mod, only: IK
         use Err_mod, only: Err_type
         use String_mod, only: num2str
         implicit none
-        class(ProposalModel_type), intent(in)   :: ProposalModelObj
+        class(LiveSampleSize_type), intent(in)  :: self
         character(*), intent(in)                :: methodName
+        integer(IK), intent(in)                 :: nd
         type(Err_type), intent(inout)           :: Err
         character(*), parameter                 :: PROCEDURE_NAME = "@checkForSanity()"
-        if ( .not. (ProposalModelObj%isNormal .or. ProposalModelObj%isUniform) ) then
+        if (self%val < nd + 1) then
             Err%occurred = .true.
             Err%msg =   Err%msg // &
                         MODULE_NAME // PROCEDURE_NAME // ": Error occurred. &
-                        &Invalid requested value for the proposalModel of " // methodName // ". The input requested &
-                        &proposal model (" // ProposalModelObj%val // ") is not supported. &
-                        &The variable proposalModel cannot be set to anything other than '" // &
-                        ProposalModelObj%normal     // "', or '" // &
-                        ProposalModelObj%uniform    // "'.\n\n"
+                        &The input requested value for liveSampleSize (" // num2str(self%val) // ") &
+                        &can not be negative. If you are not sure of the appropriate value for liveSampleSize, drop it &
+                        &from the input list. " // methodName // " will automatically assign an appropriate value to it.\n\n"
         end if
     end subroutine checkForSanity
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module SpecMCMC_ProposalModel_mod ! LCOV_EXCL_LINE
+end module SpecNest_LiveSampleSize_mod ! LCOV_EXCL_LINE

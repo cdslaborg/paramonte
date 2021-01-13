@@ -82,6 +82,7 @@ SET(ParaMonte_SOURCE_FILES
     ${ParaMonteKernel_SRC_DIR}/BandSpectrum_mod@PhotonFluence_smod.f90
     ${ParaMonteKernel_SRC_DIR}/BandSpectrum_mod@EnergyFluence_smod.f90
     ${ParaMonteKernel_SRC_DIR}/Batse_mod.f90
+    # SpecBase
     ${ParaMonteKernel_SRC_DIR}/SpecBase_SampleSize_mod.f90
     ${ParaMonteKernel_SRC_DIR}/SpecBase_RandomSeed_mod.f90
     ${ParaMonteKernel_SRC_DIR}/SpecBase_Description_mod.f90
@@ -106,6 +107,7 @@ SET(ParaMonte_SOURCE_FILES
     ${ParaMonteKernel_SRC_DIR}/SpecBase_MaxNumDomainCheckToWarn_mod.f90
     ${ParaMonteKernel_SRC_DIR}/SpecBase_MaxNumDomainCheckToStop_mod.f90
     ${ParaMonteKernel_SRC_DIR}/SpecBase_mod.f90
+    # SpecMCMC
     ${ParaMonteKernel_SRC_DIR}/SpecMCMC_ChainSize_mod.f90
     ${ParaMonteKernel_SRC_DIR}/SpecMCMC_ScaleFactor_mod.f90
     ${ParaMonteKernel_SRC_DIR}/SpecMCMC_StartPointVec_mod.f90
@@ -119,6 +121,7 @@ SET(ParaMonte_SOURCE_FILES
     ${ParaMonteKernel_SRC_DIR}/SpecMCMC_RandomStartPointDomainLowerLimitVec_mod.f90
     ${ParaMonteKernel_SRC_DIR}/SpecMCMC_RandomStartPointDomainUpperLimitVec_mod.f90
     ${ParaMonteKernel_SRC_DIR}/SpecMCMC_mod.f90
+    # SpecDRAM
     ${ParaMonteKernel_SRC_DIR}/SpecDRAM_AdaptiveUpdateCount_mod.f90
     ${ParaMonteKernel_SRC_DIR}/SpecDRAM_AdaptiveUpdatePeriod_mod.f90
     ${ParaMonteKernel_SRC_DIR}/SpecDRAM_GreedyAdaptationCount_mod.f90
@@ -126,6 +129,22 @@ SET(ParaMonte_SOURCE_FILES
     ${ParaMonteKernel_SRC_DIR}/SpecDRAM_BurninAdaptationMeasure_mod.f90
     ${ParaMonteKernel_SRC_DIR}/SpecDRAM_DelayedRejectionScaleFactorVec_mod.f90
     ${ParaMonteKernel_SRC_DIR}/SpecDRAM_mod.f90
+    # SpecNest
+    ${ParaMonteKernel_SRC_DIR}/SpecNest_Tightness_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/SpecNest_Tolerance_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/SpecNest_ScaleFactor_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/SpecNest_SamplingMethod_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/SpecNest_LiveSampleSize_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/SpecNest_InclusionFraction_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/SpecNest_AdaptiveUpdateCount_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/SpecNest_AdaptiveUpdatePeriod_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/SpecNest_MahalSqWeightExponent_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/SpecNest_StabilizationRequested_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/SpecNest_MaxAllowedKmeansFailure_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/SpecNest_MaxKvolumeLoopRecursion_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/SpecNest_MaxAllowedMinVolFailure_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/SpecNest_mod.f90
+    # Samplers
     ${ParaMonteKernel_SRC_DIR}/ParaMonteLogFunc_mod.f90
     ${ParaMonteKernel_SRC_DIR}/ParaMonteChainFileContents_mod.f90
     ${ParaMonteKernel_SRC_DIR}/ParaMCMCRefinedChain_mod.f90

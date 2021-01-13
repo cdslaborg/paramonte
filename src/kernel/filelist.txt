@@ -91,6 +91,21 @@
   SpecDRAM_DelayedRejectionScaleFactorVec_mod.f90
   SpecDRAM_mod.f90
   !
+  SpecNest_Tightness_mod.f90
+  SpecNest_Tolerance_mod.f90
+  SpecNest_ScaleFactor_mod.f90
+  SpecNest_SamplingMethod_mod.f90
+  SpecNest_LiveSampleSize_mod.f90
+  SpecNest_InclusionFraction_mod.f90
+  SpecNest_AdaptiveUpdateCount_mod.f90
+  SpecNest_AdaptiveUpdatePeriod_mod.f90
+  SpecNest_MahalSqWeightExponent_mod.f90
+  SpecNest_StabilizationRequested_mod.f90
+  SpecNest_MaxAllowedKmeansFailure_mod.f90
+  SpecNest_MaxAllowedMinVolFailure_mod.f90
+  SpecNest_MaxKvolumeLoopRecursion_mod.f90
+  SpecNest_mod.f90
+  !
   ParaMonteLogFunc_mod.f90
   ParaMonteChainFileContents_mod.f90
   ParaMCMCRefinedChain_mod.f90

@@ -378,8 +378,7 @@ contains
             call sleep(0.02_RK, Err)
         end block
 
-#if defined CODECOV_ENABLED || DEBUG_ENABLED || TESTING_ENABLED
-        if (.not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
             Test%Err%occurred = .true.
             Test%Err%msg = "The test assertion is FALSE."
             call abort  ( Err = Test%Err &
@@ -387,8 +386,8 @@ contains
                         , newline = "\n" &
                         , outputUnit = Test%outputUnit &
                         )
+            error stop
         end if
-#endif
 
     end subroutine runTest
 

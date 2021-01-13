@@ -259,7 +259,7 @@ contains
             ! LCOV_EXCL_STOP
         end if
 
-
+#if defined PARADRAM || defined PARADISE
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! Initialize ParaMCMC variables
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -271,6 +271,7 @@ contains
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         self%SpecDRAM = SpecDRAM_type( self%nd%val, self%name ) ! , self%SpecMCMC%ChainSize%def )
+#endif
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! read variables from input file if it exists
@@ -316,6 +317,7 @@ contains
                                                 , maxNumDomainCheckToWarn               = maxNumDomainCheckToWarn               & ! LCOV_EXCL_LINE
                                                 , maxNumDomainCheckToStop               = maxNumDomainCheckToStop               & ! LCOV_EXCL_LINE
                                                 )
+#if defined PARADRAM || defined PARADISE
             call self%SpecMCMC%setFromInputArgs ( chainSize                             = chainSize                             & ! LCOV_EXCL_LINE
                                                 , scaleFactor                           = scaleFactor                           & ! LCOV_EXCL_LINE
                                                 , startPointVec                         = startPointVec                         & ! LCOV_EXCL_LINE
@@ -336,7 +338,11 @@ contains
                                                 , burninAdaptationMeasure               = burninAdaptationMeasure               & ! LCOV_EXCL_LINE
                                                 , delayedRejectionScaleFactorVec        = delayedRejectionScaleFactorVec        & ! LCOV_EXCL_LINE
                                                 )
+#elif defined PARANEST
+            call self%SpecNest%setFromInputArgs (xxx)
+#endif
         end if
+
 #if (defined MPI_ENABLED || defined CAF_ENABLED) && (defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED)
         block; use Err_mod, only: bcastErr; call bcastErr(self%Err); end block
 #endif
@@ -377,8 +383,12 @@ contains
 
         if (self%isFreshRun) then
             call self%SpecBase%reportValues(prefix=self%brand,outputUnit=self%LogFile%unit,isLeaderImage=self%Image%isLeader)
+#if defined PARADRAM || defined PARADISE
             call self%SpecMCMC%reportValues(prefix=self%brand,outputUnit=self%LogFile%unit,isLeaderImage=self%Image%isLeader,methodName=self%name,splashModeRequested=self%SpecBase%SilentModeRequested%isFalse)
             call self%SpecDRAM%reportValues(prefix=self%brand,outputUnit=self%LogFile%unit,isLeaderImage=self%Image%isLeader,splashModeRequested=self%SpecBase%SilentModeRequested%isFalse)
+#elif defined PARANEST
+            call self%SpecNest%reportValues(prefix=self%brand,outputUnit=self%LogFile%unit,isLeaderImage=self%Image%isLeader,splashModeRequested=self%SpecBase%SilentModeRequested%isFalse)
+#endif
         end if
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -389,8 +399,12 @@ contains
         self%Err%occurred = .false.
 
         call self%SpecBase%checkForSanity(Err = self%Err, methodName = self%name)
+#if defined PARADRAM || defined PARADISE
         call self%SpecMCMC%checkForSanity(SpecBase = self%SpecBase, methodName = self%name, Err = self%Err, nd = ndim)
         call self%SpecDRAM%checkForSanity(Err = self%Err, methodName = self%name, nd = ndim)
+#elif defined PARANEST
+        call self%SpecNest%checkForSanity(Err = self%Err, methodName = self%name, nd = ndim)
+#endif
 
         !if (self%Image%isLeader) then
 #if (defined MPI_ENABLED || defined CAF_ENABLED) && (defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED)
@@ -565,7 +579,13 @@ contains
 #if (defined MPI_ENABLED || defined CAF_ENABLED) && (defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED)
         block; use Err_mod, only: bcastErr; call bcastErr(self%Err); end block
 #endif
-        if (self%Err%occurred) return ! LCOV_EXCL_LINE
+        if (self%Err%occurred) then
+            ! LCOV_EXCL_START
+            self%Err%msg = PROCEDURE_NAME // self%Err%msg
+            call self%abort( Err = self%Err, prefix = self%brand, newline = "\n", outputUnit = self%LogFile%unit )
+            return
+            ! LCOV_EXCL_STOP
+        end if
 
         !nullify(self%Proposal)
 #if defined CAF_ENABLED || defined MPI_ENABLED

@@ -426,6 +426,7 @@ contains
             !%%%%%%%%%%%%%%%%%%%
 
             if (any(Size==0_IK)) then
+                ! LCOV_EXCL_START
 
                 niter = 1_IK
                 nzsci = nzsci + 1_IK
@@ -445,6 +446,7 @@ contains
 
 #if defined DEBUG_ENABLED || defined TESTING_ENABLED
             elseif (any(Size<0_IK)) then
+
                 block
                     use Err_mod, only: abort
                     Err%msg = PROCEDURE_NAME//": Internal error occurred - Size < 0. Please report this issue along with circumstances to the developers."
@@ -453,6 +455,7 @@ contains
                 end block
 #endif
 
+                ! LCOV_EXCL_STOP
             end if
 
             ! if `niterMax` has reached, quit.
