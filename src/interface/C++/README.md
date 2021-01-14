@@ -156,6 +156,14 @@ Example usage instructions
 +   **Note**: Theoretically, you can use any C/C++ compiler on Windows to build and link your applications against the ParaMonte library. 
     However, the ParaMonte library example build scripts, as described below, currently only recognize the Microsoft and Intel C/C++ compilers.  
 
++   **Note**: Theoretically, you can use any Fortran compiler on Windows to build and link your applications against the ParaMonte library.  
+    A few options currently exist regarding the choice of compilers and environment:  
+    +   Use the Intel Visual C/C++ compiler or the Microsoft Visual C++ Compiler along with the Windows **Batch build scripts** of the ParaMonte library examples.  
+    +   Use the **Bash build scripts** that are also supplied with each ParaMonte example on Windows to build and run simulations via 
+        the GNU compilers on Windows available in MinGW or Cygwin Linux environments installed on a Windows system.  
+    +   Use the GNU compiler installed on a [Microsoft Windows Subsystem for Linux (WSL)](https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux). 
+        In this case, you will have to download the prebuilt ParaMonte library for the Linux environment as opposed to the Windows OS. 
+
 +   **Install the Microsoft Visual Studio (>2017)**: You will need to have a recent Microsoft Visual Studio (MSVS) installed on your system. 
     The community edition of this software is available free of charge. When installing MSVS, 
     make sure to install all the C++ components and compiler of the Visual Studio.  
