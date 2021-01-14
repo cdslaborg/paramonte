@@ -9,30 +9,30 @@
 ####
 ####   This file is part of the ParaMonte library.
 ####
-####   Permission is hereby granted, free of charge, to any person obtaining a 
-####   copy of this software and associated documentation files (the "Software"), 
-####   to deal in the Software without restriction, including without limitation 
-####   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-####   and/or sell copies of the Software, and to permit persons to whom the 
+####   Permission is hereby granted, free of charge, to any person obtaining a
+####   copy of this software and associated documentation files (the "Software"),
+####   to deal in the Software without restriction, including without limitation
+####   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+####   and/or sell copies of the Software, and to permit persons to whom the
 ####   Software is furnished to do so, subject to the following conditions:
 ####
-####   The above copyright notice and this permission notice shall be 
+####   The above copyright notice and this permission notice shall be
 ####   included in all copies or substantial portions of the Software.
 ####
-####   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-####   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-####   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-####   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-####   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-####   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+####   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+####   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+####   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+####   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+####   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+####   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 ####   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ####
 ####   ACKNOWLEDGMENT
 ####
 ####   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-####   As per the ParaMonte library license agreement terms, if you use any parts of 
-####   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-####   work (education/research/industry/development/...) by citing the ParaMonte 
+####   As per the ParaMonte library license agreement terms, if you use any parts of
+####   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+####   work (education/research/industry/development/...) by citing the ParaMonte
 ####   library as described on this page:
 ####
 ####       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md
@@ -44,7 +44,7 @@
 # set Coarray Fortran (CAF) parallelization model
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-#        none:  No Coarray Parallelization will be performed. Serial library will be built.   
+#        none:  No Coarray Parallelization will be performed. Serial library will be built.
 #      single:  Coarray Parallelism will be invoked. However, only one image will perform the tasks, and there is no parallel communications.
 #      shared:  Coarray Parallelism will be invoked. It causes the underlying Intel® Message Passing Interface (MPI) parallelization
 #               to run on one node with multiple cores or processors with shared memory.
@@ -107,13 +107,13 @@ if (CAF_ENABLED OR MPI_ENABLED)
     if ( (NOT MPI_Fortran_FOUND) OR (NOT MPIEXEC) )
     #if ( (NOT MPI_C_FOUND) OR (NOT MPI_Fortran_FOUND) OR (NOT MPIEXEC) )
         # Get default install location of MPICH from install.sh
-        message ( WARNING 
+        message ( WARNING
                 " \n"
                 " ${pmwarn}\n"
                 " ${pmattn} Could not find all MPI components!\n"
                 " ${pmattn} MPI_C_FOUND         = ${MPI_C_FOUND}\n"
                 " ${pmattn} MPI_Fortran_FOUND   = ${MPI_Fortran_FOUND}\n"
-                " ${pmattn} MPIEXEC             = ${MPIEXEC}\n" 
+                " ${pmattn} MPIEXEC             = ${MPIEXEC}\n"
                 )
         #execute_process (   COMMAND "./install.sh" -P mpich
         #                    WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
@@ -136,7 +136,7 @@ if (CAF_ENABLED OR MPI_ENABLED)
     #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
     if (NOT MPIEXEC)
-        message ( WARNING 
+        message ( WARNING
                 " \n"
                 " ${pmwarn}\n"
                 " ${pmattn} CMake failed to find `mpiexec` or similar. If building with `./install.sh`\n"
@@ -144,10 +144,10 @@ if (CAF_ENABLED OR MPI_ENABLED)
                 " ${pmattn} https://github.com/cdslaborg/paramonte/issues, \n"
                 " ${pmattn} otherwise point CMake to the desired MPI runtime.\n"
                 )
-        #message ( WARNING 
+        #message ( WARNING
         #        " \n"
         #        " ${pmwarn}\n"
-        #        " ${pmattn} Building ParaMonte in serial mode..." 
+        #        " ${pmattn} Building ParaMonte in serial mode..."
         #        )
     #else()
     #  add_definitions(-DHAVE_MPI)
@@ -185,7 +185,7 @@ if (CAF_ENABLED OR MPI_ENABLED)
     #if ((MPIEXEC_DIR STREQUAL MPICC_DIR) AND (MPIEXEC_DIR STREQUAL MPIFC_DIR))
         message ( STATUS "${pmattn} MPI runtime and compile time environments appear to be consistent")
     else()
-        message ( WARNING 
+        message ( WARNING
                 " \n"
                 " ${pmwarn}\n"
                 " ${pmattn} MPIEXEC is in ${MPIEXEC_DIR},\n"
@@ -256,7 +256,7 @@ if (CAF_ENABLED OR MPI_ENABLED)
 #    unset(OLD_LIBRARIES)
 #
 #    if (NOT MPI_C_COMPILES)
-#        message (FATAL_ERROR 
+#        message (FATAL_ERROR
 #                " \n"
 #                "${pmfatal}\n"
 #                "   MPI_C is missing!\n"
@@ -311,7 +311,7 @@ if (CAF_ENABLED OR MPI_ENABLED)
     if ( NOT MPI_Fortran_MODULE_COMPILES )
     #    add_definitions(-DMPI_WORKING_MODULE)
     #else()
-        message ( WARNING 
+        message ( WARNING
                 " \n"
                 " ${pmwarn}\n"
                 " ${pmattn} It appears that the Fortran MPI compiler is not working.\n"

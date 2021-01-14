@@ -99,7 +99,7 @@ contains
         ProposalModelObj%desc       = &
         "proposalModel is a string variable containing the name of the proposal distribution for the MCMC sampler. &
         &The string value must be enclosed by either single or double quotation marks when provided as input. &
-        &One option is currently supported:\n\n" // &
+        &Options that are currently supported include:\n\n" // &
         "    proposalModel = '" // ProposalModelObj%normal // "'\n\n" // &
         "            This is equivalent to the multivariate normal distribution&
                      &, which is the most widely-used proposal model along with MCMC samplers.\n\n&

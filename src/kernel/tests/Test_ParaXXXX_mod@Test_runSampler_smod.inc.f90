@@ -52,11 +52,11 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler with no input arguments or input file.
+    !> Test the ParaXXXX sampler with no input arguments or input file.
     module function test_runSampler_1() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaDXXX_type) :: PD
+        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
@@ -71,12 +71,12 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler with an internal input file.
+    !> Test the ParaXXXX sampler with an internal input file.
     module function test_runSampler_2() result(assertion)
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: chainSize_ref = 100_IK
         integer(IK) , parameter :: userSeed_ref = 1111_IK
 
@@ -86,11 +86,11 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_2" &
-                            , inputFile = ParaDXXX_NML//" randomSeed = "//num2str(userSeed_ref)//" chainSize = "//num2str(chainSize_ref)//" /" &
+                            , inputFile = ParaXXXX_NML//" randomSeed = "//num2str(userSeed_ref)//" chainSize = "//num2str(chainSize_ref)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. PD%SpecBase%RandomSeed%userSeed==userSeed_ref .and. PD%SpecMCMC%ChainSize%val==chainSize_ref
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "Image%id, PD%Err%occurred                   = ", PD%Image%id, PD%Err%occurred
             write(Test%outputUnit,"(*(g0))") "Image%id, PD%Err%msg                        = ", PD%Image%id, PD%Err%msg
@@ -107,17 +107,17 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler with an external input file.
+    !> Test the ParaXXXX sampler with an external input file.
     module function test_runSampler_3() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaDXXX_type) :: PD
+        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , inputFile = Test%inDir//"/Test_ParaDXXX_mod@test_runSampler_3.in" &
+                            , inputFile = Test%inDir//"/Test_ParaXXXX_mod@test_runSampler_3.in" &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_3" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
@@ -127,11 +127,11 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler with a path to a non-existing external input file.
+    !> Test the ParaXXXX sampler with a path to a non-existing external input file.
     module function test_runSampler_4() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaDXXX_type) :: PD
+        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
@@ -147,18 +147,18 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler with wrong SpecBase input values.
+    !> Test the ParaXXXX sampler with wrong SpecBase input values.
     module function test_runSampler_5() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaDXXX_type) :: PD
+        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_5" &
-                            , inputFile = Test%inDir//"/Test_ParaDXXX_mod@test_runSampler_5.in" &
+                            , inputFile = Test%inDir//"/Test_ParaXXXX_mod@test_runSampler_5.in" &
                             )
         assertion = assertion .and. PD%Err%occurred
 #endif
@@ -167,11 +167,11 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler to restart a complete simulation without an output sample file.
+    !> Test the ParaXXXX sampler to restart a complete simulation without an output sample file.
     module function test_runSampler_6() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaDXXX_type) :: PD1, PD2
+        type(ParaXXXX_type) :: PD1, PD2
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
 
@@ -191,7 +191,7 @@ contains
 
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD1%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
                 write(Test%outputUnit,"(*(g0,:,' '))")
@@ -225,7 +225,7 @@ contains
 
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD2%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
                 write(Test%outputUnit,"(*(g0,:,' '))")
@@ -238,7 +238,7 @@ contains
         ! LCOV_EXCL_START
             assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-12_RK ) ! by default, the output precision is only 8 digits
             if (.not. assertion) then
-                if (Test%isDebugMode) then
+                if (Test%isVerboseMode) then
                     write(Test%outputUnit,"(*(g0,:,' '))")
                     write(Test%outputUnit,"(*(g0,:,' '))")   "process, Difference:", Test%Image%id, abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState)
                     write(Test%outputUnit,"(*(g0,:,' '))")
@@ -253,19 +253,19 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler with a wrong internal input namelist group:
+    !> Test the ParaXXXX sampler with a wrong internal input namelist group:
     !> +    Infinity values for `domainLowerLimitVec` and `domainUpperLimitVec`.
     module function test_runSampler_7() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaDXXX_type) :: PD
+        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , inputFile = "&ParaDXXX randomSeed = 1111 /" &
+                            , inputFile = "&ParaXXXX randomSeed = 1111 /" &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_runSampler_7" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
@@ -275,19 +275,19 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler with a wrong internal input namelist group:
+    !> Test the ParaXXXX sampler with a wrong internal input namelist group:
     !> +    Infinity values for `domainLowerLimitVec` and `domainUpperLimitVec`.
     module function test_runSampler_8() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaDXXX_type) :: PD
+        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , inputFile = Test%inDir//"/Test_ParaDXXX_mod@test_runSampler_8.in" &
+                            , inputFile = Test%inDir//"/Test_ParaXXXX_mod@test_runSampler_8.in" &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_runSampler_8" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
@@ -297,11 +297,11 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler to restart a complete simulation without an output sample file.
+    !> Test the ParaXXXX sampler to restart a complete simulation without an output sample file.
     module function test_runSampler_9() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaDXXX_type) :: PD1, PD2
+        type(ParaXXXX_type) :: PD1, PD2
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
 
@@ -320,7 +320,7 @@ contains
 
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD1%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
                 write(Test%outputUnit,"(*(g0,:,' '))")
@@ -347,7 +347,7 @@ contains
 
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD1%Err%occurred(2)", Test%Image%id, PD1%Err%occurred
                 write(Test%outputUnit,"(*(g0,:,' '))")
@@ -381,7 +381,7 @@ contains
 
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))") "process, PD2%Err%occurred", Test%Image%id, PD2%Err%occurred
                 write(Test%outputUnit,"(*(g0,:,' '))")
@@ -396,7 +396,7 @@ contains
             assertion = assertion .and. all(shape(PD2%RefinedChain%LogFuncState) == shape(PD1%RefinedChain%LogFuncState))
 
             if (.not. assertion) then
-                if (Test%isDebugMode) then
+                if (Test%isVerboseMode) then
                     write(*,"(10(g0,:,', '))")
                     write(*,"(10(g0,:,', '))") "shape(PD1%RefinedChain%LogFuncState)", shape(PD1%RefinedChain%LogFuncState)
                     write(*,"(10(g0,:,', '))") "shape(PD2%RefinedChain%LogFuncState)", shape(PD2%RefinedChain%LogFuncState)
@@ -408,7 +408,7 @@ contains
             assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-6_RK ) ! by default, the output precision is only 8 digits
 
             if (.not. assertion) then
-                if (Test%isDebugMode) then
+                if (Test%isVerboseMode) then
                     write(Test%outputUnit,"(*(g0,:,' '))")
                     write(Test%outputUnit,"(*(g0,:,' '))")   "process, Difference:", Test%Image%id, abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState)
                     write(Test%outputUnit,"(*(g0,:,' '))")
@@ -424,11 +424,11 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler to restart a complete simulation without an output sample file, with an ASCII output file.
+    !> Test the ParaXXXX sampler to restart a complete simulation without an output sample file, with an ASCII output file.
     module function test_runSampler_10() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaDXXX_type) :: PD1, PD2
+        type(ParaXXXX_type) :: PD1, PD2
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
 
@@ -496,12 +496,12 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler to restart a complete simulation without an
+    !> Test the ParaXXXX sampler to restart a complete simulation without an
     !> output sample file, with an ASCII output file but with binary chain file.
     module function test_runSampler_11() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaDXXX_type) :: PD1, PD2
+        type(ParaXXXX_type) :: PD1, PD2
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
 
@@ -571,12 +571,12 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler to restart a complete simulation without an
+    !> Test the ParaXXXX sampler to restart a complete simulation without an
     !> output sample file, with an ASCII output file but with binary chain file.
     module function test_runSampler_12() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaDXXX_type) :: PD1, PD2
+        type(ParaXXXX_type) :: PD1, PD2
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
 
@@ -647,19 +647,19 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler with an empty external input file.
+    !> Test the ParaXXXX sampler with an empty external input file.
     !> This should first search for the specific namelist, then for the generic namelist,
     !> then issues a warning and runs the simulation without setting the simulation specifications.
     module function test_runSampler_13() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaDXXX_type) :: PD
+        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , inputFile = Test%inDir//"/Test_ParaDXXX_mod@test_runSampler_13.in" &
+                            , inputFile = Test%inDir//"/Test_ParaXXXX_mod@test_runSampler_13.in" &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_13" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
@@ -669,13 +669,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler with an empty external input file.
+    !> Test the ParaXXXX sampler with an empty external input file.
     !> This should first search for the specific namelist, then for the generic namelist,
     !> then issues a warning and runs the simulation without setting the simulation specifications.
     module function test_runSampler_14() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaDXXX_type) :: PD
+        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
@@ -700,7 +700,7 @@ contains
         real(RK)    , parameter :: tolerance = 1.e-10_RK
         character(*), parameter :: DELIM = "delim"
         integer(IK) , parameter :: NDIM = 2_IK
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         type(RefinedChain_type) :: RefinedChain
         real(RK), allocatable   :: Difference(:,:)
         real(RK), allocatable   :: FlattenedLogFuncState(:,:)
@@ -726,7 +726,7 @@ contains
             assertion = assertion .and. RefinedChain%numRefinement == 0_IK
 
             if (.not. assertion) then
-                if (Test%isDebugMode) then
+                if (Test%isVerboseMode) then
                     write(*,"(10(g0,:,', '))")
                     write(*,"(10(g0,:,', '))") "RefinedChain%numRefinement", RefinedChain%numRefinement
                     write(*,"(10(g0,:,', '))")
@@ -739,7 +739,7 @@ contains
             assertion = assertion .and. all( shape(FlattenedLogFuncState) == shape(RefinedChain%LogFuncState) )
 
             if (.not. assertion) then
-                if (Test%isDebugMode) then
+                if (Test%isVerboseMode) then
                     write(*,"(10(g0,:,', '))")
                     write(*,"(10(g0,:,', '))") "shape(PD%RefinedChain%LogFuncState) ", shape(PD%RefinedChain%LogFuncState)
                     write(*,"(10(g0,:,', '))") "shape(RefinedChain%LogFuncState)    ", shape(RefinedChain%LogFuncState)
@@ -755,7 +755,7 @@ contains
             assertion = assertion .and. all(Difference < tolerance)
 
             if (.not. assertion) then
-                if (Test%isDebugMode) then
+                if (Test%isVerboseMode) then
                     write(*,"(10(g0,:,', '))")
                     write(*,"(10(g0,:,', '))") "PD%RefinedChain%LogFuncState", PD%RefinedChain%LogFuncState
                     write(*,"(10(g0,:,', '))") "RefinedChain%LogFuncState   ", RefinedChain%LogFuncState
@@ -774,11 +774,11 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler to restart a complete simulation without an output sample file, in multichain parallelism.
+    !> Test the ParaXXXX sampler to restart a complete simulation without an output sample file, in multichain parallelism.
     module function test_runSampler_16() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaDXXX_type) :: PD1, PD2
+        type(ParaXXXX_type) :: PD1, PD2
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
 
@@ -798,7 +798,7 @@ contains
 
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD1%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
                 write(Test%outputUnit,"(*(g0,:,' '))")
@@ -833,7 +833,7 @@ contains
 
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD2%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
                 write(Test%outputUnit,"(*(g0,:,' '))")
@@ -847,7 +847,7 @@ contains
             assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-12_RK ) ! by default, the output precision is only 8 digits
             if (.not. assertion) then
             ! LCOV_EXCL_START
-                if (Test%isDebugMode) then
+                if (Test%isVerboseMode) then
                     write(Test%outputUnit,"(*(g0,:,' '))")
                     write(Test%outputUnit,"(*(g0,:,' '))")   "process, Difference:", Test%Image%id, abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState)
                     write(Test%outputUnit,"(*(g0,:,' '))")
@@ -862,14 +862,14 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler to restart a complete simulation without an output sample file, in singlechain parallelism.
+    !> Test the ParaXXXX sampler to restart a complete simulation without an output sample file, in singlechain parallelism.
     !> Also, ensure the delayed rejection sampling is activated by setting a low value for `adaptiveUpdatePeriod` and
     !> a large value for `scaleFactor`.
     module function test_runSampler_17() result(assertion)
         use Constants_mod, only: RK
         implicit none
         logical             :: assertion
-        type(ParaDXXX_type) :: PD1, PD2
+        type(ParaXXXX_type) :: PD1, PD2
         real(RK), parameter :: targetAcceptanceRate(*) = [0.2_RK, 0.23_RK]
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
@@ -895,7 +895,7 @@ contains
 
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD1%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
                 write(Test%outputUnit,"(*(g0,:,' '))")
@@ -935,7 +935,7 @@ contains
 
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD2%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
                 write(Test%outputUnit,"(*(g0,:,' '))")
@@ -949,7 +949,7 @@ contains
             assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-12_RK ) ! by default, the output precision is only 8 digits
             if (.not. assertion) then
             ! LCOV_EXCL_START
-                if (Test%isDebugMode) then
+                if (Test%isVerboseMode) then
                     write(Test%outputUnit,"(*(g0,:,' '))")
                     write(Test%outputUnit,"(*(g0,:,' '))")   "process, Difference:", Test%Image%id, abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState)
                     write(Test%outputUnit,"(*(g0,:,' '))")
@@ -964,7 +964,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler to restart a complete simulation without an output sample file, in singlechain parallelism.
+    !> Test the ParaXXXX sampler to restart a complete simulation without an output sample file, in singlechain parallelism.
     !> Also, ensure the delayed rejection sampling is activated by setting a low value for `adaptiveUpdatePeriod` and
     !> a large value for `scaleFactor`.
     !> Also, use uniform proposal, as opposed to Normal in `test_runSampler_17()`.
@@ -972,7 +972,7 @@ contains
         use Constants_mod, only: RK
         implicit none
         logical             :: assertion
-        type(ParaDXXX_type) :: PD1, PD2
+        type(ParaXXXX_type) :: PD1, PD2
         real(RK), parameter :: targetAcceptanceRate(*) = [0.2_RK, 0.23_RK]
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
@@ -999,7 +999,7 @@ contains
 
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD1%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
                 write(Test%outputUnit,"(*(g0,:,' '))")
@@ -1040,7 +1040,7 @@ contains
 
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD2%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
                 write(Test%outputUnit,"(*(g0,:,' '))")
@@ -1054,7 +1054,7 @@ contains
             assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-12_RK ) ! by default, the output precision is only 8 digits
             if (.not. assertion) then
             ! LCOV_EXCL_START
-                if (Test%isDebugMode) then
+                if (Test%isVerboseMode) then
                     write(Test%outputUnit,"(*(g0,:,' '))")
                     write(Test%outputUnit,"(*(g0,:,' '))")   "process, Difference:", Test%Image%id, abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState)
                     write(Test%outputUnit,"(*(g0,:,' '))")
@@ -1069,7 +1069,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler to restart a complete simulation without an output sample file, in multichain parallelism.
+    !> Test the ParaXXXX sampler to restart a complete simulation without an output sample file, in multichain parallelism.
     !> Also, ensure the delayed rejection sampling is activated by setting a low value for `adaptiveUpdatePeriod` and
     !> a large value for `scaleFactor`.
     !> Also, avoid delayed rejection, as opposed to what is done in `test_runSampler_17()`.
@@ -1078,7 +1078,7 @@ contains
         use Constants_mod, only: RK
         implicit none
         logical             :: assertion
-        type(ParaDXXX_type) :: PD1, PD2
+        type(ParaXXXX_type) :: PD1, PD2
         real(RK), parameter :: targetAcceptanceRate(*) = [0.2_RK, 0.23_RK]
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
@@ -1106,7 +1106,7 @@ contains
 
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD1%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
                 write(Test%outputUnit,"(*(g0,:,' '))")
@@ -1148,7 +1148,7 @@ contains
 
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD2%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
                 write(Test%outputUnit,"(*(g0,:,' '))")
@@ -1162,7 +1162,7 @@ contains
             assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-12_RK ) ! by default, the output precision is only 8 digits
             if (.not. assertion) then
             ! LCOV_EXCL_START
-                if (Test%isDebugMode) then
+                if (Test%isVerboseMode) then
                     write(Test%outputUnit,"(*(g0,:,' '))")
                     write(Test%outputUnit,"(*(g0,:,' '))")   "process, Difference:", Test%Image%id, abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState)
                     write(Test%outputUnit,"(*(g0,:,' '))")
@@ -1177,7 +1177,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler to restart a complete simulation without an output sample file, in multichain parallelism.
+    !> Test the ParaXXXX sampler to restart a complete simulation without an output sample file, in multichain parallelism.
     !> Also, ensure the delayed rejection sampling is activated by setting a low value for `adaptiveUpdatePeriod` and
     !> a large value for `scaleFactor`.
     !> Also, avoid delayed rejection, as opposed to what is done in `test_runSampler_17()`.
@@ -1186,7 +1186,7 @@ contains
         use Constants_mod, only: RK
         implicit none
         logical             :: assertion
-        type(ParaDXXX_type) :: PD1, PD2
+        type(ParaXXXX_type) :: PD1, PD2
         real(RK), parameter :: targetAcceptanceRate(*) = [0.2_RK, 0.23_RK]
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
@@ -1214,7 +1214,7 @@ contains
 
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD1%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
                 write(Test%outputUnit,"(*(g0,:,' '))")
@@ -1256,7 +1256,7 @@ contains
 
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD2%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
                 write(Test%outputUnit,"(*(g0,:,' '))")
@@ -1270,7 +1270,7 @@ contains
             assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-12_RK ) ! by default, the output precision is only 8 digits
             if (.not. assertion) then
             ! LCOV_EXCL_START
-                if (Test%isDebugMode) then
+                if (Test%isVerboseMode) then
                     write(Test%outputUnit,"(*(g0,:,' '))")
                     write(Test%outputUnit,"(*(g0,:,' '))")   "process, Difference:", Test%Image%id, abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState)
                     write(Test%outputUnit,"(*(g0,:,' '))")
@@ -1296,7 +1296,7 @@ contains
         real(RK)    , parameter :: tolerance = 1.e-10_RK
         character(*), parameter :: DELIM = "delim"
         integer(IK) , parameter :: NDIM = 2_IK
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         type(RefinedChain_type) :: RefinedChain
         real(RK), allocatable   :: Difference(:,:)
         real(RK), allocatable   :: FlattenedLogFuncState(:,:)
@@ -1334,7 +1334,7 @@ contains
 
             if (.not. assertion) then
             ! LCOV_EXCL_START
-                if (Test%isDebugMode) then
+                if (Test%isVerboseMode) then
                     write(*,"(10(g0,:,', '))")
                     write(*,"(10(g0,:,', '))") "RefinedChain%numRefinement", RefinedChain%numRefinement
                     write(*,"(10(g0,:,', '))")
@@ -1349,7 +1349,7 @@ contains
 
             if (.not. assertion) then
             ! LCOV_EXCL_START
-                if (Test%isDebugMode) then
+                if (Test%isVerboseMode) then
                     write(*,"(10(g0,:,', '))")
                     write(*,"(10(g0,:,', '))") "shape(PD%RefinedChain%LogFuncState) ", shape(PD%RefinedChain%LogFuncState)
                     write(*,"(10(g0,:,', '))") "shape(RefinedChain%LogFuncState)    ", shape(RefinedChain%LogFuncState)
@@ -1367,7 +1367,7 @@ contains
 
             if (.not. assertion) then
             ! LCOV_EXCL_START
-                if (Test%isDebugMode) then
+                if (Test%isVerboseMode) then
                     write(*,"(10(g0,:,', '))")
                     write(*,"(10(g0,:,', '))") "PD%RefinedChain%LogFuncState", PD%RefinedChain%LogFuncState
                     write(*,"(10(g0,:,', '))") "RefinedChain%LogFuncState   ", RefinedChain%LogFuncState
@@ -1396,7 +1396,7 @@ contains
         real(RK)    , parameter :: tolerance = 1.e-10_RK
         character(*), parameter :: DELIM = "delim"
         integer(IK) , parameter :: NDIM = 2_IK
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         type(RefinedChain_type) :: RefinedChain
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
@@ -1431,7 +1431,7 @@ contains
             if (.not. assertion) return ! LCOV_EXCL_LINE
 
             if (.not. assertion) then
-                if (Test%isDebugMode) then
+                if (Test%isVerboseMode) then
                     write(*,"(10(g0,:,', '))")
                     write(*,"(10(g0,:,', '))") "Test%Image%id, RefinedChain%numRefinement", RefinedChain%numRefinement
                     write(*,"(10(g0,:,', '))") "Test%Image%id, RefinedChain%IAC", RefinedChain%IAC

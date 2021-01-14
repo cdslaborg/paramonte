@@ -230,33 +230,34 @@ contains
 
     !> \brief
     !> Return the inverse matrix of a symmetric-positive-definite matrix, whose Cholesky Lower triangle is given in the lower part
-    !> of `CholeskyLower` and and its diagonal elements in `Diagonal`.
+    !> of `CholeskyLower` and and its diagonal elements in `CholeskyDiago`.
     !>
     !> \param[in]       nd              :   The size of the input square matrix - `nd` by `nd`.
     !> \param[in]       CholeskyLower   :   The Cholesky factorization of the matrix.
-    !> \param[in]       Diagonal        :   The diagonal elements of the Cholesky factorization of the matrix.
+    !> \param[in]       CholeskyDiago        :   The diagonal elements of the Cholesky factorization of the matrix.
     !>
     !> \return
     !> `InvMatFromCholFac` : The full inverse matrix.
     !>
     !> \warning
-    !> Do not call this routine when `nd = 1`. For `nd = 1`: `InvMatFromCholFac = 1._RK / Diagonal(1)^2`.
+    !> Do not call this routine when `nd = 1`. For `nd = 1`: `InvMatFromCholFac = 1._RK / CholeskyDiago(1)^2`.
     !>
     !> \author
     !> Amir Shahmoradi, Apr 21, 2017, 1:54 AM, ICES, UT Austin
-    pure function getInvMatFromCholFac(nd,CholeskyLower,Diagonal) result(InvMatFromCholFac)
+    pure function getInvMatFromCholFac(nd,CholeskyLower,CholeskyDiago) result(InvMatFromCholFac)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInvMatFromCholFac
 #endif
         use Constants_mod, only: RK, IK
         implicit none
         integer(IK), intent(in) :: nd
-        real(RK)   , intent(in) :: CholeskyLower(nd,nd),Diagonal(nd)
+        real(RK)   , intent(in) :: CholeskyDiago(nd)
+        real(RK)   , intent(in) :: CholeskyLower(nd,nd)
         real(RK)                :: InvMatFromCholFac(nd,nd)
         real(RK)                :: summ
         integer(IK)             :: i,j,k
         if (nd==1_IK) then
-            InvMatFromCholFac(1,1) = 1._RK / Diagonal(1)**2
+            InvMatFromCholFac(1,1) = 1._RK / CholeskyDiago(1)**2
             return
         end if
         InvMatFromCholFac = 0._RK
@@ -266,13 +267,13 @@ contains
             end do
         end do
         do i = 1,nd
-            InvMatFromCholFac(i,i) = 1._RK / Diagonal(i)
+            InvMatFromCholFac(i,i) = 1._RK / CholeskyDiago(i)
             do j = i+1,nd
                 summ = 0._RK
                 do k = i,j-1
                     summ = summ - InvMatFromCholFac(j,k) * InvMatFromCholFac(k,i)
                 end do
-                InvMatFromCholFac(j,i) = summ / Diagonal(j)
+                InvMatFromCholFac(j,i) = summ / CholeskyDiago(j)
             end do
         end do
         do i = 1,nd
@@ -321,8 +322,9 @@ contains
         implicit none
         integer(IK), intent(in) :: nd
         real(RK)   , intent(in) :: PosDefMat(nd,nd)
-        real(RK)                :: InvPosDefMat(nd,nd), CholeskyLower(nd,nd)
-        real(RK)                :: Diagonal(nd)
+        real(RK)                :: InvPosDefMat(nd,nd)
+        real(RK)                :: CholeskyLower(nd,nd)
+        real(RK)                :: CholeskyDiago(nd)
         real(RK)                :: summ
         integer(IK)             :: i,j,k
        !if (nd==1) then
@@ -334,19 +336,19 @@ contains
                 CholeskyLower(i,j) = PosDefMat(i,j)
             end do
         end do
-        call getCholeskyFactor(nd,CholeskyLower,Diagonal)
-        if (Diagonal(1)<0._RK) then
+        call getCholeskyFactor(nd,CholeskyLower,CholeskyDiago)
+        if (CholeskyDiago(1)<0._RK) then
             InvPosDefMat = -1._RK   ! error occurred: getCholeskyFactor() failed in getInvPosDefMat()
             return
         end if
         do i = 1,nd
-            CholeskyLower(i,i) = 1._RK / Diagonal(i)
+            CholeskyLower(i,i) = 1._RK / CholeskyDiago(i)
             do j = i+1,nd
                 summ = 0._RK
                 do k = i,j-1
                     summ = summ - CholeskyLower(j,k) * CholeskyLower(k,i)
                 end do
-                CholeskyLower(j,i) = summ / Diagonal(j)
+                CholeskyLower(j,i) = summ / CholeskyDiago(j)
             end do
         end do
         do i = 1,nd
@@ -687,20 +689,21 @@ contains
         implicit none
         integer(IK), intent(in) :: nd
         real(RK)   , intent(in) :: PosDefMat(nd,nd)
-        real(RK)                :: Diagonal(nd),DummyMat(nd,nd)
+        real(RK)                :: CholeskyLower(nd,nd)
+        real(RK)                :: CholeskyDiago(nd)
         real(RK)                :: sqrtDetPosDefMat
         integer(IK)             :: i,j
         do j=1,nd
             do i=1,j
-                DummyMat(i,j) = PosDefMat(i,j)
+                CholeskyLower(i,j) = PosDefMat(i,j)
             end do
         end do
-        call getCholeskyFactor(nd,DummyMat,Diagonal)
-        if (Diagonal(1)<0._RK) then
+        call getCholeskyFactor(nd, CholeskyLower, CholeskyDiago)
+        if (CholeskyDiago(1)<0._RK) then
             sqrtDetPosDefMat = -1._RK
             return
         end if
-        sqrtDetPosDefMat = product(Diagonal)
+        sqrtDetPosDefMat = product(CholeskyDiago)
     end function getSqrtDetPosDefMat
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

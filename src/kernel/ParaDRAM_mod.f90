@@ -50,6 +50,6 @@
 
 module ParaDRAM_mod
 #define PARADRAM ParaDRAM
-#include "ParaDXXX_mod.inc.f90"
+#include "ParaXXXX_mod.inc.f90"
 #undef PARADRAM
 end module ParaDRAM_mod ! LCOV_EXCL_LINE

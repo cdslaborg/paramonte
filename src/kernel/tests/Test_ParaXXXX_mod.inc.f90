@@ -43,18 +43,18 @@
 !>  \brief This module contains tests of the module [ParaDRAM_mod](@ref paradram_mod).
 !>  \author Amir Shahmoradi
 
-! module Test_ParaDXXX_mod
+! module Test_ParaXXXX_mod
 
     use Constants_mod, only: IK, RK
     use Test_mod, only: Test_type, getLogFuncMVN
-    use ParaDXXX_mod
+    use ParaXXXX_mod
 
     !use Statistics_mod, only: paradramPrintEnabled
     implicit none
     !paradramPrintEnabled = .true.
 
     private
-    public :: test_ParaDXXX
+    public :: test_ParaXXXX
 
     type(Test_type) :: Test
 
@@ -232,7 +232,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine test_ParaDXXX()
+    subroutine test_ParaXXXX()
         implicit none
         Test = Test_type(moduleName=MODULE_NAME)
 
@@ -397,8 +397,8 @@ contains
         call Test%run(test_SpecDRAM_DelayedRejectionScaleFactorVec_type_5, "test_SpecDRAM_DelayedRejectionScaleFactorVec_type_5")
 
         call Test%finalize()
-    end subroutine test_ParaDXXX
+    end subroutine test_ParaXXXX
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-! end module Test_ParaDXXX_mod
+! end module Test_ParaXXXX_mod

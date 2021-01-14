@@ -50,11 +50,11 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler with a wrong input value for `chainSize < ndim + 1`.
+    !> Test the ParaXXXX sampler with a wrong input value for `chainSize < ndim + 1`.
     module function test_SpecMCMC_ChainSize_type_1() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaDXXX_type) :: PD
+        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
@@ -70,18 +70,18 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler with a wrong input value for `chainSize < ndim + 1`.
+    !> Test the ParaXXXX sampler with a wrong input value for `chainSize < ndim + 1`.
     module function test_SpecMCMC_ChainSize_type_2() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaDXXX_type) :: PD
+        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ChainSize_type_2" &
-                            , inputFile = ParaDXXX_NML//" chainSize = 1 /" &
+                            , inputFile = ParaXXXX_NML//" chainSize = 1 /" &
                             )
         assertion = assertion .and. PD%Err%occurred
 #endif
@@ -90,11 +90,11 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler with a uniform proposal model.
+    !> Test the ParaXXXX sampler with a uniform proposal model.
     module function test_SpecMCMC_ProposalModel_type_1() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaDXXX_type) :: PD
+        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
@@ -110,18 +110,18 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler with a uniform proposal model.
+    !> Test the ParaXXXX sampler with a uniform proposal model.
     module function test_SpecMCMC_ProposalModel_type_2() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaDXXX_type) :: PD
+        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalModel_type_2" &
-                            , inputFile = ParaDXXX_NML//" proposalModel = 'UNIFORM' /" &
+                            , inputFile = ParaXXXX_NML//" proposalModel = 'UNIFORM' /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
 #endif
@@ -130,11 +130,11 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler with a uniform proposal model.
+    !> Test the ParaXXXX sampler with a uniform proposal model.
     module function test_SpecMCMC_ProposalModel_type_3() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaDXXX_type) :: PD
+        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
@@ -150,18 +150,18 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler with a wrong unrecognized proposal model.
+    !> Test the ParaXXXX sampler with a wrong unrecognized proposal model.
     module function test_SpecMCMC_ProposalModel_type_4() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaDXXX_type) :: PD
+        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalModel_type_4" &
-                            , inputFile = ParaDXXX_NML//" proposalModel = 'nonsense' /" &
+                            , inputFile = ParaXXXX_NML//" proposalModel = 'nonsense' /" &
                             )
         assertion = assertion .and. PD%Err%occurred
 #endif
@@ -170,12 +170,12 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler with a valid unidimensional `ProposalStartCorMat`.
+    !> Test the ParaXXXX sampler with a valid unidimensional `ProposalStartCorMat`.
     module function test_SpecMCMC_ProposalStartCorMat_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 1_IK
         real(RK)    , parameter :: ProposalStartCorMat(NDIM,NDIM) = reshape([1._RK], shape = shape(ProposalStartCorMat))
         assertion = .true.
@@ -193,13 +193,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler with a valid unidimensional `ProposalStartCorMat`.
+    !> Test the ParaXXXX sampler with a valid unidimensional `ProposalStartCorMat`.
     module function test_SpecMCMC_ProposalStartCorMat_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 1_IK
         real(RK)    , parameter :: ProposalStartCorMat(NDIM,NDIM) = reshape([1._RK], shape = shape(ProposalStartCorMat))
         assertion = .true.
@@ -208,7 +208,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartCorMat_type_2" &
-                            , inputFile = ParaDXXX_NML//" ProposalStartCorMat = "//num2str(ProposalStartCorMat)//" /" &
+                            , inputFile = ParaXXXX_NML//" ProposalStartCorMat = "//num2str(ProposalStartCorMat)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
 #endif
@@ -217,13 +217,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler with a wrong value for the unidimensional `ProposalStartCorMat`.
+    !> Test the ParaXXXX sampler with a wrong value for the unidimensional `ProposalStartCorMat`.
     module function test_SpecMCMC_ProposalStartCorMat_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 1_IK
         real(RK)    , parameter :: ProposalStartCorMat(NDIM,NDIM) = reshape([0._RK], shape = shape(ProposalStartCorMat))
         assertion = .true.
@@ -232,7 +232,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartCorMat_type_3" &
-                            , inputFile = ParaDXXX_NML//" ProposalStartCorMat = "//num2str(ProposalStartCorMat)//" /" &
+                            , inputFile = ParaXXXX_NML//" ProposalStartCorMat = "//num2str(ProposalStartCorMat)//" /" &
                             )
         assertion = assertion .and. PD%Err%occurred
 #endif
@@ -241,13 +241,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler with a multidimensional `ProposalStartCorMat`.
+    !> Test the ParaXXXX sampler with a multidimensional `ProposalStartCorMat`.
     module function test_SpecMCMC_ProposalStartCorMat_type_4() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: ProposalStartCorMat(NDIM,NDIM) = reshape([1._RK, 0.5_RK, 0.5_RK, 1._RK], shape = shape(ProposalStartCorMat))
         assertion = .true.
@@ -256,7 +256,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartCorMat_type_4" &
-                            , inputFile = ParaDXXX_NML//" ProposalStartCorMat = "//num2str(ProposalStartCorMat)//" /" &
+                            , inputFile = ParaXXXX_NML//" ProposalStartCorMat = "//num2str(ProposalStartCorMat)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. all(PD%SpecMCMC%ProposalStartCorMat%Val==PD%SpecMCMC%ProposalStartCovMat%Val)
 #endif
@@ -265,14 +265,14 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler with a wrong multidimensional `ProposalStartCorMat`,
+    !> Test the ParaXXXX sampler with a wrong multidimensional `ProposalStartCorMat`,
     !> which must be fine with the sampler, as long as it leads to a correct positive-definite covariance matrix.
     module function test_SpecMCMC_ProposalStartCorMat_type_5() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: ProposalStartCorMat(NDIM,NDIM) = reshape([2._RK, 0.5_RK, 0.5_RK, 2._RK], shape = shape(ProposalStartCorMat))
         assertion = .true.
@@ -281,7 +281,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartCorMat_type_5" &
-                            , inputFile = ParaDXXX_NML//" ProposalStartCorMat = "//num2str(ProposalStartCorMat)//" /" &
+                            , inputFile = ParaXXXX_NML//" ProposalStartCorMat = "//num2str(ProposalStartCorMat)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
 #endif
@@ -290,12 +290,12 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler with a valid unidimensional `ProposalStartCorMat`.
+    !> Test the ParaXXXX sampler with a valid unidimensional `ProposalStartCorMat`.
     module function test_SpecMCMC_ProposalStartCovMat_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 1_IK
         real(RK)    , parameter :: ProposalStartCovMat(NDIM,NDIM) = reshape([2._RK], shape = shape(ProposalStartCovMat))
         assertion = .true.
@@ -313,13 +313,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler with a valid unidimensional `ProposalStartCovMat`.
+    !> Test the ParaXXXX sampler with a valid unidimensional `ProposalStartCovMat`.
     module function test_SpecMCMC_ProposalStartCovMat_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 1_IK
         real(RK)    , parameter :: ProposalStartCovMat(NDIM,NDIM) = reshape([1._RK], shape = shape(ProposalStartCovMat))
         assertion = .true.
@@ -328,7 +328,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartCovMat_type_2" &
-                            , inputFile = ParaDXXX_NML//" ProposalStartCovMat = "//num2str(ProposalStartCovMat)//" /" &
+                            , inputFile = ParaXXXX_NML//" ProposalStartCovMat = "//num2str(ProposalStartCovMat)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
 #endif
@@ -337,13 +337,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler with a wrong value for the unidimensional `ProposalStartCovMat`.
+    !> Test the ParaXXXX sampler with a wrong value for the unidimensional `ProposalStartCovMat`.
     module function test_SpecMCMC_ProposalStartCovMat_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 1_IK
         real(RK)    , parameter :: ProposalStartCovMat(NDIM,NDIM) = reshape([0._RK], shape = shape(ProposalStartCovMat))
         assertion = .true.
@@ -352,7 +352,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartCovMat_type_3" &
-                            , inputFile = ParaDXXX_NML//" ProposalStartCovMat = "//num2str(ProposalStartCovMat)//" /" &
+                            , inputFile = ParaXXXX_NML//" ProposalStartCovMat = "//num2str(ProposalStartCovMat)//" /" &
                             )
         assertion = assertion .and. PD%Err%occurred
 #endif
@@ -361,13 +361,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler with a multidimensional `ProposalStartCovMat`.
+    !> Test the ParaXXXX sampler with a multidimensional `ProposalStartCovMat`.
     module function test_SpecMCMC_ProposalStartCovMat_type_4() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: ProposalStartCovMat(NDIM,NDIM) = reshape([1._RK, 0.5_RK, 0.5_RK, 1._RK], shape = shape(ProposalStartCovMat))
         assertion = .true.
@@ -376,7 +376,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartCovMat_type_4" &
-                            , inputFile = ParaDXXX_NML//" ProposalStartCovMat = "//num2str(ProposalStartCovMat)//" /" &
+                            , inputFile = ParaXXXX_NML//" ProposalStartCovMat = "//num2str(ProposalStartCovMat)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. all(PD%SpecMCMC%ProposalStartCovMat%Val==PD%SpecMCMC%ProposalStartCovMat%Val)
 #endif
@@ -385,14 +385,14 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler with a multidimensional `ProposalStartCovMat`, in the presence of `ProposalStartCorMat`
+    !> Test the ParaXXXX sampler with a multidimensional `ProposalStartCovMat`, in the presence of `ProposalStartCorMat`
     !> and `ProposalStartStdVec`, in which case, the `ProposalStartCovMat` must be preferred.
     module function test_SpecMCMC_ProposalStartCovMat_type_5() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: ProposalStartCovMat(NDIM,NDIM) = reshape([2._RK, 0.5_RK, 0.5_RK, 2._RK], shape = shape(ProposalStartCovMat))
         real(RK)    , parameter :: ProposalStartCorMat(NDIM,NDIM) = reshape([1._RK, 0.0_RK, 0.0_RK, 1._RK], shape = shape(ProposalStartCovMat))
@@ -414,12 +414,12 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler with a valid unidimensional `ProposalStartCorMat`.
+    !> Test the ParaXXXX sampler with a valid unidimensional `ProposalStartCorMat`.
     module function test_SpecMCMC_ProposalStartStdVec_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 1_IK
         real(RK)    , parameter :: ProposalStartStdVec(NDIM) = [2._RK]
         assertion = .true.
@@ -437,13 +437,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler with a valid unidimensional `ProposalStartStdVec`.
+    !> Test the ParaXXXX sampler with a valid unidimensional `ProposalStartStdVec`.
     module function test_SpecMCMC_ProposalStartStdVec_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 1_IK
         real(RK)    , parameter :: ProposalStartStdVec(NDIM) = [1._RK]
         assertion = .true.
@@ -452,7 +452,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartStdVec_type_2" &
-                            , inputFile = ParaDXXX_NML//" ProposalStartStdVec = "//num2str(ProposalStartStdVec)//" /" &
+                            , inputFile = ParaXXXX_NML//" ProposalStartStdVec = "//num2str(ProposalStartStdVec)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
 #endif
@@ -461,13 +461,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler with a wrong value for the unidimensional `ProposalStartStdVec`.
+    !> Test the ParaXXXX sampler with a wrong value for the unidimensional `ProposalStartStdVec`.
     module function test_SpecMCMC_ProposalStartStdVec_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 1_IK
         real(RK)    , parameter :: ProposalStartStdVec(NDIM) = [0._RK]
         assertion = .true.
@@ -476,7 +476,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartStdVec_type_3" &
-                            , inputFile = ParaDXXX_NML//" ProposalStartStdVec = "//num2str(ProposalStartStdVec)//" /" &
+                            , inputFile = ParaXXXX_NML//" ProposalStartStdVec = "//num2str(ProposalStartStdVec)//" /" &
                             )
         assertion = assertion .and. PD%Err%occurred
 #endif
@@ -485,13 +485,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler with a multidimensional `ProposalStartStdVec`.
+    !> Test the ParaXXXX sampler with a multidimensional `ProposalStartStdVec`.
     module function test_SpecMCMC_ProposalStartStdVec_type_4() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: ProposalStartStdVec(NDIM) = reshape([1._RK, 0.5_RK], shape = shape(ProposalStartStdVec))
         assertion = .true.
@@ -500,7 +500,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartStdVec_type_4" &
-                            , inputFile = ParaDXXX_NML//" ProposalStartStdVec = "//num2str(ProposalStartStdVec)//" /" &
+                            , inputFile = ParaXXXX_NML//" ProposalStartStdVec = "//num2str(ProposalStartStdVec)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. all(PD%SpecMCMC%ProposalStartStdVec%Val==PD%SpecMCMC%ProposalStartStdVec%Val)
 #endif
@@ -509,14 +509,14 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler with a multidimensional `ProposalStartStdVec`, in the presence of `ProposalStartCorMat`,
+    !> Test the ParaXXXX sampler with a multidimensional `ProposalStartStdVec`, in the presence of `ProposalStartCorMat`,
     !> in which case, the `ProposalStartStdVec` must be correctly computed.
     module function test_SpecMCMC_ProposalStartStdVec_type_5() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: tolerance = 1.e-12_RK
         real(RK)    , parameter :: ProposalStartStdVec(NDIM) = reshape([1._RK, 2._RK], shape = shape(ProposalStartStdVec))
@@ -538,13 +538,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler can correctly set the value of `RandomStartPointDomainLowerLimitVec` from input argument.
+    !> Test whether the ParaXXXX sampler can correctly set the value of `RandomStartPointDomainLowerLimitVec` from input argument.
     module function test_RSPDLowerLimitVec_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: RandomStartPointDomainLowerLimitVec(NDIM) = [1._RK, 2._RK]
         assertion = .true.
@@ -562,14 +562,14 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler can correctly set the value of
+    !> Test whether the ParaXXXX sampler can correctly set the value of
     !> `RandomStartPointDomainLowerLimitVec` for two consecutive simulations.
     module function test_RSPDLowerLimitVec_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: RandomStartPointDomainLowerLimitVec(NDIM) = [1._RK, 2._RK]
         assertion = .true.
@@ -578,14 +578,14 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_RSPDLowerLimitVec_type_2A" &
-                            , inputFile = ParaDXXX_NML//" RandomStartPointDomainLowerLimitVec = "//num2str(-RandomStartPointDomainLowerLimitVec)//" /" &
+                            , inputFile = ParaXXXX_NML//" RandomStartPointDomainLowerLimitVec = "//num2str(-RandomStartPointDomainLowerLimitVec)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. all(PD%SpecMCMC%RandomStartPointDomainLowerLimitVec%Val == -RandomStartPointDomainLowerLimitVec)
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_RSPDLowerLimitVec_type_2B" &
-                            , inputFile = ParaDXXX_NML//" RandomStartPointDomainLowerLimitVec = "//num2str(RandomStartPointDomainLowerLimitVec)//" /" &
+                            , inputFile = ParaXXXX_NML//" RandomStartPointDomainLowerLimitVec = "//num2str(RandomStartPointDomainLowerLimitVec)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. all(PD%SpecMCMC%RandomStartPointDomainLowerLimitVec%Val == RandomStartPointDomainLowerLimitVec)
 #endif
@@ -594,14 +594,14 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler returns with an error message when
+    !> Test whether the ParaXXXX sampler returns with an error message when
     !> `RandomStartPointDomainLowerLimitVec` goes below the limits of `DomainLowerLimitVec`.
     module function test_RSPDLowerLimitVec_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: RandomStartPointDomainLowerLimitVec(NDIM) = [+1._RK, +2._RK]
         real(RK)    , parameter :: DomainLowerLimitVec(NDIM) = [-1._RK, +3._RK]
@@ -621,13 +621,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler can correctly set the value of `RandomStartPointDomainLowerLimitVec` from input argument.
+    !> Test whether the ParaXXXX sampler can correctly set the value of `RandomStartPointDomainLowerLimitVec` from input argument.
     module function test_RSPDUpperLimitVec_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: RandomStartPointDomainUpperLimitVec(NDIM) = [1._RK, 2._RK]
         assertion = .true.
@@ -645,14 +645,14 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler can correctly set the value of
+    !> Test whether the ParaXXXX sampler can correctly set the value of
     !> `RandomStartPointDomainUpperLimitVec` for two consecutive simulations.
     module function test_RSPDUpperLimitVec_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: RandomStartPointDomainUpperLimitVec(NDIM) = [1._RK, 2._RK]
         assertion = .true.
@@ -661,14 +661,14 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_RSPDUpperLimitVec_type_2A" &
-                            , inputFile = ParaDXXX_NML//" RandomStartPointDomainUpperLimitVec = "//num2str(-RandomStartPointDomainUpperLimitVec)//" /" &
+                            , inputFile = ParaXXXX_NML//" RandomStartPointDomainUpperLimitVec = "//num2str(-RandomStartPointDomainUpperLimitVec)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. all(PD%SpecMCMC%RandomStartPointDomainUpperLimitVec%Val == -RandomStartPointDomainUpperLimitVec)
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_RSPDUpperLimitVec_type_2B" &
-                            , inputFile = ParaDXXX_NML//" RandomStartPointDomainUpperLimitVec = "//num2str(RandomStartPointDomainUpperLimitVec)//" /" &
+                            , inputFile = ParaXXXX_NML//" RandomStartPointDomainUpperLimitVec = "//num2str(RandomStartPointDomainUpperLimitVec)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. all(PD%SpecMCMC%RandomStartPointDomainUpperLimitVec%Val == RandomStartPointDomainUpperLimitVec)
 #endif
@@ -677,14 +677,14 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler returns with an error message when
+    !> Test whether the ParaXXXX sampler returns with an error message when
     !> `RandomStartPointDomainUpperLimitVec <= RandomStartPointDomainLowerLimitVec`.
     module function test_RSPDUpperLimitVec_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: RandomStartPointDomainLowerLimitVec(NDIM) = [1._RK, 2._RK]
         real(RK)    , parameter :: RandomStartPointDomainUpperLimitVec(NDIM) = [-1._RK, -2._RK]
@@ -704,14 +704,14 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler returns with an error message when
+    !> Test whether the ParaXXXX sampler returns with an error message when
     !> `RandomStartPointDomainUpperLimitVec` goes beyond the limits of `DomainUpperLimitVec`.
     module function test_RSPDUpperLimitVec_type_4() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: RandomStartPointDomainUpperLimitVec(NDIM) = [+1._RK, +2._RK]
         real(RK)    , parameter :: DomainUpperLimitVec(NDIM) = [-1._RK, +3._RK]
@@ -731,13 +731,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler correctly randomizes the start point when requested.
+    !> Test whether the ParaXXXX sampler correctly randomizes the start point when requested.
     module function test_SpecMCMC_RandomStartPointRequested_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
@@ -760,7 +760,7 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
@@ -768,10 +768,10 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_RandomStartPointRequested_type_2" &
-                            , inputFile = ParaDXXX_NML//" randomStartPointRequested = true /" &
+                            , inputFile = ParaXXXX_NML//" randomStartPointRequested = true /" &
                             )
         assertion = assertion .and. PD%Err%occurred .and. PD%SpecMCMC%RandomStartPointRequested%val
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "PD%Err%occurred :", PD%Err%occurred
@@ -791,7 +791,7 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: RandomStartPointDomainLowerLimitVec(NDIM) = [-1.e0_RK, +1.e1_RK]
         real(RK)    , parameter :: RandomStartPointDomainUpperLimitVec(NDIM) = [+2.e0_RK, +2.e1_RK]
@@ -801,7 +801,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_RandomStartPointRequested_type_3" &
-                            , inputFile = ParaDXXX_NML//" randomStartPointRequested = true /" &
+                            , inputFile = ParaXXXX_NML//" randomStartPointRequested = true /" &
                             , RandomStartPointDomainLowerLimitVec = RandomStartPointDomainLowerLimitVec &
                             , RandomStartPointDomainUpperLimitVec = RandomStartPointDomainUpperLimitVec &
                             )
@@ -818,7 +818,7 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: DomainLowerLimitVec(NDIM) = [-1.e0_RK, +1.e2_RK]
         real(RK)    , parameter :: DomainUpperLimitVec(NDIM) = [+2.e0_RK, +2.e2_RK]
@@ -828,7 +828,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_RandomStartPointRequested_type_4" &
-                            , inputFile = ParaDXXX_NML//" randomStartPointRequested = true /" &
+                            , inputFile = ParaXXXX_NML//" randomStartPointRequested = true /" &
                             , DomainLowerLimitVec = DomainLowerLimitVec &
                             , DomainUpperLimitVec = DomainUpperLimitVec &
                             , chainSize = 100_IK &
@@ -840,13 +840,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler returns an error message when `sampleRefinementCount < 0`.
+    !> Test whether the ParaXXXX sampler returns an error message when `sampleRefinementCount < 0`.
     module function test_SpecMCMC_SampleRefinementCount_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
@@ -863,13 +863,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler returns an error message when `sampleRefinementCount < 0`.
+    !> Test whether the ParaXXXX sampler returns an error message when `sampleRefinementCount < 0`.
     module function test_SpecMCMC_SampleRefinementCount_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
@@ -877,7 +877,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_SampleRefinementCount_type_2" &
-                            , inputFile = ParaDXXX_NML//" sampleRefinementCount = -1 /" &
+                            , inputFile = ParaXXXX_NML//" sampleRefinementCount = -1 /" &
                             )
         assertion = assertion .and. PD%Err%occurred
 #endif
@@ -886,13 +886,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler succeeds with a valid `sampleRefinementCount >= 0`.
+    !> Test whether the ParaXXXX sampler succeeds with a valid `sampleRefinementCount >= 0`.
     module function test_SpecMCMC_SampleRefinementCount_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
@@ -900,7 +900,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_SampleRefinementCount_type_3" &
-                            , inputFile = ParaDXXX_NML//" sampleRefinementCount = 0 /" &
+                            , inputFile = ParaXXXX_NML//" sampleRefinementCount = 0 /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
 #endif
@@ -909,13 +909,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler returns an error message with an unrecognized value for `sampleRefinementMethod`.
+    !> Test whether the ParaXXXX sampler returns an error message with an unrecognized value for `sampleRefinementMethod`.
     module function test_SpecMCMC_SampleRefinementMethod_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
@@ -923,7 +923,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_SampleRefinementMethod_type_1" &
-                            , inputFile = ParaDXXX_NML//" sampleRefinementMethod = 'nonsense' /" &
+                            , inputFile = ParaXXXX_NML//" sampleRefinementMethod = 'nonsense' /" &
                             )
         assertion = assertion .and. PD%Err%occurred
 #endif
@@ -932,13 +932,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
+    !> Test whether the ParaXXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
     module function test_SpecMCMC_SampleRefinementMethod_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
@@ -955,13 +955,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
+    !> Test whether the ParaXXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
     module function test_SpecMCMC_SampleRefinementMethod_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
@@ -969,7 +969,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_SampleRefinementMethod_type_3" &
-                            , inputFile = ParaDXXX_NML//" sampleRefinementMethod = 'CutOffAutoCorr' /" &
+                            , inputFile = ParaXXXX_NML//" sampleRefinementMethod = 'CutOffAutoCorr' /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
 #endif
@@ -978,13 +978,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
+    !> Test whether the ParaXXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
     module function test_SpecMCMC_SampleRefinementMethod_type_4() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
@@ -992,7 +992,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_SampleRefinementMethod_type_4" &
-                            , inputFile = ParaDXXX_NML//" sampleRefinementMethod = 'CutOf  fAuto Corr' /" &
+                            , inputFile = ParaXXXX_NML//" sampleRefinementMethod = 'CutOf  fAuto Corr' /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
 #endif
@@ -1001,13 +1001,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
+    !> Test whether the ParaXXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
     module function test_SpecMCMC_SampleRefinementMethod_type_5() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
@@ -1015,7 +1015,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_SampleRefinementMethod_type_5" &
-                            , inputFile = ParaDXXX_NML//" sampleRefinementMethod = 'MaxCum SumAut oCorr' /" &
+                            , inputFile = ParaXXXX_NML//" sampleRefinementMethod = 'MaxCum SumAut oCorr' /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
 #endif
@@ -1024,13 +1024,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
+    !> Test whether the ParaXXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
     module function test_SpecMCMC_SampleRefinementMethod_type_6() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
@@ -1038,7 +1038,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_SampleRefinementMethod_type_6" &
-                            , inputFile = ParaDXXX_NML//" sampleRefinementMethod = 'batchmeans-avg' /" &
+                            , inputFile = ParaXXXX_NML//" sampleRefinementMethod = 'batchmeans-avg' /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
 #endif
@@ -1047,13 +1047,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
+    !> Test whether the ParaXXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
     module function test_SpecMCMC_SampleRefinementMethod_type_7() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
@@ -1061,7 +1061,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_SampleRefinementMethod_type_7" &
-                            , inputFile = ParaDXXX_NML//" sampleRefinementMethod = 'batchmeans-average' /" &
+                            , inputFile = ParaXXXX_NML//" sampleRefinementMethod = 'batchmeans-average' /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
 #endif
@@ -1070,13 +1070,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
+    !> Test whether the ParaXXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
     module function test_SpecMCMC_SampleRefinementMethod_type_8() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
@@ -1084,7 +1084,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_SampleRefinementMethod_type_8" &
-                            , inputFile = ParaDXXX_NML//" sampleRefinementMethod = 'batchmeans-med' /" &
+                            , inputFile = ParaXXXX_NML//" sampleRefinementMethod = 'batchmeans-med' /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
 #endif
@@ -1093,13 +1093,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
+    !> Test whether the ParaXXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
     module function test_SpecMCMC_SampleRefinementMethod_type_9() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
@@ -1107,7 +1107,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_SampleRefinementMethod_type_9" &
-                            , inputFile = ParaDXXX_NML//" sampleRefinementMethod = 'batchmeans-median' /" &
+                            , inputFile = ParaXXXX_NML//" sampleRefinementMethod = 'batchmeans-median' /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
 #endif
@@ -1116,13 +1116,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
+    !> Test whether the ParaXXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
     module function test_SpecMCMC_SampleRefinementMethod_type_10() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
@@ -1130,7 +1130,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_SampleRefinementMethod_type_10" &
-                            , inputFile = ParaDXXX_NML//" sampleRefinementMethod = 'batchmeans-min' /" &
+                            , inputFile = ParaXXXX_NML//" sampleRefinementMethod = 'batchmeans-min' /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
 #endif
@@ -1139,13 +1139,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
+    !> Test whether the ParaXXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
     module function test_SpecMCMC_SampleRefinementMethod_type_11() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
@@ -1153,7 +1153,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_SampleRefinementMethod_type_11" &
-                            , inputFile = ParaDXXX_NML//" sampleRefinementMethod = 'batchmeans-minimum' /" &
+                            , inputFile = ParaXXXX_NML//" sampleRefinementMethod = 'batchmeans-minimum' /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
 #endif
@@ -1162,13 +1162,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
+    !> Test whether the ParaXXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
     module function test_SpecMCMC_SampleRefinementMethod_type_12() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
@@ -1176,7 +1176,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_SampleRefinementMethod_type_12" &
-                            , inputFile = ParaDXXX_NML//" sampleRefinementMethod = 'batchmeans-max' /" &
+                            , inputFile = ParaXXXX_NML//" sampleRefinementMethod = 'batchmeans-max' /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
 #endif
@@ -1185,13 +1185,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
+    !> Test whether the ParaXXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
     module function test_SpecMCMC_SampleRefinementMethod_type_13() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
@@ -1199,7 +1199,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_SampleRefinementMethod_type_13" &
-                            , inputFile = ParaDXXX_NML//" sampleRefinementMethod = 'batchmeans-maximum' /" &
+                            , inputFile = ParaXXXX_NML//" sampleRefinementMethod = 'batchmeans-maximum' /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
 #endif
@@ -1208,13 +1208,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler returns with an error message for a wrong input value for `scaleFactor`.
+    !> Test whether the ParaXXXX sampler returns with an error message for a wrong input value for `scaleFactor`.
     module function test_SpecMCMC_ScaleFactor_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
@@ -1222,7 +1222,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ScaleFactor_type_1" &
-                            , inputFile = ParaDXXX_NML//" scaleFactor = 'nonsense' /" &
+                            , inputFile = ParaXXXX_NML//" scaleFactor = 'nonsense' /" &
                             )
         assertion = assertion .and. PD%Err%occurred
 #endif
@@ -1231,13 +1231,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler returns with an error message for an empty input value for `scaleFactor`.
+    !> Test whether the ParaXXXX sampler returns with an error message for an empty input value for `scaleFactor`.
     module function test_SpecMCMC_ScaleFactor_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
@@ -1254,13 +1254,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler returns with an error message for an empty input value for `scaleFactor`.
+    !> Test whether the ParaXXXX sampler returns with an error message for an empty input value for `scaleFactor`.
     module function test_SpecMCMC_ScaleFactor_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
@@ -1277,13 +1277,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler returns with an error message for a wrong input value for `scaleFactor`.
+    !> Test whether the ParaXXXX sampler returns with an error message for a wrong input value for `scaleFactor`.
     module function test_SpecMCMC_ScaleFactor_type_4() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
@@ -1300,13 +1300,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler returns successfully for a valid input value for `scaleFactor`.
+    !> Test whether the ParaXXXX sampler returns successfully for a valid input value for `scaleFactor`.
     module function test_SpecMCMC_ScaleFactor_type_5() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
@@ -1314,7 +1314,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ScaleFactor_type_5" &
-                            , inputFile = ParaDXXX_NML//" scaleFactor = '2 * Gelman'" &
+                            , inputFile = ParaXXXX_NML//" scaleFactor = '2 * Gelman'" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
 #endif
@@ -1323,13 +1323,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler returns with an error message for a negative input value for `scaleFactor`.
+    !> Test whether the ParaXXXX sampler returns with an error message for a negative input value for `scaleFactor`.
     module function test_SpecMCMC_ScaleFactor_type_6() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
@@ -1337,7 +1337,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ScaleFactor_type_6" &
-                            , inputFile = ParaDXXX_NML//" scaleFactor = '-0.5 * Gelman'" &
+                            , inputFile = ParaXXXX_NML//" scaleFactor = '-0.5 * Gelman'" &
                             )
         assertion = assertion .and. PD%Err%occurred
 #endif
@@ -1346,13 +1346,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler returns with an error message for a wrong input value for `scaleFactor`.
+    !> Test whether the ParaXXXX sampler returns with an error message for a wrong input value for `scaleFactor`.
     module function test_SpecMCMC_ScaleFactor_type_7() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
@@ -1360,7 +1360,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ScaleFactor_type_7" &
-                            , inputFile = ParaDXXX_NML//" scaleFactor = '*GELMAN'" &
+                            , inputFile = ParaXXXX_NML//" scaleFactor = '*GELMAN'" &
                             )
         assertion = assertion .and. PD%Err%occurred
 #endif
@@ -1369,13 +1369,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler returns successfully for a valid input value for `scaleFactor`.
+    !> Test whether the ParaXXXX sampler returns successfully for a valid input value for `scaleFactor`.
     module function test_SpecMCMC_ScaleFactor_type_8() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
@@ -1383,7 +1383,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ScaleFactor_type_8" &
-                            , inputFile = ParaDXXX_NML//" scaleFactor = '2. * 0.5 * Gelman'" &
+                            , inputFile = ParaXXXX_NML//" scaleFactor = '2. * 0.5 * Gelman'" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. abs(PD%SpecMCMC%ScaleFactor%val-2.38_RK/sqrt(real(NDIM,kind=RK)))<1.e-12_RK
 #endif
@@ -1392,13 +1392,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler returns successfully for a valid input value for `StartPointVec`.
+    !> Test whether the ParaXXXX sampler returns successfully for a valid input value for `StartPointVec`.
     module function test_SpecMCMC_StartPointVec_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: StartPointVec(NDIM) = [1._RK, -10._RK]
         assertion = .true.
@@ -1416,13 +1416,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler returns successfully for a valid input value for `StartPointVec`.
+    !> Test whether the ParaXXXX sampler returns successfully for a valid input value for `StartPointVec`.
     module function test_SpecMCMC_StartPointVec_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
@@ -1430,7 +1430,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_StartPointVec_type_2" &
-                            , inputFile = ParaDXXX_NML//" StartPointVec = 1., -10., /" &
+                            , inputFile = ParaXXXX_NML//" StartPointVec = 1., -10., /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
 #endif
@@ -1439,13 +1439,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler returns successfully and correctly computes `StartPointVec` when not provided.
+    !> Test whether the ParaXXXX sampler returns successfully and correctly computes `StartPointVec` when not provided.
     module function test_SpecMCMC_StartPointVec_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
@@ -1461,13 +1461,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler returns successfully and correctly computes `StartPointVec` when not provided.
+    !> Test whether the ParaXXXX sampler returns successfully and correctly computes `StartPointVec` when not provided.
     module function test_SpecMCMC_StartPointVec_type_4() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: DomainLowerLimitVec(NDIM) = [-1.e0_RK, +1.e1_RK]
         real(RK)    , parameter :: DomainUpperLimitVec(NDIM) = [+2.e0_RK, +2.e1_RK]
@@ -1482,7 +1482,7 @@ contains
                             , chainSize = 100_IK &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. all( abs(PD%SpecMCMC%StartPointVec%Val-0.5_RK*(DomainLowerLimitVec+DomainUpperLimitVec)) < 1.e-12_RK )
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "PD%Err%occurred", PD%Err%occurred
@@ -1498,13 +1498,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDXXX sampler returns with an error message when `StartPointVec` is out of domain boundary.
+    !> Test whether the ParaXXXX sampler returns with an error message when `StartPointVec` is out of domain boundary.
     module function test_SpecMCMC_StartPointVec_type_5() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDXXX_type)     :: PD
+        type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: DomainLowerLimitVec(NDIM) = [-1.e0_RK, +1.e1_RK]
         real(RK)    , parameter :: DomainUpperLimitVec(NDIM) = [+2.e0_RK, +2.e1_RK]
@@ -1521,7 +1521,7 @@ contains
                             , chainSize = 100_IK &
                             )
         assertion = assertion .and. PD%Err%occurred .and. all(PD%SpecMCMC%StartPointVec%Val==StartPointVec)
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "PD%Err%occurred", PD%Err%occurred

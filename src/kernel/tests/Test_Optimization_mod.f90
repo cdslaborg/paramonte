@@ -115,7 +115,7 @@ contains
         assertion = .not. BrentMinimum%Err%occurred
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0,:,', '))")
                 write(Test%outputUnit,"(*(g0,:,', '))") BrentMinimum%Err%msg
                 write(Test%outputUnit,"(*(g0,:,', '))")
@@ -127,7 +127,7 @@ contains
         assertion = assertion .and. abs(BrentMinimum%xmin-TestFuncRosenBrock1D%XMIN_REF) / abs(TestFuncRosenBrock1D%XMIN_REF) < 1.e-6_RK
         assertion = assertion .and. abs(BrentMinimum%fmin-TestFuncRosenBrock1D%FMIN_REF) / abs(TestFuncRosenBrock1D%FMIN_REF) < 1.e-6_RK
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "BrentMinimum%xmin", BrentMinimum%xmin
@@ -167,7 +167,7 @@ contains
         assertion = .not. BrentMinimum%Err%occurred
         if (.not. assertion) then
             ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0,:,', '))")
                 write(Test%outputUnit,"(*(g0,:,', '))") BrentMinimum%Err%msg
                 write(Test%outputUnit,"(*(g0,:,', '))")
@@ -179,7 +179,7 @@ contains
         assertion = abs(BrentMinimum%xmin-TestFuncRosenBrock1D%XMIN_REF) / abs(TestFuncRosenBrock1D%XMIN_REF) < 1.e-6_RK
         assertion = abs(BrentMinimum%fmin-TestFuncRosenBrock1D%FMIN_REF) / abs(TestFuncRosenBrock1D%FMIN_REF) < 1.e-6_RK
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "BrentMinimum%xmin", BrentMinimum%xmin
@@ -222,7 +222,7 @@ contains
         assertion = .not. PowellMinimum%Err%occurred
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0,:,', '))")
                 write(Test%outputUnit,"(*(g0,:,', '))") PowellMinimum%Err%msg
                 write(Test%outputUnit,"(*(g0,:,', '))")
@@ -234,7 +234,7 @@ contains
         assertion = assertion .and. any(abs(PowellMinimum%xmin-TestFuncRosenBrock2D%XMIN_REF) / abs(TestFuncRosenBrock2D%XMIN_REF) < 1.e-6_RK)
         assertion = assertion .and. abs(PowellMinimum%fmin-TestFuncRosenBrock2D%FMIN_REF) / abs(TestFuncRosenBrock2D%FMIN_REF) < 1.e-6_RK
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "PowellMinimum%xmin", PowellMinimum%xmin

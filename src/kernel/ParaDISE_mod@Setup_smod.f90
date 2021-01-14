@@ -50,6 +50,6 @@
 
 submodule (ParaDISE_mod) Setup_smod
 #define PARADISE ParaDISE
-#include "ParaDXXX_mod@Setup_smod.inc.f90"
+#include "ParaXXXX_mod@Setup_smod.inc.f90"
 #undef PARADISE
 end submodule Setup_smod ! LCOV_EXCL_LINE

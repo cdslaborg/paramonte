@@ -241,7 +241,7 @@ module ParaMonte_mod
         type(ChainFileContents_type)    :: Chain                    !< An object of class [ChainFileContents_type](@ref paramontechainfilecontents_mod::chainfilecontents_type) containing information and methods for chain IO.
         type(Decoration_type)           :: Decor                    !< An object of class [Decoration_type](@ref decoration_mod::decoration_type) containing IO decoration tools.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
-    !> These variables are exclusively used for testing the deterministic restart functionality of ParaDXXX samplers. 
+    !> These variables are exclusively used for testing the deterministic restart functionality of ParaXXXX samplers. 
     !> This block must not be activated under any other circumstances.
     !> Under normal testing conditions (other than testing the restart functionality, self%testSamplingCountTarget > self%testSamplingCounter must always hold.
     !> To test the restart functionality under any serial or distributed parallelization schemes, set self%testSamplingCountTarget < chainSize.

@@ -92,7 +92,7 @@ contains
         assertion = .not. FileList%Err%occurred
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0))") "FileList%Err%occurred = ", FileList%Err%occurred
             end if
             return
@@ -103,7 +103,7 @@ contains
         assertion = assertion .and. FileList%orderStr == ""
         assertion = assertion .and. FileList%excludeStr == ""
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "searchStr  : '", FileList%searchStr, "'"
@@ -134,7 +134,7 @@ contains
         assertion = .not. FileList%Err%occurred
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0))") "FileList%Err%occurred = ", FileList%Err%occurred
             end if
             return
@@ -145,7 +145,7 @@ contains
         assertion = assertion .and. FileList%orderStr == "name"
         assertion = assertion .and. FileList%excludeStr == ""
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "searchStr  : '", FileList%searchStr, "'"
@@ -176,7 +176,7 @@ contains
         assertion = .not. FileList%Err%occurred
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0))") "FileList%Err%occurred = ", FileList%Err%occurred
             end if
             return
@@ -187,7 +187,7 @@ contains
         assertion = assertion .and. FileList%orderStr == "date"
         assertion = assertion .and. FileList%excludeStr == ""
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "searchStr  : '", FileList%searchStr, "'"
@@ -218,7 +218,7 @@ contains
         assertion = .not. FileList%Err%occurred
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0))") "FileList%Err%occurred = ", FileList%Err%occurred
             end if
             return
@@ -229,7 +229,7 @@ contains
         assertion = assertion .and. FileList%orderStr == ""
         assertion = assertion .and. FileList%excludeStr == "ParaMonte"
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "searchStr  : '", FileList%searchStr, "'"
@@ -260,7 +260,7 @@ contains
         assertion = .not. FileList%Err%occurred
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0))") "FileList%Err%occurred = ", FileList%Err%occurred
             end if
             return
@@ -271,7 +271,7 @@ contains
         assertion = assertion .and. FileList%orderStr == ""
         assertion = assertion .and. FileList%excludeStr == ""
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "searchStr  : '", FileList%searchStr, "'"
@@ -304,7 +304,7 @@ contains
         assertion = .not. FileList%Err%occurred
         if (.not. assertion) then
             ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0))") "FileList%Err%occurred = ", FileList%Err%occurred
             end if
             return
@@ -315,7 +315,7 @@ contains
         assertion = assertion .and. FileList%orderStr == ""
         assertion = assertion .and. FileList%excludeStr == ""
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "searchStr  : '", FileList%searchStr, "'"
@@ -348,14 +348,14 @@ contains
         assertion = FileList%Err%occurred
         if (.not. assertion) then
             ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0))") "FileList%Err%occurred = ", FileList%Err%occurred
             end if
             return
             ! LCOV_EXCL_STOP
         end if
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "searchStr  : '", FileList%searchStr, "'"
@@ -391,14 +391,14 @@ contains
         assertion = .not. FileList%Err%occurred
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0))") "FileList%Err%occurred = ", FileList%Err%occurred
             end if
             return
         end if
         ! LCOV_EXCL_STOP
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "searchStr  : '", FileList%searchStr, "'"
@@ -432,7 +432,7 @@ contains
 
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode) then
+            if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0))") "FileList%Err%occurred = ", FileList%Err%occurred
             end if
             return

@@ -92,7 +92,7 @@ contains
                             , sampleSize = 10_IK &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(*,"(10(g0,:,', '))")
             write(*,"(10(g0,:,', '))") "PD%Err%occurred", PD%Err%occurred
@@ -106,7 +106,7 @@ contains
 
         CFC = ChainFileContents_type( ndim = NDIM )
         assertion = assertion .and. .not. CFC%Err%occurred
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(*,"(10(g0,:,', '))")
             write(*,"(10(g0,:,', '))") "CFC%Err%occurred", CFC%Err%occurred
@@ -124,7 +124,7 @@ contains
                                     , chainFileForm = "compact" &
                                     )
         assertion = assertion .and. .not. CFC%Err%occurred
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(*,"(10(g0,:,', '))")
             write(*,"(10(g0,:,', '))") "CFC%Err%occurred", CFC%Err%occurred

@@ -199,7 +199,7 @@ contains
         if (Spearman%Err%occurred) then
         ! LCOV_EXCL_START
             assertion = .false.
-            if (Test%isDebugMode .and. .not. assertion) then
+            if (Test%isVerboseMode .and. .not. assertion) then
                 write(Test%outputUnit,"(*(g0))") "Error occurred: "//Spearman%Err%msg
             end if
             return
@@ -209,7 +209,7 @@ contains
         assertion = abs(Spearman%rho - CorrCoef_ref) / (Spearman%rho + CorrCoef_ref) < 1.e-10_RK
         assertion = assertion .and. abs(Spearman%rhoProb-CorrPval_ref) / (Spearman%rhoProb+CorrPval_ref) < 1.e-1_RK
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "Computed Spearman's statistic:"
@@ -255,7 +255,7 @@ contains
         if (Spearman%Err%occurred) then
         ! LCOV_EXCL_START
             assertion = .false.
-            if (Test%isDebugMode .and. .not. assertion) then
+            if (Test%isVerboseMode .and. .not. assertion) then
                 write(Test%outputUnit,"(*(g0))") "Error occurred: "//Spearman%Err%msg
             end if
             return
@@ -265,7 +265,7 @@ contains
         assertion = abs(Spearman%rho - CorrCoef_ref) / (Spearman%rho + CorrCoef_ref) < 1.e-10_RK
         assertion = assertion .and. abs(Spearman%rhoProb-CorrPval_ref) / (Spearman%rhoProb+CorrPval_ref) < 1.e-1_RK
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "Computed Spearman's statistic:"

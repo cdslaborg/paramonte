@@ -52,26 +52,34 @@
 !#define XCAT(a,b) CAT(a,b)
 #if defined PARADRAM
 
-#define ParaDXXX_mod ParaDRAM_mod
-#define ParaDXXX_type ParaDRAM_type
-#define ParaDXXXProposalAbstract_mod ParaDRAMProposalAbstract_mod
+#define ParaXXXX_mod ParaDRAM_mod
+#define ParaXXXX_type ParaDRAM_type
+#define ParaXXXXProposalAbstract_mod ParaDRAMProposalAbstract_mod
 
 #elif defined PARADISE
 
-#define ParaDXXX_mod ParaDISE_mod
-#define ParaDXXX_type ParaDISE_type
-#define ParaDXXXProposalAbstract_mod ParaDISEProposalAbstract_mod
+#define ParaXXXX_mod ParaDISE_mod
+#define ParaXXXX_type ParaDISE_type
+#define ParaXXXXProposalAbstract_mod ParaDISEProposalAbstract_mod
+
+#elif defined PARANEST
+
+#define ParaXXXX_mod ParaNest_mod
+#define ParaXXXX_type ParaNest_type
+#define ParaXXXXProposalAbstract_mod ParaNestProposalAbstract_mod
 
 #else
-#error "Unrecognized sampler in ParaDRAM_mod.inc.f90"
+#error "Unrecognized sampler in ParaXXXX_mod.inc.f90"
 #endif
 
     use Constants_mod, only: IK, RK, CK ! LCOV_EXCL_LINE
     use ParaMonte_mod, only: ParaMonteNumFunCall_type
+    use ParaMonteLogFunc_mod, only: getLogFunc_proc
+    use ParaXXXXProposalAbstract_mod, only: ProposalAbstract_type
+#if defined PARADRAM || defined PARADISE
     use ParaMCMC_mod, only: ParaMCMC_type, ParaMCMC_Statistics_type, ParaMCMC_Chain_type
     use SpecDRAM_mod, only: SpecDRAM_type
-    use ParaMonteLogFunc_mod, only: getLogFunc_proc
-    use ParaDXXXProposalAbstract_mod, only: ProposalAbstract_type
+#endif
 
     implicit none
 
@@ -88,15 +96,16 @@
         integer(IK)                         :: acceptedRejectedDelayedUnused    !< by all processes, used or unused
     end type NumFunCall_type
 
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if defined PARADRAM || defined PARADISE
     type, extends(ParaMCMC_Statistics_type) :: Statistics_type
         type(ParaMCMC_Chain_type)           :: AdaptationBurninLoc              !< burning loc based on the minimum adaptation measure requested
         type(NumFunCall_type)               :: NumFunCall
     end type Statistics_type
 
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
     !> The `ParaDRAM_type` and `ParaDISE_type` classes.
-    type, extends(ParaMCMC_type)                    :: ParaDXXX_type
+    type, extends(ParaMCMC_type)                    :: ParaXXXX_type
         type(SpecDRAM_type)                         :: SpecDRAM     !< Object of [SpecDRAM_type](@ref specdram_type) class containing DRAM simulation specs.
         type(Statistics_type)                       :: Stats        !< Object of [Statistics_type](@ref statistics_type) class containing simulation statistics.
         class(ProposalAbstract_type), allocatable   :: Proposal     !< Object of [ProposalAbstract_type](@ref proposalabstract_type) class representing the proposal distribution of the MCMC sampler.
@@ -105,7 +114,11 @@
         procedure, pass, private                    :: getSpecFromInputFile
         procedure, pass, public                     :: runSampler
         procedure, pass, private                    :: runKernel
-    end type ParaDXXX_type ! ParaDRAM_type or ParaDISE_type
+        procedure, pass, private                    :: postprocess
+    end type ParaXXXX_type ! ParaDRAM_type or ParaDISE_type
+#endif
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     interface
     module subroutine getSpecFromInputFile( self, nd )
@@ -113,10 +126,12 @@
         !DEC$ ATTRIBUTES DLLEXPORT :: getSpecFromInputFile
 #endif
         use Constants_mod, only: IK
-        class(ParaDXXX_type), intent(inout) :: self
+        class(ParaXXXX_type), intent(inout) :: self
         integer(IK), intent(in)             :: nd
     end subroutine getSpecFromInputFile
     end interface
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     interface
     module subroutine runKernel( self, getLogFunc )
@@ -124,10 +139,12 @@
         !DEC$ ATTRIBUTES DLLEXPORT :: runKernel
 #endif
         use ParaMonteLogFunc_mod, only: getLogFunc_proc
-        class(ParaDXXX_type), intent(inout) :: self
+        class(ParaXXXX_type), intent(inout) :: self
         procedure(getLogFunc_proc)          :: getLogFunc
     end subroutine runKernel
     end interface
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     interface
     module subroutine runSampler( self                                  &
@@ -175,9 +192,8 @@
                                 , delayedRejectionCount                 &
                                 , burninAdaptationMeasure               &
                                 , delayedRejectionScaleFactorVec        &
-                                ) ! result(self)
+                                )
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
-        !!DEC$ ATTRIBUTES DLLEXPORT :: ParaDXXX_type
         !DEC$ ATTRIBUTES DLLEXPORT :: runSampler
 #endif
         use ParaMonteLogFunc_mod, only: getLogFunc_proc
@@ -186,7 +202,7 @@
         implicit none
 
         ! self
-        class(ParaDXXX_type), intent(inout) :: self
+        class(ParaXXXX_type), intent(inout) :: self
 
         ! mandatory variables
         integer(IK) , intent(in)            :: ndim
@@ -216,6 +232,7 @@
         integer(IK) , intent(in), optional  :: maxNumDomainCheckToWarn
         integer(IK) , intent(in), optional  :: maxNumDomainCheckToStop
 
+#if defined PARADRAM || defined PARADISE
         ! ParaMCMC variables
         integer(IK) , intent(in), optional  :: chainSize
         real(RK)    , intent(in), optional  :: startPointVec(ndim)
@@ -237,17 +254,32 @@
         integer(IK) , intent(in), optional  :: delayedRejectionCount
         real(RK)    , intent(in), optional  :: burninAdaptationMeasure
         real(RK)    , intent(in), optional  :: delayedRejectionScaleFactorVec(:)
+#elif defined PARANEST
+
+#endif
 
     end subroutine runSampler
     end interface
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    interface
+    module subroutine postprocess(self)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: postprocess
+#endif
+        class(ParaXXXX_type), intent(inout) :: self
+    end subroutine postprocess
+    end interface
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 #if defined PARADISE
 #elif defined PARADRAM
+#elif defined PARANEST
 #endif
 
-#undef ParaDXXX_mod
-#undef ParaDXXX_type
-#undef ParaDXXXProposalAbstract_mod
+#undef ParaXXXX_mod
+#undef ParaXXXX_type
+#undef ParaXXXXProposalAbstract_mod
 

@@ -50,6 +50,6 @@
 
 submodule (ParaDISE_mod) Kernel_smod
 #define PARADISE ParaDISE
-#include "ParaDXXX_mod@Kernel_smod.inc.f90"
+#include "ParaXXXX_mod@Kernel_smod.inc.f90"
 #undef PARADISE
 end submodule Kernel_smod ! LCOV_EXCL_LINE

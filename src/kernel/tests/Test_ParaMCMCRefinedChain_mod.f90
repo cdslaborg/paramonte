@@ -82,7 +82,7 @@ contains
         integer(IK)                 :: skip4NewSampleSize
         skip4NewSampleSize = getSkip4NewSampleSize(oldSampleSize,newSampleSize)
         assertion = skip4NewSampleSize == skip4NewSampleSize_ref
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(*,"(10(g0,:,', '))")
             write(*,"(10(g0,:,', '))") "skip4NewSampleSize_ref  ", skip4NewSampleSize_ref
@@ -105,7 +105,7 @@ contains
         integer(IK)                 :: skip4NewSampleSize
         skip4NewSampleSize = getSkip4NewSampleSize(oldSampleSize,newSampleSize)
         assertion = skip4NewSampleSize == skip4NewSampleSize_ref
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(*,"(10(g0,:,', '))")
             write(*,"(10(g0,:,', '))") "skip4NewSampleSize_ref  ", skip4NewSampleSize_ref
@@ -128,7 +128,7 @@ contains
         integer(IK)                 :: skip4NewSampleSize
         skip4NewSampleSize = getSkip4NewSampleSize(oldSampleSize,newSampleSize)
         assertion = skip4NewSampleSize == skip4NewSampleSize_ref
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(*,"(10(g0,:,', '))")
             write(*,"(10(g0,:,', '))") "skip4NewSampleSize_ref  ", skip4NewSampleSize_ref
@@ -150,7 +150,7 @@ contains
         integer(IK)                 :: skip4NewSampleSize
         skip4NewSampleSize = getSkip4NewSampleSize(oldSampleSize,newSampleSize)
         assertion = skip4NewSampleSize < 0_IK
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(*,"(10(g0,:,', '))")
             write(*,"(10(g0,:,', '))") "skip4NewSampleSize      ", skip4NewSampleSize

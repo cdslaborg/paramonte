@@ -143,7 +143,7 @@ contains
         String%Parts  = split(string=String%value,delim="String")
         assertion = String%Parts(1)%record == "  " .and. String%Parts(2)%record == " "
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "String%value = '", String%value, "'"
@@ -167,7 +167,7 @@ contains
         String%Parts  = split(string=String%value,delim='str')
         assertion = String%Parts(1)%record == "  String" .and. String%Parts(2)%record == "ing "
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "String%value = '", String%value, "'"
@@ -191,7 +191,7 @@ contains
         String%Parts  = split(string=String%value,delim=' ')
         assertion = String%Parts(1)%record == ""
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "String%value = '", String%value, "'"
@@ -215,7 +215,7 @@ contains
         String%Parts  = split(string = String%value, delim = " ", nPart = String%nPart)
         assertion = String%nPart == 4_IK
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "String%value = '", String%value, "'"
@@ -244,7 +244,7 @@ contains
             assertion = assertion .and. string%parts(i)%record == string%value(i:i)
         end do
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "String%value = '", String%value, "'"
@@ -269,7 +269,7 @@ contains
         String%Parts  = splitStr(string=String%value,delimiter="String")
         assertion = String%Parts(1)%record == "  " .and. String%Parts(2)%record == " "
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "String%value = '", String%value, "'"
@@ -293,7 +293,7 @@ contains
         String%Parts  = splitStr(string=String%value,delimiter='str')
         assertion = String%Parts(1)%record == "  String" .and. String%Parts(2)%record == "ing "
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "String%value = '", String%value, "'"
@@ -317,7 +317,7 @@ contains
         String%Parts  = splitStr(string=String%value,delimiter=' ')
         assertion = String%Parts(1)%record == ""
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "String%value = '", String%value, "'"
@@ -341,7 +341,7 @@ contains
         String%Parts  = splitStr(string = String%value, delimiter = " ", nPart = String%nPart)
         assertion = String%nPart == 1_IK
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "String%value = '", String%value, "'"
@@ -367,7 +367,7 @@ contains
         String%Parts  = splitStr(string = String%value, delimiter = "", nPart = String%nPart)
         assertion = String%nPart == 1_IK .and. string%parts(1)%record == string%value
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "String%value = '", String%value, "'"
@@ -393,7 +393,7 @@ contains
         this = str2int(this_str)
         assertion = this == this_ref
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_str  = '", this_str, "'"
@@ -420,7 +420,7 @@ contains
         this = str2int(this_str, iostat)
         assertion = iostat /= 0 .or. (iostat == 0 .and. this == this_ref)
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_str  = '", this_str, "'"
@@ -446,7 +446,7 @@ contains
         this = str2int32(this_str)
         assertion = this == this_ref
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_str  = '", this_str, "'"
@@ -473,7 +473,7 @@ contains
         this = str2int32(this_str, iostat)
         assertion = iostat /= 0 .or. (iostat == 0 .and. this == this_ref)
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_str  = '", this_str, "'"
@@ -499,7 +499,7 @@ contains
         this = str2int64(this_str)
         assertion = this == this_ref
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_str  = '", this_str, "'"
@@ -526,7 +526,7 @@ contains
         this = str2int64(this_str, iostat)
         assertion = iostat /= 0 .or. (iostat == 0 .and. this == this_ref)
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_str  = '", this_str, "'"
@@ -552,7 +552,7 @@ contains
         this = str2real(this_str)
         assertion = this == this_ref
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_str  = '", this_str, "'"
@@ -579,7 +579,7 @@ contains
         this = str2real(this_str, iostat)
         assertion = iostat /= 0 .or. (iostat == 0 .and. this == this_ref)
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_str  = '", this_str, "'"
@@ -605,7 +605,7 @@ contains
         this = str2real32(this_str)
         assertion = this == this_ref
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_str  = '", this_str, "'"
@@ -632,7 +632,7 @@ contains
         this = str2real32(this_str, iostat)
         assertion = iostat /= 0 .or. (iostat == 0 .and. this == this_ref)
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_str  = '", this_str, "'"
@@ -658,7 +658,7 @@ contains
         this = str2real64(this_str)
         assertion = this == this_ref
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_str  = '", this_str, "'"
@@ -685,7 +685,7 @@ contains
         this = str2real64(this_str, iostat)
         assertion = iostat /= 0 .or. (iostat == 0 .and. this == this_ref)
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_str  = '", this_str, "'"
@@ -803,7 +803,7 @@ contains
         character(:), allocatable   :: this
         this = num2str(this_int)
         assertion = this == this_ref .and. len(this) == len(this_ref)
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = '", this_ref, "'"
@@ -825,7 +825,7 @@ contains
         character(:), allocatable   :: this
         this = num2str(this_int,"(1I10.10)")
         assertion = this == this_ref .and. len(this) == len(this_ref)
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = '", this_ref, "'"
@@ -847,7 +847,7 @@ contains
         character(:), allocatable   :: this
         this = num2str(this_int,minlen=10_IK)
         assertion = this == this_ref .and. len(this) == len(this_ref)
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = '", this_ref, "'"
@@ -869,7 +869,7 @@ contains
         character(:), allocatable   :: this
         this = num2str(this_int)
         assertion = this == this_ref .and. len(this) == len(this_ref)
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = '", this_ref, "'"
@@ -891,7 +891,7 @@ contains
         character(:), allocatable   :: this
         this = num2str(this_int,"(1I20.20)")
         assertion = this == this_ref .and. len(this) == len(this_ref)
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = '", this_ref, "'"
@@ -913,7 +913,7 @@ contains
         character(:), allocatable   :: this
         this = num2str(this_int,minlen=20_int32)
         assertion = this == this_ref .and. len(this) == len(this_ref)
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = '", this_ref, "'"
@@ -934,7 +934,7 @@ contains
         real(RK)                    :: this
         this = str2real32( num2str(this_ref) )
         assertion = this == this_ref
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
@@ -954,7 +954,7 @@ contains
         real(RK)                    :: this
         this = str2real32( num2str(this_ref,"(g0)") )
         assertion = this == this_ref
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
@@ -974,7 +974,7 @@ contains
         real(RK)                    :: this
         this = str2real32( num2str(this_ref,"(g0)",20_IK) )
         assertion = this == this_ref
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
@@ -996,7 +996,7 @@ contains
         real(RK)                    :: this
         this = str2real32( num2str(this_ref,"(g0)",263_IK) )
         assertion = this == this_ref
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
@@ -1016,7 +1016,7 @@ contains
         real(RK)                    :: this
         this = str2real64( num2str(this_ref) )
         assertion = this == this_ref
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
@@ -1036,7 +1036,7 @@ contains
         real(RK)                    :: this
         this = str2real64( num2str(this_ref,"(g0)") )
         assertion = this == this_ref
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
@@ -1056,7 +1056,7 @@ contains
         real(RK)                    :: this
         this = str2real64( num2str(this_ref,"(g0)",30_IK) )
         assertion = this == this_ref
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
@@ -1078,7 +1078,7 @@ contains
         real(RK)                    :: this
         this = str2real64( num2str(this_ref,"(g0)",263_IK) )
         assertion = this == this_ref
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
@@ -1102,7 +1102,7 @@ contains
         string = num2str(this_ref)
         read(string,*) this
         assertion = all(this == this_ref)
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
@@ -1126,7 +1126,7 @@ contains
         string = num2str(this_ref,"(*(g0,:,' '))")
         read(string,*) this
         assertion = all(this == this_ref)
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
@@ -1150,7 +1150,7 @@ contains
         string = num2str(this_ref,"(*(g0,:,' '))",63_IK)
         read(string,*) this
         assertion = all(this == this_ref)
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
@@ -1176,7 +1176,7 @@ contains
         string = num2str(this_ref,"(*(g0,:,' '))",263_IK)
         read(string,*) this
         assertion = all(this == this_ref)
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
@@ -1200,7 +1200,7 @@ contains
         string = num2str(this_ref)
         read(string,*) this
         assertion = all(this == this_ref)
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
@@ -1224,7 +1224,7 @@ contains
         string = num2str(this_ref,"(*(g0,:,' '))")
         read(string,*) this
         assertion = all(this == this_ref)
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
@@ -1248,7 +1248,7 @@ contains
         string = num2str(this_ref,"(*(g0,:,' '))",128_IK)
         read(string,*) this
         assertion = all(this == this_ref)
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
@@ -1274,7 +1274,7 @@ contains
         string = num2str(this_ref,"(*(g0,:,' '))",256_IK)
         read(string,*) this
         assertion = all(this == this_ref)
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
@@ -1339,7 +1339,7 @@ contains
         type(RealStr_type)          :: RealStr
         RealStr%str = RealStr%real2str(123._real32,"(F10.4)",15)
         assertion = RealStr%str == "123.0000       "
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "Number=123_real32"
@@ -1358,7 +1358,7 @@ contains
         type(RealStr_type)          :: RealStr
         RealStr%str = RealStr%real2str(123._real64,"(F10.4)",15)
         assertion = RealStr%str == "123.0000       "
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "Number=123_real64"
@@ -1381,7 +1381,7 @@ contains
         character(:), allocatable   :: stringPadded
         stringPadded = padString(string_nonPadded, symbol, paddedLen)
         assertion = stringPadded == stringPadded_ref .and. len(stringPadded) == len(stringPadded_ref)
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "string_nonPadded  : '", string_nonPadded, "'"
@@ -1405,7 +1405,7 @@ contains
         character(:), allocatable   :: stringPadded
         stringPadded = padString(string_nonPadded, symbol, paddedLen)
         assertion = stringPadded == stringPadded_ref .and. len(stringPadded) == len(stringPadded_ref)
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "string_nonPadded  : '", string_nonPadded, "'"
@@ -1431,7 +1431,7 @@ contains
         character(:), allocatable   :: stringPadded
         stringPadded = padString(string_nonPadded, symbol, paddedLen)
         assertion = stringPadded == stringPadded_ref .and. len(stringPadded) == paddedLen .and. stringPadded == stringPadded_ref
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "string_nonPadded  : '", string_nonPadded, "'"

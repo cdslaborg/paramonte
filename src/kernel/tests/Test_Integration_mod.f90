@@ -104,9 +104,9 @@ contains
 
         assertion = ierr == 0_IK
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
             ! LCOV_EXCL_START
-            if (Test%isDebugMode .and. .not. assertion) then
+            if (Test%isVerboseMode .and. .not. assertion) then
                 write(Test%outputUnit,"(*(g0))") "ierr = ", ierr, " /= 0"
             end if
             return
@@ -118,7 +118,7 @@ contains
         assertion = assertion .and. relativeError <= tolerance
 
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "integral_ref  = ", integral_ref
             write(Test%outputUnit,"(*(g0))") "integral      = ", integral
@@ -160,9 +160,9 @@ contains
 
         assertion = ierr == 0_IK
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
             ! LCOV_EXCL_START
-            if (Test%isDebugMode .and. .not. assertion) then
+            if (Test%isVerboseMode .and. .not. assertion) then
                 write(Test%outputUnit,"(*(g0))") "ierr = ", ierr, " /= 0"
             end if
             return
@@ -173,7 +173,7 @@ contains
         assertion = difference < tolerance
         assertion = assertion .and. relativeError <= tolerance
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "integral_ref  = ", integral_ref
@@ -215,9 +215,9 @@ contains
                             )
 
         assertion = ierr == 0_IK
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
             ! LCOV_EXCL_START
-            if (Test%isDebugMode .and. .not. assertion) then
+            if (Test%isVerboseMode .and. .not. assertion) then
                 write(Test%outputUnit,"(*(g0))") "ierr = ", ierr, " /= 0"
             end if
             return
@@ -228,7 +228,7 @@ contains
         assertion = difference < tolerance
         assertion = assertion .and. relativeError <= tolerance
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "integral_ref  = ", integral_ref
@@ -270,9 +270,9 @@ contains
                             )
 
         assertion = ierr == 0_IK
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
             ! LCOV_EXCL_START
-            if (Test%isDebugMode .and. .not. assertion) then
+            if (Test%isVerboseMode .and. .not. assertion) then
                 write(Test%outputUnit,"(*(g0))") "ierr = ", ierr, " /= 0"
             end if
             return
@@ -283,7 +283,7 @@ contains
         assertion = difference < tolerance
         assertion = assertion .and. relativeError <= tolerance
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "integral_ref  = ", integral_ref
@@ -323,9 +323,9 @@ contains
                                 , ierr = ierr &
                                 )
         assertion = ierr == 0_IK
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
-            if (Test%isDebugMode .and. .not. assertion) then
+            if (Test%isVerboseMode .and. .not. assertion) then
                 write(Test%outputUnit,"(*(g0))") "ierr = ", ierr, " /= 0"
             end if
             return
@@ -336,7 +336,7 @@ contains
         assertion = difference < tolerance
         assertion = assertion .and. relativeError <= tolerance
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "integral_ref  = ", integral_ref

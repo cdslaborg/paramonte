@@ -104,12 +104,12 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ! This will be used in the read statement
-#define ParaDXXX ParaDRAM
+#define ParaXXXX ParaDRAM
 ! This will be used in the declaration of the parent object
-#define ParaDXXX_type ParaDRAM_type
+#define ParaXXXX_type ParaDRAM_type
 ! This will be used in the namelist declaration
 #define NAMELIST ParaDRAM
-#include "ParaDXXX_mod@Input_smod.nml.inc.f90"
+#include "ParaXXXX_mod@Input_smod.nml.inc.f90"
 #undef NAMELIST
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -117,24 +117,24 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ! This will be used in the read statement
-#define ParaDXXX ParaDISE
+#define ParaXXXX ParaDISE
 ! This will be used in the declaration of the parent object
-#define ParaDXXX_type ParaDISE_type
+#define ParaXXXX_type ParaDISE_type
 ! This will be used in the namelist declaration
 #define NAMELIST ParaDISE
-#include "ParaDXXX_mod@Input_smod.nml.inc.f90"
+#include "ParaXXXX_mod@Input_smod.nml.inc.f90"
 #undef NAMELIST
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 #else
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-#error "Unrecognized sampler in ParaDXXX_mod@Input_mod.inc.f90"
+#error "Unrecognized sampler in ParaXXXX_mod@Input_mod.inc.f90"
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 #endif
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#define NAMELIST paradxxx
-#include "ParaDXXX_mod@Input_smod.nml.inc.f90"
+#define NAMELIST paraxxxx
+#include "ParaXXXX_mod@Input_smod.nml.inc.f90"
 #undef NAMELIST
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -160,7 +160,7 @@ contains
         use String_mod, only: num2str
 
         implicit none
-        class(ParaDXXX_type), intent(inout) :: self
+        class(ParaXXXX_type), intent(inout) :: self
         integer(IK), intent(in)             :: nd
         character(*), parameter             :: PROCEDURE_NAME = SUBMODULE_NAME//"@getSpecFromInputFile()"
 
@@ -178,17 +178,17 @@ contains
 
                 ! read input file as an internal file
 
-                read(self%InputFile%Path%original,nml=ParaDXXX,iostat=self%InputFile%Err%stat)
+                read(self%InputFile%Path%original,nml=ParaXXXX,iostat=self%InputFile%Err%stat)
                 self%Err = self%InputFile%getReadErr(self%InputFile%Err%stat,self%InputFile%Path%modified)
 
                 if (self%Err%occurred) then
 
                     if ( is_iostat_end(self%Err%stat) .or. is_iostat_eor(self%Err%stat) ) then
 
-                        ! search for the paradxxx namelist group in the file.
+                        ! search for the paraxxxx namelist group in the file.
 
                         call self%warnUserAboutMissingNamelist(namelist = self%name)
-                        read(self%InputFile%Path%original,nml=paradxxx,iostat=self%InputFile%Err%stat) ! WARNING: "paradxxx" is NOT the same as fpp macro name "ParaDXXX". This is a real namelist name.
+                        read(self%InputFile%Path%original,nml=paraxxxx,iostat=self%InputFile%Err%stat) ! WARNING: "paraxxxx" is NOT the same as fpp macro name "ParaXXXX". This is a real namelist name.
                         self%Err = self%InputFile%getReadErr(self%InputFile%Err%stat,self%InputFile%Path%modified)
 
                     end if
@@ -197,12 +197,12 @@ contains
 
                         if (is_iostat_end(self%Err%stat) .or. is_iostat_eor(self%Err%stat)) then
 
-                            call self%warnUserAboutMissingNamelist(namelist = "ParaDXXX")
+                            call self%warnUserAboutMissingNamelist(namelist = "ParaXXXX")
 
                         else
 
                             ! LCOV_EXCL_START
-                            read(self%InputFile%Path%original,nml=ParaDXXX) ! let the compiler print diagnostic messages, should any error happen.
+                            read(self%InputFile%Path%original,nml=ParaXXXX) ! let the compiler print diagnostic messages, should any error happen.
                             ! LCOV_EXCL_STOP
 
                         end if
@@ -250,18 +250,18 @@ contains
 
                 ! read input file
 
-                read(self%InputFile%unit,nml=ParaDXXX,iostat=self%InputFile%Err%stat)
+                read(self%InputFile%unit,nml=ParaXXXX,iostat=self%InputFile%Err%stat)
                 self%Err = self%InputFile%getReadErr(self%InputFile%Err%stat,self%InputFile%Path%modified)
 
                 if (self%Err%occurred) then
 
                     if ( is_iostat_end(self%Err%stat) .or. is_iostat_eor(self%Err%stat) ) then
 
-                        ! search for the paradxxx namelist group in the file.
+                        ! search for the paraxxxx namelist group in the file.
 
                         rewind(self%InputFile%unit)
                         call self%warnUserAboutMissingNamelist(namelist = self%name)
-                        read(self%InputFile%unit, nml=paradxxx, iostat=self%InputFile%Err%stat) ! WARNING: "paradxxx" is NOT the same as fpp macro name "ParaDXXX"
+                        read(self%InputFile%unit, nml=paraxxxx, iostat=self%InputFile%Err%stat) ! WARNING: "paraxxxx" is NOT the same as fpp macro name "ParaXXXX"
                         self%Err = self%InputFile%getReadErr(self%InputFile%Err%stat,self%InputFile%Path%modified)
 
                     end if
@@ -270,13 +270,13 @@ contains
 
                         if (is_iostat_end(self%Err%stat) .or. is_iostat_eor(self%Err%stat)) then
 
-                            call self%warnUserAboutMissingNamelist(namelist = "ParaDXXX")
+                            call self%warnUserAboutMissingNamelist(namelist = "ParaXXXX")
 
                         else ! attempt to read the file one more time, without error handling, so that the compiler prints out the error message.
 
                             ! LCOV_EXCL_START
                             rewind(self%InputFile%unit)
-                            read(self%InputFile%unit, nml=ParaDXXX)
+                            read(self%InputFile%unit, nml=ParaXXXX)
                             ! LCOV_EXCL_STOP
 
                         end if
@@ -336,6 +336,6 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#undef ParaDXXX_type
-#undef ParaDXXX
+#undef ParaXXXX_type
+#undef ParaXXXX
 

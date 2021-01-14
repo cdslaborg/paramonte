@@ -55,7 +55,7 @@ module ParaMCMCRefinedChain_mod
 
     implicit none
 
-    character(*), parameter :: MODULE_NAME = "\paramCMCRefinedChain_mod"
+    character(*), parameter :: MODULE_NAME = "@paramCMCRefinedChain_mod"
 
     !> The `RefinedChain_type` class.
     type                                    :: RefinedChain_type

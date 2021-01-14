@@ -184,7 +184,7 @@ contains
         if (.not. assertion) return
 
         assertion = Path%original == "./temp\ Folder/\{inside\}\/"
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))")   "Path%original  :", Path%original
@@ -215,7 +215,7 @@ contains
         Path%modified = winify(Path%original)
 
         assertion = Path%modified == '".\temp Folder\{inside}\"'
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") Path%original
@@ -239,7 +239,7 @@ contains
         original = "\\\"
         modified = winify(original)
         assertion = modified == "\"
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") original
@@ -263,7 +263,7 @@ contains
         original = "/"
         modified = winify(original)
         assertion = modified == "\"
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") original
@@ -291,7 +291,7 @@ contains
 
         assertion = Path%modified == "./temp\ Folder/\{inside\}/"
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))")   "Path%original     :", Path%original
@@ -323,7 +323,7 @@ contains
 
         assertion = Path%modified == "./temp\ Folder/\{inside\}/-"
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))")   "Path%original     :", Path%original
@@ -359,7 +359,7 @@ contains
         assertion = assertion .and. Path%name == ""
         assertion = assertion .and. Path%ext == ""
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))")   "Path%dir :", Path%dir
@@ -392,7 +392,7 @@ contains
         assertion = assertion .and. Path%name == "Temp"
         assertion = assertion .and. Path%ext == ".tXt"
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))")   "Path%dir :", Path%dir
@@ -424,7 +424,7 @@ contains
         assertion = assertion .and. Path%dir == ".\temp Folder\{inside}\"
         assertion = assertion .and. Path%name == "-"
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))")   "Path%dir :", Path%dir
@@ -457,7 +457,7 @@ contains
         assertion = assertion .and. Path%dir == ""
         assertion = assertion .and. Path%name == Path%original
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))")   "Path%original :", Path%original
@@ -488,7 +488,7 @@ contains
         assertion = assertion .and. name == ""
         assertion = assertion .and. ext == filename
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))")   "filename  :", filename
@@ -520,7 +520,7 @@ contains
         assertion = assertion .and. Path%name == "-"
         assertion = assertion .and. Path%ext == ""
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))")   "Path%name:", Path%name
@@ -565,7 +565,7 @@ contains
 #endif
         end if
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))")   "modified_ref  :", '"'//modified_ref//'"'

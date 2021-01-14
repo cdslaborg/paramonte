@@ -43,18 +43,18 @@
 !>  \brief This module contains tests of the module [ParaDISE_mod](@ref paradise_mod).
 !>  \author Amir Shahmoradi
 
-#define ParaDXXX_mod ParaDISE_mod
-#define ParaDXXX_type ParaDISE_type
-#define test_ParaDXXX test_ParaDISE
-#define ParaDXXX_NML "&ParaDISE"
-#define ParaDXXX ParaDISE
+#define ParaXXXX_mod ParaDISE_mod
+#define ParaXXXX_type ParaDISE_type
+#define test_ParaXXXX test_ParaDISE
+#define ParaXXXX_NML "&ParaDISE"
+#define ParaXXXX ParaDISE
 
 module Test_ParaDISE_mod
-#include "Test_ParaDXXX_mod.inc.f90"
+#include "Test_ParaXXXX_mod.inc.f90"
 end module Test_ParaDISE_mod
 
-#undef ParaDXXX_mod
-#undef ParaDXXX_type
-#undef test_ParaDXXX
-#undef ParaDXXX_NML
-#undef ParaDXXX
+#undef ParaXXXX_mod
+#undef ParaXXXX_type
+#undef test_ParaXXXX
+#undef ParaXXXX_NML
+#undef ParaXXXX

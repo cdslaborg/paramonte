@@ -50,7 +50,7 @@
 
 module ParaDRAMProposalAbstract_mod
 #define PARADRAM ParaDRAM
-#include "ParaDXXXProposalAbstract_mod.inc.f90"
+#include "ParaXXXXProposalAbstract_mod.inc.f90"
 #undef PARADRAM
 end module ParaDRAMProposalAbstract_mod
 

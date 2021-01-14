@@ -58,19 +58,19 @@
 
 #else
 
-#error "Unknown Proposal model in ParaDXXXProposal_mod.inc.f90"
+#error "Unknown Proposal model in ParaXXXXProposal_mod.inc.f90"
 
 #endif
 
 
 #if defined PARADRAM
 
-#define ParaDXXX ParaDRAM
+#define ParaXXXX ParaDRAM
     use ParaDRAMProposalAbstract_mod, only: ProposalAbstract_type, ProposalErr
 
 #elif defined PARADISE
 
-#define ParaDXXX ParaDISE
+#define ParaXXXX ParaDISE
     use ParaDISEProposalAbstract_mod, only: ProposalAbstract_type, ProposalErr
 
 #endif
@@ -85,9 +85,9 @@
     public :: Proposal_type
 
 #if defined NORMAL
-    character(*), parameter         :: MODULE_NAME = "@"//PMSM%ParaDXXX//"ProposalNormal_mod"
+    character(*), parameter         :: MODULE_NAME = "@"//PMSM%ParaXXXX//"ProposalNormal_mod"
 #elif defined UNIFORM
-    character(*), parameter         :: MODULE_NAME = "@"//PMSM%ParaDXXX//"ProposalUniform_mod"
+    character(*), parameter         :: MODULE_NAME = "@"//PMSM%ParaXXXX//"ProposalUniform_mod"
 #endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -175,14 +175,14 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    !> This is the constructor of the [ParaDXXXProposalNormal_type](@ref paradxxxproposalnormal_type)
-    !> or [ParaDXXXProposalUniform_type](@ref paradxxxproposaluniform_type) classes.\n
-    !> Return an object of [ParaDXXXProposalNormal_type](@ref paradxxxproposalnormal_type)
-    !> or [ParaDXXXProposalUniform_type](@ref paradxxxproposaluniform_type) classes given the input simulation characteristics.
+    !> This is the constructor of the [ParaXXXXProposalNormal_type](@ref paraxxxxproposalnormal_type)
+    !> or [ParaXXXXProposalUniform_type](@ref paraxxxxproposaluniform_type) classes.\n
+    !> Return an object of [ParaXXXXProposalNormal_type](@ref paraxxxxproposalnormal_type)
+    !> or [ParaXXXXProposalUniform_type](@ref paraxxxxproposaluniform_type) classes given the input simulation characteristics.
     !>
     !> \remark
-    !> This interface madness is a result of the internal compiler bug in GFortran as of Jan 2020, which diagnoses a `ParaDXXX_type`
-    !> argument as circular dependency due to this constructor appearing in the type-bound setup procedure of `ParaDXXX_type`.
+    !> This interface madness is a result of the internal compiler bug in GFortran as of Jan 2020, which diagnoses a `ParaXXXX_type`
+    !> argument as circular dependency due to this constructor appearing in the type-bound setup procedure of `ParaXXXX_type`.
     !> Intel does not complain. Until GFortran comes up with a fix, we have to live with this interface.
     function constructProposalSymmetric ( ndim &
                                         , SpecBase &
@@ -367,8 +367,8 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> This procedure is a static method of the [ParaDXXXProposalNormal_type](@ref paradxxxproposalnormal_type)
-    !> or [ParaDXXXProposalUniform_type](@ref paradxxxproposaluniform_type) classes.\n
+    !> This procedure is a static method of the [ParaXXXXProposalNormal_type](@ref paraxxxxproposalnormal_type)
+    !> or [ParaXXXXProposalUniform_type](@ref paraxxxxproposaluniform_type) classes.\n
     !> Return a newly sampled state to the kernel routine for acceptance check.
     !>
     !>
@@ -435,8 +435,8 @@ contains
 
 #if defined PARADISE
     !> \brief
-    !> This procedure is a static method of the [ParaDXXXProposalNormal_type](@ref paradxxxproposalnormal_type)
-    !> or [ParaDXXXProposalUniform_type](@ref paradxxxproposaluniform_type) classes.\n
+    !> This procedure is a static method of the [ParaXXXXProposalNormal_type](@ref paraxxxxproposalnormal_type)
+    !> or [ParaXXXXProposalUniform_type](@ref paraxxxxproposaluniform_type) classes.\n
     !> Return the natural logarithm of the probability of acceptance of the new state given the old state.
     !>
     !> @param[in]   nd          :   The number of dimensions of the objective function.
@@ -488,8 +488,8 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> This procedure is a static method of the [ParaDXXXProposalNormal_type](@ref paradxxxproposalnormal_type)
-    !> or [ParaDXXXProposalUniform_type](@ref paradxxxproposaluniform_type) classes.\n
+    !> This procedure is a static method of the [ParaXXXXProposalNormal_type](@ref paraxxxxproposalnormal_type)
+    !> or [ParaXXXXProposalUniform_type](@ref paraxxxxproposaluniform_type) classes.\n
     !> Perform adaptation of the proposal distribution of the MCMC sampler.
     !>
     !> @param[in]       nd                      :   The number of dimensions of the objective function.
@@ -993,7 +993,7 @@ contains
             ! WARNING: Setting the boundaries forces the compiler to generate a temporary array.
             mv_InvCovMat(1:mc_ndim,1:mc_ndim,istage) = getInvMatFromCholFac ( nd = mc_ndim & ! LCOV_EXCL_LINE
                                                                             , CholeskyLower = comv_CholDiagLower(:,1:mc_ndim,istage) & ! LCOV_EXCL_LINE
-                                                                            , Diagonal = comv_CholDiagLower(1:mc_ndim,0,istage) & ! LCOV_EXCL_LINE
+                                                                            , CholeskyDiago = comv_CholDiagLower(1:mc_ndim,0,istage) & ! LCOV_EXCL_LINE
                                                                             )
             mv_logSqrtDetInvCovMat(istage) = -sum(log( comv_CholDiagLower(1:mc_ndim,0,istage) ))
         end do
@@ -1035,8 +1035,8 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> This procedure is a static method of the [ParaDXXXProposalNormal_type](@ref paradxxxproposalnormal_type)
-    !> or [ParaDXXXProposalUniform_type](@ref paradxxxproposaluniform_type) classes.\n
+    !> This procedure is a static method of the [ParaXXXXProposalNormal_type](@ref paraxxxxproposalnormal_type)
+    !> or [ParaXXXXProposalUniform_type](@ref paraxxxxproposaluniform_type) classes.\n
     !> This procedure is called by the sampler kernel routines.\n
     !> Write the restart information to the output file.
     !>
@@ -1073,8 +1073,8 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> This procedure is a static method of the [ParaDXXXProposalNormal_type](@ref paradxxxproposalnormal_type)
-    !> or [ParaDXXXProposalUniform_type](@ref paradxxxproposaluniform_type) classes.\n
+    !> This procedure is a static method of the [ParaXXXXProposalNormal_type](@ref paraxxxxproposalnormal_type)
+    !> or [ParaXXXXProposalUniform_type](@ref paraxxxxproposaluniform_type) classes.\n
     !> This procedure is called by the sampler kernel routines.\n
     !> Read the restart information from the restart file.
     !>
@@ -1104,6 +1104,6 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-#undef ParaDXXX
+#undef ParaXXXX
 #undef GET_RANDOM_PROPOSAL
 

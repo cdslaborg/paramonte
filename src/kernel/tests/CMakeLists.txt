@@ -57,16 +57,17 @@ set(ParaMonteTest_SOURCE_FILES
     ${ParaMonteTest_SRC_DIR}/Test_FileList_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Integration_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Kmeans_mod.f90
+    ${ParaMonteTest_SRC_DIR}/Test_KmeansOOP_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Math_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Matrix_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Misc_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Optimization_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_ParaDRAM_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_ParaDISE_mod.f90
-    ${ParaMonteTest_SRC_DIR}/Test_ParaDXXX_mod@Test_SpecBase_smod.f90
-    ${ParaMonteTest_SRC_DIR}/Test_ParaDXXX_mod@Test_SpecMCMC_smod.f90
-    ${ParaMonteTest_SRC_DIR}/Test_ParaDXXX_mod@Test_SpecDRAM_smod.f90
-    ${ParaMonteTest_SRC_DIR}/Test_ParaDXXX_mod@Test_runSampler_smod.f90
+    ${ParaMonteTest_SRC_DIR}/Test_ParaXXXX_mod@Test_SpecBase_smod.f90
+    ${ParaMonteTest_SRC_DIR}/Test_ParaXXXX_mod@Test_SpecMCMC_smod.f90
+    ${ParaMonteTest_SRC_DIR}/Test_ParaXXXX_mod@Test_SpecDRAM_smod.f90
+    ${ParaMonteTest_SRC_DIR}/Test_ParaXXXX_mod@Test_runSampler_smod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Parallelism_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_ParaMCMCRefinedChain_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_ParaMonteChainFileContents_mod.f90
@@ -85,10 +86,10 @@ set(ParaMonteTest_SOURCE_FILES
     #${ParaMonteTest_SRC_DIR}/Test_EconomicsToolbox_mod.f90
 )
 
-set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaDXXX_mod@Test_SpecBase_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaDXXX_mod@Test_SpecBase_smod.inc.f90)
-set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaDXXX_mod@Test_SpecMCMC_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaDXXX_mod@Test_SpecMCMC_smod.inc.f90)
-set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaDXXX_mod@Test_SpecDRAM_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaDXXX_mod@Test_SpecDRAM_smod.inc.f90)
-set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaDXXX_mod@Test_runSampler_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaDXXX_mod@Test_runSampler_smod.inc.f90)
+set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaXXXX_mod@Test_SpecBase_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaXXXX_mod@Test_SpecBase_smod.inc.f90)
+set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaXXXX_mod@Test_SpecMCMC_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaXXXX_mod@Test_SpecMCMC_smod.inc.f90)
+set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaXXXX_mod@Test_SpecDRAM_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaXXXX_mod@Test_SpecDRAM_smod.inc.f90)
+set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaXXXX_mod@Test_runSampler_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaXXXX_mod@Test_runSampler_smod.inc.f90)
 
 # Define the executable in terms of the source files
 

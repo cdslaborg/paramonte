@@ -102,7 +102,7 @@ contains
         Difference = abs(GeoCyclicFit%PowellMinimum%xmin - xmin_ref) / abs(xmin_ref)
         assertion = all( Difference < tolerance )
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "xmin_ref    =", xmin_ref

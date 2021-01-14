@@ -51,7 +51,7 @@
 ! All vectors and arrays in the input file begin with index 1, following the convention of the majority 
 ! of science-oriented programming languages: Fortran, MATLAB, Julia, R, Mathematica
 
-&ParaDXXX
+&ParaXXXX
 
     ! Base
 

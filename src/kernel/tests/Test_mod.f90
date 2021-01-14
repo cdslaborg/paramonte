@@ -72,9 +72,9 @@ module Test_mod
 
     type :: Test_type
 #if defined DEBUG_ENABLED || defined TESTING_ENABLD || defined CODECOV_ENABLD
-        logical                     :: isDebugMode = .true.
+        logical                     :: isVerboseMode = .true.
 #else
-        logical                     :: isDebugMode = .false.
+        logical                     :: isVerboseMode = .false.
 #endif
         integer(IK)                 :: outputUnit
         character(:), allocatable   :: moduleName
@@ -377,6 +377,17 @@ contains
             type(Err_type) :: Err
             call sleep(0.02_RK, Err)
         end block
+
+        if (Test%isVerboseMode .and. .not. assertion) then
+            Test%Err%occurred = .true.
+            Test%Err%msg = "The test assertion is FALSE."
+            call abort  ( Err = Test%Err &
+                        , prefix = "ParaMonteCodeCov" &
+                        , newline = "\n" &
+                        , outputUnit = Test%outputUnit &
+                        )
+            error stop
+        end if
 
     end subroutine runTest
 

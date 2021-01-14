@@ -62,6 +62,8 @@ module Test_Kmeans_mod
         procedure, pass :: read => readTestData
     end type TestData_type
 
+    type(TestData_type) :: TestData
+
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 contains
@@ -71,10 +73,12 @@ contains
     subroutine test_Kmeans()
         implicit none
         Test = Test_type(moduleName=MODULE_NAME)
+        call TestData%read()
         call Test%run(test_runKmeans_1, "test_runKmeans_1")
         call Test%run(test_runKmeans_2, "test_runKmeans_2")
         call Test%run(test_runKmeans_3, "test_runKmeans_3")
         call Test%run(test_runKmeans_4, "test_runKmeans_4")
+        call Test%run(test_benchmark_1, "test_benchmark_1")
         call Test%run(test_optimizeKmeans_1, "test_optimizeKmeans_1")
         call Test%finalize()
     end subroutine test_Kmeans
@@ -109,20 +113,17 @@ contains
         implicit none
         integer(IK), parameter      :: nc = 3_IK
         logical                     :: assertion
-        type(TestData_type)         :: TestData
+
         type(Kmeans_type)           :: Kmeans
         integer                     :: i, fileUnit
 
         assertion = .true.
 
-        call TestData%read()
-
-        Kmeans = Kmeans_type( nc = nc & ! LCOV_EXCL_LINE
-                            , nd = TestData%nd & ! LCOV_EXCL_LINE
+        Kmeans = Kmeans_type( nd = TestData%nd & ! LCOV_EXCL_LINE
                             , np = TestData%np & ! LCOV_EXCL_LINE
+                            , nc = nc & ! LCOV_EXCL_LINE
                             , Point = TestData%Point & ! LCOV_EXCL_LINE
                             )
-        if (.not. assertion) return
 
         ! write data to output for further investigation
 
@@ -160,7 +161,7 @@ contains
         assertion = assertion .and. all(Kmeans%MinDistanceSq > 0_IK)
         assertion = assertion .and. all(Kmeans%Size > 0_IK)
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Size < 1          =", pack(Kmeans%Size, mask = Kmeans%Size < 1_IK)
@@ -188,23 +189,20 @@ contains
         integer(IK) , parameter     :: nc = 3_IK
         real(RK)    , allocatable   :: InitCenter(:,:)
         logical                     :: assertion
-        type(TestData_type)         :: TestData
+
         type(Kmeans_type)           :: Kmeans
         integer                     :: i, fileUnit
 
         assertion = .true.
 
-        call TestData%read()
-
         InitCenter = reshape([4.7_RK, 4.7_RK, 6.4_RK, 6.1_RK, 9.5_RK, 8.6_RK], shape = [TestData%nd,nc])
 
-        Kmeans = Kmeans_type( nc = nc & ! LCOV_EXCL_LINE
-                            , nd = TestData%nd & ! LCOV_EXCL_LINE
+        Kmeans = Kmeans_type( nd = TestData%nd & ! LCOV_EXCL_LINE
                             , np = TestData%np & ! LCOV_EXCL_LINE
+                            , nc = nc & ! LCOV_EXCL_LINE
                             , Point = TestData%Point & ! LCOV_EXCL_LINE
                             , InitCenter = InitCenter & ! LCOV_EXCL_LINE
                             )
-        if (.not. assertion) return
 
         ! write data to output for further investigation
 
@@ -242,7 +240,7 @@ contains
         assertion = assertion .and. all(Kmeans%MinDistanceSq > 0_IK)
         assertion = assertion .and. all(Kmeans%Size > 0_IK)
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Size < 1          =", pack(Kmeans%Size, mask = Kmeans%Size < 1_IK)
@@ -272,21 +270,18 @@ contains
         integer(IK) , parameter     :: niterMax = 1_IK
         real(RK)    , allocatable   :: InitCenter(:,:)
         logical                     :: assertion
-        type(TestData_type)         :: TestData
+
         type(Kmeans_type)           :: Kmeans
         integer                     :: i, fileUnit
 
         assertion = .true.
 
-        call TestData%read()
-
-        Kmeans = Kmeans_type( nc = nc & ! LCOV_EXCL_LINE
-                            , nd = TestData%nd & ! LCOV_EXCL_LINE
+        Kmeans = Kmeans_type( nd = TestData%nd & ! LCOV_EXCL_LINE
                             , np = TestData%np & ! LCOV_EXCL_LINE
+                            , nc = nc & ! LCOV_EXCL_LINE
                             , Point = TestData%Point & ! LCOV_EXCL_LINE
                             , niterMax = niterMax & ! LCOV_EXCL_LINE
                             )
-        if (.not. assertion) return
 
         ! write data to output for further investigation
 
@@ -324,7 +319,7 @@ contains
         assertion = assertion .and. all(Kmeans%MinDistanceSq > 0_IK)
         assertion = assertion .and. all(Kmeans%Size > 0_IK)
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Size < 1          =", pack(Kmeans%Size, mask = Kmeans%Size < 1_IK)
@@ -344,32 +339,28 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    !> The function `runKmeans()` must function properly for reasonable optional input values of `nzsciMax` and `reltolSq`.
+    !> The function `runKmeans()` must function properly for reasonable optional input values of `nzsciMax` and `relTol`.
     function test_runKmeans_4() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         integer(IK) , parameter     :: nc = 3_IK
         integer(IK) , parameter     :: nzsciMax = 100_IK
-        real(RK)    , parameter     :: reltolSq = 1.e-8_RK
+        real(RK)    , parameter     :: relTol = 1.e-8_RK
         real(RK)    , allocatable   :: InitCenter(:,:)
         logical                     :: assertion
-        type(TestData_type)         :: TestData
         type(Kmeans_type)           :: Kmeans
         integer                     :: i, fileUnit
 
         assertion = .true.
 
-        call TestData%read()
-
-        Kmeans = Kmeans_type( nc = nc & ! LCOV_EXCL_LINE
-                            , nd = TestData%nd & ! LCOV_EXCL_LINE
+        Kmeans = Kmeans_type( nd = TestData%nd & ! LCOV_EXCL_LINE
                             , np = TestData%np & ! LCOV_EXCL_LINE
+                            , nc = nc & ! LCOV_EXCL_LINE
                             , Point = TestData%Point & ! LCOV_EXCL_LINE
                             , nzsciMax = nzsciMax & ! LCOV_EXCL_LINE
-                            , reltolSq = reltolSq & ! LCOV_EXCL_LINE
+                            , relTol = relTol & ! LCOV_EXCL_LINE
                             )
-        if (.not. assertion) return
 
         ! write data to output for further investigation
 
@@ -407,7 +398,7 @@ contains
         assertion = assertion .and. all(Kmeans%MinDistanceSq > 0_IK)
         assertion = assertion .and. all(Kmeans%Size > 0_IK)
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Size < 1          =", pack(Kmeans%Size, mask = Kmeans%Size < 1_IK)
@@ -433,27 +424,23 @@ contains
         use String_mod, only: num2str
         implicit none
         integer(IK) , parameter     :: nc = 3_IK
-        integer(IK) , parameter     :: ntry = 2_IK + nint(log(real(nc)))
+        integer(IK) , parameter     :: nt = 2_IK + nint(log(real(nc)))
         real(RK)    , allocatable   :: InitCenter(:,:)
         logical                     :: assertion
-        type(TestData_type)         :: TestData
         type(Kmeans_type)           :: Kmeans
         integer                     :: i, fileUnit
 
         assertion = .true.
 
-        call TestData%read()
-
         InitCenter = reshape([4.7_RK, 4.7_RK, 6.4_RK, 6.1_RK, 9.5_RK, 8.6_RK], shape = [TestData%nd,nc])
 
-        Kmeans = Kmeans_type( nc = nc & ! LCOV_EXCL_LINE
-                            , nd = TestData%nd & ! LCOV_EXCL_LINE
+        Kmeans = Kmeans_type( nd = TestData%nd & ! LCOV_EXCL_LINE
                             , np = TestData%np & ! LCOV_EXCL_LINE
+                            , nc = nc & ! LCOV_EXCL_LINE
+                            , nt = nt & ! LCOV_EXCL_LINE
                             , Point = TestData%Point & ! LCOV_EXCL_LINE
                             , InitCenter = InitCenter & ! LCOV_EXCL_LINE
-                            , ntry = ntry & ! LCOV_EXCL_LINE
                             )
-        if (.not. assertion) return
 
         ! write data to output for further investigation
 
@@ -490,7 +477,7 @@ contains
         assertion = assertion .and. all(Kmeans%MinDistanceSq > 0_IK)
         assertion = assertion .and. all(Kmeans%Size > 0_IK)
 
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Size < 1          =", pack(Kmeans%Size, mask = Kmeans%Size < 1_IK)
@@ -508,4 +495,64 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module Test_Kmeans_mod
+    !> Calling the Kmeans routine repeatedly should not cause any errors.
+    !> This test is also used for benchmarking the performances of different implementations of the Kmeans algorithm.
+    function test_benchmark_1() result(assertion)
+        use Statistics_mod, only: getRandInt
+        use Constants_mod, only: IK, RK
+        use String_mod, only: num2str
+        implicit none
+        integer(IK) , parameter     :: ncMax = 3_IK
+        integer(IK) , parameter     :: nzsciMax = 100_IK
+        real(RK)    , parameter     :: relTol = 1.e-8_RK
+        real(RK)    , allocatable   :: InitCenter(:,:)
+        logical                     :: assertion
+
+        type(Kmeans_type)           :: Kmeans
+        integer                     :: i, fileUnit, np, nc
+
+        assertion = .true.
+
+        do i = 1, 1000
+
+            nc = ncMax ! getRandInt(2,ncMax)
+            np = TestData%np ! getRandInt(100,TestData%np)
+            Kmeans = Kmeans_type( nd = TestData%nd & ! LCOV_EXCL_LINE
+                                , np = np & ! LCOV_EXCL_LINE
+                                , nc = nc & ! LCOV_EXCL_LINE
+                                , Point = TestData%Point(1:TestData%nd,1:np)& ! LCOV_EXCL_LINE
+                                , nzsciMax = nzsciMax & ! LCOV_EXCL_LINE
+                                , relTol = relTol & ! LCOV_EXCL_LINE
+                                )
+
+            assertion = assertion .and. .not. Kmeans%Err%occurred
+            assertion = assertion .and. Kmeans%Err%stat /= 1_IK
+            assertion = assertion .and. Kmeans%Err%stat /= 2_IK
+            assertion = assertion .and. Kmeans%potential > 0._RK
+            assertion = assertion .and. all(Kmeans%Membership(1:np) > 0_IK) .and. all(Kmeans%Membership(1:np) < nc + 1)
+            assertion = assertion .and. all(Kmeans%MinDistanceSq(1:np) > 0_IK)
+            assertion = assertion .and. all(Kmeans%Size > 0_IK)
+
+            if (Test%isVerboseMode .and. .not. assertion) then
+            ! LCOV_EXCL_START
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Size < 1          =", pack(Kmeans%Size, mask = Kmeans%Size < 1_IK)
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Membership < 1    =", pack(Kmeans%Membership(1:np), mask = Kmeans%Membership(1:np) < 1_IK)
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Membership > nc   =", pack(Kmeans%Membership(1:np), mask = Kmeans%Membership(1:np) > nc)
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%MinDistanceSq < 0 =", pack(Kmeans%MinDistanceSq(1:np), mask = Kmeans%MinDistanceSq(1:np) < 0._RK)
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Err%occurred      =", Kmeans%Err%occurred
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%potential         =", Kmeans%potential
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Err%stat          =", Kmeans%Err%stat
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%niter             =", Kmeans%niter
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%nzsci             =", Kmeans%nzsci
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+            end if
+            ! LCOV_EXCL_STOP
+
+        end do
+
+    end function test_benchmark_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+end module Test_Kmeans_mod ! LCOV_EXCL_LINE

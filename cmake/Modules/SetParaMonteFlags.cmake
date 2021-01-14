@@ -276,6 +276,15 @@ if (intel_compiler)
         set(FL_FLAGS "${FL_FLAGS}" -prof-gen=srcpos)
     endif()
 
+    if (PERFPROF_ENABLED)
+        message ( FATAL_ERROR
+                " \n"
+                " ${pmwarn}\n"
+                " ${pmattn} Performance profiling with Intel compilers is currently not supported.\n"
+                " ${pmattn}\n"
+                )
+    endif()
+
 elseif (gnu_compiler)
 
     # -std=legacy is required to bypass the new gfortran 10 error on argument-mismatch.
@@ -318,6 +327,12 @@ elseif (gnu_compiler)
         --coverage 
         -lgcov 
         )
+    endif()
+
+    if (PERFPROF_ENABLED)
+        set(FCL_FLAGS "${FCL_FLAGS}" -pg -g) # enable profiling + enable debugging which is required for line-by-line profiling with gprof
+        set(CCL_FLAGS "${CCL_FLAGS}" -pg -g) # enable profiling + enable debugging which is required for line-by-line profiling with gprof
+        set(FL_FLAGS "${FL_FLAGS}" -pg -g)   # enable profiling + enable debugging which is required for line-by-line profiling with gprof
     endif()
 
 endif()
@@ -784,7 +799,31 @@ if (HEAP_ARRAY_ENABLED)
         endif()
     elseif(gnu_compiler)
         set(FC_FLAGS "${FC_FLAGS}"
-        -fmax-stack-var-size=10
+        -fmax-stack-var-size=10 # in bytes
+        # -frecursive overwrites -fmax-stack-var-size=10 and causes all allocations to happen on stack.
+        )
+        # @todo:
+        # Strangely, -frecursive flag causes deadlock with sampler tests in Coarray mode.
+        # Therefore, the -frecursive flag is reversed to -fmax-stack-var-size=10 until the behavior is understood.
+        # The use of -frecursive was based on the GFortran-10 warning message about unsafe storage move from stack to static storage.
+        # See also this thread: https://comp.lang.fortran.narkive.com/WApl1KMt/gfortran-stack-size-warning#post4
+        # Perhaps adding `non_recursive` to functions would fix this warning message.
+    endif()
+else()
+    if (intel_compiler)
+        #if (WIN32)
+        #    set(FC_FLAGS "${FC_FLAGS}"
+        #    /heap-arrays:10
+        #    )
+        #else()
+        #    set(FC_FLAGS "${FC_FLAGS}"
+        #    -heap-arrays=10
+        #    )
+        #endif()
+    elseif(gnu_compiler)
+        set(FC_FLAGS "${FC_FLAGS}"
+        -fstack-arrays # applies to only the local variables
+        #-fautomatic
         # -frecursive overwrites -fmax-stack-var-size=10 and causes all allocations to happen on stack.
         )
         # @todo:

@@ -434,6 +434,7 @@ ParaMonteExample_RUN_ENABLED=true
 localInstallationEnabled=false
 freshInstallEnabled=false
 YES_TO_ALL_DISABLED=true
+PERFPROF_ENABLED=false
 CODECOV_ENABLED=false
 DRYRUN_ENABLED=false
 deploy_enabled=false
@@ -497,6 +498,8 @@ while [ "$1" != "" ]; do
         -d | --dryrun )         DRYRUN_ENABLED=true; export DRYRUN_ENABLED
                                 ;;
         -c | --codecov )        CODECOV_ENABLED=true; export CODECOV_ENABLED
+                                ;;
+        -p | --perfprof )       PERFPROF_ENABLED=true; export PERFPROF_ENABLED
                                 ;;
         -y | --yes-to-all )     YES_TO_ALL_DISABLED=false; export YES_TO_ALL_DISABLED
                                 ;;
@@ -2262,7 +2265,11 @@ if [ -z ${CFI_ENABLED+x} ]; then
 fi
 
 if [ "${CODECOV_ENABLED}" = "true" ]; then
-    ParaMonte_BLD_DIR="${ParaMonte_BLD_DIR}/paramonte-codecov"
+    ParaMonte_BLD_DIR="${ParaMonte_BLD_DIR}/codecov"
+fi
+
+if [ "${PERFPROF_ENABLED}" = "true" ]; then
+    ParaMonte_BLD_DIR="${ParaMonte_BLD_DIR}/perfprof"
 fi
 
 export ParaMonte_BLD_DIR
@@ -2513,6 +2520,12 @@ echo >&2
 #### call cmake
 ####################################################################################################################################
 
+if [ "${PERFPROF_ENABLED}" = "true" ]; then
+    PERFPROF_ENABLED_FLAG="-DPERFPROF_ENABLED=${PERFPROF_ENABLED}"
+else
+    PERFPROF_ENABLED_FLAG=""
+fi
+
 if [ "${CODECOV_ENABLED}" = "true" ]; then
     CODECOV_ENABLED_FLAG="-DCODECOV_ENABLED=${CODECOV_ENABLED}"
     ParaMonteTest_RUN_ENABLED=true
@@ -2582,6 +2595,7 @@ if [ "${DRYRUN_ENABLED}" != "true" ]; then
     ${DEPLOY_ENABLED_FLAG} \
     ${SAMPLER_TEST_ENABLED_FLAG} \
     ${BASIC_TEST_ENABLED_FLAG} \
+    ${PERFPROF_ENABLED_FLAG} \
     ${CODECOV_ENABLED_FLAG} \
     ${OS_IS_WSL_FLAG} \
     ${ParaMonte_ROOT_DIR} \

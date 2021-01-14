@@ -40,34 +40,17 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-#define UNIFORM
-
 !> \brief
-!> This module implements the body of the `ParaDRAMProposalUniform_mod` module of the `ParaDRAM` sampler.
+!> This submodule contains the setup procedures and routines of the ParaDRAM sampler.
 !>
 !> \remark
-!> This module requires preprocessing prior to compilation.
+!> This module requires preprocessing, prior to compilation.
 !>
 !> \author Amir Shahmoradi
 
-module ParaDRAMProposalUniform_mod
+submodule (ParaDRAM_mod) Postprocess_smod
 #define PARADRAM ParaDRAM
-#include "ParaDXXXProposal_mod.inc.f90"
+#include "ParaXXXX_mod@Postprocess_smod.inc.f90"
 #undef PARADRAM
-end module ParaDRAMProposalUniform_mod ! LCOV_EXCL_LINE
+end submodule Postprocess_smod
 
-!> \brief
-!> This module implements the body of the `ParaDISEProposalUniform_mod` module of the `ParaDISE` sampler.
-!>
-!> \remark
-!> This module requires preprocessing prior to compilation.
-!>
-!> \author Amir Shahmoradi
-
-module ParaDISEProposalUniform_mod
-#define PARADISE ParaDISE
-#include "ParaDXXXProposal_mod.inc.f90"
-#undef PARADISE
-end module ParaDISEProposalUniform_mod ! LCOV_EXCL_LINE
-
-#undef UNIFORM

@@ -119,7 +119,7 @@ contains
                     )
 
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. Test%Image%isFirst) then
+        if (Test%isVerboseMode .and. Test%Image%isFirst) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "xmin    ", xmin
             write(Test%outputUnit,"(*(g0,:,', '))") "XMIN_REF", TestFuncRosenBrock2D%XMIN_REF

@@ -40,43 +40,16 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-!>  \brief These submodules contain tests of the modules [ParaDRAM_mod](@ref paradram_mod) and [ParaDISE_mod](@ref paradise_mod).
-!>  \author Amir Shahmoradi
+!> \brief
+!> This submodule contains procedures and routines for the ParaNest simulation input.
+!>
+!> \remark
+!> This module requires preprocessing, prior to compilation.
+!>
+!> \author Amir Shahmoradi
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-#define ParaDXXX_mod ParaDRAM_mod
-#define ParaDXXX_type ParaDRAM_type
-#define test_ParaDXXX test_ParaDRAM
-#define ParaDXXX_NML "&ParaDRAM"
-#define ParaDXXX ParaDRAM
-
-submodule (Test_ParaDRAM_mod) Test_SpecMCMC_smod
-#include "Test_ParaDXXX_mod@Test_SpecMCMC_smod.inc.f90"
-end submodule Test_SpecMCMC_smod
-
-#undef ParaDXXX_mod
-#undef ParaDXXX_type
-#undef test_ParaDXXX
-#undef ParaDXXX_NML
-#undef ParaDXXX
-
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-#define ParaDXXX_mod ParaDISE_mod
-#define ParaDXXX_type ParaDISE_type
-#define test_ParaDXXX test_ParaDISE
-#define ParaDXXX_NML "&ParaDISE"
-#define ParaDXXX ParaDISE
-
-submodule (Test_ParaDISE_mod) Test_SpecMCMC_smod
-#include "Test_ParaDXXX_mod@Test_SpecMCMC_smod.inc.f90"
-end submodule Test_SpecMCMC_smod
-
-#undef ParaDXXX_mod
-#undef ParaDXXX_type
-#undef test_ParaDXXX
-#undef ParaDXXX_NML
-#undef ParaDXXX
-
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+submodule (ParaNest_mod) Input_smod
+#define PARANEST ParaNest
+#include "ParaXXXX_mod@Input_smod.inc.f90"
+#undef PARANEST
+end submodule Input_smod ! LCOV_EXCL_LINE

@@ -99,7 +99,7 @@ contains
         assertion = RandomSeed%size == seedSize
 
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
 
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "RandomSeed%isRepeatable     :", RandomSeed%isRepeatable
@@ -144,7 +144,7 @@ contains
         assertion = all(RandomSeed%Value == Seed)
 
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
 
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))")        "RandomSeed%isRepeatable     :", RandomSeed%isRepeatable
@@ -200,7 +200,7 @@ contains
         assertion = all(RandomSeed%Value == Seed)
 
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
 
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))")        "RandomSeed%isRepeatable     :", RandomSeed%isRepeatable
@@ -253,7 +253,7 @@ contains
             call random_seed(get=SeedNew)
             assertion = all(SeedNew==Seed)
             ! LCOV_EXCL_START
-            if (Test%isDebugMode .and. .not. assertion) then
+            if (Test%isVerboseMode .and. .not. assertion) then
                 if (Test%Image%id==1) then
                     write(Test%outputUnit,"(*(g0,' '))") "this_image(), SeedOld:", Test%Image%id,",", Seed
                     write(Test%outputUnit,"(*(g0,' '))") "this_image(), SeedNew:", Test%Image%id,",", SeedNew
@@ -288,7 +288,7 @@ contains
         assertion = all(RandomSeed%Value == Seed)
 
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
 
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "RandomSeed%isRepeatable     :", RandomSeed%isRepeatable
@@ -330,7 +330,7 @@ contains
             call random_seed(get=SeedNew)
             assertion = all(SeedNew==Seed)
             ! LCOV_EXCL_START
-            if (Test%isDebugMode .and. .not. assertion) then
+            if (Test%isVerboseMode .and. .not. assertion) then
                 if (Test%Image%id==1) then
                     write(Test%outputUnit,"(*(g0,' '))") "this_image(), SeedOld(diff. on each image):", Test%Image%id,",", Seed
                     write(Test%outputUnit,"(*(g0,' '))") "this_image(), SeedNew(diff. on each image):", Test%Image%id,",", SeedNew
@@ -373,7 +373,7 @@ contains
         if (.not. assertion) return
 
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
 #if defined CAF_ENABLED
             if (Test%Image%id==1) then
                 write(Test%outputUnit,"(*(g0,' '))") "this_image(), Seed(same on each image):", Test%Image%id,",", RandomSeed%Value
@@ -420,7 +420,7 @@ contains
 #endif
 
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isVerboseMode .and. .not. assertion) then
             if (Test%Image%id==1) then
                 write(Test%outputUnit,"(*(g0,' '))") "this_image(), Seed(same on each image):", Test%Image%id,",", RandomSeed%Value
 #if defined CAF_ENABLED
