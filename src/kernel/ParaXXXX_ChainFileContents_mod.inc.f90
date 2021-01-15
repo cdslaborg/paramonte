@@ -70,54 +70,64 @@
 
     character(*), parameter :: MODULE_NAME = "@"//PMSM%ParaXXXX//"@ParaMonteChainFileContents_mod"
 
-    integer(IK) , parameter :: NUM_DEF_COL = 7_IK   ! number of columns in the chain file other than the State columns
-
 #if defined PARADRAM || defined PARADISE
 
-    character(*), parameter :: COL_HEADER_DEFAULT(NUM_DEF_COL) =    [ "ProcessID            " &
-                                                                    , "DelayedRejectionStage" &
-                                                                    , "MeanAcceptanceRate   " &
-                                                                    , "AdaptationMeasure    " &
-                                                                    , "BurninLocation       " &
-                                                                    , "SampleWeight         " &
-                                                                    , "SampleLogFunc        " &
-                                                                    ]
-
     type :: Count_type
-        integer(IK) :: compact = 0_IK   ! number of unique (weighted) points in the chain
-        integer(IK) :: verbose = 0_IK   ! number of points (weight=1) in the MCMC chain
-        integer(IK) :: target = 0_IK    ! size of the allocations for the Chain components
+        integer(IK) :: verbose = 0_IK   ! the number of points (weight=1) in the chain.
+        integer(IK) :: compact = 0_IK   ! the number of unique (weighted) points in the chain.
+        integer(IK) :: target = 0_IK    ! the size of the allocations for the Chain components.
     end type Count_type
+
+    character(*), parameter :: COL_HEADER_DEFAULT(*) =  [ "ProcessID            " &
+                                                        , "DelayedRejectionStage" &
+                                                        , "MeanAcceptanceRate   " &
+                                                        , "AdaptationMeasure    " &
+                                                        , "BurninLocation       " &
+                                                        , "SampleWeight         " &
+                                                        , "SampleLogFunc        " &
+                                                        ]
 
 #elif defined PARANEST
 
-    character(*), parameter :: COL_HEADER_DEFAULT(NUM_DEF_COL) =    [ "ProcessID            " &
-                                                                    , "MeanAcceptanceRate   " &
-                                                                    , "RemainingPriorMass   " &
-                                                                    , "LogFuncLogIntegral   " &
-                                                                    , "SampleWeight         " &
-                                                                    , "SampleLogFunc        " &
-                                                                    ]
+    type :: Count_type
+        real)RK)    :: verbose = 0._RK  ! the number of points (weight=1) in the chain.
+        integer(IK) :: compact = 0_IK   ! the number of unique (weighted) points in the chain.
+        integer(IK) :: target = 0_IK    ! the size of the allocations for the Chain components.
+    end type Count_type
+
+    character(*), parameter :: COL_HEADER_DEFAULT(*) =  [ "ProcessID            " &
+                                                        , "MeanAcceptanceRate   " &
+                                                        , "RemainingPriorMass   " &
+                                                        , "LogIntegralLogFunc   " &
+                                                        , "SampleWeight         " &
+                                                        , "SampleLogFunc        " &
+                                                        ]
 
 #endif
+
+    integer(IK) , parameter :: NUM_DEF_COL = size(COL_HEADER_DEFAULT)   !< the number of columns in the chain file other than the State columns
 
     type                                    :: ChainFileContents_type
         integer(IK)                         :: ndim = 0_IK
         integer(IK)                         :: lenHeader = 0_IK
         integer(IK)                         :: numDefCol = NUM_DEF_COL
-#if defined PARADRAM || defined PARADISE
         type(Count_type)                    :: Count
-        real(RK)            , allocatable   :: Adaptation(:)    !< The vector of the adaptation measures at the MCMC accepted states.
-        integer(IK)         , allocatable   :: DelRejStage(:)   !< The delayed rejection stages at which the proposed states were accepted.
-        integer(IK)         , allocatable   :: BurninLoc(:)     !< The burnin locations at the given locations in the chains.
+#if defined PARADRAM || defined PARADISE
+        integer(IK)         , allocatable   :: Weight(:)                !< The vector of the weights of the MCMC accepted states.
+        integer(IK)         , allocatable   :: BurninLoc(:)             !< The burnin locations at the given locations in the chains.
+        integer(IK)         , allocatable   :: DelRejStage(:)           !< The delayed rejection stages at which the proposed states were accepted.
+        real(RK)            , allocatable   :: Adaptation(:)            !< The vector of the adaptation measures at the MCMC accepted states.
+#elif defined PARANEST
+        real(RK)            , allocatable   :: LogIntegralLogFunc(:)    !< The natural logarithm of the integral of the user-input target function up to the remaining prior mass.
+        real(RK)            , allocatable   :: RemainingPriorMass(:)    !< The remaining prior mass at any stage during the stochastic integration.
+        real(RK)            , allocatable   :: Weight(:)                !< The vector of the weights of the MCMC accepted states.
 #endif
-        integer(IK)         , allocatable   :: Weight(:)        !< The vector of the weights of the MCMC accepted states.
-        integer(IK)         , allocatable   :: ProcessID(:)     !< The vector of the ID of the images whose function calls haven been accepted.
-        real(RK)            , allocatable   :: MeanAccRate(:)   !< The vector of the average acceptance rates at the given point in the chain.
-        real(RK)            , allocatable   :: LogFunc(:)       !< The vector of LogFunc values corresponding to the MCMC states.
-        real(RK)            , allocatable   :: State(:,:)       !< The (nd,chainSize) MCMC chain of accepted proposed states.
-        type(CharVec_type)  , allocatable   :: ColHeader(:)     !< The column headers of the chain file.
-        character(:)        , allocatable   :: delimiter        !< The delimiter used to separate objects in the chain file.
+        real(RK)            , allocatable   :: MeanAccRate(:)           !< The vector of the average acceptance rates at the given point in the chain.
+        real(RK)            , allocatable   :: LogFunc(:)               !< The vector of LogFunc values corresponding to the MCMC states.
+        real(RK)            , allocatable   :: State(:,:)               !< The (nd,chainSize) MCMC chain of accepted proposed states.
+        integer(IK)         , allocatable   :: ProcessID(:)             !< The vector of the ID of the images whose function calls haven been accepted.
+        type(CharVec_type)  , allocatable   :: ColHeader(:)             !< The column headers of the chain file.
+        character(:)        , allocatable   :: delimiter                !< The delimiter used to separate objects in the chain file.
         type(Err_type)                      :: Err
     contains
         procedure, pass :: nullify => nullifyChainFileContents
@@ -246,11 +256,15 @@ contains
         character(*)    , intent(in), optional          :: delimiter
         integer(IK)     , intent(in), optional          :: chainSize, lenHeader, ndim, targetChainSize
         character(:)    , allocatable                   :: chainFilePathTrimmed, thisForm
+        character(:)    , allocatable                   :: chainFileFormLowerCase
         type(String_type)                               :: Record
         integer(IK)                                     :: chainFileUnit, i, iState, delimiterLen, chainSizeDefault
         integer(IK)                                     :: irowLastUniqueSample
         integer(IK)                                     :: numColTot
-        logical                                         :: fileExists, fileIsOpen, delimHasBegun, delimHasEnded, isBinary, isCompact, isVerbose
+        logical                                         :: fileExists, fileIsOpen, delimHasBegun, delimHasEnded
+        logical                                         :: isBinary
+        logical                                         :: isCompact
+        logical                                         :: isVerbose
 
         Err%occurred = .false.
         chainFilePathTrimmed = trim(adjustl(chainFilePath))
@@ -258,17 +272,22 @@ contains
 
         blockFileExistence: if (fileExists) then
 
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             ! set up chain file format
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             isBinary = .false.
             isCompact = .false.
             isVerbose = .false.
-            if (getLowerCase(chainFileForm)=="binary") then
+            chainFileFormLowerCase = getLowerCase(chainFileForm)
+            if (chainFileFormLowerCase=="binary") then
                 isBinary = .true.
-            elseif (getLowerCase(chainFileForm)=="compact") then
+            elseif (chainFileFormLowerCase=="compact" .or. chainFileFormLowerCase=="ascii") then ! "compact" is valid in ParaMCMC, "ascii" is valid in ParaNest
                 isCompact = .true.
-            elseif (getLowerCase(chainFileForm)=="verbose") then
-                isVerbose = .false.
+#if defined PARADRAM || defined PARADISE
+            elseif (chainFileFormLowerCase=="verbose") then ! only valid in ParaMCMC
+                isVerbose = .true.
+#endif
             else
                 ! LCOV_EXCL_START
                 Err%occurred = .true.
@@ -302,7 +321,9 @@ contains
                 end if
             end if
 
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             ! get the number of records in file, minus header line
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             if (present(chainSize)) then
                 chainSizeDefault = chainSize
@@ -329,17 +350,27 @@ contains
                     read(chainFileUnit) Record%value
                     block
                         integer(IK)             :: processID ! LCOV_EXCL_LINE
+#if defined PARADRAM || defined PARADISE
                         integer(IK)             :: delRejStage ! LCOV_EXCL_LINE
-                        real(RK)                :: meanAccRate ! LCOV_EXCL_LINE
-                        real(RK)                :: adaptation ! LCOV_EXCL_LINE
                         integer(IK)             :: burninLoc ! LCOV_EXCL_LINE
                         integer(IK)             :: weight ! LCOV_EXCL_LINE
+                        real(RK)                :: adaptation ! LCOV_EXCL_LINE
+#elif defined PARANEST
+                        real(RK)                :: logIntegralLogFunc ! LCOV_EXCL_LINE
+                        real(RK)                :: remainingPriorMass ! LCOV_EXCL_LINE
+                        real(RK)                :: weight ! LCOV_EXCL_LINE
+#endif
+                        real(RK)                :: meanAccRate ! LCOV_EXCL_LINE
                         real(RK)                :: logFunc ! LCOV_EXCL_LINE
                         real(RK), allocatable   :: State(:) ! LCOV_EXCL_LINE
                         if (allocated(State)) deallocate(State); allocate(State(ndim))
                         chainSizeDefault = 0_IK
                         loopFindChainSizeDefault: do
+#if defined PARADRAM || defined PARADISE
                             read(chainFileUnit,iostat=Err%stat) processID, delRejStage, meanAccRate, adaptation, burninLoc, weight, logFunc, State
+#elif defined PARANEST
+                            read(chainFileUnit,iostat=Err%stat) processID, meanAccRate, remainingPriorMass, logIntegralLogFunc, weight, logFunc, State
+#endif
                             if (Err%stat==0_IK) then
                                 chainSizeDefault = chainSizeDefault + 1_IK
                             elseif (is_iostat_end(Err%stat)) then
@@ -370,7 +401,9 @@ contains
                 end if
             end if
 
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             ! set the number of elements in the Chain components
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             if (present(targetChainSize)) then ! in restart mode, this must always be the case
                 CFC%Count%target = targetChainSize
@@ -388,23 +421,23 @@ contains
 
             ! allocate Chain components
 
-            if (allocated(CFC%ProcessID))     deallocate(CFC%ProcessID)
-            if (allocated(CFC%DelRejStage))   deallocate(CFC%DelRejStage)
-            if (allocated(CFC%MeanAccRate))   deallocate(CFC%MeanAccRate)
-            if (allocated(CFC%Adaptation))    deallocate(CFC%Adaptation)
-            if (allocated(CFC%BurninLoc))     deallocate(CFC%BurninLoc)
-            if (allocated(CFC%Weight))        deallocate(CFC%Weight)
-            if (allocated(CFC%LogFunc))       deallocate(CFC%LogFunc)
-            if (allocated(CFC%State))         deallocate(CFC%State)
-            allocate(CFC%ProcessID  (CFC%Count%target)); CFC%ProcessID   = NEGINF_IK
-            allocate(CFC%DelRejStage(CFC%Count%target)); CFC%DelRejStage = NEGINF_IK
-            allocate(CFC%MeanAccRate(CFC%Count%target)); CFC%MeanAccRate = NEGINF_RK
-            allocate(CFC%Adaptation (CFC%Count%target)); CFC%Adaptation  = NEGINF_RK ! this initialization is critical and relied upon later below
-            allocate(CFC%BurninLoc  (CFC%Count%target)); CFC%BurninLoc   = NEGINF_IK
-            allocate(CFC%Weight     (CFC%Count%target)); CFC%Weight      = NEGINF_IK
-            allocate(CFC%LogFunc    (CFC%Count%target)); CFC%LogFunc     = NEGINF_RK
+#if defined PARADRAM || defined PARADISE
+            if (allocated(CFC%DelRejStage))         deallocate(CFC%DelRejStage);        allocate(CFC%DelRejStage        (CFC%Count%target), source = NEGINF_IK)
+            if (allocated(CFC%Adaptation))          deallocate(CFC%Adaptation);         allocate(CFC%Adaptation         (CFC%Count%target), source = NEGINF_RK) ! this initialization is critical and relied upon later below
+            if (allocated(CFC%BurninLoc))           deallocate(CFC%BurninLoc);          allocate(CFC%BurninLoc          (CFC%Count%target), source = NEGINF_IK)
+#elif defined PARANEST
+            if (allocated(CFC%RemainingPriorMass))  deallocate(CFC%RemainingPriorMass)  allocate(CFC%RemainingPriorMass (CFC%Count%target), source = NEGINF_RK)
+            if (allocated(CFC%LogIntegralLogFunc))  deallocate(CFC%LogIntegralLogFunc)  allocate(CFC%LogIntegralLogFunc (CFC%Count%target), source = NEGINF_RK)
+#endif
+            if (allocated(CFC%MeanAccRate))         deallocate(CFC%MeanAccRate);        allocate(CFC%MeanAccRate        (CFC%Count%target), source = NEGINF_RK)
+            if (allocated(CFC%ProcessID))           deallocate(CFC%ProcessID);          allocate(CFC%ProcessID          (CFC%Count%target), source = NEGINF_IK)
+            if (allocated(CFC%LogFunc))             deallocate(CFC%LogFunc);            allocate(CFC%LogFunc            (CFC%Count%target), source = NEGINF_RK)
+            if (allocated(CFC%Weight))              deallocate(CFC%Weight);             allocate(CFC%Weight             (CFC%Count%target), source = NEGINF_IK)
+            if (allocated(CFC%State))               deallocate(CFC%State)
 
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             ! find the delimiter
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             blockFindDelim: if (present(delimiter)) then
 
@@ -489,7 +522,9 @@ contains
 
             end if blockFindDelim
 
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             ! find the number of dimensions of the state (the number of function variables)
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             if (present(ndim)) then
                 CFC%ndim = ndim
@@ -512,7 +547,9 @@ contains
                 CFC%ndim = Record%nPart - NUM_DEF_COL
             end if
 
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             ! reopen the file to read the contents
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             open( newunit = chainFileUnit &
                 , file = chainFilePathTrimmed &
@@ -531,7 +568,9 @@ contains
                 ! LCOV_EXCL_STOP
             end if
 
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             ! first read the column headers
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             if (allocated(Record%value)) deallocate(Record%value) ! set up the record string that keeps the contents of each line
             if (isBinary) then
@@ -546,18 +585,20 @@ contains
                 CFC%ColHeader(i)%record = trim(adjustl(CFC%ColHeader(i)%record))
             end do
 
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             ! read the chain
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             if (.not. isBinary) then
                 numColTot = CFC%numDefCol + CFC%ndim
             end if
 
+            CFC%Count%verbose = 0._RK
             allocate(CFC%State(CFC%ndim,CFC%Count%target))
-            CFC%Count%verbose = 0_IK
-
-            if (isBinary) then
+            blockChainFileFormat: if (isBinary) then
 
                 loopReadBinary: do iState = 1, chainSizeDefault
+#if defined PARADRAM || defined PARADISE
                     read(chainFileUnit, iostat=Err%stat ) CFC%ProcessID                (iState)    &
                                                         , CFC%DelRejStage              (iState)    &
                                                         , CFC%MeanAccRate              (iState)    &
@@ -566,6 +607,15 @@ contains
                                                         , CFC%Weight                   (iState)    &
                                                         , CFC%LogFunc                  (iState)    &
                                                         , CFC%State         (1:CFC%ndim,iState)
+#elif defined PARANEST
+                    read(chainFileUnit, iostat=Err%stat ) CFC%ProcessID                (iState)    &
+                                                        , CFC%MeanAccRate              (iState)    &
+                                                        , CFC%RemainingPriorMass       (iState)    &
+                                                        , CFC%LogIntegralLogFunc       (iState)    &
+                                                        , CFC%Weight                   (iState)    &
+                                                        , CFC%LogFunc                  (iState)    &
+                                                        , CFC%State         (1:CFC%ndim,iState)
+#endif
                     if (is_iostat_eor(Err%stat) .or. is_iostat_end(Err%stat)) then
                     ! LCOV_EXCL_START
                         call warnUserAboutCorruptChainFile(iState)
@@ -575,7 +625,7 @@ contains
                     CFC%Count%verbose = CFC%Count%verbose + CFC%Weight(iState)
                 end do loopReadBinary
 
-            elseif (isCompact) then
+            elseif (isCompact) then blockChainFileFormat
 
                 loopReadCompact: do iState = 1, chainSizeDefault
                     read(chainFileUnit, "(A)" ) Record%value
@@ -586,21 +636,35 @@ contains
                         exit loopReadCompact
                         ! LCOV_EXCL_STOP
                     else
-                        read(Record%Parts(1)%record,*) CFC%ProcessID    (iState)
-                        read(Record%Parts(2)%record,*) CFC%DelRejStage  (iState)
-                        read(Record%Parts(3)%record,*) CFC%MeanAccRate  (iState)
-                        read(Record%Parts(4)%record,*) CFC%Adaptation   (iState)
-                        read(Record%Parts(5)%record,*) CFC%BurninLoc    (iState)
-                        read(Record%Parts(6)%record,*) CFC%Weight       (iState)
-                        read(Record%Parts(7)%record,*) CFC%LogFunc      (iState)
+#if defined PARADRAM || defined PARADISE
+                        read(Record%Parts(1)%record,*) CFC%ProcessID            (iState)
+                        read(Record%Parts(2)%record,*) CFC%DelRejStage          (iState)
+                        read(Record%Parts(3)%record,*) CFC%MeanAccRate          (iState)
+                        read(Record%Parts(4)%record,*) CFC%Adaptation           (iState)
+                        read(Record%Parts(5)%record,*) CFC%BurninLoc            (iState)
+                        read(Record%Parts(6)%record,*) CFC%Weight               (iState)
+                        read(Record%Parts(7)%record,*) CFC%LogFunc              (iState)
                         do i = 1, CFC%ndim
-                            read(Record%Parts(CFC%numDefCol+i)%record,*) CFC%State  (i,iState)
+                            read(Record%Parts(NUM_DEF_COL+i)%record,*) CFC%State(i,iState)
                         end do
+#elif defined PARANEST
+                        read(Record%Parts(1)%record,*) CFC%ProcessID            (iState)
+                        read(Record%Parts(2)%record,*) CFC%MeanAccRate          (iState)
+                        read(Record%Parts(3)%record,*) CFC%RemainingPriorMass   (iState)
+                        read(Record%Parts(4)%record,*) CFC%LogIntegralLogFunc   (iState)
+                        read(Record%Parts(5)%record,*) CFC%Weight               (iState)
+                        read(Record%Parts(6)%record,*) CFC%LogFunc              (iState)
+                        do i = 1, CFC%ndim
+                            read(Record%Parts(NUM_DEF_COL+i)%record,*) CFC%State(i,iState)
+                        end do
+#endif
                         CFC%Count%verbose = CFC%Count%verbose + CFC%Weight(iState)
                     end if
                 end do loopReadCompact
 
-            else ! is verbose form
+#if defined PARADRAM || defined PARADISE
+
+            else blockChainFileFormat ! is verbose form
 
                 blockChainSizeDefault: if (chainSizeDefault>0_IK) then
 
@@ -717,8 +781,9 @@ contains
                     CFC%Count%verbose = 0_IK
 
                 end if blockChainSizeDefault
+#endif
 
-            end if
+            end if blockChainFileFormat
 
             if (isBinary .or. isCompact) then
                 CFC%Count%compact = chainSizeDefault
@@ -801,14 +866,24 @@ contains
         implicit none
         class(ChainFileContents_type), intent(inout)    :: CFC
         integer(IK), intent(in)                         :: startIndex, endIndex
-        CFC%ProcessID   (startIndex:endIndex) = -huge(0_IK)
-        CFC%DelRejStage (startIndex:endIndex) = -huge(0_IK)
-        CFC%MeanAccRate (startIndex:endIndex) = -huge(0._RK)
-        CFC%Adaptation  (startIndex:endIndex) = -huge(0._RK)
-        CFC%BurninLoc   (startIndex:endIndex) = -huge(0_IK)
-        CFC%Weight      (startIndex:endIndex) = 0_IK
-        CFC%LogFunc     (startIndex:endIndex) = -huge(0._RK)
-        CFC%State       (1:CFC%ndim,startIndex:endIndex) = -huge(0._RK)
+#if defined PARADRAM || defined PARADISE
+        CFC%ProcessID           (startIndex:endIndex) = -huge(0_IK)
+        CFC%DelRejStage         (startIndex:endIndex) = -huge(0_IK)
+        CFC%MeanAccRate         (startIndex:endIndex) = -huge(0._RK)
+        CFC%Adaptation          (startIndex:endIndex) = -huge(0._RK)
+        CFC%BurninLoc           (startIndex:endIndex) = -huge(0_IK)
+        CFC%Weight              (startIndex:endIndex) = 0_IK
+        CFC%LogFunc             (startIndex:endIndex) = -huge(0._RK)
+        CFC%State               (1:CFC%ndim,startIndex:endIndex) = -huge(0._RK)
+#elif defined PARANEST
+        CFC%ProcessID           (startIndex:endIndex) = -huge(0_IK)
+        CFC%MeanAccRate         (startIndex:endIndex) = -huge(0._RK)
+        CFC%RemainingPriorMass  (startIndex:endIndex) = -huge(0._RK)
+        CFC%LogIntegralLogFunc  (startIndex:endIndex) = -huge(0_IK)
+        CFC%Weight              (startIndex:endIndex) = 0._RK
+        CFC%LogFunc             (startIndex:endIndex) = -huge(0._RK)
+        CFC%State               (1:CFC%ndim,startIndex:endIndex) = -huge(0._RK)
+#endif
     end subroutine nullifyChainFileContents
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -943,29 +1018,32 @@ contains
         isVerbose = .false.
         if (chainFileForm=="binary") then
             isBinary = .true.
-        elseif (chainFileForm=="compact") then
-            isCompact = .true.
-        elseif (chainFileForm=="verbose") then
-            isVerbose = .true.
         else
-            ! LCOV_EXCL_START
-            CFC%Err%occurred = .true.
-            CFC%Err%msg = PROCEDURE_NAME//"Internal error occurred. Unknown chain file format: "//chainFileForm
-            ! LCOV_EXCL_STOP
-        end if
-
-        if ( .not. isBinary .and. .not. present(chainFileFormat) ) then
+            if (.not. present(chainFileFormat)) then
                 ! LCOV_EXCL_START
                 CFC%Err%occurred = .true.
                 CFC%Err%msg = PROCEDURE_NAME//"Internal error occurred. For formatted chain files, chainFileFormat must be given."
                 ! LCOV_EXCL_STOP
-        end if
-
-        if ( isVerbose .and. .not. present(adaptiveUpdatePeriod) ) then
-                ! LCOV_EXCL_START
-                CFC%Err%occurred = .true.
-                CFC%Err%msg = PROCEDURE_NAME//"Internal error occurred. For verbose chain files, adaptiveUpdatePeriod must be given."
-                ! LCOV_EXCL_STOP
+            else
+                if (chainFileForm=="compact") then
+                    isCompact = .true.
+#if defined PARADRAM || defined PARADISE
+                elseif (chainFileForm=="verbose") then
+                    isVerbose = .true.
+                    if (.not. present(adaptiveUpdatePeriod)) then
+                        ! LCOV_EXCL_START
+                        CFC%Err%occurred = .true.
+                        CFC%Err%msg = PROCEDURE_NAME//"Internal error occurred. For verbose chain files, adaptiveUpdatePeriod must be given."
+                        ! LCOV_EXCL_STOP
+                    end if
+#endif
+                else
+                    ! LCOV_EXCL_START
+                    CFC%Err%occurred = .true.
+                    CFC%Err%msg = PROCEDURE_NAME//"Internal error occurred. Unknown chain file format: "//chainFileForm
+                    ! LCOV_EXCL_STOP
+                end if
+            end if
         end if
 
         if (CFC%Err%occurred) then
@@ -978,7 +1056,8 @@ contains
         call CFC%writeHeader(ndim,chainFileUnit,isBinary,chainFileFormat)
 
         if (compactStartIndex<=compactEndIndex) then
-            if (isCompact) then
+            blockChainFileFormat: if (isCompact .or. isBinary) then
+#if defined PARADRAM || defined PARADISE
                 do i = compactStartIndex, compactEndIndex
                     write(chainFileUnit,chainFileFormat     ) CFC%ProcessID(i)      &
                                                             , CFC%DelRejStage(i)    &
@@ -989,18 +1068,7 @@ contains
                                                             , CFC%LogFunc(i)        &
                                                             , CFC%State(1:ndim,i)
                 end do
-            elseif (isBinary) then
-                do i = compactStartIndex, compactEndIndex
-                    write(chainFileUnit                     ) CFC%ProcessID(i)      &
-                                                            , CFC%DelRejStage(i)    &
-                                                            , CFC%MeanAccRate(i)    &
-                                                            , CFC%Adaptation(i)     &
-                                                            , CFC%BurninLoc(i)      &
-                                                            , CFC%Weight(i)         &
-                                                            , CFC%LogFunc(i)        &
-                                                            , CFC%State(1:ndim,i)
-                end do
-            elseif (isVerbose) then
+            elseif (isVerbose) then blockChainFileFormat
                 counter = compactStartIndex
                 do i = compactStartIndex, compactEndIndex
                     do j = 1, CFC%Weight(i)
@@ -1020,7 +1088,18 @@ contains
                         counter = counter + 1
                     end do
                 end do
-            end if
+#elif defined PARANEST
+                do i = compactStartIndex, compactEndIndex
+                    write(chainFileUnit,chainFileFormat     ) CFC%ProcessID(i)          &
+                                                            , CFC%MeanAccRate(i)        &
+                                                            , CFC%RemainingPriorMass(i) &
+                                                            , CFC%LogIntegralLogFunc(i) &
+                                                            , CFC%Weight(i)             &
+                                                            , CFC%LogFunc(i)            &
+                                                            , CFC%State(1:ndim,i)
+                end do
+#endif
+            end if blockChainFileFormat
         end if
         flush(chainFileUnit)
     end subroutine writeChainFile

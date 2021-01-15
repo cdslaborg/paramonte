@@ -232,7 +232,7 @@ contains
         if (present(tightness               ))    call SpecNest%Tightness               %set(tightness              )
         if (present(tolerance               ))    call SpecNest%Tolerance               %set(tolerance              )
         if (present(scaleFactor             ))    call SpecNest%ScaleFactor             %set(scaleFactor            )
-        if (present(proposalModel          ))    call SpecNest%ProposalModel          %set(proposalModel         )
+        if (present(proposalModel           ))    call SpecNest%ProposalModel           %set(proposalModel          )
         if (present(liveSampleSize          ))    call SpecNest%LiveSampleSize          %set(liveSampleSize         )
         if (present(inclusionFraction       ))    call SpecNest%InclusionFraction       %set(inclusionFraction      )
         if (present(adaptiveUpdateCount     ))    call SpecNest%AdaptiveUpdateCount     %set(adaptiveUpdateCount    )
@@ -379,7 +379,7 @@ contains
         type(Err_type), intent(inout)       :: Err
         call SpecNest%Tightness                 %checkForSanity (Err,methodName)
         call SpecNest%Tolerance                 %checkForSanity (Err,methodName)
-        call SpecNest%ProposalModel            %checkForSanity (Err,methodName)
+        call SpecNest%ProposalModel             %checkForSanity (Err,methodName)
         call SpecNest%LiveSampleSize            %checkForSanity (Err,methodName,nd)
         call SpecNest%InclusionFraction         %checkForSanity (Err,methodName)
         call SpecNest%AdaptiveUpdateCount       %checkForSanity (Err,methodName)

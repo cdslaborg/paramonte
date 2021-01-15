@@ -26,10 +26,9 @@
         namelist /NAMELIST/ interfaceType
 
         ! ParaMCMC variables
+
         namelist /NAMELIST/ chainSize
-        namelist /NAMELIST/ scaleFactor
         namelist /NAMELIST/ startPointVec
-        namelist /NAMELIST/ proposalModel
         namelist /NAMELIST/ proposalStartStdVec
         namelist /NAMELIST/ proposalStartCorMat
         namelist /NAMELIST/ proposalStartCovMat
@@ -39,10 +38,38 @@
         namelist /NAMELIST/ randomStartPointDomainLowerLimitVec
         namelist /NAMELIST/ randomStartPointDomainUpperLimitVec
 
+#if defined PARADRAM || defined PARADISE
+        namelist /NAMELIST/ scaleFactor
+        namelist /NAMELIST/ proposalModel
+#endif
+
         ! ParaDRAM variables
-        namelist /NAMELIST/ adaptiveUpdateCount
-        namelist /NAMELIST/ adaptiveUpdatePeriod
+
         namelist /NAMELIST/ greedyAdaptationCount
         namelist /NAMELIST/ delayedRejectionCount
         namelist /NAMELIST/ burninAdaptationMeasure
         namelist /NAMELIST/ delayedRejectionScaleFactorVec
+
+#if defined PARADRAM || defined PARADISE
+        namelist /NAMELIST/ adaptiveUpdateCount
+        namelist /NAMELIST/ adaptiveUpdatePeriod
+#endif
+
+        ! ParaNest variables
+
+        namelist /NAMELIST/ tightness
+        namelist /NAMELIST/ tolerance
+        namelist /NAMELIST/ liveSampleSize
+        namelist /NAMELIST/ inclusionFraction
+        namelist /NAMELIST/ mahalSqWeightExponent
+        namelist /NAMELIST/ stabilizationRequested
+        namelist /NAMELIST/ MaxAllowedKmeansFailure
+        namelist /NAMELIST/ maxAllowedMinVolFailure
+        namelist /NAMELIST/ maxKvolumeLoopRecursion
+
+#if defined PARANEST
+        namelist /NAMELIST/ scaleFactor
+        namelist /NAMELIST/ proposalModel
+        namelist /NAMELIST/ adaptiveUpdateCount
+        namelist /NAMELIST/ adaptiveUpdatePeriod
+#endif

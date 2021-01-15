@@ -285,7 +285,7 @@ contains
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , inputFile = "&ParaXXXX randomSeed = 1111 /" &
+                            , inputFile = "&paramonte randomSeed = 1111 /" &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_runSampler_7" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred

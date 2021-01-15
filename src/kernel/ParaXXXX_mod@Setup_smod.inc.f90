@@ -154,6 +154,21 @@ contains
                                 , delayedRejectionCount                 &
                                 , burninAdaptationMeasure               &
                                 , delayedRejectionScaleFactorVec        &
+#elif defined ParaNest
+                                ! ParaNest variables
+                                , tightness                             &
+                                , tolerance                             &
+                                , scaleFactor                           &
+                                , proposalModel                         &
+                                , liveSampleSize                        &
+                                , inclusionFraction                     &
+                                , adaptiveUpdateCount                   &
+                                , adaptiveUpdatePeriod                  &
+                                , mahalSqWeightExponent                 &
+                                , stabilizationRequested                &
+                                , MaxAllowedKmeansFailure               &
+                                , maxAllowedMinVolFailure               &
+                                , maxKvolumeLoopRecursion               &
 #endif
                                 )
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
@@ -216,7 +231,6 @@ contains
         logical     , intent(in), optional  :: mpiFinalizeRequested
         integer(IK) , intent(in), optional  :: maxNumDomainCheckToWarn
         integer(IK) , intent(in), optional  :: maxNumDomainCheckToStop
-
 #if defined PARADRAM || defined PARADISE
         ! ParaMCMC variables
         integer(IK) , intent(in), optional  :: chainSize
@@ -226,7 +240,6 @@ contains
         logical     , intent(in), optional  :: randomStartPointRequested
         real(RK)    , intent(in), optional  :: randomStartPointDomainLowerLimitVec(ndim)
         real(RK)    , intent(in), optional  :: randomStartPointDomainUpperLimitVec(ndim)
-
         ! ParaDRAM variables
         character(*), intent(in), optional  :: scaleFactor
         character(*), intent(in), optional  :: proposalModel
@@ -239,6 +252,21 @@ contains
         integer(IK) , intent(in), optional  :: delayedRejectionCount
         real(RK)    , intent(in), optional  :: burninAdaptationMeasure
         real(RK)    , intent(in), optional  :: delayedRejectionScaleFactorVec(:)
+#elif defined ParaNest
+        ! ParaNest variables
+        real(RK)    , intent(in), optional  :: tightness
+        real(RK)    , intent(in), optional  :: tolerance
+        real(RK)    , intent(in), optional  :: scaleFactor
+        character(*), intent(in), optional  :: proposalModel
+        integer(IK) , intent(in), optional  :: liveSampleSize
+        real(RK)    , intent(in), optional  :: inclusionFraction
+        integer(IK) , intent(in), optional  :: adaptiveUpdateCount
+        integer(IK) , intent(in), optional  :: adaptiveUpdatePeriod
+        real(RK)    , intent(in), optional  :: mahalSqWeightExponent
+        logical     , intent(in), optional  :: stabilizationRequested
+        integer(IK) , intent(in), optional  :: maxAllowedKmeansFailure
+        integer(IK) , intent(in), optional  :: maxAllowedMinVolFailure
+        integer(IK) , intent(in), optional  :: maxKvolumeLoopRecursion
 #endif
 
         character(*), parameter             :: PROCEDURE_NAME = SUBMODULE_NAME // "@runSampler()"
@@ -342,7 +370,20 @@ contains
                                                 , delayedRejectionScaleFactorVec        = delayedRejectionScaleFactorVec        & ! LCOV_EXCL_LINE
                                                 )
 #elif defined PARANEST
-            call self%SpecNest%setFromInputArgs (xxx)
+            call self%SpecNest%setFromInputArgs ( tightness                             = tightness                             & ! LCOV_EXCL_LINE
+                                                , tolerance                             = tolerance                             & ! LCOV_EXCL_LINE
+                                                , scaleFactor                           = scaleFactor                           & ! LCOV_EXCL_LINE
+                                                , proposalModel                         = proposalModel                         & ! LCOV_EXCL_LINE
+                                                , liveSampleSize                        = liveSampleSize                        & ! LCOV_EXCL_LINE
+                                                , inclusionFraction                     = inclusionFraction                     & ! LCOV_EXCL_LINE
+                                                , adaptiveUpdateCount                   = adaptiveUpdateCount                   & ! LCOV_EXCL_LINE
+                                                , adaptiveUpdatePeriod                  = adaptiveUpdatePeriod                  & ! LCOV_EXCL_LINE
+                                                , mahalSqWeightExponent                 = mahalSqWeightExponent                 & ! LCOV_EXCL_LINE
+                                                , stabilizationRequested                = stabilizationRequested                & ! LCOV_EXCL_LINE
+                                                , maxAllowedKmeansFailure               = maxAllowedKmeansFailure               & ! LCOV_EXCL_LINE
+                                                , maxAllowedMinVolFailure               = maxAllowedMinVolFailure               & ! LCOV_EXCL_LINE
+                                                , maxKvolumeLoopRecursion               = maxKvolumeLoopRecursion               & ! LCOV_EXCL_LINE
+                                                )
 #endif
         end if
 

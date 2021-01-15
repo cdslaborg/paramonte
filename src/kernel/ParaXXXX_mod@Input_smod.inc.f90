@@ -75,9 +75,7 @@
 
     ! ParaMCMC namelist variables
     use SpecMCMC_ChainSize_mod                          , only: chainSize
-    use SpecMCMC_ScaleFactor_mod                        , only: scaleFactor
     use SpecMCMC_StartPointVec_mod                      , only: startPointVec
-    use SpecMCMC_ProposalModel_mod                      , only: proposalModel
     use SpecMCMC_proposalStartCovMat_mod                , only: proposalStartCovMat
     use SpecMCMC_proposalStartCorMat_mod                , only: proposalStartCorMat
     use SpecMCMC_proposalStartStdVec_mod                , only: proposalStartStdVec
@@ -87,13 +85,41 @@
     use SpecMCMC_RandomStartPointDomainLowerLimitVec_mod, only: randomStartPointDomainLowerLimitVec
     use SpecMCMC_RandomStartPointDomainUpperLimitVec_mod, only: randomStartPointDomainUpperLimitVec
 
+#if defined PARADRAM || defined PARADISE
+    use SpecMCMC_ScaleFactor_mod                        , only: scaleFactor
+    use SpecMCMC_ProposalModel_mod                      , only: proposalModel
+#endif
+
     ! ParaDRAM namelist variables
-    use SpecDRAM_AdaptiveUpdateCount_mod                , only: adaptiveUpdateCount
-    use SpecDRAM_AdaptiveUpdatePeriod_mod               , only: adaptiveUpdatePeriod
+
     use SpecDRAM_greedyAdaptationCount_mod              , only: greedyAdaptationCount
     use SpecDRAM_DelayedRejectionCount_mod              , only: delayedRejectionCount
     use SpecDRAM_BurninAdaptationMeasure_mod            , only: burninAdaptationMeasure
     use SpecDRAM_delayedRejectionScaleFactorVec_mod     , only: delayedRejectionScaleFactorVec
+
+#if defined PARADRAM || defined PARADISE
+    use SpecDRAM_AdaptiveUpdateCount_mod                , only: adaptiveUpdateCount
+    use SpecDRAM_AdaptiveUpdatePeriod_mod               , only: adaptiveUpdatePeriod
+#endif
+
+    ! ParaNest namelist variables
+
+    use SpecNest_Tightness_mod                          , only: tightness
+    use SpecNest_Tolerance_mod                          , only: tolerance
+    use SpecNest_LiveSampleSize_mod                     , only: liveSampleSize
+    use SpecNest_InclusionFraction_mod                  , only: inclusionFraction
+    use SpecNest_MahalSqWeightExponent_mod              , only: mahalSqWeightExponent
+    use SpecNest_StabilizationRequested_mod             , only: stabilizationRequested
+    use SpecNest_MaxAllowedKmeansFailure_mod            , only: MaxAllowedKmeansFailure
+    use SpecNest_MaxAllowedMinVolFailure_mod            , only: maxAllowedMinVolFailure
+    use SpecNest_MaxKvolumeLoopRecursion_mod            , only: maxKvolumeLoopRecursion
+
+#if defined PARANEST
+    use SpecNest_ScaleFactor_mod                        , only: scaleFactor
+    use SpecNest_ProposalModel_mod                      , only: proposalModel
+    use SpecNest_AdaptiveUpdateCount_mod                , only: adaptiveUpdateCount
+    use SpecNest_AdaptiveUpdatePeriod_mod               , only: adaptiveUpdatePeriod
+#endif
 
     implicit none
 
@@ -126,6 +152,19 @@
 #undef NAMELIST
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#elif defined PARANEST
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+! This will be used in the read statement
+#define ParaXXXX ParaNest
+! This will be used in the declaration of the parent object
+#define ParaXXXX_type ParaNest_type
+! This will be used in the namelist declaration
+#define NAMELIST ParaNest
+#include "ParaXXXX_mod@Input_smod.nml.inc.f90"
+#undef NAMELIST
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 #else
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 #error "Unrecognized sampler in ParaXXXX_mod@Input_mod.inc.f90"
@@ -133,7 +172,9 @@
 #endif
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#define NAMELIST paraxxxx
+! Regenerate the namelist for the second time, but with the generic paramonte namelist group name.
+
+#define NAMELIST paramonte
 #include "ParaXXXX_mod@Input_smod.nml.inc.f90"
 #undef NAMELIST
 
@@ -144,7 +185,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> This procedure is a method of [ParaDRAM_type](@ref paradram_type) and [ParaDISE_type](@ref paradise_type) classes.
+    !> This procedure is a method of `ParaDRAM_type`, `ParaDISE_type`, and `ParaNest_type` classes.
     !> Read the input file and assign the simulation specification variables.
     !>
     !> @param[inout]    self    :   An object of class [ParaDRAM_type](@ref paradram_type) or [ParaDISE_type](@ref paradise_type).
@@ -188,7 +229,7 @@ contains
                         ! search for the paraxxxx namelist group in the file.
 
                         call self%warnUserAboutMissingNamelist(namelist = self%name)
-                        read(self%InputFile%Path%original,nml=paraxxxx,iostat=self%InputFile%Err%stat) ! WARNING: "paraxxxx" is NOT the same as fpp macro name "ParaXXXX". This is a real namelist name.
+                        read(self%InputFile%Path%original,nml=paramonte,iostat=self%InputFile%Err%stat)
                         self%Err = self%InputFile%getReadErr(self%InputFile%Err%stat,self%InputFile%Path%modified)
 
                     end if
@@ -261,7 +302,7 @@ contains
 
                         rewind(self%InputFile%unit)
                         call self%warnUserAboutMissingNamelist(namelist = self%name)
-                        read(self%InputFile%unit, nml=paraxxxx, iostat=self%InputFile%Err%stat) ! WARNING: "paraxxxx" is NOT the same as fpp macro name "ParaXXXX"
+                        read(self%InputFile%unit, nml=paramonte, iostat=self%InputFile%Err%stat) ! WARNING: "paraxxxx" is NOT the same as fpp macro name "ParaXXXX"
                         self%Err = self%InputFile%getReadErr(self%InputFile%Err%stat,self%InputFile%Path%modified)
 
                     end if

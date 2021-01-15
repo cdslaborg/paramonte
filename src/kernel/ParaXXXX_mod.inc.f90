@@ -185,6 +185,7 @@
                                 , mpiFinalizeRequested                  &
                                 , maxNumDomainCheckToWarn               &
                                 , maxNumDomainCheckToStop               &
+#if defined PARADRAM || defined PARADISE
                                 ! ParaMCMC variables
                                 , chainSize                             &
                                 , startPointVec                         &
@@ -205,6 +206,22 @@
                                 , delayedRejectionCount                 &
                                 , burninAdaptationMeasure               &
                                 , delayedRejectionScaleFactorVec        &
+#elif defined ParaNest
+                                ! ParaNest variables
+                                , tightness                             &
+                                , tolerance                             &
+                                , scaleFactor                           &
+                                , proposalModel                         &
+                                , liveSampleSize                        &
+                                , inclusionFraction                     &
+                                , adaptiveUpdateCount                   &
+                                , adaptiveUpdatePeriod                  &
+                                , mahalSqWeightExponent                 &
+                                , stabilizationRequested                &
+                                , MaxAllowedKmeansFailure               &
+                                , maxAllowedMinVolFailure               &
+                                , maxKvolumeLoopRecursion               &
+#endif
                                 )
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: runSampler
@@ -244,7 +261,6 @@
         logical     , intent(in), optional  :: mpiFinalizeRequested
         integer(IK) , intent(in), optional  :: maxNumDomainCheckToWarn
         integer(IK) , intent(in), optional  :: maxNumDomainCheckToStop
-
 #if defined PARADRAM || defined PARADISE
         ! ParaMCMC variables
         integer(IK) , intent(in), optional  :: chainSize
@@ -254,7 +270,6 @@
         logical     , intent(in), optional  :: randomStartPointRequested
         real(RK)    , intent(in), optional  :: randomStartPointDomainLowerLimitVec(ndim)
         real(RK)    , intent(in), optional  :: randomStartPointDomainUpperLimitVec(ndim)
-
         ! ParaDRAM variables
         character(*), intent(in), optional  :: scaleFactor
         character(*), intent(in), optional  :: proposalModel
@@ -267,8 +282,21 @@
         integer(IK) , intent(in), optional  :: delayedRejectionCount
         real(RK)    , intent(in), optional  :: burninAdaptationMeasure
         real(RK)    , intent(in), optional  :: delayedRejectionScaleFactorVec(:)
-#elif defined PARANEST
-
+#elif defined ParaNest
+        ! ParaNest variables
+        real(RK)    , intent(in), optional  :: tightness
+        real(RK)    , intent(in), optional  :: tolerance
+        real(RK)    , intent(in), optional  :: scaleFactor
+        character(*), intent(in), optional  :: proposalModel
+        integer(IK) , intent(in), optional  :: liveSampleSize
+        real(RK)    , intent(in), optional  :: inclusionFraction
+        integer(IK) , intent(in), optional  :: adaptiveUpdateCount
+        integer(IK) , intent(in), optional  :: adaptiveUpdatePeriod
+        real(RK)    , intent(in), optional  :: mahalSqWeightExponent
+        logical     , intent(in), optional  :: stabilizationRequested
+        integer(IK) , intent(in), optional  :: maxAllowedKmeansFailure
+        integer(IK) , intent(in), optional  :: maxAllowedMinVolFailure
+        integer(IK) , intent(in), optional  :: maxKvolumeLoopRecursion
 #endif
 
     end subroutine runSampler
