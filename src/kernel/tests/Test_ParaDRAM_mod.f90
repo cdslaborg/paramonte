@@ -43,18 +43,8 @@
 !>  \brief This module contains tests of the module [ParaDRAM_mod](@ref paradram_mod).
 !>  \author Amir Shahmoradi
 
-#define ParaXXXX_mod ParaDRAM_mod
-#define ParaXXXX_type ParaDRAM_type
-#define test_ParaXXXX test_ParaDRAM
-#define ParaXXXX_NML "&ParaDRAM"
-#define ParaXXXX ParaDRAM
-
 module Test_ParaDRAM_mod
+#define PARADRAM ParaDRAM
 #include "Test_ParaXXXX_mod.inc.f90"
+#undef PARADRAM
 end module Test_ParaDRAM_mod
-
-#undef ParaXXXX_mod
-#undef ParaXXXX_type
-#undef test_ParaXXXX
-#undef ParaXXXX_NML
-#undef ParaXXXX

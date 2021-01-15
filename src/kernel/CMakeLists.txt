@@ -133,7 +133,7 @@ SET(ParaMonte_SOURCE_FILES
     ${ParaMonteKernel_SRC_DIR}/SpecNest_Tightness_mod.f90
     ${ParaMonteKernel_SRC_DIR}/SpecNest_Tolerance_mod.f90
     ${ParaMonteKernel_SRC_DIR}/SpecNest_ScaleFactor_mod.f90
-    ${ParaMonteKernel_SRC_DIR}/SpecNest_SamplingMethod_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/SpecNest_ProposalModel_mod.f90
     ${ParaMonteKernel_SRC_DIR}/SpecNest_LiveSampleSize_mod.f90
     ${ParaMonteKernel_SRC_DIR}/SpecNest_InclusionFraction_mod.f90
     ${ParaMonteKernel_SRC_DIR}/SpecNest_AdaptiveUpdateCount_mod.f90
@@ -145,14 +145,19 @@ SET(ParaMonte_SOURCE_FILES
     ${ParaMonteKernel_SRC_DIR}/SpecNest_MaxAllowedMinVolFailure_mod.f90
     ${ParaMonteKernel_SRC_DIR}/SpecNest_mod.f90
     # Samplers
-    ${ParaMonteKernel_SRC_DIR}/ParaMonteLogFunc_mod.f90
-    ${ParaMonteKernel_SRC_DIR}/ParaMonteChainFileContents_mod.f90
-    ${ParaMonteKernel_SRC_DIR}/ParaMCMCRefinedChain_mod.f90
     ${ParaMonteKernel_SRC_DIR}/ParaMonte_mod.f90
-    ${ParaMonteKernel_SRC_DIR}/ParaDISEProposalAbstract_mod.f90
-    ${ParaMonteKernel_SRC_DIR}/ParaDRAMProposalAbstract_mod.f90
-    ${ParaMonteKernel_SRC_DIR}/ParaXXXXProposalUniform_mod.f90
-    ${ParaMonteKernel_SRC_DIR}/ParaXXXXProposalNormal_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/ParaMonteLogFunc_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/ParaDRAM_ChainFileContents_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/ParaDISE_ChainFileContents_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/ParaDRAM_RefinedChain_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/ParaDISE_RefinedChain_mod.f90
+    #${ParaMonteKernel_SRC_DIR}/ParaNest_ChainFileContents_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/ParaDISE_ProposalAbstract_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/ParaDRAM_ProposalAbstract_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/ParaDRAM_ProposalUniform_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/ParaDISE_ProposalUniform_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/ParaDRAM_ProposalNormal_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/ParaDISE_ProposalNormal_mod.f90
     ${ParaMonteKernel_SRC_DIR}/ParaMCMC_mod.f90
     ${ParaMonteKernel_SRC_DIR}/ParaDRAM_mod.f90
     ${ParaMonteKernel_SRC_DIR}/ParaDISE_mod.f90
@@ -166,37 +171,41 @@ SET(ParaMonte_SOURCE_FILES
     ${ParaMonteKernel_SRC_DIR}/ParaDISE_mod@Postprocess_smod.f90
     ${ParaMonteKernel_SRC_DIR}/ParaMonte@runParaDRAM.f90
 )
-   #${ParaMonteKernel_SRC_DIR}/ParaDRAMProposalSymmetricUniform_mod.f90
 
-set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAM_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaXXXX_mod.inc.f90)
-set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDISE_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaXXXX_mod.inc.f90)
+set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaMonte_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaMonte_mod@version@kernel.inc.f90)
+
+set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAM_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaXXXX_ChainFileContents_mod.inc.f90)
+set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDISE_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaXXXX_ChainFileContents_mod.inc.f90)
+
 set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAM_mod@Input_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaXXXX_mod@Input_smod.inc.f90)
 set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDISE_mod@Input_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaXXXX_mod@Input_smod.inc.f90)
+
 set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAM_mod@Setup_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaXXXX_mod@Setup_smod.inc.f90)
 set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDISE_mod@Setup_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaXXXX_mod@Setup_smod.inc.f90)
+
 set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAM_mod@Kernel_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaXXXX_mod@Kernel_smod.inc.f90)
-set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDISE_mod@Kernel_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaXXXX_mod@Kernel_smod@nextMove.inc.f90)
+set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDISE_mod@Kernel_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaXXXX_mod@Kernel_smod.inc.f90)
+
 set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAM_mod@Kernel_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaXXXX_mod@Kernel_smod@nextMove.inc.f90)
-set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDISE_mod@Postprocess_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaXXXX_mod@Postprocess_smod.inc.f90)
+set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDISE_mod@Kernel_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaXXXX_mod@Kernel_smod@nextMove.inc.f90)
+
 set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAM_mod@Postprocess_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaXXXX_mod@Postprocess_smod.inc.f90)
-#set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAM_mod@Kernel_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaDRAM_mod@Kernel_smod@markovGen.inc.f90)
-set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAMProposalNormal_mod.f90    PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaXXXXProposal_mod.inc.f90)
-set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAMProposalUniform_mod.f90   PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaXXXXProposal_mod.inc.f90)
-set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAMProposalAbstract_mod.f90  PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaXXXXProposalAbstract_mod.inc.f90)
-set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDISEProposalAbstract_mod.f90  PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaXXXXProposalAbstract_mod.inc.f90)
-set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaMonte_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaMonte_mod@version@kernel.inc.f90)
-#set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAMProposalUniform_mod.f90  PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaDISEProposalAbstract_mod.f90)
-#set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAMProposalUniform_mod.f90  PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaMonteLogFunc_mod.f90)
-#set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAMProposalUniform_mod.f90  PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/Statistics_mod.f90)
-#set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAMProposalUniform_mod.f90  PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaMonte_mod.f90)
-#set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAMProposalUniform_mod.f90  PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/Constants_mod.f90)
-#set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAMProposalUniform_mod.f90  PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/SpecBase_mod.f90)
-#set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAMProposalUniform_mod.f90  PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/SpecMCMC_mod.f90)
-#set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAMProposalUniform_mod.f90  PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/SpecDRAM_mod.f90)
-#set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAMProposalUniform_mod.f90  PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/String_mod.f90)
-#set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAMProposalUniform_mod.f90  PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/Matrix_mod.f90)
-#set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAMProposalUniform_mod.f90  PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/Math_mod.f90)
-#set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAMProposalUniform_mod.f90  PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/Err_mod.f90)
+set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDISE_mod@Postprocess_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaXXXX_mod@Postprocess_smod.inc.f90)
+
+set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAM_ProposalNormal_mod.f90    PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaDXXX_Proposal_mod.inc.f90)
+set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDISE_ProposalNormal_mod.f90    PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaDXXX_Proposal_mod.inc.f90)
+
+set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAM_ProposalUniform_mod.f90   PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaDXXX_Proposal_mod.inc.f90)
+set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDISE_ProposalUniform_mod.f90   PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaDXXX_Proposal_mod.inc.f90)
+
+set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAM_ProposalAbstract_mod.f90  PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaXXXX_ProposalAbstract_mod.inc.f90)
+set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDISE_ProposalAbstract_mod.f90  PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaXXXX_ProposalAbstract_mod.inc.f90)
+
+set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAM_RefinedChain_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaXXXX_RefinedChain_mod.inc.f90)
+set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDISE_RefinedChain_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaXXXX_RefinedChain_mod.inc.f90)
+
+set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAM_ChainFileContents_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaXXXX_mod.inc.f90)
+set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDISE_ChainFileContents_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaXXXX_mod.inc.f90)
 
 #set_source_files_properties(${ParaMonteKernel_SRC_DIR}/SpecBase_SampleSize_mod.f90                          PROPERTIES OBJECT_DEPENDS "${ParaMonteKernel_SRC_DIR}/SpecBase_SampleSize_desc.f90                          ")
 #set_source_files_properties(${ParaMonteKernel_SRC_DIR}/SpecBase_RandomSeed_mod.f90                          PROPERTIES OBJECT_DEPENDS "${ParaMonteKernel_SRC_DIR}/SpecBase_RandomSeed_desc.f90                          ")
@@ -282,11 +291,12 @@ function(find_static_library LIB_NAME OUT)
 
 endfunction()
 
-#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-#: Have the .mod files placed in the lib folder
-#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
 unset(FL_FLAGS_PMLIB)
+unset(FCL_FLAGS_PMLIB)
+
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# set shared library Fortran linker flags
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 if (pmlib_shared)
 
@@ -342,6 +352,7 @@ if (pmlib_shared)
     set_target_properties(${PMLIB_NAME} PROPERTIES BUILD_WITH_INSTALL_RPATH ON)
     set_target_properties(${PMLIB_NAME} PROPERTIES BUILD_RPATH_USE_ORIGIN ON)
 
+    unset(RPATH_PROP)
     if (APPLE)
         set(RPATH_PROP "@loader_path")
     elseif(UNIX)
@@ -352,11 +363,18 @@ if (pmlib_shared)
         set(RPATH_PROP "${RPATH_PROP}:${RPATH_PROP}/${MPILIB_NAME}")
     endif()
 
-    set_target_properties(${PMLIB_NAME} PROPERTIES INSTALL_RPATH "${RPATH_PROP}")
+    if (DEFINED RPATH_PROP)
+        set_target_properties(${PMLIB_NAME} PROPERTIES INSTALL_RPATH "${RPATH_PROP}")
+    endif()
 
     #### set up the library-specific compile link flags
 
     if(gnu_compiler)
+
+        set(FCL_FLAGS_PMLIB "${FCL_FLAGS_PMLIB}"
+        -shared
+        -fPIC
+        )
 
         set(FL_FLAGS_PMLIB "${FL_FLAGS_PMLIB}"
         -shared
@@ -372,30 +390,54 @@ if (pmlib_shared)
     elseif(intel_compiler)
 
         if (WIN32)
+
+            set(FCL_FLAGS_PMLIB "${FCL_FLAGS_PMLIB}"
+            #/threads " # these flags are actually included by default in recent ifort implementations
+            /libs:dll
+            )
+
             set(FL_FLAGS_PMLIB "${FL_FLAGS_PMLIB}"
             /dll
             )
+
         elseif(UNIX)
+
+            set(FCL_FLAGS_PMLIB "${FCL_FLAGS_PMLIB}"
+            -fpic # Request compiler to generate position-independent code.
+            )
+
             set(FL_FLAGS_PMLIB "${FL_FLAGS_PMLIB}"
             -qopenmp-link=static
             -static-intel
             )
+
             if (deploy_enabled)
                 set(FL_FLAGS_PMLIB "${FL_FLAGS_PMLIB}"
                 -static-libstdc++
                 -static-libgcc
                 )
             endif()
+
             if(APPLE)
+
+                set(FCL_FLAGS_PMLIB "${FCL_FLAGS_PMLIB}"
+                -noall_load
+                # -weak_references_mismatches non-weak -threads -arch_only i386
+                )
+
                 set(FL_FLAGS_PMLIB "${FL_FLAGS_PMLIB}"
                 -noall_load
                 -dynamiclib
                 )
+
             else()
+
                 set(FL_FLAGS_PMLIB "${FL_FLAGS_PMLIB}"
                 -shared
                 )
+
             endif()
+
         endif()
 
         #### Include MKL
@@ -441,7 +483,7 @@ set_target_properties( ${PMLIB_NAME} PROPERTIES Fortran_MODULE_DIRECTORY "${Para
 
 #string(REPLACE ";" " " FCL_FLAGS ${FCL_FLAGS})
 #message(STATUS "${pmattn} ParaMonte library build flags: ${FPP_FLAGS} ${FCL_FLAGS}")
-target_compile_options(${PMLIB_NAME} BEFORE PRIVATE "${FPP_FLAGS}" "${FC_FLAGS}" "${FCL_FLAGS}")
+target_compile_options(${PMLIB_NAME} BEFORE PRIVATE "${FPP_FLAGS}" "${FC_FLAGS}" "${FCL_FLAGS}" "${FCL_FLAGS_PMLIB}")
 
 #message( STATUS "${pmattn} ParaMonte library build linker flags: ${${FCL_FLAGS}${FL_FLAGS_PMLIB}}${MATLAB_LINKER_FLAGS}" )
 #target_link_options( ${PMLIB_NAME} BEFORE PRIVATE ${${FCL_FLAGS}${FL_FLAGS_PMLIB}}${MATLAB_LINKER_FLAGS} )
@@ -463,11 +505,11 @@ message( STATUS "${pmattn} target include directories: ${PMLIB_INCLUDE_DIRECTORI
 message( STATUS "${pmattn} target compile definitions: ${PMLIB_COMPILE_DEFINITIONS}" )
 message( STATUS "${pmattn} target compile options    : ${PMLIB_COMPILE_OPTIONS}" )
 message( STATUS "${pmattn} target compile flags      : ${PMLIB_COMPILE_FLAGS}" )
-message( STATUS "${pmattn} target link directories: ${PMLIB_LINK_DIRECTORIES}" )
-message( STATUS "${pmattn} target install name dir: ${PMLIB_INSTALL_NAME_DIR}" )
-message( STATUS "${pmattn} target link options    : ${PMLIB_LINK_OPTIONS}" )
-message( STATUS "${pmattn} target link flags      : ${PMLIB_LINK_FLAGS}" )
-
+message( STATUS "${pmattn} target link directories   : ${PMLIB_LINK_DIRECTORIES}" )
+message( STATUS "${pmattn} target install name dir   : ${PMLIB_INSTALL_NAME_DIR}" )
+message( STATUS "${pmattn} target link options       : ${PMLIB_LINK_OPTIONS}" )
+message( STATUS "${pmattn} target link flags         : ${PMLIB_LINK_FLAGS}" )
+message( STATUS "${pmattn} CMAKE INSTALL PATH        : ${ParaMonte_LIB_DIR}" )
 
 if (CODECOV_ENABLED AND gnu_compiler)
     target_link_libraries(${PMLIB_NAME} PUBLIC gcov)

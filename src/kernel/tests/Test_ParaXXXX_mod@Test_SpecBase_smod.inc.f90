@@ -41,9 +41,39 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief This include file contains the body of the submodules
-!>  [ParaDRAM_mod@Test_SpecBase_smod](@ref paradram_mod@test_specbase_smod) and
-!>  [ParaDISE_mod@@Test_SpecBase_smod](@ref paradise_mod@@test_specbase_smod).
+!>  [ParaDRAM_mod@Test_SpecBase_smod](@ref paradram_mod@test_specbase_smod),
+!>  [ParaDISE_mod@Test_SpecBase_smod](@ref paradise_mod@@test_specbase_smod),
+!>  [ParaNest_mod@Test_SpecBase_smod](@ref paranest_mod@@test_specbase_smod).
 !>  \author Amir Shahmoradi
+
+#if defined PARADRAM
+
+#define ParaXXXX_mod ParaDRAM_mod
+#define ParaXXXX_type ParaDRAM_type
+#define test_ParaXXXX test_ParaDRAM
+#define ParaXXXX_NML "&ParaDRAM"
+#define ParaXXXX ParaDRAM
+#define ParaXXXX_RefinedChain_mod ParaDRAM_RefinedChain_mod
+
+#elif defined PARADISE
+
+#define ParaXXXX_mod ParaDISE_mod
+#define ParaXXXX_type ParaDISE_type
+#define test_ParaXXXX test_ParaDISE
+#define ParaXXXX_NML "&ParaDISE"
+#define ParaXXXX ParaDISE
+#define ParaXXXX_RefinedChain_mod ParaDISE_RefinedChain_mod
+
+#elif defined PARANEST
+
+#define ParaXXXX_mod ParaNest_mod
+#define ParaXXXX_type ParaNest_type
+#define test_ParaXXXX test_ParaNest
+#define ParaXXXX_NML "&ParaNest"
+#define ParaXXXX ParaNest
+#define ParaXXXX_RefinedChain_mod ParaNest_RefinedChain_mod
+
+#endif
 
 contains
 
@@ -1192,3 +1222,10 @@ contains
     end function test_SpecBase_TargetAcceptanceRate_type_6
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef ParaXXXX_mod
+#undef ParaXXXX_type
+#undef test_ParaXXXX
+#undef ParaXXXX_NML
+#undef ParaXXXX
+#undef ParaXXXX_RefinedChain_mod

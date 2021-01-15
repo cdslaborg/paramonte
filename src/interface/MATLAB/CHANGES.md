@@ -29,7 +29,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
     asking the user's response to the question of installing an MPI library if it 
     is missing on the user's system. This will prevent undesired crashes of the 
     simulations for the first time when the simulation is run from outside the 
-    MATLAB session. However, the onus will be on the user to ensure an MPICH 
+    MATLAB session. However, the onus will be on the user to ensure an MPI 
     library exists on the system if they intend to run simulations in parallel.  
 
 +   The `ParaMonte::MATLAB` library packages for different Operating systems and 

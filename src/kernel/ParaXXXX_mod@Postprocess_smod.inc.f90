@@ -52,16 +52,19 @@
 
 #define ParaXXXX ParaDRAM
 #define ParaXXXX_type ParaDRAM_type
+#define ParaXXXX_RefinedChain_mod ParaDRAM_RefinedChain_mod
 
 #elif defined PARADISE
 
 #define ParaXXXX ParaDISE
 #define ParaXXXX_type ParaDISE_type
+#define ParaXXXX_RefinedChain_mod ParaDISE_RefinedChain_mod
 
 #elif defined PARANEST
 
 #define ParaXXXX ParaNest
 #define ParaXXXX_type ParaNest_type
+#define ParaXXXX_RefinedChain_mod ParaNest_RefinedChain_mod
 
 #else
 #error "Unrecognized sampler in ParaXXXX_mod@Postprocess_smod.inc.f90"
@@ -1158,7 +1161,7 @@ contains
                         use Sort_mod, only: sortAscending
                         use String_mod, only: replaceStr
                         use Statistics_mod, only: doSortedKS2
-                        use ParaMCMCRefinedChain_mod, only: readRefinedChain, RefinedChain_type
+                        use ParaXXXX_RefinedChain_mod, only: readRefinedChain, RefinedChain_type
                         type(RefinedChain_type)     :: RefinedChainThisImage, RefinedChainThatImage
                         integer(IK)                 :: imageID,indexMinProbKS,imageMinProbKS
                         real(RK)                    :: statKS, minProbKS

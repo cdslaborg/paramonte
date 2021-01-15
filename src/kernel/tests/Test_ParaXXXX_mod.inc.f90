@@ -43,7 +43,34 @@
 !>  \brief This module contains tests of the module [ParaDRAM_mod](@ref paradram_mod).
 !>  \author Amir Shahmoradi
 
-! module Test_ParaXXXX_mod
+#if defined PARADRAM
+
+#define ParaXXXX_mod ParaDRAM_mod
+#define ParaXXXX_type ParaDRAM_type
+#define test_ParaXXXX test_ParaDRAM
+#define ParaXXXX_NML "&ParaDRAM"
+#define ParaXXXX ParaDRAM
+#define ParaXXXX_RefinedChain_mod ParaDRAM_RefinedChain_mod
+
+#elif defined PARADISE
+
+#define ParaXXXX_mod ParaDISE_mod
+#define ParaXXXX_type ParaDISE_type
+#define test_ParaXXXX test_ParaDISE
+#define ParaXXXX_NML "&ParaDISE"
+#define ParaXXXX ParaDISE
+#define ParaXXXX_RefinedChain_mod ParaDISE_RefinedChain_mod
+
+#elif defined PARANEST
+
+#define ParaXXXX_mod ParaNest_mod
+#define ParaXXXX_type ParaNest_type
+#define test_ParaXXXX test_ParaNest
+#define ParaXXXX_NML "&ParaNest"
+#define ParaXXXX ParaNest
+#define ParaXXXX_RefinedChain_mod ParaNest_RefinedChain_mod
+
+#endif
 
     use Constants_mod, only: IK, RK
     use Test_mod, only: Test_type, getLogFuncMVN
@@ -401,4 +428,9 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-! end module Test_ParaXXXX_mod
+#undef ParaXXXX_mod
+#undef ParaXXXX_type
+#undef test_ParaXXXX
+#undef ParaXXXX_NML
+#undef ParaXXXX
+#undef ParaXXXX_RefinedChain_mod

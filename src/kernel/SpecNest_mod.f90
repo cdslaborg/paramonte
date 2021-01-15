@@ -51,7 +51,7 @@ module SpecNest_mod
     use SpecNest_Tightness_mod              , only: Tightness_type
     use SpecNest_Tolerance_mod              , only: Tolerance_type
     use SpecNest_ScaleFactor_mod            , only: ScaleFactor_type
-    use SpecNest_SamplingMethod_mod         , only: SamplingMethod_type
+    use SpecNest_ProposalModel_mod          , only: ProposalModel_type
     use SpecNest_LiveSampleSize_mod         , only: LiveSampleSize_type
     use SpecNest_InclusionFraction_mod      , only: InclusionFraction_type
     use SpecNest_AdaptiveUpdateCount_mod    , only: AdaptiveUpdateCount_type
@@ -66,7 +66,7 @@ module SpecNest_mod
     use SpecNest_Tightness_mod              , only: tightness
     use SpecNest_Tolerance_mod              , only: tolerance
     use SpecNest_ScaleFactor_mod            , only: scaleFactor
-    use SpecNest_SamplingMethod_mod         , only: samplingMethod
+    use SpecNest_ProposalModel_mod          , only: proposalModel
     use SpecNest_LiveSampleSize_mod         , only: liveSampleSize
     use SpecNest_InclusionFraction_mod      , only: inclusionFraction
     use SpecNest_AdaptiveUpdateCount_mod    , only: adaptiveUpdateCount
@@ -83,7 +83,7 @@ module SpecNest_mod
         type(Tightness_type)                :: Tightness
         type(Tolerance_type)                :: Tolerance
         type(ScaleFactor_type)              :: ScaleFactor
-        type(SamplingMethod_type)           :: SamplingMethod
+        type(ProposalModel_type)            :: ProposalModel
         type(LiveSampleSize_type)           :: LiveSampleSize
         type(InclusionFraction_type)        :: InclusionFraction
         type(AdaptiveUpdateCount_type)      :: AdaptiveUpdateCount
@@ -125,7 +125,7 @@ contains
         SpecNest%Tightness                  = Tightness_type(methodName)
         SpecNest%Tolerance                  = Tolerance_type(methodName)
         SpecNest%ScaleFactor                = ScaleFactor_type(methodName)
-        SpecNest%SamplingMethod             = SamplingMethod_type(methodName)
+        SpecNest%ProposalModel              = ProposalModel_type(methodName)
         SpecNest%LiveSampleSize             = LiveSampleSize_type(nd,methodName)
         SpecNest%InclusionFraction          = InclusionFraction_type(methodName)
         SpecNest%AdaptiveUpdateCount        = AdaptiveUpdateCount_type(methodName)
@@ -150,7 +150,7 @@ contains
         call SpecNest%Tightness                 %nullifyNameListVar()
         call SpecNest%Tolerance                 %nullifyNameListVar()
         call SpecNest%ScaleFactor               %nullifyNameListVar()
-        call SpecNest%SamplingMethod            %nullifyNameListVar()
+        call SpecNest%ProposalModel             %nullifyNameListVar()
         call SpecNest%LiveSampleSize            %nullifyNameListVar()
         call SpecNest%InclusionFraction         %nullifyNameListVar()
         call SpecNest%AdaptiveUpdateCount       %nullifyNameListVar()
@@ -178,7 +178,7 @@ contains
         call SpecNest%Tightness                 %set(tightness              )
         call SpecNest%Tolerance                 %set(tolerance              )
         call SpecNest%ScaleFactor               %set(scaleFactor            )
-        call SpecNest%SamplingMethod            %set(samplingMethod         )
+        call SpecNest%ProposalModel             %set(proposalModel         )
         call SpecNest%LiveSampleSize            %set(liveSampleSize         )
         call SpecNest%InclusionFraction         %set(inclusionFraction      )
         call SpecNest%AdaptiveUpdateCount       %set(adaptiveUpdateCount    )
@@ -196,7 +196,7 @@ contains
                                     , tightness                 &
                                     , tolerance                 &
                                     , scaleFactor               &
-                                    , samplingMethod            &
+                                    , proposalModel             &
                                     , liveSampleSize            &
                                     , inclusionFraction         &
                                     , adaptiveUpdateCount       &
@@ -218,7 +218,7 @@ contains
         real(RK)    , intent(in), optional  :: tightness
         real(RK)    , intent(in), optional  :: tolerance
         real(RK)    , intent(in), optional  :: scaleFactor
-        character(*), intent(in), optional  :: samplingMethod
+        character(*), intent(in), optional  :: proposalModel
         integer(IK) , intent(in), optional  :: liveSampleSize
         real(RK)    , intent(in), optional  :: inclusionFraction
         integer(IK) , intent(in), optional  :: adaptiveUpdateCount
@@ -232,7 +232,7 @@ contains
         if (present(tightness               ))    call SpecNest%Tightness               %set(tightness              )
         if (present(tolerance               ))    call SpecNest%Tolerance               %set(tolerance              )
         if (present(scaleFactor             ))    call SpecNest%ScaleFactor             %set(scaleFactor            )
-        if (present(samplingMethod          ))    call SpecNest%SamplingMethod          %set(samplingMethod         )
+        if (present(proposalModel          ))    call SpecNest%ProposalModel          %set(proposalModel         )
         if (present(liveSampleSize          ))    call SpecNest%LiveSampleSize          %set(liveSampleSize         )
         if (present(inclusionFraction       ))    call SpecNest%InclusionFraction       %set(inclusionFraction      )
         if (present(adaptiveUpdateCount     ))    call SpecNest%AdaptiveUpdateCount     %set(adaptiveUpdateCount    )
@@ -292,10 +292,10 @@ contains
 
 
             write(outputUnit,GENERIC_OUTPUT_FORMAT)
-            write(outputUnit,GENERIC_OUTPUT_FORMAT) "samplingMethod"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "proposalModel"
             write(outputUnit,GENERIC_OUTPUT_FORMAT)
-            write(outputUnit,GENERIC_TABBED_FORMAT) SpecNest%SamplingMethod%val
-            if (splashModeRequested) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecNest%SamplingMethod%desc )
+            write(outputUnit,GENERIC_TABBED_FORMAT) SpecNest%ProposalModel%val
+            if (splashModeRequested) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecNest%ProposalModel%desc )
 
 
             write(outputUnit,GENERIC_OUTPUT_FORMAT)
@@ -379,7 +379,7 @@ contains
         type(Err_type), intent(inout)       :: Err
         call SpecNest%Tightness                 %checkForSanity (Err,methodName)
         call SpecNest%Tolerance                 %checkForSanity (Err,methodName)
-        call SpecNest%SamplingMethod            %checkForSanity (Err,methodName)
+        call SpecNest%ProposalModel            %checkForSanity (Err,methodName)
         call SpecNest%LiveSampleSize            %checkForSanity (Err,methodName,nd)
         call SpecNest%InclusionFraction         %checkForSanity (Err,methodName)
         call SpecNest%AdaptiveUpdateCount       %checkForSanity (Err,methodName)

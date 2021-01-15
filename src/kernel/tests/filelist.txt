@@ -30,8 +30,12 @@
   Test_ParaXXXX_mod@Test_SpecDRAM_smod.f90
   Test_ParaXXXX_mod@Test_runSampler_smod.f90
   Test_Parallelism_mod.f90
-  Test_ParaMCMCRefinedChain_mod.f90
-  Test_ParaMonteChainFileContents_mod.f90
+  Test_ParaDRAM_ChainFileContents_mod.f90
+  Test_ParaDISE_ChainFileContents_mod.f90
+  Test_ParaNest_ChainFileContents_mod.f90
+  Test_ParaDRAM_RefinedChain_mod.f90
+  Test_ParaDISE_RefinedChain_mod.f90
+  Test_ParaNest_RefinedChain_mod.f90
   Test_RandomSeed_mod.f90
   Test_Sort_mod.f90
   Test_StarFormation_mod.f90

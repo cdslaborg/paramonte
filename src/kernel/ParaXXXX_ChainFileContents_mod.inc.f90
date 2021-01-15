@@ -43,18 +43,36 @@
 !>  \brief This module contains the classs and procedures for chain IO and manipulation.
 !>  \author Amir Shahmoradi
 
-module ParaMonteChainFileContents_mod
+#if defined PARADRAM
+
+#define ParaXXXX ParaDRAM
+
+#elif defined PARADISE
+
+#define ParaXXXX ParaDISE
+
+#elif defined PARANEST
+
+#define ParaXXXX ParaNest
+
+#else
+#error "Unrecognized sampler in ParaXXXX_ChainFileContents_mod.inc.f90"
+#endif
 
     use, intrinsic :: iso_fortran_env, only: output_unit
+    use JaggedArray_mod, only: CharVec_type
     use Decoration_mod, only: INDENT
     use Constants_mod, only: IK, RK
-    use Err_mod, only: Err_type, warn
-    use JaggedArray_mod, only: CharVec_type
+    use Constants_mod, only: PMSM
+    use Err_mod, only: Err_type
+    use Err_mod, only: warn
     implicit none
 
-    character(*), parameter :: MODULE_NAME = "@ParaMonteChainFileContents_mod"
+    character(*), parameter :: MODULE_NAME = "@"//PMSM%ParaXXXX//"@ParaMonteChainFileContents_mod"
 
     integer(IK) , parameter :: NUM_DEF_COL = 7_IK   ! number of columns in the chain file other than the State columns
+
+#if defined PARADRAM || defined PARADISE
 
     character(*), parameter :: COL_HEADER_DEFAULT(NUM_DEF_COL) =    [ "ProcessID            " &
                                                                     , "DelayedRejectionStage" &
@@ -71,17 +89,31 @@ module ParaMonteChainFileContents_mod
         integer(IK) :: target = 0_IK    ! size of the allocations for the Chain components
     end type Count_type
 
+#elif defined PARANEST
+
+    character(*), parameter :: COL_HEADER_DEFAULT(NUM_DEF_COL) =    [ "ProcessID            " &
+                                                                    , "MeanAcceptanceRate   " &
+                                                                    , "RemainingPriorMass   " &
+                                                                    , "LogFuncLogIntegral   " &
+                                                                    , "SampleWeight         " &
+                                                                    , "SampleLogFunc        " &
+                                                                    ]
+
+#endif
+
     type                                    :: ChainFileContents_type
         integer(IK)                         :: ndim = 0_IK
         integer(IK)                         :: lenHeader = 0_IK
         integer(IK)                         :: numDefCol = NUM_DEF_COL
+#if defined PARADRAM || defined PARADISE
         type(Count_type)                    :: Count
-        integer(IK)         , allocatable   :: ProcessID(:)     !< The vector of the ID of the images whose function calls haven been accepted.
-        integer(IK)         , allocatable   :: DelRejStage(:)   !< The delayed rejection stages at which the proposed states were accepted.
         real(RK)            , allocatable   :: Adaptation(:)    !< The vector of the adaptation measures at the MCMC accepted states.
-        real(RK)            , allocatable   :: MeanAccRate(:)   !< The vector of the average acceptance rates at the given point in the chain.
+        integer(IK)         , allocatable   :: DelRejStage(:)   !< The delayed rejection stages at which the proposed states were accepted.
         integer(IK)         , allocatable   :: BurninLoc(:)     !< The burnin locations at the given locations in the chains.
+#endif
         integer(IK)         , allocatable   :: Weight(:)        !< The vector of the weights of the MCMC accepted states.
+        integer(IK)         , allocatable   :: ProcessID(:)     !< The vector of the ID of the images whose function calls haven been accepted.
+        real(RK)            , allocatable   :: MeanAccRate(:)   !< The vector of the average acceptance rates at the given point in the chain.
         real(RK)            , allocatable   :: LogFunc(:)       !< The vector of LogFunc values corresponding to the MCMC states.
         real(RK)            , allocatable   :: State(:,:)       !< The (nd,chainSize) MCMC chain of accepted proposed states.
         type(CharVec_type)  , allocatable   :: ColHeader(:)     !< The column headers of the chain file.
@@ -995,4 +1027,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module ParaMonteChainFileContents_mod ! LCOV_EXCL_LINE
+#undef ParaXXXX

@@ -40,17 +40,32 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-!>  \brief This module contains tests of the module [ParaMCMCRefinedChain_mod](@ref paramcmcrefinedchain_mod).
+!>  \brief This module contains tests of the module 
+!> [ParaDRAM_RefinedChain_mod](@ref paradram_refinedchain_mod),
+!> [ParaDISE_RefinedChain_mod](@ref paradise_refinedchain_mod),
+!> [ParaNest_RefinedChain_mod](@ref paranest_refinedchain_mod).
 !>  \author Amir Shahmoradi
 
-module Test_ParaMCMCRefinedChain_mod
+#if defined PARADRAM
+
+#define ParaXXXX_RefinedChain_mod ParaDRAM_RefinedChain_mod
+
+#elif defined PARADISE
+
+#define ParaXXXX_RefinedChain_mod ParaDISE_RefinedChain_mod
+
+#elif defined PARANEST
+
+#define ParaXXXX_RefinedChain_mod ParaNest_RefinedChain_mod
+
+#endif
 
     use Test_mod, only: Test_type, getLogFuncMVN
-    use ParaMCMCRefinedChain_mod
+    use ParaXXXX_RefinedChain_mod
     implicit none
 
     private
-    public :: test_ParaMCMCRefinedChain
+    public :: test_RefinedChain
 
     type(Test_type) :: Test
 
@@ -60,7 +75,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine test_ParaMCMCRefinedChain()
+    subroutine test_RefinedChain()
         implicit none
         Test = Test_type(moduleName=MODULE_NAME)
         call Test%run(test_getSkip4NewSampleSize_1, "test_getSkip4NewSampleSize_1")
@@ -68,7 +83,7 @@ contains
         call Test%run(test_getSkip4NewSampleSize_3, "test_getSkip4NewSampleSize_3")
         call Test%run(test_getSkip4NewSampleSize_4, "test_getSkip4NewSampleSize_4")
         call Test%finalize()
-    end subroutine test_ParaMCMCRefinedChain
+    end subroutine test_RefinedChain
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -162,4 +177,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module Test_ParaMCMCRefinedChain_mod
+#undef ParaXXXX_RefinedChain_mod

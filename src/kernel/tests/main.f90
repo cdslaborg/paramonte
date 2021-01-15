@@ -107,8 +107,11 @@ block; use Test_TranGaus_mod; call test_TranGaus(); end block
 #if defined SAMPLER_TEST_ENABLED
 block; use Test_ParaDRAM_mod; call test_ParaDRAM(); end block
 block; use Test_ParaDISE_mod; call test_ParaDISE(); end block
-block; use Test_ParaMCMCRefinedChain_mod; call test_ParaMCMCRefinedChain(); end block
-block; use Test_ParaMonteChainFileContents_mod; call test_ParaMonteChainFileContents(); end block
+block; use Test_ParaDRAM_RefinedChain_mod; call test_RefinedChain(); end block
+block; use Test_ParaDISE_RefinedChain_mod; call test_RefinedChain(); end block
+block; use Test_ParaDRAM_ChainFileContents_mod; call test_ChainFileContents(); end block
+block; use Test_ParaDISE_ChainFileContents_mod; call test_ChainFileContents(); end block
+!block; use Test_ParaNest_ChainFileContents_mod; call test_ChainFileContents(); end block
 #endif
 
 call finalize()

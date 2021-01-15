@@ -84,7 +84,7 @@ contains
         implicit none
         character(*), intent(in)            :: methodName
         type(MaxAllowedMinVolFailure_type)  :: self
-        self%def  = 10000_IK
+        self%def  = 10_IK ! 10000_IK
         self%null = NULL_IK
         self%desc = &
         "maxAllowedMinVolFailure is positive 32bit integer that sets the maximum total allowed number of minimum-volume convergence &

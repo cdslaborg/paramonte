@@ -40,17 +40,29 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-!>  \brief This module contains tests of the module [ParaMonteChainFileContents_mod](@ref paramontechainfilecontents_mod).
+!>  \brief This module contains tests of the module [ParaDRAM_ChainFileContents_mod](@ref paradram_chainfilecontents_mod).
 !>  \author Amir Shahmoradi
 
-module Test_ParaMonteChainFileContents_mod
+#if defined PARADRAM
+
+#define ParaXXXX_ChainFileContents_mod ParaDRAM_ChainFileContents_mod
+
+#elif defined PARADISE
+
+#define ParaXXXX_ChainFileContents_mod ParaDISE_ChainFileContents_mod
+
+#elif defined PARANEST
+
+#define ParaXXXX_ChainFileContents_mod ParaNest_ChainFileContents_mod
+
+#endif
 
     use Test_mod, only: Test_type, getLogFuncMVN
-    use ParaMonteChainFileContents_mod
+    use ParaXXXX_ChainFileContents_mod
     implicit none
 
     private
-    public :: test_ParaMonteChainFileContents
+    public :: test_ChainFileContents
 
     type(Test_type) :: Test
 
@@ -60,12 +72,12 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine test_ParaMonteChainFileContents()
+    subroutine test_ChainFileContents()
         implicit none
         Test = Test_type(moduleName=MODULE_NAME)
         call Test%run(test_constructChainFileContents_1, "test_constructChainFileContents_1")
         call Test%finalize()
-    end subroutine test_ParaMonteChainFileContents
+    end subroutine test_ChainFileContents
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -139,4 +151,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module Test_ParaMonteChainFileContents_mod
+#undef ParaXXXX_ChainFileContents_mod

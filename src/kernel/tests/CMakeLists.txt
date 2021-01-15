@@ -69,8 +69,12 @@ set(ParaMonteTest_SOURCE_FILES
     ${ParaMonteTest_SRC_DIR}/Test_ParaXXXX_mod@Test_SpecDRAM_smod.f90
     ${ParaMonteTest_SRC_DIR}/Test_ParaXXXX_mod@Test_runSampler_smod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Parallelism_mod.f90
-    ${ParaMonteTest_SRC_DIR}/Test_ParaMCMCRefinedChain_mod.f90
-    ${ParaMonteTest_SRC_DIR}/Test_ParaMonteChainFileContents_mod.f90
+    ${ParaMonteTest_SRC_DIR}/Test_ParaDRAM_ChainFileContents_mod.f90
+    ${ParaMonteTest_SRC_DIR}/Test_ParaDISE_ChainFileContents_mod.f90
+    #${ParaMonteTest_SRC_DIR}/Test_ParaNest_ChainFileContents_mod.f90
+    ${ParaMonteTest_SRC_DIR}/Test_ParaDRAM_RefinedChain_mod.f90
+    ${ParaMonteTest_SRC_DIR}/Test_ParaDISE_RefinedChain_mod.f90
+    #${ParaMonteTest_SRC_DIR}/Test_ParaNest_RefinedChain_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Path_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_RandomSeed_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Sort_mod.f90
@@ -86,10 +90,19 @@ set(ParaMonteTest_SOURCE_FILES
     #${ParaMonteTest_SRC_DIR}/Test_EconomicsToolbox_mod.f90
 )
 
+set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaXXXX_mod@Test_runSampler_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaXXXX_mod@Test_runSampler_smod.inc.f90)
+
 set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaXXXX_mod@Test_SpecBase_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaXXXX_mod@Test_SpecBase_smod.inc.f90)
 set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaXXXX_mod@Test_SpecMCMC_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaXXXX_mod@Test_SpecMCMC_smod.inc.f90)
 set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaXXXX_mod@Test_SpecDRAM_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaXXXX_mod@Test_SpecDRAM_smod.inc.f90)
-set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaXXXX_mod@Test_runSampler_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaXXXX_mod@Test_runSampler_smod.inc.f90)
+
+set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaDRAM_ChainFileContents_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaXXXX_ChainFileContents_mod.inc.f90)
+set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaDISE_ChainFileContents_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaXXXX_ChainFileContents_mod.inc.f90)
+set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaNest_ChainFileContents_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaXXXX_ChainFileContents_mod.inc.f90)
+
+set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaDRAM_RefinedChain_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaXXXX_RefinedChain_mod.inc.f90)
+set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaDISE_RefinedChain_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaXXXX_RefinedChain_mod.inc.f90)
+set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaNest_RefinedChain_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaXXXX_RefinedChain_mod.inc.f90)
 
 # Define the executable in terms of the source files
 
@@ -113,7 +126,7 @@ if (BASIC_TEST_ENABLED OR SAMPLER_TEST_ENABLED OR CODECOV_ENABLED)
 
     if (${LTYPE} MATCHES "[Ss][Tt][Aa][Tt][Ii][Cc]")
         target_link_libraries(${ParaMonteTest_EXE_NAME} PUBLIC ${PMLIB_NAME})
-    elseif (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
+    elseif (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]" OR ${LTYPE} MATCHES "[Ss][Hh][Aa][Rr][Ee][Dd]")
         target_link_libraries(${ParaMonteTest_EXE_NAME} PUBLIC ${PMLIB_NAME})
     endif()
 
@@ -149,6 +162,29 @@ if (BASIC_TEST_ENABLED OR SAMPLER_TEST_ENABLED OR CODECOV_ENABLED)
         target_include_directories(${ParaMonteTest_EXE_NAME} PUBLIC ${MPI_Fortran_INCLUDE_PATH})
         target_link_libraries(${ParaMonteTest_EXE_NAME} PUBLIC ${MPI_Fortran_LIBRARIES})
     endif ()
+
+    #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+    #: report the test executable build options
+    #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+    get_target_property(PMLIB_TEST_INCLUDE_DIRECTORIES   ${ParaMonteTest_EXE_NAME} INCLUDE_DIRECTORIES)
+    get_target_property(PMLIB_TEST_COMPILE_DEFINITIONS   ${ParaMonteTest_EXE_NAME} COMPILE_DEFINITIONS)
+    get_target_property(PMLIB_TEST_COMPILE_OPTIONS       ${ParaMonteTest_EXE_NAME} COMPILE_OPTIONS)
+    get_target_property(PMLIB_TEST_COMPILE_FLAGS         ${ParaMonteTest_EXE_NAME} COMPILE_FLAGS)
+
+    get_target_property(PMLIB_TEST_LINK_DIRECTORIES  ${ParaMonteTest_EXE_NAME} LINK_DIRECTORIES)
+    get_target_property(PMLIB_TEST_INSTALL_NAME_DIR  ${ParaMonteTest_EXE_NAME} INSTALL_NAME_DIR)
+    get_target_property(PMLIB_TEST_LINK_OPTIONS      ${ParaMonteTest_EXE_NAME} LINK_OPTIONS)
+    get_target_property(PMLIB_TEST_LINK_FLAGS        ${ParaMonteTest_EXE_NAME} LINK_FLAGS)
+
+    message( STATUS "${pmattn} ParaMonte library test target include directories: ${PMLIB_TEST_INCLUDE_DIRECTORIES}" )
+    message( STATUS "${pmattn} ParaMonte library test target compile definitions: ${PMLIB_TEST_COMPILE_DEFINITIONS}" )
+    message( STATUS "${pmattn} ParaMonte library test target compile options    : ${PMLIB_TEST_COMPILE_OPTIONS}" )
+    message( STATUS "${pmattn} ParaMonte library test target compile flags      : ${PMLIB_TEST_COMPILE_FLAGS}" )
+    message( STATUS "${pmattn} ParaMonte library test target link directories   : ${PMLIB_TEST_LINK_DIRECTORIES}" )
+    message( STATUS "${pmattn} ParaMonte library test target install name dir   : ${PMLIB_TEST_INSTALL_NAME_DIR}" )
+    message( STATUS "${pmattn} ParaMonte library test target link options       : ${PMLIB_TEST_LINK_OPTIONS}" )
+    message( STATUS "${pmattn} ParaMonte library test target link flags         : ${PMLIB_TEST_LINK_FLAGS}" )
 
     #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
     #: install the test executable

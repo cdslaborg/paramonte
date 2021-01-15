@@ -40,35 +40,18 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-#define NORMAL
-
 !> \brief
-!> This module implements the body of the `ParaDRAMProposalNormal_mod` module of the `ParaDRAM` sampler.
+!> This module implements the body of the `ParaDRAM_ProposalUniform_mod` module of the `ParaDRAM` sampler.
 !>
 !> \remark
 !> This module requires preprocessing prior to compilation.
 !>
 !> \author Amir Shahmoradi
 
-module ParaDRAMProposalNormal_mod
-!use Statistics_mod
+module ParaDRAM_ProposalUniform_mod
+#define UNIFORM
 #define PARADRAM ParaDRAM
-#include "ParaXXXXProposal_mod.inc.f90"
+#include "ParaDXXX_Proposal_mod.inc.f90"
 #undef PARADRAM
-end module ParaDRAMProposalNormal_mod ! LCOV_EXCL_LINE
-
-!> \brief
-!> This module implements the body of the `ParaDISEProposalNormal_mod` module of the `ParaDISE` sampler.
-!>
-!> \remark
-!> This module requires preprocessing prior to compilation.
-!>
-!> \author Amir Shahmoradi
-
-module ParaDISEProposalNormal_mod
-#define PARADISE ParaDISE
-#include "ParaXXXXProposal_mod.inc.f90"
-#undef PARADISE
-end module ParaDISEProposalNormal_mod ! LCOV_EXCL_LINE
-
-#undef NORMAL
+#undef UNIFORM
+end module ParaDRAM_ProposalUniform_mod ! LCOV_EXCL_LINE

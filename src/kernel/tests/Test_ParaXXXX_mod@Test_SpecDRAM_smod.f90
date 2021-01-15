@@ -45,38 +45,18 @@
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-#define ParaXXXX_mod ParaDRAM_mod
-#define ParaXXXX_type ParaDRAM_type
-#define test_ParaXXXX test_ParaDRAM
-#define ParaXXXX_NML "&ParaDRAM"
-#define ParaXXXX ParaDRAM
-
 submodule (Test_ParaDRAM_mod) Test_SpecDRAM_smod
+#define PARADRAM ParaDRAM
 #include "Test_ParaXXXX_mod@Test_SpecDRAM_smod.inc.f90"
+#undef PARADRAM
 end submodule Test_SpecDRAM_smod
-
-#undef ParaXXXX_mod
-#undef ParaXXXX_type
-#undef test_ParaXXXX
-#undef ParaXXXX_NML
-#undef ParaXXXX
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-#define ParaXXXX_mod ParaDISE_mod
-#define ParaXXXX_type ParaDISE_type
-#define test_ParaXXXX test_ParaDISE
-#define ParaXXXX_NML "&ParaDISE"
-#define ParaXXXX ParaDISE
-
 submodule (Test_ParaDISE_mod) Test_SpecDRAM_smod
+#define PARADISE ParaDISE
 #include "Test_ParaXXXX_mod@Test_SpecDRAM_smod.inc.f90"
+#undef PARADISE
 end submodule Test_SpecDRAM_smod
-
-#undef ParaXXXX_mod
-#undef ParaXXXX_type
-#undef test_ParaXXXX
-#undef ParaXXXX_NML
-#undef ParaXXXX
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

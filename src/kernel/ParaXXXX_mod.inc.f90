@@ -54,19 +54,26 @@
 
 #define ParaXXXX_mod ParaDRAM_mod
 #define ParaXXXX_type ParaDRAM_type
-#define ParaXXXXProposalAbstract_mod ParaDRAMProposalAbstract_mod
+#define ParaXXXX_RefinedChain_mod ParaDRAM_RefinedChain_mod
+#define ParaXXXX_RefinedChain_mod ParaDRAM_RefinedChain_mod
+#define ParaXXXX_ProposalAbstract_mod ParaDRAM_ProposalAbstract_mod
+#define ParaXXXX_ChainFileContents_mod ParaDRAM_ChainFileContents_mod
 
 #elif defined PARADISE
 
 #define ParaXXXX_mod ParaDISE_mod
 #define ParaXXXX_type ParaDISE_type
-#define ParaXXXXProposalAbstract_mod ParaDISEProposalAbstract_mod
+#define ParaXXXX_RefinedChain_mod ParaDISE_RefinedChain_mod
+#define ParaXXXX_ProposalAbstract_mod ParaDISE_ProposalAbstract_mod
+#define ParaXXXX_ChainFileContents_mod ParaDISE_ChainFileContents_mod
 
 #elif defined PARANEST
 
 #define ParaXXXX_mod ParaNest_mod
 #define ParaXXXX_type ParaNest_type
-#define ParaXXXXProposalAbstract_mod ParaNestProposalAbstract_mod
+#define ParaXXXX_RefinedChain_mod ParaNest_RefinedChain_mod
+#define ParaXXXX_ProposalAbstract_mod ParaNest_ProposalAbstract_mod
+#define ParaXXXX_ChainFileContents_mod ParaNest_ChainFileContents_mod
 
 #else
 #error "Unrecognized sampler in ParaXXXX_mod.inc.f90"
@@ -75,9 +82,13 @@
     use Constants_mod, only: IK, RK, CK ! LCOV_EXCL_LINE
     use ParaMonte_mod, only: ParaMonteNumFunCall_type
     use ParaMonteLogFunc_mod, only: getLogFunc_proc
-    use ParaXXXXProposalAbstract_mod, only: ProposalAbstract_type
+    use ParaXXXX_RefinedChain_mod, only: RefinedChain_type
+    use ParaXXXX_ProposalAbstract_mod, only: ProposalAbstract_type
+    use ParaXXXX_ChainFileContents_mod, only: ChainFileContents_type
 #if defined PARADRAM || defined PARADISE
-    use ParaMCMC_mod, only: ParaMCMC_type, ParaMCMC_Statistics_type, ParaMCMC_Chain_type
+    use ParaMCMC_mod, only: ParaMCMC_Statistics_type
+    use ParaMCMC_mod, only: ParaMCMC_Chain_type
+    use ParaMCMC_mod, only: ParaMCMC_type
     use SpecDRAM_mod, only: SpecDRAM_type
 #endif
 
@@ -106,9 +117,11 @@
 
     !> The `ParaDRAM_type` and `ParaDISE_type` classes.
     type, extends(ParaMCMC_type)                    :: ParaXXXX_type
-        type(SpecDRAM_type)                         :: SpecDRAM     !< Object of [SpecDRAM_type](@ref specdram_type) class containing DRAM simulation specs.
-        type(Statistics_type)                       :: Stats        !< Object of [Statistics_type](@ref statistics_type) class containing simulation statistics.
-        class(ProposalAbstract_type), allocatable   :: Proposal     !< Object of [ProposalAbstract_type](@ref proposalabstract_type) class representing the proposal distribution of the MCMC sampler.
+        type(RefinedChain_type)                     :: RefinedChain             !< An object of class `RefinedChain_type` containing the final refined chain.
+        type(SpecDRAM_type)                         :: SpecDRAM                 !< An object of class [SpecDRAM_type](@ref specdram_mod::specdram_type) containing DRAM simulation specs.
+        type(Statistics_type)                       :: Stats                    !< An object of class [Statistics_type](@ref statistics_type) containing simulation statistics.
+        type(ChainFileContents_type)                :: Chain                    !< An object of class `ChainFileContents_type containing information and methods for chain IO.
+        class(ProposalAbstract_type), allocatable   :: Proposal                 !< An object of class `ProposalAbstract_type` representing the proposal distribution of the MCMC sampler.
        !class(ProposalAbstract_type), pointer       :: Proposal => null()
     contains
         procedure, pass, private                    :: getSpecFromInputFile
@@ -281,5 +294,5 @@
 
 #undef ParaXXXX_mod
 #undef ParaXXXX_type
-#undef ParaXXXXProposalAbstract_mod
+#undef ParaXXXX_ProposalAbstract_mod
 

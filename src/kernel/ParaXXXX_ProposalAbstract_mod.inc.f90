@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !> \brief
-!> This file implements the main body of the `ParaDRAMProposalAbstract_mod` and `ParaDISEProposalAbstract_mod` modules.
+!> This file implements the main body of the `ParaDRAM_ProposalAbstract_mod` and `ParaDISE_ProposalAbstract_mod` modules.
 !>
 !> \remark
 !> This module requires preprocessing, prior to compilation.
@@ -54,9 +54,9 @@
     implicit none
 
 #if defined PARADRAM
-    character(*), parameter :: MODULE_NAME = "@ParaDRAMProposal_mod"
+    character(*), parameter :: MODULE_NAME = "@ParaDRAM_Proposal_mod"
 #elif defined PARADISE
-    character(*), parameter :: MODULE_NAME = "@ParaDISEProposal_mod"
+    character(*), parameter :: MODULE_NAME = "@ParaDISE_Proposal_mod"
 #endif
 
     type(Err_type), save :: ProposalErr

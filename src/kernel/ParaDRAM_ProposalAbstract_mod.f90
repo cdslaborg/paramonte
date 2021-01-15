@@ -41,15 +41,16 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !> \brief
-!> This module contains the abstract interface of the proposal distribution of the ParaDISE sampler.
+!> This module contains the abstract interface of the proposal distribution of the ParaDRAM sampler.
 !>
 !> \remark
 !> This module requires preprocessing, prior to compilation.
 !>
 !> \author Amir Shahmoradi
 
-module ParaDISEProposalAbstract_mod
-#define PARADISE ParaDISE
-#include "ParaXXXXProposalAbstract_mod.inc.f90"
-#undef ParaDISE
-end module ParaDISEProposalAbstract_mod ! LCOV_EXCL_LINE
+module ParaDRAM_ProposalAbstract_mod
+#define PARADRAM ParaDRAM
+#include "ParaXXXX_ProposalAbstract_mod.inc.f90"
+#undef PARADRAM
+end module ParaDRAM_ProposalAbstract_mod
+

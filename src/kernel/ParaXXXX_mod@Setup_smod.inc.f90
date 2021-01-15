@@ -52,19 +52,22 @@
 
 #define ParaXXXX ParaDRAM
 #define ParaXXXX_type ParaDRAM_type
-#define ParaXXXXProposalAbstract_mod ParaDRAMProposalAbstract_mod
+#define ParaXXXX_ProposalAbstract_mod ParaDRAM_ProposalAbstract_mod
+#define ParaXXXX_ChainFileContents_mod ParaDRAM_ChainFileContents_mod
 
 #elif defined PARADISE
 
 #define ParaXXXX ParaDISE
 #define ParaXXXX_type ParaDISE_type
-#define ParaXXXXProposalAbstract_mod ParaDISEProposalAbstract_mod
+#define ParaXXXX_ProposalAbstract_mod ParaDISE_ProposalAbstract_mod
+#define ParaXXXX_ChainFileContents_mod ParaDISE_ChainFileContents_mod
 
 #elif defined PARANEST
 
 #define ParaXXXX ParaNest
 #define ParaXXXX_type ParaNest_type
-#define ParaXXXXProposalAbstract_mod ParaNestProposalAbstract_mod
+#define ParaXXXX_ProposalAbstract_mod ParaNestProposalAbstract_mod
+#define ParaXXXX_ChainFileContents_mod ParaNest_ChainFileContents_mod
 
 #else
 #error "Unrecognized sampler in ParaXXXX_mod@Setup_mod.inc.f90"
@@ -158,11 +161,11 @@ contains
 #endif
 
 #if defined PARADRAM
-        use ParaDRAMProposalUniform_mod, only: ProposalUniform_type => Proposal_type
-        use ParaDRAMProposalNormal_mod, only: ProposalNormal_type => Proposal_type
+        use ParaDRAM_ProposalUniform_mod, only: ProposalUniform_type => Proposal_type
+        use ParaDRAM_ProposalNormal_mod, only: ProposalNormal_type => Proposal_type
 #elif defined PARADISE
-        use ParaDISEProposalUniform_mod, only: ProposalUniform_type => Proposal_type
-        use ParaDISEProposalNormal_mod, only: ProposalNormal_type => Proposal_type
+        use ParaDISE_ProposalUniform_mod, only: ProposalUniform_type => Proposal_type
+        use ParaDISE_ProposalNormal_mod, only: ProposalNormal_type => Proposal_type
 #elif defined PARANEST
         use ParaNestProposalRejection_mod, only: ProposalRejection_type => Proposal_type
 #endif
@@ -424,7 +427,7 @@ contains
         ! setup chain file
 
         block
-            use ParaMonteChainFileContents_mod, only: ChainFileContents_type
+            use ParaXXXX_ChainFileContents_mod, only: ChainFileContents_type
             self%Chain = ChainFileContents_type( ndim = ndim, variableNameList = self%SpecBase%VariableNameList%Val )
         end block
 
@@ -522,9 +525,9 @@ contains
 #if (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED
             block
 #if defined PARADRAM
-                use ParaXXXXProposalAbstract_mod, only: ProposalErr
+                use ParaXXXX_ProposalAbstract_mod, only: ProposalErr
 #elif defined PARADISE
-                use ParaXXXXProposalAbstract_mod, only: ProposalErr
+                use ParaXXXX_ProposalAbstract_mod, only: ProposalErr
 #endif
 
 #if (defined MPI_ENABLED || defined CAF_ENABLED) && (defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED)
@@ -598,6 +601,6 @@ contains
 
 !end submodule Setup_smod
 
-#undef ParaXXXXProposalAbstract_mod
+#undef ParaXXXX_ProposalAbstract_mod
 #undef ParaXXXX_type
 #undef ParaXXXX

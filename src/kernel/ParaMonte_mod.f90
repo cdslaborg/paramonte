@@ -134,7 +134,6 @@ module ParaMonte_mod
     use Path_mod, only: MAX_FILE_PATH_LEN
     use Err_mod, only: Err_type, informUser, note, warn, abort
     use SpecBase_mod, only: SpecBase_type
-    use ParaMonteChainFileContents_mod, only: ChainFileContents_type
 
     implicit none
 
@@ -238,7 +237,6 @@ module ParaMonte_mod
         type(ChainFile_type)            :: ChainFile                !< An object of class [ChainFile_type](@ref chainfile_type) containing information about the simulation output chain.
         type(SampleFile_type)           :: SampleFile               !< An object of class [SampleFile_type](@ref samplefile_type) containing information about the simulation output sample.
         type(RestartFile_type)          :: RestartFile              !< An object of class [RestartFile_type](@ref restartfile_type) containing information about the simulation output restart.
-        type(ChainFileContents_type)    :: Chain                    !< An object of class [ChainFileContents_type](@ref paramontechainfilecontents_mod::chainfilecontents_type) containing information and methods for chain IO.
         type(Decoration_type)           :: Decor                    !< An object of class [Decoration_type](@ref decoration_mod::decoration_type) containing IO decoration tools.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
     !> These variables are exclusively used for testing the deterministic restart functionality of ParaXXXX samplers. 

@@ -40,23 +40,11 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-!>  \brief These submodules contain tests of the modules [ParaDRAM_mod](@ref paradram_mod) and [ParaDISE_mod](@ref paradise_mod).
+!>  \brief This module contains tests of the module [ParaDRAM_mod](@ref paradram_mod).
 !>  \author Amir Shahmoradi
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-submodule (Test_ParaDRAM_mod) Test_runSampler_smod
+module Test_ParaDRAM_RefinedChain_mod
 #define PARADRAM ParaDRAM
-#include "Test_ParaXXXX_mod@Test_runSampler_smod.inc.f90"
+#include "Test_ParaXXXX_RefinedChain_mod.inc.f90"
 #undef PARADRAM
-end submodule Test_runSampler_smod
-
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-submodule (Test_ParaDISE_mod) Test_runSampler_smod
-#define PARADISE ParaDISE
-#include "Test_ParaXXXX_mod@Test_runSampler_smod.inc.f90"
-#undef PARADISE
-end submodule Test_runSampler_smod
-
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+end module Test_ParaDRAM_RefinedChain_mod

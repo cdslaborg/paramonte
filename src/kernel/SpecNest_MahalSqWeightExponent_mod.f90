@@ -82,9 +82,9 @@ contains
         use Constants_mod, only: NULL_RK
         use String_mod, only: num2str
         implicit none
-        character(*), intent(in)    :: methodName
-        type(MahalSqWeightExponent_type)        :: self
-        self%def = 1._RK
+        character(*), intent(in)            :: methodName
+        type(MahalSqWeightExponent_type)    :: self
+        self%def = 0._RK
         self%null = NULL_RK
         self%desc = &
         "mahalSqWeightExponent is a 64-bit positive real number representing the the exponent of the power-law density weights &
@@ -116,7 +116,7 @@ contains
         use Constants_mod, only: RK
         implicit none
         class(MahalSqWeightExponent_type), intent(inout)    :: self
-        real(RK), intent(in)                    :: mahalSqWeightExponent
+        real(RK), intent(in)                                :: mahalSqWeightExponent
         self%val = mahalSqWeightExponent
         if (self%val==self%null) self%val = self%def
     end subroutine set

@@ -40,23 +40,16 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-!>  \brief These submodules contain tests of the modules [ParaDRAM_mod](@ref paradram_mod) and [ParaDISE_mod](@ref paradise_mod).
-!>  \author Amir Shahmoradi
+!> \brief
+!> This module contains the abstract interface of the proposal distribution of the ParaDISE sampler.
+!>
+!> \remark
+!> This module requires preprocessing, prior to compilation.
+!>
+!> \author Amir Shahmoradi
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-submodule (Test_ParaDRAM_mod) Test_runSampler_smod
-#define PARADRAM ParaDRAM
-#include "Test_ParaXXXX_mod@Test_runSampler_smod.inc.f90"
-#undef PARADRAM
-end submodule Test_runSampler_smod
-
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-submodule (Test_ParaDISE_mod) Test_runSampler_smod
+module ParaDISE_ProposalAbstract_mod
 #define PARADISE ParaDISE
-#include "Test_ParaXXXX_mod@Test_runSampler_smod.inc.f90"
-#undef PARADISE
-end submodule Test_runSampler_smod
-
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#include "ParaXXXX_ProposalAbstract_mod.inc.f90"
+#undef ParaDISE
+end module ParaDISE_ProposalAbstract_mod ! LCOV_EXCL_LINE

@@ -41,16 +41,15 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !> \brief
-!> This module contains the abstract interface of the proposal distribution of the ParaDRAM sampler.
+!> This module contains procedures and routines for the chain file contents of the ParaDRAM sampler.
 !>
 !> \remark
 !> This module requires preprocessing, prior to compilation.
 !>
 !> \author Amir Shahmoradi
 
-module ParaDRAMProposalAbstract_mod
+module ParaDRAM_ChainFileContents_mod
 #define PARADRAM ParaDRAM
-#include "ParaXXXXProposalAbstract_mod.inc.f90"
+#include "ParaXXXX_ChainFileContents_mod.inc.f90"
 #undef PARADRAM
-end module ParaDRAMProposalAbstract_mod
-
+end module ParaDRAM_ChainFileContents_mod ! LCOV_EXCL_LINE

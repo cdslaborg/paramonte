@@ -43,12 +43,28 @@
 !>  \brief This module contains the classes and procedures for refining MCMC output chains.
 !>  \author Amir Shahmoradi
 
-module ParaMCMCRefinedChain_mod
+#if defined PARADRAM
+
+#define ParaXXXX_ChainFileContents_mod ParaDRAM_ChainFileContents_mod
+
+#elif defined PARADISE
+
+#define ParaXXXX_ChainFileContents_mod ParaDISE_ChainFileContents_mod
+
+#elif defined PARANEST
+
+#define ParaXXXX_ChainFileContents_mod ParaNest_ChainFileContents_mod
+
+#else
+#error "Unrecognized sampler in ParaXXXX_RefinedChain_mod.inc.f90"
+#endif
+
+! module ParaMCMC_RefinedChain_mod
 
     use SpecMCMC_SampleRefinementMethod_mod, only: BATCH_MEANS_METHOD_NAME
     use SpecMCMC_SampleRefinementMethod_mod, only: CUTOFF_AUTOCORR_METHOD_NAME
     use SpecMCMC_SampleRefinementMethod_mod, only: MAX_CUMSUM_AUTOCORR_METHOD_NAME
-    use ParaMonteChainFileContents_mod, only: Count_type
+    use ParaXXXX_ChainFileContents_mod, only: Count_type
     use JaggedArray_mod, only: CharVec_type
     use Constants_mod, only: IK, RK
     use Err_mod, only: Err_type
@@ -94,7 +110,7 @@ contains
     !> This procedure is a method of the [RefinedChain_type](@ref refinedchain_type) class.
     !>
     !> \param[inout] RefinedChain           :   An object of class [RefinedChain_type](@ref refinedchain_type).
-    !> \param[inout] CFC                    :   An object of type [ChainFileContents_type](@ref paramontechainfilecontents_mod::chainfilecontents_type)
+    !> \param[inout] CFC                    :   An object of type `ChainFileContents_type`.
     !!                                          containing the Markov chain.
     !> \param[out]   Err                    :   An object of class [Err_type](@ref err_mod::err_type) indicating whether any error has occurred or not.
     !> \param[in]    burninLoc              :   The estimated location of burnin point in the Markov chain (**optional**).
@@ -117,7 +133,7 @@ contains
 #endif
 
         use, intrinsic :: iso_fortran_env, only: output_unit
-        use ParaMonteChainFileContents_mod, only: ChainFileContents_type, NUM_DEF_COL
+        use ParaXXXX_ChainFileContents_mod, only: ChainFileContents_type, NUM_DEF_COL
         use CrossCorr_mod, only: getBatchMeansIAC, getCumSumIAC, getMaxCumSumIAC
         use String_mod, only: getLowerCase, replaceStr
         use Sort_mod, only: getMedian
@@ -678,4 +694,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module ParaMCMCRefinedChain_mod ! LCOV_EXCL_LINE
+! end module ParaMCMC_RefinedChain_mod ! LCOV_EXCL_LINE

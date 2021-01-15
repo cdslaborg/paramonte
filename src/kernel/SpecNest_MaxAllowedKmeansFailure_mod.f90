@@ -84,7 +84,7 @@ contains
         implicit none
         character(*), intent(in)            :: methodName
         type(MaxAllowedKmeansFailure_type)  :: self
-        self%def  = 10000_IK
+        self%def  = 10_IK ! 10000_IK
         self%null = NULL_IK
         self%desc = &
         "maxAllowedKmeansFailure is positive 32bit integer that sets the maximum allowed number of Kmeans convergence &

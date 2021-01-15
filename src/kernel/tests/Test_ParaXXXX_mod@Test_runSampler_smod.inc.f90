@@ -45,6 +45,26 @@
 !>  [ParaDISE_mod@@Test_runSampler_smod](@ref paradise_mod@test_runsampler_smod).
 !>  \author Amir Shahmoradi
 
+#if defined PARADRAM
+
+#define ParaXXXX_mod ParaDRAM_mod
+#define ParaXXXX_type ParaDRAM_type
+#define test_ParaXXXX test_ParaDRAM
+#define ParaXXXX_NML "&ParaDRAM"
+#define ParaXXXX ParaDRAM
+#define ParaXXXX_RefinedChain_mod ParaDRAM_RefinedChain_mod
+
+#elif defined PARADISE
+
+#define ParaXXXX_mod ParaDISE_mod
+#define ParaXXXX_type ParaDISE_type
+#define test_ParaXXXX test_ParaDISE
+#define ParaXXXX_NML "&ParaDISE"
+#define ParaXXXX ParaDISE
+#define ParaXXXX_RefinedChain_mod ParaDISE_RefinedChain_mod
+
+#endif
+
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 contains
@@ -693,7 +713,7 @@ contains
     !> \brief
     !> Test whether the read method of the `ParaMCMCRefinedChain_type` class can successfully read an external sample file.
     module function test_runSampler_15() result(assertion)
-        use ParaMCMCRefinedChain_mod, only: readRefinedChain, RefinedChain_type
+        use ParaXXXX_RefinedChain_mod, only: readRefinedChain, RefinedChain_type
         use Statistics_mod, only: flatten
         implicit none
         logical                 :: assertion
@@ -1289,7 +1309,7 @@ contains
     !> \remark
     !> This is similar to test #15, except that it also verifies the functionality of the optional argument `tenabled` to `readRefinedChain()`.
     module function test_runSampler_21() result(assertion)
-        use ParaMCMCRefinedChain_mod, only: readRefinedChain, RefinedChain_type
+        use ParaXXXX_RefinedChain_mod, only: readRefinedChain, RefinedChain_type
         use Statistics_mod, only: flatten
         implicit none
         logical                 :: assertion
@@ -1390,14 +1410,14 @@ contains
     !> class can handle zero-count input MCMC chain for refinement.
     !> \remark
     module function test_runSampler_22() result(assertion)
-        use ParaMCMCRefinedChain_mod, only: readRefinedChain, RefinedChain_type
+        use ParaXXXX_RefinedChain_mod, only: readRefinedChain, RefinedChain_type
         implicit none
         logical                 :: assertion
         real(RK)    , parameter :: tolerance = 1.e-10_RK
         character(*), parameter :: DELIM = "delim"
         integer(IK) , parameter :: NDIM = 2_IK
-        type(ParaXXXX_type)     :: PD
         type(RefinedChain_type) :: RefinedChain
+        type(ParaXXXX_type)     :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
 
@@ -1447,3 +1467,10 @@ contains
     end function test_runSampler_22
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef ParaXXXX_RefinedChain_mod
+#undef ParaXXXX_mod
+#undef ParaXXXX_type
+#undef test_ParaXXXX
+#undef ParaXXXX_NML
+#undef ParaXXXX

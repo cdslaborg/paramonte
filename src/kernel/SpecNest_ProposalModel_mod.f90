@@ -41,22 +41,22 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !> \brief
-!> This module contains the classes and procedures for setting up the `samplingMethod` attribute of samplers of class 
+!> This module contains the classes and procedures for setting up the `proposalModel` attribute of samplers of class 
 !> [ParaNest_type](@ref paranest_mod::paranest_type). For more information, see the description of this attribute in the body of the module.
 !> \author Amir Shahmoradi
 
-module SpecNest_SamplingMethod_mod
+module SpecNest_ProposalModel_mod
 
     use Constants_mod, only: IK
     implicit none
 
-    character(*), parameter         :: MODULE_NAME = "@SpecNest_SamplingMethod_mod"
+    character(*), parameter         :: MODULE_NAME = "@SpecNest_ProposalModel_mod"
 
     integer(IK), parameter          :: MAX_LEN_PROPOSAL_MODEL = 63_IK
 
-    character(:), allocatable       :: samplingMethod ! namelist input
+    character(:), allocatable       :: proposalModel ! namelist input
 
-    type                            :: SamplingMethod_type
+    type                            :: ProposalModel_type
         logical                     :: isRej        !< Rejection
         logical                     :: isRejEll     !< Ellipsoidal Rejection
         logical                     :: isRejBall    !< Spherical Rejection
@@ -72,11 +72,11 @@ module SpecNest_SamplingMethod_mod
         character(:), allocatable   :: desc
     contains
         procedure, pass             :: set, checkForSanity, nullifyNameListVar
-    end type SamplingMethod_type
+    end type ProposalModel_type
 
-    interface SamplingMethod_type
+    interface ProposalModel_type
         module procedure            :: construct
-    end interface SamplingMethod_type
+    end interface ProposalModel_type
 
     private :: construct, set, checkForSanity, nullifyNameListVar
 
@@ -95,7 +95,7 @@ contains
         use String_mod, only: num2str
         implicit none
         character(*), intent(in)    :: methodName
-        type(SamplingMethod_type)   :: self
+        type(ProposalModel_type)   :: self
         self%isRej          = .false.
         self%isRejEll       = .false.
         self%isRejBall      = .false.
@@ -107,13 +107,13 @@ contains
         self%def            = self%rejection//"-"//self%ellipsoidal
         self%null           = repeat(NULL_SK, MAX_LEN_PROPOSAL_MODEL)
         self%desc           = &
-        "samplingMethod is a string variable containing the name of the proposal distribution for the Nest sampler. &
+        "proposalModel is a string variable containing the name of the proposal distribution for the Nest sampler. &
         &The string value must be enclosed by either single or double quotation marks when provided as input. &
         &Options that are currently supported include:\n\n" // &
-        "    samplingMethod = 'rej' or 'rejection' or 'rej-ell' or 'rejection-ellipsoidal' \n\n" // &
+        "    proposalModel = 'rej' or 'rejection' or 'rej-ell' or 'rejection-ellipsoidal' \n\n" // &
         "            This is equivalent to the constrained rejection sampling &
                      &via bounding ellipsoids around the active point.\n\n&
-        &    samplingMethod = 'rej-ball'\n\n" // &
+        &    proposalModel = 'rej-ball'\n\n" // &
         "            The proposals will be drawn uniformly from within a ndim-dimensional ellipsoid whose covariance matrix &
                      &and scale are initialized by the user and optionally adaptively updated throughout the simulation.\n\n&
         &Note that are values are case-INsensitive and all hyphens (dashes, -) and white-space characters are ignored.&
@@ -127,21 +127,21 @@ contains
         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar
 #endif
         implicit none
-        class(SamplingMethod_type), intent(in) :: self
-        samplingMethod = self%null
+        class(ProposalModel_type), intent(in) :: self
+        proposalModel = self%null
     end subroutine nullifyNameListVar
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    pure subroutine set(self,samplingMethod)
+    pure subroutine set(self,proposalModel)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: set
 #endif
         use String_mod, only: getLowerCase
         implicit none
-        class(SamplingMethod_type), intent(inout)   :: self
-        character(*), intent(in)                    :: samplingMethod
-        self%val = getLowerCase( trim(adjustl(samplingMethod)) )
+        class(ProposalModel_type), intent(inout)   :: self
+        character(*), intent(in)                    :: proposalModel
+        self%val = getLowerCase( trim(adjustl(proposalModel)) )
         if (self%val==self%null) self%val = self%def
         self%isRej      = index(self%val,"rej")
         self%isRejCube  = self%isRej .and. (index(self%val,"cube") > 0 .or. index(self%val,"cubical") > 0)
@@ -158,7 +158,7 @@ contains
         use Err_mod, only: Err_type
         use String_mod, only: num2str
         implicit none
-        class(SamplingMethod_type), intent(in)   :: self
+        class(ProposalModel_type), intent(in)   :: self
         character(*), intent(in)                :: methodName
         type(Err_type), intent(inout)           :: Err
         character(*), parameter                 :: PROCEDURE_NAME = "@checkForSanity()"
@@ -166,13 +166,13 @@ contains
             Err%occurred = .true.
             Err%msg =   Err%msg // &
                         MODULE_NAME // PROCEDURE_NAME // ": Error occurred. &
-                        &Invalid requested value for the samplingMethod of " // methodName // ". The input requested &
+                        &Invalid requested value for the proposalModel of " // methodName // ". The input requested &
                         &proposal model (" // self%val // ") is not supported. &
-                        &The variable samplingMethod cannot be set to anything other than the values described &
-                        &in the description of the simulation specification samplingMethod.\n\n"
+                        &The variable proposalModel cannot be set to anything other than the values described &
+                        &in the description of the simulation specification proposalModel.\n\n"
         end if
     end subroutine checkForSanity
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module SpecNest_SamplingMethod_mod ! LCOV_EXCL_LINE
+end module SpecNest_ProposalModel_mod ! LCOV_EXCL_LINE

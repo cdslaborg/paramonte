@@ -79,12 +79,12 @@ contains
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: construct
 #endif
-        use Constants_mod, only: IK, NULL_IK, POSINF_IK
+        use Constants_mod, only: IK, NULL_IK ! , POSINF_IK
         use String_mod, only: num2str
         implicit none
         character(*), intent(in)            :: methodName
         type(MaxKvolumeLoopRecursion_type)  :: self
-        self%def  = POSINF_IK
+        self%def  = 50_IK ! POSINF_IK
         self%null = NULL_IK
         self%desc = &
         "maxKvolumeLoopRecursion is positive 32bit integer that sets the maximum allowed number of volume minimization convergence &

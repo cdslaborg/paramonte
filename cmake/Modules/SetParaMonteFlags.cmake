@@ -839,37 +839,37 @@ endif()
 # set shared library Fortran linker flags
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-if (pmlib_shared)
-
-    if (gnu_compiler)
-
-        set(FCL_FLAGS "${FCL_FLAGS}"
-        -shared
-        -fPIC
-        )
-
-    else(intel_compiler)
-
-        if(WIN32)
-            set(FCL_FLAGS "${FCL_FLAGS}"
-            #/threads " # these flags are actually included by default in recent ifort implementations
-            /libs:dll
-            )
-        elseif(UNIX)
-            set(FCL_FLAGS "${FCL_FLAGS}"
-            -fpic # Request compiler to generate position-independent code.
-            )
-            if (APPLE)
-                set(FCL_FLAGS "${FCL_FLAGS}"
-                -noall_load
-                # -weak_references_mismatches non-weak -threads -arch_only i386
-                )
-            endif()
-        endif()
-
-    endif()
-
-endif()
+#if (pmlib_shared)
+#
+#    if (gnu_compiler)
+#
+#        set(FCL_FLAGS "${FCL_FLAGS}"
+#        -shared
+#        -fPIC
+#        )
+#
+#    else(intel_compiler)
+#
+#        if(WIN32)
+#            set(FCL_FLAGS "${FCL_FLAGS}"
+#            #/threads " # these flags are actually included by default in recent ifort implementations
+#            /libs:dll
+#            )
+#        elseif(UNIX)
+#            set(FCL_FLAGS "${FCL_FLAGS}"
+#            -fpic # Request compiler to generate position-independent code.
+#            )
+#            if (APPLE)
+#                set(FCL_FLAGS "${FCL_FLAGS}"
+#                -noall_load
+#                # -weak_references_mismatches non-weak -threads -arch_only i386
+#                )
+#            endif()
+#        endif()
+#
+#    endif()
+#
+#endif()
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 #: report build spec

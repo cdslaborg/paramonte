@@ -84,7 +84,7 @@ contains
         implicit none
         character(*), intent(in)    :: methodName
         type(Tightness_type)        :: self
-        self%def = 1.5_RK
+        self%def = 1.1_RK
         self%null = NULL_RK
         self%desc = &
         "tightness is a 64-bit positive real number representing the factor by which the volume of the bounding region of a &

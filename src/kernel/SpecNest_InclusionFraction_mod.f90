@@ -84,7 +84,7 @@ contains
         implicit none
         character(*), intent(in)    :: methodName
         type(InclusionFraction_type)        :: self
-        self%def = 1._RK
+        self%def = 0._RK
         self%null = NULL_RK
         self%desc = &
         "inclusionFraction is a 64-bit positive real number representing the fraction of non-cluster-member points that ARE &

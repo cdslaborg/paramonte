@@ -45,6 +45,26 @@
 !>  [ParaDISE_mod@@Test_SpecMCMC_smod](@ref paradise_mod@@test_specmcmc_smod).
 !>  \author Amir Shahmoradi
 
+#if defined PARADRAM
+
+#define ParaXXXX_mod ParaDRAM_mod
+#define ParaXXXX_type ParaDRAM_type
+#define test_ParaXXXX test_ParaDRAM
+#define ParaXXXX_NML "&ParaDRAM"
+#define ParaXXXX ParaDRAM
+#define ParaXXXX_RefinedChain_mod ParaDRAM_RefinedChain_mod
+
+#elif defined PARADISE
+
+#define ParaXXXX_mod ParaDISE_mod
+#define ParaXXXX_type ParaDISE_type
+#define test_ParaXXXX test_ParaDISE
+#define ParaXXXX_NML "&ParaDISE"
+#define ParaXXXX ParaDISE
+#define ParaXXXX_RefinedChain_mod ParaDISE_RefinedChain_mod
+
+#endif
+
 contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1535,3 +1555,10 @@ contains
     end function test_SpecMCMC_StartPointVec_type_5
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef ParaXXXX_mod
+#undef ParaXXXX_type
+#undef test_ParaXXXX
+#undef ParaXXXX_NML
+#undef ParaXXXX
+#undef ParaXXXX_RefinedChain_mod

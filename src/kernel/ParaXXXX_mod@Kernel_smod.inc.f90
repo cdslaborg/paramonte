@@ -51,12 +51,12 @@
 #if defined PARADRAM
 
 #define ParaXXXX_type ParaDRAM_type
-#define ParaXXXXProposalAbstract_mod ParaDRAMProposalAbstract_mod
+#define ParaXXXX_ProposalAbstract_mod ParaDRAM_ProposalAbstract_mod
 
 #elif defined PARADISE
 
 #define ParaXXXX_type ParaDISE_type
-#define ParaXXXXProposalAbstract_mod ParaDISEProposalAbstract_mod
+#define ParaXXXX_ProposalAbstract_mod ParaDISE_ProposalAbstract_mod
 
 #else
 
@@ -67,7 +67,7 @@
     use, intrinsic :: iso_fortran_env, only: output_unit
     !use Constants_mod, only: IK, RK ! gfortran 9.3 compile crashes with this line
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED || ( (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED )
-    use ParaXXXXProposalAbstract_mod, only: ProposalErr
+    use ParaXXXX_ProposalAbstract_mod, only: ProposalErr
 #endif
 
 #if defined MPI_ENABLED
@@ -1075,4 +1075,4 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #undef ParaXXXX_type
-#undef ParaXXXXProposalAbstract_mod
+#undef ParaXXXX_ProposalAbstract_mod
