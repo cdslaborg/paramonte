@@ -149,9 +149,10 @@ SET(ParaMonte_SOURCE_FILES
     ${ParaMonteKernel_SRC_DIR}/ParaMonteLogFunc_mod.f90
     ${ParaMonteKernel_SRC_DIR}/ParaDRAM_ChainFileContents_mod.f90
     ${ParaMonteKernel_SRC_DIR}/ParaDISE_ChainFileContents_mod.f90
+    #${ParaMonteKernel_SRC_DIR}/ParaNest_ChainFileContents_mod.f90
     ${ParaMonteKernel_SRC_DIR}/ParaDRAM_RefinedChain_mod.f90
     ${ParaMonteKernel_SRC_DIR}/ParaDISE_RefinedChain_mod.f90
-    #${ParaMonteKernel_SRC_DIR}/ParaNest_ChainFileContents_mod.f90
+    #${ParaMonteKernel_SRC_DIR}/ParaNest_RefinedChain_mod.f90
     ${ParaMonteKernel_SRC_DIR}/ParaDISE_ProposalAbstract_mod.f90
     ${ParaMonteKernel_SRC_DIR}/ParaDRAM_ProposalAbstract_mod.f90
     ${ParaMonteKernel_SRC_DIR}/ParaDRAM_ProposalUniform_mod.f90
