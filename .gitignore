@@ -122,6 +122,7 @@ Thumbs.db
 **/paramonte-kernel-doc
 **/.ipynb_checkpoints
 **/paramonte-codecov
+**/paramonte-julia
 **/paramonte-doc
 **/paramontex
 **/benchmark
