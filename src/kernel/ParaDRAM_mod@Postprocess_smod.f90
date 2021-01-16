@@ -52,5 +52,4 @@ submodule (ParaDRAM_mod) Postprocess_smod
 #define PARADRAM ParaDRAM
 #include "ParaXXXX_mod@Postprocess_smod.inc.f90"
 #undef PARADRAM
-end submodule Postprocess_smod
-
+end submodule Postprocess_smod ! LCOV_EXCL_LINE
