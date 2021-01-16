@@ -346,7 +346,7 @@ contains
 
         else
 
-            co_LogFuncState(1:nd,0)     = self%Chain%State(1:nd,1)      ! proposal logFunc
+            co_LogFuncState(1:nd,0)     = self%Chain%State(1:nd,1)      ! proposal state
             co_LogFuncState(0,0)        = self%Chain%LogFunc(1)         ! proposal logFunc
 
         end if
@@ -587,7 +587,7 @@ contains
 
                         co_proposalFound_samplerUpdateOccurred(2) = 1_IK ! istart = numFunCallAcceptedLastAdaptation ! = max( numFunCallAcceptedLastAdaptation , self%Chain%BurninLoc(self%Stats%NumFunCall%accepted) ) ! this is experimental
 
-                        ! the order in the following two MUST be preserved as occasionally self%Stats%NumFunCall%accepted = numFunCallAcceptedLastAdaptation
+                        ! the order in the following two MUST be preserved because occasionally self%Stats%NumFunCall%accepted = numFunCallAcceptedLastAdaptation
 
                         dumint = self%Chain%Weight(self%Stats%NumFunCall%accepted) ! needed for the restart mode, not needed in the fresh run
                         if (self%Stats%NumFunCall%accepted==numFunCallAcceptedLastAdaptation) then    ! no new point has been accepted since last time
@@ -606,7 +606,7 @@ contains
                             self%Chain%Weight(self%Stats%NumFunCall%accepted) = currentStateWeight ! needed for the restart mode, not needed in the fresh run
                         end if
 
-                        meanAccRateSinceStart = self%Chain%MeanAccRate(self%Stats%NumFunCall%accepted) ! used only in fresh run, but not worth putting it in a conditional block.
+                        meanAccRateSinceStart = self%Chain%MeanAccRate(self%Stats%NumFunCall%accepted) ! used only in fresh runs, but is not worth putting it in a conditional fresh run block.
                         call self%Proposal%doAdaptation ( nd                        = nd                                                                                        & ! LCOV_EXCL_LINE
                                                         , chainSize                 = self%Stats%NumFunCall%accepted - numFunCallAcceptedLastAdaptation + 1_IK                  & ! LCOV_EXCL_LINE
                                                         , Chain                     = self%Chain%State(1:nd,numFunCallAcceptedLastAdaptation:self%Stats%NumFunCall%accepted)    & ! LCOV_EXCL_LINE
@@ -620,9 +620,9 @@ contains
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED || ( (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED )
                         if(ProposalErr%occurred) then; self%Err%occurred = .true.; self%Err%msg = ProposalErr%msg; exit loopMarkovChain; return; end if
 #endif
-                        if (self%isDryRun) SumAccRateSinceStart%acceptedRejected = meanAccRateSinceStart * real(self%Stats%NumFunCall%acceptedRejected,kind=RK)
+                        if (self%isDryRun) SumAccRateSinceStart%acceptedRejected = meanAccRateSinceStart * self%Stats%NumFunCall%acceptedRejected
 
-                        self%Chain%Weight(self%Stats%NumFunCall%accepted) = dumint   ! needed for the restart mode, not needed in the fresh run
+                        self%Chain%Weight(self%Stats%NumFunCall%accepted) = dumint   ! needed for the restart mode, not needed in the fresh run, but is not worth fencing it.
                         if (self%Stats%NumFunCall%accepted==numFunCallAcceptedLastAdaptation) then
                             !adaptationMeasure = adaptationMeasure + adaptationMeasureDummy ! this is the worst-case upper-bound
                             self%Chain%Adaptation(self%Stats%NumFunCall%accepted) = min(1._RK, self%Chain%Adaptation(self%Stats%NumFunCall%accepted) + AdaptationMeasure(dumint)) ! this is the worst-case upper-bound

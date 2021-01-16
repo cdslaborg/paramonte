@@ -506,30 +506,36 @@ contains
         ! The format setup of setupOutputFiles() uses the generic g0 edit descriptor. Here the format is revised to be more specific.
         ! g0 edit descriptor format is slightly more arbitrary and compiler-dependent.
 
-        if (self%SpecBase%OutputColumnWidth%val>0) then
-            self%TimeFile%format  = "("     // &
-                                    "2I"    // self%SpecBase%OutputColumnWidth%str // ",'" // self%SpecBase%OutputDelimiter%val // &
-                                    "',5(E" // self%SpecBase%OutputColumnWidth%str // "." // self%SpecBase%OutputRealPrecision%str // "E3" // &
-                                    ",:,'"  // self%SpecBase%OutputDelimiter%val // "'))"
-            self%ChainFile%format = "("     // &
-                                    "2(I"   // self%SpecBase%OutputColumnWidth%str // &
-                                    ",'"    // self%SpecBase%OutputDelimiter%val // "')," // &
-                                    "2(E"   // self%SpecBase%OutputColumnWidth%str // "." // self%SpecBase%OutputRealPrecision%str // "E3" // &
-                                    ",'"    // self%SpecBase%OutputDelimiter%val // "')," // &
-                                    "2(I"   // self%SpecBase%OutputColumnWidth%str // &
-                                    ",'"    // self%SpecBase%OutputDelimiter%val // "')" // &
-                                    ","     // num2str(3_IK+self%nd%val) // &
-                                    "(E"    // self%SpecBase%OutputColumnWidth%str // "." // self%SpecBase%OutputRealPrecision%str // "E3" // &
-                                    ",:,'"  // self%SpecBase%OutputDelimiter%val // "')" // &
-                                    ")"
-        end if
+        associate(colWidth => self%SpecBase%OutputColumnWidth%str, precision => self%SpecBase%OutputRealPrecision%str, delim => self%SpecBase%OutputDelimiter%val)
+            if (self%SpecBase%OutputColumnWidth%val>0) then
+                self%TimeFile%format  = "("//"2I"//colWidth//",'"//delim//"',5(E"//colWidth//"."//precision//"E3"//",:,'"//delim//"'))"
+#if defined PARADRAM || defined PARADISE
+                self%ChainFile%format = "("// &
+                                        "2(I"//colWidth//",'"//delim//"')"// &
+                                        ","// &
+                                        "2(E"//colWidth//"."//precision//"E3"//",'"//delim//"')"// &
+                                        ","// &
+                                        "2(I"//colWidth//",'"//delim//"')"// &
+                                        ","// &
+                                        num2str(1+self%nd%val)//"(E"//colWidth//"."//precision//"E3"//",:,'"//delim//"')"// &
+                                        ")"
+#elif defined PARANEST
+                self%ChainFile%format = "("// &
+                                        "1(I"//colWidth//",'"//delim//"')"// &
+                                        ","// &
+                                        num2str(5+self%nd%val)//"(E"//colWidth//"."//precision//"E3"//",:,'"//delim//"')"// &
+                                        ")"
+#endif
+            end if
+        end associate
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! setup the proposal distribution
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         if (allocated(self%Proposal)) deallocate(self%Proposal)
-        if (self%SpecMCMC%ProposalModel%isNormal) then ! LCOV_EXCL_LINE
+#if defined PARADRAM || defined PARADISE
+        if (self%SpecMCMC%ProposalModel%isNormal) then
             allocate( self%Proposal, source = ProposalNormal_type   ( ndim          = ndim & ! LCOV_EXCL_LINE
                                                                     , SpecBase      = self%SpecBase & ! LCOV_EXCL_LINE
                                                                     , SpecMCMC      = self%SpecMCMC & ! LCOV_EXCL_LINE
@@ -541,7 +547,7 @@ contains
                                                                     , RestartFile   = self%RestartFile & ! LCOV_EXCL_LINE
                                                                     , isFreshRun    = self%isFreshRun & ! LCOV_EXCL_LINE
                                                                     ) )
-        elseif (self%SpecMCMC%ProposalModel%isUniform) then ! LCOV_EXCL_LINE
+        elseif (self%SpecMCMC%ProposalModel%isUniform) then
             allocate( self%Proposal, source = ProposalUniform_type  ( ndim          = ndim & ! LCOV_EXCL_LINE
                                                                     , SpecBase      = self%SpecBase & ! LCOV_EXCL_LINE
                                                                     , SpecMCMC      = self%SpecMCMC & ! LCOV_EXCL_LINE
@@ -553,6 +559,20 @@ contains
                                                                     , RestartFile   = self%RestartFile & ! LCOV_EXCL_LINE
                                                                     , isFreshRun    = self%isFreshRun & ! LCOV_EXCL_LINE
                                                                     ) )
+#elif defined PARANEST
+        if (self%SpecMCMC%ProposalModel%isRejEll) then
+            allocate( self%Proposal, source = ProposalRejEll_type   ( ndim          = ndim & ! LCOV_EXCL_LINE
+                                                                    , SpecBase      = self%SpecBase & ! LCOV_EXCL_LINE
+                                                                    , SpecMCMC      = self%SpecMCMC & ! LCOV_EXCL_LINE
+                                                                    , SpecDRAM      = self%SpecDRAM & ! LCOV_EXCL_LINE
+                                                                    , Image         = self%Image & ! LCOV_EXCL_LINE
+                                                                    , name          = self%name & ! LCOV_EXCL_LINE
+                                                                    , brand         = self%brand & ! LCOV_EXCL_LINE
+                                                                    , LogFile       = self%LogFile & ! LCOV_EXCL_LINE
+                                                                    , RestartFile   = self%RestartFile & ! LCOV_EXCL_LINE
+                                                                    , isFreshRun    = self%isFreshRun & ! LCOV_EXCL_LINE
+                                                                    ) )
+#endif
         else
             ! LCOV_EXCL_START
             self%Err%occurred = .true.
