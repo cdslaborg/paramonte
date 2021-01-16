@@ -101,6 +101,7 @@
     !> The `Proposal_type` class.
     type, extends(ProposalAbstract_type) :: Proposal_type
        integer(IK)                  :: logFileUnit
+       integer(IK)                  :: restartFileUnit
        ! the following are made components for the sake of thread-safe save attribute and the restart file generation.
        integer(IK)                  :: sampleSizeOld
        real(RK)                     :: logSqrtDetOld
@@ -141,7 +142,6 @@
 #endif
     type(Image_type), save                  :: mc_Image
     integer(IK)     , save                  :: mc_ndim
-    integer(IK)     , save                  :: mc_restartFileUnit
     logical         , save                  :: mc_scalingRequested
     real(RK)        , save                  :: mc_defaultScaleFactorSq
     integer(IK)     , save                  :: mc_DelayedRejectionCount
@@ -256,7 +256,7 @@ contains
         mc_methodName                       = name
         mc_methodBrand                      = brand
         self%logFileUnit                    = LogFile%unit
-        mc_restartFileUnit                  = RestartFile%unit
+        self%restartFileUnit                = RestartFile%unit
         mc_restartFileFormat                = RestartFile%format
         mc_isBinaryRestartFileFormat        = SpecBase%RestartFileFormat%isBinary
         mc_isAsciiRestartFileFormat         = SpecBase%RestartFileFormat%isAscii
@@ -353,9 +353,10 @@ contains
                 real(RK) :: meanAccRateSinceStart
                 if (isFreshRun) then
                     if (mc_isBinaryRestartFileFormat) then
-                        call writeRestartFileBinary(meanAccRateSinceStart = 1._RK)
+                        call writeRestartFileBinary(restartFileUnit = self%restartFileUnit, meanAccRateSinceStart = 1._RK)
                     else
-                        call writeRestartFileAscii  ( meanAccRateSinceStart = 1._RK & ! LCOV_EXCL_LINE
+                        call writeRestartFileAscii  ( restartFileUnit = self%restartFileUnit & ! LCOV_EXCL_LINE
+                                                    , meanAccRateSinceStart = 1._RK & ! LCOV_EXCL_LINE
                                                     , sampleSizeOld = self%sampleSizeOld & ! LCOV_EXCL_LINE
                                                     , logSqrtDetOld = self%logSqrtDetOld & ! LCOV_EXCL_LINE
                                                     , adaptiveScaleFactorSq = self%adaptiveScaleFactorSq & ! LCOV_EXCL_LINE
@@ -364,9 +365,9 @@ contains
                     end if
                 else
                     if (mc_isBinaryRestartFileFormat) then
-                        call readRestartFileBinary(meanAccRateSinceStart)
+                        call readRestartFileBinary(restartFileUnit = self%restartFileUnit, meanAccRateSinceStart = meanAccRateSinceStart)
                     else
-                        call readRestartFileAscii(meanAccRateSinceStart)
+                        call readRestartFileAscii(restartFileUnit = self%restartFileUnit, meanAccRateSinceStart = meanAccRateSinceStart)
                     end if
                 end if
             end block
@@ -577,9 +578,9 @@ contains
         if (mc_Image%isLeader) then
             if (.not. isFreshRun) then
                 if (mc_isBinaryRestartFileFormat) then
-                    call readRestartFileBinary(meanAccRateSinceStart)
+                    call readRestartFileBinary(restartFileUnit = self%restartFileUnit, meanAccRateSinceStart = meanAccRateSinceStart)
                 else
-                    call readRestartFileAscii(meanAccRateSinceStart)
+                    call readRestartFileAscii(restartFileUnit = self%restartFileUnit, meanAccRateSinceStart = meanAccRateSinceStart)
                 end if
             end if
         end if
@@ -867,9 +868,10 @@ contains
         if (mc_Image%isLeader) then
             if (isFreshRun) then
                 if (mc_isBinaryRestartFileFormat) then
-                    call writeRestartFileBinary(meanAccRateSinceStart)
+                    call writeRestartFileBinary(restartFileUnit = self%restartFileUnit, meanAccRateSinceStart = meanAccRateSinceStart)
                 elseif (mc_isAsciiRestartFileFormat) then
-                    call writeRestartFileAscii  ( meanAccRateSinceStart & ! LCOV_EXCL_LINE
+                    call writeRestartFileAscii  ( restartFileUnit = self%restartFileUnit & ! LCOV_EXCL_LINE
+                                                , meanAccRateSinceStart = meanAccRateSinceStart & ! LCOV_EXCL_LINE
                                                 , sampleSizeOld = self%sampleSizeOld & ! LCOV_EXCL_LINE
                                                 , logSqrtDetOld = self%logSqrtDetOld & ! LCOV_EXCL_LINE
                                                 , adaptiveScaleFactorSq = self%adaptiveScaleFactorSq & ! LCOV_EXCL_LINE
@@ -896,13 +898,13 @@ contains
         use Constants_mod, only: RK, IK
         use Err_mod, only: abort
         implicit none
-        character(*), parameter                         :: PROCEDURE_NAME = MODULE_NAME // "@doAutoTune()"
+        character(*), parameter     :: PROCEDURE_NAME = MODULE_NAME // "@doAutoTune()"
 
-        real(RK)   , intent(in)                         :: AutoTuneScaleSq(1)
-        real(RK)   , intent(inout)                      :: adaptationMeasure
-        real(RK)                                        :: logSqrtDetSum, logSqrtDetOld, logSqrtDetNew
-        real(RK)                                        :: CovMatUpperOld(1,1), CovMatUpperCurrent(1,1)
-        logical                                         :: singularityOccurred
+        real(RK)   , intent(in)     :: AutoTuneScaleSq(1)
+        real(RK)   , intent(inout)  :: adaptationMeasure
+        real(RK)                    :: logSqrtDetSum, logSqrtDetOld, logSqrtDetNew
+        real(RK)                    :: CovMatUpperOld(1,1), CovMatUpperCurrent(1,1)
+        logical                     :: singularityOccurred
 
         CovMatUpperOld = comv_CholDiagLower(1:mc_ndim,1:mc_ndim,0)
         logSqrtDetOld = sum(log( comv_CholDiagLower(1:mc_ndim,0,0) ))
@@ -1070,30 +1072,31 @@ contains
     !> \warning
     !> The input argument `MeanOld` must be present if and only if `meanAccRateSinceStart` is missing as an input arguments.
     !> This condition will **NOT** be checked for at runtime. It is the developer's responsibility to ensure it holds.
-    subroutine writeRestartFileAscii(meanAccRateSinceStart, sampleSizeOld, logSqrtDetOld, adaptiveScaleFactorSq, MeanOld)
+    subroutine writeRestartFileAscii(restartFileUnit, meanAccRateSinceStart, sampleSizeOld, logSqrtDetOld, adaptiveScaleFactorSq, MeanOld)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: writeRestartFileAscii
 #endif
         implicit none
+        integer(IK) , intent(in)    :: restartFileUnit
         real(RK)    , intent(in)    :: meanAccRateSinceStart
         integer(IK) , intent(in)    :: sampleSizeOld
         real(RK)    , intent(in)    :: logSqrtDetOld
         real(RK)    , intent(in)    :: adaptiveScaleFactorSq
         real(RK)    , intent(in)    :: MeanOld(mc_ndim)
-        integer(IK)             :: i, j
-        write(mc_restartFileUnit, mc_restartFileFormat) "meanAcceptanceRateSinceStart", meanAccRateSinceStart
-        write(mc_restartFileUnit, mc_restartFileFormat) "sampleSize" &
-                                                        , sampleSizeOld &
-                                                        , "logSqrtDeterminant" &
-                                                        , logSqrtDetOld &
-                                                        , "adaptiveScaleFactorSquared" &
-                                                        , adaptiveScaleFactorSq * mc_defaultScaleFactorSq &
-                                                        , "meanVec" &
-                                                        , MeanOld(1:mc_ndim) & ! LCOV_EXCL_LINE
-                                                        , "covMat" &
-                                                        , ((comv_CholDiagLower(i,j,0),i=1,j),j=1,mc_ndim)
-                                                       !, (comv_CholDiagLower(1:mc_ndim,0:mc_ndim,0)
-        flush(mc_restartFileUnit)
+        integer(IK)                 :: i, j
+        write(restartFileUnit, mc_restartFileFormat ) "meanAcceptanceRateSinceStart", meanAccRateSinceStart
+        write(restartFileUnit, mc_restartFileFormat ) "sampleSize" &
+                                                    , sampleSizeOld &
+                                                    , "logSqrtDeterminant" &
+                                                    , logSqrtDetOld &
+                                                    , "adaptiveScaleFactorSquared" &
+                                                    , adaptiveScaleFactorSq * mc_defaultScaleFactorSq &
+                                                    , "meanVec" &
+                                                    , MeanOld(1:mc_ndim) & ! LCOV_EXCL_LINE
+                                                    , "covMat" &
+                                                    , ((comv_CholDiagLower(i,j,0),i=1,j),j=1,mc_ndim)
+                                                    !, (comv_CholDiagLower(1:mc_ndim,0:mc_ndim,0)
+        flush(restartFileUnit)
     end subroutine writeRestartFileAscii
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1110,14 +1113,15 @@ contains
     !> \warning
     !> The input argument `MeanOld` must be present if and only if `meanAccRateSinceStart` is missing as an input arguments.
     !> This condition will **NOT** be checked for at runtime. It is the developer's responsibility to ensure it holds.
-    subroutine writeRestartFileBinary(meanAccRateSinceStart)
+    subroutine writeRestartFileBinary(restartFileUnit, meanAccRateSinceStart)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: writeRestartFileBinary
 #endif
         implicit none
-        real(RK), intent(in) :: meanAccRateSinceStart
-        write(mc_restartFileUnit) meanAccRateSinceStart
-        flush(mc_restartFileUnit)
+        integer(IK) , intent(in) :: restartFileUnit
+        real(RK)    , intent(in) :: meanAccRateSinceStart
+        write(restartFileUnit) meanAccRateSinceStart
+        flush(restartFileUnit)
     end subroutine writeRestartFileBinary
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1129,17 +1133,18 @@ contains
     !> Read the restart information from the restart file.
     !>
     !> @param[out]  meanAccRateSinceStart : The current mean acceptance rate of the sampling (**optional**).
-    subroutine readRestartFileAscii(meanAccRateSinceStart)
+    subroutine readRestartFileAscii(restartFileUnit, meanAccRateSinceStart)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: readRestartFileAscii
 #endif
         implicit none
-        real(RK), intent(out)   :: meanAccRateSinceStart
-        integer(IK)             :: i
-        read(mc_restartFileUnit,*)
-        read(mc_restartFileUnit,*) meanAccRateSinceStart
+        integer(IK) , intent(in)    :: restartFileUnit
+        real(RK)    , intent(out)   :: meanAccRateSinceStart
+        integer(IK)                 :: i
+        read(restartFileUnit,*)
+        read(restartFileUnit,*) meanAccRateSinceStart
         do i = 1, 8 + mc_ndim * (mc_ndim+3) / 2
-            read(mc_restartFileUnit, *)
+            read(restartFileUnit, *)
         end do
     end subroutine readRestartFileAscii
 
@@ -1152,13 +1157,14 @@ contains
     !> Read the restart information from the restart file.
     !>
     !> @param[out]  meanAccRateSinceStart : The current mean acceptance rate of the sampling (**optional**).
-    subroutine readRestartFileBinary(meanAccRateSinceStart)
+    subroutine readRestartFileBinary(restartFileUnit, meanAccRateSinceStart)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: readRestartFileBinary
 #endif
         implicit none
-        real(RK), intent(out) :: meanAccRateSinceStart
-        read(mc_restartFileUnit) meanAccRateSinceStart
+        integer(IK) , intent(in)    :: restartFileUnit
+        real(RK)    , intent(out)   :: meanAccRateSinceStart
+        read(restartFileUnit) meanAccRateSinceStart
     end subroutine readRestartFileBinary
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
