@@ -122,7 +122,7 @@ contains
 #else
         real(RK)    , allocatable           :: co_LogFuncState(:,:)
         real(RK)    , allocatable           :: co_AccRate(:)
-        integer(IK) , save                  :: co_proposalFound_samplerUpdateOccurred(2)            ! merging these scalars would reduce the MPI communication overhead cost: co_proposalFound, co_samplerUpdateOccurred, co_counterDRS, 0 means false, 1 means true
+        integer(IK)                         :: co_proposalFound_samplerUpdateOccurred(2)            ! merging these scalars would reduce the MPI communication overhead cost: co_proposalFound, co_samplerUpdateOccurred, co_counterDRS, 0 means false, 1 means true
 #endif
         type(SumAccRateSinceStart_type)     :: SumAccRateSinceStart                                 ! used to figure out the average acceptance ratio for the entire chain.
         integer(IK)                         :: numFunCallAcceptedLastAdaptation                     ! number of function calls accepted at Last proposal adaptation occurrence

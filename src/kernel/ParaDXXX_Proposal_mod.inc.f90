@@ -116,7 +116,7 @@
     contains
         procedure   , pass          :: getNew
 #if defined PARADISE
-        procedure   , nopass        :: getLogProb
+        procedure   , pass          :: getLogProb
 #endif
         procedure   , pass          :: doAdaptation
        !procedure   , nopass        :: readRestartFile
@@ -285,7 +285,7 @@ contains
         allocate( self%logSqrtDetInvCovMat(0:mc_DelayedRejectionCount) )
 #endif
 
-        ! on the second dimension, the zeroth index refers to the Diagonal elements of the Cholesky lower triangular matrix
+        ! On the second dimension, the zeroth index refers to the Diagonal elements of the Cholesky lower triangular matrix
         ! This rearrangement was done for more efficient communication of the matrix across processes.
         if (allocated(self%CholDiagLower)) deallocate(self%CholDiagLower)
         allocate( self%CholDiagLower(ndim,0:ndim,0:mc_DelayedRejectionCount) )
@@ -322,7 +322,9 @@ contains
         end if
 
         if (mc_delayedRejectionRequested) call updateDelRejCholDiagLower(self%CholDiagLower)
-        call getInvCovMat(CholDiagLower = self%CholDiagLower)
+#if defined PARADISE
+        call getInvCovMat(CholDiagLower = self%CholDiagLower, InvCovMat = self%InvCovMat, LogSqrtDetInvCovMat = self%LogSqrtDetInvCovMat)
+#endif
         self%logSqrtDetOld = sum(log( self%CholDiagLower(1:ndim,0,0) ))
 
         ! Scale the higher-stage delayed-rejection Cholesky Lower matrices
@@ -862,7 +864,9 @@ contains
             ! update the higher-stage delayed-rejection Cholesky Lower matrices
 
             if (mc_delayedRejectionRequested) call updateDelRejCholDiagLower(self%CholDiagLower)
-            call getInvCovMat(CholDiagLower = self%CholDiagLower)
+#if defined PARADISE
+            call getInvCovMat(CholDiagLower = self%CholDiagLower, InvCovMat = self%InvCovMat, LogSqrtDetInvCovMat = self%LogSqrtDetInvCovMat)
+#endif
 
         end if blockAdaptationMeasureComputation
 
@@ -980,7 +984,9 @@ contains
         else
             self%CholDiagLower(1:mc_ndim,0:mc_ndim,0) = comv_CholDiagLower(1:mc_ndim,0:mc_ndim)[1]
             if (mc_delayedRejectionRequested) call updateDelRejCholDiagLower(self%CholDiagLower)  ! update the higher-stage delayed-rejection Cholesky Lower matrices
-            call getInvCovMat(CholDiagLower = self%CholDiagLower)
+#if defined PARADISE
+            call getInvCovMat(CholDiagLower = self%CholDiagLower, InvCovMat = self%InvCovMat, LogSqrtDetInvCovMat = self%LogSqrtDetInvCovMat)
+#endif
         end if
 #elif defined MPI_ENABLED
         use mpi ! LCOV_EXCL_LINE
@@ -996,7 +1002,9 @@ contains
                         )
         ! It is essential for the following to be exclusively done by the rooter images. The leaders have had their updates in `doAdaptation()`.
         if (mc_Image%isRooter .and. mc_delayedRejectionRequested) call updateDelRejCholDiagLower(self%CholDiagLower)
-        call getInvCovMat(CholDiagLower = self%CholDiagLower)
+#if defined PARADISE
+        call getInvCovMat(CholDiagLower = self%CholDiagLower, InvCovMat = self%InvCovMat, LogSqrtDetInvCovMat = self%LogSqrtDetInvCovMat)
+#endif
 #endif
     end subroutine bcastAdaptation
 #endif
@@ -1025,8 +1033,8 @@ contains
         use Matrix_mod, only: getInvMatFromCholFac ! LCOV_EXCL_LINE
         implicit none
         real(RK), intent(in)    :: CholDiagLower(mc_ndim, 0:mc_ndim, 0:mc_DelayedRejectionCount)
-        real(RK), intent(in)    :: InvCovMat(mc_ndim, mc_ndim, 0:mc_DelayedRejectionCount)
-        real(RK), intent(in)    :: LogSqrtDetInvCovMat(mc_DelayedRejectionCount)
+        real(RK), intent(out)   :: InvCovMat(mc_ndim, mc_ndim, 0:mc_DelayedRejectionCount)
+        real(RK), intent(out)   :: LogSqrtDetInvCovMat(mc_DelayedRejectionCount)
         integer(IK)             :: istage
         ! update the inverse covariance matrix of the proposal from the computed Cholesky factor
         do concurrent(istage=0:mc_DelayedRejectionCount)
