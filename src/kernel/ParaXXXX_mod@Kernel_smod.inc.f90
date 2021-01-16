@@ -655,6 +655,7 @@ contains
 #if defined CAF_ENABLED
 
                 if (self%SpecBase%ParallelizationModel%isSinglChain) then
+                    if (co_proposalFound_samplerUpdateOccurred(2)==1_IK) call self%Proposal%bcastAdaptation()
                     call self%Timer%toc()
                     sync images(*)
                     call self%Timer%toc(); self%Stats%avgCommTimePerFunCall = self%Stats%avgCommTimePerFunCall + self%Timer%Time%delta

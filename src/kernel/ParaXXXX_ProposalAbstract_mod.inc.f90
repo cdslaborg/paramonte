@@ -71,7 +71,7 @@
         procedure(doAdaptation_proc)            , pass      , deferred  :: doAdaptation
        !procedure(writeRestartFile_proc)        , pass      , deferred  :: writeRestartFile
 #if defined CAF_ENABLED || defined MPI_ENABLED
-        procedure(bcastAdaptation_proc)         , nopass    , deferred  :: bcastAdaptation
+        procedure(bcastAdaptation_proc)         , pass      , deferred  :: bcastAdaptation
 #endif
     end type ProposalAbstract_type
 
@@ -79,7 +79,9 @@
 
 #if defined CAF_ENABLED || defined MPI_ENABLED
     abstract interface
-        subroutine bcastAdaptation_proc()
+        subroutine bcastAdaptation_proc(self)
+            import :: ProposalAbstract_type
+            class(ProposalAbstract_type), intent(inout) :: self
         end subroutine bcastAdaptation_proc
     end interface
 #endif
