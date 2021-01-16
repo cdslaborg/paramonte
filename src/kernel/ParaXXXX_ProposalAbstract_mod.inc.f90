@@ -69,6 +69,7 @@
         procedure(getLogProb_proc)              , nopass    , deferred  :: getLogProb
 #endif
         procedure(doAdaptation_proc)            , pass      , deferred  :: doAdaptation
+       !procedure(writeRestartFile_proc)        , pass      , deferred  :: writeRestartFile
 #if defined CAF_ENABLED || defined MPI_ENABLED
         procedure(bcastAdaptation_proc)         , nopass    , deferred  :: bcastAdaptation
 #endif
@@ -159,8 +160,12 @@
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !abstract interface
-    !subroutine writeRestartFileAscii_proc()
-    !end subroutine writeRestartFileAscii_proc
+    !subroutine writeRestartFile_proc(self, meanAccRateSinceStart)
+    !    use Constants_mod, only: RK
+    !    import :: ProposalAbstract_type
+    !    class(ProposalAbstract_type), intent(in)    :: self
+    !    real(RK), intent(in), optional              :: meanAccRateSinceStart
+    !end subroutine writeRestartFile_proc
     !end interface
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

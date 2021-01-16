@@ -100,6 +100,12 @@
 
     !> The `Proposal_type` class.
     type, extends(ProposalAbstract_type) :: Proposal_type
+       integer(IK)                  :: logFileUnit
+       ! the following are made components for the sake of thread-safe save attribute and the restart file generation.
+       integer(IK)                  :: sampleSizeOld
+       real(RK)                     :: logSqrtDetOld
+       real(RK)                     :: adaptiveScaleFactorSq
+       real(RK)     , allocatable   :: MeanOld(:)
        !type(AccRate_type)          :: AccRate
     contains
         procedure   , pass          :: getNew
@@ -135,7 +141,6 @@
 #endif
     type(Image_type), save                  :: mc_Image
     integer(IK)     , save                  :: mc_ndim
-    integer(IK)     , save                  :: mc_logFileUnit
     integer(IK)     , save                  :: mc_restartFileUnit
     logical         , save                  :: mc_scalingRequested
     real(RK)        , save                  :: mc_defaultScaleFactorSq
@@ -162,13 +167,6 @@
 #if defined UNIFORM
     real(RK)        , save  , allocatable   :: mc_negLogVolUnitBall
 #endif
-
-    ! the following had to be defined globally for the sake of restart file generation
-
-    real(RK)        , save  , allocatable   :: mv_MeanOld_save(:)
-    real(RK)        , save                  :: mv_logSqrtDetOld_save
-    real(RK)        , save                  :: mv_adaptiveScaleFactorSq_save    ! = 1._RK
-    integer(IK)     , save                  :: mv_sampleSizeOld_save            ! = 0_IK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -236,11 +234,11 @@ contains
         ! setup sampler update global save variables
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        if (allocated(mv_MeanOld_save)) deallocate(mv_MeanOld_save); allocate(mv_MeanOld_save(ndim))
-        mv_MeanOld_save(1:ndim) = SpecMCMC%StartPointVec%Val
-        mv_logSqrtDetOld_save   = NULL_RK
-        mv_sampleSizeOld_save   = 1_IK
-        mv_adaptiveScaleFactorSq_save = 1._RK
+        if (allocated(self%MeanOld)) deallocate(self%MeanOld); allocate(self%MeanOld(ndim))
+        self%MeanOld(1:ndim) = SpecMCMC%StartPointVec%Val
+        self%logSqrtDetOld   = NULL_RK
+        self%sampleSizeOld   = 1_IK
+        self%adaptiveScaleFactorSq = 1._RK
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! setup general proposal specifications
@@ -257,7 +255,7 @@ contains
         mc_Image                            = Image
         mc_methodName                       = name
         mc_methodBrand                      = brand
-        mc_logFileUnit                      = LogFile%unit
+        self%logFileUnit                    = LogFile%unit
         mc_restartFileUnit                  = RestartFile%unit
         mc_restartFileFormat                = RestartFile%format
         mc_isBinaryRestartFileFormat        = SpecBase%RestartFileFormat%isBinary
@@ -318,14 +316,14 @@ contains
                 end do
             end do
             self%Err%occurred = .true.
-            call abort( Err = self%Err, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
+            call abort( Err = self%Err, prefix = mc_methodBrand, newline = "\n", outputUnit = self%logFileUnit )
             return
         ! LCOV_EXCL_STOP
         end if
 
         if (mc_delayedRejectionRequested) call updateDelRejCholDiagLower()
         call getInvCovMat()
-        mv_logSqrtDetOld_save = sum(log( comv_CholDiagLower(1:ndim,0,0) ))
+        self%logSqrtDetOld = sum(log( comv_CholDiagLower(1:ndim,0,0) ))
 
         ! Scale the higher-stage delayed-rejection Cholesky Lower matrices
 
@@ -354,11 +352,22 @@ contains
             block
                 real(RK) :: meanAccRateSinceStart
                 if (isFreshRun) then
-                    call writeRestartFile(meanAccRateSinceStart=1._RK)
-                    call writeRestartFile()
+                    if (mc_isBinaryRestartFileFormat) then
+                        call writeRestartFileBinary(meanAccRateSinceStart = 1._RK)
+                    else
+                        call writeRestartFileAscii  ( meanAccRateSinceStart = 1._RK & ! LCOV_EXCL_LINE
+                                                    , sampleSizeOld = self%sampleSizeOld & ! LCOV_EXCL_LINE
+                                                    , logSqrtDetOld = self%logSqrtDetOld & ! LCOV_EXCL_LINE
+                                                    , adaptiveScaleFactorSq = self%adaptiveScaleFactorSq & ! LCOV_EXCL_LINE
+                                                    , MeanOld = self%MeanOld & ! LCOV_EXCL_LINE
+                                                    )
+                    end if
                 else
-                    call readRestartFile(meanAccRateSinceStart)
-                    call readRestartFile()
+                    if (mc_isBinaryRestartFileFormat) then
+                        call readRestartFileBinary(meanAccRateSinceStart)
+                    else
+                        call readRestartFileAscii(meanAccRateSinceStart)
+                    end if
                 end if
             end block
         end if
@@ -418,13 +427,13 @@ contains
             if ( any(StateNew(1:nd)<=mc_DomainLowerLimitVec) .or. any(StateNew(1:nd)>=mc_DomainUpperLimitVec) ) then
                 domainCheckCounter = domainCheckCounter + 1
                 if (domainCheckCounter==mc_MaxNumDomainCheckToWarn) then
-                    call warn( prefix = mc_methodBrand, outputUnit = mc_logFileUnit, msg = mc_MaxNumDomainCheckToWarnMsg )
+                    call warn( prefix = mc_methodBrand, outputUnit = self%logFileUnit, msg = mc_MaxNumDomainCheckToWarnMsg )
                 end if
                 if (domainCheckCounter==mc_MaxNumDomainCheckToStop) then
                     self%Err%occurred = .true.
                     self%Err%msg = mc_MaxNumDomainCheckToStopMsg
 #if !defined CODECOV_ENABLED && ((!defined MATLAB_ENABLED && !defined PYTHON_ENABLED && !defined R_ENABLED) || defined CAF_ENABLED && defined MPI_ENABLED )
-                    call abort( Err = self%Err, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
+                    call abort( Err = self%Err, prefix = mc_methodBrand, newline = "\n", outputUnit = self%logFileUnit )
 #endif
                     return
                 end if
@@ -561,15 +570,17 @@ contains
         integer(IK)                                     :: sampleSizeOld, sampleSizeCurrent
 
         scalingNeeded = .false.
-        sampleSizeOld = mv_sampleSizeOld_save ! this is kept only for restoration of mv_sampleSizeOld_save, if needed.
+        sampleSizeOld = self%sampleSizeOld ! this is kept only for restoration of self%sampleSizeOld, if needed.
 
         ! read/write meanAccRateSinceStart from/to restart file
 
         if (mc_Image%isLeader) then
-            if (isFreshRun) then
-                call writeRestartFile(meanAccRateSinceStart)
-            else
-                call readRestartFile(meanAccRateSinceStart)
+            if (.not. isFreshRun) then
+                if (mc_isBinaryRestartFileFormat) then
+                    call readRestartFileBinary(meanAccRateSinceStart)
+                else
+                    call readRestartFileAscii(meanAccRateSinceStart)
+                end if
             end if
         end if
 
@@ -591,12 +602,12 @@ contains
 
             ! combine old and new covariance matrices if both exist
 
-            blockMergeCovMat: if (mv_sampleSizeOld_save==1_IK) then
+            blockMergeCovMat: if (self%sampleSizeOld==1_IK) then
 
                 ! There is no prior old Covariance matrix to combine with the new one from the new chain
 
-                mv_MeanOld_save(1:nd) = MeanCurrent
-                mv_sampleSizeOld_save = sampleSizeCurrent
+                self%MeanOld(1:nd) = MeanCurrent
+                self%sampleSizeOld = sampleSizeCurrent
 
                 ! copy and then scale the new covariance matrix by the default scale factor, which will be then used to get the Cholesky Factor
 
@@ -623,8 +634,8 @@ contains
                 ! Setting the boundaries forces the compiler to generate a temporary array.
 
                 call mergeMeanCovUpper  ( nd            = nd                            & ! LCOV_EXCL_LINE
-                                        , npA           = mv_sampleSizeOld_save         & ! LCOV_EXCL_LINE
-                                        , MeanVecA      = mv_MeanOld_save               & ! LCOV_EXCL_LINE
+                                        , npA           = self%sampleSizeOld            & ! LCOV_EXCL_LINE
+                                        , MeanVecA      = self%MeanOld                  & ! LCOV_EXCL_LINE
                                         , CovMatUpperA  = CovMatUpperOld                & ! LCOV_EXCL_LINE
                                         , npB           = sampleSizeCurrent             & ! LCOV_EXCL_LINE
                                         , MeanVecB      = MeanCurrent                   & ! LCOV_EXCL_LINE
@@ -632,7 +643,7 @@ contains
                                         , MeanVecAB     = MeanNew                       & ! LCOV_EXCL_LINE
                                         , CovMatUpperAB = comv_CholDiagLower(:,1:nd,0)  & ! LCOV_EXCL_LINE
                                         )
-                mv_MeanOld_save(1:nd) = MeanNew
+                self%MeanOld(1:nd) = MeanNew
 
             end if blockMergeCovMat
 
@@ -650,7 +661,7 @@ contains
                 !singularityOccurred = .false.
                 samplerUpdateSucceeded = .true.
                 adaptationMeasureComputationNeeded = .true.
-                mv_sampleSizeOld_save = mv_sampleSizeOld_save + sampleSizeCurrent
+                self%sampleSizeOld = self%sampleSizeOld + sampleSizeCurrent
 
             ! LCOV_EXCL_START
             else blockPosDefCheck
@@ -659,12 +670,12 @@ contains
                 !singularityOccurred = .true.
                 samplerUpdateSucceeded = .false.
                 adaptationMeasureComputationNeeded = .false.
-                mv_sampleSizeOld_save = sampleSizeOld
+                self%sampleSizeOld = sampleSizeOld
 
                 ! it may be a good idea to add a warning message printed out here for the singularity occurrence
 
                 call warn   ( prefix = mc_methodBrand       & ! LCOV_EXCL_LINE
-                            , outputUnit = mc_logFileUnit   & ! LCOV_EXCL_LINE
+                            , outputUnit = self%logFileUnit & ! LCOV_EXCL_LINE
                             , marginTop = 0_IK              & ! LCOV_EXCL_LINE
                             , marginBot = 0_IK              & ! LCOV_EXCL_LINE
                             , msg = "Singularity occurred while updating the proposal distribution's covariance matrix." & ! LCOV_EXCL_LINE
@@ -685,13 +696,13 @@ contains
 
                 call getCholeskyFactor( nd, comv_CholDiagLower(:,1:nd,0), comv_CholDiagLower(1:nd,0,0) ) ! avoid temporary array creation by using : indexer
                 if (comv_CholDiagLower(1,0,0)<0._RK) then
-                    write(mc_logFileUnit,"(A)")
-                    write(mc_logFileUnit,"(A)") "Singular covariance matrix detected:"
-                    write(mc_logFileUnit,"(A)")
+                    write(self%logFileUnit,"(A)")
+                    write(self%logFileUnit,"(A)") "Singular covariance matrix detected:"
+                    write(self%logFileUnit,"(A)")
                     do j = 1, nd
-                        write(mc_logFileUnit,"(*(E25.15))") comv_CholDiagLower(1:j,j,0)
+                        write(self%logFileUnit,"(*(E25.15))") comv_CholDiagLower(1:j,j,0)
                     end do
-                    write(mc_logFileUnit,"(A)")
+                    write(self%logFileUnit,"(A)")
                     self%Err%occurred = .true.
                     self%Err%msg =  PROCEDURE_NAME // &
                                     ": Error occurred while attempting to compute the Cholesky factorization of the &
@@ -703,7 +714,7 @@ contains
                                     &For example, ensure that you are passing a correct value of ndim to the ParaMonte sampler routine,\n&
                                     &the same value that is expected as input to your objective function's implementation.\n&
                                     &Otherwise, restarting the simulation might resolve the error."
-                    call abort( Err = self%Err, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
+                    call abort( Err = self%Err, prefix = mc_methodBrand, newline = "\n", outputUnit = self%logFileUnit )
                     return
                 end if
 
@@ -715,11 +726,11 @@ contains
             !! perform global adaptive scaling is requested
             !if (mc_scalingRequested) then
             !    if (meanAccRateSinceStart<mc_targetAcceptanceRate) then
-            !        mv_adaptiveScaleFactorSq_save = mc_maxScaleFactorSq**((mc_targetAcceptanceRate-meanAccRateSinceStart)/mc_targetAcceptanceRate)
+            !        self%adaptiveScaleFactorSq = mc_maxScaleFactorSq**((mc_targetAcceptanceRate-meanAccRateSinceStart)/mc_targetAcceptanceRate)
             !    else
-            !        mv_adaptiveScaleFactorSq_save = mc_maxScaleFactorSq**((mc_targetAcceptanceRate-meanAccRateSinceStart)/(1._RK-mc_targetAcceptanceRate))
+            !        self%adaptiveScaleFactorSq = mc_maxScaleFactorSq**((mc_targetAcceptanceRate-meanAccRateSinceStart)/(1._RK-mc_targetAcceptanceRate))
             !    end if
-            !    mv_adaptiveScaleFactorSq_save = mv_adaptiveScaleFactorSq_save * (meanAccRateSinceStart/mc_targetAcceptanceRate)**mc_ndimInverse
+            !    self%adaptiveScaleFactorSq = self%adaptiveScaleFactorSq * (meanAccRateSinceStart/mc_targetAcceptanceRate)**mc_ndimInverse
             !end if
             if (mc_scalingRequested) scalingNeeded = .true.
 
@@ -728,7 +739,7 @@ contains
             ! singularity has occurred. If the first covariance merging has not occurred yet, set the scaling factor appropriately to shrink the covariance matrix.
 
             samplerUpdateSucceeded = .false.
-            if (mv_sampleSizeOld_save==1_IK .or. mc_scalingRequested) then
+            if (self%sampleSizeOld==1_IK .or. mc_scalingRequested) then
                 scalingNeeded = .true.
                 adaptationMeasureComputationNeeded = .true.
                 ! save the old covariance matrix for the computation of the adaptation measure
@@ -750,23 +761,23 @@ contains
 !scalingNeeded = .true.
         if (scalingNeeded) then
             if ( meanAccRateSinceStart < mc_TargetAcceptanceRateLimit(1) .or. meanAccRateSinceStart > mc_TargetAcceptanceRateLimit(2) ) then
-                mv_adaptiveScaleFactorSq_save = (meanAccRateSinceStart/mc_targetAcceptanceRate)**mc_ndimInverse
+                self%adaptiveScaleFactorSq = (meanAccRateSinceStart/mc_targetAcceptanceRate)**mc_ndimInverse
 !block
 !    use Statistics_mod, only: getRandUniform
 !    integer, save :: counter = 0_IK
 !    counter = counter - 1
-!    mv_adaptiveScaleFactorSq_save = mv_adaptiveScaleFactorSq_save * exp(-counter*getRandUniform(-1.e0_RK,1.e0_RK)/1.e4_RK)
+!    self%adaptiveScaleFactorSq = self%adaptiveScaleFactorSq * exp(-counter*getRandUniform(-1.e0_RK,1.e0_RK)/1.e4_RK)
 !    !use Statistics_mod, only: getRandInt
-!    !mv_adaptiveScaleFactorSq_save = mv_adaptiveScaleFactorSq_save * exp(real(getRandInt(-1_IK,1_IK),kind=RK))
-!    !write(*,*) counter, mv_adaptiveScaleFactorSq_save
+!    !self%adaptiveScaleFactorSq = self%adaptiveScaleFactorSq * exp(real(getRandInt(-1_IK,1_IK),kind=RK))
+!    !write(*,*) counter, self%adaptiveScaleFactorSq
 !end block
-                adaptiveScaleFactor = sqrt(mv_adaptiveScaleFactorSq_save)
+                adaptiveScaleFactor = sqrt(self%adaptiveScaleFactorSq)
                 do j = 1, nd
                     ! update the Cholesky diagonal elements
                     comv_CholDiagLower(j,0,0) = comv_CholDiagLower(j,0,0) * adaptiveScaleFactor
                     ! update covariance matrix
                     do i = 1,j
-                        comv_CholDiagLower(i,j,0) = comv_CholDiagLower(i,j,0) * mv_adaptiveScaleFactorSq_save
+                        comv_CholDiagLower(i,j,0) = comv_CholDiagLower(i,j,0) * self%adaptiveScaleFactorSq
                     end do
                     ! update the Cholesky factorization
                     do i = j+1, nd
@@ -793,11 +804,11 @@ contains
             call getLogSqrtDetPosDefMat(nd,CovMatUpperCurrent,logSqrtDetSum,singularityOccurred)
             if (singularityOccurred) then
                 ! LCOV_EXCL_START
-                write(mc_logFileUnit,"(A)")
-                write(mc_logFileUnit,"(A)") "Singular covariance matrix detected while computing the Adaptation measure:"
-                write(mc_logFileUnit,"(A)")
+                write(self%logFileUnit,"(A)")
+                write(self%logFileUnit,"(A)") "Singular covariance matrix detected while computing the Adaptation measure:"
+                write(self%logFileUnit,"(A)")
                 do j = 1, nd
-                    write(mc_logFileUnit,"(*(E25.15))") CovMatUpperCurrent(1:j,j)
+                    write(self%logFileUnit,"(*(E25.15))") CovMatUpperCurrent(1:j,j)
                 end do
                 self%Err%occurred = .true.
                 self%Err%msg =  PROCEDURE_NAME // &
@@ -810,24 +821,24 @@ contains
                                 &For example, ensure that you are passing a correct value of ndim to the ParaMonte sampler routine,\n&
                                 &the same value that is expected as input to your objective function's implementation.\n&
                                 &Otherwise, restarting the simulation might resolve the error."
-                call abort( Err = self%Err, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
+                call abort( Err = self%Err, prefix = mc_methodBrand, newline = "\n", outputUnit = self%logFileUnit )
                 return
                 ! LCOV_EXCL_STOP
             end if
 
-            !adaptationMeasure = 1._RK - exp( 0.5_RK*(mv_logSqrtDetOld_save+logSqrtDetNew) - logSqrtDetSum )
-            adaptationMeasure = 1._RK - exp( 0.5*(mv_logSqrtDetOld_save + logSqrtDetNew) - logSqrtDetSum ) ! totalVariationUpperBound
+            !adaptationMeasure = 1._RK - exp( 0.5_RK*(self%logSqrtDetOld+logSqrtDetNew) - logSqrtDetSum )
+            adaptationMeasure = 1._RK - exp( 0.5*(self%logSqrtDetOld + logSqrtDetNew) - logSqrtDetSum ) ! totalVariationUpperBound
             if (adaptationMeasure>0._RK) then
                 adaptationMeasure = sqrt(adaptationMeasure) ! totalVariationUpperBound
             ! LCOV_EXCL_START
             elseif (adaptationMeasure<0._RK) then
                 call warn   ( prefix = mc_methodBrand &
-                            , outputUnit = mc_logFileUnit &
+                            , outputUnit = self%logFileUnit &
                             , msg = mc_negativeTotalVariationMsg//num2str(adaptationMeasure) )
                 adaptationMeasure = 0._RK
             end if
             ! LCOV_EXCL_STOP
-            mv_logSqrtDetOld_save = logSqrtDetNew
+            self%logSqrtDetOld = logSqrtDetNew
 
 !block
 !integer, save :: counter = 0
@@ -835,11 +846,11 @@ contains
 !!if (counter==1) then
 !if (adaptationMeasure>1._RK) then
 !write(*,*)
-!write(*,*) mv_logSqrtDetOld_save
+!write(*,*) self%logSqrtDetOld
 !write(*,*) logSqrtDetNew
 !write(*,*) logSqrtDetSum
-!write(*,*) mv_logSqrtDetOld_save + logSqrtDetNew - 2_IK * logSqrtDetSum
-!write(*,*) exp( mv_logSqrtDetOld_save + logSqrtDetNew - 2_IK * logSqrtDetSum )
+!write(*,*) self%logSqrtDetOld + logSqrtDetNew - 2_IK * logSqrtDetSum
+!write(*,*) exp( self%logSqrtDetOld + logSqrtDetNew - 2_IK * logSqrtDetSum )
 !write(*,*)
 !end if
 !end block
@@ -855,9 +866,16 @@ contains
 
         if (mc_Image%isLeader) then
             if (isFreshRun) then
-                call writeRestartFile()
-            else
-                call readRestartFile()
+                if (mc_isBinaryRestartFileFormat) then
+                    call writeRestartFileBinary(meanAccRateSinceStart)
+                elseif (mc_isAsciiRestartFileFormat) then
+                    call writeRestartFileAscii  ( meanAccRateSinceStart & ! LCOV_EXCL_LINE
+                                                , sampleSizeOld = self%sampleSizeOld & ! LCOV_EXCL_LINE
+                                                , logSqrtDetOld = self%logSqrtDetOld & ! LCOV_EXCL_LINE
+                                                , adaptiveScaleFactorSq = self%adaptiveScaleFactorSq & ! LCOV_EXCL_LINE
+                                                , MeanOld = self%MeanOld & ! LCOV_EXCL_LINE
+                                                )
+                end if
             end if
         end if
 
@@ -912,7 +930,7 @@ contains
                             &For example, ensure that you are passing a correct value of ndim to the ParaMonte sampler routine,\n&
                             &the same value that is expected as input to your objective function's implementation.\n&
                             &Otherwise, restarting the simulation might resolve the error."
-            call abort( Err = self%Err, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
+            call abort( Err = self%Err, prefix = mc_methodBrand, newline = "\n", outputUnit = self%logFileUnit )
             return
         end if
         adaptationMeasure = 1._RK - exp( 0.5_RK*(logSqrtDetOld+logSqrtDetNew) - logSqrtDetSum )
@@ -1046,35 +1064,61 @@ contains
     !> This procedure is called by the sampler kernel routines.\n
     !> Write the restart information to the output file.
     !>
-    !> @param[in]   meanAccRateSinceStart : The current mean acceptance rate of the sampling (**optional**).
-    subroutine writeRestartFile(meanAccRateSinceStart)
+    !> @param[in]   meanAccRateSinceStart   : The current mean acceptance rate of the sampling (**optional**).
+    !> @param[in]   MeanOld                 : The mean of the old sample (**optional**, to be present only if `meanAccRateSinceStart` is missing.).
+    !>
+    !> \warning
+    !> The input argument `MeanOld` must be present if and only if `meanAccRateSinceStart` is missing as an input arguments.
+    !> This condition will **NOT** be checked for at runtime. It is the developer's responsibility to ensure it holds.
+    subroutine writeRestartFileAscii(meanAccRateSinceStart, sampleSizeOld, logSqrtDetOld, adaptiveScaleFactorSq, MeanOld)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
-        !DEC$ ATTRIBUTES DLLEXPORT :: writeRestartFile
+        !DEC$ ATTRIBUTES DLLEXPORT :: writeRestartFileAscii
 #endif
         implicit none
-        real(RK), intent(in), optional  :: meanAccRateSinceStart
-        integer(IK)                     :: i, j
-        if (present(meanAccRateSinceStart)) then
-            if (mc_isBinaryRestartFileFormat) then
-                write(mc_restartFileUnit) meanAccRateSinceStart
-            else
-                write(mc_restartFileUnit,mc_restartFileFormat) "meanAcceptanceRateSinceStart", meanAccRateSinceStart
-            end if
-        elseif (mc_isAsciiRestartFileFormat) then
-            write( mc_restartFileUnit, mc_restartFileFormat ) "sampleSize" & ! sampleSizeOld
-                                                            , mv_sampleSizeOld_save &
-                                                            , "logSqrtDeterminant" & ! logSqrtDetOld
-                                                            , mv_logSqrtDetOld_save &
-                                                            , "adaptiveScaleFactorSquared" & ! adaptiveScaleFactorSq
-                                                            , mv_adaptiveScaleFactorSq_save * mc_defaultScaleFactorSq &
-                                                            , "meanVec" & ! MeanOld(1:ndim)
-                                                            , mv_MeanOld_save(1:mc_ndim) & ! LCOV_EXCL_LINE
-                                                            , "covMat" & ! CholDiagLower(1:ndim,0:ndim,0)
-                                                            , ((comv_CholDiagLower(i,j,0),i=1,j),j=1,mc_ndim)
-                                                           !, (comv_CholDiagLower(1:mc_ndim,0:mc_ndim,0)
-        end if
+        real(RK)    , intent(in)    :: meanAccRateSinceStart
+        integer(IK) , intent(in)    :: sampleSizeOld
+        real(RK)    , intent(in)    :: logSqrtDetOld
+        real(RK)    , intent(in)    :: adaptiveScaleFactorSq
+        real(RK)    , intent(in)    :: MeanOld(mc_ndim)
+        integer(IK)             :: i, j
+        write(mc_restartFileUnit, mc_restartFileFormat) "meanAcceptanceRateSinceStart", meanAccRateSinceStart
+        write(mc_restartFileUnit, mc_restartFileFormat) "sampleSize" &
+                                                        , sampleSizeOld &
+                                                        , "logSqrtDeterminant" &
+                                                        , logSqrtDetOld &
+                                                        , "adaptiveScaleFactorSquared" &
+                                                        , adaptiveScaleFactorSq * mc_defaultScaleFactorSq &
+                                                        , "meanVec" &
+                                                        , MeanOld(1:mc_ndim) & ! LCOV_EXCL_LINE
+                                                        , "covMat" &
+                                                        , ((comv_CholDiagLower(i,j,0),i=1,j),j=1,mc_ndim)
+                                                       !, (comv_CholDiagLower(1:mc_ndim,0:mc_ndim,0)
         flush(mc_restartFileUnit)
-    end subroutine writeRestartFile
+    end subroutine writeRestartFileAscii
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> This procedure is a static method of the [ParaXXXX_ProposalNormal_type](@ref paraxxxxproposalnormal_type)
+    !> or [ParaXXXX_ProposalUniform_type](@ref paraxxxxproposaluniform_type) classes.\n
+    !> This procedure is called by the sampler kernel routines.\n
+    !> Write the restart information to the output file.
+    !>
+    !> @param[in]   meanAccRateSinceStart   : The current mean acceptance rate of the sampling (**optional**).
+    !> @param[in]   MeanOld                 : The mean of the old sample (**optional**, to be present only if `meanAccRateSinceStart` is missing.).
+    !>
+    !> \warning
+    !> The input argument `MeanOld` must be present if and only if `meanAccRateSinceStart` is missing as an input arguments.
+    !> This condition will **NOT** be checked for at runtime. It is the developer's responsibility to ensure it holds.
+    subroutine writeRestartFileBinary(meanAccRateSinceStart)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: writeRestartFileBinary
+#endif
+        implicit none
+        real(RK), intent(in) :: meanAccRateSinceStart
+        write(mc_restartFileUnit) meanAccRateSinceStart
+        flush(mc_restartFileUnit)
+    end subroutine writeRestartFileBinary
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1085,27 +1129,37 @@ contains
     !> Read the restart information from the restart file.
     !>
     !> @param[out]  meanAccRateSinceStart : The current mean acceptance rate of the sampling (**optional**).
-    subroutine readRestartFile(meanAccRateSinceStart)
+    subroutine readRestartFileAscii(meanAccRateSinceStart)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
-        !DEC$ ATTRIBUTES DLLEXPORT :: readRestartFile
+        !DEC$ ATTRIBUTES DLLEXPORT :: readRestartFileAscii
 #endif
         implicit none
-        real(RK), intent(out), optional :: meanAccRateSinceStart
-        integer(IK)                     :: i
-        if (present(meanAccRateSinceStart)) then
-            if (mc_isBinaryRestartFileFormat) then
-                read(mc_restartFileUnit) meanAccRateSinceStart
-            else
-                read(mc_restartFileUnit,*)
-                read(mc_restartFileUnit,*) meanAccRateSinceStart
-            end if
-        elseif (mc_isAsciiRestartFileFormat) then
-            do i = 1, 8 + mc_ndim * (mc_ndim+3) / 2
-                !read( mc_restartFileUnit, mc_restartFileFormat )
-                read( mc_restartFileUnit, * )
-            end do
-        end if
-    end subroutine readRestartFile
+        real(RK), intent(out)   :: meanAccRateSinceStart
+        integer(IK)             :: i
+        read(mc_restartFileUnit,*)
+        read(mc_restartFileUnit,*) meanAccRateSinceStart
+        do i = 1, 8 + mc_ndim * (mc_ndim+3) / 2
+            read(mc_restartFileUnit, *)
+        end do
+    end subroutine readRestartFileAscii
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> This procedure is a static method of the [ParaXXXX_ProposalNormal_type](@ref paraxxxxproposalnormal_type)
+    !> or [ParaXXXX_ProposalUniform_type](@ref paraxxxxproposaluniform_type) classes.\n
+    !> This procedure is called by the sampler kernel routines.\n
+    !> Read the restart information from the restart file.
+    !>
+    !> @param[out]  meanAccRateSinceStart : The current mean acceptance rate of the sampling (**optional**).
+    subroutine readRestartFileBinary(meanAccRateSinceStart)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: readRestartFileBinary
+#endif
+        implicit none
+        real(RK), intent(out) :: meanAccRateSinceStart
+        read(mc_restartFileUnit) meanAccRateSinceStart
+    end subroutine readRestartFileBinary
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
