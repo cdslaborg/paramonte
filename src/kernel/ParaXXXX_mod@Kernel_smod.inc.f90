@@ -66,9 +66,6 @@
 
     use, intrinsic :: iso_fortran_env, only: output_unit
     !use Constants_mod, only: IK, RK ! gfortran 9.3 compile crashes with this line
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED || ( (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED )
-    use ParaXXXX_ProposalAbstract_mod, only: ProposalErr
-#endif
 
 #if defined MPI_ENABLED
     use mpi
@@ -125,7 +122,7 @@ contains
 #else
         real(RK)    , allocatable           :: co_LogFuncState(:,:)
         real(RK)    , allocatable           :: co_AccRate(:)
-        integer(IK) , save                  :: co_proposalFound_samplerUpdateOccurred(2)            ! merging these scalars would reduce the MPI communication overhead cost: co_proposalFound, co_samplerUpdateOccurred, co_counterDRS, 0 means false, 1 means true
+        integer(IK)                         :: co_proposalFound_samplerUpdateOccurred(2)            ! merging these scalars would reduce the MPI communication overhead cost: co_proposalFound, co_samplerUpdateOccurred, co_counterDRS, 0 means false, 1 means true
 #endif
         type(SumAccRateSinceStart_type)     :: SumAccRateSinceStart                                 ! used to figure out the average acceptance ratio for the entire chain.
         integer(IK)                         :: numFunCallAcceptedLastAdaptation                     ! number of function calls accepted at Last proposal adaptation occurrence
@@ -618,7 +615,7 @@ contains
                                                         , adaptationMeasure         = AdaptationMeasure(dumint)                                                                 & ! LCOV_EXCL_LINE
                                                         )
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED || ( (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED )
-                        if(ProposalErr%occurred) then; self%Err%occurred = .true.; self%Err%msg = ProposalErr%msg; exit loopMarkovChain; return; end if
+                        if(self%Proposal%Err%occurred) then; self%Err%occurred = .true.; self%Err%msg = self%Proposal%Err%msg; exit loopMarkovChain; return; end if
 #endif
                         if (self%isDryRun) SumAccRateSinceStart%acceptedRejected = meanAccRateSinceStart * self%Stats%NumFunCall%acceptedRejected
 
@@ -658,6 +655,7 @@ contains
 #if defined CAF_ENABLED
 
                 if (self%SpecBase%ParallelizationModel%isSinglChain) then
+                    if (co_proposalFound_samplerUpdateOccurred(2)==1_IK) call self%Proposal%bcastAdaptation()
                     call self%Timer%toc()
                     sync images(*)
                     call self%Timer%toc(); self%Stats%avgCommTimePerFunCall = self%Stats%avgCommTimePerFunCall + self%Timer%Time%delta
@@ -807,7 +805,7 @@ contains
         end do loopMarkovChain
 
 #if (defined MPI_ENABLED || defined CAF_ENABLED) && (defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED)
-        block; use Err_mod, only: bcastErr; call bcastErr(ProposalErr); end block
+        block; use Err_mod, only: bcastErr; call bcastErr(self%Proposal%Err); end block
 #endif
         if (self%Err%occurred) return
 

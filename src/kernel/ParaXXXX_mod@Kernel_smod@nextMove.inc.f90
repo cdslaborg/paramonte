@@ -68,12 +68,13 @@
                     self%Stats%NumFunCall%acceptedRejectedDelayedUnused = self%Stats%NumFunCall%acceptedRejectedDelayedUnused + self%Image%count
 #endif
 
-                    co_LogFuncState(1:nd,counterDRS) = self%Proposal%getNew ( nd            = nd & ! LCOV_EXCL_LINE
-                                                                            , counterDRS    = counterDRS & ! LCOV_EXCL_LINE
-                                                                            , StateOld      = co_LogFuncState(1:nd,counterDRS-1) & ! LCOV_EXCL_LINE
-                                                                            )
+                    call self%Proposal%getNew   ( nd            = nd & ! LCOV_EXCL_LINE
+                                                , counterDRS    = counterDRS & ! LCOV_EXCL_LINE
+                                                , StateOld      = co_LogFuncState(1:nd,counterDRS-1) & ! LCOV_EXCL_LINE
+                                                , StateNew      = co_LogFuncState(1:nd,counterDRS) & ! LCOV_EXCL_LINE
+                                                )
 #if (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED
-                    if(ProposalErr%occurred) then; self%Err%occurred = .true.; self%Err%msg = ProposalErr%msg; return; end if
+                    if(self%Proposal%Err%occurred) then; self%Err%occurred = .true.; self%Err%msg = self%Proposal%Err%msg; return; end if
 #elif defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
                     ! This block is exclusively used to test the deterministic restart functionality of ParaXXXX samplers. 
                     ! This block must not be activated under any other circumstances.

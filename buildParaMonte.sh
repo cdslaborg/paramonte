@@ -2880,7 +2880,9 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "shared" ] && [ "${C
             # if ${BTYPE}==testing set "MATLAB_BUILD_FLAGS=!MATLAB_BUILD_FLAGS!!INTEL_CPP_TESTING_FLAGS!"
             # if ${BTYPE}==release set "MATLAB_BUILD_FLAGS=!MATLAB_BUILD_FLAGS!!INTEL_CPP_RELEASE_FLAGS!"
             MEX_FLAGS="-v -nojvm"
-            # use COMPFLAGS and LINKFLAGS on Windows systems instead of CFLAGS and LDFLAGS.
+            # Use COMPFLAGS and LINKFLAGS on Windows systems instead of CFLAGS and LDFLAGS.
+            # When compiling MEX-files under Linux/MacOS the Windows-specific environment variable COMPFLAGS variable is ignored.
+            # The CFLAGS for C, CXXFLAGS for C++, or FFLAGS for Fortran, and LDFLAGS for the linker must be used under Linux/MacOS. 
             CFLAGS='-fPIC -shared'
             LDFLAGS='-fPIC -shared'
             if [ "isMacOS"  = "true" ]; then
