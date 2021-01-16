@@ -108,7 +108,11 @@
         real(RK)                    :: logSqrtDetOld
         real(RK)                    :: adaptiveScaleFactorSq
         real(RK)    , allocatable   :: MeanOld(:)
-        real(RK)    , allocatable   :: CholDiagLower(:,:,:)
+        real(RK)    , allocatable   :: CholDiagLower(:,:,:) !< The covariance Matrix of the proposal distribution. Last index belongs to delayed rejection.
+#if defined PARADISE
+        real(RK)    , allocatable   :: LogSqrtDetInvCovMat(:)
+        real(RK)    , allocatable   :: InvCovMat(:,:,:)
+#endif
     contains
         procedure   , pass          :: getNew
 #if defined PARADISE
@@ -130,16 +134,10 @@
 
 #if defined CAF_ENABLED
     real(RK)        , save  , allocatable   :: comv_CholDiagLower(:,:)[:]
-#endif
-
-    ! Covariance Matrix of the proposal distribution. Last index belongs to delayed rejection
-
-    real(RK)        , save  , allocatable   :: mv_logSqrtDetInvCovMat(:)
-    real(RK)        , save  , allocatable   :: mv_InvCovMat(:,:,:)
-
-#if defined MPI_ENABLED
+#elif defined MPI_ENABLED
     integer(IK)     , save                  :: mc_ndimSqPlusNdim
 #endif
+
     type(Image_type), save                  :: mc_Image
     integer(IK)     , save                  :: mc_ndim
     logical         , save                  :: mc_scalingRequested
@@ -280,11 +278,12 @@ contains
 
         ! setup covariance matrix
 
-        if (allocated(mv_InvCovMat)) deallocate(mv_InvCovMat)
-        allocate( mv_InvCovMat(ndim,0:ndim,0:mc_DelayedRejectionCount) )
-
-        if (allocated(mv_logSqrtDetInvCovMat)) deallocate(mv_logSqrtDetInvCovMat)
-        allocate( mv_logSqrtDetInvCovMat(0:mc_DelayedRejectionCount) )
+#if defined PARADISE
+        if (allocated(self%InvCovMat)) deallocate(self%InvCovMat)
+        allocate( self%InvCovMat(ndim,0:ndim,0:mc_DelayedRejectionCount) )
+        if (allocated(self%logSqrtDetInvCovMat)) deallocate(self%logSqrtDetInvCovMat)
+        allocate( self%logSqrtDetInvCovMat(0:mc_DelayedRejectionCount) )
+#endif
 
         ! on the second dimension, the zeroth index refers to the Diagonal elements of the Cholesky lower triangular matrix
         ! This rearrangement was done for more efficient communication of the matrix across processes.
@@ -463,7 +462,8 @@ contains
     !> \return
     !> `logProb` : The log probability of obtaining obtaining the new sample given the old sample.
     ! LCOV_EXCL_START
-    pure function getLogProb( nd                &
+    pure function getLogProb( self              & 
+                            , nd                &
                             , counterDRS        &
                             , StateOld          &
                             , StateNew          &
@@ -478,22 +478,23 @@ contains
 #endif
         use Constants_mod, only: IK, RK, NEGINF_RK
         implicit none
+        class(Proposal_type), intent(in)    :: self
         integer(IK), intent(in)             :: nd
         integer(IK), intent(in)             :: counterDRS
         real(RK)   , intent(in)             :: StateOld(nd)
         real(RK)   , intent(in)             :: StateNew(nd)
         real(RK)                            :: logProb
 #if defined UNIFORM
-            if (isInsideEllipsoid(nd,StateNew-StateOld,mv_InvCovMat(1:mc_ndim,1:mc_ndim,counterDRS))) then
-                logProb = mc_negLogVolUnitBall + mv_logSqrtDetInvCovMat(counterDRS)
+            if ( isInsideEllipsoid(nd, StateNew - StateOld, self%InvCovMat(1:mc_ndim,1:mc_ndim,counterDRS)) ) then
+                logProb = mc_negLogVolUnitBall + self%logSqrtDetInvCovMat(counterDRS)
             else
                 logProb = NEGINF_RK
             end if
 #elif defined NORMAL
             logProb = getLogProbMVN ( nd = nd &
                                     , MeanVec = StateOld &
-                                    , InvCovMat = mv_InvCovMat(1:nd,1:nd,counterDRS) &
-                                    , logSqrtDetInvCovMat = mv_logSqrtDetInvCovMat(counterDRS) &
+                                    , InvCovMat = self%InvCovMat(1:nd,1:nd,counterDRS) &
+                                    , logSqrtDetInvCovMat = self%logSqrtDetInvCovMat(counterDRS) &
                                     , Point = StateNew &
                                     )
 #endif
@@ -1002,6 +1003,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if defined PARADISE
     !> \brief
     !> Return the inverse covariance matrix of the current covariance of the proposal distribution.
     !>
@@ -1016,31 +1018,34 @@ contains
     !> Right now, this is resolved by replacing the array bounds with `:`. A better solution is to add the `contiguous` attribute to
     !> the corresponding argument of [getInvMatFromCholFac](ref matrix_mod::getinvmatfromcholfac) to guarantee it to the compiler.
     !> More than improving performance, this would turn off the pesky compiler warnings about temporary array creation.
-    subroutine getInvCovMat(CholDiagLower)
+    pure subroutine getInvCovMat(CholDiagLower, InvCovMat, LogSqrtDetInvCovMat)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInvCovMat
 #endif
         use Matrix_mod, only: getInvMatFromCholFac ! LCOV_EXCL_LINE
         implicit none
-        real(RK), intent(in)    :: CholDiagLower(mc_ndim, 0:mc_ndim, mc_DelayedRejectionCount)
+        real(RK), intent(in)    :: CholDiagLower(mc_ndim, 0:mc_ndim, 0:mc_DelayedRejectionCount)
+        real(RK), intent(in)    :: InvCovMat(mc_ndim, mc_ndim, 0:mc_DelayedRejectionCount)
+        real(RK), intent(in)    :: LogSqrtDetInvCovMat(mc_DelayedRejectionCount)
         integer(IK)             :: istage
         ! update the inverse covariance matrix of the proposal from the computed Cholesky factor
         do concurrent(istage=0:mc_DelayedRejectionCount)
             ! WARNING: Do not set the full boundaries' range `(1:mc_ndim)` for the first index of `CholDiagLower` in the following subroutine call.
             ! WARNING: Setting the boundaries forces the compiler to generate a temporary array.
-            mv_InvCovMat(1:mc_ndim,1:mc_ndim,istage) = getInvMatFromCholFac ( nd = mc_ndim & ! LCOV_EXCL_LINE
-                                                                            , CholeskyLower = CholDiagLower(:,1:mc_ndim,istage) & ! LCOV_EXCL_LINE
-                                                                            , CholeskyDiago = CholDiagLower(1:mc_ndim,0,istage) & ! LCOV_EXCL_LINE
-                                                                            )
-            mv_logSqrtDetInvCovMat(istage) = -sum(log( CholDiagLower(1:mc_ndim,0,istage) ))
+            InvCovMat(1:mc_ndim,1:mc_ndim,istage) = getInvMatFromCholFac( nd = mc_ndim & ! LCOV_EXCL_LINE
+                                                                        , CholeskyLower = CholDiagLower(:,1:mc_ndim,istage) & ! LCOV_EXCL_LINE
+                                                                        , CholeskyDiago = CholDiagLower(1:mc_ndim,0,istage) & ! LCOV_EXCL_LINE
+                                                                        )
+            LogSqrtDetInvCovMat(istage) = -sum(log( CholDiagLower(1:mc_ndim,0,istage) ))
         end do
-!if (mc_ndim==1 .and. abs(log(sqrt(mv_InvCovMat(1,1,0)))-mv_logSqrtDetInvCovMat(0))>1.e-13_RK) then
-!write(*,"(*(g0,:,' '))") "log(sqrt(mv_InvCovMat(1,1,0))) /= mv_logSqrtDetInvCovMat(0)"
-!write(*,"(*(g0,:,' '))") log(sqrt(mv_InvCovMat(1,1,0))), mv_logSqrtDetInvCovMat(0)
-!write(*,"(*(g0,:,' '))") abs(-log(sqrt(mv_InvCovMat(1,1,0)))-mv_logSqrtDetInvCovMat(0))
+!if (mc_ndim==1 .and. abs(log(sqrt(self%InvCovMat(1,1,0)))-LogSqrtDetInvCovMat(0))>1.e-13_RK) then
+!write(*,"(*(g0,:,' '))") "log(sqrt(self%InvCovMat(1,1,0))) /= LogSqrtDetInvCovMat(0)"
+!write(*,"(*(g0,:,' '))") log(sqrt(self%InvCovMat(1,1,0))), LogSqrtDetInvCovMat(0)
+!write(*,"(*(g0,:,' '))") abs(-log(sqrt(self%InvCovMat(1,1,0)))-LogSqrtDetInvCovMat(0))
 !error stop
 !endif
     end subroutine getInvCovMat
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
