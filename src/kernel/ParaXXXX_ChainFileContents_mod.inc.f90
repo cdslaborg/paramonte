@@ -644,9 +644,6 @@ contains
                         read(Record%Parts(5)%record,*) CFC%BurninLoc            (iState)
                         read(Record%Parts(6)%record,*) CFC%Weight               (iState)
                         read(Record%Parts(7)%record,*) CFC%LogFunc              (iState)
-                        do i = 1, CFC%ndim
-                            read(Record%Parts(NUM_DEF_COL+i)%record,*) CFC%State(i,iState)
-                        end do
 #elif defined PARANEST
                         read(Record%Parts(1)%record,*) CFC%ProcessID            (iState)
                         read(Record%Parts(2)%record,*) CFC%MeanAccRate          (iState)
@@ -654,10 +651,10 @@ contains
                         read(Record%Parts(4)%record,*) CFC%LogIntegralLogFunc   (iState)
                         read(Record%Parts(5)%record,*) CFC%Weight               (iState)
                         read(Record%Parts(6)%record,*) CFC%LogFunc              (iState)
+#endif
                         do i = 1, CFC%ndim
                             read(Record%Parts(NUM_DEF_COL+i)%record,*) CFC%State(i,iState)
                         end do
-#endif
                         CFC%Count%verbose = CFC%Count%verbose + CFC%Weight(iState)
                     end if
                 end do loopReadCompact
@@ -1019,18 +1016,14 @@ contains
         if (chainFileForm=="binary") then
             isBinary = .true.
         else
-            if (.not. present(chainFileFormat)) then
-                ! LCOV_EXCL_START
-                CFC%Err%occurred = .true.
-                CFC%Err%msg = PROCEDURE_NAME//"Internal error occurred. For formatted chain files, chainFileFormat must be given."
-                ! LCOV_EXCL_STOP
-            else
+            if (present(chainFileFormat)) then
                 if (chainFileForm=="compact") then
                     isCompact = .true.
 #if defined PARADRAM || defined PARADISE
                 elseif (chainFileForm=="verbose") then
-                    isVerbose = .true.
-                    if (.not. present(adaptiveUpdatePeriod)) then
+                    if (present(adaptiveUpdatePeriod)) then
+                        isVerbose = .true.
+                    else
                         ! LCOV_EXCL_START
                         CFC%Err%occurred = .true.
                         CFC%Err%msg = PROCEDURE_NAME//"Internal error occurred. For verbose chain files, adaptiveUpdatePeriod must be given."
@@ -1043,6 +1036,11 @@ contains
                     CFC%Err%msg = PROCEDURE_NAME//"Internal error occurred. Unknown chain file format: "//chainFileForm
                     ! LCOV_EXCL_STOP
                 end if
+            else
+                ! LCOV_EXCL_START
+                CFC%Err%occurred = .true.
+                CFC%Err%msg = PROCEDURE_NAME//"Internal error occurred. For formatted chain files, chainFileFormat must be given."
+                ! LCOV_EXCL_STOP
             end if
         end if
 
@@ -1056,10 +1054,43 @@ contains
         call CFC%writeHeader(ndim,chainFileUnit,isBinary,chainFileFormat)
 
         if (compactStartIndex<=compactEndIndex) then
-            blockChainFileFormat: if (isCompact .or. isBinary) then
-#if defined PARADRAM || defined PARADISE
+            blockChainFileFormat: if (isCompact) then
+#if defined PARANEST
+                do i = compactStartIndex, compactEndIndex
+                    write(chainFileUnit,chainFileFormat     ) CFC%ProcessID(i)          &
+                                                            , CFC%MeanAccRate(i)        &
+                                                            , CFC%RemainingPriorMass(i) &
+                                                            , CFC%LogIntegralLogFunc(i) &
+                                                            , CFC%Weight(i)             &
+                                                            , CFC%LogFunc(i)            &
+                                                            , CFC%State(1:ndim,i)
+                end do
+#elif defined PARADRAM || defined PARADISE
                 do i = compactStartIndex, compactEndIndex
                     write(chainFileUnit,chainFileFormat     ) CFC%ProcessID(i)      &
+                                                            , CFC%DelRejStage(i)    &
+                                                            , CFC%MeanAccRate(i)    &
+                                                            , CFC%Adaptation(i)     &
+                                                            , CFC%BurninLoc(i)      &
+                                                            , CFC%Weight(i)         &
+                                                            , CFC%LogFunc(i)        &
+                                                            , CFC%State(1:ndim,i)
+                end do
+#endif
+            elseif (isBinary) then blockChainFileFormat
+#if defined PARANEST
+                do i = compactStartIndex, compactEndIndex
+                    write(chainFileUnit                     ) CFC%ProcessID(i)          &
+                                                            , CFC%MeanAccRate(i)        &
+                                                            , CFC%RemainingPriorMass(i) &
+                                                            , CFC%LogIntegralLogFunc(i) &
+                                                            , CFC%Weight(i)             &
+                                                            , CFC%LogFunc(i)            &
+                                                            , CFC%State(1:ndim,i)
+                end do
+#elif defined PARADRAM || defined PARADISE
+                do i = compactStartIndex, compactEndIndex
+                    write(chainFileUnit                     ) CFC%ProcessID(i)      &
                                                             , CFC%DelRejStage(i)    &
                                                             , CFC%MeanAccRate(i)    &
                                                             , CFC%Adaptation(i)     &
@@ -1087,16 +1118,6 @@ contains
                                                             , CFC%State(1:ndim,i)
                         counter = counter + 1
                     end do
-                end do
-#elif defined PARANEST
-                do i = compactStartIndex, compactEndIndex
-                    write(chainFileUnit,chainFileFormat     ) CFC%ProcessID(i)          &
-                                                            , CFC%MeanAccRate(i)        &
-                                                            , CFC%RemainingPriorMass(i) &
-                                                            , CFC%LogIntegralLogFunc(i) &
-                                                            , CFC%Weight(i)             &
-                                                            , CFC%LogFunc(i)            &
-                                                            , CFC%State(1:ndim,i)
                 end do
 #endif
             end if blockChainFileFormat
