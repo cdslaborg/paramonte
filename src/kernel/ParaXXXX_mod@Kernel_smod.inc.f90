@@ -66,9 +66,6 @@
 
     use, intrinsic :: iso_fortran_env, only: output_unit
     !use Constants_mod, only: IK, RK ! gfortran 9.3 compile crashes with this line
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED || ( (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED )
-    use ParaXXXX_ProposalAbstract_mod, only: ProposalErr
-#endif
 
 #if defined MPI_ENABLED
     use mpi
@@ -618,7 +615,7 @@ contains
                                                         , adaptationMeasure         = AdaptationMeasure(dumint)                                                                 & ! LCOV_EXCL_LINE
                                                         )
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED || ( (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED )
-                        if(ProposalErr%occurred) then; self%Err%occurred = .true.; self%Err%msg = ProposalErr%msg; exit loopMarkovChain; return; end if
+                        if(self%Proposal%Err%occurred) then; self%Err%occurred = .true.; self%Err%msg = self%Proposal%Err%msg; exit loopMarkovChain; return; end if
 #endif
                         if (self%isDryRun) SumAccRateSinceStart%acceptedRejected = meanAccRateSinceStart * self%Stats%NumFunCall%acceptedRejected
 
@@ -807,7 +804,7 @@ contains
         end do loopMarkovChain
 
 #if (defined MPI_ENABLED || defined CAF_ENABLED) && (defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED)
-        block; use Err_mod, only: bcastErr; call bcastErr(ProposalErr); end block
+        block; use Err_mod, only: bcastErr; call bcastErr(self%Proposal%Err); end block
 #endif
         if (self%Err%occurred) return
 

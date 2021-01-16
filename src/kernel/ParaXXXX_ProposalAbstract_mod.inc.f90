@@ -59,17 +59,16 @@
     character(*), parameter :: MODULE_NAME = "@ParaDISE_Proposal_mod"
 #endif
 
-    type(Err_type), save :: ProposalErr
-
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     type, abstract :: ProposalAbstract_type
+        type(Err_type) :: Err
     contains
-        procedure(getNew_proc)                  , nopass    , deferred  :: getNew
+        procedure(getNew_proc)                  , pass      , deferred  :: getNew
 #if defined PARADISE
         procedure(getLogProb_proc)              , nopass    , deferred  :: getLogProb
 #endif
-        procedure(doAdaptation_proc)            , nopass    , deferred  :: doAdaptation
+        procedure(doAdaptation_proc)            , pass      , deferred  :: doAdaptation
 #if defined CAF_ENABLED || defined MPI_ENABLED
         procedure(bcastAdaptation_proc)         , nopass    , deferred  :: bcastAdaptation
 #endif
@@ -87,18 +86,20 @@
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     abstract interface
-    function getNew_proc( nd            &
-                        , counterDRS    &
-                        , StateOld      &
-                        ) result (StateNew)
+    subroutine getNew_proc  ( self          &
+                            , nd            &
+                            , counterDRS    &
+                            , StateOld      &
+                            , StateNew      &
+                            )
         use Constants_mod, only: IK, RK
         import :: ProposalAbstract_type
-       !class(ProposalAbstract_type), intent(inout) :: Proposal
-        integer(IK), intent(in) :: nd
-        integer(IK), intent(in) :: counterDRS
-        real(RK)   , intent(in) :: StateOld(nd)
-        real(RK)                :: StateNew(nd)
-    end function getNew_proc
+        class(ProposalAbstract_type), intent(inout) :: self
+        integer(IK) , intent(in)    :: nd
+        integer(IK) , intent(in)    :: counterDRS
+        real(RK)    , intent(in)    :: StateOld(nd)
+        real(RK)    , intent(out)   :: StateNew(nd)
+    end subroutine getNew_proc
     end interface
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -122,7 +123,8 @@
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     abstract interface
-    subroutine doAdaptation_proc( nd                        &
+    subroutine doAdaptation_proc( self                      &
+                                , nd                        &
                                 , chainSize                 &
                                 , Chain                     &
                                 , ChainWeight               &
@@ -134,7 +136,7 @@
                                 )
         use Constants_mod, only: IK, RK
         import :: ProposalAbstract_type
-       !class(ProposalAbstract_type), intent(inout) :: Proposal
+        class(ProposalAbstract_type), intent(inout) :: self
         integer(IK), intent(in)     :: nd
         integer(IK), intent(in)     :: chainSize
         real(RK)   , intent(in)     :: Chain(nd,chainSize)

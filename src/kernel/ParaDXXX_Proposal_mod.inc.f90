@@ -66,18 +66,19 @@
 #if defined PARADRAM
 
 #define ParaXXXX ParaDRAM
-    use ParaDRAM_ProposalAbstract_mod, only: ProposalAbstract_type, ProposalErr
+    use ParaDRAM_ProposalAbstract_mod, only: ProposalAbstract_type
 
 #elif defined PARADISE
 
 #define ParaXXXX ParaDISE
-    use ParaDISE_ProposalAbstract_mod, only: ProposalAbstract_type, ProposalErr
+    use ParaDISE_ProposalAbstract_mod, only: ProposalAbstract_type
 
 #endif
 
     use ParaMonte_mod, only: Image_type
     use Constants_mod, only: IK, RK, PMSM
     use String_mod, only: IntStr_type
+    use Err_mod, only: Err_type
 
     implicit none
 
@@ -101,11 +102,11 @@
     type, extends(ProposalAbstract_type) :: Proposal_type
        !type(AccRate_type)          :: AccRate
     contains
-        procedure   , nopass        :: getNew
+        procedure   , pass          :: getNew
 #if defined PARADISE
         procedure   , nopass        :: getLogProb
 #endif
-        procedure   , nopass        :: doAdaptation
+        procedure   , pass          :: doAdaptation
        !procedure   , nopass        :: readRestartFile
        !procedure   , nopass        :: writeRestartFile
 #if defined CAF_ENABLED || defined MPI_ENABLED
@@ -194,7 +195,7 @@ contains
                                         , LogFile &
                                         , RestartFile &
                                         , isFreshRun &
-                                        ) result(Proposal)
+                                        ) result(self)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructProposalSymmetric
 #endif
@@ -224,12 +225,12 @@ contains
         type(RestartFile_type)  , intent(in)    :: RestartFile
         logical                                 :: isFreshRun
 
-        type(Proposal_type)                     :: Proposal
+        type(Proposal_type)                     :: self
 
         character(*), parameter                 :: PROCEDURE_NAME = MODULE_NAME // "@constructProposalSymmetric()"
         integer                                 :: i, j
 
-        ProposalErr%occurred = .false.
+        self%Err%occurred = .false.
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! setup sampler update global save variables
@@ -262,7 +263,7 @@ contains
         mc_isBinaryRestartFileFormat        = SpecBase%RestartFileFormat%isBinary
         mc_isAsciiRestartFileFormat         = SpecBase%RestartFileFormat%isAscii
         mc_defaultScaleFactorSq             = SpecMCMC%ScaleFactor%val**2
-       !Proposal%AccRate%sumUpToLastUpdate  = 0._RK
+       !self%AccRate%sumUpToLastUpdate  = 0._RK
         mc_maxNumDomainCheckToWarn          = SpecBase%MaxNumDomainCheckToWarn%val
         mc_maxNumDomainCheckToStop          = SpecBase%MaxNumDomainCheckToStop%val
         mc_delayedRejectionCount            = SpecDRAM%DelayedRejectionCount%val
@@ -310,14 +311,14 @@ contains
         call getCholeskyFactor( ndim, comv_CholDiagLower(:,1:ndim,0), comv_CholDiagLower(1:ndim,0,0) ) ! The `:` instead of `1:ndim` avoids temporary array creation.
         if (comv_CholDiagLower(1,0,0)<0._RK) then
         ! LCOV_EXCL_START
-            ProposalErr%msg = mc_Image%name // PROCEDURE_NAME // ": Singular input covariance matrix by user was detected. This is strange.\nCovariance matrix lower triangle:"
+            self%Err%msg = mc_Image%name // PROCEDURE_NAME // ": Singular input covariance matrix by user was detected. This is strange.\nCovariance matrix lower triangle:"
             do j = 1, ndim
                 do i = 1, j
-                    ProposalErr%msg = ProposalErr%msg // "\n" // num2str(comv_CholDiagLower(1:i,j,0))
+                    self%Err%msg = self%Err%msg // "\n" // num2str(comv_CholDiagLower(1:i,j,0))
                 end do
             end do
-            ProposalErr%occurred = .true.
-            call abort( Err = ProposalErr, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
+            self%Err%occurred = .true.
+            call abort( Err = self%Err, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
             return
         ! LCOV_EXCL_STOP
         end if
@@ -378,10 +379,12 @@ contains
     !>
     !> \return
     !> `StateNew` : The newly sampled state.
-    function getNew ( nd            &
-                    , counterDRS    &
-                    , StateOld      &
-                    ) result (StateNew)
+    subroutine getNew   ( self          &
+                        , nd            &
+                        , counterDRS    &
+                        , StateOld      &
+                        , StateNew      &
+                        )
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNew
 #endif
@@ -392,13 +395,14 @@ contains
 
         implicit none
 
-        character(*), parameter                         :: PROCEDURE_NAME = MODULE_NAME // "@getNew()"
+        character(*), parameter             :: PROCEDURE_NAME = MODULE_NAME // "@getNew()"
 
-        integer(IK), intent(in)                         :: nd
-        integer(IK), intent(in)                         :: counterDRS
-        real(RK)   , intent(in)                         :: StateOld(nd)
-        real(RK)                                        :: StateNew(nd)
-        integer(IK)                                     :: domainCheckCounter
+        class(Proposal_type), intent(inout) :: self
+        integer(IK), intent(in)             :: nd
+        integer(IK), intent(in)             :: counterDRS
+        real(RK)   , intent(in)             :: StateOld(nd)
+        real(RK)   , intent(out)            :: StateNew(nd)
+        integer(IK)                         :: domainCheckCounter
 
         domainCheckCounter = 0_IK
 
@@ -417,10 +421,10 @@ contains
                     call warn( prefix = mc_methodBrand, outputUnit = mc_logFileUnit, msg = mc_MaxNumDomainCheckToWarnMsg )
                 end if
                 if (domainCheckCounter==mc_MaxNumDomainCheckToStop) then
-                    ProposalErr%occurred = .true.
-                    ProposalErr%msg = mc_MaxNumDomainCheckToStopMsg
+                    self%Err%occurred = .true.
+                    self%Err%msg = mc_MaxNumDomainCheckToStopMsg
 #if !defined CODECOV_ENABLED && ((!defined MATLAB_ENABLED && !defined PYTHON_ENABLED && !defined R_ENABLED) || defined CAF_ENABLED && defined MPI_ENABLED )
-                    call abort( Err = ProposalErr, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
+                    call abort( Err = self%Err, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
 #endif
                     return
                 end if
@@ -429,7 +433,7 @@ contains
             exit loopBoundaryCheck
         end do loopBoundaryCheck
 
-    end function getNew
+    end subroutine getNew
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -509,7 +513,8 @@ contains
     !> \remark
     !> For information on the meaning of `adaptationMeasure`, see the paper by Shahmoradi and Bagheri, 2020, whose PDF is available at:
     !> [https://www.cdslab.org/paramonte/notes/overview/preface/#the-paradram-sampler](https://www.cdslab.org/paramonte/notes/overview/preface/#the-paradram-sampler)
-    subroutine doAdaptation ( nd                        &
+    subroutine doAdaptation ( self                      &
+                            , nd                        &
                             , chainSize                 &
                             , Chain                     &
                             , ChainWeight               &
@@ -527,20 +532,21 @@ contains
         use Matrix_mod, only: getCholeskyFactor, getLogSqrtDetPosDefMat
         use Constants_mod, only: RK, IK ! , EPS_RK
         use String_mod, only: num2str
-        use Err_mod, only: abort, warn
+        use Err_mod, only: Err_type, abort, warn
         implicit none
 
         character(*), parameter                         :: PROCEDURE_NAME = MODULE_NAME // "@doAdaptation()"
 
-        integer(IK), intent(in)                         :: nd
-        integer(IK), intent(in)                         :: chainSize
-        real(RK)   , intent(in)                         :: Chain(nd,chainSize)
-        integer(IK), intent(in)                         :: ChainWeight(chainSize)
-        logical    , intent(in)                         :: isFreshRun
-        logical    , intent(in)                         :: samplerUpdateIsGreedy
-        real(RK)   , intent(inout)                      :: meanAccRateSinceStart ! is intent(out) in restart mode, intent(in) in fresh mode.
-        logical    , intent(out)                        :: samplerUpdateSucceeded
-        real(RK)   , intent(out)                        :: adaptationMeasure
+        class(Proposal_type), intent(inout)             :: self
+        integer(IK) , intent(in)                        :: nd
+        integer(IK) , intent(in)                        :: chainSize
+        real(RK)    , intent(in)                        :: Chain(nd,chainSize)
+        integer(IK) , intent(in)                        :: ChainWeight(chainSize)
+        logical     , intent(in)                        :: isFreshRun
+        logical     , intent(in)                        :: samplerUpdateIsGreedy
+        real(RK)    , intent(inout)                     :: meanAccRateSinceStart ! is intent(out) in restart mode, intent(in) in fresh mode.
+        logical     , intent(out)                       :: samplerUpdateSucceeded
+        real(RK)    , intent(out)                       :: adaptationMeasure
 
         integer(IK)                                     :: i, j
         real(RK)                                        :: MeanNew(nd)
@@ -686,8 +692,8 @@ contains
                         write(mc_logFileUnit,"(*(E25.15))") comv_CholDiagLower(1:j,j,0)
                     end do
                     write(mc_logFileUnit,"(A)")
-                    ProposalErr%occurred = .true.
-                    ProposalErr%msg = PROCEDURE_NAME // &
+                    self%Err%occurred = .true.
+                    self%Err%msg =  PROCEDURE_NAME // &
                                     ": Error occurred while attempting to compute the Cholesky factorization of the &
                                     &covariance matrix of the proposal distribution of " // mc_methodName // "'s sampler. &
                                     &This is highly unusual, and can be indicative of some major underlying problems.\n&
@@ -697,7 +703,7 @@ contains
                                     &For example, ensure that you are passing a correct value of ndim to the ParaMonte sampler routine,\n&
                                     &the same value that is expected as input to your objective function's implementation.\n&
                                     &Otherwise, restarting the simulation might resolve the error."
-                    call abort( Err = ProposalErr, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
+                    call abort( Err = self%Err, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
                     return
                 end if
 
@@ -793,8 +799,8 @@ contains
                 do j = 1, nd
                     write(mc_logFileUnit,"(*(E25.15))") CovMatUpperCurrent(1:j,j)
                 end do
-                ProposalErr%occurred = .true.
-                ProposalErr%msg = PROCEDURE_NAME // &
+                self%Err%occurred = .true.
+                self%Err%msg =  PROCEDURE_NAME // &
                                 ": Error occurred while computing the Cholesky factorization of &
                                 &a matrix needed for the computation of the Adaptation measure. &
                                 &Such error is highly unusual, and requires an in depth investigation of the case.\n&
@@ -804,7 +810,7 @@ contains
                                 &For example, ensure that you are passing a correct value of ndim to the ParaMonte sampler routine,\n&
                                 &the same value that is expected as input to your objective function's implementation.\n&
                                 &Otherwise, restarting the simulation might resolve the error."
-                call abort( Err = ProposalErr, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
+                call abort( Err = self%Err, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
                 return
                 ! LCOV_EXCL_STOP
             end if
@@ -897,8 +903,8 @@ contains
         CovMatUpperCurrent = 0.5_RK * ( comv_CholDiagLower(1:mc_ndim,1:mc_ndim,0) + CovMatUpperOld )
         call getLogSqrtDetPosDefMat(1_IK,CovMatUpperCurrent,logSqrtDetSum,singularityOccurred)
         if (singularityOccurred) then
-            ProposalErr%occurred = .true.
-            ProposalErr%msg = PROCEDURE_NAME // &
+            self%Err%occurred = .true.
+            self%Err%msg =  PROCEDURE_NAME // &
                             ": Error occurred while computing the Cholesky factorization of &
                             &a matrix needed for the computation of the proposal distribution's adaptation measure. &
                             &Such error is highly unusual, and requires an in depth investigation of the case. &
@@ -906,7 +912,7 @@ contains
                             &For example, ensure that you are passing a correct value of ndim to the ParaMonte sampler routine,\n&
                             &the same value that is expected as input to your objective function's implementation.\n&
                             &Otherwise, restarting the simulation might resolve the error."
-            call abort( Err = ProposalErr, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
+            call abort( Err = self%Err, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
             return
         end if
         adaptationMeasure = 1._RK - exp( 0.5_RK*(logSqrtDetOld+logSqrtDetNew) - logSqrtDetSum )
