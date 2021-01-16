@@ -1034,7 +1034,7 @@ contains
         implicit none
         real(RK), intent(in)    :: CholDiagLower(mc_ndim, 0:mc_ndim, 0:mc_DelayedRejectionCount)
         real(RK), intent(out)   :: InvCovMat(mc_ndim, mc_ndim, 0:mc_DelayedRejectionCount)
-        real(RK), intent(out)   :: LogSqrtDetInvCovMat(mc_DelayedRejectionCount)
+        real(RK), intent(out)   :: LogSqrtDetInvCovMat(0:mc_DelayedRejectionCount)
         integer(IK)             :: istage
         ! update the inverse covariance matrix of the proposal from the computed Cholesky factor
         do concurrent(istage=0:mc_DelayedRejectionCount)
@@ -1071,7 +1071,7 @@ contains
         !DEC$ ATTRIBUTES DLLEXPORT :: updateDelRejCholDiagLower
 #endif
         implicit none
-        real(RK), intent(inout) :: CholDiagLower(1:mc_ndim, 0:mc_ndim, mc_DelayedRejectionCount)
+        real(RK), intent(inout) :: CholDiagLower(1:mc_ndim, 0:mc_ndim, 0:mc_DelayedRejectionCount)
         integer(IK) :: j, istage
         ! update the Cholesky factor of the delayed-rejection-stage proposal distributions
         do istage = 1, mc_DelayedRejectionCount
