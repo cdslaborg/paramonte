@@ -175,11 +175,11 @@ matrix:
             - libmpich-dev
             - mpich
       script:
-        - echo "FCFLAG = ${FCFLAG}"
+        - echo >&2 "FCFLAG = ${FCFLAG}"
         - cmake --version || echo "cmake not found..."
         - gfortran --version && FCFLAG="-f $(which gfortran)" || echo "gfortran not found..."
         - gfortran-9 --version && FCFLAG="-f $(which gfortran-9)" || echo "gfortran-9 not found..."
-        - echo "FCFLAG = ${FCFLAG}"
+        - echo >&2 "FCFLAG = ${FCFLAG}"
         - ./install.sh --codecov --par none --yes-to-all ${FCFLAG}
 
     ################################################################################################################################
