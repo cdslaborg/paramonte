@@ -102,6 +102,7 @@ def genShield():
                     + str(errmsg)
                     + "\n\n"
                     + "WARNING: skipping the code coverage import into the shields html.")
+    shields = shields.strip("\n")
     with open("shields.html", "w") as file: file.write(shields)
     return shields
 
