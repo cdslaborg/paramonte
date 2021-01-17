@@ -10,7 +10,7 @@
 <a href="https://travis-ci.org/cdslaborg/paramonte" target="_blank"><img src="https://travis-ci.org/cdslaborg/paramonte.svg?branch=main&style=flat-square" alt="Build Status" /></a> 
 <a href="https://github.com/cdslaborg/paramonte/releases" target="_blank"><img src="https://img.shields.io/pypi/status/paramonte?style=flat-square" alt="PyPI - Status" /></a>
 <a href="https://lgtm.com/projects/g/cdslaborg/paramonte/?mode=list" target="_blank"><img src="https://img.shields.io/lgtm/grade/python/github/cdslaborg/paramonte?label=code%20quality&style=flat-square&color=brightgreen" alt="LGTM Grade" /></a>
-<a href="https://cdslaborg.github.io/paramonte-codecov/kernel/serial/" target="_blank"><img src="https://img.shields.io/badge/code%20coverage-serial%20kernel-brightgreen?style=flat-square" alt="kernel code coverage - serial" /></a>
+<a href="https://cdslaborg.github.io/paramonte-codecov/kernel/serial/" target="_blank"><img src="https://img.shields.io/badge/code%20coverage-serial%20kernel%20:%20100&#37-brightgreen?style=flat-square" alt="kernel code coverage - serial" /></a>
 <a href="https://cdslaborg.github.io/paramonte-codecov/kernel/mpi/"    target="_blank"><img src="https://img.shields.io/badge/code%20coverage-MPI%20kernel-brightgreen?style=flat-square" alt="kernel code coverage - MPI" /></a>
 <a href="https://cdslaborg.github.io/paramonte-codecov/kernel/caf/"    target="_blank"><img src="https://img.shields.io/badge/code%20coverage-Coarray%20kernel-brightgreen?style=flat-square" alt="kernel code coverage - Coarray" /></a>
 <a href="https://www.openhub.net/p/paramonte" target="_blank"><img src="https://img.shields.io/badge/Open%20Hub-stats?color=brightgreen&label=stats&message=Open%20Hub&style=flat-square" alt="stats - Open Hub" /></a>
