@@ -182,7 +182,7 @@ contains
         use ParaDISE_ProposalUniform_mod, only: ProposalUniform_type => Proposal_type
         use ParaDISE_ProposalNormal_mod, only: ProposalNormal_type => Proposal_type
 #elif defined PARANEST
-        use ParaNestProposalRejection_mod, only: ProposalRejection_type => Proposal_type
+        use ParaNestProposalRejection_mod, only: ProposalRejEll_type => Proposal_type
 #endif
         use ParaMonteLogFunc_mod, only: getLogFunc_proc
         use Decoration_mod, only: GENERIC_OUTPUT_FORMAT
@@ -583,25 +583,15 @@ contains
             ! LCOV_EXCL_STOP
         end if
 
-#if (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED
-            block
-#if defined PARADRAM
-                use ParaXXXX_ProposalAbstract_mod, only: ProposalErr
-#elif defined PARADISE
-                use ParaXXXX_ProposalAbstract_mod, only: ProposalErr
-#endif
-
 #if (defined MPI_ENABLED || defined CAF_ENABLED) && (defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED)
-                block; use Err_mod, only: bcastErr; call bcastErr(self%Err); end block
+        block; use Err_mod, only: bcastErr; call bcastErr(self%Proposal%Err); end block
 #endif
-                if (ProposalErr%occurred) then
-                    self%Err%occurred = .true.
-                    self%Err%msg = PROCEDURE_NAME // ProposalErr%msg
-                    call self%abort( Err = self%Err, prefix = self%brand, newline = "\n", outputUnit = self%LogFile%unit )
-                    return
-                end if
-            end block
-#endif
+        if (self%Proposal%Err%occurred) then
+            self%Err%occurred = .true.
+            self%Err%msg = PROCEDURE_NAME // self%Proposal%Err%msg
+            call self%abort( Err = self%Err, prefix = self%brand, newline = "\n", outputUnit = self%LogFile%unit )
+            return
+        end if
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! run ParaXXXX kernel
