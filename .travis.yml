@@ -179,7 +179,7 @@ matrix:
         - cmake --version || echo "cmake not found..."
         - gfortran --version && FCFLAG="-f $(which gfortran)" || echo "gfortran not found..."
         - gfortran-9 --version && FCFLAG="-f $(which gfortran-9)" || echo "gfortran-9 not found..."
-        - echo "FCFLAG: ${FCFLAG}"
+        - echo "FCFLAG = ${FCFLAG}"
         - ./install.sh --codecov --par none --yes-to-all ${FCFLAG}
 
     ################################################################################################################################
