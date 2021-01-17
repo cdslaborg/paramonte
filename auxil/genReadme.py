@@ -43,7 +43,9 @@
 
 # ATTN: This code must be executed from the base directory where it exists. Navigate the the directory containing this file, then: python getReadme.py
 
-with open("shields.html", "r") as file: banner = file.read()
+from genShield import genShield
+banner = genShield().strip("\n")
+#with open("shields.html", "r") as file: banner = file.read()
 
 banner = """
   
