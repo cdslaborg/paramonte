@@ -48,6 +48,8 @@
 !>
 !> \author Amir Shahmoradi
 
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 #if defined UNIFORM
 
 #define GET_RANDOM_PROPOSAL getRandMVU
@@ -62,19 +64,23 @@
 
 #endif
 
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if defined PARADRAM
 
 #define ParaXXXX ParaDRAM
-    use ParaDRAM_ProposalAbstract_mod, only: ProposalAbstract_type
+#define ParaDXXX_ProposalAbstract_mod ParaDRAM_ProposalAbstract_mod
 
 #elif defined PARADISE
 
 #define ParaXXXX ParaDISE
-    use ParaDISE_ProposalAbstract_mod, only: ProposalAbstract_type
+#define ParaDXXX_ProposalAbstract_mod ParaDISE_ProposalAbstract_mod
 
 #endif
 
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    use ParaDXXX_ProposalAbstract_mod, only: ProposalAbstract_type
     use ParaMonte_mod, only: Image_type
     use Constants_mod, only: IK, RK, PMSM
     use String_mod, only: IntStr_type
@@ -127,7 +133,7 @@
     end type Proposal_type
 
     interface Proposal_type
-        module procedure :: constructProposalSymmetric
+        module procedure :: constructProposal
     end interface Proposal_type
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -181,19 +187,19 @@ contains
     !> This interface madness is a result of the internal compiler bug in GFortran as of Jan 2020, which diagnoses a `ParaXXXX_type`
     !> argument as circular dependency due to this constructor appearing in the type-bound setup procedure of `ParaXXXX_type`.
     !> Intel does not complain. Until GFortran comes up with a fix, we have to live with this interface.
-    function constructProposalSymmetric ( ndim &
-                                        , SpecBase &
-                                        , SpecMCMC &
-                                        , SpecDRAM &
-                                        , Image &
-                                        , name &
-                                        , brand &
-                                        , LogFile &
-                                        , RestartFile &
-                                        , isFreshRun &
-                                        ) result(self)
+    function constructProposal  ( ndim &
+                                , SpecBase &
+                                , SpecMCMC &
+                                , SpecDRAM &
+                                , Image &
+                                , name &
+                                , brand &
+                                , LogFile &
+                                , RestartFile &
+                                , isFreshRun &
+                                ) result(self)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructProposalSymmetric
+        !DEC$ ATTRIBUTES DLLEXPORT :: constructProposal
 #endif
         use Constants_mod, only: IK, RK, NULL_RK
         use ParaMonte_mod, only: Image_type
@@ -223,7 +229,7 @@ contains
 
         type(Proposal_type)                     :: self
 
-        character(*), parameter                 :: PROCEDURE_NAME = MODULE_NAME // "@constructProposalSymmetric()"
+        character(*), parameter                 :: PROCEDURE_NAME = MODULE_NAME // "@constructProposal()"
         integer                                 :: i, j
 
         self%Err%occurred = .false.
@@ -376,7 +382,7 @@ contains
             end block
         end if
 
-    end function constructProposalSymmetric
+    end function constructProposal
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
