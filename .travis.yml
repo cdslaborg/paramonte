@@ -171,6 +171,7 @@ matrix:
             - lcov
             - cmake
             - gcc-9
+            - gfortran
             - gfortran-9
             - libmpich-dev
             - mpich
