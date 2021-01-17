@@ -51,7 +51,7 @@
 #if defined HELL
 #elif defined BALL
 #else
-#error "Unknown Proposal model in ParaDXXX_Proposal_mod.inc.f90"
+#error "Unknown Proposal model in ParaNest_Proposal_mod.inc.f90"
 #endif
 
 

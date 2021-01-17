@@ -41,15 +41,15 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !> \brief
-!> This submodule contains the setup procedures and routines of the ParaNest sampler.
+!> This module implements the rejetion Hyper-ellipsoidal proposal class [ProposalAbstract_type](@ref paranest_proposalrejectionhell_mod::proposalabstract_type) of the ParaNest sampler.
 !>
-!> \remark
-!> This module requires preprocessing, prior to compilation.
+!> \warning
+!> This file requires preprocessing.
 !>
 !> \author Amir Shahmoradi
 
-submodule (ParaNest_mod) Postprocess_smod
-#define PARANEST ParaNest
-#include "ParaXXXX_mod@Postprocess_smod.inc.f90"
-#undef PARANEST
-end submodule Postprocess_smod ! LCOV_EXCL_LINE
+module ParaNest_ProposalRejectionHell_mod
+#define HELL
+#include "ParaNest_Proposal_mod.inc.f90"
+#undef HELL
+end module ParaNest_ProposalRejectionHell_mod ! LCOV_EXCL_LINE

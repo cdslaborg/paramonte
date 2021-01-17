@@ -48,16 +48,20 @@
 !>
 !> \author Amir Shahmoradi
 
-    use Constants_mod, only: IK, RK
+#if !(defined PARADRAM || defined PARADISE)
+#error "Unrecognized sampler in ParaXXXX_ProposalAbstract_mod.inc.f90"
+#endif
+
+    use Constants_mod, only: IK, RK, PMSM
     use Err_mod, only: Err_type
 
     implicit none
 
-#if defined PARADRAM
-    character(*), parameter :: MODULE_NAME = "@ParaDRAM_Proposal_mod"
-#elif defined PARADISE
-    character(*), parameter :: MODULE_NAME = "@ParaDISE_Proposal_mod"
-#endif
+!#if defined PARADRAM
+!    character(*), parameter :: MODULE_NAME = "@ParaDRAM_ProposalAbstract_mod"
+!#elif defined PARADISE
+!    character(*), parameter :: MODULE_NAME = "@ParaDISE_ProposalAbstract_mod"
+!#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -173,5 +177,3 @@
     !end interface
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-

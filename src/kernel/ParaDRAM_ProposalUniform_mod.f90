@@ -51,7 +51,7 @@
 module ParaDRAM_ProposalUniform_mod
 #define UNIFORM
 #define PARADRAM ParaDRAM
-#include "ParaDXXX_Proposal_mod.inc.f90"
+#include "ParaXXXX_Proposal_mod.inc.f90"
 #undef PARADRAM
 #undef UNIFORM
 end module ParaDRAM_ProposalUniform_mod ! LCOV_EXCL_LINE

@@ -60,27 +60,22 @@
 
 #else
 
-#error "Unknown Proposal model in ParaDXXX_Proposal_mod.inc.f90"
+#error "Unknown Proposal model in ParaXXXX_Proposal_mod.inc.f90"
 
 #endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if defined PARADRAM
-
 #define ParaXXXX ParaDRAM
-#define ParaDXXX_ProposalAbstract_mod ParaDRAM_ProposalAbstract_mod
-
+    use ParaDRAM_ProposalAbstract_mod, only: ProposalAbstract_type
 #elif defined PARADISE
-
 #define ParaXXXX ParaDISE
-#define ParaDXXX_ProposalAbstract_mod ParaDISE_ProposalAbstract_mod
-
+    use ParaDISE_ProposalAbstract_mod, only: ProposalAbstract_type
 #endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    use ParaDXXX_ProposalAbstract_mod, only: ProposalAbstract_type
     use ParaMonte_mod, only: Image_type
     use Constants_mod, only: IK, RK, PMSM
     use String_mod, only: IntStr_type
@@ -1200,7 +1195,5 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
 #undef ParaXXXX
 #undef GET_RANDOM_PROPOSAL
-

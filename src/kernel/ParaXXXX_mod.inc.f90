@@ -52,16 +52,13 @@
 !#define XCAT(a,b) CAT(a,b)
 #if defined PARADRAM
 
-#define ParaXXXX_mod ParaDRAM_mod
 #define ParaXXXX_type ParaDRAM_type
-#define ParaXXXX_RefinedChain_mod ParaDRAM_RefinedChain_mod
 #define ParaXXXX_RefinedChain_mod ParaDRAM_RefinedChain_mod
 #define ParaXXXX_ProposalAbstract_mod ParaDRAM_ProposalAbstract_mod
 #define ParaXXXX_ChainFileContents_mod ParaDRAM_ChainFileContents_mod
 
 #elif defined PARADISE
 
-#define ParaXXXX_mod ParaDISE_mod
 #define ParaXXXX_type ParaDISE_type
 #define ParaXXXX_RefinedChain_mod ParaDISE_RefinedChain_mod
 #define ParaXXXX_ProposalAbstract_mod ParaDISE_ProposalAbstract_mod
@@ -69,7 +66,6 @@
 
 #elif defined PARANEST
 
-#define ParaXXXX_mod ParaNest_mod
 #define ParaXXXX_type ParaNest_type
 #define ParaXXXX_RefinedChain_mod ParaNest_RefinedChain_mod
 #define ParaXXXX_ProposalAbstract_mod ParaNest_ProposalAbstract_mod
@@ -320,7 +316,8 @@
 #elif defined PARANEST
 #endif
 
-#undef ParaXXXX_mod
 #undef ParaXXXX_type
+#undef ParaXXXX_RefinedChain_mod
 #undef ParaXXXX_ProposalAbstract_mod
+#undef ParaXXXX_ChainFileContents_mod
 

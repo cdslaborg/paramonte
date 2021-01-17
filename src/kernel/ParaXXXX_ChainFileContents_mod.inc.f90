@@ -44,17 +44,11 @@
 !>  \author Amir Shahmoradi
 
 #if defined PARADRAM
-
 #define ParaXXXX ParaDRAM
-
 #elif defined PARADISE
-
 #define ParaXXXX ParaDISE
-
 #elif defined PARANEST
-
 #define ParaXXXX ParaNest
-
 #else
 #error "Unrecognized sampler in ParaXXXX_ChainFileContents_mod.inc.f90"
 #endif

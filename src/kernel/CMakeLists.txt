@@ -155,6 +155,7 @@ SET(ParaMonte_SOURCE_FILES
     #${ParaMonteKernel_SRC_DIR}/ParaNest_RefinedChain_mod.f90
     ${ParaMonteKernel_SRC_DIR}/ParaDISE_ProposalAbstract_mod.f90
     ${ParaMonteKernel_SRC_DIR}/ParaDRAM_ProposalAbstract_mod.f90
+    #${ParaMonteKernel_SRC_DIR}/ParaNest_ProposalAbstract_mod.f90
     ${ParaMonteKernel_SRC_DIR}/ParaDRAM_ProposalUniform_mod.f90
     ${ParaMonteKernel_SRC_DIR}/ParaDISE_ProposalUniform_mod.f90
     ${ParaMonteKernel_SRC_DIR}/ParaDRAM_ProposalNormal_mod.f90
@@ -193,11 +194,15 @@ set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDISE_mod@Kernel_smod.
 set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAM_mod@Postprocess_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaXXXX_mod@Postprocess_smod.inc.f90)
 set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDISE_mod@Postprocess_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaXXXX_mod@Postprocess_smod.inc.f90)
 
-set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAM_ProposalNormal_mod.f90    PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaDXXX_Proposal_mod.inc.f90)
-set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDISE_ProposalNormal_mod.f90    PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaDXXX_Proposal_mod.inc.f90)
+set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAM_ProposalNormal_mod.f90    PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaXXXX_Proposal_mod.inc.f90)
+set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDISE_ProposalNormal_mod.f90    PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaXXXX_Proposal_mod.inc.f90)
+set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAM_ProposalNormal_mod.f90    PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaDRAM_ProposalAbstract_mod.f90)
+set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDISE_ProposalNormal_mod.f90    PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaDISE_ProposalAbstract_mod.f90)
 
-set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAM_ProposalUniform_mod.f90   PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaDXXX_Proposal_mod.inc.f90)
-set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDISE_ProposalUniform_mod.f90   PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaDXXX_Proposal_mod.inc.f90)
+set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAM_ProposalUniform_mod.f90   PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaXXXX_Proposal_mod.inc.f90)
+set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDISE_ProposalUniform_mod.f90   PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaXXXX_Proposal_mod.inc.f90)
+set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAM_ProposalUniform_mod.f90   PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaDRAM_ProposalAbstract_mod.f90)
+set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDISE_ProposalUniform_mod.f90   PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaDISE_ProposalAbstract_mod.f90)
 
 set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAM_ProposalAbstract_mod.f90  PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaXXXX_ProposalAbstract_mod.inc.f90)
 set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDISE_ProposalAbstract_mod.f90  PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaXXXX_ProposalAbstract_mod.inc.f90)

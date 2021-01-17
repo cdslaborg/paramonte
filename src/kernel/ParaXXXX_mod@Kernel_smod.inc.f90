@@ -48,20 +48,8 @@
 !>
 !> \author Amir Shahmoradi
 
-#if defined PARADRAM
-
-#define ParaXXXX_type ParaDRAM_type
-#define ParaXXXX_ProposalAbstract_mod ParaDRAM_ProposalAbstract_mod
-
-#elif defined PARADISE
-
-#define ParaXXXX_type ParaDISE_type
-#define ParaXXXX_ProposalAbstract_mod ParaDISE_ProposalAbstract_mod
-
-#else
-
+#if !(defined PARADRAM || defined PARADISE)
 #error "Unrecognized sampler in ParaXXXX_mod.inc.f90"
-
 #endif
 
     use, intrinsic :: iso_fortran_env, only: output_unit
@@ -112,7 +100,11 @@ contains
         character(*), parameter             :: PROCEDURE_NAME = SUBMODULE_NAME//"@runKernel()"
         integer(IK) , parameter             :: CHAIN_RESTART_OFFSET = 2_IK
 
-        class(ParaXXXX_type), intent(inout) :: self
+#if defined PARADRAM
+        class(ParaDRAM_type), intent(inout) :: self
+#elif defined PARADISE
+        class(ParaDISE_type), intent(inout) :: self
+#endif
         procedure(getLogFunc_proc)          :: getLogFunc
 
 #if defined CAF_ENABLED
@@ -204,13 +196,13 @@ contains
         end if
 
        !adaptationMeasure                               = 0._RK                                     ! needed for the first output
+        samplerUpdateSucceeded                          = .true.                                    ! needed to set up lastStateWeight and numFunCallAcceptedLastAdaptation for the first accepted proposal
         SumAccRateSinceStart%acceptedRejected           = 0._RK                                     ! sum of acceptance rate
-        self%Stats%NumFunCall%acceptedRejected          = 0_IK                                      ! Markov Chain counter
         counterAUC                                      = 0_IK                                      ! counter for padaptiveUpdateCount.
         counterPRP                                      = 0_IK                                      ! counter for progressReportPeriod.
         counterAUP                                      = 0_IK                                      ! counter for adaptiveUpdatePeriod.
         self%Stats%NumFunCall%accepted                  = 0_IK                                      ! Markov Chain acceptance counter.
-        samplerUpdateSucceeded                          = .true.                                    ! needed to set up lastStateWeight and numFunCallAcceptedLastAdaptation for the first accepted proposal
+        self%Stats%NumFunCall%acceptedRejected          = 0_IK                                      ! Markov Chain counter
         numFunCallAcceptedLastAdaptation                = 0_IK
         lastStateWeight                                 = -huge(lastStateWeight)
         meanAccRateSinceStart                           = 1._RK ! needed for the first restart output in fresh run.
@@ -1071,6 +1063,3 @@ contains
     end function getBurninLoc
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#undef ParaXXXX_type
-#undef ParaXXXX_ProposalAbstract_mod

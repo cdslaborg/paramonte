@@ -52,21 +52,18 @@
 
 #define ParaXXXX ParaDRAM
 #define ParaXXXX_type ParaDRAM_type
-#define ParaXXXX_ProposalAbstract_mod ParaDRAM_ProposalAbstract_mod
 #define ParaXXXX_ChainFileContents_mod ParaDRAM_ChainFileContents_mod
 
 #elif defined PARADISE
 
 #define ParaXXXX ParaDISE
 #define ParaXXXX_type ParaDISE_type
-#define ParaXXXX_ProposalAbstract_mod ParaDISE_ProposalAbstract_mod
 #define ParaXXXX_ChainFileContents_mod ParaDISE_ChainFileContents_mod
 
 #elif defined PARANEST
 
 #define ParaXXXX ParaNest
 #define ParaXXXX_type ParaNest_type
-#define ParaXXXX_ProposalAbstract_mod ParaNestProposalAbstract_mod
 #define ParaXXXX_ChainFileContents_mod ParaNest_ChainFileContents_mod
 
 #else
@@ -652,6 +649,6 @@ contains
 
 !end submodule Setup_smod
 
-#undef ParaXXXX_ProposalAbstract_mod
-#undef ParaXXXX_type
 #undef ParaXXXX
+#undef ParaXXXX_type
+#undef ParaXXXX_ChainFileContents_mod

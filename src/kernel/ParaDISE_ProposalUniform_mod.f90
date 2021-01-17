@@ -52,7 +52,7 @@
 module ParaDISE_ProposalUniform_mod
 #define UNIFORM
 #define PARADISE ParaDISE
-#include "ParaDXXX_Proposal_mod.inc.f90"
+#include "ParaXXXX_Proposal_mod.inc.f90"
 #undef PARADISE
 #undef UNIFORM
 end module ParaDISE_ProposalUniform_mod ! LCOV_EXCL_LINE

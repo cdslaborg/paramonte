@@ -48,25 +48,7 @@
 !>
 !> \author Amir Shahmoradi
 
-#if defined PARADRAM
-
-#define ParaXXXX ParaDRAM
-#define ParaXXXX_type ParaDRAM_type
-#define ParaXXXX_RefinedChain_mod ParaDRAM_RefinedChain_mod
-
-#elif defined PARADISE
-
-#define ParaXXXX ParaDISE
-#define ParaXXXX_type ParaDISE_type
-#define ParaXXXX_RefinedChain_mod ParaDISE_RefinedChain_mod
-
-#elif defined PARANEST
-
-#define ParaXXXX ParaNest
-#define ParaXXXX_type ParaNest_type
-#define ParaXXXX_RefinedChain_mod ParaNest_RefinedChain_mod
-
-#else
+#if !(defined PARADRAM || defined PARADISE || defined PARANEST)
 #error "Unrecognized sampler in ParaXXXX_mod@Postprocess_smod.inc.f90"
 #endif
 
@@ -118,7 +100,13 @@ contains
 
         implicit none
 
-        class(ParaXXXX_type), intent(inout) :: self
+#if defined PARADRAM
+        class(ParaDRAM_type), intent(inout) :: self
+#elif defined PARADISE
+        class(ParaDISE_type), intent(inout) :: self
+#elif defined PARANEST
+        class(ParaNest_type), intent(inout) :: self
+#endif
         character(*), parameter             :: PROCEDURE_NAME = SUBMODULE_NAME // "@runSampler()"
 
         integer(IK)                         :: i, iq, effectiveSampleSize
@@ -1161,7 +1149,13 @@ contains
                         use Sort_mod, only: sortAscending
                         use String_mod, only: replaceStr
                         use Statistics_mod, only: doSortedKS2
-                        use ParaXXXX_RefinedChain_mod, only: readRefinedChain, RefinedChain_type
+#if defined PARADRAM
+                        use ParaDRAM_RefinedChain_mod, only: readRefinedChain, RefinedChain_type
+#elif defined PARADISE
+                        use ParaDISE_RefinedChain_mod, only: readRefinedChain, RefinedChain_type
+#elif defined PARANEST
+                        use ParaNest_RefinedChain_mod, only: readRefinedChain, RefinedChain_type
+#endif
                         type(RefinedChain_type)     :: RefinedChainThisImage, RefinedChainThatImage
                         integer(IK)                 :: imageID,indexMinProbKS,imageMinProbKS
                         real(RK)                    :: statKS, minProbKS
@@ -1357,6 +1351,3 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 !end submodule Postprocess_smod
-
-#undef ParaXXXX_type
-#undef ParaXXXX

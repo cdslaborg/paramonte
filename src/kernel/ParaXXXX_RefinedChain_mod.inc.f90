@@ -43,28 +43,21 @@
 !>  \brief This module contains the classes and procedures for refining MCMC output chains.
 !>  \author Amir Shahmoradi
 
+! module ParaMCMC_RefinedChain_mod
+
 #if defined PARADRAM
-
-#define ParaXXXX_ChainFileContents_mod ParaDRAM_ChainFileContents_mod
-
+    use ParaDRAM_ChainFileContents_mod, only: Count_type, ChainFileContents_type, NUM_DEF_COL
 #elif defined PARADISE
-
-#define ParaXXXX_ChainFileContents_mod ParaDISE_ChainFileContents_mod
-
+    use ParaDISE_ChainFileContents_mod, only: Count_type, ChainFileContents_type, NUM_DEF_COL
 #elif defined PARANEST
-
-#define ParaXXXX_ChainFileContents_mod ParaNest_ChainFileContents_mod
-
+    use ParaNest_ChainFileContents_mod, only: Count_type, ChainFileContents_type, NUM_DEF_COL
 #else
 #error "Unrecognized sampler in ParaXXXX_RefinedChain_mod.inc.f90"
 #endif
 
-! module ParaMCMC_RefinedChain_mod
-
     use SpecMCMC_SampleRefinementMethod_mod, only: BATCH_MEANS_METHOD_NAME
     use SpecMCMC_SampleRefinementMethod_mod, only: CUTOFF_AUTOCORR_METHOD_NAME
     use SpecMCMC_SampleRefinementMethod_mod, only: MAX_CUMSUM_AUTOCORR_METHOD_NAME
-    use ParaXXXX_ChainFileContents_mod, only: Count_type
     use JaggedArray_mod, only: CharVec_type
     use Constants_mod, only: IK, RK
     use Err_mod, only: Err_type
@@ -133,7 +126,6 @@ contains
 #endif
 
         use, intrinsic :: iso_fortran_env, only: output_unit
-        use ParaXXXX_ChainFileContents_mod, only: ChainFileContents_type, NUM_DEF_COL
         use CrossCorr_mod, only: getBatchMeansIAC, getCumSumIAC, getMaxCumSumIAC
         use String_mod, only: getLowerCase, replaceStr
         use Sort_mod, only: getMedian
@@ -693,5 +685,3 @@ contains
     end function readRefinedChain
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-! end module ParaMCMC_RefinedChain_mod ! LCOV_EXCL_LINE

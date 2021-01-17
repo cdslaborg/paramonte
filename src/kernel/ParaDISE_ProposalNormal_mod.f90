@@ -51,7 +51,7 @@
 module ParaDISE_ProposalNormal_mod
 #define NORMAL
 #define PARADISE ParaDISE
-#include "ParaDXXX_Proposal_mod.inc.f90"
+#include "ParaXXXX_Proposal_mod.inc.f90"
 #undef PARADISE
 #undef NORMAL
 end module ParaDISE_ProposalNormal_mod ! LCOV_EXCL_LINE
