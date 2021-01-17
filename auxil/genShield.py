@@ -91,8 +91,8 @@ def genShield():
             html = response.read().decode("utf8")
             coverage = float(html.split('headerCovTableEntryHi">')[1].split("%")[0])
             search = "code%20coverage-" + parDict[par] + "%20kernel"
-            substitute = "code%20coverage%20%2d%20" + parDict[par] + "%20kernel-" + str(coverage) + "%25"
-            #substitute = search + "%20:%20" + str(coverage) + "%25"
+            #substitute = "code%20coverage%20%2d%20" + parDict[par] + "%20kernel-" + str(coverage) + "%25"
+            substitute = search + "%20:%20" + str(coverage) + "%25"
             print(search)
             print(substitute)
             shields = shields.replace(search, substitute)
