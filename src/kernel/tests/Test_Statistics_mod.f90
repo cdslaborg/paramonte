@@ -251,6 +251,7 @@ contains
         call Test%run(test_getRandGamma_1, "test_getRandGamma_1")
         call Test%run(test_getLogProbMVU_1, "test_getLogProbMVU_1")
         call Test%run(test_getSamCholFac_1, "test_getSamCholFac_1")
+        call Test%run(test_getSamCholFac_2, "test_getSamCholFac_2")
         call Test%run(test_getSamCovMean_1, "test_getSamCovMean_1")
         call Test%run(test_getRandCorMat_1, "test_getRandCorMat_1")
         call Test%run(test_getLogProbGeo_1, "test_getLogProbGeo_1")
@@ -1514,6 +1515,66 @@ contains
         ! LCOV_EXCL_STOP
 
     end function test_getSamCholFac_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_getSamCholFac_2() result(assertion)
+
+        use Constants_mod, only: IK, RK
+        implicit none
+
+        logical                 :: assertion
+        real(RK)    , parameter :: tolerance = 1.e-12_RK
+        integer(IK) , parameter :: nd = 10_IK
+        integer(IK) , parameter :: np = 5000_IK
+        integer(IK) , parameter :: ntry = 1 ! 50000_IK
+        real(RK)                :: Point(nd,np)
+        real(RK)                :: Mean(nd)
+        real(RK)                :: CholeskyDiago_ref(nd)
+        real(RK)                :: CholeskyLower_ref(nd,nd)
+        real(RK)                :: CholeskyLower_diff(nd,nd)
+        real(RK)                :: CholeskyDiago_diff(nd)
+        real(RK)                :: CholeskyLower(nd,nd)
+        real(RK)                :: CholeskyDiago(nd)
+        integer(IK)             :: i
+
+        call random_number(Point)
+
+        call Test%Timer%toc()
+        do i = 1, ntry
+            call getSamCholFac(nd,np,Mean,Point,CholeskyLower_ref,CholeskyDiago_ref)
+        end do
+        call Test%Timer%toc()
+
+        !write(*,*) "Time getSamCholFac() =", Test%Timer%Time%delta
+
+        call Test%Timer%toc()
+        do i = 1, ntry
+            call getSamCholFacHighDim(nd,np,Mean,Point,CholeskyLower,CholeskyDiago)
+        end do
+        call Test%Timer%toc()
+
+        !write(*,*) "Time getSamCholFacHighDim() =", Test%Timer%Time%delta
+
+        CholeskyLower_diff = abs(CholeskyLower - CholeskyLower_ref) / abs(CholeskyLower_ref)
+        CholeskyDiago_diff = abs(CholeskyDiago - CholeskyDiago_ref) / abs(CholeskyDiago_ref)
+        assertion = all(CholeskyLower_diff <= tolerance) .and. all(CholeskyDiago_diff <= tolerance)
+
+        ! LCOV_EXCL_START
+        if (Test%isVerboseMode .and. .not. assertion) then
+            write(Test%outputUnit,"(*(g0,:,', '))")
+            write(Test%outputUnit,"(*(g0,:,', '))") "CholeskyLower_ref  ", CholeskyLower_ref
+            write(Test%outputUnit,"(*(g0,:,', '))") "CholeskyLower      ", CholeskyLower
+            write(Test%outputUnit,"(*(g0,:,', '))") "CholeskyLower_diff ", CholeskyLower_diff
+            write(Test%outputUnit,"(*(g0,:,', '))")
+            write(Test%outputUnit,"(*(g0,:,', '))") "CholeskyDiago_ref  ", CholeskyDiago_ref
+            write(Test%outputUnit,"(*(g0,:,', '))") "CholeskyDiago      ", CholeskyDiago
+            write(Test%outputUnit,"(*(g0,:,', '))") "CholeskyDiago_diff ", CholeskyDiago_diff
+            write(Test%outputUnit,"(*(g0,:,', '))")
+        end if
+        ! LCOV_EXCL_STOP
+
+    end function test_getSamCholFac_2
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

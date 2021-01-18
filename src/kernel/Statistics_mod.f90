@@ -46,6 +46,7 @@
 module Statistics_mod
 
     use Constants_mod, only: RK, IK
+    use Err_mod, only: Err_type
 
     implicit none
 
@@ -150,6 +151,37 @@ module Statistics_mod
         module procedure :: getMahalSqSP_RK, getMahalSqMP_RK
         module procedure :: getMahalSqSP_CK, getMahalSqMP_CK
     end interface getMahalSq
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    type :: RandomCluster_type
+        integer(IK)                 :: nd
+        integer(IK)                 :: np
+        integer(IK)                 :: nc
+        integer(IK)                 :: ndmin
+        integer(IK)                 :: ndmax
+        integer(IK)                 :: ncmin
+        integer(IK)                 :: ncmax
+        integer(IK)                 :: sizeMin
+        integer(IK)                 :: sizeMax
+        real(RK)                    :: etaMin
+        real(RK)                    :: etaMax
+        real(RK)                    :: stdMin
+        real(RK)                    :: stdMax
+        real(RK)                    :: centerMin
+        real(RK)                    :: centerMax
+        real(RK)    , allocatable   :: Eta(:)
+        real(RK)    , allocatable   :: Std(:,:)
+        real(RK)    , allocatable   :: Point(:,:)
+        real(RK)    , allocatable   :: Center(:,:)
+        real(RK)    , allocatable   :: ChoDia(:,:)
+        real(RK)    , allocatable   :: ChoLowCovMat(:,:,:)
+        integer(IK) , allocatable   :: Membership(:)
+        integer(IK) , allocatable   :: Size(:)
+        type(Err_type)              :: Err
+    contains
+        procedure, pass :: get => getRandomCluster
+    end type RandomCluster_type
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -709,7 +741,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Flatten the input `Point` array such that each element of the output 
+    !> Flatten the input `Point` array such that each element of the output
     !> `FlattenedPoint` array has the same unity weight as elements in the array.
     !>
     !> \param[in]       nd      :   The number of dimensions of the input sample.
@@ -982,8 +1014,8 @@ contains
 
     !> \brief
     !> Return the lower triangle Cholesky Factor of the covariance matrix of a set of points in the lower part of `CholeskyLower`.
-    ! The upper part of `CholeskyLower`, including the diagonal elements of it, will contain the covariance matrix of the sample.
-    ! The output argument `CholeskyDiago`, contains the diagonal terms of Cholesky Factor.
+    !> The upper part of `CholeskyLower`, including the diagonal elements of it, will contain the covariance matrix of the sample.
+    !> The output argument `CholeskyDiago`, contains the diagonal terms of Cholesky Factor.
     !>
     !> \param[in]       nd              :   The number of dimensions of the input sample.
     !> \param[in]       np              :   The number of points in the sample.
@@ -1005,7 +1037,7 @@ contains
         real(RK)   , intent(in)  :: Mean(nd)               ! Mean vector
         real(RK)   , intent(in)  :: Point(nd,np)           ! Point is the matrix of the data, CovMat contains the elements of the sample covariance matrix
         real(RK)   , intent(out) :: CholeskyLower(nd,nd)   ! Lower Cholesky Factor of the covariance matrix
-        real(RK)   , intent(out) :: CholeskyDiago(nd)       ! Diagonal elements of the Cholesky factorization
+        real(RK)   , intent(out) :: CholeskyDiago(nd)      ! Diagonal elements of the Cholesky factorization
         real(RK)                 :: NormData(np,nd), npMinusOneInverse
         integer(IK)              :: i,j
 
@@ -1026,6 +1058,61 @@ contains
         call getCholeskyFactor(nd, CholeskyLower, CholeskyDiago)
 
   end subroutine getSamCholFac
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Return the lower triangle Cholesky Factor of the covariance matrix of a set of points in the lower part of `CholeskyLower`.
+    !> The upper part of `CholeskyLower`, including the diagonal elements of it, will contain the covariance matrix of the sample.
+    !> The output argument `CholeskyDiago`, contains the diagonal terms of Cholesky Factor.
+    !> This routine delivers the same functionality of [getSamCholFac()](@ref getsamcholfac).
+    !> However, it is considerably faster, by a few factors, for `nd >> 10`.
+    !> Furthermore, it requires significantly less runtime memory, by about half.
+    !> The exact amount of speedup depends heavily on the architecture and memory layout of the runtime system.
+    !>
+    !> \param[in]       nd              :   The number of dimensions of the input sample.
+    !> \param[in]       np              :   The number of points in the sample.
+    !> \param[in]       Mean            :   The mean vector of the sample.
+    !> \param[in]       Point           :   The array of shape `(nd,np)` containing the sample.
+    !> \param[out]      CholeskyLower   :   The output matrix of shape `(nd,nd)` whose lower triangle contains elements of the Cholesky factor.
+    !>                                      The upper triangle of the matrix contains the covariance matrix of the sample.
+    !> \param[out]      CholeskyDiago   :   The diagonal elements of the Cholesky factor.
+    !>
+    !> \todo
+    !> The efficiency of this code can be further improved.
+    subroutine getSamCholFacHighDim(nd,np,Mean,Point,CholeskyLower,CholeskyDiago)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getSamCholFacHighDim
+#endif
+        use Matrix_mod, only: getCholeskyFactor
+        implicit none
+        integer(IK), intent(in)  :: nd,np                  ! np is the number of observations, nd is the number of parameters for each observation
+        real(RK)   , intent(in)  :: Mean(nd)               ! Mean vector
+        real(RK)   , intent(in)  :: Point(nd,np)           ! Point is the matrix of the data, CovMat contains the elements of the sample covariance matrix
+        real(RK)   , intent(out) :: CholeskyLower(nd,nd)   ! Lower Cholesky Factor of the covariance matrix
+        real(RK)   , intent(out) :: CholeskyDiago(nd)      ! Diagonal elements of the Cholesky factorization
+        real(RK)                 :: npMinusOneInverse
+        real(RK)                 :: NormData(nd)
+        integer(IK)              :: i, j, ip
+
+        npMinusOneInverse = 1._RK / real(np-1,kind=RK)
+
+        ! Compute the covariance matrix upper.
+
+        CholeskyLower = 0._RK
+        do ip = 1, np
+            do j = 1, nd
+                NormData(j) = Point(j,ip) - Mean(j)
+                CholeskyLower(1:j,j) = CholeskyLower(1:j,j) + NormData(1:j) * NormData(j)
+            end do
+        end do
+        CholeskyLower = CholeskyLower * npMinusOneInverse
+
+        ! Compute the Cholesky factor lower.
+
+        call getCholeskyFactor(nd, CholeskyLower, CholeskyDiago)
+
+  end subroutine getSamCholFacHighDim
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -3821,6 +3908,221 @@ contains
         end if
         if (iq<=nq) Quantile(iq:nq) = Point(Indx(np))
     end function getQuantile
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    subroutine getRandomCluster ( self & ! LCOV_EXCL_LINE
+                                , nd, ndmin, ndmax & ! LCOV_EXCL_LINE
+                                , nc, ncmin, ncmax & ! LCOV_EXCL_LINE
+                                , Size, sizeMin, sizeMax & ! LCOV_EXCL_LINE
+                                , Center, centerMin, centerMax & ! LCOV_EXCL_LINE
+                                , Std, stdmin, stdmax & ! LCOV_EXCL_LINE
+                                , Eta, etaMin, etaMax & ! LCOV_EXCL_LINE
+                                )
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getRandomCluster
+#endif
+        use Constants_mod, only: IK, RK
+        use Matrix_mod, only: getCholeskyFactor
+        implicit none
+        class(RandomCluster_type), intent(inout)        :: self
+        integer(IK) , intent(in), optional              :: nd, ndmin, ndmax
+        integer(IK) , intent(in), optional              :: nc, ncmin, ncmax
+        integer(IK) , intent(in), optional              :: sizeMin, sizeMax
+        real(RK)    , intent(in), optional              :: stdMin, stdMax
+        real(RK)    , intent(in), optional              :: etaMin, etaMax
+        real(RK)    , intent(in), optional              :: centerMin, centerMax
+        real(RK)    , intent(in), optional              :: Center(:,:), Std(:,:), Eta(:)
+        integer(IK) , intent(in), optional              :: Size(:)
+        integer(IK)                                     :: i, j, ic, ip, ipCount
+
+        self%Err%occurred = .false.
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        ! ndmin, ndmax, nd
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        if (present(ndmin)) then
+            self%ndmin = ndmin
+        else
+            self%ndmin = 2_IK
+        endif
+
+        if (present(ndmax)) then
+            self%ndmax = ndmax
+        else
+            self%ndmax = self%ndmin * 10_IK
+        endif
+
+        if (present(nd)) then
+            self%nd = nd
+        else
+            self%nd = getRandInt(self%ndmin, self%ndmax)
+        endif
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        ! ncmin, ncmax, nc
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        if (present(ncmin)) then
+            self%ncmin = ncmin
+        else
+            self%ncmin = 1_IK
+        endif
+
+        if (present(ncmax)) then
+            self%ncmax = ncmax
+        else
+            self%ncmax = self%ncmin * 10_IK
+        endif
+
+        if (present(nc)) then
+            self%nc = nc
+        else
+            self%nc = getRandInt(self%ncmin, self%ncmax)
+        endif
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        ! sizeMin, sizeMax, Size
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        if (present(sizeMin)) then
+            self%sizeMin = sizeMin
+        else
+            self%sizeMin = self%nd + 1
+        endif
+
+        if (present(sizeMax)) then
+            self%sizeMax = sizeMax
+        else
+            self%sizeMax = self%sizeMin * 1000_IK
+        endif
+
+        if (present(Size)) then
+            self%Size = Size
+        else
+            allocate(self%Size(self%nc))
+            do ic = 1, self%nc
+                self%Size(ic) = getRandInt(self%sizeMin, self%sizeMax)
+            end do
+        endif
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        ! centerMin, centerMax, Size
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        if (present(centerMin)) then
+            self%centerMin = centerMin
+        else
+            self%centerMin = 0._RK
+        endif
+
+        if (present(centerMax)) then
+            self%centerMax = centerMax
+        else
+            self%centerMax = 1._RK
+        endif
+
+        if (present(Center)) then
+            self%Center = Center
+        else
+            allocate(self%Center(self%nd,self%nc))
+            call random_number(self%Center)
+            do concurrent(ic = 1:self%nc)
+                self%Center(:,ic) = self%centerMin + self%Center(:,ic) * (self%centerMax - self%centerMin)
+            end do
+        endif
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        ! stdMin, stdMax, Size
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        if (present(stdMin)) then
+            self%stdMin = stdMin
+        else
+            self%stdMin = 0._RK
+        endif
+
+        if (present(stdMax)) then
+            self%stdMax = stdMax
+        else
+            self%stdMax = 1._RK
+        endif
+
+        if (present(Std)) then
+            self%Std = Std
+        else
+            allocate(self%Std(self%nd,self%nc))
+            call random_number(self%Std)
+            do concurrent(ic = 1:self%nc)
+                self%Std(:,ic) = self%stdMin + self%Std(:,ic) * (self%stdMax - self%stdMin)
+            end do
+        endif
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        ! etaMin, etaMax, eta
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        if (present(etaMin)) then
+            self%etaMin = etaMin
+        else
+            self%etaMin = 0.01_RK
+        endif
+
+        if (present(etaMax)) then
+            self%etaMax = etaMax
+        else
+            self%etaMax = self%etaMin * 1.e1_RK
+        endif
+
+        if (present(eta)) then
+            self%eta = eta
+        else
+            allocate(self%Eta(self%nc))
+            call random_number(self%Eta)
+            do concurrent(ic = 1:self%nc)
+                self%Eta(ic) = self%etaMin + self%Eta(ic) * (self%etaMax - self%etaMin)
+            end do
+        endif
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        ! etaMin, etaMax, eta
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        ipCount = 0_IK
+        self%np = sum(self%Size)
+        allocate(self%Membership(self%np))
+        allocate(self%Point(self%nd,self%np))
+        allocate(self%ChoDia(self%nd,self%nc))
+        allocate(self%ChoLowCovMat(self%nd,self%nd,self%nc))
+        do ic = 1, self%nc
+
+            self%ChoLowCovMat(:,:,ic) = getRandCorMat(self%nd, self%Eta(ic))
+            do j = 1, self%nd
+                do i = 1, self%nd
+                    self%ChoLowCovMat(i,j,ic) = self%ChoLowCovMat(i,j,ic) * self%Std(i,ic) * self%Std(j,ic)
+                end do
+            end do
+
+            call getCholeskyFactor  ( nd = self%nd & ! LCOV_EXCL_LINE
+                                    , PosDefMat = self%ChoLowCovMat(1:self%nd,1:self%nd,ic) & ! LCOV_EXCL_LINE
+                                    , Diagonal = self%ChoDia(1:self%nd,ic) & ! LCOV_EXCL_LINE
+                                    )
+
+            do ip = ipCount + 1, ipCount + self%Size(ic)
+                self%Point(1:self%nd,ip) = getRandMVU   ( nd = self%nd & ! LCOV_EXCL_LINE
+                                                        , MeanVec = self%Center(1:self%nd,ic) & ! LCOV_EXCL_LINE
+                                                        , CholeskyLower = self%ChoLowCovMat(1:self%nd,1:self%nd,ic) & ! LCOV_EXCL_LINE
+                                                        , Diagonal = self%ChoDia(1:self%nd,ic) & ! LCOV_EXCL_LINE
+                                                        )
+                self%Membership(ip) = ic
+            end do
+
+            ipCount = ipCount + self%Size(ic)
+
+        end do
+
+    end subroutine getRandomCluster
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
