@@ -199,23 +199,23 @@ contains
         assertion = .true.
 
         call RandomCluster%get  ( & ! LCOV_EXCL_LINE
-                                 nd = 2_IK, & ! LCOV_EXCL_LINE
-                                 nc = 1_IK, & ! LCOV_EXCL_LINE
-                                ! Size = [50, 1000, 500, 2000, 3], & ! LCOV_EXCL_LINE
-                                Eta = [1._RK, 2._RK, 0.5_RK, 0.05_RK, 1.5_RK] & ! LCOV_EXCL_LINE
+                                 nd = 2_IK & ! LCOV_EXCL_LINE
+                                !, nc = 5_IK, & ! LCOV_EXCL_LINE
+                                !, Size = [50, 1000, 500, 2000, 3] & ! LCOV_EXCL_LINE
+                                !, Eta = [1._RK, 2._RK, 0.5_RK, 0.05_RK, 1.5_RK] & ! LCOV_EXCL_LINE
                                 )
 
         MinVolPartition = MinVolPartition_type  ( Point = RandomCluster%Point & ! LCOV_EXCL_LINE
                                                 , nd = RandomCluster%nd & ! LCOV_EXCL_LINE
                                                 , np = RandomCluster%np & ! LCOV_EXCL_LINE
                                                 !, nemax = RandomCluster%nemax & ! LCOV_EXCL_LINE
-                                                !, maxKvolumeLoopRecursion = 10000 & ! LCOV_EXCL_LINE
-                                                !, maxAllowedKmeansFailure = 10000 & ! LCOV_EXCL_LINE
-                                                !, maxAllowedMinVolFailure = 10000 & ! LCOV_EXCL_LINE
-                                                !, stabilizationRequested  = .true. & ! LCOV_EXCL_LINE
-                                                , mahalSqWeightExponent = 1._RK & ! LCOV_EXCL_LINE
-                                                !, tightness  = 1._RK & ! LCOV_EXCL_LINE
-                                                !, inclusionFraction = 0._RK & ! LCOV_EXCL_LINE
+                                                , maxKvolumeLoopRecursion = 10000 & ! LCOV_EXCL_LINE
+                                                , maxAllowedKmeansFailure = 10000 & ! LCOV_EXCL_LINE
+                                                , maxAllowedMinVolFailure = 10000 & ! LCOV_EXCL_LINE
+                                                , stabilizationRequested  = .true. & ! LCOV_EXCL_LINE
+                                                , mahalSqWeightExponent = 0._RK & ! LCOV_EXCL_LINE
+                                                , tightness  = 1.1_RK & ! LCOV_EXCL_LINE
+                                                , inclusionFraction = 0._RK & ! LCOV_EXCL_LINE
                                                 !, parLogVol = sum(log(RandomCluster%DomainSize)) & ! LCOV_EXCL_LINE
                                                 , trimEnabled = .true. & ! LCOV_EXCL_LINE
                                                 )

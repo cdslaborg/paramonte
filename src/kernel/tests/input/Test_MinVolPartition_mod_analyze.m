@@ -62,8 +62,6 @@ for iupdate = 1:proposalUpdates.count
                 CholeskyUpper(j,i) = dumCell{1}(icount);
             end
         end
-        CholeskyLower
-        CholeskyUpper
         proposalUpdates.update{iupdate}.CovMatUpper(:,:,ic) = CholeskyLower * CholeskyUpper;
     end
 

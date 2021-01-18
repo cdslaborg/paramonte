@@ -4066,17 +4066,17 @@ contains
         if (present(etaMin)) then
             self%etaMin = etaMin
         else
-            self%etaMin = 0.01_RK
+            self%etaMin = 0.1_RK
         endif
 
         if (present(etaMax)) then
             self%etaMax = etaMax
         else
-            self%etaMax = self%etaMin * 1.e1_RK
+            self%etaMax = self%etaMin * (1._RK/self%etaMin)**2
         endif
 
-        if (present(eta)) then
-            self%eta = eta
+        if (present(Eta)) then
+            self%Eta = Eta
         else
             allocate(self%Eta(self%nc))
             call random_number(self%Eta)
