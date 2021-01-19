@@ -165,7 +165,7 @@ contains
     !>
     !> \warning
     !> Upon return from this procedure, the value of `RandomSeed%Err%occurred` must be checked for the occurrence of any potential errors.
-    subroutine setRandomSeed(RandomSeed,inputSeed)
+    subroutine setRandomSeed(RandomSeed, inputSeed)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRandomSeed
 #endif

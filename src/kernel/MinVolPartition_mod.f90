@@ -662,9 +662,10 @@ contains
             reclusteringNeeded = .false.
             CKCenter(1:nd,1) = CKCenter(1:nd,1) * CKSize(1)  ! Now it is sum instead of mean
             CKCenter(1:nd,2) = CKCenter(1:nd,2) * CKSize(2)  ! Now it is sum instead of mean
+
             ic = 1
             icOther = 2
-            do ip = IpStart(ic),IpEnd(ic)
+            do ip = IpStart(ic), IpEnd(ic)
                 ClusterMembership(ip) = ic    ! This has not been assigned correctly in the past, here is the first attempt
                 if ( MahalSqWeight(ic)*CKMahalSq(ip,ic) >= MahalSqWeight(icOther)*CKMahalSq(ip,icOther) ) then
                     ClusterMembership(ip) = icOther
@@ -678,7 +679,7 @@ contains
 
             ic = 2
             icOther = 1
-            do ip = IpStart(ic),IpEnd(ic)
+            do ip = IpStart(ic), IpEnd(ic)
                 ClusterMembership(ip) = ic    ! This has not been assigned correctly in the past, here is the first attempt
                 if ( MahalSqWeight(ic)*CKMahalSq(ip,ic) > MahalSqWeight(icOther)*CKMahalSq(ip,icOther) ) then
                     ClusterMembership(ip) = icOther
@@ -897,20 +898,19 @@ contains
         character(*)    , parameter     :: fileFormat = "(*(g0.8,:,','))"
         integer(IK)                     :: i, j, ic
 
-
         write(fileUnit,"(A)") "nd, np, nc"
         write(fileUnit,fileFormat) nd, np, nc
 
-        write(fileUnit,"(A)") "ClusterSize"
+        write(fileUnit,"(A)") "Size"
         write(fileUnit,fileFormat) ClusterSize
 
-        write(fileUnit,"(A)") "ClusterCenter"
+        write(fileUnit,"(A)") "Center"
         write(fileUnit,fileFormat) ClusterCenter
 
-        write(fileUnit,"(A)") "ClusterLogVolume"
+        write(fileUnit,"(A)") "LogVolume"
         write(fileUnit,fileFormat) ClusterLogVolume
 
-        write(fileUnit,"(A)") "ClusterCholeskyLower"
+        write(fileUnit,"(A)") "CholeskyLower"
         write(fileUnit,fileFormat) ((ClusterChoDia(j,ic), (ClusterChoLowCovUpp(i,j,ic), i=j+1,nd), j=1,nd), ic=1,nc)
 
 !write(*,fileFormat)

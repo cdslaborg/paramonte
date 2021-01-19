@@ -1,7 +1,7 @@
-clear all;
+%clear all;
 %close all;
 
-file = "../output/Test_MinVolPartition_mod@test_runMinVolPartition_2.MinVolPartition.1.txt";
+file = "../output/Test_MinVolPartition_mod@test_runMinVolPartition_2.ClusteredPoint.1.txt";
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -9,73 +9,79 @@ contents = strrep(fileread(file),char(13),'');
 lineList = strsplit(contents,char(10));
 lineListLen = length(lineList);
 
-proposalUpdates.count = count(contents, "CholeskyLower");
-proposalUpdates.update = cell(proposalUpdates.count,1);
+ClusteredPoint.count = count(contents, "CholeskyLower");
+ClusteredPoint.update = cell(ClusteredPoint.count,1);
 
 iline = 0;
-for iupdate = 1:proposalUpdates.count
+for iupdate = 1:ClusteredPoint.count
+
+    %%%% dist
+
+    iline = iline + 2;
+    dumCell = textscan(lineList{iline}, "%s", "Delimiter", ",");
+    ClusteredPoint.update{iupdate}.dist = dumCell{1};
 
     %%%% nd, np, nc
 
     iline = iline + 2;
     dumCell = textscan(lineList{iline}, "%d", "Delimiter", ",");
-    proposalUpdates.update{iupdate}.nd = dumCell{1}(1);
-    proposalUpdates.update{iupdate}.np = dumCell{1}(2);
-    proposalUpdates.update{iupdate}.nc = dumCell{1}(3);
+    ClusteredPoint.update{iupdate}.nd = dumCell{1}(1);
+    ClusteredPoint.update{iupdate}.np = dumCell{1}(2);
+    ClusteredPoint.update{iupdate}.nc = dumCell{1}(3);
 
     %%%% Size
 
     iline = iline + 2;
     dumCell = textscan(lineList{iline}, "%d", "Delimiter", ",");
-    proposalUpdates.update{iupdate}.Size = dumCell{1};
+    ClusteredPoint.update{iupdate}.Size = dumCell{1};
 
     %%%% Center
 
     iline = iline + 2;
     dumCell = textscan(lineList{iline}, "%f", "Delimiter", ",");
-    proposalUpdates.update{iupdate}.Center = reshape( dumCell{1} , [proposalUpdates.update{iupdate}.nd, proposalUpdates.update{iupdate}.nc] );
+    ClusteredPoint.update{iupdate}.Center = reshape( dumCell{1} , [ClusteredPoint.update{iupdate}.nd, ClusteredPoint.update{iupdate}.nc] );
 
     %%%% LogVolume
 
     iline = iline + 2;
     dumCell = textscan(lineList{iline}, "%f", "Delimiter", ",");
-    proposalUpdates.update{iupdate}.LogVolume = dumCell{1};
+    ClusteredPoint.update{iupdate}.LogVolume = dumCell{1};
 
     %%%% CholeskyLower
 
     iline = iline + 2;
     dumCell = textscan(lineList{iline}, "%f", "Delimiter", ",");
-    CholeskyLower = zeros(proposalUpdates.update{iupdate}.nd, proposalUpdates.update{iupdate}.nd);
-    CholeskyUpper = zeros(proposalUpdates.update{iupdate}.nd, proposalUpdates.update{iupdate}.nd);
-    proposalUpdates.update{iupdate}.CovMatUpper = zeros ( proposalUpdates.update{iupdate}.nd ...
-                                                        , proposalUpdates.update{iupdate}.nd ...
-                                                        , proposalUpdates.update{iupdate}.nc ...
+    CholeskyLower = zeros(ClusteredPoint.update{iupdate}.nd, ClusteredPoint.update{iupdate}.nd);
+    CholeskyUpper = zeros(ClusteredPoint.update{iupdate}.nd, ClusteredPoint.update{iupdate}.nd);
+    ClusteredPoint.update{iupdate}.CovMatUpper = zeros ( ClusteredPoint.update{iupdate}.nd ...
+                                                        , ClusteredPoint.update{iupdate}.nd ...
+                                                        , ClusteredPoint.update{iupdate}.nc ...
                                                         );
     icount = 0;
-    for ic = 1:proposalUpdates.update{iupdate}.nc
+    for ic = 1:ClusteredPoint.update{iupdate}.nc
         CholeskyLower(:,:) = 0.;
         CholeskyUpper(:,:) = 0.;
-        for j = 1:proposalUpdates.update{iupdate}.nd
-            for i = j:proposalUpdates.update{iupdate}.nd
+        for j = 1:ClusteredPoint.update{iupdate}.nd
+            for i = j:ClusteredPoint.update{iupdate}.nd
                 icount = icount + 1;
                 CholeskyLower(i,j) = dumCell{1}(icount);
                 CholeskyUpper(j,i) = dumCell{1}(icount);
             end
         end
-        proposalUpdates.update{iupdate}.CovMatUpper(:,:,ic) = CholeskyLower * CholeskyUpper;
+        ClusteredPoint.update{iupdate}.CovMatUpper(:,:,ic) = CholeskyLower * CholeskyUpper;
     end
 
     %%%% Point
 
     iline = iline + 2;
     dumCell = textscan(lineList{iline}, "%f", "Delimiter", ",");
-    proposalUpdates.update{iupdate}.Point = reshape( dumCell{1}, [proposalUpdates.update{iupdate}.nd, proposalUpdates.update{iupdate}.np] )';
+    ClusteredPoint.update{iupdate}.Point = reshape( dumCell{1}, [ClusteredPoint.update{iupdate}.nd, ClusteredPoint.update{iupdate}.np] )';
 
     %%%% Membership
 
     iline = iline + 2;
     dumCell = textscan(lineList{iline}, "%d", "Delimiter", ",");
-    proposalUpdates.update{iupdate}.Membership = dumCell{1};
+    ClusteredPoint.update{iupdate}.Membership = dumCell{1};
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%% plot ellipsoids
@@ -83,16 +89,16 @@ for iupdate = 1:proposalUpdates.count
 
     figure; hold on; box on;
 
-    plot( proposalUpdates.update{iupdate}.Point(:,1) ...
-        , proposalUpdates.update{iupdate}.Point(:,2) ...
+    plot( ClusteredPoint.update{iupdate}.Point(:,1) ...
+        , ClusteredPoint.update{iupdate}.Point(:,2) ...
         , "." ...
         );
 
     % get ellipsoid boundary
 
-    for ic = 1:proposalUpdates.update{iupdate}.nc
-        bcrd = getEllipsoidBoundary ( proposalUpdates.update{iupdate}.CovMatUpper(:,:,ic) ... covMat
-                                    , proposalUpdates.update{iupdate}.Center(:,ic) ... meanVec
+    for ic = 1:ClusteredPoint.update{iupdate}.nc
+        bcrd = getEllipsoidBoundary ( ClusteredPoint.update{iupdate}.CovMatUpper(:,:,ic) ... covMat
+                                    , ClusteredPoint.update{iupdate}.Center(:,ic) ... meanVec
                                     , 50 ... npoint
                                     );
         plot( bcrd(:,1) ...

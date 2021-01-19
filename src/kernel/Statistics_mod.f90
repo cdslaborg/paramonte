@@ -154,7 +154,7 @@ module Statistics_mod
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    type :: RandomCluster_type
+    type :: ClusteredPoint_type
         integer(IK)                 :: nd
         integer(IK)                 :: np
         integer(IK)                 :: nc
@@ -175,13 +175,16 @@ module Statistics_mod
         real(RK)    , allocatable   :: Point(:,:)
         real(RK)    , allocatable   :: Center(:,:)
         real(RK)    , allocatable   :: ChoDia(:,:)
-        real(RK)    , allocatable   :: ChoLowCovMat(:,:,:)
+        real(RK)    , allocatable   :: LogVolume(:)
+        real(RK)    , allocatable   :: ChoLowCovUpp(:,:,:)
         integer(IK) , allocatable   :: Membership(:)
         integer(IK) , allocatable   :: Size(:)
+        character(:), allocatable   :: dist
         type(Err_type)              :: Err
     contains
-        procedure, pass :: get => getRandomCluster
-    end type RandomCluster_type
+        procedure, pass :: get => getClusteredPoint
+        procedure, pass :: write => writeClusteredPoint
+    end type ClusteredPoint_type
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -3911,21 +3914,24 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine getRandomCluster ( self & ! LCOV_EXCL_LINE
+    subroutine getClusteredPoint( self & ! LCOV_EXCL_LINE
                                 , nd, ndmin, ndmax & ! LCOV_EXCL_LINE
                                 , nc, ncmin, ncmax & ! LCOV_EXCL_LINE
                                 , Size, sizeMin, sizeMax & ! LCOV_EXCL_LINE
                                 , Center, centerMin, centerMax & ! LCOV_EXCL_LINE
                                 , Std, stdmin, stdmax & ! LCOV_EXCL_LINE
                                 , Eta, etaMin, etaMax & ! LCOV_EXCL_LINE
+                                , dist & ! LCOV_EXCL_LINE
                                 )
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getRandomCluster
+        !DEC$ ATTRIBUTES DLLEXPORT :: getClusteredPoint
 #endif
-        use Constants_mod, only: IK, RK
+        use Matrix_mod, only: getInvMatFromCholFac
         use Matrix_mod, only: getCholeskyFactor
+        use Constants_mod, only: IK, RK
+        use Math_mod, only: getCumSum
         implicit none
-        class(RandomCluster_type), intent(inout)        :: self
+        class(ClusteredPoint_type), intent(inout)       :: self
         integer(IK) , intent(in), optional              :: nd, ndmin, ndmax
         integer(IK) , intent(in), optional              :: nc, ncmin, ncmax
         integer(IK) , intent(in), optional              :: sizeMin, sizeMax
@@ -3934,7 +3940,15 @@ contains
         real(RK)    , intent(in), optional              :: centerMin, centerMax
         real(RK)    , intent(in), optional              :: Center(:,:), Std(:,:), Eta(:)
         integer(IK) , intent(in), optional              :: Size(:)
-        integer(IK)                                     :: i, j, ic, ip, ipCount
+        character(*), intent(in), optional              :: dist
+        integer(IK) , allocatable                       :: CumSumSize(:)
+        real(RK)    , allocatable                       :: NormedPoint(:), InvCovMat(:,:,:)
+        real(RK)    , allocatable                       :: CumSumVolNormed(:)
+        real(RK)    , allocatable                       :: VolNormed(:)
+        real(RK)                                        :: dummy, minLogVol
+        logical                                         :: isUniformSuperposed
+        logical                                         :: isUniform, isMember
+        integer(IK)                                     :: i, j, ic, ip, membershipCount, minSize
 
         self%Err%occurred = .false.
 
@@ -4001,9 +4015,11 @@ contains
         if (present(Size)) then
             self%Size = Size
         else
-            allocate(self%Size(self%nc))
+            allocate(self%Size(self%nc), CumSumSize(0:self%nc))
+            CumSumSize(0) = 0._RK
             do ic = 1, self%nc
                 self%Size(ic) = getRandInt(self%sizeMin, self%sizeMax)
+                CumSumSize(ic) = CumSumSize(ic-1) + self%Size(ic)
             end do
         endif
 
@@ -4086,43 +4102,167 @@ contains
         endif
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        ! etaMin, etaMax, eta
+        ! Generate the representative matrices of the clusters
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        ipCount = 0_IK
-        self%np = sum(self%Size)
-        allocate(self%Membership(self%np))
-        allocate(self%Point(self%nd,self%np))
+        allocate(self%LogVolume(self%nc))
         allocate(self%ChoDia(self%nd,self%nc))
-        allocate(self%ChoLowCovMat(self%nd,self%nd,self%nc))
+        allocate(self%ChoLowCovUpp(self%nd,self%nd,self%nc))
         do ic = 1, self%nc
 
-            self%ChoLowCovMat(:,:,ic) = getRandCorMat(self%nd, self%Eta(ic))
+            ! Generate random correlation matrix.
+
+            self%ChoLowCovUpp(:,:,ic) = getRandCorMat(self%nd, self%Eta(ic))
             do j = 1, self%nd
                 do i = 1, self%nd
-                    self%ChoLowCovMat(i,j,ic) = self%ChoLowCovMat(i,j,ic) * self%Std(i,ic) * self%Std(j,ic)
+                    self%ChoLowCovUpp(i,j,ic) = self%ChoLowCovUpp(i,j,ic) * self%Std(i,ic) * self%Std(j,ic)
                 end do
             end do
 
+            ! Compute the Cholesky factorization.
+
             call getCholeskyFactor  ( nd = self%nd & ! LCOV_EXCL_LINE
-                                    , PosDefMat = self%ChoLowCovMat(1:self%nd,1:self%nd,ic) & ! LCOV_EXCL_LINE
+                                    , PosDefMat = self%ChoLowCovUpp(1:self%nd,1:self%nd,ic) & ! LCOV_EXCL_LINE
                                     , Diagonal = self%ChoDia(1:self%nd,ic) & ! LCOV_EXCL_LINE
                                     )
 
-            do ip = ipCount + 1, ipCount + self%Size(ic)
-                self%Point(1:self%nd,ip) = getRandMVU   ( nd = self%nd & ! LCOV_EXCL_LINE
-                                                        , MeanVec = self%Center(1:self%nd,ic) & ! LCOV_EXCL_LINE
-                                                        , CholeskyLower = self%ChoLowCovMat(1:self%nd,1:self%nd,ic) & ! LCOV_EXCL_LINE
-                                                        , Diagonal = self%ChoDia(1:self%nd,ic) & ! LCOV_EXCL_LINE
-                                                        )
-                self%Membership(ip) = ic
-            end do
-
-            ipCount = ipCount + self%Size(ic)
+            self%LogVolume(ic) = sum(log(self%ChoDia(1:self%nd,ic)))
 
         end do
 
-    end subroutine getRandomCluster
+        VolNormed = exp( self%LogVolume - maxval(self%LogVolume) )
+        CumSumVolNormed = getCumSum(self%nc, VolNormed)
+        CumSumVolNormed = CumSumVolNormed / CumSumVolNormed(self%nc)
+        
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        ! Set the distribution
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        if (present(dist)) then
+            self%dist = dist
+        else
+            self%dist = "superposedUniform"
+        end if
+
+        isUniform = self%dist == "uniform"
+        isUniformSuperposed = self%dist == "superposedUniform"
+
+        if (.not. (isUniformSuperposed .or. isUniform)) then
+            self%Err%occurred = .true.
+            self%Err%msg = "No point distribution other than uniform is currently supported."
+            return
+        end if
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        ! Generate the cluster members
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        self%np = sum(self%Size)
+        allocate(self%Membership(self%np))
+        allocate(self%Point(self%nd,self%np))
+
+        if (isUniformSuperposed) then
+
+            do ic = 1, self%nc
+                do ip = CumSumSize(ic-1) + 1, CumSumSize(ic)
+                    self%Membership(ip) = ic
+                    self%Point(1:self%nd,ip) = getRandMVU   ( nd = self%nd & ! LCOV_EXCL_LINE
+                                                            , MeanVec = self%Center(1:self%nd,ic) & ! LCOV_EXCL_LINE
+                                                            , CholeskyLower = self%ChoLowCovUpp(1:self%nd,1:self%nd,ic) & ! LCOV_EXCL_LINE
+                                                            , Diagonal = self%ChoDia(1:self%nd,ic) & ! LCOV_EXCL_LINE
+                                                            )
+                end do
+            end do
+
+        elseif (isUniform) then
+
+            allocate(NormedPoint(self%nd), InvCovMat(self%nd,self%nd,self%nc))
+
+            do ic = 1, self%nc
+                InvCovMat(1:self%nd,1:self%nd,ic) = getInvMatFromCholFac( nd = self%nd & ! LCOV_EXCL_LINE
+                                                                        , CholeskyLower = self%ChoLowCovUpp(1:self%nd,1:self%nd,ic) & ! LCOV_EXCL_LINE
+                                                                        , CholeskyDiago = self%ChoDia(1:self%nd,ic) & ! LCOV_EXCL_LINE
+                                                                        )
+            end do
+
+            self%Size = 0_IK ! all cluster sizes will be determined after all point generations.
+
+            do ip = 1, self%np
+
+                ! Check for the distribution type.
+
+                loopAddClusterMember: do
+
+                    call random_number(dummy)
+                    ic = minloc(CumSumVolNormed, dim = 1, mask = CumSumVolNormed > dummy)
+                    !ic = getRandInt(lowerBound = 1_IK, upperBound = self%nc)
+
+                    self%Point(1:self%nd,ip) = getRandMVU   ( nd = self%nd & ! LCOV_EXCL_LINE
+                                                            , MeanVec = self%Center(1:self%nd,ic) & ! LCOV_EXCL_LINE
+                                                            , CholeskyLower = self%ChoLowCovUpp(1:self%nd,1:self%nd,ic) & ! LCOV_EXCL_LINE
+                                                            , Diagonal = self%ChoDia(1:self%nd,ic) & ! LCOV_EXCL_LINE
+                                                            )
+
+                    membershipCount = 0_IK
+                    do i = 1, self%nc
+                        NormedPoint(1:self%nd) = self%Point(1:self%nd,ip) - self%Center(1:self%nd,i)
+                        isMember = isInsideEllipsoid(nd = self%nd, NormedPoint = NormedPoint, InvRepMat = InvCovMat(1:self%nd,1:self%nd,i))
+                        if (isMember) membershipCount = membershipCount + 1_IK
+                    end do
+
+                    call random_number(dummy)
+                    if (dummy < 1._RK / membershipCount) then
+                        self%Size(ic) = self%Size(ic) + 1_IK
+                        self%Membership(ip) = ic
+                        exit loopAddClusterMember
+                    end if
+
+                    cycle loopAddClusterMember
+
+                end do loopAddClusterMember
+
+            end do
+
+        end if
+
+    end subroutine getClusteredPoint
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    subroutine writeClusteredPoint(self, fileUnit)
+        use Constants_mod, only: IK, RK
+        implicit none
+        class(ClusteredPoint_type)  , intent(in)    :: self
+        integer(IK)                 , intent(in)    :: fileUnit
+        character(*), parameter                     :: fileFormat = "(*(g0.8,:,','))"
+        integer(IK)                                 :: i, j, ic
+
+        write(fileUnit,"(A)") "dist"
+        write(fileUnit,fileFormat) self%dist
+
+        write(fileUnit,"(A)") "nd, np, nc"
+        write(fileUnit,fileFormat) self%nd, self%np, self%nc
+
+        write(fileUnit,"(A)") "Size"
+        write(fileUnit,fileFormat) self%Size
+
+        write(fileUnit,"(A)") "Center"
+        write(fileUnit,fileFormat) self%Center
+
+        write(fileUnit,"(A)") "LogVolume"
+        write(fileUnit,fileFormat) self%LogVolume
+
+        write(fileUnit,"(A)") "CholeskyLower"
+        write(fileUnit,fileFormat) ((self%ChoDia(j,ic), (self%ChoLowCovUpp(i,j,ic), i=j+1,self%nd), j=1,self%nd), ic=1,self%nc)
+
+        write(fileUnit,"(A)") "Point"
+        write(fileUnit,fileFormat) self%Point
+
+        write(fileUnit,"(A)") "Membership"
+        write(fileUnit,fileFormat) self%Membership
+
+    end subroutine writeClusteredPoint
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

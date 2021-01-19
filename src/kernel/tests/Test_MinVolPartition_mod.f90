@@ -186,51 +186,75 @@ contains
 
     !> test `runMinVolPartition()` by passing a fixed initial set of cluster centers to the MinVolPartition constructor.
     function test_runMinVolPartition_2() result(assertion)
-        use Statistics_mod, only: RandomCluster_type
+        use Statistics_mod, only: ClusteredPoint_type
+        use RandomSeed_mod, only: RandomSeed_type
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                     :: assertion
-
         type(MinVolPartition_type)  :: MinVolPartition
-        type(RandomCluster_type)    :: RandomCluster
+        type(ClusteredPoint_type)   :: ClusteredPoint
+        type(RandomSeed_type)       :: RandomSeed
         integer                     :: fileUnit
 
         assertion = .true.
 
-        call RandomCluster%get  ( & ! LCOV_EXCL_LINE
+        !RandomSeed = RandomSeed_type(imageID = Test%Image%id, inputSeed = 1234_IK)
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        ! Generate clustered points
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        call ClusteredPoint%get ( & ! LCOV_EXCL_LINE
                                  nd = 2_IK & ! LCOV_EXCL_LINE
                                 !, nc = 5_IK, & ! LCOV_EXCL_LINE
                                 !, Size = [50, 1000, 500, 2000, 3] & ! LCOV_EXCL_LINE
                                 !, Eta = [1._RK, 2._RK, 0.5_RK, 0.05_RK, 1.5_RK] & ! LCOV_EXCL_LINE
+                                , dist = "uniform" & ! LCOV_EXCL_LINE
                                 )
-
-        MinVolPartition = MinVolPartition_type  ( Point = RandomCluster%Point & ! LCOV_EXCL_LINE
-                                                , nd = RandomCluster%nd & ! LCOV_EXCL_LINE
-                                                , np = RandomCluster%np & ! LCOV_EXCL_LINE
-                                                !, nemax = RandomCluster%nemax & ! LCOV_EXCL_LINE
-                                                , maxKvolumeLoopRecursion = 10000 & ! LCOV_EXCL_LINE
-                                                , maxAllowedKmeansFailure = 10000 & ! LCOV_EXCL_LINE
-                                                , maxAllowedMinVolFailure = 10000 & ! LCOV_EXCL_LINE
-                                                , stabilizationRequested  = .true. & ! LCOV_EXCL_LINE
-                                                , mahalSqWeightExponent = 0._RK & ! LCOV_EXCL_LINE
-                                                , tightness  = 1.1_RK & ! LCOV_EXCL_LINE
-                                                , inclusionFraction = 0._RK & ! LCOV_EXCL_LINE
-                                                !, parLogVol = sum(log(RandomCluster%DomainSize)) & ! LCOV_EXCL_LINE
-                                                , trimEnabled = .true. & ! LCOV_EXCL_LINE
-                                                )
 
         ! write data to output for further investigation
 
-        open( file = Test%outDir//"/Test_MinVolPartition_mod@test_runMinVolPartition_2."//num2str(Test%Image%id)//".txt" & ! LCOV_EXCL_LINE
+        open( file = Test%outDir//"/Test_MinVolPartition_mod@test_runMinVolPartition_2.ClusteredPoint."//num2str(Test%Image%id)//".txt" & ! LCOV_EXCL_LINE
             , status = "replace" & ! LCOV_EXCL_LINE
             , newunit = fileUnit & ! LCOV_EXCL_LINE
 #if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
             , SHARED & ! LCOV_EXCL_LINE
 #endif
             )
+        call ClusteredPoint%write(fileUnit)
+        close(fileUnit)
 
-        call MinVolPartition%write(fileUnit, RandomCluster%nd, RandomCluster%np, RandomCluster%Point)
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        ! Partition the clustered points clustered points
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        MinVolPartition = MinVolPartition_type  ( Point = ClusteredPoint%Point & ! LCOV_EXCL_LINE
+                                                , nd = ClusteredPoint%nd & ! LCOV_EXCL_LINE
+                                                , np = ClusteredPoint%np & ! LCOV_EXCL_LINE
+                                                !, nemax = ClusteredPoint%nemax & ! LCOV_EXCL_LINE
+                                                !, maxKvolumeLoopRecursion = 10000 & ! LCOV_EXCL_LINE
+                                                !, maxAllowedKmeansFailure = 10000 & ! LCOV_EXCL_LINE
+                                                !, maxAllowedMinVolFailure = 10000 & ! LCOV_EXCL_LINE
+                                                !, stabilizationRequested  = .true. & ! LCOV_EXCL_LINE
+                                                !, mahalSqWeightExponent = 0._RK & ! LCOV_EXCL_LINE
+                                                !, tightness  = 1._RK & ! LCOV_EXCL_LINE
+                                                !, inclusionFraction = 0._RK & ! LCOV_EXCL_LINE
+                                                !, parLogVol = sum(log(ClusteredPoint%DomainSize)) & ! LCOV_EXCL_LINE
+                                                , trimEnabled = .true. & ! LCOV_EXCL_LINE
+                                                )
+
+        ! write data to output for further investigation
+
+        open( file = Test%outDir//"/Test_MinVolPartition_mod@test_runMinVolPartition_2.MinVolPartition."//num2str(Test%Image%id)//".txt" & ! LCOV_EXCL_LINE
+            , status = "replace" & ! LCOV_EXCL_LINE
+            , newunit = fileUnit & ! LCOV_EXCL_LINE
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
+            , SHARED & ! LCOV_EXCL_LINE
+#endif
+            )
+        call MinVolPartition%write(fileUnit, ClusteredPoint%nd, ClusteredPoint%np, ClusteredPoint%Point)
+        close(fileUnit)
 
         assertion = assertion .and. .not. MinVolPartition%Err%occurred
         assertion = assertion .and. MinVolPartition%Err%stat /= 1_IK

@@ -56,7 +56,7 @@ It should be also compatible with MATLAB 2017, but is not tested.
 If you notice an incompatibility with any of the above MATLAB versions,
 please report this issue to the developers for a resolution at:
 
-https://github.com/cdslaborg/paramonte/issues
+[https://github.com/cdslaborg/paramonte/issues](https://github.com/cdslaborg/paramonte/issues)  
 
 ### Version  2.4.0 -- December 23, 2020  
 
