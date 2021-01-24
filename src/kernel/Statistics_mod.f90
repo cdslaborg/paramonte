@@ -4016,7 +4016,8 @@ contains
         if (present(Size)) then
             self%Size = Size
         else
-            
+            if (allocated(self%Size)) deallocate(self%Size) ! LCOV_EXCL_LINE ! GFortran crashes without this
+            if (allocated(self%CumSumSize)) deallocate(self%CumSumSize) ! LCOV_EXCL_LINE ! GFortran crashes without this
             allocate(self%Size(self%nc), CumSumSize(0:self%nc))
             CumSumSize(0) = 0._RK
             do ic = 1, self%nc
@@ -4044,6 +4045,7 @@ contains
         if (present(Center)) then
             self%Center = Center
         else
+            if (allocated(self%Center)) deallocate(self%Center) ! LCOV_EXCL_LINE ! GFortran crashes without this
             allocate(self%Center(self%nd,self%nc))
             call random_number(self%Center)
             do concurrent(ic = 1:self%nc)
@@ -4070,6 +4072,7 @@ contains
         if (present(Std)) then
             self%Std = Std
         else
+            if (allocated(self%Std)) deallocate(self%Std) ! LCOV_EXCL_LINE ! GFortran crashes without this
             allocate(self%Std(self%nd,self%nc))
             call random_number(self%Std)
             do concurrent(ic = 1:self%nc)
@@ -4096,6 +4099,7 @@ contains
         if (present(Eta)) then
             self%Eta = Eta
         else
+            if (allocated(self%Eta)) deallocate(self%Eta) ! LCOV_EXCL_LINE ! GFortran crashes without this
             allocate(self%Eta(self%nc))
             call random_number(self%Eta)
             do concurrent(ic = 1:self%nc)
@@ -4107,9 +4111,14 @@ contains
         ! Generate the representative matrices of the clusters
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+        if (allocated(self%ChoDia)) deallocate(self%ChoDia) ! LCOV_EXCL_LINE ! GFortran crashes without this
+        if (allocated(self%LogVolume)) deallocate(self%LogVolume) ! LCOV_EXCL_LINE ! GFortran crashes without this
+        if (allocated(self%ChoLowCovUpp)) deallocate(self%ChoLowCovUpp) ! LCOV_EXCL_LINE ! GFortran crashes without this
+
         allocate(self%LogVolume(self%nc))
         allocate(self%ChoDia(self%nd,self%nc))
         allocate(self%ChoLowCovUpp(self%nd,self%nd,self%nc))
+
         do ic = 1, self%nc
 
             ! Generate random correlation matrix.
@@ -4142,7 +4151,7 @@ contains
         VolNormed = exp( self%LogVolume - maxval(self%LogVolume) )
         CumSumVolNormed = getCumSum(self%nc, VolNormed)
         CumSumVolNormed = CumSumVolNormed / CumSumVolNormed(self%nc)
-        
+
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! Set the distribution
@@ -4169,6 +4178,10 @@ contains
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         self%np = sum(self%Size)
+
+        if (allocated(self%Point)) deallocate(self%Point) ! LCOV_EXCL_LINE ! GFortran crashes without this
+        if (allocated(self%Membership)) deallocate(self%Membership) ! LCOV_EXCL_LINE ! GFortran crashes without this
+
         allocate(self%Membership(self%np))
         allocate(self%Point(self%nd,self%np))
 
@@ -4187,6 +4200,7 @@ contains
 
         elseif (isUniform) then
 
+            if (allocated(self%NormedPoint)) deallocate(self%NormedPoint) ! LCOV_EXCL_LINE ! GFortran crashes without this
             allocate(NormedPoint(self%nd), InvCovMat(self%nd,self%nd,self%nc))
 
             do ic = 1, self%nc
