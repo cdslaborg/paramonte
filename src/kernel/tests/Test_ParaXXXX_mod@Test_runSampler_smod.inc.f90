@@ -1205,11 +1205,11 @@ contains
     module function test_runSampler_20() result(assertion)
         use Constants_mod, only: RK
         implicit none
-        logical             :: assertion
+        logical             :: assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         type(ParaXXXX_type) :: PD1, PD2
         real(RK), parameter :: targetAcceptanceRate(*) = [0.2_RK, 0.23_RK]
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        !assertion = .true.
 
         ! Run the fresh simulation
 
