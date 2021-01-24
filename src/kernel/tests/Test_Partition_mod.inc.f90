@@ -227,7 +227,7 @@ contains
 
         assertion = .true.
 
-        RandomSeed = RandomSeed_type(imageID = Test%Image%id, inputSeed = 1234_IK)
+        !RandomSeed = RandomSeed_type(imageID = Test%Image%id, inputSeed = 1234_IK)
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! Generate clustered points
@@ -262,7 +262,7 @@ contains
         ! Partition the clustered points clustered points
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        RandomSeed = RandomSeed_type(imageID = Test%Image%id, inputSeed = 12243_IK)
+        !RandomSeed = RandomSeed_type(imageID = Test%Image%id, inputSeed = 12243_IK)
 
         Partition = Partition_type  ( Point = ClusteredPoint%Point & ! LCOV_EXCL_LINE
                                     , nd = ClusteredPoint%nd & ! LCOV_EXCL_LINE
@@ -294,15 +294,6 @@ contains
             )
         call Partition%write(fileUnit, ClusteredPoint%nd, ClusteredPoint%np, ClusteredPoint%Point)
         close(fileUnit)
-
-!write(*,"(40(g0,:,','))") 
-!write(*,"(40(g0,:,','))") 
-!write(*,"(40(g0,:,','))") 
-!write(*,"(40(g0,:,','))") "size(PartitionMembership), np", size(Partition%Membership), Partition%np
-!write(*,"(40(g0,:,','))") Partition%Membership
-!write(*,"(40(g0,:,','))") 
-!write(*,"(40(g0,:,','))") 
-!write(*,"(40(g0,:,','))") 
 
         assertion = assertion .and. .not. Partition%Err%occurred
         assertion = assertion .and. Partition%Err%stat /= 1_IK
