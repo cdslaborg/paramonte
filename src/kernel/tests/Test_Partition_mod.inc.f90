@@ -278,7 +278,7 @@ contains
                                     , mahalSqWeightExponent = 1._RK & ! LCOV_EXCL_LINE
 #endif
                                     , inclusionFraction = 0._RK & ! LCOV_EXCL_LINE
-                                    , logTightness = log(1.5_RK) & ! LCOV_EXCL_LINE
+                                    !, logTightness = log(1.5_RK) & ! LCOV_EXCL_LINE
                                     !, parLogVol = sum(log(ClusteredPoint%DomainSize)) & ! LCOV_EXCL_LINE
                                     , trimEnabled = .true. & ! LCOV_EXCL_LINE
                                     )
