@@ -84,9 +84,10 @@ contains
     module function test_SpecBase_ChainFileFormat_type_1() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -94,6 +95,7 @@ contains
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_ChainFileFormat_type_1" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_ChainFileFormat_type_1
 
@@ -104,9 +106,10 @@ contains
     module function test_SpecBase_ChainFileFormat_type_2() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -114,6 +117,7 @@ contains
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_ChainFileFormat_type_2" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_ChainFileFormat_type_2
 
@@ -124,9 +128,10 @@ contains
     module function test_SpecBase_ChainFileFormat_type_3() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -134,6 +139,7 @@ contains
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_ChainFileFormat_type_3" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_ChainFileFormat_type_3
 
@@ -144,9 +150,10 @@ contains
     module function test_SpecBase_ChainFileFormat_type_4() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -154,6 +161,7 @@ contains
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_ChainFileFormat_type_4" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_ChainFileFormat_type_4
 
@@ -164,9 +172,10 @@ contains
     module function test_SpecBase_ChainFileFormat_type_5() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -174,6 +183,7 @@ contains
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_ChainFileFormat_type_5" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_ChainFileFormat_type_5
 
@@ -185,10 +195,11 @@ contains
         use Constants_mod, only: IK, RK, HUGE_RK
         implicit none
         logical             :: assertion
-        real(RK), parameter :: domainLowerLimitVec(*) = [-HUGE_RK/2._RK] ! NOTE: HUGE_RK is the null value.
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
+        real(RK), parameter :: domainLowerLimitVec(*) = [-HUGE_RK/2._RK] ! NOTE: HUGE_RK is the null value.
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -196,6 +207,7 @@ contains
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_DomainLowerLimitVec_type_1" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_DomainLowerLimitVec_type_1
 
@@ -208,10 +220,11 @@ contains
         use String_mod, only: num2str
         implicit none
         logical             :: assertion
-        real(RK), parameter :: domainLowerLimitVec(*) = [-HUGE_RK/2._RK] ! NOTE: HUGE_RK is the null value.
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        real(RK), parameter :: domainLowerLimitVec(*) = [-HUGE_RK/2._RK] ! NOTE: HUGE_RK is the null value.
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -219,6 +232,7 @@ contains
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_DomainLowerLimitVec_type_2" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_DomainLowerLimitVec_type_2
 
@@ -230,10 +244,11 @@ contains
         use Constants_mod, only: IK, RK, HUGE_RK
         implicit none
         logical             :: assertion
-        real(RK), parameter :: domainUpperLimitVec(*) = [+HUGE_RK/2._RK] ! NOTE: HUGE_RK is the null value.
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        real(RK), parameter :: domainUpperLimitVec(*) = [+HUGE_RK/2._RK] ! NOTE: HUGE_RK is the null value.
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -241,6 +256,7 @@ contains
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_DomainUpperLimitVec_type_1" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_DomainUpperLimitVec_type_1
 
@@ -253,10 +269,11 @@ contains
         use String_mod, only: num2str
         implicit none
         logical             :: assertion
-        real(RK), parameter :: domainUpperLimitVec(*) = [+HUGE_RK/2._RK] ! NOTE: HUGE_RK is the null value.
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        real(RK), parameter :: domainUpperLimitVec(*) = [+HUGE_RK/2._RK] ! NOTE: HUGE_RK is the null value.
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -264,6 +281,7 @@ contains
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_DomainUpperLimitVec_type_2" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_DomainUpperLimitVec_type_2
 
@@ -276,11 +294,12 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         real(RK), parameter :: domainLowerLimitVec(*) = [+2._RK]
         real(RK), parameter :: domainUpperLimitVec(*) = [-2._RK]
         type(ParaXXXX_type) :: PD
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -289,6 +308,7 @@ contains
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_DomainUpperLimitVec_type_3" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_DomainUpperLimitVec_type_3
 
@@ -301,11 +321,12 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         real(RK), parameter :: domainLowerLimitVec(*) = [+2._RK]
         real(RK), parameter :: domainUpperLimitVec(*) = [+2._RK]
         type(ParaXXXX_type) :: PD
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -314,6 +335,7 @@ contains
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_DomainUpperLimitVec_type_4" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_DomainUpperLimitVec_type_4
 
@@ -325,11 +347,12 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         real(RK), parameter :: domainLowerLimitVec(*) = [-1.e-1_RK]
         real(RK), parameter :: domainUpperLimitVec(*) = [+1.e+1_RK]
         type(ParaXXXX_type) :: PD
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -339,6 +362,7 @@ contains
                             , maxNumDomainCheckToWarn = 0_IK &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_MaxNumDomainCheckToWarn_type_1
 
@@ -350,11 +374,12 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         real(RK), parameter :: domainLowerLimitVec(*) = [-1.e-1_RK]
         real(RK), parameter :: domainUpperLimitVec(*) = [+1.e+1_RK]
         type(ParaXXXX_type) :: PD
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -364,6 +389,7 @@ contains
                             , inputFile = ParaXXXX_NML//" maxNumDomainCheckToWarn = 0 /" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_MaxNumDomainCheckToWarn_type_2
 
@@ -375,11 +401,12 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         real(RK), parameter :: domainLowerLimitVec(*) = [-1.e-2_RK]
         real(RK), parameter :: domainUpperLimitVec(*) = [+1.e-2_RK]
         type(ParaXXXX_type) :: PD
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -390,6 +417,7 @@ contains
                             , chainSize = 10_IK &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_MaxNumDomainCheckToWarn_type_3
 
@@ -406,11 +434,12 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         real(RK), parameter :: domainLowerLimitVec(*) = [-1.e-2_RK]
         real(RK), parameter :: domainUpperLimitVec(*) = [+1.e-2_RK]
         type(ParaXXXX_type) :: PD
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -421,6 +450,7 @@ contains
                             , maxNumDomainCheckToStop = 0_IK &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_MaxNumDomainCheckToStop_type_1
 
@@ -437,11 +467,12 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         real(RK), parameter :: domainLowerLimitVec(*) = [-1.e-2_RK]
         real(RK), parameter :: domainUpperLimitVec(*) = [+1.e-2_RK]
         type(ParaXXXX_type) :: PD
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -452,6 +483,7 @@ contains
                             , inputFile = ParaXXXX_NML//"  maxNumDomainCheckToStop = 0 /" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_MaxNumDomainCheckToStop_type_2
 
@@ -468,11 +500,12 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         real(RK), parameter :: domainLowerLimitVec(*) = [-1.e-2_RK]
         real(RK), parameter :: domainUpperLimitVec(*) = [+1.e-2_RK]
         type(ParaXXXX_type) :: PD
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -483,6 +516,7 @@ contains
                             , maxNumDomainCheckToStop = 1_IK &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_MaxNumDomainCheckToStop_type_3
 
@@ -494,9 +528,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -504,6 +539,7 @@ contains
                             , outputColumnWidth = -1_IK &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_OutputColumnWidth_type_1
 
@@ -515,9 +551,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -525,6 +562,7 @@ contains
                             , inputFile = ParaXXXX_NML//" outputColumnWidth = -1 /" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_OutputColumnWidth_type_2
 
@@ -536,9 +574,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -547,6 +586,7 @@ contains
                             , outputColumnWidth = 14_IK &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_OutputColumnWidth_type_3
 
@@ -558,9 +598,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -569,6 +610,7 @@ contains
                             , outputColumnWidth = 21_IK &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_OutputColumnWidth_type_4
 
@@ -580,9 +622,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -590,6 +633,7 @@ contains
                             , outputDelimiter = "this.that" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_OutputDelimiter_type_1
 
@@ -601,9 +645,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -611,6 +656,7 @@ contains
                             , inputFile = ParaXXXX_NML//" outputDelimiter = 'this+that' /" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_OutputDelimiter_type_2
 
@@ -622,9 +668,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -632,6 +679,7 @@ contains
                             , inputFile = ParaXXXX_NML//" outputDelimiter = 'this1234that' /" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_OutputDelimiter_type_3
 
@@ -643,9 +691,10 @@ contains
         use Constants_mod, only: IK, RK, TAB
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -653,6 +702,7 @@ contains
                             , outputDelimiter = "\t" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. PD%SpecBase%OutputDelimiter%val == TAB
+        end block
 #endif
     end function test_SpecBase_OutputDelimiter_type_4
 
@@ -664,9 +714,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -674,6 +725,7 @@ contains
                             , outputDelimiter = "\\t" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. PD%SpecBase%OutputDelimiter%val == "\t"
+        end block
 #endif
     end function test_SpecBase_OutputDelimiter_type_5
 
@@ -685,9 +737,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -695,6 +748,7 @@ contains
                             , outputDelimiter = "" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. PD%SpecBase%OutputDelimiter%val == " " .and. len(PD%SpecBase%OutputDelimiter%val) == 1
+        end block
 #endif
     end function test_SpecBase_OutputDelimiter_type_6
 
@@ -706,9 +760,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -716,6 +771,7 @@ contains
                             , outputRealPrecision = 0_IK &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_OutputRealPrecision_type_1
 
@@ -727,9 +783,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -737,6 +794,7 @@ contains
                             , inputFile = ParaXXXX_NML//" outputRealPrecision = 0 /" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_OutputRealPrecision_type_2
 
@@ -748,9 +806,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -765,6 +824,7 @@ contains
                             , inputFile = ParaXXXX_NML//" overwriteRequested = true /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_OverwriteRequested_type_1
 
@@ -776,9 +836,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -793,6 +854,7 @@ contains
                             , inputFile = ParaXXXX_NML//" overwriteRequested = false /" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_OverwriteRequested_type_2
 
@@ -804,9 +866,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -814,6 +877,7 @@ contains
                             , parallelizationModel = "SinGleChAin" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_ParallelizationModel_type_1
 
@@ -825,9 +889,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -835,6 +900,7 @@ contains
                             , inputFile = ParaXXXX_NML//" parallelizationModel = 'MULTI ChAin' /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_ParallelizationModel_type_2
 
@@ -846,9 +912,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -856,6 +923,7 @@ contains
                             , inputFile = ParaXXXX_NML//" parallelizationModel = 'nonsense' /" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_ParallelizationModel_type_3
 
@@ -867,9 +935,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -877,6 +946,7 @@ contains
                             , progressReportPeriod = -1_IK &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_ProgressReportPeriod_type_1
 
@@ -888,9 +958,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -898,6 +969,7 @@ contains
                             , inputFile = ParaXXXX_NML//" progressReportPeriod = 0 /" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_ProgressReportPeriod_type_2
 
@@ -909,9 +981,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -919,6 +992,7 @@ contains
                             , randomSeed = -12345_IK &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_RandomSeed_type_1
 
@@ -930,9 +1004,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -940,6 +1015,7 @@ contains
                             , inputFile = ParaXXXX_NML//" randomSeed = 12345 /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_RandomSeed_type_2
 
@@ -951,9 +1027,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -961,6 +1038,7 @@ contains
                             , restartFileFormat = "BINARY" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_RestartFileFormat_type_1
 
@@ -972,9 +1050,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -982,6 +1061,7 @@ contains
                             , inputFile = ParaXXXX_NML//" restartFileFormat = 'asCII' /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_RestartFileFormat_type_2
 
@@ -993,9 +1073,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1003,6 +1084,7 @@ contains
                             , inputFile = ParaXXXX_NML//" restartFileFormat = 'nonsense' /" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_RestartFileFormat_type_3
 
@@ -1014,9 +1096,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1024,6 +1107,7 @@ contains
                             , sampleSize = -1_IK &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_SampleSize_type_1
 
@@ -1035,9 +1119,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1045,6 +1130,7 @@ contains
                             , sampleSize = -2_IK &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_SampleSize_type_2
 
@@ -1056,9 +1142,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1066,6 +1153,7 @@ contains
                             , sampleSize = 200_IK &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_SampleSize_type_3
 
@@ -1076,11 +1164,13 @@ contains
     module function test_SpecBase_SampleSize_type_4() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
-        logical             :: assertion, exist
-        integer             :: iostat
-        type(ParaXXXX_type) :: PD
+        logical             :: assertion
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        integer             :: iostat
+        logical             :: exist
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1090,6 +1180,7 @@ contains
         assertion = assertion .and. .not. PD%Err%occurred
         inquire(file = PD%SampleFile%Path%original, exist = exist, iostat = iostat)
         assertion = assertion .and. .not. exist .and. iostat == 0
+        end block
 #endif
     end function test_SpecBase_SampleSize_type_4
 
@@ -1101,10 +1192,11 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
-        real(RK), parameter :: targetAcceptanceRate(*) = [-1._RK, 0.5_RK]
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
+        real(RK), parameter :: targetAcceptanceRate(*) = [-1._RK, 0.5_RK]
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1112,6 +1204,7 @@ contains
                             , targetAcceptanceRate = targetAcceptanceRate &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_TargetAcceptanceRate_type_1
 
@@ -1123,9 +1216,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1133,6 +1227,7 @@ contains
                             , inputFile = ParaXXXX_NML//" targetAcceptanceRate = +2. /" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_TargetAcceptanceRate_type_2
 
@@ -1144,9 +1239,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1154,6 +1250,7 @@ contains
                             , inputFile = ParaXXXX_NML//" targetAcceptanceRate = +0.5d0, 0.2d0 /" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_TargetAcceptanceRate_type_3
 
@@ -1165,9 +1262,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1175,6 +1273,7 @@ contains
                             , inputFile = ParaXXXX_NML//" targetAcceptanceRate(1) = 1. /" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_TargetAcceptanceRate_type_4
 
@@ -1186,9 +1285,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1196,6 +1296,7 @@ contains
                             , inputFile = ParaXXXX_NML//" targetAcceptanceRate(2) = 0. /" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecBase_TargetAcceptanceRate_type_5
 
@@ -1207,10 +1308,11 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
-        real(RK), parameter :: targetAcceptanceRate(*) = [0._RK, 1._RK]
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        real(RK), parameter :: targetAcceptanceRate(*) = [0._RK, 1._RK]
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1218,6 +1320,7 @@ contains
                             , targetAcceptanceRate = targetAcceptanceRate &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. .not. PD%SpecBase%TargetAcceptanceRate%scalingRequested
+        end block
 #endif
     end function test_SpecBase_TargetAcceptanceRate_type_6
 

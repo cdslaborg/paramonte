@@ -74,9 +74,10 @@ contains
     module function test_SpecMCMC_ChainSize_type_1() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
-        assertion = .true.
+        assertion = .true. 
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -84,6 +85,7 @@ contains
                             , chainSize = 0_IK &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_ChainSize_type_1
 
@@ -94,9 +96,10 @@ contains
     module function test_SpecMCMC_ChainSize_type_2() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -104,6 +107,7 @@ contains
                             , inputFile = ParaXXXX_NML//" chainSize = 1 /" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_ChainSize_type_2
 
@@ -114,9 +118,10 @@ contains
     module function test_SpecMCMC_ProposalModel_type_1() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -124,6 +129,7 @@ contains
                             , proposalModel = "UniForm" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_ProposalModel_type_1
 
@@ -134,9 +140,10 @@ contains
     module function test_SpecMCMC_ProposalModel_type_2() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -144,6 +151,7 @@ contains
                             , inputFile = ParaXXXX_NML//" proposalModel = 'UNIFORM' /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_ProposalModel_type_2
 
@@ -154,9 +162,10 @@ contains
     module function test_SpecMCMC_ProposalModel_type_3() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -164,6 +173,7 @@ contains
                             , proposalModel = "Normal" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_ProposalModel_type_3
 
@@ -174,9 +184,10 @@ contains
     module function test_SpecMCMC_ProposalModel_type_4() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -184,6 +195,7 @@ contains
                             , inputFile = ParaXXXX_NML//" proposalModel = 'nonsense' /" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_ProposalModel_type_4
 
@@ -195,11 +207,12 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical                 :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 1_IK
         real(RK)    , parameter :: ProposalStartCorMat(NDIM,NDIM) = reshape([1._RK], shape = shape(ProposalStartCorMat))
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -207,6 +220,7 @@ contains
                             , ProposalStartCorMat = ProposalStartCorMat &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_ProposalStartCorMat_type_1
 
@@ -219,11 +233,12 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 1_IK
         real(RK)    , parameter :: ProposalStartCorMat(NDIM,NDIM) = reshape([1._RK], shape = shape(ProposalStartCorMat))
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -231,6 +246,7 @@ contains
                             , inputFile = ParaXXXX_NML//" ProposalStartCorMat = "//num2str(ProposalStartCorMat)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_ProposalStartCorMat_type_2
 
@@ -243,11 +259,12 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 1_IK
         real(RK)    , parameter :: ProposalStartCorMat(NDIM,NDIM) = reshape([0._RK], shape = shape(ProposalStartCorMat))
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -255,6 +272,7 @@ contains
                             , inputFile = ParaXXXX_NML//" ProposalStartCorMat = "//num2str(ProposalStartCorMat)//" /" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_ProposalStartCorMat_type_3
 
@@ -267,11 +285,12 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: ProposalStartCorMat(NDIM,NDIM) = reshape([1._RK, 0.5_RK, 0.5_RK, 1._RK], shape = shape(ProposalStartCorMat))
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -279,6 +298,7 @@ contains
                             , inputFile = ParaXXXX_NML//" ProposalStartCorMat = "//num2str(ProposalStartCorMat)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. all(PD%SpecMCMC%ProposalStartCorMat%Val==PD%SpecMCMC%ProposalStartCovMat%Val)
+        end block
 #endif
     end function test_SpecMCMC_ProposalStartCorMat_type_4
 
@@ -292,11 +312,12 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: ProposalStartCorMat(NDIM,NDIM) = reshape([2._RK, 0.5_RK, 0.5_RK, 2._RK], shape = shape(ProposalStartCorMat))
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -304,6 +325,7 @@ contains
                             , inputFile = ParaXXXX_NML//" ProposalStartCorMat = "//num2str(ProposalStartCorMat)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_ProposalStartCorMat_type_5
 
@@ -315,11 +337,12 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical                 :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 1_IK
         real(RK)    , parameter :: ProposalStartCovMat(NDIM,NDIM) = reshape([2._RK], shape = shape(ProposalStartCovMat))
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -327,6 +350,7 @@ contains
                             , ProposalStartCovMat = ProposalStartCovMat &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_ProposalStartCovMat_type_1
 
@@ -339,11 +363,12 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 1_IK
         real(RK)    , parameter :: ProposalStartCovMat(NDIM,NDIM) = reshape([1._RK], shape = shape(ProposalStartCovMat))
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -351,6 +376,7 @@ contains
                             , inputFile = ParaXXXX_NML//" ProposalStartCovMat = "//num2str(ProposalStartCovMat)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_ProposalStartCovMat_type_2
 
@@ -363,11 +389,12 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 1_IK
         real(RK)    , parameter :: ProposalStartCovMat(NDIM,NDIM) = reshape([0._RK], shape = shape(ProposalStartCovMat))
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -375,6 +402,7 @@ contains
                             , inputFile = ParaXXXX_NML//" ProposalStartCovMat = "//num2str(ProposalStartCovMat)//" /" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_ProposalStartCovMat_type_3
 
@@ -387,11 +415,12 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: ProposalStartCovMat(NDIM,NDIM) = reshape([1._RK, 0.5_RK, 0.5_RK, 1._RK], shape = shape(ProposalStartCovMat))
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -399,6 +428,7 @@ contains
                             , inputFile = ParaXXXX_NML//" ProposalStartCovMat = "//num2str(ProposalStartCovMat)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. all(PD%SpecMCMC%ProposalStartCovMat%Val==PD%SpecMCMC%ProposalStartCovMat%Val)
+        end block
 #endif
     end function test_SpecMCMC_ProposalStartCovMat_type_4
 
@@ -412,13 +442,14 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: ProposalStartCovMat(NDIM,NDIM) = reshape([2._RK, 0.5_RK, 0.5_RK, 2._RK], shape = shape(ProposalStartCovMat))
         real(RK)    , parameter :: ProposalStartCorMat(NDIM,NDIM) = reshape([1._RK, 0.0_RK, 0.0_RK, 1._RK], shape = shape(ProposalStartCovMat))
         real(RK)    , parameter :: ProposalStartStdVec(NDIM) = [1._RK, 1._RK]
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -428,6 +459,7 @@ contains
                             , ProposalStartStdVec = ProposalStartStdVec &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_ProposalStartCovMat_type_5
 
@@ -439,11 +471,12 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical                 :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 1_IK
         real(RK)    , parameter :: ProposalStartStdVec(NDIM) = [2._RK]
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -451,6 +484,7 @@ contains
                             , ProposalStartStdVec = ProposalStartStdVec &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_ProposalStartStdVec_type_1
 
@@ -463,11 +497,12 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 1_IK
         real(RK)    , parameter :: ProposalStartStdVec(NDIM) = [1._RK]
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -475,6 +510,7 @@ contains
                             , inputFile = ParaXXXX_NML//" ProposalStartStdVec = "//num2str(ProposalStartStdVec)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_ProposalStartStdVec_type_2
 
@@ -487,11 +523,12 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 1_IK
         real(RK)    , parameter :: ProposalStartStdVec(NDIM) = [0._RK]
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -499,6 +536,7 @@ contains
                             , inputFile = ParaXXXX_NML//" ProposalStartStdVec = "//num2str(ProposalStartStdVec)//" /" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_ProposalStartStdVec_type_3
 
@@ -511,11 +549,12 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: ProposalStartStdVec(NDIM) = reshape([1._RK, 0.5_RK], shape = shape(ProposalStartStdVec))
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -523,6 +562,7 @@ contains
                             , inputFile = ParaXXXX_NML//" ProposalStartStdVec = "//num2str(ProposalStartStdVec)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. all(PD%SpecMCMC%ProposalStartStdVec%Val==PD%SpecMCMC%ProposalStartStdVec%Val)
+        end block
 #endif
     end function test_SpecMCMC_ProposalStartStdVec_type_4
 
@@ -536,14 +576,15 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: tolerance = 1.e-12_RK
         real(RK)    , parameter :: ProposalStartStdVec(NDIM) = reshape([1._RK, 2._RK], shape = shape(ProposalStartStdVec))
         real(RK)    , parameter :: ProposalStartCorMat(NDIM,NDIM) = reshape([1._RK, 0.5_RK, 0.5_RK, 1._RK], shape = shape(ProposalStartCorMat))
         real(RK)    , parameter :: ProposalStartCovMat(NDIM,NDIM) = reshape([1._RK, 1.0_RK, 1.0_RK, 4._RK], shape = shape(ProposalStartCovMat))
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -552,6 +593,7 @@ contains
                             , ProposalStartCorMat = ProposalStartCorMat &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. all(abs(PD%SpecMCMC%ProposalStartCovMat%Val-ProposalStartCovMat) <= tolerance)
+        end block
 #endif
     end function test_SpecMCMC_ProposalStartStdVec_type_5
 
@@ -564,11 +606,12 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: RandomStartPointDomainLowerLimitVec(NDIM) = [1._RK, 2._RK]
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -576,6 +619,7 @@ contains
                             , RandomStartPointDomainLowerLimitVec = RandomStartPointDomainLowerLimitVec &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. all(PD%SpecMCMC%RandomStartPointDomainLowerLimitVec%Val == RandomStartPointDomainLowerLimitVec)
+        end block
 #endif
     end function test_RSPDLowerLimitVec_type_1
 
@@ -589,11 +633,12 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: RandomStartPointDomainLowerLimitVec(NDIM) = [1._RK, 2._RK]
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -608,6 +653,7 @@ contains
                             , inputFile = ParaXXXX_NML//" RandomStartPointDomainLowerLimitVec = "//num2str(RandomStartPointDomainLowerLimitVec)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. all(PD%SpecMCMC%RandomStartPointDomainLowerLimitVec%Val == RandomStartPointDomainLowerLimitVec)
+        end block
 #endif
     end function test_RSPDLowerLimitVec_type_2
 
@@ -621,12 +667,13 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: RandomStartPointDomainLowerLimitVec(NDIM) = [+1._RK, +2._RK]
         real(RK)    , parameter :: DomainLowerLimitVec(NDIM) = [-1._RK, +3._RK]
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -635,6 +682,7 @@ contains
                             , DomainLowerLimitVec = DomainLowerLimitVec &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_RSPDLowerLimitVec_type_3
 
@@ -647,11 +695,12 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: RandomStartPointDomainUpperLimitVec(NDIM) = [1._RK, 2._RK]
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -659,6 +708,7 @@ contains
                             , RandomStartPointDomainUpperLimitVec = RandomStartPointDomainUpperLimitVec &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. all(PD%SpecMCMC%RandomStartPointDomainUpperLimitVec%Val == RandomStartPointDomainUpperLimitVec)
+        end block
 #endif
     end function test_RSPDUpperLimitVec_type_1
 
@@ -672,11 +722,12 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: RandomStartPointDomainUpperLimitVec(NDIM) = [1._RK, 2._RK]
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -691,6 +742,7 @@ contains
                             , inputFile = ParaXXXX_NML//" RandomStartPointDomainUpperLimitVec = "//num2str(RandomStartPointDomainUpperLimitVec)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. all(PD%SpecMCMC%RandomStartPointDomainUpperLimitVec%Val == RandomStartPointDomainUpperLimitVec)
+        end block
 #endif
     end function test_RSPDUpperLimitVec_type_2
 
@@ -704,12 +756,13 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: RandomStartPointDomainLowerLimitVec(NDIM) = [1._RK, 2._RK]
         real(RK)    , parameter :: RandomStartPointDomainUpperLimitVec(NDIM) = [-1._RK, -2._RK]
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -718,6 +771,7 @@ contains
                             , RandomStartPointDomainUpperLimitVec = RandomStartPointDomainUpperLimitVec &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_RSPDUpperLimitVec_type_3
 
@@ -731,12 +785,13 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: RandomStartPointDomainUpperLimitVec(NDIM) = [+1._RK, +2._RK]
         real(RK)    , parameter :: DomainUpperLimitVec(NDIM) = [-1._RK, +3._RK]
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -745,6 +800,7 @@ contains
                             , DomainUpperLimitVec = DomainUpperLimitVec &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_RSPDUpperLimitVec_type_4
 
@@ -757,10 +813,11 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaXXXX_type)     :: PD
-        integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -768,6 +825,7 @@ contains
                             , randomStartPointRequested = .false. &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. .not. PD%SpecMCMC%RandomStartPointRequested%val
+        end block
 #endif
     end function test_SpecMCMC_RandomStartPointRequested_type_1
 
@@ -780,10 +838,11 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaXXXX_type)     :: PD
-        integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -799,6 +858,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
         ! LCOV_EXCL_STOP
+        end block
 #endif
     end function test_SpecMCMC_RandomStartPointRequested_type_2
 
@@ -811,12 +871,13 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: RandomStartPointDomainLowerLimitVec(NDIM) = [-1.e0_RK, +1.e1_RK]
         real(RK)    , parameter :: RandomStartPointDomainUpperLimitVec(NDIM) = [+2.e0_RK, +2.e1_RK]
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -826,6 +887,7 @@ contains
                             , RandomStartPointDomainUpperLimitVec = RandomStartPointDomainUpperLimitVec &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. PD%SpecMCMC%RandomStartPointRequested%val
+        end block
 #endif
     end function test_SpecMCMC_RandomStartPointRequested_type_3
 
@@ -838,12 +900,13 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: DomainLowerLimitVec(NDIM) = [-1.e0_RK, +1.e2_RK]
         real(RK)    , parameter :: DomainUpperLimitVec(NDIM) = [+2.e0_RK, +2.e2_RK]
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -854,6 +917,7 @@ contains
                             , chainSize = 100_IK &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. PD%SpecMCMC%RandomStartPointRequested%val
+        end block
 #endif
     end function test_SpecMCMC_RandomStartPointRequested_type_4
 
@@ -866,10 +930,11 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaXXXX_type)     :: PD
-        integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -877,6 +942,7 @@ contains
                             , sampleRefinementCount = -1_IK &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_SampleRefinementCount_type_1
 
@@ -889,10 +955,11 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaXXXX_type)     :: PD
-        integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -900,6 +967,7 @@ contains
                             , inputFile = ParaXXXX_NML//" sampleRefinementCount = -1 /" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_SampleRefinementCount_type_2
 
@@ -912,10 +980,11 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaXXXX_type)     :: PD
-        integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -923,6 +992,7 @@ contains
                             , inputFile = ParaXXXX_NML//" sampleRefinementCount = 0 /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_SampleRefinementCount_type_3
 
@@ -935,10 +1005,11 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaXXXX_type)     :: PD
-        integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -946,6 +1017,7 @@ contains
                             , inputFile = ParaXXXX_NML//" sampleRefinementMethod = 'nonsense' /" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_SampleRefinementMethod_type_1
 
@@ -958,10 +1030,11 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaXXXX_type)     :: PD
-        integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -969,6 +1042,7 @@ contains
                             , sampleRefinementMethod = "Batch  Means" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_SampleRefinementMethod_type_2
 
@@ -981,10 +1055,11 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaXXXX_type)     :: PD
-        integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -992,6 +1067,7 @@ contains
                             , inputFile = ParaXXXX_NML//" sampleRefinementMethod = 'CutOffAutoCorr' /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_SampleRefinementMethod_type_3
 
@@ -1004,10 +1080,11 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaXXXX_type)     :: PD
-        integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1015,6 +1092,7 @@ contains
                             , inputFile = ParaXXXX_NML//" sampleRefinementMethod = 'CutOf  fAuto Corr' /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_SampleRefinementMethod_type_4
 
@@ -1027,10 +1105,11 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaXXXX_type)     :: PD
-        integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1038,6 +1117,7 @@ contains
                             , inputFile = ParaXXXX_NML//" sampleRefinementMethod = 'MaxCum SumAut oCorr' /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_SampleRefinementMethod_type_5
 
@@ -1050,10 +1130,11 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaXXXX_type)     :: PD
-        integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1061,6 +1142,7 @@ contains
                             , inputFile = ParaXXXX_NML//" sampleRefinementMethod = 'batchmeans-avg' /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_SampleRefinementMethod_type_6
 
@@ -1073,10 +1155,11 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaXXXX_type)     :: PD
-        integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1084,6 +1167,7 @@ contains
                             , inputFile = ParaXXXX_NML//" sampleRefinementMethod = 'batchmeans-average' /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_SampleRefinementMethod_type_7
 
@@ -1096,10 +1180,11 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaXXXX_type)     :: PD
-        integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1107,6 +1192,7 @@ contains
                             , inputFile = ParaXXXX_NML//" sampleRefinementMethod = 'batchmeans-med' /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_SampleRefinementMethod_type_8
 
@@ -1119,10 +1205,11 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaXXXX_type)     :: PD
-        integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1130,6 +1217,7 @@ contains
                             , inputFile = ParaXXXX_NML//" sampleRefinementMethod = 'batchmeans-median' /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_SampleRefinementMethod_type_9
 
@@ -1142,10 +1230,11 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaXXXX_type)     :: PD
-        integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1153,6 +1242,7 @@ contains
                             , inputFile = ParaXXXX_NML//" sampleRefinementMethod = 'batchmeans-min' /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_SampleRefinementMethod_type_10
 
@@ -1165,10 +1255,11 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaXXXX_type)     :: PD
-        integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1176,6 +1267,7 @@ contains
                             , inputFile = ParaXXXX_NML//" sampleRefinementMethod = 'batchmeans-minimum' /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_SampleRefinementMethod_type_11
 
@@ -1188,10 +1280,11 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaXXXX_type)     :: PD
-        integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1199,6 +1292,7 @@ contains
                             , inputFile = ParaXXXX_NML//" sampleRefinementMethod = 'batchmeans-max' /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_SampleRefinementMethod_type_12
 
@@ -1211,10 +1305,11 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaXXXX_type)     :: PD
-        integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1222,6 +1317,7 @@ contains
                             , inputFile = ParaXXXX_NML//" sampleRefinementMethod = 'batchmeans-maximum' /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_SampleRefinementMethod_type_13
 
@@ -1234,10 +1330,11 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaXXXX_type)     :: PD
-        integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1245,6 +1342,7 @@ contains
                             , inputFile = ParaXXXX_NML//" scaleFactor = 'nonsense' /" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_ScaleFactor_type_1
 
@@ -1257,10 +1355,11 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaXXXX_type)     :: PD
-        integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1268,6 +1367,7 @@ contains
                             , scaleFactor = " " &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_ScaleFactor_type_2
 
@@ -1280,10 +1380,11 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaXXXX_type)     :: PD
-        integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1291,6 +1392,7 @@ contains
                             , scaleFactor = " " &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_ScaleFactor_type_3
 
@@ -1303,10 +1405,11 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaXXXX_type)     :: PD
-        integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1314,6 +1417,7 @@ contains
                             , scaleFactor = "Gelman / 2" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_ScaleFactor_type_4
 
@@ -1326,10 +1430,11 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaXXXX_type)     :: PD
-        integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1337,6 +1442,7 @@ contains
                             , inputFile = ParaXXXX_NML//" scaleFactor = '2 * Gelman'" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_ScaleFactor_type_5
 
@@ -1349,10 +1455,11 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaXXXX_type)     :: PD
-        integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1360,6 +1467,7 @@ contains
                             , inputFile = ParaXXXX_NML//" scaleFactor = '-0.5 * Gelman'" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_ScaleFactor_type_6
 
@@ -1372,10 +1480,11 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaXXXX_type)     :: PD
-        integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1383,6 +1492,7 @@ contains
                             , inputFile = ParaXXXX_NML//" scaleFactor = '*GELMAN'" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_ScaleFactor_type_7
 
@@ -1395,10 +1505,11 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaXXXX_type)     :: PD
-        integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1406,6 +1517,7 @@ contains
                             , inputFile = ParaXXXX_NML//" scaleFactor = '2. * 0.5 * Gelman'" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. abs(PD%SpecMCMC%ScaleFactor%val-2.38_RK/sqrt(real(NDIM,kind=RK)))<1.e-12_RK
+        end block
 #endif
     end function test_SpecMCMC_ScaleFactor_type_8
 
@@ -1418,11 +1530,12 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: StartPointVec(NDIM) = [1._RK, -10._RK]
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1430,6 +1543,7 @@ contains
                             , StartPointVec = StartPointVec &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. abs(PD%SpecMCMC%ScaleFactor%val-2.38_RK/sqrt(real(NDIM,kind=RK)))<1.e-12_RK
+        end block
 #endif
     end function test_SpecMCMC_StartPointVec_type_1
 
@@ -1442,10 +1556,11 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaXXXX_type)     :: PD
-        integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1453,6 +1568,7 @@ contains
                             , inputFile = ParaXXXX_NML//" StartPointVec = 1., -10., /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecMCMC_StartPointVec_type_2
 
@@ -1465,16 +1581,18 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaXXXX_type)     :: PD
-        integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_StartPointVec_type_3" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. all( abs(PD%SpecMCMC%StartPointVec%Val) < 1.e-12_RK )
+        end block
 #endif
     end function test_SpecMCMC_StartPointVec_type_3
 
@@ -1487,12 +1605,13 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: DomainLowerLimitVec(NDIM) = [-1.e0_RK, +1.e1_RK]
         real(RK)    , parameter :: DomainUpperLimitVec(NDIM) = [+2.e0_RK, +2.e1_RK]
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1512,6 +1631,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
         ! LCOV_EXCL_STOP
+        end block
 #endif
     end function test_SpecMCMC_StartPointVec_type_4
 
@@ -1524,13 +1644,14 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: DomainLowerLimitVec(NDIM) = [-1.e0_RK, +1.e1_RK]
         real(RK)    , parameter :: DomainUpperLimitVec(NDIM) = [+2.e0_RK, +2.e1_RK]
         real(RK)    , parameter :: StartPointVec(NDIM) = [-2.e1_RK, +2.e2_RK]
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1551,6 +1672,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
         ! LCOV_EXCL_STOP
+        end block
 #endif
     end function test_SpecMCMC_StartPointVec_type_5
 
