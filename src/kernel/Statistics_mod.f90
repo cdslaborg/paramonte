@@ -4016,6 +4016,7 @@ contains
         if (present(Size)) then
             self%Size = Size
         else
+            
             allocate(self%Size(self%nc), CumSumSize(0:self%nc))
             CumSumSize(0) = 0._RK
             do ic = 1, self%nc
