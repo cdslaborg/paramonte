@@ -4017,7 +4017,7 @@ contains
             self%Size = Size
         else
             if (allocated(self%Size)) deallocate(self%Size) ! LCOV_EXCL_LINE ! GFortran crashes without this
-            if (allocated(self%CumSumSize)) deallocate(self%CumSumSize) ! LCOV_EXCL_LINE ! GFortran crashes without this
+            if (allocated(CumSumSize)) deallocate(CumSumSize) ! LCOV_EXCL_LINE ! GFortran crashes without this
             allocate(self%Size(self%nc), CumSumSize(0:self%nc))
             CumSumSize(0) = 0._RK
             do ic = 1, self%nc
@@ -4200,7 +4200,7 @@ contains
 
         elseif (isUniform) then
 
-            if (allocated(self%NormedPoint)) deallocate(self%NormedPoint) ! LCOV_EXCL_LINE ! GFortran crashes without this
+            if (allocated(NormedPoint)) deallocate(NormedPoint) ! LCOV_EXCL_LINE ! GFortran crashes without this
             allocate(NormedPoint(self%nd), InvCovMat(self%nd,self%nd,self%nc))
 
             do ic = 1, self%nc
