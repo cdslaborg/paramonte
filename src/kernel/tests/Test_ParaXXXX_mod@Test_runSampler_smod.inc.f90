@@ -76,15 +76,20 @@ contains
     module function test_runSampler_1() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+
+        type(ParaXXXX_type) :: PD
+
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_1" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+
+        end block
 #endif
     end function test_runSampler_1
 
@@ -96,12 +101,15 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
+
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+
         type(ParaXXXX_type)     :: PD
         integer(IK) , parameter :: chainSize_ref = 100_IK
         integer(IK) , parameter :: userSeed_ref = 1111_IK
 
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -121,6 +129,8 @@ contains
             write(Test%outputUnit,"(*(g0))")
         end if
         ! LCOV_EXCL_STOP
+
+        end block
 #endif
     end function test_runSampler_2
 
@@ -131,9 +141,12 @@ contains
     module function test_runSampler_3() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+
+        type(ParaXXXX_type) :: PD
+
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -141,6 +154,8 @@ contains
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_3" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+
+        end block
 #endif
     end function test_runSampler_3
 
@@ -151,9 +166,12 @@ contains
     module function test_runSampler_4() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+
+        type(ParaXXXX_type) :: PD
+
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -161,6 +179,8 @@ contains
                             , inputFile = " " &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+
+        end block
 #endif
     end function test_runSampler_4
 
@@ -171,9 +191,12 @@ contains
     module function test_runSampler_5() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+
+        type(ParaXXXX_type) :: PD
+
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -181,6 +204,8 @@ contains
                             , inputFile = Test%inDir//"/Test_ParaXXXX_mod@test_runSampler_5.in" &
                             )
         assertion = assertion .and. PD%Err%occurred
+
+        end block
 #endif
     end function test_runSampler_5
 
@@ -191,9 +216,11 @@ contains
     module function test_runSampler_6() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD1, PD2
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+
+        type(ParaXXXX_type) :: PD1, PD2
 
         ! Run the fresh simulation
 
@@ -267,6 +294,8 @@ contains
             end if
         end if
         ! LCOV_EXCL_STOP
+
+        end block
 #endif
     end function test_runSampler_6
 
@@ -279,9 +308,12 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+
+        type(ParaXXXX_type) :: PD
+
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -289,6 +321,8 @@ contains
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_runSampler_7" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+
+        end block
 #endif
     end function test_runSampler_7
 
@@ -301,9 +335,12 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+
+        type(ParaXXXX_type) :: PD
+
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -311,6 +348,8 @@ contains
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_runSampler_8" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+
+        end block
 #endif
     end function test_runSampler_8
 
@@ -323,7 +362,6 @@ contains
         logical             :: assertion
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
-
         block
 
         type(ParaXXXX_type) :: PD1, PD2
