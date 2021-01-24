@@ -60,7 +60,9 @@ set(ParaMonteTest_SOURCE_FILES
     ${ParaMonteTest_SRC_DIR}/Test_KmeansOOP_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Math_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Matrix_mod.f90
-    ${ParaMonteTest_SRC_DIR}/Test_MinVolPartition_mod.f90
+    ${ParaMonteTest_SRC_DIR}/Test_Partition_mod.f90
+    ${ParaMonteTest_SRC_DIR}/Test_PartitionMaxDen_mod.f90
+    ${ParaMonteTest_SRC_DIR}/Test_PartitionMinVol_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Misc_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Optimization_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_ParaDRAM_mod.f90
@@ -90,6 +92,9 @@ set(ParaMonteTest_SOURCE_FILES
     ${ParaMonteTest_SRC_DIR}/main.f90
     #${ParaMonteTest_SRC_DIR}/Test_EconomicsToolbox_mod.f90
 )
+
+set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_PartitionMaxDen_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_Partition_mod.inc.f90)
+set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_PartitionMinVol_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_Partition_mod.inc.f90)
 
 set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaXXXX_mod@Test_runSampler_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaXXXX_mod@Test_runSampler_smod.inc.f90)
 

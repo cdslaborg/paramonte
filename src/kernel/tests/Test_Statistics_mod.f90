@@ -251,7 +251,6 @@ contains
         call Test%run(test_getRandGamma_1, "test_getRandGamma_1")
         call Test%run(test_getLogProbMVU_1, "test_getLogProbMVU_1")
         call Test%run(test_getSamCholFac_1, "test_getSamCholFac_1")
-        call Test%run(test_getSamCholFac_2, "test_getSamCholFac_2")
         call Test%run(test_getSamCovMean_1, "test_getSamCovMean_1")
         call Test%run(test_getRandCorMat_1, "test_getRandCorMat_1")
         call Test%run(test_getLogProbGeo_1, "test_getLogProbGeo_1")
@@ -287,6 +286,7 @@ contains
         call Test%run(test_getLogProbNormMP_CK_1, "test_getLogProbNormMP_CK_1")
         call Test%run(test_getLogProbGeoCyclic_1, "test_getLogProbGeoCyclic_1")
         call Test%run(test_getRandGammaIntShape_1, "test_getRandGammaIntShape_1")
+        call Test%run(test_getSamCholFacHighDim_1, "test_getSamCholFacHighDim_1")
         call Test%run(test_getRandExpWithInvMean_1, "test_getRandExpWithInvMean_1")
        !call Test%run(test_mergeMeanCovUpperSlow_1, "test_mergeMeanCovUpperSlow_1")
         call Test%run(test_getLogProbMixMVNSP_RK_1, "test_getLogProbMixMVNSP_RK_1")
@@ -1518,7 +1518,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function test_getSamCholFac_2() result(assertion)
+    function test_getSamCholFacHighDim_1() result(assertion)
 
         use Constants_mod, only: IK, RK
         implicit none
@@ -1539,6 +1539,7 @@ contains
         integer(IK)             :: i
 
         call random_number(Point)
+        Mean = getMean(nd,np,Point)
 
         call Test%Timer%toc()
         do i = 1, ntry
@@ -1574,7 +1575,7 @@ contains
         end if
         ! LCOV_EXCL_STOP
 
-    end function test_getSamCholFac_2
+    end function test_getSamCholFacHighDim_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -20,7 +20,6 @@
   Test_KmeansOOP_mod.f90
   Test_Math_mod.f90
   Test_Matrix_mod.f90
-  Test_MinVolPartition_mod.f90
   Test_Misc_mod.f90
   Test_Optimization_mod.f90
   Test_Path_mod.f90
@@ -37,6 +36,9 @@
   Test_ParaDRAM_RefinedChain_mod.f90
   Test_ParaDISE_RefinedChain_mod.f90
   !Test_ParaNest_RefinedChain_mod.f90
+  Test_Partition_mod.f90
+  Test_PartitionMaxDen_mod.f90
+  Test_PartitionMinVol_mod.f90
   Test_RandomSeed_mod.f90
   Test_Sort_mod.f90
   Test_StarFormation_mod.f90

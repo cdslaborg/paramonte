@@ -67,7 +67,9 @@ SET(ParaMonte_SOURCE_FILES
     ${ParaMonteKernel_SRC_DIR}/Statistics_mod.f90
     ${ParaMonteKernel_SRC_DIR}/Kmeans_mod.f90
     ${ParaMonteKernel_SRC_DIR}/KmeansOOP_mod.f90
-    ${ParaMonteKernel_SRC_DIR}/MinVolPartition_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/Partition_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/PartitionMaxDen_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/PartitionMinVol_mod.f90
     ${ParaMonteKernel_SRC_DIR}/GeoCyclicFit_mod.f90
     ${ParaMonteKernel_SRC_DIR}/Parallelism_mod.f90
     ${ParaMonteKernel_SRC_DIR}/CorrCoef_mod.f90
@@ -173,6 +175,9 @@ SET(ParaMonte_SOURCE_FILES
     ${ParaMonteKernel_SRC_DIR}/ParaDISE_mod@Postprocess_smod.f90
     ${ParaMonteKernel_SRC_DIR}/ParaMonte@runParaDRAM.f90
 )
+
+set_source_files_properties(${ParaMonteKernel_SRC_DIR}/PartitionMaxDen_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/Partition_mod.inc.f90)
+set_source_files_properties(${ParaMonteKernel_SRC_DIR}/PartitionMinVol_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/Partition_mod.inc.f90)
 
 set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaMonte_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaMonte_mod@version@kernel.inc.f90)
 

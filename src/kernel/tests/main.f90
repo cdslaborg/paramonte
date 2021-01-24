@@ -88,7 +88,9 @@ call setup()
 !block; use Test_KmeansOOP_mod; call test_KmeansOOP(); end block
 !block; use Test_Math_mod; call test_Math(); end block
 !block; use Test_Matrix_mod; call test_Matrix(); end block
-block; use Test_MinVolPartition_mod; call Test_MinVolPartition(); end block
+block; use Test_Partition_mod; call Test_Partition(); end block
+block; use Test_PartitionMaxDen_mod; call Test_Partition(); end block
+block; use Test_PartitionMinVol_mod; call Test_Partition(); end block
 !block; use Test_Misc_mod; call test_Misc(); end block
 !block; use Test_Optimization_mod; call test_Optimization(); end block
 !block; use Test_Parallelism_mod; call test_Parallelism(); end block

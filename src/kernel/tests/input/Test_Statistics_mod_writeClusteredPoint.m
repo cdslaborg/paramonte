@@ -87,27 +87,27 @@ for iupdate = 1:ClusteredPoint.count
     %%%% plot ellipsoids
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    figure; hold on; box on;
-
-    plot( ClusteredPoint.update{iupdate}.Point(:,1) ...
-        , ClusteredPoint.update{iupdate}.Point(:,2) ...
-        , "." ...
-        );
-
-    % get ellipsoid boundary
-
-    for ic = 1:ClusteredPoint.update{iupdate}.nc
-        bcrd = getEllipsoidBoundary ( ClusteredPoint.update{iupdate}.CovMatUpper(:,:,ic) ... covMat
-                                    , ClusteredPoint.update{iupdate}.Center(:,ic) ... meanVec
-                                    , 50 ... npoint
-                                    );
-        plot( bcrd(:,1) ...
-            , bcrd(:,2) ...
-            , "color", "red" ...
-            );
-    end
-
-    hold off;
+%    figure; hold on; box on;
+%
+%    plot( ClusteredPoint.update{iupdate}.Point(:,1) ...
+%        , ClusteredPoint.update{iupdate}.Point(:,2) ...
+%        , "." ...
+%        );
+%
+%    % get ellipsoid boundary
+%
+%    for ic = 1:ClusteredPoint.update{iupdate}.nc
+%        bcrd = getEllipsoidBoundary ( ClusteredPoint.update{iupdate}.CovMatUpper(:,:,ic) ... covMat
+%                                    , ClusteredPoint.update{iupdate}.Center(:,ic) ... meanVec
+%                                    , 50 ... npoint
+%                                    );
+%        plot( bcrd(:,1) ...
+%            , bcrd(:,2) ...
+%            , "color", "red" ...
+%            );
+%    end
+%
+%    hold off;
 
 end
 

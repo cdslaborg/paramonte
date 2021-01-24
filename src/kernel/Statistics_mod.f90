@@ -1998,7 +1998,6 @@ contains
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: isInsideEllipsoid
 #endif
-        use Math_mod, only: getLogVolEllipsoid
         implicit none
         integer(IK), intent(in) :: nd
         real(RK)   , intent(in) :: NormedPoint(nd)
@@ -3929,6 +3928,7 @@ contains
         use Matrix_mod, only: getInvMatFromCholFac
         use Matrix_mod, only: getCholeskyFactor
         use Constants_mod, only: IK, RK
+        use String_mod, only: num2str !, getLowerCase
         use Math_mod, only: getCumSum
         implicit none
         class(ClusteredPoint_type), intent(inout)       :: self
@@ -3948,6 +3948,7 @@ contains
         real(RK)                                        :: dummy, minLogVol
         logical                                         :: isUniformSuperposed
         logical                                         :: isUniform, isMember
+        logical                                         :: isNormal
         integer(IK)                                     :: i, j, ic, ip, membershipCount, minSize
 
         self%Err%occurred = .false.
@@ -4125,6 +4126,13 @@ contains
                                     , PosDefMat = self%ChoLowCovUpp(1:self%nd,1:self%nd,ic) & ! LCOV_EXCL_LINE
                                     , Diagonal = self%ChoDia(1:self%nd,ic) & ! LCOV_EXCL_LINE
                                     )
+            if (self%ChoDia(1,ic) < 0._RK) then
+                self%Err%occurred = .true.
+                self%Err%msg = "Singular Covariance matrix detected."
+                write(*,"(A)") "ChoLowCovUpp:"
+                write(*,"("//num2str(self%nd)//"(F15.8,:,' '))") self%ChoLowCovUpp(1:self%nd,1:self%nd,ic)
+                error stop
+            end if
 
             self%LogVolume(ic) = sum(log(self%ChoDia(1:self%nd,ic)))
 
@@ -4142,11 +4150,12 @@ contains
         if (present(dist)) then
             self%dist = dist
         else
-            self%dist = "superposedUniform"
+            self%dist = "uniform-mixture"
         end if
 
         isUniform = self%dist == "uniform"
-        isUniformSuperposed = self%dist == "superposedUniform"
+        isNormal = self%dist == "normal-mixture"
+        isUniformSuperposed = self%dist == "uniform-mixture"
 
         if (.not. (isUniformSuperposed .or. isUniform)) then
             self%Err%occurred = .true.
