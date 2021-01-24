@@ -75,9 +75,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -85,6 +86,7 @@ contains
                             , adaptiveUpdateCount = -1_IK &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecDRAM_AdaptiveUpdateCount_type_1
 
@@ -96,9 +98,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -106,6 +109,7 @@ contains
                             , adaptiveUpdateCount = 0_IK &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecDRAM_AdaptiveUpdateCount_type_2
 
@@ -117,9 +121,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -127,6 +132,7 @@ contains
                             , inputFile = ParaXXXX_NML//" adaptiveUpdateCount = 0 /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecDRAM_AdaptiveUpdateCount_type_3
 
@@ -138,9 +144,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -148,6 +155,7 @@ contains
                             , adaptiveUpdatePeriod = 0_IK &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecDRAM_AdaptiveUpdatePeriod_type_1
 
@@ -159,9 +167,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -169,6 +178,7 @@ contains
                             , adaptiveUpdatePeriod = 1_IK &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecDRAM_AdaptiveUpdatePeriod_type_2
 
@@ -180,9 +190,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -190,6 +201,7 @@ contains
                             , inputFile = ParaXXXX_NML//" adaptiveUpdatePeriod = 1 /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecDRAM_AdaptiveUpdatePeriod_type_3
 
@@ -201,9 +213,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -211,6 +224,7 @@ contains
                             , burninAdaptationMeasure = -0.1_RK &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecDRAM_BurninAdaptationMeasure_type_1
 
@@ -222,9 +236,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -232,6 +247,7 @@ contains
                             , burninAdaptationMeasure = 1.1_RK &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecDRAM_BurninAdaptationMeasure_type_2
 
@@ -243,9 +259,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -253,6 +270,7 @@ contains
                             , burninAdaptationMeasure = 1._RK &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecDRAM_BurninAdaptationMeasure_type_3
 
@@ -264,9 +282,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -274,6 +293,7 @@ contains
                             , inputFile = ParaXXXX_NML//" burninAdaptationMeasure = 0.5 /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecDRAM_BurninAdaptationMeasure_type_4
 
@@ -286,9 +306,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -296,6 +317,7 @@ contains
                             , delayedRejectionCount = MIN_DELAYED_REJECTION_COUNT - 1_IK &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecDRAM_DelayedRejectionCount_type_1
 
@@ -308,9 +330,10 @@ contains
         use SpecDRAM_DelayedRejectionCount_mod, only: MAX_DELAYED_REJECTION_COUNT
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -318,6 +341,7 @@ contains
                             , delayedRejectionCount = MAX_DELAYED_REJECTION_COUNT + 1_IK &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecDRAM_DelayedRejectionCount_type_2
 
@@ -329,9 +353,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -339,6 +364,7 @@ contains
                             , delayedRejectionCount = 0_IK &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecDRAM_DelayedRejectionCount_type_3
 
@@ -350,9 +376,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -360,6 +387,7 @@ contains
                             , inputFile = ParaXXXX_NML//" delayedRejectionCount = 3 /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecDRAM_DelayedRejectionCount_type_4
 
@@ -371,9 +399,10 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -382,6 +411,7 @@ contains
                             , inputFile = ParaXXXX_NML//" DelayedRejectionScaleFactorVec = 3., 2., 1., /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+        end block
 #endif
     end function test_SpecDRAM_DelayedRejectionScaleFactorVec_type_1
 
@@ -394,10 +424,11 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical                 :: assertion
-        type(ParaXXXX_type)     :: PD
-        integer(IK), parameter  :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        integer(IK), parameter  :: NDIM = 2_IK
+        type(ParaXXXX_type)     :: PD
         call PD%runSampler  ( ndim = 2_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -405,6 +436,7 @@ contains
                             , inputFile = ParaXXXX_NML//" delayedRejectionCount = 3 /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. all(abs(PD%SpecDRAM%DelayedRejectionScaleFactorVec%Val-0.5_RK**(1._RK/real(NDIM,kind=RK)))<1.e-12_RK)
+        end block
 #endif
     end function test_SpecDRAM_DelayedRejectionScaleFactorVec_type_2
 
@@ -417,11 +449,12 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
         type(ParaXXXX_type)     :: PD
         real(RK), parameter     :: DelayedRejectionScaleFactorVec(*) = [3._RK, 2._RK]
         integer(IK), parameter  :: delayedRejectionCount = 2_IK
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -430,6 +463,7 @@ contains
                             , inputFile = ParaXXXX_NML//" delayedRejectionCount = "//num2str(delayedRejectionCount)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. all(PD%SpecDRAM%DelayedRejectionScaleFactorVec%Val==DelayedRejectionScaleFactorVec(1:delayedRejectionCount))
+        end block
 #endif
     end function test_SpecDRAM_DelayedRejectionScaleFactorVec_type_3
 
@@ -441,10 +475,11 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
-        real(RK), parameter :: DelayedRejectionScaleFactorVec(*) = [-1._RK, 2._RK]
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
+        real(RK), parameter :: DelayedRejectionScaleFactorVec(*) = [-1._RK, 2._RK]
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -453,6 +488,7 @@ contains
                             , inputFile = ParaXXXX_NML//" delayedRejectionCount = 2 /" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecDRAM_DelayedRejectionScaleFactorVec_type_4
 
@@ -464,10 +500,11 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
-        real(RK), parameter :: DelayedRejectionScaleFactorVec(*) = [2._RK, 0._RK, 1._RK]
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type) :: PD
+        real(RK), parameter :: DelayedRejectionScaleFactorVec(*) = [2._RK, 0._RK, 1._RK]
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -476,6 +513,7 @@ contains
                             , inputFile = ParaXXXX_NML//" delayedRejectionCount = 2 /" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecDRAM_DelayedRejectionScaleFactorVec_type_5
 
@@ -487,10 +525,11 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical                 :: assertion
-        type(ParaXXXX_type)     :: PD
-        integer(IK), parameter  :: greedyAdaptationCount = 10_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type)     :: PD
+        integer(IK), parameter  :: greedyAdaptationCount = 10_IK
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -498,6 +537,7 @@ contains
                             , greedyAdaptationCount = greedyAdaptationCount &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. PD%SpecDRAM%greedyAdaptationCount%val==greedyAdaptationCount
+        end block
 #endif
     end function test_SpecDRAM_GreedyAdaptationCount_type_1
 
@@ -510,10 +550,11 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaXXXX_type)     :: PD
-        integer(IK), parameter  :: greedyAdaptationCount = 0_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type)     :: PD
+        integer(IK), parameter  :: greedyAdaptationCount = 0_IK
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -521,6 +562,7 @@ contains
                             , inputFile = ParaXXXX_NML//" greedyAdaptationCount = "//num2str(greedyAdaptationCount)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. PD%SpecDRAM%greedyAdaptationCount%val==greedyAdaptationCount
+        end block
 #endif
     end function test_SpecDRAM_GreedyAdaptationCount_type_2
 
@@ -533,10 +575,11 @@ contains
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaXXXX_type)     :: PD
-        integer(IK), parameter  :: greedyAdaptationCount = -1_IK
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+        type(ParaXXXX_type)     :: PD
+        integer(IK), parameter  :: greedyAdaptationCount = -1_IK
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -544,6 +587,7 @@ contains
                             , inputFile = ParaXXXX_NML//" greedyAdaptationCount = "//num2str(greedyAdaptationCount)//" /" &
                             )
         assertion = assertion .and. PD%Err%occurred
+        end block
 #endif
     end function test_SpecDRAM_GreedyAdaptationCount_type_3
 
