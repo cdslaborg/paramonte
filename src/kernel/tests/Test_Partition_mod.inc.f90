@@ -227,7 +227,7 @@ contains
 
         assertion = .true.
 
-        !RandomSeed = RandomSeed_type(imageID = Test%Image%id, inputSeed = 1234_IK)
+        RandomSeed = RandomSeed_type(imageID = Test%Image%id, inputSeed = 1234_IK)
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! Generate clustered points
@@ -262,7 +262,7 @@ contains
         ! Partition the clustered points clustered points
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        !RandomSeed = RandomSeed_type(imageID = Test%Image%id, inputSeed = 12243_IK)
+        RandomSeed = RandomSeed_type(imageID = Test%Image%id, inputSeed = 12243_IK)
 
         Partition = Partition_type  ( Point = ClusteredPoint%Point & ! LCOV_EXCL_LINE
                                     , nd = ClusteredPoint%nd & ! LCOV_EXCL_LINE

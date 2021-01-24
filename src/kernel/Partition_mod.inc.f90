@@ -163,7 +163,7 @@ contains
         self%mahalSqWeightExponent = 0._RK; if (present(mahalSqWeightExponent)) self%mahalSqWeightExponent = mahalSqWeightExponent
 #endif
         self%inclusionFraction = 0._RK; if (present(inclusionFraction)) self%inclusionFraction = inclusionFraction
-        self%logTightness = log(1.1_RK); if (present(logTightness)) self%logTightness = logTightness
+        self%logTightness = log(1.3_RK); if (present(logTightness)) self%logTightness = logTightness
         self%parLogVol = -huge(1._RK); if (present(parLogVol)) self%parLogVol = parLogVol
 
         allocate( self%Size         (self%nemax) & ! LCOV_EXCL_LINE
