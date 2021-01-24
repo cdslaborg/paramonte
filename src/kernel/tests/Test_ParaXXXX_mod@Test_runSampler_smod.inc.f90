@@ -321,9 +321,12 @@ contains
     module function test_runSampler_9() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD1, PD2
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+
+        block
+
+        type(ParaXXXX_type) :: PD1, PD2
 
         ! Run the fresh simulation as a reference run
 
@@ -438,6 +441,8 @@ contains
 
         end if
         ! LCOV_EXCL_STOP
+
+        end block
 #endif
     end function test_runSampler_9
 
@@ -448,9 +453,11 @@ contains
     module function test_runSampler_10() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD1, PD2
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+
+        type(ParaXXXX_type) :: PD1, PD2
 
         ! Run the fresh simulation as a reference run
 
@@ -510,6 +517,7 @@ contains
 
         if (PD2%Image%isLeader) assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-6_RK ) ! LCOV_EXCL_LINE ! by default, the output precision is only 8 digits
 
+        end block
 #endif
     end function test_runSampler_10
 
@@ -521,9 +529,12 @@ contains
     module function test_runSampler_11() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD1, PD2
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+
+        block
+
+        type(ParaXXXX_type) :: PD1, PD2
 
         ! Run the fresh simulation as a reference run
 
@@ -585,6 +596,8 @@ contains
         if (.not. assertion) return ! LCOV_EXCL_LINE
 
         if (PD2%Image%isLeader) assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-6_RK ) ! LCOV_EXCL_LINE ! by default, the output precision is only 8 digits
+
+        end block
 #endif
     end function test_runSampler_11
 
@@ -596,9 +609,12 @@ contains
     module function test_runSampler_12() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD1, PD2
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+
+        block
+
+        type(ParaXXXX_type) :: PD1, PD2
 
         ! Run the fresh simulation as a reference run
 
@@ -661,6 +677,7 @@ contains
 
         if (PD2%Image%isLeader) assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-6_RK ) ! LCOV_EXCL_LINE ! by default, the output precision is only 8 digits
 
+        end block
 #endif
     end function test_runSampler_12
 
@@ -673,9 +690,12 @@ contains
     module function test_runSampler_13() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+        block
+
+        type(ParaXXXX_type) :: PD
+
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -683,6 +703,8 @@ contains
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_13" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+
+        end block
 #endif
     end function test_runSampler_13
 
@@ -695,9 +717,13 @@ contains
     module function test_runSampler_14() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+
+        block
+
+        type(ParaXXXX_type) :: PD
+
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -705,6 +731,9 @@ contains
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_14" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
+
+        end block
+
 #endif
     end function test_runSampler_14
 
@@ -717,6 +746,11 @@ contains
         use Statistics_mod, only: flatten
         implicit none
         logical                 :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+
+        block
+
         real(RK)    , parameter :: tolerance = 1.e-10_RK
         character(*), parameter :: DELIM = "delim"
         integer(IK) , parameter :: NDIM = 2_IK
@@ -724,8 +758,6 @@ contains
         type(RefinedChain_type) :: RefinedChain
         real(RK), allocatable   :: Difference(:,:)
         real(RK), allocatable   :: FlattenedLogFuncState(:,:)
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
 
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
@@ -788,6 +820,8 @@ contains
         end if
         ! LCOV_EXCL_STOP
 
+        end block
+
 #endif
     end function test_runSampler_15
 
@@ -798,9 +832,12 @@ contains
     module function test_runSampler_16() result(assertion)
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD1, PD2
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+
+        block
+
+        type(ParaXXXX_type) :: PD1, PD2
 
         ! Run the fresh simulation
 
@@ -876,6 +913,8 @@ contains
             end if
         end if
         ! LCOV_EXCL_STOP
+
+        end block
 #endif
     end function test_runSampler_16
 
@@ -889,10 +928,13 @@ contains
         use Constants_mod, only: RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD1, PD2
-        real(RK), parameter :: targetAcceptanceRate(*) = [0.2_RK, 0.23_RK]
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+
+        block
+
+        type(ParaXXXX_type) :: PD1, PD2
+        real(RK), parameter :: targetAcceptanceRate(*) = [0.2_RK, 0.23_RK]
 
         ! Run the fresh simulation
 
@@ -978,6 +1020,9 @@ contains
             end if
         end if
         ! LCOV_EXCL_STOP
+
+        end block
+
 #endif
     end function test_runSampler_17
 
@@ -992,10 +1037,13 @@ contains
         use Constants_mod, only: RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD1, PD2
-        real(RK), parameter :: targetAcceptanceRate(*) = [0.2_RK, 0.23_RK]
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+
+        block
+
+        type(ParaXXXX_type) :: PD1, PD2
+        real(RK), parameter :: targetAcceptanceRate(*) = [0.2_RK, 0.23_RK]
 
         ! Run the fresh simulation
 
@@ -1083,6 +1131,9 @@ contains
             end if
         end if
         ! LCOV_EXCL_STOP
+
+        end block
+
 #endif
     end function test_runSampler_18
 
@@ -1098,10 +1149,13 @@ contains
         use Constants_mod, only: RK
         implicit none
         logical             :: assertion
-        type(ParaXXXX_type) :: PD1, PD2
-        real(RK), parameter :: targetAcceptanceRate(*) = [0.2_RK, 0.23_RK]
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+
+        block
+
+        type(ParaXXXX_type) :: PD1, PD2
+        real(RK), parameter :: targetAcceptanceRate(*) = [0.2_RK, 0.23_RK]
 
         ! Run the fresh simulation
 
@@ -1191,6 +1245,9 @@ contains
             end if
         end if
         ! LCOV_EXCL_STOP
+
+        end block
+
 #endif
     end function test_runSampler_19
 
@@ -1205,11 +1262,14 @@ contains
     module function test_runSampler_20() result(assertion)
         use Constants_mod, only: RK
         implicit none
-        logical             :: assertion = .true.
+        logical             :: assertion
+        assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+
+        block
+
         type(ParaXXXX_type) :: PD1, PD2
         real(RK), parameter :: targetAcceptanceRate(*) = [0.2_RK, 0.23_RK]
-        !assertion = .true.
 
         ! Run the fresh simulation
 
@@ -1299,6 +1359,8 @@ contains
             end if
         end if
         ! LCOV_EXCL_STOP
+
+        end block
 #endif
     end function test_runSampler_20
 
@@ -1313,6 +1375,11 @@ contains
         use Statistics_mod, only: flatten
         implicit none
         logical                 :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+
+        block
+
         real(RK)    , parameter :: tolerance = 1.e-10_RK
         character(*), parameter :: DELIM = "delim"
         integer(IK) , parameter :: NDIM = 2_IK
@@ -1320,8 +1387,6 @@ contains
         type(RefinedChain_type) :: RefinedChain
         real(RK), allocatable   :: Difference(:,:)
         real(RK), allocatable   :: FlattenedLogFuncState(:,:)
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
 
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
@@ -1400,6 +1465,8 @@ contains
 
         end if
 
+        end block
+
 #endif
     end function test_runSampler_21
 
@@ -1413,13 +1480,16 @@ contains
         use ParaXXXX_RefinedChain_mod, only: readRefinedChain, RefinedChain_type
         implicit none
         logical                 :: assertion
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+
+        block
+
         real(RK)    , parameter :: tolerance = 1.e-10_RK
         character(*), parameter :: DELIM = "delim"
         integer(IK) , parameter :: NDIM = 2_IK
         type(RefinedChain_type) :: RefinedChain
         type(ParaXXXX_type)     :: PD
-        assertion = .true.
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
 
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
@@ -1462,6 +1532,8 @@ contains
 
         end if
         ! LCOV_EXCL_STOP
+
+        end block
 
 #endif
     end function test_runSampler_22
