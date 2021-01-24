@@ -119,9 +119,9 @@ contains
 
         implicit none
 
-        real(RK)    , intent(inout)             :: Point(nd,np)
         integer(IK) , intent(in)                :: nd,np
         integer(IK) , intent(in), optional      :: nemax
+        real(RK)    , intent(inout)             :: Point(nd,np) ! do not move this up. This must appear after nd, np declaration.
         integer(IK) , intent(in), optional      :: partitionMaxAllowedFailure
         integer(IK) , intent(in), optional      :: partitionMaxAllowedRecursion
         integer(IK) , intent(in), optional      :: partitionMaxAllowedKmeansFailure
@@ -256,9 +256,9 @@ contains
 
         implicit none
 
-        real(RK)        , intent(inout)             :: Point(nd,np)                         ! the input data (points) to be clustered. on output, it is ordered.
         integer(IK)     , intent(in)                :: nd,np                                ! the maximum allowed number of ellipsoidal clusters, number of dimensions, number of points
         integer(IK)     , intent(in)                :: nemax                                ! the maximum allowed number of ellipsoidal clusters, number of dimensions, number of points
+        real(RK)        , intent(inout)             :: Point(nd,np)                         ! the input data (points) to be clustered. on output, it is ordered. This must appear after nd, np declaration.
         integer(IK)     , intent(in)                :: partitionMaxAllowedFailure
         integer(IK)     , intent(in)                :: partitionMaxAllowedRecursion
         integer(IK)     , intent(in)                :: partitionMaxAllowedKmeansFailure
