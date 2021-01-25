@@ -83,7 +83,7 @@ contains
         implicit none
         Test = Test_type(moduleName=MODULE_NAME)
         call TestData%read()
-        call Test%run(test_runPartition_1, "test_runPartition_1")
+        !call Test%run(test_runPartition_1, "test_runPartition_1")
         call Test%run(test_runPartition_2, "test_runPartition_2")
         !call Test%run(test_runPartition_3, "test_runPartition_3")
         !call Test%run(test_runPartition_4, "test_runPartition_4")
@@ -273,7 +273,7 @@ contains
                                     !, partitionMaxAllowedRecursion = 10000 & ! LCOV_EXCL_LINE
                                     !, partitionMaxAllowedKmeansFailure = 10000 & ! LCOV_EXCL_LINE
                                     !, partitionStabilizationRequested = .true. & ! LCOV_EXCL_LINE
-                                    , partitionOptimizationRequested = .true. & ! LCOV_EXCL_LINE
+                                    , partitionOptimizationRequested = .false. & ! LCOV_EXCL_LINE
 #if !defined MAXDEN && !defined MINVOL
                                     , mahalSqWeightExponent = 1._RK & ! LCOV_EXCL_LINE
 #endif
