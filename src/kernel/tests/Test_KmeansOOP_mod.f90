@@ -519,7 +519,7 @@ contains
         integer(IK), parameter      :: ntMax = 1_IK
         logical                     :: assertion
         type(KmeansOOP_type)        :: Kmeans
-        integer                     :: i, fileUnit, np, nc
+        integer                     :: i, np, nc
 
         assertion = .true.
 

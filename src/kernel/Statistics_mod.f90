@@ -1096,7 +1096,7 @@ contains
         real(RK)   , intent(out) :: CholeskyDiago(nd)      ! Diagonal elements of the Cholesky factorization
         real(RK)                 :: npMinusOneInverse
         real(RK)                 :: NormData(nd)
-        integer(IK)              :: i, j, ip
+        integer(IK)              :: j, ip
 
         npMinusOneInverse = 1._RK / real(np-1,kind=RK)
 
@@ -3945,11 +3945,11 @@ contains
         real(RK)    , allocatable                       :: NormedPoint(:), InvCovMat(:,:,:)
         real(RK)    , allocatable                       :: CumSumVolNormed(:)
         real(RK)    , allocatable                       :: VolNormed(:)
-        real(RK)                                        :: dummy, minLogVol
         logical                                         :: isUniformSuperposed
         logical                                         :: isUniform, isMember
         logical                                         :: isNormal
-        integer(IK)                                     :: i, j, ic, ip, membershipCount, minSize
+        real(RK)                                        :: dummy
+        integer(IK)                                     :: i, j, ic, ip, membershipCount
 
         self%Err%occurred = .false.
 

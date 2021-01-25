@@ -147,7 +147,6 @@ contains
         integer(IK) , intent(in)            :: ndMax, npMax, ncMax, ntMax
         integer(IK) , intent(in), optional  :: niterMax, nzsciMax
         real(RK)    , intent(in), optional  :: relTol
-        integer(IK)                         :: it
         if (present(relTol)) Kmeans%relTol = relTol
         if (present(niterMax)) Kmeans%niterMax = niterMax
         if (present(nzsciMax)) Kmeans%nzsciMax = nzsciMax
@@ -227,11 +226,11 @@ contains
 
         implicit none
 
-        real(RK)    , intent(in)            :: Point(nd,np)
-        integer(IK) , intent(in)            :: nd, np, nc, nt
-        integer(IK) , intent(in), optional  :: niterMax, nzsciMax
-        real(RK)    , intent(in), optional  :: relTol, InitCenter(nd,nc,nt)
-        class(KmeansOOP_type)               :: Kmeans
+        class(KmeansOOP_type), intent(inout)    :: Kmeans
+        integer(IK) , intent(in)                :: nd, np, nc, nt
+        real(RK)    , intent(in)                :: Point(nd,np) ! This must appear after nd, np declarations.
+        integer(IK) , intent(in), optional      :: niterMax, nzsciMax
+        real(RK)    , intent(in), optional      :: relTol, InitCenter(nd,nc,nt)
 
         character(*), parameter :: PROCEDURE_NAME = MODULE_NAME//"@runKmeans()"
 
@@ -244,7 +243,7 @@ contains
 
         logical                 :: isPresentInitCenter
         logical                 :: convergenceOccurred
-        integer                 :: i, j, ip, ic, it
+        integer                 :: ip, ic, it
 
         Kmeans%itopt = 0_IK
         Kmeans%failed = .true.
@@ -475,8 +474,7 @@ contains
         real(RK)                    :: Center(nd,nc)
         real(RK)                    :: MinDistanceSq(np)    ! An array representing the minimum distances of individual points from all clusters.
         real(RK)                    :: CumSumDistSq(0:np)   ! sum of distance squared of points up to the given index of the vector.
-        integer(IK)                 :: randomInteger
-        integer(IK)                 :: ic, ip, i
+        integer(IK)                 :: ic, ip
 
         CumSumDistSq(0) = 0._RK ! This element must always remain zero.
 

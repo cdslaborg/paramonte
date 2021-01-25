@@ -322,7 +322,7 @@ contains
         integer(IK)             :: niterMaxDefault
         integer(IK)             :: nzsciMaxDefault
         real(RK)                :: relTolDefault
-        integer                 :: i, j, ip, ic
+        integer                 :: ip, ic
 
         Err%occurred = .false.
 
@@ -535,8 +535,7 @@ contains
         real(RK)                    :: Center(nd,nc)
         real(RK)                    :: MinDistanceSq(np)    ! An array representing the minimum distances of individual points from all clusters.
         real(RK)                    :: CumSumDistSq(0:np)   ! sum of distance squared of points up to the given index of the vector.
-        integer(IK)                 :: randomInteger
-        integer(IK)                 :: ic, ip, i
+        integer(IK)                 :: ic, ip
 
         CumSumDistSq(0) = 0._RK ! This element must always remain zero.
 

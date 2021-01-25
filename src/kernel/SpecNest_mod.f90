@@ -265,7 +265,6 @@ contains
         character(*), intent(in)            :: prefix
         integer(IK), intent(in)             :: outputUnit
         logical, intent(in)                 :: isLeaderImage, splashModeRequested
-        integer(IK)                         :: i
 
         if (isLeaderImage) then
 

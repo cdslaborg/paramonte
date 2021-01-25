@@ -1038,7 +1038,8 @@ contains
         real(RK), intent(out)   :: LogSqrtDetInvCovMat(0:mc_DelayedRejectionCount)
         integer(IK)             :: istage
         ! update the inverse covariance matrix of the proposal from the computed Cholesky factor
-        do concurrent(istage=0:mc_DelayedRejectionCount)
+        !do concurrent(integer(IK) :: istage = 0:mc_DelayedRejectionCount)
+        do concurrent(istage = 0:mc_DelayedRejectionCount)
             ! WARNING: Do not set the full boundaries' range `(1:mc_ndim)` for the first index of `CholDiagLower` in the following subroutine call.
             ! WARNING: Setting the boundaries forces the compiler to generate a temporary array.
             InvCovMat(1:mc_ndim,1:mc_ndim,istage) = getInvMatFromCholFac( nd = mc_ndim & ! LCOV_EXCL_LINE

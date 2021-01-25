@@ -268,7 +268,6 @@ contains
         implicit none
         integer(IK) , parameter     :: nc = 3_IK
         integer(IK) , parameter     :: niterMax = 1_IK
-        real(RK)    , allocatable   :: InitCenter(:,:)
         logical                     :: assertion
 
         type(Kmeans_type)           :: Kmeans
@@ -347,7 +346,6 @@ contains
         integer(IK) , parameter     :: nc = 3_IK
         integer(IK) , parameter     :: nzsciMax = 100_IK
         real(RK)    , parameter     :: relTol = 1.e-8_RK
-        real(RK)    , allocatable   :: InitCenter(:,:)
         logical                     :: assertion
         type(Kmeans_type)           :: Kmeans
         integer                     :: i, fileUnit
@@ -505,11 +503,10 @@ contains
         integer(IK) , parameter     :: ncMax = 3_IK
         integer(IK) , parameter     :: nzsciMax = 100_IK
         real(RK)    , parameter     :: relTol = 1.e-8_RK
-        real(RK)    , allocatable   :: InitCenter(:,:)
         logical                     :: assertion
 
         type(Kmeans_type)           :: Kmeans
-        integer                     :: i, fileUnit, np, nc
+        integer                     :: i, np, nc
 
         assertion = .true.
 
