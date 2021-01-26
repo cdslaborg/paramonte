@@ -227,7 +227,7 @@ contains
 
         assertion = .true.
 
-        RandomSeed = RandomSeed_type(imageID = Test%Image%id, inputSeed = 1234_IK)
+        RandomSeed = RandomSeed_type(imageID = Test%Image%id, inputSeed = 11234_IK)
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! Generate clustered points
@@ -243,7 +243,7 @@ contains
                                 , nc = 5_IK & ! LCOV_EXCL_LINE
                                 !, Size = [50, 1000, 500, 2000, 3] & ! LCOV_EXCL_LINE
                                 !, Eta = [1._RK, 2._RK, 0.5_RK, 0.05_RK, 1.5_RK] & ! LCOV_EXCL_LINE
-                                !, dist = "uniform" & ! LCOV_EXCL_LINE
+                                , dist = "uniform" & ! LCOV_EXCL_LINE
                                 )
 
         ! write data to output for further investigation
@@ -262,7 +262,7 @@ contains
         ! Partition the clustered points clustered points
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        RandomSeed = RandomSeed_type(imageID = Test%Image%id, inputSeed = 12243_IK)
+        !RandomSeed = RandomSeed_type(imageID = Test%Image%id, inputSeed = 12243_IK)
 
         Partition = Partition_type  ( Point = ClusteredPoint%Point & ! LCOV_EXCL_LINE
                                     , nd = ClusteredPoint%nd & ! LCOV_EXCL_LINE
@@ -272,13 +272,13 @@ contains
                                     !, partitionMaxAllowedFailure = 10000 & ! LCOV_EXCL_LINE
                                     !, partitionMaxAllowedRecursion = 10000 & ! LCOV_EXCL_LINE
                                     !, partitionMaxAllowedKmeansFailure = 10000 & ! LCOV_EXCL_LINE
-                                    !, partitionStabilizationRequested = .true. & ! LCOV_EXCL_LINE
-                                    , partitionOptimizationRequested = .false. & ! LCOV_EXCL_LINE
+                                    , partitionStabilizationRequested = .false. & ! LCOV_EXCL_LINE
+                                    , partitionOptimizationRequested = .true. & ! LCOV_EXCL_LINE
 #if !defined MAXDEN && !defined MINVOL
                                     , mahalSqWeightExponent = 1._RK & ! LCOV_EXCL_LINE
 #endif
                                     , inclusionFraction = 0._RK & ! LCOV_EXCL_LINE
-                                    , logTightness = log(0.1_RK) & ! LCOV_EXCL_LINE
+                                    , logTightness = log(1._RK) & ! LCOV_EXCL_LINE
                                     !, parLogVol = sum(log(ClusteredPoint%DomainSize)) & ! LCOV_EXCL_LINE
                                     , trimEnabled = .true. & ! LCOV_EXCL_LINE
                                     )
@@ -301,6 +301,8 @@ contains
         assertion = assertion .and. all(Partition%Size > 0_IK)
         assertion = assertion .and. all(Partition%Membership > 0_IK) .and. all(Partition%Membership < Partition%neopt + 1)
 
+        ! Ensure all points are within their corresponding clusters.
+
         do ip = 1, Partition%np
             ic = Partition%Membership(ip)
             NormedPoint = ClusteredPoint%Point(:,ip) - Partition%Center(:,ic)
@@ -308,12 +310,10 @@ contains
             isInside = mahalSq - 1._RK <= 1.e-6_RK
             if (.not. isInside) then
                 if (Test%isVerboseMode) write(Test%outputUnit,"(*(g0.15,:,' '))") new_line("a"), "FATAL - POINT NOT INSIDE!, MAHALSQ = ", mahalSq, new_line("a")
-                !assertion = assertion .and. isInside
+                assertion = assertion .and. isInside
                 exit
             end if
         end do
-
-        !assertion = assertion .and. isInside
 
         if (Test%isVerboseMode .and. .not. assertion) then
         ! LCOV_EXCL_START

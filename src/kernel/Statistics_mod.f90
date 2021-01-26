@@ -1094,11 +1094,8 @@ contains
         real(RK)   , intent(in)  :: Point(nd,np)           ! Point is the matrix of the data, CovMat contains the elements of the sample covariance matrix
         real(RK)   , intent(out) :: CholeskyLower(nd,nd)   ! Lower Cholesky Factor of the covariance matrix
         real(RK)   , intent(out) :: CholeskyDiago(nd)      ! Diagonal elements of the Cholesky factorization
-        real(RK)                 :: npMinusOneInverse
         real(RK)                 :: NormData(nd)
         integer(IK)              :: j, ip
-
-        npMinusOneInverse = 1._RK / real(np-1,kind=RK)
 
         ! Compute the covariance matrix upper.
 
@@ -1109,7 +1106,7 @@ contains
                 CholeskyLower(1:j,j) = CholeskyLower(1:j,j) + NormData(1:j) * NormData(j)
             end do
         end do
-        CholeskyLower = CholeskyLower * npMinusOneInverse
+        CholeskyLower = CholeskyLower / real(np-1,kind=RK)
 
         ! Compute the Cholesky factor lower.
 
@@ -4114,10 +4111,12 @@ contains
         if (allocated(self%ChoDia)) deallocate(self%ChoDia) ! LCOV_EXCL_LINE ! GFortran crashes without this
         if (allocated(self%LogVolume)) deallocate(self%LogVolume) ! LCOV_EXCL_LINE ! GFortran crashes without this
         if (allocated(self%ChoLowCovUpp)) deallocate(self%ChoLowCovUpp) ! LCOV_EXCL_LINE ! GFortran crashes without this
+        if (allocated(CumSumVolNormed)) deallocate(CumSumVolNormed) ! LCOV_EXCL_LINE ! GFortran crashes without this
 
         allocate(self%LogVolume(self%nc))
         allocate(self%ChoDia(self%nd,self%nc))
         allocate(self%ChoLowCovUpp(self%nd,self%nd,self%nc))
+        allocate(CumSumVolNormed(self%nc))
 
         do ic = 1, self%nc
 
@@ -4149,8 +4148,8 @@ contains
         end do
 
         VolNormed = exp( self%LogVolume - maxval(self%LogVolume) )
-        CumSumVolNormed = getCumSum(self%nc, VolNormed)
-        CumSumVolNormed = CumSumVolNormed / CumSumVolNormed(self%nc)
+        CumSumVolNormed(1:self%nc) = getCumSum(self%nc, VolNormed)
+        CumSumVolNormed(1:self%nc) = CumSumVolNormed / CumSumVolNormed(self%nc)
 
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

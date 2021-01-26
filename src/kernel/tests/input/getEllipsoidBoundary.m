@@ -1,5 +1,6 @@
 function bcrd = getEllipsoidBoundary(covMat, meanVec, npoint) % returns the coordinates of the boundary of the ellipsoid
-    if isempty(npoint); npoint = 50; end
+    if nargin<3 || isempty(npoint); npoint = 50; end
+    if nargin<2 || isempty(meanVec); meanVec = zeros(length(covMat(:,1))); end
     independentVariable = linspace(0, 2*pi, npoint)';
     xval = cos(independentVariable);
     yval = sin(independentVariable);
