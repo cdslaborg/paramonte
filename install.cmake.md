@@ -1,20 +1,22 @@
-The easiest way to build and install the ParaMonte library and its examples is via the Linux/macOS 
-Bash and Windows Batch install scripts that exist at the root of the ParaMonte repository on GitHub. 
+The easiest way to build and install the ParaMonte library and its examples is via the 
+[Linux/macOS Bash](https://github.com/cdslaborg/paramonte/blob/main/install.sh.usage.txt) and 
+[Windows Batch](https://github.com/cdslaborg/paramonte/blob/main/install.bat.usage.txt) 
+install scripts that exist at the root of the ParaMonte repository on GitHub. 
 The scripts will automatically install the library and run the tests (if requested) and the examples provided.  
 
-However, if you still really prefer to build library directly via the cmake software and 
-manually go through all the rest of the build, testing, and installation processes, 
-you will have to follow the guidelines below to predefine the various aspects of the library and its tests.  
+However, if there are still good reasons to build library directly via the cmake software 
+and manually go through all the rest of the build, testing, and installation processes, 
+then you can follow the guidelines below to predefine the various settings of the library and its tests.  
 
-**Note** that the ParaMonte library build via cmake is exclusively available on Linux, macOS, and Microsoft WSL platforms.  
+**Note** that the ParaMonte library build via cmake is currently exclusively available and tested on Linux, macOS, and Microsoft WSL platforms.  
 
 1.  Ensure a [ParaMonte-compatible](CHANGES.md) version of the GNU or Intel compiler suite 
-    is already installed on our system and the paths to different compiler components and wrappers 
-    already exist in the environmental `PATH` variable. 
-    (**This step would be automatically done via `install.sh` script.**)  
+    is already installed on the system and the paths to the different components of the 
+    compiler and wrappers already exist in the environmental `PATH` variable. 
+    (**This step would be automatically done via the [`install.sh` script](https://github.com/cdslaborg/paramonte/blob/main/install.sh.usage.txt).**)  
 1.  Ensure a ParaMonte-compatible cmake installation (`3.14.0` or newer) exists on your system 
     and the path to the cmake executable already exist in the environmental `PATH` variable. 
-    (**This step would be automatically done via the `install.sh` script.**)  
+    (**This step would be automatically done via the [`install.sh` script](https://github.com/cdslaborg/paramonte/blob/main/install.sh.usage.txt).**)  
 1.  Navigate to the root directory of the library (where the `.git` file exists).  
 1.  Then, assuming that you are using the GNU compiler suite, you can configure the library's build minimally via,  
     ```bash  
@@ -22,7 +24,7 @@ you will have to follow the guidelines below to predefine the various aspects of
     cd build && \
     cmake -DPMCS=GNU ..
     ```  
-    (**This step would be automatically done via the `install.sh` script.**)  
+    (**This step would be automatically done via the [`install.sh` script](https://github.com/cdslaborg/paramonte/blob/main/install.sh.usage.txt).**)  
 1.  The above command will configure the library with the default build settings. 
     To change the default settings, the following macros can be also defined,  
     ```bash  
@@ -51,15 +53,15 @@ you will have to follow the guidelines below to predefine the various aspects of
     -DOS_IS_WSL="whether the current operating system is Microsoft WSL" \
     ..
     ```  
-    (**All of the above configuration settings could be easily done via the `install.sh` script.**)  
+    (**All of the above configuration settings could be easily done via the [`install.sh` script](https://github.com/cdslaborg/paramonte/blob/main/install.sh.usage.txt).**)  
 1.  Once you configure the library's build, try,  
     ```bash  
     make -j 3 && make install
     ```  
     Replace the number `3` with as many number of cores you wish to use to build the library. 
-    (**This step would be automatically done if via `install.sh` script.**)  
+    (**This step would be automatically done via the [`install.sh` script](https://github.com/cdslaborg/paramonte/blob/main/install.sh.usage.txt).**)  
 1.  The ParaMonte library should be now built and installed in the `lib` directory. 
     If you built the library for testing or code coverage purposes, then a `testParaMonte` 
     executable must also exist in the subdirectory `test/bin/`. The onus is on the developer/user (presumably you) 
     to ensure all runtime libraries and dependencies can be found by the library or the test executable or the examples.  
-    (**All dependency checks and test runs would be automatically done via the `install.sh` script.**)  
+    (**All dependency checks and test runs would be automatically done via the [`install.sh` script](https://github.com/cdslaborg/paramonte/blob/main/install.sh.usage.txt).**)  

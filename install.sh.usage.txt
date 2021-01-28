@@ -17,15 +17,16 @@
         -y <assume yes as answer to all installation permission inquiries>
         -B <perform GCC bootstrap installation>
         -n <default number of processors for parallel application>
+        -j <default number of processors for parallel library build>
         -h <help on the script usage>
 
     example:
 
-        ./install.sh -L "Python C" -b "release debug" -l shared -p "none mpi" -m heap -n 3
+        ./install.sh -L "Python C" -b "release debug" -l shared -p "none mpi" -m heap -n 3 -j 4
 
         or equivalently,
 
-        ./install.sh --lang "Python C" --build "release debug" --lib shared --par "none mpi" --mem heap --nproc 3
+        ./install.sh --lang "Python C" --build "release debug" --lib shared --par "none mpi" --mem heap --nproc 3 --njob 4
 
         The above two commands will build the library for the C and Python programming languages.
 
@@ -72,6 +73,7 @@
         -a | --matdram          : build (only) the ParaMonte MatDRAM MATLAB library and return.
         -n | --nproc            : the default number of processes (coarray images) on which the ParaMonte examples/tests (if any) will be run: positive integer
                                   If not provided, 3 will be used.
+        -j | --njob             : the default number of processes to be used for building the ParaMonte library. The default is 1.
         -h | --help             : help with the script usage
 
     NOTE: All flags are optional.
