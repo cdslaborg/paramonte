@@ -169,7 +169,7 @@ contains
         Kmeans%npMax = npMax
         Kmeans%ncMax = ncMax
         Kmeans%ntMax = ntMax
-        if (allocated(Kmeans%Try)) deallocate(Kmeans%Try)
+        if (allocated(Kmeans%Try)) deallocate(Kmeans%Try) ! LCOV_EXCL_LINE
         allocate(Kmeans%Try(ntMax))
         do it = 1, Kmeans%ntMax
             allocate(Kmeans%Try(it)%Size(ncMax), source = 0_IK)
@@ -362,7 +362,7 @@ contains
                 !%%%%%%%%%%%%%%%%%%%
 
                 if (any(Kmeans%Try(it)%Size==0_IK)) then
-
+                ! LCOV_EXCL_START
                     Kmeans%Try(it)%niter = 1_IK
                     Kmeans%Try(it)%nzsci = Kmeans%Try(it)%nzsci + 1_IK
 
@@ -388,8 +388,8 @@ contains
                         return
                     end block
 #endif
-
                 end if
+                ! LCOV_EXCL_STOP
 
                 ! if `niterMax` has reached, quit.
 

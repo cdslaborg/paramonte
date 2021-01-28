@@ -81,7 +81,6 @@ contains
 #endif
         use Decoration_mod, only: TAB
         use Constants_mod, only: IK, RK, NULL_RK
-        use String_mod, only: num2str
         implicit none
         integer(IK), intent(in)                     :: nd
         character(*), intent(in)                    :: methodName
@@ -94,9 +93,9 @@ contains
         &scheme is activated (by setting delayedRejectionCount>0). At each ith stage of the DR process, &
         &the proposal distribution from the last stage is scaled by the factor delayedRejectionScaleFactorVec(i). &
         &Missing elements of the delayedRejectionScaleFactorVec in the input to "//methodName//" will be set to the default value. &
-        &The default value at all stages is 0.5^(1/ndim) = "//num2str(self%def)//", which reduces the &
-        &volume of the covariance matrix of the proposal from the last DR stage by one half. The variable ndim represents the &
-        &number of dimensions of the Domain of the objective function."
+        &The default value at all stages is 0.5^(1/ndim) where ndim is the number of dimensions of the domain of the objective &
+        &function. This default value effectively reduces the volume of the covariance matrix of the proposal distribution by &
+        &half compared to the last DR stage."
     end function construct
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

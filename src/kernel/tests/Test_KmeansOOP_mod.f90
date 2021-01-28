@@ -331,7 +331,7 @@ contains
         assertion = assertion .and. all(Kmeans%Try(1)%Size > 0_IK)
 
         if (Test%isVerboseMode .and. .not. assertion) then
-        ! LCOV_EXCL_START
+            ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Try(1)%Size < 1           =", pack(Kmeans%Try(1)%Size, mask = Kmeans%Try(1)%Size < 1_IK)
             write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Try(1)%Membership < 1     =", pack(Kmeans%Try(1)%Membership, mask = Kmeans%Try(1)%Membership < 1_IK)
@@ -345,8 +345,8 @@ contains
             write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%failed                    =", Kmeans%failed
             write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%itopt                     =", Kmeans%itopt
             write(Test%outputUnit,"(*(g0.15,:,' '))")
+            ! LCOV_EXCL_STOP
         end if
-        ! LCOV_EXCL_STOP
 
     end function test_runKmeans_3
 
@@ -523,8 +523,8 @@ contains
 
         assertion = .true.
 
-        Kmeans = KmeansOOP_type(TestData%nd, TestData%np, ncMax, ntMax)
-        do i = 1, 1000
+        Kmeans = KmeansOOP_type(TestData%nd, TestData%np, ncMax, ntMax, relTol = 1.e-8_RK)
+        do i = 1, 100
 
             nc = ncMax ! getRandInt(2,ncMax)
             np = TestData%np ! getRandInt(100,TestData%np)

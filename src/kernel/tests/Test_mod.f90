@@ -70,6 +70,11 @@ module Test_mod
 
     type(Image_type)                :: mv_Image
 
+    type :: File_type
+        integer(IK)                 :: unit
+        character(:), allocatable   :: path
+    end type File_type
+
     type :: Test_type
 #if defined DEBUG_ENABLED || defined TESTING_ENABLD || defined CODECOV_ENABLD
         logical                     :: isVerboseMode = .true.
@@ -78,14 +83,17 @@ module Test_mod
 #endif
         integer(IK)                 :: outputUnit
         character(:), allocatable   :: moduleName
+        character(:), allocatable   :: funcName
         character(:), allocatable   :: outDir
         character(:), allocatable   :: inDir
         type(Timer_type)            :: Timer
         type(Image_type)            :: Image
+        type(File_type)             :: File
         type(Err_type)              :: Err
     contains
         procedure, pass :: run => runTest
         procedure, pass :: finalize => finalizeTest
+        procedure, pass :: openFile
     end type Test_type
 
     interface Test_type
@@ -306,6 +314,8 @@ contains
         logical                         :: assertion
         integer                         :: imageID
 
+        Test%funcName = "Test_"//Test%moduleName(2:)//"@"//test_func_name
+
         funcName = test_func_name(6:) ! remove "test_"
         Message%Parts = Message%split(string = funcName, delim = "_", npart = Message%nPart)
         if ( Message%nPart==1_IK .or. .not. isInteger(Message%Parts(Message%nPart)%record) ) then
@@ -348,7 +358,7 @@ contains
                 end block
             end if
 
-            mv_FailedTestFuncName(mv_nfail)%record = "Test_"//Test%moduleName(2:)//"@"//test_func_name
+            mv_FailedTestFuncName(mv_nfail)%record = Test%funcName
 
         end if
 
@@ -471,6 +481,38 @@ contains
        !                                )
        !end block
     end function getLogFuncMVN
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function openFile(Test, path, prefix, status) result(File)
+
+        use String_mod, only: num2str
+        implicit none
+
+        class(Test_type), intent(in)        :: Test
+        character(*), intent(in), optional  :: path, prefix, status
+        type(File_type)                     :: File
+
+        character(:), allocatable           :: prefixDefault, statusDefault
+
+        if (present(status)) then; statusDefault = status; else; statusDefault = "unknown"; end if
+
+        if (present(path)) then
+            File%path = path
+        else
+            if (present(prefix)) then; prefixDefault = "@"//prefix; else; prefixDefault = ""; end if
+            File%path = Test%outDir//"/"//Test%funcName//prefixDefault//"."//num2str(Test%Image%id)//".txt"
+        end if
+
+        open( file = File%path & ! LCOV_EXCL_LINE
+            , status = statusDefault & ! LCOV_EXCL_LINE
+            , newunit = File%unit & ! LCOV_EXCL_LINE
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
+            , SHARED & ! LCOV_EXCL_LINE
+#endif
+            )
+
+    end function openFile
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

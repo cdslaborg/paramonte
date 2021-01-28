@@ -468,9 +468,7 @@ contains
         !DEC$ ATTRIBUTES DLLEXPORT :: runPartitionKernel
 #endif
         use Constants_mod, only: IK, RK, SPR, HUGE_RK
-        use Matrix_mod, only: getInvMatFromCholFac
-        use Matrix_mod, only: getCholeskyFactor
-        use Kmeans_mod, only: runKmeans
+        use Kmeans_mod, only: getKmeans !, runKmeans
         use Math_mod, only: getLogSumExp
         use Err_mod, only: Err_type
 
@@ -547,18 +545,6 @@ contains
         parLogVolIsPresent = present(parLogVol)
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        ! Perform the initial Kmeans clustering.
-        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-        if (kmeansClusteringFailed()) return
-
-        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        ! Compute the scaled Mahalanobis distances and the bounded regions properties.
-        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-        call computeBoundedResgion()
-
-        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! Find two approximately minimum-volume sub-clusters and if requested, store a copy of the results for recovery.
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -580,6 +566,29 @@ contains
                 convergenceFailureCount = convergenceFailureCount + 1_IK
                 return
             end if
+
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            ! Perform the initial Kmeans clustering.
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            Kmeans = getKmeans  ( nd = nd &
+                                , np = np &
+                                , nc = nc &
+                                , nt = nd &
+                                , Point = Point &
+                                , maxIteration = 300_IK &
+                                , maxNumFailure = 10_IK &
+                                , minSize = minClusterSize &
+                                , propEnabled = .true. &
+                                !, relTol
+                                )
+            if (Kmeans%Err%occurred) return
+
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            ! Compute the scaled Mahalanobis distances and the bounded regions properties.
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            call computeBoundedResgion()
 
             !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             ! Ensure the stability of the volume shrinkage, if requested, by caching the previous estimates.
@@ -1059,28 +1068,6 @@ write(*,*) "reclusteringNeeded, recursionCounter", reclusteringNeeded, recursion
 
                 icOther = 3 - ic
 
-                ! Compute the upper covariance matrix of the cluster covariance matrices.
-
-                KmeansChoLowCovUpp(1:nd,1:nd,ic) = 0._RK
-                do ip = IpStart(ic), IpEnd(ic)
-                    do j = 1, nd
-                        KmeansChoLowCovUpp(1:j,j,ic) = KmeansChoLowCovUpp(1:j,j,ic) + NormedPoint(1:j,ip,ic) * NormedPoint(j,ip,ic)
-                    end do
-                end do
-                KmeansChoLowCovUpp(1:nd,1:nd,ic) = KmeansChoLowCovUpp(1:nd,1:nd,ic) / real(KmeansSize(ic)-1, kind = RK)
-
-                ! Compute the Cholesky Factor of the cluster covariance matrices.
-
-                call getCholeskyFactor(nd, KmeansChoLowCovUpp(1:nd,1:nd,ic), KmeansChoDia(1:nd,ic))
-                if (KmeansChoDia(1,ic)<0._RK) then
-                    ! LCOV_EXCL_START
-                    write(*,*) "    FATAL: runPartitionKernel() @ getSamCholFac() @ getCholeskyFactor() failed."
-                    write(*,*) "           Cluster id, dimension, size:"
-                    write(*,*) "           ", ic, nd, KmeansSize(ic)
-                    error stop
-                    ! LCOV_EXCL_STOP
-                end if
-
 #if defined DEBUG_ENABLED || TESTING_ENABLED || CODECOVE_ENABLED
                 block
                     use Statistics_mod, only: getSamCholFac
@@ -1131,16 +1118,6 @@ write(*,*) "reclusteringNeeded, recursionCounter", reclusteringNeeded, recursion
                 end block
 #endif
 
-                ! Compute the inverse of the cluster covariance matrices.
-
-                KmeansInvCovMat(1:nd,1:nd,ic) = getInvMatFromCholFac( nd, KmeansChoLowCovUpp(1:nd,1:nd,ic), KmeansChoDia(1:nd,ic) )
-
-                ! Compute the MahalSq of as many points as needed.
-
-                do concurrent(ip = 1:np)
-                    KmeansMahalSq(ip,ic) = dot_product( KmeansNormedPoint(1:nd,ip,ic) , matmul(KmeansInvCovMat(1:nd,1:nd,ic), KmeansNormedPoint(1:nd,ip,ic)) )
-                end do
-
 #if defined DEBUG_ENABLED || TESTING_ENABLED || CODECOVE_ENABLED
                 do ip = 1, np
                     KmeansMahalSq(ip,ic) = dot_product( KmeansNormedPoint(1:nd,ip,ic) , matmul(KmeansInvCovMat(1:nd,1:nd,ic), KmeansNormedPoint(1:nd,ip,ic)) )
@@ -1172,11 +1149,7 @@ write(*,*) "reclusteringNeeded, recursionCounter", reclusteringNeeded, recursion
                     end block
                 end do
 #endif
-                ! Compute the scaleFcator of the bounding region.
-
-                KmeansScaleFactorSq(ic) = maxval(KmeansMahalSq(IpStart(ic):IpEnd(ic),ic)); KmeansScaleFactor(ic) = sqrt(KmeansScaleFactorSq(ic))
-                KmeansMahalSq(1:np,ic) = KmeansMahalSq(1:np,ic) / KmeansScaleFactorSq(ic)
-                KmeansLogVol(ic) = nd * log(KmeansScaleFactor(ic)) + sum( log(KmeansChoDia(1:nd,ic)) )
+                Kmeans%MahalSq(1:np,ic) = Kmeans%MahalSq(1:np,ic) / Kmeans%ScaleFactorSq(ic)
 
             end do loopComputeScaleFactor
 
