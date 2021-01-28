@@ -98,6 +98,7 @@ perfprof_flag=""
 codecov_flag=""
 dryrun_flag=""
 deploy_flag=""
+njob_flag=""
 TTYPE=""
 
 while [ "$1" != "" ]; do
@@ -152,6 +153,9 @@ while [ "$1" != "" ]; do
                                 ;;
         -n | --nproc )          shift
                                 FOR_COARRAY_NUM_IMAGES="$1"
+                                ;;
+        -j | --njob )           shift
+                                njob_flag="-j $1"
                                 ;;
         -h | --help )           usage
                                 echo >&2 ""
@@ -666,6 +670,9 @@ for PMCS in $PMCS_LIST; do
                             if ! [ "${nproc_flag}" = "" ]; then
                             echo >&2 "                          ${nproc_flag} \ "
                             fi
+                            if ! [ "${njob_flag}" = "" ]; then
+                            echo >&2 "                          ${njob_flag} \ "
+                            fi
                             echo >&2 "                          --clean"
                             echo >&2 ""
                             echo >&2 "************************************************************************************************************************************"
@@ -695,6 +702,7 @@ for PMCS in $PMCS_LIST; do
                             ${fortran_flag} \
                             ${mpiexec_flag} \
                             ${nproc_flag} \
+                            ${njob_flag} \
                             ) || {
                             echo >&2 ""
                             echo >&2 "-- ParaMonte "

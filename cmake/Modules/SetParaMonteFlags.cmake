@@ -138,9 +138,29 @@ endif()
 # ParaMonte Version Preprocessor Flag: This flag is not used anymore as it is too aggressive. Changing its value causes an entire rebuild.
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
+set(ParaMonteKernelVersionSourceFile "${ParaMonteKernel_SRC_DIR}/ParaMonte_mod@version@kernel.inc.f90")
+
 if (DEFINED fppParaMonteVersion)
     set(FPP_FLAGS "${FPP_FLAGS}"
     -DPARAMONTE_VERSION=\"'${fppParaMonteVersion}'\"
+    )
+elseif(NOT EXISTS "${ParaMonteKernelVersionSourceFile}")
+    message ( WARNING
+            "\n"
+            " ${pmwarn} The ParaMonte version file does not exist at,\n"
+            " ${pmwarn} \n"
+            " ${pmwarn}     ${ParaMonteKernel_SRC_DIR}/ParaMonte_mod@version@kernel.inc.f90\n"
+            " ${pmwarn} \n"
+            " ${pmwarn} This is fine, however, it can lead to complete rebuilds of the entire library\n"
+            " ${pmwarn} as soon as the ParaMonte library version inside .VERSION file is incremented.\n"
+            " ${pmwarn} Normally, this WARNING message should be issued only when you are building\n"
+            " ${pmwarn} the library directly via CMAKE. Otherwise, please report this issue at,\n"
+            " ${pmwarn} \n"
+            " ${pmwarn}     https://github.com/cdslaborg/paramonte/issues/new/choose"
+            "\n\n"
+            )
+    set(FPP_FLAGS "${FPP_FLAGS}"
+    -DPARAMONTE_VERSION=\"'${PARAMONTE_CMAKE_PROJECT_VERSION}'\"
     )
 endif()
 
@@ -316,16 +336,16 @@ elseif (gnu_compiler)
         set(CCL_FLAGS "${CCL_FLAGS}"
         # -fcf-protection=full
         -ftest-coverage
-        -fprofile-arcs 
-        --coverage 
+        -fprofile-arcs
+        --coverage
         )
         set(FL_FLAGS "${FL_FLAGS}"
         -fcf-protection=full
-        -ftest-coverage 
-        -fprofile-arcs 
-        -static-libgcc 
-        --coverage 
-        -lgcov 
+        -ftest-coverage
+        -fprofile-arcs
+        -static-libgcc
+        --coverage
+        -lgcov
         )
     endif()
 
@@ -732,7 +752,7 @@ if( "${CAFTYPE}" STREQUAL "single" OR
     set(CAF_ENABLED ON CACHE BOOL "Enable Coarray Fortran parallelism" FORCE)
     set(FOR_COARRAY_NUM_IMAGES 2 CACHE STRING "The default number of coarray images/processes" FORCE)
     if (intel_compiler)
-        set(FCL_FLAGS "${FCL_FLAGS}" 
+        set(FCL_FLAGS "${FCL_FLAGS}"
         -coarray=${CAFTYPE}
         )
     endif()

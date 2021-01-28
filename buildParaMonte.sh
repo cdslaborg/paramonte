@@ -375,6 +375,7 @@ cat << EndOfMessage
         -y <assume yes as answer to all installation permission inquiries>
         -B <perform GCC bootstrap installation>
         -n <default number of processors for parallel application>
+        -j <default number of processors for parallel builds>
         -a <clean bash variables upon exit from the script>
         -h <help on the script usage>
 
@@ -401,6 +402,7 @@ cat << EndOfMessage
         -y | --yes-to-all       : if a fresh installation of all of the prerequisites is needed, automatically answer yes to all permission requests.
         -B | --bootstrap        : enables robust bootstrap build when building the required GCC version with an old GCC version. Applicable only to GNU compiler suite.
         -n | --nproc            : the default number of processes (coarray images) on which the ParaMonte examples/tests (if any) will be run: positive integer
+        -j | --njob             : the default number of processes via which the ParaMonte library will be built for the requested configuration: positive integer
         -a | --clean            : clean the environmental variables upon exit, if flag is provided.
         -h | --help             : help with the script usage
 
@@ -417,6 +419,7 @@ cafInstallEnabled=false
 gnuInstallEnabled=false
 mpiInstallEnabled=false
 
+CMAKE_NJOB=""
 unset PMCS
 unset BTYPE
 unset LTYPE
@@ -490,6 +493,9 @@ while [ "$1" != "" ]; do
                                 ;;
         -n | --nproc )          shift
                                 FOR_COARRAY_NUM_IMAGES=$1; export FOR_COARRAY_NUM_IMAGES
+                                ;;
+        -j | --njob )           shift
+                                CMAKE_JOB="-j $1";
                                 ;;
         -F | --fresh )          freshInstallEnabled=true; export freshInstallEnabled
                                 ;;
@@ -2578,6 +2584,7 @@ if [ "${DRYRUN_ENABLED}" != "true" ]; then
     ${CAF_LOCAL_INSTALLATION_SETUP_FILE_CMD} && \
     cmake \
     --verbose=1 \
+    "${CMAKE_JOB}" \
     "${FC_OPTION}" \
     "${MPIEXEC_OPTION}" \
     "${MATLAB_ROOT_DIR_OPTION}" \

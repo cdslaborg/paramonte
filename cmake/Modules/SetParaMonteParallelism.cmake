@@ -314,8 +314,8 @@ if (CAF_ENABLED OR MPI_ENABLED)
         message ( WARNING
                 " \n"
                 " ${pmwarn}\n"
-                " ${pmattn} It appears that the Fortran MPI compiler is not working.\n"
-                " ${pmattn} For ParaMonte-compatible compilers, this may be irrelavent.\n"
+                " ${pmattn} The Fortran MPI compiler wrapper appears to not be working.\n"
+                " ${pmattn} For ParaMonte-compatible compilers, this may be irrelevant.\n"
                 " ${pmattn} It is possible that the build will succeed, despite this fishy circumstance.\n"
                 )
     endif()
