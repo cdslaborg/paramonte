@@ -9,30 +9,30 @@
 ####
 ####   This file is part of the ParaMonte library.
 ####
-####   Permission is hereby granted, free of charge, to any person obtaining a 
-####   copy of this software and associated documentation files (the "Software"), 
-####   to deal in the Software without restriction, including without limitation 
-####   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-####   and/or sell copies of the Software, and to permit persons to whom the 
+####   Permission is hereby granted, free of charge, to any person obtaining a
+####   copy of this software and associated documentation files (the "Software"),
+####   to deal in the Software without restriction, including without limitation
+####   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+####   and/or sell copies of the Software, and to permit persons to whom the
 ####   Software is furnished to do so, subject to the following conditions:
 ####
-####   The above copyright notice and this permission notice shall be 
+####   The above copyright notice and this permission notice shall be
 ####   included in all copies or substantial portions of the Software.
 ####
-####   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-####   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-####   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-####   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-####   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-####   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+####   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+####   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+####   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+####   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+####   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+####   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 ####   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ####
 ####   ACKNOWLEDGMENT
 ####
 ####   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-####   As per the ParaMonte library license agreement terms, if you use any parts of 
-####   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-####   work (education/research/industry/development/...) by citing the ParaMonte 
+####   As per the ParaMonte library license agreement terms, if you use any parts of
+####   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+####   work (education/research/industry/development/...) by citing the ParaMonte
 ####   library as described on this page:
 ####
 ####       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md
@@ -57,7 +57,7 @@ cmake_policy(VERSION 3.10...3.14)
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 if(WIN32)
-    message( FATAL_ERROR 
+    message( FATAL_ERROR
     "-- ParaMonte - FATAL ERROR:\n"
     "   Do not build with CMAKE on Windows OS. Instead follow the instructions below:\n"
     "   1. Install Microsoft Visual Studio (MSVC).\n"
@@ -122,7 +122,7 @@ set(pmfatal "${pmattn} ${BoldRed}FATAL ERROR:${ColorReset}")
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 if ("${CMAKE_CURRENT_SOURCE_DIR}" STREQUAL "${CMAKE_CURRENT_BINARY_DIR}")
-    message ( FATAL_ERROR 
+    message ( FATAL_ERROR
             " \n"
             "${pmfatal}\n"
             "   CMAKE_CURRENT_SOURCE_DIR=${CMAKE_CURRENT_SOURCE_DIR}\n"
@@ -230,7 +230,7 @@ elseif("${PMCS}" MATCHES "[Gg][Nn][Uu]")
     set(COMPILER_SUITE "GNU")
     set(gnu_compiler TRUE)
 else()
-    message ( FATAL_ERROR 
+    message ( FATAL_ERROR
             " \n"
             "${pmfatal}\n"
             "   The compiler suite for building ParaMonte library as specified by \n"
@@ -379,7 +379,7 @@ set ( INTERFACE_LANGUAGE "c" CACHE STRING "Select the build interface language (
 # define library linking type
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-#  shared:      Use this flag when you have R/Python/MATLAB/Julia code to which you need to link the ParaMonte library dynamically, using DLL files. 
+#  shared:      Use this flag when you have R/Python/MATLAB/Julia code to which you need to link the ParaMonte library dynamically, using DLL files.
 #  static:      Use this flag when you have Fortran/C/C++ code to which you want to link the ParaMonte library statically.
 #               You can also link dynamically your Fortran/C/C++ codes using DLL files by specifying LTYPE=shared flag instead.
 
@@ -442,7 +442,7 @@ include(SetParaMonteParallelism)
 
 message( STATUS "${pmattn} setting up the root directory..." )
 
-# define ParaMonte_ROOT_DIR as CMAKE_SOURCE_DIR 
+# define ParaMonte_ROOT_DIR as CMAKE_SOURCE_DIR
 
 message( STATUS "${pmattn} project root directory: ${CMAKE_SOURCE_DIR}" )
 
@@ -473,12 +473,12 @@ set(ParaMonteInterfacePython_SRC_DIR
     CACHE PATH "ParaMonte-interface Python source files directory" )
 
 message( STATUS "${pmattn} interface source files directory: ${ParaMonteInterface_SRC_DIR}" )
-foreach(X IN LISTS  ParaMonteKernel_SRC_DIR 
-                    ParaMonteInterface_SRC_DIR 
-                    ParaMonteInterfaceC_SRC_DIR 
+foreach(X IN LISTS  ParaMonteKernel_SRC_DIR
+                    ParaMonteInterface_SRC_DIR
+                    ParaMonteInterfaceC_SRC_DIR
                     ParaMonteInterfacePython_SRC_DIR )
     if (NOT EXISTS "${X}/")
-        message (FATAL_ERROR 
+        message (FATAL_ERROR
                 " \n"
                 "${pmfatal}\n"
                 "   The source files directory does not exist:\n"
@@ -604,12 +604,12 @@ if (NOT DEFINED PMLIB_NAME)
     # \todo
     # This library name definition requires further enhancement to match the name defined by the bash installer, whenever cmake is used directly.
 
-    message ( WARNING 
+    message ( WARNING
             " \n"
             " ${pmwarn} The ParaMonte Library name is not predefined.\n"
             " ${pmwarn} This is highly unusual and and the name must exist in PMLIB_NAME.\n"
             " ${pmwarn} Normally, the value of PMLIB_NAME is defined by the ParaMonte installer\n"
-            " ${pmwarn} script or passed to cmake for abuild via cmake. The most likely cause of\n"
+            " ${pmwarn} script or passed to cmake for a build via cmake. The most likely cause of\n"
             " ${pmwarn} this warning message is that you are either building the library directly via\n"
             " ${pmwarn} cmake and forgot to predefine the library name or, the Bash installation that you\n"
             " ${pmwarn} are using is corrupted. It is also equally possible that that you might have changed\n"
@@ -617,7 +617,7 @@ if (NOT DEFINED PMLIB_NAME)
             " ${pmwarn} the build directory corresponding to this CMake build and start fresh. Otherwise, report this at:\n"
             " ${pmwarn} are using is corrupted. If the latter is the case, please report the issue at:\n"
             " ${pmwarn} \n"
-            " ${pmwarn} https://github.com/cdslaborg/paramonte/issues,\n"
+            " ${pmwarn}     https://github.com/cdslaborg/paramonte/issues,\n"
             " ${pmwarn} \n"
             " ${pmwarn} to resolve it. Note that even if the library might be properly built, the naming \n"
             " ${pmwarn} used might not follow the conventional naming rules of the ParaMonte library.\n"
