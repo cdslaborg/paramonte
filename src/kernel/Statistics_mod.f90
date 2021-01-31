@@ -1862,7 +1862,7 @@ contains
         do j = 1,nd
             dummy = getRandGaus()
             RandMVN(j) = RandMVN(j) + Diagonal(j) * dummy
-            do i = j+1,nd
+            do i = j+1, nd
                 RandMVN(i) = RandMVN(i) + CholeskyLower(i,j) * dummy
             end do
         end do

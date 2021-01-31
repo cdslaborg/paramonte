@@ -60,6 +60,7 @@ set(ParaMonteTest_SOURCE_FILES
     ${ParaMonteTest_SRC_DIR}/Test_KmeansOOP_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Math_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Matrix_mod.f90
+    ${ParaMonteTest_SRC_DIR}/Test_MultiSkewNorm_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Partition_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_PartitionMaxDen_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_PartitionMinVol_mod.f90

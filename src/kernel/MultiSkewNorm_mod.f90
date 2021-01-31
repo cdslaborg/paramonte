@@ -44,14 +44,14 @@
 !> Azzalini, 2009, Statistical applications of the multivariate skew-normal distribution.
 !> \author Amir Shahmoradi
 
-module MultiSkewNormal_mod
+module MultiSkewNorm_mod
 
     use Constants_mod, only: RK, IK
     use Err_mod, only: Err_type
 
     implicit none
 
-    character(len=*), parameter :: MODULE_NAME = "@MultiSkewNormal_mod"
+    character(len=*), parameter :: MODULE_NAME = "@MultiSkewNorm_mod"
 
     interface getLogProbMSN
         module procedure :: getLogProbMSN_RK
@@ -83,7 +83,7 @@ contains
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbMSN_RK
 #endif
-        use Constants_mod, only: LOGINVSQRT2PI, INVSQRT2, NULL_RK
+        use Constants_mod, only: LOGINVSQRT2PI, INVSQRT2
         implicit none
         integer(IK), intent(in) :: nd
         real(RK)   , intent(in) :: MeanVec(nd)
@@ -94,10 +94,11 @@ contains
         real(RK)                :: NormedPoint(nd)
         real(RK)                :: logProbSkewNorm
         real(RK)    , parameter :: LOG2 = log(2._RK)
+        real(RK)    , parameter :: LOGHALF = log(0.5_RK)
         NormedPoint = Point - MeanVec
         logProbSkewNorm = LOG2 + nd*LOGINVSQRT2PI + logSqrtDetInvCovMat & ! LCOV_EXCL_LINE
                         - 0.5_RK * dot_product(NormedPoint, matmul(InvCovMat,NormedPoint)) & ! LCOV_EXCL_LINE
-                        + log( 0.5_RK * ( 1._RK + erf(INVSQRT2 * dot_product(NormedPoint,Alpha)) ) )
+                        + LOGHALF + log( 1._RK + erf(INVSQRT2 * dot_product(NormedPoint,Alpha)) )
     end function getLogProbMSN_RK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -120,24 +121,30 @@ contains
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandMSN
 #endif
-        use Statistics_mod, only: getRandGaus
+        use Statistics_mod, only: getRandGaus, getRandMVN
         use Constants_mod, only: IK, RK
         implicit none
         integer(IK), intent(in) :: nd
         real(RK)   , intent(in) :: MeanVec(nd)
         real(RK)   , intent(in) :: AugChoLow(0:nd,0:nd), AugChoDia(0:nd)
-        real(RK)                :: RandMSN(nd), normrnd, randMSN0
-        integer(IK)             :: j,i
-        randMSN0 = AugChoDia(0) * getRandGaus()
-        RandMSN = MeanVec
-        do j = 2, nd
+        real(RK)                :: RandMSN(nd), normrnd
+        logical                 :: switchDisabled
+        integer(IK)             :: j, i
+        normrnd = getRandGaus()
+        switchDisabled = normrnd > 0._RK
+        RandMSN(1:nd) = AugChoLow(1:nd,0) * normrnd
+        do j = 1, nd
             normrnd = getRandGaus()
             RandMSN(j) = RandMSN(j) + AugChoDia(j) * normrnd
-            do i = j, nd
+            do i = j+1, nd
                 RandMSN(i) = RandMSN(i) + AugChoLow(i,j) * normrnd
             end do
         end do
-        if (randMSN0<0._RK) RandMSN = -RandMSN
+        if (switchDisabled) then
+            RandMSN = MeanVec(1:nd) + RandMSN
+        else
+            RandMSN = MeanVec(1:nd) - RandMSN
+        end if
     end function getRandMSN
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -176,9 +183,9 @@ contains
             AugChoLow(0,j) = Delta(j)
             AugChoLow(1:j,j) = CovMat(1:j,j)
         end do
-        call getCholeskyFactor(nd,AugChoLow,AugChoDia)
+        call getCholeskyFactor(nd+1,AugChoLow,AugChoDia)
     end subroutine getAugChoFac
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module MultiSkewNormal_mod ! LCOV_EXCL_LINE
+end module MultiSkewNorm_mod ! LCOV_EXCL_LINE
