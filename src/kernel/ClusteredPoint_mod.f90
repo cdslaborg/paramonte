@@ -385,6 +385,7 @@ contains
 
         elseif (isUniform) then
 
+            if (allocated(InvCovMat)) deallocate(InvCovMat) ! LCOV_EXCL_LINE ! GFortran crashes without this
             if (allocated(NormedPoint)) deallocate(NormedPoint) ! LCOV_EXCL_LINE ! GFortran crashes without this
             allocate(NormedPoint(self%nd), InvCovMat(self%nd,self%nd,self%nc))
 
