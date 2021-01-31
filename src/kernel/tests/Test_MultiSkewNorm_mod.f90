@@ -82,7 +82,7 @@ contains
         implicit none
         logical                 :: assertion
         integer(IK) , parameter :: nd = 2_IK, np = 10000_IK
-        real(RK)    , parameter :: Alpha(nd) = [4._RK, 0.5_RK]
+        real(RK)    , parameter :: Alpha(nd) = [40._RK, 0.5_RK]
         real(RK)    , parameter :: MeanVec(nd) = [ 1._RK, 2._RK ]
         real(RK)    , parameter :: CovMat(nd,nd) = reshape( [ 1.5_RK, -0.9_RK, -0.9_RK, 1.5_RK ], shape = shape(CovMat) )
         real(RK)                :: AugChoLow(nd+1,nd+1)
