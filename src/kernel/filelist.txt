@@ -25,6 +25,8 @@
   Math_mod.f90
   Matrix_mod.f90
   Statistics_mod.f90
+  MultiSkewNormal_mod.f90
+  ClusteredPoint_mod.f90
   Kmeans_mod.f90
   KmeansOOP_mod.f90
   Partition_mod.f90

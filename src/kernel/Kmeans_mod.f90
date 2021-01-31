@@ -79,11 +79,13 @@ module Kmeans_mod
         real(RK)    , allocatable   :: ChoLowCovUpp(:,:,:)  !< An array of size `(nd,nd,nc)` whose upper triangle and diagonal is the covariance matrix and the lower is the Cholesky Lower.
         real(RK)    , allocatable   :: MinDistanceSq(:)     !< An array of size `(np)` of the minimum distances of the points from the cluster centers.
         real(RK)    , allocatable   :: ScaleFactorSq(:)     !< An array of size `(nc)` representing the factors by which the cluster covariance matrices must be enlarged to enclose their corresponding members.
+        integer(IK) , allocatable   :: EffectiveSize(:)     !< An array of size `(nc)` representing the factors by which the cluster covariance matrices must be enlarged to enclose their corresponding members.
         integer(IK) , allocatable   :: Membership(:)        !< A vector of size `np` each element of which represents the cluster ID to which the point belongs.
         integer(IK) , allocatable   :: CumSumSize(:)        !< A vector of size `0:nc` representing the cumulative sum of all cluster sizes from cluster 1 to the last.
-        integer(IK) , allocatable   :: Index(:)             !< A vector of size `np` representing the mapping `Point(:,ip) -> NormedPoint(:,Index(ip))`.
         integer(IK) , allocatable   :: Size(:)              !< A vector of size `nc` (the number of clusters) containing the sizes of the individual clusters identified.
         type(Err_type)              :: Err                  !< An object of class [Err_type](@ref err_mod::err_type) containing information about error occurrence.
+    contains
+        procedure, pass :: getProp
     end type Kmeans_type
 
     interface Kmeans_type
@@ -114,31 +116,19 @@ contains
     !> Perform the Kmeans clustering for `nt` tries on the input data set represented by the array `Point(nd, np)`
     !> and return the clustering that yields the least potential.
     !>
-    !> \param[in]       nd              :   See the description of the [runKmeans](@ref runkmeans).
-    !> \param[in]       np              :   See the description of the [runKmeans](@ref runkmeans).
-    !> \param[in]       nc              :   See the description of the [runKmeans](@ref runkmeans).
-    !> \param[in]       nt              :   The number of independent instances of Kmeans to run.
-    !> \param[inout]    Point           :   See the description of the [runKmeans](@ref runkmeans).
-    !> \param[in]       InitCenter      :   See the description of the [runKmeans](@ref runkmeans).
-    !> \param[in]       niterMax        :   See the description of the [runKmeans](@ref runkmeans).
-    !> \param[in]       nfailMax        :   See the description of the [runKmeans](@ref runkmeans).
-    !> \param[in]       minSize         :   The minimum acceptable size for any Kmeans cluster.
-    !> \param[in]       relTol          :   See the description of the [runKmeans](@ref runkmeans).
-    !> \param[in]       Index           :   The order of the input points. If `propEnabled = .true.`, `Index` will be reshuffled
-    !>                                      such that `Point(:,Index(ip))` points to the input `Point(:,ip,:)`.
-    !>                                      Note that the output `Index` will be set only if `propEnabled = .true.`.
-    !>                                      (**optional**, if not provided, the default will be `range(1:np)`)
-    !> \param[in]       propEnabled     :   A logical flag. If `.true.`, the following properties of the clusters and their members will be also computed.
-    !>                                      (**optional**, the default is `.false.`)
-    !>                                      +   covariance matrix,
-    !>                                      +   inverse covariance matrix,
-    !>                                      +   Cholesky factorization of the covariance matrix,
-    !>                                      +   the Mahalanobis distances of all points with respect to all cluster covariance matrices,
-    !>                                      +   the Index array, such that `Point(:,Index(ip),:)` points to the input `Point(:,ip,:)`.
-    !>                                      +   The maximum Mahalanobis distance squared for each cluster.
-    !>                                          When the covariance matrix is multiplied with this number,
-    !>                                          it will become the representative matrix of the bounding
-    !>                                          ellipsoid of the corresponding cluster members.
+    !> \param[in]       nd                  :   See the description of the [runKmeans()](@ref runkmeans).
+    !> \param[in]       np                  :   See the description of the [runKmeans()](@ref runkmeans).
+    !> \param[in]       nc                  :   See the description of the [runKmeans()](@ref runkmeans).
+    !> \param[in]       nt                  :   The number of independent instances of Kmeans to run.
+    !> \param[inout]    Point               :   See the description of the [runKmeans()](@ref runkmeans).
+    !> \param[inout]    Index               :   See the description of the [runKmeans()](@ref runkmeans).
+    !> \param[in]       InitCenter          :   See the description of the [runKmeans()](@ref runkmeans).
+    !> \param[in]       niterMax            :   See the description of the [runKmeans()](@ref runkmeans).
+    !> \param[in]       nfailMax            :   See the description of the [runKmeans()](@ref runkmeans).
+    !> \param[in]       minSize             :   The minimum acceptable size for any Kmeans cluster.
+    !> \param[in]       relTol              :   See the description of the [runKmeans()](@ref runkmeans).
+    !> \param[in]       propEnabled         :   If `.true.`, a call to `getProp()` method will be made (**optional**, default = `.false.`).
+    !> \param[in]       inclusionFraction   :   See the description of the [getProp()](@ref getprop).
     !>
     !> \return
     !> `Kmeans` :   An object of type [Kmeans_type](@ref Kmeans_type) containing the properties of the identified clusters.
@@ -147,11 +137,6 @@ contains
     !>              The `Err%stat` component of the output `Kmeans` will be set to `2` if more than `nfailMax` clustering tries
     !>              result in clusters with zero members.
     !>              In both cases in the above, `Err%occurred = .true.` upon exiting the procedure.
-    !>
-    !> \warning
-    !> If `propEnabled = .true.`, then `Point` will be rearranged on exit from the procedure such that the members of the same clusters
-    !> appear next to each other contiguously in the array. Consequently, the output array component `Index(1:np)` will be populated
-    !> such that the new `Point(1:nd,Index(ip))` points to the original input `Point(1:nd,ip)` or the original .
     !>
     !> \warning
     !> The input value for `nt` must be at least 1, otherwise it will lead to a runtime error or at best, the output will be undefined.
@@ -165,37 +150,34 @@ contains
     !>
     !> \author
     ! Amir Shahmoradi, April 03, 2017, 2:16 PM, ICES, UTEXAS
-    function getKmeans(nd, np, nc, nt, Point, InitCenter, niterMax, nfailMax, minSize, relTol, propEnabled, Index) result(Kmeans)
+    function getKmeans(nd, np, nc, nt, Point, Index, InitCenter, niterMax, nfailMax, minSize, relTol, propEnabled, inclusionFraction) result(Kmeans)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getKmeans
 #endif
         use Constants_mod, only: IK, RK, HUGE_RK
-        use Matrix_mod, only: getInvMatFromCholFac
-        use Matrix_mod, only: getCholeskyFactor
 
         implicit none
 
-        integer(IK) , intent(in)            :: nd, np, nc, nt
-        real(RK)    , intent(inout)         :: Point(nd,np)
-        real(RK)    , intent(in), optional  :: InitCenter(nd,nc)
-        real(RK)    , intent(in), optional  :: relTol
-        logical     , intent(in), optional  :: propEnabled
-        integer(IK) , intent(in), optional  :: Index(np)
-        integer(IK) , intent(in), optional  :: nfailMax
-        integer(IK) , intent(in), optional  :: niterMax
-        integer(IK) , intent(in), optional  :: minSize
-        type(Kmeans_type), allocatable      :: KmeansTry(:)
-        type(Kmeans_type)                   :: Kmeans
-        real(RK)                            :: potential
-        real(RK)                            :: NormedPoint(nd,np)
-        logical                             :: propEnabledDefault
-        logical                             :: minSizeRequirementPassed
-        integer(IK)                         :: itry, itryLeastPotential
-        integer(IK)                         :: j, ic, ip, ipstart, ipend
-        integer(IK)                         :: minSizeDefault
-        integer(IK) , allocatable           :: KmeansMemberCounter(:)
+        integer(IK) , intent(in)                :: nd, np, nc, nt
+        real(RK)    , intent(inout)             :: Point(nd,np)
+        integer(IK) , intent(inout) , optional  :: Index(np)
+        real(RK)    , intent(in)    , optional  :: InitCenter(nd,nc)
+        real(RK)    , intent(in)    , optional  :: relTol
+        logical     , intent(in)    , optional  :: propEnabled
+        integer(IK) , intent(in)    , optional  :: nfailMax
+        integer(IK) , intent(in)    , optional  :: niterMax
+        integer(IK) , intent(in)    , optional  :: minSize
+        real(RK)    , intent(in)    , optional  :: inclusionFraction
 
-        character(*), parameter             :: PROCEDURE_NAME = MODULE_NAME//"@getKmeans()"
+        type(Kmeans_type), allocatable          :: KmeansTry(:)
+        type(Kmeans_type)                       :: Kmeans
+        real(RK)                                :: potential
+       !real(RK)                                :: NormedPoint(nd,np)
+        logical                                 :: propEnabledDefault
+        integer(IK)                             :: itry, itryLeastPotential
+        integer(IK)                             :: minSizeDefault
+
+        character(*), parameter                 :: PROCEDURE_NAME = MODULE_NAME//"@getKmeans()"
 
         minSizeDefault = 1_IK; if (present(minSize)) minSizeDefault = minSize
 
@@ -243,9 +225,7 @@ contains
                 end if
             end do
 
-            minSizeRequirementPassed = itryLeastPotential > 0_IK
-
-            if (minSizeRequirementPassed) then
+            if (itryLeastPotential > 0_IK) then
                 Kmeans = KmeansTry(itryLeastPotential)
             else
                 ! LCOV_EXCL_START
@@ -278,9 +258,7 @@ contains
                             , nfailMax = nfailMax & ! LCOV_EXCL_LINE
                             )
 
-            minSizeRequirementPassed = .not. any(Kmeans%Size < minSizeDefault)
-
-            if (.not. minSizeRequirementPassed) then
+            if (any(Kmeans%Size < minSizeDefault)) then
                 ! LCOV_EXCL_START
                 Kmeans%Err%msg = "The Kmeans clustering sizes are smaller than the requested input minimum cluster size."
                 Kmeans%Err%occurred = .true.
@@ -291,109 +269,187 @@ contains
 
         end if
 
+        if (propEnabledDefault) call Kmeans%getProp(nd, np, Point, Index, inclusionFraction)
+
+    end function getKmeans
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> This is a method of class [Kmeans_type](@ref kmeans_type).
+    !> Compute the following properties (components) of the input object of class [Kmeans_type](@ref kmeans_type):
+    !>
+    !> +   `ChoLowCovUpp(1:nd,1:nd,1:nc)`   :   The covariance matrix upper triangle and Cholesky factor lower triangle,
+    !> +   `InvCovMat(1:nd,1:nd,1:nc)`      :   The full inverse covariance matrix,
+    !> +   `EffectiveSize(1:nc)`            :   The effective sizes of the ellipsoidal bounded regions of the clusters.
+    !> +   `ScaleFactorSq(1:nc)`            :   The factor by which the covariance matrix elements must be multiplied
+    !>                                          to convert the matrix to a bounding ellipsoid of the cluster members.
+    !> +   `ChoDia(1:nd,1:nc)`              :   The diagonal elements of the Cholesky lower triangle,
+    !> +   `CumSumSize(0:nc)`               :   The cumulative sum of `Kmeans%Size(1:nc)` with `CumSumSize(0) = 0`,
+    !> +   `MahalSq(1:np)`                  :   The Mahalanobis distances squared of all points from all cluster centers,
+    !> +   `LogVol(1:nc)`                   :   The vector of natural-log volumes of all clusters,
+    !>
+    !> \param[in]       nd                  :   See the description of the [runKmeans](@ref runkmeans).
+    !> \param[in]       np                  :   See the description of the [runKmeans](@ref runkmeans).
+    !> \param[in]       nc                  :   See the description of the [runKmeans](@ref runkmeans).
+    !> \param[inout]    Point               :   The Array of size `(nd,np)` representing the original points used in Kmeans clustering.
+    !> \param[inout]    Index               :   A vector of size `np` such that the output `Point(:,Index(ip),:)` points to the input `Point(:,Index(ip),:)` (**optional**).
+    !> \param[in]       inclusionFraction   :   The fraction of points inside each cluster's bounding region to be considered in computing the effective sizes of 
+    !>                                          the bounded regions of each cluster (**optional**, default = `0.`).
+    !>
+    !> \warning
+    !> Upon entry to this method, the `Center`, `Size`, and `Membership` components of the Kmeans object
+    !> must have been already properly set up by its class constructor or a call to `getKmeans()`.
+    !>
+    !> \warning
+    !> On output, the arrays `Point` and `Index` will be rearranged on exit from the procedure such that the members of the same
+    !> clusters appear next to each other contiguously in the array. Consequently, the output array component `Index(1:np)` will
+    !> be populated such that the new `Point(1:nd,Index(ip))` points to the original input `Point(1:nd,ip)` or the original .
+    !>
+    !> \warning
+    !> If the Cholesky factorization in the procedure fails, the control is returned with `Kmeans%Err%occurred = .true.`.
+    pure subroutine getProp(Kmeans, nd, np, Point, Index, inclusionFraction)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getProp
+#endif
+        use Constants_mod, only: IK, RK
+        use Matrix_mod, only: getCholeskyFactor
+        use Matrix_mod, only: getInvMatFromCholFac
+
+        implicit none
+
+        class(Kmeans_type) , intent(inout)      :: Kmeans
+        integer(IK) , intent(in)                :: nd, np
+        real(RK)    , intent(inout)             :: Point(nd,np)
+        integer(IK) , intent(inout) , optional  :: Index(np)
+        real(RK)    , intent(in)    , optional  :: inclusionFraction
+
+        integer(IK) , allocatable               :: KmeansMemberCounter(:)
+        integer(IK)                             :: KmeansIndex(np)
+        integer(IK)                             :: j, ic, ip, nc
+        integer(IK)                             :: ipstart, ipend
+        real(RK)                                :: NormedPoint(nd,np)
+        real(RK)                                :: ndHalf
+
+        character(*), parameter :: PROCEDURE_NAME = MODULE_NAME//"@getProp()"
+
+        nc = size(Kmeans%Size)
+        ndHalf = 0.5_RK * nd
+
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! If requested, compute the bounded region properties of the optimal Kmeans clusters.
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        if (propEnabledDefault .and. minSizeRequirementPassed) then
+        if (.not. allocated(Kmeans%ChoDia       )) allocate(Kmeans%ChoDia          (nd,nc))
+        if (.not. allocated(Kmeans%MahalSq      )) allocate(Kmeans%MahalSq         (np,nc))
+        if (.not. allocated(Kmeans%InvCovMat    )) allocate(Kmeans%InvCovMat       (nd,nd,nc))
+        if (.not. allocated(Kmeans%ChoLowCovUpp )) allocate(Kmeans%ChoLowCovUpp    (nd,nd,nc))
+        if (.not. allocated(Kmeans%EffectiveSize)) allocate(Kmeans%EffectiveSize   (nc))
+        if (.not. allocated(Kmeans%ScaleFactorSq)) allocate(Kmeans%ScaleFactorSq   (nc))
+        if (.not. allocated(Kmeans%CumSumSize   )) allocate(Kmeans%CumSumSize      (0:nc))
+        if (.not. allocated(Kmeans%LogVol       )) allocate(Kmeans%LogVol          (nc))
 
-            allocate(Kmeans%ChoDia(nd,nc))
-            allocate(Kmeans%MahalSq(np,nc))
-            allocate(Kmeans%InvCovMat(nd,nd,nc))
-            allocate(Kmeans%ChoLowCovUpp(nd,nd,nc))
-            allocate(Kmeans%ScaleFactorSq(nc))
-            allocate(Kmeans%CumSumSize(0:nc))
-            allocate(Kmeans%LogVol(nc))
-            allocate(Kmeans%Index(np))
+        if (allocated(KmeansMemberCounter)) deallocate(KmeansMemberCounter) ! LCOV_EXCL_LINE
+        allocate(KmeansMemberCounter(nc))
 
-            if (allocated(KmeansMemberCounter)) deallocate(KmeansMemberCounter) ! LCOV_EXCL_LINE
-            allocate(KmeansMemberCounter(nc))
+        ! Compute the CDF of the cluster Size array.
 
-            ! Compute the CDF of the cluster Size array.
+        Kmeans%CumSumSize(0) = 0_IK
+        loopDetermineClusterBoundaries: do ic = 1, nc
+            KmeansMemberCounter(ic) = Kmeans%CumSumSize(ic-1)
+            Kmeans%CumSumSize(ic) = KmeansMemberCounter(ic) + Kmeans%Size(ic)
+        end do loopDetermineClusterBoundaries
 
-            Kmeans%CumSumSize(0) = 0_IK
-            loopDetermineClusterBoundaries: do ic = 1, nc
-                KmeansMemberCounter(ic) = Kmeans%CumSumSize(ic-1)
-                Kmeans%CumSumSize(ic) = KmeansMemberCounter(ic) + Kmeans%Size(ic)
-            end do loopDetermineClusterBoundaries
+        ! Reorder Point based on the identified clusters.
 
-            ! Reorder Point based on the identified clusters.
+        if (present(Index)) then
+            do ip = 1, np
+                KmeansMemberCounter(Kmeans%Membership(ip)) = KmeansMemberCounter(Kmeans%Membership(ip)) + 1_IK
+                NormedPoint(1:nd,KmeansMemberCounter(Kmeans%Membership(ip))) = Point(1:nd,ip)
+                KmeansIndex(KmeansMemberCounter(Kmeans%Membership(ip))) = Index(ip)
+            end do
+            Index = KmeansIndex
+        else
+            do ip = 1, np
+                KmeansMemberCounter(Kmeans%Membership(ip)) = KmeansMemberCounter(Kmeans%Membership(ip)) + 1_IK
+                NormedPoint(1:nd,KmeansMemberCounter(Kmeans%Membership(ip))) = Point(1:nd,ip)
+                !KmeansIndex(KmeansMemberCounter(Kmeans%Membership(ip))) = ip
+            end do
+        end if
+        Point = NormedPoint
 
-            if (present(Index)) then
-                do ip = 1, np
-                    KmeansMemberCounter(Kmeans%Membership(ip)) = KmeansMemberCounter(Kmeans%Membership(ip)) + 1_IK
-                    NormedPoint(1:nd,KmeansMemberCounter(Kmeans%Membership(ip))) = Point(1:nd,ip)
-                    Kmeans%Index(KmeansMemberCounter(Kmeans%Membership(ip))) = Index(ip)
+        ! Compute the properties of the clusters.
+
+        loopComputeClusterProperties: do ic = 1, nc
+
+            ipstart = Kmeans%CumSumSize(ic-1) + 1_IK
+            ipend = Kmeans%CumSumSize(ic)
+
+            ! Correct the cluster memberships.
+
+            Kmeans%Membership(ipstart:ipend) = ic
+
+            ! Normalize points.
+
+            do concurrent(ip = 1:np)
+                NormedPoint(1:nd,ip) = Point(1:nd,ip) - Kmeans%Center(1:nd,ic)
+            end do
+
+            ! Compute the upper covariance matrix of the cluster covariance matrices.
+
+            Kmeans%ChoLowCovUpp(1:nd,1:nd,ic) = 0._RK
+            do ip = ipstart, ipend
+                do j = 1, nd
+                    Kmeans%ChoLowCovUpp(1:j,j,ic) = Kmeans%ChoLowCovUpp(1:j,j,ic) + NormedPoint(1:j,ip) * NormedPoint(j,ip)
                 end do
-            else
-                do ip = 1, np
-                    KmeansMemberCounter(Kmeans%Membership(ip)) = KmeansMemberCounter(Kmeans%Membership(ip)) + 1_IK
-                    NormedPoint(1:nd,KmeansMemberCounter(Kmeans%Membership(ip))) = Point(1:nd,ip)
-                    Kmeans%Index(KmeansMemberCounter(Kmeans%Membership(ip))) = ip
-                end do
+            end do
+            Kmeans%ChoLowCovUpp(1:nd,1:nd,ic) = Kmeans%ChoLowCovUpp(1:nd,1:nd,ic) / real(Kmeans%Size(ic)-1_IK, kind = RK)
+
+            ! Compute the Cholesky Factor of the cluster covariance matrices.
+
+            call getCholeskyFactor(nd, Kmeans%ChoLowCovUpp(1:nd,1:nd,ic), Kmeans%ChoDia(1:nd,ic))
+            if (Kmeans%ChoDia(1,ic) < 0._RK) then
+                ! LCOV_EXCL_START
+                Kmeans%Err%msg = PROCEDURE_NAME//"Cholesky factorization failed."
+                Kmeans%Err%occurred = .true.
+                return
+                ! LCOV_EXCL_STOP
             end if
-            Point = NormedPoint
 
-            ! Compute the properties of the clusters.
+            ! Compute the inverse of the cluster covariance matrices.
 
-            loopComputeClusterProperties: do ic = 1, nc
+            Kmeans%InvCovMat(1:nd,1:nd,ic) = getInvMatFromCholFac( nd, Kmeans%ChoLowCovUpp(1:nd,1:nd,ic), Kmeans%ChoDia(1:nd,ic) )
 
-                ipstart = Kmeans%CumSumSize(ic-1) + 1_IK
-                ipend = Kmeans%CumSumSize(ic)
+            ! Compute the MahalSq of as many points as needed.
 
-                ! Correct the cluster memberships.
+            do concurrent(ip = 1:np)
+                Kmeans%MahalSq(ip,ic) = dot_product( NormedPoint(1:nd,ip) , matmul(Kmeans%InvCovMat(1:nd,1:nd,ic), NormedPoint(1:nd,ip)) )
+            end do
 
-                Kmeans%Membership(ipstart:ipend) = ic
+            ! Compute the scaleFcator of the bounding region and scale the volumes to the bounded region.
 
-                ! Normalize points.
+            Kmeans%ScaleFactorSq(ic) = maxval(Kmeans%MahalSq(ipstart:ipend,ic))
+            Kmeans%LogVol(ic) = sum( log(Kmeans%ChoDia(1:nd,ic)) ) + ndHalf * log(Kmeans%ScaleFactorSq(ic))
+            !Kmeans%ScaleFactor(ic) = sqrt(Kmeans%ScaleFactorSq(ic))
 
-                do concurrent(ip = 1:np)
-                    NormedPoint(1:nd,ip) = Point(1:nd,ip) - Kmeans%Center(1:nd,ic)
-                end do
+        end do loopComputeClusterProperties
 
-                ! Compute the upper covariance matrix of the cluster covariance matrices.
+        ! Compute the effective fraction of points inside the bounded region.
 
-                Kmeans%ChoLowCovUpp(1:nd,1:nd,ic) = 0._RK
-                do ip = ipstart, ipend
-                    do j = 1, nd
-                        Kmeans%ChoLowCovUpp(1:j,j,ic) = Kmeans%ChoLowCovUpp(1:j,j,ic) + NormedPoint(1:j,ip) * NormedPoint(j,ip)
-                    end do
-                end do
-                Kmeans%ChoLowCovUpp(1:nd,1:nd,ic) = Kmeans%ChoLowCovUpp(1:nd,1:nd,ic) / real(Kmeans%Size(ic)-1_IK, kind = RK)
-
-                ! Compute the Cholesky Factor of the cluster covariance matrices.
-
-                call getCholeskyFactor(nd, Kmeans%ChoLowCovUpp(1:nd,1:nd,ic), Kmeans%ChoDia(1:nd,ic))
-                if (Kmeans%ChoDia(1,ic) < 0._RK) then
-                    ! LCOV_EXCL_START
-                    Kmeans%Err%msg = PROCEDURE_NAME//"Cholesky factorization failed."
-                    Kmeans%Err%occurred = .true.
-                    return
-                    ! LCOV_EXCL_STOP
-                end if
-
-                ! Compute the inverse of the cluster covariance matrices.
-
-                Kmeans%InvCovMat(1:nd,1:nd,ic) = getInvMatFromCholFac( nd, Kmeans%ChoLowCovUpp(1:nd,1:nd,ic), Kmeans%ChoDia(1:nd,ic) )
-
-                ! Compute the MahalSq of as many points as needed.
-
-                do concurrent(ip = 1:np)
-                    Kmeans%MahalSq(ip,ic) = dot_product( NormedPoint(1:nd,ip) , matmul(Kmeans%InvCovMat(1:nd,1:nd,ic), NormedPoint(1:nd,ip)) )
-                end do
-
-                ! Compute the scaleFcator of the bounding region.
-
-                Kmeans%ScaleFactorSq(ic) = maxval(Kmeans%MahalSq(ipstart:ipend,ic))
-                Kmeans%LogVol(ic) = sum( log(Kmeans%ChoDia(1:nd,ic)) )
-                !Kmeans%ScaleFactor(ic) = sqrt(Kmeans%ScaleFactorSq(ic))
-                !Kmeans%LogVol(ic) = nd * log(Kmeans%ScaleFactor(ic)) + sum( log(Kmeans%ChoDia(1:nd,ic)) )
-
-            end do loopComputeClusterProperties
-
+        if (present(inclusionFraction)) then
+            !ic = 1_IK; Kmeans%EffectiveSize(ic) = Kmeans%Size(ic) + nint(inclusionFraction*count(Kmeans%MahalSq(Kmeans%CumSumSize(ic)+1:np,ic)<Kmeans%ScaleFactorSq(ic)), kind=IK)
+            !ic = nc  ; Kmeans%EffectiveSize(ic) = Kmeans%Size(ic) + nint(inclusionFraction*count(Kmeans%MahalSq(1:Kmeans%CumSumSize(ic-1),ic)<Kmeans%ScaleFactorSq(ic)), kind=IK)
+            !do concurrent(ic = 2:nc-1)
+            do concurrent(ic = 1:nc)
+                Kmeans%EffectiveSize(ic) = Kmeans%Size(ic) & ! LCOV_EXCL_LINE
+                                        + nint(inclusionFraction*count(Kmeans%MahalSq(1:Kmeans%CumSumSize(ic-1),ic)<Kmeans%ScaleFactorSq(ic)), kind=IK) & ! LCOV_EXCL_LINE
+                                        + nint(inclusionFraction*count(Kmeans%MahalSq(Kmeans%CumSumSize(ic)+1:np,ic)<Kmeans%ScaleFactorSq(ic)), kind=IK)
+                !write(*,*) ic, Kmeans%Size(ic), Kmeans%EffectiveSize(ic), abs(Kmeans%EffectiveSize(ic) - Kmeans%Size(ic))
+            end do
+        else
+            Kmeans%EffectiveSize = Kmeans%Size
         end if
 
-    end function getKmeans
+    end subroutine getProp
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

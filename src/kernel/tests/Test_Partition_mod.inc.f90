@@ -137,14 +137,13 @@ contains
         real(RK), allocatable       :: NormedPoint(:)
         real(RK)                    :: mahalSq
         integer                     :: ip, ic
-        integer                     :: fileUnit
         logical                     :: isInside
 
         assertion = .true.
 
-        Partition = Partition_type  ( Point = TestData%Point & ! LCOV_EXCL_LINE
-                                    , nd = TestData%nd & ! LCOV_EXCL_LINE
+        Partition = Partition_type  ( nd = TestData%nd & ! LCOV_EXCL_LINE
                                     , np = TestData%np & ! LCOV_EXCL_LINE
+                                    , Point = TestData%Point & ! LCOV_EXCL_LINE
                                     !, nemax = TestData%nemax & ! LCOV_EXCL_LINE
                                     !, partitionMaxAllowedRecursion = 10000 & ! LCOV_EXCL_LINE
                                     !, partitionMaxAllowedKmeansFailure = 10000 & ! LCOV_EXCL_LINE
@@ -161,15 +160,9 @@ contains
 
         ! write data to output for further investigation
 
-        open( file = Test%outDir//"/Test_"//MODULE_NAME(2:)//"@test_runPartition_1.Partition."//num2str(Test%Image%id)//".txt" & ! LCOV_EXCL_LINE
-            , status = "replace" & ! LCOV_EXCL_LINE
-            , newunit = fileUnit & ! LCOV_EXCL_LINE
-#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
-            , SHARED & ! LCOV_EXCL_LINE
-#endif
-            )
-
-        call Partition%write(fileUnit, TestData%nd, TestData%np, TestData%Point)
+        Test%File = Test%openFile(label = "Partition")
+        call Partition%write(Test%File%unit, TestData%nd, TestData%np, TestData%Point)
+        close(Test%File%unit)
 
         assertion = assertion .and. .not. Partition%Err%occurred
         assertion = assertion .and. Partition%Err%stat /= 1_IK
@@ -210,7 +203,7 @@ contains
 
     !> test `runPartition()` by passing a fixed initial set of cluster centers to the Partition constructor.
     function test_runPartition_2() result(assertion)
-        use Statistics_mod, only: ClusteredPoint_type
+        use ClusteredPoint_mod, only: ClusteredPoint_type
         use RandomSeed_mod, only: RandomSeed_type
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
@@ -221,79 +214,91 @@ contains
         type(RandomSeed_type)       :: RandomSeed
         real(RK), allocatable       :: NormedPoint(:)
         real(RK)                    :: mahalSq
-        integer                     :: fileUnit
         logical                     :: isInside
         integer                     :: ip, ic
 
-        assertion = .true.
+        character(:), allocatable   :: dist
+        integer(IK)                 :: rngseed, nd, nc, sizeMin, sizeMax
+        real(RK)                    :: etamin, etamax, centerMin, centerMax
+        namelist /specData/ rngseed, nd, nc, sizeMin, sizeMax, etamin, etamax, centerMin, centerMax, dist
 
-        RandomSeed = RandomSeed_type(imageID = Test%Image%id, inputSeed = 11234_IK)
+        integer(IK)                 :: nt, nemax
+        real(RK)                    :: tightness, inclusionFraction
+        namelist /specPartition/ rngseed, nc, nt, nemax, inclusionFraction, tightness
+
+        assertion = .true.
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! Generate clustered points
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        call ClusteredPoint%get ( nd = 2_IK & ! LCOV_EXCL_LINE
-                                , etamin = 0.5_RK & ! LCOV_EXCL_LINE
-                                , etamax = 10.0_RK & ! LCOV_EXCL_LINE
-                                , sizeMin = 100 & ! LCOV_EXCL_LINE
-                                , sizeMax = 100 & ! LCOV_EXCL_LINE
-                                , centerMin = -2._RK & ! LCOV_EXCL_LINE
-                                , centerMax = +2._RK & ! LCOV_EXCL_LINE
-                                , nc = 5_IK & ! LCOV_EXCL_LINE
+        rngseed = -huge(rngseed)
+        allocate(character(63) :: dist)
+        open(newunit = Test%File%unit, file = Test%inDir//"/Test_Partition_mod@test_runPartition_2.nml", status = "old")
+        read(Test%File%unit, nml = specData)
+        dist = trim(adjustl(dist))
+        close(Test%File%unit)
+
+        if (rngseed /= -huge(rngseed)) RandomSeed = RandomSeed_type(imageID = Test%Image%id, inputSeed = rngseed)
+
+        call ClusteredPoint%get ( nd = nd & ! LCOV_EXCL_LINE
+                                , nc = nc & ! LCOV_EXCL_LINE
+                                , etamin = etamin & ! LCOV_EXCL_LINE
+                                , etamax = etamax & ! LCOV_EXCL_LINE
+                                , sizeMin = sizeMin & ! LCOV_EXCL_LINE
+                                , sizeMax = sizeMax & ! LCOV_EXCL_LINE
+                                , centerMin = centerMin & ! LCOV_EXCL_LINE
+                                , centerMax = centerMax & ! LCOV_EXCL_LINE
                                 !, Size = [50, 1000, 500, 2000, 3] & ! LCOV_EXCL_LINE
                                 !, Eta = [1._RK, 2._RK, 0.5_RK, 0.05_RK, 1.5_RK] & ! LCOV_EXCL_LINE
-                                , dist = "uniform" & ! LCOV_EXCL_LINE
+                                , dist = dist & ! LCOV_EXCL_LINE
                                 )
 
         ! write data to output for further investigation
 
-        open( file = Test%outDir//"/Test_"//MODULE_NAME(2:)//"@test_runPartition_2.ClusteredPoint."//num2str(Test%Image%id)//".txt" & ! LCOV_EXCL_LINE
-            , status = "replace" & ! LCOV_EXCL_LINE
-            , newunit = fileUnit & ! LCOV_EXCL_LINE
-#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
-            , SHARED & ! LCOV_EXCL_LINE
-#endif
-            )
-        call ClusteredPoint%write(fileUnit)
-        close(fileUnit)
+        Test%File = Test%openFile(label = "ClusteredPoint")
+        call ClusteredPoint%write(Test%File%unit)
+        close(Test%File%unit)
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! Partition the clustered points clustered points
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        !RandomSeed = RandomSeed_type(imageID = Test%Image%id, inputSeed = 12243_IK)
+        rngseed = -huge(rngseed)
+        nemax = ClusteredPoint%np / (ClusteredPoint%nd + 1)
+        open(newunit = Test%File%unit, file = Test%inDir//"/Test_Partition_mod@test_runPartition_2.nml", status = "old")
+        read(Test%File%unit, nml = specPartition)
+        close(Test%File%unit)
 
+        if (rngseed /= -huge(rngseed)) RandomSeed = RandomSeed_type(imageID = Test%Image%id, inputSeed = rngseed)
+
+write(*,*) "zeroth nemax", nemax, ClusteredPoint%np, ClusteredPoint%nd + 1
         Partition = Partition_type  ( Point = ClusteredPoint%Point & ! LCOV_EXCL_LINE
                                     , nd = ClusteredPoint%nd & ! LCOV_EXCL_LINE
                                     , np = ClusteredPoint%np & ! LCOV_EXCL_LINE
-                                    !, nemax = 2_IK & ! LCOV_EXCL_LINE
+                                    , nc = nc & ! LCOV_EXCL_LINE
+                                    , nt = nt & ! LCOV_EXCL_LINE
+                                    , nemax = nemax & ! LCOV_EXCL_LINE
                                     !, nemax = ClusteredPoint%nemax & ! LCOV_EXCL_LINE
                                     !, partitionMaxAllowedFailure = 10000 & ! LCOV_EXCL_LINE
                                     !, partitionMaxAllowedRecursion = 10000 & ! LCOV_EXCL_LINE
                                     !, partitionMaxAllowedKmeansFailure = 10000 & ! LCOV_EXCL_LINE
                                     , partitionStabilizationRequested = .false. & ! LCOV_EXCL_LINE
-                                    , partitionOptimizationRequested = .true. & ! LCOV_EXCL_LINE
+                                    , partitionOptimizationRequested = .false. & ! LCOV_EXCL_LINE
 #if !defined MAXDEN && !defined MINVOL
-                                    , mahalSqWeightExponent = 1._RK & ! LCOV_EXCL_LINE
+                                    , mahalSqWeightExponent = 10.1_RK & ! LCOV_EXCL_LINE
 #endif
-                                    , inclusionFraction = 0._RK & ! LCOV_EXCL_LINE
-                                    , logTightness = log(1._RK) & ! LCOV_EXCL_LINE
+                                    , inclusionFraction = inclusionFraction & ! LCOV_EXCL_LINE
+                                    , logTightness = log(tightness) & ! LCOV_EXCL_LINE
                                     !, parLogVol = sum(log(ClusteredPoint%DomainSize)) & ! LCOV_EXCL_LINE
                                     , trimEnabled = .true. & ! LCOV_EXCL_LINE
                                     )
 
         ! write data to output for further investigation
 
-        open( file = Test%outDir//"/Test_"//MODULE_NAME(2:)//"@test_runPartition_2.Partition."//num2str(Test%Image%id)//".txt" & ! LCOV_EXCL_LINE
-            , status = "replace" & ! LCOV_EXCL_LINE
-            , newunit = fileUnit & ! LCOV_EXCL_LINE
-#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
-            , SHARED & ! LCOV_EXCL_LINE
-#endif
-            )
-        call Partition%write(fileUnit, ClusteredPoint%nd, ClusteredPoint%np, ClusteredPoint%Point)
-        close(fileUnit)
+        Test%File = Test%openFile(label = "Partition")
+        call Partition%write(Test%File%unit, ClusteredPoint%nd, ClusteredPoint%np, ClusteredPoint%Point)
+        close(Test%File%unit)
 
         assertion = assertion .and. .not. Partition%Err%occurred
         assertion = assertion .and. Partition%Err%stat /= 1_IK

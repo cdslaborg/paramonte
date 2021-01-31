@@ -391,7 +391,7 @@ contains
         implicit none
         integer(IK) , parameter     :: nc = 3_IK
         integer(IK) , parameter     :: nt = 2_IK + nint(log(real(nc)))
-        Integer(IK) , allocatable   :: Index(:)
+        Integer(IK) , allocatable   :: PointIndex(:)
         real(RK)    , allocatable   :: InitCenter(:,:), Point(:,:)
         logical                     :: assertion
         type(Kmeans_type)           :: Kmeans
@@ -401,14 +401,14 @@ contains
 
         InitCenter = reshape([4.7_RK, 4.7_RK, 6.4_RK, 6.1_RK, 9.5_RK, 8.6_RK], shape = [TestData%nd,nc])
         Point = TestData%Point
-        Index = [(ip,ip=1,TestData%np)]
+        PointIndex = [(ip,ip=1,TestData%np)]
 
         Kmeans = Kmeans_type( nd = TestData%nd & ! LCOV_EXCL_LINE
                             , np = TestData%np & ! LCOV_EXCL_LINE
                             , nc = nc & ! LCOV_EXCL_LINE
                             , nt = nt & ! LCOV_EXCL_LINE
-                            , Index = Index & ! LCOV_EXCL_LINE
                             , Point = Point & ! LCOV_EXCL_LINE
+                            , Index = PointIndex & ! LCOV_EXCL_LINE
                             , InitCenter = InitCenter & ! LCOV_EXCL_LINE
                             , propEnabled = .true. & ! LCOV_EXCL_LINE
                             )
@@ -425,7 +425,7 @@ contains
         assertion = assertion .and. all(Kmeans%Membership > 0_IK) .and. all(Kmeans%Membership < nc + 1)
         assertion = assertion .and. all(Kmeans%MinDistanceSq > 0_IK)
         assertion = assertion .and. all(Kmeans%Size > 0_IK) .and. sum(Kmeans%Size)==TestData%np
-        assertion = assertion .and. all( Point(:,Kmeans%Index) == TestData%Point )
+        assertion = assertion .and. all( Point(:,PointIndex) == TestData%Point )
         do ic = 1, nc
             assertion = assertion .and. all( Kmeans%Membership(Kmeans%CumSumSize(ic-1)+1:Kmeans%CumSumSize(ic)) == Kmeans%Membership(Kmeans%CumSumSize(ic)) )
         end do

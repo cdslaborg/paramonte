@@ -484,13 +484,13 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function openFile(Test, path, prefix, status) result(File)
+    function openFile(Test, path, label, status) result(File)
 
         use String_mod, only: num2str
         implicit none
 
         class(Test_type), intent(in)        :: Test
-        character(*), intent(in), optional  :: path, prefix, status
+        character(*), intent(in), optional  :: path, label, status
         type(File_type)                     :: File
 
         character(:), allocatable           :: prefixDefault, statusDefault
@@ -500,8 +500,8 @@ contains
         if (present(path)) then
             File%path = path
         else
-            if (present(prefix)) then; prefixDefault = "@"//prefix; else; prefixDefault = ""; end if
-            File%path = Test%outDir//"/"//Test%funcName//prefixDefault//"."//num2str(Test%Image%id)//".txt"
+            if (present(label)) then; prefixDefault = "@"//label; else; prefixDefault = ""; end if
+            File%path = Test%outDir//"/"//Test%funcName//prefixDefault//"@"//num2str(Test%Image%id)//".txt"
         end if
 
         open( file = File%path & ! LCOV_EXCL_LINE

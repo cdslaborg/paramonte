@@ -1,0 +1,21 @@
+&specData
+    nd = 2
+    nc = 5
+    etamin = 0.5d0
+    etamax = 10.d0
+    sizeMin = 100
+    sizeMax = 100
+    centerMin = -2.d0
+    centerMax = +2.d0
+    !rngseed = 31234
+    dist = "uniform"
+/
+
+&specPartition
+    nc = 3
+    nt = 1
+    !nemax = 10
+    tightness = 1.d0
+    inclusionFraction = 1.d0
+    !rngseed = 31234
+/
