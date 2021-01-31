@@ -79,6 +79,7 @@ contains
     !> \remark
     !> A positive value for any element of `Alpha` causes a negative skeness along the corresponding dimension.
     !> This looks as if the distribution is truncated or cut toward negative values.
+    !> Amir Shahmoradi, January 30, 2021, 7:49 AM, Dallas, TX
     pure function getLogProbMSN_RK(nd,MeanVec,InvCovMat,logSqrtDetInvCovMat,Alpha,Point) result(logProbSkewNorm)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbMSN_RK
@@ -116,7 +117,7 @@ contains
     !> `RandMSN` : The randomly generated MSN vector.
     !>
     !> \author
-    !> Amir Shahmoradi, April 23, 2017, 12:36 AM, ICES, UTEXAS
+    !> Amir Shahmoradi, January 30, 2021, 5:36 AM, Dallas, TX
     function getRandMSN(nd,MeanVec,AugChoLow,AugChoDia) result(RandMSN)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandMSN
