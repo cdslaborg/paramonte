@@ -58,6 +58,22 @@ module Kmeans_mod
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> The `Prop_type` class, containing the properties of Kmeans clusters.
+    type :: Prop_type
+        real(RK)    , allocatable   :: LogVol(:)            !< An array of size `(nc)` each element of which represents the volume of the covariance matrix of the corresponding cluster.
+        real(RK)    , allocatable   :: ChoDia(:,:)          !< An array of size `(nd,nc)` representing the diagonal elements of the Cholesky factorization of the covariance matrix.
+        real(RK)    , allocatable   :: MahalSq(:,:)         !< An array of size `(np,nc)` each element of which represents the Mahalanobis distance squared of point `ip` from the cluster `ic`.
+        real(RK)    , allocatable   :: InvCovMat(:,:,:)     !< An array of size `(nd,nd,nc)` containing the inverse of the covariance matrix of the corresponding cluster.
+        real(RK)    , allocatable   :: ChoLowCovUpp(:,:,:)  !< An array of size `(nd,nd,nc)` whose upper triangle and diagonal is the covariance matrix and the lower is the Cholesky Lower.
+        real(RK)    , allocatable   :: ScaleFactorSq(:)     !< An array of size `(nc)` representing the factors by which the cluster covariance matrices must be enlarged to enclose their corresponding members.
+        integer(IK) , allocatable   :: EffectiveSize(:)     !< An array of size `(nc)` representing the factors by which the cluster covariance matrices must be enlarged to enclose their corresponding members.
+        integer(IK) , allocatable   :: CumSumSize(:)        !< A vector of size `0:nc` representing the cumulative sum of all cluster sizes from cluster 1 to the last.
+    contains
+        procedure, pass :: allocate => allocateKmeansProp
+    end type Prop_type
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     !> The `Kmeans_type` class.
     !> The inclusion of the component `NormedPoint` adds ~50% to the computational cost of performing Kmeans.
     !> In this latest implementation, avoiding `NormedPoint` as a component leads to 15-50% performance improvement.
@@ -70,19 +86,12 @@ module Kmeans_mod
         real(RK)                    :: potential            !< The sum of the distances-squared of all points from their corresponding group centers.
         integer(IK)                 :: nfail                !< The number of Zero-Sized Clusters Iterations.
         integer(IK)                 :: niter                !< The number of iterations to reach convergence.
-        real(RK)    , allocatable   :: LogVol(:)            !< An array of size `(nc)` each element of which represents the volume of the covariance matrix of the corresponding cluster.
-        real(RK)    , allocatable   :: ChoDia(:,:)          !< An array of size `(nd,nc)` representing the diagonal elements of the Cholesky factorization of the covariance matrix.
         real(RK)    , allocatable   :: Center(:,:)          !< An array of size `(nd,nc)` containing the centers of the individual clusters identified.
-        real(RK)    , allocatable   :: MahalSq(:,:)         !< An array of size `(np,nc)` each element of which represents the Mahalanobis distance squared of point `ip` from the cluster `ic`.
-        real(RK)    , allocatable   :: InvCovMat(:,:,:)     !< An array of size `(nd,nd,nc)` containing the inverse of the covariance matrix of the corresponding cluster.
        !real(RK)    , allocatable   :: NormedPoint(:,:,:)   !< An array of size `(nd,np,nc)` containing `nc` copies of the input array `Point(nd,np)` normalized to the cluster centers.
-        real(RK)    , allocatable   :: ChoLowCovUpp(:,:,:)  !< An array of size `(nd,nd,nc)` whose upper triangle and diagonal is the covariance matrix and the lower is the Cholesky Lower.
         real(RK)    , allocatable   :: MinDistanceSq(:)     !< An array of size `(np)` of the minimum distances of the points from the cluster centers.
-        real(RK)    , allocatable   :: ScaleFactorSq(:)     !< An array of size `(nc)` representing the factors by which the cluster covariance matrices must be enlarged to enclose their corresponding members.
-        integer(IK) , allocatable   :: EffectiveSize(:)     !< An array of size `(nc)` representing the factors by which the cluster covariance matrices must be enlarged to enclose their corresponding members.
         integer(IK) , allocatable   :: Membership(:)        !< A vector of size `np` each element of which represents the cluster ID to which the point belongs.
-        integer(IK) , allocatable   :: CumSumSize(:)        !< A vector of size `0:nc` representing the cumulative sum of all cluster sizes from cluster 1 to the last.
         integer(IK) , allocatable   :: Size(:)              !< A vector of size `nc` (the number of clusters) containing the sizes of the individual clusters identified.
+        type(Prop_type)             :: Prop                 !< An object of class [Prop_type](@ref prop_type) containing the Kmeans cluster properties.
         type(Err_type)              :: Err                  !< An object of class [Err_type](@ref err_mod::err_type) containing information about error occurrence.
     contains
         procedure, pass :: getProp
@@ -109,6 +118,22 @@ contains
                 , Kmeans%Membership(np) & ! LCOV_EXCL_LINE
                 )
     end function allocateKmeans
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    pure subroutine allocateKmeansProp(Prop, nd, np, nc)
+        implicit none
+        class(Prop_type), intent(inout) :: Prop
+        integer(IK), intent(in)         :: nd, np, nc
+        if (.not. allocated(Prop%ChoDia       )) allocate(Prop%ChoDia          (nd,nc))
+        if (.not. allocated(Prop%MahalSq      )) allocate(Prop%MahalSq         (np,nc))
+        if (.not. allocated(Prop%InvCovMat    )) allocate(Prop%InvCovMat       (nd,nd,nc))
+        if (.not. allocated(Prop%ChoLowCovUpp )) allocate(Prop%ChoLowCovUpp    (nd,nd,nc))
+        if (.not. allocated(Prop%EffectiveSize)) allocate(Prop%EffectiveSize   (nc))
+        if (.not. allocated(Prop%ScaleFactorSq)) allocate(Prop%ScaleFactorSq   (nc))
+        if (.not. allocated(Prop%CumSumSize   )) allocate(Prop%CumSumSize      (0:nc))
+        if (.not. allocated(Prop%LogVol       )) allocate(Prop%LogVol          (nc))
+    end subroutine allocateKmeansProp
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -283,9 +308,9 @@ contains
     !> +   `EffectiveSize(1:nc)`            :   The effective sizes of the ellipsoidal bounded regions of the clusters.
     !> +   `ScaleFactorSq(1:nc)`            :   The factor by which the covariance matrix elements must be multiplied
     !>                                          to convert the matrix to a bounding ellipsoid of the cluster members.
+    !> +   `MahalSq(1:np,1:nc)`             :   The Mahalanobis distances squared of all points from all cluster centers,
     !> +   `ChoDia(1:nd,1:nc)`              :   The diagonal elements of the Cholesky lower triangle,
     !> +   `CumSumSize(0:nc)`               :   The cumulative sum of `Kmeans%Size(1:nc)` with `CumSumSize(0) = 0`,
-    !> +   `MahalSq(1:np)`                  :   The Mahalanobis distances squared of all points from all cluster centers,
     !> +   `LogVol(1:nc)`                   :   The vector of natural-log volumes of all clusters,
     !>
     !> \param[in]       nd                  :   See the description of the [runKmeans](@ref runkmeans).
@@ -339,24 +364,17 @@ contains
         ! If requested, compute the bounded region properties of the optimal Kmeans clusters.
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        if (.not. allocated(Kmeans%ChoDia       )) allocate(Kmeans%ChoDia          (nd,nc))
-        if (.not. allocated(Kmeans%MahalSq      )) allocate(Kmeans%MahalSq         (np,nc))
-        if (.not. allocated(Kmeans%InvCovMat    )) allocate(Kmeans%InvCovMat       (nd,nd,nc))
-        if (.not. allocated(Kmeans%ChoLowCovUpp )) allocate(Kmeans%ChoLowCovUpp    (nd,nd,nc))
-        if (.not. allocated(Kmeans%EffectiveSize)) allocate(Kmeans%EffectiveSize   (nc))
-        if (.not. allocated(Kmeans%ScaleFactorSq)) allocate(Kmeans%ScaleFactorSq   (nc))
-        if (.not. allocated(Kmeans%CumSumSize   )) allocate(Kmeans%CumSumSize      (0:nc))
-        if (.not. allocated(Kmeans%LogVol       )) allocate(Kmeans%LogVol          (nc))
+        call Kmeans%Prop%allocate(nd,np,nc)
 
         if (allocated(KmeansMemberCounter)) deallocate(KmeansMemberCounter) ! LCOV_EXCL_LINE
         allocate(KmeansMemberCounter(nc))
 
         ! Compute the CDF of the cluster Size array.
 
-        Kmeans%CumSumSize(0) = 0_IK
+        Kmeans%Prop%CumSumSize(0) = 0_IK
         loopDetermineClusterBoundaries: do ic = 1, nc
-            KmeansMemberCounter(ic) = Kmeans%CumSumSize(ic-1)
-            Kmeans%CumSumSize(ic) = KmeansMemberCounter(ic) + Kmeans%Size(ic)
+            KmeansMemberCounter(ic) = Kmeans%Prop%CumSumSize(ic-1)
+            Kmeans%Prop%CumSumSize(ic) = KmeansMemberCounter(ic) + Kmeans%Size(ic)
         end do loopDetermineClusterBoundaries
 
         ! Reorder Point based on the identified clusters.
@@ -381,8 +399,8 @@ contains
 
         loopComputeClusterProperties: do ic = 1, nc
 
-            ipstart = Kmeans%CumSumSize(ic-1) + 1_IK
-            ipend = Kmeans%CumSumSize(ic)
+            ipstart = Kmeans%Prop%CumSumSize(ic-1) + 1_IK
+            ipend = Kmeans%Prop%CumSumSize(ic)
 
             ! Correct the cluster memberships.
 
@@ -396,18 +414,18 @@ contains
 
             ! Compute the upper covariance matrix of the cluster covariance matrices.
 
-            Kmeans%ChoLowCovUpp(1:nd,1:nd,ic) = 0._RK
+            Kmeans%Prop%ChoLowCovUpp(1:nd,1:nd,ic) = 0._RK
             do ip = ipstart, ipend
                 do j = 1, nd
-                    Kmeans%ChoLowCovUpp(1:j,j,ic) = Kmeans%ChoLowCovUpp(1:j,j,ic) + NormedPoint(1:j,ip) * NormedPoint(j,ip)
+                    Kmeans%Prop%ChoLowCovUpp(1:j,j,ic) = Kmeans%Prop%ChoLowCovUpp(1:j,j,ic) + NormedPoint(1:j,ip) * NormedPoint(j,ip)
                 end do
             end do
-            Kmeans%ChoLowCovUpp(1:nd,1:nd,ic) = Kmeans%ChoLowCovUpp(1:nd,1:nd,ic) / real(Kmeans%Size(ic)-1_IK, kind = RK)
+            Kmeans%Prop%ChoLowCovUpp(1:nd,1:nd,ic) = Kmeans%Prop%ChoLowCovUpp(1:nd,1:nd,ic) / real(Kmeans%Size(ic)-1_IK, kind = RK)
 
             ! Compute the Cholesky Factor of the cluster covariance matrices.
 
-            call getCholeskyFactor(nd, Kmeans%ChoLowCovUpp(1:nd,1:nd,ic), Kmeans%ChoDia(1:nd,ic))
-            if (Kmeans%ChoDia(1,ic) < 0._RK) then
+            call getCholeskyFactor(nd, Kmeans%Prop%ChoLowCovUpp(1:nd,1:nd,ic), Kmeans%Prop%ChoDia(1:nd,ic))
+            if (Kmeans%Prop%ChoDia(1,ic) < 0._RK) then
                 ! LCOV_EXCL_START
                 Kmeans%Err%msg = PROCEDURE_NAME//"Cholesky factorization failed."
                 Kmeans%Err%occurred = .true.
@@ -417,36 +435,36 @@ contains
 
             ! Compute the inverse of the cluster covariance matrices.
 
-            Kmeans%InvCovMat(1:nd,1:nd,ic) = getInvMatFromCholFac( nd, Kmeans%ChoLowCovUpp(1:nd,1:nd,ic), Kmeans%ChoDia(1:nd,ic) )
+            Kmeans%Prop%InvCovMat(1:nd,1:nd,ic) = getInvMatFromCholFac( nd, Kmeans%Prop%ChoLowCovUpp(1:nd,1:nd,ic), Kmeans%Prop%ChoDia(1:nd,ic) )
 
             ! Compute the MahalSq of as many points as needed.
 
             do concurrent(ip = 1:np)
-                Kmeans%MahalSq(ip,ic) = dot_product( NormedPoint(1:nd,ip) , matmul(Kmeans%InvCovMat(1:nd,1:nd,ic), NormedPoint(1:nd,ip)) )
+                Kmeans%Prop%MahalSq(ip,ic) = dot_product( NormedPoint(1:nd,ip) , matmul(Kmeans%Prop%InvCovMat(1:nd,1:nd,ic), NormedPoint(1:nd,ip)) )
             end do
 
             ! Compute the scaleFcator of the bounding region and scale the volumes to the bounded region.
 
-            Kmeans%ScaleFactorSq(ic) = maxval(Kmeans%MahalSq(ipstart:ipend,ic))
-            Kmeans%LogVol(ic) = sum( log(Kmeans%ChoDia(1:nd,ic)) ) + ndHalf * log(Kmeans%ScaleFactorSq(ic))
-            !Kmeans%ScaleFactor(ic) = sqrt(Kmeans%ScaleFactorSq(ic))
+            Kmeans%Prop%ScaleFactorSq(ic) = maxval(Kmeans%Prop%MahalSq(ipstart:ipend,ic))
+            Kmeans%Prop%LogVol(ic) = sum( log(Kmeans%Prop%ChoDia(1:nd,ic)) ) + ndHalf * log(Kmeans%Prop%ScaleFactorSq(ic))
+            !Kmeans%ScaleFactor(ic) = sqrt(Kmeans%Prop%ScaleFactorSq(ic))
 
         end do loopComputeClusterProperties
 
         ! Compute the effective fraction of points inside the bounded region.
 
         if (present(inclusionFraction)) then
-            !ic = 1_IK; Kmeans%EffectiveSize(ic) = Kmeans%Size(ic) + nint(inclusionFraction*count(Kmeans%MahalSq(Kmeans%CumSumSize(ic)+1:np,ic)<Kmeans%ScaleFactorSq(ic)), kind=IK)
-            !ic = nc  ; Kmeans%EffectiveSize(ic) = Kmeans%Size(ic) + nint(inclusionFraction*count(Kmeans%MahalSq(1:Kmeans%CumSumSize(ic-1),ic)<Kmeans%ScaleFactorSq(ic)), kind=IK)
+            !ic = 1_IK; Kmeans%Prop%EffectiveSize(ic) = Kmeans%Size(ic) + nint(inclusionFraction*count(Kmeans%Prop%MahalSq(Kmeans%Prop%CumSumSize(ic)+1:np,ic)<Kmeans%Prop%ScaleFactorSq(ic)), kind=IK)
+            !ic = nc  ; Kmeans%Prop%EffectiveSize(ic) = Kmeans%Size(ic) + nint(inclusionFraction*count(Kmeans%Prop%MahalSq(1:Kmeans%Prop%CumSumSize(ic-1),ic)<Kmeans%Prop%ScaleFactorSq(ic)), kind=IK)
             !do concurrent(ic = 2:nc-1)
             do concurrent(ic = 1:nc)
-                Kmeans%EffectiveSize(ic) = Kmeans%Size(ic) & ! LCOV_EXCL_LINE
-                                        + nint(inclusionFraction*count(Kmeans%MahalSq(1:Kmeans%CumSumSize(ic-1),ic)<Kmeans%ScaleFactorSq(ic)), kind=IK) & ! LCOV_EXCL_LINE
-                                        + nint(inclusionFraction*count(Kmeans%MahalSq(Kmeans%CumSumSize(ic)+1:np,ic)<Kmeans%ScaleFactorSq(ic)), kind=IK)
-                !write(*,*) ic, Kmeans%Size(ic), Kmeans%EffectiveSize(ic), abs(Kmeans%EffectiveSize(ic) - Kmeans%Size(ic))
+                Kmeans%Prop%EffectiveSize(ic) = Kmeans%Size(ic) & ! LCOV_EXCL_LINE
+                                        + nint(inclusionFraction*count(Kmeans%Prop%MahalSq(1:Kmeans%Prop%CumSumSize(ic-1),ic)<Kmeans%Prop%ScaleFactorSq(ic)), kind=IK) & ! LCOV_EXCL_LINE
+                                        + nint(inclusionFraction*count(Kmeans%Prop%MahalSq(Kmeans%Prop%CumSumSize(ic)+1:np,ic)<Kmeans%Prop%ScaleFactorSq(ic)), kind=IK)
+                !write(*,*) ic, Kmeans%Size(ic), Kmeans%Prop%EffectiveSize(ic), abs(Kmeans%Prop%EffectiveSize(ic) - Kmeans%Size(ic))
             end do
         else
-            Kmeans%EffectiveSize = Kmeans%Size
+            Kmeans%Prop%EffectiveSize = Kmeans%Size
         end if
 
     end subroutine getProp
@@ -826,27 +844,27 @@ contains
             write(fileUnit,fileFormat) Kmeans%Center
         end if
 
-        if (allocated(Kmeans%LogVol)) then
+        if (allocated(Kmeans%Prop%LogVol)) then
             write(fileUnit,"(A)") "LogVol"
-            write(fileUnit,fileFormat) Kmeans%LogVol
+            write(fileUnit,fileFormat) Kmeans%Prop%LogVol
         end if
 
-        if (allocated(Kmeans%ScaleFactorSq)) then
+        if (allocated(Kmeans%Prop%ScaleFactorSq)) then
             write(fileUnit,"(A)") "ScaleFactorSq"
-            write(fileUnit,fileFormat) Kmeans%ScaleFactorSq
+            write(fileUnit,fileFormat) Kmeans%Prop%ScaleFactorSq
         end if
 
-        if (allocated(Kmeans%ChoLowCovUpp)) then
+        if (allocated(Kmeans%Prop%ChoLowCovUpp)) then
             write(fileUnit,"(A)") "CholeskyLower"
-            write(fileUnit,fileFormat) ((Kmeans%ChoDia(j,ic), (Kmeans%ChoLowCovUpp(i,j,ic), i=j+1,nd), j=1,nd), ic=1,nc)
+            write(fileUnit,fileFormat) ((Kmeans%Prop%ChoDia(j,ic), (Kmeans%Prop%ChoLowCovUpp(i,j,ic), i=j+1,nd), j=1,nd), ic=1,nc)
         end if
 
         write(fileUnit,"(A)") "Point"
         write(fileUnit,fileFormat) Point
 
-        if (allocated(Kmeans%MahalSq)) then
+        if (allocated(Kmeans%Prop%MahalSq)) then
             write(fileUnit,"(A)") "MahalSq"
-            write(fileUnit,fileFormat) Kmeans%MahalSq
+            write(fileUnit,fileFormat) Kmeans%Prop%MahalSq
         end if
 
         if (allocated(Kmeans%Membership)) then

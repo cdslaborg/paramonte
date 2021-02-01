@@ -427,7 +427,7 @@ contains
         assertion = assertion .and. all(Kmeans%Size > 0_IK) .and. sum(Kmeans%Size)==TestData%np
         assertion = assertion .and. all( Point(:,PointIndex) == TestData%Point )
         do ic = 1, nc
-            assertion = assertion .and. all( Kmeans%Membership(Kmeans%CumSumSize(ic-1)+1:Kmeans%CumSumSize(ic)) == Kmeans%Membership(Kmeans%CumSumSize(ic)) )
+            assertion = assertion .and. all( Kmeans%Membership(Kmeans%Prop%CumSumSize(ic-1)+1:Kmeans%Prop%CumSumSize(ic)) == Kmeans%Membership(Kmeans%Prop%CumSumSize(ic)) )
         end do
 
         if (Test%isVerboseMode .and. .not. assertion) then

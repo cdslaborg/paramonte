@@ -90,6 +90,7 @@ call setup()
 !block; use Test_Matrix_mod; call test_Matrix(); end block
 block; use Test_MultiSkewNorm_mod; call test_MultiSkewNorm(); end block
 block; use Test_Partition_mod; call Test_Partition(); end block
+block; use Test_PartitionKmeans_mod; call Test_Partition(); end block
 block; use Test_PartitionMaxDen_mod; call Test_Partition(); end block
 block; use Test_PartitionMinVol_mod; call Test_Partition(); end block
 !block; use Test_Misc_mod; call test_Misc(); end block

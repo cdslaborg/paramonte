@@ -45,14 +45,14 @@
 !> \author
 !> Amir Shahmoradi
 
-#define OPTIMIZATION_ENABLED
-
     use Constants_mod, only: IK, RK
     use Err_mod, only: Err_type
 
     implicit none
 
-#if defined MAXDEN
+#if defined KMEANS
+    character(*), parameter :: MODULE_NAME = "@PartitionKmeans_mod"
+#elif defined MAXDEN
     character(*), parameter :: MODULE_NAME = "@PartitionMaxDen_mod"
 #elif defined MINVOL
     character(*), parameter :: MODULE_NAME = "@PartitionMinVol_mod"
@@ -62,39 +62,40 @@
 
     !> The `Partition_type` class. Partitions an input array `Point(nd,np)` with `nd` attributes and `np` observations (points).
     type :: Partition_type
-        integer(IK)                 :: nd,np                            !< See the interface of [runPartitionKernel()](@ref runPartitionkernel).
-        integer(IK)                 :: nc,nt                            !< See the interface of [runPartitionKernel()](@ref runPartitionkernel).
-        integer(IK)                 :: nemax                            !< See the interface of [runPartitionKernel()](@ref runPartitionkernel).
-        integer(IK)                 :: neopt                            !< See the interface of [runPartitionKernel()](@ref runPartitionkernel).
-        integer(IK)                 :: numRecursiveCall                 !< See the interface of [runPartitionKernel()](@ref runPartitionkernel).
-        integer(IK)                 :: convergenceFailureCount          !< See the interface of [runPartitionKernel()](@ref runPartitionkernel).
-        integer(IK)                 :: partitionMaxAllowedFailure       !< See the interface of [runPartitionKernel()](@ref runPartitionkernel).
-        integer(IK)                 :: partitionMaxAllowedRecursion     !< See the interface of [runPartitionKernel()](@ref runPartitionkernel).
-        integer(IK)                 :: partitionMaxAllowedKmeansFailure !< See the interface of [runPartitionKernel()](@ref runPartitionkernel).
-        logical                     :: partitionStabilizationRequested  !< See the interface of [runPartitionKernel()](@ref runPartitionkernel).
-        logical                     :: partitionOptimizationRequested   !< See the interface of [runPartitionKernel()](@ref runPartitionkernel).
-#if !defined MAXDEN && !defined MINVOL
-        real(RK)                    :: mahalSqWeightExponent            !< See the interface of [runPartitionKernel()](@ref runPartitionkernel).
+        integer(IK)                 :: nd,np                                !< See the interface of [runPartitionKernel()](@ref runPartitionkernel).
+        integer(IK)                 :: nc,nt                                !< See the interface of [runPartitionKernel()](@ref runPartitionkernel).
+        integer(IK)                 :: nemax                                !< See the interface of [runPartitionKernel()](@ref runPartitionkernel).
+        integer(IK)                 :: neopt                                !< See the interface of [runPartitionKernel()](@ref runPartitionkernel).
+        integer(IK)                 :: numRecursiveCall                     !< See the interface of [runPartitionKernel()](@ref runPartitionkernel).
+        integer(IK)                 :: convergenceFailureCount              !< See the interface of [runPartitionKernel()](@ref runPartitionkernel).
+        integer(IK)                 :: partitionMaxAllowedKmeansFailure     !< See the interface of [runPartitionKernel()](@ref runPartitionkernel).
+        integer(IK)                 :: partitionMaxAllowedKmeansRecursion   !< See the interface of [runPartitionKernel()](@ref runPartitionkernel).
+#if !defined KMEANS
+        integer(IK)                 :: partitionMaxAllowedRecursion         !< See the interface of [runPartitionKernel()](@ref runPartitionkernel).
 #endif
-        real(RK)                    :: inclusionFraction                !< See the interface of [runPartitionKernel()](@ref runPartitionkernel).
-        real(RK)                    :: logTightness                     !< See the interface of [runPartitionKernel()](@ref runPartitionkernel).
-        real(RK)                    :: parLogVol                        !< See the interface of [runPartitionKernel()](@ref runPartitionkernel).
-        integer(IK) , allocatable   :: Membership(:)                    !< An array of size `(np)` representing the bounding-ellipsoid membership IDs of the corresponding data points.
-        integer(IK) , allocatable   :: PointIndex(:)                    !< An array of size `(np)` representing the indices of the original data points before partitioning.
-        real(RK)    , allocatable   :: LogVolNormed(:)                  !< An array of size `(nemax)` representing the log-volumes of the corresponding bounding ellipsoids.
-        real(RK)    , allocatable   :: ChoLowCovUpp(:,:,:)              !< An array of size `(nd,nd,nemax)` representing the Cholesky lower triangle, diagonal, and covariance matrices of the bounding ellipsoids.
-        real(RK)    , allocatable   :: InvCovMat(:,:,:)                 !< An array of size `(nd,nd,nemax)` representing the full symmetric inverse covariance matrices of the bounding ellipsoids.
-        real(RK)    , allocatable   :: ChoDia(:,:)                      !< An array of size `(nd,nemax)` representing the Cholesky lower triangle, diagonal, and covariance matrices of the bounding ellipsoids.
-        real(RK)    , allocatable   :: Center(:,:)                      !< An array of size `(nd,nemax)` representing the centers of the bounding ellipsoids.
-        integer(IK) , allocatable   :: Size(:)                          !< An array of size `(nemax)` representing the sizes of the corresponding bounding ellipsoids.
-        type(Err_type)              :: Err                              !< An object of class [Err_type](@ref err_mod::err_type) containing information about error occurrence.
+#if !(defined KMEANS || defined MAXDEN || defined MINVOL)
+        real(RK)                    :: mahalSqWeightExponent                !< See the interface of [runPartitionKernel()](@ref runPartitionkernel).
+#endif
+        real(RK)                    :: partitionKmeansRelTol                !< See the interface of [runPartitionKernel()](@ref runPartitionkernel).
+        real(RK)                    :: inclusionFraction                    !< See the interface of [runPartitionKernel()](@ref runPartitionkernel).
+        real(RK)                    :: logTightness                         !< See the interface of [runPartitionKernel()](@ref runPartitionkernel).
+        real(RK)                    :: parLogVol                            !< See the interface of [runPartitionKernel()](@ref runPartitionkernel).
+        integer(IK) , allocatable   :: Membership(:)                        !< An array of size `(np)` representing the bounding-ellipsoid membership IDs of the corresponding data points.
+        integer(IK) , allocatable   :: PointIndex(:)                        !< An array of size `(np)` representing the indices of the original data points before partitioning.
+        real(RK)    , allocatable   :: LogVolNormed(:)                      !< An array of size `(nemax)` representing the log-volumes of the corresponding bounding ellipsoids.
+        real(RK)    , allocatable   :: ChoLowCovUpp(:,:,:)                  !< An array of size `(nd,nd,nemax)` representing the Cholesky lower triangle, diagonal, and covariance matrices of the bounding ellipsoids.
+        real(RK)    , allocatable   :: InvCovMat(:,:,:)                     !< An array of size `(nd,nd,nemax)` representing the full symmetric inverse covariance matrices of the bounding ellipsoids.
+        real(RK)    , allocatable   :: ChoDia(:,:)                          !< An array of size `(nd,nemax)` representing the Cholesky lower triangle, diagonal, and covariance matrices of the bounding ellipsoids.
+        real(RK)    , allocatable   :: Center(:,:)                          !< An array of size `(nd,nemax)` representing the centers of the bounding ellipsoids.
+        integer(IK) , allocatable   :: Size(:)                              !< An array of size `(nemax)` representing the sizes of the corresponding bounding ellipsoids.
+        type(Err_type)              :: Err                                  !< An object of class [Err_type](@ref err_mod::err_type) containing information about error occurrence.
     contains
         procedure, pass :: write => writePartitionOOP
     end type Partition_type
 
-    interface Partition_type
-        module procedure :: constructPartition
-    end interface Partition_type
+    !interface Partition_type ! stupid gfortran complains about this interface
+    !    module procedure :: constructPartition
+    !end interface Partition_type
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -102,23 +103,24 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function constructPartition ( nd, np, Point & ! LCOV_EXCL_LINE
-                                , nc, nt, nemax & ! LCOV_EXCL_LINE
-                                , partitionMaxAllowedFailure & ! LCOV_EXCL_LINE
-                                , partitionMaxAllowedRecursion & ! LCOV_EXCL_LINE
-                                , partitionMaxAllowedKmeansFailure & ! LCOV_EXCL_LINE
-                                , partitionStabilizationRequested & ! LCOV_EXCL_LINE
-                                , partitionOptimizationRequested & ! LCOV_EXCL_LINE
-#if !defined MAXDEN && !defined MINVOL
-                                , mahalSqWeightExponent & ! LCOV_EXCL_LINE
+    function getPartition   ( nd, np, Point & ! LCOV_EXCL_LINE
+                            , nc, nt, nemax & ! LCOV_EXCL_LINE
+#if !defined KMEANS
+                            , partitionMaxAllowedRecursion & ! LCOV_EXCL_LINE
 #endif
-                                , inclusionFraction & ! LCOV_EXCL_LINE
-                                , logTightness & ! LCOV_EXCL_LINE
-                                , trimEnabled & ! LCOV_EXCL_LINE
-                                , parLogVol & ! LCOV_EXCL_LINE
-                                ) result(self)
+#if !(defined KMEANS || defined MAXDEN || defined MINVOL)
+                            , mahalSqWeightExponent & ! LCOV_EXCL_LINE
+#endif
+                            , inclusionFraction & ! LCOV_EXCL_LINE
+                            , logTightness & ! LCOV_EXCL_LINE
+                            , trimEnabled & ! LCOV_EXCL_LINE
+                            , parLogVol & ! LCOV_EXCL_LINE
+                            , partitionKmeansRelTol & ! LCOV_EXCL_LINE
+                            , partitionMaxAllowedKmeansFailure & ! LCOV_EXCL_LINE
+                            , partitionMaxAllowedKmeansRecursion & ! LCOV_EXCL_LINE
+                            ) result(Partition)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructPartition
+        !DEC$ ATTRIBUTES DLLEXPORT :: getPartition
 #endif
         use Constants_mod, only: IK, RK !, NEGINF_RK
 
@@ -127,110 +129,113 @@ contains
         integer(IK) , intent(in)                :: nd,np
         real(RK)    , intent(inout)             :: Point(nd,np) ! do not move this up. This must appear after nd, np declaration.
         integer(IK) , intent(in), optional      :: nc, nt, nemax
-        integer(IK) , intent(in), optional      :: partitionMaxAllowedFailure
+#if !defined KMEANS
         integer(IK) , intent(in), optional      :: partitionMaxAllowedRecursion
-        integer(IK) , intent(in), optional      :: partitionMaxAllowedKmeansFailure
-        logical     , intent(in), optional      :: partitionStabilizationRequested
-        logical     , intent(in), optional      :: partitionOptimizationRequested
-#if !defined MAXDEN && !defined MINVOL
+#endif
+#if !(defined KMEANS || defined MAXDEN || defined MINVOL)
         real(RK)    , intent(in), optional      :: mahalSqWeightExponent
 #endif
         real(RK)    , intent(in), optional      :: inclusionFraction
         real(RK)    , intent(in), optional      :: logTightness
         logical     , intent(in), optional      :: trimEnabled
         real(RK)    , intent(inout), optional   :: parLogVol
-        type(Partition_type)                    :: self
+        real(RK)    , intent(in), optional      :: partitionKmeansRelTol
+        integer(IK) , intent(in), optional      :: partitionMaxAllowedKmeansFailure
+        integer(IK) , intent(in), optional      :: partitionMaxAllowedKmeansRecursion
+        type(Partition_type)                    :: Partition
 
         logical                                 :: trimEnabledDefault
 
-        self%nd = nd
-        self%np = np
-        self%nc = 2_IK; if (present(nc)) self%nc = nc
-        self%nt = 1_IK; if (present(nt)) self%nt = nt
-        self%Err%occurred = .false.
+        Partition%nd = nd
+        Partition%np = np
+        Partition%nc = 2_IK; if (present(nc)) Partition%nc = nc
+        Partition%nt = 1_IK; if (present(nt)) Partition%nt = nt
+        Partition%Err%occurred = .false.
         trimEnabledDefault = .false.; if (present(trimEnabled)) trimEnabledDefault = trimEnabled
 
-        if (present(nemax)) then 
-            self%nemax = nemax
+        if (present(nemax)) then
+            Partition%nemax = nemax
         else
-            self%nemax = np / (nd + 1)
+            Partition%nemax = np / (nd + 1)
         end if
-        self%nemax = max(self%nc, self%nemax)
+        Partition%nemax = max(Partition%nc, Partition%nemax)
 
         !if (present(nemax)) then
-            !if (nemax > self%nemax) then
-            !    self%Err%occurred = .true.
-            !    self%Err%msg = "The input value for `nemax` cannot be larger than `np / (nd + 1)`."
+            !if (nemax > Partition%nemax) then
+            !    Partition%Err%occurred = .true.
+            !    Partition%Err%msg = "The input value for `nemax` cannot be larger than `np / (nd + 1)`."
             !    return
             !else
-            !    self%nemax = nemax
-            !    !if (self%nemax<nemax) self%nemax = nemax
+            !    Partition%nemax = nemax
+            !    !if (Partition%nemax<nemax) Partition%nemax = nemax
             !end if
         !end if
 
-        self%partitionMaxAllowedFailure = 10_IK; if (present(partitionMaxAllowedFailure)) self%partitionMaxAllowedFailure = partitionMaxAllowedFailure
-        self%partitionMaxAllowedRecursion = 50_IK; if (present(partitionMaxAllowedRecursion)) self%partitionMaxAllowedRecursion = partitionMaxAllowedRecursion
-        self%partitionMaxAllowedKmeansFailure = 10_IK; if (present(partitionMaxAllowedKmeansFailure)) self%partitionMaxAllowedKmeansFailure = partitionMaxAllowedKmeansFailure
-        self%partitionStabilizationRequested = .true.; if (present(partitionStabilizationRequested)) self%partitionStabilizationRequested = partitionStabilizationRequested
-        self%partitionOptimizationRequested = .true.; if (present(partitionOptimizationRequested)) self%partitionOptimizationRequested = partitionOptimizationRequested
-#if !defined MAXDEN && !defined MINVOL
-        self%mahalSqWeightExponent = 0._RK; if (present(mahalSqWeightExponent)) self%mahalSqWeightExponent = mahalSqWeightExponent
+        Partition%partitionMaxAllowedKmeansRecursion = 300_IK; if (present(partitionMaxAllowedKmeansRecursion)) Partition%partitionMaxAllowedKmeansRecursion = partitionMaxAllowedKmeansRecursion
+        Partition%partitionMaxAllowedKmeansFailure = 10_IK; if (present(partitionMaxAllowedKmeansFailure)) Partition%partitionMaxAllowedKmeansFailure = partitionMaxAllowedKmeansFailure
+#if !defined KMEANS
+        Partition%partitionMaxAllowedRecursion = 50_IK; if (present(partitionMaxAllowedRecursion)) Partition%partitionMaxAllowedRecursion = partitionMaxAllowedRecursion
 #endif
-        self%inclusionFraction = 0._RK; if (present(inclusionFraction)) self%inclusionFraction = inclusionFraction
-        self%logTightness = log(1.3_RK); if (present(logTightness)) self%logTightness = logTightness
-        self%parLogVol = -huge(1._RK); if (present(parLogVol)) self%parLogVol = parLogVol
+#if !(defined KMEANS || defined MAXDEN || defined MINVOL)
+        Partition%mahalSqWeightExponent = 0._RK; if (present(mahalSqWeightExponent)) Partition%mahalSqWeightExponent = mahalSqWeightExponent
+#endif
+        Partition%partitionKmeansRelTol = 1.e-4_RK; if (present(partitionKmeansRelTol)) Partition%partitionKmeansRelTol = partitionKmeansRelTol
+        Partition%inclusionFraction = 0._RK; if (present(inclusionFraction)) Partition%inclusionFraction = inclusionFraction
+        Partition%logTightness = log(1.3_RK); if (present(logTightness)) Partition%logTightness = logTightness
+        Partition%parLogVol = -huge(1._RK); if (present(parLogVol)) Partition%parLogVol = parLogVol
 
-        allocate( self%Size         (self%nemax) & ! LCOV_EXCL_LINE
-                , self%Center       (nd,self%nemax) & ! LCOV_EXCL_LINE
-                , self%ChoDia       (nd,self%nemax) & ! LCOV_EXCL_LINE
-                , self%InvCovMat    (nd,nd,self%nemax) & ! LCOV_EXCL_LINE
-                , self%ChoLowCovUpp (nd,nd,self%nemax) & ! LCOV_EXCL_LINE
-                , self%LogVolNormed (self%nemax) & ! LCOV_EXCL_LINE
-                , self%Membership   (np) & ! LCOV_EXCL_LINE
-                , self%PointIndex   (np) & ! LCOV_EXCL_LINE
+        allocate( Partition%Size         (Partition%nemax) & ! LCOV_EXCL_LINE
+                , Partition%Center       (nd,Partition%nemax) & ! LCOV_EXCL_LINE
+                , Partition%ChoDia       (nd,Partition%nemax) & ! LCOV_EXCL_LINE
+                , Partition%InvCovMat    (nd,nd,Partition%nemax) & ! LCOV_EXCL_LINE
+                , Partition%ChoLowCovUpp (nd,nd,Partition%nemax) & ! LCOV_EXCL_LINE
+                , Partition%LogVolNormed (Partition%nemax) & ! LCOV_EXCL_LINE
+                , Partition%Membership   (np) & ! LCOV_EXCL_LINE
+                , Partition%PointIndex   (np) & ! LCOV_EXCL_LINE
                 )
 
         call runPartition   ( Point = Point & ! LCOV_EXCL_LINE
                             , nd = nd & ! LCOV_EXCL_LINE
                             , np = np & ! LCOV_EXCL_LINE
-                            , nc = self%nc & ! LCOV_EXCL_LINE
-                            , nt = self%nt & ! LCOV_EXCL_LINE
-                            , nemax = self%nemax & ! LCOV_EXCL_LINE
-                            , partitionMaxAllowedFailure = self%partitionMaxAllowedFailure & ! LCOV_EXCL_LINE
-                            , partitionMaxAllowedRecursion = self%partitionMaxAllowedRecursion & ! LCOV_EXCL_LINE
-                            , partitionMaxAllowedKmeansFailure = self%partitionMaxAllowedKmeansFailure & ! LCOV_EXCL_LINE
-                            , partitionStabilizationRequested = self%partitionStabilizationRequested & ! LCOV_EXCL_LINE
-                            , partitionOptimizationRequested = self%partitionOptimizationRequested & ! LCOV_EXCL_LINE
-#if !defined MAXDEN && !defined MINVOL
-                            , mahalSqWeightExponent = self%mahalSqWeightExponent & ! LCOV_EXCL_LINE
+                            , nc = Partition%nc & ! LCOV_EXCL_LINE
+                            , nt = Partition%nt & ! LCOV_EXCL_LINE
+                            , nemax = Partition%nemax & ! LCOV_EXCL_LINE
+#if !defined KMEANS
+                            , partitionMaxAllowedRecursion = Partition%partitionMaxAllowedRecursion & ! LCOV_EXCL_LINE
 #endif
-                            , inclusionFraction = self%inclusionFraction & ! LCOV_EXCL_LINE
-                            , logTightness = self%logTightness & ! LCOV_EXCL_LINE
-                            , neopt = self%neopt & ! LCOV_EXCL_LINE
-                            , PointIndex = self%PointIndex & ! LCOV_EXCL_LINE
-                            , PartitionSize = self%Size & ! LCOV_EXCL_LINE
-                            , PartitionCenter = self%Center & ! LCOV_EXCL_LINE
-                            , PartitionChoDia = self%ChoDia & ! LCOV_EXCL_LINE
-                            , PartitionLogVol = self%LogVolNormed & ! LCOV_EXCL_LINE
-                            , PartitionInvCovMat = self%InvCovMat & ! LCOV_EXCL_LINE
-                            , PartitionMembership = self%Membership & ! LCOV_EXCL_LINE
-                            , PartitionChoLowCovUpp = self%ChoLowCovUpp & ! LCOV_EXCL_LINE
-                            , convergenceFailureCount = self%convergenceFailureCount & ! LCOV_EXCL_LINE
-                            , numRecursiveCall = self%numRecursiveCall & ! LCOV_EXCL_LINE
-                            , Err = self%Err & ! LCOV_EXCL_LINE
+#if !(defined KMEANS || defined MAXDEN || defined MINVOL)
+                            , mahalSqWeightExponent = Partition%mahalSqWeightExponent & ! LCOV_EXCL_LINE
+#endif
+                            , inclusionFraction = Partition%inclusionFraction & ! LCOV_EXCL_LINE
+                            , logTightness = Partition%logTightness & ! LCOV_EXCL_LINE
+                            , neopt = Partition%neopt & ! LCOV_EXCL_LINE
+                            , PointIndex = Partition%PointIndex & ! LCOV_EXCL_LINE
+                            , PartitionSize = Partition%Size & ! LCOV_EXCL_LINE
+                            , PartitionCenter = Partition%Center & ! LCOV_EXCL_LINE
+                            , PartitionChoDia = Partition%ChoDia & ! LCOV_EXCL_LINE
+                            , PartitionLogVol = Partition%LogVolNormed & ! LCOV_EXCL_LINE
+                            , PartitionInvCovMat = Partition%InvCovMat & ! LCOV_EXCL_LINE
+                            , PartitionMembership = Partition%Membership & ! LCOV_EXCL_LINE
+                            , PartitionChoLowCovUpp = Partition%ChoLowCovUpp & ! LCOV_EXCL_LINE
+                            , convergenceFailureCount = Partition%convergenceFailureCount & ! LCOV_EXCL_LINE
+                            , numRecursiveCall = Partition%numRecursiveCall & ! LCOV_EXCL_LINE
+                            , Err = Partition%Err & ! LCOV_EXCL_LINE
                             , parLogVol = parLogVol & ! LCOV_EXCL_LINE
+                            , partitionKmeansRelTol = Partition%partitionKmeansRelTol & ! LCOV_EXCL_LINE
+                            , partitionMaxAllowedKmeansFailure = Partition%partitionMaxAllowedKmeansFailure & ! LCOV_EXCL_LINE
+                            , partitionMaxAllowedKmeansRecursion = Partition%partitionMaxAllowedKmeansRecursion & ! LCOV_EXCL_LINE
                             )
 
         if (trimEnabledDefault) then
-            self%Size           = self%Size         (1:self%neopt)
-            self%Center         = self%Center       (1:nd,1:self%neopt)
-            self%ChoDia         = self%ChoDia       (1:nd,1:self%neopt)
-            self%InvCovMat      = self%InvCovMat    (1:nd,1:nd,1:self%neopt)
-            self%ChoLowCovUpp   = self%ChoLowCovUpp (1:nd,1:nd,1:self%neopt)
-            self%LogVolNormed   = self%LogVolNormed (1:self%neopt)
+            Partition%Size           = Partition%Size         (1:Partition%neopt)
+            Partition%Center         = Partition%Center       (1:nd,1:Partition%neopt)
+            Partition%ChoDia         = Partition%ChoDia       (1:nd,1:Partition%neopt)
+            Partition%InvCovMat      = Partition%InvCovMat    (1:nd,1:nd,1:Partition%neopt)
+            Partition%ChoLowCovUpp   = Partition%ChoLowCovUpp (1:nd,1:nd,1:Partition%neopt)
+            Partition%LogVolNormed   = Partition%LogVolNormed (1:Partition%neopt)
         end if
 
-    end function constructPartition
+    end function getPartition
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -240,12 +245,10 @@ contains
                             , nd,np & ! LCOV_EXCL_LINE
                             , nc,nt & ! LCOV_EXCL_LINE
                             , nemax & ! LCOV_EXCL_LINE
+#if !defined KMEANS
                             , partitionMaxAllowedRecursion & ! LCOV_EXCL_LINE
-                            , partitionMaxAllowedKmeansFailure & ! LCOV_EXCL_LINE
-                            , partitionMaxAllowedFailure & ! LCOV_EXCL_LINE
-                            , partitionStabilizationRequested & ! LCOV_EXCL_LINE
-                            , partitionOptimizationRequested & ! LCOV_EXCL_LINE
-#if !defined MAXDEN && !defined MINVOL
+#endif
+#if !(defined KMEANS || defined MAXDEN || defined MINVOL)
                             , mahalSqWeightExponent & ! LCOV_EXCL_LINE
 #endif
                             , inclusionFraction & ! LCOV_EXCL_LINE
@@ -264,6 +267,9 @@ contains
                             , numRecursiveCall & ! LCOV_EXCL_LINE
                             , Err & ! LCOV_EXCL_LINE
                             , parLogVol & ! LCOV_EXCL_LINE
+                            , partitionKmeansRelTol & ! LCOV_EXCL_LINE
+                            , partitionMaxAllowedKmeansFailure & ! LCOV_EXCL_LINE
+                            , partitionMaxAllowedKmeansRecursion & ! LCOV_EXCL_LINE
                             )
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: runPartition
@@ -280,12 +286,10 @@ contains
         integer(IK)     , intent(in)                :: nc,nt                                ! the number of subclusters in each partitioning step. The number of Kmeans clustering tries.
         integer(IK)     , intent(in)                :: nemax                                ! the maximum allowed number of ellipsoidal clusters, number of dimensions, number of points
         real(RK)        , intent(inout)             :: Point(nd,np)                         ! the input data (points) to be clustered. on output, it is ordered. This must appear after nd, np declaration.
-        integer(IK)     , intent(in)                :: partitionMaxAllowedFailure
+#if !defined KMEANS
         integer(IK)     , intent(in)                :: partitionMaxAllowedRecursion
-        integer(IK)     , intent(in)                :: partitionMaxAllowedKmeansFailure
-        logical         , intent(in)                :: partitionStabilizationRequested
-        logical         , intent(in)                :: partitionOptimizationRequested
-#if !defined MAXDEN && !defined MINVOL
+#endif
+#if !(defined KMEANS || defined MAXDEN || defined MINVOL)
         real(RK)        , intent(in)                :: mahalSqWeightExponent
 #endif
         real(RK)        , intent(in)                :: inclusionFraction                    ! the fraction of non-cluster-member points that ARE inside the cluster, to be considered in the estimation of the true volume of the cluster.
@@ -303,6 +307,9 @@ contains
         integer(IK)     , intent(out)               :: numRecursiveCall                     ! The number of recursive calls before convergence occurs.
         type(Err_type)  , intent(out)               :: Err                                  ! Error object containing error information.
         real(RK)        , intent(inout), optional   :: parLogVol                            ! input log-estimate of the total volume of the points. Input zero or negative for the value to be ignored.
+        real(RK)        , intent(in)   , optional   :: partitionKmeansRelTol                ! The `relTol` input argument to the `Kmeans_type()` constructor.
+        integer(IK)     , intent(in)   , optional   :: partitionMaxAllowedKmeansFailure     ! The `nfailMax` input argument to the `Kmeans_type()` constructor.
+        integer(IK)     , intent(in)   , optional   :: partitionMaxAllowedKmeansRecursion   ! The `niterMax` input argument to the `Kmeans_type()` constructor.
 
         logical                                     :: parLogVolIsPresent
         logical                                     :: boundedRegionIsTooLarge
@@ -405,12 +412,10 @@ contains
                                     , nc = min(nc,nemax) & ! LCOV_EXCL_LINE
                                     , nt = nt & ! LCOV_EXCL_LINE
                                     , nemax = nemax & ! LCOV_EXCL_LINE
-                                    , partitionMaxAllowedFailure = partitionMaxAllowedFailure & ! LCOV_EXCL_LINE
+#if !defined KMEANS
                                     , partitionMaxAllowedRecursion = partitionMaxAllowedRecursion & ! LCOV_EXCL_LINE
-                                    , partitionMaxAllowedKmeansFailure = partitionMaxAllowedKmeansFailure & ! LCOV_EXCL_LINE
-                                    , partitionStabilizationRequested = partitionStabilizationRequested & ! LCOV_EXCL_LINE
-                                    , partitionOptimizationRequested = partitionOptimizationRequested & ! LCOV_EXCL_LINE
-#if !defined MAXDEN && !defined MINVOL
+#endif
+#if !(defined KMEANS || defined MAXDEN || defined MINVOL)
                                     , mahalSqWeightExponent = mahalSqWeightExponent & ! LCOV_EXCL_LINE
 #endif
                                     , inclusionFraction = inclusionFraction & ! LCOV_EXCL_LINE
@@ -427,6 +432,9 @@ contains
                                     , convergenceFailureCount = convergenceFailureCount & ! LCOV_EXCL_LINE
                                     , numRecursiveCall = numRecursiveCall & ! LCOV_EXCL_LINE
                                     , parLogVol = parLogVol & ! LCOV_EXCL_LINE
+                                    , partitionKmeansRelTol = partitionKmeansRelTol & ! LCOV_EXCL_LINE
+                                    , partitionMaxAllowedKmeansFailure = partitionMaxAllowedKmeansFailure & ! LCOV_EXCL_LINE
+                                    , partitionMaxAllowedKmeansRecursion = partitionMaxAllowedKmeansRecursion & ! LCOV_EXCL_LINE
                                     )
         else ! There is only one cluster
             neopt = 1_IK
@@ -462,12 +470,10 @@ contains
                                             , nc & ! LCOV_EXCL_LINE
                                             , nt & ! LCOV_EXCL_LINE
                                             , nemax & ! LCOV_EXCL_LINE
-                                            , partitionMaxAllowedFailure & ! LCOV_EXCL_LINE
+#if !defined KMEANS
                                             , partitionMaxAllowedRecursion & ! LCOV_EXCL_LINE
-                                            , partitionMaxAllowedKmeansFailure & ! LCOV_EXCL_LINE
-                                            , partitionStabilizationRequested & ! LCOV_EXCL_LINE
-                                            , partitionOptimizationRequested & ! LCOV_EXCL_LINE
-#if !defined MAXDEN && !defined MINVOL
+#endif
+#if !(defined KMEANS || defined MAXDEN || defined MINVOL)
                                             , mahalSqWeightExponent & ! LCOV_EXCL_LINE
 #endif
                                             , inclusionFraction & ! LCOV_EXCL_LINE
@@ -484,25 +490,25 @@ contains
                                             , convergenceFailureCount & ! LCOV_EXCL_LINE
                                             , numRecursiveCall & ! LCOV_EXCL_LINE
                                             , parLogVol & ! LCOV_EXCL_LINE
+                                            , partitionKmeansRelTol & ! LCOV_EXCL_LINE
+                                            , partitionMaxAllowedKmeansFailure & ! LCOV_EXCL_LINE
+                                            , partitionMaxAllowedKmeansRecursion & ! LCOV_EXCL_LINE
                                             )
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: runPartitionKernel
 #endif
-        use Constants_mod, only: IK, RK, SPR, HUGE_IK
+        use Constants_mod, only: IK, RK, SPR, HUGE_IK, HUGE_RK
         use Kmeans_mod, only: Kmeans_type !, getKmeans, runKmeans
         use Math_mod, only: getLogSumExp
-        use Err_mod, only: Err_type
 
         implicit none
 
         integer(IK) , intent(in)                :: nemax                            ! maximum number of clusters determined from the nd and np
         integer(IK) , intent(in)                :: nd, np, nc, nt                   ! number of dimensions, number of points, number of clusters, number of tries
-        integer(IK) , intent(in)                :: partitionMaxAllowedFailure
+#if !defined KMEANS
         integer(IK) , intent(in)                :: partitionMaxAllowedRecursion
-        integer(IK) , intent(in)                :: partitionMaxAllowedKmeansFailure
-        logical     , intent(in)                :: partitionStabilizationRequested
-        logical     , intent(in)                :: partitionOptimizationRequested
-#if !defined MAXDEN && !defined MINVOL
+#endif
+#if !(defined KMEANS || defined MAXDEN || defined MINVOL)
         real(RK)    , intent(in)                :: mahalSqWeightExponent
 #endif
         real(RK)    , intent(in)                :: inclusionFraction                    ! the fraction of non-cluster-member points that ARE inside the cluster, to be considered in the estimation of the true volume of the cluster.
@@ -520,49 +526,34 @@ contains
         real(RK)    , intent(inout)             :: PartitionLogVol(nemax)               ! CBE: Cluster Bounding Ellipsoid - On input: The volume of the Bounding Ellipsoid of the parent cluster. On output: The Bounding volume of all child clusters.
         integer(IK) , intent(inout)             :: numRecursiveCall                     ! The number of recursive calls before convergence occurs.
         real(RK)    , intent(inout), optional   :: parLogVol                            ! parent's sqrt(det(invCovMat)), where invCovMat is the inverse covariance matrix of the bounding ellipsoid of the input points.
+        real(RK)    , intent(in)   , optional   :: partitionKmeansRelTol
+        integer(IK) , intent(in)   , optional   :: partitionMaxAllowedKmeansFailure
+        integer(IK) , intent(in)   , optional   :: partitionMaxAllowedKmeansRecursion
 
         type(Kmeans_type)       :: Kmeans
+        real(RK)                :: NormedPoint(nd)                      ! Vector of Maximum Mahalanobis distances for each cluster.
+        real(RK)                :: KmeansLogVolEstimate(nc)             ! New Cluster Volume estimates.
+        real(RK)                :: kmeansScaleFactor                    ! New Cluster Bounding Ellipsoid Volumes
+        integer(IK)             :: KmeansNemax(nc)                      ! maximum allowed number of clusters in each of the two K-means clusters.
+        integer(IK)             :: KmeansNeopt(0:nc)                    ! optimal number of clusters in each of the child clusters.
+#if !defined KMEANS
         type(Kmeans_type)       :: KmeansBackup
-        !real(RK)                :: KmeansChoLowCovUppOld(nd,nd,nc)    ! Covariance Matrices of the bounding ellipsoid of the Kmeans' nc clusters, reported in the upper triangle. The lower triangle contains the Cholesky factors
-        !real(RK)                :: KmeansInvCovMatOld(nd,nd,nc)       ! Inverse of the Covariance Matrices of the bounding ellipsoid of the Kmeans' nc clusters.
-        !real(RK)                :: KmeansScaleFactorSqOld(nc)         ! The factor by which determinant must be multiplied in order for the ellipsoid to become a bounding ellipsoid.
-        !real(RK)                :: KmeansScaleFactorOld(nc)           ! The factor by which determinant must be multiplied in order for the ellipsoid to become a bounding ellipsoid.
-        !real(RK)                :: KmeansMahalSqOld(np,nc)            ! Vector of Maximum Mahalanobis distances for each cluster
-        !real(RK)                :: KmeansCenterOld(nd,nc)             ! Cluster Centers for nc Kmeans algorithm
-        !real(RK)                :: KmeansChoDiaOld(nd,nc)             ! determinants of the inverse covariance matrices of the bounding ellipsoids of the Kmeans' nc clusters.
-        !real(RK)                :: KmeansLogVolOld(nc)                ! New Cluster Bounding Ellipsoid Volumes
-        real(RK)                :: KmeansPoint(nd,np)           ! Cluster Points in Kmeans partition result.
-        real(RK)                :: NormedPoint(nd)              ! Vector of Maximum Mahalanobis distances for each cluster.
-        real(RK)                :: KmeansNormedPoint(nd,np,nc)  ! Vector of Maximum Mahalanobis distances for each cluster.
-        real(RK)                :: KmeansLogVolEstimate(nc)     ! New Cluster Volume estimates.
-        real(RK)                :: KmeansMinDistanceSq(np)      ! Vector of Maximum Mahalanobis distances for each cluster.
-       !integer(IK)             :: KmeansNumPointInner(nc)      ! cluster sizes for nc Kmeans algorithm.
-        integer(IK)             :: KmeansMemberCounter(nc)      ! cluster member counter dummy variable.
-        integer(IK)             :: KmeansPointIndex(np)         ! Vector containing the scrambled indices of Point elements. It represent the mapping from the input Point elements to output scrambled Point vector.
-        real(RK)                :: kmeansScaleFactor            ! New Cluster Bounding Ellipsoid Volumes
-        integer(IK)             :: KmeansNemax(nc)              ! maximum allowed number of clusters in each of the two K-means clusters.
-        integer(IK)             :: KmeansNeopt(0:nc)            ! optimal number of clusters in each of the child clusters.
-        integer(IK)             :: zcsIteration                 ! Counts the number of times zero sized clusters are found, zcs stands for zero cluster size.
-#if !defined MINVOL
-        real(RK)                :: MahalSqWeight(nc)             ! MahalSqWeight definition of Lu et al 2007.
 #endif
-
-        integer(IK)     :: i, j, ip, ic, icOther, iteration, ndEffectivePlusOne, ipstart, ipend
-        integer(IK)     :: icstart,icend,recursionCounter,kmeansFailureCount,partitionFailureCount
-        integer(IK)     :: minClusterSize
-        integer(IK)     :: nemaxRemained
-        integer(IK)     :: icmin
-        logical         :: reclusteringNeeded
-        logical         :: parLogVolIsPresent
-        logical         :: boundedRegionIsTooLarge
-        !logical         :: isZeroInclusionFraction
-        real(RK)        :: scaleFactorSqInverse
-        real(RK)        :: potential                    ! The factor by which determinant must be multiplied in order for the ellipsoid to become a bounding ellipsoid.
-        type(Err_type)  :: Err
+#if !(defined KMEANS || defined MINVOL)
+        real(RK)                :: MahalSqWeight(nc)                    ! MahalSqWeight definition of Lu et al 2007.
+#endif
+        integer(IK)             :: i, j, ip, ic, ipstart, ipend !, ndEffectivePlusOne
+        integer(IK)             :: icstart,icend,recursionCounter
+        integer(IK)             :: minClusterSize
+        integer(IK)             :: nemaxRemained
+        integer(IK)             :: icmin
+        real(RK)                :: scaleFactorSqInverse
+        logical                 :: boundedRegionIsTooLarge
+        logical                 :: reclusteringNeeded
+        logical                 :: parLogVolIsPresent
 
         minClusterSize = nd + 1_IK
         numRecursiveCall = numRecursiveCall + 1
-        !isZeroInclusionFraction = abs(inclusionFraction) < 1.e-6_RK
 
         parLogVolIsPresent = present(parLogVol)
 
@@ -570,18 +561,18 @@ contains
         ! Perform the initial Kmeans clustering.
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        Kmeans = Kmeans_type( nd = nd &
-                            , np = np &
-                            , nc = nc &
-                            , nt = nt &
-                            , Point = Point &
-                            , niterMax = 300_IK &
-                            , nfailMax = 10_IK &
-                            , minSize = minClusterSize &
-                            , propEnabled = .true. &
-                            , Index = PointIndex &
-                            , inclusionFraction = inclusionFraction &
-                            !, relTol
+        Kmeans = Kmeans_type( nd = nd & ! LCOV_EXCL_LINE
+                            , np = np & ! LCOV_EXCL_LINE
+                            , nc = nc & ! LCOV_EXCL_LINE
+                            , nt = nt & ! LCOV_EXCL_LINE
+                            , Point = Point & ! LCOV_EXCL_LINE
+                            , relTol = partitionKmeansRelTol & ! LCOV_EXCL_LINE
+                            , niterMax = partitionMaxAllowedKmeansRecursion & ! LCOV_EXCL_LINE
+                            , nfailMax = partitionMaxAllowedKmeansFailure & ! LCOV_EXCL_LINE
+                            , inclusionFraction = inclusionFraction & ! LCOV_EXCL_LINE
+                            , minSize = minClusterSize & ! LCOV_EXCL_LINE
+                            , propEnabled = .true. & ! LCOV_EXCL_LINE
+                            , Index = PointIndex & ! LCOV_EXCL_LINE
                             )
         if (Kmeans%Err%occurred) then
             neopt = 1_IK
@@ -601,40 +592,40 @@ contains
                     call getSamCholFac  ( nd = nd & ! LCOV_EXCL_LINE
                                         , np = Kmeans%Size(ic) & ! LCOV_EXCL_LINE
                                         , Mean = Kmeans%Center(1:nd,ic) & ! LCOV_EXCL_LINE
-                                        , Point = Point(1:nd,Kmeans%CumSumSize(ic-1)+1:Kmeans%CumSumSize(ic)) & ! LCOV_EXCL_LINE
+                                        , Point = Point(1:nd,Kmeans%Prop%CumSumSize(ic-1)+1:Kmeans%Prop%CumSumSize(ic)) & ! LCOV_EXCL_LINE
                                         , CholeskyLower = ChoLow & ! LCOV_EXCL_LINE
                                         , CholeskyDiago = ChoDia & ! LCOV_EXCL_LINE
                                         )
-                    ChoLowDiff = 2 * abs(Kmeans%ChoLowCovUpp(1:nd,1:nd,ic)-ChoLow) / abs(Kmeans%ChoLowCovUpp(1:nd,1:nd,ic)+ChoLow)
+                    ChoLowDiff = 2 * abs(Kmeans%Prop%ChoLowCovUpp(1:nd,1:nd,ic)-ChoLow) / abs(Kmeans%Prop%ChoLowCovUpp(1:nd,1:nd,ic)+ChoLow)
                     if ( any(ChoLowDiff > TOLERANCE) ) then
                         ! LCOV_EXCL_START
                         write(*,*)
-                        write(*,*) "Kmeans%ChoLowCovUpp(1:nd,1:nd,ic)-ChoLow) > TOLERANCE"
+                        write(*,*) "Kmeans%Prop%ChoLowCovUpp(1:nd,1:nd,ic)-ChoLow) > TOLERANCE"
                         write(*,*) "TOLERANCE"
                         write(*,*) TOLERANCE
                         write(*,*) "ChoLowDiff"
                         write(*,*) ChoLowDiff
                         write(*,*) "ChoLow"
                         write(*,*) ChoLow
-                        write(*,*) "Kmeans%ChoLowCovUpp(1:nd,1:nd,ic)"
-                        write(*,*) Kmeans%ChoLowCovUpp(1:nd,1:nd,ic)
+                        write(*,*) "Kmeans%Prop%ChoLowCovUpp(1:nd,1:nd,ic)"
+                        write(*,*) Kmeans%Prop%ChoLowCovUpp(1:nd,1:nd,ic)
                         write(*,*)
                         !error stop
                         ! LCOV_EXCL_STOP
                     end if
-                    ChoDiaDiff = 2 * abs(Kmeans%ChoDia(1:nd,ic)-ChoDia) / abs(Kmeans%ChoDia(1:nd,ic)+ChoDia)
+                    ChoDiaDiff = 2 * abs(Kmeans%Prop%ChoDia(1:nd,ic)-ChoDia) / abs(Kmeans%Prop%ChoDia(1:nd,ic)+ChoDia)
                     if ( any(ChoDiaDiff > TOLERANCE) ) then
                         ! LCOV_EXCL_START
                         write(*,*)
-                        write(*,*) "Kmeans%ChoDia(1:nd,ic)-ChoDia) > TOLERANCE"
+                        write(*,*) "Kmeans%Prop%ChoDia(1:nd,ic)-ChoDia) > TOLERANCE"
                         write(*,*) "TOLERANCE"
                         write(*,*) TOLERANCE
                         write(*,*) "ChoDiaDiff"
                         write(*,*) ChoDiaDiff
                         write(*,*) "ChoDia"
                         write(*,*) ChoDia
-                        write(*,*) "Kmeans%ChoDia(1:nd,1:nd,ic)"
-                        write(*,*) Kmeans%ChoDia(1:nd,ic)
+                        write(*,*) "Kmeans%Prop%ChoDia(1:nd,1:nd,ic)"
+                        write(*,*) Kmeans%Prop%ChoDia(1:nd,ic)
                         write(*,*)
                         !error stop
                         ! LCOV_EXCL_STOP
@@ -642,20 +633,20 @@ contains
 
                     do ip = 1, np
                         NormedPoint(1:nd) = Point(1:nd,ip) - Kmeans%Center(1:nd,ic)
-                        Kmeans%MahalSq(ip,ic) = dot_product( NormedPoint , matmul(Kmeans%InvCovMat(1:nd,1:nd,ic), NormedPoint) )
-                        if (Kmeans%MahalSq(ip,ic)<0._RK) then
+                        Kmeans%Prop%MahalSq(ip,ic) = dot_product( NormedPoint , matmul(Kmeans%Prop%InvCovMat(1:nd,1:nd,ic), NormedPoint) )
+                        if (Kmeans%Prop%MahalSq(ip,ic)<0._RK) then
                         ! LCOV_EXCL_START
-                            Kmeans%MahalSq(1,ic) = -1._RK
-                            write(*,*) "Kmeans%MahalSq(ip)<0._RK", ip, Kmeans%MahalSq(ip,ic)
+                            Kmeans%Prop%MahalSq(1,ic) = -1._RK
+                            write(*,*) "Kmeans%Prop%MahalSq(ip)<0._RK", ip, Kmeans%Prop%MahalSq(ip,ic)
                             error stop
                         end if
                         ! LCOV_EXCL_STOP
-                        dum = getMahalSq( nd, Kmeans%Center(1:nd,ic), Kmeans%InvCovMat(1:nd,1:nd,ic), Point(1:nd,ip) )
-                        diff = 2 * abs(dum-Kmeans%MahalSq(ip,ic)) / abs(dum+Kmeans%MahalSq(ip,ic))
+                        dum = getMahalSq( nd, Kmeans%Center(1:nd,ic), Kmeans%Prop%InvCovMat(1:nd,1:nd,ic), Point(1:nd,ip) )
+                        diff = 2 * abs(dum-Kmeans%Prop%MahalSq(ip,ic)) / abs(dum+Kmeans%Prop%MahalSq(ip,ic))
                         if (diff > TOLERANCE) then
                             ! LCOV_EXCL_START
                             write(*,*)
-                            write(*,*) "dum/=Kmeans%MahalSq(ip,ic)", ip, Kmeans%MahalSq(ip,ic), dum
+                            write(*,*) "dum/=Kmeans%Prop%MahalSq(ip,ic)", ip, Kmeans%Prop%MahalSq(ip,ic), dum
                             write(*,*) "TOLERANCE"
                             write(*,*) TOLERANCE
                             write(*,*) "diff"
@@ -666,7 +657,7 @@ contains
                         end if
                     end do
                 end block
-                !Kmeans%MahalSq(1:np,ic) = Kmeans%MahalSq(1:np,ic) / Kmeans%ScaleFactorSq(ic)
+                !Kmeans%Prop%MahalSq(1:np,ic) = Kmeans%Prop%MahalSq(1:np,ic) / Kmeans%Prop%ScaleFactorSq(ic)
             end do loopComputeScaleFactor
 #endif
 
@@ -674,99 +665,106 @@ contains
         ! If optimization is enabled, reassign points to clusters based on minimum-volume, maximum-density, ...
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if defined OPTIMIZATION_ENABLED
+#if !defined KMEANS
 
-        blockPartitionOptimization: if (partitionOptimizationRequested) then ! .and. recursionCounter < 2_IK) then
+        recursionCounter = 0_IK
+        !call KmeansBackup%Prop%allocate(nd, np, nc)
+        !KmeansBackup%Prop%LogVol = 2 * Kmeans%Prop%LogVol
 
-            recursionCounter = 0_IK
-            partitionFailureCount = 0
+        loopRecursivePartitionOptimization: do
 
-            loopRecursiveRunPartitionKernel: do
+            ! If the maximum allowed number of recursion has reached, quit.
 
-                ! If the maximum allowed number of recursion has reached, quit
+            recursionCounter = recursionCounter + 1_IK
+            if(recursionCounter > partitionMaxAllowedRecursion) then
+                write(*,*) "recursionCounter > partitionMaxAllowedRecursion: ", recursionCounter
+                neopt = 1_IK
+                PartitionSize(1) = np
+                PartitionMembership = 1_IK
+                convergenceFailureCount = convergenceFailureCount + 1_IK
+                !error stop
+                return
+            end if
 
-                recursionCounter = recursionCounter + 1_IK
-                if(recursionCounter > partitionMaxAllowedRecursion) then
-                    write(*,*) "recursionCounter > partitionMaxAllowedRecursion: ", recursionCounter
+            ! Ensure the stability of the minimum bounding regions.
+
+            !if ( sum(Kmeans%Prop%LogVol) < sum(KmeansBackup%Prop%LogVol) ) then ! This must never occur on the first try
+            !    KmeansBackup = Kmeans ! Create a backup of the current clustering properties.
+            !else
+            !    Kmeans = KmeansBackup ! Restore the last clustering properties.
+            !    exit loopRecursivePartitionOptimization
+            !end if
+
+#if !(defined KMEANS || defined MAXDEN || defined MINVOL)
+            MahalSqWeight = ( Kmeans%Prop%LogVol / Kmeans%Prop%EffectiveSize )**mahalSqWeightExponent
+#elif defined MAXDEN
+            MahalSqWeight = ( Kmeans%Prop%LogVol / Kmeans%Prop%EffectiveSize )**2
+#endif
+
+            ! Convert Center to sum(Point).
+
+            do concurrent(ic = 1:nc)
+                Kmeans%Center(1:nd,ic) = Kmeans%Center(1:nd,ic) * Kmeans%Size(ic)
+            end do
+
+            ! Optimize the Kmeans clusters.
+
+            reclusteringNeeded = .false.
+            do ip = 1, np
+
+                ! Determine the cluster to which the point is the closest.
+
+                icmin = Kmeans%Membership(ip)
+                do ic = 1, nc
+                    if (ic/=icmin) then
+#if defined MINVOL
+                        if ( Kmeans%Prop%MahalSq(ip,ic) < Kmeans%Prop%MahalSq(ip,icmin) ) icmin = ic
+#else
+                        if ( Kmeans%Prop%MahalSq(ip,ic) * MahalSqWeight(ic) < Kmeans%Prop%MahalSq(ip,icmin) * MahalSqWeight(icmin) ) icmin = ic
+#endif
+                    end if
+                end do
+
+                ! Switch the membership of point if needed.
+
+                if (icmin /= Kmeans%Membership(ip) .and. Kmeans%Size(Kmeans%Membership(ip)) > minClusterSize) then
+                    Kmeans%Size(icmin) = Kmeans%Size(icmin) + 1
+                    Kmeans%Size(Kmeans%Membership(ip)) = Kmeans%Size(Kmeans%Membership(ip)) - 1
+                    Kmeans%Center(1:nd,icmin) = Kmeans%Center(1:nd,icmin) + Point(1:nd,ip)
+                    Kmeans%Center(1:nd,Kmeans%Membership(ip)) = Kmeans%Center(1:nd,Kmeans%Membership(ip)) - Point(1:nd,ip)
+                    Kmeans%Membership(ip) = icmin
+                    reclusteringNeeded = .true.
+                end if
+
+            end do
+
+            ! Convert sum(Point) back to center of clusters.
+
+            do concurrent(ic = 1:nc)
+                Kmeans%Center(1:nd,ic) = Kmeans%Center(1:nd,ic) / Kmeans%Size(ic)
+            end do
+
+            ! Restart the process if anything has changed.
+
+            blockReclusteringNeeded: if (reclusteringNeeded) then ! perform reassignment
+
+                ! Reorder Point based on the identified clusters and recompute the cluster properties.
+
+                call Kmeans%getProp(nd, np, Point, PointIndex)
+                if (Kmeans%Err%occurred) then ! This must revert back to the original Kmeans cluster and continue instead of return
                     neopt = 1_IK
                     PartitionSize(1) = np
                     PartitionMembership = 1_IK
-                    convergenceFailureCount = convergenceFailureCount + 1_IK
                     return
                 end if
 
-#if !defined MAXDEN && !defined MINVOL
-                MahalSqWeight = ( Kmeans%LogVol / Kmeans%EffectiveSize )**mahalSqWeightExponent
-#elif defined MAXDEN
-                MahalSqWeight = ( Kmeans%LogVol / Kmeans%EffectiveSize )**2
-#endif
+                cycle loopRecursivePartitionOptimization
 
-                ! Convert Center to sum(Point).
+            end if blockReclusteringNeeded
 
-                do concurrent(ic = 1:nc)
-                    Kmeans%Center(1:nd,ic) = Kmeans%Center(1:nd,ic) * Kmeans%Size(ic)
-                end do
+            exit loopRecursivePartitionOptimization ! mission accomplished, current volumes minimized.
 
-                ! Optimize the Kmeans clusters.
-
-                reclusteringNeeded = .false.
-                do ip = 1, np
-
-                    ! Determine the cluster to which the point is the closest.
-
-                    icmin = Kmeans%Membership(ip)
-                    do ic = 1, nc
-                        if (ic/=icmin) then
-#if defined MINVOL
-                            if ( Kmeans%MahalSq(ip,ic) < Kmeans%MahalSq(ip,icmin) ) icmin = ic
-#else
-                            if ( Kmeans%MahalSq(ip,ic) * MahalSqWeight(ic) < Kmeans%MahalSq(ip,icmin) * MahalSqWeight(icmin) ) icmin = ic
-#endif
-                        end if
-                    end do
-
-                    ! Switch the membership of point if needed.
-
-                    if (icmin /= Kmeans%Membership(ip) .and. Kmeans%Size(Kmeans%Membership(ip)) > minClusterSize) then
-                        Kmeans%Size(icmin) = Kmeans%Size(icmin) + 1
-                        Kmeans%Size(Kmeans%Membership(ip)) = Kmeans%Size(Kmeans%Membership(ip)) - 1
-                        Kmeans%Center(1:nd,icmin) = Kmeans%Center(1:nd,icmin) + Point(1:nd,ip)
-                        Kmeans%Center(1:nd,Kmeans%Membership(ip)) = Kmeans%Center(1:nd,Kmeans%Membership(ip)) - Point(1:nd,ip)
-                        Kmeans%Membership(ip) = icmin
-                        reclusteringNeeded = .true.
-                    end if
-                    
-                end do
-
-                ! Convert sum(Point) back to center of clusters.
-
-                do concurrent(ic = 1:nc)
-                    Kmeans%Center(1:nd,ic) = Kmeans%Center(1:nd,ic) / Kmeans%Size(ic)
-                end do
-
-                ! Restart the process if anything has changed.
-
-                blockReclusteringNeeded: if (reclusteringNeeded) then ! perform reassignment
-
-                    ! Reorder Point based on the identified clusters and recompute the cluster properties.
-
-                    call Kmeans%getProp(nd, np, Point, PointIndex)
-                    if (Kmeans%Err%occurred) then ! This must revert back to the original Kmeans cluster and continue instead of return
-                        neopt = 1_IK
-                        PartitionSize(1) = np
-                        PartitionMembership = 1_IK
-                        return
-                    end if
-
-                    cycle loopRecursiveRunPartitionKernel
-
-                end if blockReclusteringNeeded
-
-                exit loopRecursiveRunPartitionKernel ! mission accomplished, current volumes minimized.
-
-            end do loopRecursiveRunPartitionKernel
-
-        end if blockPartitionOptimization
+        end do loopRecursivePartitionOptimization
 
 #endif
 
@@ -777,17 +775,17 @@ contains
         if (parLogVolIsPresent) then
             do ic = 1, nc
 #if defined DEBUG_ENABLED
-                if (Kmeans%EffectiveSize(ic) > np) then
-                    write(*,*) "FATAL: Internal error occurred: Kmeans%EffectiveSize(ic) > np", Kmeans%EffectiveSize(ic), np
+                if (Kmeans%Prop%EffectiveSize(ic) > np) then
+                    write(*,*) "FATAL: Internal error occurred: Kmeans%EffectiveSize(ic) > np", Kmeans%Prop%EffectiveSize(ic), np
                     error stop
                 end if
 #endif
-                KmeansLogVolEstimate(ic) = parLogVol + log( Kmeans%EffectiveSize(ic) / real(np, kind = SPR) )
-                if (Kmeans%LogVol(ic) < KmeansLogVolEstimate(ic)) then
-                    !kmeansScaleFactor(ic) = kmeansScaleFactor(ic) * exp( (KmeansLogVolEstimate(ic) - Kmeans%LogVol(ic)) / nd )
+                KmeansLogVolEstimate(ic) = parLogVol + log( Kmeans%Prop%EffectiveSize(ic) / real(np, kind = SPR) )
+                if (Kmeans%Prop%LogVol(ic) < KmeansLogVolEstimate(ic)) then
+                    !kmeansScaleFactor(ic) = kmeansScaleFactor(ic) * exp( (KmeansLogVolEstimate(ic) - Kmeans%Prop%LogVol(ic)) / nd )
                     !Kmeans%ScaleFactorSq(ic) = kmeansScaleFactor(ic)**2
-                    Kmeans%ScaleFactorSq(ic) = Kmeans%ScaleFactorSq(ic) * exp( 2 * (KmeansLogVolEstimate(ic) - Kmeans%LogVol(ic)) / nd )
-                    Kmeans%LogVol(ic) = KmeansLogVolEstimate(ic)
+                    Kmeans%Prop%ScaleFactorSq(ic) = Kmeans%Prop%ScaleFactorSq(ic) * exp( 2 * (KmeansLogVolEstimate(ic) - Kmeans%Prop%LogVol(ic)) / nd )
+                    Kmeans%Prop%LogVol(ic) = KmeansLogVolEstimate(ic)
                 end if
             end do
             boundedRegionIsTooLarge = PartitionLogVol(1) > logTightness + parLogVol
@@ -799,21 +797,21 @@ contains
 
         !blockScaleFactorRescale: do
         !    do ic = 1, nc
-        !        KmeansLogVolEstimate(ic) = parLogVol + real( log( real(Kmeans%EffectiveSize(ic), kind = SPR) / real(np, kind = SPR) ) , kind = RK )
+        !        KmeansLogVolEstimate(ic) = parLogVol + real( log( real(Kmeans%Prop%EffectiveSize(ic), kind = SPR) / real(np, kind = SPR) ) , kind = RK )
         !    end do
-        !    Kmeans%EffectiveSize(ic) = Kmeans%Size(ic) + nint( inclusionFraction * count(Kmeans%MahalSq(IpStart(icOther):IpEnd(icOther),ic)<Kmeans%ScaleFactorSq(ic)), IK )
+        !    Kmeans%Prop%EffectiveSize(ic) = Kmeans%Size(ic) + nint( inclusionFraction * count(Kmeans%Prop%MahalSq(IpStart(icOther):IpEnd(icOther),ic)<Kmeans%Prop%ScaleFactorSq(ic)), IK )
         !end blockScaleFactorRescale
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! Check if further clustering is warranted.
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-!write(*,*) logTightness, parLogVol, PartitionLogVol(1), getLogSumExp(2, Kmeans%LogVol)
+!write(*,*) logTightness, parLogVol, PartitionLogVol(1), getLogSumExp(2, Kmeans%Prop%LogVol)
 !write(*,"(*(g0,:,','))")
 !write(*,"(*(g0,:,','))")
 !write(*,"(*(g0,:,','))") "numRecursiveCall", numRecursiveCall
 
-        furtherClusteringCheck: if  (logTightness + getLogSumExp(nc, Kmeans%LogVol) < PartitionLogVol(1) .or. boundedRegionIsTooLarge) then
+        furtherClusteringCheck: if  (logTightness + getLogSumExp(nc, Kmeans%Prop%LogVol) < PartitionLogVol(1) .or. boundedRegionIsTooLarge) then
 
             ! At least nc sub-clusters is better than one cluster. Now search for more sub-sub-clusters.
 
@@ -838,8 +836,8 @@ contains
                 !KmeansNemax(ic) = min(nemaxRemained, Kmeans%Size(ic) / minClusterSize)
                 !KmeansNemax(ic) = Kmeans%Size(ic) / minClusterSize
 
-                ipstart = Kmeans%CumSumSize(ic-1) + 1
-                ipend = Kmeans%CumSumSize(ic)
+                ipstart = Kmeans%Prop%CumSumSize(ic-1) + 1
+                ipend = Kmeans%Prop%CumSumSize(ic)
 
                 icstart = icstart + KmeansNeopt(ic-1)
                 icend = icstart + KmeansNemax(ic) - 1
@@ -850,29 +848,25 @@ contains
 !write(*,"(*(g0,:,','))") "Kmeans%Size(ic)", Kmeans%Size(ic)
 !write(*,"(*(g0,:,','))") "nemaxRemained", nemaxRemained
 
-                if (KmeansNemax(ic) > 1_IK) then ! .and. Kmeans%LogVol(ic)>1.1_RK*KmeansLogVolEstimate(ic)) then
+                if (KmeansNemax(ic) > 1_IK) then ! .and. Kmeans%Prop%LogVol(ic)>1.1_RK*KmeansLogVolEstimate(ic)) then
 
-                    PartitionLogVol(icstart) = Kmeans%LogVol(ic)
+                    PartitionLogVol(icstart) = Kmeans%Prop%LogVol(ic)
 
                     if (parLogVolIsPresent) parLogVol = KmeansLogVolEstimate(ic)
 
                     call runPartitionKernel ( nemax = KmeansNemax(ic) & ! LCOV_EXCL_LINE
                                             , nd = nd & ! LCOV_EXCL_LINE
                                             , np = Kmeans%Size(ic) & ! LCOV_EXCL_LINE
-                                           !, nc = KmeansNemax(ic) & ! LCOV_EXCL_LINE
                                             , nc = min(nc, KmeansNemax(ic)) & ! LCOV_EXCL_LINE
                                             , nt = nt & ! LCOV_EXCL_LINE
-                                            , partitionMaxAllowedFailure = partitionMaxAllowedFailure & ! LCOV_EXCL_LINE
+#if !defined KMEANS
                                             , partitionMaxAllowedRecursion = partitionMaxAllowedRecursion & ! LCOV_EXCL_LINE
-                                            , partitionMaxAllowedKmeansFailure = partitionMaxAllowedKmeansFailure & ! LCOV_EXCL_LINE
-                                            , partitionStabilizationRequested = partitionStabilizationRequested & ! LCOV_EXCL_LINE
-                                            , partitionOptimizationRequested = partitionOptimizationRequested & ! LCOV_EXCL_LINE
-#if !defined MAXDEN && !defined MINVOL
+#endif
+#if !(defined KMEANS || defined MAXDEN || defined MINVOL)
                                             , mahalSqWeightExponent = mahalSqWeightExponent & ! LCOV_EXCL_LINE
 #endif
                                             , inclusionFraction = inclusionFraction & ! LCOV_EXCL_LINE
                                             , logTightness = logTightness & ! LCOV_EXCL_LINE
-                                            , parLogVol = parLogVol & ! LCOV_EXCL_LINE
                                             , Point = Point(1:nd,ipstart:ipend) & ! LCOV_EXCL_LINE
                                             , neopt = KmeansNeopt(ic) & ! LCOV_EXCL_LINE
                                             , PointIndex = PointIndex(ipstart:ipend) & ! LCOV_EXCL_LINE
@@ -885,6 +879,10 @@ contains
                                             , PartitionChoLowCovUpp = PartitionChoLowCovUpp(1:nd,1:nd,icstart:icend) & ! LCOV_EXCL_LINE
                                             , convergenceFailureCount = convergenceFailureCount & ! LCOV_EXCL_LINE
                                             , numRecursiveCall = numRecursiveCall & ! LCOV_EXCL_LINE
+                                            , parLogVol = parLogVol & ! LCOV_EXCL_LINE
+                                            , partitionKmeansRelTol = partitionKmeansRelTol & ! LCOV_EXCL_LINE
+                                            , partitionMaxAllowedKmeansFailure = partitionMaxAllowedKmeansFailure & ! LCOV_EXCL_LINE
+                                            , partitionMaxAllowedKmeansRecursion = partitionMaxAllowedKmeansRecursion & ! LCOV_EXCL_LINE
                                             )
                     PartitionMembership(ipstart:ipend) = PartitionMembership(ipstart:ipend) + icstart - 1_IK
 
@@ -904,16 +902,16 @@ contains
 
                     KmeansNeopt(ic) = 1_IK
                     PartitionSize(icstart) = Kmeans%Size(ic)
-                    PartitionChoLowCovUpp(1:nd,1:nd,icstart) = Kmeans%ChoLowCovUpp(1:nd,1:nd,ic)
+                    PartitionChoLowCovUpp(1:nd,1:nd,icstart) = Kmeans%Prop%ChoLowCovUpp(1:nd,1:nd,ic)
 
                     ! Rescale the Cholesky factor and its diagonals such that they describe the bounded shape of the cluster
 
-                    kmeansScaleFactor = sqrt(Kmeans%ScaleFactorSq(ic))
-                    scaleFactorSqInverse = 1._RK / Kmeans%ScaleFactorSq(ic)
+                    kmeansScaleFactor = sqrt(Kmeans%Prop%ScaleFactorSq(ic))
+                    scaleFactorSqInverse = 1._RK / Kmeans%Prop%ScaleFactorSq(ic)
                     do j = 1, nd
                         PartitionCenter(j,icstart) = Kmeans%Center(j,ic)
-                        PartitionChoDia(j,icstart) = Kmeans%ChoDia(j,ic) * kmeansScaleFactor
-                        PartitionInvCovMat(1:nd,j,icstart) = Kmeans%InvCovMat(1:nd,j,ic) * scaleFactorSqInverse
+                        PartitionChoDia(j,icstart) = Kmeans%Prop%ChoDia(j,ic) * kmeansScaleFactor
+                        PartitionInvCovMat(1:nd,j,icstart) = Kmeans%Prop%InvCovMat(1:nd,j,ic) * scaleFactorSqInverse
                         do i = j + 1, nd
                             PartitionChoLowCovUpp(i,j,icstart) = PartitionChoLowCovUpp(i,j,icstart) * kmeansScaleFactor
                         end do
@@ -1085,5 +1083,3 @@ contains
     end subroutine writePartition
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#undef OPTIMIZATION_ENABLED

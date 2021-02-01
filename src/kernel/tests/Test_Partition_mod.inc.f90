@@ -45,7 +45,9 @@
 
     use Test_mod, only: Test_type
 
-#if defined MAXDEN
+#if defined KMEANS
+    use PartitionKmeans_mod
+#elif defined MAXDEN
     use PartitionMaxDen_mod
 #elif defined MINVOL
     use PartitionMinVol_mod
@@ -141,22 +143,22 @@ contains
 
         assertion = .true.
 
-        Partition = Partition_type  ( nd = TestData%nd & ! LCOV_EXCL_LINE
-                                    , np = TestData%np & ! LCOV_EXCL_LINE
-                                    , Point = TestData%Point & ! LCOV_EXCL_LINE
-                                    !, nemax = TestData%nemax & ! LCOV_EXCL_LINE
-                                    !, partitionMaxAllowedRecursion = 10000 & ! LCOV_EXCL_LINE
-                                    !, partitionMaxAllowedKmeansFailure = 10000 & ! LCOV_EXCL_LINE
-                                    !, partitionMaxAllowedFailure = 10000 & ! LCOV_EXCL_LINE
-                                    !, partitionStabilizationRequested  = .true. & ! LCOV_EXCL_LINE
+        Partition = getPartition( nd = TestData%nd & ! LCOV_EXCL_LINE
+                                , np = TestData%np & ! LCOV_EXCL_LINE
+                                , Point = TestData%Point & ! LCOV_EXCL_LINE
+                                !, nemax = TestData%nemax & ! LCOV_EXCL_LINE
+                                !, partitionMaxAllowedRecursion = 10000 & ! LCOV_EXCL_LINE
+                                !, partitionMaxAllowedKmeansFailure = 10000 & ! LCOV_EXCL_LINE
+                                !, partitionMaxAllowedFailure = 10000 & ! LCOV_EXCL_LINE
+                                !, partitionStabilizationRequested  = .true. & ! LCOV_EXCL_LINE
 #if !defined MAXDEN && !defined MINVOL
-                                    !, mahalSqWeightExponent = 1._RK & ! LCOV_EXCL_LINE
+                                !, mahalSqWeightExponent = 1._RK & ! LCOV_EXCL_LINE
 #endif
-                                    , logTightness = log(1._RK) & ! LCOV_EXCL_LINE
-                                    !, inclusionFraction = 0._RK & ! LCOV_EXCL_LINE
-                                    !, parLogVol = sum(log(TestData%DomainSize)) & ! LCOV_EXCL_LINE
-                                    , trimEnabled = .true. & ! LCOV_EXCL_LINE
-                                    )
+                                , logTightness = log(1._RK) & ! LCOV_EXCL_LINE
+                                !, inclusionFraction = 0._RK & ! LCOV_EXCL_LINE
+                                !, parLogVol = sum(log(TestData%DomainSize)) & ! LCOV_EXCL_LINE
+                                , trimEnabled = .true. & ! LCOV_EXCL_LINE
+                                )
 
         ! write data to output for further investigation
 
@@ -272,27 +274,25 @@ contains
 
         if (rngseed /= -huge(rngseed)) RandomSeed = RandomSeed_type(imageID = Test%Image%id, inputSeed = rngseed)
 
-write(*,*) "zeroth nemax", nemax, ClusteredPoint%np, ClusteredPoint%nd + 1
-        Partition = Partition_type  ( Point = ClusteredPoint%Point & ! LCOV_EXCL_LINE
-                                    , nd = ClusteredPoint%nd & ! LCOV_EXCL_LINE
-                                    , np = ClusteredPoint%np & ! LCOV_EXCL_LINE
-                                    , nc = nc & ! LCOV_EXCL_LINE
-                                    , nt = nt & ! LCOV_EXCL_LINE
-                                    , nemax = nemax & ! LCOV_EXCL_LINE
-                                    !, nemax = ClusteredPoint%nemax & ! LCOV_EXCL_LINE
-                                    !, partitionMaxAllowedFailure = 10000 & ! LCOV_EXCL_LINE
-                                    !, partitionMaxAllowedRecursion = 10000 & ! LCOV_EXCL_LINE
-                                    !, partitionMaxAllowedKmeansFailure = 10000 & ! LCOV_EXCL_LINE
-                                    , partitionStabilizationRequested = .false. & ! LCOV_EXCL_LINE
-                                    , partitionOptimizationRequested = .false. & ! LCOV_EXCL_LINE
-#if !defined MAXDEN && !defined MINVOL
-                                    , mahalSqWeightExponent = 10.1_RK & ! LCOV_EXCL_LINE
+        !write(*,*) "zeroth nemax", nemax, ClusteredPoint%np, ClusteredPoint%nd + 1
+        Partition = getPartition( Point = ClusteredPoint%Point & ! LCOV_EXCL_LINE
+                                , nd = ClusteredPoint%nd & ! LCOV_EXCL_LINE
+                                , np = ClusteredPoint%np & ! LCOV_EXCL_LINE
+                                , nc = nc & ! LCOV_EXCL_LINE
+                                , nt = nt & ! LCOV_EXCL_LINE
+                                , nemax = nemax & ! LCOV_EXCL_LINE
+                                !, nemax = ClusteredPoint%nemax & ! LCOV_EXCL_LINE
+                                !, partitionMaxAllowedFailure = 10000 & ! LCOV_EXCL_LINE
+                                !, partitionMaxAllowedRecursion = 10000 & ! LCOV_EXCL_LINE
+                                !, partitionMaxAllowedKmeansFailure = 10000 & ! LCOV_EXCL_LINE
+#if !(defined KMEANS || defined MAXDEN || defined MINVOL)
+                                , mahalSqWeightExponent = 10.1_RK & ! LCOV_EXCL_LINE
 #endif
-                                    , inclusionFraction = inclusionFraction & ! LCOV_EXCL_LINE
-                                    , logTightness = log(tightness) & ! LCOV_EXCL_LINE
-                                    !, parLogVol = sum(log(ClusteredPoint%DomainSize)) & ! LCOV_EXCL_LINE
-                                    , trimEnabled = .true. & ! LCOV_EXCL_LINE
-                                    )
+                                , inclusionFraction = inclusionFraction & ! LCOV_EXCL_LINE
+                                , logTightness = log(tightness) & ! LCOV_EXCL_LINE
+                                !, parLogVol = sum(log(ClusteredPoint%DomainSize)) & ! LCOV_EXCL_LINE
+                                , trimEnabled = .true. & ! LCOV_EXCL_LINE
+                                )
 
         ! write data to output for further investigation
 

@@ -70,6 +70,7 @@ SET(ParaMonte_SOURCE_FILES
     ${ParaMonteKernel_SRC_DIR}/Kmeans_mod.f90
     ${ParaMonteKernel_SRC_DIR}/KmeansOOP_mod.f90
     ${ParaMonteKernel_SRC_DIR}/Partition_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/PartitionKmeans_mod.f90
     ${ParaMonteKernel_SRC_DIR}/PartitionMaxDen_mod.f90
     ${ParaMonteKernel_SRC_DIR}/PartitionMinVol_mod.f90
     ${ParaMonteKernel_SRC_DIR}/GeoCyclicFit_mod.f90
