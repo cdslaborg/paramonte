@@ -1,4 +1,4 @@
-function Contents = parseCluster(file,delim)
+function Contents = readCluster(file,delim)
 
     if nargin==1
         delim = ",";
@@ -92,9 +92,10 @@ function Contents = parseCluster(file,delim)
 
                         Contents.case{icase}.(label) = reshape( dumCell{1} , [Contents.case{icase}.nd, Contents.case{icase}.nc] );
 
-                    elseif strcmp(label, "Point") % assumes (nd,np) shape
+                    elseif strcmp(label, "Point") || strcmp(label, "HubPoint") % assumes (nd,np) shape
 
-                        Contents.case{icase}.(label) = reshape( dumCell{1}, [Contents.case{icase}.nd, Contents.case{icase}.np] );
+                        npdum = length(dumCell{1}) / Contents.case{icase}.nd;
+                        Contents.case{icase}.(label) = reshape( dumCell{1}, [Contents.case{icase}.nd, npdum] )';
 
                     elseif strcmp(label, "MahalSq") % assumes (np,nc) shape
 

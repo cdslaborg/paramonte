@@ -18,6 +18,7 @@
   Test_Integration_mod.f90
   Test_Kmeans_mod.f90
   Test_KmeansOOP_mod.f90
+  Test_Knn_mod.f90
   Test_Math_mod.f90
   Test_Matrix_mod.f90
   Test_Misc_mod.f90
@@ -50,5 +51,6 @@
   Test_Timer_mod.f90
   Test_TimerCPU_mod.f90
   Test_TranGaus_mod.f90
+  Test_Unique_mod.f90
   main.f90
   !Test_EconomicsToolbox_mod.f90

@@ -1856,14 +1856,14 @@ contains
         integer(IK), intent(in) :: nd
         real(RK)   , intent(in) :: MeanVec(nd)
         real(RK)   , intent(in) :: CholeskyLower(nd,nd), Diagonal(nd)   ! Cholesky lower triangle and its diagonal terms, calculated from the input CovMat.
-        real(RK)                :: RandMVN(nd), dummy
+        real(RK)                :: RandMVN(nd), normrnd
         integer(IK)             :: j,i
         RandMVN = MeanVec
         do j = 1,nd
-            dummy = getRandGaus()
-            RandMVN(j) = RandMVN(j) + Diagonal(j) * dummy
+            normrnd = getRandGaus()
+            RandMVN(j) = RandMVN(j) + Diagonal(j) * normrnd
             do i = j+1, nd
-                RandMVN(i) = RandMVN(i) + CholeskyLower(i,j) * dummy
+                RandMVN(i) = RandMVN(i) + CholeskyLower(i,j) * normrnd
             end do
         end do
     end function getRandMVN
@@ -2433,7 +2433,11 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Return a random correlation matrix.
+    !> Return a random correlation matrix, sample correlation matrices `RandCorMat` from a distribution proportional to `(det(C))^(eta−1)`.
+    !> The larger the `eta`, the larger will be the determinant, meaning that generated correlation matrices will more and more approach 
+    !> the identity matrix. The value `eta = 1` corresponds to the uniform distribution.
+    !> This procedure is based on the Vine approach described by Lewandowski, Kurowicka, and Joe (2009),
+    !> "Generating random correlation matrices based on vines and extended onion method".
     !>
     !> \param[in]   nd  :   The rank of the correlation matrix.
     !> \param[in]   eta :   The parameter that roughly represents the shape parameters of the Beta distribution.
@@ -2448,17 +2452,104 @@ contains
     !> The conditions `nd > 1` and `eta > 0.0` must hold, otherwise the first element of
     !> output, `getRandCorMat(1,1)`, will be set to `-1` to indicate the occurrence of an error.
     !>
+    !> \warning
+    !> If the Cholesky factorization fails, the component `RandCorMat(1,1) = -1`
+    !> of the output will be set to indicate the occurrence of an error.
+    !>
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
-    function getRandCorMat(nd,eta) result(RandCorMat)
+    function getRandCorMat(nd, eta) result(RandCorMat)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandCorMat
 #endif
-        use Matrix_mod, only: getCholeskyFactor
+        use Matrix_mod, only: getEye
         implicit none
         integer(IK), intent(in) :: nd
         real(RK)   , intent(in) :: eta
-        real(RK)                :: RandCorMat(nd,nd), dummy
+        real(RK)                :: RandCorMat(nd,nd)
+        real(RK)                :: ParCorMat(nd,nd)
+        real(RK)                :: randBeta, element
+        real(RK)                :: beta
+        integer(IK)             :: i, j, k
+
+        if (nd<2_IK .or. eta<=0._RK) then  ! illegal value for eta.
+            RandCorMat(1,1) = -1._RK
+            return
+        end if
+
+        beta = eta + 0.5_RK * (nd - 1_IK)
+        RandCorMat = getEye(nd,nd)
+        ParCorMat = 0._RK
+
+        do k = 1, nd - 1
+
+            beta = beta - 0.5_RK
+
+            do i = k + 1, nd
+
+                randBeta = getRandBeta(beta,beta)
+                if (randBeta<=0._RK .or. randBeta>=1._RK) then; RandCorMat(1,1) = -1._RK; return; end if ! LCOV_EXCL_LINE
+
+                ParCorMat(k,i) = randBeta
+                ParCorMat(k,i) = 2 * ParCorMat(k,i) - 1._RK ! linearly shift to the range [-1, 1].
+
+                ! converting partial correlation to raw correlation.
+
+                element = ParCorMat(k,i);
+                do j = k - 1, 1, -1
+                    element = element * sqrt( (1 - ParCorMat(j,i)**2) * (1 - ParCorMat(j,k)**2)) + ParCorMat(j,i) * ParCorMat(j,k)
+                end do
+                RandCorMat(k,i) = element
+                RandCorMat(i,k) = element
+
+            end do
+
+        end do
+
+    end function getRandCorMat
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Return a random correlation matrix, sample correlation matrices `RandCorMat` from a distribution proportional to `(det(C))^(eta−1)`.
+    !> The larger the `eta`, the larger will be the determinant, meaning that generated correlation matrices will more and more approach 
+    !> the identity matrix. The value `eta = 1` corresponds to the uniform distribution.
+    !> This procedure is based on the approach described by Lewandowski, Kurowicka, and Joe (2009),
+    !> "Generating random correlation matrices based on vines and extended onion method".
+    !>
+    !> \param[in]   nd  :   The rank of the correlation matrix.
+    !> \param[in]   eta :   The parameter that roughly represents the shape parameters of the Beta distribution.
+    !>                      The larger the value of `eta` is, the more homogeneous the correlation matrix will look.
+    !>                      In other words, set this parameter to some small number to generate strong random correlations
+    !>                      in the output random correlation matrix.
+    !>
+    !> \return
+    !> `RandCorMat` : A random correlation matrix.
+    !>
+    !> \warning
+    !> The origin of the routine implemented here is unknown and furthermore,
+    !> it yields non-positive-definite random correlation matrices at high dimenions.
+    !> Use instead [getRandCorMat()](@ref getRandCorMat).
+    !>
+    !> \warning
+    !> The conditions `nd > 1` and `eta > 0.0` must hold, otherwise the first element of
+    !> output, `RandCorMat(1,1)`, will be set to `-1` to indicate the occurrence of an error.
+    !>
+    !> \warning
+    !> If the Cholesky factorization fails, the component `RandCorMat(1,1) = -1`
+    !> of the output will be set to indicate the occurrence of an error.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
+    function getRandCorMatLKJ(nd,eta) result(RandCorMat)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getRandCorMatLKJ
+#endif
+        use Matrix_mod, only: getCholeskyFactor, getEye
+        implicit none
+        integer(IK), intent(in) :: nd
+        real(RK)   , intent(in) :: eta
+        real(RK)                :: RandCorMat(nd,nd), randBeta
         real(RK)                :: beta,sumSqDummyVec,DummyVec(nd-1),W(nd-1),Diagonal(nd-1)
         integer(IK)             :: m,j,i
 
@@ -2467,20 +2558,25 @@ contains
             return
         end if
 
-        do m = 1,nd
-            RandCorMat(m,m) = 1._RK
-        end do
+        RandCorMat = getEye(nd,nd)
         beta = eta + 0.5_RK*(nd-2._RK)
-        dummy = getRandBeta(beta,beta)
-        if (dummy<=0._RK .or. dummy>=1._RK) then
-        ! LCOV_EXCL_START
-            error stop
-            !call abortProgram( output_unit , 1 , 1 , 'Statitistics@getRandCorMat() failed. Random Beta variable out of bound: ' // num2str(dummy) )
+        randBeta = getRandBeta(beta,beta)
+        if (randBeta<=0._RK .or. randBeta>=1._RK) then
+            ! LCOV_EXCL_START
+            RandCorMat(1,1) = -1._RK
+            return
+            !error stop
+            !call abortProgram( output_unit , 1 , 1 , 'Statitistics@getRandCorMatLKJ() failed. Random Beta variable out of bound: ' // num2str(randBeta) )
+            ! LCOV_EXCL_STOP
         end if
-        ! LCOV_EXCL_STOP
-        RandCorMat(1,2) = 2._RK * dummy - 1._RK ! for the moment, only the upper half of RandCorMat is needed, the lower half will contain cholesky lower triangle.
 
-        do m = 2,nd-1
+        ! for the moment, only the upper half of RandCorMat is needed. 
+        ! The lower half will contain cholesky lower triangle.
+
+        RandCorMat(1,2) = 2._RK * randBeta - 1._RK
+
+        do m = 2, nd - 1
+
             beta = beta - 0.5_RK
             sumSqDummyVec = 0._RK
             do j=1,m
@@ -2488,12 +2584,14 @@ contains
                 sumSqDummyVec = sumSqDummyVec + DummyVec(j)**2
             end do
             DummyVec(1:m) = DummyVec(1:m) / sqrt(sumSqDummyVec)   ! DummyVec is now a uniform random point from inside of m-sphere
-            dummy = getRandBeta(0.5e0_RK*m,beta)
-            W(1:m) = sqrt(dummy) * DummyVec(1:m)
+            randBeta = getRandBeta(0.5e0_RK*m,beta)
+            W(1:m) = sqrt(randBeta) * DummyVec(1:m)
             call getCholeskyFactor(m,RandCorMat(1:m,1:m),Diagonal(1:m))
             if (Diagonal(1)<0._RK) then
-                error stop
-                !call abortProgram( output_unit , 1 , 1 , 'Statitistics@getRandCorMat()@getCholeskyFactor() failed.' )
+                RandCorMat(1,1) = -1._RK
+                return
+                !error stop
+                !call abortProgram( output_unit , 1 , 1 , 'Statitistics@getRandCorMatLKJ()@getCholeskyFactor() failed.' )
             end if
             DummyVec(1:m) = 0._RK
             do j = 1,m
@@ -2503,11 +2601,14 @@ contains
                 end do
             end do
             RandCorMat(1:m,m+1) = DummyVec(1:m)
+
         end do
+
         do i=1,nd-1
             RandCorMat(i+1:nd,i) = RandCorMat(i,i+1:nd)
         end do
-  end function getRandCorMat
+
+  end function getRandCorMatLKJ
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

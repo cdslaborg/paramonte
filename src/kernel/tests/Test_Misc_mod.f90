@@ -55,11 +55,11 @@ module Test_Misc_mod
 
     type(Test_type) :: Test
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 contains
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine test_Misc()
         implicit none
@@ -86,11 +86,10 @@ contains
         call Test%run(test_masked_swap_SPR_2, "test_masked_swap_SPR_2")
         call Test%run(test_masked_swap_SPRV_1, "test_masked_swap_SPRV_1")
         call Test%run(test_masked_swap_SPRM_1, "test_masked_swap_SPRM_1")
-        call Test%run(test_findUnique_1, "test_findUnique_1")
         call Test%finalize()
     end subroutine test_Misc
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function test_swap_IK_1() result(assertion)
         use Constants_mod, only: IK
@@ -118,7 +117,7 @@ contains
         ! LCOV_EXCL_STOP
     end function test_swap_IK_1
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function test_swap_SPI_1() result(assertion)
         use Constants_mod, only: SPI
@@ -146,7 +145,7 @@ contains
         ! LCOV_EXCL_STOP
     end function test_swap_SPI_1
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function test_swap_DPI_1() result(assertion)
         use Constants_mod, only: DPI
@@ -174,7 +173,7 @@ contains
         ! LCOV_EXCL_STOP
     end function test_swap_DPI_1
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function test_swap_RK_1() result(assertion)
         use Constants_mod, only: IK, RK
@@ -202,7 +201,7 @@ contains
         ! LCOV_EXCL_STOP
     end function test_swap_RK_1
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function test_swap_SPR_1() result(assertion)
         use Constants_mod, only: IK, SPR
@@ -230,7 +229,7 @@ contains
         ! LCOV_EXCL_STOP
     end function test_swap_SPR_1
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function test_swap_DPR_1() result(assertion)
         use Constants_mod, only: IK, DPR
@@ -258,7 +257,7 @@ contains
         ! LCOV_EXCL_STOP
     end function test_swap_DPR_1
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function test_swap_CK_1() result(assertion)
         use Constants_mod, only: IK, RK, CK
@@ -286,7 +285,7 @@ contains
         ! LCOV_EXCL_STOP
     end function test_swap_CK_1
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function test_swap_SPC_1() result(assertion)
         use Constants_mod, only: IK, SPR, SPC
@@ -314,7 +313,7 @@ contains
         ! LCOV_EXCL_STOP
     end function test_swap_SPC_1
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function test_swap_DPC_1() result(assertion)
         use Constants_mod, only: IK, DPR, DPC
@@ -342,7 +341,7 @@ contains
         ! LCOV_EXCL_STOP
     end function test_swap_DPC_1
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function test_masked_swap_SPR_1() result(assertion)
         use Constants_mod, only: IK, SPR
@@ -369,7 +368,7 @@ contains
         ! LCOV_EXCL_STOP
     end function test_masked_swap_SPR_1
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function test_masked_swap_SPR_2() result(assertion)
         use Constants_mod, only: IK, SPR
@@ -396,7 +395,7 @@ contains
         ! LCOV_EXCL_STOP
     end function test_masked_swap_SPR_2
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function test_masked_swap_SPRV_1() result(assertion)
         use Constants_mod, only: IK, SPR
@@ -426,7 +425,7 @@ contains
         ! LCOV_EXCL_STOP
     end function test_masked_swap_SPRV_1
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function test_masked_swap_SPRM_1() result(assertion)
         use Constants_mod, only: IK, SPR
@@ -457,7 +456,7 @@ contains
         ! LCOV_EXCL_STOP
     end function test_masked_swap_SPRM_1
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function test_arth_IK_1() result(assertion)
         use Constants_mod, only: IK
@@ -479,7 +478,7 @@ contains
         ! LCOV_EXCL_STOP
     end function test_arth_IK_1
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function test_arth_RK_1() result(assertion)
         use Constants_mod, only: IK, RK
@@ -502,7 +501,7 @@ contains
         ! LCOV_EXCL_STOP
     end function test_arth_RK_1
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function test_arth_RK_2() result(assertion)
         use Constants_mod, only: IK, RK
@@ -525,7 +524,7 @@ contains
         ! LCOV_EXCL_STOP
     end function test_arth_RK_2
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function test_zroots_unity_1() result(assertion)
         use Constants_mod, only: IK, RK, CK
@@ -556,7 +555,7 @@ contains
         ! LCOV_EXCL_STOP
     end function test_zroots_unity_1
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function test_copyArray_IK_1() result(assertion)
         use Constants_mod, only: IK
@@ -587,7 +586,7 @@ contains
         ! LCOV_EXCL_STOP
     end function test_copyArray_IK_1
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function test_copyArray_IK_2() result(assertion)
         use Constants_mod, only: IK
@@ -618,7 +617,7 @@ contains
         ! LCOV_EXCL_STOP
     end function test_copyArray_IK_2
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function test_copyArray_RK_1() result(assertion)
         use Constants_mod, only: IK, RK
@@ -649,7 +648,7 @@ contains
         ! LCOV_EXCL_STOP
     end function test_copyArray_RK_1
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function test_copyArray_RK_2() result(assertion)
         use Constants_mod, only: IK, RK
@@ -680,7 +679,7 @@ contains
         ! LCOV_EXCL_STOP
     end function test_copyArray_RK_2
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function test_resizeVector_RK_1() result(assertion)
         use Constants_mod, only: IK, RK
@@ -704,68 +703,6 @@ contains
         ! LCOV_EXCL_STOP
     end function test_resizeVector_RK_1
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    function test_findUnique_1() result(assertion)
-
-        use Constants_mod, only: RK, IK
-
-        implicit none
-        logical                     :: assertion
-        integer(IK), parameter      :: VECTOR(*) = [1,2,1,3,5,5,2]
-        integer(IK), parameter      :: LEN_VECTOR = size(VECTOR)
-        integer(IK), parameter      :: UNIQUE_VALUE(*) = [1,2,3,5]
-        integer(IK), parameter      :: UNIQUE_COUNT(*) = [2,2,1,2]
-        integer(IK), allocatable    :: UniqueValue(:), UniqueCount(:), ZeroLenVector(:)
-        integer(IK)                 :: lenUnique
-
-        call findUnique ( lenVector = LEN_VECTOR &
-                        , Vector = VECTOR &
-                        , UniqueValue = UniqueValue &
-                        , UniqueCount = UniqueCount &
-                        , lenUnique = lenUnique &
-                        )
-
-        assertion = all(UniqueValue==UNIQUE_VALUE) .and. all(UniqueCount==UNIQUE_COUNT)
-
-        ! test with empty input vector
-
-        allocate(ZeroLenVector(0))
-        call findUnique ( lenVector = 0_IK & ! LCOV_EXCL_LINE
-                        , Vector = ZeroLenVector & ! LCOV_EXCL_LINE
-                        , UniqueValue = UniqueValue & ! LCOV_EXCL_LINE
-                        , UniqueCount = UniqueCount & ! LCOV_EXCL_LINE
-                        , lenUnique = lenUnique & ! LCOV_EXCL_LINE
-                        )
-
-        if (Test%isVerboseMode .and. .not. assertion) then
-        ! LCOV_EXCL_START
-            write(Test%outputUnit,"(*(g0,:,', '))")
-            write(Test%outputUnit,"(*(g0,:,', '))") "VECTOR", VECTOR
-            write(Test%outputUnit,"(*(g0,:,', '))")
-            write(Test%outputUnit,"(*(g0,:,', '))") "UNIQUE_VALUE", UNIQUE_VALUE
-            write(Test%outputUnit,"(*(g0,:,', '))") "UniqueValue ", UniqueValue
-            write(Test%outputUnit,"(*(g0,:,', '))")
-            write(Test%outputUnit,"(*(g0,:,', '))") "UNIQUE_COUNT", UNIQUE_COUNT
-            write(Test%outputUnit,"(*(g0,:,', '))") "UniqueCount ", UniqueCount
-            write(Test%outputUnit,"(*(g0,:,', '))")
-            write(Test%outputUnit,"(*(g0,:,', '))") "lenUnique", lenUnique
-            write(Test%outputUnit,"(*(g0,:,', '))")
-            write(Test%outputUnit,"(*(g0,:,', '))")
-            write(Test%outputUnit,"(*(g0,:,', '))")
-            write(Test%outputUnit,"(*(g0,:,', '))") "VECTOR", ZeroLenVector
-            write(Test%outputUnit,"(*(g0,:,', '))")
-            write(Test%outputUnit,"(*(g0,:,', '))") "UniqueValue ", UniqueValue
-            write(Test%outputUnit,"(*(g0,:,', '))")
-            write(Test%outputUnit,"(*(g0,:,', '))") "UniqueCount ", UniqueCount
-            write(Test%outputUnit,"(*(g0,:,', '))")
-            write(Test%outputUnit,"(*(g0,:,', '))") "lenUnique", lenUnique
-            write(Test%outputUnit,"(*(g0,:,', '))")
-        end if
-        ! LCOV_EXCL_STOP
-
-    end function test_findUnique_1
-
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 end module Test_Misc_mod ! LCOV_EXCL_LINE

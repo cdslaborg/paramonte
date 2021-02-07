@@ -137,7 +137,7 @@ readme["quickstart"]["fortran"] = """"""
 
 readme["quickstart"]["matlab"] = readme["quickstart"]["title"] + """
 For a quick start with some MATLAB Live Script examples, visit [this ParaMonte documentation page](https://www.cdslab.org/paramonte/notes/examples/matlab/mlx/). 
-The corresponding example source files (the `*.mlx` files) can be downloaded from the [paramonte.svg?branch=main GitHub repository](https://github.com/cdslaborg/paramonte.svg?branch=main/tree/main/MATLAB/mlx), 
+The corresponding example source files (the `*.mlx` files) can be downloaded from the [paramontex GitHub repository](https://github.com/cdslaborg/paramontex/tree/main/MATLAB/mlx), 
 a repository dedicated to the ParaMonte library examples.  
 
 The following example code samples a 4-dimensional MultiVariate Normal (MNV) distribution via the ParaDRAM sampler in serial mode,  
@@ -157,7 +157,7 @@ To learn about the post-processing and visualization tools of the `ParaMonte::MA
 
 readme["quickstart"]["python"] = readme["quickstart"]["title"] + """
 For a quick start with some Jupyter Notebook examples, visit [this ParaMonte documentation page](https://www.cdslab.org/paramonte/notes/examples/python/jupyter/). 
-The corresponding example source files (the `*.ipynb` files) can be downloaded from the [paramonte.svg?branch=main GitHub repository](https://github.com/cdslaborg/paramonte.svg?branch=main/tree/main/Python/Jupyter), 
+The corresponding example source files (the `*.ipynb` files) can be downloaded from the [paramontex GitHub repository](https://github.com/cdslaborg/paramontex/tree/main/Python/Jupyter), 
 which is a repository dedicated to the ParaMonte library examples.  
 
 The following example code samples a 4-dimensional MultiVariate Normal (MNV) distribution via the ParaDRAM sampler in serial mode,  

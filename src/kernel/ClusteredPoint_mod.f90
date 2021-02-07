@@ -47,6 +47,7 @@ module ClusteredPoint_mod
 
     use Constants_mod, only: RK, IK
     use Err_mod, only: Err_type
+    use Knn_mod, only: Hub_type
 
     implicit none
 
@@ -70,16 +71,27 @@ module ClusteredPoint_mod
         real(RK)                    :: stdMax
         real(RK)                    :: centerMin
         real(RK)                    :: centerMax
+        real(RK)                    :: sumLogVolNormed
+        real(RK)                    :: sumLogVolNormedEffective
         real(RK)    , allocatable   :: Eta(:)
         real(RK)    , allocatable   :: Std(:,:)
         real(RK)    , allocatable   :: Point(:,:)
+        real(RK)    , allocatable   :: LogProb(:)
         real(RK)    , allocatable   :: Center(:,:)
         real(RK)    , allocatable   :: ChoDia(:,:)
-        real(RK)    , allocatable   :: LogVolume(:)
+        real(RK)    , allocatable   :: InvCovMat(:,:,:)
         real(RK)    , allocatable   :: ChoLowCovUpp(:,:,:)
+        real(RK)    , allocatable   :: LogSqrtDetCovMat(:)
+        real(RK)    , allocatable   :: PointLogVolNormed(:)
+        real(RK)    , allocatable   :: LogVolNormed(:)
+        real(RK)    , allocatable   :: InnestPoint(:)
+        real(RK)    , allocatable   :: LogDensity(:)
         integer(IK) , allocatable   :: Membership(:)
+        integer(IK) , allocatable   :: Overlap(:,:)         !< Array of size `(1:nc,1:np)`, where the `1:nc` elements can have a value of either 0 or 1,
+                                                            !< with 1 indicating whether the point is a member of the corresponding cluster.
         integer(IK) , allocatable   :: Size(:)
         character(:), allocatable   :: dist
+        type(Hub_type)              :: Hub
         type(Err_type)              :: Err
     contains
         procedure, pass :: get => getClusteredPoint
@@ -104,15 +116,19 @@ contains
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getClusteredPoint
 #endif
+        use Matrix_mod, only: getEye
         use Matrix_mod, only: getCholeskyFactor
         use Matrix_mod, only: getInvMatFromCholFac
         use Statistics_mod, only: isInsideEllipsoid
+        use Statistics_mod, only: getLogProbMVU
+        use Statistics_mod, only: getLogProbMVN
         use Statistics_mod, only: getRandCorMat
         use Statistics_mod, only: getRandMVU
         use Statistics_mod, only: getRandInt
-        use Constants_mod, only: IK, RK
+        use Constants_mod, only: IK, RK, HUGE_RK
         use String_mod, only: num2str !, getLowerCase
-        use Math_mod, only: getCumSum
+        use Knn_mod, only: getShortestSumDistSqPointIndex, getDistSq
+        use Math_mod, only: getCumSum, getLogSubExp, getLogSumExp, getLogVolUnitBall
         implicit none
         class(ClusteredPoint_type), intent(inout)       :: self
         integer(IK) , intent(in), optional              :: nd, ndmin, ndmax
@@ -125,14 +141,15 @@ contains
         integer(IK) , intent(in), optional              :: Size(:)
         character(*), intent(in), optional              :: dist
         integer(IK) , allocatable                       :: CumSumSize(:)
-        real(RK)    , allocatable                       :: NormedPoint(:), InvCovMat(:,:,:)
+        real(RK)    , allocatable                       :: NormedPoint(:)
         real(RK)    , allocatable                       :: CumSumVolNormed(:)
         real(RK)    , allocatable                       :: VolNormed(:)
-        logical                                         :: isUniformSuperposed
+        logical                                         :: isUniformMixture
         logical                                         :: isUniform, isMember
         logical                                         :: isNormal
-        real(RK)                                        :: dummy
-        integer(IK)                                     :: i, j, ic, ip, membershipCount
+        real(RK)                                        :: logVolUnitBall
+        real(RK)                                        :: dummy, maxLogVolNormed
+        integer(IK)                                     :: i, j, k, ic, ip, sumOverlap
 
         self%Err%occurred = .false.
 
@@ -295,45 +312,79 @@ contains
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         if (allocated(self%ChoDia)) deallocate(self%ChoDia) ! LCOV_EXCL_LINE ! GFortran crashes without this
-        if (allocated(self%LogVolume)) deallocate(self%LogVolume) ! LCOV_EXCL_LINE ! GFortran crashes without this
+        if (allocated(self%InvCovMat)) deallocate(self%InvCovMat) ! LCOV_EXCL_LINE ! GFortran crashes without this
         if (allocated(self%ChoLowCovUpp)) deallocate(self%ChoLowCovUpp) ! LCOV_EXCL_LINE ! GFortran crashes without this
+        if (allocated(self%LogVolNormed)) deallocate(self%LogVolNormed) ! LCOV_EXCL_LINE ! GFortran crashes without this
+        if (allocated(self%LogSqrtDetCovMat)) deallocate(self%LogSqrtDetCovMat) ! LCOV_EXCL_LINE ! GFortran crashes without this
         if (allocated(CumSumVolNormed)) deallocate(CumSumVolNormed) ! LCOV_EXCL_LINE ! GFortran crashes without this
 
-        allocate(self%LogVolume(self%nc))
+        allocate(self%LogVolNormed(self%nc))
         allocate(self%ChoDia(self%nd,self%nc))
+        allocate(self%InvCovMat(self%nd,self%nd,self%nc))
         allocate(self%ChoLowCovUpp(self%nd,self%nd,self%nc))
+        allocate(self%LogSqrtDetCovMat(self%nc))
         allocate(CumSumVolNormed(self%nc))
 
         do ic = 1, self%nc
 
             ! Generate random correlation matrix.
 
-            self%ChoLowCovUpp(:,:,ic) = getRandCorMat(self%nd, self%Eta(ic))
-            do j = 1, self%nd
-                do i = 1, self%nd
-                    self%ChoLowCovUpp(i,j,ic) = self%ChoLowCovUpp(i,j,ic) * self%Std(i,ic) * self%Std(j,ic)
+            self%ChoDia(1,ic) = -1._RK
+            do k = 1, self%nd
+
+                if (k < self%nd) then
+                    self%ChoLowCovUpp(:,:,ic) = getRandCorMat(self%nd, self%Eta(ic))
+                    if (self%ChoLowCovUpp(1,1,ic) < 0._RK) cycle
+                else
+                    self%ChoLowCovUpp(:,:,ic) = getEye(self%nd, self%nd)
+                end if
+
+                ! Compute the covariance matrix.
+
+                do j = 1, self%nd
+                    do i = 1, self%nd
+                        self%ChoLowCovUpp(i,j,ic) = self%ChoLowCovUpp(i,j,ic) * self%Std(i,ic) * self%Std(j,ic)
+                    end do
                 end do
+
+                ! Compute the Cholesky factorization.
+
+                call getCholeskyFactor  ( nd = self%nd & ! LCOV_EXCL_LINE
+                                        , PosDefMat = self%ChoLowCovUpp(1:self%nd,1:self%nd,ic) & ! LCOV_EXCL_LINE
+                                        , Diagonal = self%ChoDia(1:self%nd,ic) & ! LCOV_EXCL_LINE
+                                        )
+                if (self%ChoDia(1,ic) < 0._RK) then
+                    !self%Err%occurred = .true.
+                    !self%Err%msg = "Singular Covariance matrix detected."
+                    !write(*,"(A)") "ChoLowCovUpp:"
+                    !write(*,"("//num2str(self%nd)//"(F15.8,:,' '))") self%ChoLowCovUpp(1:self%nd,1:self%nd,ic)
+                    !error stop
+                    cycle
+                end if
+
+                exit
+
             end do
 
-            ! Compute the Cholesky factorization.
+!do j = 1, self%nd
+!    write(*,*) self%ChoLowCovUpp(1:self%nd,j,ic)
+!end do
 
-            call getCholeskyFactor  ( nd = self%nd & ! LCOV_EXCL_LINE
-                                    , PosDefMat = self%ChoLowCovUpp(1:self%nd,1:self%nd,ic) & ! LCOV_EXCL_LINE
-                                    , Diagonal = self%ChoDia(1:self%nd,ic) & ! LCOV_EXCL_LINE
-                                    )
-            if (self%ChoDia(1,ic) < 0._RK) then
-                self%Err%occurred = .true.
-                self%Err%msg = "Singular Covariance matrix detected."
-                write(*,"(A)") "ChoLowCovUpp:"
-                write(*,"("//num2str(self%nd)//"(F15.8,:,' '))") self%ChoLowCovUpp(1:self%nd,1:self%nd,ic)
-                error stop
-            end if
+            ! Compute the inverse covariance matrix.
 
-            self%LogVolume(ic) = sum(log(self%ChoDia(1:self%nd,ic)))
+            self%InvCovMat(1:self%nd,1:self%nd,ic) = getInvMatFromCholFac   ( nd = self%nd & ! LCOV_EXCL_LINE
+                                                                            , CholeskyLower = self%ChoLowCovUpp(1:self%nd,1:self%nd,ic) & ! LCOV_EXCL_LINE
+                                                                            , CholeskyDiago = self%ChoDia(1:self%nd,ic) & ! LCOV_EXCL_LINE
+                                                                            )
+
+            self%LogSqrtDetCovMat(ic) = sum(log(self%ChoDia(1:self%nd,ic)))
+            self%LogVolNormed(ic) = sum(log(self%ChoDia(1:self%nd,ic)))
 
         end do
 
-        VolNormed = exp( self%LogVolume - maxval(self%LogVolume) )
+        maxLogVolNormed = maxval(self%LogVolNormed)
+        self%sumLogVolNormed = getLogSumExp(self%nc, self%LogVolNormed, maxLogVolNormed)
+        VolNormed = exp(self%LogVolNormed - maxLogVolNormed)
         CumSumVolNormed(1:self%nc) = getCumSum(self%nc, VolNormed)
         CumSumVolNormed(1:self%nc) = CumSumVolNormed / CumSumVolNormed(self%nc)
 
@@ -350,9 +401,9 @@ contains
 
         isUniform = self%dist == "uniform"
         isNormal = self%dist == "normal-mixture"
-        isUniformSuperposed = self%dist == "uniform-mixture"
+        isUniformMixture = self%dist == "uniform-mixture"
 
-        if (.not. (isUniformSuperposed .or. isUniform)) then
+        if (.not. (isUniformMixture .or. isUniform)) then
             self%Err%occurred = .true.
             self%Err%msg = "No point distribution other than uniform is currently supported."
             return
@@ -365,36 +416,44 @@ contains
         self%np = sum(self%Size)
 
         if (allocated(self%Point)) deallocate(self%Point) ! LCOV_EXCL_LINE ! GFortran crashes without this
+        if (allocated(self%LogProb)) deallocate(self%LogProb) ! LCOV_EXCL_LINE ! GFortran crashes without this
+        if (allocated(self%Overlap)) deallocate(self%Overlap) ! LCOV_EXCL_LINE ! GFortran crashes without this
         if (allocated(self%Membership)) deallocate(self%Membership) ! LCOV_EXCL_LINE ! GFortran crashes without this
+        if (allocated(NormedPoint)) deallocate(NormedPoint) ! LCOV_EXCL_LINE ! GFortran crashes without this
 
+        allocate(self%LogProb(self%np))
         allocate(self%Membership(self%np))
         allocate(self%Point(self%nd,self%np))
+        allocate(self%Overlap(1:self%nc,self%np), source = 0_IK)
+        allocate(NormedPoint(self%nd))
 
-        if (isUniformSuperposed) then
+        if (isUniformMixture) then
 
             do ic = 1, self%nc
                 do ip = CumSumSize(ic-1) + 1, CumSumSize(ic)
+
                     self%Membership(ip) = ic
+
                     self%Point(1:self%nd,ip) = getRandMVU   ( nd = self%nd & ! LCOV_EXCL_LINE
                                                             , MeanVec = self%Center(1:self%nd,ic) & ! LCOV_EXCL_LINE
                                                             , CholeskyLower = self%ChoLowCovUpp(1:self%nd,1:self%nd,ic) & ! LCOV_EXCL_LINE
                                                             , Diagonal = self%ChoDia(1:self%nd,ic) & ! LCOV_EXCL_LINE
                                                             )
+
+                    ! Compute the number of cluster memberships of each point.
+
+                    do i = 1, self%nc
+                        NormedPoint(1:self%nd) = self%Point(1:self%nd,ip) - self%Center(1:self%nd,i)
+                        isMember = isInsideEllipsoid(nd = self%nd, NormedPoint = NormedPoint, InvRepMat = self%InvCovMat(1:self%nd,1:self%nd,i))
+                        if (isMember) then
+                            self%Overlap(ic,ip) = self%Overlap(ic,ip) + 1_IK
+                        end if
+                    end do
+
                 end do
             end do
 
         elseif (isUniform) then
-
-            if (allocated(InvCovMat)) deallocate(InvCovMat) ! LCOV_EXCL_LINE ! GFortran crashes without this
-            if (allocated(NormedPoint)) deallocate(NormedPoint) ! LCOV_EXCL_LINE ! GFortran crashes without this
-            allocate(NormedPoint(self%nd), InvCovMat(self%nd,self%nd,self%nc))
-
-            do ic = 1, self%nc
-                InvCovMat(1:self%nd,1:self%nd,ic) = getInvMatFromCholFac( nd = self%nd & ! LCOV_EXCL_LINE
-                                                                        , CholeskyLower = self%ChoLowCovUpp(1:self%nd,1:self%nd,ic) & ! LCOV_EXCL_LINE
-                                                                        , CholeskyDiago = self%ChoDia(1:self%nd,ic) & ! LCOV_EXCL_LINE
-                                                                        )
-            end do
 
             self%Size = 0_IK ! all cluster sizes will be determined after all point generations.
 
@@ -414,15 +473,20 @@ contains
                                                             , Diagonal = self%ChoDia(1:self%nd,ic) & ! LCOV_EXCL_LINE
                                                             )
 
-                    membershipCount = 0_IK
+                    ! Compute the number of cluster memberships of each point.
+
+                    sumOverlap = 0_IK
                     do i = 1, self%nc
                         NormedPoint(1:self%nd) = self%Point(1:self%nd,ip) - self%Center(1:self%nd,i)
-                        isMember = isInsideEllipsoid(nd = self%nd, NormedPoint = NormedPoint, InvRepMat = InvCovMat(1:self%nd,1:self%nd,i))
-                        if (isMember) membershipCount = membershipCount + 1_IK
+                        isMember = isInsideEllipsoid(nd = self%nd, NormedPoint = NormedPoint, InvRepMat = self%InvCovMat(1:self%nd,1:self%nd,i))
+                        if (isMember) then
+                            self%Overlap(ic,ip) = 1_IK
+                            sumOverlap = sumOverlap + 1_IK
+                        end if
                     end do
 
                     call random_number(dummy)
-                    if (dummy < 1._RK / membershipCount) then
+                    if (dummy < 1._RK / sumOverlap) then
                         self%Size(ic) = self%Size(ic) + 1_IK
                         self%Membership(ip) = ic
                         exit loopAddClusterMember
@@ -435,6 +499,68 @@ contains
             end do
 
         end if
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        ! Compute the effective volume of a single Point
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        if (allocated(self%PointLogVolNormed)) deallocate(self%PointLogVolNormed) ! LCOV_EXCL_LINE ! GFortran crashes without this
+        allocate(self%PointLogVolNormed(self%nc))
+
+        do ic = 1, nc
+            if (self%Size(ic)>0_IK) then
+                self%PointLogVolNormed(ic) = self%LogVolNormed(ic) - log(real(self%Size(ic),RK))
+            else
+                self%PointLogVolNormed(ic) = HUGE_RK
+            end if
+        end do
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        ! Compute the Point probabilities and Estimate the total volume of all clusters while taking into account potential overlaps
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        self%sumLogVolNormedEffective = self%sumLogVolNormed
+        do ip = 1, self%np
+            if (isUniform) then
+                self%LogProb(ip) = 1._RK
+                do ic = 1, nc
+                    if (ic /= self%Membership(ip) .and. self%Overlap(ic,ip) == 1_IK) then
+                        !write(*,*) self%sumLogVolNormedEffective, self%PointLogVolNormed(self%Membership(ip))
+                        self%sumLogVolNormedEffective = getLogSubExp(self%sumLogVolNormedEffective,self%PointLogVolNormed(self%Membership(ip)))
+                    end if
+                end do
+            elseif (isUniformMixture) then
+                self%LogProb(ip) = 0._RK
+                do ic = 1, self%nc
+                    if (self%Overlap(ic,ip)==1_IK) self%LogProb(ip) = self%LogProb(ip) - self%PointLogVolNormed(ic)
+                end do
+            end if
+        end do
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        ! hubify
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        self%InnestPoint = self%Point(1:nd, getShortestSumDistSqPointIndex(self%nd, self%np, self%Point))
+        self%Hub = Hub_type ( np = self%np & ! LCOV_EXCL_LINE
+                            , DistSq = getDistSq(nd = self%nd, np = self%np, Point = self%Point) & ! LCOV_EXCL_LINE
+                            )
+        if (self%Hub%Err%occurred) then
+            self%Err%occurred = .true.
+            self%Err%msg = self%Hub%Err%msg
+            return
+        end if
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        ! compute densities
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        logVolUnitBall = getLogVolUnitBall(self%nd)
+        if (allocated(self%LogDensity)) deallocate(self%LogDensity) ! LCOV_EXCL_LINE ! GFortran crashes without this
+        allocate(self%LogDensity(self%nc))
+        do concurrent(ic = 1:nc)
+            if (self%Size(ic) > 0_IK) self%LogDensity(ic) = log(real(self%Size(ic),RK)) - self%LogVolNormed(ic) - logVolUnitBall
+        end do
 
     end subroutine getClusteredPoint
 
@@ -451,8 +577,7 @@ contains
         write(fileUnit,"(A)") "dist"
         write(fileUnit,fileFormat) self%dist
 
-        write(fileUnit,"(A)") "nd, np, nc"
-        write(fileUnit,fileFormat) self%nd, self%np, self%nc
+        write(fileUnit,"(*(g0,:,'"//new_line("a")//"'))") "nd", self%nd, "np", self%np, "nc", self%nc
 
         write(fileUnit,"(A)") "Size"
         write(fileUnit,fileFormat) self%Size
@@ -460,8 +585,8 @@ contains
         write(fileUnit,"(A)") "Center"
         write(fileUnit,fileFormat) self%Center
 
-        write(fileUnit,"(A)") "LogVolume"
-        write(fileUnit,fileFormat) self%LogVolume
+        write(fileUnit,"(A)") "LogVolNormed"
+        write(fileUnit,fileFormat) self%LogVolNormed
 
         write(fileUnit,"(A)") "CholeskyLower"
         write(fileUnit,fileFormat) ((self%ChoDia(j,ic), (self%ChoLowCovUpp(i,j,ic), i=j+1,self%nd), j=1,self%nd), ic=1,self%nc)
@@ -471,6 +596,15 @@ contains
 
         write(fileUnit,"(A)") "Membership"
         write(fileUnit,fileFormat) self%Membership
+
+        write(fileUnit,"(A)") "InnestPoint"
+        write(fileUnit,fileFormat) self%InnestPoint
+
+        write(fileUnit,"(A)") "HubPoint"
+        write(fileUnit,fileFormat) self%Point(1:self%nd, self%Hub%NodeIndex)
+
+        write(fileUnit,"(A)") "HubEdgeCount"
+        write(fileUnit,fileFormat) self%Hub%EdgeCount
 
     end subroutine writeClusteredPoint
 

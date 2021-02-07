@@ -56,13 +56,13 @@ module Kmeans_mod
 
     real(RK) :: ndKuniform, btFactor
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> The `Prop_type` class, containing the properties of Kmeans clusters.
     type :: Prop_type
-        real(RK)    , allocatable   :: LogVol(:)            !< An array of size `(nc)` each element of which represents the volume of the covariance matrix of the corresponding cluster.
         real(RK)    , allocatable   :: ChoDia(:,:)          !< An array of size `(nd,nc)` representing the diagonal elements of the Cholesky factorization of the covariance matrix.
         real(RK)    , allocatable   :: MahalSq(:,:)         !< An array of size `(np,nc)` each element of which represents the Mahalanobis distance squared of point `ip` from the cluster `ic`.
+        real(RK)    , allocatable   :: LogVolNormed(:)      !< An array of size `(nc)` each element of which represents the volume of the covariance matrix of the corresponding cluster.
         real(RK)    , allocatable   :: InvCovMat(:,:,:)     !< An array of size `(nd,nd,nc)` containing the inverse of the covariance matrix of the corresponding cluster.
         real(RK)    , allocatable   :: ChoLowCovUpp(:,:,:)  !< An array of size `(nd,nd,nc)` whose upper triangle and diagonal is the covariance matrix and the lower is the Cholesky Lower.
         real(RK)    , allocatable   :: ScaleFactorSq(:)     !< An array of size `(nc)` representing the factors by which the cluster covariance matrices must be enlarged to enclose their corresponding members.
@@ -72,7 +72,7 @@ module Kmeans_mod
         procedure, pass :: allocate => allocateKmeansProp
     end type Prop_type
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> The `Kmeans_type` class.
     !> The inclusion of the component `NormedPoint` adds ~50% to the computational cost of performing Kmeans.
@@ -125,14 +125,14 @@ contains
         implicit none
         class(Prop_type), intent(inout) :: Prop
         integer(IK), intent(in)         :: nd, np, nc
-        if (.not. allocated(Prop%ChoDia       )) allocate(Prop%ChoDia          (nd,nc))
-        if (.not. allocated(Prop%MahalSq      )) allocate(Prop%MahalSq         (np,nc))
-        if (.not. allocated(Prop%InvCovMat    )) allocate(Prop%InvCovMat       (nd,nd,nc))
-        if (.not. allocated(Prop%ChoLowCovUpp )) allocate(Prop%ChoLowCovUpp    (nd,nd,nc))
-        if (.not. allocated(Prop%EffectiveSize)) allocate(Prop%EffectiveSize   (nc))
-        if (.not. allocated(Prop%ScaleFactorSq)) allocate(Prop%ScaleFactorSq   (nc))
-        if (.not. allocated(Prop%CumSumSize   )) allocate(Prop%CumSumSize      (0:nc))
-        if (.not. allocated(Prop%LogVol       )) allocate(Prop%LogVol          (nc))
+        if (.not. allocated(Prop%ChoDia         )) allocate(Prop%ChoDia         (nd,nc))
+        if (.not. allocated(Prop%MahalSq        )) allocate(Prop%MahalSq        (np,nc))
+        if (.not. allocated(Prop%InvCovMat      )) allocate(Prop%InvCovMat      (nd,nd,nc))
+        if (.not. allocated(Prop%ChoLowCovUpp   )) allocate(Prop%ChoLowCovUpp   (nd,nd,nc))
+        if (.not. allocated(Prop%EffectiveSize  )) allocate(Prop%EffectiveSize  (nc))
+        if (.not. allocated(Prop%ScaleFactorSq  )) allocate(Prop%ScaleFactorSq  (nc))
+        if (.not. allocated(Prop%CumSumSize     )) allocate(Prop%CumSumSize     (0:nc))
+        if (.not. allocated(Prop%LogVolNormed   )) allocate(Prop%LogVolNormed   (nc))
     end subroutine allocateKmeansProp
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -311,7 +311,7 @@ contains
     !> +   `MahalSq(1:np,1:nc)`             :   The Mahalanobis distances squared of all points from all cluster centers,
     !> +   `ChoDia(1:nd,1:nc)`              :   The diagonal elements of the Cholesky lower triangle,
     !> +   `CumSumSize(0:nc)`               :   The cumulative sum of `Kmeans%Size(1:nc)` with `CumSumSize(0) = 0`,
-    !> +   `LogVol(1:nc)`                   :   The vector of natural-log volumes of all clusters,
+    !> +   `LogVolNormed(1:nc)`             :   The vector of natural-log volumes of all clusters normalized by the volume of unit nd-ball,
     !>
     !> \param[in]       nd                  :   See the description of the [runKmeans](@ref runkmeans).
     !> \param[in]       np                  :   See the description of the [runKmeans](@ref runkmeans).
@@ -446,7 +446,7 @@ contains
             ! Compute the scaleFcator of the bounding region and scale the volumes to the bounded region.
 
             Kmeans%Prop%ScaleFactorSq(ic) = maxval(Kmeans%Prop%MahalSq(ipstart:ipend,ic))
-            Kmeans%Prop%LogVol(ic) = sum( log(Kmeans%Prop%ChoDia(1:nd,ic)) ) + ndHalf * log(Kmeans%Prop%ScaleFactorSq(ic))
+            Kmeans%Prop%LogVolNormed(ic) = sum( log(Kmeans%Prop%ChoDia(1:nd,ic)) ) + ndHalf * log(Kmeans%Prop%ScaleFactorSq(ic))
             !Kmeans%ScaleFactor(ic) = sqrt(Kmeans%Prop%ScaleFactorSq(ic))
 
         end do loopComputeClusterProperties
@@ -844,9 +844,9 @@ contains
             write(fileUnit,fileFormat) Kmeans%Center
         end if
 
-        if (allocated(Kmeans%Prop%LogVol)) then
-            write(fileUnit,"(A)") "LogVol"
-            write(fileUnit,fileFormat) Kmeans%Prop%LogVol
+        if (allocated(Kmeans%Prop%LogVolNormed)) then
+            write(fileUnit,"(A)") "LogVolNormed"
+            write(fileUnit,fileFormat) Kmeans%Prop%LogVolNormed
         end if
 
         if (allocated(Kmeans%Prop%ScaleFactorSq)) then

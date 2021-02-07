@@ -290,7 +290,7 @@ contains
 #endif
                                 , inclusionFraction = inclusionFraction & ! LCOV_EXCL_LINE
                                 , logTightness = log(tightness) & ! LCOV_EXCL_LINE
-                                !, parLogVol = sum(log(ClusteredPoint%DomainSize)) & ! LCOV_EXCL_LINE
+                                , parLogVolNormed = ClusteredPoint%sumLogVolNormedEffective & ! LCOV_EXCL_LINE
                                 , trimEnabled = .true. & ! LCOV_EXCL_LINE
                                 )
 

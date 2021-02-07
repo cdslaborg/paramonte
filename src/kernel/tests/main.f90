@@ -86,14 +86,15 @@ call setup()
 !block; use Test_Integration_mod; call test_Integration(); end block
 !block; use Test_Kmeans_mod; call test_Kmeans(); end block
 !block; use Test_KmeansOOP_mod; call test_KmeansOOP(); end block
-!block; use Test_Math_mod; call test_Math(); end block
+block; use Test_Math_mod; call test_Math(); end block
 !block; use Test_Matrix_mod; call test_Matrix(); end block
+block; use Test_Misc_mod; call test_Misc(); end block
+block; use Test_Knn_mod; call test_Knn(); end block
 block; use Test_MultiSkewNorm_mod; call test_MultiSkewNorm(); end block
 block; use Test_Partition_mod; call Test_Partition(); end block
 block; use Test_PartitionKmeans_mod; call Test_Partition(); end block
 block; use Test_PartitionMaxDen_mod; call Test_Partition(); end block
 block; use Test_PartitionMinVol_mod; call Test_Partition(); end block
-!block; use Test_Misc_mod; call test_Misc(); end block
 !block; use Test_Optimization_mod; call test_Optimization(); end block
 !block; use Test_Parallelism_mod; call test_Parallelism(); end block
 !block; use Test_Path_mod; call test_Path(); end block
@@ -107,6 +108,7 @@ block; use Test_PartitionMinVol_mod; call Test_Partition(); end block
 !block; use Test_Timer_mod; call test_Timer(); end block
 !block; use Test_TimerCPU_mod; call test_TimerCPU(); end block
 !block; use Test_TranGaus_mod; call test_TranGaus(); end block
+block; use Test_Unique_mod; call test_Unique(); end block
 #endif
 
 #if defined SAMPLER_TEST_ENABLED

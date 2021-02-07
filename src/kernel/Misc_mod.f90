@@ -66,10 +66,6 @@ module Misc_mod
         module procedure :: masked_swap_SPR, masked_swap_SPRV, masked_swap_SPRM         ! swap_zv, swap_zm
     end interface swap
 
-    interface findUnique
-        module procedure :: findUnique_IK
-    end interface findUnique
-
     interface resize
         module procedure :: resizeVector_RK
     end interface resize
@@ -78,11 +74,11 @@ module Misc_mod
         module procedure :: resizeVector_RK
     end interface resizeVector
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 contains
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     pure elemental subroutine swap_CK(a,b)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
@@ -123,7 +119,7 @@ contains
         b = dummy
     end subroutine swap_IK
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     pure elemental subroutine swap_SPI(a,b)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
@@ -311,7 +307,7 @@ contains
         end where
     end subroutine masked_swap_SPRM
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
     !> Return an arithmetic progression as an array
@@ -347,7 +343,7 @@ contains
         end if
     end function arth_RK
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
     !> Return an arithmetic progression as an array.
@@ -381,7 +377,7 @@ contains
         end if
     end function arth_IK
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
     !> Return `nn` consecutive powers of the `n`th root of unity.
@@ -406,7 +402,7 @@ contains
         end do
     end function zroots_unity
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     pure subroutine copyArray_IK(Source,Destination,numCopied,numNotCopied)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
@@ -422,7 +418,7 @@ contains
         Destination(1:numCopied) = Source(1:numCopied)
     end subroutine copyArray_IK
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     pure subroutine copyArray_RK(Source,Destination,numCopied,numNotCopied)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
@@ -438,53 +434,7 @@ contains
         Destination(1:numCopied) = Source(1:numCopied)
     end subroutine copyArray_RK
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    !> \brief
-    !> Find the unique values in the input integer vector.
-    !>
-    !> @param[in]       lenVector   :   The size of the input square matrix - `nd` by `nd`.
-    !> @param[in]       Vector      :   The input integer vector.
-    !> @param[out]      UniqueValue :   The vector of unique values identified in the input vector.
-    !> @param[out]      UniqueCount :   The counts of each unique value in the input vector.
-    !> @param[out]      lenUnique   :   The length of `UniqueValue`, that is, the total number of unique values.
-    pure subroutine findUnique_IK(lenVector, Vector, UniqueValue, UniqueCount, lenUnique)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
-        !DEC$ ATTRIBUTES DLLEXPORT :: findUnique_IK
-#endif
-        use Constants_mod, only: IK
-        implicit none
-        integer(IK)     , intent(in)                :: lenVector
-        integer(IK)     , intent(in)                :: Vector(lenVector)
-        integer(IK)     , intent(out), allocatable  :: UniqueValue(:)
-        integer(IK)     , intent(out), allocatable  :: UniqueCount(:)
-        integer(IK)     , intent(out), optional     :: lenUnique
-        integer(IK)                                 :: lenUniq, i, j
-        logical                                     :: isUnique
-        allocate(UniqueValue(lenVector))
-        allocate(UniqueCount(lenVector), source = 0_IK)
-        lenUniq = 0
-        do i = 1, lenVector
-            isUnique = .true.
-            loopSearchUnique: do j = 1, lenUniq
-                if (UniqueValue(j)==Vector(i)) then
-                    UniqueCount(j) = UniqueCount(j) + 1
-                    isUnique = .false.
-                    exit loopSearchUnique
-                end if
-            end do loopSearchUnique
-            if (isUnique) then
-                lenUniq = lenUniq + 1
-                UniqueValue(lenUniq) = Vector(i)
-                UniqueCount(lenUniq) = UniqueCount(lenUniq) + 1
-            end if
-        end do
-        UniqueValue = UniqueValue(1:lenUniq)
-        UniqueCount = UniqueCount(1:lenUniq)
-        if (present(lenUnique)) lenUnique = lenUniq
-    end subroutine findUnique_IK
-
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
     !> Resize the input 1-dimensional real vector to a new size.
@@ -506,6 +456,6 @@ contains
         call move_alloc(Temp, Vector)
     end subroutine resizeVector_RK
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 end module Misc_mod

@@ -62,7 +62,9 @@ SET(ParaMonte_SOURCE_FILES
     ${ParaMonteKernel_SRC_DIR}/RandomSeed_mod.f90
     ${ParaMonteKernel_SRC_DIR}/File_mod.f90
     ${ParaMonteKernel_SRC_DIR}/Sort_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/Unique_mod.f90
     ${ParaMonteKernel_SRC_DIR}/Math_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/Knn_mod.f90
     ${ParaMonteKernel_SRC_DIR}/Matrix_mod.f90
     ${ParaMonteKernel_SRC_DIR}/Statistics_mod.f90
     ${ParaMonteKernel_SRC_DIR}/MultiSkewNorm_mod.f90

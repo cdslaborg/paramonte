@@ -13,7 +13,7 @@ for ifile = 1:lenKmeansFileList
 
     if ~KmeansFileList(ifile).isdir
 
-        Kmeans = parseCluster( fullfile(KmeansFileList(ifile).folder,KmeansFileList(ifile).name) );
+        Kmeans = readCluster( fullfile(KmeansFileList(ifile).folder,KmeansFileList(ifile).name) );
 
         for icase = 1:Kmeans.count
 

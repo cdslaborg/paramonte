@@ -58,6 +58,7 @@ set(ParaMonteTest_SOURCE_FILES
     ${ParaMonteTest_SRC_DIR}/Test_Integration_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Kmeans_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_KmeansOOP_mod.f90
+    ${ParaMonteTest_SRC_DIR}/Test_Knn_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Math_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Matrix_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_MultiSkewNorm_mod.f90
@@ -91,6 +92,7 @@ set(ParaMonteTest_SOURCE_FILES
     ${ParaMonteTest_SRC_DIR}/Test_Timer_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_TimerCPU_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_TranGaus_mod.f90
+    ${ParaMonteTest_SRC_DIR}/Test_Unique_mod.f90
     ${ParaMonteTest_SRC_DIR}/main.f90
     #${ParaMonteTest_SRC_DIR}/Test_EconomicsToolbox_mod.f90
 )

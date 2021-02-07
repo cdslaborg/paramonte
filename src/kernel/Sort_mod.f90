@@ -259,19 +259,19 @@ contains
         type(Err_type)  , intent(out)   :: Err
 
         character(*)    , parameter     :: PROCEDURE_NAME = MODULE_NAME//"@indexArray_RK()"
-        integer(IK)     , parameter     :: nn=15, NSTACK=50
+        integer(IK)     , parameter     :: nn = 15_IK, NSTACK = 50_IK
         integer(IK)                     :: k,i,j,indext,jstack,l,r
         integer(IK)                     :: istack(NSTACK)
         real(RK)                        :: a
 
         Err%occurred = .false.
 
-        do j = 1,n
+        do concurrent(j = 1:n)
             Indx(j) = j
         end do
-        jstack=0
-        l=1
-        r=n
+        jstack = 0
+        l = 1
+        r = n
         do
             if (r-l < nn) then
                 do j=l+1,r
@@ -377,7 +377,7 @@ contains
 
         Err%occurred = .false.
 
-        do j = 1,n
+        do concurrent(j = 1:n)
             Indx(j) = j
         end do
         jstack=0

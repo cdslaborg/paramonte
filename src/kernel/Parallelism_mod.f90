@@ -243,9 +243,9 @@ contains
 #endif
         use GeoCyclicFit_mod, only: fitGeoCyclicLogPDF ! LCOV_EXCL_LINE
         use Constants_mod, only: IK, RK, SQRT_EPS_RK, NEGINF_RK
-        use String_mod, only: num2str
-        use Misc_mod, only: findUnique
+        use Unique_mod, only: findUnique
         use Sort_mod, only: indexArray
+        use String_mod, only: num2str
 
         implicit none
 
@@ -303,9 +303,9 @@ contains
 
         call findUnique ( lenVector = lenProcessID &
                         , Vector = ProcessID &
+                        , lenUnique = ForkJoin%UniqueProcess%count &
                         , UniqueValue = ForkJoin%UniqueProcess%Identity &
                         , UniqueCount = ForkJoin%UniqueProcess%Frequency &
-                        , lenUnique = ForkJoin%UniqueProcess%count &
                         )
         !maxContributorProcessID = ForkJoin%UniqueProcess%Identity(maxloc(ForkJoin%UniqueProcess%Frequency))
 
@@ -313,7 +313,7 @@ contains
         ! From the IO report perspective, however, it is important to have it ordered.
 
         allocate(Indx(ForkJoin%UniqueProcess%count))
-        call indexArray( n = ForkJoin%UniqueProcess%count, Array = ForkJoin%UniqueProcess%Identity, Indx = Indx, Err = ForkJoin%Err )
+        call indexArray( n = ForkJoin%UniqueProcess%count, Array = ForkJoin%UniqueProcess%Identity(1:ForkJoin%UniqueProcess%count), Indx = Indx, Err = ForkJoin%Err )
         if (ForkJoin%Err%occurred) then
             ! LCOV_EXCL_START
             ForkJoin%Err%msg = PROCEDURE_NAME // ForkJoin%Err%msg
@@ -323,8 +323,8 @@ contains
 
         ! get all processes contributions
 
-        ForkJoin%UniqueProcess%Identity(:) = ForkJoin%UniqueProcess%Identity(Indx)
-        ForkJoin%UniqueProcess%Frequency(:) = ForkJoin%UniqueProcess%Frequency(Indx)
+        ForkJoin%UniqueProcess%Identity = ForkJoin%UniqueProcess%Identity(Indx)
+        ForkJoin%UniqueProcess%Frequency = ForkJoin%UniqueProcess%Frequency(Indx)
 
         deallocate(Indx)
 

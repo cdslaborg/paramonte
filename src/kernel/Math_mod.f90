@@ -670,12 +670,13 @@ contains
     !> \brief
     !> This routine is an exact replacement for [getLogEllVolCoef](@ref getlogellvolcoef).
     !> However, it is, on average, 10%-15% faster than [getLogEllVolCoef](@ref getlogellvolcoef) based
-    !> on benchmarks with Intel ifort 19.4 with all optimization flags on.
+    !> on benchmarks with Intel ifort 19.4 with all optimization flags switched on.
     !
     ! see for example: http://math.stackexchange.com/questions/606184/volume-of-n-dimensional-ellipsoid
     ! see for example: https://en.wikipedia.org/wiki/Volume_of_an_n-ball
     ! see for example: https://en.wikipedia.org/wiki/Particular_values_of_the_Gamma_function
     ! getEllVolCoef = PI^(nd/2) / gamma(nd/2+1) where n is just a positive integer
+    !pure function getLogVolUnitBall(nd) result(logVolUnitBall)
     pure function getLogVolUnitBall(nd) result(logVolUnitBall)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogVolUnitBall
