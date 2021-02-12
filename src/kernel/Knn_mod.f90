@@ -115,7 +115,7 @@ contains
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanMinDist
 #endif
-        use Constants_mod, only: IK, RK
+        use Constants_mod, only: IK, RK ! LCOV_EXCL_LINE
         !use Math_mod, only: getLogVolUnitBall
         implicit none
         integer(IK) , intent(in)    :: nd
@@ -135,14 +135,13 @@ contains
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogDensity
 #endif
-        use Constants_mod, only: IK, RK
+        use Constants_mod, only: IK, RK ! LCOV_EXCL_LINE
         implicit none
         integer(IK) , intent(in)    :: nd
-        real(RK)    , intent(in)    :: logMeanMinDist, logVolUnitBall
+        real(RK)    , intent(in)    :: logMeanMinDist
+        real(RK)    , intent(in)    :: logVolUnitBall
         real(RK)                    :: logDensity
-        real(RK)                    :: ndInverse
-        ndInverse = 1._RK / nd
-        logDensity = nd * ( log_gamma((nd + 1_IK) * ndInverse) - logMeanMinDist - ndInverse * logVolUnitBall )
+        logDensity = nd * (log_gamma((nd + 1_IK) / real(nd,RK)) - logMeanMinDist) - logVolUnitBall
     end function getLogDensity
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -151,7 +150,7 @@ contains
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getShortestSumDistSqPointIndex
 #endif
-        use Constants_mod, only: IK, RK, HUGE_RK
+        use Constants_mod, only: IK, RK, HUGE_RK ! LCOV_EXCL_LINE
         implicit none
         integer(IK) , intent(in)    :: nd, np
         real(RK)    , intent(in)    :: Point(nd,np)
@@ -181,7 +180,7 @@ contains
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDistSq
 #endif
-        use Constants_mod, only: IK, RK
+        use Constants_mod, only: IK, RK ! LCOV_EXCL_LINE
         implicit none
         integer(IK) , intent(in)    :: nd, np
         real(RK)    , intent(in)    :: Point(nd,np)
@@ -205,7 +204,7 @@ contains
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinDistEdge
 #endif
-        use Constants_mod, only: IK, RK, HUGE_RK
+        use Constants_mod, only: IK, RK, HUGE_RK ! LCOV_EXCL_LINE
         implicit none
         integer(IK) , intent(in)    :: np
         real(RK)    , intent(in)    :: DistSq(np,np)
@@ -271,8 +270,10 @@ contains
                         , Err = Hub%Err & ! LCOV_EXCL_LINE
                         )
         if (Hub%Err%occurred) then
+            ! LCOV_EXCL_START
             Hub%Err%msg = PROCEDURE_NAME//Hub%Err%msg
             return
+            ! LCOV_EXCL_STOP
         end if
 
         allocate(Hub%EdgeLenSq(Hub%nh))

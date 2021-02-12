@@ -305,13 +305,14 @@ contains
         close(Test%File%unit)
 
         logVolUnitBall = getLogVolUnitBall(nd)
-write(*,*) "logVolUnitBall", logVolUnitBall
+
+!write(*,*) "logVolUnitBall", logVolUnitBall
 
         Test%File = Test%openFile() ! label = "LogVolEstimate")
 
-        do i = 1, 5000
+        do i = 1, 5 ! 000
 
-if (mod(i,100)==0) write(*,*) "i = ", i
+!if (mod(i,100)==0) write(*,*) "i = ", i
 
             ! Generate clustered points
 

@@ -1781,7 +1781,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! This subroutine is legacy and slow. use getRandMVU() in this same module.
+    ! This subroutine is legacy and slow. Use getRandMVU() in this same module.
     ! Given the mean vector MeanVec and the covariance matrix CovMat, this subroutine generates a random vector X (of length nd>=2)
     ! from an nd-dimensional multivariate ellipsoidal uniform distribution, such that getMVUDev() is randomly distributed inside the nd-dimensional ellipsoid.
     ! ATTENTION: Only the upper half of the covariance matrix (plus the diagonal terms) need to be given in the input.
@@ -1923,7 +1923,7 @@ contains
         end do
         call random_number(dummy)
         dummy = dummy**(1._RK/nd) / sqrt(sumSqDummyVec)
-        DummyVec = DummyVec * dummy  ! a uniform random point from inside of nd-sphere
+        DummyVec = DummyVec * dummy ! a uniform random point from inside of nd-sphere
         RandMVU = MeanVec
         do j = 1,nd
             RandMVU(j) = RandMVU(j) + Diagonal(j) * DummyVec(j)

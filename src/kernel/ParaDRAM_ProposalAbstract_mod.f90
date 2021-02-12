@@ -52,5 +52,5 @@ module ParaDRAM_ProposalAbstract_mod
 #define PARADRAM ParaDRAM
 #include "ParaXXXX_ProposalAbstract_mod.inc.f90"
 #undef PARADRAM
-end module ParaDRAM_ProposalAbstract_mod
+end module ParaDRAM_ProposalAbstract_mod ! LCOV_EXCL_LINE
 

@@ -118,6 +118,7 @@ contains
         end do
 
         if (present(Err)) then
+            if (allocated(Indx)) deallocate(Indx) ! LCOV_EXCL_LINE ! GFortran crashes without this line
             allocate(Indx(lenUnique))
             call indexArray(lenUnique, UniqueCount(1:lenUnique), Indx, Err)
             if (Err%occurred) return

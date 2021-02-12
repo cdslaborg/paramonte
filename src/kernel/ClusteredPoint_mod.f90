@@ -359,7 +359,7 @@ contains
                     !write(*,"(A)") "ChoLowCovUpp:"
                     !write(*,"("//num2str(self%nd)//"(F15.8,:,' '))") self%ChoLowCovUpp(1:self%nd,1:self%nd,ic)
                     !error stop
-                    cycle
+                    cycle ! LCOV_EXCL_LINE
                 end if
 
                 exit
@@ -546,9 +546,11 @@ contains
                             , DistSq = getDistSq(nd = self%nd, np = self%np, Point = self%Point) & ! LCOV_EXCL_LINE
                             )
         if (self%Hub%Err%occurred) then
+            ! LCOV_EXCL_START
             self%Err%occurred = .true.
             self%Err%msg = self%Hub%Err%msg
             return
+            ! LCOV_EXCL_STOP
         end if
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

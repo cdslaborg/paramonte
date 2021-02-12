@@ -12,16 +12,18 @@ close all;
 % things to plot
 
 dbscanEnabled = true;
-pointsEnabled = 0;
-innestPointEnabled = 0;
+pointsEnabled = 1;
+innestPointEnabled = 1;
 originalBoundsEnabled = 1;
-predictedBoundsEnabled = 0;
-distMatEnabled = 0;
+predictedBoundsEnabled = 1;
+distMatEnabled = 1;
 
 methodList = ["", "Kmeans", "MaxDen", "MinVol"];
 fileTemplate = "../output/Test_Partition__SAMPLING_METHOD___mod@test_runPartition_2@__FILE_TYPE__@1.txt";
 
 iline = 0;
+
+global DistSqSorted np LogFac
 
 for method = methodList
 
@@ -65,6 +67,14 @@ for method = methodList
             DistSqSorted = sort(DistSq,"ascend");
             DistSqCDF = zeros(np,np);
             npIndexMinSumDistSqCDF = 1; %floor(sqrt(np));
+
+            % optimize the density
+
+            LogFac = zeros(np,1);
+            LogFac(1) = 0.;
+            for ip = 2:np
+                LogFac(ip) = LogFac(ip-1) + log(ip);
+            end
 
             % Identify hubs
 
@@ -221,7 +231,7 @@ for method = methodList
 
             if dbscanEnabled
                 idx = dbscan( cluspoint.case{1}.Point ...
-                            , 0.15 ...
+                            , 0.5 ...
                             , 3 ...
                             ..., "distance", 'mahalanobis' ...
                             ..., "distance", 'correlation' ...

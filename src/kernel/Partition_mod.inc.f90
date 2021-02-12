@@ -356,9 +356,11 @@ contains
 
         call getCholeskyFactor(nd, PartitionChoLowCovUpp(1:nd,1:nd,1), PartitionChoDia(1:nd,1))
         if (PartitionChoDia(1,1)<0._RK) then
+            ! LCOV_EXCL_START
             Err%msg = PROCEDURE_NAME//": Singular covariance matrix detected for nemax, nd, np: "//num2str(nemax)//", "//num2str(nd)//", "//num2str(np)
             write(*,*) Err%msg
             error stop
+            ! LCOV_EXCL_STOP
         end if
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -610,7 +612,7 @@ contains
                         write(*,*) "Kmeans%Prop%ChoLowCovUpp(1:nd,1:nd,ic)"
                         write(*,*) Kmeans%Prop%ChoLowCovUpp(1:nd,1:nd,ic)
                         write(*,*)
-                        !error stop
+                        error stop
                         ! LCOV_EXCL_STOP
                     end if
                     ChoDiaDiff = 2 * abs(Kmeans%Prop%ChoDia(1:nd,ic)-ChoDia) / abs(Kmeans%Prop%ChoDia(1:nd,ic)+ChoDia)
@@ -677,6 +679,7 @@ contains
 
             recursionCounter = recursionCounter + 1_IK
             if(recursionCounter > partitionMaxAllowedRecursion) then
+                ! LCOV_EXCL_START
                 write(*,*) "recursionCounter > partitionMaxAllowedRecursion: ", recursionCounter
                 neopt = 1_IK
                 PartitionSize(1) = np
@@ -684,6 +687,7 @@ contains
                 convergenceFailureCount = convergenceFailureCount + 1_IK
                 !error stop
                 return
+                ! LCOV_EXCL_STOP
             end if
 
             ! Ensure the stability of the minimum bounding regions.
@@ -752,10 +756,12 @@ contains
 
                 call Kmeans%getProp(nd, np, Point, PointIndex)
                 if (Kmeans%Err%occurred) then ! This must revert back to the original Kmeans cluster and continue instead of return
+                    ! LCOV_EXCL_START
                     neopt = 1_IK
                     PartitionSize(1) = np
                     PartitionMembership = 1_IK
                     return
+                    ! LCOV_EXCL_STOP
                 end if
 
                 cycle loopRecursivePartitionOptimization
@@ -928,6 +934,7 @@ contains
                             mahalSq = dot_product(NormedPoint,matmul(PartitionInvCovMat(:,:,icstart),NormedPoint))
                             isInside = mahalSq - 1._RK <= 1.e-6_RK
                             if (.not. isInside) then
+                                ! LCOV_EXCL_START
                                 write(*,"(*(g0.15,:,' '))") new_line("a"), "FATAL - POINT NOT INSIDE!, MAHAL = ", sqrt(mahalSq), new_line("a")
                                 write(*,"(60(g0,:,','))") "numRecursiveCall", numRecursiveCall
                                 write(*,"(60(g0,:,','))") "KmeansNemax(icstart), icstart", KmeansNemax(icstart), icstart
@@ -938,6 +945,7 @@ contains
                                 write(*,"(60(g0,:,','))") "PartitionChoDia", PartitionChoDia(:,icstart)
                                 write(*,"(60(g0,:,','))") "NormedPoint", NormedPoint
                                 error stop
+                                ! LCOV_EXCL_STOP
                             end if
                         end do
                     end block
@@ -970,6 +978,7 @@ contains
                 mahalSq = dot_product(NormedPoint,matmul(PartitionInvCovMat(:,:,ic),NormedPoint))
                 isInside = mahalSq - 1._RK <= 1.e-6_RK
                 if (.not. isInside) then
+                    ! LCOV_EXCL_START
                     write(*,"(*(g0.15,:,' '))") new_line("a"), "FATAL - POINT NOT INSIDE!, MAHALSQ = ", mahalSq, new_line("a")
                     write(*,"(60(g0,:,','))") "numRecursiveCall, ic, size(PartitionMembership)", numRecursiveCall, ic, size(PartitionMembership)
                     write(*,"(60(g0,:,','))") "PartitionMembership", PartitionMembership
@@ -977,6 +986,7 @@ contains
                     write(*,"(60(g0,:,','))") "PartitionInvCovMat", PartitionInvCovMat(:,:,ic)
                     write(*,"(60(g0,:,','))") "NormedPoint", NormedPoint
                     error stop
+                    ! LCOV_EXCL_STOP
                 end if
             end do
             !write(*,*) 'nemax: ', nemax
