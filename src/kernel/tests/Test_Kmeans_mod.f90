@@ -81,6 +81,8 @@ contains
         call Test%run(test_runKmeans_4, "test_runKmeans_4")
         call Test%run(test_getKmeans_1, "test_getKmeans_1")
         call Test%run(test_getKmeans_2, "test_getKmeans_2")
+        call Test%run(test_getKmeans_3, "test_getKmeans_3")
+        call Test%run(test_getKmeans_4, "test_getKmeans_4")
         call Test%finalize()
     end subroutine test_Kmeans
 
@@ -224,7 +226,7 @@ contains
         use String_mod, only: num2str
         implicit none
         integer(IK) , parameter     :: nc = 3_IK
-        integer(IK) , parameter     :: niterMax = 1_IK
+        integer(IK) , parameter     :: niterMax = 0_IK
         logical                     :: assertion
 
         type(Kmeans_type)           :: Kmeans
@@ -350,7 +352,6 @@ contains
                             , nt = nt & ! LCOV_EXCL_LINE
                             , Point = TestData%Point & ! LCOV_EXCL_LINE
                             , InitCenter = InitCenter & ! LCOV_EXCL_LINE
-                            , propEnabled = .true. & ! LCOV_EXCL_LINE
                             )
 
         ! write data to output for further investigation
@@ -399,19 +400,25 @@ contains
 
         assertion = .true.
 
-        InitCenter = reshape([4.7_RK, 4.7_RK, 6.4_RK, 6.1_RK, 9.5_RK, 8.6_RK], shape = [TestData%nd,nc])
         Point = TestData%Point
         PointIndex = [(ip,ip=1,TestData%np)]
+        InitCenter = reshape([4.7_RK, 4.7_RK, 6.4_RK, 6.1_RK, 9.5_RK, 8.6_RK], shape = [TestData%nd,nc])
 
         Kmeans = Kmeans_type( nd = TestData%nd & ! LCOV_EXCL_LINE
                             , np = TestData%np & ! LCOV_EXCL_LINE
                             , nc = nc & ! LCOV_EXCL_LINE
                             , nt = nt & ! LCOV_EXCL_LINE
                             , Point = Point & ! LCOV_EXCL_LINE
-                            , Index = PointIndex & ! LCOV_EXCL_LINE
                             , InitCenter = InitCenter & ! LCOV_EXCL_LINE
-                            , propEnabled = .true. & ! LCOV_EXCL_LINE
                             )
+
+        assertion = assertion .and. .not. Kmeans%Err%occurred
+        if (.not. assertion) return
+
+        call Kmeans%getProp(nd = TestData%nd, np = TestData%np, Point = Point, Index = PointIndex)
+
+        assertion = assertion .and. .not. Kmeans%Err%occurred
+        if (.not. assertion) return
 
         ! write data to output for further investigation
 
@@ -419,13 +426,12 @@ contains
         call writeKmeans(Kmeans = Kmeans, Point = TestData%Point, nd = TestData%nd, np = TestData%np, fileUnit = Test%File%unit)
         close(Test%File%unit)
 
-        assertion = assertion .and. .not. Kmeans%Err%occurred
         assertion = assertion .and. Kmeans%potential > 0._RK
         assertion = assertion .and. Kmeans%Err%stat /= 1_IK .and. Kmeans%Err%stat /= 2_IK
         assertion = assertion .and. all(Kmeans%Membership > 0_IK) .and. all(Kmeans%Membership < nc + 1)
         assertion = assertion .and. all(Kmeans%MinDistanceSq > 0_IK)
         assertion = assertion .and. all(Kmeans%Size > 0_IK) .and. sum(Kmeans%Size)==TestData%np
-        assertion = assertion .and. all( Point(:,PointIndex) == TestData%Point )
+        assertion = assertion .and. all(TestData%Point(:,PointIndex) == Point)
         do ic = 1, nc
             assertion = assertion .and. all( Kmeans%Membership(Kmeans%Prop%CumSumSize(ic-1)+1:Kmeans%Prop%CumSumSize(ic)) == Kmeans%Membership(Kmeans%Prop%CumSumSize(ic)) )
         end do
@@ -445,6 +451,375 @@ contains
         ! LCOV_EXCL_STOP
 
     end function test_getKmeans_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> The component `Index` must be properly set by [getKmeans](@ref kmeans_mod::gekmeans) when it is given as input.
+    function test_getKmeans_3() result(assertion)
+        use Constants_mod, only: IK, RK, LNPI
+        use String_mod, only: num2str
+        implicit none
+        integer(IK) , parameter     :: nc = 2_IK
+        integer(IK) , parameter     :: nd = 2_IK
+        integer(IK) , parameter     :: np = 11_IK
+        integer(IK) , parameter     :: nt = 10_IK + 2_IK + nint(log(real(nc)))
+        real(RK)    , parameter     :: pointLogVolNormed = log(1.e-1_RK) - LNPI
+        integer(IK) , parameter     :: minSize = 1_IK
+        Integer(IK)                 :: PointIndex(np)
+        real(RK)                    :: Point_ref(nd,np)
+        real(RK)                    :: Point(nd,np)
+        logical                     :: assertion
+        type(Kmeans_type)           :: Kmeans
+        integer(IK)                 :: ip, ic
+
+        assertion = .true.
+
+        Point_ref = reshape([ 0.126986816293506_RK, 0.957166948242946_RK &
+                            , 0.913375856139019_RK, 0.485375648722841_RK &
+                            , 0.632359246225410_RK, 0.800280468888800_RK &
+                            , 0.097540404999410_RK, 0.141886338627215_RK &
+                            , 0.278498218867048_RK, 0.421761282626275_RK &
+                            , 0.546881519204984_RK, 0.915735525189067_RK &
+                            , 0.957506835434298_RK, 0.792207329559554_RK &
+                            , 0.964888535199277_RK, 0.959492426392903_RK &
+                            , 0.157613081677548_RK, 0.655740699156587_RK &
+                            , 0.970592781760616_RK, 0.035711678574190_RK &
+                            , 10.00000000000000_RK, 10.00000000000000_RK ], shape = shape(Point_ref))
+
+        Point = Point_ref
+        PointIndex = [(ip,ip=1,np)]
+
+        Kmeans = Kmeans_type( nd = nd & ! LCOV_EXCL_LINE
+                            , np = np & ! LCOV_EXCL_LINE
+                            , nc = nc & ! LCOV_EXCL_LINE
+                            , nt = nt & ! LCOV_EXCL_LINE
+                            , Point = Point & ! LCOV_EXCL_LINE
+                            , minSize = minSize & ! LCOV_EXCL_LINE
+                            )
+
+        assertion = assertion .and. (.not. Kmeans%Err%occurred .or. (Kmeans%Err%occurred .and. Kmeans%Err%stat == 2_IK))
+        if (.not. assertion) then
+            ! LCOV_EXCL_START
+            if (Test%isVerboseMode) then
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "No error must occur, otherwise stat must be 2 indicating zero-sized cluster."
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Err%occurred      =", Kmeans%Err%occurred
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Err%stat          =", Kmeans%Err%stat
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+            end if
+            ! LCOV_EXCL_STOP
+            return
+        end if
+
+        assertion = assertion .and. all(Kmeans%Membership(1:10) == Kmeans%Membership(1))
+        if (.not. assertion) then
+            ! LCOV_EXCL_START
+            if (Test%isVerboseMode) then
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "The first 10 memberships must be equal."
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Membership    =", Kmeans%Membership
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+            end if
+            ! LCOV_EXCL_STOP
+            return
+        end if
+
+        call Kmeans%getProp(nd = nd, np = np, Point = Point, Index = PointIndex, pointLogVolNormed = pointLogVolNormed)
+
+        assertion = assertion .and. all(Point_ref(:,PointIndex) == Point)
+        if (.not. assertion) then
+            ! LCOV_EXCL_START
+            if (Test%isVerboseMode) then
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Point_ref(:,PointIndex) == Point"
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Point_ref(:,PointIndex)  =", Point_ref(:,PointIndex)
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Point                    =", Point
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+            end if
+            ! LCOV_EXCL_STOP
+            return
+        end if
+
+        assertion = assertion .and. all(Kmeans%Prop%EffectiveSize == Kmeans%Size)
+        if (.not. assertion) then
+            ! LCOV_EXCL_START
+            if (Test%isVerboseMode) then
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "all(Kmeans%Prop%EffectiveSize == Kmeans%Size)"
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Prop%EffectiveSize    =", Kmeans%Prop%EffectiveSize
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Size                  =", Kmeans%Size
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+            end if
+            ! LCOV_EXCL_STOP
+            return
+        end if
+
+        assertion = assertion .and. ( abs(Kmeans%Prop%LogVolNormed(2) - pointLogVolNormed) < 1.e-10_RK .or. abs(Kmeans%Prop%LogVolNormed(1) - pointLogVolNormed) < 1.e-10_RK )
+        if (.not. assertion) then
+            ! LCOV_EXCL_START
+            if (Test%isVerboseMode) then
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Prop%LogVolNormed(2)  == pointLogVolNormed"
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Prop%LogVolNormed(2)  =", Kmeans%Prop%LogVolNormed(2)
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "pointLogVolNormed            =", pointLogVolNormed
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+            end if
+            ! LCOV_EXCL_STOP
+            return
+        end if
+
+        assertion = assertion .and. ( abs(Kmeans%Prop%LogDenNormed(2) + pointLogVolNormed) < 1.e-10_RK .or. abs(Kmeans%Prop%LogDenNormed(1) + pointLogVolNormed) < 1.e-10_RK )
+        if (.not. assertion) then
+            ! LCOV_EXCL_START
+            if (Test%isVerboseMode) then
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Prop%LogDenNormed(2)  == pointLogVolNormed"
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Prop%LogDenNormed(2)  =", Kmeans%Prop%LogDenNormed(2)
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "-pointLogVolNormed           =", -pointLogVolNormed
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+            end if
+            ! LCOV_EXCL_STOP
+            return
+        end if
+
+        assertion = assertion .and. abs(Kmeans%Prop%logSumVolNormed + 0.552093409710310_RK) < 1.e-10_RK
+        if (.not. assertion) then
+            ! LCOV_EXCL_START
+            if (Test%isVerboseMode) then
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Prop%logSumVolNormed  == -0.552093409710310_RK"
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Prop%logSumVolNormed  =", Kmeans%Prop%logSumVolNormed
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+            end if
+            ! LCOV_EXCL_STOP
+            return
+        end if
+
+    end function test_getKmeans_3
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> When the `pointLogVolNormed` is missing, the properties of singular clusters must be correctly computed from 
+    !> the properties of non-singular clusters.
+    function test_getKmeans_4() result(assertion)
+        use Constants_mod, only: IK, RK, LNPI
+        use String_mod, only: num2str
+        use Math_mod, only: getCumSum
+        implicit none
+        integer(IK) , parameter     :: nc = 2_IK
+        integer(IK) , parameter     :: nd = 2_IK
+        integer(IK) , parameter     :: np = 11_IK
+        integer(IK) , parameter     :: nt = 10_IK + 2_IK + nint(log(real(nc)))
+        real(RK)    , parameter     :: logSumVolNormed = -0.513657091888111_RK
+        real(RK)    , parameter     :: pointLogVolNormed = log(1.e-1_RK) - LNPI
+        real(RK)    , parameter     :: LogVolNormed(nc) = [-0.608967271692436_RK, -2.91155236468648_RK]
+        real(RK)    , parameter     :: LogDenNormed(nc) = [2.91155236468648_RK, 2.91155236468648_RK]
+        real(RK)    , parameter     :: ChoLowCovUpp(nd,nd,nc) = reshape([ 0.140347692021171_RK &
+                                                                        , 0.273777628663980E-1_RK &
+                                                                        , 0.492129448979672E-2_RK &
+                                                                        , 0.111901976129643_RK &
+                                                                        , 0.543912292747094E-1_RK &
+                                                                        , 0.00000000000000_RK &
+                                                                        , 0.00000000000000_RK &
+                                                                        , 0.543912292747094E-1_RK &
+                                                                        ], shape = shape(ChoLowCovUpp))
+        real(RK)    , parameter     :: InvCovMat(nd,nd,nc) = reshape(   [ 1.64294297527196_RK &
+                                                                        , -0.722543648549051E-1_RK &
+                                                                        , -0.722543648549051E-1_RK &
+                                                                        , 2.06058250870097_RK &
+                                                                        , 18.3853171427581_RK &
+                                                                        , 0.00000000000000_RK &
+                                                                        , 0.00000000000000_RK &
+                                                                        , 18.3853171427581_RK &
+                                                                        ], shape = shape(InvCovMat))
+        real(RK)    , parameter     :: ChoDia(nd,nc) = reshape( [ 0.780771367974080_RK &
+                                                                , 0.696634527157956_RK &
+                                                                , 0.233219272948677_RK &
+                                                                , 0.233219272948677_RK &
+                                                                ], shape = shape(ChoDia))
+        integer(IK) , parameter     :: minSize = 1_IK
+        Integer(IK)                 :: PointIndex(np)
+        real(RK)                    :: Point_ref(nd,np)
+        real(RK)                    :: Point(nd,np)
+        logical                     :: assertion
+        type(Kmeans_type)           :: Kmeans
+        integer(IK)                 :: ip, ic
+
+        assertion = .true.
+
+        Point_ref = reshape([ 0.126986816293506_RK, 0.957166948242946_RK &
+                            , 0.913375856139019_RK, 0.485375648722841_RK &
+                            , 0.632359246225410_RK, 0.800280468888800_RK &
+                            , 0.097540404999410_RK, 0.141886338627215_RK &
+                            , 0.278498218867048_RK, 0.421761282626275_RK &
+                            , 0.546881519204984_RK, 0.915735525189067_RK &
+                            , 0.957506835434298_RK, 0.792207329559554_RK &
+                            , 0.964888535199277_RK, 0.959492426392903_RK &
+                            , 0.157613081677548_RK, 0.655740699156587_RK &
+                            , 0.970592781760616_RK, 0.035711678574190_RK &
+                            , 10.00000000000000_RK, 10.00000000000000_RK ], shape = shape(Point_ref))
+
+        Point = Point_ref
+        PointIndex = [(ip,ip=1,np)]
+
+        Kmeans = Kmeans_type( nd = nd & ! LCOV_EXCL_LINE
+                            , np = np & ! LCOV_EXCL_LINE
+                            , nc = nc & ! LCOV_EXCL_LINE
+                            , nt = nt & ! LCOV_EXCL_LINE
+                            , Point = Point & ! LCOV_EXCL_LINE
+                            , minSize = minSize & ! LCOV_EXCL_LINE
+                            )
+
+        assertion = assertion .and. (.not. Kmeans%Err%occurred .or. (Kmeans%Err%occurred .and. Kmeans%Err%stat == 2_IK))
+        if (.not. assertion) then
+            ! LCOV_EXCL_START
+            if (Test%isVerboseMode) then
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "No error must occur, otherwise stat must be 2 indicating zero-sized cluster."
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Err%occurred      =", Kmeans%Err%occurred
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Err%stat          =", Kmeans%Err%stat
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+            end if
+            ! LCOV_EXCL_STOP
+            return
+        end if
+
+        ! Test getProp() with no input pointLogVolNormed or Index
+
+        call Kmeans%getProp(nd = nd, np = np, Point = Point, inclusionFraction = 0._RK)
+
+        assertion = assertion .and. all(Point_ref(:,Kmeans%Prop%Index) == Point)
+        if (.not. assertion) then
+            ! LCOV_EXCL_START
+            if (Test%isVerboseMode) then
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Point_ref(:,Kmeans%Prop%Index) == Point"
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Point_ref    =", Point_ref(:,Kmeans%Prop%Index)
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Point        =", Point
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+            end if
+            ! LCOV_EXCL_STOP
+            return
+        end if
+
+        assertion = assertion .and. abs(Kmeans%Prop%logSumVolNormed - logSumVolNormed) < 1.e-8_RK
+        if (.not. assertion) then
+            ! LCOV_EXCL_START
+            if (Test%isVerboseMode) then
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "all(Kmeans%Prop%logSumVolNormed == logSumVolNormed"
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Prop%logSumVolNormed      =", Kmeans%Prop%logSumVolNormed
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "logSumVolNormed                  =", logSumVolNormed
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+            end if
+            ! LCOV_EXCL_STOP
+            return
+        end if
+
+        assertion = assertion .and. all(Kmeans%Prop%EffectiveSize == Kmeans%Size)
+        if (.not. assertion) then
+            ! LCOV_EXCL_START
+            if (Test%isVerboseMode) then
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "all(Kmeans%Prop%EffectiveSize == Kmeans%Size)"
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Prop%EffectiveSize    =", Kmeans%Prop%EffectiveSize
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Prop%Size             =", Kmeans%Size
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+            end if
+            ! LCOV_EXCL_STOP
+            return
+        end if
+
+        assertion = assertion .and. ( all(abs(Kmeans%Prop%LogVolNormed - LogVolNormed) < 1.e-10_RK) .or. all(abs(Kmeans%Prop%LogVolNormed(nc:1:-1) - LogVolNormed) < 1.e-10_RK) )
+        if (.not. assertion) then
+            ! LCOV_EXCL_START
+            if (Test%isVerboseMode) then
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Prop%LogVolNormed(nc:1:-1)    == LogVolNormed)"
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Prop%LogVolNormed             =", Kmeans%Prop%LogVolNormed
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "LogVolNormed                         =", LogVolNormed
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+            end if
+            ! LCOV_EXCL_STOP
+            return
+        end if
+
+        assertion = assertion .and. ( all(abs(Kmeans%Prop%LogDenNormed - LogDenNormed) < 1.e-10_RK) .or. all(abs(Kmeans%Prop%LogDenNormed(nc:1:-1) - LogDenNormed) < 1.e-10_RK) )
+        if (.not. assertion) then
+            ! LCOV_EXCL_START
+            if (Test%isVerboseMode) then
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Prop%LogDenNormed(nc:1:-1)    == LogDenNormed)"
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Prop%LogDenNormed             =", Kmeans%Prop%LogDenNormed
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+            end if
+            ! LCOV_EXCL_STOP
+            return
+        end if
+
+        assertion = assertion .and. all(Kmeans%Prop%CumSumSize(1:) == getCumSum(nc,Kmeans%Size)) .and. Kmeans%Prop%CumSumSize(0) == 0_IK
+        if (.not. assertion) then
+            ! LCOV_EXCL_START
+            if (Test%isVerboseMode) then
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "all(Kmeans%Prop%CumSumSize == [0_IK,10_IK,11_IK])"
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Prop%CumSumSize     =", Kmeans%Prop%CumSumSize
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+            end if
+            ! LCOV_EXCL_STOP
+            return
+        end if
+
+        assertion = assertion .and. ( all(abs(Kmeans%Prop%ChoLowCovUpp - ChoLowCovUpp) < 1.e-10_RK) .or. all(abs(Kmeans%Prop%ChoLowCovUpp(:,:,nc:1:-1) - ChoLowCovUpp) < 1.e-10_RK) )
+        if (.not. assertion) then
+            ! LCOV_EXCL_START
+            if (Test%isVerboseMode) then
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Prop%ChoLowCovUpp(:,:,nc:1:-1)    == ChoLowCovUpp"
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Prop%ChoLowCovUpp                 =", Kmeans%Prop%ChoLowCovUpp
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "ChoLowCovUpp                             =", ChoLowCovUpp
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "difference                               =", abs(Kmeans%Prop%ChoLowCovUpp - ChoLowCovUpp)
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+            end if
+            ! LCOV_EXCL_STOP
+            return
+        end if
+
+        assertion = assertion .and. ( all(abs(Kmeans%Prop%InvCovMat - InvCovMat) < 1.e-10_RK) .or. all(abs(Kmeans%Prop%InvCovMat(:,:,nc:1:-1) - InvCovMat) < 1.e-10_RK) )
+        if (.not. assertion) then
+            ! LCOV_EXCL_START
+            if (Test%isVerboseMode) then
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Prop%InvCovMat(:,:,nc:1:-1)   == InvCovMat"
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Prop%InvCovMat                =", Kmeans%Prop%InvCovMat
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "InvCovMat                            =", InvCovMat
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+            end if
+            ! LCOV_EXCL_STOP
+            return
+        end if
+
+        assertion = assertion .and. ( all(abs(Kmeans%Prop%ChoDia - ChoDia) < 1.e-10_RK) .or. all(abs(Kmeans%Prop%ChoDia(:,nc:1:-1) - ChoDia) < 1.e-10_RK) )
+        if (.not. assertion) then
+            ! LCOV_EXCL_START
+            if (Test%isVerboseMode) then
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Prop%ChoDia(:,nc:1:-1)    == ChoDia"
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Prop%ChoDia               =", Kmeans%Prop%ChoDia
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Prop%ChoDia               =", ChoDia
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+            end if
+            ! LCOV_EXCL_STOP
+            return
+        end if
+
+        ! write data to output for further investigation
+
+        !Test%File = Test%openFile()
+        !call writeKmeans(Kmeans = Kmeans, Point = TestData%Point, nd = TestData%nd, np = TestData%np, fileUnit = Test%File%unit)
+        !close(Test%File%unit)
+
+    end function test_getKmeans_4
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

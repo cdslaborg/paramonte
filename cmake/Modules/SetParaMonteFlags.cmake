@@ -535,17 +535,17 @@ elseif(gnu_compiler)
     if (${CMAKE_BUILD_TYPE} MATCHES "[Dd][eE][bB][uU][gG]")
 
         set(CCL_FLAGS_GNU "${CCL_FLAGS_GNU}"
-        -g                                    # generate full debug information
-        -O0                                   # disable optimizations
-        -fcheck=all                           # enable the generation of run-time checks
-        -ffpe-trap=zero,overflow,underflow    # Floating-point invalid, divide-by-zero, and overflow exceptions are enabled
-        -finit-real=snan                      # initialize REAL and COMPLEX variables with a signaling NaN
-        -fbacktrace                           # trace back for debugging
-        --pedantic                            # issue warnings for uses of extensions to the Fortran standard
-        -fmax-errors=10                       # max diagnostic error count
-        -Wall                                 # enable all warnings:
-                                              # -Waliasing, -Wampersand, -Wconversion, -Wsurprising, -Wc-binding-type, -Wintrinsics-std, -Wtabs, -Wintrinsic-shadow,
-                                              # -Wline-truncation, -Wtarget-lifetime, -Winteger-division, -Wreal-q-constant, -Wunused, -Wundefined-do-loop
+        -g                                  # generate full debug information
+        -O0                                 # disable optimizations
+        -fcheck=all                         # enable the generation of run-time checks
+        -ffpe-trap=invalid,zero,overflow    # ,underflow : Floating-point invalid, divide-by-zero, and overflow exceptions are enabled
+        -finit-real=snan                    # initialize REAL and COMPLEX variables with a signaling NaN
+        -fbacktrace                         # trace back for debugging
+        --pedantic                          # issue warnings for uses of extensions to the Fortran standard
+        -fmax-errors=10                     # max diagnostic error count
+        -Wall                               # enable all warnings:
+                                            # -Waliasing, -Wampersand, -Wconversion, -Wsurprising, -Wc-binding-type, -Wintrinsics-std, -Wtabs, -Wintrinsic-shadow,
+                                            # -Wline-truncation, -Wtarget-lifetime, -Winteger-division, -Wreal-q-constant, -Wunused, -Wundefined-do-loop
         )
 
         set(FCL_FLAGS_GNU "${FCL_FLAGS_GNU}"
@@ -555,7 +555,7 @@ elseif(gnu_compiler)
        #-fsanitize=address                  # enable AddressSanitizer, for memory error detection, like out-of-bounds and use-after-free bugs.
        #-fsanitize=leak                     # enable LeakSanitizer for memory leak detection.
         -fcheck=all                         # enable the generation of run-time checks
-        -ffpe-trap=zero,overflow,underflow  # Floating-point invalid, divide-by-zero, and overflow exceptions are enabled
+        -ffpe-trap=invalid,zero,overflow    # ,underflow : Floating-point invalid, divide-by-zero, and overflow exceptions are enabled
         -finit-real=snan                    # initialize REAL and COMPLEX variables with a signaling NaN
         -fbacktrace                         # trace back for debugging
        #--pedantic                          # issue warnings for uses of extensions to the Fortran standard. Gfortran10 with MPICH 3.2 in debug mode crashes with this flag at mpi_bcast. Excluded until MPICH upgraded.
@@ -565,6 +565,9 @@ elseif(gnu_compiler)
                                             # -Waliasing, -Wampersand, -Wconversion, -Wsurprising, -Wc-binding-type, -Wintrinsics-std, -Wtabs, -Wintrinsic-shadow,
                                             # -Wline-truncation, -Wtarget-lifetime, -Winteger-division, -Wreal-q-constant, -Wunused, -Wundefined-do-loop
                                             # gfortran10 crashes and cannot compile MPI ParaMonte with mpich in debug mode. Therefore -wall is disabled for now, until MPICH upgrades interface.
+        -fno-unsafe-math-optimizations
+        -fsignaling-nans
+        -frounding-math
         #-Waliasing
         #-Wampersand
         #-Wconversion

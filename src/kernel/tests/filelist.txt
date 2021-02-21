@@ -39,7 +39,7 @@
   Test_ParaDISE_RefinedChain_mod.f90
   !Test_ParaNest_RefinedChain_mod.f90
   Test_Partition_mod.f90
-  Test_PartitionMaxDen_mod.f90
+  Test_PartitionVarDen_mod.f90
   Test_PartitionMinVol_mod.f90
   Test_RandomSeed_mod.f90
   Test_Sort_mod.f90

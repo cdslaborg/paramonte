@@ -85,7 +85,9 @@ contains
         use Sort_mod, only: indexArray
         use Constants_mod, only: IK
         use Err_mod, only: Err_type
+
         implicit none
+
         integer(IK)     , intent(in)                                :: lenVector
         integer(IK)     , intent(in)                                :: Vector(lenVector)
         integer(IK)     , intent(out)                               :: lenUnique
@@ -93,9 +95,11 @@ contains
         integer(IK)     , intent(out)   , allocatable               :: UniqueCount(:)
         type(IV)        , intent(out)   , allocatable   , optional  :: UniqueIndex(:)
         type(Err_type)  , intent(out)                   , optional  :: Err
-        integer(IK)                     , allocatable               :: Indx(:)
-        integer(IK)                                                 :: ivec, iuniq, counter
-        logical                                                     :: isUnique
+
+        integer(IK)     , allocatable   :: Indx(:)
+        integer(IK)                     :: ivec, iuniq, counter
+        logical                         :: isUnique
+
         allocate(UniqueValue(lenVector))
         allocate(UniqueCount(lenVector), source = 0_IK)
 

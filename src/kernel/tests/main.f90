@@ -84,15 +84,13 @@ call setup()
 !block; use Test_FileContents_mod; call test_FileContents(); end block
 !block; use Test_FileList_mod; call test_FileList(); end block
 !block; use Test_Integration_mod; call test_Integration(); end block
-!block; use Test_Kmeans_mod; call test_Kmeans(); end block
+block; use Test_Kmeans_mod; call test_Kmeans(); end block
 !block; use Test_KmeansOOP_mod; call test_KmeansOOP(); end block
 !block; use Test_Math_mod; call test_Math(); end block
 !block; use Test_Matrix_mod; call test_Matrix(); end block
 !block; use Test_Misc_mod; call test_Misc(); end block
 block; use Test_Knn_mod; call test_Knn(); end block
 block; use Test_MultiSkewNorm_mod; call test_MultiSkewNorm(); end block
-block; use Test_Partition_mod; call Test_Partition(); end block
-block; use Test_PartitionKmeans_mod; call Test_Partition(); end block
 block; use Test_PartitionMaxDen_mod; call Test_Partition(); end block
 block; use Test_PartitionMinVol_mod; call Test_Partition(); end block
 !block; use Test_Optimization_mod; call test_Optimization(); end block

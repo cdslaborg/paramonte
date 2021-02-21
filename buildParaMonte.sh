@@ -2647,7 +2647,7 @@ if [ "${ParaMonteTest_RUN_ENABLED}" = "true" ]; then
         mkdir "${ParaMonteTest_BIN_INPUT_DIR}"
     fi
 
-    cp "${ParaMonteTest_SRC_INPUT_DIR}"/* "${ParaMonteTest_BIN_INPUT_DIR}"/
+    cp -far "${ParaMonteTest_SRC_INPUT_DIR}"/* "${ParaMonteTest_BIN_INPUT_DIR}"/
 
     # run the tests
 
@@ -2678,7 +2678,7 @@ if [ "${ParaMonteTest_RUN_ENABLED}" = "true" ]; then
     else
         if [ "${PMCS}" = "gnu" ]; then
             if [[ -f "${SETUP_FILE_PATH}" ]]; then
-                cp ${SETUP_FILE_PATH} ${ParaMonte_BLD_DIR}/test/bin/
+                cp -far ${SETUP_FILE_PATH} ${ParaMonte_BLD_DIR}/test/bin/
             fi
             if [ "${CAF_ENABLED}" = "true" ]; then
                 (cd ${ParaMonte_BLD_DIR}/test/bin && source ${SETUP_FILE_PATH} && cafrun -np ${FOR_COARRAY_NUM_IMAGES} ./testParaMonte)

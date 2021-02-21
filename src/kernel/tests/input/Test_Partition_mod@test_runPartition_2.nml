@@ -1,21 +1,30 @@
+&specTest
+    ntest = 100
+/
+
 &specData
     nd = 2
     nc = 5
     etamin = 0.5d0
     etamax = 10.d0
-    sizeMin = 100
-    sizeMax = 100
+    sizeMin = 10
+    sizeMax = 10
     centerMin = -2.d0
     centerMax = +2.d0
-    !rngseed = 31234
+    !rngseed = 3132151
+    !rngseed = 3132152
+    !rngseed = 5157682
     dist = "uniform"
 /
 
 &specPartition
-    nc = 3
-    nt = 1
-    !nemax = 10
+    nc = 2
+    nt = 10
+    nsim = 0
+    nemax = 100
+    minSize = 0
     tightness = 1.d0
-    inclusionFraction = 1.d0
-    !rngseed = 31234
+    inclusionFraction = 0.d0
+    maxAllowedKvolumeRecursion = 10
+    !rngseed = 31234515
 /

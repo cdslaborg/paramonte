@@ -161,6 +161,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> This is the constructor of the [ParaNest_ProposalNormal_type](@ref paranestproposalnormal_type)
     !> or [ParaNest_ProposalUniform_type](@ref paranestproposaluniform_type) classes.\n
     !> Return an object of [ParaNest_ProposalNormal_type](@ref paranestproposalnormal_type)

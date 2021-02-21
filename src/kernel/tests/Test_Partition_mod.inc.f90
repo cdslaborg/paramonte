@@ -45,14 +45,10 @@
 
     use Test_mod, only: Test_type
 
-#if defined KMEANS
-    use PartitionKmeans_mod
-#elif defined MAXDEN
+#if defined MAXDEN
     use PartitionMaxDen_mod
 #elif defined MINVOL
     use PartitionMinVol_mod
-#else
-    use Partition_mod
 #endif
 
     implicit none
@@ -96,18 +92,12 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Generate a uniformly random set of points from an nd-cube.
     subroutine readTestData(TestData)
         implicit none
         class(TestData_type), intent(inout) :: TestData
         integer(IK) :: ip
-!        integer(IK) :: fileUnit
-!        open( file = Test%inDir//"/Test_Partition_mod@points.txt" & ! LCOV_EXCL_LINE
-!            , newunit = fileUnit & ! LCOV_EXCL_LINE
-!            , status = "old" & ! LCOV_EXCL_LINE
-!#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
-!            , SHARED & ! LCOV_EXCL_LINE
-!#endif
-!            )
         if (allocated(TestData%Point)) deallocate(TestData%Point) ! LCOV_EXCL_LINE
         if (allocated(TestData%Domain)) deallocate(TestData%Domain) ! LCOV_EXCL_LINE
         allocate(TestData%Point(TestData%nd,TestData%np))
@@ -120,11 +110,6 @@ contains
         do ip = 1, TestData%np
             TestData%Point(:,ip) = TestData%Domain(:,1) + TestData%Point(:,ip) * TestData%DomainSize
         end do
-!        read(fileUnit,*)
-!        do ip = 1, TestData%np
-!            read(fileUnit,*) TestData%Point(1:TestData%nd,ip)
-!        end do
-!        close(fileUnit)
     end subroutine readTestData
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -143,22 +128,19 @@ contains
 
         assertion = .true.
 
-        Partition = getPartition( nd = TestData%nd & ! LCOV_EXCL_LINE
-                                , np = TestData%np & ! LCOV_EXCL_LINE
-                                , Point = TestData%Point & ! LCOV_EXCL_LINE
-                                !, nemax = TestData%nemax & ! LCOV_EXCL_LINE
-                                !, partitionMaxAllowedRecursion = 10000 & ! LCOV_EXCL_LINE
-                                !, partitionMaxAllowedKmeansFailure = 10000 & ! LCOV_EXCL_LINE
-                                !, partitionMaxAllowedFailure = 10000 & ! LCOV_EXCL_LINE
-                                !, partitionStabilizationRequested  = .true. & ! LCOV_EXCL_LINE
-#if !defined MAXDEN && !defined MINVOL
-                                !, mahalSqWeightExponent = 1._RK & ! LCOV_EXCL_LINE
-#endif
-                                , logTightness = log(1._RK) & ! LCOV_EXCL_LINE
-                                !, inclusionFraction = 0._RK & ! LCOV_EXCL_LINE
-                                !, parLogVol = sum(log(TestData%DomainSize)) & ! LCOV_EXCL_LINE
-                                , trimEnabled = .true. & ! LCOV_EXCL_LINE
-                                )
+        Partition = Partition_type  ( nd = TestData%nd & ! LCOV_EXCL_LINE
+                                    , np = TestData%np & ! LCOV_EXCL_LINE
+                                    , Point = TestData%Point & ! LCOV_EXCL_LINE
+                                    , nsim = 0_IK & ! LCOV_EXCL_LINE
+                                   !, nemax = TestData%nemax & ! LCOV_EXCL_LINE
+                                    , trimEnabled = .true. & ! LCOV_EXCL_LINE
+                                    , logTightness = log(1._RK) & ! LCOV_EXCL_LINE
+                                   !, inclusionFraction = 0._RK & ! LCOV_EXCL_LINE
+                                   !, parentLogVolNormed = sum(log(TestData%DomainSize)) & ! LCOV_EXCL_LINE
+                                    , MaxAllowedKmeansFailure = 10000 & ! LCOV_EXCL_LINE
+                                    , MaxAllowedKmeansRecursion = 10000 & ! LCOV_EXCL_LINE
+                                   !, maxAllowedKvolumeRecursion = 1000 & ! LCOV_EXCL_LINE
+                                    )
 
         ! write data to output for further investigation
 
@@ -174,12 +156,13 @@ contains
 
         do ip = 1, Partition%np
             ic = Partition%Membership(ip)
+            if (Test%isVerboseMode .and. ic == 0_IK) write(Test%outputUnit,"(*(g0.15,:,', '))") "ic, nc, ip, np = ", ic, Partition%nc, ip, Partition%np
             NormedPoint = TestData%Point(:,ip) - Partition%Center(:,ic)
             mahalSq = dot_product(NormedPoint,matmul(Partition%InvCovMat(:,:,ic),NormedPoint))
             isInside = mahalSq - 1._RK <= 1.e-6_RK
             if (.not. isInside) then
                 if (Test%isVerboseMode) write(Test%outputUnit,"(*(g0.15,:,' '))") "Point not inside!, mahalSq = ", mahalSq
-                !assertion = assertion .and. isInside
+                assertion = assertion .and. isInside
                 exit
             end if
         end do
@@ -219,121 +202,178 @@ contains
         logical                     :: isInside
         integer                     :: ip, ic
 
+        integer(IK)                 :: itest, ntest
+        namelist /specTest/ ntest
+
         character(:), allocatable   :: dist
         integer(IK)                 :: rngseed, nd, nc, sizeMin, sizeMax
         real(RK)                    :: etamin, etamax, centerMin, centerMax
         namelist /specData/ rngseed, nd, nc, sizeMin, sizeMax, etamin, etamax, centerMin, centerMax, dist
 
-        integer(IK)                 :: nt, nemax
+        integer(IK)                 :: nt, nsim, nemax, minSize
+        integer(IK)                 :: maxAllowedKvolumeRecursion
         real(RK)                    :: tightness, inclusionFraction
-        namelist /specPartition/ rngseed, nc, nt, nemax, inclusionFraction, tightness
+        namelist /specPartition/ rngseed, nc, nt, nemax, nsim, minSize, inclusionFraction, tightness, maxAllowedKvolumeRecursion
 
         assertion = .true.
+
+        ! read the number of tests
+
+        ntest = 1
+        open(newunit = Test%File%unit, file = Test%inDir//"/Test_Partition_mod@test_runPartition_2.nml", status = "old")
+        read(Test%File%unit, nml = specTest)
+        close(Test%File%unit)
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! Generate clustered points
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        rngseed = -huge(rngseed)
-        allocate(character(63) :: dist)
-        open(newunit = Test%File%unit, file = Test%inDir//"/Test_Partition_mod@test_runPartition_2.nml", status = "old")
-        read(Test%File%unit, nml = specData)
-        dist = trim(adjustl(dist))
-        close(Test%File%unit)
+        do itest = 1, ntest
 
-        if (rngseed /= -huge(rngseed)) RandomSeed = RandomSeed_type(imageID = Test%Image%id, inputSeed = rngseed)
+            ! read cluster spec
 
-        call ClusteredPoint%get ( nd = nd & ! LCOV_EXCL_LINE
-                                , nc = nc & ! LCOV_EXCL_LINE
-                                , etamin = etamin & ! LCOV_EXCL_LINE
-                                , etamax = etamax & ! LCOV_EXCL_LINE
-                                , sizeMin = sizeMin & ! LCOV_EXCL_LINE
-                                , sizeMax = sizeMax & ! LCOV_EXCL_LINE
-                                , centerMin = centerMin & ! LCOV_EXCL_LINE
-                                , centerMax = centerMax & ! LCOV_EXCL_LINE
-                                !, Size = [50, 1000, 500, 2000, 3] & ! LCOV_EXCL_LINE
-                                !, Eta = [1._RK, 2._RK, 0.5_RK, 0.05_RK, 1.5_RK] & ! LCOV_EXCL_LINE
-                                , dist = dist & ! LCOV_EXCL_LINE
-                                )
+            rngseed = -huge(rngseed)
+            if (.not. allocated(dist)) allocate(character(63) :: dist)
+            open(newunit = Test%File%unit, file = Test%inDir//"/Test_Partition_mod@test_runPartition_2.nml", status = "old")
+            read(Test%File%unit, nml = specData)
+            dist = trim(adjustl(dist))
+            close(Test%File%unit)
+            if (rngseed /= -huge(rngseed)) RandomSeed = RandomSeed_type(imageID = Test%Image%id, inputSeed = rngseed)
 
-        ! write data to output for further investigation
+            call ClusteredPoint%get ( nd = nd & ! LCOV_EXCL_LINE
+                                    , nc = nc & ! LCOV_EXCL_LINE
+                                    , etamin = etamin & ! LCOV_EXCL_LINE
+                                    , etamax = etamax & ! LCOV_EXCL_LINE
+                                    , sizeMin = sizeMin & ! LCOV_EXCL_LINE
+                                    , sizeMax = sizeMax & ! LCOV_EXCL_LINE
+                                    , centerMin = centerMin & ! LCOV_EXCL_LINE
+                                    , centerMax = centerMax & ! LCOV_EXCL_LINE
+                                    !, Size = [50, 1000, 500, 2000, 3] & ! LCOV_EXCL_LINE
+                                    !, Eta = [1._RK, 2._RK, 0.5_RK, 0.05_RK, 1.5_RK] & ! LCOV_EXCL_LINE
+                                    , dist = dist & ! LCOV_EXCL_LINE
+                                    )
 
-        Test%File = Test%openFile(label = "ClusteredPoint")
-        call ClusteredPoint%write(Test%File%unit)
-        close(Test%File%unit)
+            ! write data to output for further investigation
 
-        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        ! Partition the clustered points clustered points
-        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            Test%File = Test%openFile(label = "ClusteredPoint")
+            call ClusteredPoint%write(Test%File%unit)
+            close(Test%File%unit)
 
-        rngseed = -huge(rngseed)
-        nemax = ClusteredPoint%np / (ClusteredPoint%nd + 1)
-        open(newunit = Test%File%unit, file = Test%inDir//"/Test_Partition_mod@test_runPartition_2.nml", status = "old")
-        read(Test%File%unit, nml = specPartition)
-        close(Test%File%unit)
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            ! Partition the clustered points clustered points
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        if (rngseed /= -huge(rngseed)) RandomSeed = RandomSeed_type(imageID = Test%Image%id, inputSeed = rngseed)
+            ! read partition spec
 
-        !write(*,*) "zeroth nemax", nemax, ClusteredPoint%np, ClusteredPoint%nd + 1
-        Partition = getPartition( Point = ClusteredPoint%Point & ! LCOV_EXCL_LINE
-                                , nd = ClusteredPoint%nd & ! LCOV_EXCL_LINE
-                                , np = ClusteredPoint%np & ! LCOV_EXCL_LINE
-                                , nc = nc & ! LCOV_EXCL_LINE
-                                , nt = nt & ! LCOV_EXCL_LINE
-                                , nemax = nemax & ! LCOV_EXCL_LINE
-                                !, nemax = ClusteredPoint%nemax & ! LCOV_EXCL_LINE
-                                !, partitionMaxAllowedFailure = 10000 & ! LCOV_EXCL_LINE
-                                !, partitionMaxAllowedRecursion = 10000 & ! LCOV_EXCL_LINE
-                                !, partitionMaxAllowedKmeansFailure = 10000 & ! LCOV_EXCL_LINE
-#if !(defined KMEANS || defined MAXDEN || defined MINVOL)
-                                , mahalSqWeightExponent = 10.1_RK & ! LCOV_EXCL_LINE
-#endif
-                                , inclusionFraction = inclusionFraction & ! LCOV_EXCL_LINE
-                                , logTightness = log(tightness) & ! LCOV_EXCL_LINE
-                                , parLogVolNormed = ClusteredPoint%sumLogVolNormedEffective & ! LCOV_EXCL_LINE
-                                , trimEnabled = .true. & ! LCOV_EXCL_LINE
-                                )
+            nsim = 0_IK
+            minSize = nd + 1_IK
+            rngseed = -huge(rngseed)
+            maxAllowedKvolumeRecursion = 100_IK
+            nemax = ClusteredPoint%np / (ClusteredPoint%nd + 1)
+            open(newunit = Test%File%unit, file = Test%inDir//"/Test_Partition_mod@test_runPartition_2.nml", status = "old")
+            read(Test%File%unit, nml = specPartition)
+            close(Test%File%unit)
+            if (rngseed /= -huge(rngseed)) RandomSeed = RandomSeed_type(imageID = Test%Image%id, inputSeed = rngseed)
 
-        ! write data to output for further investigation
+            !write(*,*) "zeroth nemax", nemax, ClusteredPoint%np, ClusteredPoint%nd + 1
+            Partition = Partition_type  ( nd = ClusteredPoint%nd & ! LCOV_EXCL_LINE
+                                        , np = ClusteredPoint%np & ! LCOV_EXCL_LINE
+                                        , Point = ClusteredPoint%Point & ! LCOV_EXCL_LINE
+                                        , nc = nc & ! LCOV_EXCL_LINE
+                                        , nt = nt & ! LCOV_EXCL_LINE
+                                        , nsim = nsim & ! LCOV_EXCL_LINE
+                                        , nemax = nemax & ! LCOV_EXCL_LINE
+                                        , trimEnabled = .true. & ! LCOV_EXCL_LINE
+                                        , logTightness = log(tightness) & ! LCOV_EXCL_LINE
+                                        , inclusionFraction = inclusionFraction & ! LCOV_EXCL_LINE
+                                        , parentLogVolNormed = ClusteredPoint%sumLogVolNormedEffective & ! LCOV_EXCL_LINE
+                                       !, nemax = ClusteredPoint%nemax & ! LCOV_EXCL_LINE
+                                       !, maxAllowedKmeansFailure = 10000 & ! LCOV_EXCL_LINE
+                                       !, maxAllowedKmeansRecursion = 10000 & ! LCOV_EXCL_LINE
+                                       !, mahalSqWeightExponent = 1._RK & ! LCOV_EXCL_LINE
+                                        , maxAllowedKvolumeRecursion = maxAllowedKvolumeRecursion & ! LCOV_EXCL_LINE
+                                        , minSize = minSize & ! LCOV_EXCL_LINE
+                                        )
 
-        Test%File = Test%openFile(label = "Partition")
-        call Partition%write(Test%File%unit, ClusteredPoint%nd, ClusteredPoint%np, ClusteredPoint%Point)
-        close(Test%File%unit)
+            ! write data to output for further investigation
 
-        assertion = assertion .and. .not. Partition%Err%occurred
-        assertion = assertion .and. Partition%Err%stat /= 1_IK
-        assertion = assertion .and. Partition%Err%stat /= 2_IK
-        assertion = assertion .and. all(Partition%Size > 0_IK)
-        assertion = assertion .and. all(Partition%Membership > 0_IK) .and. all(Partition%Membership < Partition%neopt + 1)
+            Test%File = Test%openFile(label = "Partition")
+            call Partition%write(Test%File%unit, ClusteredPoint%nd, ClusteredPoint%np, ClusteredPoint%Point)
+            close(Test%File%unit)
 
-        ! Ensure all points are within their corresponding clusters.
+            assertion = assertion .and. .not. Partition%Err%occurred
+            assertion = assertion .and. Partition%Err%stat /= 1_IK
+            assertion = assertion .and. Partition%Err%stat /= 2_IK
+            assertion = assertion .and. all(Partition%Size >= 0_IK)
+            assertion = assertion .and. all(Partition%Membership > 0_IK) .and. all(Partition%Membership < Partition%neopt + 1)
 
-        do ip = 1, Partition%np
-            ic = Partition%Membership(ip)
-            NormedPoint = ClusteredPoint%Point(:,ip) - Partition%Center(:,ic)
-            mahalSq = dot_product(NormedPoint,matmul(Partition%InvCovMat(:,:,ic),NormedPoint))
-            isInside = mahalSq - 1._RK <= 1.e-6_RK
-            if (.not. isInside) then
-                if (Test%isVerboseMode) write(Test%outputUnit,"(*(g0.15,:,' '))") new_line("a"), "FATAL - POINT NOT INSIDE!, MAHALSQ = ", mahalSq, new_line("a")
-                assertion = assertion .and. isInside
-                exit
+            if (.not. assertion) return
+
+            ! Ensure all points are within their corresponding clusters.
+
+            do ip = 1, Partition%np
+                ic = Partition%Membership(ip)
+                NormedPoint = ClusteredPoint%Point(:,ip) - Partition%Center(:,ic)
+                mahalSq = dot_product(NormedPoint,matmul(Partition%InvCovMat(:,:,ic),NormedPoint))
+                isInside = mahalSq - 1._RK <= 1.e-6_RK
+                if (.not. isInside) then
+                    if (Test%isVerboseMode) write(Test%outputUnit,"(*(g0.15,:,' '))") new_line("a"), "FATAL - POINT NOT INSIDE!, MAHALSQ = ", mahalSq, new_line("a")
+                    assertion = assertion .and. isInside
+                    exit
+                end if
+            end do
+
+            if (Test%isVerboseMode .and. .not. assertion) then
+                ! LCOV_EXCL_START
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%neopt                =", Partition%neopt
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%Size < 1             =", pack(Partition%Size, mask = Partition%Size < 1_IK)
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%Membership < 1       =", pack(Partition%Membership, mask = Partition%Membership < 1_IK)
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%Membership > neopt   =", pack(Partition%Membership, mask = Partition%Membership > Partition%neopt)
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%Err%occurred         =", Partition%Err%occurred
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%Err%stat             =", Partition%Err%stat
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%Err%msg              =", Partition%Err%msg
+                if (.not. isInside) write(Test%outputUnit,"(*(g0.15,:,' '))") "One or more points are NOT bounded!"
+                write(Test%outputUnit,"(*(g0.15,:,' '))")
+                ! LCOV_EXCL_STOP
             end if
-        end do
 
-        if (Test%isVerboseMode .and. .not. assertion) then
-        ! LCOV_EXCL_START
-            write(Test%outputUnit,"(*(g0.15,:,' '))")
-            write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%neopt                =", Partition%neopt
-            write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%Size < 1             =", pack(Partition%Size, mask = Partition%Size < 1_IK)
-            write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%Membership < 1       =", pack(Partition%Membership, mask = Partition%Membership < 1_IK)
-            write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%Membership > neopt   =", pack(Partition%Membership, mask = Partition%Membership > Partition%neopt)
-            write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%Err%occurred         =", Partition%Err%occurred
-            write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%Err%stat             =", Partition%Err%stat
-            write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%Err%msg              =", Partition%Err%msg
-            if (.not. isInside) write(Test%outputUnit,"(*(g0.15,:,' '))") "One or more points are NOT bounded!"
-            write(Test%outputUnit,"(*(g0.15,:,' '))")
-        end if
-        ! LCOV_EXCL_STOP
+            if (.not. assertion) return
+
+            ! The membership IDs must cover a full range from 1 to Partition%neopt
+
+            block
+
+                use Unique_mod, only: findUnique
+                integer(IK) :: lenUnique
+                integer(IK), allocatable :: UniqueValue(:), UniqueCount(:)
+
+                call findUnique ( lenVector = Partition%np & ! LCOV_EXCL_LINE
+                                , Vector = Partition%Membership & ! LCOV_EXCL_LINE
+                                , lenUnique = lenUnique & ! LCOV_EXCL_LINE
+                                , UniqueValue = UniqueValue & ! LCOV_EXCL_LINE
+                                , UniqueCount = UniqueCount & ! LCOV_EXCL_LINE
+                                )
+
+                do ic = 1, Partition%neopt
+                    assertion = assertion .and. any(UniqueValue == ic)
+                    if (Test%isVerboseMode .and. .not. assertion) then
+                        ! LCOV_EXCL_START
+                        write(Test%outputUnit,"(*(g0.15,:,' '))")
+                        write(Test%outputUnit,"(*(g0.15,:,' '))") "Membership IDs must cover a full range 1:Partition%neopt"
+                        write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%neopt          =", Partition%neopt
+                        write(Test%outputUnit,"(*(g0.15,:,' '))") "Unique Membership IDs    =", UniqueValue
+                        write(Test%outputUnit,"(*(g0.15,:,' '))")
+                        ! LCOV_EXCL_STOP
+                    end if
+                    if (.not. assertion) return
+                end do
+
+            end block
+
+            if (.not. assertion) return
+
+        end do
 
     end function test_runPartition_2
 

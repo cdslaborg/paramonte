@@ -41,8 +41,8 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !> \brief
-!> This module contains procedures and routines for finding the minimum-volume bounding ellipsoid partitioning
-!> of a given set of points by minimizing the volumes of the ellipsoids and comparing them against their parents.
+!> This module contains procedures and routines for finding the maximum-density bounding ellipsoid partitioning
+!> of a given set of points by maximizing the densities of the ellipsoids and comparing them against their parents.
 !> \author
 !> Amir Shahmoradi
 

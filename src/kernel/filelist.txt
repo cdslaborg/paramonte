@@ -33,7 +33,7 @@
   KmeansOOP_mod.f90
   Partition_mod.f90
   PartitionKmeans_mod.f90
-  PartitionMaxDen_mod.f90
+  PartitionVarDen_mod.f90
   PartitionMinVol_mod.f90
   GeoCyclicFit_mod.f90
   Parallelism_mod.f90

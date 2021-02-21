@@ -392,7 +392,7 @@ contains
             Test%Err%occurred = .true.
             Test%Err%msg = "The test assertion is FALSE."
             call abort  ( Err = Test%Err &
-                        , prefix = "ParaMonteCodeCov" &
+                        , prefix = "ParaMonteTest @ "//Test%funcName//"()" &
                         , newline = "\n" &
                         , outputUnit = Test%outputUnit &
                         )

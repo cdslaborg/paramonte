@@ -11,14 +11,14 @@ close all;
 
 % things to plot
 
-dbscanEnabled = true;
+dbscanEnabled = 0;
 pointsEnabled = 1;
-innestPointEnabled = 1;
+innestPointEnabled = 0;
 originalBoundsEnabled = 1;
 predictedBoundsEnabled = 1;
-distMatEnabled = 1;
+distMatEnabled = 0;
 
-methodList = ["", "Kmeans", "MaxDen", "MinVol"];
+methodList = ["MaxDen"];%, "MinVol"]; %, "", "Kmeans", "VarDen"];
 fileTemplate = "../output/Test_Partition__SAMPLING_METHOD___mod@test_runPartition_2@__FILE_TYPE__@1.txt";
 
 iline = 0;
