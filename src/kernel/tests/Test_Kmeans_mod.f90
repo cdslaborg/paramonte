@@ -392,7 +392,6 @@ contains
         implicit none
         integer(IK) , parameter     :: nc = 3_IK
         integer(IK) , parameter     :: nt = 2_IK + nint(log(real(nc)))
-        Integer(IK) , allocatable   :: PointIndex(:)
         real(RK)    , allocatable   :: InitCenter(:,:), Point(:,:)
         logical                     :: assertion
         type(Kmeans_type)           :: Kmeans
@@ -401,7 +400,6 @@ contains
         assertion = .true.
 
         Point = TestData%Point
-        PointIndex = [(ip,ip=1,TestData%np)]
         InitCenter = reshape([4.7_RK, 4.7_RK, 6.4_RK, 6.1_RK, 9.5_RK, 8.6_RK], shape = [TestData%nd,nc])
 
         Kmeans = Kmeans_type( nd = TestData%nd & ! LCOV_EXCL_LINE
@@ -415,7 +413,7 @@ contains
         assertion = assertion .and. .not. Kmeans%Err%occurred
         if (.not. assertion) return
 
-        call Kmeans%getProp(nd = TestData%nd, np = TestData%np, Point = Point, Index = PointIndex)
+        call Kmeans%getProp(nd = TestData%nd, np = TestData%np, Point = Point)
 
         assertion = assertion .and. .not. Kmeans%Err%occurred
         if (.not. assertion) return
@@ -431,9 +429,9 @@ contains
         assertion = assertion .and. all(Kmeans%Membership > 0_IK) .and. all(Kmeans%Membership < nc + 1)
         assertion = assertion .and. all(Kmeans%MinDistanceSq > 0_IK)
         assertion = assertion .and. all(Kmeans%Size > 0_IK) .and. sum(Kmeans%Size)==TestData%np
-        assertion = assertion .and. all(TestData%Point(:,PointIndex) == Point)
+        assertion = assertion .and. all(TestData%Point == Point)
         do ic = 1, nc
-            assertion = assertion .and. all( Kmeans%Membership(Kmeans%Prop%CumSumSize(ic-1)+1:Kmeans%Prop%CumSumSize(ic)) == Kmeans%Membership(Kmeans%Prop%CumSumSize(ic)) )
+            assertion = assertion .and. all( Kmeans%Membership(Kmeans%Prop%Index(Kmeans%Prop%CumSumSize(ic-1)+1:Kmeans%Prop%CumSumSize(ic))) == Kmeans%Membership(Kmeans%Prop%Index(Kmeans%Prop%CumSumSize(ic))) )
         end do
 
         if (Test%isVerboseMode .and. .not. assertion) then
@@ -465,7 +463,6 @@ contains
         integer(IK) , parameter     :: nt = 10_IK + 2_IK + nint(log(real(nc)))
         real(RK)    , parameter     :: pointLogVolNormed = log(1.e-1_RK) - LNPI
         integer(IK) , parameter     :: minSize = 1_IK
-        Integer(IK)                 :: PointIndex(np)
         real(RK)                    :: Point_ref(nd,np)
         real(RK)                    :: Point(nd,np)
         logical                     :: assertion
@@ -487,7 +484,6 @@ contains
                             , 10.00000000000000_RK, 10.00000000000000_RK ], shape = shape(Point_ref))
 
         Point = Point_ref
-        PointIndex = [(ip,ip=1,np)]
 
         Kmeans = Kmeans_type( nd = nd & ! LCOV_EXCL_LINE
                             , np = np & ! LCOV_EXCL_LINE
@@ -524,16 +520,16 @@ contains
             return
         end if
 
-        call Kmeans%getProp(nd = nd, np = np, Point = Point, Index = PointIndex, pointLogVolNormed = pointLogVolNormed)
+        call Kmeans%getProp(nd = nd, np = np, Point = Point, pointLogVolNormed = pointLogVolNormed)
 
-        assertion = assertion .and. all(Point_ref(:,PointIndex) == Point)
+        assertion = assertion .and. all(Point_ref == Point)
         if (.not. assertion) then
             ! LCOV_EXCL_START
             if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0.15,:,' '))")
-                write(Test%outputUnit,"(*(g0.15,:,' '))") "Point_ref(:,PointIndex) == Point"
-                write(Test%outputUnit,"(*(g0.15,:,' '))") "Point_ref(:,PointIndex)  =", Point_ref(:,PointIndex)
-                write(Test%outputUnit,"(*(g0.15,:,' '))") "Point                    =", Point
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Point_ref    == Point"
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Point_ref    =", Point_ref
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Point        =", Point
                 write(Test%outputUnit,"(*(g0.15,:,' '))")
             end if
             ! LCOV_EXCL_STOP
@@ -638,7 +634,6 @@ contains
                                                                 , 0.233219272948677_RK &
                                                                 ], shape = shape(ChoDia))
         integer(IK) , parameter     :: minSize = 1_IK
-        Integer(IK)                 :: PointIndex(np)
         real(RK)                    :: Point_ref(nd,np)
         real(RK)                    :: Point(nd,np)
         logical                     :: assertion
@@ -660,7 +655,6 @@ contains
                             , 10.00000000000000_RK, 10.00000000000000_RK ], shape = shape(Point_ref))
 
         Point = Point_ref
-        PointIndex = [(ip,ip=1,np)]
 
         Kmeans = Kmeans_type( nd = nd & ! LCOV_EXCL_LINE
                             , np = np & ! LCOV_EXCL_LINE
@@ -688,12 +682,12 @@ contains
 
         call Kmeans%getProp(nd = nd, np = np, Point = Point, inclusionFraction = 0._RK)
 
-        assertion = assertion .and. all(Point_ref(:,Kmeans%Prop%Index) == Point)
+        assertion = assertion .and. all(Point_ref == Point)
         if (.not. assertion) then
             ! LCOV_EXCL_START
             if (Test%isVerboseMode) then
                 write(Test%outputUnit,"(*(g0.15,:,' '))")
-                write(Test%outputUnit,"(*(g0.15,:,' '))") "Point_ref(:,Kmeans%Prop%Index) == Point"
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Point_ref    == Point"
                 write(Test%outputUnit,"(*(g0.15,:,' '))") "Point_ref    =", Point_ref(:,Kmeans%Prop%Index)
                 write(Test%outputUnit,"(*(g0.15,:,' '))") "Point        =", Point
                 write(Test%outputUnit,"(*(g0.15,:,' '))")

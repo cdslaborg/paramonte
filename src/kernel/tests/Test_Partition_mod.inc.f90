@@ -128,9 +128,7 @@ contains
 
         assertion = .true.
 
-        Partition = Partition_type  ( nd = TestData%nd & ! LCOV_EXCL_LINE
-                                    , np = TestData%np & ! LCOV_EXCL_LINE
-                                    , Point = TestData%Point & ! LCOV_EXCL_LINE
+        Partition = Partition_type  ( Point = TestData%Point & ! LCOV_EXCL_LINE
                                     , nsim = 0_IK & ! LCOV_EXCL_LINE
                                    !, nemax = TestData%nemax & ! LCOV_EXCL_LINE
                                     , trimEnabled = .true. & ! LCOV_EXCL_LINE
@@ -276,9 +274,7 @@ contains
             if (rngseed /= -huge(rngseed)) RandomSeed = RandomSeed_type(imageID = Test%Image%id, inputSeed = rngseed)
 
             !write(*,*) "zeroth nemax", nemax, ClusteredPoint%np, ClusteredPoint%nd + 1
-            Partition = Partition_type  ( nd = ClusteredPoint%nd & ! LCOV_EXCL_LINE
-                                        , np = ClusteredPoint%np & ! LCOV_EXCL_LINE
-                                        , Point = ClusteredPoint%Point & ! LCOV_EXCL_LINE
+            Partition = Partition_type  ( Point = ClusteredPoint%Point & ! LCOV_EXCL_LINE
                                         , nc = nc & ! LCOV_EXCL_LINE
                                         , nt = nt & ! LCOV_EXCL_LINE
                                         , nsim = nsim & ! LCOV_EXCL_LINE

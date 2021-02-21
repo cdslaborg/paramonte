@@ -63,6 +63,7 @@ module Kmeans_mod
         real(RK)    , allocatable   :: ChoDia(:,:)          !< An array of size `(nd,nc)` representing the diagonal elements of the Cholesky factorization of the covariance matrix.
         real(RK)    , allocatable   :: MahalSq(:,:)         !< An array of size `(np,nc)` each element of which represents the Mahalanobis distance squared of point `ip` from the cluster `ic`.
         real(RK)    , allocatable   :: InvCovMat(:,:,:)     !< An array of size `(nd,nd,nc)` containing the inverse of the covariance matrix of the corresponding cluster.
+        real(RK)    , allocatable   :: PointSorted(:,:)     !< An array of size `(nd,np)` representing the sorted `Point` according to the cluster membership IDs from 1 to nc.
         real(RK)    , allocatable   :: LogVolNormed(:)      !< An array of size `(nc)` each element of which represents the log(volume) of the bounding covariance matrix of the corresponding cluster.
         real(RK)    , allocatable   :: LogDenNormed(:)      !< An array of size `(nc)` each element of which represents the log effective (mean) density of points in the corresponding cluster bounding volume.
         real(RK)    , allocatable   :: ChoLowCovUpp(:,:,:)  !< An array of size `(nd,nd,nc)` whose upper triangle and diagonal is the covariance matrix and the lower is the Cholesky Lower.
@@ -132,6 +133,7 @@ contains
         if (.not. allocated(Prop%ChoDia         )) allocate(Prop%ChoDia         (nd,nc))
         if (.not. allocated(Prop%MahalSq        )) allocate(Prop%MahalSq        (np,nc))
         if (.not. allocated(Prop%InvCovMat      )) allocate(Prop%InvCovMat      (nd,nd,nc))
+        if (.not. allocated(Prop%PointSorted    )) allocate(Prop%PointSorted    (nd,np))
         if (.not. allocated(Prop%ChoLowCovUpp   )) allocate(Prop%ChoLowCovUpp   (nd,nd,nc))
         if (.not. allocated(Prop%EffectiveSize  )) allocate(Prop%EffectiveSize  (nc))
         if (.not. allocated(Prop%ScaleFactorSq  )) allocate(Prop%ScaleFactorSq  (nc))
@@ -605,7 +607,7 @@ contains
     !> If `pointLogVolNormed` is provided on input, it will be solely used to define the properties of singular clusters.
     !> Consequently, the densities of singular clusters will be the same while the densities of non-singular clusters will
     !> be different from each other and from those of singular clusters.
-    subroutine getProp(Kmeans, nd, np, Point, Index, inclusionFraction, pointLogVolNormed)
+    subroutine getProp(Kmeans, nd, np, Point, inclusionFraction, pointLogVolNormed)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getProp
 #endif
@@ -618,10 +620,10 @@ contains
 
         class(Kmeans_type) , intent(inout)      :: Kmeans
         integer(IK) , intent(in)                :: nd, np
-        real(RK)    , intent(inout)             :: Point(nd,np)
+        real(RK)    , intent(in)                :: Point(nd,np)
         real(RK)    , intent(in)    , optional  :: pointLogVolNormed
         real(RK)    , intent(in)    , optional  :: inclusionFraction
-        integer(IK) , intent(inout) , optional  :: Index(np)
+        !integer(IK) , intent(inout) , optional  :: Index(np)
 
         integer(IK) , allocatable               :: KmeansMemberCounter(:)
         integer(IK)                             :: i, j, ic, ip, nc
@@ -654,21 +656,21 @@ contains
             Kmeans%Prop%CumSumSize(ic) = KmeansMemberCounter(ic) + Kmeans%Size(ic)
         end do loopDetermineClusterBoundaries
 
-        if (present(Index)) then
+        !if (present(Index)) then
+        !    do ip = 1, np
+        !        KmeansMemberCounter(Kmeans%Membership(ip)) = KmeansMemberCounter(Kmeans%Membership(ip)) + 1_IK
+        !        Kmeans%Prop%PointSorted(1:nd,KmeansMemberCounter(Kmeans%Membership(ip))) = Point(1:nd,ip)
+        !        Kmeans%Prop%Index(KmeansMemberCounter(Kmeans%Membership(ip))) = Index(ip)
+        !    end do
+        !    Index = Kmeans%Prop%Index
+        !else
             do ip = 1, np
                 KmeansMemberCounter(Kmeans%Membership(ip)) = KmeansMemberCounter(Kmeans%Membership(ip)) + 1_IK
-                NormedPoint(1:nd,KmeansMemberCounter(Kmeans%Membership(ip))) = Point(1:nd,ip)
-                Kmeans%Prop%Index(KmeansMemberCounter(Kmeans%Membership(ip))) = Index(ip)
-            end do
-            Index = Kmeans%Prop%Index
-        else
-            do ip = 1, np
-                KmeansMemberCounter(Kmeans%Membership(ip)) = KmeansMemberCounter(Kmeans%Membership(ip)) + 1_IK
-                NormedPoint(1:nd,KmeansMemberCounter(Kmeans%Membership(ip))) = Point(1:nd,ip)
+                Kmeans%Prop%PointSorted(1:nd,KmeansMemberCounter(Kmeans%Membership(ip))) = Point(1:nd,ip)
                 Kmeans%Prop%Index(KmeansMemberCounter(Kmeans%Membership(ip))) = ip
             end do
-        end if
-        Point = NormedPoint
+        !end if
+        !Point = NormedPoint
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! Compute the properties of non-singular clusters.
@@ -685,12 +687,12 @@ contains
 
                 ! Correct the cluster memberships.
 
-                Kmeans%Membership(ipstart:ipend) = ic
+                !Kmeans%Membership(ipstart:ipend) = ic
 
                 ! Normalize points.
 
                 do concurrent(ip = 1:np)
-                    NormedPoint(1:nd,ip) = Point(1:nd,ip) - Kmeans%Center(1:nd,ic)
+                    NormedPoint(1:nd,ip) = Kmeans%Prop%PointSorted(1:nd,ip) - Kmeans%Center(1:nd,ic)
                 end do
 
                 ! Compute the upper covariance matrix of the cluster covariance matrices.
@@ -804,12 +806,12 @@ contains
 
                     ! Correct the cluster memberships.
 
-                    Kmeans%Membership(ipstart:ipend) = ic
+                    !Kmeans%Membership(ipstart:ipend) = ic
 
                     ! Compute the scale factor and other properties.
 
                     do concurrent(ip = 1:np)
-                        Kmeans%Prop%MahalSq(ip,ic) = sum( ( Point(1:nd,ip) - Kmeans%Center(1:nd,ic) )**2 )
+                        Kmeans%Prop%MahalSq(ip,ic) = sum( ( Kmeans%Prop%PointSorted(1:nd,ip) - Kmeans%Center(1:nd,ic) )**2 )
                     end do
 
                     Kmeans%Prop%ScaleFactorSq(ic) = max(exp(2*pointLogVolNormedDefault/nd), maxval(Kmeans%Prop%MahalSq(ipstart:ipend,ic)))
