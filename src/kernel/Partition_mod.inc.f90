@@ -78,7 +78,6 @@
         integer(IK)                 :: numRecursiveCall             !< The total number of recursive calls to the partitioning algorithm.
         integer(IK)                 :: convergenceFailureCount      !< The number of times the partitioning algorithm has failed to converge.
         integer(IK) , allocatable   :: Membership(:)                !< An array of size `(np)` representing the bounding-ellipsoid membership IDs of the corresponding data points.
-        integer(IK) , allocatable   :: PointIndex(:)                !< An array of size `(np)` of indices such that the input `Point(1:nd,Index(ip))` is saved at the output `Point(1:nd,ip)`.
         real(RK)    , allocatable   :: LogVolNormed(:)              !< An array of size `(nemax)` representing the log-volumes of the corresponding bounding ellipsoids.
         real(RK)    , allocatable   :: ChoLowCovUpp(:,:,:)          !< An array of size `(nd,nd,nemax)` representing the Cholesky lower triangle, diagonal, and covariance matrices of the bounding ellipsoids.
         real(RK)    , allocatable   :: InvCovMat(:,:,:)             !< An array of size `(nd,nd,nemax)` representing the full symmetric inverse covariance matrices of the bounding ellipsoids.
@@ -208,7 +207,6 @@ contains
                 , Partition%ChoLowCovUpp (Partition%nd,Partition%nd,Partition%nemax) & ! LCOV_EXCL_LINE
                 , Partition%LogVolNormed (Partition%nemax) & ! LCOV_EXCL_LINE
                 , Partition%Membership   (Partition%np) & ! LCOV_EXCL_LINE
-                , Partition%PointIndex   (Partition%np) & ! LCOV_EXCL_LINE
                 )
 
         call Partition%run(Point)
@@ -272,7 +270,6 @@ contains
 
         Partition%Center(1:Partition%nd,1) = 0._RK
         do ip = 1, Partition%np
-          Partition%PointIndex(ip) = ip
           Partition%Center(1:Partition%nd,1) = Partition%Center(1:Partition%nd,1) + Point(1:Partition%nd,ip)
         end do
         Partition%Center(1:Partition%nd,1) = Partition%Center(1:Partition%nd,1) / Partition%np
@@ -375,7 +372,6 @@ contains
                                         , ChoDia = Partition%ChoDia & ! LCOV_EXCL_LINE
                                         , InvCovMat = Partition%InvCovMat & ! LCOV_EXCL_LINE
                                         , Membership = Partition%Membership & ! LCOV_EXCL_LINE
-                                        , PointIndex = Partition%PointIndex & ! LCOV_EXCL_LINE
                                         , ChoLowCovUpp = Partition%ChoLowCovUpp & ! LCOV_EXCL_LINE
                                         , LogVolNormed = Partition%LogVolNormed & ! LCOV_EXCL_LINE
                                         , numRecursiveCall = Partition%numRecursiveCall & ! LCOV_EXCL_LINE
@@ -434,7 +430,6 @@ contains
                                                 , ChoDia & ! LCOV_EXCL_LINE
                                                 , InvCovMat & ! LCOV_EXCL_LINE
                                                 , Membership & ! LCOV_EXCL_LINE
-                                                , PointIndex & ! LCOV_EXCL_LINE
                                                 , ChoLowCovUpp & ! LCOV_EXCL_LINE
                                                 , LogVolNormed & ! LCOV_EXCL_LINE
                                                 , numRecursiveCall & ! LCOV_EXCL_LINE
@@ -468,7 +463,6 @@ contains
         integer(IK) , intent(inout) :: numRecursiveCall
         integer(IK) , intent(inout) :: convergenceFailureCount
         integer(IK) , intent(inout) :: Membership(np)
-        integer(IK) , intent(inout) :: PointIndex(np)
         real(RK)    , intent(inout) :: Center(nd,nemax)
         real(RK)    , intent(inout) :: ChoLowCovUpp(nd,nd,nemax)
         real(RK)    , intent(inout) :: InvCovMat(nd,nd,nemax)
@@ -629,7 +623,6 @@ contains
             !if (Kmeans%Prop%logSumVolNormed < KmeansBackup%Prop%logSumVolNormed) then ! Create a backup of the current clustering properties. This must never occur on the first try.
             !    !KmeansBackup = Kmeans
             !    BackupPoint(1:nd,1:np)                          = Point(1:nd,1:np)
-            !    BackupPointIndex(1:np)                          = PointIndex(1:np)
             !    KmeansBackup%Membership(1:np)                   = Kmeans%Membership(1:np)
             !    KmeansBackup%Center(1:nd,1:nc)                  = Kmeans%Center(1:nd,1:nc)
             !    KmeansBackup%Prop%ChoDia(1:nd,1:nc)             = Kmeans%Prop%ChoDia(1:nd,1:nc)
@@ -645,7 +638,6 @@ contains
             !else ! Restore the last clustering properties.
             !    !Kmeans = KmeansBackup
             !    Point(1:nd,1:np)                                = BackupPoint(1:nd,1:np)
-            !    PointIndex(1:np)                                = BackupPointIndex(1:np)
             !    Kmeans%Membership(1:np)                         = KmeansBackup%Membership(1:np)
             !    Kmeans%Center(1:nd,1:nc)                        = KmeansBackup%Center(1:nd,1:nc)
             !    Kmeans%Prop%ChoDia(1:nd,1:nc)                   = KmeansBackup%Prop%ChoDia(1:nd,1:nc)
@@ -859,7 +851,6 @@ contains
                                                 , ChoDia = ChoDia(1:nd,icstart:icend) & ! LCOV_EXCL_LINE
                                                 , InvCovMat = InvCovMat(1:nd,1:nd,icstart:icend) & ! LCOV_EXCL_LINE
                                                 , Membership = Kmeans%Prop%Membership(ipstart:ipend) & ! LCOV_EXCL_LINE
-                                                , PointIndex = PointIndex(ipstart:ipend) & ! LCOV_EXCL_LINE
                                                 , ChoLowCovUpp = ChoLowCovUpp(1:nd,1:nd,icstart:icend) & ! LCOV_EXCL_LINE
                                                 , LogVolNormed = LogVolNormed(icstart:icend) & ! LCOV_EXCL_LINE
                                                 , numRecursiveCall = numRecursiveCall & ! LCOV_EXCL_LINE
