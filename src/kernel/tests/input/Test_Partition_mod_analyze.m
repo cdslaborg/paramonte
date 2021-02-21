@@ -146,23 +146,30 @@ for method = methodList
 
         if pointsEnabled || (innestPointEnabled && cluspointExists) || distMatEnabled || (originalBoundsEnabled && cluspointExists) || dbscanEnabled || (predictedBoundsEnabled && cluspointExists)
 
-            figure; hold on; box on;
+            figure; hold on; box on; legend off;
 
             if pointsEnabled
 
-                istart = 1;
-                iend = partition.case{icase}.Size(1);
-                for ic = 1:partition.case{icase}.nc
-                    if ic > 1
-                        istart = istart + partition.case{icase}.Size(ic-1);
-                        iend = iend + partition.case{icase}.Size(ic);
-                    end
-                    plot( partition.case{icase}.Point(istart:iend,id1) ...
-                        , partition.case{icase}.Point(istart:iend,id2) ...
-                        , "." ...
-                        , 'markersize', 15 ...
+                %istart = 1;
+                %iend = partition.case{icase}.Size(1);
+                %for ic = 1:partition.case{icase}.nc
+                %    if ic > 1
+                %        istart = istart + partition.case{icase}.Size(ic-1);
+                %        iend = iend + partition.case{icase}.Size(ic);
+                %    end
+                %    plot( partition.case{icase}.Point(istart:iend,id1) ...
+                %        , partition.case{icase}.Point(istart:iend,id2) ...
+                %        , "." ...
+                %        , 'markersize', 15 ...
+                %        );
+                %end
+                gscatter( partition.case{icase}.Point(:,id1) ...
+                        , partition.case{icase}.Point(:,id2) ...
+                        , partition.case{icase}.Membership ...
+                        ..., "markerStyle", "." ...
+                        ..., 'markersize', 15 ...
                         );
-                end
+
 
                 for ip = ProxyCenterIndex
                     plot( partition.case{icase}.Point(ip,id1) ...
@@ -257,7 +264,7 @@ for method = methodList
 
             title(method);
 
-            hold off;
+            legend off; hold off;
 
         end
 
