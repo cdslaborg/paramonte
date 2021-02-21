@@ -1,5 +1,5 @@
 &specTest
-    ntest = 100
+    ntest = 10000
 /
 
 &specData

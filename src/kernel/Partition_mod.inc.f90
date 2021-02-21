@@ -484,7 +484,7 @@ contains
         integer(IK)                 :: KmeansMemberCounter(nc)
         integer(IK)                 :: KmeansNemax(nc)              ! maximum allowed number of clusters in each of the two K-means clusters.
         integer(IK)                 :: KmeansNeopt(0:nc)            ! optimal number of clusters in each of the child clusters.
-        integer(IK)                 :: i, j, ip, jp, ic, jc, ipstart, ipend
+        integer(IK)                 :: i, j, ip, ic, jc, ipstart, ipend
         integer(IK)                 :: icstart, icend, recursionCounter
         integer(IK)                 :: icmin, nemaxRemained
         logical                     :: boundedRegionIsTooLarge
@@ -674,22 +674,22 @@ contains
 
                 ! Determine the cluster to which the point is the closest.
 
-                jp = Kmeans%Prop%Index(ip)
+                !jp = Kmeans%Prop%Index(ip)
 
-                icmin = Kmeans%Membership(jp)
+                icmin = Kmeans%Prop%Membership(ip)
                 do ic = 1, nc
                     if (ic/=icmin .and. Kmeans%Prop%MahalSq(ip,ic) < Kmeans%Prop%MahalSq(ip,icmin)) icmin = ic
                 end do
 
                 ! Switch the point membership if needed.
 
-                if (icmin /= Kmeans%Membership(jp)) then ! .and. Kmeans%Size(Kmeans%Membership(jp)) > minSize) then
-                !if (icmin /= Kmeans%Membership(jp) .and. Kmeans%Size(Kmeans%Membership(jp)) > minSize) then
+                if (icmin /= Kmeans%Prop%Membership(ip)) then ! .and. Kmeans%Size(Kmeans%Prop%Membership(ip)) > minSize) then
+                !if (icmin /= Kmeans%Prop%Membership(ip) .and. Kmeans%Size(Kmeans%Prop%Membership(ip)) > minSize) then
                     Kmeans%Size(icmin) = Kmeans%Size(icmin) + 1_IK
-                    Kmeans%Size(Kmeans%Membership(jp)) = Kmeans%Size(Kmeans%Membership(jp)) - 1_IK
+                    Kmeans%Size(Kmeans%Prop%Membership(ip)) = Kmeans%Size(Kmeans%Prop%Membership(ip)) - 1_IK
                     Kmeans%Center(1:nd,icmin) = Kmeans%Center(1:nd,icmin) + Kmeans%Prop%PointSorted(1:nd,ip)
-                    Kmeans%Center(1:nd,Kmeans%Membership(jp)) = Kmeans%Center(1:nd,Kmeans%Membership(jp)) - Kmeans%Prop%PointSorted(1:nd,ip)
-                    Kmeans%Membership(jp) = icmin
+                    Kmeans%Center(1:nd,Kmeans%Prop%Membership(ip)) = Kmeans%Center(1:nd,Kmeans%Prop%Membership(ip)) - Kmeans%Prop%PointSorted(1:nd,ip)
+                    Kmeans%Prop%Membership(ip) = icmin
                     reclusteringNeeded = .true.
                 end if
 
@@ -716,6 +716,7 @@ contains
 
                 ! Reorder Point based on the identified clusters and recompute the cluster properties.
 
+                Kmeans%Membership(1:np) = Kmeans%Prop%Membership(1:np)
                 call Kmeans%getProp(nd = nd, np = np, Point = Point, inclusionFraction = inclusionFraction, pointLogVolNormed = pointLogVolNormed)
                 if (Kmeans%Err%occurred) then
                     ! LCOV_EXCL_START
@@ -857,7 +858,7 @@ contains
                                                 , Center = Center(1:nd,icstart:icend) & ! LCOV_EXCL_LINE
                                                 , ChoDia = ChoDia(1:nd,icstart:icend) & ! LCOV_EXCL_LINE
                                                 , InvCovMat = InvCovMat(1:nd,1:nd,icstart:icend) & ! LCOV_EXCL_LINE
-                                                , Membership = Kmeans%Membership(ipstart:ipend) & ! LCOV_EXCL_LINE
+                                                , Membership = Kmeans%Prop%Membership(ipstart:ipend) & ! LCOV_EXCL_LINE
                                                 , PointIndex = PointIndex(ipstart:ipend) & ! LCOV_EXCL_LINE
                                                 , ChoLowCovUpp = ChoLowCovUpp(1:nd,1:nd,icstart:icend) & ! LCOV_EXCL_LINE
                                                 , LogVolNormed = LogVolNormed(icstart:icend) & ! LCOV_EXCL_LINE
@@ -866,13 +867,13 @@ contains
                                                 )
 
 #if defined DEBUG_ENABLED || TESTING_ENABLED || CODECOVE_ENABLED
-                    if (any(Kmeans%Membership(ipstart:ipend) > KmeansNemax(ic))) then
+                    if (any(Kmeans%Prop%Membership(ipstart:ipend) > KmeansNemax(ic))) then
                         write(*,*) "KmeansNemax(ic) : ", KmeansNemax(ic)
-                        write(*,*) "Membership(ipstart:ipend) > KmeansNemax(ic) : ", Kmeans%Membership(ipstart:ipend)
+                        write(*,*) "Membership(ipstart:ipend) > KmeansNemax(ic) : ", Kmeans%Prop%Membership(ipstart:ipend)
                         error stop
                     end if
 #endif
-                    Membership(Kmeans%Prop%Index(ipstart:ipend)) = Kmeans%Membership(ipstart:ipend) + icstart - 1_IK
+                    Membership(Kmeans%Prop%Index(ipstart:ipend)) = Kmeans%Prop%Membership(ipstart:ipend) + icstart - 1_IK
 
                 !elseif (KmeansNemax(ic) == 1_IK) then
                 else blockSubclusterCheck

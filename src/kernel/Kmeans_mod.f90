@@ -70,6 +70,7 @@ module Kmeans_mod
         real(RK)    , allocatable   :: ScaleFactorSq(:)     !< An array of size `(nc)` representing the factors by which the cluster covariance matrices must be enlarged to enclose their corresponding members.
         integer(IK) , allocatable   :: EffectiveSize(:)     !< An array of size `(nc)` representing the factors by which the cluster covariance matrices must be enlarged to enclose their corresponding members.
         integer(IK) , allocatable   :: CumSumSize(:)        !< A vector of size `0:nc` representing the cumulative sum of all cluster sizes from cluster 1 to the last.
+        integer(IK) , allocatable   :: Membership(:)        !< A vector of size `0:nc` representing the cumulative sum of all cluster sizes from cluster 1 to the last.
         integer(IK) , allocatable   :: Index(:)             !< A vector of size `(np)` such that the output `Point(:,Index(ip),:)` points to the input `Point(:,Index(ip),:)` in [getProp](@ref getprop).
                                                             !< The `Index` component is populated only if `Index` is missing from the list of input arguments to [getProp](@ref getprop).
     contains
@@ -140,6 +141,7 @@ contains
         if (.not. allocated(Prop%LogVolNormed   )) allocate(Prop%LogVolNormed   (nc))
         if (.not. allocated(Prop%LogDenNormed   )) allocate(Prop%LogDenNormed   (nc))
         if (.not. allocated(Prop%CumSumSize     )) allocate(Prop%CumSumSize     (0:nc))
+        if (.not. allocated(Prop%Membership     )) allocate(Prop%Membership     (np))
         if (.not. allocated(Prop%Index          )) allocate(Prop%Index          (np))
     end subroutine allocateKmeansProp
 
@@ -687,7 +689,7 @@ contains
 
                 ! Correct the cluster memberships.
 
-                !Kmeans%Membership(ipstart:ipend) = ic
+                Kmeans%Prop%Membership(ipstart:ipend) = ic
 
                 ! Normalize points.
 
@@ -806,7 +808,7 @@ contains
 
                     ! Correct the cluster memberships.
 
-                    !Kmeans%Membership(ipstart:ipend) = ic
+                    Kmeans%Prop%Membership(ipstart:ipend) = ic
 
                     ! Compute the scale factor and other properties.
 
