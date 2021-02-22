@@ -208,10 +208,11 @@ contains
         real(RK)                    :: etamin, etamax, centerMin, centerMax
         namelist /specData/ rngseed, nd, nc, sizeMin, sizeMax, etamin, etamax, centerMin, centerMax, dist
 
+        logical                     :: stanEnabled
         integer(IK)                 :: nt, nsim, nemax, minSize
         integer(IK)                 :: maxAllowedKvolumeRecursion
         real(RK)                    :: tightness, inclusionFraction
-        namelist /specPartition/ rngseed, nc, nt, nemax, nsim, minSize, inclusionFraction, tightness, maxAllowedKvolumeRecursion
+        namelist /specPartition/ rngseed, nc, nt, nemax, nsim, minSize, inclusionFraction, tightness, maxAllowedKvolumeRecursion, stanEnabled
 
         assertion = .true.
 
@@ -265,6 +266,7 @@ contains
 
             nsim = 0_IK
             minSize = nd + 1_IK
+            stanEnabled = .true.
             rngseed = -huge(rngseed)
             maxAllowedKvolumeRecursion = 100_IK
             nemax = ClusteredPoint%np / (ClusteredPoint%nd + 1)
@@ -279,7 +281,11 @@ contains
                                         , nt = nt & ! LCOV_EXCL_LINE
                                         , nsim = nsim & ! LCOV_EXCL_LINE
                                         , nemax = nemax & ! LCOV_EXCL_LINE
-                                        , trimEnabled = .true. & ! LCOV_EXCL_LINE
+                                        , trimEnabled = .false. & ! LCOV_EXCL_LINE
+!#if defined MINVOL
+!                                        , stanEnabled = .false. & ! LCOV_EXCL_LINE
+!#endif
+                                        , stanEnabled = stanEnabled & ! LCOV_EXCL_LINE
                                         , logTightness = log(tightness) & ! LCOV_EXCL_LINE
                                         , inclusionFraction = inclusionFraction & ! LCOV_EXCL_LINE
                                         , parentLogVolNormed = ClusteredPoint%sumLogVolNormedEffective & ! LCOV_EXCL_LINE
@@ -300,10 +306,10 @@ contains
             assertion = assertion .and. .not. Partition%Err%occurred
             assertion = assertion .and. Partition%Err%stat /= 1_IK
             assertion = assertion .and. Partition%Err%stat /= 2_IK
-            assertion = assertion .and. all(Partition%Size >= 0_IK)
+            assertion = assertion .and. all(Partition%Size(1:Partition%neopt) >= 0_IK)
             assertion = assertion .and. all(Partition%Membership > 0_IK) .and. all(Partition%Membership < Partition%neopt + 1)
 
-            if (.not. assertion) return
+            !if (.not. assertion) return
 
             ! Ensure all points are within their corresponding clusters.
 
@@ -323,7 +329,7 @@ contains
                 ! LCOV_EXCL_START
                 write(Test%outputUnit,"(*(g0.15,:,' '))")
                 write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%neopt                =", Partition%neopt
-                write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%Size < 1             =", pack(Partition%Size, mask = Partition%Size < 1_IK)
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%Size < 1             =", pack(Partition%Size(1:Partition%neopt), mask = Partition%Size(1:Partition%neopt) < 1_IK)
                 write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%Membership < 1       =", pack(Partition%Membership, mask = Partition%Membership < 1_IK)
                 write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%Membership > neopt   =", pack(Partition%Membership, mask = Partition%Membership > Partition%neopt)
                 write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%Err%occurred         =", Partition%Err%occurred
