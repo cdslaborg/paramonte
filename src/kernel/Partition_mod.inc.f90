@@ -105,9 +105,7 @@ contains
     !> This function can serve as the constructor for `Partition_type` while also performing the partitioning for the first time.
     !> Construct a hierarchical partitioning of the input `Point` using a combination of Kmeans, Kvolume, and density maximization algorithms.
     !>
-    !> \param[in]   nd                          :   The number of dimensions of `Point`.
-    !> \param[in]   np                          :   The number of observations in `Point`.
-    !> \param[in]   Point                       :   An array of size `(nd,np)` containing the input set of points to partition.
+    !> \param[in]   Point                       :   An array of size `(nd = #dimensions, np = #observations)` containing the input set of points to partition.
     !> \param[in]   nc                          :   The number of clusters at each level of partitioning (**optional**, default = `2`).
     !> \param[in]   nt                          :   The number of Kmeans clustering tries before choosing the optimal clustering among all (**optional**, default = `1`).
     !> \param[in]   nsim                        :   The number of Monte Carlo simulation tries to estimate the sum of volumes of partitions excluding overlaps (**optional**, default = `0`).
@@ -149,8 +147,7 @@ contains
     !>
     !> \author
     !> Amir Shahmoradi, April 03, 2017, 2:16 AM, ICES, University of Texas at Austin
-    function constructPartition ( nd,np & ! LCOV_EXCL_LINE
-                                , Point & ! LCOV_EXCL_LINE
+    function constructPartition ( Point & ! LCOV_EXCL_LINE
                                 , nc,nt & ! LCOV_EXCL_LINE
                                 , nsim & ! LCOV_EXCL_LINE
                                 , nemax & ! LCOV_EXCL_LINE
@@ -172,8 +169,7 @@ contains
 
         implicit none
 
-        integer(IK) , intent(in)                :: nd,np
-        real(RK)    , intent(inout)             :: Point(nd,np) ! do not move this up. This must appear after nd, np declaration.
+        real(RK)    , intent(inout)             :: Point(:,:)
         integer(IK) , intent(in)    , optional  :: nc,nt
         integer(IK) , intent(in)    , optional  :: nsim
         integer(IK) , intent(in)    , optional  :: nemax
@@ -189,15 +185,15 @@ contains
         integer(IK) , intent(in)    , optional  :: maxAllowedKvolumeRecursion
         type(Partition_type)                    :: Partition
 
-        Partition%nd = nd
-        Partition%np = np
+        Partition%nd = size(Point(:,1))
+        Partition%np = size(Point(1,:))
         Partition%nc = 2_IK; if (present(nc)) Partition%nc = max(Partition%nc, nc)
         Partition%nt = 1_IK; if (present(nt)) Partition%nt = max(Partition%nt, nt)
         Partition%nsim = 0_IK; if (present(nsim)) Partition%nsim = max(Partition%nsim, nsim)
-        Partition%minSize = nd + 1_IK; if (present(minSize)) Partition%minSize = max(1_IK, minSize)
-        Partition%nemax = np / Partition%minSize; if (present(nemax)) Partition%nemax = max(1_IK, nemax)
-!write(*,*) "minSize, np, nemax, Partition%minSize, Partition%nemax", minSize, np, nemax, Partition%minSize, Partition%nemax
-       !Partition%nemax = 1_IK + np / Partition%nc; if (present(nemax)) Partition%nemax = nemax; Partition%nemax = max(Partition%nc, Partition%nemax)
+        Partition%minSize = Partition%nd + 1_IK; if (present(minSize)) Partition%minSize = max(1_IK, minSize)
+        Partition%nemax = Partition%np / Partition%minSize; if (present(nemax)) Partition%nemax = max(1_IK, nemax)
+!write(*,*) "minSize, Partition%np, nemax, Partition%minSize, Partition%nemax", minSize, Partition%np, nemax, Partition%minSize, Partition%nemax
+       !Partition%nemax = 1_IK + Partition%np / Partition%nc; if (present(nemax)) Partition%nemax = nemax; Partition%nemax = max(Partition%nc, Partition%nemax)
         Partition%maxAllowedKvolumeRecursion = 3_IK; if (present(maxAllowedKvolumeRecursion)) Partition%maxAllowedKvolumeRecursion = maxAllowedKvolumeRecursion
         Partition%maxAllowedKmeansRecursion = 300_IK; if (present(maxAllowedKmeansRecursion)) Partition%maxAllowedKmeansRecursion = maxAllowedKmeansRecursion
         Partition%maxAllowedKmeansFailure = 10_IK; if (present(maxAllowedKmeansFailure)) Partition%maxAllowedKmeansFailure = maxAllowedKmeansFailure
@@ -209,13 +205,13 @@ contains
         Partition%pointLogVolNormed = NEGINF_RK ! This will be properly set in `runPartition()`.
 
         allocate( Partition%Size         (Partition%nemax) & ! LCOV_EXCL_LINE
-                , Partition%Center       (nd,Partition%nemax) & ! LCOV_EXCL_LINE
-                , Partition%ChoDia       (nd,Partition%nemax) & ! LCOV_EXCL_LINE
-                , Partition%InvCovMat    (nd,nd,Partition%nemax) & ! LCOV_EXCL_LINE
-                , Partition%ChoLowCovUpp (nd,nd,Partition%nemax) & ! LCOV_EXCL_LINE
+                , Partition%Center       (Partition%nd,Partition%nemax) & ! LCOV_EXCL_LINE
+                , Partition%ChoDia       (Partition%nd,Partition%nemax) & ! LCOV_EXCL_LINE
+                , Partition%InvCovMat    (Partition%nd,Partition%nd,Partition%nemax) & ! LCOV_EXCL_LINE
+                , Partition%ChoLowCovUpp (Partition%nd,Partition%nd,Partition%nemax) & ! LCOV_EXCL_LINE
                 , Partition%LogVolNormed (Partition%nemax) & ! LCOV_EXCL_LINE
-                , Partition%Membership   (np) & ! LCOV_EXCL_LINE
-                , Partition%PointIndex   (np) & ! LCOV_EXCL_LINE
+                , Partition%Membership   (Partition%np) & ! LCOV_EXCL_LINE
+                , Partition%PointIndex   (Partition%np) & ! LCOV_EXCL_LINE
                 )
 
         call Partition%run(Point)
@@ -223,10 +219,10 @@ contains
         if (present(trimEnabled)) then
             if (trimEnabled) then
                 Partition%Size           = Partition%Size         (1:Partition%neopt)
-                Partition%Center         = Partition%Center       (1:nd,1:Partition%neopt)
-                Partition%ChoDia         = Partition%ChoDia       (1:nd,1:Partition%neopt)
-                Partition%InvCovMat      = Partition%InvCovMat    (1:nd,1:nd,1:Partition%neopt)
-                Partition%ChoLowCovUpp   = Partition%ChoLowCovUpp (1:nd,1:nd,1:Partition%neopt)
+                Partition%Center         = Partition%Center       (1:Partition%nd,1:Partition%neopt)
+                Partition%ChoDia         = Partition%ChoDia       (1:Partition%nd,1:Partition%neopt)
+                Partition%InvCovMat      = Partition%InvCovMat    (1:Partition%nd,1:Partition%nd,1:Partition%neopt)
+                Partition%ChoLowCovUpp   = Partition%ChoLowCovUpp (1:Partition%nd,1:Partition%nd,1:Partition%neopt)
                 Partition%LogVolNormed   = Partition%LogVolNormed (1:Partition%neopt)
             end if
         end if
