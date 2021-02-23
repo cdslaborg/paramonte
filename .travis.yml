@@ -3,8 +3,14 @@ sudo: true
 
 branches:
   only:
-    - main
     - dev
+    - main
+    - master
+    - revive
+    - archive
+    - ParaDISE
+    - ParaTemp
+    - ParaNest
 
 before_cache:
   - if [ "${TRAVIS_OS_NAME}" = "osx" ]; then brew cleanup; fi
