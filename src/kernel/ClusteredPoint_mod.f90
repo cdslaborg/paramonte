@@ -71,8 +71,8 @@ module ClusteredPoint_mod
         real(RK)                    :: stdMax
         real(RK)                    :: centerMin
         real(RK)                    :: centerMax
-        real(RK)                    :: sumLogVolNormed
-        real(RK)                    :: sumLogVolNormedEffective
+        real(RK)                    :: logSumVolNormed
+        real(RK)                    :: logSumVolNormedEffective
         real(RK)    , allocatable   :: Eta(:)
         real(RK)    , allocatable   :: Std(:,:)
         real(RK)    , allocatable   :: Point(:,:)
@@ -383,7 +383,7 @@ contains
         end do
 
         maxLogVolNormed = maxval(self%LogVolNormed)
-        self%sumLogVolNormed = getLogSumExp(self%nc, self%LogVolNormed, maxLogVolNormed)
+        self%logSumVolNormed = getLogSumExp(self%nc, self%LogVolNormed, maxLogVolNormed)
         VolNormed = exp(self%LogVolNormed - maxLogVolNormed)
         CumSumVolNormed(1:self%nc) = getCumSum(self%nc, VolNormed)
         CumSumVolNormed(1:self%nc) = CumSumVolNormed / CumSumVolNormed(self%nc)
@@ -519,14 +519,14 @@ contains
         ! Compute the Point probabilities and Estimate the total volume of all clusters while taking into account potential overlaps
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        self%sumLogVolNormedEffective = self%sumLogVolNormed
+        self%logSumVolNormedEffective = self%logSumVolNormed
         do ip = 1, self%np
             if (isUniform) then
                 self%LogProb(ip) = 1._RK
                 do ic = 1, nc
                     if (ic /= self%Membership(ip) .and. self%Overlap(ic,ip) == 1_IK) then
-                        !write(*,*) self%sumLogVolNormedEffective, self%PointLogVolNormed(self%Membership(ip))
-                        self%sumLogVolNormedEffective = getLogSubExp(self%sumLogVolNormedEffective,self%PointLogVolNormed(self%Membership(ip)))
+                        !write(*,*) self%logSumVolNormedEffective, self%PointLogVolNormed(self%Membership(ip))
+                        self%logSumVolNormedEffective = getLogSubExp(self%logSumVolNormedEffective,self%PointLogVolNormed(self%Membership(ip)))
                     end if
                 end do
             elseif (isUniformMixture) then

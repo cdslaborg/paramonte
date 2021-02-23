@@ -67,6 +67,7 @@ SET(ParaMonte_SOURCE_FILES
     ${ParaMonteKernel_SRC_DIR}/Knn_mod.f90
     ${ParaMonteKernel_SRC_DIR}/Matrix_mod.f90
     ${ParaMonteKernel_SRC_DIR}/Statistics_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/Geometry_mod.f90
     ${ParaMonteKernel_SRC_DIR}/MultiSkewNorm_mod.f90
     ${ParaMonteKernel_SRC_DIR}/ClusteredPoint_mod.f90
     ${ParaMonteKernel_SRC_DIR}/Kmeans_mod.f90

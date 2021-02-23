@@ -308,7 +308,7 @@ contains
                                         , logExpansion = log(expansionMaxDen) & ! LCOV_EXCL_LINE
 #endif
                                         , inclusionFraction = inclusionFraction & ! LCOV_EXCL_LINE
-                                        , parentLogVolNormed = ClusteredPoint%sumLogVolNormedEffective & ! LCOV_EXCL_LINE
+                                        , parentLogVolNormed = ClusteredPoint%logSumVolNormedEffective & ! LCOV_EXCL_LINE
                                        !, nemax = ClusteredPoint%nemax & ! LCOV_EXCL_LINE
                                        !, maxAllowedKmeansFailure = 10000 & ! LCOV_EXCL_LINE
                                        !, maxAllowedKmeansRecursion = 10000 & ! LCOV_EXCL_LINE
