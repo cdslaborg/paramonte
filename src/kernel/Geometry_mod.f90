@@ -82,7 +82,7 @@ contains
                             , ChoLowCovUpp & ! LCOV_EXCL_LINE
                             , ChoDia & ! LCOV_EXCL_LINE
                             , logSumVolNormed & ! LCOV_EXCL_LINE
-                            , Overlap & ! LCOV_EXCL_LINE
+                            !, Overlap & ! LCOV_EXCL_LINE
                             )
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getEffLogVol
@@ -99,7 +99,7 @@ contains
         real(RK)    , intent(in)    :: InvCovMat(nd,nd,nc)
         real(RK)    , intent(in)    :: ChoLowCovUpp(nd,nd,nc)
         real(RK)    , intent(inout) :: logSumVolNormed
-        integer(IK) , intent(out)   :: Overlap(nc,nc)
+        !integer(IK) , intent(out)   :: Overlap(nc,nc)
 
         integer(IK)                 :: ic, jc, isim
         integer(IK)                 :: membershipCount

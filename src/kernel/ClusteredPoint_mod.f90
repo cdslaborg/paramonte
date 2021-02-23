@@ -519,23 +519,44 @@ contains
         ! Compute the Point probabilities and Estimate the total volume of all clusters while taking into account potential overlaps
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+        !! This approach uses the simulated points to estimate the overlaps. However, it becomes increasingly biased in low counts.
+        !self%logSumVolNormedEffective = self%logSumVolNormed
+        !do ip = 1, self%np
+        !    if (isUniform) then
+        !        self%LogProb(ip) = 1._RK
+        !        do ic = 1, nc
+        !            if (ic /= self%Membership(ip) .and. self%Overlap(ic,ip) == 1_IK) then
+        !                !write(*,*) self%logSumVolNormedEffective, self%PointLogVolNormed(self%Membership(ip))
+        !                self%logSumVolNormedEffective = getLogSubExp(self%logSumVolNormedEffective,self%PointLogVolNormed(self%Membership(ip)))
+        !            end if
+        !        end do
+        !    elseif (isUniformMixture) then
+        !        self%LogProb(ip) = 0._RK
+        !        do ic = 1, self%nc
+        !            if (self%Overlap(ic,ip)==1_IK) self%LogProb(ip) = self%LogProb(ip) - self%PointLogVolNormed(ic)
+        !        end do
+        !    end if
+        !end do
+        !write(*,*) "self%logSumVolNormedEffective 1 = ", self%logSumVolNormedEffective
+
         self%logSumVolNormedEffective = self%logSumVolNormed
-        do ip = 1, self%np
-            if (isUniform) then
-                self%LogProb(ip) = 1._RK
-                do ic = 1, nc
-                    if (ic /= self%Membership(ip) .and. self%Overlap(ic,ip) == 1_IK) then
-                        !write(*,*) self%logSumVolNormedEffective, self%PointLogVolNormed(self%Membership(ip))
-                        self%logSumVolNormedEffective = getLogSubExp(self%logSumVolNormedEffective,self%PointLogVolNormed(self%Membership(ip)))
-                    end if
-                end do
-            elseif (isUniformMixture) then
-                self%LogProb(ip) = 0._RK
-                do ic = 1, self%nc
-                    if (self%Overlap(ic,ip)==1_IK) self%LogProb(ip) = self%LogProb(ip) - self%PointLogVolNormed(ic)
-                end do
-            end if
-        end do
+        block
+            use Geometry_mod, only: getEffLogVol
+            real(RK), allocatable :: ScaleFactorSq(:)
+            ScaleFactorSq = [(1._RK, ic = 1, nc)]
+            call getEffLogVol   ( nd = self%nd & ! LCOV_EXCL_LINE
+                                , nc = self%nc & ! LCOV_EXCL_LINE
+                                , nsim = 10000_IK & ! LCOV_EXCL_LINE
+                                , Center = self%Center & ! LCOV_EXCL_LINE
+                                , InvCovMat = self%InvCovMat & ! LCOV_EXCL_LINE
+                                , LogVolNormed = self%LogVolNormed & ! LCOV_EXCL_LINE
+                                , ChoLowCovUpp = self%ChoLowCovUpp & ! LCOV_EXCL_LINE
+                                , ScaleFactorSq = ScaleFactorSq & ! LCOV_EXCL_LINE
+                                , ChoDia = self%ChoDia & ! LCOV_EXCL_LINE
+                                , logSumVolNormed = self%logSumVolNormedEffective & ! LCOV_EXCL_LINE
+                                )
+        end block
+        !write(*,*) "self%logSumVolNormedEffective 2 = ", self%logSumVolNormedEffective
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! hubify
