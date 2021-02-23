@@ -186,6 +186,7 @@ contains
 
     !> test `runPartition()` by passing a fixed initial set of cluster centers to the Partition constructor.
     function test_runPartition_2() result(assertion)
+        use iso_fortran_env, only: compiler_version
         use ClusteredPoint_mod, only: ClusteredPoint_type
         use RandomSeed_mod, only: RandomSeed_type
         use Constants_mod, only: IK, RK
@@ -204,17 +205,24 @@ contains
         namelist /specTest/ ntest
 
         character(:), allocatable   :: dist
+        logical                     :: isRepeatable
         integer(IK)                 :: rngseed, nd, nc, sizeMin, sizeMax
         real(RK)                    :: etamin, etamax, centerMin, centerMax
-        namelist /specData/ rngseed, nd, nc, sizeMin, sizeMax, etamin, etamax, centerMin, centerMax, dist
+        namelist /specData/ rngseed, isRepeatable, nd, nc, sizeMin, sizeMax, etamin, etamax, centerMin, centerMax, dist
 
-        logical                     :: stanEnabled
         integer(IK)                 :: nt, nsim, nemax, minSize
         integer(IK)                 :: maxAllowedKvolumeRecursion
-        real(RK)                    :: expansion, inclusionFraction
-        namelist /specPartition/ rngseed, nc, nt, nemax, nsim, minSize, inclusionFraction, expansion, maxAllowedKvolumeRecursion, stanEnabled
+        real(RK)                    :: inclusionFraction
+        real(RK)                    :: expansionMaxDen
+        real(RK)                    :: expansionMinVol
+        logical                     :: rinitEnabled
+        logical                     :: stanEnabled
+        namelist /specPartition/ rngseed, isRepeatable, nc, nt, nemax, nsim, minSize, inclusionFraction, maxAllowedKvolumeRecursion, stanEnabled
+        namelist /specPartition/ expansionMaxDen, expansionMinVol
 
         assertion = .true.
+
+        rinitEnabled = compiler_version() == "GCC version 10.2.0"
 
         ! read the number of tests
 
@@ -237,7 +245,11 @@ contains
             read(Test%File%unit, nml = specData)
             dist = trim(adjustl(dist))
             close(Test%File%unit)
-            if (rngseed /= -huge(rngseed)) RandomSeed = RandomSeed_type(imageID = Test%Image%id, inputSeed = rngseed)
+            if (isRepeatable .and. rinitEnabled) then
+                call random_init (repeatable = .true., image_distinct = .true.)
+            else
+                if(rngseed == -huge(rngseed)) RandomSeed = RandomSeed_type(imageID = Test%Image%id, inputSeed = rngseed)
+            end if
 
             call ClusteredPoint%get ( nd = nd & ! LCOV_EXCL_LINE
                                     , nc = nc & ! LCOV_EXCL_LINE
@@ -273,7 +285,11 @@ contains
             open(newunit = Test%File%unit, file = Test%inDir//"/Test_Partition_mod@test_runPartition_2.nml", status = "old")
             read(Test%File%unit, nml = specPartition)
             close(Test%File%unit)
-            if (rngseed /= -huge(rngseed)) RandomSeed = RandomSeed_type(imageID = Test%Image%id, inputSeed = rngseed)
+            if (isRepeatable .and. rinitEnabled) then
+                call random_init (repeatable = .true., image_distinct = .true.)
+            else
+                if(rngseed == -huge(rngseed)) RandomSeed = RandomSeed_type(imageID = Test%Image%id, inputSeed = rngseed)
+            end if
 
             !write(*,*) "zeroth nemax", nemax, ClusteredPoint%np, ClusteredPoint%nd + 1
             Partition = Partition_type  ( Point = ClusteredPoint%Point & ! LCOV_EXCL_LINE
@@ -286,7 +302,11 @@ contains
 !                                        , stanEnabled = .false. & ! LCOV_EXCL_LINE
 !#endif
                                         , stanEnabled = stanEnabled & ! LCOV_EXCL_LINE
-                                        , logExpansion = log(expansion) & ! LCOV_EXCL_LINE
+#if defined MINVOL
+                                        , logExpansion = log(expansionMinVol) & ! LCOV_EXCL_LINE
+#elif defined MAXDEN
+                                        , logExpansion = log(expansionMaxDen) & ! LCOV_EXCL_LINE
+#endif
                                         , inclusionFraction = inclusionFraction & ! LCOV_EXCL_LINE
                                         , parentLogVolNormed = ClusteredPoint%sumLogVolNormedEffective & ! LCOV_EXCL_LINE
                                        !, nemax = ClusteredPoint%nemax & ! LCOV_EXCL_LINE

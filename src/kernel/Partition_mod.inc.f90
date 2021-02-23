@@ -1271,18 +1271,21 @@ contains
     !> \param[in]       ChoDia          :   An array of size `(nd,nc)` representing the diagonal elements of the Cholesky lower triangle of the covariance matrices of the ellipsoids.
     !> \param[out]      Overlap         :   An array of size `(nc,nc)` representing the diagonal elements of the Cholesky lower triangle of the covariance matrices of the ellipsoids.
     !> \param[inout]    logSumVolNormed :   The logarithm of the sum of `LogVolNormed`. On output, it will be rewritten with the effective log-sum of the (normalized) volumes.
-    subroutine getEffectiveVolume   ( nd & ! LCOV_EXCL_LINE
-                                    , nc & ! LCOV_EXCL_LINE
-                                    , nsim & ! LCOV_EXCL_LINE
-                                    , Center & ! LCOV_EXCL_LINE
-                                    , InvCovMat & ! LCOV_EXCL_LINE
-                                    , LogVolNormed & ! LCOV_EXCL_LINE
-                                    , ScaleFactorSq & ! LCOV_EXCL_LINE
-                                    , ChoLowCovUpp & ! LCOV_EXCL_LINE
-                                    , ChoDia & ! LCOV_EXCL_LINE
-                                    , logSumVolNormed & ! LCOV_EXCL_LINE
-                                    , Overlap & ! LCOV_EXCL_LINE
-                                    )
+    subroutine getEffLogVol ( nd & ! LCOV_EXCL_LINE
+                            , nc & ! LCOV_EXCL_LINE
+                            , nsim & ! LCOV_EXCL_LINE
+                            , Center & ! LCOV_EXCL_LINE
+                            , InvCovMat & ! LCOV_EXCL_LINE
+                            , LogVolNormed & ! LCOV_EXCL_LINE
+                            , ScaleFactorSq & ! LCOV_EXCL_LINE
+                            , ChoLowCovUpp & ! LCOV_EXCL_LINE
+                            , ChoDia & ! LCOV_EXCL_LINE
+                            , logSumVolNormed & ! LCOV_EXCL_LINE
+                            , Overlap & ! LCOV_EXCL_LINE
+                            )
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getEffLogVol
+#endif
         use Statistics_mod, only: getRandMVU
         use Constants_mod, only: IK, RK
         implicit none
@@ -1352,7 +1355,7 @@ contains
 
         logSumVolNormed = log(sumVolNormed) + logSumVolNormed
 
-    end subroutine getEffectiveVolume
+    end subroutine getEffLogVol
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

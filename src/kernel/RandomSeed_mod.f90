@@ -211,7 +211,7 @@ contains
         if (RandomSeed%isImageDistinct) then
             offsetImageRandomSeed = 127_IK * RandomSeed%size * (RandomSeed%imageID-1)
         else
-            offsetImageRandomSeed = 0
+            offsetImageRandomSeed = 0_IK
         end if
         do i = 1, RandomSeed%size
             RandomSeed%Value(i) = HUGE_IK - scalarSeed - offsetImageRandomSeed - 127_IK * (i-1)
@@ -224,6 +224,7 @@ contains
         call random_seed(put=RandomSeed%Value)
 
 !block
+!call random_init(repeatable = .false., image_distinct = .false.)
 !write(*,"(*(g0,:,' '))")
 !write(*,"(*(g0,:,' '))") "RandomSeed%Value", RandomSeed%Value
 !write(*,"(*(g0,:,' '))")
