@@ -65,6 +65,10 @@ module Statistics_mod
         module procedure :: getBetaCDF_SPR, getBetaCDF_DPR
     end interface getBetaCDF
 
+    interface getLogPoisPMF
+        module procedure :: getLogPoisPMF_SP
+    end interface getLogPoisPMF
+
     interface getBetaContinuedFraction
         module procedure :: getBetaContinuedFraction_SPR, getBetaContinuedFraction_DPR
     end interface getBetaContinuedFraction
@@ -3106,7 +3110,7 @@ contains
     !>
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
-    function getSNormPDF(z) result(snormPDF)
+    pure function getSNormPDF(z) result(snormPDF)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSNormPDF
 #endif
@@ -3132,7 +3136,7 @@ contains
     !>
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
-    function getNormPDF(avg,std,var,x) result(normPDF)
+    pure function getNormPDF(avg,std,var,x) result(normPDF)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormPDF
 #endif
@@ -3142,6 +3146,35 @@ contains
         real(RK)             :: normPDF
         normPDF = INVSQRT2PI * exp( -(x-avg)**2/(2._RK*var) ) / std
     end function getNormPDF
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Return the natural logarithm of the Poisson Probability Mass Function (PMF) of input integer `count` for the input mean `avg`.
+    !>
+    !> \param[in]   avg     :   The mean of the Poisson distribution.
+    !> \param[in]   logAvg  :   The natural logarithm of the mean of the Poisson distribution.
+    !> \param[in]   count   :   The point at which the PMF will be computed.
+    !>
+    !> \return
+    !> `logPoisPMF` :   The Poisson distribution PMF value at the given input point.
+    !>
+    !> \warning
+    !> The input value for `avg` **must** be larger than `0.`. This condition is not checked for.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday February 22, 2017, 3:22 1:51 AM, Dallas, Texas.
+    pure function getLogPoisPMF_SP(avg, logAvg, count) result(logPoisPMF)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogPoisPMF_SP
+#endif
+        use Constants_mod, only: IK, RK
+        implicit none
+        real(RK)    , intent(in)    :: avg, logAvg
+        integer(IK) , intent(in)    :: count
+        real(RK)                    :: logPoisPMF
+        logPoisPMF = count * logAvg - log_gamma(count + 1._RK) - avg
+    end function getLogPoisPMF_SP
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

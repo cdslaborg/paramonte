@@ -132,9 +132,9 @@ contains
                                     , nsim = 0_IK & ! LCOV_EXCL_LINE
                                    !, nemax = TestData%nemax & ! LCOV_EXCL_LINE
                                     , trimEnabled = .true. & ! LCOV_EXCL_LINE
-                                    , logTightness = log(1._RK) & ! LCOV_EXCL_LINE
+                                    , logExpansion = log(1._RK) & ! LCOV_EXCL_LINE
                                    !, inclusionFraction = 0._RK & ! LCOV_EXCL_LINE
-                                   !, parentLogVolNormed = sum(log(TestData%DomainSize)) & ! LCOV_EXCL_LINE
+                                    , parentLogVolNormed = sum(log(TestData%DomainSize)) & ! LCOV_EXCL_LINE
                                     , MaxAllowedKmeansFailure = 10000 & ! LCOV_EXCL_LINE
                                     , MaxAllowedKmeansRecursion = 10000 & ! LCOV_EXCL_LINE
                                    !, maxAllowedKvolumeRecursion = 1000 & ! LCOV_EXCL_LINE
@@ -211,8 +211,8 @@ contains
         logical                     :: stanEnabled
         integer(IK)                 :: nt, nsim, nemax, minSize
         integer(IK)                 :: maxAllowedKvolumeRecursion
-        real(RK)                    :: tightness, inclusionFraction
-        namelist /specPartition/ rngseed, nc, nt, nemax, nsim, minSize, inclusionFraction, tightness, maxAllowedKvolumeRecursion, stanEnabled
+        real(RK)                    :: expansion, inclusionFraction
+        namelist /specPartition/ rngseed, nc, nt, nemax, nsim, minSize, inclusionFraction, expansion, maxAllowedKvolumeRecursion, stanEnabled
 
         assertion = .true.
 
@@ -286,7 +286,7 @@ contains
 !                                        , stanEnabled = .false. & ! LCOV_EXCL_LINE
 !#endif
                                         , stanEnabled = stanEnabled & ! LCOV_EXCL_LINE
-                                        , logTightness = log(tightness) & ! LCOV_EXCL_LINE
+                                        , logExpansion = log(expansion) & ! LCOV_EXCL_LINE
                                         , inclusionFraction = inclusionFraction & ! LCOV_EXCL_LINE
                                         , parentLogVolNormed = ClusteredPoint%sumLogVolNormedEffective & ! LCOV_EXCL_LINE
                                        !, nemax = ClusteredPoint%nemax & ! LCOV_EXCL_LINE
