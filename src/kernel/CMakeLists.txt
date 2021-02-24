@@ -537,6 +537,11 @@ if (CODECOV_ENABLED AND gnu_compiler)
     target_link_libraries(${PMLIB_NAME} PUBLIC gcov)
 endif()
 
+SET(SRC_BENCH ${ParaMonteKernel_SRC_DIR}/___benchmn___.f90)
+if (EXISTS ${SRC_BENCH})
+    target_sources(${PMLIB_NAME} PRIVATE ${SRC_BENCH})
+endif()
+
 install(TARGETS ${PMLIB_NAME}
         CONFIGURATIONS "${CMAKE_BUILD_TYPE}"
         DESTINATION "${ParaMonte_LIB_DIR}/"

@@ -986,9 +986,8 @@ contains
         ! Check if further clustering is warranted.
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        !blockSubclusterSearch: if  (logExpansion + getLogSumExp(nc, Kmeans%Prop%LogVolNormed) < LogVolNormed(1) .or. boundedRegionIsTooLarge) then
-        !blockSubclusterSearch: if  (getLogSumExp(nc, Kmeans%Prop%LogVolNormed) < LogVolNormed(1) .or. boundedRegionIsTooLarge) then
-        blockSubclusterSearch: if  (boundedRegionIsTooLarge .or. LogVolNormed(1) > logExpansion + Kmeans%Prop%logSumVolNormed) then
+        !blockSubclusterSearch: if (LogVolNormed(1) > logExpansion + Kmeans%Prop%logSumVolNormed .or. boundedRegionIsTooLarge) then ! homebrew
+        blockSubclusterSearch: if (LogVolNormed(1) > Kmeans%Prop%logSumVolNormed .or. boundedRegionIsTooLarge) then
 #endif
 
             ! At least nc sub-clusters is better than one cluster. Now search for more sub-sub-clusters.
