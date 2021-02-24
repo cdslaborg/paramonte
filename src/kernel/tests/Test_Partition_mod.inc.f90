@@ -212,13 +212,14 @@ contains
 
         integer(IK)                 :: nt, nsim, nemax, minSize
         integer(IK)                 :: maxAllowedKvolumeRecursion
+        real(RK)                    :: mahalSqWeightExponent
         real(RK)                    :: inclusionFraction
         real(RK)                    :: expansionMaxDen
         real(RK)                    :: expansionMinVol
         logical                     :: rinitEnabled
         logical                     :: stanEnabled
-        namelist /specPartition/ rngseed, isRepeatable, nc, nt, nemax, nsim, minSize, inclusionFraction, maxAllowedKvolumeRecursion, stanEnabled
-        namelist /specPartition/ expansionMaxDen, expansionMinVol
+        namelist /specPartition/ rngseed, isRepeatable, nc, nt, nemax, nsim, minSize, inclusionFraction, stanEnabled
+        namelist /specPartition/ maxAllowedKvolumeRecursion, expansionMaxDen, expansionMinVol, mahalSqWeightExponent
 
         assertion = .true.
 
@@ -239,6 +240,7 @@ contains
 
             ! read cluster spec
 
+            isRepeatable = .false.
             rngseed = -huge(rngseed)
             if (.not. allocated(dist)) allocate(character(63) :: dist)
             open(newunit = Test%File%unit, file = Test%inDir//"/Test_Partition_mod@test_runPartition_2.nml", status = "old")
@@ -248,7 +250,7 @@ contains
             if (isRepeatable .and. rinitEnabled) then
                 call random_init (repeatable = .true., image_distinct = .true.)
             else
-                if(rngseed == -huge(rngseed)) RandomSeed = RandomSeed_type(imageID = Test%Image%id, inputSeed = rngseed)
+                if(rngseed /= -huge(rngseed)) RandomSeed = RandomSeed_type(imageID = Test%Image%id, inputSeed = rngseed)
             end if
 
             call ClusteredPoint%get ( nd = nd & ! LCOV_EXCL_LINE
@@ -279,7 +281,9 @@ contains
             nsim = 0_IK
             minSize = nd + 1_IK
             stanEnabled = .true.
+            isRepeatable = .false.
             rngseed = -huge(rngseed)
+            mahalSqWeightExponent = 0._RK
             maxAllowedKvolumeRecursion = 100_IK
             nemax = ClusteredPoint%np / (ClusteredPoint%nd + 1)
             open(newunit = Test%File%unit, file = Test%inDir//"/Test_Partition_mod@test_runPartition_2.nml", status = "old")
@@ -288,7 +292,7 @@ contains
             if (isRepeatable .and. rinitEnabled) then
                 call random_init (repeatable = .true., image_distinct = .true.)
             else
-                if(rngseed == -huge(rngseed)) RandomSeed = RandomSeed_type(imageID = Test%Image%id, inputSeed = rngseed)
+                if(rngseed /= -huge(rngseed)) RandomSeed = RandomSeed_type(imageID = Test%Image%id, inputSeed = rngseed)
             end if
 
             !write(*,*) "zeroth nemax", nemax, ClusteredPoint%np, ClusteredPoint%nd + 1
@@ -308,6 +312,7 @@ contains
                                         , logExpansion = log(expansionMaxDen) & ! LCOV_EXCL_LINE
 #endif
                                         , inclusionFraction = inclusionFraction & ! LCOV_EXCL_LINE
+                                        , mahalSqWeightExponent = mahalSqWeightExponent & ! LCOV_EXCL_LINE
                                         , parentLogVolNormed = ClusteredPoint%logSumVolNormedEffective & ! LCOV_EXCL_LINE
                                        !, nemax = ClusteredPoint%nemax & ! LCOV_EXCL_LINE
                                        !, maxAllowedKmeansFailure = 10000 & ! LCOV_EXCL_LINE
