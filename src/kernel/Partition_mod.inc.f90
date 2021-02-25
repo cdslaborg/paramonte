@@ -219,7 +219,7 @@ contains
         Partition%maxAllowedKvolumeRecursion = 3_IK; if (present(maxAllowedKvolumeRecursion)) Partition%maxAllowedKvolumeRecursion = maxAllowedKvolumeRecursion
         Partition%maxAllowedKmeansRecursion = 300_IK; if (present(maxAllowedKmeansRecursion)) Partition%maxAllowedKmeansRecursion = maxAllowedKmeansRecursion
         Partition%maxAllowedKmeansFailure = 10_IK; if (present(maxAllowedKmeansFailure)) Partition%maxAllowedKmeansFailure = maxAllowedKmeansFailure
-        Partition%mahalSqWeightExponent = 0._RK; if (present(mahalSqWeightExponent)) Partition%mahalSqWeightExponent = mahalSqWeightExponent
+        Partition%mahalSqWeightExponent = 0._RK; if (present(mahalSqWeightExponent)) then; if (abs(mahalSqWeightExponent)>1.e-4_RK) Partition%mahalSqWeightExponent = mahalSqWeightExponent; endif
         Partition%inclusionFraction = 0._RK; if (present(inclusionFraction)) Partition%inclusionFraction = inclusionFraction
         Partition%logExpansion = LOG_EXPANSION; if (present(logExpansion)) Partition%logExpansion = logExpansion
         Partition%kmeansRelTol = 1.e-4_RK; if (present(kmeansRelTol)) Partition%kmeansRelTol = kmeansRelTol
@@ -896,7 +896,7 @@ contains
             ! Determine the cluster to which the point is the closest and switch the point membership if needed.
 
             reclusteringNeeded = .false.
-            if ( abs(mahalSqWeightExponent) < 1.e-4_RK &
+            if ( mahalSqWeightExponent /= 0._RK &
 #if defined MINVOL
                 .and. parentLogVolNormed > NEGINF_RK &
 #endif
