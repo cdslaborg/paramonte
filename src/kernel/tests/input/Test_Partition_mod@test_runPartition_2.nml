@@ -16,7 +16,7 @@
     !rngseed = 5157682
     !rngseed = 51575130 ! some random seeds are not deterministic!
     rngseed = 515769
-    isRepeatable = .true.
+    !isRepeatable = .true.
     dist = "uniform"
 /
 
