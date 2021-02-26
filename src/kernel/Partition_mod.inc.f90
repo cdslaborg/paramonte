@@ -436,8 +436,6 @@ contains
                                             , nt    = Partition%nt & ! LCOV_EXCL_LINE
                                             , nsim  = Partition%nsim & ! LCOV_EXCL_LINE
                                             , nemax = Partition%nemax & ! LCOV_EXCL_LINE
-                                            , npend = 1_IK & ! LCOV_EXCL_LINE
-                                            , npstart = np & ! LCOV_EXCL_LINE
                                             , minSize = Partition%minSize & ! LCOV_EXCL_LINE
                                             , kmeansRelTol = Partition%kmeansRelTol & ! LCOV_EXCL_LINE
                                             , logExpansion = Partition%logExpansion & ! LCOV_EXCL_LINE
@@ -503,8 +501,6 @@ contains
                                             , nt    = Partition%nt & ! LCOV_EXCL_LINE
                                             , nsim  = Partition%nsim & ! LCOV_EXCL_LINE
                                             , nemax = Partition%nemax & ! LCOV_EXCL_LINE
-                                            , npend = 1_IK & ! LCOV_EXCL_LINE
-                                            , npstart = np & ! LCOV_EXCL_LINE
                                             , minSize = Partition%minSize & ! LCOV_EXCL_LINE
                                             , kmeansRelTol = Partition%kmeansRelTol & ! LCOV_EXCL_LINE
                                             , logExpansion = Partition%logExpansion & ! LCOV_EXCL_LINE
@@ -586,8 +582,6 @@ contains
                                                 , nt & ! LCOV_EXCL_LINE
                                                 , nsim & ! LCOV_EXCL_LINE
                                                 , nemax & ! LCOV_EXCL_LINE
-                                                , npend & ! LCOV_EXCL_LINE
-                                                , npstart & ! LCOV_EXCL_LINE
                                                 , minSize & ! LCOV_EXCL_LINE
                                                 , kmeansRelTol & ! LCOV_EXCL_LINE
                                                 , logExpansion & ! LCOV_EXCL_LINE
@@ -628,7 +622,7 @@ contains
 
         implicit none
 
-        integer(IK) , intent(in)                :: nd, np, nc, nt, nsim, nemax, npend, npstart, minSize
+        integer(IK) , intent(in)                :: nd, np, nc, nt, nsim, nemax, minSize
         real(RK)    , intent(in)                :: logExpansion
         real(RK)    , intent(in)                :: kmeansRelTol
         real(RK)    , intent(in)                :: inclusionFraction
@@ -698,7 +692,7 @@ contains
                                 , np = np & ! LCOV_EXCL_LINE
                                 , nc = nc & ! LCOV_EXCL_LINE
                                 , nt = nt & ! LCOV_EXCL_LINE
-                                , Point = StanPoint(npstart:npend) & ! LCOV_EXCL_LINE
+                                , Point = StanPoint & ! LCOV_EXCL_LINE
                                 , relTol = kmeansRelTol & ! LCOV_EXCL_LINE
                                 , minSize = minSize & ! LCOV_EXCL_LINE
                                 , nfailMax = maxAllowedKmeansFailure & ! LCOV_EXCL_LINE
@@ -723,7 +717,7 @@ contains
                                 , np = np & ! LCOV_EXCL_LINE
                                 , nc = nc & ! LCOV_EXCL_LINE
                                 , nt = nt & ! LCOV_EXCL_LINE
-                                , Point = Point(npstart:npend) & ! LCOV_EXCL_LINE
+                                , Point = Point & ! LCOV_EXCL_LINE
                                 , relTol = kmeansRelTol & ! LCOV_EXCL_LINE
                                 , minSize = minSize & ! LCOV_EXCL_LINE
                                 , nfailMax = maxAllowedKmeansFailure & ! LCOV_EXCL_LINE
@@ -742,8 +736,6 @@ contains
 
         call Kmeans%getProp ( nd = nd & ! LCOV_EXCL_LINE
                             , np = np & ! LCOV_EXCL_LINE
-                            , npend = npend & ! LCOV_EXCL_LINE
-                            , npstart = npstart & ! LCOV_EXCL_LINE
                             , Point = Point & ! LCOV_EXCL_LINE
                             , Index = PointIndex & ! LCOV_EXCL_LINE
                             , inclusionFraction = inclusionFraction & ! LCOV_EXCL_LINE
