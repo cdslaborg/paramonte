@@ -434,6 +434,9 @@ contains
                                             , np    = Partition%np & ! LCOV_EXCL_LINE
                                             , nc    = min(Partition%nc, Partition%nemax) & ! LCOV_EXCL_LINE
                                             , nt    = Partition%nt & ! LCOV_EXCL_LINE
+                                            , npp   = Partition%np & ! LCOV_EXCL_LINE
+                                            , nps   = 1_IK & ! LCOV_EXCL_LINE
+                                            , npe   = Partition%np & ! LCOV_EXCL_LINE
                                             , nsim  = Partition%nsim & ! LCOV_EXCL_LINE
                                             , nemax = Partition%nemax & ! LCOV_EXCL_LINE
                                             , minSize = Partition%minSize & ! LCOV_EXCL_LINE
@@ -499,6 +502,9 @@ contains
                                             , np    = Partition%np & ! LCOV_EXCL_LINE
                                             , nc    = min(Partition%nc, Partition%nemax) & ! LCOV_EXCL_LINE
                                             , nt    = Partition%nt & ! LCOV_EXCL_LINE
+                                            , npp   = Partition%np & ! LCOV_EXCL_LINE
+                                            , nps   = 1_IK & ! LCOV_EXCL_LINE
+                                            , npe   = Partition%np & ! LCOV_EXCL_LINE
                                             , nsim  = Partition%nsim & ! LCOV_EXCL_LINE
                                             , nemax = Partition%nemax & ! LCOV_EXCL_LINE
                                             , minSize = Partition%minSize & ! LCOV_EXCL_LINE
@@ -580,6 +586,9 @@ contains
                                                 , np & ! LCOV_EXCL_LINE
                                                 , nc & ! LCOV_EXCL_LINE
                                                 , nt & ! LCOV_EXCL_LINE
+                                                , npp & ! LCOV_EXCL_LINE
+                                                , nps & ! LCOV_EXCL_LINE
+                                                , npe & ! LCOV_EXCL_LINE
                                                 , nsim & ! LCOV_EXCL_LINE
                                                 , nemax & ! LCOV_EXCL_LINE
                                                 , minSize & ! LCOV_EXCL_LINE
@@ -622,7 +631,9 @@ contains
 
         implicit none
 
-        integer(IK) , intent(in)                :: nd, np, nc, nt, nsim, nemax, minSize
+        integer(IK) , intent(in)                :: nd, np, nc, nt
+        integer(IK) , intent(in)                :: npp, nps, npe
+        integer(IK) , intent(in)                :: nsim, nemax, minSize
         real(RK)    , intent(in)                :: logExpansion
         real(RK)    , intent(in)                :: kmeansRelTol
         real(RK)    , intent(in)                :: inclusionFraction
@@ -636,8 +647,8 @@ contains
         integer(IK) , intent(out)               :: PartitionSize(nemax)
         integer(IK) , intent(inout)             :: numRecursiveCall
         integer(IK) , intent(inout)             :: convergenceFailureCount
-        integer(IK) , intent(inout)             :: Membership(np)
-        integer(IK) , intent(inout)             :: PointIndex(np)
+        integer(IK) , intent(inout)             :: Membership(npp)
+        integer(IK) , intent(inout)             :: PointIndex(npp)
         real(RK)    , intent(inout)             :: Point(nd,np)
         real(RK)    , intent(inout)             :: Center(nd,nemax)
         real(RK)    , intent(inout)             :: ChoLowCovUpp(nd,nd,nemax)
@@ -652,7 +663,7 @@ contains
         type(Kmeans_type)                       :: Kmeans
         real(RK)    , allocatable               :: InvStd(:)
         real(RK)                                :: ndInverse
-        real(RK)                                :: StanPoint(nd,np)
+        real(RK)                                :: StanPoint(nd,npp)
         real(RK)                                :: MahalSqWeight(nc)
         real(RK)                                :: KmeansLogVolEstimate(nc) ! New Cluster Volume estimates.
         real(RK)                                :: scaleFactorSqInverse
@@ -684,12 +695,12 @@ contains
         blockKmeansClustering: if (present(PointStd)) then
 
             InvStd = 1._RK / PointStd(1:nd)
-            do concurrent(ip = 1:np)
-                StanPoint(1:nd,ip) = Point(1:nd,ip) * InvStd(1:nd)
+            do concurrent(ip = 1:npp)
+                StanPoint(1:nd,ip) = Point(1:nd,ip+nps-1) * InvStd(1:nd)
             end do
 
             Kmeans = Kmeans_type( nd = nd & ! LCOV_EXCL_LINE
-                                , np = np & ! LCOV_EXCL_LINE
+                                , np = npp & ! LCOV_EXCL_LINE
                                 , nc = nc & ! LCOV_EXCL_LINE
                                 , nt = nt & ! LCOV_EXCL_LINE
                                 , Point = StanPoint & ! LCOV_EXCL_LINE
@@ -700,7 +711,7 @@ contains
                                 )
             if (Kmeans%Err%occurred) then
                 Membership = 1
-                PartitionSize(1) = np
+                PartitionSize(1) = npp
                 neopt = 1
                 return
             end if
@@ -714,10 +725,10 @@ contains
         else blockKmeansClustering
 
             Kmeans = Kmeans_type( nd = nd & ! LCOV_EXCL_LINE
-                                , np = np & ! LCOV_EXCL_LINE
+                                , np = npp & ! LCOV_EXCL_LINE
                                 , nc = nc & ! LCOV_EXCL_LINE
                                 , nt = nt & ! LCOV_EXCL_LINE
-                                , Point = Point & ! LCOV_EXCL_LINE
+                                , Point = Point(1:nd,nps:npe) & ! LCOV_EXCL_LINE
                                 , relTol = kmeansRelTol & ! LCOV_EXCL_LINE
                                 , minSize = minSize & ! LCOV_EXCL_LINE
                                 , nfailMax = maxAllowedKmeansFailure & ! LCOV_EXCL_LINE
@@ -725,7 +736,7 @@ contains
                                 )
             if (Kmeans%Err%occurred) then
                 Membership = 1
-                PartitionSize(1) = np
+                PartitionSize(1) = npp
                 neopt = 1
                 return
             end if
@@ -735,8 +746,8 @@ contains
         ! Compute cluster properties.
 
         call Kmeans%getProp ( nd = nd & ! LCOV_EXCL_LINE
-                            , np = np & ! LCOV_EXCL_LINE
-                            , Point = Point & ! LCOV_EXCL_LINE
+                            , np = npp & ! LCOV_EXCL_LINE
+                            , Point = Point(1:nd,nps:npe) & ! LCOV_EXCL_LINE
                             , Index = PointIndex & ! LCOV_EXCL_LINE
                             , inclusionFraction = inclusionFraction & ! LCOV_EXCL_LINE
                             , pointLogVolNormed = pointLogVolNormed & ! LCOV_EXCL_LINE
@@ -744,7 +755,7 @@ contains
         if (Kmeans%Err%occurred) then
             ! LCOV_EXCL_START
             Membership = 1
-            PartitionSize(1) = np
+            PartitionSize(1) = npp
             neopt = 1
             return
             ! LCOV_EXCL_STOP
@@ -762,7 +773,7 @@ contains
                     call getSamCholFac  ( nd = nd & ! LCOV_EXCL_LINE
                                         , np = Kmeans%Size(ic) & ! LCOV_EXCL_LINE
                                         , Mean = Kmeans%Center(1:nd,ic) & ! LCOV_EXCL_LINE
-                                        , Point = Point(1:nd,Kmeans%Prop%CumSumSize(ic-1)+1:Kmeans%Prop%CumSumSize(ic)) & ! LCOV_EXCL_LINE
+                                        , Point = Point(1:nd,Kmeans%Prop%CumSumSize(ic-1)+nps:Kmeans%Prop%CumSumSize(ic)+nps-1) & ! LCOV_EXCL_LINE
                                         , CholeskyLower = ChoLow & ! LCOV_EXCL_LINE
                                         , CholeskyDiago = ChoDia & ! LCOV_EXCL_LINE
                                         )
@@ -809,8 +820,8 @@ contains
                         ! LCOV_EXCL_STOP
                     end if
 
-                    do ip = 1, np
-                        NormedPoint(1:nd) = Point(1:nd,ip) - Kmeans%Center(1:nd,ic)
+                    do ip = 1, npp
+                        NormedPoint(1:nd) = Point(1:nd,ip+nps-1) - Kmeans%Center(1:nd,ic)
                         Kmeans%Prop%MahalSq(ip,ic) = dot_product( NormedPoint , matmul(Kmeans%Prop%InvCovMat(1:nd,1:nd,ic), NormedPoint) )
                         if (Kmeans%Prop%MahalSq(ip,ic)<0._RK) then
                         ! LCOV_EXCL_START
@@ -820,7 +831,7 @@ contains
                             error stop
                         end if
                         ! LCOV_EXCL_STOP
-                        dum = getMahalSq( nd, Kmeans%Center(1:nd,ic), Kmeans%Prop%InvCovMat(1:nd,1:nd,ic), Point(1:nd,ip) )
+                        dum = getMahalSq( nd, Kmeans%Center(1:nd,ic), Kmeans%Prop%InvCovMat(1:nd,1:nd,ic), Point(1:nd,ip+nps-1) )
                         diff = 2 * abs(dum-Kmeans%Prop%MahalSq(ip,ic)) / abs(dum+Kmeans%Prop%MahalSq(ip,ic))
                         if (diff > TOLERANCE) then
                             ! LCOV_EXCL_START
@@ -902,7 +913,7 @@ contains
 #endif
                 ) then
                 MahalSqWeight(1:nc) = exp(mahalSqWeightExponent * Kmeans%Prop%LogVolNormed(1:nc) - parentLogVolNormed)
-                loopReassignPoint: do ip = 1, np
+                loopReassignPoint: do ip = 1, npp
                     icmin = Kmeans%Membership(ip)
                     do ic = 1, nc
                         !if (Kmeans%Size(ic) > 0_IK .and. ic/=icmin .and. MahalSqWeight(ic) * Kmeans%Prop%MahalSq(ip,ic) < MahalSqWeight(icmin) * Kmeans%Prop%MahalSq(ip,icmin)) icmin = ic
@@ -911,14 +922,14 @@ contains
                     if (icmin /= Kmeans%Membership(ip)) then
                         Kmeans%Size(icmin) = Kmeans%Size(icmin) + 1_IK
                         Kmeans%Size(Kmeans%Membership(ip)) = Kmeans%Size(Kmeans%Membership(ip)) - 1_IK
-                        Kmeans%Center(1:nd,icmin) = Kmeans%Center(1:nd,icmin) + Point(1:nd,ip)
-                        Kmeans%Center(1:nd,Kmeans%Membership(ip)) = Kmeans%Center(1:nd,Kmeans%Membership(ip)) - Point(1:nd,ip)
+                        Kmeans%Center(1:nd,icmin) = Kmeans%Center(1:nd,icmin) + Point(1:nd,ip+nps-1)
+                        Kmeans%Center(1:nd,Kmeans%Membership(ip)) = Kmeans%Center(1:nd,Kmeans%Membership(ip)) - Point(1:nd,ip+nps-1)
                         Kmeans%Membership(ip) = icmin
                         reclusteringNeeded = .true.
                     end if
                 end do loopReassignPoint
             else
-                loopReassignWeightedPoint: do ip = 1, np
+                loopReassignWeightedPoint: do ip = 1, npp
                     icmin = Kmeans%Membership(ip)
                     do ic = 1, nc
                         !if (Kmeans%Size(ic) > 0_IK .and. ic/=icmin .and. Kmeans%Prop%MahalSq(ip,ic) < Kmeans%Prop%MahalSq(ip,icmin)) icmin = ic
@@ -927,8 +938,8 @@ contains
                     if (icmin /= Kmeans%Membership(ip)) then ! .and. Kmeans%Size(Kmeans%Membership(ip)) > minSize) then
                         Kmeans%Size(icmin) = Kmeans%Size(icmin) + 1_IK
                         Kmeans%Size(Kmeans%Membership(ip)) = Kmeans%Size(Kmeans%Membership(ip)) - 1_IK
-                        Kmeans%Center(1:nd,icmin) = Kmeans%Center(1:nd,icmin) + Point(1:nd,ip)
-                        Kmeans%Center(1:nd,Kmeans%Membership(ip)) = Kmeans%Center(1:nd,Kmeans%Membership(ip)) - Point(1:nd,ip)
+                        Kmeans%Center(1:nd,icmin) = Kmeans%Center(1:nd,icmin) + Point(1:nd,ip+nps-1)
+                        Kmeans%Center(1:nd,Kmeans%Membership(ip)) = Kmeans%Center(1:nd,Kmeans%Membership(ip)) - Point(1:nd,ip+nps-1)
                         Kmeans%Membership(ip) = icmin
                         reclusteringNeeded = .true.
                     end if
@@ -956,11 +967,11 @@ contains
 
                 ! Reorder Point based on the identified clusters and recompute the cluster properties.
 
-                call Kmeans%getProp(nd = nd, np = np, Point = Point, Index = PointIndex, inclusionFraction = inclusionFraction, pointLogVolNormed = pointLogVolNormed)
+                call Kmeans%getProp(nd = nd, np = npp, Point = Point(1:nd,nps:npe), Index = PointIndex, inclusionFraction = inclusionFraction, pointLogVolNormed = pointLogVolNormed)
                 if (Kmeans%Err%occurred) then
                     ! LCOV_EXCL_START
                     Membership = 1
-                    PartitionSize(1) = np
+                    PartitionSize(1) = npp
                     neopt = 1
                     return
                     ! LCOV_EXCL_STOP
@@ -985,9 +996,9 @@ contains
             do ic = 1, nc
 
 #if defined DEBUG_ENABLED
-                if (Kmeans%Prop%EffectiveSize(ic) > np) then
+                if (Kmeans%Prop%EffectiveSize(ic) > npp) then
                     write(*,*) PROCEDURE_NAME
-                    write(*,*) "FATAL: Internal error occurred: Kmeans%EffectiveSize(ic) > np", Kmeans%Prop%EffectiveSize(ic), np
+                    write(*,*) "FATAL: Internal error occurred: Kmeans%EffectiveSize(ic) > npp", Kmeans%Prop%EffectiveSize(ic), npp
                     error stop
                 end if
 #endif
@@ -1064,7 +1075,7 @@ contains
 #if defined DEBUG_ENABLED || TESTING_ENABLED || CODECOVE_ENABLED
                 if (nemaxRemained < KmeansNemax(ic)) then
                     write(*,"(*(g0,:,', '))") PROCEDURE_NAME//": nemaxRemained < KmeansNemax(ic) : numRecursiveCall, np, ic, minSize, nemaxRemained, KmeansNemax(ic), nemax" &
-                                            , numRecursiveCall, np, ic, minSize, nemaxRemained, KmeansNemax(ic), nemax
+                                            , numRecursiveCall, npp, ic, minSize, nemaxRemained, KmeansNemax(ic), nemax
                     error stop
                 end if
 #endif
@@ -1095,16 +1106,20 @@ contains
                             PointStd(i) = sqrt(Kmeans%Prop%ChoLowCovUpp(i,i,ic))
                         end do
 
-                        do concurrent(ip = ipstart:ipend)
+                        do concurrent(ip = ipstart+nps-1:ipend+nps-1)
                             Point(1:nd,ip) = Point(1:nd,ip) - Kmeans%Center(1:nd,ic)
                         end do
 
                     end if
 
                     call runRecursivePartition  ( nd = nd & ! LCOV_EXCL_LINE
-                                                , np = Kmeans%Size(ic) & ! LCOV_EXCL_LINE
+                                                !, np = Kmeans%Size(ic) & ! LCOV_EXCL_LINE
+                                                , np = np & ! LCOV_EXCL_LINE
                                                 , nc = min(nc, KmeansNemax(ic)) & ! LCOV_EXCL_LINE
                                                 , nt = nt & ! LCOV_EXCL_LINE
+                                                , npp = Kmeans%Size(ic) & ! LCOV_EXCL_LINE
+                                                , nps = ipstart + nps - 1 & ! LCOV_EXCL_LINE
+                                                , npe = ipend + nps - 1 & ! LCOV_EXCL_LINE
                                                 , nsim = nsim & ! LCOV_EXCL_LINE
                                                 , nemax = KmeansNemax(ic) & ! LCOV_EXCL_LINE
                                                 , minSize = minSize & ! LCOV_EXCL_LINE
@@ -1118,7 +1133,7 @@ contains
                                                 , maxAllowedKmeansFailure = maxAllowedKmeansFailure & ! LCOV_EXCL_LINE
                                                 , maxAllowedKmeansRecursion = maxAllowedKmeansRecursion & ! LCOV_EXCL_LINE
                                                 , maxAllowedKvolumeRecursion = maxAllowedKvolumeRecursion & ! LCOV_EXCL_LINE
-                                                , Point = Point(1:nd,ipstart:ipend) & ! LCOV_EXCL_LINE
+                                                , Point = Point & ! (1:nd,ipstart:ipend) & ! LCOV_EXCL_LINE
                                                 , PartitionSize = PartitionSize(icstart:icend) & ! LCOV_EXCL_LINE
                                                 , neopt = KmeansNeopt(ic) & ! LCOV_EXCL_LINE
                                                 , Center = Center(1:nd,icstart:icend) & ! LCOV_EXCL_LINE
@@ -1153,7 +1168,7 @@ contains
 
 #if defined DEBUG_ENABLED || TESTING_ENABLED || CODECOVE_ENABLED
                     if (present(PointStd)) then
-                        do concurrent(ip = ipstart:ipend)
+                        do concurrent(ip = ipstart+nps-1:ipend+nps-1)
                             Point(1:nd,ip) = Point(1:nd,ip) + Kmeans%Center(1:nd,ic)
                         end do
                     end if
@@ -1230,7 +1245,7 @@ contains
                         logical :: isInside
                         real(RK) :: mahalSq
                         real(RK), allocatable :: NormedPoint(:)
-                        do ip = ipstart, ipend
+                        do ip = ipstart + nps - 1, ipend + nps - 1
                             NormedPoint = Point(:,ip) - Center(:,icstart)
                             mahalSq = dot_product(NormedPoint,matmul(InvCovMat(:,:,icstart),NormedPoint))
                             isInside = mahalSq - 1._RK <= 1.e-6_RK
@@ -1262,7 +1277,7 @@ contains
         else blockSubclusterSearch  ! one cluster is better
 
             Membership = 1_IK
-            PartitionSize(1) = np
+            PartitionSize(1) = npp
             neopt = 1_IK
             return
 
@@ -1275,15 +1290,15 @@ contains
             logical :: isInside
             real(RK) :: mahalSq
             real(RK), allocatable :: NormedPoint(:)
-            do ip = 1, np
+            do ip = 1, npp
                 ic = Membership(ip)
                 if (ic < 1_IK .or. ic > nemax) then
                     write(*,*) PROCEDURE_NAME
-                    write(*,*) "ic, nc, ip, np, nemax, numRecursiveCall", ic, nc, ip, np, nemax, numRecursiveCall
+                    write(*,*) "ic, nc, ip, npp, nemax, numRecursiveCall", ic, nc, ip, npp, nemax, numRecursiveCall
                     write(*,*) "Kmeans%Prop%CumSumSize", Kmeans%Prop%CumSumSize
                     error stop
                 end if
-                NormedPoint = Point(:,ip) - Center(:,ic)
+                NormedPoint = Point(:,ip+nps-1) - Center(:,ic)
                 mahalSq = dot_product(NormedPoint,matmul(InvCovMat(:,:,ic),NormedPoint))
                 isInside = mahalSq - 1._RK <= 1.e-6_RK
                 if (.not. isInside) then
