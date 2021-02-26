@@ -96,6 +96,7 @@ matrix:
         - MPIEXEC_PATH="$(dpkg -L mpich | egrep bin/mpiexec.mpich)"
         - MPI_BIN_DIR="$(dirname "${MPIEXEC_PATH}")"
         - PATH="${MPI_BIN_DIR}:${PATH}"
+        - ulimit -s unlimited
         #- sudo apt install python3-pip
         #- pip3 install --user --upgrade numpy
         #- pip3 install --user --upgrade pandas
@@ -155,6 +156,7 @@ matrix:
         - gfortran-9 --version && FCFLAG="-f $(which gfortran-9)" || echo "gfortran-9 not found..."
         - ./install.sh --lang "C C++ Fortran" --build release --lib shared --mem heap --par "none" --yes-to-all ${FCFLAG} ${mpiexecFlag}
         - pmRootDir="$(pwd)"
+        - ulimit -s unlimited
         - ls ${pmRootDir}/bin/
         - cd ${pmRootDir}/bin/libparamonte_c_linux_x64_gnu_release_shared_heap && ls && ./build.sh && ./run.sh
         - cd ${pmRootDir}/bin/libparamonte_cpp_linux_x64_gnu_release_shared_heap && ls && ./build.sh && ./run.sh
@@ -182,6 +184,7 @@ matrix:
             - libmpich-dev
             - mpich
       script:
+        - ulimit -s unlimited
         - echo >&2 "FCFLAG = ${FCFLAG}"
         - cmake --version || echo "cmake not found..."
         - gfortran --version && FCFLAG="-f $(which gfortran)" || echo "gfortran not found..."
