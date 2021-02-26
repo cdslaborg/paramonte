@@ -131,6 +131,11 @@ if (BASIC_TEST_ENABLED OR SAMPLER_TEST_ENABLED OR CODECOV_ENABLED)
 
     add_executable(${ParaMonteTest_EXE_NAME} ${ParaMonteTest_SOURCE_FILES})
 
+    set(Test_SRC_BENCH ${ParaMonteTest_SRC_DIR}/___test_benchmn___.f90)
+    if (EXISTS ${Test_SRC_BENCH})
+        target_sources(${ParaMonteTest_EXE_NAME} PRIVATE ${Test_SRC_BENCH})
+    endif()
+
     if (CODECOV_ENABLED AND gnu_compiler)
         target_link_libraries(${ParaMonteTest_EXE_NAME} PUBLIC gcov)
     endif()
@@ -149,7 +154,7 @@ if (BASIC_TEST_ENABLED OR SAMPLER_TEST_ENABLED OR CODECOV_ENABLED)
 
     # set up BLAS and LAPACK if needed
 
-    if (DEFINED BLAS AND DEFINED LAPACK)
+    if (BLAS_FOUND AND LAPACK_FOUND)
         target_link_libraries   (   ${ParaMonteTest_EXE_NAME} PUBLIC
                                     ${BLAS_LIBRARIES}
                                     ${LAPACK_LIBRARIES}

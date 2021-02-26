@@ -758,7 +758,7 @@ contains
 
             else blockMinimumClusterSize
 
-                Kmeans%Prop%LogVolNormed(ic) = NEGINF_RK ! This initialization is essential in dependent procedures
+                Kmeans%Prop%LogVolNormed(ic) = NEGINF_RK ! This initialization is essential in dependent procedures.
                 pointLogVolNormedDefault = 1._RK ! This is an indicator
 
             end if blockMinimumClusterSize

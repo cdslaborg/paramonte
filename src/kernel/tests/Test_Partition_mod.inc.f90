@@ -49,6 +49,9 @@
     use PartitionMaxDen_mod
 #elif defined MINVOL
     use PartitionMinVol_mod
+#elif defined BENCHM
+    use Benchm_mod, only: getPartition, MODULE_NAME
+    use PartitionMinVol_mod, only: Partition_type, IK, RK
 #endif
 
     implicit none
@@ -81,7 +84,9 @@ contains
         implicit none
         Test = Test_type(moduleName=MODULE_NAME)
         call TestData%read()
+#if !defined BENCHM
         call Test%run(test_runPartition_1, "test_runPartition_1")
+#endif
         call Test%run(test_runPartition_2, "test_runPartition_2")
         !call Test%run(test_runPartition_3, "test_runPartition_3")
         !call Test%run(test_runPartition_4, "test_runPartition_4")
@@ -295,6 +300,15 @@ contains
                 if(rngseed /= -huge(rngseed)) RandomSeed = RandomSeed_type(imageID = Test%Image%id, inputSeed = rngseed)
             end if
 
+#if defined BENCHM
+
+            Partition = getPartition( Point = ClusteredPoint%Point & ! LCOV_EXCL_LINE
+                                    , nemax = nemax & ! LCOV_EXCL_LINE
+                                    , minSize = minSize & ! LCOV_EXCL_LINE
+                                    )
+
+#else
+
             !write(*,*) "zeroth nemax", nemax, ClusteredPoint%np, ClusteredPoint%nd + 1
             Partition = Partition_type  ( Point = ClusteredPoint%Point & ! LCOV_EXCL_LINE
                                         , nc = nc & ! LCOV_EXCL_LINE
@@ -399,6 +413,7 @@ contains
             end block
 
             if (.not. assertion) return
+#endif
 
         end do
 
