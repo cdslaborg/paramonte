@@ -676,6 +676,7 @@ contains
 
         maxLogVolNormed = NEGINF_RK
         pointLogVolNormedDefault = -1._RK ! indicator
+        Kmeans%Prop%logSumVolNormed = NEGINF_RK
         loopComputeClusterProperties: do ic = 1, nc
 
             blockMinimumClusterSize: if (Kmeans%Size(ic) > nd) then
@@ -765,7 +766,7 @@ contains
 
         end do loopComputeClusterProperties
 
-        Kmeans%Prop%logSumVolNormed = getLogSumExp(nc, Kmeans%Prop%LogVolNormed, maxLogVolNormed)
+        if (maxLogVolNormed /= NEGINF_RK) Kmeans%Prop%logSumVolNormed = getLogSumExp(nc, Kmeans%Prop%LogVolNormed, maxLogVolNormed)
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! Compute the properties of singular clusters.
@@ -779,7 +780,8 @@ contains
 
             if (pointLogVolNormedDefault < 0._RK) then
                 pointLogVolNormedDefault = pointLogVolNormed
-            elseif (any(Kmeans%Size(1:nc) > nd)) then
+           !elseif (any(Kmeans%Size(1:nc) > nd)) then
+            elseif (maxLogVolNormed /= NEGINF_RK) then
                 pointLogVolNormedDefault = 0._RK
                 do ic = 1, nc
                     if (Kmeans%Size(ic) > nd) pointLogVolNormedDefault = pointLogVolNormedDefault + real(Kmeans%Size(ic),RK)
@@ -791,7 +793,12 @@ contains
                 return
             end if
 
-            Kmeans%Prop%logSumVolNormed = exp(Kmeans%Prop%logSumVolNormed - maxLogVolNormed)
+            if (maxLogVolNormed /= NEGINF_RK) then
+                Kmeans%Prop%logSumVolNormed = exp(Kmeans%Prop%logSumVolNormed - maxLogVolNormed)
+            else
+                Kmeans%Prop%logSumVolNormed = 0._RK
+                maxLogVolNormed = pointLogVolNormedDefault
+            end if
 
             ! Assume a hyper-spherical ellipsoid as the bounding region of the points.
 
@@ -833,7 +840,7 @@ contains
                     else
                         Kmeans%Prop%EffectiveSize(ic)   = Kmeans%Size(ic)
                     end if
-
+                    !write(*,*) "Kmeans%Prop%LogVolNormed(ic), maxLogVolNormed", Kmeans%Prop%LogVolNormed(ic), maxLogVolNormed
                     Kmeans%Prop%logSumVolNormed = Kmeans%Prop%logSumVolNormed + exp(Kmeans%Prop%LogVolNormed(ic) - maxLogVolNormed)
 
                 end if

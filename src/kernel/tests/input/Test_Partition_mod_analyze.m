@@ -148,9 +148,10 @@ for method = methodList
 
             figure; hold on; box on; legend off;
 
-            % get the predicted ellipsoid boundary
-
             if predictedBoundsEnabled && cluspointExists
+
+                % get the predicted ellipsoid boundary
+
                 for ic = 1:partition.case{icase}.nc
                     bcrd = getEllipsoidBoundary ( partition.case{icase}.CovMatUpper(mask,mask,ic) ... covMat
                                                 , partition.case{icase}.Center(mask,ic) ... meanVec
@@ -161,6 +162,24 @@ for method = methodList
                         , "color", "red" ...
                         );
                 end
+
+                % plot the failed partitions
+
+                if isfield(partition.case{icase},"LogLike")
+                    FailedIndex = find(partition.case{icase}.LogLike>=0);
+                    for ic = 1:length(FailedIndex)
+                        bcrd = getEllipsoidBoundary ( partition.case{icase}.CovMatUpper(mask,mask,FailedIndex(ic)) ... covMat
+                                                    , partition.case{icase}.Center(mask,FailedIndex(ic)) ... meanVec
+                                                    , 100 ... npoint
+                                                    );
+                        plot( bcrd(:,1) ...
+                            , bcrd(:,2) ...
+                            , "color", "black" ...
+                            , "linewidth", 2 ...
+                            );
+                    end
+                end
+
             end
 
             % add the points

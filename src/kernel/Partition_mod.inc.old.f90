@@ -78,7 +78,6 @@
 !        real(RK)                    :: poisMode                     !< The (lower) mode of the Poisson distribution with a log-mean of `poisLogDen`.
 !#endif
         real(RK)                    :: logExpansion                 !< See the interface of [constructPartition()](@ref constructpartition).
-        real(RK)                    :: logShrinkage                 !< See the interface of [constructPartition()](@ref constructpartition).
         real(RK)                    :: kmeansRelTol                 !< See the interface of [constructPartition()](@ref constructpartition).
         logical                     :: stanEnabled                  !< See the interface of [constructPartition()](@ref constructpartition).
         integer(IK)                 :: neopt                        !< The predicted optimal number of clusters identified in the input data.
@@ -87,7 +86,7 @@
         integer(IK) , allocatable   :: Membership(:)                !< An array of size `(np)` representing the bounding-ellipsoid membership IDs of the corresponding data points.
         integer(IK) , allocatable   :: PointIndex(:)                !< An array of size `(np)` of indices such that the input `Point(1:nd,Index(ip))` is saved at the output `Point(1:nd,ip)`.
 #if defined MAXDEN
-        real(RK)    , allocatable   :: LogLike(:)                   !< An array of size `(nemax)` indicating the likelihood of subclustering (`0<<1` if successful, else `1<<2` if failed), enlargement (if < 0), being warranted. If it is warranted but fails, the likelihood will be negative.
+        real(RK)    , allocatable   :: OddityProb(:)                !< An array of size `(nemax)` indicating the likelihood of subclustering (`0<<1` if successful, else `1<<2` if failed), enlargement (if < 0), being warranted. If it is warranted but fails, the likelihood will be negative.
 #endif
         real(RK)    , allocatable   :: LogVolNormed(:)              !< An array of size `(nemax)` representing the log-volumes of the corresponding bounding ellipsoids.
         real(RK)    , allocatable   :: ChoLowCovUpp(:,:,:)          !< An array of size `(nd,nd,nemax)` representing the Cholesky lower triangle, diagonal, and covariance matrices of the bounding ellipsoids.
@@ -125,7 +124,6 @@ contains
     !> \param[in]   trimEnabled                 :   A logical value, indicating weather all allocatable components have been trimmed to the minimum size (**optional**, default = `.false.`).
     !> \param[in]   kmeansRelTol                :   The relative tolerance below which the Kmeans clustering is assumed to have converged (**optional**, default = `1.e-4`).
     !> \param[in]   logExpansion                :   The logarithm of the factor by which the volumes of the children bounding ellipsoids are enlarged before comparing their sums to their parents (**optional**, default = `0.`).
-    !> \param[in]   logShrinkage                :   The logarithm of the factor by which the sum of the volumes of the children bounds must be smaller than their parents to warrant further sub-partitioning (**optional**, default = `0.`).
     !> \param[in]   inclusionFraction           :   The fraction of non-member points that **are** inside the partition, to be used in estimating of the true volumes of the partitions (**optional**, default = `1.`).
     !> \param[in]   parentLogVolNormed          :   The logarithm of the volume of the input set of points normalized to the volume of the unit `nd`-ball (**optional**, default = `-infinity`).
     !> \param[in]   mahalSqWeightExponent       :   The exponent with which the density of the partitions are exponentiated to be used as the Mahalanobis distance weights (**optional**, default = `0.`).
@@ -168,7 +166,6 @@ contains
                                 , trimEnabled & ! LCOV_EXCL_LINE
                                 , kmeansRelTol & ! LCOV_EXCL_LINE
                                 , logExpansion & ! LCOV_EXCL_LINE
-                                , logShrinkage & ! LCOV_EXCL_LINE
                                 , inclusionFraction & ! LCOV_EXCL_LINE
                                 , parentLogVolNormed & ! LCOV_EXCL_LINE
                                 , mahalSqWeightExponent & ! LCOV_EXCL_LINE
@@ -193,7 +190,6 @@ contains
         logical     , intent(in)    , optional  :: trimEnabled
         real(RK)    , intent(in)    , optional  :: kmeansRelTol
         real(RK)    , intent(in)    , optional  :: logExpansion
-        real(RK)    , intent(in)    , optional  :: logShrinkage
         real(RK)    , intent(in)    , optional  :: inclusionFraction
         real(RK)    , intent(in)    , optional  :: parentLogVolNormed
         real(RK)    , intent(in)    , optional  :: mahalSqWeightExponent
@@ -202,11 +198,11 @@ contains
         integer(IK) , intent(in)    , optional  :: maxAllowedKvolumeRecursion
         type(Partition_type)                    :: Partition
 
-!#if defined MAXDEN
-!        real(RK), parameter :: LOG_EXPANSION = 0._RK
-!#elif defined MINVOL
-!        real(RK), parameter :: LOG_EXPANSION = log(1.3_RK)
-!#endif
+#if defined MAXDEN
+        real(RK), parameter :: LOG_EXPANSION = 0._RK
+#elif defined MINVOL
+        real(RK), parameter :: LOG_EXPANSION = log(1.3_RK)
+#endif
 
         Partition%nd = size(Point(:,1))
         Partition%np = size(Point(1,:))
@@ -224,9 +220,8 @@ contains
         Partition%maxAllowedKmeansRecursion = 300_IK; if (present(maxAllowedKmeansRecursion)) Partition%maxAllowedKmeansRecursion = maxAllowedKmeansRecursion
         Partition%maxAllowedKmeansFailure = 10_IK; if (present(maxAllowedKmeansFailure)) Partition%maxAllowedKmeansFailure = maxAllowedKmeansFailure
         Partition%mahalSqWeightExponent = 0._RK; if (present(mahalSqWeightExponent)) then; if (abs(mahalSqWeightExponent)>1.e-4_RK) Partition%mahalSqWeightExponent = mahalSqWeightExponent; endif
-        Partition%inclusionFraction = 0._RK; if (present(inclusionFraction)) then; if (abs(inclusionFraction)>1.e-5_RK) Partition%inclusionFraction = inclusionFraction; endif
-        Partition%logExpansion = 0._RK; if (present(logExpansion)) Partition%logExpansion = logExpansion
-        Partition%logShrinkage = 0._RK; if (present(logShrinkage)) Partition%logShrinkage = logShrinkage
+        Partition%inclusionFraction = 0._RK; if (present(inclusionFraction)) Partition%inclusionFraction = inclusionFraction
+        Partition%logExpansion = LOG_EXPANSION; if (present(logExpansion)) Partition%logExpansion = logExpansion
         Partition%kmeansRelTol = 1.e-4_RK; if (present(kmeansRelTol)) Partition%kmeansRelTol = kmeansRelTol
         Partition%stanEnabled = .true.; if (present(stanEnabled)) Partition%stanEnabled = stanEnabled
 
@@ -237,7 +232,7 @@ contains
                 , Partition%ChoLowCovUpp(Partition%nd,Partition%nd,Partition%nemax) & ! LCOV_EXCL_LINE
                 , Partition%LogVolNormed(Partition%nemax) & ! LCOV_EXCL_LINE
 #if defined MAXDEN
-                , Partition%LogLike     (Partition%nemax) & ! LCOV_EXCL_LINE
+                , Partition%OddityProb  (Partition%nemax) & ! LCOV_EXCL_LINE
 #endif
                 , Partition%Membership  (Partition%np) & ! LCOV_EXCL_LINE
                 , Partition%PointIndex  (Partition%np) & ! LCOV_EXCL_LINE
@@ -254,7 +249,7 @@ contains
                 Partition%ChoLowCovUpp  = Partition%ChoLowCovUpp(1:Partition%nd,1:Partition%nd,1:Partition%neopt)
                 Partition%LogVolNormed  = Partition%LogVolNormed(1:Partition%neopt)
 #if defined MAXDEN
-                Partition%LogLike       = Partition%LogLike     (1:Partition%neopt)
+                Partition%OddityProb    = Partition%OddityProb  (1:Partition%neopt)
 #endif
             end if
         end if
@@ -299,7 +294,7 @@ contains
         integer(IK) , allocatable               :: PointIndexSorted(:)
         real(RK)                                :: NormedPoint(Partition%nd,Partition%np)
         logical                                 :: boundedRegionIsTooLarge
-        real(RK)                                :: PointAvg(Partition%nd)
+        real(RK)                                :: PointMean(Partition%nd)
         real(RK)                                :: PointStd(Partition%nd)
         real(RK)                                :: scaleFactorSqInverse
         real(RK)                                :: scaleFactorSq
@@ -395,21 +390,12 @@ contains
         Partition%parentLogVolNormed = Partition%logExpansion + parentLogVolNormed
         logVolRatio = Partition%LogVolNormed(1) - Partition%parentLogVolNormed
         Partition%pointLogVolNormed = Partition%parentLogVolNormed - log(real(Partition%np,RK))
-        Partition%LogLike(1) = getLogProbPoisDiff(Partition%np, logVolRatio)
-#if defined DEBUG_ENABLED || defined TESTING_ENABLED || defined CODECOVE_ENABLED
-        !if (Partition%LogLike(1) < 0._RK .or. Partition%LogLike(1) > 1._RK) then
-        if (Partition%LogLike(1) < NEGINF_RK .or. Partition%LogLike(1) > 0._RK) then
-            write(*,*) "Internal error occurred: Partition%LogLike(1) < NEGINF_RK .or. Partition%LogLike(1) > 0._RK"
-            write(*,*) "Partition%LogVolNormed(1), Partition%parentLogVolNormed, Partition%LogLike(1):" & ! LCOV_EXCL_LINE
-                     ,  Partition%LogVolNormed(1), Partition%parentLogVolNormed, Partition%LogLike(1)
-            error stop
-        end if
-#endif
+        Partition%OddityProb(1) = 1._RK - getProbPoisDiff(Partition%np, logVolRatio)
         call random_number(unifrnd)
-        if (Partition%LogLike(1) < log(unifrnd)) then
+        if (Partition%OddityProb(1) > unifrnd) then
             boundedRegionIsTooLarge = logVolRatio > 0._RK
             if (.not. boundedRegionIsTooLarge) then
-                !Partition%LogLike(1) = 1._RK + Partition%LogLike(1)
+                Partition%OddityProb(1) = -Partition%OddityProb(1)
                 scaleFactor = scaleFactor * exp( (Partition%parentLogVolNormed - Partition%LogVolNormed(1)) / Partition%nd )
                 Partition%LogVolNormed(1) = Partition%parentLogVolNormed
                 scaleFactorSq = scaleFactor**2
@@ -443,7 +429,7 @@ contains
 
             blockStandardization: if (Partition%stanEnabled) then
 
-                PointAvg(1:Partition%nd) = Partition%Center(1:Partition%nd,1)
+                PointMean(1:Partition%nd) = Partition%Center(1:Partition%nd,1)
                 call runRecursivePartition  ( nd    = Partition%nd & ! LCOV_EXCL_LINE
                                             , np    = Partition%np & ! LCOV_EXCL_LINE
                                             , nc    = min(Partition%nc, Partition%nemax) & ! LCOV_EXCL_LINE
@@ -456,7 +442,6 @@ contains
                                             , minSize = Partition%minSize & ! LCOV_EXCL_LINE
                                             , kmeansRelTol = Partition%kmeansRelTol & ! LCOV_EXCL_LINE
                                             , logExpansion = Partition%logExpansion & ! LCOV_EXCL_LINE
-                                            , logShrinkage = Partition%logShrinkage & ! LCOV_EXCL_LINE
                                             , inclusionFraction = Partition%inclusionFraction & ! LCOV_EXCL_LINE
                                             , pointLogVolNormed = Partition%pointLogVolNormed & ! LCOV_EXCL_LINE
                                             , parentLogVolNormed = Partition%parentLogVolNormed & ! LCOV_EXCL_LINE
@@ -464,31 +449,31 @@ contains
                                             , maxAllowedKmeansFailure = Partition%maxAllowedKmeansFailure & ! LCOV_EXCL_LINE
                                             , maxAllowedKmeansRecursion = Partition%maxAllowedKmeansRecursion & ! LCOV_EXCL_LINE
                                             , maxAllowedKvolumeRecursion = Partition%maxAllowedKvolumeRecursion & ! LCOV_EXCL_LINE
-                                            , Point = Point & ! LCOV_EXCL_LINE
+                                            , Point = NormedPoint & ! LCOV_EXCL_LINE
                                             , PartitionSize = Partition%Size & ! LCOV_EXCL_LINE
                                             , neopt = Partition%neopt & ! LCOV_EXCL_LINE
                                             , Center = Partition%Center & ! LCOV_EXCL_LINE
                                             , ChoDia = Partition%ChoDia & ! LCOV_EXCL_LINE
-#if defined MAXDEN
-                                            , LogLike = Partition%LogLike & ! LCOV_EXCL_LINE
-#endif
                                             , InvCovMat = Partition%InvCovMat & ! LCOV_EXCL_LINE
+                                            !, Membership = NormedPointMembership & ! LCOV_EXCL_LINE
+#if defined MAXDEN
+                                            , OddityProb = Partition%OddityProb & ! LCOV_EXCL_LINE
+#endif
                                             , Membership = Partition%Membership & ! LCOV_EXCL_LINE
                                             , PointIndex = Partition%PointIndex & ! LCOV_EXCL_LINE
                                             , ChoLowCovUpp = Partition%ChoLowCovUpp & ! LCOV_EXCL_LINE
                                             , LogVolNormed = Partition%LogVolNormed & ! LCOV_EXCL_LINE
                                             , numRecursiveCall = Partition%numRecursiveCall & ! LCOV_EXCL_LINE
                                             , convergenceFailureCount = Partition%convergenceFailureCount & ! LCOV_EXCL_LINE
-                                            , PointAvg = PointAvg(1:Partition%nd) & ! LCOV_EXCL_LINE
                                             , PointStd = PointStd & ! LCOV_EXCL_LINE
                                             )
                 if (Partition%neopt > 1_IK) then
-                    !do concurrent(ic = 1:Partition%neopt)
-                    !    Partition%Center(1:Partition%nd,ic) = Partition%Center(1:Partition%nd,ic) + PointAvg(1:Partition%nd)
-                    !end do
+                    do concurrent(ic = 1:Partition%neopt)
+                        Partition%Center(1:Partition%nd,ic) = Partition%Center(1:Partition%nd,ic) + PointMean(1:Partition%nd)
+                    end do
 #if defined MAXDEN
                 else
-                    Partition%LogLike(1) = -Partition%LogLike(1)
+                    Partition%OddityProb(1) = 1._RK + Partition%OddityProb(1)
 #endif
                 end if
 
@@ -498,15 +483,15 @@ contains
                 !call Timer%tic()
                 ! The following step takes about 1 microseconds (in low dims) to 1 ms (in high dims).
                 ! Sorting PointIndex at dimensions > 20 with 500-2000 tends to be superior to sorting Point.
-                !xx!if (Partition%nd < 20_IK) then
-                !xx!    NormedPoint(1:Partition%nd, 1:Partition%np) = Point(1:Partition%nd, Partition%PointIndex(1:Partition%np))
-                !xx!    Point(1:Partition%nd, 1:Partition%np) = NormedPoint(1:Partition%nd, 1:Partition%np)
-                !xx!else
-                !xx!    if (.not. allocated(PointIndexSorted)) allocate(PointIndexSorted(Partition%np))
-                !xx!    call indexArray(Partition%np, Partition%PointIndex, PointIndexSorted, Partition%Err)
-                !xx!    if (Partition%Err%occurred) return ! LCOV_EXCL_LINE
-                !xx!    Partition%Membership(1:Partition%np) = Partition%Membership(PointIndexSorted)
-                !xx!end if
+                if (Partition%nd < 20_IK) then
+                    NormedPoint(1:Partition%nd, 1:Partition%np) = Point(1:Partition%nd, Partition%PointIndex(1:Partition%np))
+                    Point(1:Partition%nd, 1:Partition%np) = NormedPoint(1:Partition%nd, 1:Partition%np)
+                else
+                    if (.not. allocated(PointIndexSorted)) allocate(PointIndexSorted(Partition%np))
+                    call indexArray(Partition%np, Partition%PointIndex, PointIndexSorted, Partition%Err)
+                    if (Partition%Err%occurred) return ! LCOV_EXCL_LINE
+                    Partition%Membership(1:Partition%np) = Partition%Membership(PointIndexSorted)
+                end if
                 !call Timer%toc()
                 !write(*,*) "delta = ", Timer%Time%delta
                 !end block
@@ -525,7 +510,6 @@ contains
                                             , minSize = Partition%minSize & ! LCOV_EXCL_LINE
                                             , kmeansRelTol = Partition%kmeansRelTol & ! LCOV_EXCL_LINE
                                             , logExpansion = Partition%logExpansion & ! LCOV_EXCL_LINE
-                                            , logShrinkage = Partition%logShrinkage & ! LCOV_EXCL_LINE
                                             , inclusionFraction = Partition%inclusionFraction & ! LCOV_EXCL_LINE
                                             , pointLogVolNormed = Partition%pointLogVolNormed & ! LCOV_EXCL_LINE
                                             , parentLogVolNormed = Partition%parentLogVolNormed & ! LCOV_EXCL_LINE
@@ -538,10 +522,10 @@ contains
                                             , neopt = Partition%neopt & ! LCOV_EXCL_LINE
                                             , Center = Partition%Center & ! LCOV_EXCL_LINE
                                             , ChoDia = Partition%ChoDia & ! LCOV_EXCL_LINE
-#if defined MAXDEN
-                                            , LogLike = Partition%LogLike & ! LCOV_EXCL_LINE
-#endif
                                             , InvCovMat = Partition%InvCovMat & ! LCOV_EXCL_LINE
+#if defined MAXDEN
+                                            , OddityProb = Partition%OddityProb & ! LCOV_EXCL_LINE
+#endif
                                             , Membership = Partition%Membership & ! LCOV_EXCL_LINE
                                             , PointIndex = Partition%PointIndex & ! LCOV_EXCL_LINE
                                             , ChoLowCovUpp = Partition%ChoLowCovUpp & ! LCOV_EXCL_LINE
@@ -551,7 +535,7 @@ contains
                                             )
 
 #if defined MAXDEN
-                if (Partition%neopt == 1_IK) Partition%LogLike(1) = -Partition%LogLike(1)
+                if (Partition%neopt == 1_IK) Partition%OddityProb(1) = -Partition%OddityProb(1)
 #endif
 
             end if blockStandardization
@@ -610,7 +594,6 @@ contains
                                                 , minSize & ! LCOV_EXCL_LINE
                                                 , kmeansRelTol & ! LCOV_EXCL_LINE
                                                 , logExpansion & ! LCOV_EXCL_LINE
-                                                , logShrinkage & ! LCOV_EXCL_LINE
                                                 , inclusionFraction & ! LCOV_EXCL_LINE
                                                 , pointLogVolNormed & ! LCOV_EXCL_LINE
                                                 , parentLogVolNormed & ! LCOV_EXCL_LINE
@@ -623,17 +606,16 @@ contains
                                                 , neopt & ! LCOV_EXCL_LINE
                                                 , Center & ! LCOV_EXCL_LINE
                                                 , ChoDia & ! LCOV_EXCL_LINE
-#if defined MAXDEN
-                                                , LogLike & ! LCOV_EXCL_LINE
-#endif
                                                 , InvCovMat & ! LCOV_EXCL_LINE
+#if defined MAXDEN
+                                                , OddityProb & ! LCOV_EXCL_LINE
+#endif
                                                 , Membership & ! LCOV_EXCL_LINE
                                                 , PointIndex & ! LCOV_EXCL_LINE
                                                 , ChoLowCovUpp & ! LCOV_EXCL_LINE
                                                 , LogVolNormed & ! LCOV_EXCL_LINE
                                                 , numRecursiveCall & ! LCOV_EXCL_LINE
                                                 , convergenceFailureCount & ! LCOV_EXCL_LINE
-                                                , PointAvg & ! LCOV_EXCL_LINE
                                                 , PointStd & ! LCOV_EXCL_LINE
                                                 )
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
@@ -653,7 +635,6 @@ contains
         integer(IK) , intent(in)                :: npp, nps, npe
         integer(IK) , intent(in)                :: nsim, nemax, minSize
         real(RK)    , intent(in)                :: logExpansion
-        real(RK)    , intent(in)                :: logShrinkage
         real(RK)    , intent(in)                :: kmeansRelTol
         real(RK)    , intent(in)                :: inclusionFraction
         real(RK)    , intent(in)                :: pointLogVolNormed
@@ -674,17 +655,14 @@ contains
         real(RK)    , intent(inout)             :: InvCovMat(nd,nd,nemax)
         real(RK)    , intent(inout)             :: LogVolNormed(nemax)
 #if defined MAXDEN
-        real(RK)    , intent(inout)             :: LogLike(nemax)
+        real(RK)    , intent(inout)             :: OddityProb(nemax)
 #endif
         real(RK)    , intent(inout)             :: ChoDia(nd,nemax)
-        real(RK)    , intent(inout) , optional  :: PointAvg(nd) ! must coexist with PointStd
-        real(RK)    , intent(inout) , optional  :: PointStd(nd)
+        real(RK)    , intent(inout), optional   :: PointStd(nd)
 
         type(Kmeans_type)                       :: Kmeans
         real(RK)    , allocatable               :: InvStd(:)
-        real(RK)                                :: mahalSq
         real(RK)                                :: ndInverse
-        real(RK)                                :: NormedPoint(nd)
         real(RK)                                :: StanPoint(nd,npp)
         real(RK)                                :: MahalSqWeight(nc)
         real(RK)                                :: KmeansLogVolEstimate(nc) ! New Cluster Volume estimates.
@@ -694,24 +672,16 @@ contains
         integer(IK)                             :: KmeansNeopt(0:nc)    ! optimal number of clusters in each of the child clusters.
         integer(IK)                             :: i, j, ip, ic, jc, ipstart, ipend
         integer(IK)                             :: icstart, icend, recursionCounter
-        integer(IK)                             :: counterEffectiveSize
         integer(IK)                             :: icmin, nemaxRemained
         logical                                 :: boundedRegionIsTooLarge
         logical                                 :: reclusteringNeeded
-#if defined MINVOL
-        real(RK)                                :: maxLogVolNormed
-#elif defined MAXDEN
-        real(RK)                                :: logVolRatio
+#if defined MAXDEN
         real(RK)                                :: unifrnd
-        real(RK)                                :: logLikeSum ! recovery
-        real(RK)                                :: parEllLogLike ! recovery
+        real(RK)                                :: logVolRatio
+       !real(RK)                                :: probPoisDiff
+#elif defined MINVOL
+        real(RK)                                :: maxLogVolNormed
 #endif
-        real(RK)                                :: ParEllCenter(nd) ! recovery
-        real(RK)                                :: ParEllChoDia(1:nd) ! recovery
-        real(RK)                                :: parEllLogVolNormed ! recovery
-        real(RK)                                :: ParEllInvCovMat(1:nd,1:nd) ! recovery
-        real(RK)                                :: ParEllChoLowCovUpp(1:nd,1:nd) ! recovery
-
 
         character(*), parameter                 :: PROCEDURE_NAME = MODULE_NAME//"@runRecursivePartition()"
 
@@ -726,7 +696,7 @@ contains
 
             InvStd = 1._RK / PointStd(1:nd)
             do concurrent(ip = 1:npp)
-                StanPoint(1:nd,ip) = (Point(1:nd,ip+nps-1) - PointAvg(1:nd)) * InvStd(1:nd)
+                StanPoint(1:nd,ip) = Point(1:nd,ip+nps-1) * InvStd(1:nd)
             end do
 
             Kmeans = Kmeans_type( nd = nd & ! LCOV_EXCL_LINE
@@ -749,7 +719,7 @@ contains
             ! Shift centers back.
 
             do concurrent(ic = 1:nc)
-                Kmeans%Center(1:nd,ic) = Kmeans%Center(1:nd,ic) * PointStd(1:nd) + PointAvg(1:nd)
+                Kmeans%Center(1:nd,ic) = Kmeans%Center(1:nd,ic) * PointStd(1:nd) !+ PointMean(1:nd)
             end do
 
         else blockKmeansClustering
@@ -885,8 +855,8 @@ contains
         ! If optimization is enabled (i.e., not kmeans), reassign points to clusters based on minimum-volume, maximum-density, ...
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        !KmeansBackup = Kmeans_type(nd, npp, nc)
-        !call KmeansBackup%Prop%allocate(nd, npp, nc)
+        !KmeansBackup = Kmeans_type(nd, np, nc)
+        !call KmeansBackup%Prop%allocate(nd, np, nc)
         !KmeansBackup%Prop%LogVolNormed = 2 * Kmeans%Prop%LogVolNormed
 
         loopRecursivePartitionOptimization: do recursionCounter = 1, maxAllowedKvolumeRecursion
@@ -895,12 +865,12 @@ contains
 
             !if (Kmeans%Prop%logSumVolNormed < KmeansBackup%Prop%logSumVolNormed) then ! Create a backup of the current clustering properties. This must never occur on the first try.
             !    !KmeansBackup = Kmeans
-            !    BackupPoint(1:nd,1:npp)                          = Point(1:nd,1:npp)
-            !    BackupPointIndex(1:npp)                          = PointIndex(1:npp)
-            !    KmeansBackup%Membership(1:npp)                   = Kmeans%Membership(1:npp)
+            !    BackupPoint(1:nd,1:np)                          = Point(1:nd,1:np)
+            !    BackupPointIndex(1:np)                          = PointIndex(1:np)
+            !    KmeansBackup%Membership(1:np)                   = Kmeans%Membership(1:np)
             !    KmeansBackup%Center(1:nd,1:nc)                  = Kmeans%Center(1:nd,1:nc)
             !    KmeansBackup%Prop%ChoDia(1:nd,1:nc)             = Kmeans%Prop%ChoDia(1:nd,1:nc)
-            !    KmeansBackup%Prop%MahalSq(1:npp,1:nc)            = Kmeans%Prop%MahalSq(1:npp,1:nc)
+            !    KmeansBackup%Prop%MahalSq(1:np,1:nc)            = Kmeans%Prop%MahalSq(1:np,1:nc)
             !    KmeansBackup%Prop%ScaleFactorSq(1:nc)           = Kmeans%Prop%ScaleFactorSq(1:nc)
             !    KmeansBackup%Prop%InvCovMat(1:nd,1:nd,1:nc)     = Kmeans%Prop%InvCovMat(1:nd,1:nd,1:nc)
             !    KmeansBackup%Prop%ChoLowCovUpp(1:nd,1:nd,1:nc)  = Kmeans%Prop%ChoLowCovUpp(1:nd,1:nd,1:nc)
@@ -911,12 +881,12 @@ contains
             !    KmeansBackup%Prop%logSumVolNormed               = Kmeans%Prop%logSumVolNormed
             !else ! Restore the last clustering properties.
             !    !Kmeans = KmeansBackup
-            !    Point(1:nd,nps:npe)                             = BackupPoint(1:nd,nps:npe)
-            !    PointIndex(1:npp)                                = BackupPointIndex(1:npp)
-            !    Kmeans%Membership(1:npp)                         = KmeansBackup%Membership(1:npp)
+            !    Point(1:nd,1:np)                                = BackupPoint(1:nd,1:np)
+            !    PointIndex(1:np)                                = BackupPointIndex(1:np)
+            !    Kmeans%Membership(1:np)                         = KmeansBackup%Membership(1:np)
             !    Kmeans%Center(1:nd,1:nc)                        = KmeansBackup%Center(1:nd,1:nc)
             !    Kmeans%Prop%ChoDia(1:nd,1:nc)                   = KmeansBackup%Prop%ChoDia(1:nd,1:nc)
-            !    Kmeans%Prop%MahalSq(1:npp,1:nc)                  = KmeansBackup%Prop%MahalSq(1:npp,1:nc)
+            !    Kmeans%Prop%MahalSq(1:np,1:nc)                  = KmeansBackup%Prop%MahalSq(1:np,1:nc)
             !    Kmeans%Prop%ScaleFactorSq(1:nc)                 = KmeansBackup%Prop%ScaleFactorSq(1:nc)
             !    Kmeans%Prop%InvCovMat(1:nd,1:nd,1:nc)           = KmeansBackup%Prop%InvCovMat(1:nd,1:nd,1:nc)
             !    Kmeans%Prop%ChoLowCovUpp(1:nd,1:nd,1:nc)        = KmeansBackup%Prop%ChoLowCovUpp(1:nd,1:nd,1:nc)
@@ -997,13 +967,7 @@ contains
 
                 ! Reorder Point based on the identified clusters and recompute the cluster properties.
 
-                call Kmeans%getProp ( nd = nd & ! LCOV_EXCL_LINE
-                                    , np = npp & ! LCOV_EXCL_LINE
-                                    , Point = Point(1:nd,nps:npe) & ! LCOV_EXCL_LINE
-                                    , Index = PointIndex & ! LCOV_EXCL_LINE
-                                    , inclusionFraction = inclusionFraction & ! LCOV_EXCL_LINE
-                                    , pointLogVolNormed = pointLogVolNormed & ! LCOV_EXCL_LINE
-                                    )
+                call Kmeans%getProp(nd = nd, np = npp, Point = Point(1:nd,nps:npe), Index = PointIndex, inclusionFraction = inclusionFraction, pointLogVolNormed = pointLogVolNormed)
                 if (Kmeans%Err%occurred) then
                     ! LCOV_EXCL_START
                     Membership = 1
@@ -1090,20 +1054,8 @@ contains
         ! Check if further clustering is warranted.
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        blockSubclusterSearch: if (LogVolNormed(1) > logShrinkage + Kmeans%Prop%logSumVolNormed .or. boundedRegionIsTooLarge) then
-#endif
-
-#if defined MAXDEN
-            if (logShrinkage > NEGINF_RK) then
-                parEllLogLike = LogLike(1) ! recovery
-#endif
-                ParEllCenter(1:nd) = Center(1:nd,1) ! recovery
-                ParEllChoDia(1:nd) = ChoDia(1:nd,1) ! recovery
-                parEllLogVolNormed = LogVolNormed(1) ! recovery
-                ParEllInvCovMat(1:nd,1:nd) = InvCovMat(1:nd,1:nd,1) ! recovery
-                ParEllChoLowCovUpp(1:nd,1:nd) = ChoLowCovUpp(1:nd,1:nd,1) ! recovery
-#if defined MAXDEN
-            end if
+        !blockSubclusterSearch: if (LogVolNormed(1) > logExpansion + Kmeans%Prop%logSumVolNormed .or. boundedRegionIsTooLarge) then ! homebrew
+        blockSubclusterSearch: if (LogVolNormed(1) > Kmeans%Prop%logSumVolNormed .or. boundedRegionIsTooLarge) then
 #endif
 
             ! At least nc sub-clusters is better than one cluster. Now search for more sub-sub-clusters.
@@ -1136,47 +1088,11 @@ contains
 
 #if defined MAXDEN
                 if (Kmeans%size(ic) > 0_IK) then
-                    if (inclusionFraction > 0._RK) then
-                        counterEffectiveSize = 0_IK
-                        do ip = 1, nps
-                            NormedPoint(1:nd) = Point(1:nd,ip) - Kmeans%Center(1:nd,ic)
-                            mahalSq = dot_product( NormedPoint(1:nd) , matmul(Kmeans%Prop%InvCovMat(1:nd,1:nd,ic), NormedPoint(1:nd)) )
-                            if (mahalSq < 1._RK) counterEffectiveSize = counterEffectiveSize + 1_IK
-                        end do
-#if defined DEBUG_ENABLED || TESTING_ENABLED || CODECOVE_ENABLED
-                        do ip = ipstart + nps - 1, ipend + nps - 1
-                            NormedPoint(1:nd) = Point(1:nd,ip) - Kmeans%Center(1:nd,ic)
-                            mahalSq = dot_product( NormedPoint(1:nd) , matmul(Kmeans%Prop%InvCovMat(1:nd,1:nd,ic), NormedPoint(1:nd)) )
-                            if (mahalSq - 1._RK > 1.e-6_RK) then
-                                write(*,*) "Internal error occurred : mahalSq > 1 :", mahalSq
-                                write(*,*) "nps, ip, npe, np", nps, ip, npe, np
-                                write(*,*) "ic, Kmeans%size(ic)", ic, Kmeans%size(ic)
-                                write(*,*) "numRecursiveCall", numRecursiveCall
-                                error stop
-                            endif
-                        end do
-#endif
-                        do ip = npe, np
-                            NormedPoint(1:nd) = Point(1:nd,ip) - Kmeans%Center(1:nd,ic)
-                            mahalSq = dot_product( NormedPoint(1:nd) , matmul(Kmeans%Prop%InvCovMat(1:nd,1:nd,ic), NormedPoint(1:nd)) )
-                            if (mahalSq < 1._RK) counterEffectiveSize = counterEffectiveSize + 1_IK
-                        end do
-                        Kmeans%Prop%EffectiveSize(ic) = Kmeans%Prop%EffectiveSize(ic) + nint(inclusionFraction * counterEffectiveSize)
-                    end if
                     KmeansLogVolEstimate(ic) = pointLogVolNormed + log(real(Kmeans%Prop%EffectiveSize(ic),RK)) ! @attn: Kmeans%Prop%EffectiveSize(ic) >= Kmeans%Size(ic) > 0
                     logVolRatio = Kmeans%Prop%LogVolNormed(ic) - KmeansLogVolEstimate(ic)
-                    LogLike(icstart) = getLogProbPoisDiff(Kmeans%Prop%EffectiveSize(ic), logVolRatio)
-#if defined DEBUG_ENABLED || defined TESTING_ENABLED || defined CODECOVE_ENABLED
-        !if (LogLike(icstart) < 0._RK .or. LogLike(icstart) > 1._RK) then
-        if (LogLike(icstart) < NEGINF_RK .or. LogLike(icstart) > 0._RK) then
-            write(*,*) "Internal error occurred: LogLike(icstart) < NEGINF_RK .or. LogLike(icstart) > 0._RK"
-            write(*,*) "Kmeans%Prop%LogVolNormed(ic), KmeansLogVolEstimate(ic), LogLike(icstart):" & ! LCOV_EXCL_LINE
-                     , Kmeans%Prop%LogVolNormed(ic), KmeansLogVolEstimate(ic), LogLike(icstart)
-            error stop
-        end if
-#endif
-                    call random_number(unifrnd); unifrnd = log(unifrnd)
-                    boundedRegionIsTooLarge = boundedRegionIsTooLarge .and. (LogLike(icstart) < unifrnd) .and. (logVolRatio > 0._RK)
+                    OddityProb(icstart) = 1._RK - getProbPoisDiff(Kmeans%Prop%EffectiveSize(ic), logVolRatio)
+                    call random_number(unifrnd)
+                    boundedRegionIsTooLarge = boundedRegionIsTooLarge .and. (OddityProb(icstart) > unifrnd) .and. (logVolRatio > 0._RK)
                 end if
 #endif
 
@@ -1186,14 +1102,13 @@ contains
 
                     if (present(PointStd)) then
 
-                        PointAvg(1:nd) = Kmeans%Center(1:nd,ic)
                         do concurrent(i = 1:nd)
                             PointStd(i) = sqrt(Kmeans%Prop%ChoLowCovUpp(i,i,ic))
                         end do
 
-                        !do concurrent(ip = ipstart+nps-1:ipend+nps-1)
-                        !    Point(1:nd,ip) = Point(1:nd,ip) - PointAvg(1:nd)
-                        !end do
+                        do concurrent(ip = ipstart+nps-1:ipend+nps-1)
+                            Point(1:nd,ip) = Point(1:nd,ip) - Kmeans%Center(1:nd,ic)
+                        end do
 
                     end if
 
@@ -1208,9 +1123,9 @@ contains
                                                 , nsim = nsim & ! LCOV_EXCL_LINE
                                                 , nemax = KmeansNemax(ic) & ! LCOV_EXCL_LINE
                                                 , minSize = minSize & ! LCOV_EXCL_LINE
+                                                , PointStd = PointStd & ! LCOV_EXCL_LINE
                                                 , kmeansRelTol = kmeansRelTol & ! LCOV_EXCL_LINE
                                                 , logExpansion = logExpansion & ! LCOV_EXCL_LINE
-                                                , logShrinkage = logShrinkage & ! LCOV_EXCL_LINE
                                                 , inclusionFraction = inclusionFraction & ! LCOV_EXCL_LINE
                                                 , pointLogVolNormed = pointLogVolNormed & ! LCOV_EXCL_LINE
                                                 , parentLogVolNormed = KmeansLogVolEstimate(ic) & ! LCOV_EXCL_LINE
@@ -1223,43 +1138,40 @@ contains
                                                 , neopt = KmeansNeopt(ic) & ! LCOV_EXCL_LINE
                                                 , Center = Center(1:nd,icstart:icend) & ! LCOV_EXCL_LINE
                                                 , ChoDia = ChoDia(1:nd,icstart:icend) & ! LCOV_EXCL_LINE
-#if defined MAXDEN
-                                                , LogLike = LogLike(icstart:icend) & ! LCOV_EXCL_LINE
-#endif
                                                 , InvCovMat = InvCovMat(1:nd,1:nd,icstart:icend) & ! LCOV_EXCL_LINE
+#if defined MAXDEN
+                                                , OddityProb = OddityProb(icstart:icend) & ! LCOV_EXCL_LINE
+#endif
                                                 , Membership = Membership(ipstart:ipend) & ! LCOV_EXCL_LINE
                                                 , PointIndex = PointIndex(ipstart:ipend) & ! LCOV_EXCL_LINE
                                                 , ChoLowCovUpp = ChoLowCovUpp(1:nd,1:nd,icstart:icend) & ! LCOV_EXCL_LINE
                                                 , LogVolNormed = LogVolNormed(icstart:icend) & ! LCOV_EXCL_LINE
                                                 , numRecursiveCall = numRecursiveCall & ! LCOV_EXCL_LINE
                                                 , convergenceFailureCount = convergenceFailureCount & ! LCOV_EXCL_LINE
-                                                , PointAvg = PointAvg & ! LCOV_EXCL_LINE
-                                                , PointStd = PointStd & ! LCOV_EXCL_LINE
                                                 )
-
-                    !if (KmeansNeopt(ic) > 1_IK) then ! xxx remove
-                        !if (present(PointStd)) then
-                        !    do concurrent(jc = icstart : icstart + KmeansNeopt(ic) - 1)
-                        !        Center(1:nd,jc) = Center(1:nd,jc) + Kmeans%Center(1:nd,ic)
-                        !    end do
-                        !end if
+                    if (KmeansNeopt(ic) > 1_IK) then
+                        if (present(PointStd)) then
+                            do concurrent(jc = icstart : icstart + KmeansNeopt(ic) - 1)
+                                Center(1:nd,jc) = Center(1:nd,jc) + Kmeans%Center(1:nd,ic)
+                            end do
+                        end if
 #if defined MAXDEN
-                    !elseif (KmeansNeopt(ic) == 1_IK) then
-                    if (KmeansNeopt(ic) == 1_IK) LogLike(icstart) = -LogLike(icstart)
+                    elseif (KmeansNeopt(ic) == 1_IK) then
+                        OddityProb(icstart) = 1._RK + OddityProb(icstart)
 #endif
 #if defined DEBUG_ENABLED || TESTING_ENABLED || CODECOVE_ENABLED
-                    if (KmeansNeopt(ic) < 1_IK) then
+                    elseif (KmeansNeopt(ic) < 1_IK) then
                         write(*,*) "KmeansNeopt(ic) < 1_IK : ", KmeansNeopt(ic), ic
                         error stop
-                    end if
 #endif
+                    end if
 
 #if defined DEBUG_ENABLED || TESTING_ENABLED || CODECOVE_ENABLED
-                    !if (present(PointStd)) then
-                    !    do concurrent(ip = ipstart+nps-1:ipend+nps-1)
-                    !        Point(1:nd,ip) = Point(1:nd,ip) + Kmeans%Center(1:nd,ic)
-                    !    end do
-                    !end if
+                    if (present(PointStd)) then
+                        do concurrent(ip = ipstart+nps-1:ipend+nps-1)
+                            Point(1:nd,ip) = Point(1:nd,ip) + Kmeans%Center(1:nd,ic)
+                        end do
+                    end if
 
                     if (any(Membership(ipstart:ipend) > KmeansNemax(ic))) then
                         write(*,*) PROCEDURE_NAME
@@ -1276,8 +1188,8 @@ contains
                         KmeansNeopt(ic) = 1_IK
                         Membership(ipstart:ipend) = icstart
 #if defined MAXDEN
-                        if (LogLike(icstart) < unifrnd .and. logVolRatio < 0._RK) then
-                            !LogLike(icstart) = 1._RK + LogLike(icstart)
+                        if (OddityProb(icstart) > unifrnd .and. logVolRatio < 0._RK) then
+                            OddityProb(icstart) = -OddityProb(icstart)
                             LogVolNormed(icstart) = KmeansLogVolEstimate(ic)
                             scaleFactor = exp( -ndInverse * logVolRatio )
                             Kmeans%Prop%ScaleFactorSq(ic) = scaleFactor**2
@@ -1361,49 +1273,11 @@ contains
 
             neopt = sum(KmeansNeopt)
 
-#if defined DEBUG_ENABLED || TESTING_ENABLED || CODECOVE_ENABLED
-            if (neopt < 1_IK) then
-                write(*,*) "Internal error occurred: neopt <= 1_IK :: neopt = ", neopt
-                error stop
-            end if
-#endif
-
-#if defined MINVOL
-            if (parEllLogVolNormed < sum(LogVolNormed(1:neopt)) + logShrinkage) then ! recovery
-#elif defined MAXDEN
-            if (logShrinkage > NEGINF_RK) then
-                logLikeSum = 0._RK
-                loopSumLogLikeComputation: do ic = 1, neopt
-                    if (LogLike(ic) > 0._RK) then
-                        logLikeSum = logLikeSum - LogLike(ic)
-                    else
-                        logLikeSum = logLikeSum + LogLike(ic)
-                    end if
-                end do loopSumLogLikeComputation
-                call random_number(unifrnd); unifrnd = log(unifrnd)
-                if (logLikeSum - parEllLogLike - logShrinkage > unifrnd) then ! recovery
-                    LogLike(1) = -parEllLogLike
-write(*,*) "sub2par likelihood: ", exp(logLikeSum - parEllLogLike - logShrinkage)
-#endif
-                    Center(1:nd,1) = ParEllCenter(1:nd)
-                    ChoDia(1:nd,1) = ParEllChoDia(1:nd)
-                    LogVolNormed(1) = parEllLogVolNormed
-                    InvCovMat(1:nd,1:nd,1) = ParEllInvCovMat(1:nd,1:nd)
-                    ChoLowCovUpp(1:nd,1:nd,1) = ParEllChoLowCovUpp(1:nd,1:nd)
-                    PartitionSize(1) = npp
-                    Membership = 1_IK
-                    neopt = 1_IK
-                    return
-                end if
-#if defined MAXDEN
-            end if
-#endif
-
 #if defined MINVOL
         else blockSubclusterSearch  ! one cluster is better
 
-            PartitionSize(1) = npp
             Membership = 1_IK
+            PartitionSize(1) = npp
             neopt = 1_IK
             return
 
@@ -1447,22 +1321,22 @@ write(*,*) "sub2par likelihood: ", exp(logLikeSum - parEllLogLike - logShrinkage
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if defined MAXDEN
-    pure function getLogProbPoisDiff(count, logVolRatio) result(logProbPoisDiff)
+    pure function getProbPoisDiff(count, logVolRatio) result(probPoisDiff)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbPoisDiff
+        !DEC$ ATTRIBUTES DLLEXPORT :: getProbPoisDiff
 #endif
         use Constants_mod, only: IK, RK, NEGINF_RK
         implicit none
         integer(IK) , intent(in)    :: count
         real(RK)    , intent(in)    :: logVolRatio
-        real(RK)                    :: logProbPoisDiff
-        logProbPoisDiff = count * (1._RK + logVolRatio - exp(logVolRatio))
-        !if (probPoisDiff < NEGINF_RK) then ! @todo: xxx NEGINF_RK could be replaced with log(epsilon) for efficiency reasons.
-        !    probPoisDiff = 0._RK
-        !else
-        !    probPoisDiff = exp(probPoisDiff)
-        !end if
-    end function getLogProbPoisDiff
+        real(RK)                    :: probPoisDiff
+        probPoisDiff = count * (1._RK + logVolRatio - exp(logVolRatio))
+        if (probPoisDiff < NEGINF_RK) then ! @todo: xxx NEGINF_RK could be replaced with log(epsilon) for efficiency reasons.
+            probPoisDiff = 0._RK
+        else
+            probPoisDiff = exp(probPoisDiff)
+        end if
+    end function getProbPoisDiff
 #endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1484,7 +1358,7 @@ write(*,*) "sub2par likelihood: ", exp(logLikeSum - parEllLogLike - logShrinkage
                             , Center = self%Center & ! LCOV_EXCL_LINE
                             , ChoDia = self%ChoDia & ! LCOV_EXCL_LINE
 #if defined MAXDEN
-                            , LogLike = self%LogLike & ! LCOV_EXCL_LINE
+                            , OddityProb = self%OddityProb & ! LCOV_EXCL_LINE
 #endif
                             , Membership = self%Membership & ! LCOV_EXCL_LINE
                             , ChoLowCovUpp = self%ChoLowCovUpp & ! LCOV_EXCL_LINE
@@ -1501,7 +1375,7 @@ write(*,*) "sub2par likelihood: ", exp(logLikeSum - parEllLogLike - logShrinkage
                                 , Center & ! LCOV_EXCL_LINE
                                 , ChoDia & ! LCOV_EXCL_LINE
 #if defined MAXDEN
-                                , LogLike & ! LCOV_EXCL_LINE
+                                , OddityProb & ! LCOV_EXCL_LINE
 #endif
                                 , Membership & ! LCOV_EXCL_LINE
                                 , LogVolNormed & ! LCOV_EXCL_LINE
@@ -1520,7 +1394,7 @@ write(*,*) "sub2par likelihood: ", exp(logLikeSum - parEllLogLike - logShrinkage
         real(RK)        , intent(in)    :: ChoDia(nd,nc)
         integer(IK)     , intent(in)    :: Membership(np)
 #if defined MAXDEN
-        real(RK)        , intent(in)    :: LogLike(nc)
+        real(RK)        , intent(in)    :: OddityProb(nc)
 #endif
         real(RK)        , intent(in)    :: LogVolNormed(nc)
         real(RK)        , intent(in)    :: ChoLowCovUpp(nd,nd,nc)
@@ -1546,8 +1420,8 @@ write(*,*) "sub2par likelihood: ", exp(logLikeSum - parEllLogLike - logShrinkage
         write(fileUnit,fileFormat) Point
 
 #if defined MAXDEN
-        write(fileUnit,"(A)") "LogLike"
-        write(fileUnit,fileFormat) LogLike
+        write(fileUnit,"(A)") "OddityProb"
+        write(fileUnit,fileFormat) OddityProb
 #endif
 
         write(fileUnit,"(A)") "Membership"

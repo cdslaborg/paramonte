@@ -194,7 +194,7 @@ contains
         use iso_fortran_env, only: compiler_version
         use ClusteredPoint_mod, only: ClusteredPoint_type
         use RandomSeed_mod, only: RandomSeed_type
-        use Constants_mod, only: IK, RK
+        use Constants_mod, only: IK, RK, NEGINF_RK
         use String_mod, only: num2str
         implicit none
         logical                     :: assertion
@@ -221,10 +221,13 @@ contains
         real(RK)                    :: inclusionFraction
         real(RK)                    :: expansionMaxDen
         real(RK)                    :: expansionMinVol
+        real(RK)                    :: shrinkageMaxDen
+        real(RK)                    :: shrinkageMinVol
         logical                     :: rinitEnabled
         logical                     :: stanEnabled
         namelist /specPartition/ rngseed, isRepeatable, nc, nt, nemax, nsim, minSize, inclusionFraction, stanEnabled
-        namelist /specPartition/ maxAllowedKvolumeRecursion, expansionMaxDen, expansionMinVol, mahalSqWeightExponent
+        namelist /specPartition/ expansionMaxDen, expansionMinVol, shrinkageMaxDen, shrinkageMinVol
+        namelist /specPartition/ maxAllowedKvolumeRecursion, mahalSqWeightExponent
 
         assertion = .true.
 
@@ -288,12 +291,17 @@ contains
             stanEnabled = .true.
             isRepeatable = .false.
             rngseed = -huge(rngseed)
+            expansionMinVol = 1._RK
+            expansionMaxDen = 1._RK
+            shrinkageMinVol = 1._RK
+            shrinkageMaxDen = NEGINF_RK
             mahalSqWeightExponent = 0._RK
             maxAllowedKvolumeRecursion = 100_IK
             nemax = ClusteredPoint%np / (ClusteredPoint%nd + 1)
             open(newunit = Test%File%unit, file = Test%inDir//"/Test_Partition_mod@test_runPartition_2.nml", status = "old")
             read(Test%File%unit, nml = specPartition)
             close(Test%File%unit)
+            if (shrinkageMaxDen > 0._RK) shrinkageMaxDen = log(shrinkageMaxDen)
             if (isRepeatable .and. rinitEnabled) then
                 call random_init (repeatable = .true., image_distinct = .true.)
             else
@@ -322,8 +330,10 @@ contains
                                         , stanEnabled = stanEnabled & ! LCOV_EXCL_LINE
 #if defined MINVOL
                                         , logExpansion = log(expansionMinVol) & ! LCOV_EXCL_LINE
+                                        , logShrinkage = log(shrinkageMinVol) & ! LCOV_EXCL_LINE
 #elif defined MAXDEN
                                         , logExpansion = log(expansionMaxDen) & ! LCOV_EXCL_LINE
+                                        , logShrinkage = shrinkageMaxDen & ! LCOV_EXCL_LINE
 #endif
                                         , inclusionFraction = inclusionFraction & ! LCOV_EXCL_LINE
                                         , mahalSqWeightExponent = mahalSqWeightExponent & ! LCOV_EXCL_LINE
