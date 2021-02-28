@@ -49,7 +49,7 @@ for method = methodList
         id1 = 1;
         id2 = 2;
         dum = 1:partition.case{icase}.nd;
-        mask = dum(dum==id1 | dum==id2);
+        dimask = dum(dum==id1 | dum==id2);
 
         ProxyCenterIndex = dsearchn ( partition.case{icase}.Point ...
                                     , cluspoint.case{1}.Center' ...
@@ -135,7 +135,7 @@ for method = methodList
                 , "linewidth", 2.5 ...
                 , "color", "blue" ...
                 );
-            
+
             hold off;
 
         end
@@ -153,8 +153,8 @@ for method = methodList
                 % get the predicted ellipsoid boundary
 
                 for ic = 1:partition.case{icase}.nc
-                    bcrd = getEllipsoidBoundary ( partition.case{icase}.CovMatUpper(mask,mask,ic) ... covMat
-                                                , partition.case{icase}.Center(mask,ic) ... meanVec
+                    bcrd = getEllipsoidBoundary ( partition.case{icase}.CovMatUpper(dimask,dimask,ic) ... covMat
+                                                , partition.case{icase}.Center(dimask,ic) ... meanVec
                                                 , 100 ... npoint
                                                 );
                     plot( bcrd(:,1) ...
@@ -163,21 +163,39 @@ for method = methodList
                         );
                 end
 
-                % plot the failed partitions
 
                 if isfield(partition.case{icase},"LogLike")
-                    FailedIndex = find(partition.case{icase}.LogLike>=0);
+
+                    % plot the failed partitions
+
+                    FailedIndex = find(partition.case{icase}.LogLike>0);
                     for ic = 1:length(FailedIndex)
-                        bcrd = getEllipsoidBoundary ( partition.case{icase}.CovMatUpper(mask,mask,FailedIndex(ic)) ... covMat
-                                                    , partition.case{icase}.Center(mask,FailedIndex(ic)) ... meanVec
+                        bcrd = getEllipsoidBoundary ( partition.case{icase}.CovMatUpper(dimask,dimask,FailedIndex(ic)) ... covMat
+                                                    , partition.case{icase}.Center(dimask,FailedIndex(ic)) ... meanVec
                                                     , 100 ... npoint
                                                     );
                         plot( bcrd(:,1) ...
                             , bcrd(:,2) ...
                             , "color", "black" ...
-                            , "linewidth", 2 ...
+                            , "linewidth", 3 ...
                             );
                     end
+
+                    % plot the corresponding least likely partitions
+
+                    %[~, LogLikeSortedIndex] = sort(-abs(partition.case{icase}.LogLike));
+                    %for ic = 1:length(FailedIndex)
+                    %    bcrd = getEllipsoidBoundary ( partition.case{icase}.CovMatUpper(dimask,dimask,LogLikeSortedIndex(ic)) ... covMat
+                    %                                , partition.case{icase}.Center(dimask,LogLikeSortedIndex(ic)) ... meanVec
+                    %                                , 100 ... npoint
+                    %                                );
+                    %    plot( bcrd(:,1) ...
+                    %        , bcrd(:,2) ...
+                    %        , "color", "blue" ...
+                    %        , "linewidth", 2 ...
+                    %        );
+                    %end
+
                 end
 
             end
@@ -202,6 +220,9 @@ for method = methodList
                 gscatter( partition.case{icase}.Point(:,id1) ...
                         , partition.case{icase}.Point(:,id2) ...
                         , partition.case{icase}.Membership ...
+                        , [] ...
+                        , [] ...
+                        , 15 * ones(partition.case{icase}.nc,1) ...
                         ..., "markerStyle", "." ...
                         ..., 'markersize', 15 ...
                         );
@@ -258,8 +279,8 @@ for method = methodList
 
             if originalBoundsEnabled && cluspointExists
                 for ic = 1:cluspoint.case{icase}.nc
-                    bcrd = getEllipsoidBoundary ( cluspoint.case{icase}.CovMatUpper(mask,mask,ic) ... covMat
-                                                , cluspoint.case{icase}.Center(mask,ic) ... meanVec
+                    bcrd = getEllipsoidBoundary ( cluspoint.case{icase}.CovMatUpper(dimask,dimask,ic) ... covMat
+                                                , cluspoint.case{icase}.Center(dimask,ic) ... meanVec
                                                 , 100 ... npoint
                                                 );
                     plot( bcrd(:,1) ...

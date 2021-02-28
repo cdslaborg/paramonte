@@ -148,7 +148,7 @@ contains
         ! write data to output for further investigation
 
         Test%File = Test%openFile(label = "Partition")
-        call Partition%write(Test%File%unit, TestData%nd, TestData%np, TestData%Point)
+        call Partition%write(Test%File%unit, TestData%Point)
         close(Test%File%unit)
 
         assertion = assertion .and. .not. Partition%Err%occurred
@@ -301,7 +301,7 @@ contains
             open(newunit = Test%File%unit, file = Test%inDir//"/Test_Partition_mod@test_runPartition_2.nml", status = "old")
             read(Test%File%unit, nml = specPartition)
             close(Test%File%unit)
-            if (shrinkageMaxDen > 0._RK) shrinkageMaxDen = log(shrinkageMaxDen)
+            if (shrinkageMaxDen > 0._RK) then; shrinkageMaxDen = log(shrinkageMaxDen); else; shrinkageMaxDen = NEGINF_RK; endif ! LCOV_EXCL_LINE
             if (isRepeatable .and. rinitEnabled) then
                 call random_init (repeatable = .true., image_distinct = .true.)
             else
@@ -349,7 +349,7 @@ contains
             ! write data to output for further investigation
 
             Test%File = Test%openFile(label = "Partition")
-            call Partition%write(Test%File%unit, ClusteredPoint%nd, ClusteredPoint%np, ClusteredPoint%Point)
+            call Partition%write(Test%File%unit, ClusteredPoint%Point)
             close(Test%File%unit)
 
             assertion = assertion .and. .not. Partition%Err%occurred

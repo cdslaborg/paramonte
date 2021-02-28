@@ -15,7 +15,7 @@
     !rngseed = 3132152
     !rngseed = 5157682
     !rngseed = 51575130 ! some random seeds are not deterministic!
-    rngseed = 515769
+    rngseed = 51579
     !isRepeatable = .true.
     dist = "uniform"
 /
@@ -27,11 +27,12 @@
     !nemax = 10000
     minSize = 0
     !stanEnabled = .false.
+    shrinkageMaxDen = 1.0d0
     expansionMaxDen = 1.0d0
-    expansionMinVol = 2.0d0
     shrinkageMinVol = 2.0d0
+    expansionMinVol = 2.0d0
     inclusionFraction = 1.d0
-    maxAllowedKvolumeRecursion = 20
+    maxAllowedKvolumeRecursion = 0!20
     mahalSqWeightExponent = 1.d0
     !isRepeatable = .true.
     !rngseed = 517693
