@@ -611,7 +611,10 @@ contains
 #if defined MAXDEN
 
 #if defined DEBUG_ENABLED || defined TESTING_ENABLED || defined CODECOVE_ENABLED
-        
+!        do ic = 1, Partition%neopt
+!            if (
+!            Partition%EffectiveSize
+!        end do
 #endif
 
 !        if (.not. allocated(MahalSqIndexSorted)) allocate(MahalSqIndexSorted(Partition%neopt))
@@ -868,7 +871,9 @@ contains
                             , np = npp & ! LCOV_EXCL_LINE
                             , Point = Point(1:nd,nps:npe) & ! LCOV_EXCL_LINE
                             , Index = PointIndex & ! LCOV_EXCL_LINE
+#if defined MINVOL
                             , inclusionFraction = inclusionFraction & ! LCOV_EXCL_LINE
+#endif
                             , pointLogVolNormed = pointLogVolNormed & ! LCOV_EXCL_LINE
                             )
 
@@ -1097,7 +1102,9 @@ contains
                                     , np = npp & ! LCOV_EXCL_LINE
                                     , Point = Point(1:nd,nps:npe) & ! LCOV_EXCL_LINE
                                     , Index = PointIndex & ! LCOV_EXCL_LINE
+#if defined MINVOL
                                     , inclusionFraction = inclusionFraction & ! LCOV_EXCL_LINE
+#endif
                                     , pointLogVolNormed = pointLogVolNormed & ! LCOV_EXCL_LINE
                                     )
 
@@ -1277,7 +1284,12 @@ contains
                             KmeansMahalSq(ip,ic) = dot_product( NormedPoint(1:nd) , matmul(Kmeans%Prop%InvCovMat(1:nd,1:nd,ic), NormedPoint(1:nd)) )
                             if (KmeansMahalSq(ip,ic) <= 1._RK) counterEffectiveSize = counterEffectiveSize + 1_IK
                         end do
-                        Kmeans%Prop%EffectiveSize(ic) = Kmeans%Prop%EffectiveSize(ic) + nint(inclusionFraction * counterEffectiveSize)
+                        Kmeans%Prop%EffectiveSize(ic)   = Kmeans%Size(ic) & ! LCOV_EXCL_LINE
+                                                        + nint(inclusionFraction * & ! LCOV_EXCL_LINE
+                                                        ( count(Kmeans%Prop%MahalSq(1:Kmeans%Prop%CumSumSize(ic-1),ic)<=Kmeans%Prop%ScaleFactorSq(ic)) & ! LCOV_EXCL_LINE
+                                                        + count(Kmeans%Prop%MahalSq(Kmeans%Prop%CumSumSize(ic)+1:np,ic)<=Kmeans%Prop%ScaleFactorSq(ic)) & ! LCOV_EXCL_LINE
+                                                        + counterEffectiveSize & ! LCOV_EXCL_LINE
+                                                        ), kind = IK)
                     end if
                     KmeansLogVolEstimate(ic) = pointLogVolNormed + log(real(Kmeans%Prop%EffectiveSize(ic),RK)) ! @attn: Kmeans%Prop%EffectiveSize(ic) >= Kmeans%Size(ic) > 0
                     logVolRatio = Kmeans%Prop%LogVolNormed(ic) - KmeansLogVolEstimate(ic)
