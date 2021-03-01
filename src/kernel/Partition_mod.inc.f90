@@ -587,37 +587,37 @@ contains
 
         ! refine the partition
 
-#if defined MAXDEN
-        if (.not. allocated(SuccessStepMinusOne)) allocate(SuccessStepMinusOne(Partition%neopt), source = 1_TK)
-        do ic = 1, Partition%neopt
-
-            if (Partition%LogLike(ic) > NEGINF_RK) then
-                if (Partition%LogLike(ic) < 0._RK) then
-                    logLikeFailure = log(1._RK - exp(Partition%LogLike(ic)))
-                    call random_number(unifrnd)
-                    if (unifrnd > 0._RK) then; unifrnd = log(unifrnd); else; unifrnd = -huge(unifrnd); end if ! LCOV_EXCL_LINE or unifrnd = log(max(tiny(unifrnd),unifrnd))
-                    boundedRegionIsTooLarge = SuccessStepMinusOne(ic) * logLikeFailure + Partition%LogLike(ic) < unifrnd
-                    SuccessStepMinusOne(ic) = SuccessStepMinusOne(ic) + 1_IK
-                else
-#if defined DEBUG_ENABLED || defined TESTING_ENABLED || defined CODECOVE_ENABLED
-                    if (Partition%LogLike(ic) > 0._RK) then
-                        write(*,*) "Internal error occurred : Partition%LogLike(ic) > 0._RK : ", Partition%LogLike(ic), ic
-                        error stop
-                    end if
-#endif
-                    boundedRegionIsTooLarge = .false.
-                    !logLikeFailure = NEGINF_RK
-                end if
-            else
-                boundedRegionIsTooLarge = .true.
-            end if
-
-            if (boundedRegionIsTooLarge) then
-            
-            end if
-
-        end do
-#endif
+!#if defined MAXDEN
+!        if (.not. allocated(SuccessStepMinusOne)) allocate(SuccessStepMinusOne(Partition%neopt), source = 1_TK)
+!        do ic = 1, Partition%neopt
+!
+!            if (Partition%LogLike(ic) > NEGINF_RK) then
+!                if (Partition%LogLike(ic) < 0._RK) then
+!                    logLikeFailure = log(1._RK - exp(Partition%LogLike(ic)))
+!                    call random_number(unifrnd)
+!                    if (unifrnd > 0._RK) then; unifrnd = log(unifrnd); else; unifrnd = -huge(unifrnd); end if ! LCOV_EXCL_LINE or unifrnd = log(max(tiny(unifrnd),unifrnd))
+!                    boundedRegionIsTooLarge = SuccessStepMinusOne(ic) * logLikeFailure + Partition%LogLike(ic) < unifrnd
+!                    SuccessStepMinusOne(ic) = SuccessStepMinusOne(ic) + 1_IK
+!                else
+!#if defined DEBUG_ENABLED || defined TESTING_ENABLED || defined CODECOVE_ENABLED
+!                    if (Partition%LogLike(ic) > 0._RK) then
+!                        write(*,*) "Internal error occurred : Partition%LogLike(ic) > 0._RK : ", Partition%LogLike(ic), ic
+!                        error stop
+!                    end if
+!#endif
+!                    boundedRegionIsTooLarge = .false.
+!                    !logLikeFailure = NEGINF_RK
+!                end if
+!            else
+!                boundedRegionIsTooLarge = .true.
+!            end if
+!
+!            if (boundedRegionIsTooLarge) then
+!            
+!            end if
+!
+!        end do
+!#endif
 
     end subroutine runPartition
 
@@ -655,7 +655,6 @@ contains
                                                 , ChoDia & ! LCOV_EXCL_LINE
 #if defined MAXDEN
                                                 , LogLike & ! LCOV_EXCL_LINE
-                                                , MahalSq & ! LCOV_EXCL_LINE
 #endif
                                                 , InvCovMat & ! LCOV_EXCL_LINE
                                                 , Membership & ! LCOV_EXCL_LINE
@@ -706,7 +705,6 @@ contains
         real(RK)    , intent(inout)             :: LogVolNormed(nemax)
 #if defined MAXDEN
         real(RK)    , intent(inout)             :: LogLike(nemax)
-        real(RK)    , intent(inout)             :: MahalSq(npp)
 #endif
         real(RK)    , intent(inout)             :: ChoDia(nd,nemax)
         real(RK)    , intent(inout) , optional  :: PointAvg(nd) ! must coexist with PointStd
