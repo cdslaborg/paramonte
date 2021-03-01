@@ -1428,18 +1428,28 @@ contains
                         MahalSq(nps:npe,icstart) = Kmeans%Prop%MahalSq(1:npp,ic) * scaleFactorSqInverse4KPM
                         MahalSq(npe+1:np,icstart) = KmeansMahalSq(npe+1:np,ic) * scaleFactorSqInverse
 #if (defined DEBUG_ENABLED || TESTING_ENABLED || CODECOVE_ENABLED)
-                        if (count(MahalSq(nps:npe,icstart) <= 1._RK) < EffectiveSizeOld(ic)) then
-                            write(*,*) PROCEDURE_NAME//": Internal error occurred : count(MahalSq(nps:npe,icstart) <= 1._RK) >= Kmeans%Prop%EffectiveSize(ic)"
-                            write(*,*) "count(MahalSq(nps:npe,icstart) <= 1._RK) : ", count(MahalSq(nps:npe,icstart) <= 1._RK)
-                            write(*,*) "Kmeans%Prop%EffectiveSize(ic) : ", Kmeans%Prop%EffectiveSize(ic)
+                        if (count(MahalSq(ipstart+nps-1:ipend+nps-1,icstart) <= 1._RK) < Kmeans%Size(ic)) then
+                            write(*,*) PROCEDURE_NAME//": Internal error occurred : count(MahalSq(ipstart+nps-1:ipend+nps-1,icstart) <= 1._RK) >= Kmeans%Size(ic)"
+                            write(*,*) "count(MahalSq(nps:npe,icstart) <= 1._RK) : ", count(MahalSq(ipstart+nps-1:ipend+nps-1,icstart) <= 1._RK)
+                            write(*,*) "Kmeans%Size(ic) : ", Kmeans%Size(ic)
                             write(*,*) "logVolRatio < 0._RK :", logVolRatio < 0._RK
                             error stop
-                        elseif (count(MahalSq(1:np,icstart) <= 1._RK) < Kmeans%Prop%EffectiveSize(ic)) then
-                            write(*,*) PROCEDURE_NAME//": Internal error occurred : count(MahalSq(1:np,icstart) <= 1._RK) < Kmeans%Prop%EffectiveSize(ic)"
-                            write(*,*) "count(MahalSq(1:np,icstart) <= 1._RK) : ", count(MahalSq(1:np,icstart) <= 1._RK)
-                            write(*,*) "Kmeans%Prop%EffectiveSize(ic) : ", Kmeans%Prop%EffectiveSize(ic)
-                            write(*,*) "logVolRatio < 0._RK :", logVolRatio < 0._RK
-                            error stop
+                        else
+                            block
+                                integer(IK) :: extraSize
+                                extraSize = nint(inclusionFraction * (count(MahalSq(1:ipstart+nps-2,icstart) <= 1._RK) + count(MahalSq(1:ipend+nps,icstart) <= 1._RK)))
+                                if (Kmeans%Size(ic) + nint(inclusionFraction * extraSize) /= Kmeans%Prop%EffectiveSize(ic)) then
+                                    write(*,*) PROCEDURE_NAME//": Internal error occurred : Kmeans%Size(ic) + nint(inclusionFraction * extraSize) /= Kmeans%Prop%EffectiveSize(ic)"
+                                    write(*,*) "count(MahalSq(1:ipstart+nps-2,icstart) <= 1._RK) : ", count(MahalSq(1:ipstart+nps-2,icstart) <= 1._RK)
+                                    write(*,*) "count(MahalSq(1:ipend+nps,icstart) <= 1._RK) : ", count(MahalSq(1:ipend+nps,icstart) <= 1._RK)
+                                    write(*,*) "Kmeans%Size(ic) : ", Kmeans%Size(ic)
+                                    write(*,*) "extraSize : ", extraSize
+                                    write(*,*) "Kmeans%Size(ic) + extraSize : ", Kmeans%Size(ic) + extraSize
+                                    write(*,*) "Kmeans%Prop%EffectiveSize(ic) : ", Kmeans%Prop%EffectiveSize(ic)
+                                    write(*,*) "logVolRatio < 0._RK :", logVolRatio < 0._RK
+                                    error stop
+                                end if
+                            end block
                         end if
 #endif
                         do j = 1, nd
