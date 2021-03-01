@@ -87,7 +87,8 @@
         integer(IK) , allocatable   :: Membership(:)                !< An array of size `(np)` representing the bounding-ellipsoid membership IDs of the corresponding data points.
         integer(IK) , allocatable   :: PointIndex(:)                !< An array of size `(np)` of indices such that the input `Point(1:nd,Index(ip))` is saved at the output `Point(1:nd,ip)`.
 #if defined MAXDEN
-        real(RK)    , allocatable   :: LogLikeFitness(:)                   !< An array of size `(nemax)` indicating the likelihood of subclustering (`0<<1` if successful, else `1<<2` if failed), enlargement (if < 0), being warranted. If it is warranted but fails, the likelihood will be negative.
+        integer(IK) , allocatable   :: EffectiveSize(:)             !< An array of size `(nemax)` indicating the likelihood of subclustering (`0<<1` if successful, else `1<<2` if failed), enlargement (if < 0), being warranted. If it is warranted but fails, the likelihood will be negative.
+        real(RK)    , allocatable   :: LogLikeFitness(:)            !< An array of size `(nemax)` indicating the likelihood of subclustering (`0<<1` if successful, else `1<<2` if failed), enlargement (if < 0), being warranted. If it is warranted but fails, the likelihood will be negative.
 #endif
         real(RK)    , allocatable   :: LogVolNormed(:)              !< An array of size `(nemax)` representing the log-volumes of the corresponding bounding ellipsoids.
         real(RK)    , allocatable   :: ChoLowCovUpp(:,:,:)          !< An array of size `(nd,nd,nemax)` representing the Cholesky lower triangle, diagonal, and covariance matrices of the bounding ellipsoids.
@@ -279,7 +280,7 @@ contains
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: runPartition
 #endif
-        use Constants_mod, only: IK, RK, NEGINF_RK
+        use Constants_mod, only: IK, RK, NEGINF_RK, POSINF_RK
         use Matrix_mod, only: getInvMatFromCholFac
         use Matrix_mod, only: getCholeskyFactor
         use String_mod, only: num2str
@@ -304,17 +305,17 @@ contains
         real(RK)                                :: scaleFactorSqInverse
         real(RK)                                :: scaleFactorSq
         real(RK)                                :: scaleFactor
-       !real(RK)                                :: mahalSqScalar
+        real(RK)                                :: MahalSqSinglePartition(Partition%np)
 #if defined MAXDEN
+        logical                                 :: isGoodFit
         real(RK)                                :: unifrnd
         real(RK)                                :: logVolRatio
         real(RK)                                :: logLikeShrinkage
-       !integer(IK) , allocatable               :: SuccessStepMinusOne(:)
         real(RK)                                :: MahalSq(Partition%np,Partition%nemax)
-       !real(RK)                                :: probPoisDiff
-       logical                                  :: isGoodFit
-#elif defined MINVOL
-        real(RK)                                :: MahalSq(Partition%np,1)
+        real(RK)    , allocatable               :: MahalSqAcrossPartition(:)
+        integer(IK) , allocatable               :: MahalSqIndexSorted(:)
+        integer(IK)                             :: ipMaxMahal
+        integer(IK)                             :: icMinMahal
 #endif
         character(*), parameter                 :: PROCEDURE_NAME = MODULE_NAME//"@runPartition()"
 
@@ -380,8 +381,8 @@ contains
 
         scaleFactorSq = NEGINF_RK
         do ip = 1, Partition%np
-            MahalSq(ip,1) = dot_product( NormedPoint(1:Partition%nd,ip) , matmul(Partition%InvCovMat(1:Partition%nd,1:Partition%nd,1), NormedPoint(1:Partition%nd,ip)) )
-            if (scaleFactorSq < MahalSq(ip,1)) scaleFactorSq = MahalSq(ip,1)
+            MahalSqSinglePartition(ip) = dot_product( NormedPoint(1:Partition%nd,ip) , matmul(Partition%InvCovMat(1:Partition%nd,1:Partition%nd,1), NormedPoint(1:Partition%nd,ip)) )
+            if (scaleFactorSq < MahalSqSinglePartition(ip)) scaleFactorSq = MahalSqSinglePartition(ip)
         end do
         scaleFactor = sqrt(scaleFactorSq)
 
@@ -587,7 +588,7 @@ contains
             end do
 
 #if defined MAXDEN
-            MahalSq(1:Partition%np,1) = MahalSq(1:Partition%np,1) * scaleFactorSqInverse
+            MahalSq(1:Partition%np,1) = MahalSqSinglePartition(1:Partition%np) * scaleFactorSqInverse
 #endif
 
 #if defined DEBUG_ENABLED || defined TESTING_ENABLED || defined CODECOVE_ENABLED
@@ -599,46 +600,64 @@ contains
         end if
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        ! refine the partition
+        ! refine the partitions.
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if defined MAXDEN
-
-        !if (.not. allocated(SuccessStepMinusOne)) allocate(SuccessStepMinusOne(Partition%neopt), source = 1_IK)
-        do ic = 1, Partition%neopt
-
-            logLikeShrinkage = 0._RK
-            loopShrinkage: do
-
-                if (Partition%LogLikeFitness(ic) > NEGINF_RK) then
-                    if (Partition%LogLikeFitness(ic) < 0._RK) then
-                        logLikeShrinkage = logLikeShrinkage + log(1._RK - exp(Partition%LogLikeFitness(ic)))
-                        call random_number(unifrnd)
-                        if (unifrnd > 0._RK) then; unifrnd = log(unifrnd); else; unifrnd = -huge(unifrnd); end if ! LCOV_EXCL_LINE or unifrnd = log(max(tiny(unifrnd),unifrnd))
-                        isGoodFit = logLikeShrinkage + Partition%LogLikeFitness(ic) > unifrnd
-                        !SuccessStepMinusOne(ic) = SuccessStepMinusOne(ic) + 1_IK
-                    else
-#if defined DEBUG_ENABLED || defined TESTING_ENABLED || defined CODECOVE_ENABLED
-                        if (Partition%LogLikeFitness(ic) > 0._RK) then
-                            write(*,*) "Internal error occurred : Partition%LogLikeFitness(ic) > 0._RK : ", Partition%LogLikeFitness(ic), ic
-                            error stop
-                        end if
-#endif
-                        isGoodFit = .true.
-                        !logLikeShrinkage = NEGINF_RK
-                    end if
-                else
-                    isGoodFit = .false.
-                end if
-
-                exit loopShrinkage
-                if (isGoodFit) exit loopShrinkage
-
-                
-
-            end do loopShrinkage
-
-        end do
+!        if (.not. allocated(MahalSqIndexSorted)) allocate(MahalSqIndexSorted(Partition%neopt))
+!        if (.not. allocated(MahalSqAcrossPartition)) allocate(MahalSqAcrossPartition(Partition%neopt))
+!        loopOverPartition: do ic = 1, Partition%neopt
+!
+!            logLikeShrinkage = 0._RK
+!            loopShrinkage: do
+!
+!                if (Partition%LogLikeFitness(ic) > NEGINF_RK) then
+!                    if (Partition%LogLikeFitness(ic) < 0._RK) then
+!                        logLikeShrinkage = logLikeShrinkage + log(1._RK - exp(Partition%LogLikeFitness(ic)))
+!                        call random_number(unifrnd)
+!                        if (unifrnd > 0._RK) then; unifrnd = log(unifrnd); else; unifrnd = -huge(unifrnd); end if ! LCOV_EXCL_LINE or unifrnd = log(max(tiny(unifrnd),unifrnd))
+!                        isGoodFit = logLikeShrinkage + Partition%LogLikeFitness(ic) > unifrnd
+!                        !SuccessStepMinusOne(ic) = SuccessStepMinusOne(ic) + 1_IK
+!                    else
+!#if defined DEBUG_ENABLED || defined TESTING_ENABLED || defined CODECOVE_ENABLED
+!                        if (Partition%LogLikeFitness(ic) > 0._RK) then
+!                            write(*,*) "Internal error occurred : Partition%LogLikeFitness(ic) > 0._RK : ", Partition%LogLikeFitness(ic), ic
+!                            error stop
+!                        end if
+!#endif
+!                        isGoodFit = .true.
+!                        !logLikeShrinkage = NEGINF_RK
+!                    end if
+!                else
+!                    isGoodFit = .false.
+!                end if
+!
+!                if (isGoodFit) exit loopShrinkage
+!
+!                ipMaxMahal = maxloc(MahalSq(1:Partition%np,ic), dim = 1)
+!                MahalSqAcrossPartition(1:Partition%neopt) = MahalSq(ipMaxMahal,1:Partition%neopt)
+!                MahalSqAcrossPartition(ipMaxMahal,ic) = POSINF_RK
+!                icMinMahal = minloc(MahalSqAcrossPartition(1:Partition%neopt), dim = 1)
+!                !call indexArray(Partition%neopt, MahalSqAcrossPartition, MahalSqIndexSorted, Partition%Err)
+!                !if (Partition%Err%occurred) then
+!                !    error stop ! xxx needs improvement
+!                !end if
+!                newLogVolNormed = 
+!                if (icMinMahal == ic) then
+!                end if
+!                if (MahalSq(1:Partition%np,ic)
+!
+!#if defined DEBUG_ENABLED || defined TESTING_ENABLED || defined CODECOVE_ENABLED
+!                if (abs(MahalSq(ipMaxMahal,ic) - 1._RK) < 1.e-6_RK) then
+!                    write(*,*) PROCEDURE_NAME//"Internal error occurred : abs(MahalSq(ipMaxMahal,ic) - 1._RK) < 1.e-6_RK :"
+!                    write(*,*) "ipMaxMahal, ic, MahalSq(ipMaxMahal,ic)", ipMaxMahal, ic, MahalSq(ipMaxMahal,ic)
+!                    error stop
+!                end if
+!#endif
+!
+!            end do loopShrinkage
+!
+!        end do loopOverPartition
 #endif
 
     end subroutine runPartition
@@ -676,6 +695,7 @@ contains
                                                 , Center & ! LCOV_EXCL_LINE
                                                 , ChoDia & ! LCOV_EXCL_LINE
 #if defined MAXDEN
+                                                , EffectiveSize & ! LCOV_EXCL_LINE
                                                 , LogLikeFitness & ! LCOV_EXCL_LINE
                                                 , MahalSq & ! LCOV_EXCL_LINE
 #endif
@@ -728,6 +748,7 @@ contains
         real(RK)    , intent(inout)             :: LogVolNormed(nemax)
 #if defined MAXDEN
         real(RK)    , intent(inout)             :: LogLikeFitness(nemax)
+        integer(IK) , intent(out)               :: EffectiveSize(nemax)
         real(RK)    , intent(out)               :: MahalSq(np,nemax)
 #endif
         real(RK)    , intent(inout)             :: ChoDia(nd,nemax)
@@ -1310,6 +1331,7 @@ contains
                                                 , ChoDia = ChoDia(1:nd,icstart:icend) & ! LCOV_EXCL_LINE
 #if defined MAXDEN
                                                 , LogLikeFitness = LogLikeFitness(icstart:icend) & ! LCOV_EXCL_LINE
+                                                , EffectiveSize = EffectiveSize(icstart:icend) & ! LCOV_EXCL_LINE
                                                 , MahalSq = MahalSq(1:np,icstart:icend) & ! LCOV_EXCL_LINE
 #endif
                                                 , InvCovMat = InvCovMat(1:nd,1:nd,icstart:icend) & ! LCOV_EXCL_LINE
@@ -1370,6 +1392,7 @@ contains
                     PartitionSize(icstart) = Kmeans%Size(ic)
                     Center(1:nd,icstart) = Kmeans%Center(1:nd,ic)
 #if defined MAXDEN
+                    EffectiveSize(icstart) = Kmeans%Prop%EffectiveSize(ic)
                     !if (LogLikeFitness(icstart) < unifrnd .and. logVolRatio < 0._RK) then ! enlarge
                     blockExpansionCheck: if (logVolRatio < 0._RK) then ! enlarge, no questions asked.
 
