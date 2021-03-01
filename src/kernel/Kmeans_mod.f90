@@ -747,8 +747,18 @@ contains
 
                 if (present(inclusionFraction)) then
                     Kmeans%Prop%EffectiveSize(ic)   = Kmeans%Size(ic) & ! LCOV_EXCL_LINE
-                                                    + nint(inclusionFraction*count(Kmeans%Prop%MahalSq(1:Kmeans%Prop%CumSumSize(ic-1),ic)<Kmeans%Prop%ScaleFactorSq(ic)), kind=IK) & ! LCOV_EXCL_LINE
-                                                    + nint(inclusionFraction*count(Kmeans%Prop%MahalSq(Kmeans%Prop%CumSumSize(ic)+1:np,ic)<Kmeans%Prop%ScaleFactorSq(ic)), kind=IK)
+                                                    + nint(inclusionFraction * &
+                                                    ( count(Kmeans%Prop%MahalSq(1:Kmeans%Prop%CumSumSize(ic-1),ic)<=Kmeans%Prop%ScaleFactorSq(ic)) & ! LCOV_EXCL_LINE
+                                                    + count(Kmeans%Prop%MahalSq(Kmeans%Prop%CumSumSize(ic)+1:np,ic)<=Kmeans%Prop%ScaleFactorSq(ic)) & ! LCOV_EXCL_LINE
+                                                    ), kind=IK)
+!write(*,*) 
+!write(*,*) "Kmeans%ic, CumSumSize(ic-1), CumSumSize(ic), np", ic, Kmeans%Prop%CumSumSize(ic-1), Kmeans%Prop%CumSumSize(ic), np
+!write(*,*) Kmeans%Size(ic)
+!write(*,*) count(Kmeans%Prop%MahalSq(1:Kmeans%Prop%CumSumSize(ic-1),ic)<Kmeans%Prop%ScaleFactorSq(ic))
+!write(*,*) count(Kmeans%Prop%MahalSq(Kmeans%Prop%CumSumSize(ic)+1:np,ic)<Kmeans%Prop%ScaleFactorSq(ic))
+!write(*,*) "Kmeans%Prop%ScaleFactorSq(ic)", Kmeans%Prop%ScaleFactorSq(ic)
+!write(*,*) "Kmeans%Prop%MahalSq(Kmeans%Prop%CumSumSize(ic)+1:np,ic): ", Kmeans%Prop%MahalSq(Kmeans%Prop%CumSumSize(ic)+1:np,ic)
+!write(*,*) 
                 else
                     Kmeans%Prop%EffectiveSize(ic)   = Kmeans%Size(ic)
                 end if
@@ -835,8 +845,16 @@ contains
 
                     if (present(inclusionFraction)) then
                         Kmeans%Prop%EffectiveSize(ic)   = Kmeans%Size(ic) & ! LCOV_EXCL_LINE
-                                                        + nint(inclusionFraction*count(Kmeans%Prop%MahalSq(1:Kmeans%Prop%CumSumSize(ic-1),ic)<Kmeans%Prop%ScaleFactorSq(ic)), kind=IK) & ! LCOV_EXCL_LINE
-                                                        + nint(inclusionFraction*count(Kmeans%Prop%MahalSq(Kmeans%Prop%CumSumSize(ic)+1:np,ic)<Kmeans%Prop%ScaleFactorSq(ic)), kind=IK)
+                                                        + nint(inclusionFraction * &
+                                                        ( count(Kmeans%Prop%MahalSq(1:Kmeans%Prop%CumSumSize(ic-1),ic)<=Kmeans%Prop%ScaleFactorSq(ic)) & ! LCOV_EXCL_LINE
+                                                        + count(Kmeans%Prop%MahalSq(Kmeans%Prop%CumSumSize(ic)+1:np,ic)<=Kmeans%Prop%ScaleFactorSq(ic)) & ! LCOV_EXCL_LINE
+                                                        ), kind=IK)
+!write(*,*) 
+!write(*,*) "Kmeans%ic, CumSumSize(ic-1), CumSumSize(ic), np", ic, Kmeans%Prop%CumSumSize(ic-1), Kmeans%Prop%CumSumSize(ic), np
+!write(*,*) Kmeans%Size(ic)
+!write(*,*) count(Kmeans%Prop%MahalSq(1:Kmeans%Prop%CumSumSize(ic-1),ic)<Kmeans%Prop%ScaleFactorSq(ic))
+!write(*,*) count(Kmeans%Prop%MahalSq(Kmeans%Prop%CumSumSize(ic)+1:np,ic)<Kmeans%Prop%ScaleFactorSq(ic))
+!write(*,*) 
                     else
                         Kmeans%Prop%EffectiveSize(ic)   = Kmeans%Size(ic)
                     end if

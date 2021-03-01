@@ -16,6 +16,7 @@ pointsEnabled = 1;
 innestPointEnabled = 0;
 originalBoundsEnabled = 1;
 predictedBoundsEnabled = 1;
+leastLikely2DisplayCount = 1;
 distMatEnabled = 0;
 
 methodList = ["MinVol", "MaxDen"]; %, "", "Kmeans", "VarDen"];
@@ -164,11 +165,11 @@ for method = methodList
                 end
 
 
-                if isfield(partition.case{icase},"LogLike")
+                if isfield(partition.case{icase},"LogLikeFitness")
 
                     % plot the failed partitions
 
-                    FailedIndex = find(partition.case{icase}.LogLike>0);
+                    FailedIndex = find(partition.case{icase}.LogLikeFitness>0);
                     for ic = 1:length(FailedIndex)
                         bcrd = getEllipsoidBoundary ( partition.case{icase}.CovMatUpper(dimask,dimask,FailedIndex(ic)) ... covMat
                                                     , partition.case{icase}.Center(dimask,FailedIndex(ic)) ... meanVec
@@ -183,18 +184,18 @@ for method = methodList
 
                     % plot the corresponding least likely partitions
 
-                    %[~, LogLikeSortedIndex] = sort(-abs(partition.case{icase}.LogLike));
-                    %for ic = 1:length(FailedIndex)
-                    %    bcrd = getEllipsoidBoundary ( partition.case{icase}.CovMatUpper(dimask,dimask,LogLikeSortedIndex(ic)) ... covMat
-                    %                                , partition.case{icase}.Center(dimask,LogLikeSortedIndex(ic)) ... meanVec
-                    %                                , 100 ... npoint
-                    %                                );
-                    %    plot( bcrd(:,1) ...
-                    %        , bcrd(:,2) ...
-                    %        , "color", "blue" ...
-                    %        , "linewidth", 2 ...
-                    %        );
-                    %end
+                    [~, LogLikeSortedIndex] = sort(-abs(partition.case{icase}.LogLikeFitness));
+                    for ic = 1:leastLikely2DisplayCount
+                        bcrd = getEllipsoidBoundary ( partition.case{icase}.CovMatUpper(dimask,dimask,LogLikeSortedIndex(ic)) ... covMat
+                                                    , partition.case{icase}.Center(dimask,LogLikeSortedIndex(ic)) ... meanVec
+                                                    , 100 ... npoint
+                                                    );
+                        plot( bcrd(:,1) ...
+                            , bcrd(:,2) ...
+                            , "color", "blue" ...
+                            , "linewidth", 2 ...
+                            );
+                    end
 
                 end
 
