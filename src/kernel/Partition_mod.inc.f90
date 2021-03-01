@@ -238,6 +238,7 @@ contains
                 , Partition%ChoLowCovUpp    (Partition%nd,Partition%nd,Partition%nemax) & ! LCOV_EXCL_LINE
                 , Partition%LogVolNormed    (Partition%nemax) & ! LCOV_EXCL_LINE
 #if defined MAXDEN
+                , Partition%EffectiveSize   (Partition%nemax) & ! LCOV_EXCL_LINE
                 , Partition%LogLikeFitness  (Partition%nemax) & ! LCOV_EXCL_LINE
 #endif
                 , Partition%Membership      (Partition%np) & ! LCOV_EXCL_LINE
@@ -255,6 +256,7 @@ contains
                 Partition%ChoLowCovUpp      = Partition%ChoLowCovUpp    (1:Partition%nd,1:Partition%nd,1:Partition%neopt)
                 Partition%LogVolNormed      = Partition%LogVolNormed    (1:Partition%neopt)
 #if defined MAXDEN
+                Partition%EffectiveSize     = Partition%EffectiveSize   (1:Partition%neopt)
                 Partition%LogLikeFitness    = Partition%LogLikeFitness  (1:Partition%neopt)
 #endif
             end if
@@ -482,6 +484,7 @@ contains
                                             , ChoDia = Partition%ChoDia & ! LCOV_EXCL_LINE
 #if defined MAXDEN
                                             , LogLikeFitness = Partition%LogLikeFitness & ! LCOV_EXCL_LINE
+                                            , EffectiveSize = Partition%EffectiveSize & ! LCOV_EXCL_LINE
                                             , MahalSq = MahalSq & ! LCOV_EXCL_LINE
 #endif
                                             , InvCovMat = Partition%InvCovMat & ! LCOV_EXCL_LINE
@@ -548,6 +551,7 @@ contains
                                             , ChoDia = Partition%ChoDia & ! LCOV_EXCL_LINE
 #if defined MAXDEN
                                             , LogLikeFitness = Partition%LogLikeFitness & ! LCOV_EXCL_LINE
+                                            , EffectiveSize = Partition%EffectiveSize & ! LCOV_EXCL_LINE
                                             , MahalSq = MahalSq & ! LCOV_EXCL_LINE
 #endif
                                             , InvCovMat = Partition%InvCovMat & ! LCOV_EXCL_LINE
@@ -589,6 +593,7 @@ contains
 
 #if defined MAXDEN
             MahalSq(1:Partition%np,1) = MahalSqSinglePartition(1:Partition%np) * scaleFactorSqInverse
+            Partition%EffectiveSize(1) = Partition%np
 #endif
 
 #if defined DEBUG_ENABLED || defined TESTING_ENABLED || defined CODECOVE_ENABLED
@@ -604,6 +609,11 @@ contains
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if defined MAXDEN
+
+#if defined DEBUG_ENABLED || defined TESTING_ENABLED || defined CODECOVE_ENABLED
+        
+#endif
+
 !        if (.not. allocated(MahalSqIndexSorted)) allocate(MahalSqIndexSorted(Partition%neopt))
 !        if (.not. allocated(MahalSqAcrossPartition)) allocate(MahalSqAcrossPartition(Partition%neopt))
 !        loopOverPartition: do ic = 1, Partition%neopt
@@ -619,12 +629,12 @@ contains
 !                        isGoodFit = logLikeShrinkage + Partition%LogLikeFitness(ic) > unifrnd
 !                        !SuccessStepMinusOne(ic) = SuccessStepMinusOne(ic) + 1_IK
 !                    else
-!#if defined DEBUG_ENABLED || defined TESTING_ENABLED || defined CODECOVE_ENABLED
+#if defined DEBUG_ENABLED || defined TESTING_ENABLED || defined CODECOVE_ENABLED
 !                        if (Partition%LogLikeFitness(ic) > 0._RK) then
 !                            write(*,*) "Internal error occurred : Partition%LogLikeFitness(ic) > 0._RK : ", Partition%LogLikeFitness(ic), ic
 !                            error stop
 !                        end if
-!#endif
+#endif
 !                        isGoodFit = .true.
 !                        !logLikeShrinkage = NEGINF_RK
 !                    end if
@@ -695,8 +705,8 @@ contains
                                                 , Center & ! LCOV_EXCL_LINE
                                                 , ChoDia & ! LCOV_EXCL_LINE
 #if defined MAXDEN
-                                                , EffectiveSize & ! LCOV_EXCL_LINE
                                                 , LogLikeFitness & ! LCOV_EXCL_LINE
+                                                , EffectiveSize & ! LCOV_EXCL_LINE
                                                 , MahalSq & ! LCOV_EXCL_LINE
 #endif
                                                 , InvCovMat & ! LCOV_EXCL_LINE
