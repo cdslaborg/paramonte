@@ -1183,12 +1183,16 @@ contains
                 if (Kmeans%size(ic) > 0_IK) then
                     if (inclusionFraction > 0._RK) then
                         counterEffectiveSize = 0_IK
-                        do ip = 1, nps
+                        do ip = 1, nps - 1
                             NormedPoint(1:nd) = Point(1:nd,ip) - Kmeans%Center(1:nd,ic)
                             mahalSqScalar = dot_product( NormedPoint(1:nd) , matmul(Kmeans%Prop%InvCovMat(1:nd,1:nd,ic), NormedPoint(1:nd)) )
                             if (mahalSqScalar <= 1._RK) counterEffectiveSize = counterEffectiveSize + 1_IK
                         end do
 #if defined DEBUG_ENABLED || TESTING_ENABLED || CODECOVE_ENABLED
+                        if (npp /= npe - nps + 1) then
+                            write(*,*) PROCEDURE_NAME//": Internal error occurred : npp /= npe - nps + 1"
+                            error stop
+                        end if
                         do ip = ipstart + nps - 1, ipend + nps - 1
                             NormedPoint(1:nd) = Point(1:nd,ip) - Kmeans%Center(1:nd,ic)
                             mahalSqScalar = dot_product( NormedPoint(1:nd) , matmul(Kmeans%Prop%InvCovMat(1:nd,1:nd,ic), NormedPoint(1:nd)) )
@@ -1201,7 +1205,7 @@ contains
                             endif
                         end do
 #endif
-                        do ip = npe, np
+                        do ip = npe + 1, np
                             NormedPoint(1:nd) = Point(1:nd,ip) - Kmeans%Center(1:nd,ic)
                             mahalSqScalar = dot_product( NormedPoint(1:nd) , matmul(Kmeans%Prop%InvCovMat(1:nd,1:nd,ic), NormedPoint(1:nd)) )
                             if (mahalSqScalar <= 1._RK) counterEffectiveSize = counterEffectiveSize + 1_IK
