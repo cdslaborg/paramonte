@@ -308,6 +308,9 @@ contains
 #if defined MAXDEN
         real(RK)                                :: unifrnd
         real(RK)                                :: logVolRatio
+        real(RK)                                :: logLikeFailure
+        integer(IK) , allocatable               :: SuccessStepMinusOne(:)
+        real(RK)                                :: MahalSq(Partition%np,Partition%nemax)
        !real(RK)                                :: probPoisDiff
 #endif
         character(*), parameter                 :: PROCEDURE_NAME = MODULE_NAME//"@runPartition()"
@@ -471,6 +474,7 @@ contains
                                             , ChoDia = Partition%ChoDia & ! LCOV_EXCL_LINE
 #if defined MAXDEN
                                             , LogLike = Partition%LogLike & ! LCOV_EXCL_LINE
+                                            , MahalSq = MahalSq & ! LCOV_EXCL_LINE
 #endif
                                             , InvCovMat = Partition%InvCovMat & ! LCOV_EXCL_LINE
                                             , Membership = Partition%Membership & ! LCOV_EXCL_LINE
@@ -536,6 +540,7 @@ contains
                                             , ChoDia = Partition%ChoDia & ! LCOV_EXCL_LINE
 #if defined MAXDEN
                                             , LogLike = Partition%LogLike & ! LCOV_EXCL_LINE
+                                            , MahalSq = MahalSq & ! LCOV_EXCL_LINE
 #endif
                                             , InvCovMat = Partition%InvCovMat & ! LCOV_EXCL_LINE
                                             , Membership = Partition%Membership & ! LCOV_EXCL_LINE
@@ -585,7 +590,9 @@ contains
 
         end if
 
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! refine the partition
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 !#if defined MAXDEN
 !        if (.not. allocated(SuccessStepMinusOne)) allocate(SuccessStepMinusOne(Partition%neopt), source = 1_TK)
@@ -655,6 +662,7 @@ contains
                                                 , ChoDia & ! LCOV_EXCL_LINE
 #if defined MAXDEN
                                                 , LogLike & ! LCOV_EXCL_LINE
+                                                , MahalSq & ! LCOV_EXCL_LINE
 #endif
                                                 , InvCovMat & ! LCOV_EXCL_LINE
                                                 , Membership & ! LCOV_EXCL_LINE
@@ -705,6 +713,7 @@ contains
         real(RK)    , intent(inout)             :: LogVolNormed(nemax)
 #if defined MAXDEN
         real(RK)    , intent(inout)             :: LogLike(nemax)
+        real(RK)    , intent(inout)             :: MahalSq(np,nemax)
 #endif
         real(RK)    , intent(inout)             :: ChoDia(nd,nemax)
         real(RK)    , intent(inout) , optional  :: PointAvg(nd) ! must coexist with PointStd
@@ -712,7 +721,6 @@ contains
 
         type(Kmeans_type)                       :: Kmeans
         real(RK)    , allocatable               :: InvStd(:)
-        real(RK)                                :: mahalSqScalar
         real(RK)                                :: ndInverse
         real(RK)                                :: NormedPoint(nd)
         real(RK)                                :: StanPoint(nd,npp)
@@ -731,10 +739,12 @@ contains
 #if defined MINVOL
         real(RK)                                :: maxLogVolNormed
 #elif defined MAXDEN
-        real(RK)                                :: logVolRatio
         real(RK)                                :: unifrnd
-        real(RK)                                :: logLikeSum ! recovery
-        real(RK)                                :: parEllLogLike ! recovery
+        real(RK)                                :: logVolRatio
+        real(RK)                                :: KmeansMahalSq(np,nc)
+        real(RK)                                :: scaleFactorSqInverse4KPM ! for MahalSq component of Kmeans Prop
+        real(RK)                                :: parEllLogLike    ! recovery
+        real(RK)                                :: logLikeSum       ! recovery
 #endif
         real(RK)                                :: ParEllCenter(nd) ! recovery
         real(RK)                                :: ParEllChoDia(1:nd) ! recovery
@@ -770,8 +780,8 @@ contains
                                 , niterMax = maxAllowedKmeansRecursion & ! LCOV_EXCL_LINE
                                 )
             if (Kmeans%Err%occurred) then
-                Membership = 1
                 PartitionSize(1) = npp
+                !Membership = 1
                 neopt = 1
                 return
             end if
@@ -795,8 +805,8 @@ contains
                                 , niterMax = maxAllowedKmeansRecursion & ! LCOV_EXCL_LINE
                                 )
             if (Kmeans%Err%occurred) then
-                Membership = 1
                 PartitionSize(1) = npp
+                !Membership = 1
                 neopt = 1
                 return
             end if
@@ -814,8 +824,8 @@ contains
                             )
         if (Kmeans%Err%occurred) then
             ! LCOV_EXCL_START
-            Membership = 1
             PartitionSize(1) = npp
+            !Membership = 1
             neopt = 1
             return
             ! LCOV_EXCL_STOP
@@ -1051,8 +1061,8 @@ contains
 #endif
                 if (Kmeans%Err%occurred) then
                     ! LCOV_EXCL_START
-                    Membership = 1
                     PartitionSize(1) = npp
+                    !Membership = 1
                     neopt = 1
                     return
                     ! LCOV_EXCL_STOP
@@ -1180,19 +1190,22 @@ contains
                 icend = icstart + KmeansNemax(ic) - 1
 
 #if defined MAXDEN
+                !scaleFactorSqInverse = 1._RK
                 if (Kmeans%size(ic) > 0_IK) then
                     if (inclusionFraction > 0._RK) then
                         counterEffectiveSize = 0_IK
                         do ip = 1, nps - 1
                             NormedPoint(1:nd) = Point(1:nd,ip) - Kmeans%Center(1:nd,ic)
-                            mahalSqScalar = dot_product( NormedPoint(1:nd) , matmul(Kmeans%Prop%InvCovMat(1:nd,1:nd,ic), NormedPoint(1:nd)) )
-                            if (mahalSqScalar <= 1._RK) counterEffectiveSize = counterEffectiveSize + 1_IK
+                            KmeansMahalSq(ip,ic) = dot_product( NormedPoint(1:nd) , matmul(Kmeans%Prop%InvCovMat(1:nd,1:nd,ic), NormedPoint(1:nd)) )
+                            if (KmeansMahalSq(ip,ic) <= 1._RK) counterEffectiveSize = counterEffectiveSize + 1_IK
                         end do
 #if defined DEBUG_ENABLED || TESTING_ENABLED || CODECOVE_ENABLED
                         if (npp /= npe - nps + 1) then
                             write(*,*) PROCEDURE_NAME//": Internal error occurred : npp /= npe - nps + 1"
                             error stop
                         end if
+                        block
+                        real(RK) :: mahalSqScalar
                         do ip = ipstart + nps - 1, ipend + nps - 1
                             NormedPoint(1:nd) = Point(1:nd,ip) - Kmeans%Center(1:nd,ic)
                             mahalSqScalar = dot_product( NormedPoint(1:nd) , matmul(Kmeans%Prop%InvCovMat(1:nd,1:nd,ic), NormedPoint(1:nd)) )
@@ -1204,11 +1217,12 @@ contains
                                 error stop
                             endif
                         end do
+                        end block
 #endif
                         do ip = npe + 1, np
                             NormedPoint(1:nd) = Point(1:nd,ip) - Kmeans%Center(1:nd,ic)
-                            mahalSqScalar = dot_product( NormedPoint(1:nd) , matmul(Kmeans%Prop%InvCovMat(1:nd,1:nd,ic), NormedPoint(1:nd)) )
-                            if (mahalSqScalar <= 1._RK) counterEffectiveSize = counterEffectiveSize + 1_IK
+                            KmeansMahalSq(ip,ic) = dot_product( NormedPoint(1:nd) , matmul(Kmeans%Prop%InvCovMat(1:nd,1:nd,ic), NormedPoint(1:nd)) )
+                            if (KmeansMahalSq(ip,ic) <= 1._RK) counterEffectiveSize = counterEffectiveSize + 1_IK
                         end do
                         Kmeans%Prop%EffectiveSize(ic) = Kmeans%Prop%EffectiveSize(ic) + nint(inclusionFraction * counterEffectiveSize)
                     end if
@@ -1226,10 +1240,9 @@ contains
 #endif
                     call random_number(unifrnd)
                     if (unifrnd > 0._RK) then; unifrnd = log(unifrnd); else; unifrnd = -huge(unifrnd); end if ! LCOV_EXCL_LINE or unifrnd = log(max(tiny(unifrnd),unifrnd))
-                    boundedRegionIsTooLarge = boundedRegionIsTooLarge .and. (LogLike(icstart) < unifrnd) .and. (logVolRatio > 0._RK)
+                    boundedRegionIsTooLarge = boundedRegionIsTooLarge .and. LogLike(icstart) < unifrnd .and. logVolRatio > 0._RK
                 end if
 #endif
-
                 blockSubclusterCheck: if (boundedRegionIsTooLarge) then ! .and. Kmeans%Prop%LogVolNormed(ic)>1.1_RK*KmeansLogVolEstimate(ic)) then
 
                     LogVolNormed(icstart) = Kmeans%Prop%LogVolNormed(ic)
@@ -1275,6 +1288,7 @@ contains
                                                 , ChoDia = ChoDia(1:nd,icstart:icend) & ! LCOV_EXCL_LINE
 #if defined MAXDEN
                                                 , LogLike = LogLike(icstart:icend) & ! LCOV_EXCL_LINE
+                                                , MahalSq = MahalSq(1:np,icstart:icend) & ! LCOV_EXCL_LINE
 #endif
                                                 , InvCovMat = InvCovMat(1:nd,1:nd,icstart:icend) & ! LCOV_EXCL_LINE
                                                 , Membership = Membership(ipstart:ipend) & ! LCOV_EXCL_LINE
@@ -1295,86 +1309,76 @@ contains
                         !end if
 #if defined DEBUG_ENABLED || TESTING_ENABLED || CODECOVE_ENABLED
                     if (any(abs(LogVolNormed(icstart:icstart+KmeansNeopt(ic)-1)) < 1.e-6_RK)) then ! xxx This must be removed later as the condition can be true in normal situations.
-                    write(*,*) LogVolNormed(icstart:icstart+KmeansNeopt(ic)-1)
-                    error stop
-                    endif
-#endif
-
-#if defined MAXDEN
-                    !elseif (KmeansNeopt(ic) == 1_IK) then
-                    !if (KmeansNeopt(ic) == 1_IK) LogLike(icstart) = -LogLike(icstart) ! flag the failed partition
-#endif
-
-#if defined DEBUG_ENABLED || TESTING_ENABLED || CODECOVE_ENABLED
-                    if (KmeansNeopt(ic) < 1_IK) then
+                        write(*,*) LogVolNormed(icstart:icstart+KmeansNeopt(ic)-1)
+                        error stop
+                    elseif (KmeansNeopt(ic) < 1_IK) then
                         write(*,*) "KmeansNeopt(ic) < 1_IK : ", KmeansNeopt(ic), ic
                         error stop
                     end if
 #endif
 
+                    if (KmeansNeopt(ic) > 1_IK) then
 #if defined DEBUG_ENABLED || TESTING_ENABLED || CODECOVE_ENABLED
-                    !if (present(PointStd)) then
-                    !    do concurrent(ip = ipstart+nps-1:ipend+nps-1)
-                    !        Point(1:nd,ip) = Point(1:nd,ip) + Kmeans%Center(1:nd,ic)
-                    !    end do
-                    !end if
-
-                    if (any(Membership(ipstart:ipend) > KmeansNemax(ic))) then
-                        write(*,*) PROCEDURE_NAME
-                        write(*,*) "KmeansNemax(ic) : ", KmeansNemax(ic)
-                        write(*,*) "Membership(ipstart:ipend) > KmeansNemax(ic) : ", Membership(ipstart:ipend)
-                        error stop
-                    end if
+                        if (any(Membership(ipstart:ipend) < 1_IK) .or. any(Membership(ipstart:ipend) > KmeansNemax(ic))) then
+                            write(*,*) PROCEDURE_NAME//": Internal error occurred."
+                            write(*,*) "KmeansNemax(ic) : ", KmeansNemax(ic)
+                            write(*,*) "Membership(ipstart:ipend) <= 0_IK : ", pack(Membership(ipstart:ipend), Membership(ipstart:ipend) <= 0_IK)
+                            write(*,*) "Membership(ipstart:ipend) > KmeansNemax(ic) : ", pack(Membership(ipstart:ipend), Membership(ipstart:ipend) > KmeansNemax(ic))
+                            write(*,*) "Membership(ipstart:ipend) : ", Membership(ipstart:ipend)
+                            write(*,*) "ic, icstart: ", ic, icstart
+                            error stop
+                        end if
 #endif
-                    Membership(ipstart:ipend) = Membership(ipstart:ipend) + icstart - 1_IK
+                        Membership(ipstart:ipend) = Membership(ipstart:ipend) + icstart - 1_IK
+                    end if
+
+                elseif (Kmeans%Size(ic) > 0_IK) then blockSubclusterCheck
+
+                    KmeansNeopt(ic) = 1_IK
 
                 else blockSubclusterCheck
 
-                    if (Kmeans%Size(ic) > 0_IK) then
-                        KmeansNeopt(ic) = 1_IK
-                        Membership(ipstart:ipend) = icstart
-                        LogVolNormed(icstart) = Kmeans%Prop%LogVolNormed(ic)
-#if defined MAXDEN
-                        !if (LogLike(icstart) < unifrnd .and. logVolRatio < 0._RK) then ! enlarge
-                        if (logVolRatio < 0._RK) then ! enlarge, no questions asked.
-                            !LogLike(icstart) = 1._RK + LogLike(icstart)
-                            LogLike(icstart) = 0._RK
-                            LogVolNormed(icstart) = KmeansLogVolEstimate(ic)
-                            scaleFactor = exp( -ndInverse * logVolRatio )
-                            Kmeans%Prop%ScaleFactorSq(ic) = scaleFactor**2
-                            scaleFactorSqInverse = 1._RK / Kmeans%Prop%ScaleFactorSq(ic)
-                            do j = 1, nd
-                                Kmeans%Prop%ChoDia(j,ic) = Kmeans%Prop%ChoDia(j,ic) * scaleFactor
-                                Kmeans%Prop%InvCovMat(1:nd,j,ic) = Kmeans%Prop%InvCovMat(1:nd,j,ic) * scaleFactorSqInverse
-                                do i = j + 1, nd
-                                    Kmeans%Prop%ChoLowCovUpp(i,j,ic) = Kmeans%Prop%ChoLowCovUpp(i,j,ic) * scaleFactor
-                                end do
-                            end do
-                        end if
-#endif
-                    else
-                        KmeansNeopt(ic) = 0_IK
-                    end if
+                    KmeansNeopt(ic) = 0_IK
 
                 end if blockSubclusterCheck
 
-#if defined DEBUG_ENABLED || TESTING_ENABLED || CODECOVE_ENABLED
-                if (any(Membership(ipstart:ipend) <= 0_IK) .or. any(Membership(ipstart:ipend) > nemax)) then
-                    write(*,*) PROCEDURE_NAME
-                    write(*,*) "Membership(ipstart:ipend) = 0 : ", Membership(ipstart:ipend)
-                    write(*,*) "ic, icstart: ", ic, icstart
-                    error stop
-                end if
-#endif
-
                 blockSingleCluster: if (KmeansNeopt(ic) == 1_IK) then ! .or. KmeansNemax(ic) == 1_IK ) then ! There is only one cluster here
 
+                    Membership(ipstart:ipend) = icstart
                     PartitionSize(icstart) = Kmeans%Size(ic)
                     Center(1:nd,icstart) = Kmeans%Center(1:nd,ic)
-                    ChoDia(1:nd,icstart) = Kmeans%Prop%ChoDia(1:nd,ic)
-                    ChoLowCovUpp(1:nd,1:nd,icstart) = Kmeans%Prop%ChoLowCovUpp(1:nd,1:nd,ic)
-                    InvCovMat(1:nd,1:nd,icstart) = Kmeans%Prop%InvCovMat(1:nd,1:nd,ic)
-
+#if defined MAXDEN
+                    !if (LogLike(icstart) < unifrnd .and. logVolRatio < 0._RK) then ! enlarge
+                    if (logVolRatio < 0._RK) then ! enlarge, no questions asked.
+                        !LogLike(icstart) = 1._RK + LogLike(icstart)
+                        LogLike(icstart) = 0._RK
+                        LogVolNormed(icstart) = KmeansLogVolEstimate(ic)
+                        scaleFactor = exp( -ndInverse * logVolRatio )
+                        scaleFactorSqInverse = 1._RK / scaleFactor**2
+                        scaleFactorSqInverse4KPM = scaleFactorSqInverse / Kmeans%Prop%ScaleFactorSq(ic) ! assumes no MahalSq normalization in Kmeans%getProp()
+                        MahalSq(1:nps-1,icstart) = KmeansMahalSq(1:nps-1,ic) * scaleFactorSqInverse
+                        MahalSq(nps:npe,icstart) = Kmeans%Prop%MahalSq(1:npp,ic) * scaleFactorSqInverse4KPM
+                        MahalSq(npe+1:np,icstart) = KmeansMahalSq(npe+1:np,ic) * scaleFactorSqInverse
+                        do j = 1, nd
+                            ChoDia(j,icstart) = Kmeans%Prop%ChoDia(j,ic) * scaleFactor
+                            InvCovMat(1:nd,j,icstart) = Kmeans%Prop%InvCovMat(1:nd,j,ic) * scaleFactorSqInverse
+                            do i = j + 1, nd
+                                ChoLowCovUpp(i,j,icstart) = Kmeans%Prop%ChoLowCovUpp(i,j,ic) * scaleFactor
+                            end do
+                        end do
+                    else
+#endif
+                        ChoDia(1:nd,icstart) = Kmeans%Prop%ChoDia(1:nd,ic)
+                        LogVolNormed(icstart) = Kmeans%Prop%LogVolNormed(ic)
+                        InvCovMat(1:nd,1:nd,icstart) = Kmeans%Prop%InvCovMat(1:nd,1:nd,ic)
+                        ChoLowCovUpp(1:nd,1:nd,icstart) = Kmeans%Prop%ChoLowCovUpp(1:nd,1:nd,ic)
+#if defined MAXDEN
+                        scaleFactorSqInverse4KPM = 1._RK / Kmeans%Prop%ScaleFactorSq(ic) ! assumes no MahalSq normalization in Kmeans%getProp()
+                        MahalSq(1:nps-1,icstart) = KmeansMahalSq(1:nps-1,ic)
+                        MahalSq(nps:npe,icstart) = Kmeans%Prop%MahalSq(1:npp,ic) * scaleFactorSqInverse4KPM
+                        MahalSq(npe+1:np,icstart) = KmeansMahalSq(npe+1:np,ic)
+                    end if
+#endif
                     ! Rescale the Cholesky factor and its diagonals such that they describe the bounded shape of the cluster
 
                     !scaleFactor = sqrt(Kmeans%Prop%ScaleFactorSq(ic))
@@ -1463,7 +1467,7 @@ write(*,*) "sub2par likelihood: ", exp(logLikeSum - parEllLogLike - logShrinkage
                     InvCovMat(1:nd,1:nd,1) = ParEllInvCovMat(1:nd,1:nd)
                     ChoLowCovUpp(1:nd,1:nd,1) = ParEllChoLowCovUpp(1:nd,1:nd)
                     PartitionSize(1) = npp
-                    Membership = 1_IK
+                    !Membership = 1_IK
                     neopt = 1_IK
                     return
                 end if
@@ -1475,7 +1479,7 @@ write(*,*) "sub2par likelihood: ", exp(logLikeSum - parEllLogLike - logShrinkage
         else blockSubclusterSearch  ! one cluster is better
 
             PartitionSize(1) = npp
-            Membership = 1_IK
+            !Membership = 1_IK
             neopt = 1_IK
             return
 
