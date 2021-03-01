@@ -1287,7 +1287,7 @@ contains
                         Kmeans%Prop%EffectiveSize(ic)   = Kmeans%Size(ic) & ! LCOV_EXCL_LINE
                                                         + nint(inclusionFraction * & ! LCOV_EXCL_LINE
                                                         ( count(Kmeans%Prop%MahalSq(1:Kmeans%Prop%CumSumSize(ic-1),ic)<=Kmeans%Prop%ScaleFactorSq(ic)) & ! LCOV_EXCL_LINE
-                                                        + count(Kmeans%Prop%MahalSq(Kmeans%Prop%CumSumSize(ic)+1:np,ic)<=Kmeans%Prop%ScaleFactorSq(ic)) & ! LCOV_EXCL_LINE
+                                                        + count(Kmeans%Prop%MahalSq(Kmeans%Prop%CumSumSize(ic)+1:npp,ic)<=Kmeans%Prop%ScaleFactorSq(ic)) & ! LCOV_EXCL_LINE
                                                         + counterEffectiveSize & ! LCOV_EXCL_LINE
                                                         ), kind = IK)
                     end if
