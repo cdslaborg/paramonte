@@ -760,7 +760,7 @@ contains
 !write(*,*) "Kmeans%Prop%MahalSq(Kmeans%Prop%CumSumSize(ic)+1:np,ic): ", Kmeans%Prop%MahalSq(Kmeans%Prop%CumSumSize(ic)+1:np,ic)
 !write(*,*) 
                 else
-                    Kmeans%Prop%EffectiveSize(ic)   = Kmeans%Size(ic)
+                    Kmeans%Prop%EffectiveSize(ic) = Kmeans%Size(ic)
                 end if
 
                 Kmeans%Prop%LogVolNormed(ic) = sum( log(Kmeans%Prop%ChoDia(1:nd,ic)) )
@@ -770,6 +770,7 @@ contains
             else blockMinimumClusterSize
 
                 Kmeans%Prop%LogVolNormed(ic) = NEGINF_RK ! This initialization is essential in dependent procedures.
+                Kmeans%Prop%EffectiveSize(ic) = 0_IK
                 pointLogVolNormedDefault = 1._RK ! This is an indicator
 
             end if blockMinimumClusterSize

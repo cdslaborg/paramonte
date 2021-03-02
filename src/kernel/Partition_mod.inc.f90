@@ -611,10 +611,10 @@ contains
 #if defined MAXDEN
 
 #if defined DEBUG_ENABLED || defined TESTING_ENABLED || defined CODECOVE_ENABLED
-!        do ic = 1, Partition%neopt
-!            if (
-!            Partition%EffectiveSize
-!        end do
+         !do ic = 1, Partition%neopt
+         !    if (
+         !    Partition%EffectiveSize
+         !end do
 #endif
 
 !        if (.not. allocated(MahalSqIndexSorted)) allocate(MahalSqIndexSorted(Partition%neopt))
@@ -655,7 +655,7 @@ contains
 !                !if (Partition%Err%occurred) then
 !                !    error stop ! xxx needs improvement
 !                !end if
-!                newLogVolNormed = 
+!                newLogVolNormed =
 !                if (icMinMahal == ic) then
 !                end if
 !                if (MahalSq(1:Partition%np,ic)
@@ -775,7 +775,7 @@ contains
         real(RK)                                :: StanPoint(nd,npp)
         real(RK)                                :: MahalSqWeight(nc)
         real(RK)                                :: scaleFactorSqInverse
-        real(RK)                                :: KmeansLogVolEstimate(nc) ! New Cluster Volume estimates.
+        real(RK)                                :: KmeansLogVolExpected(nc) ! New Cluster Volume estimates.
         real(RK)                                :: scaleFactor
         integer(IK)                             :: KmeansNemax(nc)      ! maximum allowed number of clusters in each of the two K-means clusters.
         integer(IK)                             :: KmeansNeopt(0:nc)    ! optimal number of clusters in each of the child clusters.
@@ -784,12 +784,13 @@ contains
         integer(IK)                             :: counterEffectiveSize
         integer(IK)                             :: icmin, nemaxRemained
         logical                                 :: boundedRegionIsTooLarge
+        logical                                 :: mahalSqWeightEnabled
         logical                                 :: reclusteringNeeded
 #if defined MINVOL
         real(RK)                                :: maxLogVolNormed
 #elif defined MAXDEN
 #if defined DEBUG_ENABLED || TESTING_ENABLED || CODECOVE_ENABLED
-        real(RK)                                :: EffectiveSizeOld(nc)
+        !real(RK)                                :: EffectiveSizeOld(nc)
 #endif
         real(RK)                                :: unifrnd
         real(RK)                                :: logVolRatio
@@ -876,7 +877,6 @@ contains
 #endif
                             , pointLogVolNormed = pointLogVolNormed & ! LCOV_EXCL_LINE
                             )
-
         if (Kmeans%Err%occurred) then
             ! LCOV_EXCL_START
             PartitionSize(1) = npp
@@ -990,150 +990,171 @@ contains
         !call KmeansBackup%Prop%allocate(nd, npp, nc)
         !KmeansBackup%Prop%LogVolNormed = 2 * Kmeans%Prop%LogVolNormed
 
-        loopRecursivePartitionOptimization: do recursionCounter = 1, maxAllowedKvolumeRecursion
-!write(*,*) "We should not be here"; error stop ! xxx remove
-            ! Ensure the stability of the minimum bounding regions by making a backup.
+        blockRecursivePartitionOptimization: if (maxAllowedKvolumeRecursion > 0_IK) then
 
-            !if (Kmeans%Prop%logSumVolNormed < KmeansBackup%Prop%logSumVolNormed) then ! Create a backup of the current clustering properties. This must never occur on the first try.
-            !    !KmeansBackup = Kmeans
-            !    BackupPoint(1:nd,1:npp)                          = Point(1:nd,1:npp)
-            !    BackupPointIndex(1:npp)                          = PointIndex(1:npp)
-            !    KmeansBackup%Membership(1:npp)                   = Kmeans%Membership(1:npp)
-            !    KmeansBackup%Center(1:nd,1:nc)                  = Kmeans%Center(1:nd,1:nc)
-            !    KmeansBackup%Prop%ChoDia(1:nd,1:nc)             = Kmeans%Prop%ChoDia(1:nd,1:nc)
-            !    KmeansBackup%Prop%MahalSq(1:npp,1:nc)            = Kmeans%Prop%MahalSq(1:npp,1:nc)
-            !    KmeansBackup%Prop%ScaleFactorSq(1:nc)           = Kmeans%Prop%ScaleFactorSq(1:nc)
-            !    KmeansBackup%Prop%InvCovMat(1:nd,1:nd,1:nc)     = Kmeans%Prop%InvCovMat(1:nd,1:nd,1:nc)
-            !    KmeansBackup%Prop%ChoLowCovUpp(1:nd,1:nd,1:nc)  = Kmeans%Prop%ChoLowCovUpp(1:nd,1:nd,1:nc)
-            !    KmeansBackup%Prop%EffectiveSize(1:nc)           = Kmeans%Prop%EffectiveSize(1:nc)
-            !    KmeansBackup%Prop%LogVolNormed(1:nc)            = Kmeans%Prop%LogVolNormed(1:nc)
-            !    KmeansBackup%Prop%LogDenNormed(1:nc)            = Kmeans%Prop%LogDenNormed(1:nc)
-            !    KmeansBackup%Prop%CumSumSize(1:nc)              = Kmeans%Prop%CumSumSize(1:nc)
-            !    KmeansBackup%Prop%logSumVolNormed               = Kmeans%Prop%logSumVolNormed
-            !else ! Restore the last clustering properties.
-            !    !Kmeans = KmeansBackup
-            !    Point(1:nd,nps:npe)                             = BackupPoint(1:nd,nps:npe)
-            !    PointIndex(1:npp)                                = BackupPointIndex(1:npp)
-            !    Kmeans%Membership(1:npp)                         = KmeansBackup%Membership(1:npp)
-            !    Kmeans%Center(1:nd,1:nc)                        = KmeansBackup%Center(1:nd,1:nc)
-            !    Kmeans%Prop%ChoDia(1:nd,1:nc)                   = KmeansBackup%Prop%ChoDia(1:nd,1:nc)
-            !    Kmeans%Prop%MahalSq(1:npp,1:nc)                  = KmeansBackup%Prop%MahalSq(1:npp,1:nc)
-            !    Kmeans%Prop%ScaleFactorSq(1:nc)                 = KmeansBackup%Prop%ScaleFactorSq(1:nc)
-            !    Kmeans%Prop%InvCovMat(1:nd,1:nd,1:nc)           = KmeansBackup%Prop%InvCovMat(1:nd,1:nd,1:nc)
-            !    Kmeans%Prop%ChoLowCovUpp(1:nd,1:nd,1:nc)        = KmeansBackup%Prop%ChoLowCovUpp(1:nd,1:nd,1:nc)
-            !    Kmeans%Prop%EffectiveSize(1:nc)                 = KmeansBackup%Prop%EffectiveSize(1:nc)
-            !    Kmeans%Prop%LogVolNormed(1:nc)                  = KmeansBackup%Prop%LogVolNormed(1:nc)
-            !    Kmeans%Prop%LogDenNormed(1:nc)                  = KmeansBackup%Prop%LogDenNormed(1:nc)
-            !    Kmeans%Prop%CumSumSize(1:nc)                    = KmeansBackup%Prop%CumSumSize(1:nc)
-            !    Kmeans%Prop%logSumVolNormed                     = KmeansBackup%Prop%logSumVolNormed
-            !    exit loopRecursivePartitionOptimization
-            !end if
-
-            ! Convert Mean(Point) to sum(Point) per cluster and compute variational weights.
-
-            do concurrent(ic = 1:nc)
-                Kmeans%Center(1:nd,ic) = Kmeans%Center(1:nd,ic) * Kmeans%Size(ic)
-            end do
-
-            ! Determine the cluster to which the point is the closest and switch the point membership if needed.
-
-            reclusteringNeeded = .false.
-            if ( mahalSqWeightExponent /= 0._RK &
-#if defined MINVOL
-                .and. parentLogVolNormed > NEGINF_RK &
+#if defined MAXDEN
+            mahalSqWeightEnabled = mahalSqWeightExponent /= 0._RK
+#elif defined MINVOL
+            mahalSqWeightEnabled = mahalSqWeightExponent /= 0._RK .and. parentLogVolNormed > NEGINF_RK
 #endif
-                ) then
-                MahalSqWeight(1:nc) = exp(mahalSqWeightExponent * Kmeans%Prop%LogVolNormed(1:nc) - parentLogVolNormed)
-                loopReassignPoint: do ip = 1, npp
-                    icmin = Kmeans%Membership(ip)
-                    do ic = 1, nc
-                        !if (Kmeans%Size(ic) > 0_IK .and. ic/=icmin .and. MahalSqWeight(ic) * Kmeans%Prop%MahalSq(ip,ic) < MahalSqWeight(icmin) * Kmeans%Prop%MahalSq(ip,icmin)) icmin = ic
-                        if (ic/=icmin .and. MahalSqWeight(ic) * Kmeans%Prop%MahalSq(ip,ic) < MahalSqWeight(icmin) * Kmeans%Prop%MahalSq(ip,icmin)) icmin = ic
+
+            loopRecursivePartitionOptimization: do recursionCounter = 1, maxAllowedKvolumeRecursion
+
+                ! Ensure the stability of the minimum bounding regions by making a backup.
+
+                !if (Kmeans%Prop%logSumVolNormed < KmeansBackup%Prop%logSumVolNormed) then ! Create a backup of the current clustering properties. This must never occur on the first try.
+                !    !KmeansBackup = Kmeans
+                !    BackupPoint(1:nd,1:npp)                          = Point(1:nd,1:npp)
+                !    BackupPointIndex(1:npp)                          = PointIndex(1:npp)
+                !    KmeansBackup%Membership(1:npp)                   = Kmeans%Membership(1:npp)
+                !    KmeansBackup%Center(1:nd,1:nc)                  = Kmeans%Center(1:nd,1:nc)
+                !    KmeansBackup%Prop%ChoDia(1:nd,1:nc)             = Kmeans%Prop%ChoDia(1:nd,1:nc)
+                !    KmeansBackup%Prop%MahalSq(1:npp,1:nc)            = Kmeans%Prop%MahalSq(1:npp,1:nc)
+                !    KmeansBackup%Prop%ScaleFactorSq(1:nc)           = Kmeans%Prop%ScaleFactorSq(1:nc)
+                !    KmeansBackup%Prop%InvCovMat(1:nd,1:nd,1:nc)     = Kmeans%Prop%InvCovMat(1:nd,1:nd,1:nc)
+                !    KmeansBackup%Prop%ChoLowCovUpp(1:nd,1:nd,1:nc)  = Kmeans%Prop%ChoLowCovUpp(1:nd,1:nd,1:nc)
+                !    KmeansBackup%Prop%EffectiveSize(1:nc)           = Kmeans%Prop%EffectiveSize(1:nc)
+                !    KmeansBackup%Prop%LogVolNormed(1:nc)            = Kmeans%Prop%LogVolNormed(1:nc)
+                !    KmeansBackup%Prop%LogDenNormed(1:nc)            = Kmeans%Prop%LogDenNormed(1:nc)
+                !    KmeansBackup%Prop%CumSumSize(1:nc)              = Kmeans%Prop%CumSumSize(1:nc)
+                !    KmeansBackup%Prop%logSumVolNormed               = Kmeans%Prop%logSumVolNormed
+                !else ! Restore the last clustering properties.
+                !    !Kmeans = KmeansBackup
+                !    Point(1:nd,nps:npe)                             = BackupPoint(1:nd,nps:npe)
+                !    PointIndex(1:npp)                                = BackupPointIndex(1:npp)
+                !    Kmeans%Membership(1:npp)                         = KmeansBackup%Membership(1:npp)
+                !    Kmeans%Center(1:nd,1:nc)                        = KmeansBackup%Center(1:nd,1:nc)
+                !    Kmeans%Prop%ChoDia(1:nd,1:nc)                   = KmeansBackup%Prop%ChoDia(1:nd,1:nc)
+                !    Kmeans%Prop%MahalSq(1:npp,1:nc)                  = KmeansBackup%Prop%MahalSq(1:npp,1:nc)
+                !    Kmeans%Prop%ScaleFactorSq(1:nc)                 = KmeansBackup%Prop%ScaleFactorSq(1:nc)
+                !    Kmeans%Prop%InvCovMat(1:nd,1:nd,1:nc)           = KmeansBackup%Prop%InvCovMat(1:nd,1:nd,1:nc)
+                !    Kmeans%Prop%ChoLowCovUpp(1:nd,1:nd,1:nc)        = KmeansBackup%Prop%ChoLowCovUpp(1:nd,1:nd,1:nc)
+                !    Kmeans%Prop%EffectiveSize(1:nc)                 = KmeansBackup%Prop%EffectiveSize(1:nc)
+                !    Kmeans%Prop%LogVolNormed(1:nc)                  = KmeansBackup%Prop%LogVolNormed(1:nc)
+                !    Kmeans%Prop%LogDenNormed(1:nc)                  = KmeansBackup%Prop%LogDenNormed(1:nc)
+                !    Kmeans%Prop%CumSumSize(1:nc)                    = KmeansBackup%Prop%CumSumSize(1:nc)
+                !    Kmeans%Prop%logSumVolNormed                     = KmeansBackup%Prop%logSumVolNormed
+                !    exit loopRecursivePartitionOptimization
+                !end if
+
+                ! Convert Mean(Point) to sum(Point) per cluster and compute variational weights.
+
+                do concurrent(ic = 1:nc)
+                    Kmeans%Center(1:nd,ic) = Kmeans%Center(1:nd,ic) * Kmeans%Size(ic)
+                end do
+
+                ! Determine the cluster to which the point is the closest and switch the point membership if needed.
+
+                reclusteringNeeded = .false.
+                if (mahalSqWeightEnabled) then
+
+                    do concurrent(ic = 1:nc)
+                        if (Kmeans%Prop%EffectiveSize(ic) > 0._RK) then
+                            KmeansLogVolExpected(ic) = pointLogVolNormed + log(real(Kmeans%Prop%EffectiveSize(ic),RK)) ! @attn: Kmeans%Prop%EffectiveSize(ic) >= Kmeans%Size(ic) > 0
+                            MahalSqWeight(ic) = exp(mahalSqWeightExponent * (Kmeans%Prop%LogVolNormed(ic) - KmeansLogVolExpected(ic)))
+                        end if
                     end do
-                    if (icmin /= Kmeans%Membership(ip)) then
-                        Kmeans%Size(icmin) = Kmeans%Size(icmin) + 1_IK
-                        Kmeans%Size(Kmeans%Membership(ip)) = Kmeans%Size(Kmeans%Membership(ip)) - 1_IK
-                        Kmeans%Center(1:nd,icmin) = Kmeans%Center(1:nd,icmin) + Point(1:nd,ip+nps-1)
-                        Kmeans%Center(1:nd,Kmeans%Membership(ip)) = Kmeans%Center(1:nd,Kmeans%Membership(ip)) - Point(1:nd,ip+nps-1)
-                        Kmeans%Membership(ip) = icmin
-                        reclusteringNeeded = .true.
-                    end if
-                end do loopReassignPoint
-            else
-                loopReassignWeightedPoint: do ip = 1, npp
-                    icmin = Kmeans%Membership(ip)
-                    do ic = 1, nc
-                        !if (Kmeans%Size(ic) > 0_IK .and. ic/=icmin .and. Kmeans%Prop%MahalSq(ip,ic) < Kmeans%Prop%MahalSq(ip,icmin)) icmin = ic
-                        if (ic/=icmin .and. Kmeans%Prop%MahalSq(ip,ic) < Kmeans%Prop%MahalSq(ip,icmin)) icmin = ic
-                    end do
-                    if (icmin /= Kmeans%Membership(ip)) then ! .and. Kmeans%Size(Kmeans%Membership(ip)) > minSize) then
-                        Kmeans%Size(icmin) = Kmeans%Size(icmin) + 1_IK
-                        Kmeans%Size(Kmeans%Membership(ip)) = Kmeans%Size(Kmeans%Membership(ip)) - 1_IK
-                        Kmeans%Center(1:nd,icmin) = Kmeans%Center(1:nd,icmin) + Point(1:nd,ip+nps-1)
-                        Kmeans%Center(1:nd,Kmeans%Membership(ip)) = Kmeans%Center(1:nd,Kmeans%Membership(ip)) - Point(1:nd,ip+nps-1)
-                        Kmeans%Membership(ip) = icmin
-                        reclusteringNeeded = .true.
-                    end if
-                end do loopReassignWeightedPoint
-            end if
 
-#if (defined DEBUG_ENABLED || TESTING_ENABLED || CODECOVE_ENABLED)
-            !if (any(Kmeans%Size<minSize)) then
-            !    !write(*,*) "Kmeans%Size < minSize : minSize, Kmeans%Size = ", minSize, Kmeans%Size
-            !    !error stop ! @attn: This is NOT an error anymore as Size can become less than minSize.
-            !end if
-#endif
+                    loopReassignWeightedPoint: do ip = 1, npp
+                        icmin = Kmeans%Membership(ip)
+                        do ic = 1, nc
+                            if (Kmeans%Prop%EffectiveSize(ic) > 0_IK .and. ic /= icmin) then
+                                if (MahalSqWeight(ic) * Kmeans%Prop%MahalSq(ip,ic) < MahalSqWeight(icmin) * Kmeans%Prop%MahalSq(ip,icmin)) icmin = ic
+                            end if
+                        end do
+                        if (icmin /= Kmeans%Membership(ip)) then
+                            Kmeans%Size(icmin) = Kmeans%Size(icmin) + 1_IK
+                            Kmeans%Size(Kmeans%Membership(ip)) = Kmeans%Size(Kmeans%Membership(ip)) - 1_IK
+                            Kmeans%Center(1:nd,icmin) = Kmeans%Center(1:nd,icmin) + Point(1:nd,ip+nps-1)
+                            Kmeans%Center(1:nd,Kmeans%Membership(ip)) = Kmeans%Center(1:nd,Kmeans%Membership(ip)) - Point(1:nd,ip+nps-1)
+                            Kmeans%Membership(ip) = icmin
+                            reclusteringNeeded = .true.
+                        end if
+                    end do loopReassignWeightedPoint
 
-            ! Convert sum(Point) back to center of clusters.
+                else
 
-            !do concurrent(ic = 1:nc) ! xxx revive this line
-            do ic = 1, nc
-                !write(*,*) "Kmeans%Center(1:nd,ic), Kmeans%Size", Kmeans%Center(1:nd,ic), Kmeans%Size ! xxx
-                if (Kmeans%Size(ic) > 0_IK) Kmeans%Center(1:nd,ic) = Kmeans%Center(1:nd,ic) / Kmeans%Size(ic)
-            end do
+                    loopReassignPoint: do ip = 1, npp
+                        icmin = Kmeans%Membership(ip)
+                        do ic = 1, nc
+                            if (Kmeans%Prop%EffectiveSize(ic) > 0_IK .and. ic /= icmin) then
+                                if (Kmeans%Prop%MahalSq(ip,ic) < Kmeans%Prop%MahalSq(ip,icmin)) icmin = ic
+                            end if
+                        end do
+                        if (icmin /= Kmeans%Membership(ip)) then ! .and. Kmeans%Size(Kmeans%Membership(ip)) > minSize) then
+                            Kmeans%Size(icmin) = Kmeans%Size(icmin) + 1_IK
+                            Kmeans%Size(Kmeans%Membership(ip)) = Kmeans%Size(Kmeans%Membership(ip)) - 1_IK
+                            Kmeans%Center(1:nd,icmin) = Kmeans%Center(1:nd,icmin) + Point(1:nd,ip+nps-1)
+                            Kmeans%Center(1:nd,Kmeans%Membership(ip)) = Kmeans%Center(1:nd,Kmeans%Membership(ip)) - Point(1:nd,ip+nps-1)
+                            Kmeans%Membership(ip) = icmin
+                            reclusteringNeeded = .true.
+                        end if
+                    end do loopReassignPoint
 
-            ! Restart the process if anything has changed.
-
-            blockReclusteringNeeded: if (reclusteringNeeded) then ! perform reassignment
-
-                ! Reorder Point based on the identified clusters and recompute the cluster properties.
-
-                call Kmeans%getProp ( nd = nd & ! LCOV_EXCL_LINE
-                                    , np = npp & ! LCOV_EXCL_LINE
-                                    , Point = Point(1:nd,nps:npe) & ! LCOV_EXCL_LINE
-                                    , Index = PointIndex & ! LCOV_EXCL_LINE
-#if defined MINVOL
-                                    , inclusionFraction = inclusionFraction & ! LCOV_EXCL_LINE
-#endif
-                                    , pointLogVolNormed = pointLogVolNormed & ! LCOV_EXCL_LINE
-                                    )
-
-#if (defined DEBUG_ENABLED || TESTING_ENABLED || CODECOVE_ENABLED)
-                block
-                    real(RK), allocatable :: LogVolNormed(:)
-                    if (any(abs(Kmeans%Prop%LogVolNormed(1:nc)) < 1.e-6_RK)) then ! xxx : this check must be removed as the condition could normally though rarely be true.
-                        write(*,*) "Internal error occurred #2 : Kmeans%Prop%LogVolNormed == 0. : Kmeans%Prop%LogVolNormed :"
-                        write(*,*) Kmeans%Prop%LogVolNormed
-                        error stop
-                    end if
-                end block
-#endif
-                if (Kmeans%Err%occurred) then
-                    ! LCOV_EXCL_START
-                    PartitionSize(1) = npp
-                    !Membership = 1
-                    neopt = 1
-                    return
-                    ! LCOV_EXCL_STOP
                 end if
 
-                cycle loopRecursivePartitionOptimization
+#if (defined DEBUG_ENABLED || TESTING_ENABLED || CODECOVE_ENABLED)
+                !if (any(Kmeans%Size<minSize)) then
+                !    !write(*,*) "Kmeans%Size < minSize : minSize, Kmeans%Size = ", minSize, Kmeans%Size
+                !    !error stop ! @attn: This is NOT an error anymore as Size can become less than minSize.
+                !end if
+#endif
 
-            end if blockReclusteringNeeded
+                ! Convert sum(Point) back to center of clusters.
 
-            exit loopRecursivePartitionOptimization ! mission accomplished, current volumes minimized.
+                !do concurrent(ic = 1:nc) ! xxx revive this line
+                do ic = 1, nc
+                    !write(*,*) "Kmeans%Center(1:nd,ic), Kmeans%Size", Kmeans%Center(1:nd,ic), Kmeans%Size ! xxx
+                    if (Kmeans%Size(ic) > 0_IK) Kmeans%Center(1:nd,ic) = Kmeans%Center(1:nd,ic) / Kmeans%Size(ic)
+                end do
 
-        end do loopRecursivePartitionOptimization
+                ! Restart the process if anything has changed.
+
+                blockReclusteringNeeded: if (reclusteringNeeded) then ! perform reassignment
+
+                    ! Reorder Point based on the identified clusters and recompute the cluster properties.
+
+                    call Kmeans%getProp ( nd = nd & ! LCOV_EXCL_LINE
+                                        , np = npp & ! LCOV_EXCL_LINE
+                                        , Point = Point(1:nd,nps:npe) & ! LCOV_EXCL_LINE
+                                        , Index = PointIndex & ! LCOV_EXCL_LINE
+#if defined MINVOL
+                                        , inclusionFraction = inclusionFraction & ! LCOV_EXCL_LINE
+#endif
+                                        , pointLogVolNormed = pointLogVolNormed & ! LCOV_EXCL_LINE
+                                        )
+                    if (Kmeans%Err%occurred) then
+                        ! LCOV_EXCL_START
+                        PartitionSize(1) = npp
+                        !Membership = 1
+                        neopt = 1
+                        return
+                        ! LCOV_EXCL_STOP
+                    end if
+
+#if (defined DEBUG_ENABLED || TESTING_ENABLED || CODECOVE_ENABLED)
+                    block
+                        real(RK), allocatable :: LogVolNormed(:)
+                        if (any(abs(Kmeans%Prop%LogVolNormed(1:nc)) < 1.e-6_RK)) then ! xxx : this check must be removed as the condition could normally though rarely be true.
+                            write(*,*) "Internal error occurred #2 : Kmeans%Prop%LogVolNormed == 0. : Kmeans%Prop%LogVolNormed :"
+                            write(*,*) Kmeans%Prop%LogVolNormed
+                            error stop
+                        end if
+                    end block
+#endif
+                    cycle loopRecursivePartitionOptimization
+
+                end if blockReclusteringNeeded
+
+                exit loopRecursivePartitionOptimization ! mission accomplished, current volumes minimized.
+
+            end do loopRecursivePartitionOptimization
+
+        else blockRecursivePartitionOptimization
+
+            mahalSqWeightEnabled = .false.
+
+        end if blockRecursivePartitionOptimization
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! Rescale the volumes if needed and for as long as needed, based on the user-input volume estimate
@@ -1152,21 +1173,21 @@ contains
                     error stop
                 end if
 #endif
-                !KmeansLogVolEstimate(ic) = pointLogVolNormed + log(real(Kmeans%Prop%EffectiveSize(ic),RK)) ! @attn: xxx how is Kmeans%Prop%EffectiveSize(ic) > 0 ensured?
+                !KmeansLogVolExpected(ic) = pointLogVolNormed + log(real(Kmeans%Prop%EffectiveSize(ic),RK)) ! @attn: xxx how is Kmeans%Prop%EffectiveSize(ic) > 0 ensured?
                 if (Kmeans%Size(ic) > 0_IK) then
 
-                    KmeansLogVolEstimate(ic) = pointLogVolNormed + log(real(Kmeans%Prop%EffectiveSize(ic),RK)) ! @attn: Kmeans%Prop%EffectiveSize(ic) >= Kmeans%Size(ic) > 0
+                    if (.not. mahalSqWeightEnabled) KmeansLogVolExpected(1:nc) = pointLogVolNormed + log(real(Kmeans%Prop%EffectiveSize(1:nc),RK)) ! @attn: Kmeans%Prop%EffectiveSize(ic) >= Kmeans%Size(ic) > 0
 
-                    if (Kmeans%Prop%LogVolNormed(ic) < KmeansLogVolEstimate(ic)) then
+                    if (Kmeans%Prop%LogVolNormed(ic) < KmeansLogVolExpected(ic)) then
 
-                        Kmeans%Prop%LogVolNormed(ic) = KmeansLogVolEstimate(ic)
+                        Kmeans%Prop%LogVolNormed(ic) = KmeansLogVolExpected(ic)
                         if (Kmeans%Prop%LogVolNormed(ic) > maxLogVolNormed) maxLogVolNormed = Kmeans%Prop%LogVolNormed(ic)
 
                         ! Rescale the Cholesky factor and its diagonals such that they describe the bounded shape of the cluster
                         ! @todo: xxx This will have to be moved to a later location for better efficiency.
                         ! pay attention to the correct value of Kmeans%Prop%ScaleFactorSq(ic).
 
-                        scaleFactor = exp( ndInverse * (KmeansLogVolEstimate(ic) - Kmeans%Prop%LogVolNormed(ic)) )
+                        scaleFactor = exp( ndInverse * (KmeansLogVolExpected(ic) - Kmeans%Prop%LogVolNormed(ic)) )
                         Kmeans%Prop%ScaleFactorSq(ic) = scaleFactor**2
                         scaleFactorSqInverse = 1._RK / Kmeans%Prop%ScaleFactorSq(ic)
                         do j = 1, nd
@@ -1193,7 +1214,7 @@ contains
 
         else
 
-            KmeansLogVolEstimate(1:nc) = NEGINF_RK
+            KmeansLogVolExpected(1:nc) = NEGINF_RK
             boundedRegionIsTooLarge = .false.
 
         end if
@@ -1259,24 +1280,24 @@ contains
                             if (KmeansMahalSq(ip,ic) <= 1._RK) counterEffectiveSize = counterEffectiveSize + 1_IK
                         end do
 #if defined DEBUG_ENABLED || TESTING_ENABLED || CODECOVE_ENABLED
-                        EffectiveSizeOld(ic) = Kmeans%Prop%EffectiveSize(ic)
+                        !EffectiveSizeOld(ic) = Kmeans%Prop%EffectiveSize(ic)
                         if (npp /= npe - nps + 1) then
                             write(*,*) PROCEDURE_NAME//": Internal error occurred : npp /= npe - nps + 1"
                             error stop
                         end if
                         block
-                        real(RK) :: mahalSqScalar
-                        do ip = ipstart + nps - 1, ipend + nps - 1
-                            NormedPoint(1:nd) = Point(1:nd,ip) - Kmeans%Center(1:nd,ic)
-                            mahalSqScalar = dot_product( NormedPoint(1:nd) , matmul(Kmeans%Prop%InvCovMat(1:nd,1:nd,ic), NormedPoint(1:nd)) )
-                            if (mahalSqScalar - 1._RK > 1.e-6_RK) then
-                                write(*,*) "Internal error occurred : mahalSqScalar > 1 :", mahalSqScalar
-                                write(*,*) "nps, ip, npe, np", nps, ip, npe, np
-                                write(*,*) "ic, Kmeans%size(ic)", ic, Kmeans%size(ic)
-                                write(*,*) "numRecursiveCall", numRecursiveCall
-                                error stop
-                            endif
-                        end do
+                            real(RK) :: mahalSqScalar
+                            do ip = ipstart + nps - 1, ipend + nps - 1
+                                NormedPoint(1:nd) = Point(1:nd,ip) - Kmeans%Center(1:nd,ic)
+                                mahalSqScalar = dot_product( NormedPoint(1:nd) , matmul(Kmeans%Prop%InvCovMat(1:nd,1:nd,ic), NormedPoint(1:nd)) )
+                                if (mahalSqScalar - 1._RK > 1.e-6_RK) then
+                                    write(*,*) "Internal error occurred : mahalSqScalar > 1 :", mahalSqScalar
+                                    write(*,*) "nps, ip, npe, np", nps, ip, npe, np
+                                    write(*,*) "ic, Kmeans%size(ic)", ic, Kmeans%size(ic)
+                                    write(*,*) "numRecursiveCall", numRecursiveCall
+                                    error stop
+                                endif
+                            end do
                         end block
 #endif
                         do ip = npe + 1, np
@@ -1286,20 +1307,20 @@ contains
                         end do
                         Kmeans%Prop%EffectiveSize(ic)   = Kmeans%Size(ic) & ! LCOV_EXCL_LINE
                                                         + nint(inclusionFraction * & ! LCOV_EXCL_LINE
-                                                        ( count(Kmeans%Prop%MahalSq(1:Kmeans%Prop%CumSumSize(ic-1),ic)<=Kmeans%Prop%ScaleFactorSq(ic)) & ! LCOV_EXCL_LINE
-                                                        + count(Kmeans%Prop%MahalSq(Kmeans%Prop%CumSumSize(ic)+1:npp,ic)<=Kmeans%Prop%ScaleFactorSq(ic)) & ! LCOV_EXCL_LINE
+                                                        ( count(Kmeans%Prop%MahalSq(1:ipstart-1,ic)<=Kmeans%Prop%ScaleFactorSq(ic)) & ! LCOV_EXCL_LINE
+                                                        + count(Kmeans%Prop%MahalSq(ipend+1:npp,ic)<=Kmeans%Prop%ScaleFactorSq(ic)) & ! LCOV_EXCL_LINE
                                                         + counterEffectiveSize & ! LCOV_EXCL_LINE
                                                         ), kind = IK)
                     end if
-                    KmeansLogVolEstimate(ic) = pointLogVolNormed + log(real(Kmeans%Prop%EffectiveSize(ic),RK)) ! @attn: Kmeans%Prop%EffectiveSize(ic) >= Kmeans%Size(ic) > 0
-                    logVolRatio = Kmeans%Prop%LogVolNormed(ic) - KmeansLogVolEstimate(ic)
+                    KmeansLogVolExpected(ic) = pointLogVolNormed + log(real(Kmeans%Prop%EffectiveSize(ic),RK)) ! @attn: Kmeans%Prop%EffectiveSize(ic) >= Kmeans%Size(ic) > 0
+                    logVolRatio = Kmeans%Prop%LogVolNormed(ic) - KmeansLogVolExpected(ic)
                     LogLikeFitness(icstart) = getLogProbPoisDiff(Kmeans%Prop%EffectiveSize(ic), logVolRatio)
 #if defined DEBUG_ENABLED || defined TESTING_ENABLED || defined CODECOVE_ENABLED
                     !if (LogLikeFitness(icstart) < 0._RK .or. LogLikeFitness(icstart) > 1._RK) then
                     if (LogLikeFitness(icstart) < NEGINF_RK .or. LogLikeFitness(icstart) > 0._RK) then
                         write(*,*) "Internal error occurred: LogLikeFitness(icstart) < NEGINF_RK .or. LogLikeFitness(icstart) > 0._RK"
-                        write(*,*) "Kmeans%Prop%LogVolNormed(ic), KmeansLogVolEstimate(ic), LogLikeFitness(icstart):" & ! LCOV_EXCL_LINE
-                                 , Kmeans%Prop%LogVolNormed(ic), KmeansLogVolEstimate(ic), LogLikeFitness(icstart)
+                        write(*,*) "Kmeans%Prop%LogVolNormed(ic), KmeansLogVolExpected(ic), LogLikeFitness(icstart):" & ! LCOV_EXCL_LINE
+                                 , Kmeans%Prop%LogVolNormed(ic), KmeansLogVolExpected(ic), LogLikeFitness(icstart)
                         error stop
                     end if
 #endif
@@ -1308,7 +1329,7 @@ contains
                     boundedRegionIsTooLarge = boundedRegionIsTooLarge .and. LogLikeFitness(icstart) < unifrnd .and. logVolRatio > 0._RK
                 end if
 #endif
-                blockSubclusterCheck: if (boundedRegionIsTooLarge) then ! .and. Kmeans%Prop%LogVolNormed(ic)>1.1_RK*KmeansLogVolEstimate(ic)) then
+                blockSubclusterCheck: if (boundedRegionIsTooLarge) then ! .and. Kmeans%Prop%LogVolNormed(ic)>1.1_RK*KmeansLogVolExpected(ic)) then
 
                     LogVolNormed(icstart) = Kmeans%Prop%LogVolNormed(ic)
 
@@ -1341,7 +1362,7 @@ contains
                                                 , logShrinkage = logShrinkage & ! LCOV_EXCL_LINE
                                                 , inclusionFraction = inclusionFraction & ! LCOV_EXCL_LINE
                                                 , pointLogVolNormed = pointLogVolNormed & ! LCOV_EXCL_LINE
-                                                , parentLogVolNormed = KmeansLogVolEstimate(ic) & ! LCOV_EXCL_LINE
+                                                , parentLogVolNormed = KmeansLogVolExpected(ic) & ! LCOV_EXCL_LINE
                                                 , mahalSqWeightExponent = mahalSqWeightExponent & ! LCOV_EXCL_LINE
                                                 , maxAllowedKmeansFailure = maxAllowedKmeansFailure & ! LCOV_EXCL_LINE
                                                 , maxAllowedKmeansRecursion = maxAllowedKmeansRecursion & ! LCOV_EXCL_LINE
@@ -1414,19 +1435,19 @@ contains
                     PartitionSize(icstart) = Kmeans%Size(ic)
                     Center(1:nd,icstart) = Kmeans%Center(1:nd,ic)
 #if defined MAXDEN
-                    EffectiveSize(icstart) = Kmeans%Prop%EffectiveSize(ic)
                     !if (LogLikeFitness(icstart) < unifrnd .and. logVolRatio < 0._RK) then ! enlarge
                     blockExpansionCheck: if (logVolRatio < 0._RK) then ! enlarge, no questions asked.
 
                         !LogLikeFitness(icstart) = 1._RK + LogLikeFitness(icstart)
                         LogLikeFitness(icstart) = 0._RK
-                        LogVolNormed(icstart) = KmeansLogVolEstimate(ic)
+                        LogVolNormed(icstart) = KmeansLogVolExpected(ic)
                         scaleFactor = exp( -ndInverse * logVolRatio )
                         scaleFactorSqInverse = 1._RK / scaleFactor**2
                         scaleFactorSqInverse4KPM = scaleFactorSqInverse / Kmeans%Prop%ScaleFactorSq(ic) ! assumes no MahalSq normalization in Kmeans%getProp()
                         MahalSq(1:nps-1,icstart) = KmeansMahalSq(1:nps-1,ic) * scaleFactorSqInverse
                         MahalSq(nps:npe,icstart) = Kmeans%Prop%MahalSq(1:npp,ic) * scaleFactorSqInverse4KPM
                         MahalSq(npe+1:np,icstart) = KmeansMahalSq(npe+1:np,ic) * scaleFactorSqInverse
+                        EffectiveSize(icstart) = Kmeans%Size(ic) + nint(inclusionFraction * (count(MahalSq(1:ipstart+nps-2,icstart) <= 1._RK) + count(MahalSq(1:ipend+nps,icstart) <= 1._RK)))
 #if (defined DEBUG_ENABLED || TESTING_ENABLED || CODECOVE_ENABLED)
                         if (count(MahalSq(ipstart+nps-1:ipend+nps-1,icstart) <= 1._RK) < Kmeans%Size(ic)) then
                             write(*,*) PROCEDURE_NAME//": Internal error occurred : count(MahalSq(ipstart+nps-1:ipend+nps-1,icstart) <= 1._RK) >= Kmeans%Size(ic)"
@@ -1438,7 +1459,7 @@ contains
                             block
                                 integer(IK) :: extraSize
                                 extraSize = nint(inclusionFraction * (count(MahalSq(1:ipstart+nps-2,icstart) <= 1._RK) + count(MahalSq(1:ipend+nps,icstart) <= 1._RK)))
-                                if (Kmeans%Size(ic) + nint(inclusionFraction * extraSize) /= Kmeans%Prop%EffectiveSize(ic)) then
+                                if (Kmeans%Size(ic) + nint(inclusionFraction * extraSize) < Kmeans%Prop%EffectiveSize(ic)) then
                                     write(*,*) PROCEDURE_NAME//": Internal error occurred : Kmeans%Size(ic) + nint(inclusionFraction * extraSize) /= Kmeans%Prop%EffectiveSize(ic)"
                                     write(*,*) "count(MahalSq(1:ipstart+nps-2,icstart) <= 1._RK) : ", count(MahalSq(1:ipstart+nps-2,icstart) <= 1._RK)
                                     write(*,*) "count(MahalSq(1:ipend+nps,icstart) <= 1._RK) : ", count(MahalSq(1:ipend+nps,icstart) <= 1._RK)
@@ -1467,6 +1488,7 @@ contains
                         InvCovMat(1:nd,1:nd,icstart) = Kmeans%Prop%InvCovMat(1:nd,1:nd,ic)
                         ChoLowCovUpp(1:nd,1:nd,icstart) = Kmeans%Prop%ChoLowCovUpp(1:nd,1:nd,ic)
 #if defined MAXDEN
+                        EffectiveSize(icstart) = Kmeans%Prop%EffectiveSize(ic)
                         scaleFactorSqInverse4KPM = 1._RK / Kmeans%Prop%ScaleFactorSq(ic) ! assumes no MahalSq normalization in Kmeans%getProp()
                         MahalSq(1:nps-1,icstart) = KmeansMahalSq(1:nps-1,ic)
                         MahalSq(nps:npe,icstart) = Kmeans%Prop%MahalSq(1:npp,ic) * scaleFactorSqInverse4KPM
@@ -1479,17 +1501,22 @@ contains
                             error stop
                         else
                             block
-                                integer(IK) :: effectiveSize, effSizeOld
-                                effSizeOld      = count(MahalSq(ipstart+nps-1:ipend+nps-1,icstart) <= 1._RK) & ! Kmeans%Size(ic)
-                                                + nint(inclusionFraction * (count(MahalSq(nps:ipstart+nps-2,icstart) <= 1._RK) + count(MahalSq(ipend+nps:npe,icstart) <= 1._RK)))
-                                effectiveSize   = effSizeOld &
-                                                + nint(inclusionFraction * (count(MahalSq(1:nps-1,icstart) <= 1._RK) + count(MahalSq(npe+1:np,icstart) <= 1._RK)))
+                                integer(IK) :: effectiveSize
+                                write(*,*) "1", inclusionFraction
+                                write(*,*) "2", count(MahalSq(ipstart+nps-1:ipend+nps-1,icstart) <= 1._RK)
+                                write(*,*) "3", count(MahalSq(nps:ipstart+nps-2,icstart) <= 1._RK) + count(MahalSq(ipend+nps:npe,icstart) <= 1._RK)
+                                write(*,*) "4", count(MahalSq(1:nps-1,icstart) <= 1._RK) + count(MahalSq(npe+1:np,icstart) <= 1._RK)
+                                effectiveSize   = count(MahalSq(ipstart+nps-1:ipend+nps-1,icstart) <= 1._RK) & ! LCOV_EXCL_LINE ! Kmeans%Size(ic)
+                                                + nint(inclusionFraction * & ! LCOV_EXCL_LINE
+                                                ( count(MahalSq(nps:ipstart+nps-2,icstart) <= 1._RK) + count(MahalSq(ipend+nps:npe,icstart) <= 1._RK) & ! LCOV_EXCL_LINE
+                                                + count(MahalSq(1:nps-1,icstart) <= 1._RK) + count(MahalSq(npe+1:np,icstart) <= 1._RK) & ! LCOV_EXCL_LINE
+                                                ) )
                                 if (effectiveSize /= Kmeans%Prop%EffectiveSize(ic)) then
                                     write(*,*) PROCEDURE_NAME//": Internal error occurred : effectiveSize /= Kmeans%Prop%EffectiveSize(ic) :"
                                     write(*,*) "Kmeans%Prop%EffectiveSize(ic) :", Kmeans%Prop%EffectiveSize(ic)
                                     write(*,*) "effectiveSize :", effectiveSize
                                     write(*,*) "count(MahalSq(ipstart+nps-1:ipend+nps-1,icstart) <= 1._RK) == Kmeans%Size(ic) :", count(MahalSq(ipstart+nps-1:ipend+nps-1,icstart) <= 1._RK), Kmeans%Size(ic)
-                                    write(*,*) "EffectiveSizeOld(ic) == effSizeOld :", EffectiveSizeOld(ic), effSizeOld
+                                    !write(*,*) "EffectiveSizeOld(ic) == effSizeOld :", EffectiveSizeOld(ic), effSizeOld
                                     error stop
                                 end if
                             end block
@@ -1705,6 +1732,9 @@ write(*,*) "sub2par likelihood: ", exp(logLikeSum - parEllLogLike - logShrinkage
         integer(IK)                             :: i, j, ic
 
         write(fileUnit,"(*(g0,:,'"//new_line("a")//"'))") "nd", Partition%nd, "np", Partition%np, "nc", Partition%neopt
+
+        write(fileUnit,"(A)") "pointLogVolNormed"
+        write(fileUnit,fileFormat) Partition%pointLogVolNormed
 
         write(fileUnit,"(A)") "parentLogVolNormed"
         write(fileUnit,fileFormat) Partition%parentLogVolNormed

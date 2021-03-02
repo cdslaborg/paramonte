@@ -71,6 +71,7 @@ module ClusteredPoint_mod
         real(RK)                    :: stdMax
         real(RK)                    :: centerMin
         real(RK)                    :: centerMax
+        real(RK)                    :: logVolUnitBall
         real(RK)                    :: logSumVolNormed
         real(RK)                    :: logSumVolNormedEffective
         real(RK)    , allocatable   :: Eta(:)
@@ -147,7 +148,6 @@ contains
         logical                                         :: isUniformMixture
         logical                                         :: isUniform, isMember
         logical                                         :: isNormal
-        real(RK)                                        :: logVolUnitBall
         real(RK)                                        :: dummy, maxLogVolNormed
         integer(IK)                                     :: i, j, k, ic, ip, sumOverlap
 
@@ -584,11 +584,11 @@ contains
         ! compute densities
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        logVolUnitBall = getLogVolUnitBall(self%nd)
+        self%logVolUnitBall = getLogVolUnitBall(self%nd)
         if (allocated(self%LogDensity)) deallocate(self%LogDensity) ! LCOV_EXCL_LINE ! GFortran crashes without this
         allocate(self%LogDensity(self%nc))
         do concurrent(ic = 1:nc)
-            if (self%Size(ic) > 0_IK) self%LogDensity(ic) = log(real(self%Size(ic),RK)) - self%LogVolNormed(ic) - logVolUnitBall
+            if (self%Size(ic) > 0_IK) self%LogDensity(ic) = log(real(self%Size(ic),RK)) - self%LogVolNormed(ic) - self%logVolUnitBall
         end do
 
     end subroutine getClusteredPoint
@@ -607,6 +607,15 @@ contains
         write(fileUnit,fileFormat) self%dist
 
         write(fileUnit,"(*(g0,:,'"//new_line("a")//"'))") "nd", self%nd, "np", self%np, "nc", self%nc
+
+        write(fileUnit,"(A)") "logVolUnitBall"
+        write(fileUnit,fileFormat) self%logVolUnitBall
+
+        write(fileUnit,"(A)") "logSumVolNormed"
+        write(fileUnit,fileFormat) self%logSumVolNormed
+
+        write(fileUnit,"(A)") "logSumVolNormedEffective"
+        write(fileUnit,fileFormat) self%logSumVolNormedEffective
 
         write(fileUnit,"(A)") "Size"
         write(fileUnit,fileFormat) self%Size
