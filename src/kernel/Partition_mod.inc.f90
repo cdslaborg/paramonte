@@ -867,6 +867,11 @@ contains
         end if blockKmeansClustering
 
         ! Compute cluster properties.
+        
+
+!        call Kmeans%Prop%allocate(nd,np,nc)
+
+!#include "Partition_mod.prop.inc.f90"
 
         call Kmeans%getProp ( nd = nd & ! LCOV_EXCL_LINE
                             , np = npp & ! LCOV_EXCL_LINE
@@ -1113,7 +1118,7 @@ contains
                 blockReclusteringNeeded: if (reclusteringNeeded) then ! perform reassignment
 
                     ! Reorder Point based on the identified clusters and recompute the cluster properties.
-
+!#include "Partition_mod.prop.inc.f90"
                     call Kmeans%getProp ( nd = nd & ! LCOV_EXCL_LINE
                                         , np = npp & ! LCOV_EXCL_LINE
                                         , Point = Point(1:nd,nps:npe) & ! LCOV_EXCL_LINE
@@ -1502,10 +1507,10 @@ contains
                         else
                             block
                                 integer(IK) :: effectiveSize
-                                write(*,*) "1", inclusionFraction
-                                write(*,*) "2", count(MahalSq(ipstart+nps-1:ipend+nps-1,icstart) <= 1._RK)
-                                write(*,*) "3", count(MahalSq(nps:ipstart+nps-2,icstart) <= 1._RK) + count(MahalSq(ipend+nps:npe,icstart) <= 1._RK)
-                                write(*,*) "4", count(MahalSq(1:nps-1,icstart) <= 1._RK) + count(MahalSq(npe+1:np,icstart) <= 1._RK)
+                                !write(*,*) "1", inclusionFraction
+                                !write(*,*) "2", count(MahalSq(ipstart+nps-1:ipend+nps-1,icstart) <= 1._RK)
+                                !write(*,*) "3", count(MahalSq(nps:ipstart+nps-2,icstart) <= 1._RK) + count(MahalSq(ipend+nps:npe,icstart) <= 1._RK)
+                                !write(*,*) "4", count(MahalSq(1:nps-1,icstart) <= 1._RK) + count(MahalSq(npe+1:np,icstart) <= 1._RK)
                                 effectiveSize   = count(MahalSq(ipstart+nps-1:ipend+nps-1,icstart) <= 1._RK) & ! LCOV_EXCL_LINE ! Kmeans%Size(ic)
                                                 + nint(inclusionFraction * & ! LCOV_EXCL_LINE
                                                 ( count(MahalSq(nps:ipstart+nps-2,icstart) <= 1._RK) + count(MahalSq(ipend+nps:npe,icstart) <= 1._RK) & ! LCOV_EXCL_LINE

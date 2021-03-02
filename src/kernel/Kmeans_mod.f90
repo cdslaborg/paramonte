@@ -64,7 +64,7 @@ module Kmeans_mod
         real(RK)    , allocatable   :: MahalSq(:,:)         !< An array of size `(np,nc)` each element of which represents the Mahalanobis distance squared of point `ip` from the cluster `ic`.
         real(RK)    , allocatable   :: InvCovMat(:,:,:)     !< An array of size `(nd,nd,nc)` containing the inverse of the covariance matrix of the corresponding cluster.
         real(RK)    , allocatable   :: LogVolNormed(:)      !< An array of size `(nc)` each element of which represents the log(volume) of the bounding covariance matrix of the corresponding cluster.
-        real(RK)    , allocatable   :: LogDenNormed(:)      !< An array of size `(nc)` each element of which represents the log effective (mean) density of points in the corresponding cluster bounding volume.
+       !real(RK)    , allocatable   :: LogDenNormed(:)      !< An array of size `(nc)` each element of which represents the log effective (mean) density of points in the corresponding cluster bounding volume.
         real(RK)    , allocatable   :: ChoLowCovUpp(:,:,:)  !< An array of size `(nd,nd,nc)` whose upper triangle and diagonal is the covariance matrix and the lower is the Cholesky Lower.
         real(RK)    , allocatable   :: ScaleFactorSq(:)     !< An array of size `(nc)` representing the factors by which the cluster covariance matrices must be enlarged to enclose their corresponding members.
         integer(IK) , allocatable   :: EffectiveSize(:)     !< An array of size `(nc)` representing the factors by which the cluster covariance matrices must be enlarged to enclose their corresponding members.
@@ -136,7 +136,7 @@ contains
         if (.not. allocated(Prop%EffectiveSize  )) allocate(Prop%EffectiveSize  (nc))
         if (.not. allocated(Prop%ScaleFactorSq  )) allocate(Prop%ScaleFactorSq  (nc))
         if (.not. allocated(Prop%LogVolNormed   )) allocate(Prop%LogVolNormed   (nc))
-        if (.not. allocated(Prop%LogDenNormed   )) allocate(Prop%LogDenNormed   (nc))
+       !if (.not. allocated(Prop%LogDenNormed   )) allocate(Prop%LogDenNormed   (nc))
         if (.not. allocated(Prop%CumSumSize     )) allocate(Prop%CumSumSize     (0:nc))
         if (.not. allocated(Prop%Index          )) allocate(Prop%Index          (np))
     end subroutine allocateKmeansProp
@@ -571,9 +571,9 @@ contains
     !>
     !> \param[in]       nd                  :   See the description of the [runKmeans](@ref runkmeans).
     !> \param[in]       np                  :   See the description of the [runKmeans](@ref runkmeans).
-    !> \param[in]       nc                  :   See the description of the [runKmeans](@ref runkmeans).
     !> \param[inout]    Point               :   The Array of size `(nd,np)` representing the original points used in Kmeans clustering.
-    !> \param[inout]    Index               :   A vector of size `np` such that the output `Point(:,Index(ip),:)` points to the input `Point(:,Index(ip),:)` (**optional**).
+    !> \param[inout]    Index               :   A vector of size `np` such that the output `Point(:,Index(ip),:)` points to the input `Point(:,ip)`
+    !>                                          (**optional**, if not provided, it will be stored in `Prop%Index` component of the input `Kmeans` object).
     !> \param[in]       inclusionFraction   :   The fraction of points inside the bounding region of each cluster to be considered in computing the effective sizes of
     !>                                          the bounded regions of each cluster (**optional**, default = `0.`).
     !> \param[in]       pointLogVolNormed   :   The logarithm of the volume of a single point, to be used for assigning the properties of singular clusters.
@@ -765,7 +765,7 @@ contains
 
                 Kmeans%Prop%LogVolNormed(ic) = sum( log(Kmeans%Prop%ChoDia(1:nd,ic)) )
                 maxLogVolNormed = max( maxLogVolNormed, Kmeans%Prop%LogVolNormed(ic) )
-                Kmeans%Prop%LogDenNormed(ic) = log(real(Kmeans%Prop%EffectiveSize(ic),RK)) - Kmeans%Prop%LogVolNormed(ic)
+               !Kmeans%Prop%LogDenNormed(ic) = log(real(Kmeans%Prop%EffectiveSize(ic),RK)) - Kmeans%Prop%LogVolNormed(ic)
 
             else blockMinimumClusterSize
 
@@ -838,7 +838,7 @@ contains
 
                     Kmeans%Prop%ChoDia(1:nd,ic) = scaleFactor
                     Kmeans%Prop%LogVolNormed(ic) = nd * log(scaleFactor)
-                    Kmeans%Prop%LogDenNormed(ic) = log(real(Kmeans%Size(ic),RK)) - Kmeans%Prop%LogVolNormed(ic)
+                   !Kmeans%Prop%LogDenNormed(ic) = log(real(Kmeans%Size(ic),RK)) - Kmeans%Prop%LogVolNormed(ic)
                     Kmeans%Prop%ChoLowCovUpp(1:nd,1:nd,ic) = getEye(nd, nd, Kmeans%Prop%ScaleFactorSq(ic))
                     Kmeans%Prop%InvCovMat(1:nd,1:nd,ic) = getEye(nd, nd, scaleFactorSqInverse)
 

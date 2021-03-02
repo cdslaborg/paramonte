@@ -32,7 +32,7 @@
     shrinkageMinVol = 2.0d0
     expansionMinVol = 2.0d0
     inclusionFraction = 1.d0
-    maxAllowedKvolumeRecursion = 0!20
+    maxAllowedKvolumeRecursion = 20
     mahalSqWeightExponent = 1.d0
     !isRepeatable = .true.
     !rngseed = 517693

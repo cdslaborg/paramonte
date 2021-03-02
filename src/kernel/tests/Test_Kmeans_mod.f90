@@ -568,19 +568,19 @@ contains
             return
         end if
 
-        assertion = assertion .and. ( abs(Kmeans%Prop%LogDenNormed(2) + pointLogVolNormed) < 1.e-10_RK .or. abs(Kmeans%Prop%LogDenNormed(1) + pointLogVolNormed) < 1.e-10_RK )
-        if (.not. assertion) then
-            ! LCOV_EXCL_START
-            if (Test%isVerboseMode) then
-                write(Test%outputUnit,"(*(g0.15,:,' '))")
-                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Prop%LogDenNormed(2)  == pointLogVolNormed"
-                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Prop%LogDenNormed(2)  =", Kmeans%Prop%LogDenNormed(2)
-                write(Test%outputUnit,"(*(g0.15,:,' '))") "-pointLogVolNormed           =", -pointLogVolNormed
-                write(Test%outputUnit,"(*(g0.15,:,' '))")
-            end if
-            ! LCOV_EXCL_STOP
-            return
-        end if
+        !assertion = assertion .and. ( abs(Kmeans%Prop%LogDenNormed(2) + pointLogVolNormed) < 1.e-10_RK .or. abs(Kmeans%Prop%LogDenNormed(1) + pointLogVolNormed) < 1.e-10_RK )
+        !if (.not. assertion) then
+        !    ! LCOV_EXCL_START
+        !    if (Test%isVerboseMode) then
+        !        write(Test%outputUnit,"(*(g0.15,:,' '))")
+        !        write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Prop%LogDenNormed(2)  == pointLogVolNormed"
+        !        write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Prop%LogDenNormed(2)  =", Kmeans%Prop%LogDenNormed(2)
+        !        write(Test%outputUnit,"(*(g0.15,:,' '))") "-pointLogVolNormed           =", -pointLogVolNormed
+        !        write(Test%outputUnit,"(*(g0.15,:,' '))")
+        !    end if
+        !    ! LCOV_EXCL_STOP
+        !    return
+        !end if
 
         assertion = assertion .and. abs(Kmeans%Prop%logSumVolNormed + 0.552093409710310_RK) < 1.e-10_RK
         if (.not. assertion) then
@@ -613,7 +613,7 @@ contains
         real(RK)    , parameter     :: logSumVolNormed = -0.513657091888111_RK
         real(RK)    , parameter     :: pointLogVolNormed = log(1.e-1_RK) - LNPI
         real(RK)    , parameter     :: LogVolNormed(nc) = [-0.608967271692436_RK, -2.91155236468648_RK]
-        real(RK)    , parameter     :: LogDenNormed(nc) = [2.91155236468648_RK, 2.91155236468648_RK]
+       !real(RK)    , parameter     :: LogDenNormed(nc) = [2.91155236468648_RK, 2.91155236468648_RK]
         real(RK)    , parameter     :: ChoLowCovUpp(nd,nd,nc) = reshape([ 0.140347692021171_RK &
                                                                         , 0.273777628663980E-1_RK &
                                                                         , 0.492129448979672E-2_RK &
@@ -744,18 +744,18 @@ contains
             return
         end if
 
-        assertion = assertion .and. ( all(abs(Kmeans%Prop%LogDenNormed - LogDenNormed) < 1.e-10_RK) .or. all(abs(Kmeans%Prop%LogDenNormed(nc:1:-1) - LogDenNormed) < 1.e-10_RK) )
-        if (.not. assertion) then
-            ! LCOV_EXCL_START
-            if (Test%isVerboseMode) then
-                write(Test%outputUnit,"(*(g0.15,:,' '))")
-                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Prop%LogDenNormed(nc:1:-1)    == LogDenNormed)"
-                write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Prop%LogDenNormed             =", Kmeans%Prop%LogDenNormed
-                write(Test%outputUnit,"(*(g0.15,:,' '))")
-            end if
-            ! LCOV_EXCL_STOP
-            return
-        end if
+        !assertion = assertion .and. ( all(abs(Kmeans%Prop%LogDenNormed - LogDenNormed) < 1.e-10_RK) .or. all(abs(Kmeans%Prop%LogDenNormed(nc:1:-1) - LogDenNormed) < 1.e-10_RK) )
+        !if (.not. assertion) then
+        !    ! LCOV_EXCL_START
+        !    if (Test%isVerboseMode) then
+        !        write(Test%outputUnit,"(*(g0.15,:,' '))")
+        !        write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Prop%LogDenNormed(nc:1:-1)    == LogDenNormed)"
+        !        write(Test%outputUnit,"(*(g0.15,:,' '))") "Kmeans%Prop%LogDenNormed             =", Kmeans%Prop%LogDenNormed
+        !        write(Test%outputUnit,"(*(g0.15,:,' '))")
+        !    end if
+        !    ! LCOV_EXCL_STOP
+        !    return
+        !end if
 
         assertion = assertion .and. all(Kmeans%Prop%CumSumSize(1:) == getCumSum(nc,Kmeans%Size)) .and. Kmeans%Prop%CumSumSize(0) == 0_IK
         if (.not. assertion) then
