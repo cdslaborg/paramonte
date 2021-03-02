@@ -1134,24 +1134,6 @@ contains
 
 #include "Partition_mod.prop.inc.f90"
 
-!                    call Kmeans%getProp ( nd = nd & ! LCOV_EXCL_LINE
-!                                        , np = npp & ! LCOV_EXCL_LINE
-!                                        , Point = Point(1:nd,nps:npe) & ! LCOV_EXCL_LINE
-!                                        , Index = PointIndex & ! LCOV_EXCL_LINE
-!#if defined MINVOL
-!                                        , inclusionFraction = inclusionFraction & ! LCOV_EXCL_LINE
-!#endif
-!                                        , pointLogVolNormed = pointLogVolNormed & ! LCOV_EXCL_LINE
-!                                        )
-!                    if (Kmeans%Err%occurred) then
-!                        ! LCOV_EXCL_START
-!                        PartitionSize(1) = npp
-!                        !Membership = 1
-!                        neopt = 1
-!                        return
-!                        ! LCOV_EXCL_STOP
-!                    end if
-
 #if (defined DEBUG_ENABLED || TESTING_ENABLED || CODECOVE_ENABLED)
                     block
                         real(RK), allocatable :: LogVolNormed(:)
@@ -1189,7 +1171,7 @@ contains
                 !KmeansLogVolExpected(ic) = pointLogVolNormed + log(real(Kmeans%Prop%EffectiveSize(ic),RK)) ! @attn: xxx how is Kmeans%Prop%EffectiveSize(ic) > 0 ensured?
                 if (Kmeans%Size(ic) > 0_IK) then
 
-                    if (.not. mahalSqWeightEnabled) KmeansLogVolExpected(1:nc) = pointLogVolNormed + log(real(Kmeans%Prop%EffectiveSize(1:nc),RK)) ! @attn: Kmeans%Prop%EffectiveSize(ic) >= Kmeans%Size(ic) > 0
+                    if (.not. mahalSqWeightEnabled) KmeansLogVolExpected(ic) = pointLogVolNormed + log(real(Kmeans%Prop%EffectiveSize(ic),RK)) ! @attn: Kmeans%Prop%EffectiveSize(ic) >= Kmeans%Size(ic) > 0
 
                     if (Kmeans%Prop%LogVolNormed(ic) < KmeansLogVolExpected(ic)) then
 
