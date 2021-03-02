@@ -867,10 +867,17 @@ contains
         end if blockKmeansClustering
 
         ! Compute cluster properties.
-        
 
-!        call Kmeans%Prop%allocate(nd,np,nc)
-
+!        allocate(Prop%ChoDia         (nd,nc))
+!        allocate(Prop%MahalSq        (np,nc))
+!        allocate(Prop%InvCovMat      (nd,nd,nc))
+!        allocate(Prop%ChoLowCovUpp   (nd,nd,nc))
+!        allocate(Prop%EffectiveSize  (nc))
+!        allocate(Prop%ScaleFactorSq  (nc))
+!        allocate(Prop%LogVolNormed   (nc))
+!        allocate(Prop%CumSumSize     (0:nc))
+!        allocate(Prop%Index          (np))
+!
 !#include "Partition_mod.prop.inc.f90"
 
         call Kmeans%getProp ( nd = nd & ! LCOV_EXCL_LINE
