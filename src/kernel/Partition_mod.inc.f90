@@ -231,6 +231,12 @@ contains
         Partition%kmeansRelTol = 1.e-4_RK; if (present(kmeansRelTol)) Partition%kmeansRelTol = kmeansRelTol
         Partition%stanEnabled = .true.; if (present(stanEnabled)) Partition%stanEnabled = stanEnabled
 
+        if (Partition%mahalSqWeightExponent == 0._RK .and. .not. present(parentLogVolNormed)) then ! xxx could we instead approximate `parentLogVolNormed`?
+            Partition%Err%msg = "If `mahalSqWeightExponent` is given as input argument, then `parentLogVolNormed` must be also given as input."
+            Partition%Err%occurred = .true.
+            error stop
+        end if
+
         allocate( Partition%Size            (Partition%nemax) & ! LCOV_EXCL_LINE
                 , Partition%Center          (Partition%nd,Partition%nemax) & ! LCOV_EXCL_LINE
                 , Partition%ChoDia          (Partition%nd,Partition%nemax) & ! LCOV_EXCL_LINE
@@ -682,6 +688,9 @@ contains
     !>
     !> \warning
     !> if `parentLogVolNormed > NEGINF_RK` , then `pointLogVolNormed > NEGINF_RK` must also hold.
+    !>
+    !> \warning
+    !> if `mahalSqWeightExponent /= 0._RK` , then `pointLogVolNormed > NEGINF_RK` and `parentLogVolNormed > NEGINF_RK` must also hold.
     recursive subroutine runRecursivePartition  ( nd & ! LCOV_EXCL_LINE
                                                 , np & ! LCOV_EXCL_LINE
                                                 , nc & ! LCOV_EXCL_LINE
@@ -730,7 +739,8 @@ contains
 !        use, intrinsic :: ieee_arithmetic, only: ieee_set_underflow_mode
 !#endif
         use Constants_mod, only: IK, RK, NEGINF_RK !, POSINF_RK !, SPR
-        use Kmeans_mod, only: Kmeans_type !, getKmeans, runKmeans
+        use Matrix_mod, only: getCholeskyFactor, getInvMatFromCholFac, getEye
+        use Kmeans_mod, only: Kmeans_type
         use Math_mod, only: getLogSumExp
 
         implicit none
@@ -752,8 +762,8 @@ contains
         integer(IK) , intent(out)               :: PartitionSize(nemax)
         integer(IK) , intent(inout)             :: numRecursiveCall
         integer(IK) , intent(inout)             :: convergenceFailureCount
-        integer(IK) , intent(inout)             :: Membership(npp)
-        integer(IK) , intent(inout)             :: PointIndex(npp)
+        integer(IK) , intent(out)               :: Membership(nps:npe)
+        integer(IK) , intent(inout)             :: PointIndex(nps:npe)
         real(RK)    , intent(inout)             :: Point(nd,np)
         real(RK)    , intent(inout)             :: Center(nd,nemax)
         real(RK)    , intent(inout)             :: ChoLowCovUpp(nd,nd,nemax)
@@ -772,29 +782,27 @@ contains
         real(RK)    , allocatable               :: InvStd(:)
         real(RK)                                :: ndInverse
         real(RK)                                :: NormedPoint(nd)
-        real(RK)                                :: StanPoint(nd,npp)
         real(RK)                                :: MahalSqWeight(nc)
-        real(RK)                                :: scaleFactorSqInverse
+        real(RK)                                :: StanPoint(nd,nps:npe)
         real(RK)                                :: KmeansLogVolExpected(nc) ! New Cluster Volume estimates.
+        real(RK)                                :: pointLogVolNormedDefault
+        real(RK)                                :: scaleFactorSqInverse
         real(RK)                                :: scaleFactor
         integer(IK)                             :: KmeansNemax(nc)      ! maximum allowed number of clusters in each of the two K-means clusters.
         integer(IK)                             :: KmeansNeopt(0:nc)    ! optimal number of clusters in each of the child clusters.
-        integer(IK)                             :: i, j, ip, ic, jc, ipstart, ipend
+        integer(IK)                             :: KmeansMemberCounter(nc)
+        integer(IK)                             :: i, j, ip, jp, ic, jc, ipstart, ipend
         integer(IK)                             :: icstart, icend, recursionCounter
         integer(IK)                             :: counterEffectiveSize
         integer(IK)                             :: icmin, nemaxRemained
         logical                                 :: boundedRegionIsTooLarge
         logical                                 :: mahalSqWeightEnabled
         logical                                 :: reclusteringNeeded
-#if defined MINVOL
         real(RK)                                :: maxLogVolNormed
-#elif defined MAXDEN
-#if defined DEBUG_ENABLED || TESTING_ENABLED || CODECOVE_ENABLED
-        !real(RK)                                :: EffectiveSizeOld(nc)
-#endif
+#if defined MAXDEN
         real(RK)                                :: unifrnd
         real(RK)                                :: logVolRatio
-        real(RK)                                :: KmeansMahalSq(np,nc)
+       !real(RK)                                :: KmeansMahalSq(np,nc)
         real(RK)                                :: scaleFactorSqInverse4KPM ! for MahalSq component of Kmeans Prop
         real(RK)                                :: parEllLogLike    ! recovery
         real(RK)                                :: logLikeSum       ! recovery
@@ -804,7 +812,6 @@ contains
         real(RK)                                :: parEllLogVolNormed ! recovery
         real(RK)                                :: ParEllInvCovMat(1:nd,1:nd) ! recovery
         real(RK)                                :: ParEllChoLowCovUpp(1:nd,1:nd) ! recovery
-
 
         character(*), parameter                 :: PROCEDURE_NAME = MODULE_NAME//"@runRecursivePartition()"
 
@@ -818,8 +825,8 @@ contains
         blockKmeansClustering: if (present(PointStd)) then
 
             InvStd = 1._RK / PointStd(1:nd)
-            do concurrent(ip = 1:npp)
-                StanPoint(1:nd,ip) = (Point(1:nd,ip+nps-1) - PointAvg(1:nd)) * InvStd(1:nd)
+            do concurrent(ip = nps:npe)
+                StanPoint(1:nd,ip) = (Point(1:nd,ip) - PointAvg(1:nd)) * InvStd(1:nd)
             end do
 
             Kmeans = Kmeans_type( nd = nd & ! LCOV_EXCL_LINE
@@ -834,7 +841,6 @@ contains
                                 )
             if (Kmeans%Err%occurred) then
                 PartitionSize(1) = npp
-                !Membership = 1
                 neopt = 1
                 return
             end if
@@ -859,7 +865,6 @@ contains
                                 )
             if (Kmeans%Err%occurred) then
                 PartitionSize(1) = npp
-                !Membership = 1
                 neopt = 1
                 return
             end if
@@ -868,35 +873,34 @@ contains
 
         ! Compute cluster properties.
 
-!        allocate(Prop%ChoDia         (nd,nc))
-!        allocate(Prop%MahalSq        (np,nc))
-!        allocate(Prop%InvCovMat      (nd,nd,nc))
-!        allocate(Prop%ChoLowCovUpp   (nd,nd,nc))
-!        allocate(Prop%EffectiveSize  (nc))
-!        allocate(Prop%ScaleFactorSq  (nc))
-!        allocate(Prop%LogVolNormed   (nc))
-!        allocate(Prop%CumSumSize     (0:nc))
-!        allocate(Prop%Index          (np))
-!
-!#include "Partition_mod.prop.inc.f90"
+        allocate(Kmeans%Prop%ChoDia         (nd,nc))
+        allocate(Kmeans%Prop%MahalSq        (np,nc))
+        allocate(Kmeans%Prop%InvCovMat      (nd,nd,nc))
+        allocate(Kmeans%Prop%ChoLowCovUpp   (nd,nd,nc))
+        allocate(Kmeans%Prop%EffectiveSize  (nc))
+        allocate(Kmeans%Prop%ScaleFactorSq  (nc))
+        allocate(Kmeans%Prop%LogVolNormed   (nc))
+        allocate(Kmeans%Prop%CumSumSize     (0:nc))
+        allocate(Kmeans%Prop%Index          (nps:npe))
 
-        call Kmeans%getProp ( nd = nd & ! LCOV_EXCL_LINE
-                            , np = npp & ! LCOV_EXCL_LINE
-                            , Point = Point(1:nd,nps:npe) & ! LCOV_EXCL_LINE
-                            , Index = PointIndex & ! LCOV_EXCL_LINE
-#if defined MINVOL
-                            , inclusionFraction = inclusionFraction & ! LCOV_EXCL_LINE
-#endif
-                            , pointLogVolNormed = pointLogVolNormed & ! LCOV_EXCL_LINE
-                            )
-        if (Kmeans%Err%occurred) then
-            ! LCOV_EXCL_START
-            PartitionSize(1) = npp
-            !Membership = 1
-            neopt = 1
-            return
-            ! LCOV_EXCL_STOP
-        end if
+#include "Partition_mod.prop.inc.f90"
+
+!        call Kmeans%getProp ( nd = nd & ! LCOV_EXCL_LINE
+!                            , np = npp & ! LCOV_EXCL_LINE
+!                            , Point = Point(1:nd,nps:npe) & ! LCOV_EXCL_LINE
+!                            , Index = PointIndex & ! LCOV_EXCL_LINE
+!#if defined MINVOL
+!                            , inclusionFraction = inclusionFraction & ! LCOV_EXCL_LINE
+!#endif
+!                            , pointLogVolNormed = pointLogVolNormed & ! LCOV_EXCL_LINE
+!                            )
+!        if (Kmeans%Err%occurred) then
+!            ! LCOV_EXCL_START
+!            PartitionSize(1) = npp
+!            neopt = 1
+!            return
+!            ! LCOV_EXCL_STOP
+!        end if
 
 #if (defined DEBUG_ENABLED || TESTING_ENABLED || CODECOVE_ENABLED)
         if (any(abs(Kmeans%Prop%LogVolNormed(1:nc)) < 1.e-6_RK)) then ! xxx this must be removed as this condition could normally happen, even though rarely.
@@ -916,7 +920,7 @@ contains
                     call getSamCholFac  ( nd = nd & ! LCOV_EXCL_LINE
                                         , np = Kmeans%Size(ic) & ! LCOV_EXCL_LINE
                                         , Mean = Kmeans%Center(1:nd,ic) & ! LCOV_EXCL_LINE
-                                        , Point = Point(1:nd,Kmeans%Prop%CumSumSize(ic-1)+nps:Kmeans%Prop%CumSumSize(ic)+nps-1) & ! LCOV_EXCL_LINE
+                                        , Point = Point(1:nd,Kmeans%Prop%CumSumSize(ic-1)+1:Kmeans%Prop%CumSumSize(ic)) & ! LCOV_EXCL_LINE
                                         , CholeskyLower = ChoLow & ! LCOV_EXCL_LINE
                                         , CholeskyDiago = ChoDia & ! LCOV_EXCL_LINE
                                         )
@@ -1067,38 +1071,40 @@ contains
                         end if
                     end do
 
-                    loopReassignWeightedPoint: do ip = 1, npp
-                        icmin = Kmeans%Membership(ip)
+                    loopReassignWeightedPoint: do ip = nps, npe
+                        jp = ip - nps + 1
+                        icmin = Kmeans%Membership(jp)
                         do ic = 1, nc
                             if (Kmeans%Prop%EffectiveSize(ic) > 0_IK .and. ic /= icmin) then
                                 if (MahalSqWeight(ic) * Kmeans%Prop%MahalSq(ip,ic) < MahalSqWeight(icmin) * Kmeans%Prop%MahalSq(ip,icmin)) icmin = ic
                             end if
                         end do
-                        if (icmin /= Kmeans%Membership(ip)) then
+                        if (icmin /= Kmeans%Membership(jp)) then
                             Kmeans%Size(icmin) = Kmeans%Size(icmin) + 1_IK
-                            Kmeans%Size(Kmeans%Membership(ip)) = Kmeans%Size(Kmeans%Membership(ip)) - 1_IK
-                            Kmeans%Center(1:nd,icmin) = Kmeans%Center(1:nd,icmin) + Point(1:nd,ip+nps-1)
-                            Kmeans%Center(1:nd,Kmeans%Membership(ip)) = Kmeans%Center(1:nd,Kmeans%Membership(ip)) - Point(1:nd,ip+nps-1)
-                            Kmeans%Membership(ip) = icmin
+                            Kmeans%Size(Kmeans%Membership(jp)) = Kmeans%Size(Kmeans%Membership(jp)) - 1_IK
+                            Kmeans%Center(1:nd,icmin) = Kmeans%Center(1:nd,icmin) + Point(1:nd,ip)
+                            Kmeans%Center(1:nd,Kmeans%Membership(jp)) = Kmeans%Center(1:nd,Kmeans%Membership(jp)) - Point(1:nd,ip)
+                            Kmeans%Membership(jp) = icmin
                             reclusteringNeeded = .true.
                         end if
                     end do loopReassignWeightedPoint
 
                 else
 
-                    loopReassignPoint: do ip = 1, npp
-                        icmin = Kmeans%Membership(ip)
+                    loopReassignPoint: do ip = nps, npe
+                        jp = ip - nps + 1
+                        icmin = Kmeans%Membership(jp)
                         do ic = 1, nc
                             if (Kmeans%Prop%EffectiveSize(ic) > 0_IK .and. ic /= icmin) then
                                 if (Kmeans%Prop%MahalSq(ip,ic) < Kmeans%Prop%MahalSq(ip,icmin)) icmin = ic
                             end if
                         end do
-                        if (icmin /= Kmeans%Membership(ip)) then ! .and. Kmeans%Size(Kmeans%Membership(ip)) > minSize) then
+                        if (icmin /= Kmeans%Membership(jp)) then ! .and. Kmeans%Size(Kmeans%Membership(jp)) > minSize) then
                             Kmeans%Size(icmin) = Kmeans%Size(icmin) + 1_IK
-                            Kmeans%Size(Kmeans%Membership(ip)) = Kmeans%Size(Kmeans%Membership(ip)) - 1_IK
-                            Kmeans%Center(1:nd,icmin) = Kmeans%Center(1:nd,icmin) + Point(1:nd,ip+nps-1)
-                            Kmeans%Center(1:nd,Kmeans%Membership(ip)) = Kmeans%Center(1:nd,Kmeans%Membership(ip)) - Point(1:nd,ip+nps-1)
-                            Kmeans%Membership(ip) = icmin
+                            Kmeans%Size(Kmeans%Membership(jp)) = Kmeans%Size(Kmeans%Membership(jp)) - 1_IK
+                            Kmeans%Center(1:nd,icmin) = Kmeans%Center(1:nd,icmin) + Point(1:nd,ip)
+                            Kmeans%Center(1:nd,Kmeans%Membership(jp)) = Kmeans%Center(1:nd,Kmeans%Membership(jp)) - Point(1:nd,ip)
+                            Kmeans%Membership(jp) = icmin
                             reclusteringNeeded = .true.
                         end if
                     end do loopReassignPoint
@@ -1125,24 +1131,26 @@ contains
                 blockReclusteringNeeded: if (reclusteringNeeded) then ! perform reassignment
 
                     ! Reorder Point based on the identified clusters and recompute the cluster properties.
-!#include "Partition_mod.prop.inc.f90"
-                    call Kmeans%getProp ( nd = nd & ! LCOV_EXCL_LINE
-                                        , np = npp & ! LCOV_EXCL_LINE
-                                        , Point = Point(1:nd,nps:npe) & ! LCOV_EXCL_LINE
-                                        , Index = PointIndex & ! LCOV_EXCL_LINE
-#if defined MINVOL
-                                        , inclusionFraction = inclusionFraction & ! LCOV_EXCL_LINE
-#endif
-                                        , pointLogVolNormed = pointLogVolNormed & ! LCOV_EXCL_LINE
-                                        )
-                    if (Kmeans%Err%occurred) then
-                        ! LCOV_EXCL_START
-                        PartitionSize(1) = npp
-                        !Membership = 1
-                        neopt = 1
-                        return
-                        ! LCOV_EXCL_STOP
-                    end if
+
+#include "Partition_mod.prop.inc.f90"
+
+!                    call Kmeans%getProp ( nd = nd & ! LCOV_EXCL_LINE
+!                                        , np = npp & ! LCOV_EXCL_LINE
+!                                        , Point = Point(1:nd,nps:npe) & ! LCOV_EXCL_LINE
+!                                        , Index = PointIndex & ! LCOV_EXCL_LINE
+!#if defined MINVOL
+!                                        , inclusionFraction = inclusionFraction & ! LCOV_EXCL_LINE
+!#endif
+!                                        , pointLogVolNormed = pointLogVolNormed & ! LCOV_EXCL_LINE
+!                                        )
+!                    if (Kmeans%Err%occurred) then
+!                        ! LCOV_EXCL_START
+!                        PartitionSize(1) = npp
+!                        !Membership = 1
+!                        neopt = 1
+!                        return
+!                        ! LCOV_EXCL_STOP
+!                    end if
 
 #if (defined DEBUG_ENABLED || TESTING_ENABLED || CODECOVE_ENABLED)
                     block
@@ -1178,13 +1186,6 @@ contains
 
             do ic = 1, nc
 
-#if defined DEBUG_ENABLED
-                if (Kmeans%Prop%EffectiveSize(ic) > npp) then
-                    write(*,*) PROCEDURE_NAME
-                    write(*,*) "FATAL: Internal error occurred: Kmeans%EffectiveSize(ic) > npp", Kmeans%Prop%EffectiveSize(ic), npp
-                    error stop
-                end if
-#endif
                 !KmeansLogVolExpected(ic) = pointLogVolNormed + log(real(Kmeans%Prop%EffectiveSize(ic),RK)) ! @attn: xxx how is Kmeans%Prop%EffectiveSize(ic) > 0 ensured?
                 if (Kmeans%Size(ic) > 0_IK) then
 
@@ -1284,46 +1285,46 @@ contains
 #if defined MAXDEN
                 !scaleFactorSqInverse = 1._RK
                 if (Kmeans%size(ic) > 0_IK) then
-                    if (inclusionFraction > 0._RK) then
-                        counterEffectiveSize = 0_IK
-                        do ip = 1, nps - 1
-                            NormedPoint(1:nd) = Point(1:nd,ip) - Kmeans%Center(1:nd,ic)
-                            KmeansMahalSq(ip,ic) = dot_product( NormedPoint(1:nd) , matmul(Kmeans%Prop%InvCovMat(1:nd,1:nd,ic), NormedPoint(1:nd)) )
-                            if (KmeansMahalSq(ip,ic) <= 1._RK) counterEffectiveSize = counterEffectiveSize + 1_IK
-                        end do
-#if defined DEBUG_ENABLED || TESTING_ENABLED || CODECOVE_ENABLED
-                        !EffectiveSizeOld(ic) = Kmeans%Prop%EffectiveSize(ic)
-                        if (npp /= npe - nps + 1) then
-                            write(*,*) PROCEDURE_NAME//": Internal error occurred : npp /= npe - nps + 1"
-                            error stop
-                        end if
-                        block
-                            real(RK) :: mahalSqScalar
-                            do ip = ipstart + nps - 1, ipend + nps - 1
-                                NormedPoint(1:nd) = Point(1:nd,ip) - Kmeans%Center(1:nd,ic)
-                                mahalSqScalar = dot_product( NormedPoint(1:nd) , matmul(Kmeans%Prop%InvCovMat(1:nd,1:nd,ic), NormedPoint(1:nd)) )
-                                if (mahalSqScalar - 1._RK > 1.e-6_RK) then
-                                    write(*,*) "Internal error occurred : mahalSqScalar > 1 :", mahalSqScalar
-                                    write(*,*) "nps, ip, npe, np", nps, ip, npe, np
-                                    write(*,*) "ic, Kmeans%size(ic)", ic, Kmeans%size(ic)
-                                    write(*,*) "numRecursiveCall", numRecursiveCall
-                                    error stop
-                                endif
-                            end do
-                        end block
-#endif
-                        do ip = npe + 1, np
-                            NormedPoint(1:nd) = Point(1:nd,ip) - Kmeans%Center(1:nd,ic)
-                            KmeansMahalSq(ip,ic) = dot_product( NormedPoint(1:nd) , matmul(Kmeans%Prop%InvCovMat(1:nd,1:nd,ic), NormedPoint(1:nd)) )
-                            if (KmeansMahalSq(ip,ic) <= 1._RK) counterEffectiveSize = counterEffectiveSize + 1_IK
-                        end do
-                        Kmeans%Prop%EffectiveSize(ic)   = Kmeans%Size(ic) & ! LCOV_EXCL_LINE
-                                                        + nint(inclusionFraction * & ! LCOV_EXCL_LINE
-                                                        ( count(Kmeans%Prop%MahalSq(1:ipstart-1,ic)<=Kmeans%Prop%ScaleFactorSq(ic)) & ! LCOV_EXCL_LINE
-                                                        + count(Kmeans%Prop%MahalSq(ipend+1:npp,ic)<=Kmeans%Prop%ScaleFactorSq(ic)) & ! LCOV_EXCL_LINE
-                                                        + counterEffectiveSize & ! LCOV_EXCL_LINE
-                                                        ), kind = IK)
-                    end if
+!                    if (inclusionFraction > 0._RK) then
+!                        counterEffectiveSize = 0_IK
+!                        do ip = 1, nps - 1
+!                            NormedPoint(1:nd) = Point(1:nd,ip) - Kmeans%Center(1:nd,ic)
+!                            Kmeans%Prop%MahalSq(ip,ic) = dot_product( NormedPoint(1:nd) , matmul(Kmeans%Prop%InvCovMat(1:nd,1:nd,ic), NormedPoint(1:nd)) )
+!                            if (KmeansMahalSq(ip,ic) <= 1._RK) counterEffectiveSize = counterEffectiveSize + 1_IK
+!                        end do
+!#if defined DEBUG_ENABLED || TESTING_ENABLED || CODECOVE_ENABLED
+!                        !EffectiveSizeOld(ic) = Kmeans%Prop%EffectiveSize(ic)
+!                        if (npp /= npe - nps + 1) then
+!                            write(*,*) PROCEDURE_NAME//": Internal error occurred : npp /= npe - nps + 1"
+!                            error stop
+!                        end if
+!                        block
+!                            real(RK) :: mahalSqScalar
+!                            do ip = ipstart + nps - 1, ipend + nps - 1
+!                                NormedPoint(1:nd) = Point(1:nd,ip) - Kmeans%Center(1:nd,ic)
+!                                mahalSqScalar = dot_product( NormedPoint(1:nd) , matmul(Kmeans%Prop%InvCovMat(1:nd,1:nd,ic), NormedPoint(1:nd)) )
+!                                if (mahalSqScalar - 1._RK > 1.e-6_RK) then
+!                                    write(*,*) "Internal error occurred : mahalSqScalar > 1 :", mahalSqScalar
+!                                    write(*,*) "nps, ip, npe, np", nps, ip, npe, np
+!                                    write(*,*) "ic, Kmeans%size(ic)", ic, Kmeans%size(ic)
+!                                    write(*,*) "numRecursiveCall", numRecursiveCall
+!                                    error stop
+!                                endif
+!                            end do
+!                        end block
+!#endif
+!                        do ip = npe + 1, np
+!                            NormedPoint(1:nd) = Point(1:nd,ip) - Kmeans%Center(1:nd,ic)
+!                            KmeansMahalSq(ip,ic) = dot_product( NormedPoint(1:nd) , matmul(Kmeans%Prop%InvCovMat(1:nd,1:nd,ic), NormedPoint(1:nd)) )
+!                            if (KmeansMahalSq(ip,ic) <= 1._RK) counterEffectiveSize = counterEffectiveSize + 1_IK
+!                        end do
+!                        Kmeans%Prop%EffectiveSize(ic)   = Kmeans%Size(ic) & ! LCOV_EXCL_LINE
+!                                                        + nint(inclusionFraction * & ! LCOV_EXCL_LINE
+!                                                        ( count(Kmeans%Prop%MahalSq(1:ipstart-1,ic)<=Kmeans%Prop%ScaleFactorSq(ic)) & ! LCOV_EXCL_LINE
+!                                                        + count(Kmeans%Prop%MahalSq(ipend+1:npp,ic)<=Kmeans%Prop%ScaleFactorSq(ic)) & ! LCOV_EXCL_LINE
+!                                                        + counterEffectiveSize & ! LCOV_EXCL_LINE
+!                                                        ), kind = IK)
+!                    end if
                     KmeansLogVolExpected(ic) = pointLogVolNormed + log(real(Kmeans%Prop%EffectiveSize(ic),RK)) ! @attn: Kmeans%Prop%EffectiveSize(ic) >= Kmeans%Size(ic) > 0
                     logVolRatio = Kmeans%Prop%LogVolNormed(ic) - KmeansLogVolExpected(ic)
                     LogLikeFitness(icstart) = getLogProbPoisDiff(Kmeans%Prop%EffectiveSize(ic), logVolRatio)
@@ -1364,8 +1365,8 @@ contains
                                                 , nc = min(nc, KmeansNemax(ic)) & ! LCOV_EXCL_LINE
                                                 , nt = nt & ! LCOV_EXCL_LINE
                                                 , npp = Kmeans%Size(ic) & ! LCOV_EXCL_LINE
-                                                , nps = ipstart + nps - 1 & ! LCOV_EXCL_LINE
-                                                , npe = ipend + nps - 1 & ! LCOV_EXCL_LINE
+                                                , nps = ipstart & ! LCOV_EXCL_LINE
+                                                , npe = ipend & ! LCOV_EXCL_LINE
                                                 , nsim = nsim & ! LCOV_EXCL_LINE
                                                 , nemax = KmeansNemax(ic) & ! LCOV_EXCL_LINE
                                                 , minSize = minSize & ! LCOV_EXCL_LINE
@@ -1456,34 +1457,35 @@ contains
                         scaleFactor = exp( -ndInverse * logVolRatio )
                         scaleFactorSqInverse = 1._RK / scaleFactor**2
                         scaleFactorSqInverse4KPM = scaleFactorSqInverse / Kmeans%Prop%ScaleFactorSq(ic) ! assumes no MahalSq normalization in Kmeans%getProp()
-                        MahalSq(1:nps-1,icstart) = KmeansMahalSq(1:nps-1,ic) * scaleFactorSqInverse
-                        MahalSq(nps:npe,icstart) = Kmeans%Prop%MahalSq(1:npp,ic) * scaleFactorSqInverse4KPM
-                        MahalSq(npe+1:np,icstart) = KmeansMahalSq(npe+1:np,ic) * scaleFactorSqInverse
-                        EffectiveSize(icstart) = Kmeans%Size(ic) + nint(inclusionFraction * (count(MahalSq(1:ipstart+nps-2,icstart) <= 1._RK) + count(MahalSq(1:ipend+nps,icstart) <= 1._RK)))
+                        MahalSq(1:np,icstart) = Kmeans%Prop%MahalSq(1:np,ic) * scaleFactorSqInverse4KPM
+                        !MahalSq(1:nps-1,icstart) = KmeansMahalSq(1:nps-1,ic) * scaleFactorSqInverse
+                        !MahalSq(nps:npe,icstart) = Kmeans%Prop%MahalSq(1:npp,ic) * scaleFactorSqInverse4KPM
+                        !MahalSq(npe+1:np,icstart) = KmeansMahalSq(npe+1:np,ic) * scaleFactorSqInverse
+                        EffectiveSize(icstart) = Kmeans%Size(ic) + nint(inclusionFraction * (count(MahalSq(1:ipstart-1,icstart) <= 1._RK) + count(MahalSq(ipend+1:np,icstart) <= 1._RK)))
 #if (defined DEBUG_ENABLED || TESTING_ENABLED || CODECOVE_ENABLED)
-                        if (count(MahalSq(ipstart+nps-1:ipend+nps-1,icstart) <= 1._RK) < Kmeans%Size(ic)) then
-                            write(*,*) PROCEDURE_NAME//": Internal error occurred : count(MahalSq(ipstart+nps-1:ipend+nps-1,icstart) <= 1._RK) >= Kmeans%Size(ic)"
-                            write(*,*) "count(MahalSq(nps:npe,icstart) <= 1._RK) : ", count(MahalSq(ipstart+nps-1:ipend+nps-1,icstart) <= 1._RK)
-                            write(*,*) "Kmeans%Size(ic) : ", Kmeans%Size(ic)
-                            write(*,*) "logVolRatio < 0._RK :", logVolRatio < 0._RK
-                            error stop
-                        else
-                            block
-                                integer(IK) :: extraSize
-                                extraSize = nint(inclusionFraction * (count(MahalSq(1:ipstart+nps-2,icstart) <= 1._RK) + count(MahalSq(1:ipend+nps,icstart) <= 1._RK)))
-                                if (Kmeans%Size(ic) + nint(inclusionFraction * extraSize) < Kmeans%Prop%EffectiveSize(ic)) then
-                                    write(*,*) PROCEDURE_NAME//": Internal error occurred : Kmeans%Size(ic) + nint(inclusionFraction * extraSize) /= Kmeans%Prop%EffectiveSize(ic)"
-                                    write(*,*) "count(MahalSq(1:ipstart+nps-2,icstart) <= 1._RK) : ", count(MahalSq(1:ipstart+nps-2,icstart) <= 1._RK)
-                                    write(*,*) "count(MahalSq(1:ipend+nps,icstart) <= 1._RK) : ", count(MahalSq(1:ipend+nps,icstart) <= 1._RK)
-                                    write(*,*) "Kmeans%Size(ic) : ", Kmeans%Size(ic)
-                                    write(*,*) "extraSize : ", extraSize
-                                    write(*,*) "Kmeans%Size(ic) + extraSize : ", Kmeans%Size(ic) + extraSize
-                                    write(*,*) "Kmeans%Prop%EffectiveSize(ic) : ", Kmeans%Prop%EffectiveSize(ic)
-                                    write(*,*) "logVolRatio < 0._RK :", logVolRatio < 0._RK
-                                    error stop
-                                end if
-                            end block
-                        end if
+                        !if (count(MahalSq(ipstart+nps-1:ipend+nps-1,icstart) <= 1._RK) < Kmeans%Size(ic)) then
+                        !    write(*,*) PROCEDURE_NAME//": Internal error occurred : count(MahalSq(ipstart+nps-1:ipend+nps-1,icstart) <= 1._RK) >= Kmeans%Size(ic)"
+                        !    write(*,*) "count(MahalSq(nps:npe,icstart) <= 1._RK) : ", count(MahalSq(ipstart+nps-1:ipend+nps-1,icstart) <= 1._RK)
+                        !    write(*,*) "Kmeans%Size(ic) : ", Kmeans%Size(ic)
+                        !    write(*,*) "logVolRatio < 0._RK :", logVolRatio < 0._RK
+                        !    error stop
+                        !else
+                        !    block
+                        !        integer(IK) :: extraSize
+                        !        extraSize = nint(inclusionFraction * (count(MahalSq(1:ipstart+nps-2,icstart) <= 1._RK) + count(MahalSq(1:ipend+nps,icstart) <= 1._RK)))
+                        !        if (Kmeans%Size(ic) + nint(inclusionFraction * extraSize) < Kmeans%Prop%EffectiveSize(ic)) then
+                        !            write(*,*) PROCEDURE_NAME//": Internal error occurred : Kmeans%Size(ic) + nint(inclusionFraction * extraSize) /= Kmeans%Prop%EffectiveSize(ic)"
+                        !            write(*,*) "count(MahalSq(1:ipstart+nps-2,icstart) <= 1._RK) : ", count(MahalSq(1:ipstart+nps-2,icstart) <= 1._RK)
+                        !            write(*,*) "count(MahalSq(1:ipend+nps,icstart) <= 1._RK) : ", count(MahalSq(1:ipend+nps,icstart) <= 1._RK)
+                        !            write(*,*) "Kmeans%Size(ic) : ", Kmeans%Size(ic)
+                        !            write(*,*) "extraSize : ", extraSize
+                        !            write(*,*) "Kmeans%Size(ic) + extraSize : ", Kmeans%Size(ic) + extraSize
+                        !            write(*,*) "Kmeans%Prop%EffectiveSize(ic) : ", Kmeans%Prop%EffectiveSize(ic)
+                        !            write(*,*) "logVolRatio < 0._RK :", logVolRatio < 0._RK
+                        !            error stop
+                        !        end if
+                        !    end block
+                        !end if
 #endif
                         do j = 1, nd
                             ChoDia(j,icstart) = Kmeans%Prop%ChoDia(j,ic) * scaleFactor
@@ -1502,37 +1504,38 @@ contains
 #if defined MAXDEN
                         EffectiveSize(icstart) = Kmeans%Prop%EffectiveSize(ic)
                         scaleFactorSqInverse4KPM = 1._RK / Kmeans%Prop%ScaleFactorSq(ic) ! assumes no MahalSq normalization in Kmeans%getProp()
-                        MahalSq(1:nps-1,icstart) = KmeansMahalSq(1:nps-1,ic)
-                        MahalSq(nps:npe,icstart) = Kmeans%Prop%MahalSq(1:npp,ic) * scaleFactorSqInverse4KPM
-                        MahalSq(npe+1:np,icstart) = KmeansMahalSq(npe+1:np,ic)
+                        MahalSq(1:np,icstart) = Kmeans%Prop%MahalSq(1:np,ic) * scaleFactorSqInverse4KPM
+                        !MahalSq(1:nps-1,icstart) = KmeansMahalSq(1:nps-1,ic)
+                        !MahalSq(nps:npe,icstart) = Kmeans%Prop%MahalSq(1:npp,ic) * scaleFactorSqInverse4KPM
+                        !MahalSq(npe+1:np,icstart) = KmeansMahalSq(npe+1:np,ic)
 #if (defined DEBUG_ENABLED || TESTING_ENABLED || CODECOVE_ENABLED)
-                        if (any(MahalSq(ipstart+nps-1:ipend+nps-1,icstart) > 1._RK)) then
-                            write(*,*) pack(MahalSq(ipstart+nps-1:ipend+nps-1,icstart), MahalSq(ipstart+nps-1:ipend+nps-1,icstart) > 1._RK)
-                            write(*,*) PROCEDURE_NAME//": Internal error occurred : MahalSq(1:ipstart+nps-1,icstart) > 1._RK :"
-                            write(*,*) "logVolRatio < 0._RK :", logVolRatio < 0._RK
-                            error stop
-                        else
-                            block
-                                integer(IK) :: effectiveSize
-                                !write(*,*) "1", inclusionFraction
-                                !write(*,*) "2", count(MahalSq(ipstart+nps-1:ipend+nps-1,icstart) <= 1._RK)
-                                !write(*,*) "3", count(MahalSq(nps:ipstart+nps-2,icstart) <= 1._RK) + count(MahalSq(ipend+nps:npe,icstart) <= 1._RK)
-                                !write(*,*) "4", count(MahalSq(1:nps-1,icstart) <= 1._RK) + count(MahalSq(npe+1:np,icstart) <= 1._RK)
-                                effectiveSize   = count(MahalSq(ipstart+nps-1:ipend+nps-1,icstart) <= 1._RK) & ! LCOV_EXCL_LINE ! Kmeans%Size(ic)
-                                                + nint(inclusionFraction * & ! LCOV_EXCL_LINE
-                                                ( count(MahalSq(nps:ipstart+nps-2,icstart) <= 1._RK) + count(MahalSq(ipend+nps:npe,icstart) <= 1._RK) & ! LCOV_EXCL_LINE
-                                                + count(MahalSq(1:nps-1,icstart) <= 1._RK) + count(MahalSq(npe+1:np,icstart) <= 1._RK) & ! LCOV_EXCL_LINE
-                                                ) )
-                                if (effectiveSize /= Kmeans%Prop%EffectiveSize(ic)) then
-                                    write(*,*) PROCEDURE_NAME//": Internal error occurred : effectiveSize /= Kmeans%Prop%EffectiveSize(ic) :"
-                                    write(*,*) "Kmeans%Prop%EffectiveSize(ic) :", Kmeans%Prop%EffectiveSize(ic)
-                                    write(*,*) "effectiveSize :", effectiveSize
-                                    write(*,*) "count(MahalSq(ipstart+nps-1:ipend+nps-1,icstart) <= 1._RK) == Kmeans%Size(ic) :", count(MahalSq(ipstart+nps-1:ipend+nps-1,icstart) <= 1._RK), Kmeans%Size(ic)
-                                    !write(*,*) "EffectiveSizeOld(ic) == effSizeOld :", EffectiveSizeOld(ic), effSizeOld
-                                    error stop
-                                end if
-                            end block
-                        end if
+                        !if (any(MahalSq(ipstart+nps-1:ipend+nps-1,icstart) > 1._RK)) then
+                        !    write(*,*) pack(MahalSq(ipstart+nps-1:ipend+nps-1,icstart), MahalSq(ipstart+nps-1:ipend+nps-1,icstart) > 1._RK)
+                        !    write(*,*) PROCEDURE_NAME//": Internal error occurred : MahalSq(1:ipstart+nps-1,icstart) > 1._RK :"
+                        !    write(*,*) "logVolRatio < 0._RK :", logVolRatio < 0._RK
+                        !    error stop
+                        !else
+                        !    block
+                        !        integer(IK) :: effectiveSize
+                        !        !write(*,*) "1", inclusionFraction
+                        !        !write(*,*) "2", count(MahalSq(ipstart+nps-1:ipend+nps-1,icstart) <= 1._RK)
+                        !        !write(*,*) "3", count(MahalSq(nps:ipstart+nps-2,icstart) <= 1._RK) + count(MahalSq(ipend+nps:npe,icstart) <= 1._RK)
+                        !        !write(*,*) "4", count(MahalSq(1:nps-1,icstart) <= 1._RK) + count(MahalSq(npe+1:np,icstart) <= 1._RK)
+                        !        effectiveSize   = count(MahalSq(ipstart+nps-1:ipend+nps-1,icstart) <= 1._RK) & ! LCOV_EXCL_LINE ! Kmeans%Size(ic)
+                        !                        + nint(inclusionFraction * & ! LCOV_EXCL_LINE
+                        !                        ( count(MahalSq(nps:ipstart+nps-2,icstart) <= 1._RK) + count(MahalSq(ipend+nps:npe,icstart) <= 1._RK) & ! LCOV_EXCL_LINE
+                        !                        + count(MahalSq(1:nps-1,icstart) <= 1._RK) + count(MahalSq(npe+1:np,icstart) <= 1._RK) & ! LCOV_EXCL_LINE
+                        !                        ) )
+                        !        if (effectiveSize /= Kmeans%Prop%EffectiveSize(ic)) then
+                        !            write(*,*) PROCEDURE_NAME//": Internal error occurred : effectiveSize /= Kmeans%Prop%EffectiveSize(ic) :"
+                        !            write(*,*) "Kmeans%Prop%EffectiveSize(ic) :", Kmeans%Prop%EffectiveSize(ic)
+                        !            write(*,*) "effectiveSize :", effectiveSize
+                        !            write(*,*) "count(MahalSq(ipstart+nps-1:ipend+nps-1,icstart) <= 1._RK) == Kmeans%Size(ic) :", count(MahalSq(ipstart+nps-1:ipend+nps-1,icstart) <= 1._RK), Kmeans%Size(ic)
+                        !            !write(*,*) "EffectiveSizeOld(ic) == effSizeOld :", EffectiveSizeOld(ic), effSizeOld
+                        !            error stop
+                        !        end if
+                        !    end block
+                        !end if
 #endif
                     end if blockExpansionCheck
 #endif
@@ -1555,7 +1558,7 @@ contains
                         logical :: isInside
                         real(RK) :: mahalSqScalar
                         real(RK), allocatable :: NormedPoint(:)
-                        do ip = ipstart + nps - 1, ipend + nps - 1
+                        do ip = ipstart, ipend
                             NormedPoint = Point(:,ip) - Center(:,icstart)
                             mahalSqScalar = dot_product(NormedPoint,matmul(InvCovMat(:,:,icstart),NormedPoint))
                             isInside = mahalSqScalar - 1._RK <= 1.e-6_RK
@@ -1624,7 +1627,6 @@ write(*,*) "sub2par likelihood: ", exp(logLikeSum - parEllLogLike - logShrinkage
                     InvCovMat(1:nd,1:nd,1) = ParEllInvCovMat(1:nd,1:nd)
                     ChoLowCovUpp(1:nd,1:nd,1) = ParEllChoLowCovUpp(1:nd,1:nd)
                     PartitionSize(1) = npp
-                    !Membership = 1_IK
                     neopt = 1_IK
                     return
                 end if
@@ -1636,7 +1638,6 @@ write(*,*) "sub2par likelihood: ", exp(logLikeSum - parEllLogLike - logShrinkage
         else blockSubclusterSearch  ! one cluster is better
 
             PartitionSize(1) = npp
-            !Membership = 1_IK
             neopt = 1_IK
             return
 
@@ -1649,7 +1650,7 @@ write(*,*) "sub2par likelihood: ", exp(logLikeSum - parEllLogLike - logShrinkage
             logical :: isInside
             real(RK) :: mahalSqScalar
             real(RK), allocatable :: NormedPoint(:)
-            do ip = 1, npp
+            do ip = nps, npe
                 ic = Membership(ip)
                 if (ic < 1_IK .or. ic > nemax) then
                     write(*,*) PROCEDURE_NAME
@@ -1657,7 +1658,7 @@ write(*,*) "sub2par likelihood: ", exp(logLikeSum - parEllLogLike - logShrinkage
                     write(*,*) "Kmeans%Prop%CumSumSize", Kmeans%Prop%CumSumSize
                     error stop
                 end if
-                NormedPoint = Point(:,ip+nps-1) - Center(:,ic)
+                NormedPoint = Point(:,ip) - Center(:,ic)
                 mahalSqScalar = dot_product(NormedPoint,matmul(InvCovMat(:,:,ic),NormedPoint))
                 isInside = mahalSqScalar - 1._RK <= 1.e-6_RK
                 if (.not. isInside) then

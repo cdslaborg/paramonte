@@ -185,8 +185,8 @@ SET(ParaMonte_SOURCE_FILES
 
 set_source_files_properties(${ParaMonteKernel_SRC_DIR}/PartitionMaxDen_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/Partition_mod.inc.f90)
 set_source_files_properties(${ParaMonteKernel_SRC_DIR}/PartitionMinVol_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/Partition_mod.inc.f90)
-#set_source_files_properties(${ParaMonteKernel_SRC_DIR}/PartitionMaxDen_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/Partition_mod@runRecursivePartitionCall.inc.f90)
-#set_source_files_properties(${ParaMonteKernel_SRC_DIR}/PartitionMinVol_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/Partition_mod@runRecursivePartitionCall.inc.f90)
+set_source_files_properties(${ParaMonteKernel_SRC_DIR}/PartitionMaxDen_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/Partition_mod.prop.inc.f90)
+set_source_files_properties(${ParaMonteKernel_SRC_DIR}/PartitionMinVol_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/Partition_mod.prop.inc.f90)
 
 if(EXISTS "${ParaMonteKernelVersionSourceFile}")
     set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaMonte_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaMonte_mod@version@kernel.inc.f90)

@@ -1,53 +1,43 @@
 
-        if (allocated(KmeansMemberCounter)) deallocate(KmeansMemberCounter) ! LCOV_EXCL_LINE
-        allocate(KmeansMemberCounter(nc))
-
         ! Compute the cumulative sum of the cluster Size array.
 
-        Kmeans%Prop%CumSumSize(0) = 0_IK
-        loopDetermineClusterBoundaries: do ic = 1, nc
+        Kmeans%Prop%CumSumSize(0) = nps - 1
+        do ic = 1, nc ! loopDetermineClusterBoundaries
             KmeansMemberCounter(ic) = Kmeans%Prop%CumSumSize(ic-1)
             Kmeans%Prop%CumSumSize(ic) = KmeansMemberCounter(ic) + Kmeans%Size(ic)
-        end do loopDetermineClusterBoundaries
+        end do ! loopDetermineClusterBoundaries
 
-        if (present(Index)) then
-            do ip = 1, np
-                KmeansMemberCounter(Kmeans%Membership(ip)) = KmeansMemberCounter(Kmeans%Membership(ip)) + 1_IK
-                NormedPoint(1:nd,KmeansMemberCounter(Kmeans%Membership(ip))) = Point(1:nd,ip)
-                Kmeans%Prop%Index(KmeansMemberCounter(Kmeans%Membership(ip))) = Index(ip)
-            end do
-            Index = Kmeans%Prop%Index
-        else
-            do ip = 1, np
-                KmeansMemberCounter(Kmeans%Membership(ip)) = KmeansMemberCounter(Kmeans%Membership(ip)) + 1_IK
-                NormedPoint(1:nd,KmeansMemberCounter(Kmeans%Membership(ip))) = Point(1:nd,ip)
-                Kmeans%Prop%Index(KmeansMemberCounter(Kmeans%Membership(ip))) = ip
-            end do
-        end if
-        Point = NormedPoint
+        do ip = nps, npe
+            jp = ip - nps + 1
+            KmeansMemberCounter(Kmeans%Membership(jp)) = KmeansMemberCounter(Kmeans%Membership(jp)) + 1_IK
+            StanPoint(1:nd,KmeansMemberCounter(Kmeans%Membership(jp))) = Point(1:nd,ip)
+            Kmeans%Prop%Index(KmeansMemberCounter(Kmeans%Membership(jp))) = PointIndex(ip)
+        end do
+        PointIndex = Kmeans%Prop%Index
+        Point(1:nd,nps:npe) = StanPoint
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! Compute the properties of non-singular clusters.
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         maxLogVolNormed = NEGINF_RK
-        pointLogVolNormedDefault = -1._RK ! indicator
+        pointLogVolNormedDefault = -1._RK ! indicator: no singular cluster detected.
         Kmeans%Prop%logSumVolNormed = NEGINF_RK
-        loopComputeClusterProperties: do ic = 1, nc
+        do ic = 1, nc ! loopComputeClusterProperties
 
-            blockMinimumClusterSize: if (Kmeans%Size(ic) > nd) then
+            if (Kmeans%Size(ic) > nd) then ! blockMinimumClusterSize
 
                 ipstart = Kmeans%Prop%CumSumSize(ic-1) + 1_IK
                 ipend = Kmeans%Prop%CumSumSize(ic)
 
                 ! Correct the cluster memberships.
 
-                Kmeans%Membership(ipstart:ipend) = ic
+                Kmeans%Membership(ipstart-nps+1:ipend-nps+1) = ic
 
                 ! Normalize points.
 
-                do concurrent(ip = 1:np)
-                    NormedPoint(1:nd,ip) = Point(1:nd,ip) - Kmeans%Center(1:nd,ic)
+                do concurrent(ip = nps:npe)
+                    StanPoint(1:nd,ip) = Point(1:nd,ip) - Kmeans%Center(1:nd,ic)
                 end do
 
                 ! Compute the upper covariance matrix of the cluster covariance matrices.
@@ -55,7 +45,7 @@
                 Kmeans%Prop%ChoLowCovUpp(1:nd,1:nd,ic) = 0._RK
                 do ip = ipstart, ipend
                     do j = 1, nd
-                        Kmeans%Prop%ChoLowCovUpp(1:j,j,ic) = Kmeans%Prop%ChoLowCovUpp(1:j,j,ic) + NormedPoint(1:j,ip) * NormedPoint(j,ip)
+                        Kmeans%Prop%ChoLowCovUpp(1:j,j,ic) = Kmeans%Prop%ChoLowCovUpp(1:j,j,ic) + StanPoint(1:j,ip) * StanPoint(j,ip)
                     end do
                 end do
                 Kmeans%Prop%ChoLowCovUpp(1:nd,1:nd,ic) = Kmeans%Prop%ChoLowCovUpp(1:nd,1:nd,ic) / real(Kmeans%Size(ic)-1_IK, kind = RK)
@@ -77,8 +67,18 @@
 
                 ! Compute the MahalSq of as many points as needed.
 
-                do concurrent(ip = 1:np)
-                    Kmeans%Prop%MahalSq(ip,ic) = dot_product( NormedPoint(1:nd,ip) , matmul(Kmeans%Prop%InvCovMat(1:nd,1:nd,ic), NormedPoint(1:nd,ip)) )
+                do concurrent(ip = 1:nps-1)
+                    NormedPoint(1:nd) = Point(1:nd,ip) - Kmeans%Center(1:nd,ic)
+                    Kmeans%Prop%MahalSq(ip,ic) = dot_product( NormedPoint(1:nd) , matmul(Kmeans%Prop%InvCovMat(1:nd,1:nd,ic), NormedPoint(1:nd)) )
+                end do
+
+                do concurrent(ip = nps:npe)
+                    Kmeans%Prop%MahalSq(ip,ic) = dot_product( StanPoint(1:nd,ip) , matmul(Kmeans%Prop%InvCovMat(1:nd,1:nd,ic), StanPoint(1:nd,ip)) )
+                end do
+
+                do concurrent(ip = npe+1:np)
+                    NormedPoint(1:nd) = Point(1:nd,ip) - Kmeans%Center(1:nd,ic)
+                    Kmeans%Prop%MahalSq(ip,ic) = dot_product( NormedPoint(1:nd) , matmul(Kmeans%Prop%InvCovMat(1:nd,1:nd,ic), NormedPoint(1:nd)) )
                 end do
 
                 ! Compute the scaleFcator of the bounding region and scale the properties to form the bounded regions.
@@ -101,37 +101,28 @@
 
                 ! Compute the effective fraction of points inside the bounded region.
 
-                if (present(inclusionFraction)) then
+                if (inclusionFraction > 0._RK) then
                     Kmeans%Prop%EffectiveSize(ic)   = Kmeans%Size(ic) & ! LCOV_EXCL_LINE
-                                                    + nint(inclusionFraction * &
+                                                    + nint(inclusionFraction * & ! LCOV_EXCL_LINE
                                                     ( count(Kmeans%Prop%MahalSq(1:Kmeans%Prop%CumSumSize(ic-1),ic)<=Kmeans%Prop%ScaleFactorSq(ic)) & ! LCOV_EXCL_LINE
                                                     + count(Kmeans%Prop%MahalSq(Kmeans%Prop%CumSumSize(ic)+1:np,ic)<=Kmeans%Prop%ScaleFactorSq(ic)) & ! LCOV_EXCL_LINE
-                                                    ), kind=IK)
-!write(*,*) 
-!write(*,*) "Kmeans%ic, CumSumSize(ic-1), CumSumSize(ic), np", ic, Kmeans%Prop%CumSumSize(ic-1), Kmeans%Prop%CumSumSize(ic), np
-!write(*,*) Kmeans%Size(ic)
-!write(*,*) count(Kmeans%Prop%MahalSq(1:Kmeans%Prop%CumSumSize(ic-1),ic)<Kmeans%Prop%ScaleFactorSq(ic))
-!write(*,*) count(Kmeans%Prop%MahalSq(Kmeans%Prop%CumSumSize(ic)+1:np,ic)<Kmeans%Prop%ScaleFactorSq(ic))
-!write(*,*) "Kmeans%Prop%ScaleFactorSq(ic)", Kmeans%Prop%ScaleFactorSq(ic)
-!write(*,*) "Kmeans%Prop%MahalSq(Kmeans%Prop%CumSumSize(ic)+1:np,ic): ", Kmeans%Prop%MahalSq(Kmeans%Prop%CumSumSize(ic)+1:np,ic)
-!write(*,*) 
+                                                    ), kind = IK)
                 else
                     Kmeans%Prop%EffectiveSize(ic) = Kmeans%Size(ic)
                 end if
 
                 Kmeans%Prop%LogVolNormed(ic) = sum( log(Kmeans%Prop%ChoDia(1:nd,ic)) )
                 maxLogVolNormed = max( maxLogVolNormed, Kmeans%Prop%LogVolNormed(ic) )
-               !Kmeans%Prop%LogDenNormed(ic) = log(real(Kmeans%Prop%EffectiveSize(ic),RK)) - Kmeans%Prop%LogVolNormed(ic)
 
-            else blockMinimumClusterSize
+            else ! blockMinimumClusterSize
 
+                pointLogVolNormedDefault = 1._RK ! This is an indicator
                 Kmeans%Prop%LogVolNormed(ic) = NEGINF_RK ! This initialization is essential in dependent procedures.
                 Kmeans%Prop%EffectiveSize(ic) = 0_IK
-                pointLogVolNormedDefault = 1._RK ! This is an indicator
 
-            end if blockMinimumClusterSize
+            end if ! blockMinimumClusterSize
 
-        end do loopComputeClusterProperties
+        end do ! loopComputeClusterProperties
 
         if (maxLogVolNormed /= NEGINF_RK) Kmeans%Prop%logSumVolNormed = getLogSumExp(nc, Kmeans%Prop%LogVolNormed, maxLogVolNormed)
 
@@ -139,25 +130,22 @@
         ! Compute the properties of singular clusters.
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        if (pointLogVolNormedDefault > 0._RK) then
+        if (pointLogVolNormedDefault > 0._RK) then ! blockSingularClusterDetected
 
-            if (present(pointLogVolNormed)) then
-                if (pointLogVolNormed > NEGINF_RK) pointLogVolNormedDefault = -1._RK ! flag to indicate the presence of `pointLogVolNormed`.
-            end if
-
-            if (pointLogVolNormedDefault < 0._RK) then
+            if (pointLogVolNormed > NEGINF_RK) then
                 pointLogVolNormedDefault = pointLogVolNormed
-           !elseif (any(Kmeans%Size(1:nc) > nd)) then
             elseif (maxLogVolNormed /= NEGINF_RK) then
                 pointLogVolNormedDefault = 0._RK
-                do ic = 1, nc
+                do ic = 1, nc ! add all points.
                     if (Kmeans%Size(ic) > nd) pointLogVolNormedDefault = pointLogVolNormedDefault + real(Kmeans%Size(ic),RK)
                 end do
                 pointLogVolNormedDefault = Kmeans%Prop%logSumVolNormed - log(pointLogVolNormedDefault)
-            else
-                Kmeans%Err%msg = "There is not any non-singular cluster for which to compute the properties."
-                Kmeans%Err%occurred = .true.
+            else ! There is not any non-singular cluster for which to compute the properties.
+                ! LCOV_EXCL_START
+                PartitionSize(1) = npp
+                neopt = 1
                 return
+                ! LCOV_EXCL_STOP
             end if
 
             if (maxLogVolNormed /= NEGINF_RK) then
@@ -169,7 +157,7 @@
 
             ! Assume a hyper-spherical ellipsoid as the bounding region of the points.
 
-            loopComputeSingularClusterProperties: do ic = 1, nc
+            do ic = 1, nc ! loopComputeSingularClusterProperties
 
                 if (Kmeans%Size(ic) <= nd .and. Kmeans%Size(ic) > 0_IK) then
 
@@ -178,7 +166,7 @@
 
                     ! Correct the cluster memberships.
 
-                    Kmeans%Membership(ipstart:ipend) = ic
+                    Kmeans%Membership(ipstart-nps+1:ipend-nps+1) = ic
 
                     ! Compute the scale factor and other properties.
 
@@ -194,34 +182,27 @@
 
                     Kmeans%Prop%ChoDia(1:nd,ic) = scaleFactor
                     Kmeans%Prop%LogVolNormed(ic) = nd * log(scaleFactor)
-                   !Kmeans%Prop%LogDenNormed(ic) = log(real(Kmeans%Size(ic),RK)) - Kmeans%Prop%LogVolNormed(ic)
                     Kmeans%Prop%ChoLowCovUpp(1:nd,1:nd,ic) = getEye(nd, nd, Kmeans%Prop%ScaleFactorSq(ic))
                     Kmeans%Prop%InvCovMat(1:nd,1:nd,ic) = getEye(nd, nd, scaleFactorSqInverse)
 
                     ! Compute the effective fraction of points inside the bounded region.
 
-                    if (present(inclusionFraction)) then
+                    if (inclusionFraction > 0._RK) then
                         Kmeans%Prop%EffectiveSize(ic)   = Kmeans%Size(ic) & ! LCOV_EXCL_LINE
-                                                        + nint(inclusionFraction * &
+                                                        + nint(inclusionFraction * & ! LCOV_EXCL_LINE
                                                         ( count(Kmeans%Prop%MahalSq(1:Kmeans%Prop%CumSumSize(ic-1),ic)<=Kmeans%Prop%ScaleFactorSq(ic)) & ! LCOV_EXCL_LINE
                                                         + count(Kmeans%Prop%MahalSq(Kmeans%Prop%CumSumSize(ic)+1:np,ic)<=Kmeans%Prop%ScaleFactorSq(ic)) & ! LCOV_EXCL_LINE
-                                                        ), kind=IK)
-!write(*,*) 
-!write(*,*) "Kmeans%ic, CumSumSize(ic-1), CumSumSize(ic), np", ic, Kmeans%Prop%CumSumSize(ic-1), Kmeans%Prop%CumSumSize(ic), np
-!write(*,*) Kmeans%Size(ic)
-!write(*,*) count(Kmeans%Prop%MahalSq(1:Kmeans%Prop%CumSumSize(ic-1),ic)<Kmeans%Prop%ScaleFactorSq(ic))
-!write(*,*) count(Kmeans%Prop%MahalSq(Kmeans%Prop%CumSumSize(ic)+1:np,ic)<Kmeans%Prop%ScaleFactorSq(ic))
-!write(*,*) 
+                                                        ), kind = IK)
                     else
-                        Kmeans%Prop%EffectiveSize(ic)   = Kmeans%Size(ic)
+                        Kmeans%Prop%EffectiveSize(ic) = Kmeans%Size(ic)
                     end if
-                    !write(*,*) "Kmeans%Prop%LogVolNormed(ic), maxLogVolNormed", Kmeans%Prop%LogVolNormed(ic), maxLogVolNormed
+
                     Kmeans%Prop%logSumVolNormed = Kmeans%Prop%logSumVolNormed + exp(Kmeans%Prop%LogVolNormed(ic) - maxLogVolNormed)
 
                 end if
 
-            end do loopComputeSingularClusterProperties
+            end do ! loopComputeSingularClusterProperties
 
             Kmeans%Prop%logSumVolNormed = maxLogVolNormed + log(Kmeans%Prop%logSumVolNormed)
 
-        end if
+        end if ! blockSingularClusterDetected

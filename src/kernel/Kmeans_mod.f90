@@ -794,7 +794,7 @@ contains
            !elseif (any(Kmeans%Size(1:nc) > nd)) then
             elseif (maxLogVolNormed /= NEGINF_RK) then
                 pointLogVolNormedDefault = 0._RK
-                do ic = 1, nc
+                do ic = 1, nc ! add all points.
                     if (Kmeans%Size(ic) > nd) pointLogVolNormedDefault = pointLogVolNormedDefault + real(Kmeans%Size(ic),RK)
                 end do
                 pointLogVolNormedDefault = Kmeans%Prop%logSumVolNormed - log(pointLogVolNormedDefault)
