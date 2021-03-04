@@ -4,18 +4,19 @@
 
 &specData
     nd = 2
-    nc = 5
+    nc = 10
     etamin = 0.5d0
     etamax = 10.d0
-    sizeMin = 500
-    sizeMax = 500
-    centerMin = -1.d0
-    centerMax = +1.d0
+    sizeMin = 1000
+    sizeMax = 1000
+    centerMin = -2.5d0
+    centerMax = +2.5d0
     !rngseed = 3132151
     !rngseed = 3132152
     !rngseed = 5157682
     !rngseed = 51575130 ! some random seeds are not deterministic!
-    rngseed = 515791
+    rngseed = 515795
+    !rngseed = 5157931
     !isRepeatable = .true.
     dist = "uniform"
 /
@@ -33,7 +34,7 @@
     expansionMinVol = 2.0d0
     inclusionFraction = 1.d0
     maxAllowedKvolumeRecursion = 20
-    mahalSqWeightExponent = 1.d0
+    mahalSqWeightExponent = 0.d0
     !isRepeatable = .true.
     !rngseed = 517693
 /
