@@ -16,7 +16,7 @@ pointsEnabled = 1;
 innestPointEnabled = 0;
 originalBoundsEnabled = 1;
 predictedBoundsEnabled = 1;
-leastLikely2DisplayCount = 1;
+leastLikely2DisplayCount = -1;
 distMatEnabled = 0;
 
 methodList = ["MinVol", "MaxDen"]; %, "", "Kmeans", "VarDen"];
@@ -184,8 +184,11 @@ for method = methodList
 
                     % plot the corresponding least likely partitions
 
+                    AbsLogLikeFitness = abs(partition.case{icase}.LogLikeFitness);
                     [~, LogLikeSortedIndex] = sort(-abs(partition.case{icase}.LogLikeFitness));
-                    for ic = 1:leastLikely2DisplayCount
+                    leastLikelyCount = leastLikely2DisplayCount;
+                    if leastLikelyCount < 0; leastLikelyCount = sum(exp(-AbsLogLikeFitness) < 1 / double(partition.case{icase}.nc)); end
+                    for ic = 1:leastLikelyCount
                         bcrd = getEllipsoidBoundary ( partition.case{icase}.CovMatUpper(dimask,dimask,LogLikeSortedIndex(ic)) ... covMat
                                                     , partition.case{icase}.Center(dimask,LogLikeSortedIndex(ic)) ... meanVec
                                                     , 100 ... npoint
