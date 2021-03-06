@@ -225,9 +225,11 @@ contains
         real(RK)                    :: shrinkageMinVol
         logical                     :: rinitEnabled
         logical                     :: stanEnabled
+        logical                     :: scaleOptimizationEnabled
         namelist /specPartition/ rngseed, isRepeatable, nc, nt, nemax, nsim, minSize, inclusionFraction, stanEnabled
         namelist /specPartition/ expansionMaxDen, expansionMinVol, shrinkageMaxDen, shrinkageMinVol
         namelist /specPartition/ maxAllowedKvolumeRecursion, mahalSqWeightExponent
+        namelist /specPartition/ scaleOptimizationEnabled
 
         assertion = .true.
 
@@ -296,6 +298,7 @@ contains
             shrinkageMinVol = 1._RK
             shrinkageMaxDen = NEGINF_RK
             mahalSqWeightExponent = 0._RK
+            scaleOptimizationEnabled = .true.
             maxAllowedKvolumeRecursion = 100_IK
             nemax = ClusteredPoint%np / (ClusteredPoint%nd + 1)
             open(newunit = Test%File%unit, file = Test%inDir//"/Test_Partition_mod@test_runPartition_2.nml", status = "old")
@@ -334,6 +337,7 @@ contains
 #elif defined MAXDEN
                                         , logExpansion = log(expansionMaxDen) & ! LCOV_EXCL_LINE
                                         , logShrinkage = shrinkageMaxDen & ! LCOV_EXCL_LINE
+                                        , scaleOptimizationEnabled = scaleOptimizationEnabled & ! LCOV_EXCL_LINE
 #endif
                                         , inclusionFraction = inclusionFraction & ! LCOV_EXCL_LINE
                                         , mahalSqWeightExponent = mahalSqWeightExponent & ! LCOV_EXCL_LINE

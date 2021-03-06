@@ -68,6 +68,9 @@
         integer(IK)                 :: maxAllowedKmeansFailure      !< See the interface of [constructPartition()](@ref constructpartition).
         integer(IK)                 :: maxAllowedKmeansRecursion    !< See the interface of [constructPartition()](@ref constructpartition).
         integer(IK)                 :: maxAllowedKvolumeRecursion   !< See the interface of [constructPartition()](@ref constructpartition).
+#if defined MAXDEN
+        logical                     :: scaleOptimizationEnabled
+#endif
         real(RK)                    :: mahalSqWeightExponent        !< See the interface of [constructPartition()](@ref constructpartition).
         real(RK)                    :: parentLogVolNormed           !< See the interface of [constructPartition()](@ref constructpartition).
         real(RK)                    :: pointLogVolNormed            !< The estimated volume of a single point based on the input value of `parentLogVolNormed`.
@@ -169,6 +172,9 @@ contains
                                 , parentLogVolNormed & ! LCOV_EXCL_LINE
                                 , mahalSqWeightExponent & ! LCOV_EXCL_LINE
                                 , maxAllowedKmeansFailure & ! LCOV_EXCL_LINE
+#if defined MAXDEN
+                                , scaleOptimizationEnabled & ! LCOV_EXCL_LINE
+#endif
                                 , maxAllowedKmeansRecursion & ! LCOV_EXCL_LINE
                                 , maxAllowedKvolumeRecursion & ! LCOV_EXCL_LINE
                                 ) result(Partition)
@@ -195,6 +201,9 @@ contains
         integer(IK) , intent(in)    , optional  :: maxAllowedKmeansFailure
         integer(IK) , intent(in)    , optional  :: maxAllowedKmeansRecursion
         integer(IK) , intent(in)    , optional  :: maxAllowedKvolumeRecursion
+#if defined MAXDEN
+        logical     , intent(in)    , optional  :: scaleOptimizationEnabled
+#endif
         type(Partition_type)                    :: Partition
 
         Partition%nd = size(Point(:,1))
@@ -205,6 +214,9 @@ contains
         Partition%nsim = 0_IK; if (present(nsim)) Partition%nsim = max(Partition%nsim, nsim)
         Partition%minSize = Partition%nd + 1_IK; if (present(minSize)) Partition%minSize = minSize
         Partition%nemax = Partition%np / max(1_IK, Partition%minSize); if (present(nemax)) Partition%nemax = max(1_IK, nemax)
+#if defined MAXDEN
+        Partition%scaleOptimizationEnabled = .true.; if (present(scaleOptimizationEnabled)) Partition%scaleOptimizationEnabled = scaleOptimizationEnabled
+#endif
         Partition%maxAllowedKvolumeRecursion = 3_IK; if (present(maxAllowedKvolumeRecursion)) Partition%maxAllowedKvolumeRecursion = maxAllowedKvolumeRecursion
         Partition%maxAllowedKmeansRecursion = 300_IK; if (present(maxAllowedKmeansRecursion)) Partition%maxAllowedKmeansRecursion = maxAllowedKmeansRecursion
         Partition%maxAllowedKmeansFailure = 10_IK; if (present(maxAllowedKmeansFailure)) Partition%maxAllowedKmeansFailure = maxAllowedKmeansFailure
@@ -276,7 +288,8 @@ contains
         use Matrix_mod, only: getInvMatFromCholFac
         use Matrix_mod, only: getCholeskyFactor
         use String_mod, only: num2str
-        use Sort_mod, only: indexArray
+        !use Sort_mod, only: indexArray
+        use Sort_mod, only: sortAscending
 
         implicit none
 
@@ -286,27 +299,31 @@ contains
         real(RK)    , optional  , intent(in)    :: parentLogVolNormed
 #elif defined MAXDEN
         real(RK)                , intent(in)    :: parentLogVolNormed
-        logical                                 :: swapAccepted
+       !logical                                 :: swapAccepted
+        real(RK)                                :: ndHalf
         real(RK)                                :: unifrnd
         real(RK)                                :: logVolRatio
+        real(RK)                                :: ndHalfInverse
         real(RK)                                :: newLogVolNormed
-        real(RK)                                :: logLikeShrinkage
         real(RK)                                :: newLogLikeFitness
-        real(RK)                                :: SumPoint(Partition%nd)
-        real(RK)                                :: NewCenter(Partition%nd)
-        real(RK)                                :: NewChoDia(Partition%nd)
-        real(RK)                                :: NewInvCovMat(Partition%nd,Partition%nd)
-        real(RK)                                :: NewChoLowCovUpp(Partition%nd,Partition%nd)
+       !real(RK)                                :: logLikeShrinkage
+       !real(RK)                                :: SumPoint(Partition%nd)
+       !real(RK)                                :: NewCenter(Partition%nd)
+       !real(RK)                                :: NewChoDia(Partition%nd)
+       !real(RK)                                :: SinglePartitionCenter(Partition%nd)
+       !real(RK)                                :: NewInvCovMat(Partition%nd,Partition%nd)
+       !real(RK)                                :: NewChoLowCovUpp(Partition%nd,Partition%nd)
         real(RK)                                :: MahalSq(Partition%np,Partition%nemax)
-        real(RK)    , allocatable               :: MahalSqAcrossPartition(:)
-        integer(IK) , allocatable               :: MahalSqSortedIndex(:)
-        integer(IK)                             :: newEffeciveSize
-        integer(IK)                             :: ipstart, ipend
-        integer(IK)                             :: ipMaxMahal
-        integer(IK)                             :: icMinMahal
-        integer(IK)                             :: newSize
-        integer(IK)                             :: ndHalf
-        integer(IK)                             :: jp
+       !real(RK)                                :: MahalSqSorted(Partition%np)
+       !real(RK)    , allocatable               :: MahalSqAcrossPartition(:)
+       !integer(IK) , allocatable               :: MahalSqSortedIndex(:)
+       !integer(IK)                             :: newEffeciveSize
+       !integer(IK)                             :: ipstart, ipend
+        integer(IK)                             :: nps, npe, npc
+       !integer(IK)                             :: ipMaxMahal
+       !integer(IK)                             :: icMinMahal
+       !integer(IK)                             :: newSize
+       !integer(IK)                             :: jp
 #endif
         integer(IK)                             :: i, j, ip, ic
         integer(IK) , allocatable               :: PointIndexSorted(:)
@@ -563,13 +580,18 @@ contains
 
         end if blockSubclusterSearch
 
-        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        ! Set the single cluster properties.
-        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#if defined DEBUG_ENABLED || defined TESTING_ENABLED || defined CODECOVE_ENABLED
+        if (Partition%neopt < 1_IK) then
+            write(*,*) PROCEDURE_NAME//": Internal error occurred : Partition%neopt < 1_IK : ", Partition%neopt
+            error stop
+        end if
+#endif
 
-        if (Partition%neopt == 1_IK) then
+        blockPartitionPostProcessing: if (Partition%neopt == 1_IK) then
 
-            ! Now rescale Cholesky factor and its diagonals, such that they describe the bounding ellipsoid of the cluster.
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            ! Rescale the Cholesky lower and diagonals to describe the bounding ellipsoid of the single partition.
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             Partition%Size(1) = Partition%np
             Partition%Membership(1:Partition%np) = 1_IK
@@ -586,14 +608,104 @@ contains
 #if defined MAXDEN
             MahalSq(1:Partition%np,1) = MahalSqSinglePartition(1:Partition%np) * scaleFactorSqInverse
             Partition%EffectiveSize(1) = Partition%np
-#endif
 
+        else blockPartitionPostProcessing
+
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            ! maximize and refine partitions.
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            !if (.not. allocated(MahalSqSortedIndex)) allocate(MahalSqSortedIndex(Partition%np))
+            !if (.not. allocated(MahalSqAcrossPartition)) allocate(MahalSqAcrossPartition(Partition%neopt))
+            !SinglePartitionCenter(1:Partition%nd) = Partition%Center(1:Partition%nd,1)
+
+            blockScaleOptimizationEnabled: if (Partition%scaleOptimizationEnabled) then
+
+                ndHalf = 0.5_RK * Partition%nd
+                ndHalfInverse = 1._RK / ndHalf
+                loopOverFitPartition: do ic = 1, Partition%neopt
+
+                    blockScaleOptimization: if (Partition%LogLikeFitness(ic) <= 0._RK) then
+
+                        !NewCenter(1:Partition%nd) = SinglePartitionCenter(1:Partition%nd)
+
+                        !call indexArray(Partition%np, MahalSq(1:Partition%np,ic), MahalSqSortedIndex(1:Partition%np), Partition%Err)
+                        !MahalSqSorted(1:Partition%np) = MahalSq(1:Partition%np,ic)
+                        call sortAscending(Partition%np, MahalSq(1:Partition%np,ic), Partition%Err)
+                        if (Partition%Err%occurred) cycle loopOverFitPartition
+
+                        npe = Partition%np
+                        nps = Partition%EffectiveSize(ic)
+                        if (npe - nps < 2) cycle loopOverFitPartition ! xxx is this necessary?
+
+                        loopScaleOptimization: do
+
+                            npc = (nps + npe) / 2
+                            
+                            newLogVolNormed = Partition%LogVolNormed(ic) + ndHalf * log(MahalSq(npc,ic))
+                            logVolRatio = newLogVolNormed - Partition%pointLogVolNormed - log(real(npc,RK))
+                            boundedRegionIsTooLarge = logVolRatio > 0._RK
+                            if (boundedRegionIsTooLarge) then
+                                call random_number(unifrnd)
+                                newLogLikeFitness = getLogProbPoisDiff(npc, logVolRatio)
+                                if (unifrnd > 0._RK) then; unifrnd = log(unifrnd); else; unifrnd = -huge(unifrnd); end if ! LCOV_EXCL_LINE
+                                boundedRegionIsTooLarge = newLogLikeFitness < unifrnd
+                            end if
+
+                            if (boundedRegionIsTooLarge) then
+                                npe = npc
+                            else
+                                nps = npc
+                            end if
+
+                            if (npe - nps < 2) then
+                                if (boundedRegionIsTooLarge) then
+                                    npc = nps
+                                else
+                                    npc = npe
+                                end if
+write(*,*) "ic, npc, Partition%EffectiveSize(ic)", ic, npc, Partition%EffectiveSize(ic)
+                                if (Partition%EffectiveSize(ic) == npc) exit loopScaleOptimization
 #if defined DEBUG_ENABLED || defined TESTING_ENABLED || defined CODECOVE_ENABLED
-        elseif (Partition%neopt < 1_IK) then
-            write(*,*) PROCEDURE_NAME//": Internal error occurred : Partition%neopt < 1_IK : ", Partition%neopt
-            error stop
+                                if (Partition%EffectiveSize(ic) > npc) then
+                                    write(*,*) "Partition%EffectiveSize(ic) > npc: ", Partition%EffectiveSize(ic), npc
+                                    error stop
+                                end if
 #endif
-        end if
+                                Partition%EffectiveSize(ic) = npc
+                                Partition%LogVolNormed(ic) = Partition%LogVolNormed(ic) + ndHalf * log(MahalSq(npc,ic))
+                                logVolRatio = Partition%LogVolNormed(ic) - Partition%pointLogVolNormed - log(real(npc,RK))
+                                Partition%LogLikeFitness(ic) = getLogProbPoisDiff(npc, logVolRatio)
+                                if (logVolRatio < 0._RK) then
+                                    Partition%LogLikeFitness(ic) = 0._RK
+                                    scaleFactorSq = exp(ndHalfInverse * logVolRatio)
+                                    Partition%LogVolNormed(ic) = Partition%LogVolNormed(ic) - logVolRatio
+                                else
+                                    scaleFactorSq = MahalSq(Partition%EffectiveSize(ic),ic)
+                                    Partition%LogVolNormed(ic) = Partition%LogVolNormed(ic) - logVolRatio
+                                end if
+                                scaleFactor = sqrt(scaleFactorSq)
+                                scaleFactorSqInverse = 1._RK / scaleFactorSq
+                                do j = 1, Partition%nd
+                                    Partition%ChoDia(j,ic) = Partition%ChoDia(j,ic) * scaleFactor
+                                    !Partition%ChoLowCovUpp(1:j,j,ic) = Partition%ChoLowCovUpp(1:j,j,ic) * scaleFactorSq
+                                    Partition%InvCovMat(1:Partition%nd,j,ic) = Partition%InvCovMat(1:Partition%nd,j,ic) * scaleFactorSqInverse
+                                    do i = j+1, Partition%nd
+                                        Partition%ChoLowCovUpp(i,j,ic) = Partition%ChoLowCovUpp(i,j,ic) * scaleFactor
+                                    end do
+                                end do
+                                exit loopScaleOptimization
+                            end if
+
+                        end do loopScaleOptimization
+
+                    end if blockScaleOptimization
+
+                end do loopOverFitPartition
+
+            end if blockScaleOptimizationEnabled
+#endif
+        end if blockPartitionPostProcessing
 
 #if defined DEBUG_ENABLED || defined TESTING_ENABLED || defined CODECOVE_ENABLED
         block
@@ -611,219 +723,6 @@ contains
             end do
         end block
 #endif
-
-!#if defined MAXDEN
-!        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-!        ! refine the partitions.
-!        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-!
-!        nd = Partition%nd
-!
-!        if (.not. allocated(MahalSqSortedIndex)) allocate(MahalSqSortedIndex(Partition%np))
-!        if (.not. allocated(MahalSqAcrossPartition)) allocate(MahalSqAcrossPartition(Partition%neopt))
-!        ipend = 0
-!        ndHalf = 0.5_RK * nd
-!        loopOverPartition: do ic = 1, Partition%neopt
-!
-!            ipstart = ipend + 1
-!            ipend = ipstart + Partition%Size(ic) - 1
-!
-!            logLikeShrinkage = 0._RK
-!            if (isGoodFit()) cycle loopOverPartition
-!
-!            ! flag points to exclude.
-!
-!            call indexArray(Partition%Size(ic), Partition%MahalSq(ipstart:ipend), MahalSqSortedIndex(ipstart:ipend), Partition%Err)
-!            if (Partition%Err%occurred) cycle loopOverPartition
-!            MahalSqSortedIndex(ipstart:ipend) = MahalSqSortedIndex(ipstart:ipend) + ipstart - 1
-!
-!            SumPoint(1:nd) = Partition%Center(1:nd,ic) * Partition%Size(ic)
-!
-!            loopExclude: do jp = ipend, ipstart + nd, -1
-!
-!#if defined DEBUG_ENABLED || defined TESTING_ENABLED || defined CODECOVE_ENABLED
-!                if (MahalSq(MahalSqSortedIndex(jp),ic) - 1._RK > 1.e-6_RK) then
-!                    write(*,*) PROCEDURE_NAME//"Internal error occurred : MahalSq(MahalSqSortedIndex(jp),ic) - 1._RK > 1.e-6_RK :"
-!                    write(*,*) "ipstart, jp, MahalSqSortedIndex(jp), ic, MahalSq(MahalSqSortedIndex(jp),ic)" & ! LCOV_EXCL_LINE
-!                             , ipstart, jp, MahalSqSortedIndex(jp), ic, MahalSq(MahalSqSortedIndex(jp),ic)
-!                    error stop
-!                end if
-!#endif
-!
-!                Partition%Size(ic) = Partition%Size(ic) - 1 ! must not become less than nd + 1
-!
-!                ! First compute the naive volume change
-!
-!                !newLogVolNormed = Partition%LogVolNormed(ic) + ndHalf * log(Partition%MahalSq(jp-1,ic) / Partition%MahalSq(jp,ic))
-!                !newEffeciveSize = count(Partition%MahalSq(1:Partition%np,ic) <= Partition%MahalSq(jp-1,ic))
-!                !logVolRatio = newLogVolNormed - newEffeciveSize * Partition%pointLogVolNormed
-!                !newLogLikeFitness = getLogProbPoisDiff(newEffeciveSize, logVolRatio)
-!                !if (isGoodFit(newLogLikeFitness
-!
-!                SumPoint(1:nd) = SumPoint(1:nd) - Point(1:nd,MahalSqSortedIndex(jp))
-!                Partition%Center(1:nd,ic) = SumPoint(1:nd) / real(Partition%Size(ic),RK)
-!
-!                ! Normalize points.
-!
-!                do concurrent(ip = ipstart:ipend)
-!                    NormedPoint(1:nd,ip) = Point(1:nd,ip) - Partition%Center(1:nd,ic)
-!                end do
-!
-!                ! Compute the upper covariance matrix of the cluster covariance matrices.
-!
-!                Partition%ChoLowCovUpp(1:nd,1:nd,ic) = 0._RK
-!                do ip = ipstart, ipend
-!                    do j = 1, nd
-!                        Partition%ChoLowCovUpp(1:j,j,ic) = Partition%ChoLowCovUpp(1:j,j,ic) + NormedPoint(1:j,ip) * NormedPoint(j,ip)
-!                    end do
-!                end do
-!                Partition%ChoLowCovUpp(1:nd,1:nd,ic) = Partition%ChoLowCovUpp(1:nd,1:nd,ic) / real(Partition%Size(ic)-1,RK)
-!
-!                ! Compute the Cholesky Factor of the cluster covariance matrices.
-!
-!                call getCholeskyFactor(nd, Partition%ChoLowCovUpp(1:nd,1:nd,ic), Partition%ChoDia(1:nd,ic))
-!                if (Partition%ChoDia(1) < 0._RK) then
-!                    ! LCOV_EXCL_START
-!                    Partition%Err%msg = PROCEDURE_NAME//"Cholesky factorization failed in partition postprocessing."
-!                    Partition%Err%occurred = .true.
-!                    return
-!                    ! LCOV_EXCL_STOP
-!                end if
-!
-!                ! Compute the inverse of the cluster covariance matrices.
-!
-!                Partition%InvCovMat(1:nd,1:nd,ic) = getInvMatFromCholFac(nd, Partition%ChoLowCovUpp(1:nd,1:nd,ic), Partition%ChoDia(1:nd,ic))
-!
-!                ! Compute the MahalSq of as many points as needed.
-!
-!                do concurrent(ip = 1:ipstart-1)
-!                    NormedPoint(1:nd,ip) = Point(1:nd,ip) - Partition%Center(1:nd,ic)
-!                    Partition%MahalSq(ip,ic) = dot_product(NormedPoint(1:nd,ip), matmul(Partition%InvCovMat(1:nd,1:nd,ic), NormedPoint(1:nd,ip)))
-!                end do
-!
-!                do concurrent(ip = nps:npe)
-!                    Partition%MahalSq(ip,ic) = dot_product(NormedPoint(1:nd,ip), matmul(Partition%InvCovMat(1:nd,1:nd,ic), NormedPoint(1:nd,ip)))
-!                end do
-!
-!                do concurrent(ip = npe+1:np)
-!                    NormedPoint(1:nd,ip) = Point(1:nd,ip) - Partition%Center(1:nd,ic)
-!                    Partition%MahalSq(ip,ic) = dot_product( NormedPoint(1:nd,ip) , matmul(Partition%InvCovMat(1:nd,1:nd,ic), NormedPoint(1:nd,ip)) )
-!                end do
-!
-!                ! Compute the scaleFcator of the bounding region and scale the properties to form the bounded regions.
-!
-!                Partition%ScaleFactorSq(ic) = maxval(Partition%MahalSq(ipstart:ipend,ic))
-!
-!                scaleFactor = sqrt(Partition%ScaleFactorSq(ic))
-!                scaleFactorSqInverse = 1._RK / Partition%ScaleFactorSq(ic)
-!                Partition%ChoDia(1:nd,ic) = Partition%ChoDia(1:nd,ic) * scaleFactor
-!                Partition%InvCovMat(1:nd,1:nd,ic) = Partition%InvCovMat(1:nd,1:nd,ic) * scaleFactorSqInverse
-!                do j = 1, nd
-!                    do i = j + 1, nd
-!                        Partition%ChoLowCovUpp(i,j,ic) = Partition%ChoLowCovUpp(i,j,ic) * scaleFactor
-!                    end do
-!                end do
-!
-!                ! Rescale the MahalSq to the bounding regions
-!
-!                !Partition%MahalSq(1:np,ic) = Partition%MahalSq(1:np,ic) * scaleFactorSqInverse
-!
-!                ! Compute the effective fraction of points inside the bounded region.
-!
-!                if (inclusionFraction > 0._RK) then
-!                    Partition%EffectiveSize(ic)   = Partition%Size(ic) & ! LCOV_EXCL_LINE
-!                                                    + nint(inclusionFraction * & ! LCOV_EXCL_LINE
-!                                                    ( count(Partition%MahalSq(1:Partition%CumSumSize(ic-1),ic)<=Partition%ScaleFactorSq(ic)) & ! LCOV_EXCL_LINE
-!                                                    + count(Partition%MahalSq(Partition%CumSumSize(ic)+1:np,ic)<=Partition%ScaleFactorSq(ic)) & ! LCOV_EXCL_LINE
-!                                                    ), kind = IK)
-!                else
-!                    Partition%EffectiveSize(ic) = Partition%Size(ic)
-!                end if
-!
-!                Partition%LogVolNormed(ic) = sum( log(Partition%ChoDia(1:nd,ic)) )
-!                maxLogVolNormed = max( maxLogVolNormed, Partition%LogVolNormed(ic) )
-!
-!            end do loopExclude
-!
-!
-!
-!                    Partition%Size(ic) = Partition%Size
-!                    neopt = Partition%neopt + Partition%Size
-!                    if (neopt > Partition%nemax) extendPartitionAllocation(neopt)
-!                    Partition%neopt = neopt
-!                    Partition%Center(1:nd,Partition%neopt) = Partition%Size
-!
-!                ipMaxMahal = maxloc(MahalSq(1:Partition%np,ic), dim = 1)
-!                MahalSqAcrossPartition(1:Partition%neopt) = MahalSq(ipMaxMahal,1:Partition%neopt)
-!                MahalSqAcrossPartition(ic) = POSINF_RK
-!                icMinMahal = minloc(MahalSqAcrossPartition(1:Partition%neopt), dim = 1)
-!
-!                if (MahalSq(ipMaxMahal,icMinMahal) <= 1._RK) then ! move the point, no questions asked.
-!                    swapAccepted = .true.
-!                else
-!                    Center(1:nd) = Partition%Center(1:nd,ic
-!                    Partition%LogVolNormed =
-!                end if
-!
-!
-!        end do loopOverPartition
-!
-!        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-!
-!    contains
-!
-!        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-!
-!        function isGoodFit()
-!            implicit none
-!            logical :: isGoodFit
-!            if (Partition%LogLikeFitness(ic) > NEGINF_RK) then
-!                if (Partition%LogLikeFitness(ic) < 0._RK) then
-!                    logLikeShrinkage = logLikeShrinkage + log(1._RK - exp(Partition%LogLikeFitness(ic)))
-!                    call random_number(unifrnd)
-!                    if (unifrnd > 0._RK) then; unifrnd = log(unifrnd); else; unifrnd = -huge(unifrnd); end if ! LCOV_EXCL_LINE or unifrnd = log(max(tiny(unifrnd),unifrnd))
-!                    isGoodFit = Partition%LogLikeFitness(ic) > unifrnd + logLikeShrinkage
-!                else
-!                    isGoodFit = .true.
-!#if defined DEBUG_ENABLED || defined TESTING_ENABLED || defined CODECOVE_ENABLED
-!                    if (Partition%LogLikeFitness(ic) > 0._RK) then
-!                        write(*,*) "Internal error occurred : Partition%LogLikeFitness(ic) > 0._RK : ", Partition%LogLikeFitness(ic), ic
-!                        error stop
-!                    end if
-!#endif
-!                end if
-!            else
-!                isGoodFit = .false.
-!            end if
-!        end function isGoodFit
-!
-!        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-!
-!        subroutine extendPartitionAllocation(nemax)
-!            implicit none
-!            integer, intent(in) :: nemax
-!            integer(IK) , allocatable   :: Size(:)
-!            real(RK)    , allocatable   :: Center(:,:)
-!            real(RK)    , allocatable   :: ChoDia(:,:)
-!            real(RK)    , allocatable   :: InvCovMat(:,:,:)
-!            real(RK)    , allocatable   :: ChoLowCovUpp(:,:,:)
-!            real(RK)    , allocatable   :: LogVolNormed(:)
-!            real(RK)    , allocatable   :: LogLikeFitness(:)
-!            integer(IK) , allocatable   :: EffectiveSize(:)
-!            associate(nd => Partition%nd, neopt => Partition%neopt)
-!                allocate(Size(nemax))                   ; Size(1:neopt) = Partition%Size                            ; call move_alloc(Size, Partition%Size)
-!                allocate(Center(1:nd,nemax))            ; Center(1:nd,1:neopt) = Partition%Center                   ; call move_alloc(Center, Partition%Center)
-!                allocate(ChoDia(1:nd,nemax))            ; ChoDia(1:nd,1:neopt) = Partition%ChoDia                   ; call move_alloc(ChoDia, Partition%ChoDia)
-!                allocate(LogVolNormed(nemax))           ; LogVolNormed(1:neopt) = Partition%LogVolNormed            ; call move_alloc(LogVolNormed, Partition%LogVolNormed)
-!                allocate(EffectiveSize(nemax))          ; EffectiveSize(1:neopt) = Partition%EffectiveSize          ; call move_alloc(EffectiveSize, Partition%EffectiveSize)
-!                allocate(LogLikeFitness(nemax))         ; LogLikeFitness(1:neopt) = Partition%LogLikeFitness        ; call move_alloc(LogLikeFitness, Partition%LogLikeFitness)
-!                allocate(ChoLowCovUpp(1:nd,1:nd,nemax)) ; ChoLowCovUpp(1:nd,1:nd,1:neopt) = Partition%ChoLowCovUpp  ; call move_alloc(ChoLowCovUpp, Partition%ChoLowCovUpp)
-!                allocate(InvCovMat(1:nd,1:nd,nemax))    ; InvCovMat(1:nd,1:nd,1:neopt) = Partition%InvCovMat        ; call move_alloc(InvCovMat, Partition%InvCovMat)
-!            end associate
-!        end subroutine extendPartitionAllocation
-!
-!        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-!#endif
 
     end subroutine runPartition
 
@@ -942,6 +841,7 @@ contains
         integer(IK)                             :: icstart, icend, recursionCounter
         integer(IK)                             :: counterEffectiveSize
         integer(IK)                             :: icmin, nemaxRemained
+        logical                                 :: subclusterSearchWarranted
         logical                                 :: boundedRegionIsTooLarge
         logical                                 :: mahalSqWeightEnabled
         logical                                 :: reclusteringNeeded
@@ -1452,7 +1352,7 @@ contains
 
                 nemaxRemained = nemaxRemained - KmeansNeopt(ic-1)
                 KmeansNemax(ic) = min(nemaxRemained - nc + ic, Kmeans%Size(ic) / minSizePartition)
-                boundedRegionIsTooLarge = KmeansNemax(ic) > 1_IK
+                subclusterSearchWarranted = KmeansNemax(ic) > 1_IK
 
 #if defined DEBUG_ENABLED || TESTING_ENABLED || CODECOVE_ENABLED
                 if (nemaxRemained < KmeansNemax(ic)) then
@@ -1523,12 +1423,16 @@ contains
                         error stop
                     end if
 #endif
-                    call random_number(unifrnd)
-                    if (unifrnd > 0._RK) then; unifrnd = log(unifrnd); else; unifrnd = -huge(unifrnd); end if ! LCOV_EXCL_LINE or unifrnd = log(max(tiny(unifrnd),unifrnd))
-                    boundedRegionIsTooLarge = boundedRegionIsTooLarge .and. LogLikeFitness(icstart) < unifrnd .and. logVolRatio > 0._RK
+                    boundedRegionIsTooLarge = logVolRatio > 0._RK
+                    if (boundedRegionIsTooLarge) then
+                        call random_number(unifrnd)
+                        if (unifrnd > 0._RK) then; unifrnd = log(unifrnd); else; unifrnd = -huge(unifrnd); end if ! LCOV_EXCL_LINE or unifrnd = log(max(tiny(unifrnd),unifrnd))
+                        boundedRegionIsTooLarge = LogLikeFitness(icstart) < unifrnd
+                    end if
+                    subclusterSearchWarranted = subclusterSearchWarranted .and. boundedRegionIsTooLarge
                 end if
 #endif
-                blockSubclusterCheck: if (boundedRegionIsTooLarge) then ! .and. Kmeans%Prop%LogVolNormed(ic)>1.1_RK*KmeansLogVolExpected(ic)) then
+                blockSubclusterCheck: if (subclusterSearchWarranted) then ! .and. Kmeans%Prop%LogVolNormed(ic)>1.1_RK*KmeansLogVolExpected(ic)) then
 
                     LogVolNormed(icstart) = Kmeans%Prop%LogVolNormed(ic)
 
@@ -1688,6 +1592,7 @@ contains
                         InvCovMat(1:nd,1:nd,icstart) = Kmeans%Prop%InvCovMat(1:nd,1:nd,ic)
                         ChoLowCovUpp(1:nd,1:nd,icstart) = Kmeans%Prop%ChoLowCovUpp(1:nd,1:nd,ic)
 #if defined MAXDEN
+                        if (boundedRegionIsTooLarge) LogLikeFitness(icstart) = -LogLikeFitness(icstart)
                         EffectiveSize(icstart) = Kmeans%Prop%EffectiveSize(ic)
                         scaleFactorSqInverse4KPM = 1._RK / Kmeans%Prop%ScaleFactorSq(ic) ! assumes no MahalSq normalization in Kmeans%getProp()
                         MahalSq(1:np,icstart) = Kmeans%Prop%MahalSq(1:np,ic) * scaleFactorSqInverse4KPM
@@ -1754,6 +1659,7 @@ contains
                                 write(*,"(*(g0.15,:,' '))") new_line("a"), PROCEDURE_NAME//": FATAL - POINT NOT INSIDE!, MAHAL = ", sqrt(mahalSqScalar), new_line("a")
                                 write(*,"(60(g0,:,','))") "numRecursiveCall", numRecursiveCall
                                 write(*,"(60(g0,:,','))") "boundedRegionIsTooLarge", boundedRegionIsTooLarge
+                                write(*,"(60(g0,:,','))") "subclusterSearchWarranted", subclusterSearchWarranted
                                 write(*,"(60(g0,:,','))") "KmeansNemax(icstart), icstart", KmeansNemax(icstart), icstart
                                 write(*,"(60(g0,:,','))") "ip, IpStart, IpEnd, size(Membership)", ip, ipstart, ipend, size(Membership(ipstart:ipend))
                                 write(*,"(60(g0,:,','))") "Membership", Membership(ipstart:ipend)
@@ -1867,8 +1773,11 @@ write(*,*) "sub2par likelihood: ", exp(logLikeSum - parEllLogLike - logShrinkage
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if defined MAXDEN
+#if defined DEBUG_ENABLED || defined TESTING_ENABLED || defined CODECOVE_ENABLED
+    function getLogProbPoisDiff(count, logVolRatio) result(logProbPoisDiff)
+#else
     pure function getLogProbPoisDiff(count, logVolRatio) result(logProbPoisDiff)
+#endif
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbPoisDiff
 #endif
@@ -1883,8 +1792,14 @@ write(*,*) "sub2par likelihood: ", exp(logLikeSum - parEllLogLike - logShrinkage
         !else
         !    probPoisDiff = exp(probPoisDiff)
         !end if
-    end function getLogProbPoisDiff
+#if defined DEBUG_ENABLED || defined TESTING_ENABLED || defined CODECOVE_ENABLED
+        if (logProbPoisDiff < NEGINF_RK .or. logProbPoisDiff > 0._RK) then
+            write(*,*) "Internal error occurred: logProbPoisDiff < NEGINF_RK .or. logProbPoisDiff > 0._RK"
+            write(*,*) "count, logVolRatio, logProbPoisDiff:", count, logVolRatio, logProbPoisDiff
+            error stop
+        end if
 #endif
+    end function getLogProbPoisDiff
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1933,6 +1848,9 @@ write(*,*) "sub2par likelihood: ", exp(logLikeSum - parEllLogLike - logShrinkage
 
         write(fileUnit,"(*(g0,:,'"//new_line("a")//"'))") "nd", Partition%nd, "np", Partition%np, "nc", Partition%neopt
 
+        write(fileUnit,"(A)") "numRecursiveCall"
+        write(fileUnit,fileFormat) Partition%numRecursiveCall
+
         write(fileUnit,"(A)") "pointLogVolNormed"
         write(fileUnit,fileFormat) Partition%pointLogVolNormed
 
@@ -1953,12 +1871,10 @@ write(*,*) "sub2par likelihood: ", exp(logLikeSum - parEllLogLike - logShrinkage
 
         write(fileUnit,"(A)") "Point"
         write(fileUnit,fileFormat) Point
-
 #if defined MAXDEN
         write(fileUnit,"(A)") "LogLikeFitness"
         write(fileUnit,fileFormat) Partition%LogLikeFitness(1:Partition%neopt)
 #endif
-
         write(fileUnit,"(A)") "Membership"
         write(fileUnit,fileFormat) Partition%Membership(1:Partition%np)
 

@@ -33,6 +33,7 @@
     shrinkageMinVol = 2.0d0
     expansionMinVol = 2.0d0
     inclusionFraction = 1.d0
+    scaleOptimizationEnabled = false
     maxAllowedKvolumeRecursion = 20
     mahalSqWeightExponent = 0.d0
     !isRepeatable = .true.
