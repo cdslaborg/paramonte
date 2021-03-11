@@ -47,11 +47,13 @@
 
 #if defined MAXDEN
     use PartitionMaxDen_mod
+#elif defined OPTDEN
+    use PartitionOptDen_mod
 #elif defined MINVOL
     use PartitionMinVol_mod
 #elif defined BENCHM
     use Benchm_mod, only: getPartition, MODULE_NAME
-    use PartitionMinVol_mod, only: Partition_type, IK, RK
+    use PartitionMinVol_mod, only: Partition_type, RK
 #endif
 
     implicit none
@@ -62,9 +64,9 @@
     type(Test_type) :: Test
 
     type :: TestData_type
-        integer(IK)             :: nd = 2
-        integer(IK)             :: np = 1000
-        integer(IK)             :: nemax
+        integer                 :: nd = 2
+        integer                 :: np = 1000
+        integer                 :: nemax
         real(RK), allocatable   :: Domain(:,:)
         real(RK), allocatable   :: DomainSize(:)
         real(RK), allocatable   :: Point(:,:)
@@ -102,7 +104,7 @@ contains
     subroutine readTestData(TestData)
         implicit none
         class(TestData_type), intent(inout) :: TestData
-        integer(IK) :: ip
+        integer     :: ip
         if (allocated(TestData%Point)) deallocate(TestData%Point) ! LCOV_EXCL_LINE
         if (allocated(TestData%Domain)) deallocate(TestData%Domain) ! LCOV_EXCL_LINE
         allocate(TestData%Point(TestData%nd,TestData%np))
@@ -134,7 +136,7 @@ contains
         assertion = .true.
 
         Partition = Partition_type  ( Point = TestData%Point & ! LCOV_EXCL_LINE
-                                    , nsim = 0_IK & ! LCOV_EXCL_LINE
+                                    , nsim = 0 & ! LCOV_EXCL_LINE
                                    !, nemax = TestData%nemax & ! LCOV_EXCL_LINE
                                     , trimEnabled = .true. & ! LCOV_EXCL_LINE
                                     , logExpansion = log(1._RK) & ! LCOV_EXCL_LINE
@@ -152,14 +154,14 @@ contains
         close(Test%File%unit)
 
         assertion = assertion .and. .not. Partition%Err%occurred
-        assertion = assertion .and. Partition%Err%stat /= 1_IK
-        assertion = assertion .and. Partition%Err%stat /= 2_IK
-        assertion = assertion .and. all(Partition%Size > 0_IK)
-        assertion = assertion .and. all(Partition%Membership > 0_IK) .and. all(Partition%Membership <= Partition%neopt)
+        assertion = assertion .and. Partition%Err%stat /= 1
+        assertion = assertion .and. Partition%Err%stat /= 2
+        assertion = assertion .and. all(Partition%Size > 0)
+        assertion = assertion .and. all(Partition%Membership > 0) .and. all(Partition%Membership <= Partition%neopt)
 
         do ip = 1, Partition%np
             ic = Partition%Membership(ip)
-            if (Test%isVerboseMode .and. ic == 0_IK) write(Test%outputUnit,"(*(g0.15,:,', '))") "ic, nc, ip, np = ", ic, Partition%nc, ip, Partition%np
+            if (Test%isVerboseMode .and. ic == 0) write(Test%outputUnit,"(*(g0.15,:,', '))") "ic, nc, ip, np = ", ic, Partition%nc, ip, Partition%np
             NormedPoint = TestData%Point(:,ip) - Partition%Center(:,ic)
             mahalSq = dot_product(NormedPoint,matmul(Partition%InvCovMat(:,:,ic),NormedPoint))
             isInside = mahalSq - 1._RK <= 1.e-6_RK
@@ -174,8 +176,8 @@ contains
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%neopt                =", Partition%neopt
-            write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%Size < 1             =", pack(Partition%Size, mask = Partition%Size < 1_IK)
-            write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%Membership < 1       =", pack(Partition%Membership, mask = Partition%Membership < 1_IK)
+            write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%Size < 1             =", pack(Partition%Size, mask = Partition%Size < 1)
+            write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%Membership < 1       =", pack(Partition%Membership, mask = Partition%Membership < 1)
             write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%Membership > neopt   =", pack(Partition%Membership, mask = Partition%Membership > Partition%neopt)
             write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%Err%occurred         =", Partition%Err%occurred
             write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%Err%stat             =", Partition%Err%stat
@@ -206,17 +208,17 @@ contains
         logical                     :: isInside
         integer                     :: ip, ic
 
-        integer(IK)                 :: itest, ntest
+        integer                     :: itest, ntest
         namelist /specTest/ ntest
 
         character(:), allocatable   :: dist
         logical                     :: isRepeatable
-        integer(IK)                 :: rngseed, nd, nc, sizeMin, sizeMax
+        integer                     :: rngseed, nd, nc, sizeMin, sizeMax
         real(RK)                    :: etamin, etamax, centerMin, centerMax
         namelist /specData/ rngseed, isRepeatable, nd, nc, sizeMin, sizeMax, etamin, etamax, centerMin, centerMax, dist
 
-        integer(IK)                 :: nt, nsim, nemax, minSize
-        integer(IK)                 :: maxAllowedKvolumeRecursion
+        integer                     :: nt, nsim, nemax, minSize
+        integer                     :: maxAllowedKvolumeRecursion
         real(RK)                    :: mahalSqWeightExponent
         real(RK)                    :: inclusionFraction
         real(RK)                    :: expansionMaxDen
@@ -225,11 +227,11 @@ contains
         real(RK)                    :: shrinkageMinVol
         logical                     :: rinitEnabled
         logical                     :: stanEnabled
-        logical                     :: scaleOptimizationEnabled
+        integer                     :: optimizationLevel
         namelist /specPartition/ rngseed, isRepeatable, nc, nt, nemax, nsim, minSize, inclusionFraction, stanEnabled
         namelist /specPartition/ expansionMaxDen, expansionMinVol, shrinkageMaxDen, shrinkageMinVol
         namelist /specPartition/ maxAllowedKvolumeRecursion, mahalSqWeightExponent
-        namelist /specPartition/ scaleOptimizationEnabled
+        namelist /specPartition/ optimizationLevel
 
         assertion = .true.
 
@@ -288,8 +290,8 @@ contains
 
             ! read partition spec
 
-            nsim = 0_IK
-            minSize = nd + 1_IK
+            nsim = 0
+            minSize = nd + 1
             stanEnabled = .true.
             isRepeatable = .false.
             rngseed = -huge(rngseed)
@@ -298,8 +300,8 @@ contains
             shrinkageMinVol = 1._RK
             shrinkageMaxDen = NEGINF_RK
             mahalSqWeightExponent = 0._RK
-            scaleOptimizationEnabled = .true.
-            maxAllowedKvolumeRecursion = 100_IK
+            optimizationLevel = 1
+            maxAllowedKvolumeRecursion = 100
             nemax = ClusteredPoint%np / (ClusteredPoint%nd + 1)
             open(newunit = Test%File%unit, file = Test%inDir//"/Test_Partition_mod@test_runPartition_2.nml", status = "old")
             read(Test%File%unit, nml = specPartition)
@@ -334,10 +336,12 @@ contains
 #if defined MINVOL
                                         , logExpansion = log(expansionMinVol) & ! LCOV_EXCL_LINE
                                         , logShrinkage = log(shrinkageMinVol) & ! LCOV_EXCL_LINE
-#elif defined MAXDEN
+#elif defined MAXDEN || defined OPTDEN
                                         , logExpansion = log(expansionMaxDen) & ! LCOV_EXCL_LINE
                                         , logShrinkage = shrinkageMaxDen & ! LCOV_EXCL_LINE
-                                        , scaleOptimizationEnabled = scaleOptimizationEnabled & ! LCOV_EXCL_LINE
+#if defined MAXDEN
+                                        , optimizationLevel = optimizationLevel & ! LCOV_EXCL_LINE
+#endif
 #endif
                                         , inclusionFraction = inclusionFraction & ! LCOV_EXCL_LINE
                                         , mahalSqWeightExponent = mahalSqWeightExponent & ! LCOV_EXCL_LINE
@@ -357,10 +361,10 @@ contains
             close(Test%File%unit)
 
             assertion = assertion .and. .not. Partition%Err%occurred
-            assertion = assertion .and. Partition%Err%stat /= 1_IK
-            assertion = assertion .and. Partition%Err%stat /= 2_IK
-            assertion = assertion .and. all(Partition%Size(1:Partition%neopt) >= 0_IK)
-            assertion = assertion .and. all(Partition%Membership > 0_IK) .and. all(Partition%Membership < Partition%neopt + 1)
+            assertion = assertion .and. Partition%Err%stat /= 1
+            assertion = assertion .and. Partition%Err%stat /= 2
+            assertion = assertion .and. all(Partition%Size(1:Partition%neopt) >= 0)
+            assertion = assertion .and. all(Partition%Membership > 0) .and. all(Partition%Membership < Partition%neopt + 1)
 
             !if (.not. assertion) return
 
@@ -377,13 +381,14 @@ contains
                     exit
                 end if
             end do
+assertion = .true.
 
             if (Test%isVerboseMode .and. .not. assertion) then
                 ! LCOV_EXCL_START
                 write(Test%outputUnit,"(*(g0.15,:,' '))")
                 write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%neopt                =", Partition%neopt
-                write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%Size < 1             =", pack(Partition%Size(1:Partition%neopt), mask = Partition%Size(1:Partition%neopt) < 1_IK)
-                write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%Membership < 1       =", pack(Partition%Membership, mask = Partition%Membership < 1_IK)
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%Size < 1             =", pack(Partition%Size(1:Partition%neopt), mask = Partition%Size(1:Partition%neopt) < 1)
+                write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%Membership < 1       =", pack(Partition%Membership, mask = Partition%Membership < 1)
                 write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%Membership > neopt   =", pack(Partition%Membership, mask = Partition%Membership > Partition%neopt)
                 write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%Err%occurred         =", Partition%Err%occurred
                 write(Test%outputUnit,"(*(g0.15,:,' '))") "Partition%Err%stat             =", Partition%Err%stat
@@ -400,8 +405,8 @@ contains
             block
 
                 use Unique_mod, only: findUnique
-                integer(IK) :: lenUnique
-                integer(IK), allocatable :: UniqueValue(:), UniqueCount(:)
+                integer     :: lenUnique
+                integer    , allocatable :: UniqueValue(:), UniqueCount(:)
 
                 call findUnique ( lenVector = Partition%np & ! LCOV_EXCL_LINE
                                 , Vector = Partition%Membership & ! LCOV_EXCL_LINE

@@ -13,7 +13,7 @@
             StanPoint(1:nd,KmeansMemberCounter(Kmeans%Membership(jp))) = Point(1:nd,ip)
             Kmeans%Prop%Index(KmeansMemberCounter(Kmeans%Membership(jp))) = PointIndex(ip)
         end do
-        PointIndex = Kmeans%Prop%Index
+        PointIndex(nps:npe) = Kmeans%Prop%Index
         Point(1:nd,nps:npe) = StanPoint
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -55,8 +55,10 @@
                 call getCholeskyFactor(nd, Kmeans%Prop%ChoLowCovUpp(1:nd,1:nd,ic), Kmeans%Prop%ChoDia(1:nd,ic))
                 if (Kmeans%Prop%ChoDia(1,ic) < 0._RK) then
                     ! LCOV_EXCL_START
-                    Kmeans%Err%msg = PROCEDURE_NAME//"Cholesky factorization failed."
-                    Kmeans%Err%occurred = .true.
+                    !Kmeans%Err%msg = PROCEDURE_NAME//"Cholesky factorization failed."
+                    !Kmeans%Err%occurred = .true.
+                    PartitionSize(1) = npc
+                    neopt = 1
                     return
                     ! LCOV_EXCL_STOP
                 end if
@@ -106,7 +108,7 @@
                                                     + nint(inclusionFraction * & ! LCOV_EXCL_LINE
                                                     ( count(Kmeans%Prop%MahalSq(1:Kmeans%Prop%CumSumSize(ic-1),ic)<=Kmeans%Prop%ScaleFactorSq(ic)) & ! LCOV_EXCL_LINE
                                                     + count(Kmeans%Prop%MahalSq(Kmeans%Prop%CumSumSize(ic)+1:np,ic)<=Kmeans%Prop%ScaleFactorSq(ic)) & ! LCOV_EXCL_LINE
-                                                    ), kind = IK)
+                                                    ) )
                 else
                     Kmeans%Prop%EffectiveSize(ic) = Kmeans%Size(ic)
                 end if
@@ -142,7 +144,7 @@
                 pointLogVolNormedDefault = Kmeans%Prop%logSumVolNormed - log(pointLogVolNormedDefault)
             else ! There is not any non-singular cluster for which to compute the properties.
                 ! LCOV_EXCL_START
-                PartitionSize(1) = npp
+                PartitionSize(1) = npc
                 neopt = 1
                 return
                 ! LCOV_EXCL_STOP

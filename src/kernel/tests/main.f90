@@ -93,6 +93,7 @@ block; use Test_Knn_mod; call test_Knn(); end block
 block; use Test_MultiSkewNorm_mod; call test_MultiSkewNorm(); end block
 block; use Test_PartitionMaxDen_mod; call Test_Partition(); end block
 block; use Test_PartitionMinVol_mod; call Test_Partition(); end block
+!block; use Test_PartitionOptDen_mod; call Test_Partition(); end block
 !block; use Test_PartitionBenchm_mod; call Test_Partition(); end block
 !block; use Test_Optimization_mod; call test_Optimization(); end block
 !block; use Test_Parallelism_mod; call test_Parallelism(); end block

@@ -8,7 +8,7 @@
     etamin = 0.5d0
     etamax = 10.d0
     sizeMin = 1000
-    sizeMax = 1000
+    sizeMax = 100
     centerMin = -2.5d0
     centerMax = +2.5d0
     !rngseed = 3132151
@@ -16,7 +16,7 @@
     !rngseed = 5157682
     !rngseed = 51575130 ! some random seeds are not deterministic!
     rngseed = 515795
-    !rngseed = 5157931
+    rngseed = 5157931
     !isRepeatable = .true.
     dist = "uniform"
 /
@@ -33,7 +33,7 @@
     shrinkageMinVol = 2.0d0
     expansionMinVol = 2.0d0
     inclusionFraction = 1.d0
-    scaleOptimizationEnabled = false
+    optimizationLevel = 2
     maxAllowedKvolumeRecursion = 20
     mahalSqWeightExponent = 0.d0
     !isRepeatable = .true.

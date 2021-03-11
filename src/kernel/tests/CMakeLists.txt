@@ -66,6 +66,7 @@ set(ParaMonteTest_SOURCE_FILES
     #${ParaMonteTest_SRC_DIR}/Test_PartitionKmeans_mod.f90
     #${ParaMonteTest_SRC_DIR}/Test_PartitionVarDen_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_PartitionMaxDen_mod.f90
+    ${ParaMonteTest_SRC_DIR}/Test_PartitionOptDen_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_PartitionMinVol_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Misc_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Optimization_mod.f90

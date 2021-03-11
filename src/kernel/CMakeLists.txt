@@ -77,6 +77,7 @@ SET(ParaMonte_SOURCE_FILES
     #${ParaMonteKernel_SRC_DIR}/PartitionVarDen_mod.f90
     ${ParaMonteKernel_SRC_DIR}/PartitionMaxDen_mod.f90
     ${ParaMonteKernel_SRC_DIR}/PartitionMinVol_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/PartitionOptDen_mod.f90
     ${ParaMonteKernel_SRC_DIR}/GeoCyclicFit_mod.f90
     ${ParaMonteKernel_SRC_DIR}/Parallelism_mod.f90
     ${ParaMonteKernel_SRC_DIR}/CorrCoef_mod.f90

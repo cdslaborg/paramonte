@@ -19,7 +19,7 @@ predictedBoundsEnabled = 1;
 leastLikely2DisplayCount = -1;
 distMatEnabled = 0;
 
-methodList = ["MinVol", "MaxDen"]; %, "", "Kmeans", "VarDen"];
+methodList = ["MinVol", "MaxDen", "OptDen"]; %, "", "Kmeans", "VarDen"];
 fileTemplate = "../output/Test_Partition__SAMPLING_METHOD___mod@test_runPartition_2@__FILE_TYPE__@1.txt";
 
 iline = 0;
