@@ -67,9 +67,9 @@ module Kmeans_mod
        !real(RK)    , allocatable   :: LogDenNormed(:)      !< An array of size `(nc)` each element of which represents the log effective (mean) density of points in the corresponding cluster bounding volume.
         real(RK)    , allocatable   :: ChoLowCovUpp(:,:,:)  !< An array of size `(nd,nd,nc)` whose upper triangle and diagonal is the covariance matrix and the lower is the Cholesky Lower.
         real(RK)    , allocatable   :: ScaleFactorSq(:)     !< An array of size `(nc)` representing the factors by which the cluster covariance matrices must be enlarged to enclose their corresponding members.
-        integer(IK) , allocatable   :: EffectiveSize(:)     !< An array of size `(nc)` representing the factors by which the cluster covariance matrices must be enlarged to enclose their corresponding members.
-        integer(IK) , allocatable   :: CumSumSize(:)        !< A vector of size `0:nc` representing the cumulative sum of all cluster sizes from cluster 1 to the last.
-        integer(IK) , allocatable   :: Index(:)             !< A vector of size `(np)` such that the output `Point(:,Index(ip),:)` points to the input `Point(:,Index(ip),:)` in [getProp](@ref getprop).
+        integer     , allocatable   :: EffectiveSize(:)     !< An array of size `(nc)` representing the factors by which the cluster covariance matrices must be enlarged to enclose their corresponding members.
+        integer     , allocatable   :: CumSumSize(:)        !< A vector of size `0:nc` representing the cumulative sum of all cluster sizes from cluster 1 to the last.
+        integer     , allocatable   :: Index(:)             !< A vector of size `(np)` such that the output `Point(:,Index(ip),:)` points to the input `Point(:,Index(ip),:)` in [getProp](@ref getprop).
                                                             !< The `Index` component is populated only if `Index` is missing from the list of input arguments to [getProp](@ref getprop).
     contains
         procedure, pass :: allocate => allocateKmeansProp
@@ -86,14 +86,14 @@ module Kmeans_mod
     !>     +    `np` represents the number of data points to be clustered.
     !>     +    `nd` represents the number of dimensions (features) of the points to be clustered.
     type :: Kmeans_type
-        integer(IK)                 :: nfail                !< The number of Zero-Sized Clusters Iterations.
-        integer(IK)                 :: niter                !< The number of iterations to reach convergence.
+        integer                     :: nfail                !< The number of Zero-Sized Clusters Iterations.
+        integer                     :: niter                !< The number of iterations to reach convergence.
         real(RK)                    :: potential            !< The sum of the distances-squared of all points from their corresponding group centers.
         real(RK)    , allocatable   :: Center(:,:)          !< An array of size `(nd,nc)` containing the centers of the individual clusters identified.
        !real(RK)    , allocatable   :: NormedPoint(:,:,:)   !< An array of size `(nd,np,nc)` containing `nc` copies of the input array `Point(nd,np)` normalized to the cluster centers.
         real(RK)    , allocatable   :: MinDistanceSq(:)     !< An array of size `(np)` of the minimum distances of the points from the cluster centers.
-        integer(IK) , allocatable   :: Membership(:)        !< A vector of size `np` each element of which represents the cluster ID to which the point belongs.
-        integer(IK) , allocatable   :: Size(:)              !< A vector of size `nc` (the number of clusters) containing the sizes of the individual clusters identified.
+        integer     , allocatable   :: Membership(:)        !< A vector of size `np` each element of which represents the cluster ID to which the point belongs.
+        integer     , allocatable   :: Size(:)              !< A vector of size `nc` (the number of clusters) containing the sizes of the individual clusters identified.
         type(Prop_type)             :: Prop                 !< An object of class [Prop_type](@ref prop_type) containing the Kmeans cluster properties.
         type(Err_type)              :: Err                  !< An object of class [Err_type](@ref err_mod::err_type) containing information about error occurrence.
     contains
@@ -113,7 +113,7 @@ contains
 
     pure function allocateKmeans(nd, np, nc) result(Kmeans)
         implicit none
-        integer(IK), intent(in) :: nd, np, nc
+        integer    , intent(in) :: nd, np, nc
         type(Kmeans_type)       :: Kmeans
         allocate( Kmeans%Size(nc) & ! LCOV_EXCL_LINE
                 , Kmeans%Center(nd,nc) & ! LCOV_EXCL_LINE
@@ -128,7 +128,7 @@ contains
     pure subroutine allocateKmeansProp(Prop, nd, np, nc)
         implicit none
         class(Prop_type), intent(inout) :: Prop
-        integer(IK), intent(in)         :: nd, np, nc
+        integer    , intent(in)         :: nd, np, nc
         if (.not. allocated(Prop%ChoDia         )) allocate(Prop%ChoDia         (nd,nc))
         if (.not. allocated(Prop%MahalSq        )) allocate(Prop%MahalSq        (np,nc))
         if (.not. allocated(Prop%InvCovMat      )) allocate(Prop%InvCovMat      (nd,nd,nc))
@@ -192,30 +192,30 @@ contains
 
         implicit none
 
-        integer(IK) , intent(in)                :: nd, np, nc, nt
+        integer     , intent(in)                :: nd, np, nc, nt
         real(RK)    , intent(in)                :: Point(nd,np)
         real(RK)    , intent(in)    , optional  :: InitCenter(nd,nc)
         real(RK)    , intent(in)    , optional  :: relTol
-        integer(IK) , intent(in)    , optional  :: minSize
-        integer(IK) , intent(in)    , optional  :: nfailMax
-        integer(IK) , intent(in)    , optional  :: niterMax
+        integer     , intent(in)    , optional  :: minSize
+        integer     , intent(in)    , optional  :: nfailMax
+        integer     , intent(in)    , optional  :: niterMax
 
         type(Kmeans_type)                       :: Kmeans
         type(Kmeans_type), allocatable          :: KmeansTry(:)
 
-        integer(IK)                             :: itry
-        integer(IK)                             :: itryLeastPotential
-        integer(IK)                             :: nfailMaxDefault
-        integer(IK)                             :: niterMaxDefault
-        integer(IK)                             :: minSizeDefault
+        integer                                 :: itry
+        integer                                 :: itryLeastPotential
+        integer                                 :: nfailMaxDefault
+        integer                                 :: niterMaxDefault
+        integer                                 :: minSizeDefault
         real(RK)                                :: relTolDefault
         real(RK)                                :: potential
 
         character(*), parameter                 :: PROCEDURE_NAME = MODULE_NAME//"@getKmeans()"
 
-        niterMaxDefault = 1e3_IK    ; if (present(niterMax)) niterMaxDefault = niterMax
-        nfailMaxDefault = 1e1_IK    ; if (present(nfailMax)) nfailMaxDefault = nfailMax
-        minSizeDefault  = 1_IK      ; if (present(minSize)) minSizeDefault = minSize
+        niterMaxDefault = 1e3       ; if (present(niterMax)) niterMaxDefault = niterMax
+        nfailMaxDefault = 1e1       ; if (present(nfailMax)) nfailMaxDefault = nfailMax
+        minSizeDefault  = 1         ; if (present(minSize)) minSizeDefault = minSize
         relTolDefault   = 1.e-4_RK  ; if (present(relTol)) relTolDefault = relTol
 
 
@@ -225,9 +225,9 @@ contains
 
         ! Compute the optimal Kmeans
 
-        if (nt > 1_IK) then
+        if (nt > 1) then
 
-            itryLeastPotential = 0_IK
+            itryLeastPotential = 0
             do itry = 1, nt
                 KmeansTry(itry) = Kmeans_type(nd, np, nc)
                 call runKmeans  ( nd = nd & ! LCOV_EXCL_LINE
@@ -255,13 +255,13 @@ contains
                 end if
             end do
 
-            if (itryLeastPotential > 0_IK) then
+            if (itryLeastPotential > 0) then
                 Kmeans = KmeansTry(itryLeastPotential)
             else
                 ! LCOV_EXCL_START
                 Kmeans%Err%msg = "All Kmeans clustering tries failed."
                 Kmeans%Err%occurred = .true.
-                Kmeans%Err%stat = 1_IK
+                Kmeans%Err%stat = 1
                 return
                 ! LCOV_EXCL_STOP
             end if
@@ -290,20 +290,20 @@ contains
 #if defined DEBUG_ENABLED || defined TESTING_ENABLED
             if (any(Kmeans%Size < minSizeDefault)) then ! @todo xxx : This need further enhancement. Is it even necessary?
                 ! LCOV_EXCL_START
-                if (.not. Kmeans%Err%occurred .and. Kmeans%Err%stat /= 2_IK) then
+                if (.not. Kmeans%Err%occurred .and. Kmeans%Err%stat /= 2) then
                     Kmeans%Err%msg = "The Kmeans clustering sizes are smaller than the requested input minimum cluster size."
                     write(*,*) Kmeans%Err%msg, minSizeDefault, Kmeans%Size
                     Kmeans%Err%occurred = .true.
-                    Kmeans%Err%stat = 1_IK
+                    Kmeans%Err%stat = 1
                     error stop
                     !return
                 end if
                 ! LCOV_EXCL_STOP
             else
                 block
-                    integer(IK) :: ic
+                    integer     :: ic
                     do ic = 1, nc
-                        if (Kmeans%Size(ic) == 0_IK) then
+                        if (Kmeans%Size(ic) == 0) then
                             if (any(Kmeans%Membership(1:np) == ic)) then
                                 write(*,*) "Internal error occurred: Zero-sized cluster has associated members. ic, ip = ", ic
                                 error stop
@@ -317,7 +317,7 @@ contains
 
 #if defined DEBUG_ENABLED || defined TESTING_ENABLED
         block
-            integer(IK) :: sizeDum, ip, ic
+            integer     :: sizeDum, ip, ic
             real(RK) :: CenterDum(nd)
             do ic = 1, nc
                 sizeDum = 0
@@ -406,23 +406,23 @@ contains
 
         implicit none
 
-        integer(IK)     , intent(in)            :: nc, nd, np, minSize, nfailMax, niterMax
+        integer         , intent(in)            :: nc, nd, np, minSize, nfailMax, niterMax
         real(RK)        , intent(in)            :: Point(nd,np)
         real(RK)        , intent(in)            :: relTol
-        integer(IK)     , intent(out)           :: nfail
-        integer(IK)     , intent(out)           :: niter
+        integer         , intent(out)           :: nfail
+        integer         , intent(out)           :: niter
         real(RK)        , intent(out)           :: potential
         real(RK)        , intent(out)           :: Center(nd,nc)
        !real(RK)        , intent(out)           :: NormedPoint(nd,np,nc)
         real(RK)        , intent(out)           :: MinDistanceSq(np)
-        integer(IK)     , intent(out)           :: Membership(np)
-        integer(IK)     , intent(out)           :: Size(nc)
+        integer         , intent(out)           :: Membership(np)
+        integer         , intent(out)           :: Size(nc)
         type(Err_type)  , intent(out)           :: Err
         real(RK)        , intent(in), optional  :: InitCenter(nd,nc)
 
         character(*), parameter                 :: PROCEDURE_NAME = MODULE_NAME//"@runKmeans()"
 
-        integer(IK)                             :: MembershipOld(np)        ! current (old) Memberships of the clusters.
+        integer                                 :: MembershipOld(np)        ! current (old) Memberships of the clusters.
         logical                                 :: convergenceOccurred
         integer                                 :: ip, ic
         real(RK)                                :: distanceSq               ! distance of each point ip from a given cluster center.
@@ -438,14 +438,14 @@ contains
         if(present(InitCenter)) then
             !%%%%%%%%%%%%%%%%%%%
             ic = 1
-            Size(ic) = 0_IK
+            Size(ic) = 0
             do ip = 1, np
                 MinDistanceSq(ip) = sum( (InitCenter(1:nd,ic) - Point(1:nd,ip))**2 )
                 MembershipOld(ip) = ic
             end do
             !%%%%%%%%%%%%%%%%%%%
             do ic = 2, nc - 1
-                Size(ic) = 0_IK
+                Size(ic) = 0
                 do ip = 1, np
                     distanceSq = sum( (InitCenter(1:nd,ic) - Point(1:nd,ip))**2 )
                     if (distanceSq < MinDistanceSq(ip)) then
@@ -456,7 +456,7 @@ contains
             end do
             !%%%%%%%%%%%%%%%%%%%
             ic = nc
-            Size(ic) = 0_IK
+            Size(ic) = 0
             SumPoint = 0._RK
             potentialOld = 0._RK
             do ip = 1, np
@@ -466,7 +466,7 @@ contains
                     MembershipOld(ip) = ic
                 end if
                 SumPoint(1:nd,MembershipOld(ip)) = SumPoint(1:nd,MembershipOld(ip)) + Point(1:nd,ip)
-                Size(MembershipOld(ip)) = Size(MembershipOld(ip)) + 1_IK
+                Size(MembershipOld(ip)) = Size(MembershipOld(ip)) + 1
                 potentialOld = potentialOld + MinDistanceSq(ip)
             end do
             !%%%%%%%%%%%%%%%%%%%
@@ -478,8 +478,8 @@ contains
         ! Refine all centers until convergence.
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        nfail = 0_IK
-        niter = 0_IK
+        nfail = 0
+        niter = 0
 
         loopCenterRefinement: do
 
@@ -488,7 +488,7 @@ contains
             !%%%%%%%%%%%%%%%%%%%
 
             ic = 1
-            if (Size(ic) > 0_IK) then
+            if (Size(ic) > 0) then
                 Center(1:nd,ic) = SumPoint(1:nd,ic) / real(Size(ic), kind = RK)
                 do concurrent(ip = 1:np)
                     !NormedPoint(1:nd,ip,ic) = Center(1:nd,ic) - Point(1:nd,ip)
@@ -503,7 +503,7 @@ contains
             !%%%%%%%%%%%%%%%%%%%
 
             do ic = 2, nc - 1
-                if (Size(ic) > 0_IK) then
+                if (Size(ic) > 0) then
                     Center(1:nd,ic) = SumPoint(1:nd,ic) / real(Size(ic), kind = RK)
                     do concurrent(ip = 1:np)
                        !NormedPoint(1:nd,ip,ic) = Center(1:nd,ic) - Point(1:nd,ip)
@@ -522,7 +522,7 @@ contains
             ic = nc
             potential = 0._RK
             convergenceOccurred = .true.
-            if (Size(ic) > 0_IK) then
+            if (Size(ic) > 0) then
                 Center(1:nd,ic) = SumPoint(1:nd,ic) / real(Size(ic), kind = RK)
                 do ip = 1, np
                    !NormedPoint(1:nd,ip,ic) = Center(1:nd,ic) - Point(1:nd,ip)
@@ -535,8 +535,8 @@ contains
                     if (Membership(ip)/=MembershipOld(ip)) then
                         SumPoint(1:nd,MembershipOld(ip)) = SumPoint(1:nd,MembershipOld(ip)) - Point(1:nd,ip)
                         SumPoint(1:nd,Membership(ip)) = SumPoint(1:nd,Membership(ip)) + Point(1:nd,ip)
-                        Size(MembershipOld(ip)) = Size(MembershipOld(ip)) - 1_IK
-                        Size(Membership(ip)) = Size(Membership(ip)) + 1_IK
+                        Size(MembershipOld(ip)) = Size(MembershipOld(ip)) - 1
+                        Size(Membership(ip)) = Size(Membership(ip)) + 1
                         convergenceOccurred = .false.
                     end if
                     potential = potential + MinDistanceSq(ip)
@@ -546,8 +546,8 @@ contains
                     if (Membership(ip)/=MembershipOld(ip)) then
                         SumPoint(1:nd,MembershipOld(ip)) = SumPoint(1:nd,MembershipOld(ip)) - Point(1:nd,ip)
                         SumPoint(1:nd,Membership(ip)) = SumPoint(1:nd,Membership(ip)) + Point(1:nd,ip)
-                        Size(MembershipOld(ip)) = Size(MembershipOld(ip)) - 1_IK
-                        Size(Membership(ip)) = Size(Membership(ip)) + 1_IK
+                        Size(MembershipOld(ip)) = Size(MembershipOld(ip)) - 1
+                        Size(Membership(ip)) = Size(Membership(ip)) + 1
                         convergenceOccurred = .false.
                     end if
                     potential = potential + MinDistanceSq(ip)
@@ -557,12 +557,13 @@ contains
             !%%%%%%%%%%%%%%%%%%%
 
 #if defined DEBUG_ENABLED || defined TESTING_ENABLED
-            if (any(Size<0_IK)) then
+            if (any(Size<0)) then
                 ! LCOV_EXCL_START
                 block
                     use Err_mod, only: abort
                     Err%msg = PROCEDURE_NAME//": Internal error occurred - Size < 0. Please report this issue along with circumstances to the developers at: https://github.com/cdslaborg/paramonte/issues"
                     call abort(Err)
+                    error stop
                     return
                 end block
                 ! LCOV_EXCL_STOP
@@ -570,12 +571,12 @@ contains
 #endif
             if (any(Size < minSize)) then
                 ! LCOV_EXCL_START
-                niter = 0_IK
-                nfail = nfail + 1_IK
+                niter = 0
+                nfail = nfail + 1
                 if (nfail > nfailMax) then
                     !Err%msg = "nfail > nfailMax"
                     Err%occurred = .true.
-                    Err%stat = 2_IK
+                    Err%stat = 2
                     exit loopCenterRefinement
                 end if
                 call runKPP(nc, nd, np, Point, SumPoint, MembershipOld, Size, potentialOld) ! find new random Centers and start over.
@@ -591,7 +592,7 @@ contains
 
                 if (convergenceOccurred .or. abs(potential-potentialOld)/potential < relTol) exit loopCenterRefinement
 
-                niter = niter + 1_IK
+                niter = niter + 1
 
                 MembershipOld(1:np) = Membership(1:np)
                 potentialOld = potential
@@ -599,7 +600,7 @@ contains
             else
 
                 !Err%msg = "niter > niterMax"
-                Err%stat = 1_IK
+                Err%stat = 1
                 Err%occurred = .true.
                 exit loopCenterRefinement
 
@@ -608,7 +609,7 @@ contains
         end do loopCenterRefinement
 
         do concurrent(ic = 1:nc)
-            if (Size(ic) >= 0_IK) Center(1:nd,ic) = SumPoint(1:nd,ic) / real(Size(ic), kind = RK)
+            if (Size(ic) >= 0) Center(1:nd,ic) = SumPoint(1:nd,ic) / real(Size(ic), kind = RK)
         end do
 
     end subroutine runKmeans
@@ -676,15 +677,15 @@ contains
         implicit none
 
         class(Kmeans_type) , intent(inout)      :: Kmeans
-        integer(IK) , intent(in)                :: nd, np
+        integer     , intent(in)                :: nd, np
         real(RK)    , intent(inout)             :: Point(nd,np)
         real(RK)    , intent(in)    , optional  :: pointLogVolNormed
         real(RK)    , intent(in)    , optional  :: inclusionFraction
-        integer(IK) , intent(inout) , optional  :: Index(np)
+        integer     , intent(inout) , optional  :: Index(np)
 
-        integer(IK) , allocatable               :: KmeansMemberCounter(:)
-        integer(IK)                             :: i, j, ic, ip, nc
-        integer(IK)                             :: ipstart, ipend
+        integer     , allocatable               :: KmeansMemberCounter(:)
+        integer                                 :: i, j, ic, ip, nc
+        integer                                 :: ipstart, ipend
 
         real(RK)                                :: NormedPoint(nd,np)
         real(RK)                                :: scaleFactorSqInverse
@@ -707,7 +708,7 @@ contains
 
         ! Compute the cumulative sum of the cluster Size array.
 
-        Kmeans%Prop%CumSumSize(0) = 0_IK
+        Kmeans%Prop%CumSumSize(0) = 0
         loopDetermineClusterBoundaries: do ic = 1, nc
             KmeansMemberCounter(ic) = Kmeans%Prop%CumSumSize(ic-1)
             Kmeans%Prop%CumSumSize(ic) = KmeansMemberCounter(ic) + Kmeans%Size(ic)
@@ -715,14 +716,14 @@ contains
 
         if (present(Index)) then
             do ip = 1, np
-                KmeansMemberCounter(Kmeans%Membership(ip)) = KmeansMemberCounter(Kmeans%Membership(ip)) + 1_IK
+                KmeansMemberCounter(Kmeans%Membership(ip)) = KmeansMemberCounter(Kmeans%Membership(ip)) + 1
                 NormedPoint(1:nd,KmeansMemberCounter(Kmeans%Membership(ip))) = Point(1:nd,ip)
                 Kmeans%Prop%Index(KmeansMemberCounter(Kmeans%Membership(ip))) = Index(ip)
             end do
             Index = Kmeans%Prop%Index
         else
             do ip = 1, np
-                KmeansMemberCounter(Kmeans%Membership(ip)) = KmeansMemberCounter(Kmeans%Membership(ip)) + 1_IK
+                KmeansMemberCounter(Kmeans%Membership(ip)) = KmeansMemberCounter(Kmeans%Membership(ip)) + 1
                 NormedPoint(1:nd,KmeansMemberCounter(Kmeans%Membership(ip))) = Point(1:nd,ip)
                 Kmeans%Prop%Index(KmeansMemberCounter(Kmeans%Membership(ip))) = ip
             end do
@@ -740,7 +741,7 @@ contains
 
             blockMinimumClusterSize: if (Kmeans%Size(ic) > nd) then
 
-                ipstart = Kmeans%Prop%CumSumSize(ic-1) + 1_IK
+                ipstart = Kmeans%Prop%CumSumSize(ic-1) + 1
                 ipend = Kmeans%Prop%CumSumSize(ic)
 
                 ! Correct the cluster memberships.
@@ -761,7 +762,7 @@ contains
                         Kmeans%Prop%ChoLowCovUpp(1:j,j,ic) = Kmeans%Prop%ChoLowCovUpp(1:j,j,ic) + NormedPoint(1:j,ip) * NormedPoint(j,ip)
                     end do
                 end do
-                Kmeans%Prop%ChoLowCovUpp(1:nd,1:nd,ic) = Kmeans%Prop%ChoLowCovUpp(1:nd,1:nd,ic) / real(Kmeans%Size(ic)-1_IK, kind = RK)
+                Kmeans%Prop%ChoLowCovUpp(1:nd,1:nd,ic) = Kmeans%Prop%ChoLowCovUpp(1:nd,1:nd,ic) / real(Kmeans%Size(ic)-1, kind = RK)
 
                 ! Compute the Cholesky Factor of the cluster covariance matrices.
 
@@ -829,7 +830,7 @@ contains
             else blockMinimumClusterSize
 
                 Kmeans%Prop%LogVolNormed(ic) = NEGINF_RK ! This initialization is essential in dependent procedures.
-                Kmeans%Prop%EffectiveSize(ic) = 0_IK
+                Kmeans%Prop%EffectiveSize(ic) = 0
                 pointLogVolNormedDefault = 1._RK ! This is an indicator
 
             end if blockMinimumClusterSize
@@ -874,9 +875,9 @@ contains
 
             loopComputeSingularClusterProperties: do ic = 1, nc
 
-                if (Kmeans%Size(ic) <= nd .and. Kmeans%Size(ic) > 0_IK) then
+                if (Kmeans%Size(ic) <= nd .and. Kmeans%Size(ic) > 0) then
 
-                    ipstart = Kmeans%Prop%CumSumSize(ic-1) + 1_IK
+                    ipstart = Kmeans%Prop%CumSumSize(ic-1) + 1
                     ipend = Kmeans%Prop%CumSumSize(ic)
 
                     ! Correct the cluster memberships.
@@ -966,11 +967,11 @@ contains
 
         implicit none
 
-        integer(IK) , intent(in)    :: np, nd, nc
+        integer     , intent(in)    :: np, nd, nc
         real(RK)    , intent(in)    :: Point(nd,np)
         real(RK)    , intent(out)   :: SumPoint(nd,nc)
-        integer(IK) , intent(out)   :: Membership(np)
-        integer(IK) , intent(out)   :: Size(nc)
+        integer     , intent(out)   :: Membership(np)
+        integer     , intent(out)   :: Size(nc)
         real(RK)    , intent(out)   :: potential
 
         real(RK)                    :: dummy
@@ -978,11 +979,11 @@ contains
         real(RK)                    :: Center(nd,nc)
         real(RK)                    :: MinDistanceSq(np)    ! An array representing the minimum distances of individual points from all clusters.
         real(RK)                    :: CumSumDistSq(0:np)   ! sum of distance squared of points up to the given index of the vector.
-        integer(IK)                 :: ic, ip
+        integer                     :: ic, ip
 
         CumSumDistSq(0) = 0._RK ! This element must always remain zero.
 
-        ic = 1_IK
+        ic = 1
         Center(1:nd,ic) = Point( 1:nd , getRandInt(1,np) ) ! perhaps this random assignment is unnecessary, after all, Point is supposed to be of random order.
         do ip = 1, np
             MinDistanceSq(ip) = sum( (Center(1:nd,ic) - Point(1:nd,ip))**2 ) ! find the distance-squared of each point to the # ic cluster Center.
@@ -990,7 +991,7 @@ contains
             Membership(ip) = ic
         end do
 
-        ic = 2_IK
+        ic = 2
         call random_number(dummy)
         dummy = dummy * CumSumDistSq(np)
         Center(1:nd,ic) = Point( 1:nd , minloc(CumSumDistSq, dim = 1, mask = CumSumDistSq > dummy) - 1 ) ! -1 is essential to compensate for the 0 starting index of CumSumDistSq
@@ -1014,7 +1015,7 @@ contains
 
         end do
 
-        Size = 0_IK
+        Size = 0
         SumPoint = 0._RK
         potential = 0._RK
         do ip = 1, np
@@ -1024,7 +1025,7 @@ contains
                 Membership(ip) = nc
             end if
             SumPoint(1:nd,Membership(ip)) = SumPoint(1:nd,Membership(ip)) + Point(1:nd,ip)
-            Size(Membership(ip)) = Size(Membership(ip)) + 1_IK
+            Size(Membership(ip)) = Size(Membership(ip)) + 1
             potential = potential + MinDistanceSq(ip)
         end do
 
@@ -1036,10 +1037,10 @@ contains
         use Constants_mod, only: IK, RK, NLC
         implicit none
         type(Kmeans_type)   , intent(in)    :: Kmeans
-        integer(IK)         , intent(in)    :: nd, np
-        integer(IK)         , intent(in)    :: fileUnit
+        integer             , intent(in)    :: nd, np
+        integer             , intent(in)    :: fileUnit
         real(RK)            , intent(in)    :: Point(nd,np)
-        integer(IK)                         :: i, j, ic, nc
+        integer                             :: i, j, ic, nc
         character(*)        , parameter     :: fileFormat = "(*(g0.8,:,','))"
 
         nc = size(Kmeans%Size)

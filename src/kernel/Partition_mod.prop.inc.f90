@@ -176,7 +176,7 @@
                         Kmeans%Prop%MahalSq(ip,ic) = sum( ( Point(1:nd,ip) - Kmeans%Center(1:nd,ic) )**2 )
                     end do
 
-                    Kmeans%Prop%ScaleFactorSq(ic) = max(exp(2*pointLogVolNormedDefault/nd), maxval(Kmeans%Prop%MahalSq(ipstart:ipend,ic)))
+                    Kmeans%Prop%ScaleFactorSq(ic) = max(exp(2*pointLogVolNormedDefault/nd), maxval(Kmeans%Prop%MahalSq(ipstart:ipend,ic))) ! xxx this is likely wrong. maximization will be done later.
                     scaleFactorSqInverse = 1._RK / Kmeans%Prop%ScaleFactorSq(ic)
                     scaleFactor = sqrt(Kmeans%Prop%ScaleFactorSq(ic))
 
