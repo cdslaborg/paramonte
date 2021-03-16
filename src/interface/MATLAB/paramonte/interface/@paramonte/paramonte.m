@@ -475,7 +475,7 @@ classdef paramonte %< dynamicprops
             matlabKernelName = "matdram";
             matlabInterfName = "interface";
             if nargin==0
-                self.matdramKernelEnabled = true; if isfolder(self.path.lib.root); self.matdramKernelEnabled = false; end
+                self.matdramKernelEnabled = true; if isfolder(fullfile(self.path.lib.root,"x64")); self.matdramKernelEnabled = false; end
             elseif nargin==1
                 if isa(varargin{1},"char") || isa(varargin{1},"string")
                     if strcmpi(string(varargin{1}),matlabKernelName)
