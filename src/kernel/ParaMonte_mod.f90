@@ -75,7 +75,7 @@
 !>
 !>  For the API developer documentation, visit:
 !>
-!>  &nbsp;&nbsp;&nbsp;&nbsp;[**https://www.cdslab.org/paramonte/notes/api/kernel**](https://www.cdslab.org/paramonte/notes/api/kernel)
+!>  &nbsp;&nbsp;&nbsp;&nbsp;[**https://cdslaborg.github.io/paramonte-kernel-doc/html**](https://cdslaborg.github.io/paramonte-kernel-doc/html)
 !>
 !>  ParaMonte samplers
 !>  ==================
