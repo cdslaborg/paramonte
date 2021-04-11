@@ -46,7 +46,7 @@ The ParaMonte library presented in this work aims to address the aforementioned 
 
 # The origins of ParaMonte  
 
-The ParaMonte library grew out of the need for a free user-friendly high-performance parallel software for stochastic optimization, sampling, and integration problems in scientific inference and Data Science applications. The project started in 2012 to aid the research goals of the primary author of the package in the field of High Energy Astrophysics and Bioinformatics [@Shahmoradi:2013], [@ShahmoradiA:2013], [@Shahmoradi:2014], [@Shahmoradi:2015], [@Shahmoradi:2019], [@OsborneARXIV:2020], [@osborne2020multilevelapj]. It remained in private usage over the years until summer 2020, when version 1.0 of the library was as an open-source project for public usage and contributions.  
+The ParaMonte library grew out of the need for a free user-friendly high-performance parallel software for stochastic optimization, sampling, and integration problems in scientific inference and Data Science applications. The project started in 2012 to aid the research goals of the primary author of the package in the field of High Energy Astrophysics and Bioinformatics [@Shahmoradi:2013], [@ShahmoradiA:2013], [@Shahmoradi:2014], [@Shahmoradi:2015], [@Shahmoradi:2019], [@OsborneARXIV:2020], [@osborne2020multilevelapj]. It remained in private usage over the years until summer 2020, when version 1.0 of the library was released as an open-source project for public usage and contributions.  
 
 Many of the contemporary research problems are computationally demanding and require the analysis of vast amounts of high-dimensional data by a community of non-computer-science domain researchers who might be neither familiar with details of software dependencies, build processes, and complexities nor even with the inner-workings of the various stochastic optimization and sampling techniques. As such, since its inception, the ParaMonte library has been built upon the two pillars of user-friendliness and high-performance.  
 
@@ -116,18 +116,15 @@ Thus, with each tagged release of the library, the code coverage reports for the
 
 The current set of 866 unit tests in version 1.5.0 release of the ParaMonte library collectively cover 47565 out of 48384 lines of code ($\sim 98\%$ line coverage) and 4467 out of 4476 procedures ($\sim 100\%$ function coverage) in the library's kernel for the three serial, MPI, and Coarray parallelism paradigms.  
 
-# Funding  
-
-The development cost of ParaMonte is estimated over 1 million dollars by [Open Hub](https://www.openhub.net/p/paramonte/estimated_cost). Considering the presence of  multiple high-level dynamic languages such as MATLAB, Python, and R which together comprise approximately $40\%$ of the repository, an estimate of $500-600$ thousand dollars seems more realist for the development costs of the library's kernel routines. The current state of the library has resulted from multiple years of continuous development predominantly by the core developers of the library as graduate student, postdoc, and faculty in their free times.  The project was also partially supported in its final stages of development by the Peter O'Donnell, Jr. Postdoctoral Fellowship awarded by the Oden Institute for Computational Engineering and Sciences at The University of Texas at Austin to the primary developer of the library, Amir Shahmoradi.
-
 # Documentation and Repository  
 
 Extensive documentation and examples in C, C++, Fortran (as well as other programming languages) are available on the documentation website of the library at: [https://www.cdslab.org/paramonte/](https://www.cdslab.org/paramonte/). The ParaMonte library is MIT-licensed and is permanently located and maintained at [https://github.com/cdslaborg/paramonte](https://github.com/cdslaborg/paramonte).  
 
 A high number of comments in a codebase are frequently indicative of an organized well-documented project and considered a sign of a helpful and disciplined development team. As of January 2021, comments approximately make up $31\%$ of the entire ParaMonte codebase. Currently, the Open Hub indexer service ranks the ParaMonte project's level of documentation as "impressive" and among the top $10\%$ of all projects in the same category on Open Hub. 
 
-# Acknowledgements
 
-We thank the Texas Advanced Computing Center for providing the supercomputer time for testing and development of this library.  
+# Funding and Acknowledgements  
 
-# References
+The development cost of ParaMonte is estimated over 1 million dollars by [Open Hub](https://www.openhub.net/p/paramonte/estimated_cost). Considering the presence of  multiple high-level dynamic languages such as MATLAB, Python, and R which together comprise approximately $40\%$ of the repository, an estimate of $500-600$ thousand dollars seems more realist for the development costs of the library's kernel routines. The current state of the library has resulted from multiple years of continuous development predominantly by the core developers of the library as graduate student, postdoc, and faculty in their free times.  The project was also partially supported in its final stages of development by the Peter O'Donnell, Jr. Postdoctoral Fellowship awarded by the Oden Institute for Computational Engineering and Sciences at The University of Texas at Austin to the primary developer of the library, Amir Shahmoradi. We thank the Texas Advanced Computing Center for providing the supercomputer time for testing and development of this library.  
+
+# References  
