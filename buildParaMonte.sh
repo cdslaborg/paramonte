@@ -2580,14 +2580,15 @@ if [ "${DRYRUN_ENABLED}" != "true" ]; then
         DEPLOY_ENABLED_FLAG=""
     fi
 
+    #--verbose=1
     (cd ${ParaMonte_BLD_DIR} && \
     ${CAF_LOCAL_INSTALLATION_SETUP_FILE_CMD} && \
     cmake \
-    --verbose=1 \
     "${CMAKE_JOB}" \
     "${FC_OPTION}" \
     "${MPIEXEC_OPTION}" \
     "${MATLAB_ROOT_DIR_OPTION}" \
+    -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
     -DPMLIB_NAME=${PMLIB_NAME} \
     -DINTERFACE_LANGUAGE=${INTERFACE_LANGUAGE} \
     -DPMCS=${PMCS} \
