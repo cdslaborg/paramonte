@@ -201,10 +201,13 @@ matrix:
       before_install:
         - brew install gcc@10 || brew upgrade gcc
         - brew install cmake || brew upgrade cmake
-        - brew install mpich || brew upgrade mpich
-        - brew link gcc
+        #- brew install mpich || brew upgrade mpich
+        - brew unlink mpich || echo "NO MPICH INSTALLATION FOUND"
+        - brew install openmpi || brew upgrade openmpi
+        - brew link openmpi
         - brew link cmake
-        - brew link mpich
+        - brew link gcc
+        #- brew link mpich
       script:
         - cmake --version
         - ./install.sh --lang "C C++ Fortran" --build release --lib shared --mem heap --par "none mpi" #-s gnu
