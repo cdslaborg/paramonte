@@ -24,7 +24,7 @@
 *.mod
 *.smod
 *.asv
-*.png
+#*.png
 *.out
 
 #########################
@@ -112,6 +112,7 @@ Thumbs.db
 #########################
 
 *.mex*
+src/interface/MATLAB/paramonte/vis/colornames/htm/*
 
 #########################
 # ParaMonte temp folders
@@ -186,7 +187,7 @@ _deps
 #########################
 
 *.pdf
-*.png
+#*.png
 *.gif
 *.jpg
 *.jpeg
