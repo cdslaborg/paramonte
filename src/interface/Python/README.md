@@ -83,7 +83,7 @@ Quick start
 ===========  
 
 For a quick start with some Jupyter Notebook examples, visit [this ParaMonte documentation page](https://www.cdslab.org/paramonte/notes/examples/python/jupyter/). 
-The corresponding example source files (the `*.ipynb` files) can be downloaded from the [paramonte.svg?branch=main GitHub repository](https://github.com/cdslaborg/paramonte.svg?branch=main/tree/main/Python/Jupyter), 
+The corresponding example source files (the `*.ipynb` files) can be downloaded from the [paramontex GitHub repository](https://github.com/cdslaborg/paramontex/tree/main/Python/Jupyter), 
 which is a repository dedicated to the ParaMonte library examples.  
 
 The following example code samples a 4-dimensional MultiVariate Normal (MNV) distribution via the ParaDRAM sampler in serial mode,  
@@ -195,10 +195,10 @@ Example usage instructions
 Citing ParaMonte  
 ================  
 
-The ParaMonte library is an honor-ware and its currency is acknowledgment and citations.  
+The ParaMonte library is an honor-ware, the currency of which is acknowledgment and citations.  
   
-If you use ParaMonte, please acknowledge it by citing the ParaMonte library's main publications 
-as listed in [ACKNOWLEDGMENT.md](https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md).  
+If you use ParaMonte or any ideas from the software, please acknowledge it by citing the ParaMonte library's 
+main publications as listed in [ACKNOWLEDGMENT.md](https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md).  
 
 Visit [the ParaMonte library homepage](https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work) 
 to access the PDF version of these files free of charge.  

@@ -177,7 +177,7 @@ function compareVersions() {
 
 verify() {
     if [ $1 -eq 0 ]; then
-        echo >&2 "-- ${pmattn} ${BoldGreen}The ParaMonte $2 appears to have succeeded.${ColorReset}"
+        echo >&2 "${pmattn} ${BoldGreen}The ParaMonte $2 appears to have succeeded.${ColorReset}"
     else
         echo >&2
         echo >&2 "    -- ParaMonte - FATAL: ParaMonte $2 appears to have failed."
@@ -2227,12 +2227,12 @@ export COMPILER_VERSION
 echo >&2 "-- ${BUILD_NAME} - selected compiler suite: ${PMCS}"
 echo >&2 "-- ${BUILD_NAME} - selected compiler version: ${COMPILER_VERSION}"
 
-unset PARALLELIZATION_DIR
-if [ "${OMP_ENABLED}" = "true" ]; then PARALLELIZATION_DIR=${PARALLELIZATION_DIR}omp; fi
-if [ "${MPI_ENABLED}" = "true" ]; then PARALLELIZATION_DIR=${PARALLELIZATION_DIR}${MPILIB_NAME}; fi
-if [ "${CAF_ENABLED}" = "true" ]; then PARALLELIZATION_DIR=${PARALLELIZATION_DIR}caf${CAFTYPE}; fi
-if [ -z ${PARALLELIZATION_DIR+x} ]; then PARALLELIZATION_DIR=serial; fi
-export PARALLELIZATION_DIR
+unset PARALLELISM_DIR
+if [ "${OMP_ENABLED}" = "true" ]; then PARALLELISM_DIR=${PARALLELISM_DIR}omp; fi
+if [ "${MPI_ENABLED}" = "true" ]; then PARALLELISM_DIR=${PARALLELISM_DIR}${MPILIB_NAME}; fi
+if [ "${CAF_ENABLED}" = "true" ]; then PARALLELISM_DIR=${PARALLELISM_DIR}caf${CAFTYPE}; fi
+if [ -z ${PARALLELISM_DIR+x} ]; then PARALLELISM_DIR=serial; fi
+export PARALLELISM_DIR
 
 unset MEMORY_ALLOCATION
 if [ "${HEAP_ARRAY_ENABLED}" = "true" ]; then MEMORY_ALLOCATION="heap"; fi
@@ -2255,7 +2255,7 @@ echo >&2
 echo >&2 "-- ${BUILD_NAME} - setting up build directories..."
 echo >&2
 
-ParaMonte_BLD_DIR="${ParaMonte_ROOT_DIR}/build/${PLATFORM}${ARCHITECTURE}/${PMCS}/${COMPILER_VERSION}/${BTYPE}/${LTYPE}/${MEMORY_ALLOCATION}/${PARALLELIZATION_DIR}"
+ParaMonte_BLD_DIR="${ParaMonte_ROOT_DIR}/build/${PLATFORM}${ARCHITECTURE}/${PMCS}/${COMPILER_VERSION}/${BTYPE}/${LTYPE}/${MEMORY_ALLOCATION}/${PARALLELISM_DIR}"
 if [ ${INTERFACE_LANGUAGE} = "c" ]; then ParaMonte_BLD_DIR="${ParaMonte_BLD_DIR}/C"; fi
 if [ ${INTERFACE_LANGUAGE} = "c++" ]; then ParaMonte_BLD_DIR="${ParaMonte_BLD_DIR}/C++"; fi
 if [ ${INTERFACE_LANGUAGE} = "fortran" ]; then ParaMonte_BLD_DIR="${ParaMonte_BLD_DIR}/Fortran"; fi
@@ -2342,7 +2342,7 @@ unset MATLAB_ROOT_DIR_OPTION # it is imperative to nullify this MATLAB variable 
 if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "shared" ] && [ "${CFI_ENABLED}" = "true" ]; then
 
     echo >&2
-    echo >&2 "-- ${BUILD_NAME}MATLAB - searching for a MATLAB installation on your system..."
+    echo >&2 "-- ${BUILD_NAME} :: MATLAB - searching for a MATLAB installation on your system..."
 
     unset MATLAB_ROOT_DIR
     unset MATLAB_EXE_PATH
@@ -2354,8 +2354,10 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "shared" ] && [ "${C
         MATLAB_ROOT_DIR=$(dirname $MATLAB_BIN_DIR)
         # echo >&2 "-- ${BUILD_NAME} - MATLAB detected at: ${MATLAB_EXE_PATH}"
     else
-        echo >&2 "-- ${BUILD_NAME} - ${warning}: MATLAB could not be found in among the search paths."
-        echo >&2 "-- ${BUILD_NAME} - ${warning}: searching for MATLAB in the default installation directories..."
+        echo >&2
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}: MATLAB could not be found in among the search paths."
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}: searching for MATLAB in the default installation directories..."
+        echo >&2
     fi
 
     if [ -z ${MATLAB_EXE_PATH+x} ]; then
@@ -2373,13 +2375,13 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "shared" ] && [ "${C
                 else
                     MATLAB_ROOT_DIR="${INSTALL_LOC_LIST}/${MATLAB_VERSION}"
                 fi
-                MATLAB_BIN_DIR="${MATLAB_ROOT_DIR}/bin"
-                MATLAB_EXE_PATH="${MATLAB_BIN_DIR}/matlab"
-                if [[ -f "${MATLAB_EXE_PATH}" ]]; then
+                MATLAB_BIN_DIR_TEMP="${MATLAB_ROOT_DIR}/bin"
+                MATLAB_EXE_PATH_TEMP="${MATLAB_BIN_DIR}/matlab"
+                if [[ -f "${MATLAB_EXE_PATH_TEMP}" ]]; then
                     #MATLAB_ROOT_DIR_OPTION="-DMATLAB_ROOT_DIR=${MATLAB_ROOT_DIR}"
-                    MATLAB_EXE_PATH="${MATLAB_EXE_PATH}"
-                    MATLAB_BIN_DIR="${MATLAB_BIN_DIR}"
-                    echo >&2 "-- ${BUILD_NAME}MATLAB - MATLAB ${MATLAB_VERSION} installation detected at: ${MATLAB_EXE_PATH}"
+                    MATLAB_BIN_DIR="${MATLAB_BIN_DIR_TEMP}"
+                    MATLAB_EXE_PATH="${MATLAB_EXE_PATH_TEMP}"
+                    echo >&2 "-- ${BUILD_NAME} :: MATLAB - MATLAB ${MATLAB_VERSION} installation detected at: ${MATLAB_EXE_PATH}"
                     echo >&2
                     break 2
                 fi
@@ -2396,28 +2398,31 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "shared" ] && [ "${C
         else
             EXAMPLE_MATLAB_ROOT_DIR="/usr/local/MATLAB/${EXAMPLE_MATLAB_VERSION}"
         fi
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: Exhausted all possible search paths for a MATLAB installation, but failed to find MATLAB."
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: The ParaMonte MATLAB kernel will not be functional without building the required DLL libraries."
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: Please add MATLAB to your environmental variable PATH and rerun the install script."
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: For example, in your current terminal, try:"
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}:     export PATH=\"PATH_TO_MATLAB_BIN_DIR:$PATH\""
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: where PATH_TO_MATLAB_BIN_DIR must be replaced with path to the bin folder of the current"
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: installation of MATLAB on your system. Typical MATLAB bin installation path on a 64-bit ${OSNAME}"
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: Operating Systems is a string like the following:"
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}:     \"${EXAMPLE_MATLAB_ROOT_DIR}/bin\""
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: where ${EXAMPLE_MATLAB_VERSION} in the path points to the MATLAB ${EXAMPLE_MATLAB_VERSION} version installation on the system. You can also "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: find the installation location of MATLAB by typing the following command in your MATLAB session:"
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}:     matlabroot"
+        echo >&2
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}: Exhausted all possible search paths for a MATLAB installation, but failed to find MATLAB."
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}: The ParaMonte MATLAB kernel will not be functional without building the required DLL libraries."
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}: Please add MATLAB to your environmental variable PATH and rerun the install script."
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}: For example, in your current terminal, try:"
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}: "
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}:     export PATH=\"PATH_TO_MATLAB_BIN_DIR:\$PATH\""
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}: "
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}: where PATH_TO_MATLAB_BIN_DIR must be replaced with path to the bin folder of the current"
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}: installation of MATLAB on your system. Typical MATLAB bin installation path on a 64-bit ${OSNAME}"
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}: Operating Systems is a string like the following:"
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}: "
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}:     \"${EXAMPLE_MATLAB_ROOT_DIR}/bin\""
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}: "
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}: where ${EXAMPLE_MATLAB_VERSION} in the path points to the MATLAB ${EXAMPLE_MATLAB_VERSION} version installation on the system. You can also "
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}: find the installation location of MATLAB by typing the following command in your MATLAB session:"
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}: "
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}:     matlabroot"
         echo >&2
         if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
             answerNotGiven=true
             while [ "${answerNotGiven}" = "true" ]; do
-                read -p "-- ${BUILD_NAME}MATLAB - Do you wish to continue with the rest of the installation process (y/n)? " answer
+                echo >&2
+                read -p "-- ${BUILD_NAME} :: MATLAB - Do you wish to continue with the rest of the installation process (y/n)? " answer
+                echo >&2
                 if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
                     answer=y
                     answerNotGiven=false
@@ -2427,20 +2432,20 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "shared" ] && [ "${C
                     answerNotGiven=false
                 fi
                 if [ "${answerNotGiven}" = "true" ]; then
-                    echo >&2 "-- ${BUILD_NAME}MATLAB - please enter either y or n"
+                    echo >&2 "-- ${BUILD_NAME} :: MATLAB - please enter either y or n"
                 fi
             done
         else
-            echo >&2 "-- ${BUILD_NAME}MATLAB - Do you wish to continue with the rest of the installation process (y/n)? y"
+            echo >&2 "-- ${BUILD_NAME} :: MATLAB - Do you wish to continue with the rest of the installation process (y/n)? y"
             answer=y
         fi
         if [ "${answer}" = "y" ]; then
             echo >&2
-            echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: skipping the ParaMonte MATLAB shared library build..."
+            echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}: skipping the ParaMonte MATLAB shared library build..."
             echo >&2
         else
             echo >&2
-            echo >&2 "-- ${BUILD_NAME}MATLAB - exiting the ParaMonte MATLAB library build."
+            echo >&2 "-- ${BUILD_NAME} :: MATLAB - exiting the ParaMonte MATLAB library build."
             echo >&2
             exit 1
         fi
@@ -2648,7 +2653,7 @@ if [ "${ParaMonteTest_RUN_ENABLED}" = "true" ]; then
         mkdir "${ParaMonteTest_BIN_INPUT_DIR}"
     fi
 
-    cp "${ParaMonteTest_SRC_INPUT_DIR}"/* "${ParaMonteTest_BIN_INPUT_DIR}"/
+    cp -r "${ParaMonteTest_SRC_INPUT_DIR}"/* "${ParaMonteTest_BIN_INPUT_DIR}"/
 
     # run the tests
 
@@ -2758,7 +2763,7 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "shared" ] && [ "${C
     #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
     echo >&2
-    echo >&2 "-- ${BUILD_NAME}MATLAB - searching for a MATLAB installation on your system..."
+    echo >&2 "-- ${BUILD_NAME} :: MATLAB - searching for a MATLAB installation on your system..."
 
     unset MATLAB_ROOT_DIR
     unset MATLAB_EXE_PATH
@@ -2795,7 +2800,7 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "shared" ] && [ "${C
                     MATLAB_ROOT_DIR="${MATLAB_ROOT_DIR}"
                     MATLAB_EXE_PATH="${MATLAB_EXE_PATH}"
                     MATLAB_BIN_DIR="${MATLAB_BIN_DIR}"
-                    echo >&2 "-- ${BUILD_NAME}MATLAB - MATLAB ${MATLAB_VERSION} installation detected at: ${MATLAB_EXE_PATH}"
+                    echo >&2 "-- ${BUILD_NAME} :: MATLAB - MATLAB ${MATLAB_VERSION} installation detected at: ${MATLAB_EXE_PATH}"
                     echo >&2
                     break 2
                 fi
@@ -2812,28 +2817,28 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "shared" ] && [ "${C
         else
             EXAMPLE_MATLAB_ROOT_DIR="/usr/local/MATLAB/${EXAMPLE_MATLAB_VERSION}"
         fi
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: Exhausted all possible search paths for a MATLAB installation, but failed to find MATLAB."
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: The ParaMonte MATLAB kernel will not be functional without building the required DLL libraries."
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: Please add MATLAB to your environmental variable PATH and rerun the install script."
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: For example, in your current terminal, try:"
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}:     export PATH=\"PATH_TO_MATLAB_BIN_DIR:$PATH\""
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: where PATH_TO_MATLAB_BIN_DIR must be replaced with path to the bin folder of the current"
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: installation of MATLAB on your system. Typical MATLAB bin installation path on a 64-bit ${OSNAME}"
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: Operating Systems is a string like the following:"
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}:     \"${EXAMPLE_MATLAB_ROOT_DIR}/bin\""
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: where ${EXAMPLE_MATLAB_VERSION} in the path points to the MATLAB ${EXAMPLE_MATLAB_VERSION} version installation on the system. You can also "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: find the installation location of MATLAB by typing the following command in your MATLAB session:"
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}:     matlabroot"
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}: Exhausted all possible search paths for a MATLAB installation, but failed to find MATLAB."
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}: The ParaMonte MATLAB kernel will not be functional without building the required DLL libraries."
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}: Please add MATLAB to your environmental variable PATH and rerun the install script."
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}: For example, in your current terminal, try:"
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}: "
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}:     export PATH=\"PATH_TO_MATLAB_BIN_DIR:$PATH\""
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}: "
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}: where PATH_TO_MATLAB_BIN_DIR must be replaced with path to the bin folder of the current"
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}: installation of MATLAB on your system. Typical MATLAB bin installation path on a 64-bit ${OSNAME}"
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}: Operating Systems is a string like the following:"
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}: "
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}:     \"${EXAMPLE_MATLAB_ROOT_DIR}/bin\""
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}: "
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}: where ${EXAMPLE_MATLAB_VERSION} in the path points to the MATLAB ${EXAMPLE_MATLAB_VERSION} version installation on the system. You can also "
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}: find the installation location of MATLAB by typing the following command in your MATLAB session:"
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}: "
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}:     matlabroot"
         echo >&2
         if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
             answerNotGiven=true
             while [ "${answerNotGiven}" = "true" ]; do
-                read -p "-- ${BUILD_NAME}MATLAB - Do you wish to continue with the rest of the installation process (y/n)? " answer
+                read -p "-- ${BUILD_NAME} :: MATLAB - Do you wish to continue with the rest of the installation process (y/n)? " answer
                 if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
                     answer=y
                     answerNotGiven=false
@@ -2843,20 +2848,20 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "shared" ] && [ "${C
                     answerNotGiven=false
                 fi
                 if [ "${answerNotGiven}" = "true" ]; then
-                    echo >&2 "-- ${BUILD_NAME}MATLAB - please enter either y or n"
+                    echo >&2 "-- ${BUILD_NAME} :: MATLAB - please enter either y or n"
                 fi
             done
         else
-            echo >&2 "-- ${BUILD_NAME}MATLAB - Do you wish to continue with the rest of the installation process (y/n)? y"
+            echo >&2 "-- ${BUILD_NAME} :: MATLAB - Do you wish to continue with the rest of the installation process (y/n)? y"
             answer=y
         fi
         if [ "${answer}" = "y" ]; then
             echo >&2
-            echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: skipping the ParaMonte MATLAB shared library build..."
+            echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${warning}: skipping the ParaMonte MATLAB shared library build..."
             echo >&2
         else
             echo >&2
-            echo >&2 "-- ${BUILD_NAME}MATLAB - exiting the ParaMonte MATLAB library build."
+            echo >&2 "-- ${BUILD_NAME} :: MATLAB - exiting the ParaMonte MATLAB library build."
             echo >&2
             exit 1
         fi
@@ -2868,7 +2873,7 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "shared" ] && [ "${C
         #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
         echo >&2
-        echo >&2 "-- ${BUILD_NAME}MATLAB - MATLAB installation detected at: ${MATLAB_EXE_PATH}"
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB - MATLAB installation detected at: ${MATLAB_EXE_PATH}"
         echo >&2
 
         ParaMonteMATLAB_BLD_LIB_DIR="${ParaMonte_BLD_DIR}/lib"
@@ -2906,42 +2911,42 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "shared" ] && [ "${C
                 LDFLAGS+=' -O3'
                 CFLAGS+=' -O3'
             fi
-            echo >&2 "-- ${BUILD_NAME}MATLAB - generating the ParaMonte MATLAB shared library: ${ParaMonteMATLAB_BLD_LIB_DIR}${PMLIB_MATLAB_NAME}"
-            echo >&2 "-- ${BUILD_NAME}MATLAB - compiler command: ${MATLAB_BIN_DIR}/mex ${MEX_FLAGS} CFLAGS=${CFLAGS} LDFLAGS=${LDFLAGS} ${ParaMonteKernel_SRC_DIR}/paramonte.m.c ${PMLIB_FULL_PATH} -output ${PMLIB_MATLAB_NAME}"
-            #echo >&2 "-- ${BUILD_NAME}MATLAB - compiler options: ${MATLAB_BUILD_FLAGS}"
+            echo >&2 "-- ${BUILD_NAME} :: MATLAB - generating the ParaMonte MATLAB shared library: ${ParaMonteMATLAB_BLD_LIB_DIR}${PMLIB_MATLAB_NAME}"
+            echo >&2 "-- ${BUILD_NAME} :: MATLAB - compiler command: ${MATLAB_BIN_DIR}/mex ${MEX_FLAGS} CFLAGS=${CFLAGS} LDFLAGS=${LDFLAGS} ${ParaMonteKernel_SRC_DIR}/paramonte.m.c ${PMLIB_FULL_PATH} -output ${PMLIB_MATLAB_NAME}"
+            #echo >&2 "-- ${BUILD_NAME} :: MATLAB - compiler options: ${MATLAB_BUILD_FLAGS}"
             # CC=icl CFLAGS="${MATLAB_BUILD_FLAGS}"
             cd "${ParaMonteMATLAB_BLD_LIB_DIR}"
             "${MATLAB_BIN_DIR}/mex" ${MEX_FLAGS} CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" \
             "${ParaMonteKernel_SRC_DIR}/paramonte.m.c" ${PMLIB_FULL_PATH} -output ${PMLIB_MATLAB_NAME}
             if [ $? -eq 0 ]; then
                 echo >&2
-                echo >&2 "-- ${BUILD_NAME}MATLAB - ${BoldGreen}The ParaMonte MATLAB shared library build appears to have succeeded.${ColorReset}"
+                echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${BoldGreen}The ParaMonte MATLAB shared library build appears to have succeeded.${ColorReset}"
                 echo >&2
             else
                 echo >&2
-                echo >&2 "-- ${BUILD_NAME}MATLAB - ${BoldRed}Fatal Error${ColorReset}: The ParaMonte MATLAB library build failed."
-                echo >&2 "-- ${BUILD_NAME}MATLAB - Please make sure you have the following components installed"
-                echo >&2 "-- ${BUILD_NAME}MATLAB - on your system before rerunning the installation script:"
-                echo >&2 "-- ${BUILD_NAME}MATLAB - "
-                echo >&2 "-- ${BUILD_NAME}MATLAB -     -- MATLAB, including MATLAB compilers."
-                echo >&2 "-- ${BUILD_NAME}MATLAB -     -- The GNU compiler collection 7 or newer while being compatible with MATLAB."
-                echo >&2 "-- ${BUILD_NAME}MATLAB - "
-                echo >&2 "-- ${BUILD_NAME}MATLAB - Note that MATLAB is compatible only with the GNU compiler collections on ${OSNAME} "
-                echo >&2 "-- ${BUILD_NAME}MATLAB - and not with the Intel compilers. Once you are sure of the existence of these components in your "
-                echo >&2 "-- ${BUILD_NAME}MATLAB - ${OSNAME} command line environment, run the following command:"
-                echo >&2 "-- ${BUILD_NAME}MATLAB - "
-                echo >&2 "-- ${BUILD_NAME}MATLAB -     \"${MATLAB_BIN_DIR}/mex\" -setup C"
-                echo >&2 "-- ${BUILD_NAME}MATLAB - "
-                echo >&2 "-- ${BUILD_NAME}MATLAB - You should then be able to see a message like the following, "
-                echo >&2 "-- ${BUILD_NAME}MATLAB - "
-                echo >&2 "-- ${BUILD_NAME}MATLAB -     MEX configured to use 'gcc' for C language compilation."
-                echo >&2 "-- ${BUILD_NAME}MATLAB - "
-                echo >&2 "-- ${BUILD_NAME}MATLAB - This ensures that your MATLAB is already set to use an appropriate compiler for building applications."
-                echo >&2 "-- ${BUILD_NAME}MATLAB - If you cannot identify the cause of the failure, Please report this error at: "
-                echo >&2 "-- ${BUILD_NAME}MATLAB - "
-                echo >&2 "-- ${BUILD_NAME}MATLAB -     https://github.com/cdslaborg/paramonte/issues"
-                echo >&2 "-- ${BUILD_NAME}MATLAB - "
-                echo >&2 "-- ${BUILD_NAME}MATLAB - gracefully exiting The ParaMonte build script."
+                echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${BoldRed}Fatal Error${ColorReset}: The ParaMonte MATLAB library build failed."
+                echo >&2 "-- ${BUILD_NAME} :: MATLAB - Please make sure you have the following components installed"
+                echo >&2 "-- ${BUILD_NAME} :: MATLAB - on your system before rerunning the installation script:"
+                echo >&2 "-- ${BUILD_NAME} :: MATLAB - "
+                echo >&2 "-- ${BUILD_NAME} :: MATLAB -     -- MATLAB, including MATLAB compilers."
+                echo >&2 "-- ${BUILD_NAME} :: MATLAB -     -- The GNU compiler collection 7 or newer while being compatible with MATLAB."
+                echo >&2 "-- ${BUILD_NAME} :: MATLAB - "
+                echo >&2 "-- ${BUILD_NAME} :: MATLAB - Note that MATLAB is compatible only with the GNU compiler collections on ${OSNAME} "
+                echo >&2 "-- ${BUILD_NAME} :: MATLAB - and not with the Intel compilers. Once you are sure of the existence of these components in your "
+                echo >&2 "-- ${BUILD_NAME} :: MATLAB - ${OSNAME} command line environment, run the following command:"
+                echo >&2 "-- ${BUILD_NAME} :: MATLAB - "
+                echo >&2 "-- ${BUILD_NAME} :: MATLAB -     \"${MATLAB_BIN_DIR}/mex\" -setup C"
+                echo >&2 "-- ${BUILD_NAME} :: MATLAB - "
+                echo >&2 "-- ${BUILD_NAME} :: MATLAB - You should then be able to see a message like the following, "
+                echo >&2 "-- ${BUILD_NAME} :: MATLAB - "
+                echo >&2 "-- ${BUILD_NAME} :: MATLAB -     MEX configured to use 'gcc' for C language compilation."
+                echo >&2 "-- ${BUILD_NAME} :: MATLAB - "
+                echo >&2 "-- ${BUILD_NAME} :: MATLAB - This ensures that your MATLAB is already set to use an appropriate compiler for building applications."
+                echo >&2 "-- ${BUILD_NAME} :: MATLAB - If you cannot identify the cause of the failure, Please report this error at: "
+                echo >&2 "-- ${BUILD_NAME} :: MATLAB - "
+                echo >&2 "-- ${BUILD_NAME} :: MATLAB -     https://github.com/cdslaborg/paramonte/issues"
+                echo >&2 "-- ${BUILD_NAME} :: MATLAB - "
+                echo >&2 "-- ${BUILD_NAME} :: MATLAB - gracefully exiting The ParaMonte build script."
                 echo >&2
                 exit 1
             fi
@@ -2955,7 +2960,7 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "shared" ] && [ "${C
     #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
     echo >&2
-    echo >&2 "-- ${BUILD_NAME}MATLABTest - building ParaMonte MATLAB test..."
+    echo >&2 "-- ${BUILD_NAME} :: MATLAB :: Test - building ParaMonte MATLAB test..."
     ParaMonteMATLABTest_BLD_DIR=${ParaMonte_BLD_DIR}/test/MATLAB
     export ParaMonteMATLABTest_BLD_DIR
 
@@ -2966,56 +2971,56 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "shared" ] && [ "${C
     MATLAB_TEST_FILENAME=${MATLAB_TEST_FILENAME}.m
 
     if [ -d "${ParaMonteMATLABTest_BLD_DIR}" ]; then
-        echo >&2 "-- ${BUILD_NAME}MATLABTest - ${ParaMonteMATLABTest_BLD_DIR} already exists. skipping..."
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB :: Test - ${ParaMonteMATLABTest_BLD_DIR} already exists. skipping..."
     else
-        echo >&2 "-- ${BUILD_NAME}MATLABTest - generating MATLAB files directory: ${ParaMonteMATLABTest_BLD_DIR}"
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB :: Test - generating MATLAB files directory: ${ParaMonteMATLABTest_BLD_DIR}"
         mkdir "${ParaMonteMATLABTest_BLD_DIR}"
     fi
 
     # copy necessary ParaMonte MATLAB library files in MATLAB's directory
 
-    echo >&2 "-- ${BUILD_NAME}MATLABTest - copying the ParaMonte library files to the MATLAB directory"
-    echo >&2 "-- ${BUILD_NAME}MATLABTest - from: ${ParaMonteInterfaceMATLAB_SRC_DIR}/paramonte"
-    echo >&2 "-- ${BUILD_NAME}MATLABTest -   to: ${ParaMonteMATLABTest_BLD_DIR}/paramonte/"
+    echo >&2 "-- ${BUILD_NAME} :: MATLAB :: Test - copying the ParaMonte library files to the MATLAB directory"
+    echo >&2 "-- ${BUILD_NAME} :: MATLAB :: Test - from: ${ParaMonteInterfaceMATLAB_SRC_DIR}/paramonte"
+    echo >&2 "-- ${BUILD_NAME} :: MATLAB :: Test -   to: ${ParaMonteMATLABTest_BLD_DIR}/paramonte/"
     cp -R "${ParaMonteInterfaceMATLAB_SRC_DIR}"/paramonte "${ParaMonteMATLABTest_BLD_DIR}"/
     echo >&2
 
     # copy necessary ParaMonte library auxiliary files
 
-    echo >&2 "-- ${BUILD_NAME}MATLABTest - copying the ParaMonte library auxiliary files"
-    echo >&2 "-- ${BUILD_NAME}MATLABTest - from: ${ParaMonteInterface_SRC_DIR}/auxil"
-    echo >&2 "-- ${BUILD_NAME}MATLABTest -   to: ${ParaMonteMATLABTest_BLD_DIR}/paramonte/"
+    echo >&2 "-- ${BUILD_NAME} :: MATLAB :: Test - copying the ParaMonte library auxiliary files"
+    echo >&2 "-- ${BUILD_NAME} :: MATLAB :: Test - from: ${ParaMonteInterface_SRC_DIR}/auxil"
+    echo >&2 "-- ${BUILD_NAME} :: MATLAB :: Test -   to: ${ParaMonteMATLABTest_BLD_DIR}/paramonte/"
     cp -R "${ParaMonteInterface_SRC_DIR}/auxil" "${ParaMonteMATLABTest_BLD_DIR}/paramonte/"
     echo >&2
 
     # copy necessary ParaMonte MATLAB shared library files in MATLAB's directory
 
     if [ -d "${ParaMonteMATLABTest_BLD_DIR}/paramonte/lib" ]; then
-        echo >&2 "-- ${BUILD_NAME}MATLABTest - ${ParaMonteMATLABTest_BLD_DIR}/paramonte/lib already exists. skipping..."
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB :: Test - ${ParaMonteMATLABTest_BLD_DIR}/paramonte/lib already exists. skipping..."
     else
-        echo >&2 "-- ${BUILD_NAME}MATLABTest - generating MATLAB files directory: ${ParaMonteMATLABTest_BLD_DIR}/paramonte/lib"
+        echo >&2 "-- ${BUILD_NAME} :: MATLAB :: Test - generating MATLAB files directory: ${ParaMonteMATLABTest_BLD_DIR}/paramonte/lib"
         mkdir "${ParaMonteMATLABTest_BLD_DIR}/paramonte/lib"
     fi
 
-    echo >&2 "-- ${BUILD_NAME}MATLABTest - copying the ParaMonte library files..."
-    echo >&2 "-- ${BUILD_NAME}MATLABTest - from: ${PMLIB_FULL_PATH}"
-    echo >&2 "-- ${BUILD_NAME}MATLABTest -   to: ${ParaMonteMATLABTest_BLD_DIR}/paramonte/lib"
+    echo >&2 "-- ${BUILD_NAME} :: MATLAB :: Test - copying the ParaMonte library files..."
+    echo >&2 "-- ${BUILD_NAME} :: MATLAB :: Test - from: ${PMLIB_FULL_PATH}"
+    echo >&2 "-- ${BUILD_NAME} :: MATLAB :: Test -   to: ${ParaMonteMATLABTest_BLD_DIR}/paramonte/lib"
     cp -R "${ParaMonte_LIB_DIR}/"* "${ParaMonteMATLABTest_BLD_DIR}/paramonte/lib"
     echo >&2
 
     # copy necessary ParaMonte MATLAB library files in MATLAB's directory
 
-    echo >&2 "-- ${BUILD_NAME}MATLABTest - copying the ParaMonte library test files to the MATLAB directory"
-    echo >&2 "-- ${BUILD_NAME}MATLABTest - from: ${ParaMonteMATLABTest_SRC_DIR}/${MATLAB_TEST_FILENAME}"
-    echo >&2 "-- ${BUILD_NAME}MATLABTest -   to: ${ParaMonteMATLABTest_BLD_DIR}/"
+    echo >&2 "-- ${BUILD_NAME} :: MATLAB :: Test - copying the ParaMonte library test files to the MATLAB directory"
+    echo >&2 "-- ${BUILD_NAME} :: MATLAB :: Test - from: ${ParaMonteMATLABTest_SRC_DIR}/${MATLAB_TEST_FILENAME}"
+    echo >&2 "-- ${BUILD_NAME} :: MATLAB :: Test -   to: ${ParaMonteMATLABTest_BLD_DIR}/"
     cp "${ParaMonteMATLABTest_SRC_DIR}"/${MATLAB_TEST_FILENAME} "${ParaMonteMATLABTest_BLD_DIR}"/
     echo >&2
 
     # copy necessary input files in MATLAB's directory
 
-    echo >&2 "-- ${BUILD_NAME}MATLABTest - copying input files to the MATLAB directory"
-    echo >&2 "-- ${BUILD_NAME}MATLABTest - from: ${ParaMonteTest_SRC_DIR}/input"
-    echo >&2 "-- ${BUILD_NAME}MATLABTest -   to: ${ParaMonteMATLABTest_BLD_DIR}/input/"
+    echo >&2 "-- ${BUILD_NAME} :: MATLAB :: Test - copying input files to the MATLAB directory"
+    echo >&2 "-- ${BUILD_NAME} :: MATLAB :: Test - from: ${ParaMonteTest_SRC_DIR}/input"
+    echo >&2 "-- ${BUILD_NAME} :: MATLAB :: Test -   to: ${ParaMonteMATLABTest_BLD_DIR}/input/"
     cp -R "${ParaMonteTest_SRC_DIR}"/input "${ParaMonteMATLABTest_BLD_DIR}"/
     echo >&2
 
@@ -3241,7 +3246,7 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                     --output-file "${lcovOutputKernelFilePath}" \
                     || {
                         echo >&2
-                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} Code Coverage report generation via LCOV tool failed."
+                        echo >&2 "${pmwarn} Code Coverage report generation via LCOV tool failed."
                         echo >&2
                         #exit 1
                     }
@@ -3305,9 +3310,9 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                         if ! [ -f "${lcovOutputCombinedFilePath}" ]; then
                             cp "${lcovOutputKernelFilePath}" "${lcovOutputCombinedFilePath}" || {
                                 echo >&2
-                                echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} copy action failed:"
-                                echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} from: ${lcovOutputKernelFilePath}"
-                                echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn}   to: ${lcovOutputCombinedFilePath}"
+                                echo >&2 "${pmwarn} copy action failed:"
+                                echo >&2 "${pmwarn} from: ${lcovOutputKernelFilePath}"
+                                echo >&2 "${pmwarn}   to: ${lcovOutputCombinedFilePath}"
                                 #echo >&2 "-- ${BUILD_NAME}CodeCoverage - "
                                 #echo >&2 "-- ${BUILD_NAME}CodeCoverage - gracefully exiting The ParaMonte build script."
                                 #echo >&2
@@ -3372,7 +3377,7 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
 
                         } || {
                             echo >&2
-                            echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} Code Coverage report generation via genhtml failed."
+                            echo >&2 "${pmwarn} Code Coverage report generation via genhtml failed."
                             echo >&2
                             #exit 1
                         }
@@ -3394,13 +3399,13 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
 
                     else
                         echo >&2
-                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} Failed to find the GENHTML test coverage summarizer."
-                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} The genhtml program is required to generate the coverage report."
-                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} If you believe genhtml is already installed on your system,"
-                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} please make sure the path its directory is added to the"
-                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} PATH environmental variable of your terminal."
-                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} Once added, rerun the ParaMonte code coverage."
-                        #echo >&2 "-- ${BUILD_NAME}CodeCoverage - "
+                        echo >&2 "${pmwarn} Failed to find the GENHTML test coverage summarizer."
+                        echo >&2 "${pmwarn} The genhtml program is required to generate the coverage report."
+                        echo >&2 "${pmwarn} If you believe genhtml is already installed on your system,"
+                        echo >&2 "${pmwarn} please make sure the path its directory is added to the"
+                        echo >&2 "${pmwarn} PATH environmental variable of your terminal."
+                        echo >&2 "${pmwarn} Once added, rerun the ParaMonte code coverage."
+                        #echo >&2 ""
                         #echo >&2 "-- ${BUILD_NAME}CodeCoverage - gracefully exiting The ParaMonte build script."
                         #echo >&2
                         #exit 1
@@ -3409,12 +3414,12 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                 else
 
                     echo >&2
-                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} Failed to find the LCOV test coverage summarizer."
-                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} The lcov program is required to generate the coverage report."
-                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} If you believe lcov is already installed on your system,"
-                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} please make sure the path its directory is added to the"
-                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} PATH environmental variable of your terminal."
-                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} Once added, rerun the ParaMonte code coverage."
+                    echo >&2 "${pmwarn} Failed to find the LCOV test coverage summarizer."
+                    echo >&2 "${pmwarn} The lcov program is required to generate the coverage report."
+                    echo >&2 "${pmwarn} If you believe lcov is already installed on your system,"
+                    echo >&2 "${pmwarn} please make sure the path its directory is added to the"
+                    echo >&2 "${pmwarn} PATH environmental variable of your terminal."
+                    echo >&2 "${pmwarn} Once added, rerun the ParaMonte code coverage."
                     #echo >&2 "-- ${BUILD_NAME}CodeCoverage - "
                     #echo >&2 "-- ${BUILD_NAME}CodeCoverage - gracefully exiting The ParaMonte build script."
                     #echo >&2

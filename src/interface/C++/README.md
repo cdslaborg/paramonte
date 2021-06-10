@@ -256,10 +256,10 @@ Example usage instructions
 Citing ParaMonte  
 ================  
 
-The ParaMonte library is an honor-ware and its currency is acknowledgment and citations.  
+The ParaMonte library is an honor-ware, the currency of which is acknowledgment and citations.  
   
-If you use ParaMonte, please acknowledge it by citing the ParaMonte library's main publications 
-as listed in [ACKNOWLEDGMENT.md](https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md).  
+If you use ParaMonte or any ideas from the software, please acknowledge it by citing the ParaMonte library's 
+main publications as listed in [ACKNOWLEDGMENT.md](https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md).  
 
 Visit [the ParaMonte library homepage](https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work) 
 to access the PDF version of these files free of charge.  
