@@ -4,7 +4,6 @@ sudo: true
 branches:
   only:
     - main
-    #- dev
 
 before_cache:
   - if [ "${TRAVIS_OS_NAME}" = "osx" ]; then brew cleanup; fi
