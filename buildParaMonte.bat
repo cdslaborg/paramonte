@@ -330,12 +330,12 @@ for %%A in (
     ) do (  if exist %%A (
                 echo. -- !BUILD_SCRIPT_NAME! - %%A exists.
             ) else (
-                echo. 
-                echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: interface source files directory does not exist: %%A
-                echo. 
-                cd %~dp0
-                set ERRORLEVEL=1
-                exit /B 1
+                REM echo. 
+                echo. -- !BUILD_SCRIPT_NAME! - WARNING: The interface source files directory does not exist: %%A
+                REM echo. 
+                REM cd %~dp0
+                REM set ERRORLEVEL=1
+                REM exit /B 1
             )
 )
 echo.
