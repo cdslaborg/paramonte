@@ -5,7 +5,7 @@ If you use ParaMonte, please acknowledge it by citing the ParaMonte library's ma
 ### The ParaMonte Python library  
 
 +   Amir Shahmoradi, Fatemeh Bagheri, Joshua Alexander Osborne (2020). 
-    **Fast fully-reproducible streamlined serial/parallel Monte Carlo/MCMC simulations and visualizations via `ParaMonte::Python` library.**. 
+    **Fast fully-reproducible streamlined serial/parallel Monte Carlo/MCMC simulations and visualizations via ParaMonte Python library.**. 
     Journal of Open Source Software (JOSS), to be submitted, [**PDF link**](https://www.cdslab.org/pubs/2020_Shahmoradi_III.pdf).  
     **BibTeX citation entries:**  
     ```text  
@@ -13,7 +13,7 @@ If you use ParaMonte, please acknowledge it by citing the ParaMonte library's ma
     @article{2020arXiv201000724S,
            author = { {Shahmoradi}, Amir and {Bagheri}, Fatemeh and {Osborne}, Joshua Alexand
             er},
-            title = "{Fast fully-reproducible serial/parallel Monte Carlo and MCMC simulations and visualizations via ParaMonte::Python library}",
+            title = "{Fast fully-reproducible serial/parallel Monte Carlo and MCMC simulations and visualizations via ParaMonte Python library}",
           journal = {arXiv e-prints},
          keywords = {Computer Science - Mathematical Software, Astrophysics - Instrumentation and Methods for Astrophysics, Quantitative Biology - Quantitative Methods, Statistics - Machine Learning},
              year = 2020,

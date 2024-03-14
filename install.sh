@@ -1,733 +1,979 @@
 #!/bin/bash
 ####################################################################################################################################
 ####################################################################################################################################
-####
-####   MIT License
-####
-####   ParaMonte: plain powerful parallel Monte Carlo library.
-####
-####   Copyright (C) 2012-present, The Computational Data Science Lab
-####
-####   This file is part of the ParaMonte library.
-####
-####   Permission is hereby granted, free of charge, to any person obtaining a 
-####   copy of this software and associated documentation files (the "Software"), 
-####   to deal in the Software without restriction, including without limitation 
-####   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-####   and/or sell copies of the Software, and to permit persons to whom the 
-####   Software is furnished to do so, subject to the following conditions:
-####
-####   The above copyright notice and this permission notice shall be 
-####   included in all copies or substantial portions of the Software.
-####
-####   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-####   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-####   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-####   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-####   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-####   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
-####   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-####
-####   ACKNOWLEDGMENT
-####
-####   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-####   As per the ParaMonte library license agreement terms, if you use any parts of 
-####   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-####   work (education/research/industry/development/...) by citing the ParaMonte 
-####   library as described on this page:
-####
-####       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md
-####
+####                                                                                                                            ####
+####    ParaMonte: Parallel Monte Carlo and Machine Learning Library.                                                           ####
+####                                                                                                                            ####
+####    Copyright (C) 2012-present, The Computational Data Science Lab                                                          ####
+####                                                                                                                            ####
+####    This file is part of the ParaMonte library.                                                                             ####
+####                                                                                                                            ####
+####    LICENSE                                                                                                                 ####
+####                                                                                                                            ####
+####       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md                                                          ####
+####                                                                                                                            ####
 ####################################################################################################################################
 ####################################################################################################################################
-#
-#   NOTE: Do not change the contents of this file unless you know what the consequences are.
-#   This is the Bash script file that builds objects, shared libraries, 
-#   as well as the test and example binaries of the ParaMonte library on non-Windows systems.
-#   Upon invocation of this file from a Bash command-line interface, 
-#   this script will parse the user-provided flags and their values 
-#   to build the ParaMonte library.
-#   to redirect output to the external file install.sh.out, try:
-#
-#       install.sh >install.sh.out 2>&1
-#
-#   to redirect output to the external file install.sh.out and run the installation in background, try:
-#
-#       install.sh >install.sh.out 2>&1 &
-#       jobs; disown
 
-FILE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+####    See the file install.sh.usage in the same folder for usage guidelines of this Batch script.
+####    
+####    NOTE: Do not change the contents of this file unless you know what the consequences are.
+####    This is the Bash script file that builds objects, shared libraries,
+####    as well as the test and example binaries of the ParaMonte library in
+####    POSIX-like (non-Windows) environments (such as Unix Shell, Git Bash).
+####    Upon invocation of this file from a Bash command-line interface,
+####    this script will parse the user-provided flags and their values
+####    to build the ParaMonte library.
+####    
+####    To redirect the output to an external file (e.g., install.sh.out), try:
+####    
+####        install.sh >install.sh.out 2>&1
+####    
+####    to redirect output to the external file install.sh.out and run the installation in background, try:
+####    
+####        install.sh >install.sh.out 2>&1 &; jobs; disown
+####        jobs; disown
 
-ParaMonte_ROOT_DIR=${FILE_DIR}
-export ParaMonte_ROOT_DIR
-#export ParaMonte_ROOT_DIR="${ParaMonte_ROOT_DIR:-${PWD%/}}"
+# The following lines must appear in the specified order before anything else in the script.
+#paramonte_dir="${paramonte_dir:-${PWD%/}}"
+FILE_DIR="$( cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd )"
+caller_name="$(basename "${BASH_SOURCE[0]}")"
+source ./auxil/install.init.sh
+#workingDir="$(pwd)"
 
-if [[ ! -f "${ParaMonte_ROOT_DIR}/src/kernel/ParaMonte_mod.f90" ]]; then
-  echo >&2
-  echo >&2 "-- ParaMonte - FATAL: build failed."
-  echo >&2 "-- ParaMonte - FATAL: Please run this script inside the top-level ParaMonte library root directory."
-  echo >&2 "-- ParaMonte - FATAL: This is the directory which contains this file in the GitHub repository of ParaMonte."
-  echo >&2
-  exit 1
-fi
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# Reset the script arguments.
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-echo "$(cat ./auxil/.ParaMonteBanner)"
+if [ 0 -lt 1 ]; then # just to allow toggling in notepad++.
 
-usage()
-{
-    echo "$(cat ${ParaMonte_ROOT_DIR}/install.sh.usage.txt)"
-}
+    unset bdir
+    export FOR_COARRAY_NUM_IMAGES=3
+    ddir="${paramonte_dir}/bin"
+    flag_ddir="-Dddir=${ddir}"
 
-unset LANG_LIST
-unset BTYPE_LIST
-unset LTYPE_LIST
-unset PARALLELISM_LIST
-unset MEMORY_LIST
-unset ParaMonteExample_RUN_ENABLED
-unset Fortran_COMPILER_PATH
-unset MPIEXEC_PATH
+    unset list_build
+    unset list_checking
+    unset list_fc
+    unset list_lang
+    unset list_lib
+    unset list_mem
+    unset list_par
 
-PMCS_LIST="none"
-fresh_flag=""
-local_flag=""
-yes_to_all_flag=""
-gcc_bootstrap_flag=""
-FOR_COARRAY_NUM_IMAGES=3
-MatDRAM_ENABLED="false"
-perfprof_flag=""
-codecov_flag=""
-dryrun_flag=""
-deploy_flag=""
-njob_flag=""
-TTYPE=""
+    unset flag_bench
+    unset flag_benchpp
+    unset flag_blas
+    unset flag_codecov
+    unset flag_cfi
+    unset flag_deps
+    unset flag_exam
+    unset flag_exampp
+    unset flag_fpp
+    unset flag_fresh
+    unset flag_j
+    unset flag_lapack
+    unset flag_matlabdir
+    unset flag_me
+    unset flag_mod
+    unset flag_nproc
+    unset flag_perfprof
+    unset flag_pdt
+    unset flag_purity
+    unset flag_test
 
-while [ "$1" != "" ]; do
-    case $1 in
-        -L | --lang )           shift
-                                LANG_LIST="$1"
-                                ;;
-        -s | --compiler_suite ) shift
-                                PMCS_LIST="$1"
-                                ;;
-        -b | --build )          shift
-                                BTYPE_LIST="$1"
-                                ;;
-        -l | --lib )            shift
-                                LTYPE_LIST="$1"
-                                ;;
-        -p | --par )            shift
-                                PARALLELISM_LIST="$1"
-                                ;;
-        -m | --mem )            shift
-                                MEMORY_LIST="$1"
-                                ;;
-        -t | --test )           shift
-                                TTYPE="$1"
-                                ;;
-        -x | --exam_enabled )   shift
-                                ParaMonteExample_RUN_ENABLED="$1"
-                                ;;
-        -D | --deploy )         deploy_flag="--deploy"
-                                ;;
-        -f | --fortran )        shift
-                                Fortran_COMPILER_PATH="$1"
-                                ;;
-        -M | --mpiexec )        shift
-                                MPIEXEC_PATH="$1"
-                                ;;
-        -F | --fresh )          fresh_flag="--fresh"
-                                ;;
-        -O | --local )          local_flag="--local"
-                                ;;
-        -d | --dryrun )         dryrun_flag="--dryrun"
-                                ;;
-        -y | --yes-to-all )     yes_to_all_flag="--yes-to-all"
-                                ;;
-        -B | --bootstrap )      gcc_bootstrap_flag="--bootstrap"
-                                ;;
-        -a | --matdram )        MatDRAM_ENABLED="true"
-                                ;;
-        -c | --codecov )        codecov_flag="--codecov"
-                                ;;
-        -P | --perfprof )       perfprof_flag="--perfprof"
-                                ;;
-        -n | --nproc )          shift
-                                FOR_COARRAY_NUM_IMAGES="$1"
-                                ;;
-        -j | --njob )           shift
-                                njob_flag="-j $1"
-                                ;;
-        -h | --help )           usage
-                                echo >&2 ""
-                                echo >&2 ""
-                                exit
-                                ;;
-        * )                     usage
-                                echo >&2 ""
-                                echo >&2 "-- ParaMonte - FATAL: The specified flag $1 does not exist."
-                                echo >&2 ""
-                                echo >&2 "-- ParaMonte - gracefully exiting."
-                                echo >&2 ""
-                                echo >&2 ""
-                                exit 1
-    esac
-    shift
-done
+    unset flag_ski
+    unset flag_iki
+    unset flag_lki
+    unset flag_cki
+    unset flag_rki
 
-if ! [ "${codecov_flag}" = "" ]; then
-    if [ -z ${LANG_LIST+x} ]; then
-        LANG_LIST="fortran"
-    fi
-    if [ -z ${BTYPE_LIST+x} ]; then
-        BTYPE_LIST="debug"
-    fi
-    if [ -z ${LTYPE_LIST+x} ]; then
-        LTYPE_LIST="static"
-    fi
-    if [ -z ${MEMORY_LIST+x} ]; then
-        MEMORY_LIST="heap"
-    fi
-    if [ -z ${PARALLELISM_LIST+x} ]; then
-        PARALLELISM_LIST="none"
-    fi
-fi
+    while [ "$1" != "" ]; do
+        case "$1" in
 
-####################################################################################################################################
-# determine whether to build MatDRAM or not. NOTE: If true, all other builds will be disabled. NOT IMPLEMENTED YET. NOT NEEDED.
-####################################################################################################################################
+            #### list args
 
-export MatDRAM_ENABLED
-if [ "${MatDRAM_ENABLED}" = "true" ]; then
-    chmod +x buildMatDRAM.sh
-    ./buildMatDRAM.sh
-    exit 0
-fi
+            --build )       shift
+                            verifyArgNotKey "$1" --build
+                            verifyArgNotEmpty "$1" --build
+                            list_build="$1"
+                            ;;
 
-####################################################################################################################################
-# auxil
-####################################################################################################################################
+            --checking )    shift
+                            verifyArgNotKey "$1" --checking
+                            verifyArgNotEmpty "$1" --checking
+                            list_checking="$1"
+                            ;;
 
-getLowerCaseChar()
-{
-    if [[ $1 =~ [A-Z] ]];then
-        n=$(printf "%d" "'$1")
-        n=$((n+32))
-        printf \\$(printf "%o" "$n")
-    else
-        printf "%s" "$1"
-    fi
-}
+            --fc )          shift
+                            verifyArgNotKey "$1" --fc
+                            verifyArgNotEmpty "$1" --fc
+                            list_fc="$1"
+                            ;;
 
-getUpperCaseChar()
-{
-    if [[ $1 =~ [a-z] ]];then
-        n=$(printf "%d" "'$1")
-        n=$((n-32))
-        printf \\$(printf "%o" "$n")
-    else
-        printf "%s" "$1"
-    fi
-}
+            --lang )        shift
+                            verifyArgNotKey "$1" --lang
+                            verifyArgNotEmpty "$1" --lang
+                            list_lang="$1"
+                            ;;
 
-getLowerCase() {
-    word="$@"
-    for((i=0;i<${#word};i++)); do
-        ch="${word:$i:1}"
-        getLowerCaseChar "$ch"
-    done
-}
+            --lib )         shift
+                            verifyArgNotKey "$1" --lib
+                            verifyArgNotEmpty "$1" --lib
+                            list_lib="$1"
+                            ;;
 
-getUpperCase() {
-    word="$@"
-    for((i=0;i<${#word};i++)); do
-        ch="${word:$i:1}"
-        getUpperCaseChar "$ch"
-    done
-}
+            --mem )         shift
+                            verifyArgNotKey "$1" --mem
+                            verifyArgNotEmpty "$1" --mem
+                            list_mem="$1"
+                            ;;
 
-isnumeric() {
-    isNumericValue=true
-    word="$@"
-    for((i=0;i<${#word};i++)); do
-        ch="${word:$i:1}"
-        if ! [[ $ch =~ [0-9] ]];then
-            isNumericValue=false
-            break
-        fi
-    done
-    echo $isNumericValue
-}
+            --par )         shift
+                            verifyArgNotKey "$1" --par
+                            verifyArgNotEmpty "$1" --par
+                            list_par="$1"
+                            ;;
 
-####################################################################################################################################
-# verify arguments
-####################################################################################################################################
+            #### flag args
 
-reportConflict()
-{
-    usage
-    echo >&2 ""
-    echo >&2 "-- ParaMonte - WARNING: conflicting flag values detected."
-    echo >&2 "-- ParaMonte - WARNING: $1"
-    echo >&2 "-- ParaMonte - WARNING: The requested build configuration will ignored."
-    echo >&2 "-- ParaMonte - skipping..."
-    echo >&2 ""
-    #exit 1
-}
+            --bench )       shift
+                            verifyArgNotKey "$1" --bench
+                            verifyArgNotEmpty "$1" --bench
+                            flag_bench="-Dbench=$1"
+                            ;;
 
-reportBadValue()
-{
-    usage
-    echo >&2 ""
-    echo >&2 "-- ParaMonte - FATAL: The requested input value $2 specified with "
-    echo >&2 "-- ParaMonte - FATAL: the input flag $1 is not supported."
-    if ! [ -z ${3+x} ]; then
-    echo >&2 "-- ParaMonte - FATAL: $3"
-    fi
-    echo >&2 ""
-    echo >&2 "-- ParaMonte - gracefully exiting."
-    echo >&2 ""
-    echo >&2 ""
-    exit 1
-}
+            --benchpp )     shift
+                            verifyArgNotKey "$1" --benchpp
+                            verifyArgNotEmpty "$1" --benchpp
+                            flag_benchpp="-Dbenchpp=$1"
+                            ;;
 
-if ! [ -z ${LANG_LIST+x} ]; then
-    for LANG in $LANG_LIST; do
-        if  [[ $LANG != [cC]
-            && ($LANG != "c++" && $LANG != "C++" && $LANG != [cC][pP][pP])
-            && $LANG != [fF][oO][rR][tT][rR][aA][nN]
-            && $LANG != [mM][aA][tT][lL][aA][bB]
-            && $LANG != [pP][yY][tT][hH][oO][nN] ]]; then
-            reportBadValue "-L or --lang" $LANG
-        fi
-    done
-    if [ "${LANG_LIST}" = "" ]; then
-        unset LANG_LIST
-    else
-        LANG_LIST="$(getLowerCase $LANG_LIST)"
-    fi
-fi
+            --blas )        shift
+                            verifyArgNotKey "$1" --blas
+                            verifyArgNotEmpty "$1" --blas
+                            flag_blas="-Dblas=$1"
+                            ;;
 
-if ! [ -z ${PMCS_LIST+x} ]; then
-    for PMCS in $PMCS_LIST; do
-        if  [[ $PMCS != [nN][oO][nN][eE] 
-            && $PMCS != [iI][nN][tT][eE][lL]
-            && $PMCS != [gG][nN][uU] ]]; then
-            reportBadValue "-s or --compiler_suite" $PMCS
-        fi
-    done
-    if [ "${PMCS_LIST}" = "" ]; then
-        unset PMCS_LIST
-    else
-        PMCS_LIST="$(getLowerCase $PMCS_LIST)"
-    fi
-fi
+            --codecov )     shift
+                            verifyArgNotKey "$1" --codecov
+                            verifyArgNotEmpty "$1" --codecov
+                            flag_codecov="-Dcodecov=$1"
+                            ;;
 
-if ! [ -z ${BTYPE_LIST+x} ]; then
-    for BTYPE in $BTYPE_LIST; do
-        if  [[ $BTYPE != [rR][eE][lL][eE][aA][sS][eE]
-            && $BTYPE != [tT][eE][sS][tT][iI][nN][gG] 
-            && $BTYPE != [dD][eE][bB][uU][gG] ]]; then
-            reportBadValue "-b or --build" $BTYPE
-        fi
-    done
-    if [ "${BTYPE_LIST}" = "" ]; then
-        unset BTYPE_LIST
-    else
-        BTYPE_LIST="$(getLowerCase $BTYPE_LIST)"
-    fi
-fi
+            --deps )        shift
+                            verifyArgNotKey "$1" --deps
+                            verifyArgNotEmpty "$1" --deps
+                            flag_deps="-Ddeps=$1"
+                            ;;
 
-if ! [ -z ${LTYPE_LIST+x} ]; then
-    LTYPE_LIST=${LTYPE_LIST/dynamic/shared}
-    for LTYPE in $LTYPE_LIST; do
-        if  [[ $LTYPE != [sS][tT][aA][tT][iI][cC] 
-            && $LTYPE != [sS][hH][aA][rR][eE][dD] 
-            ]]; then
-            reportBadValue "-l or --lib" $LTYPE
-        fi
-    done
-    if [ "${LTYPE_LIST}" = "" ]; then
-        unset LTYPE_LIST
-    else
-        LTYPE_LIST="$(getLowerCase $LTYPE_LIST)"
-    fi
-fi
+            --exam )        shift
+                            verifyArgNotKey "$1" --exam
+                            verifyArgNotEmpty "$1" --exam
+                            flag_exam="-Dexam=$1"
+                            ;;
 
-if ! [ -z ${PARALLELISM_LIST+x} ]; then
-    for PARALLELISM in $PARALLELISM_LIST; do
-        if  [[ $PARALLELISM != [nN][oO][nN][eE] 
-            && $PARALLELISM != [cC][aA][fF][sS][iI][nN][gG][lL][eE] 
-            && $PARALLELISM != [cC][aA][fF][sS][hH][aA][rR][eE][dD] 
-            && $PARALLELISM != [cC][aA][fF][dD][iI][sS][tT][rR][iI][bB][uU][tT][eE][dD] 
-            && $PARALLELISM != [mM][pP][iI] 
-            ]]; then
-            reportBadValue "-p or --par" $PARALLELISM
-        fi
-    done
-    if [ "${PARALLELISM_LIST}" = "" ]; then
-        unset PARALLELISM_LIST
-    else
-        PARALLELISM_LIST="$(getLowerCase $PARALLELISM_LIST)"
-    fi
-fi
+            --exampp )      shift
+                            verifyArgNotKey "$1" --exampp
+                            verifyArgNotEmpty "$1" --exampp
+                            flag_exampp="-Dexampp=$1"
+                            ;;
 
-if ! [ -z ${MEMORY_LIST+x} ]; then
-    for MEMORY in $MEMORY_LIST; do
-        if  [[ $MEMORY != [hH][eE][aA][pP] 
-            && $MEMORY != [sS][tT][aA][cC][kK] ]]; then
-            reportBadValue "-m or --memory" $MEMORY
-        fi
-    done
-    if [ "${MEMORY_LIST}" = "" ]; then
-        unset MEMORY_LIST
-    else
-        MEMORY_LIST="$(getLowerCase $MEMORY_LIST)"
-    fi
-fi
+            --cfi )         shift
+                            verifyArgNotKey "$1" --cfi
+                            verifyArgNotEmpty "$1" --cfi
+                            flag_cfi="-Dcfi=$1"
+                            ;;
 
-# Check the value of Testing TYPE. Normally, especially when build is for production, 
-# NO testing should be done since testing enables the error handling which requires MPI/CAF 
-# communications when the library is built for parallel simulations.
-# However, when code coverage analysis is done, 
-# all tests must be enabled.
+            --fpp )         shift
+                            verifyArgNotKey "$1" --fpp
+                            verifyArgNotEmpty "$1" --fpp
+                            flag_fpp="-Dfpp=$1"
+                            ;;
 
-if [ "${TTYPE}" = "" ]; then
-    if [ "${codecov_flag}" = "" ]; then
-        test_type_flag="--test none"
-    else
-        test_type_flag="--test all"
-    fi
-elif [[ $TTYPE == [nN][oO][nN][eE] || $TTYPE == [aA][lL][lL] || $TTYPE == [bB][aA][sS][iI][cC] || $TTYPE == [sS][aA][mM][pP][lL][eE][rR] ]]; then
-    test_type_flag="--test $TTYPE"
-else
-    reportBadValue "-t or --test" $TTYPE
-fi
+            --fresh )       shift
+                            verifyArgNotKey "$1" --fresh
+                            verifyArgNotEmpty "$1" --fresh
+                            flag_fresh="-Dfresh=$1"
+                            ;;
 
-if ! [ -z ${ParaMonteExample_RUN_ENABLED+x} ]; then
-    if  [[ $ParaMonteExample_RUN_ENABLED != [tT][rR][uU][eE] 
-        && $ParaMonteExample_RUN_ENABLED != [fF][aA][lL][sS][eE] ]]; then
-        reportBadValue "-x or --exam_enabled" $ParaMonteExample_RUN_ENABLED
-    fi
-    if [ "${ParaMonteExample_RUN_ENABLED}" = "" ]; then
-        unset ParaMonteExample_RUN_ENABLED
-    else
-        ParaMonteExample_RUN_ENABLED="$(getLowerCase $ParaMonteExample_RUN_ENABLED)"
-    fi
-fi
+            --lapack )      shift
+                            verifyArgNotKey "$1" --lapack
+                            verifyArgNotEmpty "$1" --lapack
+                            flag_lapack="-Dlapack=$1"
+                            ;;
 
-fortran_flag=""
-if ! [ -z ${Fortran_COMPILER_PATH+x} ]; then
-    if [[ -f "${Fortran_COMPILER_PATH}" ]]; then
-        fortran_flag="--fortran ${Fortran_COMPILER_PATH}"
-    else
-        if [ "${Fortran_COMPILER_PATH}" = "" ]; then
-            unset Fortran_COMPILER_PATH
-        else
-            reportBadValue "-f or --fortran" "${Fortran_COMPILER_PATH}" "The value specified must be the path to the Fortran compiler executable file."
-        fi
-    fi
-fi
+            --matlabdir )   shift
+                            verifyArgNotKey "$1" --matlabdir
+                            verifyArgNotEmpty "$1" --matlabdir
+                            flag_matlabdir="-Dmatlabdir=\"$1\""
+                            ;;
 
-mpiexec_flag=""
-if ! [ -z ${MPIEXEC_PATH+x} ]; then
-    if [[ -f "${MPIEXEC_PATH}" ]]; then
-        mpiexec_flag="--mpiexec ${MPIEXEC_PATH}"
-    else
-        if [ "${MPIEXEC_PATH}" = "" ]; then
-            unset MPIEXEC_PATH
-        else
-            reportBadValue "-M or --mpiexec" "${MPIEXEC_PATH}" "The value specified must be the path to the mpiexec executable file."
-        fi
-    fi
-fi
+            --me )          shift
+                            verifyArgNotKey "$1" --me
+                            verifyArgNotEmpty "$1" --me
+                            flag_me="-Dme=\"$1\""
+                            ;;
 
-nproc_flag=""
-if ! [ -z ${FOR_COARRAY_NUM_IMAGES+x} ]; then
-    isNumericValue="$(isnumeric ${FOR_COARRAY_NUM_IMAGES})"
-    if [ "${isNumericValue}" = "true" ]; then
-        nproc_flag="--nproc ${FOR_COARRAY_NUM_IMAGES}"
-    else
-        reportBadValue "-n or --nproc" $FOR_COARRAY_NUM_IMAGES "The number of processors must be a positive integer."
-    fi
-fi
+            --mod )         shift
+                            verifyArgNotKey "$1" --mod
+                            verifyArgNotEmpty "$1" --mod
+                            flag_mod="-Dmod=$1"
+                            ;;
 
-####################################################################################################################################
-# verify arguments consistencies
-####################################################################################################################################
-
-if ! [ -z ${PARALLELISM_LIST+x} ]; then
-    for PARALLELISM in $PARALLELISM_LIST; do
-        if  [[ "${PARALLELISM}" =~ .*"caf".* ]]; then
-            for LANG in $LANG_LIST; do
-                if  [ "${LANG}" != "fortran" ]; then
-                    reportConflict "Coarray Fortran parallelism cannot be used to build the ParaMonte library for the ${LANG} language."
-                fi
-            done
-            if  [[ "${PARALLELISM}" =~ .*"mpi".* ]]; then
-                reportConflict "Coarray Fortran parallelism cannot be mixed with MPI."
-            fi
-            for LTYPE in $LTYPE_LIST; do
-                if  [ "${LTYPE}" = "shared" ]; then
-                    reportConflict "Coarray Fortran parallelism cannot be used with shared library build option."
-                fi
-            done
-        fi
-    done
-fi
-
-# avoid static library build for non-Fortran languages
-
-if ! [ -z ${LANG_LIST+x} ]; then
-    for LANG in $LANG_LIST; do
-        if ! [ "${LANG}" = "fortran" ]; then
-            for LTYPE in $LTYPE_LIST; do
-                if  [ "${LTYPE}" = "static" ]; then
-                    reportConflict "ParaMonte static library build is not possible for usage from non-Fortran languages."
-                fi
-            done
-        fi
-    done
-fi
-
-####################################################################################################################################
-# configure build
-####################################################################################################################################
-
-if [ -z ${LANG_LIST+x} ]; then
-    LANG_LIST="c c++ fortran matlab python"
-fi
-# # CFI_ENABLED_LIST=""
-# C_IS_MISSING=true
-# Fortran_IS_MISSING=true
-# MATLAB_IS_MISSING=true
-# Python_IS_MISSING=true
-# for LANG in $LANG_LIST; do
-    # if [ "${LANG}" = "c" ]; then
-        # if [ "${C_IS_MISSING}" = "true" ]; then
-            # # CFI_ENABLED_LIST="${CFI_ENABLED_LIST} true"
-            # C_IS_MISSING=false
-        # fi
-    # fi
-    # if [ "${LANG}" = "fortran" ]; then if [ "${Fortran_IS_MISSING}" = "true" ]; then Fortran_IS_MISSING=false; fi; fi
-    # if [ "${LANG}" = "matlab" ]; then if [ "${MATLAB_IS_MISSING}" = "true" ]; then MATLAB_IS_MISSING=false; fi; fi
-    # if [ "${LANG}" = "python" ]; then if [ "${Python_IS_MISSING}" = "true" ]; then Python_IS_MISSING=false; fi; fi
-# done
-
-if [ -z ${PMCS_LIST+x} ]; then
-    PMCS_LIST="none"
-fi
-if [ -z ${BTYPE_LIST+x} ]; then
-    #BTYPE_LIST="release testing debug"
-    BTYPE_LIST="release debug"
-fi
-if [ -z ${LTYPE_LIST+x} ]; then
-    #LTYPE_LIST="static shared"
-    LTYPE_LIST="shared"
-fi
-if [ -z ${PARALLELISM_LIST+x} ]; then
-    PARALLELISM_LIST="none mpi cafsingle cafshared cafdistributed"
-fi
-if [ -z ${MEMORY_LIST+x} ]; then
-    #MEMORY_LIST="stack heap"
-    MEMORY_LIST="heap"
-fi
-if [ -z ${ParaMonteTest_RUN_ENABLED+x} ]; then
-    ParaMonteTest_RUN_ENABLED="true"
-fi
-if [ -z ${ParaMonteExample_RUN_ENABLED+x} ]; then
-    ParaMonteExample_RUN_ENABLED="true"
-fi
-
-if [ "${LANG_LIST}" = "matlab" ] || [ "${LANG_LIST}" = "python" ]; then
-    #MEMORY_LIST="heap"
-    LTYPE_LIST="shared"
-    if [ -z ${PARALLELISM_LIST+x} ]; then PARALLELISM_LIST="none mpi"; fi
-fi
-
-for PMCS in $PMCS_LIST; do
-
-    #for CFI_ENABLED in $CFI_ENABLED_LIST; do
-    for INTERFACE_LANGUAGE in $LANG_LIST; do
-
-        for BTYPE in $BTYPE_LIST; do
-
-            for LTYPE in $LTYPE_LIST; do
-
-                for MEMORY in $MEMORY_LIST; do
-
-                    for PARALLELISM in $PARALLELISM_LIST; do
-
-                        BENABLED=true
-
-                        if [ "${INTERFACE_LANGUAGE}" = "cpp" ]; then
-                            interface_language_flag="--lang c++"
-                        else
-                            interface_language_flag="--lang ${INTERFACE_LANGUAGE}"
-                        fi
-                        if [ "${INTERFACE_LANGUAGE}" = "fortran" ]; then
-                            CFI_ENABLED="false"
-                        else
-                            CFI_ENABLED="true"
-                        fi
-                        cfi_enabled_flag="--cfi_enabled ${CFI_ENABLED}"
-
-                        #test_enabled_flag="--test_enabled ${ParaMonteTest_RUN_ENABLED}"
-                        exam_enabled_flag="--exam_enabled ${ParaMonteExample_RUN_ENABLED}"
-
-                        if [ "${PMCS}" = "none" ]; then
-                           compiler_suite_flag=""
-                        else
-                           compiler_suite_flag="--compiler_suite ${PMCS}"
-                        fi
-
-                        caftype_flag="--caf none"
-                        mpi_enabled_flag="--mpi_enabled false"
-                        if [[ "${PARALLELISM}" =~ .*"caf".* ]]; then
-                            caftype_flag="--caf ${PARALLELISM:3}"
-                        elif [[ "${PARALLELISM}" =~ .*"mpi".* ]]; then
-                            mpi_enabled_flag="--mpi_enabled true"
-                        fi
-                        lib_flag="--lib ${LTYPE}"
-                        build_flag="--build ${BTYPE}"
-                        heap_enabled_flag="--heap_enabled true"
-                        if [ "${MEMORY}" = "stack" ]; then
-                            heap_enabled_flag="--heap_enabled false"
-                        fi
-
-                        # verify no conflict
-
-                        # avoid static library build for non-Fortran languages
-
-                        if [ "${CFI_ENABLED}" = "true" ] && [ "${LTYPE}" = "static" ]; then
-                            BENABLED=false
-                        fi
-
-                        # avoid caf library builds for non-Fortran languages
-
-                        if [[ "${PARALLELISM}" =~ .*"caf".* ]]; then
-                            if [ "${CFI_ENABLED}" = "true" ] || [ "${LTYPE}" = "shared" ]; then
-                                BENABLED=false
+            --nproc )       shift
+                            verifyArgNotKey "$1" --nproc
+                            verifyArgNotEmpty "$1" --nproc
+                            isNumericValue="$(isnumeric ${nproc})"
+                            if ! [ "${isNumericValue}" = "true" ]; then
+                                reportBadValue "--nproc" $nproc "The spoecified number of processors must be a positive integer."
                             fi
-                        fi
+                            FOR_COARRAY_NUM_IMAGES="$1"
+                            flag_nproc="-Dnproc=$1"
+                            ;;
 
-                        # avoid stack memory allocations for shared library builds
+            --perfprof )    shift
+                            verifyArgNotKey "$1" --perfprof
+                            verifyArgNotEmpty "$1" --perfprof
+                            flag_perfprof="-Dperfprof=$1"
+                            ;;
 
-                        if ! [ "${LTYPE}" = "shared" ]; then
-                        #if [ "${LTYPE}" = "shared" ]; then
-                        #    if [ "${MEMORY}" = "stack" ]; then BENABLED=false; fi
-                        #else
-                            if [ "${INTERFACE_LANGUAGE}" = "matlab" ] || [ "${INTERFACE_LANGUAGE}" = "python" ]; then BENABLED=false; fi
-                        fi
+            --pdt )         shift
+                            verifyArgNotKey "$1" --pdt
+                            verifyArgNotEmpty "$1" --pdt
+                            flag_pdt="-Dpdt=$1"
+                            ;;
 
-                        if [ "${BENABLED}" = "true" ]; then
+            --purity )      shift
+                            verifyArgNotKey "$1" --purity
+                            verifyArgNotEmpty "$1" --purity
+                            flag_purity="-Dpurity=$1"
+                            ;;
 
+            --test )        shift
+                            verifyArgNotKey "$1" --test
+                            verifyArgNotEmpty "$1" --test
+                            flag_test="-Dtest=$1"
+                            ;;
+
+            #### flag args: type kind
+
+            --ski )         shift
+                            verifyArgNotKey "$1" --ski
+                            verifyArgNotEmpty "$1" --ski
+                            flag_ski="-Dski=$1"
+                            ;;
+
+            --iki )         shift
+                            verifyArgNotKey "$1" --iki
+                            verifyArgNotEmpty "$1" --iki
+                            flag_iki="-Diki=$1"
+                            ;;
+
+            --lki )         shift
+                            verifyArgNotKey "$1" --lki
+                            verifyArgNotEmpty "$1" --lki
+                            flag_lki="-Dlki=$1"
+                            ;;
+
+            --cki )         shift
+                            verifyArgNotKey "$1" --cki
+                            verifyArgNotEmpty "$1" --cki
+                            flag_cki="-Dcki=$1"
+                            ;;
+
+            --rki )         shift
+                            verifyArgNotKey "$1" --rki
+                            verifyArgNotEmpty "$1" --rki
+                            flag_rki="-Drki=$1"
+                            ;;
+
+            #### other args
+
+            --bdir )        shift
+                            verifyArgNotKey "$1" --bdir
+                            verifyArgNotEmpty "$1" --bdir
+                            bdir="$1"
+                            ;;
+
+            --ddir )        shift
+                            verifyArgNotKey "$1" --ddir
+                            verifyArgNotEmpty "$1" --ddir
+                            ddir="$1"
+                            flag_ddir="-Dddir=${ddir}"
+                            ;;
+
+            --help )        usage
                             echo >&2 ""
-                            echo >&2 "************************************************************************************************************************************"
                             echo >&2 ""
-                            echo >&2 "-- ParaMonte - invoking: "
-                            echo >&2 ""
-                            echo >&2 "                          buildParaMonte.sh \ "
-                            echo >&2 "                          ${interface_language_flag} \ "
-                            if ! [ "${compiler_suite_flag}" = "" ]; then
-                            echo >&2 "                          ${compiler_suite_flag} \ "
-                            fi
-                            echo >&2 "                          ${build_flag} \ "
-                            echo >&2 "                          ${lib_flag} \ "
-                            echo >&2 "                          ${cfi_enabled_flag} \ "
-                            echo >&2 "                          ${heap_enabled_flag} \ "
-                            echo >&2 "                          ${mpi_enabled_flag} \ "
-                            echo >&2 "                          ${caftype_flag} \ "
-                            echo >&2 "                          ${test_type_flag} \ "
-                            echo >&2 "                          ${exam_enabled_flag} \ "
-                            echo >&2 "                          ${deploy_flag} \ "
-                            if ! [ "${yes_to_all_flag}" = "" ]; then
-                            echo >&2 "                          ${yes_to_all_flag} \ "
-                            fi
-                            if ! [ "${fresh_flag}" = "" ]; then
-                            echo >&2 "                          ${fresh_flag} \ "
-                            fi
-                            if ! [ "${local_flag}" = "" ]; then
-                            echo >&2 "                          ${local_flag} \ "
-                            fi
-                            if ! [ "${dryrun_flag}" = "" ]; then
-                            echo >&2 "                          ${dryrun_flag} \ "
-                            fi
-                            if ! [ "${codecov_flag}" = "" ]; then
-                            echo >&2 "                          ${codecov_flag} \ "
-                            fi
-                            if ! [ "${perfprof_flag}" = "" ]; then
-                            echo >&2 "                          ${perfprof_flag} \ "
-                            fi
-                            if ! [ "${gcc_bootstrap_flag}" = "" ]; then
-                            echo >&2 "                          ${gcc_bootstrap_flag} \ "
-                            fi
-                            if ! [ "${fortran_flag}" = "" ]; then
-                            echo >&2 "                          ${fortran_flag} \ "
-                            fi
-                            if ! [ "${mpiexec_flag}" = "" ]; then
-                            echo >&2 "                          ${mpiexec_flag} \ "
-                            fi
-                            if ! [ "${nproc_flag}" = "" ]; then
-                            echo >&2 "                          ${nproc_flag} \ "
-                            fi
-                            if ! [ "${njob_flag}" = "" ]; then
-                            echo >&2 "                          ${njob_flag} \ "
-                            fi
-                            echo >&2 "                          --clean"
-                            echo >&2 ""
-                            echo >&2 "************************************************************************************************************************************"
-                            echo >&2 ""
+                            exit
+                            ;;
 
-                            (cd ${ParaMonte_ROOT_DIR} && \
-                            chmod +x ./buildParaMonte.sh && \
-                            ./buildParaMonte.sh \
-                            ${interface_language_flag} \
-                            ${compiler_suite_flag} \
-                            ${build_flag} \
-                            ${lib_flag} \
-                            ${cfi_enabled_flag} \
-                            ${heap_enabled_flag} \
-                            ${mpi_enabled_flag} \
-                            ${caftype_flag} \
-                            ${test_type_flag} \
-                            ${exam_enabled_flag} \
-                            ${yes_to_all_flag} \
-                            ${fresh_flag} \
-                            ${local_flag} \
-                            ${deploy_flag} \
-                            ${dryrun_flag} \
-                            ${codecov_flag} \
-                            ${perfprof_flag} \
-                            ${gcc_bootstrap_flag} \
-                            ${fortran_flag} \
-                            ${mpiexec_flag} \
-                            ${nproc_flag} \
-                            ${njob_flag} \
-                            ) || {
+            -j )            shift
+                            verifyArgNotKey "$1" -j
+                            verifyArgNotEmpty "$1" -j
+                            flag_j="-j $1"
+                            ;;
+
+            * )             usage
                             echo >&2 ""
-                            echo >&2 "-- ParaMonte "
-                            echo >&2 "-- ParaMonte - Fatal Error: The ParaMonte library build failed for the following configuration:"
-                            echo >&2 "-- ParaMonte - "
-                            echo >&2 "-- ParaMonte -               language: ${INTERFACE_LANGUAGE}"
-                            echo >&2 "-- ParaMonte -             build type: ${BTYPE}"
-                            echo >&2 "-- ParaMonte -           library type: ${LTYPE}"
-                            echo >&2 "-- ParaMonte -      memory allocation: ${MEMORY}"
-                            echo >&2 "-- ParaMonte -            parallelism: ${PARALLELISM}"
-                            echo >&2 "-- ParaMonte - "
-                            echo >&2 "-- ParaMonte - If you cannot identify the cause of the failure, please report this error at: "
-                            echo >&2 "-- ParaMonte - "
-                            echo >&2 "-- ParaMonte -     https://github.com/cdslaborg/paramonte/issues"
-                            echo >&2 "-- ParaMonte - "
-                            echo >&2 "-- ParaMonte - gracefully exiting..."
+                            echo >&2 "-- ParaMonte - FATAL: The specified flag $1 does not exist."
+                            echo >&2 "-- ParaMonte - FATAL: The specified flag $1 does not exist."
                             echo >&2 ""
-                            cd "${ParaMonte_ROOT_DIR}"
-                            #return
+                            echo >&2 "-- ParaMonte - gracefully exiting."
+                            echo >&2 ""
+                            echo >&2 ""
                             exit 1
-                            }
+        esac
+        shift
+    done
 
-                            fresh_flag=""
+fi
 
-                        fi
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# Set the default values for the input command line arguments.
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+if [ 0 -lt 1 ]; then # just to allow toggling in notepad++.
+
+    #### list args
+
+    if  [ -z ${list_build+x} ]; then
+        list_build="release"
+    else
+        list_build="$(getLowerCase "$list_build")"
+    fi
+
+    if  [ -z ${list_checking+x} ]; then
+        list_checking="nocheck"
+    else
+        list_checking="$(getLowerCase "$list_checking")"
+    fi
+
+    if [ -z ${list_fc+x} ]; then
+        #   On Windows OS, particularly with MinGW, CMake fails if the specified compiler name or path does not have the
+        #   the file extension ".exe". Given that this extension is unlikely to change in the future, and that it is not used
+        #   on Unix systems, try suffixing the extension to the compiler file path. If it fails, use the default specified path.
+        compilers=("ifort" "ifx" "gfortran-13" "gfortran-12" "gfortran-11" "gfortran-10" "gfortran")
+        if [ "${os}" = "mingw" ] || [ "${os}" = "msys" ] || [ "${os}" = "cygwin" ]; then
+            extensions=(".exe" "")
+        else
+            extensions=("")
+        fi
+        for compiler in "${compilers[@]}"; do
+            for extension in "${extensions[@]}"; do
+                echo >&2 "${pmnote} Checking existence of compiler \"${compiler}\" executable with extension \"${extension}\""
+                # check if the specified compiler can be found in the environment.
+                if command -v "${compiler}${extension}" >/dev/null 2>&1; then
+                    list_fc="$(command -v "${compiler}${extension}")"
+                    break 2
+                fi
+            done
+        done
+        if  [ "${list_fc}" = "" ]; then
+            echo >&2 "${pmwarn} Failed to detect any compatible Fortran compiler in the environment."
+            echo >&2 "${pmwarn} You can manually specify the Fortran compiler or its path via the install script flag \"--fc\"."
+            echo >&2 "${pmwarn} The build will proceed with no guarantee of success."
+            list_fc="default"
+        else
+            echo >&2 "${pmnote} The identified Fortran compiler path is: fc=\"${list_fc}\""
+        fi
+    fi
+
+    if  [ -z ${list_lang+x} ]; then
+        list_lang="fortran"
+    else
+        list_lang="$(getLowerCase "$list_lang")"
+        list_lang="${list_lang/c++/cpp}"
+    fi
+
+    if  [ -z ${list_lib+x} ]; then
+        list_lib="shared"
+    else
+        # Replace `dynamic` with `shared`.
+        list_lib=${list_lib/dynamic/shared}
+        list_lib="$(getLowerCase "$list_lib")"
+    fi
+
+    if  [ -z ${list_mem+x} ]; then
+        list_mem="heap"
+    else
+        list_mem="$(getLowerCase "$list_mem")"
+    fi
+
+    if  [ -z ${list_par+x} ]; then
+        list_par="serial"
+    else
+        # Replace `none` with `serial`.
+        list_par=${list_par/none/serial}
+        list_par="$(getLowerCase "$list_par")"
+    fi
+
+    if  [ -z ${flag_j+x} ]; then
+        flag_j="-j"
+    fi
+
+fi
+
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# Set CMake default flags.
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+if [ 0 -lt 1 ]; then # just to allow toggling in notepad++.
+
+    if  [[ "${flag_fresh}" =~ .*"prereq".* || "${flag_fresh}" =~ .*"all".* ]]; then
+        if  [ -d "${paramonte_req_dir}" ]; then
+            echo >&2 "${pmnote} Removing the old prerequisites of the ParaMonte library build at: paramonte_req_dir=\"${paramonte_req_dir}\""
+            rm -rf "${paramonte_req_dir}"
+        fi
+    fi
+
+    # Set the CMake build generator.
+
+    flag_g="-G"
+    unset cmakeBuildGenerator
+    if [ "${os}" = "mingw" ]; then
+        cmakeBuildGenerator="MinGW Makefiles"
+    elif [ "${os}" = "msys" ]; then
+        cmakeBuildGenerator="MSYS Makefiles"
+    else
+        cmakeBuildGenerator="Unix Makefiles"
+    fi
+
+fi
+
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# Configure and build the ParaMonte library.
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+for fc in ${list_fc//;/$'\n'}; do
+
+    #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+    # Set up the CMake fc flag.
+    #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+    unset flag_fc
+    if [ -f "${fc}" ]; then
+        fcpath="${fc}"
+        flag_fc="-Dfc=${fcpath}"
+    elif ! [[ "${fc}" =~ [Dd][Ee][Ff][Aa][Uu][Ll][Tt] ]]; then
+        fcpath="$(getPathFC "${fc}")"
+        if [ -f "${fcpath}" ]; then
+            flag_fc="-Dfc=${fcpath}"
+        else
+            echo >&2 "${pmfatal} Failed to detect the full path for the specified compiler: fcpath=\"${fcpath}\""
+            reportBadValue "--fc" "${fc}"
+        fi
+        echo >&2 "${pmnote} Fortran compiler path: fcpath=\"${fcpath}\""
+    fi
+
+    # Get the compiler ID and version to be used in the build path.
+
+    csid=$(getCSID "${fcpath}")
+    csvs=$(getCSVS "${fcpath}" "${csid}")
+    echo >&2 "${pmnote} compiler suite: ${csid}"
+    echo >&2 "${pmnote} compiler version: ${csvs}"
+
+    #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+    # Build the ParaMonte library with the specified compiler.
+    #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+    for lang in $list_lang; do
+
+        flag_lang="-Dlang=${lang}"
+
+        #lang_is_dynamic="false"
+        #if [ "${lang}" = "julia" ] || [ "${lang}" = "matlab" ] || [ "${lang}" = "mathematica" ] || [ "${lang}" = "python" ] || [ "${lang}" = "r" ]; then
+        #    lang_is_dynamic="true"
+        #fi
+
+        ## Set source preprocessing output on by default for Fortran.
+        #if [ "${lang}" = "fortran" ] && [ "${flag_fpp}" = "" ]; then
+        #    flag_fpp="-Dfpp=generic"
+        #fi
+
+        for build in $list_build; do
+
+            flag_build="-Dbuild=${build}"
+
+            for lib in $list_lib; do
+
+                flag_lib="-Dlib=${lib}"
+
+                for mem in $list_mem; do
+
+                    flag_mem="-Dmem=${mem}"
+
+                    for par in $list_par; do
+
+                        flag_par="-Dpar=${par}"
+
+                        for checking in $list_checking; do
+
+                            flag_checking="-Dchecking=${checking}"
+
+                            #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+                            # Set the ParaMonte CMake build directory.
+                            #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+                            if [ 0 -lt 1 ]; then # just to allow toggling in notepad++.
+
+                                # First, determine the MPI library name to be used in the ParaMonte library name and build directory.
+
+                                if [ "${par}" = "mpi" ]; then
+                                    if [ -z ${me+x} ]; then
+                                        me=mpiexec
+                                    fi
+                                    if ! [[ -f "${me}" ]]; then
+                                        me="$(command -v ${me})"
+                                        if ! [[ -f "${me}" ]]; then
+                                            echo >&2 "${pmwarn} The specified mpiexec path does not appear to be a valid path to an mpiexec executable: me=\"${me}\""
+                                        fi
+                                    fi
+                                    parname=mpi
+                                    mpiVersionInfo="$(${me} --version)"
+                                    if [[ "${mpiVersionInfo}" =~ .*"Intel".* ]]; then
+                                        parname="impi"
+                                    elif [[ "${mpiVersionInfo}" =~ .*[oO][pP][eE][nN][rR][tT][eE].* ]] || [[ "${mpiVersionInfo}" =~ .*[oO][pP][eE][nN]-?[mM][pP][iI].* ]]; then
+                                        parname="openmpi"
+                                    elif [[ "${mpiVersionInfo}" =~ .*[mM][pP][iI][cC][hH].* ]]; then
+                                        parname="mpich"
+                                    else # look for mpichversion
+                                        mpichversion_path="$(dirname ${me})"/mpichversion
+                                        if [ -f "${mpichversion_path}" ] && [[ "$(mpichversion_path)" =~ .*[mM][pP][iI][cC][hH].* ]]; then
+                                            parname="mpich"
+                                        fi
+                                    fi
+                                    if [ "${parname}" = "mpi" ]; then
+                                        echo >&2 "${pmwarn} The MPI library vendor could not be identified."
+                                        echo >&2 "${pmwarn} The MPI library behavior does not match the Intel, MPICH, or OpenMPI libraries."
+                                        echo >&2 "${pmwarn} The ParaMonte library name will be suffixed with the generic \"${parname}\" label."
+                                    fi
+                                elif [ "${par}" = "omp" ]; then
+                                    parname="openmp"
+                                else
+                                    parname="${par}"
+                                fi
+
+                                if [ -z ${bdir+x} ]; then
+                                    paramonte_bld_dir="${paramonte_dir}/bld/${os}/${arch}/${csid}/${csvs}/${build}/${lib}/${mem}/${parname}/${lang}/${checking}"
+                                    if [[ "${flag_perfprof}" =~ .*"all".* ]]; then
+                                        paramonte_bld_dir="${paramonte_bld_dir}/perfprof"
+                                    fi
+                                    if [[ "${flag_codecov}" =~ .*"all".* ]]; then
+                                        paramonte_bld_dir="${paramonte_bld_dir}/codecov"
+                                    fi
+                                    echo >&2 "${pmnote} The ParaMonte library build directory: paramonte_bld_dir=\"${paramonte_bld_dir}\""
+                                else
+                                    echo >&2 "${pmnote} User-specified library build directory detected: bdir=\"${bdir}\""
+                                    paramonte_bld_dir="${bdir}"
+                                fi
+
+                                # Make the build directory if needed.
+
+                                if ! [ -d "${paramonte_bld_dir}" ]; then
+                                    echo >&2 "${pmnote} Generating the ParaMonte build directory..."
+                                    mkdir -p "${paramonte_bld_dir}/"
+                                fi
+
+                            fi
+
+                            #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+                            #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+                            # Configure and build the library via CMake.
+                            #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+                            #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+                            if [ 0 -lt 1 ]; then # just to allow toggling in notepad++.
+
+                                echo >&2 "${pmnote} All generated build files will be stored at: ${paramonte_bld_dir}"
+                                echo >&2 "${pmnote} Changing directory to: ${paramonte_bld_dir}"
+                                echo >&2 ""
+                                echo >&2 "########################################################################################%%"
+                                echo >&2 ""
+                                echo >&2 "${pmnote} Invoking CMake as:"
+                                echo >&2 ""
+
+                                set -x
+                                (cd "${paramonte_bld_dir}" && \
+                                cmake \
+                                "${paramonte_dir}" \
+                                ${flag_g} "${cmakeBuildGenerator}" \
+                                "-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON" \
+                                "${flag_ddir}" \
+                                "${flag_build}" \
+                                "${flag_checking}" \
+                                "${flag_lang}" \
+                                "${flag_lib}" \
+                                "${flag_mem}" \
+                                "${flag_par}" \
+                                ${flag_fc} \
+                                ${flag_bench} \
+                                ${flag_benchpp} \
+                                ${flag_blas} \
+                                ${flag_codecov} \
+                                ${flag_cfi} \
+                                ${flag_deps} \
+                                ${flag_exam} \
+                                ${flag_exampp} \
+                                ${flag_fpp} \
+                                ${flag_fresh} \
+                                ${flag_lapack} \
+                                ${flag_matlabdir} \
+                                ${flag_me} \
+                                ${flag_mod} \
+                                ${flag_nproc} \
+                                ${flag_perfprof} \
+                                ${flag_pdt} \
+                                ${flag_purity} \
+                                ${flag_test} \
+                                ${flag_ski} \
+                                ${flag_iki} \
+                                ${flag_lki} \
+                                ${flag_cki} \
+                                ${flag_rki} \
+                                )
+                                verify $? "configuration with cmake"
+
+                                echo >&2 ""
+                                echo >&2 "########################################################################################%%"
+                                echo >&2 ""
+
+                               #(cd "${paramonte_bld_dir}" && $makename ${flag_j})
+                                (cd "${paramonte_bld_dir}" && cmake --build "${paramonte_bld_dir}" ${flag_j})
+                                verify $? "build with make"
+
+                               #(cd "${paramonte_bld_dir}" && $makename install)
+                                (cd "${paramonte_bld_dir}" && cmake --build "${paramonte_bld_dir}" --target install ${flag_j})
+                                verify $? "installation"
+
+                               #(cd "${paramonte_bld_dir}" && $makename deploy)
+                                (cd "${paramonte_bld_dir}" && cmake --build "${paramonte_bld_dir}" --target deploy ${flag_j})
+                                verify $? "deployment"
+
+                               #(cd "${paramonte_bld_dir}" && $makename test && echo)
+                                (cd "${paramonte_bld_dir}" && cmake --build "${paramonte_bld_dir}" --target test)
+                                verify $? "testing"
+
+                               #(cd "${paramonte_bld_dir}" && $makename example)
+                                (cd "${paramonte_bld_dir}" && cmake --build "${paramonte_bld_dir}" --target example)
+                                verify $? "examples build and run"
+
+                               #(cd "${paramonte_bld_dir}" && $makename benchmark)
+                                (cd "${paramonte_bld_dir}" && cmake --build "${paramonte_bld_dir}" --target benchmark)
+                                verify $? "benchmarks build and run"
+
+                            fi
+
+                            #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+                            #### CODECOVE: Generate *.gcda *.gcno codecov files for the Fortran test source files
+                            #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+                            if [[ "${flag_codecov}" =~ .*"all".* ]]; then
+
+                                # \todo
+                                # \warning
+                                # This version extraction relies on "version " appearing before the lcov version number.
+                                # This must be adjusted to any potential future changes in the LCOV version string.
+
+                                if  command -v lcov >/dev/null 2>&1; then
+                                    lcovVersion=$(lcov -v | grep -Po '(?<=version )[^;]+')
+                                else
+                                    unset lcovVersion
+                                fi
+
+                                unset htmlSubDir
+                                if [ "${par}" = "mpi" ]; then
+                                    parallelismText="MPI Parallel"
+                                    htmlSubDir="mpi"
+                                elif [[ "${par}" =~ .*"caf".* ]]; then
+                                    parallelismText="Coarray Parallel"
+                                    htmlSubDir="caf"
+                                else
+                                    parallelismText="Serial"
+                                    htmlSubDir="serial"
+                                fi
+                                htmlDir="${paramonte_external_codecov_fortran_dir}/${htmlSubDir}"
+                                #htmlDir="${paramonte_external_codecov_fortran_dir}/${paramonte_version_fortran}/${PMLIB_BASE_NAME}"
+                                htmlTitleCodeCov="ParaMonte ${paramonte_version_fortran} :: ${parallelismText} Fortran - Code Coverage Report"
+
+                                if [[ ${csid} == [gG][nN][uU] ]]; then
+
+                                    if command -v gcov >/dev/null 2>&1; then
+
+                                        gcovPath="$(command -v gcov)"
+                                        echo >&2 "${pmnote} GNU gcov detected at: ${gcovPath}"
+                                        echo >&2 "${pmnote} Invoking gcov to generate coverage report..."
+
+                                        gcovFortranDataDir=$(find "${paramonte_bld_dir}" -name pm_blas*.o)
+                                        gcovFortranDataDir=$(dirname "${gcovFortranDataDir}")
+
+                                        if [ -d "${gcovFortranDataDir}" ]; then
+
+                                            gcovFortranDir="${paramonte_bld_dir}"/gcov
+                                            if [ -d "${gcovFortranDir}" ]; then
+                                                echo >&2 "${pmnote} Removing the old existing gcov files directory: ${gcovFortranDir}"
+                                                rm -rf "${gcovFortranDir}"
+                                            fi
+                                            echo >&2 "${pmnote} Generating the gcov files directory: ${gcovFortranDir}"
+                                            mkdir -p "${gcovFortranDir}"
+                                            cd "${gcovFortranDir}"
+
+                                            #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+                                            #### GCOV Fortran source: Generate *.gcda *.gcno codecov files for the Fortran source files
+                                            #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+                                            for srcFileName in "${paramonte_src_fortran_dir}"/*.F90; do
+                                                if ! [[ "${srcFileName}" =~ .*"pm_array.F90".* ]]; then
+
+                                                    srcFileNameBase=$(basename -- "${srcFileName}")
+                                                    #if ! [[ "${srcFileName}" =~ .*".inc.F90".* ]]; then
+                                                    #objFilePath=$(find "${gcovFortranDataDir}" -name ${srcFileNameBase}.o)
+                                                    # The following assumes that cmake names the object files with full source file name (including file extension).
+                                                    objFilePath="${gcovFortranDataDir}/${srcFileNameBase}.o"
+                                                    echo >&2 Now running: gcov "${paramonte_src_fortran_dir}/${srcFileName}" -o "${objFilePath}"
+
+                                                    gcov "${paramonte_src_fortran_dir}/${srcFileName}" -o "${objFilePath}" || {
+                                                        echo >&2 "${pmfatal} Fatal Error: Code Coverage analysis via GNU gcov tool failed."
+                                                        exit 1
+                                                    }
+                                                    #fi
+
+                                                fi
+                                            done
+
+                                            #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+                                            #### GCOV TEST SOURCE: Generate *.gcda *.gcno codecov files for the Fortran test source files
+                                            #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+                                            #### first attempt to infer the cmake object files' directory
+
+                                            gcovFortranTestDataDir=$(find "${paramonte_bld_dir}" -name main.F90.o)
+                                            gcovFortranTestDataDir=$(dirname "${gcovFortranTestDataDir}")
+
+                                            if [ -d "${gcovFortranTestDataDir}" ]; then
+                                                gcovFortranTestDir="${paramonte_bld_dir}"/gcov
+                                                #rm -rf "${gcovFortranTestDir}" This would also the new Fortran coverage files.
+                                                if ! [ -d "${gcovFortranTestDir}" ]; then
+                                                    mkdir -p "${gcovFortranTestDir}"
+                                                fi
+                                                cd "${gcovFortranTestDir}"
+                                                for srcFileName in "${paramonte_src_fortran_test_dir}"/*.F90; do
+                                                    if ! [[ "${srcFileName}" =~ .*"main.F90".* ]]; then
+
+                                                        srcFileNameBase=$(basename -- "${srcFileName}")
+                                                        objFilePath="${gcovFortranTestDataDir}/${srcFileNameBase}.o"
+                                                        echo >&2 gcov "${paramonte_src_fortran_test_dir}/${srcFileName}" -o "${objFilePath}"
+
+                                                        gcov "${paramonte_src_fortran_test_dir}/${srcFileName}" -o "${objFilePath}" \
+                                                        || {
+                                                            echo >&2 "${pmwarn} The ParaMonte Code Coverage analysis of the test source files via GNU gcov tool failed."
+                                                            echo >&2 "${pmwarn} The ParaMonte test source file: ${paramonte_src_fortran_test_dir}/${srcFileName}"
+                                                            echo >&2 "${pmwarn} Skipping..."
+                                                        }
+                                                        #fi
+                                                    fi
+                                                done
+                                            else
+                                                echo >&2 "${pmwarn} The directory for the *.gcda *.gcno codecov data files does not exist."
+                                                echo >&2 "${pmwarn} The expected directory path: ${gcovFortranTestDataDir}"
+                                                echo >&2 "${pmwarn} Skipping code coverage report generation for the test files..."
+                                            fi
+
+                                            #::::::::::::::::::::::::::::::::::::::::
+                                            # LCOV: generate lcov summary report file
+                                            #::::::::::::::::::::::::::::::::::::::::
+
+                                            if command -v lcov >/dev/null 2>&1; then
+
+                                                #### generate the Fortran code coverage report file
+
+                                                lcovFortranDir="${paramonte_bld_dir}"/lcov
+                                                rm -rf "${lcovFortranDir}"
+                                                mkdir -p "${lcovFortranDir}"
+                                                cd "${lcovFortranDir}"
+
+                                                lcovOutputFortranFilePath="${lcovFortranDir}/paramonte.fortran.coverage.info"
+
+                                                unset branchCoverageFlag
+                                                # Add the following flag to lcov to enable branch coverage:
+                                                # branchCoverageFlag="--rc lcov_branch_coverage=1"
+                                                # "${branchCoverageFlag}"
+
+                                                lcov --capture \
+                                                --directory "${gcovFortranDataDir}" \
+                                                --output-file "${lcovOutputFortranFilePath}" \
+                                                || {
+                                                    echo >&2 "${pmwarn} Code Coverage report generation via LCOV tool failed."
+                                                    #exit 1
+                                                }
+
+                                                #### generate the fortran code coverage report file
+
+                                                lcovOutputCombinedFilePath="${lcovFortranDir}/paramonte.combined.coverage.info"
+
+                                                unset lcovOutputTestFilePath
+                                                if ls "${gcovFortranTestDir}"/*.gcov 1> /dev/null 2>&1; then
+                                                    echo >&2 "${pmnote} generating the code coverage report file for the ParaMonte test files..."
+                                                    lcovOutputTestFilePath="${lcovFortranDir}/paramonte.test.coverage.info"
+                                                    lcov --capture \
+                                                    --directory "${gcovFortranTestDataDir}" \
+                                                    --output-file "${lcovOutputTestFilePath}" \
+                                                    && {
+                                                        echo >&2 "${pmnote} Combining all LCOV code coverage report files as a single final report file..."
+                                                        lcov --add-tracefile "${lcovOutputFortranFilePath}" -a "${lcovOutputTestFilePath}" -o "${lcovOutputCombinedFilePath}"
+                                                    } || {
+                                                        echo >&2 "${pmwarn} Code Coverage report generation for the ParaMonte test source files via lcov tool failed."
+                                                        echo >&2 "${pmwarn} Skipping..."
+                                                    }
+                                                else
+                                                    echo >&2 "${pmwarn} Failed to detect the *.gcda *.gcno codecov data files for the ParaMonte test source files."
+                                                    echo >&2 "${pmwarn} The expected directory path for the files: ${gcovFortranTestDir}"
+                                                    echo >&2 "${pmwarn} The coverage report for the ParaMonte test source file will not be included."
+                                                    echo >&2 "${pmwarn} Skipping the lcov code coverage report generation for the test files..."
+                                                fi
+
+                                                #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+                                                # HTML: convert the lcov summary file to the final html report files
+                                                #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+                                                if command -v genhtml >/dev/null 2>&1; then
+
+                                                    if [ -d "${htmlDir}" ]; then
+                                                        rm -rf "${htmlDir}"
+                                                    else
+                                                        mkdir -p "${htmlDir}"
+                                                    fi
+
+                                                    if ! [ -f "${lcovOutputCombinedFilePath}" ]; then
+                                                        cp "${lcovOutputFortranFilePath}" "${lcovOutputCombinedFilePath}" || {
+                                                            echo >&2 "${pmwarn} Copy action failed:"
+                                                            echo >&2 "${pmwarn} from: ${lcovOutputFortranFilePath}"
+                                                            echo >&2 "${pmwarn}   to: ${lcovOutputCombinedFilePath}"
+                                                        }
+                                                    fi
+
+                                                    genhtml \
+                                                    "${lcovOutputCombinedFilePath}" \
+                                                    --output-directory "${htmlDir}" \
+                                                    --legend \
+                                                    --title "${htmlTitleCodeCov}" \
+                                                    && {
+
+                                                        echo >&2 "${pmnote} The code coverage build files are stored at: ${paramonte_bld_dir}"
+                                                        echo >&2 "${pmnote} The code coverage report files are stored at: ${htmlDir}"
+
+                                                        # postprocess the html files
+
+                                                        pmlinkopen='<a href="https:\/\/www.cdslab.org\/paramonte\/" target="_blank">'
+                                                        pmlinklogo='<img alt="The ParaMonte Documentation Website" src="https:\/\/cdslaborg.github.io\/paramonted/fortran\/html\/logo.png"\/>'
+                                                        pmlinkclose='<\/a>'
+
+                                                        original='<tr><td class="title">LCOV - code coverage report<\/td><\/tr>'
+                                                        modified='<tr><td class="title">'
+                                                        modified+="${pmlinkopen}"
+                                                        modified+="${pmlinklogo}"
+                                                        modified+="${pmlinkclose}"
+                                                        modified+='<\/td><\/tr>'
+
+                                                        footer='<tr><td class="versionInfo">'
+                                                        footer+='<a href="https:\/\/www.cdslab.org\/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library<\/b><\/a>&nbsp;<br>'
+                                                        footer+='<a href="https:\/\/www.cdslab.org" target="_blank"><b>The Computational Data Science Lab<\/b><\/a><br>'
+                                                        footer+="&copy; Copyright 2012 - $(date +%Y)"
+                                                        footer+='<\/td><\/tr>'
+
+                                                        shopt -s globstar
+                                                        for htmlFilePath in "${htmlDir}"/**/*.html; do # Whitespace-safe and recursive
+                                                            sed -i "s/${original}/${modified}/g" "${htmlFilePath}"
+                                                            sed -i "/<tr><td class=\"versionInfo\">/c\\${footer}" "${htmlFilePath}"
+                                                        done
+
+                                                        #scfile="${paramonte_dir}/auxil/sc.html"
+                                                        #if [ -f "${scfile}" ]; then
+                                                        #    echo >&2
+                                                        #    echo >&2 "${pmnote} processing the sc file contents..."
+                                                        #    echo >&2
+                                                        #    sccontents=`cat "${paramonte_dir}/auxil/sc.html"`
+                                                        #    sed -e '/<\/body>/r${scfile}' "${htmlFilePath}"
+                                                        #else
+                                                        #    echo >&2
+                                                        #    echo >&2 "${pmnote} ${warning} ${paramonte_dir}/auxil/sc.html is missing in your clone."
+                                                        #    echo >&2 "${pmnote} ${warning} This is not critical, unless you are a ParaMonte developer and"
+                                                        #    echo >&2 "${pmnote} ${warning} aim to publicly release this code coverage report. To obtain a "
+                                                        #    echo >&2 "${pmnote} ${warning} copy of the file, contact the ParaMonte lead developer at"
+                                                        #    echo >&2 "${pmnote} ${warning} "
+                                                        #    echo >&2 "${pmnote} ${warning} shahmoradi@utexas.edu"
+                                                        #    echo >&2
+                                                        #fi
+
+                                                    } || {
+
+                                                        echo >&2 "${pmwarn} Code Coverage report generation via genhtml failed."
+
+                                                    }
+                                                    # "${branchCoverageFlag}" \
+                                                    #--title "<a href=\"https://github.com/cdslaborg/paramonte\" target=\"_blank\">ParaMonte Fortran</a> code coverage report" \
+
+                                                    ## generate test files code coverage
+                                                    #
+                                                    #gcovFortranTestDataDir=$(find "${paramonte_bld_obj_dir}" -name test_pm_*.o)
+                                                    #gcovFortranTestDataDir=$(dirname "${gcovFortranTestDataDir}")
+                                                    #
+                                                    #lcovFortranTestDir="${paramonte_bld_dir}"/test/lcov
+                                                    #mkdir -p "${lcovFortranTestDir}"
+                                                    #cd "${lcovFortranTestDir}"
+                                                    #
+                                                    #lcov --capture --directory "${gcovFortranTestDataDir}" --output-file ./paramonte.coverage.info
+                                                    #
+                                                    #genhtml paramonte.coverage.info --output-directory "${lcovFortranTestDir}/html"
+
+                                                else
+                                                    echo >&2 "${pmwarn} Failed to find the GENHTML test coverage summarizer."
+                                                    echo >&2 "${pmwarn} The genhtml program is required to generate the coverage report."
+                                                    echo >&2 "${pmwarn} If you believe genhtml is already installed on your system,"
+                                                    echo >&2 "${pmwarn} please make sure the path its directory is added to the"
+                                                    echo >&2 "${pmwarn} PATH environmental variable of your terminal."
+                                                    echo >&2 "${pmwarn} Once added, rerun the ParaMonte code coverage."
+                                                fi
+
+                                            else
+                                                echo >&2 "${pmwarn} Failed to find the LCOV test coverage summarizer."
+                                                echo >&2 "${pmwarn} The lcov program is required to generate the coverage report."
+                                                echo >&2 "${pmwarn} If you believe lcov is already installed on your system,"
+                                                echo >&2 "${pmwarn} please make sure the path its directory is added to the"
+                                                echo >&2 "${pmwarn} PATH environmental variable of your terminal."
+                                                echo >&2 "${pmwarn} Once added, rerun the ParaMonte code coverage."
+                                            fi
+
+                                            cd "${paramonte_dir}"
+
+                                        else
+                                            echo >&2 "${pmfatal} Failed to find the ParaMonte library objects directory."
+                                            echo >&2 "${pmfatal} "
+                                            echo >&2 "${pmfatal} gracefully exiting The ParaMonte build script."
+                                            exit 1
+                                        fi
+
+                                    else
+                                        echo >&2 "${pmfatal} Fatal Error: Failed to find the GNU gcov test coverage program."
+                                        echo >&2 "${pmfatal} The gcov program is required to generate the coverage report."
+                                        echo >&2 "${pmfatal} If you believe gcov is already installed on your system,"
+                                        echo >&2 "${pmfatal} please make sure the path its directory is added to the"
+                                        echo >&2 "${pmfatal} PATH environmental variable of your terminal."
+                                        echo >&2 "${pmfatal} Once added, rerun the ParaMonte code coverage."
+                                        echo >&2 "${pmfatal} "
+                                        echo >&2 "${pmfatal} Gracefully exiting The ParaMonte build script."
+                                        exit 1
+                                    fi
+
+                                else
+
+                                    echo >&2 "${pmfatal} Code coverage with compilers other than GNU gfortran is currently unsupported."
+                                    exit 1
+                                fi
+
+                            fi # codecov
+
+                        done
 
                     done
 
@@ -737,44 +983,15 @@ for PMCS in $PMCS_LIST; do
 
         done
 
-        # ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-        # :: if MATLAB, generate MatDRAM
-        # ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-        #if [ "${INTERFACE_LANGUAGE}" = "matlab" ]; then
-        #
-        #    echo >&2 "-- ParaMonte - Generating the ParaMonte::MatDRAM library..."
-        #    echo >&2 ""
-        #
-        #    MatDRAM_ORIGIN_PATH=./bin/MATLAB
-        #    MatDRAM_DESTINATION_PATH=./bin/MatDRAM
-        #    if ! [ -d "${MatDRAM_DESTINATION_PATH}" ]; then
-        #        mkdir -p "${MatDRAM_DESTINATION_PATH}"
-        #    fi
-        #    echo >&2 "-- ParaMonte - copying the MatDRAM library files..."
-        #    echo >&2 "-- ParaMonte - from: ${MatDRAM_ORIGIN_PATH}"
-        #    echo >&2 "-- ParaMonte -   to: ${MatDRAM_DESTINATION_PATH}"
-        #    cp -frp "${MatDRAM_ORIGIN_PATH}" -T "${MatDRAM_DESTINATION_PATH}"
-        #
-        #    # delete the binary files
-        #
-        #    rm -rf "${MatDRAM_DESTINATION_PATH}/paramonte/lib"
-        #
-        #    # delete the mpi example file
-        #
-        #    rm -rf "${MatDRAM_DESTINATION_PATH}/main_mpi.m"
-        #
-        #fi
-
     done
 
 done
 
 echo >&2 ""
-echo >&2 "-- ParaMonte - all build files are stored at ${ParaMonte_ROOT_DIR}/build/"
-if [ "${codecov_flag}" = "" ]; then
-echo >&2 "-- ParaMonte - the library files are ready to use at ${ParaMonte_ROOT_DIR}/bin/"
+echo >&2 "${pmnote} All build files for all requested build configurations are stored at: \"${paramonte_dir}/bld/\""
+if [[ ! "${flag_codecov}" =~ .*"true".* ]]; then
+    echo >&2 "${pmnote} The installed binary files for all requested build configurations are ready to use at: \"${ddir}/\""
 fi
 echo >&2 ""
-echo >&2 "-- ParaMonte - mission accomplished."
+echo >&2 "${pmnote} ${BoldGreen}mission accomplished.${ColorReset}"
 echo >&2 ""

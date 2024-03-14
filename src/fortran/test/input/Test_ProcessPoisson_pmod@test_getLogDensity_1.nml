@@ -1,0 +1,13 @@
+&specData
+    nd = 2
+    nc = 1
+    etamin = 0.5d0
+    etamax = 10.d0
+    sizeMin = 100
+    sizeMax = 100
+    centerMin = -2.d0
+    centerMax = +2.d0
+    rngseed = 31234
+    dist = "uniform"
+/
+

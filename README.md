@@ -1,24 +1,23 @@
 
-  
+
 <div align="center">
-<a href="https://www.cdslab.org/paramonte" target="_blank"><img src="https://raw.githubusercontent.com/shahmoradi/paramonte/gh-pages/images/paramonte.png" alt="ParaMonte: Plain Powerful Parallel Monte Carlo Library" /></a>
-<br><br>
+<a href="https://www.cdslab.org/paramonte" target="_blank"><img src="https://github.com/cdslaborg/paramonte/blob/main/img/paramonte.png" alt="ParaMonte: Parallel Monte Carlo and Machine Learning Library" style="height:500px" /></a>
+<br>
 <a href="https://github.com/cdslaborg/paramonte#license" target="_blank"><img src="https://img.shields.io/github/license/cdslaborg/paramonte?color=orange&style=flat-square" alt="GitHub" /></a>
-<a href="https://github.com/cdslaborg/paramonte/releases" target="_blank"><img src="https://img.shields.io/github/v/release/cdslaborg/paramonte?color=orange&label=kernel%20release&style=flat-square" alt="GitHub release (latest by date)" /></a>
 <a href="https://github.com/cdslaborg/paramonte/releases" target="_blank"><img src="https://img.shields.io/github/release-date/cdslaborg/paramonte?color=orange&style=flat-square" alt="GitHub Release Date" /></a>
+<a href="https://github.com/cdslaborg/paramonte/releases" target="_blank"><img src="https://img.shields.io/github/v/release/cdslaborg/paramonte?color=purple&label=release%20version&style=flat-square" alt="GitHub release (latest by date)" /></a>
 <a href="https://pypi.org/project/paramonte/" target="_blank"><img src="https://img.shields.io/pypi/v/paramonte?color=orange&label=pypi%20release&style=flat-square" alt="PyPI - release version" /></a>
 <a href="https://travis-ci.com/cdslaborg/paramonte" target="_blank"><img src="https://travis-ci.com/cdslaborg/paramonte.svg?branch=main&style=flat-square" alt="Build Status" /></a>
 <a href="https://github.com/cdslaborg/paramonte/releases" target="_blank"><img src="https://img.shields.io/pypi/status/paramonte?style=flat-square" alt="PyPI - Status" /></a>
-<a href="https://lgtm.com/projects/g/cdslaborg/paramonte/?mode=list" target="_blank"><img src="https://img.shields.io/lgtm/grade/python/github/cdslaborg/paramonte?label=code%20quality&style=flat-square&color=brightgreen" alt="LGTM Grade" /></a>
-<a href="https://cdslaborg.github.io/paramonte-codecov/kernel/serial/" target="_blank"><img src="https://img.shields.io/badge/code%20coverage-serial%20kernel%20:%2098.2%25-brightgreen?style=flat-square" alt="kernel code coverage - serial" /></a>
-<a href="https://cdslaborg.github.io/paramonte-codecov/kernel/mpi/" target="_blank"><img src="https://img.shields.io/badge/code%20coverage-MPI%20kernel%20:%2098.3%25-brightgreen?style=flat-square" alt="kernel code coverage - MPI" /></a>
-<a href="https://cdslaborg.github.io/paramonte-codecov/kernel/caf/" target="_blank"><img src="https://img.shields.io/badge/code%20coverage-Coarray%20kernel%20:%2098.3%25-brightgreen?style=flat-square" alt="kernel code coverage - Coarray" /></a>
+<a href="https://cdslaborg.github.io/paramonte-codecov/kernel/serial/" target="_blank"><img src="https://img.shields.io/badge/Fortran%20code%20coverage-serial-brightgreen?style=flat-square" alt="Fortran code coverage - serial" /></a>
+<a href="https://cdslaborg.github.io/paramonte-codecov/kernel/mpi/" target="_blank"><img src="https://img.shields.io/badge/Fortran%20code%20coverage-MPI-brightgreen?style=flat-square" alt="Fortran code coverage - MPI" /></a>
+<a href="https://cdslaborg.github.io/paramonte-codecov/kernel/caf/" target="_blank"><img src="https://img.shields.io/badge/Fortran%20code%20coverage-Coarray-brightgreen?style=flat-square" alt="Fortran code coverage - Coarray" /></a>
 <a href="https://github.com/cdslaborg/paramonte/issues" target="_blank"><img src="https://img.shields.io/github/issues/cdslaborg/paramonte?style=flat-square" alt="GitHub issues" /></a>
 <a href="https://github.com/cdslaborg/paramonte/tree/main/src/interface" target="_blank"><img src="https://img.shields.io/badge/available%20in-C%20%2F%20C%2B%2B%20%2F%20Fortran%20%2F%20MATLAB%20%2F%20Python-brightgreen?style=flat-square" alt="supported languages" /></a>
 <a href="https://www.openhub.net/p/paramonte" target="_blank"><img src="https://img.shields.io/badge/Open%20Hub-stats?color=brightgreen&label=stats&message=Open%20Hub&style=flat-square" alt="stats - Open Hub" /></a>
-<a href="https://github.com/cdslaborg/paramonte/graphs/traffic" target="_blank"><img src="https://img.shields.io/github/downloads/cdslaborg/paramonte/total?color=brightgreen&label=kernel%20downloads&style=flat-square" alt="GitHub All Releases" /></a>
+<a href="https://github.com/cdslaborg/paramonte/graphs/traffic" target="_blank"><img src="https://img.shields.io/github/downloads/cdslaborg/paramonte/total?color=brightgreen&label=GitHub%20downloads&style=flat-square" alt="GitHub All Releases" /></a>
 <a href="https://libraries.io/pypi/paramonte" target="_blank"><img src="https://img.shields.io/pypi/dm/paramonte?color=brightgreen&label=PyPI%20downloads&style=flat-square" alt="PyPI - Downloads" /></a>
-<a href="https://pypi.org/project/paramonte/" target="_blank"><img src="https://img.shields.io/badge/dynamic/json?style=flat-square&labelColor=grey&color=brightgreen&maxAge=86400&label=PyPI%20downloads&query=%24.total_downloads&url=https%3A%2F%2Fapi.pepy.tech%2Fapi%2Fprojects%2Fparamonte" alt="PyPI - Downloads Total" /></a>
+<a href="https://pypistats.org/packages/paramonte" target="_blank"><img src="https://img.shields.io/badge/stats-green?style=flat-square&label=PyPI&labelColor=grey&color=brightgreen" alt="PyPI stats" /></a>
 <a href="https://www.mathworks.com/matlabcentral/fileexchange/78946-paramonte" target="_blank"><img src="https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg" alt="View ParaMonte on File Exchange" /></a>
 <a href="https://github.com/cdslaborg/paramonte/" target="_blank"><img src="https://img.shields.io/github/repo-size/cdslaborg/paramonte?style=flat-square" alt="GitHub repo size" /></a>
 <a href="https://github.com/cdslaborg/paramonte/tree/main/src/interface" target="_blank"><img src="https://img.shields.io/github/languages/count/cdslaborg/paramonte?style=flat-square" alt="GitHub language count" /></a>
@@ -31,170 +30,164 @@
 <br><br>
 <a href="https://twitter.com/intent/tweet?text=ParaMonte%20-%20Plain%20Powerfull%20Parallel%20Monte%20Carlo%20Library:&url=https%3A%2F%2Fgithub.com%2Fcdslaborg%2Fparamonte" target="_blank"><img src="https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fcdslaborg%2Fparamonte" alt="Twitter" /></a>
 <br><br>
-<a href="#paramonte-plain-powerful-parallel-monte-carlo-library">Overview</a> | 
-<a href="#installation">Installation</a> | 
-<a href="#dependencies">Dependencies</a> | 
-<a href="#parallelism">Parallelism</a> | 
+<a href="#paramonte-plain-powerful-parallel-monte-carlo-library">Overview</a> |
+<a href="#installation">Installation</a> |
+<a href="#dependencies">Dependencies</a> |
+<a href="#parallelism">Parallelism</a> |
 <a href="#example-usage-instructions">Examples</a> |
-<a href="#citing-paramonte">Acknowledgments</a> | 
-<a href="#license">License</a> | 
-<a href="#authors-and-contributors">Authors</a>  
+<a href="#citing-paramonte">Acknowledgments</a> |
+<a href="#license">License</a> |
+<a href="#authors-and-contributors">Authors</a>
 </div>
-  
-  
+
 ParaMonte: Plain Powerful Parallel Monte Carlo Library
 ======================================================
-  
-ParaMonte is a serial/parallel library of Monte Carlo routines for sampling mathematical objective functions 
-of arbitrary-dimensions, in particular, the posterior distributions of Bayesian models in data science, Machine Learning, 
-and scientific inference, with the design goal of unifying the **automation** (of Monte Carlo simulations), 
-**user-friendliness** (of the library), **accessibility** (from multiple programming environments), 
-**high-performance** (at runtime), and **scalability** (across many parallel processors).  
 
-For more information on the installation, usage, and examples, visit: https://www.cdslab.org/paramonte  
-  
-  
-ParaMonte design goals  
-======================  
+ParaMonte is a serial/parallel library of Monte Carlo routines for sampling mathematical density functions of arbitrary dimensions and 
+Machine Learning (ML) algorithms for scientific inference, with the design goal of unifying **automation** (of simulations and tasks),
+**user-friendliness** (of algorithms), **accessibility** (from any platform or programming environment),
+**high-performance** (at runtime), and **scalability** (across many parallel processors).
 
-ParaMonte has been developed while bearing the following design goals in mind:  
+For more information on the installation, usage, and examples, visit https://www.cdslab.org/paramonte
 
--   **Full automation** of all Monte Carlo simulations to the highest levels possible to ensure the highest level of user-friendliness 
-    of the library and minimal time investment requirements for building, running, and post-processing of simulation models.  
+ParaMonte design goals
+======================
 
--   **Interoperability** of the core library with as many programming languages as currently possible, 
-    including C, C++, Fortran, MATLAB, Python, with ongoing efforts to support other popular programming languages.  
+ParaMonte has been developed while bearing the following design goals in mind:
 
--   **High-Performance** meticulously-low-level implementation of the library to ensure the fastest-possible Monte Carlo simulations.  
+-   **Full automation** of Monte Carlo and Machine Learning simulations as much as possible to ensure user-friendliness
+    of the library and minimal time investment requirements for building, running, and post-processing simulation models.
 
--   **Parallelizability** of all simulations via two-sided and one-sided MPI/Coarray 
-    communications while requiring zero-parallel-coding efforts by the user.  
+-   **Interoperability** of the core library with as many programming languages as currently possible,
+    including C, C++, Fortran, MATLAB, and Python, with ongoing efforts to support other popular programming languages.
 
--   **Zero-dependence** on external libraries to ensure hassle-free ParaMonte library builds and ParaMonte simulation runs.  
+-   **High-Performance** meticulously-low-level library implementation to ensure the fastest-possible inferences.
 
--   **Fully-deterministic reproducibility** and automatically-enabled restart functionality 
-    for all simulations up to 16 digits of precision as requested by the user.  
+-   **Parallelizability** of all simulations via shared-memory OpenMP threads and two-sided and one-sided 
+    MPI/Coarray distributed communications while requiring zero-parallel-coding efforts by the user.
 
--   **Comprehensive-reporting and post-processing** of each simulation and its results, as well as their automatic storage in 
-    external files to ensure the simulation results will be comprehensible and reproducible at any time in the distant future.  
+-   **Zero-dependence** on external libraries to ensure hassle-free ParaMonte library builds and ParaMonte simulation runs.
 
-  
-Installation  
-============  
+-   **Fully-deterministic reproducibility** and automatically-enabled restart functionality
+    for all simulations with arbitrary digits of precision as requested by the user.
 
-The pre-built ready-to-use libraries are available on [the release page of the ParaMonte library on GitHub](https://github.com/cdslaborg/paramonte/releases). 
-Each prebuilt ParaMonte library automatically ships with a full-fledged set of example codes and build scripts.  
-
-Alternatively, you can build the library from the source in the [GitHub repository of the project](https://github.com/cdslaborg/paramonte). 
-The ParaMonte library installation/build process is fully automated for all of the supported programming languages. 
-Currently, the following compiler suites are supported **for builds from source**:  
-  
-| Compiler Suite                    | Linux | macOS | Windows (64bit) |  
-|----------------------------------:|:-----:|:-----:|:---------------:|  
-| GNU Compiler Collection > 8.4     |&check;|&check;| &cross;         |  
-| Intel Parallel Studio > 19.1.1    |&check;|&check;| &check;         |  
-
-For more information and quick-start in the programming language of your choice, visit the [ParaMonte library homepage](https://www.cdslab.org/paramonte).  
-
-  
-Dependencies  
-============  
-
-Beyond an optional MPI runtime library for parallel simulations, the ParaMonte kernel has **zero dependency** on external third-party libraries or packages.  
-
-  
-Parallelism  
-===========  
-
-The ParaMonte library relies on the Message Passing Interface (MPI) standard for inter-processor communications. 
-To run a parallel simulation, you will have to have a compatible MPI runtime library installed on your system. 
-In most cases, ParaMonte will automatically install the required missing libraries on your system (with your permission). 
-These automatic checks and installations happen when you download and install or use the library on your system, for the first time. 
-If the automatic installation is unsuccessful, you can also install the libraries manually on your system:  
-
-+   On **Windows** and **Linux** operating systems, we highly recommend downloading and installing the 
-    [Intel MPI runtime libraries](https://software.intel.com/en-us/mpi-library), 
-    which is available to the public free of charge, also available in the latest release of the 
-    ParaMonte library on the [GitHub release page](https://github.com/cdslaborg/paramonte/releases) 
-    (For Windows, look for the executable file that ends with `.exe`. For Linux, look for the file 
-    that ends with `.tgz`, like `l_mpi-rt_2018.2.199.tgz`).
-+   On **macOS**, the Intel MPI library is not available. Therefore, we recommend installing either 
-    [Open-MPI](https://www.open-mpi.org/) or [MPICH](https://www.mpich.org/) MPI runtime libraries 
-    depending the prebuilt version of the ParaMonte library that you have downloaded or 
-    the configuration with which you intend to build the library.  
-
-For more information, visit [https://www.cdslab.org/paramonte/](https://www.cdslab.org/paramonte/).  
-
-  
-Example usage instructions  
-==========================  
-
-+   For complete organized up-to-date instructions, visit: [cdslab.org/pm](https://www.cdslab.org/paramonte)  
-
-+   For a quick look into *language-specific* README.md instructions, visit:  
-    +   **C**: [https://github.com/cdslaborg/paramonte/tree/main/src/interface/C](https://github.com/cdslaborg/paramonte/tree/main/src/interface/C)  
-    +   **C++**: [https://github.com/cdslaborg/paramonte/tree/main/src/interface/C++](https://github.com/cdslaborg/paramonte/tree/main/src/interface/C++)  
-    +   **Fortran**: [https://github.com/cdslaborg/paramonte/tree/main/src/interface/Fortran](https://github.com/cdslaborg/paramonte/tree/main/src/interface/Fortran)  
-    +   **MATLAB**: [https://github.com/cdslaborg/paramonte/tree/main/src/interface/MATLAB](https://github.com/cdslaborg/paramonte/tree/main/src/interface/MATLAB)  
-    +   **Python**: [https://github.com/cdslaborg/paramonte/tree/main/src/interface/Python](https://github.com/cdslaborg/paramonte/tree/main/src/interface/Python)  
-
-  
-Citing ParaMonte  
-================  
-
-The ParaMonte library is an honor-ware, the currency of which is acknowledgment and citations.  
-  
-If you use ParaMonte or any ideas from the software, please acknowledge it by citing the ParaMonte library's 
-main publications as listed in [ACKNOWLEDGMENT.md](https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md).  
-
-Visit [the ParaMonte library homepage](https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work) 
-to access the PDF version of these files free of charge.  
-
-  
-License  
-=======  
-
-[MIT License](https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md)  
-
-**What does this license mean?**  
-
-Essentially, all we are asking from the users or developers is to  
-
->   explicitly acknowledge the use of this library or any concepts or parts of it in their education, research, or software (free or commercial).  
-
-This is a free software, so help us keep it freely available to the public by redistributing the library and contributing to it. 
-If you have questions or concerns about the license, do not hesitate to contact us (shahmoradi@utexas.edu).  
-
-  
-Authors and contributors  
-========================  
-
-+   [Amir Shahmoradi](https://www.cdslab.org/people/#amir-shahmoradi)  
-    +   astrophysicist/bioinformatician by training (and a science-lover in general),  
-    +   Ph.D. in computational physics/bioinformatics from the University of Texas at Austin,  
-    +   currently a faculty member of Physics and Data Science at The University of Texas at Arlington,  
-    +   with teaching/research experience/background in computational and data sciences, statistics, 
-        data analysis, and modeling, stochastic processes, Monte Carlo Methods, Bayesian probability theory, 
-        high energy physics, astronomy and astrophysics, computational physics, Molecular Dynamics simulations, 
-        biomedical science and MRI data analysis, bioinformatics and evolutionary biology (viral evolution, 
-        protein dynamics, and interactions),  
-    +   contact: [shahmoradi@utexas.edu](mailto:"shahmoradi@utexas.edu")  
-
-+   [Fatemeh Bagheri](https://www.linkedin.com/in/fbagheri)  
-    +   physicist / cosmologist by training,  
-    +   currently a UTA Physics member,  
-    +   deep philosophical thinker,  
-    +   contact: [Fatemeh.Bagheri@uta.edu](mailto:"Fatemeh.Bagheri@uta.edu")  
-
-+   [Shashank Kumbhare](https://www.cdslab.org/people/#shashank-kumbhare)  
-    +   physicist / Computational Data Scientist,  
-    +   currently a UTA Physics member,  
-    +   contact: [shashankkumbhare8@gmail.com](mailto:"shashankkumbhare8@gmail.com")  
-
-+   [Joshua Osborne](https://www.cdslab.org/people/#joshua-alexander-osborne)  
-    +   physicist / Computational Data Scientist by training,  
-    +   currently a UTA Physics member,  
-    +   contact: [joshuaalexanderosborne@gmail.com](mailto:"joshuaalexanderosborne@gmail.com")  
+-   **Comprehensive reporting and post-processing** of simulations and ML tasks, as well as their automatic storage in
+    external files to ensure the simulation results will be understandable and reproducible at any time in the foreseeable future.
 
 
-**For more information**, visit [cdslab.org/pm](https://www.cdslab.org/paramonte) or contact Amir Shahmoradi: [shahmoradi@utexas.edu](mailto:"shahmoradi@utexas.edu")  
+Installation
+============
+
+The prebuilt, ready-to-use libraries are available on [the release page of the ParaMonte library on GitHub](https://github.com/cdslaborg/paramonte/releases).
+Each prebuilt ParaMonte library automatically ships with a full-fledged set of example codes and build scripts.
+
+Alternatively, you can build the library from the source in the project's [GitHub repository](https://github.com/cdslaborg/paramonte).
+The ParaMonte library installation/build process is fully automated for all supported programming languages.
+Currently, the following compiler suites are supported **for builds from source**:
+
+| Compiler Suite                    | Linux | macOS | Windows (64bit) |
+|----------------------------------:|:-----:|:-----:|:---------------:|
+| GNU Compiler Collection > 10.3    |&check;|&check;| &cross;         |
+| Intel OneAPI > 2021.8.0           |&check;|&check;| &check;         |
+
++   Read the [`install.md` installation instruction notes](install.md) to learn more about the library's many optional build configurations.
++   For more information and a quickstart in the programming language of your choice, visit the [ParaMonte library homepage](https://www.cdslab.org/paramonte).
+
+
+Dependencies
+============
+
+Beyond an optional MPI runtime library for MPI-parallel simulations, the ParaMonte library core has **zero dependency** on external third-party libraries or packages. 
+
+
+Parallelism
+===========
+
+The ParaMonte library relies on three independent parallelism paradigms for parallel applications:
+
+1.  The Coarray parallelism (only available for select routines in the Fortran programming language).  
+2.  The Message Passing Interface (MPI) standard for inter-processor distributed parallelism.  
+    +   On **Windows** and **Linux** operating systems, we highly recommend downloading and installing the
+        [Intel MPI runtime libraries](https://software.intel.com/en-us/mpi-library),
+        which is available to the public free of charge. This requires the ParaMonte 
+        library to be (or have been prebuilt) using the Intel compilers.
+    +   On **macOS**, the Intel MPI library is not available. Therefore, we recommend installing either
+        [Open-MPI](https://www.open-mpi.org/) or [MPICH](https://www.mpich.org/) MPI runtime libraries
+        depending on the prebuilt version of the ParaMonte library that you have downloaded or
+        the configuration with which you intend to build the library.
+
+Read the [`install.md` installation instruction notes](install.md) to learn more about the library's optional parallel build configurations.<br>
+
+For more information, visit [https://www.cdslab.org/paramonte/](https://www.cdslab.org/paramonte/).
+
+
+Example usage instructions
+==========================
+
++   For complete, organized, up-to-date instructions, visit: [cdslab.org/pm](https://www.cdslab.org/paramonte)
+
++   For a quick look into *language-specific* README.md instructions, visit:
+    +   **C**: [https://github.com/cdslaborg/paramonte/tree/main/src/c](https://github.com/cdslaborg/paramonte/tree/main/src/c)
+    +   **C++**: [https://github.com/cdslaborg/paramonte/tree/main/src/cpp](https://github.com/cdslaborg/paramonte/tree/main/src/cpp)
+    +   **Fortran**: [https://github.com/cdslaborg/paramonte/tree/main/src/fortran](https://github.com/cdslaborg/paramonte/tree/main/src/fortran)
+
++   The ParaMonte libraries for MATLAB and Python are currently undergoing internal testing before their impending release.
++   For now, the previous versions (1) of the ParaMonte MATLAB and Python libraries can be downloaded 
+    and used from the previous library major release on [GitHub Release Page](https://github.com/cdslaborg/paramonte/releases/tag/v1.5.1).
+
+
+Citing ParaMonte
+================
+
+The ParaMonte library is an honor-ware and its currency is acknowledgment and citations.
+
+If you use ParaMonte or any ideas from this software, please acknowledge it by citing the ParaMonte library's
+main publications as listed in [ACKNOWLEDGMENT.md](https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md).
+
+Visit [the ParaMonte library homepage](https://www.cdslab.org/paramonte/generic/latest/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work)
+to access the PDF version of these files free of charge.
+
+
+License
+=======
+
+The majority of the ParaMonte library routines are distributed under the permissive [MIT License](LICENSE.md) 
+plus acknowledgments that are detailed in [LICENSE.md](LICENSE.md).
+
+However, there are occasionally modernized and extended routines from external projects, particularly within the ParaMonte Fortran library.
+These routines may have a license that does not fully overlap with the default ParaMonte library license [LICENSE.md](LICENSE.md).
+In such cases, the documentation and source code of the specific routine explicitly list the original license information.
+
+This is free software, so help us keep it freely available to the public by acknowledging the usage and contributing to it.
+If you have questions or concerns about the license, please get in touch with the project's lead (shahmoradi@utexas.edu).
+
+
+Authors and contributors
+========================
+
++   [Amir Shahmoradi](https://www.cdslab.org/people/#amir-shahmoradi)
+    +   Astrophysicist/bioinformatician by training,
+    +   Ph.D. in computational physics/bioinformatics, The University of Texas at Austin,
+    +   Currently a faculty member of the Data Science and Physics programs at UT Arlington,
+    +   Contact: [shahmoradi@utexas.edu](mailto:"shahmoradi@utexas.edu")
+
++   [Fatemeh Bagheri](https://www.linkedin.com/in/fbagheri)
+    +   PhD in Astronomy,
+    +   PhD in Space Physics,
+    +   Deep philosophical thinker,
+    +   Currently at NASA Goddard Space Flight Center,
+    +   Contact: [bagheri.fateme@gmail.com](mailto:"bagheri.fateme@gmail.com")
+
++   [Joshua Osborne](https://www.cdslab.org/people/#joshua-alexander-osborne)
+    +   Physicist / computational data scientist by training,
+    +   Currently a Physics PhD candidate at UT Arlington,
+    +   Contact: [joshuaalexanderosborne@gmail.com](mailto:"joshuaalexanderosborne@gmail.com")
+
+
+Contributing to ParaMonte
+=========================
+
+Please read the generic contribution guidelines listed in [CONTRIBUTING.md](CONTRIBUTING.md).
+
+
+**For more information**, visit [cdslab.org/pm](https://www.cdslab.org/paramonte) or contact Amir Shahmoradi: [shahmoradi@utexas.edu](mailto:"shahmoradi@utexas.edu")

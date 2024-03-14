@@ -1,13 +1,33 @@
-# ParaMonte kernel C/C++/Fortran release notes
+# ParaMonte release notes  
 
 This project follows [Semantic Versioning](https://semver.org/). 
 To access the latest release of the package, visit [the ParaMonte GitHub repository release page](https://github.com/cdslaborg/paramonte/releases).  
 
-See also,  
+## **Version 2.x.x**  
 
-+   [CHANGES.md](https://github.com/cdslaborg/paramonte/blob/main/src/interface/MATLAB/CHANGES.md) for the `ParaMonte::MATLAB` release notes.  
-+   [CHANGES.md](https://github.com/cdslaborg/paramonte/blob/main/src/interface/Python/CHANGES.md) for the `ParaMonte::Python` release notes.  
+### **Version 2.0.0** -- March 8, 2024 (pre-release)  
 
+**Major Enhancements**  
+
++   This is a major interface-breaking ParaMonte library release:  
+    +   The ParaMonte C and C++ have considerably changed with new interfaces and functionalities. 
+    +   The ParaMonte Fortran library has grown extensively into a full-blown Machine Learning library.  
+    +   The ParaMonte MATLAB and Python libraries have also grown extensively with modernized simple interfaces.  
+
+All the above changes are backward-incompatible.  
+The current pre-release contains only the ParaMonte C, C++, Fortran implementations.  
+Work and significant testing is underway to release the ParaMonte MATLAB, Python, and R implementations.  
+To learn about language-specific changes, visit:  
+
++   [ParaMonte C CHANGES.md](./src/c/CHANGES.md).  
++   [ParaMonte C++ CHANGES.md](./src/cpp/CHANGES.md).  
++   [ParaMonte Fortran CHANGES.md](./src/fortran/CHANGES.md).  
+  
+| Compiler Suite                    | Windows (64bit) | Linux | macOS |  
+|----------------------------------:|:---------------:|:-----:|:-----:|  
+| Intel OneAPI > 2023.0.0           | ✅              | ✅    | ✅    |  
+| GNU Compiler Collection > 10.3    | ✅              | ✅    | ✅    |  
+| Microsoft C/C++ Compiler > 16.0.0 | ✅              | ❌    | ❌    |  
 
 ## **Version 1.x.x**  
 
@@ -15,14 +35,14 @@ See also,
 
 **Minor Enhancements**  
 
-+   This is a minor enhancement release, but is a major step toward 
-    further portability of the ParaMonte library. All ParaMonte kernel 
++   This is a minor enhancement release but is a major step 
+    toward further portability of the ParaMonte library. All ParaMonte 
     library dependencies are now properly handled and recognized at runtime
     without such aggressive actions as permanently redefining the environmental
     path variables, most importantly, `PATH` and `LD_LIBRARY_PATH` on Linux/macOS.
 
-+   The ParaMonte kernel routines are now capable of handling user-input 
-    file paths that contain white-space (blank) or other exotic characters.
++   The ParaMonte routines are now capable of handling user-input 
+    file paths that contain white space (blank) or other exotic characters.
 
 +   The Bash build script for the ParaMonte C/C++/Fortran examples can now handle
     file paths that contain white-space (blank) or other exotic characters.
@@ -57,8 +77,8 @@ See also,
 **Major Enhancements**  
 
 +   This version introduces numerous performance and accuracy enhancements to the ParaMonte library.
-+   The entire kernel library is now fully documented and verified with over 866 tests that cover close 
-    to 100% of all lines and functions in the kernel.
++   The entire ParaMonte library is now fully documented and verified with over 866 tests that cover close 
+    to 100% of all lines and functions in the library.
 +   New prebuilt libraries with GNU compilers and Open-MPI on Linux are added.
 +   New flags are now added to the build scripts of the library that automate the process of code coverage generation.
 +   The `testing` builds are now removed from the ParaMonte release page as this build is mostly useful for development purposes.  
@@ -129,11 +149,11 @@ See also,
 +   The IO debugging info of all ParaMonte samplers have been enhanced. 
     In cases of wrong syntax or syntax-breaking input values in the simulation 
     output files, the error messages are now more informative and point directly 
-    to the exact location of of error in the input file.  
+    to the exact location of error in the input file.  
 
-+   The Integrated Autocorrelation (IAC) for sample refinement in ParaDRAM 
-    sampler of ParaMonte is now set to the average of all variables' IAC values 
-    instead of the maximum IAC value. This will lead to less aggressive decorrelation 
++   The Integrated Autocorrelation (ACT) for sample refinement in ParaDRAM 
+    sampler of ParaMonte is now set to the average of all variables' ACT values 
+    instead of the maximum ACT value. This will lead to less aggressive decorrelation 
     of the final sample, which means significantly larger final sample sizes, without 
     compromising the i.i.d. property of the final refined sample. This behavior can 
     be reversed back to the original by specifying "max" or "maximum" along with 
@@ -192,7 +212,7 @@ See also,
     +   The parallel simulation summary now also provides the 
         predicted strong-scaling speedup behavior of the parallel 
         ParaDRAM simulations in "single chain" parallelism mode. 
-        This can help make wiser decisions regarding the the number 
+        This can help make wiser decisions regarding the number 
         of processors for similar parallel simulations in the future.  
 
 +   The ParaDRAM restart output file in ASCII mode now contains all 
@@ -245,7 +265,7 @@ See also,
 **Bug fixes**  
 
 +   The build Batch-script for the ParaMonte examples on Windows now properly builds and runs coarray applications in parallel.
-+   The fully-deterministic restart functionality is now functional also when chainFileFormat="verbose" in ParaDRAM simulations.
++   The fully-deterministic restart functionality is now functional also when outputChainFormat="verbose" in ParaDRAM simulations.
 
 **Compiler support**  
 

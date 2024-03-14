@@ -1,0 +1,29 @@
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!                                                                                                                            !!!!
+!!!!    ParaMonte: Parallel Monte Carlo and Machine Learning Library.                                                           !!!!
+!!!!                                                                                                                            !!!!
+!!!!    Copyright (C) 2012-present, The Computational Data Science Lab                                                          !!!!
+!!!!                                                                                                                            !!!!
+!!!!    This file is part of the ParaMonte library.                                                                             !!!!
+!!!!                                                                                                                            !!!!
+!!!!    LICENSE                                                                                                                 !!!!
+!!!!                                                                                                                            !!!!
+!!!!       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md                                                          !!!!
+!!!!                                                                                                                            !!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+! NOTES:
+! Comments must begin with an exclamation mark `!`.
+! Comments can appear anywhere on an empty line or, after a value assignement.
+! The order of the input variables in the ParaDRAM namelist is irrelevant and unimportant.
+! Variables can be defined multiple times, but only the last definition will be considered as input.
+! All variable names are case insensitive. However, for clarity, this software follows the Camel-Case code-writing practice.
+! String values must be enclosed with either single or double quotation marks.
+! Logical values are case-insensitive and can be either .true., true, or t for TRUE value, and .false., false, or f for FALSE value.
+! All vectors and arrays in the input file begin with index 1, following the convention of the majority 
+! of science-oriented programming languages: Fortran, MATLAB, Julia, R, Mathematica
+
+&ParaDRAM description = "" /
+&ParaDISE description = "" /
