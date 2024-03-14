@@ -40,8 +40,8 @@
 <a href="#authors-and-contributors">Authors</a>
 </div>
 
-ParaMonte: Plain Powerful Parallel Monte Carlo Library
-======================================================
+ParaMonte: Parallel Monte Carlo and Machine Learning
+====================================================
 
 ParaMonte is a serial/parallel library of Monte Carlo routines for sampling mathematical density functions of arbitrary dimensions and 
 Machine Learning (ML) algorithms for scientific inference, with the design goal of unifying **automation** (of simulations and tasks),
@@ -50,7 +50,7 @@ Machine Learning (ML) algorithms for scientific inference, with the design goal 
 
 For more information on the installation, usage, and examples, visit https://www.cdslab.org/paramonte
 
-ParaMonte design goals
+ParaMonte Design Goals
 ======================
 
 ParaMonte has been developed while bearing the following design goals in mind:
@@ -73,6 +73,14 @@ ParaMonte has been developed while bearing the following design goals in mind:
 
 -   **Comprehensive reporting and post-processing** of simulations and ML tasks, as well as their automatic storage in
     external files to ensure the simulation results will be understandable and reproducible at any time in the foreseeable future.
+
+
+Quick Start
+===========
+
++   Follow the quick start instructions in this [QUICKSTART.md](https://github.com/cdslaborg/paramonte/blob/main/QUICKSTART.md) file. 
++   For programming languages other than C, C++, Fortran, see the quick start section of the README.md file in the corresponding 
+    language's source subfolder in the [src folder](./src) in the root directory of the ParaMonte repository.
 
 
 Installation
@@ -121,7 +129,7 @@ Read the [`install.md` installation instruction notes](install.md) to learn more
 For more information, visit [https://www.cdslab.org/paramonte/](https://www.cdslab.org/paramonte/).
 
 
-Example usage instructions
+Example Usage Instructions
 ==========================
 
 +   For complete clear organized, up-to-date instructions on the build process and the installation of the ParaMonte library, visit: [cdslab.org/pm](https://www.cdslab.org/paramonte)
@@ -184,7 +192,7 @@ This is free software, so help us keep it freely available to the public by ackn
 If you have questions or concerns about the license, please get in touch with the project's lead (shahmoradi@utexas.edu).
 
 
-Authors and contributors
+Authors and Contributors
 ========================
 
 +   [Amir Shahmoradi](https://www.cdslab.org/people/#amir-shahmoradi)
