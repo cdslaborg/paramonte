@@ -10,7 +10,7 @@
     ```
 
 2.  Navigate to the root directory of the repository either in a Windows `CMD` command prompt or Unix `Bash` terminal.
-3.  Ensure you have a recent CMake, and a recent Intel (`>2021`) or GNU (`>10`) C/Fortran compilers already installed in your terminal.
+3.  Ensure you have a recent CMake (`>3.16`), and a recent Intel (`>2021`) or GNU (`>10`) C/Fortran compilers already installed in your terminal.
 4.  Using a Windows `CMD` command prompt, type,
     +   For the ParaMonte C library build,
         ```batch
