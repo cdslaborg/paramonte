@@ -78,7 +78,9 @@ ParaMonte has been developed while bearing the following design goals in mind:
 Quick Start
 ===========
 
-Follow the quick start instructions in this [QUICKSTART.md](https://github.com/cdslaborg/paramonte/blob/main/QUICKSTART.md) file.
+Follow the quick start instructions in this [QUICKSTART.md](https://github.com/cdslaborg/paramonte/blob/main/QUICKSTART.md) file. 
+For programming languages other than C, C++, Fortran, see the quick start section of the README.md file in the corresponding 
+language's source subfolder in the [src](./src) folder in the root directory of the ParaMonte repository.
 
 
 Installation
