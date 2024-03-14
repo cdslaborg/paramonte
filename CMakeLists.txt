@@ -1468,7 +1468,7 @@ message(NOTICE "${pmattn} The ParaMonte library binary folder name: binname=\"${
 ####################################################################################################################################
 ####################################################################################################################################
 
-project(ParaMonte VERSION "${ParaMonteVersion}" LANGUAGES C CXX Fortran DESCRIPTION "A high-performance parallel Machine Learning library")
+project(ParaMonte VERSION "${ParaMonteVersion}" LANGUAGES C Fortran DESCRIPTION "A high-performance parallel Machine Learning library")
 set(CMAKE_Fortran_PREPROCESS ON)
 set(CMAKE_MACOSX_RPATH ON)
 set(CMAKE_INSTALL_RPATH_USE_LINK_PATH ON)

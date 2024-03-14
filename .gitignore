@@ -164,7 +164,6 @@ bpp.sh
 # CMake
 #########################
 
-CMakeLists.txt.user
 CMakeCache.txt
 CMakeFiles
 CMakeScripts
