@@ -50,7 +50,7 @@ Machine Learning (ML) algorithms for scientific inference, with the design goal 
 
 For more information on the installation, usage, and examples, visit https://www.cdslab.org/paramonte
 
-ParaMonte design goals
+ParaMonte Design Goals
 ======================
 
 ParaMonte has been developed while bearing the following design goals in mind:
@@ -75,7 +75,7 @@ ParaMonte has been developed while bearing the following design goals in mind:
     external files to ensure the simulation results will be understandable and reproducible at any time in the foreseeable future.
 
 
-Quick start
+Quick Start
 ===========
 
 For a quick start with some MATLAB Live Script examples, visit [this ParaMonte documentation page](https://www.cdslab.org/paramonte/generic/latest/examples/matlab/mlx/).
@@ -156,7 +156,7 @@ Read the [`install.md` installation instruction notes](install.md) to learn more
 For more information, visit [https://www.cdslab.org/paramonte/](https://www.cdslab.org/paramonte/).
 
 
-Example usage instructions
+Example Usage Instructions
 ==========================
 
 +   **Install a MATLAB >2017b distribution**, preferably, the latest MATLAB.
@@ -252,7 +252,7 @@ This is free software, so help us keep it freely available to the public by ackn
 If you have questions or concerns about the license, please get in touch with the project's lead (shahmoradi@utexas.edu).
 
 
-Authors and contributors
+Authors and Contributors
 ========================
 
 +   [Amir Shahmoradi](https://www.cdslab.org/people/#amir-shahmoradi)

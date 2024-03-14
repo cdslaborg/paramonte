@@ -49,7 +49,7 @@ Machine Learning (ML) algorithms for scientific inference, with the design goal 
 
 For more information on the installation, usage, and examples, visit https://www.cdslab.org/paramonte
 
-ParaMonte design goals
+ParaMonte Design Goals
 ======================
 
 ParaMonte has been developed while bearing the following design goals in mind:
@@ -96,17 +96,19 @@ for section in sectionList: readme[section] = dict()
 
 readme["quickstart"]["title"] = """
 
-Quick start
+Quick Start
 ===========
 """
 
-readme["quickstart"]["main"] = """"""
+readme["quickstart"]["main"] = """
+Follow the quick start instructions in this [QUICKSTART.md](https://github.com/cdslaborg/paramonte/blob/main/QUICKSTART.md) file.
+"""
 
-readme["quickstart"]["c"] = """"""
+readme["quickstart"]["c"] = readme["quickstart"]["main"]
 
-readme["quickstart"]["cpp"] = """"""
+readme["quickstart"]["cpp"] = readme["quickstart"]["main"]
 
-readme["quickstart"]["fortran"] = """"""
+readme["quickstart"]["fortran"] = readme["quickstart"]["main"]
 
 readme["quickstart"]["matlab"] = readme["quickstart"]["title"] + """
 For a quick start with some MATLAB Live Script examples, visit [this ParaMonte documentation page](https://www.cdslab.org/paramonte/generic/latest/examples/matlab/mlx/).
@@ -353,7 +355,7 @@ readme["license"]["python"] = readme["license"]["main"]
 
 readme["authors"]["title"] = """
 
-Authors and contributors
+Authors and Contributors
 ========================
 """
 
@@ -397,11 +399,15 @@ readme["authors"]["python"] = readme["authors"]["title"] + fatima + amir + josh
 
 readme["examples"]["title"] = """
 
-Example usage instructions
+Example Usage Instructions
 ==========================
 """
 
 readme["examples"]["main"] = readme["examples"]["title"] + """
++   Generally, the best way to get started with example usage is to build the language-specific library examples.  
+    The library example build and run scripts are automatically generated for each ParaMonte build and 
+    are automatically stored in the output installation directory of the build.
+
 +   For complete, organized, up-to-date instructions, visit: [cdslab.org/pm](https://www.cdslab.org/paramonte)
 
 +   For a quick look into *language-specific* README.md instructions, visit:
