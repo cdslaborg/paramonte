@@ -125,8 +125,10 @@ src/matlab/paramonte/vis/colornames/htm/*
 **/paramonte-codecov
 **/src/matlab/main
 **/src/matlab/test
+**/src/matlab/xrc
 **/src/python/main
 **/src/python/test
+**/src/python/setup
 **/codecov
 **/build
 #**/trash
