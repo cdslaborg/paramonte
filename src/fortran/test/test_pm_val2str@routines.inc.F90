@@ -17,6 +17,8 @@
 !>  \brief
 !>  This module contains implementations of the tests of the procedures under the generic interface [getStr](@ref pm_val2str::getStr).
 !>
+!>  \fintest
+!>
 !>  \author
 !>  \AmirShahmoradi
 

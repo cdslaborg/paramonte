@@ -14,8 +14,13 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-!>  \brief This module contains tests of the module [pm_str](@ref pm_str).
-!>  \author Amir Shahmoradi
+!>  \brief
+!>  This module contains tests of the module [pm_str](@ref pm_str).
+!>
+!>  \fintest
+!>
+!>  \author
+!>  Amir Shahmoradi
 
 module test_pm_str
 
