@@ -40,8 +40,8 @@
 <a href="#authors-and-contributors">Authors</a>
 </div>
 
-ParaMonte: Parallel Monte Carlo & Machine Learning Library
-==========================================================
+ParaMonte: Parallel Monte Carlo and Machine Learning
+====================================================
 
 ParaMonte is a serial/parallel library of Monte Carlo routines for sampling mathematical density functions of arbitrary dimensions and 
 Machine Learning (ML) algorithms for scientific inference, with the design goal of unifying **automation** (of simulations and tasks),
