@@ -1,0 +1,6 @@
+[submodule "OpenBLAS"]
+	path = OpenBLAS
+	url = git@github.com:xianyi/OpenBLAS.git
+[submodule "external/paramonted"]
+	path = external/paramonted
+	url = https://github.com/cdslaborg/paramonted

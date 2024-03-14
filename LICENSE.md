@@ -1,21 +1,14 @@
-MIT License
+ParaMonte License
 
 Copyright (c) 2012 - present, The Computational Data Science Lab
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+This software is distributed under the MIT license with additional terms as outlined below.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+1.  If you use any parts or concepts from this library, you must acknowledge 
+    the usage by citing the relevant publications of the ParaMonte library.
+2.  If you regenerate any parts/ideas from this library in a programming 
+    environment other than those currently supported by this ParaMonte library, 
+    you must also ask the end users to cite this original ParaMonte library.
+3.  There are occasionally modernized and extended routines from external projects, particularly within the ParaMonte Fortran library.  
+    These routines may have a license that does not fully overlap with the default ParaMonte library license [LICENSE.md](LICENSE.md).  
+    In such cases, the documentation and source code of the specific routine explicitly list the original license information.  

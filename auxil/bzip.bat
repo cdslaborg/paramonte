@@ -1,42 +1,16 @@
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-::::
-::::   MIT License
-::::
-::::   ParaMonte: plain powerful parallel Monte Carlo library.
-::::
-::::   Copyright (C) 2012-present, The Computational Data Science Lab
-::::
-::::   This file is part of the ParaMonte library.
-::::
-::::   Permission is hereby granted, free of charge, to any person obtaining a 
-::::   copy of this software and associated documentation files (the "Software"), 
-::::   to deal in the Software without restriction, including without limitation 
-::::   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-::::   and/or sell copies of the Software, and to permit persons to whom the 
-::::   Software is furnished to do so, subject to the following conditions:
-::::
-::::   The above copyright notice and this permission notice shall be 
-::::   included in all copies or substantial portions of the Software.
-::::
-::::   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-::::   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-::::   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-::::   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-::::   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-::::   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
-::::   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-::::
-::::   ACKNOWLEDGMENT
-::::
-::::   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-::::   As per the ParaMonte library license agreement terms, if you use any parts of 
-::::   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-::::   work (education/research/industry/development/...) by citing the ParaMonte 
-::::   library as described on this page:
-::::
-::::       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md
-::::
+::::                                                                                                                            ::::
+::::    ParaMonte: Parallel Monte Carlo and Machine Learning Library.                                                           ::::
+::::                                                                                                                            ::::
+::::    Copyright (C) 2012-present, The Computational Data Science Lab                                                          ::::
+::::                                                                                                                            ::::
+::::    This file is part of the ParaMonte library.                                                                             ::::
+::::                                                                                                                            ::::
+::::    LICENSE                                                                                                                 ::::
+::::                                                                                                                            ::::
+::::       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md                                                          ::::
+::::                                                                                                                            ::::
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -46,7 +20,7 @@
 set ERRORLEVEL=0
 cd %~dp0
 set "AUXIL_DIR=%~dp0"
-set "ParaMonte_ROOT_DIR=!AUXIL_DIR!.."
+set "paramonte_dir=!AUXIL_DIR!.."
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: parse arguments
@@ -85,7 +59,7 @@ if not "%1"=="" (
             echo. 
             echo. -- ParaMonte - Fatal Error: input destination directory does not exist: !DESTINATION_DIR!
             echo. 
-            cd !ParaMonte_ROOT_DIR!
+            cd !paramonte_dir!
             set ERRORLEVEL=1
             exit /B 1
         )
@@ -117,7 +91,7 @@ if "!FLAG_SUPPORTED!"=="true" (
 :: zip subfolders
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-if not defined DESTINATION_DIR set DESTINATION_DIR=!ParaMonte_ROOT_DIR!\bin
+if not defined DESTINATION_DIR set DESTINATION_DIR=!paramonte_dir!\bin
 
 call :NORMALIZEPATH "!DESTINATION_DIR!"
 if exist "!DESTINATION_DIR!" (
@@ -136,7 +110,7 @@ if exist "!DESTINATION_DIR!" (
                 echo. -- ParaMonte - FATAL: compression failed for subdirectory: %%~G
                 echo. -- ParaMonte - FATAL: gracefully exiting.
                 echo.
-                cd !ParaMonte_ROOT_DIR!
+                cd !paramonte_dir!
                 set ERRORLEVEL=1
                 exit /B 1
             )
@@ -146,7 +120,7 @@ if exist "!DESTINATION_DIR!" (
     echo. 
     echo. -- ParaMonte - Fatal Error: input destination directory does not exist: !DESTINATION_DIR!
     echo. 
-    cd !ParaMonte_ROOT_DIR!
+    cd !paramonte_dir!
     set ERRORLEVEL=1
     exit /B 1
 )
@@ -157,7 +131,7 @@ set "FLAG="
 set "VALUE="
 set "AUXIL_DIR="
 set "DESTINATION_DIR="
-cd !ParaMonte_ROOT_DIR!
+cd !paramonte_dir!
 exit /B 0
 
 goto LABEL_EOF
@@ -184,12 +158,12 @@ GOTO:EOF
 
 :LABEL_ERR
 
-cd !ParaMonte_ROOT_DIR!
+cd !paramonte_dir!
 set ERRORLEVEL=1
 exit /B 1
 
 :NORMALIZEPATH
-cd !ParaMonte_ROOT_DIR!
+cd !paramonte_dir!
 set DESTINATION_DIR=%~dpfn1
 exit /B
 
@@ -199,5 +173,5 @@ echo.
 echo. -- ParaMonte - mission accomplished. 
 echo.
 
-cd !ParaMonte_ROOT_DIR!
+cd !paramonte_dir!
 exit /B 0

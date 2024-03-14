@@ -1,0 +1,48 @@
+&specTest
+    ntest = 1
+/
+
+&specData
+    nd = 2
+    nc = 15
+    relTol = 0.001d0
+    etamin = 0.1d0
+    etamax = 10.d0
+    sizeMin = 200
+    sizeMax = 50
+    centerMin = -2.5d0
+    centerMax = +2.5d0
+    !rngseed = 3132151
+    !rngseed = 3132152
+    !rngseed = 5157682
+    !rngseed = 51575130 ! some random seeds are not deterministic!
+    !rngseed = 5157931
+    !rngseed = 51579513 ! singular cluster mess
+    !rngseed = 515795
+    !rngseed = 51575
+    rngseed = 2312
+    !rngseed = 2329
+    !isRepeatable = .true.
+    dist = "uniform"
+/
+
+&specPartition
+    nc = 2
+    nt = 10
+    !nemax = 4
+    !minSize = 3
+    !stanEnabled = .false.
+    shrinkageMaxDen = 1.0d0
+    expansionMaxDen = 1.0d0
+    expansionMinVol = 2.0d0
+    shrinkageMinVol = 1.0d0
+    inclusionFraction = 1.d0
+    shapeAdaptationEnabled = .false.
+    !scaleOptimizationEnabled = .false.
+    shapeOptimizationEnabled = .false.
+    biasCorrectionEnabled = .false.
+    !kvolumeNumRecursionMax = 0!1000
+    mahalSqWeightExponent = 0.d0
+    isRepeatable = .true.
+    !rngseed = 51769
+/

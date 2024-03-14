@@ -1,47 +1,21 @@
 #!/bin/bash
 ####################################################################################################################################
 ####################################################################################################################################
-####
-####   MIT License
-####
-####   ParaMonte: plain powerful parallel Monte Carlo library.
-####
-####   Copyright (C) 2012-present, The Computational Data Science Lab
-####
-####   This file is part of the ParaMonte library.
-####
-####   Permission is hereby granted, free of charge, to any person obtaining a 
-####   copy of this software and associated documentation files (the "Software"), 
-####   to deal in the Software without restriction, including without limitation 
-####   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-####   and/or sell copies of the Software, and to permit persons to whom the 
-####   Software is furnished to do so, subject to the following conditions:
-####
-####   The above copyright notice and this permission notice shall be 
-####   included in all copies or substantial portions of the Software.
-####
-####   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-####   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-####   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-####   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-####   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-####   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
-####   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-####
-####   ACKNOWLEDGMENT
-####
-####   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-####   As per the ParaMonte library license agreement terms, if you use any parts of 
-####   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-####   work (education/research/industry/development/...) by citing the ParaMonte 
-####   library as described on this page:
-####
-####       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md
-####
+####                                                                                                                            ####
+####    ParaMonte: Parallel Monte Carlo and Machine Learning Library.                                                           ####
+####                                                                                                                            ####
+####    Copyright (C) 2012-present, The Computational Data Science Lab                                                          ####
+####                                                                                                                            ####
+####    This file is part of the ParaMonte library.                                                                             ####
+####                                                                                                                            ####
+####    LICENSE                                                                                                                 ####
+####                                                                                                                            ####
+####       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md                                                          ####
+####                                                                                                                            ####
 ####################################################################################################################################
 ####################################################################################################################################
 
-BUILD_NAME="ReleaseTest"
+build_name="ReleaseTest"
 workingDir="$(pwd)"
 srcFileDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
@@ -72,11 +46,11 @@ case "${UNAME_PLATFORM}" in
 esac
 if [[ "$PLATFORM" =~ .*"unknown".* ]]; then
     echo >&2
-    echo >&2 "-- ${BUILD_NAME} - FATAL: Build failed. unrecognized platform - ${PLATFORM}"
-    echo >&2 "-- ${BUILD_NAME} - FATAL: The supported platforms include: Linux, Darwin, CYGWIN, MINGW"
-    echo >&2 "-- ${BUILD_NAME} - FATAL: The ParaMonte build has been only tested on Linux and Darwin platforms."
+    echo >&2 "-- ${build_name} - FATAL: Build failed. unrecognized platform - ${PLATFORM}"
+    echo >&2 "-- ${build_name} - FATAL: The supported platforms include: Linux, Darwin, CYGWIN, MINGW"
+    echo >&2 "-- ${build_name} - FATAL: The ParaMonte build has been only tested on Linux and Darwin platforms."
     echo >&2
-    echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
+    echo >&2 "-- ${build_name} - gracefully exiting."
     echo >&2
     exit 1
 else
@@ -127,22 +101,22 @@ LANG_LIST="c cpp fortran python matlab"
 BTYPE_LIST="debug release"
 LTYPE_LIST="shared"
 PARALLELISM_LIST="none impi mpich openmpi"
-PMCS_LIST="gnu intel"
+csid_LIST="gnu intel"
 MEMORY_LIST="heap"
 pmReleaseLink="https://github.com/cdslaborg/paramonte/releases/latest/download"
-unset pmKernelVersionNumber
+unset pmVersionNumber
 
 while [ "$1" != "" ]; do
     case $1 in
         -v | --version )        shift
-                                pmKernelVersionNumber="$1"
-                                pmReleaseLink="https://github.com/cdslaborg/paramonte/releases/download/v${pmKernelVersionNumber}"
+                                pmVersionNumber="$1"
+                                pmReleaseLink="https://github.com/cdslaborg/paramonte/releases/download/v${pmVersionNumber}"
                                 ;;
         -L | --lang )           shift
                                 LANG_LIST="$1"
                                 ;;
         -s | --compiler_suite ) shift
-                                PMCS_LIST="$1"
+                                csid_LIST="$1"
                                 ;;
         -b | --build )          shift
                                 BTYPE_LIST="$1"
@@ -162,7 +136,7 @@ while [ "$1" != "" ]; do
         -x | --exam_enabled )   shift
                                 ParaMonteExample_RUN_ENABLED="$1"
                                 ;;
-        -D | --deploy )         deploy_flag="--deploy"
+        -D | --deps )           flag_deps="--deps"
                                 ;;
         -f | --fortran )        shift
                                 Fortran_COMPILER_PATH="$1"
@@ -170,7 +144,7 @@ while [ "$1" != "" ]; do
         -M | --mpiexec )        shift
                                 MPIEXEC_PATH="$1"
                                 ;;
-        -F | --fresh )          fresh_flag="--fresh"
+        -F | --fresh )          flag_fresh="--fresh"
                                 ;;
         -O | --local )          local_flag="--local"
                                 ;;
@@ -180,9 +154,7 @@ while [ "$1" != "" ]; do
                                 ;;
         -B | --bootstrap )      gcc_bootstrap_flag="--bootstrap"
                                 ;;
-        -a | --matdram )        MatDRAM_ENABLED="true"
-                                ;;
-        -c | --codecov )        codecov_flag="--codecov"
+        -c | --codecov )        flag_codecov="--codecov"
                                 ;;
         -n | --nproc )          shift
                                 FOR_COARRAY_NUM_IMAGES="$1"
@@ -208,7 +180,7 @@ done
 #### download libraries and run tests
 ####################################################################################################################################
 
-for PMCS in $PMCS_LIST; do
+for csid in $csid_LIST; do
     for LANG in $LANG_LIST; do
         for BTYPE in $BTYPE_LIST; do
             for LTYPE in $LTYPE_LIST; do
@@ -217,7 +189,7 @@ for PMCS in $PMCS_LIST; do
 
                         BENABLED=true
 
-                        if [ "${isWindows}" = "true" ] && ([ "${PMCS}" = "gnu" ] || [ "${PARALLELISM}" = "mpich" ] || [ "${PARALLELISM}" = "openmpi" ]); then
+                        if [ "${isWindows}" = "true" ] && ([ "${csid}" = "gnu" ] || [ "${PARALLELISM}" = "mpich" ] || [ "${PARALLELISM}" = "openmpi" ]); then
                             BENABLED=false
                         fi
 
@@ -231,9 +203,9 @@ for PMCS in $PMCS_LIST; do
                         else
                             parSuffix="_${PARALLELISM}"
                             nproc_flag="--nproc ${FOR_COARRAY_NUM_IMAGES}"
-                            if ([ "${PMCS}" = "intel" ] && ([ "${PARALLELISM}" = "openmpi" ] || [ "${PARALLELISM}" = "mpich" ])) \
-                            || ([ "${PMCS}" = "intel" ] && [ "${PARALLELISM}" = "impi" ] && [ "${isMacOS}" = "true" ]) \
-                            || ([ "${PMCS}" = "gnu" ] && [ "${PARALLELISM}" = "impi" ]) \
+                            if ([ "${csid}" = "intel" ] && ([ "${PARALLELISM}" = "openmpi" ] || [ "${PARALLELISM}" = "mpich" ])) \
+                            || ([ "${csid}" = "intel" ] && [ "${PARALLELISM}" = "impi" ] && [ "${isMacOS}" = "true" ]) \
+                            || ([ "${csid}" = "gnu" ] && [ "${PARALLELISM}" = "impi" ]) \
                             then
                                 BENABLED=false
                             fi
@@ -242,10 +214,10 @@ for PMCS in $PMCS_LIST; do
                         if [ "${BENABLED}" = "true" ]; then
 
                             tempDir=$(mktemp -d "${TMPDIR:-/tmp}/cversion.XXXXXXXXX")
-                            echo >&2 "-- ${BUILD_NAME} - changing directory to: ${tempDir}"
+                            echo >&2 "-- ${build_name} - changing directory to: ${tempDir}"
                             cd "${tempDir}"
 
-                            pmLibName="libparamonte_${LANG}_${PLATFORM}_${ARCHITECTURE}_${PMCS}_${BTYPE}_${LTYPE}_${MEMORY}${parSuffix}"
+                            pmLibName="libparamonte_${LANG}_${PLATFORM}_${ARCHITECTURE}_${csid}_${BTYPE}_${LTYPE}_${MEMORY}${parSuffix}"
                             compressedFileExt=".tar.gz"
                             untar=(tar xvzf "${pmLibName}${compressedFileExt}")
 
@@ -265,17 +237,17 @@ for PMCS in $PMCS_LIST; do
                             fi
                             fetch+=" ${pmReleaseLink}/${compressedFileName}"
 
-                            echo >&2 && echo >&2 "-- ${BUILD_NAME} - ${fetch}" && echo >&2 && $(${fetch}) \
+                            echo >&2 && echo >&2 "-- ${build_name} - ${fetch}" && echo >&2 && $(${fetch}) \
                             && \
-                            echo >&2 && echo >&2 "-- ${BUILD_NAME} - ${untar[@]}" && echo >&2 && "${untar[@]}" \
+                            echo >&2 && echo >&2 "-- ${build_name} - ${untar[@]}" && echo >&2 && "${untar[@]}" \
                             && \
                             cd ${pmLibName} \
                             && \
                             ./build.sh && ./run.sh ${nproc_flag} \
                             || {
                                 echo >&2
-                                echo >&2 "-- ${BUILD_NAME} - test FAILED for ${pmLibName}."
-                                echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
+                                echo >&2 "-- ${build_name} - test FAILED for ${pmLibName}."
+                                echo >&2 "-- ${build_name} - gracefully exiting."
                                 echo >&2
                                 cd "${workingDir}"
                                 exit 1
@@ -323,7 +295,7 @@ for LANG in $LANG_LIST; do
         if ! [ -z ${plexe+x} ]; then
 
             tempDir=$(mktemp -d "${TMPDIR:-/tmp}/cversion.XXXXXXXXX")
-            echo >&2 "-- ${BUILD_NAME} - changing directory to: ${tempDir}"
+            echo >&2 "-- ${build_name} - changing directory to: ${tempDir}"
             cd "${tempDir}"
 
             pmLibName="libparamonte_${LANG}_${PLATFORM}_${ARCHITECTURE}"
@@ -344,13 +316,13 @@ for LANG in $LANG_LIST; do
             fi
             fetch+=" ${pmReleaseLink}/${compressedFileName}"
 
-            echo >&2 && echo >&2 "-- ${BUILD_NAME} - ${fetch}" && echo >&2 && $(${fetch}) \
+            echo >&2 && echo >&2 "-- ${build_name} - ${fetch}" && echo >&2 && $(${fetch}) \
             && \
-            echo >&2 && echo >&2 "-- ${BUILD_NAME} - ${untar[@]}" && echo >&2 && "${untar[@]}" \
+            echo >&2 && echo >&2 "-- ${build_name} - ${untar[@]}" && echo >&2 && "${untar[@]}" \
             && \
             ls "${tempDir}/" && cd "${tempDir}/${pmLibName}" \
             && \
-            echo >&2 && echo >&2 "-- ${BUILD_NAME} - ${cmd[@]}" && echo >&2 && "${cmd[@]}" \
+            echo >&2 && echo >&2 "-- ${build_name} - ${cmd[@]}" && echo >&2 && "${cmd[@]}" \
             && \
             {
             if [[ "${PARALLELISM}" =~ .*"impi".* ]] || [[ "${PARALLELISM}" =~ .*"mpich".* ]] || [[ "${PARALLELISM}" =~ .*"openmpi".* ]]; then
@@ -365,11 +337,11 @@ for LANG in $LANG_LIST; do
                     cmd+=(main_mpi.py)
                 fi
             fi
-            echo >&2 && echo >&2 "-- ${BUILD_NAME} - ${cmd[@]}" && echo >&2 && "${cmd[@]}"
+            echo >&2 && echo >&2 "-- ${build_name} - ${cmd[@]}" && echo >&2 && "${cmd[@]}"
             } || {
                 echo >&2
-                echo >&2 "-- ${BUILD_NAME} - test FAILED for ${pmLibName}."
-                echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
+                echo >&2 "-- ${build_name} - test FAILED for ${pmLibName}."
+                echo >&2 "-- ${build_name} - gracefully exiting."
                 echo >&2
                 cd "${workingDir}"
                 exit 1

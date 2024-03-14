@@ -112,25 +112,26 @@ Thumbs.db
 #########################
 
 *.mex*
-src/interface/MATLAB/paramonte/vis/colornames/htm/*
+src/matlab/paramonte/vis/colornames/htm/*
 
 #########################
 # ParaMonte temp folders
 #########################
 
-**/src/kernel/ParaMonte_mod@version@kernel.inc.f90
-**/getCompilerVersion.f90
-**/paramonte-kernel-doc
+**/pm_paramonte@version.inc.F90
+#**/getCompilerVersion.F90
+**/doc/fortran
 **/.ipynb_checkpoints
 **/paramonte-codecov
-**/paramonte-julia
-**/paramonte-doc
-**/paramontex
-**/benchmark
+**/src/matlab/main
+**/src/matlab/test
+**/src/python/main
+**/src/python/test
 **/codecov
 **/build
-**/trash
+#**/trash
 **/temp
+**/bld
 **/bin
 **/R
 **/___*___
@@ -197,7 +198,7 @@ _deps
 # documentation
 #########################
 
-**/paramonte-kernel-doc/*
+**/external/fortran/*
 **/devscripts/*
 **/draft/*
 **/doc/*
