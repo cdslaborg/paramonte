@@ -103,7 +103,7 @@ Quick Start
 readme["quickstart"]["main"] = readme["quickstart"]["title"] + """
 +   Follow the quick start instructions in this [QUICKSTART.md](https://github.com/cdslaborg/paramonte/blob/main/QUICKSTART.md) file. 
 +   For programming languages other than C, C++, Fortran, see the quick start section of the README.md file in the corresponding 
-    language's source subfolder in the [src](./src) folder in the root directory of the ParaMonte repository.
+    language's source subfolder in the [src folder](./src) in the root directory of the ParaMonte repository.
 """
 
 readme["quickstart"]["c"] = readme["quickstart"]["main"]
