@@ -1,0 +1,258 @@
+program example
+
+    use pm_kind, only: SK, IK
+    use pm_kind, only: TKC => RK32 ! All other real types are also supported.
+    use pm_arrayResize, only: setResized
+    use pm_distUnif, only: getUnifRand
+    use pm_sampleMean, only: setMean
+    use pm_io, only: display_type
+
+    implicit none
+
+    integer(IK) :: idim, ndim, nsam
+    type(display_type) :: disp
+    disp = display_type(file = "main.out.F90")
+
+    call disp%skip()
+    call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+    call disp%show("!Compute the mean of a 1-D array.")
+    call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+    call disp%skip()
+
+    block
+        real(TKC) :: mean
+        real(TKC), allocatable :: sample(:)
+        call disp%skip()
+        call disp%show("nsam = getUnifRand(1, 5)")
+                        nsam = getUnifRand(1, 5)
+        call disp%show("sample = getUnifRand(0., 1., nsam)")
+                        sample = getUnifRand(0., 1., nsam)
+        call disp%show("sample")
+        call disp%show( sample )
+        call disp%show("call setMean(mean, sample)")
+                        call setMean(mean, sample)
+        call disp%show("mean")
+        call disp%show( mean )
+        call disp%show("call setMean(mean, sample, dim = 1_IK)")
+                        call setMean(mean, sample, dim = 1_IK)
+        call disp%show("mean")
+        call disp%show( mean )
+        call disp%skip()
+    end block
+
+    call disp%skip()
+    call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+    call disp%show("!Compute the mean of a pair of data series.")
+    call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+    call disp%skip()
+
+    block
+        real(TKC) :: mean(2)
+        real(TKC), allocatable :: sample(:,:)
+        real(TKC), allocatable :: weight(:)
+        real(TKC) :: weisum
+        call disp%skip()
+        call disp%show("nsam = getUnifRand(1, 5)")
+                        nsam = getUnifRand(1, 5)
+        call disp%show("sample = getUnifRand(0., 1., nsam, 2_IK)")
+                        sample = getUnifRand(0., 1., nsam, 2_IK)
+        call disp%show("sample")
+        call disp%show( sample )
+        call disp%show("call setMean(mean, sample(:,1), sample(:,2))")
+                        call setMean(mean, sample(:,1), sample(:,2))
+        call disp%show("mean")
+        call disp%show( mean )
+        call disp%show("call setMean(mean, sample, dim = 1_IK) ! for comparison.")
+                        call setMean(mean, sample, dim = 1_IK) ! for comparison.
+        call disp%show("mean")
+        call disp%show( mean )
+        call disp%skip()
+        call disp%show("weight = getUnifRand(1, 100, nsam)")
+                        weight = getUnifRand(1, 100, nsam)
+        call disp%show("weight")
+        call disp%show( weight )
+        call disp%show("call setMean(mean, sample(:,1), sample(:,2), weight, weisum)")
+                        call setMean(mean, sample(:,1), sample(:,2), weight, weisum)
+        call disp%show("weisum")
+        call disp%show( weisum )
+        call disp%show("mean")
+        call disp%show( mean )
+        call disp%show("call setMean(mean, sample, 1_IK, weight, weisum) ! for comparison.")
+                        call setMean(mean, sample, 1_IK, weight, weisum) ! for comparison.
+        call disp%show("weisum")
+        call disp%show( weisum )
+        call disp%show("mean")
+        call disp%show( mean )
+        call disp%skip()
+        call disp%show("call setMean(mean, sample(:,1), sample(:,2), weight, weisum)")
+                        call setMean(mean, sample(:,1), sample(:,2), weight, weisum)
+        call disp%show("weisum")
+        call disp%show( weisum )
+        call disp%show("mean")
+        call disp%show( mean )
+        call disp%show("call setMean(mean, sample, 1_IK, weight, weisum) ! for comparison.")
+                        call setMean(mean, sample, 1_IK, weight, weisum) ! for comparison.
+        call disp%show("weisum")
+        call disp%show( weisum )
+        call disp%show("mean")
+        call disp%show( mean )
+        call disp%skip()
+    end block
+
+    call disp%skip()
+    call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+    call disp%show("!Compute the mean of a 2-D array along a specific dimension.")
+    call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+    call disp%skip()
+
+    block
+        real(TKC), allocatable :: mean(:)
+        real(TKC), allocatable :: sample(:,:)
+        call disp%skip()
+        call disp%show("ndim = getUnifRand(1, 3); nsam = getUnifRand(1, 5)")
+                        ndim = getUnifRand(1, 3); nsam = getUnifRand(1, 5)
+        call disp%show("sample = getUnifRand(0., 1., ndim, nsam)")
+                        sample = getUnifRand(0., 1., ndim, nsam)
+        call disp%show("sample")
+        call disp%show( sample )
+        call disp%show("call setResized(mean, ndim)")
+                        call setResized(mean, ndim)
+        call disp%show("call setMean(mean(1), sample)")
+                        call setMean(mean(1), sample)
+        call disp%show("mean(1)")
+        call disp%show( mean(1) )
+        call disp%show("call setMean(mean, sample, dim = 2_IK)")
+                        call setMean(mean, sample, dim = 2_IK)
+        call disp%show("mean")
+        call disp%show( mean )
+        call disp%show("call setMean(mean, transpose(sample), dim = 1_IK)")
+                        call setMean(mean, transpose(sample), dim = 1_IK)
+        call disp%show("mean")
+        call disp%show( mean )
+        call disp%skip()
+    end block
+
+    call disp%skip()
+    call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+    call disp%show("!Compute the mean of a 1-D weighted array.")
+    call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+    call disp%skip()
+
+    block
+        real(TKC) :: mean
+        real(TKC), allocatable :: sample(:)
+        real(TKC), allocatable :: weight(:)
+        real(TKC) :: weisum
+        call disp%skip()
+        call disp%show("nsam = getUnifRand(1, 5)")
+                        nsam = getUnifRand(1, 5)
+        call disp%show("sample = getUnifRand(0., 1., nsam)")
+                        sample = getUnifRand(0., 1., nsam)
+        call disp%show("sample")
+        call disp%show( sample )
+        call disp%show("weight = getUnifRand(1, 100, nsam)")
+                        weight = getUnifRand(1, 100, nsam)
+        call disp%show("weight")
+        call disp%show( weight )
+        call disp%show("call setMean(mean, sample)")
+                        call setMean(mean, sample)
+        call disp%show("mean")
+        call disp%show( mean )
+        call disp%show("call setMean(mean, sample, dim = 1_IK)")
+                        call setMean(mean, sample, dim = 1_IK)
+        call disp%show("mean")
+        call disp%show( mean )
+        call disp%show("call setMean(mean, sample, weight, weisum)")
+                        call setMean(mean, sample, weight, weisum)
+        call disp%show("[weisum, sum(weight)]")
+        call disp%show( [weisum, sum(weight)] )
+        call disp%show("mean")
+        call disp%show( mean )
+        call disp%show("call setMean(mean, sample, 1_IK, weight, weisum)")
+                        call setMean(mean, sample, 1_IK, weight, weisum)
+        call disp%show("[weisum, sum(weight)]")
+        call disp%show( [weisum, sum(weight)] )
+        call disp%show("mean")
+        call disp%show( mean )
+        call disp%skip()
+    end block
+
+    call disp%skip()
+    call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+    call disp%show("!Compute the mean of a 2-D weighted array along a specific dimension.")
+    call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+    call disp%skip()
+
+    block
+        real(TKC), allocatable :: mean(:)
+        real(TKC), allocatable :: sample(:,:)
+        real(TKC), allocatable :: weight(:)
+        real(TKC) :: weisum
+        call disp%skip()
+        call disp%show("ndim = getUnifRand(1, 3); nsam = getUnifRand(1, 5)")
+                        ndim = getUnifRand(1, 3); nsam = getUnifRand(1, 5)
+        call disp%show("sample = getUnifRand(0., 1., ndim, nsam)")
+                        sample = getUnifRand(0., 1., ndim, nsam)
+        call disp%show("sample")
+        call disp%show( sample )
+        call disp%show("weight = getUnifRand(1, 100, nsam)")
+                        weight = getUnifRand(1, 100, nsam)
+        call disp%show("weight")
+        call disp%show( weight )
+        call disp%show("call setResized(mean, ndim)")
+                        call setResized(mean, ndim)
+        call disp%show("call setMean(mean(1), sample, [(weight, idim = 1, ndim)], weisum)")
+                        call setMean(mean(1), sample, [(weight, idim = 1, ndim)], weisum)
+        call disp%show("mean(1)")
+        call disp%show( mean(1) )
+        call disp%show("call setMean(mean, sample, 2_IK, weight, weisum)")
+                        call setMean(mean, sample, 2_IK, weight, weisum)
+        call disp%show("[weisum, sum(weight)]")
+        call disp%show( [weisum, sum(weight)] )
+        call disp%show("mean")
+        call disp%show( mean )
+        call disp%show("call setMean(mean, transpose(sample), 1_IK, weight, weisum)")
+                        call setMean(mean, transpose(sample), 1_IK, weight, weisum)
+        call disp%show("[weisum, sum(weight)]")
+        call disp%show( [weisum, sum(weight)] )
+        call disp%show("mean")
+        call disp%show( mean )
+        call disp%skip()
+    end block
+
+    call disp%skip()
+    call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+    call disp%show("!Compute the mean of a multidimensional array by associating it with a 1D pointer.")
+    call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+    call disp%skip()
+
+    block
+        real(TKC) :: mean
+        integer(IK) :: nslice
+        real(TKC), allocatable, target :: sample(:,:,:)
+        real(TKC), pointer :: samptr(:)
+        call disp%skip()
+        call disp%show("ndim = getUnifRand(1, 2); nsam = getUnifRand(1, 3); nslice = getUnifRand(1, 4)")
+                        ndim = getUnifRand(1, 2); nsam = getUnifRand(1, 3); nslice = getUnifRand(1, 4)
+        call disp%show("sample = getUnifRand(0., 1., ndim, nsam, nslice)")
+                        sample = getUnifRand(0., 1., ndim, nsam, nslice)
+        call disp%show("sample")
+        call disp%show( sample )
+    call disp%show("shape(sample)")
+    call disp%show( shape(sample) )
+    call disp%show("samptr(1:product(shape(sample))) => sample")
+                    samptr(1:product(shape(sample))) => sample
+        call disp%show("call setMean(mean, samptr)")
+                        call setMean(mean, samptr)
+        call disp%show("nullify(samptr)")
+                        nullify(samptr)
+        call disp%show("mean")
+        call disp%show( mean )
+        call disp%show("call setMean(mean, reshape(sample, [product(shape(sample))]))")
+                        call setMean(mean, reshape(sample, [product(shape(sample))]))
+        call disp%show("mean")
+        call disp%show( mean )
+        call disp%skip()
+    end block
+
+end program example

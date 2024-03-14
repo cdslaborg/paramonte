@@ -1,0 +1,142 @@
+program example
+
+    use pm_kind, only: SK, IK, LK
+    use pm_io, only: display_type
+    use pm_distUnif, only: getUnifRand
+    use pm_distUnif, only: setUnifRand
+
+    implicit none
+
+    type(display_type) :: disp
+    disp = display_type(file = SK_"main.out.F90")
+
+    call disp%skip()
+    call disp%show('disp = display_type(file = SK_"main.out.F90", status = "old", position = "append")')
+    call disp%skip()
+    call disp%show("call disp%show('ParaMonte') ! output without quotation marks.")
+                    call disp%show('ParaMonte')
+    call disp%skip()
+    call disp%show("call disp%show('ParaMonte', deliml = SK_'''') ! output with single quotation marks.")
+                    call disp%show('ParaMonte', deliml = SK_'''')
+    call disp%skip()
+    call disp%show('call disp%show("ParaMonte", deliml = SK_"""") ! output with double quotation marks.')
+                    call disp%show('ParaMonte', deliml = SK_"""")
+    call disp%skip()
+    call disp%show('call disp%show("ParaMonte", deliml = SK_"`") ! output with backtick marks.')
+                    call disp%show('ParaMonte', deliml = SK_"`")
+    call disp%skip()
+
+    call disp%skip()
+    call disp%show('disp = display_type(disp%unit)')
+                    disp = display_type(disp%unit)
+    call disp%skip()
+    call disp%show("call disp%show([character(10) :: 'ParaMonte', 'is', 'a', 'machine', 'learning', 'library.']) ! output without quotation marks.")
+                    call disp%show([character(10) :: 'ParaMonte', 'is', 'a', 'machine', 'learning', 'library.'])
+    call disp%skip()
+    call disp%show("call disp%show([character(10) :: 'ParaMonte', 'is', 'a', 'machine', 'learning', 'library.'], deliml = SK_'''') ! output with single quotation marks.")
+                    call disp%show([character(10) :: 'ParaMonte', 'is', 'a', 'machine', 'learning', 'library.'], deliml = SK_'''')
+    call disp%skip()
+    call disp%show('call disp%show([character(10) :: "ParaMonte", "is", "a", "machine", "learning", "library."], deliml = SK_"""") ! output with double quotation marks.')
+                    call disp%show([character(10) :: 'ParaMonte', 'is', 'a', 'machine', 'learning', 'library.'], deliml = SK_"""")
+    call disp%skip()
+    call disp%show('call disp%show([character(10) :: "ParaMonte", "is", "a", "machine", "learning", "library."], deliml = SK_"`") ! output with backtick marks.')
+                    call disp%show([character(10) :: 'ParaMonte', 'is', 'a', 'machine', 'learning', 'library.'], deliml = SK_"`")
+    call disp%skip()
+
+    call disp%skip()
+    call disp%show('disp = display_type(disp%unit)')
+                    disp = display_type(disp%unit)
+    call disp%skip()
+    call disp%show("call disp%show(.true.)")
+                    call disp%show(.true.)
+    call disp%skip()
+    call disp%show("call disp%show([.true., .false.])")
+                    call disp%show([.true., .false.])
+    call disp%skip()
+
+    call disp%skip()
+    call disp%show('disp = display_type(disp%unit)')
+                    disp = display_type(disp%unit)
+    call disp%skip()
+    call disp%show("call disp%show(1)")
+                    call disp%show(1)
+    call disp%skip()
+    call disp%show("call disp%show([1, 2])")
+                    call disp%show([1, 2])
+    call disp%skip()
+
+    call disp%skip()
+    call disp%show('disp = display_type(disp%unit)')
+                    disp = display_type(disp%unit)
+    call disp%skip()
+    call disp%show("call disp%show(1.)")
+                    call disp%show(1.)
+    call disp%skip()
+    call disp%show("call disp%show([1., 2.])")
+                    call disp%show([1., 2.])
+    call disp%skip()
+
+    call disp%skip()
+    call disp%show('disp = display_type(disp%unit)')
+                    disp = display_type(disp%unit)
+    call disp%skip()
+    call disp%show("call disp%show((1.,-1.))")
+                    call disp%show((1.,-1.))
+    call disp%skip()
+    call disp%show("call disp%show([(1.,-1.), (2.,-2.)])")
+                    call disp%show([(1.,-1.), (2.,-2.)])
+    call disp%skip()
+
+    call disp%skip()
+    call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+    call disp%show("! Display matrices of values.")
+    call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+    call disp%skip()
+
+    call disp%skip()
+    call disp%show('disp = display_type(disp%unit)')
+                    disp = display_type(disp%unit)
+    call disp%skip()
+    call disp%show("call disp%show(reshape(getUnifRand(0, 1, 9), [3, 3]))")
+                    call disp%show(reshape(getUnifRand(0, 1, 9), [3, 3]))
+    call disp%skip()
+
+    call disp%skip()
+    call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+    call disp%show("! Display contents of containers of matrices.")
+    call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+    call disp%skip()
+
+    block
+        use pm_container, only: cmi_type
+        type(cmi_type) :: ConMat(3)
+        call disp%skip()
+        call disp%show('allocate(ConMat(1)%val(2,2)); call setUnifRand(ConMat(1)%val)')
+                        allocate(ConMat(1)%val(2,2)); call setUnifRand(ConMat(1)%val)
+        call disp%show('allocate(ConMat(2)%val(3,5)); call setUnifRand(ConMat(2)%val)')
+                        allocate(ConMat(2)%val(3,5)); call setUnifRand(ConMat(2)%val)
+        call disp%show('allocate(ConMat(3)%val(5,3)); call setUnifRand(ConMat(3)%val)')
+                        allocate(ConMat(3)%val(5,3)); call setUnifRand(ConMat(3)%val)
+        call disp%show('disp = display_type(disp%unit)')
+                        disp = display_type(disp%unit)
+        call disp%skip()
+        call disp%show("call disp%show(ConMat(:))")
+                        call disp%show(ConMat(:))
+        call disp%skip()
+    end block
+
+    call disp%skip()
+    call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%")
+    call disp%show("! Display cubes of values.")
+    call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%")
+    call disp%skip()
+
+    call disp%skip()
+    call disp%show('disp = display_type(disp%unit)')
+                    disp = display_type(disp%unit)
+    call disp%skip()
+    call disp%show("call disp%show(reshape(getUnifRand(0, 1, 27), [3, 3, 3]))")
+                    call disp%show(reshape(getUnifRand(0, 1, 27), [3, 3, 3]))
+    call disp%skip()
+
+end program example
