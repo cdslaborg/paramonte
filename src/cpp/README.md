@@ -74,6 +74,10 @@ ParaMonte has been developed while bearing the following design goals in mind:
 -   **Comprehensive reporting and post-processing** of simulations and ML tasks, as well as their automatic storage in
     external files to ensure the simulation results will be understandable and reproducible at any time in the foreseeable future.
 
+
+Quick Start
+===========
+
 Follow the quick start instructions in this [QUICKSTART.md](https://github.com/cdslaborg/paramonte/blob/main/QUICKSTART.md) file.
 
 

@@ -100,7 +100,7 @@ Quick Start
 ===========
 """
 
-readme["quickstart"]["main"] = """
+readme["quickstart"]["main"] = readme["quickstart"]["title"] + """
 Follow the quick start instructions in this [QUICKSTART.md](https://github.com/cdslaborg/paramonte/blob/main/QUICKSTART.md) file.
 """
 
