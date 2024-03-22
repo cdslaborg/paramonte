@@ -2,7 +2,7 @@
 
 <div align="center">
 <a href="https://www.cdslab.org/paramonte" target="_blank">
-    <img src="https://github.com/cdslaborg/paramonte/blob/main/img/paramonte.png" alt="ParaMonte: Parallel Monte Carlo and Machine Learning Library" style="max-height:300px;width:auto;" />
+    <img src="https://github.com/cdslaborg/paramonte/blob/main/img/paramonte.png" alt="ParaMonte: Parallel Monte Carlo and Machine Learning Library" style="max-width:300px;height:auto;" />
 </a>
 <br>
 <a href="https://github.com/cdslaborg/paramonte#license" target="_blank"><img src="https://img.shields.io/github/license/cdslaborg/paramonte?color=orange&style=flat-square" alt="GitHub" /></a>
