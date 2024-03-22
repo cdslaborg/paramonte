@@ -347,10 +347,7 @@ activating additional diagnostic runtime checks within the library.
 > This option is very useful for debugging purposes but significantly
 degrades the runtime performance and increases the library size.
 
-**optional**. The default value for `checking_type` is,
-
-1.  `nocheck` if `build` is set to `release`, `ipo`, `tuned`, or `native`,
-2.  `checked` if `build` is set to `debug` or `testing`, or `codecov` is set to `true`.
+**optional**. The default value for `checking_type` is `nocheck`.
 
 ### `ddir`
 

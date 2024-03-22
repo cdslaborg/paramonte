@@ -64,11 +64,14 @@
 #elif   getParetoLogCDFNF_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if     ALL_ENABLED
+#if     ALD_ENABLED
+        CHECK_ASSERTION(__LINE__, alpha < 0._RKC, SK_"@getParetoLogCDFNF(): The condition `alpha < 0._RKC` must hold. alpha = "//getStr(alpha))
+        logCDFNF = 0._RKC
+#elif   ALL_ENABLED
         real(RKC) :: alphaLogMinX
-        alphaLogMinX = alpha * logMinX
         CHECK_ASSERTION(__LINE__, alpha < 0._RKC, SK_"@getParetoLogCDFNF(): The condition `alpha < 0._RKC` must hold. alpha = "//getStr(alpha))
         CHECK_ASSERTION(__LINE__, logMinX < logMaxX, SK_"@getParetoLogCDFNF(): The condition `logMinX < logMaxX` must hold. logMinX, logMaxX = "//getStr([logMinX, logMaxX]))
+        alphaLogMinX = alpha * logMinX
         logCDFNF = alphaLogMinX - getLogSubExp(smaller = alpha * logMaxX, larger = alphaLogMinX)
 #else
 #error  "Unrecognized interface."

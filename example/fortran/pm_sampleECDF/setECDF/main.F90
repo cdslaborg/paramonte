@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK, LK
-    use pm_kind, only: IKC => IK32 ! all processor kinds are supported.
+    use pm_kind, only: IKC => IKS ! all processor kinds are supported.
     use pm_sampleECDF, only: setECDF
     use pm_arrayRange, only: getRange
     use pm_arrayResize, only: setResized

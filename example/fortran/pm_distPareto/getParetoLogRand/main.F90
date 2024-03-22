@@ -6,7 +6,7 @@ program example
 
     implicit none
 
-    real                    :: LogX(3)
+    real                    :: logx(3)
 
     type(display_type)      :: disp
     disp = display_type(file = "main.out.F90")
@@ -18,17 +18,17 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("LogX(1) = getParetoLogRand(Alpha = -2., logMinX = -2.) ! Pareto distribution.")
-                    LogX(1) = getParetoLogRand(Alpha = -2., logMinX = -2.) ! Pareto distribution.
-    call disp%show("LogX(1)")
-    call disp%show( LogX(1) )
+    call disp%show("logx(1) = getParetoLogRand(alpha = -2., logMinX = -2.) ! Pareto distribution.")
+                    logx(1) = getParetoLogRand(alpha = -2., logMinX = -2.) ! Pareto distribution.
+    call disp%show("logx(1)")
+    call disp%show( logx(1) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("LogX(1:3) = getParetoLogRand(Alpha = -[+2., +3., +4.], logMinX = -2.) ! Pareto distribution.")
-                    LogX(1:3) = getParetoLogRand(Alpha = -[+2., +3., +4.], logMinX = -2.) ! Pareto distribution.
-    call disp%show("LogX(1:3)")
-    call disp%show( LogX(1:3) )
+    call disp%show("logx(1:3) = getParetoLogRand(alpha = -[+2., +3., +4.], logMinX = -2.) ! Pareto distribution.")
+                    logx(1:3) = getParetoLogRand(alpha = -[+2., +3., +4.], logMinX = -2.) ! Pareto distribution.
+    call disp%show("logx(1:3)")
+    call disp%show( logx(1:3) )
     call disp%skip()
 
     call disp%skip()
@@ -38,35 +38,35 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("LogX(1) = getParetoLogRand(Alpha = -1., logMinX = -2., logMaxX = 5.) ! Truncated Pareto distribution.")
-                    LogX(1) = getParetoLogRand(Alpha = -1., logMinX = -2., logMaxX = 5.) ! Truncated Pareto distribution.
-    call disp%show("LogX(1)")
-    call disp%show( LogX(1) )
+    call disp%show("logx(1) = getParetoLogRand(alpha = -1., logMinX = -2., logMaxX = 5.) ! Truncated Pareto distribution.")
+                    logx(1) = getParetoLogRand(alpha = -1., logMinX = -2., logMaxX = 5.) ! Truncated Pareto distribution.
+    call disp%show("logx(1)")
+    call disp%show( logx(1) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("LogX(1:3) = getParetoLogRand(Alpha = -[+1., +2., +3.], logMinX = -2., logMaxX = 5.) ! Truncated Pareto distribution.")
-                    LogX(1:3) = getParetoLogRand(Alpha = -[+1., +2., +3.], logMinX = -2., logMaxX = 5.) ! Truncated Pareto distribution.
-    call disp%show("LogX(1:3)")
-    call disp%show( LogX(1:3) )
+    call disp%show("logx(1:3) = getParetoLogRand(alpha = -[+1., +2., +3.], logMinX = -2., logMaxX = 5.) ! Truncated Pareto distribution.")
+                    logx(1:3) = getParetoLogRand(alpha = -[+1., +2., +3.], logMinX = -2., logMaxX = 5.) ! Truncated Pareto distribution.
+    call disp%show("logx(1:3)")
+    call disp%show( logx(1:3) )
     call disp%skip()
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    ! Output an example LogX array for visualization.
+    ! Output an example array for visualization.
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     block
         use pm_arraySpace, only: setLinSpace
-        real :: Alpha(3), LogMinX(3), LogMaxX(3), LogX(3)
+        real :: alpha(3), logMinX(3), logMaxX(3), logx(3)
         integer(IK) :: fileUnit, i
-        Alpha = -[.5, 1., 10.]
-        LogMinX = log([3., 1., 2.])
-        LogMaxX = log([5., 4., huge(0.)])
+        alpha = -[.5, 1., 10.]
+        logMinX = log([3., 1., 2.])
+        logMaxX = log([5., 4., huge(0.)])
         open(newunit = fileUnit, file = "getParetoLogRand.RK.txt")
         do i = 1, 2000_IK
-            LogX(1:2) = getParetoLogRand(Alpha(1:2), LogMinX(1:2), LogMaxX(1:2))
-            LogX(3) = getParetoLogRand(Alpha(3), LogMinX(3))
-            write(fileUnit, "(*(g0,:,', '))") exp(LogX)
+            logx(1:2) = getParetoLogRand(alpha(1:2), logMinX(1:2), logMaxX(1:2))
+            logx(3) = getParetoLogRand(alpha(3), logMinX(3))
+            write(fileUnit, "(*(g0,:,', '))") exp(logx)
         end do
         close(fileUnit)
     end block

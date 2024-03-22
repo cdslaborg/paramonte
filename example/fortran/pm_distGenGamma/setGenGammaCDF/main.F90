@@ -2,7 +2,7 @@ program example
 
     use pm_kind, only: SK
     use pm_kind, only: IK, LK
-    use pm_kind, only: RK => RK32 ! all other real kinds are also acceptable: RK, RK32, RK64, RK128
+    use pm_kind, only: RK => RKS ! all other real kinds are also supported.
     use pm_io, only: display_type
     use pm_arraySpace, only: getLinSpace
     use pm_arraySpace, only: getLogSpace
@@ -11,15 +11,15 @@ program example
     implicit none
 
     integer(IK) , parameter     :: NP = 1000_IK
-    real(RK)    , dimension(NP) :: Point, CDF, Kappa, InvOmega, InvSigma
+    real(RK)    , dimension(NP) :: Point, CDF, Kappa, invOmega, invSigma
     integer(IK)                 :: info(NP)
 
     type(display_type) :: disp
     disp = display_type(file = "main.out.F90")
 
     Kappa = getLinSpace(+0.5_RK, +2._RK, count = NP)
-    InvOmega = getLogSpace(logx1 = log(0.1_RK), logx2 = log(10._RK), count = NP)
-    InvSigma = getLogSpace(-3._RK, +3._RK, count = NP)
+    invOmega = getLogSpace(logx1 = log(0.1_RK), logx2 = log(10._RK), count = NP)
+    invSigma = getLogSpace(-3._RK, +3._RK, count = NP)
     Point = getLogSpace(log(.01_RK), log(+10._RK), count = NP)
 
     call disp%skip()
@@ -59,10 +59,10 @@ program example
     call disp%skip()
     call disp%show("Kappa(1)")
     call disp%show( Kappa(1) )
-    call disp%show("InvOmega(1)")
-    call disp%show( InvOmega(1) )
-    call disp%show("call setGenGammaCDF(CDF(1), 0.5_RK, log_gamma(Kappa(1)), Kappa(1), InvOmega(1), info(1))")
-                    call setGenGammaCDF(CDF(1), 0.5_RK, log_gamma(Kappa(1)), Kappa(1), InvOmega(1), info(1))
+    call disp%show("invOmega(1)")
+    call disp%show( invOmega(1) )
+    call disp%show("call setGenGammaCDF(CDF(1), 0.5_RK, log_gamma(Kappa(1)), Kappa(1), invOmega(1), info(1))")
+                    call setGenGammaCDF(CDF(1), 0.5_RK, log_gamma(Kappa(1)), Kappa(1), invOmega(1), info(1))
     call disp%show("if (info(1) < 0) error stop 'The computation of the CDF info.'")
                     if (info(1) < 0) error stop 'The computation of the CDF info.'
     call disp%show("CDF(1)")
@@ -72,10 +72,10 @@ program example
     call disp%skip()
     call disp%show("Kappa(1)")
     call disp%show( Kappa(1) )
-    call disp%show("InvOmega(1)")
-    call disp%show( InvOmega(1) )
-    call disp%show("call setGenGammaCDF(CDF(1), 0.5_RK, log_gamma(Kappa(1)), Kappa(1), InvOmega(1), InvSigma(1), info(1))")
-                    call setGenGammaCDF(CDF(1), 0.5_RK, log_gamma(Kappa(1)), Kappa(1), InvOmega(1), InvSigma(1), info(1))
+    call disp%show("invOmega(1)")
+    call disp%show( invOmega(1) )
+    call disp%show("call setGenGammaCDF(CDF(1), 0.5_RK, log_gamma(Kappa(1)), Kappa(1), invOmega(1), invSigma(1), info(1))")
+                    call setGenGammaCDF(CDF(1), 0.5_RK, log_gamma(Kappa(1)), Kappa(1), invOmega(1), invSigma(1), info(1))
     call disp%show("if (info(1) < 0) error stop 'The computation of the CDF info.'")
                     if (info(1) < 0) error stop 'The computation of the CDF info.'
     call disp%show("CDF(1)")
@@ -111,7 +111,7 @@ program example
     call disp%skip()
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    ! Output an example CDF array for visualization.
+    ! Output an example array for visualization.
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     block

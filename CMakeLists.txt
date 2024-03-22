@@ -981,7 +981,7 @@ if (TRUE)
                     "\n"
                     )
         endif()
-    elseif (${CHECK_ENABLED})
+    elseif (${CHECK_ENABLED})# OR "${build}" STREQUAL "debug" OR "${build}" STREQUAL "testing")
         add_compile_definitions("PURE=impure")
     else()
         add_compile_definitions("PURE=pure")

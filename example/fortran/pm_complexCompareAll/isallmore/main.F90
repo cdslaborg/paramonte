@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK
-    use pm_kind, only: CK ! All other complex kinds e.g., CK32, CK64, CK128 are also supported.
+    use pm_kind, only: CK ! All other kinds are also supported.
     use pm_complexCompareAll, only: operator(>)
     use pm_distUnif, only: setUnifRand
     use pm_io, only: display_type

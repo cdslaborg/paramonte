@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: IK
-    use pm_kind, only: CK => CK32, LK, SK ! all processor types and kinds are supported.
+    use pm_kind, only: CK => CKS, LK, SK ! all processor types and kinds are supported.
     use pm_io, only: display_type
     use pm_val2complex, only: setComplex
 

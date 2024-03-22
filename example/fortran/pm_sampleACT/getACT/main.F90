@@ -23,7 +23,7 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! All other real types are also supported, e.g., RK32, RK64, RK128.
+        use pm_kind, only: TKC => RKS ! All other real types are also supported.
         real(TKC), allocatable :: table(:,:)
         real(TKC) :: act
         call disp%skip()
@@ -73,7 +73,7 @@ program example
         use pm_arrayResize, only: setResized
         use pm_io, only: getErrTableWrite, trans
         use pm_arrayRange, only: getRange
-        use pm_kind, only: TKC => RKS ! All other real types are also supported, e.g., RK32, RK64, RK128.
+        use pm_kind, only: TKC => RKS ! All other real types are also supported.
         character(:, SK), allocatable :: header
         integer(IK), allocatable :: sbatch(:)
         real(TKC), allocatable :: output(:,:)

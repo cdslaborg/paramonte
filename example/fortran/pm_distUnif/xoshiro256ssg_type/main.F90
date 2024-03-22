@@ -21,11 +21,11 @@ program example
                     rng = xoshiro256ssg_type()
 
     block
-        use pm_kind, only: IK64
+        use pm_kind, only: IKD
         integer :: rand, lb, ub
         do itry = 1, ntry
-        call disp%show("lb = -3_IK64; ub = 5_IK64")
-                        lb = -3_IK64; ub = 5_IK64
+        call disp%show("lb = -3_IKD; ub = 5_IKD")
+                        lb = -3_IKD; ub = 5_IKD
         call disp%show("rand = getUnifRand(rng, lb, ub)")
                         rand = getUnifRand(rng, lb, ub)
         call disp%show("[lb, rand, ub]")
@@ -37,7 +37,7 @@ program example
     end block
 
     block
-        use pm_kind, only: IKC => IK32
+        use pm_kind, only: IKC => IKS
         integer(IKC) :: rand, lb, ub
         do itry = 1, ntry
         call disp%show("digits(0_IKC)")
@@ -51,7 +51,7 @@ program example
     end block
 
     block
-        use pm_kind, only: IKC => IK8
+        use pm_kind, only: IKC => IKL
         integer(IKC) :: rand, lb, ub
         do itry = 1, ntry
         call disp%show("digits(0_IKC)")
@@ -65,7 +65,7 @@ program example
     end block
 
     block
-        use pm_kind, only: IKC => IK32
+        use pm_kind, only: IKC => IKS
         integer(IKC) :: rand, lb, ub
         do itry = 1, ntry
         call disp%show("digits(0_IKC)")
@@ -83,7 +83,7 @@ program example
     end block
 
     block
-        use pm_kind, only: IKC => IK8
+        use pm_kind, only: IKC => IKL
         integer(IKC) :: rand, lb, ub
         do itry = 1, ntry
         call disp%show("digits(0_IKC)")
@@ -148,7 +148,7 @@ program example
     end block
 
     block
-        use pm_kind, only: RKC => RK128
+        use pm_kind, only: RKC => RKH
         real(RKC) :: rand, lb, ub
         call disp%show("lb = 2._RKC; ub = lb + spacing(lb)")
                         lb = 2._RKC; ub = lb + spacing(lb)
@@ -183,10 +183,10 @@ program example
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     block
-        use pm_kind, only: IK8
+        use pm_kind, only: IKL
         integer(IK) :: fileUnit
         integer(IK), parameter :: NP = 10000_IK
-        integer(IK8), dimension(NP) :: rand
+        integer(IKL), dimension(NP) :: rand
         call setUnifRand(rng, rand)
         open(newunit = fileUnit, file = "xoshiro256ssg_type.IK.txt")
         write(fileUnit,"(1(g0,:,' '))") rand

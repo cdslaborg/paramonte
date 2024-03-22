@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK
-    use pm_kind, only: RK => RK32 ! all real kinds are supported.
+    use pm_kind, only: RK => RKS ! all real kinds are supported.
     use pm_distGamma, only: setGammaRand
     use pm_arraySpace, only: setLinSpace
     use pm_arraySpace, only: setLogSpace

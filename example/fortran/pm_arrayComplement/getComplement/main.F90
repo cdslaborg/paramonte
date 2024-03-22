@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: LK
-    use pm_kind, only: SK, IK, LK, CK => CK32, RK => RK32 ! all processor types and kinds are supported.
+    use pm_kind, only: SK, IK, LK, CK => CKS, RK => RKS ! all processor types and kinds are supported.
     use pm_arrayComplement, only: getComplement
     use pm_arrayUnique, only: getUnique
     use pm_io, only: display_type

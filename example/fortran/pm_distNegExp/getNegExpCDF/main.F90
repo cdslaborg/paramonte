@@ -85,13 +85,13 @@ program example
     call disp%skip()
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    ! Output an example CDF array for visualization.
+    ! Output an example array for visualization.
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     block
         use pm_arraySpace, only: getLinSpace
-        real, parameter :: InvSigma(3) = [2., 1., .5]
-        real, parameter :: Mu(3) = [-2., 0., 2.]
+        real, parameter :: invSigma(3) = [2., 1., .5]
+        real, parameter :: mu(3) = [-2., 0., 2.]
         real :: Point(1000)
         integer :: fileUnit, i, j
         Point = -getLinSpace(-4., +8., size(Point,1,IK))
@@ -99,7 +99,7 @@ program example
         do i = 1, size(Point)
             do j = 1, size(CDF)
                 CDF(j) = 0.
-                if (Point(i) <= Mu(j)) CDF(j) = getNegExpCDF(Point(i), Mu(j), InvSigma(j))
+                if (Point(i) <= mu(j)) CDF(j) = getNegExpCDF(Point(i), mu(j), invSigma(j))
             end do
             write(fileUnit,"(*(g0,:,', '))") Point(i), CDF
         end do

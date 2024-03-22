@@ -10,12 +10,12 @@ program example
     implicit none
 
     integer(IK), parameter  :: NP = 1000_IK
-    real(RK), dimension(NP) :: Point, Mu, Sigma, CDF
+    real(RK), dimension(NP) :: Point, mu, Sigma, CDF
 
     type(display_type) :: disp
     disp = display_type(file = "main.out.F90")
 
-    call setLinSpace(Mu, x1 = -5._RK, x2 = +5._RK)
+    call setLinSpace(mu, x1 = -5._RK, x2 = +5._RK)
     call setLinSpace(Point, x1 = -10._RK, x2 = +10._RK)
     call setLogSpace(Sigma, logx1 = log(0.1_RK), logx2 = log(10._RK))
 
@@ -47,12 +47,12 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("Mu(1)")
-    call disp%show( Mu(1) )
+    call disp%show("mu(1)")
+    call disp%show( mu(1) )
     call disp%show("Point(1)")
     call disp%show( Point(1) )
-    call disp%show("CDF(1) = getNormCDF(Point(1), Mu(1))")
-                    CDF(1) = getNormCDF(Point(1), Mu(1))
+    call disp%show("CDF(1) = getNormCDF(Point(1), mu(1))")
+                    CDF(1) = getNormCDF(Point(1), mu(1))
     call disp%show("CDF(1)")
     call disp%show( CDF(1) )
     call disp%skip()
@@ -81,14 +81,14 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("Mu(1)")
-    call disp%show( Mu(1) )
+    call disp%show("mu(1)")
+    call disp%show( mu(1) )
     call disp%show("Sigma(1)")
     call disp%show( Sigma(1) )
     call disp%show("Point(1)")
     call disp%show( Point(1) )
-    call disp%show("CDF(1) = getNormCDF(Point(1), Mu(1), Sigma(1))")
-                    CDF(1) = getNormCDF(Point(1), Mu(1), Sigma(1))
+    call disp%show("CDF(1) = getNormCDF(Point(1), mu(1), Sigma(1))")
+                    CDF(1) = getNormCDF(Point(1), mu(1), Sigma(1))
     call disp%show("CDF(1)")
     call disp%show( CDF(1) )
     call disp%skip()
@@ -100,14 +100,14 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("Mu(1)")
-    call disp%show( Mu(1) )
+    call disp%show("mu(1)")
+    call disp%show( mu(1) )
     call disp%show("Sigma(1)")
     call disp%show( Sigma(1) )
     call disp%show("Point(1:NP:NP/5)")
     call disp%show( Point(1:NP:NP/5) )
-    call disp%show("CDF(1:NP:NP/5) = getNormCDF(Point(1:NP:NP/5), Mu(1), Sigma(1))")
-                    CDF(1:NP:NP/5) = getNormCDF(Point(1:NP:NP/5), Mu(1), Sigma(1))
+    call disp%show("CDF(1:NP:NP/5) = getNormCDF(Point(1:NP:NP/5), mu(1), Sigma(1))")
+                    CDF(1:NP:NP/5) = getNormCDF(Point(1:NP:NP/5), mu(1), Sigma(1))
     call disp%show("CDF(1:NP:NP/5)")
     call disp%show( CDF(1:NP:NP/5) )
     call disp%skip()
@@ -119,14 +119,14 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("Mu(1:NP:NP/5)")
-    call disp%show( Mu(1:NP:NP/5) )
+    call disp%show("mu(1:NP:NP/5)")
+    call disp%show( mu(1:NP:NP/5) )
     call disp%show("Sigma(1:NP:NP/5)")
     call disp%show( Sigma(1:NP:NP/5) )
     call disp%show("Point(1)")
     call disp%show( Point(1) )
-    call disp%show("CDF(1:NP:NP/5) = getNormCDF(Point(1), Mu(1:NP:NP/5), Sigma(1:NP:NP/5))")
-                    CDF(1:NP:NP/5) = getNormCDF(Point(1), Mu(1:NP:NP/5), Sigma(1:NP:NP/5))
+    call disp%show("CDF(1:NP:NP/5) = getNormCDF(Point(1), mu(1:NP:NP/5), Sigma(1:NP:NP/5))")
+                    CDF(1:NP:NP/5) = getNormCDF(Point(1), mu(1:NP:NP/5), Sigma(1:NP:NP/5))
     call disp%show("CDF(1:NP:NP/5)")
     call disp%show( CDF(1:NP:NP/5) )
     call disp%skip()
@@ -138,20 +138,20 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("Mu(1:NP:NP/5)")
-    call disp%show( Mu(1:NP:NP/5) )
+    call disp%show("mu(1:NP:NP/5)")
+    call disp%show( mu(1:NP:NP/5) )
     call disp%show("Sigma(1:NP:NP/5)")
     call disp%show( Sigma(1:NP:NP/5) )
     call disp%show("Point(1:NP:NP/5)")
     call disp%show( Point(1:NP:NP/5) )
-    call disp%show("CDF(1:NP:NP/5) = getNormCDF(Point(1:NP:NP/5), Mu(1:NP:NP/5), Sigma(1:NP:NP/5))")
-                    CDF(1:NP:NP/5) = getNormCDF(Point(1:NP:NP/5), Mu(1:NP:NP/5), Sigma(1:NP:NP/5))
+    call disp%show("CDF(1:NP:NP/5) = getNormCDF(Point(1:NP:NP/5), mu(1:NP:NP/5), Sigma(1:NP:NP/5))")
+                    CDF(1:NP:NP/5) = getNormCDF(Point(1:NP:NP/5), mu(1:NP:NP/5), Sigma(1:NP:NP/5))
     call disp%show("CDF(1:NP:NP/5)")
     call disp%show( CDF(1:NP:NP/5) )
     call disp%skip()
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    ! Output an example CDF array for visualization.
+    ! Output an example array for visualization.
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     block

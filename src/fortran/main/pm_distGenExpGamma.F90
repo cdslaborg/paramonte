@@ -21,9 +21,9 @@
 !>  Specifically, this module contains routines for computing the following quantities of the <b>GenExpGamma distribution</b>:<br>
 !>  <ol>
 !>      <li>    the Probability Density Function (**PDF**)
-!>      <li>    the **Cumulative Distribution Function (**CDF**)
-!>      <li>    the random number generation from the distribution (**RNG**)
-!>      <li>    the **Inverse Cumulative Distribution Function (ICDF)** or the **Quantile Function**
+!>      <li>    the Cumulative Distribution Function (**CDF**)
+!>      <li>    the Random Number Generation from the distribution (**RNG**)
+!>      <li>    the Inverse Cumulative Distribution Function **(ICDF)** or the **Quantile Function**
 !>  </ol>
 !>
 !>  A variable \f$X\f$ is said to be GenExpGamma-distributed if its PDF with **location** \f$-\infty < \log(\sigma) < +\infty\f$,
@@ -155,7 +155,7 @@ module pm_distGenExpGamma
     !>                              (**optional**, default = `1.`)
     !>
     !>  \return
-    !>  `logNormFac`            :   The output scalar or array of the same shape as array-like input arguments,
+    !>  `logPDFNF`              :   The output scalar or array of the same shape as array-like input arguments,
     !>                              of the same type, kind, and highest rank as the input arguments containing
     !>                              the natural logarithm of the normalization factor of the distribution.
     !>
@@ -164,8 +164,8 @@ module pm_distGenExpGamma
     !>
     !>      use pm_distGenExpGamma, only: getGenExpGammaLogPDFNF
     !>
-    !>      logNormFac = getGenExpGammaLogPDFNF(kappa)
-    !>      logNormFac = getGenExpGammaLogPDFNF(kappa, invOmega)
+    !>      logPDFNF = getGenExpGammaLogPDFNF(kappa)
+    !>      logPDFNF = getGenExpGammaLogPDFNF(kappa, invOmega)
     !>
     !>  \endcode
     !>
@@ -234,114 +234,114 @@ module pm_distGenExpGamma
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE elemental module function getGenExpGammaLogPDFNFKD_RK5(kappa) result(logNormFac)
+    PURE elemental module function getGenExpGammaLogPDFNFKD_RK5(kappa) result(logPDFNF)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGenExpGammaLogPDFNFKD_RK5
 #endif
         use pm_kind, only: RKC => RK5
         real(RKC)   , intent(in)                    :: kappa
-        real(RKC)                                   :: logNormFac
+        real(RKC)                                   :: logPDFNF
     end function
 #endif
 
 #if RK4_ENABLED
-    PURE elemental module function getGenExpGammaLogPDFNFKD_RK4(kappa) result(logNormFac)
+    PURE elemental module function getGenExpGammaLogPDFNFKD_RK4(kappa) result(logPDFNF)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGenExpGammaLogPDFNFKD_RK4
 #endif
         use pm_kind, only: RKC => RK4
         real(RKC)   , intent(in)                    :: kappa
-        real(RKC)                                   :: logNormFac
+        real(RKC)                                   :: logPDFNF
     end function
 #endif
 
 #if RK3_ENABLED
-    PURE elemental module function getGenExpGammaLogPDFNFKD_RK3(kappa) result(logNormFac)
+    PURE elemental module function getGenExpGammaLogPDFNFKD_RK3(kappa) result(logPDFNF)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGenExpGammaLogPDFNFKD_RK3
 #endif
         use pm_kind, only: RKC => RK3
         real(RKC)   , intent(in)                    :: kappa
-        real(RKC)                                   :: logNormFac
+        real(RKC)                                   :: logPDFNF
     end function
 #endif
 
 #if RK2_ENABLED
-    PURE elemental module function getGenExpGammaLogPDFNFKD_RK2(kappa) result(logNormFac)
+    PURE elemental module function getGenExpGammaLogPDFNFKD_RK2(kappa) result(logPDFNF)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGenExpGammaLogPDFNFKD_RK2
 #endif
         use pm_kind, only: RKC => RK2
         real(RKC)   , intent(in)                    :: kappa
-        real(RKC)                                   :: logNormFac
+        real(RKC)                                   :: logPDFNF
     end function
 #endif
 
 #if RK1_ENABLED
-    PURE elemental module function getGenExpGammaLogPDFNFKD_RK1(kappa) result(logNormFac)
+    PURE elemental module function getGenExpGammaLogPDFNFKD_RK1(kappa) result(logPDFNF)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGenExpGammaLogPDFNFKD_RK1
 #endif
         use pm_kind, only: RKC => RK1
         real(RKC)   , intent(in)                    :: kappa
-        real(RKC)                                   :: logNormFac
+        real(RKC)                                   :: logPDFNF
     end function
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE elemental module function getGenExpGammaLogPDFNFKO_RK5(kappa, invOmega) result(logNormFac)
+    PURE elemental module function getGenExpGammaLogPDFNFKO_RK5(kappa, invOmega) result(logPDFNF)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGenExpGammaLogPDFNFKO_RK5
 #endif
         use pm_kind, only: RKC => RK5
         real(RKC)   , intent(in)                    :: kappa, invOmega
-        real(RKC)                                   :: logNormFac
+        real(RKC)                                   :: logPDFNF
     end function
 #endif
 
 #if RK4_ENABLED
-    PURE elemental module function getGenExpGammaLogPDFNFKO_RK4(kappa, invOmega) result(logNormFac)
+    PURE elemental module function getGenExpGammaLogPDFNFKO_RK4(kappa, invOmega) result(logPDFNF)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGenExpGammaLogPDFNFKO_RK4
 #endif
         use pm_kind, only: RKC => RK4
         real(RKC)   , intent(in)                    :: kappa, invOmega
-        real(RKC)                                   :: logNormFac
+        real(RKC)                                   :: logPDFNF
     end function
 #endif
 
 #if RK3_ENABLED
-    PURE elemental module function getGenExpGammaLogPDFNFKO_RK3(kappa, invOmega) result(logNormFac)
+    PURE elemental module function getGenExpGammaLogPDFNFKO_RK3(kappa, invOmega) result(logPDFNF)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGenExpGammaLogPDFNFKO_RK3
 #endif
         use pm_kind, only: RKC => RK3
         real(RKC)   , intent(in)                    :: kappa, invOmega
-        real(RKC)                                   :: logNormFac
+        real(RKC)                                   :: logPDFNF
     end function
 #endif
 
 #if RK2_ENABLED
-    PURE elemental module function getGenExpGammaLogPDFNFKO_RK2(kappa, invOmega) result(logNormFac)
+    PURE elemental module function getGenExpGammaLogPDFNFKO_RK2(kappa, invOmega) result(logPDFNF)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGenExpGammaLogPDFNFKO_RK2
 #endif
         use pm_kind, only: RKC => RK2
         real(RKC)   , intent(in)                    :: kappa, invOmega
-        real(RKC)                                   :: logNormFac
+        real(RKC)                                   :: logPDFNF
     end function
 #endif
 
 #if RK1_ENABLED
-    PURE elemental module function getGenExpGammaLogPDFNFKO_RK1(kappa, invOmega) result(logNormFac)
+    PURE elemental module function getGenExpGammaLogPDFNFKO_RK1(kappa, invOmega) result(logPDFNF)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGenExpGammaLogPDFNFKO_RK1
 #endif
         use pm_kind, only: RKC => RK1
         real(RKC)   , intent(in)                    :: kappa, invOmega
-        real(RKC)                                   :: logNormFac
+        real(RKC)                                   :: logPDFNF
     end function
 #endif
 
@@ -498,7 +498,7 @@ module pm_distGenExpGamma
     !>                              of type `real` of kind \RKALL containing the PDF of the specified GenExpGamma distribution.<br>
     !>  \param[in]  x           :   The input scalar (or array of the same shape as other array-valued arguments), of the same type and kind as `logPDF`,
     !>                              containing the points at which the `log(PDF)` must be computed.<br>
-    !>  \param[in]  logNormFac  :   The input scalar (or array of the same shape as other array-valued arguments),
+    !>  \param[in]  logPDFNF    :   The input scalar (or array of the same shape as other array-valued arguments),
     !>                              containing the natural logarithm of the normalization factor (\f$\eta\f$) of the distribution.<br>
     !>                              The value of this argument can be obtained by calling [getGenExpGammaLogPDFNF](@ref pm_distGenExpGamma::getGenExpGammaLogPDFNF).<br>
     !>                              (**optional**, default = `getGenExpGammaLogPDFNF(kappa, invOmega)`. It must be present <b>if and only if</b> `kappa` is also present.)
@@ -516,13 +516,13 @@ module pm_distGenExpGamma
     !>
     !>      call setGenExpGammaLogPDF(logPDF, x)
     !>      call setGenExpGammaLogPDF(logPDF, x, logSigma)
-    !>      call setGenExpGammaLogPDF(logPDF, x, logNormFac, kappa, invOmega)
-    !>      call setGenExpGammaLogPDF(logPDF, x, logNormFac, kappa, invOmega, logSigma)
+    !>      call setGenExpGammaLogPDF(logPDF, x, logPDFNF, kappa, invOmega)
+    !>      call setGenExpGammaLogPDF(logPDF, x, logPDFNF, kappa, invOmega, logSigma)
     !>
     !>  \endcode
     !>
     !>  \warning
-    !>  The condition `logNormFac = getExpGammaLogPDFNF(kappa)`, `kappa > 0`, and `invOmega > 0` must hold for the corresponding input arguments.<br>
+    !>  The condition `logPDFNF = getExpGammaLogPDFNF(kappa)`, `kappa > 0`, and `invOmega > 0` must hold for the corresponding input arguments.<br>
     !>  \vericons
     !>
     !>  \warnpure
@@ -632,57 +632,57 @@ module pm_distGenExpGamma
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE elemental module subroutine setGenExpGammaLogPDFNKDD_RK5(logPDF, x, logNormFac, kappa)
+    PURE elemental module subroutine setGenExpGammaLogPDFNKDD_RK5(logPDF, x, logPDFNF, kappa)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaLogPDFNKDD_RK5
 #endif
         use pm_kind, only: RKC => RK5
         real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, logNormFac, kappa
+        real(RKC)   , intent(in)                    :: x, logPDFNF, kappa
     end subroutine
 #endif
 
 #if RK4_ENABLED
-    PURE elemental module subroutine setGenExpGammaLogPDFNKDD_RK4(logPDF, x, logNormFac, kappa)
+    PURE elemental module subroutine setGenExpGammaLogPDFNKDD_RK4(logPDF, x, logPDFNF, kappa)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaLogPDFNKDD_RK4
 #endif
         use pm_kind, only: RKC => RK4
         real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, logNormFac, kappa
+        real(RKC)   , intent(in)                    :: x, logPDFNF, kappa
     end subroutine
 #endif
 
 #if RK3_ENABLED
-    PURE elemental module subroutine setGenExpGammaLogPDFNKDD_RK3(logPDF, x, logNormFac, kappa)
+    PURE elemental module subroutine setGenExpGammaLogPDFNKDD_RK3(logPDF, x, logPDFNF, kappa)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaLogPDFNKDD_RK3
 #endif
         use pm_kind, only: RKC => RK3
         real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, logNormFac, kappa
+        real(RKC)   , intent(in)                    :: x, logPDFNF, kappa
     end subroutine
 #endif
 
 #if RK2_ENABLED
-    PURE elemental module subroutine setGenExpGammaLogPDFNKDD_RK2(logPDF, x, logNormFac, kappa)
+    PURE elemental module subroutine setGenExpGammaLogPDFNKDD_RK2(logPDF, x, logPDFNF, kappa)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaLogPDFNKDD_RK2
 #endif
         use pm_kind, only: RKC => RK2
         real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, logNormFac, kappa
+        real(RKC)   , intent(in)                    :: x, logPDFNF, kappa
     end subroutine
 #endif
 
 #if RK1_ENABLED
-    PURE elemental module subroutine setGenExpGammaLogPDFNKDD_RK1(logPDF, x, logNormFac, kappa)
+    PURE elemental module subroutine setGenExpGammaLogPDFNKDD_RK1(logPDF, x, logPDFNF, kappa)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaLogPDFNKDD_RK1
 #endif
         use pm_kind, only: RKC => RK1
         real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, logNormFac, kappa
+        real(RKC)   , intent(in)                    :: x, logPDFNF, kappa
     end subroutine
 #endif
 
@@ -695,57 +695,57 @@ module pm_distGenExpGamma
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE elemental module subroutine setGenExpGammaLogPDFNKOD_RK5(logPDF, x, logNormFac, kappa, invOmega)
+    PURE elemental module subroutine setGenExpGammaLogPDFNKOD_RK5(logPDF, x, logPDFNF, kappa, invOmega)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaLogPDFNKOD_RK5
 #endif
         use pm_kind, only: RKC => RK5
         real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, logNormFac, kappa, invOmega
+        real(RKC)   , intent(in)                    :: x, logPDFNF, kappa, invOmega
     end subroutine
 #endif
 
 #if RK4_ENABLED
-    PURE elemental module subroutine setGenExpGammaLogPDFNKOD_RK4(logPDF, x, logNormFac, kappa, invOmega)
+    PURE elemental module subroutine setGenExpGammaLogPDFNKOD_RK4(logPDF, x, logPDFNF, kappa, invOmega)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaLogPDFNKOD_RK4
 #endif
         use pm_kind, only: RKC => RK4
         real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, logNormFac, kappa, invOmega
+        real(RKC)   , intent(in)                    :: x, logPDFNF, kappa, invOmega
     end subroutine
 #endif
 
 #if RK3_ENABLED
-    PURE elemental module subroutine setGenExpGammaLogPDFNKOD_RK3(logPDF, x, logNormFac, kappa, invOmega)
+    PURE elemental module subroutine setGenExpGammaLogPDFNKOD_RK3(logPDF, x, logPDFNF, kappa, invOmega)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaLogPDFNKOD_RK3
 #endif
         use pm_kind, only: RKC => RK3
         real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, logNormFac, kappa, invOmega
+        real(RKC)   , intent(in)                    :: x, logPDFNF, kappa, invOmega
     end subroutine
 #endif
 
 #if RK2_ENABLED
-    PURE elemental module subroutine setGenExpGammaLogPDFNKOD_RK2(logPDF, x, logNormFac, kappa, invOmega)
+    PURE elemental module subroutine setGenExpGammaLogPDFNKOD_RK2(logPDF, x, logPDFNF, kappa, invOmega)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaLogPDFNKOD_RK2
 #endif
         use pm_kind, only: RKC => RK2
         real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, logNormFac, kappa, invOmega
+        real(RKC)   , intent(in)                    :: x, logPDFNF, kappa, invOmega
     end subroutine
 #endif
 
 #if RK1_ENABLED
-    PURE elemental module subroutine setGenExpGammaLogPDFNKOD_RK1(logPDF, x, logNormFac, kappa, invOmega)
+    PURE elemental module subroutine setGenExpGammaLogPDFNKOD_RK1(logPDF, x, logPDFNF, kappa, invOmega)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaLogPDFNKOD_RK1
 #endif
         use pm_kind, only: RKC => RK1
         real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, logNormFac, kappa, invOmega
+        real(RKC)   , intent(in)                    :: x, logPDFNF, kappa, invOmega
     end subroutine
 #endif
 
@@ -758,57 +758,57 @@ module pm_distGenExpGamma
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE elemental module subroutine setGenExpGammaLogPDFNKOS_RK5(logPDF, x, logNormFac, kappa, invOmega, logSigma)
+    PURE elemental module subroutine setGenExpGammaLogPDFNKOS_RK5(logPDF, x, logPDFNF, kappa, invOmega, logSigma)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaLogPDFNKOS_RK5
 #endif
         use pm_kind, only: RKC => RK5
         real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, logNormFac, kappa, invOmega, logSigma
+        real(RKC)   , intent(in)                    :: x, logPDFNF, kappa, invOmega, logSigma
     end subroutine
 #endif
 
 #if RK4_ENABLED
-    PURE elemental module subroutine setGenExpGammaLogPDFNKOS_RK4(logPDF, x, logNormFac, kappa, invOmega, logSigma)
+    PURE elemental module subroutine setGenExpGammaLogPDFNKOS_RK4(logPDF, x, logPDFNF, kappa, invOmega, logSigma)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaLogPDFNKOS_RK4
 #endif
         use pm_kind, only: RKC => RK4
         real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, logNormFac, kappa, invOmega, logSigma
+        real(RKC)   , intent(in)                    :: x, logPDFNF, kappa, invOmega, logSigma
     end subroutine
 #endif
 
 #if RK3_ENABLED
-    PURE elemental module subroutine setGenExpGammaLogPDFNKOS_RK3(logPDF, x, logNormFac, kappa, invOmega, logSigma)
+    PURE elemental module subroutine setGenExpGammaLogPDFNKOS_RK3(logPDF, x, logPDFNF, kappa, invOmega, logSigma)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaLogPDFNKOS_RK3
 #endif
         use pm_kind, only: RKC => RK3
         real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, logNormFac, kappa, invOmega, logSigma
+        real(RKC)   , intent(in)                    :: x, logPDFNF, kappa, invOmega, logSigma
     end subroutine
 #endif
 
 #if RK2_ENABLED
-    PURE elemental module subroutine setGenExpGammaLogPDFNKOS_RK2(logPDF, x, logNormFac, kappa, invOmega, logSigma)
+    PURE elemental module subroutine setGenExpGammaLogPDFNKOS_RK2(logPDF, x, logPDFNF, kappa, invOmega, logSigma)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaLogPDFNKOS_RK2
 #endif
         use pm_kind, only: RKC => RK2
         real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, logNormFac, kappa, invOmega, logSigma
+        real(RKC)   , intent(in)                    :: x, logPDFNF, kappa, invOmega, logSigma
     end subroutine
 #endif
 
 #if RK1_ENABLED
-    PURE elemental module subroutine setGenExpGammaLogPDFNKOS_RK1(logPDF, x, logNormFac, kappa, invOmega, logSigma)
+    PURE elemental module subroutine setGenExpGammaLogPDFNKOS_RK1(logPDF, x, logPDFNF, kappa, invOmega, logSigma)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGenExpGammaLogPDFNKOS_RK1
 #endif
         use pm_kind, only: RKC => RK1
         real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, logNormFac, kappa, invOmega, logSigma
+        real(RKC)   , intent(in)                    :: x, logPDFNF, kappa, invOmega, logSigma
     end subroutine
 #endif
 

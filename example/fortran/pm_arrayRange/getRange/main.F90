@@ -2,7 +2,7 @@ program example
 
     use pm_kind, only: SK, IK, LK
     use pm_io, only: display_type
-    use pm_kind, only: IK8, IK16, IK32, IK64
+    use pm_kind, only: IKL, IKS, IKD, IKH
     use pm_arrayRange, only: getRange
 
     implicit none
@@ -108,24 +108,24 @@ program example
     call disp%skip
 
     call disp%skip
-    call disp%show("getRange(0_IK8, 10_IK8)")
-    call disp%show( getRange(0_IK8, 10_IK8) )
+    call disp%show("getRange(0_IKL, 10_IKL)")
+    call disp%show( getRange(0_IKL, 10_IKL) )
     call disp%skip
-    call disp%show("getRange(0_IK8, 10_IK8, 2_IK8)")
-    call disp%show( getRange(0_IK8, 10_IK8, 2_IK8) )
+    call disp%show("getRange(0_IKL, 10_IKL, 2_IKL)")
+    call disp%show( getRange(0_IKL, 10_IKL, 2_IKL) )
     call disp%skip
-    call disp%show("getRange(0_IK8, 10_IK8, 3_IK8)")
-    call disp%show( getRange(0_IK8, 10_IK8, 3_IK8) )
+    call disp%show("getRange(0_IKL, 10_IKL, 3_IKL)")
+    call disp%show( getRange(0_IKL, 10_IKL, 3_IKL) )
     call disp%skip
 
     ! Generate sequence in reverse.
 
     call disp%skip
-    call disp%show("getRange(10_IK8, 0_IK8, -2_IK8)")
-    call disp%show( getRange(10_IK8, 0_IK8, -2_IK8) )
+    call disp%show("getRange(10_IKL, 0_IKL, -2_IKL)")
+    call disp%show( getRange(10_IKL, 0_IKL, -2_IKL) )
     call disp%skip
-    call disp%show("getRange(10_IK8, 0_IK8, -3_IK8)")
-    call disp%show( getRange(10_IK8, 0_IK8, -3_IK8) )
+    call disp%show("getRange(10_IKL, 0_IKL, -3_IKL)")
+    call disp%show( getRange(10_IKL, 0_IKL, -3_IKL) )
     call disp%skip
 
     call disp%skip
@@ -135,24 +135,24 @@ program example
     call disp%skip
 
     call disp%skip
-    call disp%show("getRange(0_IK16, 10_IK16)")
-    call disp%show( getRange(0_IK16, 10_IK16) )
+    call disp%show("getRange(0_IKS, 10_IKS)")
+    call disp%show( getRange(0_IKS, 10_IKS) )
     call disp%skip
-    call disp%show("getRange(0_IK16, 10_IK16, 2_IK16)")
-    call disp%show( getRange(0_IK16, 10_IK16, 2_IK16) )
+    call disp%show("getRange(0_IKS, 10_IKS, 2_IKS)")
+    call disp%show( getRange(0_IKS, 10_IKS, 2_IKS) )
     call disp%skip
-    call disp%show("getRange(0_IK16, 10_IK16, 3_IK16)")
-    call disp%show( getRange(0_IK16, 10_IK16, 3_IK16) )
+    call disp%show("getRange(0_IKS, 10_IKS, 3_IKS)")
+    call disp%show( getRange(0_IKS, 10_IKS, 3_IKS) )
     call disp%skip
 
     ! Generate sequence in reverse.
 
     call disp%skip
-    call disp%show("getRange(10_IK16, 0_IK16, -2_IK16)")
-    call disp%show( getRange(10_IK16, 0_IK16, -2_IK16) )
+    call disp%show("getRange(10_IKS, 0_IKS, -2_IKS)")
+    call disp%show( getRange(10_IKS, 0_IKS, -2_IKS) )
     call disp%skip
-    call disp%show("getRange(10_IK16, 0_IK16, -3_IK16)")
-    call disp%show( getRange(10_IK16, 0_IK16, -3_IK16) )
+    call disp%show("getRange(10_IKS, 0_IKS, -3_IKS)")
+    call disp%show( getRange(10_IKS, 0_IKS, -3_IKS) )
     call disp%skip
 
     call disp%skip
@@ -162,24 +162,24 @@ program example
     call disp%skip
 
     call disp%skip
-    call disp%show("getRange(0_IK32, 10_IK32)")
-    call disp%show( getRange(0_IK32, 10_IK32) )
+    call disp%show("getRange(0_IKD, 10_IKD)")
+    call disp%show( getRange(0_IKD, 10_IKD) )
     call disp%skip
-    call disp%show("getRange(0_IK32, 10_IK32, 2_IK32)")
-    call disp%show( getRange(0_IK32, 10_IK32, 2_IK32) )
+    call disp%show("getRange(0_IKD, 10_IKD, 2_IKD)")
+    call disp%show( getRange(0_IKD, 10_IKD, 2_IKD) )
     call disp%skip
-    call disp%show("getRange(0_IK32, 10_IK32, 3_IK32)")
-    call disp%show( getRange(0_IK32, 10_IK32, 3_IK32) )
+    call disp%show("getRange(0_IKD, 10_IKD, 3_IKD)")
+    call disp%show( getRange(0_IKD, 10_IKD, 3_IKD) )
     call disp%skip
 
     ! Generate sequence in reverse.
 
     call disp%skip
-    call disp%show("getRange(10_IK32, 0_IK32, -2_IK32)")
-    call disp%show( getRange(10_IK32, 0_IK32, -2_IK32) )
+    call disp%show("getRange(10_IKD, 0_IKD, -2_IKD)")
+    call disp%show( getRange(10_IKD, 0_IKD, -2_IKD) )
     call disp%skip
-    call disp%show("getRange(10_IK32, 0_IK32, -3_IK32)")
-    call disp%show( getRange(10_IK32, 0_IK32, -3_IK32) )
+    call disp%show("getRange(10_IKD, 0_IKD, -3_IKD)")
+    call disp%show( getRange(10_IKD, 0_IKD, -3_IKD) )
     call disp%skip
 
     call disp%skip
@@ -189,24 +189,24 @@ program example
     call disp%skip
 
     call disp%skip
-    call disp%show("getRange(0_IK64, 10_IK64)")
-    call disp%show( getRange(0_IK64, 10_IK64) )
+    call disp%show("getRange(0_IKH, 10_IKH)")
+    call disp%show( getRange(0_IKH, 10_IKH) )
     call disp%skip
-    call disp%show("getRange(0_IK64, 10_IK64, 2_IK64)")
-    call disp%show( getRange(0_IK64, 10_IK64, 2_IK64) )
+    call disp%show("getRange(0_IKH, 10_IKH, 2_IKH)")
+    call disp%show( getRange(0_IKH, 10_IKH, 2_IKH) )
     call disp%skip
-    call disp%show("getRange(0_IK64, 10_IK64, 3_IK64)")
-    call disp%show( getRange(0_IK64, 10_IK64, 3_IK64) )
+    call disp%show("getRange(0_IKH, 10_IKH, 3_IKH)")
+    call disp%show( getRange(0_IKH, 10_IKH, 3_IKH) )
     call disp%skip
 
     ! Generate sequence in reverse.
 
     call disp%skip
-    call disp%show("getRange(10_IK64, 0_IK64, -2_IK64)")
-    call disp%show( getRange(10_IK64, 0_IK64, -2_IK64) )
+    call disp%show("getRange(10_IKH, 0_IKH, -2_IKH)")
+    call disp%show( getRange(10_IKH, 0_IKH, -2_IKH) )
     call disp%skip
-    call disp%show("getRange(10_IK64, 0_IK64, -3_IK64)")
-    call disp%show( getRange(10_IK64, 0_IK64, -3_IK64) )
+    call disp%show("getRange(10_IKH, 0_IKH, -3_IKH)")
+    call disp%show( getRange(10_IKH, 0_IKH, -3_IKH) )
     call disp%skip
 
 end program example

@@ -12,9 +12,9 @@ marker ={ "CK" : "-"
         , "IK" : "."
         , "RK" : "-"
         }
-xlab =  { "CK" : r"Scale Parameters: $x_{min}$ ( real/imaginary )"
-        , "IK" : r"Scale Parameters: $x_{min}$ ( integer-valued )"
-        , "RK" : r"Scale Parameters: $x_{min}$ ( real-valued )"
+xlab =  { "CK" : r"$\alpha$ ( real/imaginary )"
+        , "IK" : r"$\alpha$ ( integer-valued )"
+        , "RK" : r"$\alpha$ ( real-valued )"
         }
 
 for kind in ["IK", "CK", "RK"]:
@@ -49,8 +49,8 @@ for kind in ["IK", "CK", "RK"]:
         plt.xticks(fontsize = fontsize - 2)
         plt.yticks(fontsize = fontsize - 2)
         ax.set_xlabel(xlab[kind], fontsize = fontsize)
-        ax.set_ylabel("Cumulative Area Under PDF Components", fontsize = fontsize)
-        ax.set_xscale("log")
+        ax.set_ylabel("Normalization Factor of the PDF", fontsize = fontsize)
+        #ax.set_xscale("log")
         #ax.set_yscale("log")
 
         plt.grid(visible = True, which = "both", axis = "both", color = "0.85", linestyle = "-")

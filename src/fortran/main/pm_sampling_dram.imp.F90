@@ -197,7 +197,7 @@ contains
                 &objective function, the parameters of the proposal distribution will be updated until either the total number of adaptive &
                 &updates reaches the value of `proposalAdaptationCount`. This variable must be a non-negative integer. As a rule of thumb, &
                 &it may be appropriate to ensure the condition `outputChainSize >> proposalAdaptationPeriod * proposalAdaptationCount` &
-                &holds to improve the ergodicity and stationarity of the MCMC sampler. If `proposalAdaptationCount = 0`, &
+                &holds to improve the ergodicity and stationarity of the MCMC sampler. If `proposalAdaptationCount` is zero, &
                 &then the proposal distribution parameters will be fixed to the initial input values &
                 &throughout the entire MCMC sampling. The default value is "//getStr(spec%proposalAdaptationCount%def)//SKC_"."
             !$omp master
@@ -236,8 +236,8 @@ contains
                 &The larger the value of `proposalAdaptationPeriod`, the easier it will be for the sampler kernel to keep the sampling efficiency &
                 &close to the requested target acceptance rate range (if specified via the input variable targetAcceptanceRate). However, too large &
                 &values for `proposalAdaptationPeriod` will only delay the adaptation of the proposal distribution to the global structure of &
-                &the objective function that is being sampled. If the condition `proposalAdaptationPeriod >= outputChainSize` holds, then no &
-                &adaptive updates to the proposal distribution will be made. The default value is `4 * ndim`, where `ndim` is the dimension &
+                &the objective function that is being sampled. If `outputChainSize <= proposalAdaptationPeriod` holds, then no adaptive &
+                &updates to the proposal distribution will be made. The default value is `4 * ndim`, where `ndim` is the dimension &
                 &of the domain of the objective function to be sampled."
             !$omp master
             proposalAdaptationPeriod = spec%proposalAdaptationPeriod%null
@@ -258,7 +258,7 @@ contains
             SKC_"            indicating no deployment of the delayed rejection algorithm."//NL2//&
             SKC_"    proposalDelayedRejectionCount > 0"//NL2//&
             SKC_"            which implies a maximum proposalDelayedRejectionCount number of rejections will be tolerated."//NL2//&
-            SKC_"For example, `proposalDelayedRejectionCount = 1`, means that at any point during the sampling, if a proposal is rejected, &
+            SKC_"For example, setting `proposalDelayedRejectionCount` to `1` means that at any point during the sampling, if a proposal is rejected, &
                 &the MCMC sampler will not go back to the last sampled state. Instead, it will continue to propose a new state from the last &
                 &rejected proposal. If the new state is again rejected based on the rules of the MCMC sampler, then the algorithm will not &
                 &tolerate further rejections, because the maximum number of rejections to be tolerated has been set by the user to be &
@@ -276,8 +276,8 @@ contains
             "The simulation specification `proposalDelayedRejectionScaleFactor` is a positive-valued vector of type `real` of the &
             &highest precision available within the ParaMonte library, of length `(1 : proposalDelayedRejectionCount)`, by which &
             &the covariance matrix of the proposal distribution of MCMC sampler is scaled when the Delayed Rejection (DR) scheme &
-            &is activated (by setting `proposalDelayedRejectionCount > 0`). At each `i`th stage of the DR process, the proposal &
-            &distribution from the last stage is scaled by the factor `proposalDelayedRejectionScaleFactor(i)`. &
+            &is activated (by setting `proposalDelayedRejectionCount` to a positive value). At each `i`th stage of the DR process, &
+            &the proposal distribution from the last stage is scaled by the factor `proposalDelayedRejectionScaleFactor(i)`. &
             &Missing elements of the `proposalDelayedRejectionScaleFactor` in the input external file to the sampler will be set to &
             &the default value. The default value at all stages is `0.5**(1 / ndim)` where `ndim` is the number of dimensions of the &
             &domain of the objective function. This default value effectively reduces the volume of the covariance matrix &

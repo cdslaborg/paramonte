@@ -9,7 +9,7 @@ program example
     implicit none
 
     integer(IK), parameter  :: NP = 999_IK
-    real                    :: Point(NP), LogPDF(NP)
+    real                    :: Point(NP), logPDF(NP)
 
     type(display_type)      :: disp
     disp = display_type(file = "main.out.F90")
@@ -27,10 +27,10 @@ program example
     call disp%skip()
     call disp%show("Point(1)")
     call disp%show( Point(1) )
-    call disp%show("LogPDF(1) = getGammaLogPDF(Point(1), 2., 2.)")
-                    LogPDF(1) = getGammaLogPDF(Point(1), 2., 2.)
-    call disp%show("LogPDF(1)")
-    call disp%show( LogPDF(1) )
+    call disp%show("logPDF(1) = getGammaLogPDF(Point(1), 2., 2.)")
+                    logPDF(1) = getGammaLogPDF(Point(1), 2., 2.)
+    call disp%show("logPDF(1)")
+    call disp%show( logPDF(1) )
     call disp%skip()
 
     call disp%skip()
@@ -42,10 +42,10 @@ program example
     call disp%skip()
     call disp%show("Point(1:NP:NP/4)")
     call disp%show( Point(1:NP:NP/4) )
-    call disp%show("LogPDF(1:NP:NP/4) = getGammaLogPDF(Point(1:NP:NP/4), 2., 2.)")
-                    LogPDF(1:NP:NP/4) = getGammaLogPDF(Point(1:NP:NP/4), 2., 2.)
-    call disp%show("LogPDF(1:NP:NP/4)")
-    call disp%show( LogPDF(1:NP:NP/4) )
+    call disp%show("logPDF(1:NP:NP/4) = getGammaLogPDF(Point(1:NP:NP/4), 2., 2.)")
+                    logPDF(1:NP:NP/4) = getGammaLogPDF(Point(1:NP:NP/4), 2., 2.)
+    call disp%show("logPDF(1:NP:NP/4)")
+    call disp%show( logPDF(1:NP:NP/4) )
     call disp%skip()
 
     call disp%skip()
@@ -57,10 +57,10 @@ program example
     call disp%skip()
     call disp%show("Point(1:NP:NP/4)")
     call disp%show( Point(1:NP:NP/4) )
-    call disp%show("LogPDF(1:NP:NP/4) = getGammaLogPDF(Point(1:NP:NP/4), kappa = 0.5, invSigma = 5.)")
-                    LogPDF(1:NP:NP/4) = getGammaLogPDF(Point(1:NP:NP/4), kappa = 0.5, invSigma = 5.)
-    call disp%show("LogPDF(1:NP:NP/4)")
-    call disp%show( LogPDF(1:NP:NP/4) )
+    call disp%show("logPDF(1:NP:NP/4) = getGammaLogPDF(Point(1:NP:NP/4), kappa = 0.5, invSigma = 5.)")
+                    logPDF(1:NP:NP/4) = getGammaLogPDF(Point(1:NP:NP/4), kappa = 0.5, invSigma = 5.)
+    call disp%show("logPDF(1:NP:NP/4)")
+    call disp%show( logPDF(1:NP:NP/4) )
     call disp%skip()
 
     call disp%skip()
@@ -72,10 +72,10 @@ program example
     call disp%skip()
     call disp%show("Point(NP/4)")
     call disp%show( Point(NP/4) )
-    call disp%show("LogPDF(1:NP:NP/4) = getGammaLogPDF(Point(NP/4), kappa = getLinSpace(0.5, 5., 5), invSigma = getLinSpace(5., .5, 5))")
-                    LogPDF(1:NP:NP/4) = getGammaLogPDF(Point(NP/4), kappa = getLinSpace(0.5, 5., 5), invSigma = getLinSpace(5., .5, 5))
-    call disp%show("LogPDF(1:NP:NP/4)")
-    call disp%show( LogPDF(1:NP:NP/4) )
+    call disp%show("logPDF(1:NP:NP/4) = getGammaLogPDF(Point(NP/4), kappa = getLinSpace(0.5, 5., 5), invSigma = getLinSpace(5., .5, 5))")
+                    logPDF(1:NP:NP/4) = getGammaLogPDF(Point(NP/4), kappa = getLinSpace(0.5, 5., 5), invSigma = getLinSpace(5., .5, 5))
+    call disp%show("logPDF(1:NP:NP/4)")
+    call disp%show( logPDF(1:NP:NP/4) )
     call disp%skip()
 
     call disp%skip()
@@ -87,14 +87,14 @@ program example
     call disp%skip()
     call disp%show("Point(1:NP:NP/4)")
     call disp%show( Point(1:NP:NP/4) )
-    call disp%show("LogPDF(1:NP:NP/4) = getGammaLogPDF(Point(1:NP:NP/4), kappa = getLinSpace(0.5, 5., 5), invSigma = getLinSpace(5., .5, 5))")
-                    LogPDF(1:NP:NP/4) = getGammaLogPDF(Point(1:NP:NP/4), kappa = getLinSpace(0.5, 5., 5), invSigma = getLinSpace(5., .5, 5))
-    call disp%show("LogPDF(1:NP:NP/4)")
-    call disp%show( LogPDF(1:NP:NP/4) )
+    call disp%show("logPDF(1:NP:NP/4) = getGammaLogPDF(Point(1:NP:NP/4), kappa = getLinSpace(0.5, 5., 5), invSigma = getLinSpace(5., .5, 5))")
+                    logPDF(1:NP:NP/4) = getGammaLogPDF(Point(1:NP:NP/4), kappa = getLinSpace(0.5, 5., 5), invSigma = getLinSpace(5., .5, 5))
+    call disp%show("logPDF(1:NP:NP/4)")
+    call disp%show( logPDF(1:NP:NP/4) )
     call disp%skip()
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    ! Output an example LogPDF array for visualization.
+    ! Output an example logPDF array for visualization.
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     block

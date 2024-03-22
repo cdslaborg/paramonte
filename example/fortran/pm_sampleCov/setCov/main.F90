@@ -30,7 +30,7 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! All other real types are also supported, e.g., RK32, RK64, RK128.
+        use pm_kind, only: TKC => RKS ! All other real types are also supported.
         use pm_matrixCopy, only: setMatCopy, rdpack
         use pm_distCov, only: getCovRand
         integer(IK) :: ndim
@@ -84,7 +84,7 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! All other real types are also supported, e.g., RK32, RK64, RK128.
+        use pm_kind, only: TKC => RKS ! All other real types are also supported.
         real(TKC), allocatable :: sample(:,:), samShifted(:,:), cov(:,:), mean(:)
         integer(IK) :: ndim, nsam, dim
         call disp%show("ndim = 2; nsam = 10; dim = 2")
@@ -183,7 +183,7 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! All other real types are also supported, e.g., RK32, RK64, RK128.
+        use pm_kind, only: TKC => RKS ! All other real types are also supported.
         real(TKC) :: rweisum
         integer(IK) :: iweisum
         real(TKC), allocatable :: rweight(:)

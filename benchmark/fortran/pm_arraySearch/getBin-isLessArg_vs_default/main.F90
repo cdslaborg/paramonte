@@ -2,7 +2,7 @@
 program benchmark
 
     use iso_fortran_env, only: error_unit
-    use pm_kind, only: IK, LK, SK, RK, RKC => RK32
+    use pm_kind, only: IK, LK, SK, RK, RKC => RKS
     use pm_distUnif, only: setUnifRand
     use pm_arraySpace, only: getLinSpace
     use pm_mathMinMax, only: getMinMax

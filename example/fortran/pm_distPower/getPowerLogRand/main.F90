@@ -6,7 +6,7 @@ program example
 
     implicit none
 
-    real                    :: LogX(3)
+    real                    :: logx(3)
 
     type(display_type)      :: disp
     disp = display_type(file = "main.out.F90")
@@ -18,17 +18,17 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("LogX(1) = getPowerLogRand(alpha = +2., logMaxX = -2.) ! Power distribution.")
-                    LogX(1) = getPowerLogRand(alpha = +2., logMaxX = -2.) ! Power distribution.
-    call disp%show("LogX(1)")
-    call disp%show( LogX(1) )
+    call disp%show("logx(1) = getPowerLogRand(alpha = +2., logMaxX = -2.) ! Power distribution.")
+                    logx(1) = getPowerLogRand(alpha = +2., logMaxX = -2.) ! Power distribution.
+    call disp%show("logx(1)")
+    call disp%show( logx(1) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("LogX(1:3) = getPowerLogRand(alpha = +[+2., +3., +4.], logMaxX = -2.) ! Power distribution.")
-                    LogX(1:3) = getPowerLogRand(alpha = +[+2., +3., +4.], logMaxX = -2.) ! Power distribution.
-    call disp%show("LogX(1:3)")
-    call disp%show( LogX(1:3) )
+    call disp%show("logx(1:3) = getPowerLogRand(alpha = +[+2., +3., +4.], logMaxX = -2.) ! Power distribution.")
+                    logx(1:3) = getPowerLogRand(alpha = +[+2., +3., +4.], logMaxX = -2.) ! Power distribution.
+    call disp%show("logx(1:3)")
+    call disp%show( logx(1:3) )
     call disp%skip()
 
     call disp%skip()
@@ -38,35 +38,35 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("LogX(1) = getPowerLogRand(alpha = +1., logMinX = -2., logMaxX = 5.) ! Truncated Power distribution.")
-                    LogX(1) = getPowerLogRand(alpha = +1., logMinX = -2., logMaxX = 5.) ! Truncated Power distribution.
-    call disp%show("LogX(1)")
-    call disp%show( LogX(1) )
+    call disp%show("logx(1) = getPowerLogRand(alpha = +1., logMinX = -2., logMaxX = 5.) ! Truncated Power distribution.")
+                    logx(1) = getPowerLogRand(alpha = +1., logMinX = -2., logMaxX = 5.) ! Truncated Power distribution.
+    call disp%show("logx(1)")
+    call disp%show( logx(1) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("LogX(1:3) = getPowerLogRand(alpha = +[+1., +2., +3.], logMinX = -2., logMaxX = 5.) ! Truncated Power distribution.")
-                    LogX(1:3) = getPowerLogRand(alpha = +[+1., +2., +3.], logMinX = -2., logMaxX = 5.) ! Truncated Power distribution.
-    call disp%show("LogX(1:3)")
-    call disp%show( LogX(1:3) )
+    call disp%show("logx(1:3) = getPowerLogRand(alpha = +[+1., +2., +3.], logMinX = -2., logMaxX = 5.) ! Truncated Power distribution.")
+                    logx(1:3) = getPowerLogRand(alpha = +[+1., +2., +3.], logMinX = -2., logMaxX = 5.) ! Truncated Power distribution.
+    call disp%show("logx(1:3)")
+    call disp%show( logx(1:3) )
     call disp%skip()
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    ! Output an example LogX array for visualization.
+    ! Output an example array for visualization.
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     block
         use pm_arraySpace, only: setLinSpace
-        real :: Alpha(3), LogMinX(3), LogMaxX(3), LogX(3)
+        real :: alpha(3), logMinX(3), logMaxX(3), logx(3)
         integer(IK) :: fileUnit, i
-        Alpha = [.1, 2., .5]
-        LogMinX = log([3., tiny(0.), tiny(0.)])
-        LogMaxX = log([10., 5., 8.])
+        alpha = [.1, 2., .5]
+        logMinX = log([3., tiny(0.), tiny(0.)])
+        logMaxX = log([10., 5., 8.])
         open(newunit = fileUnit, file = "getPowerLogRand.RK.txt")
         do i = 1, 2000_IK
-            LogX(1) = getPowerLogRand(Alpha(1), LogMinX(1), LogMaxX(1))
-            LogX(2:3) = getPowerLogRand(Alpha(2:3), LogMaxX(2:3))
-            write(fileUnit, "(*(g0,:,', '))") exp(LogX)
+            logx(1) = getPowerLogRand(alpha(1), logMinX(1), logMaxX(1))
+            logx(2:3) = getPowerLogRand(alpha(2:3), logMaxX(2:3))
+            write(fileUnit, "(*(g0,:,', '))") exp(logx)
         end do
         close(fileUnit)
     end block

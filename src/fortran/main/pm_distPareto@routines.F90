@@ -326,6 +326,57 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#define ALD_ENABLED 1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define RK_ENABLED 1
+
+#if RK5_ENABLED
+    module procedure getParetoLogCDFNFALD_RK5
+        use pm_kind, only: RKC => RK5
+#include "pm_distPareto@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK4_ENABLED
+    module procedure getParetoLogCDFNFALD_RK4
+        use pm_kind, only: RKC => RK4
+#include "pm_distPareto@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK3_ENABLED
+    module procedure getParetoLogCDFNFALD_RK3
+        use pm_kind, only: RKC => RK3
+#include "pm_distPareto@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK2_ENABLED
+    module procedure getParetoLogCDFNFALD_RK2
+        use pm_kind, only: RKC => RK2
+#include "pm_distPareto@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK1_ENABLED
+    module procedure getParetoLogCDFNFALD_RK1
+        use pm_kind, only: RKC => RK1
+#include "pm_distPareto@routines.inc.F90"
+    end procedure
+#endif
+
+#undef RK_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef ALD_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 #define ALL_ENABLED 1
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

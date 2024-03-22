@@ -1,9 +1,9 @@
 program example
 
     use pm_kind, only: SK, LK
-    use pm_kind, only: IK => IK32 ! could also point to other supported integer kinds.
-    use pm_kind, only: CK => CK32 ! could also point to other supported complex kinds.
-    use pm_kind, only: RK => RK32 ! could also point to other supported real kinds.
+    use pm_kind, only: IK => IKS ! All other kinds are also supported.
+    use pm_kind, only: CK => CKS ! All other kinds are also supported.
+    use pm_kind, only: RK => RKS ! All other kinds are also supported.
     use pm_io, only: display_type
     use pm_distUnif, only: setUnifRand
 

@@ -2,9 +2,9 @@ program example
 
     use pm_kind, only: LK ! The default `logical` kind.
     use pm_kind, only: SK ! The default `character` kind.
-    use pm_kind, only: IK ! All other complex kinds IK8, IK16, IK32, IK64 are also possible.
-    use pm_kind, only: CK ! All other complex kinds e.g., CK32, CK64, CK128 are also supported.
-    use pm_kind, only: RK ! All other complex kinds RK32, RK64, RK128 are also possible.
+    use pm_kind, only: IK ! All other kinds are also supported.
+    use pm_kind, only: CK ! All other kinds are also supported.
+    use pm_kind, only: RK ! All other kinds are also supported.
     use pm_arrayCompareLex, only: operator(.lle.)
     use pm_distUnif, only: setUnifRand
     use pm_io, only: display_type

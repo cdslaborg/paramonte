@@ -22,9 +22,18 @@ if (DEFINED ski OR DEFINED iki OR DEFINED lki OR DEFINED cki OR DEFINED rki)
     unset(FPP_PM_KINDS)
 endif()
 
+if (${codecov_enabled} AND ${csid_is_gnu} AND NOT DEFINED rki)
+    set(rki "1;2")
+endif()
+
 # Unless explicitly enforced, ensure the requested complex kinds have equivalent real kinds.
 if (DEFINED cki AND NOT DEFINED rki)
     set(rki ${cki})
+endif()
+
+# Unless explicitly enforced, ensure the requested complex kinds have equivalent real kinds.
+if (DEFINED rki AND NOT DEFINED cki)
+    set(cki ${rki})
 endif()
 
 # This file must be executed at every cmake run because the pm_sampling@generics

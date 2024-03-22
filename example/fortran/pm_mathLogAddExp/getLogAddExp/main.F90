@@ -2,7 +2,7 @@ program example
 
     use pm_kind, only: SK
     use pm_io, only: display_type
-    use pm_kind, only: IK, CK32, CK64, CK128, RK32, RK64, RK128
+    use pm_kind, only: IK, CKS, CKD, CKH, RKS, RKD, RKH
     use pm_mathLogAddExp, only: getLogAddExp
     use pm_distUnif, only: getUnifRand
     use pm_mathMinMax, only: getMinMax
@@ -19,8 +19,8 @@ program example
     call disp%show("!%%%%%%%%%%%")
     call disp%skip()
 
-    call disp%show("exp( getLogAddExp(smaller = log(4._RK32), larger = log(10._RK32)) )")
-    call disp%show( exp( getLogAddExp(smaller = log(4._RK32), larger = log(10._RK32)) ) )
+    call disp%show("exp( getLogAddExp(smaller = log(4._RKS), larger = log(10._RKS)) )")
+    call disp%show( exp( getLogAddExp(smaller = log(4._RKS), larger = log(10._RKS)) ) )
 
     call disp%skip()
     call disp%show("!%%%%%%%%%%%")
@@ -28,8 +28,8 @@ program example
     call disp%show("!%%%%%%%%%%%")
     call disp%skip()
 
-    call disp%show("exp( getLogAddExp(smaller = log(4._RK64), larger = log(10._RK64)) )")
-    call disp%show( exp( getLogAddExp(smaller = log(4._RK64), larger = log(10._RK64)) ) )
+    call disp%show("exp( getLogAddExp(smaller = log(4._RKD), larger = log(10._RKD)) )")
+    call disp%show( exp( getLogAddExp(smaller = log(4._RKD), larger = log(10._RKD)) ) )
 
     call disp%skip()
     call disp%show("!%%%%%%%%%%%%")
@@ -37,8 +37,8 @@ program example
     call disp%show("!%%%%%%%%%%%%")
     call disp%skip()
 
-    call disp%show("exp( getLogAddExp(smaller = log(4._RK128), larger = log(10._RK128)) )")
-    call disp%show( exp( getLogAddExp(smaller = log(4._RK128), larger = log(10._RK128)) ) )
+    call disp%show("exp( getLogAddExp(smaller = log(4._RKH), larger = log(10._RKH)) )")
+    call disp%show( exp( getLogAddExp(smaller = log(4._RKH), larger = log(10._RKH)) ) )
 
     call disp%skip()
     call disp%show("!%%%%%%%%%%%%%%")
@@ -46,8 +46,8 @@ program example
     call disp%show("!%%%%%%%%%%%%%%")
     call disp%skip()
 
-    call disp%show("exp( getLogAddExp(smaller = log((4._CK32, -4._CK32)), larger = log((10._CK32, -10._CK32))) )")
-    call disp%show( exp( getLogAddExp(smaller = log((4._CK32, -4._CK32)), larger = log((10._CK32, -10._CK32))) ) )
+    call disp%show("exp( getLogAddExp(smaller = log((4._CKS, -4._CKS)), larger = log((10._CKS, -10._CKS))) )")
+    call disp%show( exp( getLogAddExp(smaller = log((4._CKS, -4._CKS)), larger = log((10._CKS, -10._CKS))) ) )
 
     call disp%skip()
     call disp%show("!%%%%%%%%%%%%%%")
@@ -55,8 +55,8 @@ program example
     call disp%show("!%%%%%%%%%%%%%%")
     call disp%skip()
 
-    call disp%show("exp( getLogAddExp(smaller = log((4._CK64, -4._CK64)), larger = log((10._CK64, -10._CK64))) )")
-    call disp%show( exp( getLogAddExp(smaller = log((4._CK64, -4._CK64)), larger = log((10._CK64, -10._CK64))) ) )
+    call disp%show("exp( getLogAddExp(smaller = log((4._CKD, -4._CKD)), larger = log((10._CKD, -10._CKD))) )")
+    call disp%show( exp( getLogAddExp(smaller = log((4._CKD, -4._CKD)), larger = log((10._CKD, -10._CKD))) ) )
 
     call disp%skip()
     call disp%show("!%%%%%%%%%%%%%%%")
@@ -64,8 +64,8 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%")
     call disp%skip()
 
-    call disp%show("exp( getLogAddExp(smaller = log((4._CK128, -4._CK128)), larger = log((10._CK128, -10._CK128))) )")
-    call disp%show( exp( getLogAddExp(smaller = log((4._CK128, -4._CK128)), larger = log((10._CK128, -10._CK128))) ) )
+    call disp%show("exp( getLogAddExp(smaller = log((4._CKH, -4._CKH)), larger = log((10._CKH, -10._CKH))) )")
+    call disp%show( exp( getLogAddExp(smaller = log((4._CKH, -4._CKH)), larger = log((10._CKH, -10._CKH))) ) )
 
     call disp%skip()
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")

@@ -8,7 +8,7 @@ program example
 
     implicit none
 
-    real :: LogCDFNF(3)
+    real :: logCDFNF(3)
 
     type(display_type) :: disp
     disp = display_type(file = "main.out.F90")
@@ -20,44 +20,44 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("LogCDFNF(1) = getPowerLogCDFNF(alpha = 1., logMaxX = 1.)")
-                    LogCDFNF(1) = getPowerLogCDFNF(alpha = 1., logMaxX = 1.)
-    call disp%show("LogCDFNF(1)")
-    call disp%show( LogCDFNF(1) )
+    call disp%show("logCDFNF(1) = getPowerLogCDFNF(alpha = 1., logMaxX = 1.)")
+                    logCDFNF(1) = getPowerLogCDFNF(alpha = 1., logMaxX = 1.)
+    call disp%show("logCDFNF(1)")
+    call disp%show( logCDFNF(1) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("LogCDFNF(1:3) = getPowerLogCDFNF(alpha = 2., logMaxX = log([1., 2., 3.]))")
-                    LogCDFNF(1:3) = getPowerLogCDFNF(alpha = 2., logMaxX = log([1., 2., 3.]))
-    call disp%show("LogCDFNF(1:3)")
-    call disp%show( LogCDFNF(1:3) )
+    call disp%show("logCDFNF(1:3) = getPowerLogCDFNF(alpha = 2., logMaxX = log([1., 2., 3.]))")
+                    logCDFNF(1:3) = getPowerLogCDFNF(alpha = 2., logMaxX = log([1., 2., 3.]))
+    call disp%show("logCDFNF(1:3)")
+    call disp%show( logCDFNF(1:3) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("LogCDFNF(1:3) = getPowerLogCDFNF(alpha = [+2., +3., +4.], logMaxX = log([1., 2., 3.]))")
-                    LogCDFNF(1:3) = getPowerLogCDFNF(alpha = [+2., +3., +4.], logMaxX = log([1., 2., 3.]))
-    call disp%show("LogCDFNF(1:3)")
-    call disp%show( LogCDFNF(1:3) )
+    call disp%show("logCDFNF(1:3) = getPowerLogCDFNF(alpha = [+2., +3., +4.], logMaxX = log([1., 2., 3.]))")
+                    logCDFNF(1:3) = getPowerLogCDFNF(alpha = [+2., +3., +4.], logMaxX = log([1., 2., 3.]))
+    call disp%show("logCDFNF(1:3)")
+    call disp%show( logCDFNF(1:3) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("LogCDFNF(1:3) = getPowerLogCDFNF(alpha = [+2., +3., +4.], logMinX = log([1., 2., 3.]), logMaxX = log(20.))")
-                    LogCDFNF(1:3) = getPowerLogCDFNF(alpha = [+2., +3., +4.], logMinX = log([1., 2., 3.]), logMaxX = log(20.))
-    call disp%show("LogCDFNF(1:3)")
-    call disp%show( LogCDFNF(1:3) )
+    call disp%show("logCDFNF(1:3) = getPowerLogCDFNF(alpha = [+2., +3., +4.], logMinX = log([1., 2., 3.]), logMaxX = log(20.))")
+                    logCDFNF(1:3) = getPowerLogCDFNF(alpha = [+2., +3., +4.], logMinX = log([1., 2., 3.]), logMaxX = log(20.))
+    call disp%show("logCDFNF(1:3)")
+    call disp%show( logCDFNF(1:3) )
     call disp%skip()
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    ! Output an example CDF array for visualization.
+    ! Output an example array for visualization.
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     block
         integer :: fileUnit, i
-        real, allocatable :: Alpha(:), LogCDFNF(:)
-        Alpha = getLogSpace(-10., +10., count = 500_IK)
-        LogCDFNF = getPowerLogCDFNF(Alpha, logMinX = -1., logMaxX = +1.)
+        real, allocatable :: alpha(:), logCDFNF(:)
+        alpha = getLogSpace(-10., +10., count = 500_IK)
+        logCDFNF = getPowerLogCDFNF(alpha, logMinX = -1., logMaxX = +1.)
         open(newunit = fileUnit, file = "getPowerLogCDFNF.RK.txt")
-        write(fileUnit,"(2(g0,:,' '))") (Alpha(i), exp(LogCDFNF(i)), i = 1, size(LogCDFNF))
+        write(fileUnit,"(2(g0,:,' '))") (alpha(i), exp(logCDFNF(i)), i = 1, size(logCDFNF))
         close(fileUnit)
     end block
 

@@ -30,7 +30,7 @@ end block;
 program example
 
     use pm_kind, only: SK, IK
-    use pm_kind, only: RKC => RK32 ! all processor real and complex kinds are supported.
+    use pm_kind, only: RKC => RKS ! all processor real and complex kinds are supported.
     use pm_io, only: display_type
     use pm_polynomial, only: getPolyMul
     use pm_polynomial, only: getPolyAdd

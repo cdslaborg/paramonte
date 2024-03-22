@@ -10,7 +10,7 @@ program example
     implicit none
 
     integer(IK), parameter  :: NP = 999_IK
-    real                    :: Point(NP), LogPDF(NP)
+    real                    :: Point(NP), logPDF(NP)
 
     type(display_type)      :: disp
     disp = display_type(file = "main.out.F90")
@@ -28,10 +28,10 @@ program example
     call disp%skip()
     call disp%show("Point(1)")
     call disp%show( Point(1) )
-    call disp%show("call setGammaLogPDF(LogPDF(1), Point(1))")
-                    call setGammaLogPDF(LogPDF(1), Point(1))
-    call disp%show("LogPDF(1)")
-    call disp%show( LogPDF(1) )
+    call disp%show("call setGammaLogPDF(logPDF(1), Point(1))")
+                    call setGammaLogPDF(logPDF(1), Point(1))
+    call disp%show("logPDF(1)")
+    call disp%show( logPDF(1) )
     call disp%skip()
 
     call disp%skip()
@@ -43,10 +43,10 @@ program example
     call disp%skip()
     call disp%show("Point(1:NP:NP/4)")
     call disp%show( Point(1:NP:NP/4) )
-    call disp%show("call setGammaLogPDF(LogPDF(1:NP:NP/4), Point(1:NP:NP/4), getGammaLogPDFNF(2., 2.), kappa = 2., invSigma = 2.)")
-                    call setGammaLogPDF(LogPDF(1:NP:NP/4), Point(1:NP:NP/4), getGammaLogPDFNF(2., 2.), kappa = 2., invSigma = 2.)
-    call disp%show("LogPDF(1:NP:NP/4)")
-    call disp%show( LogPDF(1:NP:NP/4) )
+    call disp%show("call setGammaLogPDF(logPDF(1:NP:NP/4), Point(1:NP:NP/4), getGammaLogPDFNF(2., 2.), kappa = 2., invSigma = 2.)")
+                    call setGammaLogPDF(logPDF(1:NP:NP/4), Point(1:NP:NP/4), getGammaLogPDFNF(2., 2.), kappa = 2., invSigma = 2.)
+    call disp%show("logPDF(1:NP:NP/4)")
+    call disp%show( logPDF(1:NP:NP/4) )
     call disp%skip()
 
     call disp%skip()
@@ -58,10 +58,10 @@ program example
     call disp%skip()
     call disp%show("Point(1:NP:NP/4)")
     call disp%show( Point(1:NP:NP/4) )
-    call disp%show("call setGammaLogPDF(LogPDF(1:NP:NP/4), Point(1:NP:NP/4), getGammaLogPDFNF(0.5, 5.), kappa = 0.5, invSigma = 5.)")
-                    call setGammaLogPDF(LogPDF(1:NP:NP/4), Point(1:NP:NP/4), getGammaLogPDFNF(0.5, 5.), kappa = 0.5, invSigma = 5.)
-    call disp%show("LogPDF(1:NP:NP/4)")
-    call disp%show( LogPDF(1:NP:NP/4) )
+    call disp%show("call setGammaLogPDF(logPDF(1:NP:NP/4), Point(1:NP:NP/4), getGammaLogPDFNF(0.5, 5.), kappa = 0.5, invSigma = 5.)")
+                    call setGammaLogPDF(logPDF(1:NP:NP/4), Point(1:NP:NP/4), getGammaLogPDFNF(0.5, 5.), kappa = 0.5, invSigma = 5.)
+    call disp%show("logPDF(1:NP:NP/4)")
+    call disp%show( logPDF(1:NP:NP/4) )
     call disp%skip()
 
     call disp%skip()
@@ -73,10 +73,10 @@ program example
     call disp%skip()
     call disp%show("Point(NP/4)")
     call disp%show( Point(NP/4) )
-    call disp%show("call setGammaLogPDF(LogPDF(1:NP:NP/4), Point(NP/4), getGammaLogPDFNF(getLinSpace(0.5, 5., 5), getLinSpace(5., .5, 5)), kappa = getLinSpace(0.5, 5., 5), invSigma = getLinSpace(5., .5, 5))")
-                    call setGammaLogPDF(LogPDF(1:NP:NP/4), Point(NP/4), getGammaLogPDFNF(getLinSpace(0.5, 5., 5), getLinSpace(5., .5, 5)), kappa = getLinSpace(0.5, 5., 5), invSigma = getLinSpace(5., .5, 5))
-    call disp%show("LogPDF(1:NP:NP/4)")
-    call disp%show( LogPDF(1:NP:NP/4) )
+    call disp%show("call setGammaLogPDF(logPDF(1:NP:NP/4), Point(NP/4), getGammaLogPDFNF(getLinSpace(0.5, 5., 5), getLinSpace(5., .5, 5)), kappa = getLinSpace(0.5, 5., 5), invSigma = getLinSpace(5., .5, 5))")
+                    call setGammaLogPDF(logPDF(1:NP:NP/4), Point(NP/4), getGammaLogPDFNF(getLinSpace(0.5, 5., 5), getLinSpace(5., .5, 5)), kappa = getLinSpace(0.5, 5., 5), invSigma = getLinSpace(5., .5, 5))
+    call disp%show("logPDF(1:NP:NP/4)")
+    call disp%show( logPDF(1:NP:NP/4) )
     call disp%skip()
 
     call disp%skip()
@@ -88,24 +88,24 @@ program example
     call disp%skip()
     call disp%show("Point(1:NP:NP/4)")
     call disp%show( Point(1:NP:NP/4) )
-    call disp%show("call setGammaLogPDF(LogPDF(1:NP:NP/4), Point(1:NP:NP/4), getGammaLogPDFNF(getLinSpace(0.5, 5., 5), getLinSpace(5., .5, 5)), kappa = getLinSpace(0.5, 5., 5), invSigma = getLinSpace(5., .5, 5))")
-                    call setGammaLogPDF(LogPDF(1:NP:NP/4), Point(1:NP:NP/4), getGammaLogPDFNF(getLinSpace(0.5, 5., 5), getLinSpace(5., .5, 5)), kappa = getLinSpace(0.5, 5., 5), invSigma = getLinSpace(5., .5, 5))
-    call disp%show("LogPDF(1:NP:NP/4)")
-    call disp%show( LogPDF(1:NP:NP/4) )
+    call disp%show("call setGammaLogPDF(logPDF(1:NP:NP/4), Point(1:NP:NP/4), getGammaLogPDFNF(getLinSpace(0.5, 5., 5), getLinSpace(5., .5, 5)), kappa = getLinSpace(0.5, 5., 5), invSigma = getLinSpace(5., .5, 5))")
+                    call setGammaLogPDF(logPDF(1:NP:NP/4), Point(1:NP:NP/4), getGammaLogPDFNF(getLinSpace(0.5, 5., 5), getLinSpace(5., .5, 5)), kappa = getLinSpace(0.5, 5., 5), invSigma = getLinSpace(5., .5, 5))
+    call disp%show("logPDF(1:NP:NP/4)")
+    call disp%show( logPDF(1:NP:NP/4) )
     call disp%skip()
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    ! Output an example LogPDF array for visualization.
+    ! Output an example logPDF array for visualization.
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     block
         integer(IK) :: fileUnit, i
         real, parameter :: Kappa(*) = [0.5, 1.0, 2.0, 7.5]
-        real, parameter :: InvSigma(*) = [1.0, 0.5, 0.5, 1.0]
+        real, parameter :: invSigma(*) = [1.0, 0.5, 0.5, 1.0]
         open(newunit = fileUnit, file = "setGammaLogPDF.RK.txt")
         do i = 1, NP
-            call setGammaLogPDF(LogPDF(1:4), Point(i), getGammaLogPDFNF(Kappa, InvSigma), Kappa, InvSigma)
-            write(fileUnit,"(5(g0,:,' '))") Point(i), exp(LogPDF(1:4))
+            call setGammaLogPDF(logPDF(1:4), Point(i), getGammaLogPDFNF(Kappa, invSigma), Kappa, invSigma)
+            write(fileUnit,"(5(g0,:,' '))") Point(i), exp(logPDF(1:4))
         end do
         close(fileUnit)
     end block

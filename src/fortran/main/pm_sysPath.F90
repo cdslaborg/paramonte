@@ -273,7 +273,8 @@
 
 module pm_sysPath
 
-    use pm_kind, only: IK, LK, SK ! LCOV_EXCL_LINE
+    use pm_kind, only: IK, LK, SK
+    use pm_container, only: css_type
 
     implicit none
 
@@ -774,8 +775,8 @@ module pm_sysPath
     !>  \code{.F90}
     !>
     !>      use pm_kind, only: SK, IK, LK
-    !>      use pm_sysPath, only: ls
-    !>      character(:, SK), allocatable :: list
+    !>      use pm_sysPath, only: ls, css_type
+    !>      type(css_type), allocatable :: list(:)
     !>      logical(LK) :: showhidden, showdir, showfile
     !>
     !>      list = ls(path, sort = sort, showdir = showdir, showfile = showfile, showhidden = showhidden, reversed = reversed) ! `list` is a vector of string containers.
@@ -817,7 +818,6 @@ module pm_sysPath
         !DEC$ ATTRIBUTES DLLEXPORT :: ls_BSSK
 #endif
         use pm_kind, only: SKC => SK
-        use pm_container, only: css_type
         character(*,SKC)    , intent(in)                    :: path
         character(*, SK)    , intent(in)    , optional      :: sort
         logical(LK)         , intent(in)    , optional      :: showdir, showfile, showhidden, reversed
@@ -850,7 +850,7 @@ module pm_sysPath
     !>      type(css_type), allocatable :: list(:)
     !>
     !>      list = glob(pattern) ! `list` is a vector of string containers.
-    !>
+    !>      !
     !>  \endcode
     !>
     !>  \impure
@@ -890,7 +890,6 @@ module pm_sysPath
         !DEC$ ATTRIBUTES DLLEXPORT :: glob_BSSK
 #endif
         use pm_kind, only: SKC => SK
-        use pm_container, only: css_type
         character(*,SKC)    , intent(in)                    :: pattern
         type(css_type)      , allocatable                   :: list(:)
     end function

@@ -12,7 +12,7 @@ program example
     disp = display_type(file = "main.out.F90")
 
     block
-        use pm_kind, only: RKC => RK128
+        use pm_kind, only: RKC => RKH
         real(RKC), allocatable :: zig(:,:)
         integer(IK) :: nlayer
         real(RKC) :: abserr

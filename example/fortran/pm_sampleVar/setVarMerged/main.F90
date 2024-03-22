@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK
-    use pm_kind, only: TKC => RK32 ! All other real types are also supported.
+    use pm_kind, only: TKC => RKS ! All other real types are also supported.
     use pm_sampleVar, only: getVar
     use pm_sampleMean, only: getMean
     use pm_sampleVar, only: setVarMerged

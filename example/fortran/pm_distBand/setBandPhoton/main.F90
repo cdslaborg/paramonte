@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK, LK
-    use pm_kind, only: RKC => RK128 ! all processor kinds are supported.
+    use pm_kind, only: RKC => RKH ! all processor kinds are supported.
     use pm_io, only: display_type
     use pm_distBand, only: getBandEbreak
     use pm_distBand, only: setBandPhoton
@@ -15,7 +15,7 @@ program example
 
     block
 
-        use pm_kind, only: RKC => RK64
+        use pm_kind, only: RKC => RKD
         real(RKC) :: photons, fluence, lbnew, ubnew, lb, ub, alpha, beta, ebreak
 
         call disp%skip()

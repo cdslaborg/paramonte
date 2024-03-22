@@ -6,7 +6,7 @@ program example
 
     implicit none
 
-    real :: LogX(3)
+    real :: logx(3)
 
     type(display_type) :: disp
     disp = display_type(file = "main.out.F90")
@@ -18,17 +18,17 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("LogX(1) = getLogUnifLogQuan(cdf = 0.5, logMinX = log(2.), logMaxX = log(5.))")
-                    LogX(1) = getLogUnifLogQuan(cdf = 0.5, logMinX = log(2.), logMaxX = log(5.))
-    call disp%show("LogX(1)")
-    call disp%show( LogX(1) )
+    call disp%show("logx(1) = getLogUnifLogQuan(cdf = 0.5, logMinX = log(2.), logMaxX = log(5.))")
+                    logx(1) = getLogUnifLogQuan(cdf = 0.5, logMinX = log(2.), logMaxX = log(5.))
+    call disp%show("logx(1)")
+    call disp%show( logx(1) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("LogX(1:3) = getLogUnifLogQuan(cdf = [.3, .4, .25], logMinX = log(2.), logMaxX = log(5.))")
-                    LogX(1:3) = getLogUnifLogQuan(cdf = [.3, .4, .25], logMinX = log(2.), logMaxX = log(5.))
-    call disp%show("LogX(1:3)")
-    call disp%show( LogX(1:3) )
+    call disp%show("logx(1:3) = getLogUnifLogQuan(cdf = [.3, .4, .25], logMinX = log(2.), logMaxX = log(5.))")
+                    logx(1:3) = getLogUnifLogQuan(cdf = [.3, .4, .25], logMinX = log(2.), logMaxX = log(5.))
+    call disp%show("logx(1:3)")
+    call disp%show( logx(1:3) )
     call disp%skip()
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -37,15 +37,15 @@ program example
 
     block
         use pm_arraySpace, only: setLinSpace
-        real :: LogMinX(2), LogMaxX(2), LogX(2), CDF(2000)
+        real :: logMinX(2), logMaxX(2), logx(2), CDF(2000)
         integer(IK) :: fileUnit, i
         call setLinSpace(CDF, x1 = 0., x2 = 1.)
-        LogMinX = log([3., 2.0])
-        LogMaxX = log([7., 10.])
+        logMinX = log([3., 2.0])
+        logMaxX = log([7., 10.])
         open(newunit = fileUnit, file = "getLogUnifLogQuan.RK.txt")
         do i = 1, size(CDF)
-            LogX = getLogUnifLogQuan(CDF(i), LogMinX, LogMaxX)
-            write(fileUnit, "(*(g0,:,', '))") CDF(i), exp(LogX)
+            logx = getLogUnifLogQuan(CDF(i), logMinX, logMaxX)
+            write(fileUnit, "(*(g0,:,', '))") CDF(i), exp(logx)
         end do
         close(fileUnit)
     end block

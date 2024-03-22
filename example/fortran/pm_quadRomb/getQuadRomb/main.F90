@@ -1,6 +1,6 @@
 program example
 
-    use pm_kind, only: SK, IK, QP => RK128
+    use pm_kind, only: SK, IK, QP => RKH
     use pm_mathBeta, only: getBetaInc
     use pm_distBeta, only: getBetaPDF
     use pm_quadRomb, only: getQuadRomb, lbis_type, ubis_type

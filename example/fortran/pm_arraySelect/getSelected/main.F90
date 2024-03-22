@@ -18,7 +18,7 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: IKC => IK8
+        use pm_kind, only: IKC => IKL
         integer(IK) :: rank, lenArray
         integer, parameter :: TKC = merge(IKC, IK, IKC > 0)
         integer(TKC), allocatable :: array(:)
@@ -44,7 +44,7 @@ program example
     end block
 
     block
-        use pm_kind, only: IKC => IK16
+        use pm_kind, only: IKC => IKS
         integer(IK) :: rank, lenArray
         integer, parameter :: TKC = merge(IKC, IK, IKC > 0)
         integer(TKC), allocatable :: array(:)
@@ -70,7 +70,7 @@ program example
     end block
 
     block
-        use pm_kind, only: IKC => IK32
+        use pm_kind, only: IKC => IKD
         integer(IK) :: rank, lenArray
         integer, parameter :: TKC = merge(IKC, IK, IKC > 0)
         integer(TKC), allocatable :: array(:)
@@ -96,7 +96,7 @@ program example
     end block
 
     block
-        use pm_kind, only: IKC => IK64
+        use pm_kind, only: IKC => IKH
         integer(IK) :: rank, lenArray
         integer, parameter :: TKC = merge(IKC, IK, IKC > 0)
         integer(TKC), allocatable :: array(:)

@@ -22,8 +22,8 @@
 !>  <ol>
 !>      <li>    the Probability Mass Function (**PMF**)
 !>      <li>    the Cumulative Distribution Function (**CDF**)
-!>      <li>    the random number generation from the distribution (**RNG**)
-!>      <li>    the **Inverse Cumulative Distribution Function (ICDF)** or the **Quantile Function**
+!>      <li>    the Random Number Generation from the distribution (**RNG**)
+!>      <li>    the Inverse Cumulative Distribution Function **(ICDF)** or the **Quantile Function**
 !>  </ol>
 !>
 !>  \details

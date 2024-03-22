@@ -38,23 +38,23 @@ program example
 
     block
         use pm_arraySpace, only: setLinSpace
-        real :: LogMinX(2), LogMaxX(2), CDF(2), LogX(2000)
+        real :: logMinX(2), logMaxX(2), CDF(2), logx(2000)
         integer(IK) :: fileUnit, i, j
-        call setLinSpace(LogX, x1 = log(1.), x2 = log(13.))
-        LogMinX = log([3., 2.0])
-        LogMaxX = log([7., 10.])
+        call setLinSpace(logx, x1 = log(1.), x2 = log(13.))
+        logMinX = log([3., 2.0])
+        logMaxX = log([7., 10.])
         open(newunit = fileUnit, file = "setLogUnifCDF.RK.txt")
-        do i = 1, size(LogX)
+        do i = 1, size(logx)
             do j = 1, size(CDF)
-                if (LogMaxX(j) <= LogX(i)) then
+                if (logMaxX(j) <= logx(i)) then
                     CDF(j) = 1.
-                elseif (LogMinX(j) <= LogX(i)) then
-                    call setLogUnifCDF(CDF(j), LogX(i), LogMinX(j), getLogUnifPDFNF(LogMinX(j), LogMaxX(j)))
+                elseif (logMinX(j) <= logx(i)) then
+                    call setLogUnifCDF(CDF(j), logx(i), logMinX(j), getLogUnifPDFNF(logMinX(j), logMaxX(j)))
                 else
                     CDF(j) = 0.
                 end if
             end do
-            write(fileUnit, "(*(g0,:,', '))") exp(LogX(i)), CDF
+            write(fileUnit, "(*(g0,:,', '))") exp(logx(i)), CDF
         end do
         close(fileUnit)
     end block

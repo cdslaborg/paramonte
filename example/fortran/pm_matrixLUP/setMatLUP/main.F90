@@ -1,6 +1,6 @@
 program example
 
-    use pm_kind, only: IK, LK, SK, RK32, RK64, RK128
+    use pm_kind, only: IK, LK, SK, RKS, RKD, RKH
     use pm_arrayResize, only: setResized
     use pm_matrixCopy, only: setMatCopy
     use pm_matrixLUP, only: setMatLUP

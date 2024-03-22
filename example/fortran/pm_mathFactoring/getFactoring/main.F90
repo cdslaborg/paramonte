@@ -1,6 +1,6 @@
 program example
 
-    use pm_kind, only: IK32, IK64
+    use pm_kind, only: IKS, IKD
     use pm_kind, only: SK, IK, LK
     use pm_io, only: display_type
     use pm_mathFactoring, only: getFactoring

@@ -147,8 +147,8 @@ program example
         close(fileUnit)
 
         block
-            use pm_kind, only: RKC => RK32
-            character(*), parameter :: RKSTR = "RK32"
+            use pm_kind, only: RKC => RKS
+            character(*), parameter :: RKSTR = "RKS"
             real(RKC) :: betaInv(max(size(alpha), size(beta)))
             open(newunit = fileUnit, file = "setBetaInv."//RKSTR//".abserr.txt")
             do i = 1, NP
@@ -161,8 +161,8 @@ program example
         end block
 
         block
-            use pm_kind, only: RKC => RK64
-            character(*), parameter :: RKSTR = "RK64"
+            use pm_kind, only: RKC => RKD
+            character(*), parameter :: RKSTR = "RKD"
             real(RKC) :: betaInv(max(size(alpha), size(beta)))
             open(newunit = fileUnit, file = "setBetaInv."//RKSTR//".abserr.txt")
             do i = 1, NP
@@ -175,8 +175,8 @@ program example
         end block
 
         block
-            use pm_kind, only: RKC => RK128
-            character(*), parameter :: RKSTR = "RK128"
+            use pm_kind, only: RKC => RKH
+            character(*), parameter :: RKSTR = "RKH"
             real(RKC) :: betaInv(max(size(alpha), size(beta)))
             open(newunit = fileUnit, file = "setBetaInv."//RKSTR//".abserr.txt")
             do i = 1, NP

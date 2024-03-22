@@ -2,7 +2,7 @@ program example
 
     use pm_kind, only: LK, SK
     use pm_io, only: display_type
-    use pm_kind, only: IK, RK32, RK64, RK128, CK32, CK64, CK128
+    use pm_kind, only: IK, RKS, RKD, RKH, CKS, CKD, CKH
     use pm_arraySpace, only: getLogSpace 
 
     implicit none
@@ -25,31 +25,31 @@ program example
     call disp%skip
 
     call disp%skip
-    call disp%show("getLogSpace(0._RK32, 4._RK32, 4_IK)")
-    call disp%show( getLogSpace(0._RK32, 4._RK32, 4_IK) )
-    call disp%show("getLogSpace(0._RK32, 4._RK32, 4_IK, base = 10._RK32)")
-    call disp%show( getLogSpace(0._RK32, 4._RK32, 4_IK, base = 10._RK32) )
-    call disp%show("getLogSpace(0._RK32, 4._RK32, 4_IK, fopen = .true._LK, base = 10._RK32)")
-    call disp%show( getLogSpace(0._RK32, 4._RK32, 4_IK, fopen = .true._LK, base = 10._RK32) )
-    call disp%show("getLogSpace(0._RK32, 4._RK32, 4_IK, lopen = .true._LK, base = 10._RK32)")
-    call disp%show( getLogSpace(0._RK32, 4._RK32, 4_IK, lopen = .true._LK, base = 10._RK32) )
-    call disp%show("getLogSpace(0._RK32, 4._RK32, 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._RK32)")
-    call disp%show( getLogSpace(0._RK32, 4._RK32, 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._RK32) )
+    call disp%show("getLogSpace(0._RKS, 4._RKS, 4_IK)")
+    call disp%show( getLogSpace(0._RKS, 4._RKS, 4_IK) )
+    call disp%show("getLogSpace(0._RKS, 4._RKS, 4_IK, base = 10._RKS)")
+    call disp%show( getLogSpace(0._RKS, 4._RKS, 4_IK, base = 10._RKS) )
+    call disp%show("getLogSpace(0._RKS, 4._RKS, 4_IK, fopen = .true._LK, base = 10._RKS)")
+    call disp%show( getLogSpace(0._RKS, 4._RKS, 4_IK, fopen = .true._LK, base = 10._RKS) )
+    call disp%show("getLogSpace(0._RKS, 4._RKS, 4_IK, lopen = .true._LK, base = 10._RKS)")
+    call disp%show( getLogSpace(0._RKS, 4._RKS, 4_IK, lopen = .true._LK, base = 10._RKS) )
+    call disp%show("getLogSpace(0._RKS, 4._RKS, 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._RKS)")
+    call disp%show( getLogSpace(0._RKS, 4._RKS, 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._RKS) )
     call disp%skip
 
     ! Generate sequence in reverse.
 
     call disp%skip
-    call disp%show("getLogSpace(4._RK32, 0._RK32, 4_IK)")
-    call disp%show( getLogSpace(4._RK32, 0._RK32, 4_IK) )
-    call disp%show("getLogSpace(4._RK32, 0._RK32, 4_IK, base = 10._RK32)")
-    call disp%show( getLogSpace(4._RK32, 0._RK32, 4_IK, base = 10._RK32) )
-    call disp%show("getLogSpace(4._RK32, 0._RK32, 4_IK, fopen = .true._LK, base = 10._RK32)")
-    call disp%show( getLogSpace(4._RK32, 0._RK32, 4_IK, fopen = .true._LK, base = 10._RK32) )
-    call disp%show("getLogSpace(4._RK32, 0._RK32, 4_IK, lopen = .true._LK, base = 10._RK32)")
-    call disp%show( getLogSpace(4._RK32, 0._RK32, 4_IK, lopen = .true._LK, base = 10._RK32) )
-    call disp%show("getLogSpace(4._RK32, 0._RK32, 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._RK32)")
-    call disp%show( getLogSpace(4._RK32, 0._RK32, 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._RK32) )
+    call disp%show("getLogSpace(4._RKS, 0._RKS, 4_IK)")
+    call disp%show( getLogSpace(4._RKS, 0._RKS, 4_IK) )
+    call disp%show("getLogSpace(4._RKS, 0._RKS, 4_IK, base = 10._RKS)")
+    call disp%show( getLogSpace(4._RKS, 0._RKS, 4_IK, base = 10._RKS) )
+    call disp%show("getLogSpace(4._RKS, 0._RKS, 4_IK, fopen = .true._LK, base = 10._RKS)")
+    call disp%show( getLogSpace(4._RKS, 0._RKS, 4_IK, fopen = .true._LK, base = 10._RKS) )
+    call disp%show("getLogSpace(4._RKS, 0._RKS, 4_IK, lopen = .true._LK, base = 10._RKS)")
+    call disp%show( getLogSpace(4._RKS, 0._RKS, 4_IK, lopen = .true._LK, base = 10._RKS) )
+    call disp%show("getLogSpace(4._RKS, 0._RKS, 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._RKS)")
+    call disp%show( getLogSpace(4._RKS, 0._RKS, 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._RKS) )
     call disp%skip
 
     call disp%skip
@@ -59,31 +59,31 @@ program example
     call disp%skip
 
     call disp%skip
-    call disp%show("getLogSpace(0._RK64, 4._RK64, 4_IK)")
-    call disp%show( getLogSpace(0._RK64, 4._RK64, 4_IK) )
-    call disp%show("getLogSpace(0._RK64, 4._RK64, 4_IK, base = 10._RK64)")
-    call disp%show( getLogSpace(0._RK64, 4._RK64, 4_IK, base = 10._RK64) )
-    call disp%show("getLogSpace(0._RK64, 4._RK64, 4_IK, fopen = .true._LK, base = 10._RK64)")
-    call disp%show( getLogSpace(0._RK64, 4._RK64, 4_IK, fopen = .true._LK, base = 10._RK64) )
-    call disp%show("getLogSpace(0._RK64, 4._RK64, 4_IK, lopen = .true._LK, base = 10._RK64)")
-    call disp%show( getLogSpace(0._RK64, 4._RK64, 4_IK, lopen = .true._LK, base = 10._RK64) )
-    call disp%show("getLogSpace(0._RK64, 4._RK64, 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._RK64)")
-    call disp%show( getLogSpace(0._RK64, 4._RK64, 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._RK64) )
+    call disp%show("getLogSpace(0._RKD, 4._RKD, 4_IK)")
+    call disp%show( getLogSpace(0._RKD, 4._RKD, 4_IK) )
+    call disp%show("getLogSpace(0._RKD, 4._RKD, 4_IK, base = 10._RKD)")
+    call disp%show( getLogSpace(0._RKD, 4._RKD, 4_IK, base = 10._RKD) )
+    call disp%show("getLogSpace(0._RKD, 4._RKD, 4_IK, fopen = .true._LK, base = 10._RKD)")
+    call disp%show( getLogSpace(0._RKD, 4._RKD, 4_IK, fopen = .true._LK, base = 10._RKD) )
+    call disp%show("getLogSpace(0._RKD, 4._RKD, 4_IK, lopen = .true._LK, base = 10._RKD)")
+    call disp%show( getLogSpace(0._RKD, 4._RKD, 4_IK, lopen = .true._LK, base = 10._RKD) )
+    call disp%show("getLogSpace(0._RKD, 4._RKD, 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._RKD)")
+    call disp%show( getLogSpace(0._RKD, 4._RKD, 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._RKD) )
     call disp%skip
     
     ! Generate sequence in reverse.
 
     call disp%skip
-    call disp%show("getLogSpace(4._RK64, 0._RK64, 4_IK)")
-    call disp%show( getLogSpace(4._RK64, 0._RK64, 4_IK) )
-    call disp%show("getLogSpace(4._RK64, 0._RK64, 4_IK, base = 10._RK64)")
-    call disp%show( getLogSpace(4._RK64, 0._RK64, 4_IK, base = 10._RK64) )
-    call disp%show("getLogSpace(4._RK64, 0._RK64, 4_IK, fopen = .true._LK, base = 10._RK64)")
-    call disp%show( getLogSpace(4._RK64, 0._RK64, 4_IK, fopen = .true._LK, base = 10._RK64) )
-    call disp%show("getLogSpace(4._RK64, 0._RK64, 4_IK, lopen = .true._LK, base = 10._RK64)")
-    call disp%show( getLogSpace(4._RK64, 0._RK64, 4_IK, lopen = .true._LK, base = 10._RK64) )
-    call disp%show("getLogSpace(4._RK64, 0._RK64, 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._RK64)")
-    call disp%show( getLogSpace(4._RK64, 0._RK64, 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._RK64) )
+    call disp%show("getLogSpace(4._RKD, 0._RKD, 4_IK)")
+    call disp%show( getLogSpace(4._RKD, 0._RKD, 4_IK) )
+    call disp%show("getLogSpace(4._RKD, 0._RKD, 4_IK, base = 10._RKD)")
+    call disp%show( getLogSpace(4._RKD, 0._RKD, 4_IK, base = 10._RKD) )
+    call disp%show("getLogSpace(4._RKD, 0._RKD, 4_IK, fopen = .true._LK, base = 10._RKD)")
+    call disp%show( getLogSpace(4._RKD, 0._RKD, 4_IK, fopen = .true._LK, base = 10._RKD) )
+    call disp%show("getLogSpace(4._RKD, 0._RKD, 4_IK, lopen = .true._LK, base = 10._RKD)")
+    call disp%show( getLogSpace(4._RKD, 0._RKD, 4_IK, lopen = .true._LK, base = 10._RKD) )
+    call disp%show("getLogSpace(4._RKD, 0._RKD, 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._RKD)")
+    call disp%show( getLogSpace(4._RKD, 0._RKD, 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._RKD) )
     call disp%skip
 
     call disp%skip
@@ -93,31 +93,31 @@ program example
     call disp%skip
 
     call disp%skip
-    call disp%show("getLogSpace(0._RK128, 4._RK128, 4_IK)")
-    call disp%show( getLogSpace(0._RK128, 4._RK128, 4_IK) )
-    call disp%show("getLogSpace(0._RK128, 4._RK128, 4_IK, base = 10._RK128)")
-    call disp%show( getLogSpace(0._RK128, 4._RK128, 4_IK, base = 10._RK128) )
-    call disp%show("getLogSpace(0._RK128, 4._RK128, 4_IK, fopen = .true._LK, base = 10._RK128)")
-    call disp%show( getLogSpace(0._RK128, 4._RK128, 4_IK, fopen = .true._LK, base = 10._RK128) )
-    call disp%show("getLogSpace(0._RK128, 4._RK128, 4_IK, lopen = .true._LK, base = 10._RK128)")
-    call disp%show( getLogSpace(0._RK128, 4._RK128, 4_IK, lopen = .true._LK, base = 10._RK128) )
-    call disp%show("getLogSpace(0._RK128, 4._RK128, 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._RK128)")
-    call disp%show( getLogSpace(0._RK128, 4._RK128, 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._RK128) )
+    call disp%show("getLogSpace(0._RKH, 4._RKH, 4_IK)")
+    call disp%show( getLogSpace(0._RKH, 4._RKH, 4_IK) )
+    call disp%show("getLogSpace(0._RKH, 4._RKH, 4_IK, base = 10._RKH)")
+    call disp%show( getLogSpace(0._RKH, 4._RKH, 4_IK, base = 10._RKH) )
+    call disp%show("getLogSpace(0._RKH, 4._RKH, 4_IK, fopen = .true._LK, base = 10._RKH)")
+    call disp%show( getLogSpace(0._RKH, 4._RKH, 4_IK, fopen = .true._LK, base = 10._RKH) )
+    call disp%show("getLogSpace(0._RKH, 4._RKH, 4_IK, lopen = .true._LK, base = 10._RKH)")
+    call disp%show( getLogSpace(0._RKH, 4._RKH, 4_IK, lopen = .true._LK, base = 10._RKH) )
+    call disp%show("getLogSpace(0._RKH, 4._RKH, 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._RKH)")
+    call disp%show( getLogSpace(0._RKH, 4._RKH, 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._RKH) )
     call disp%skip
 
     ! Generate sequence in reverse.
 
     call disp%skip
-    call disp%show("getLogSpace(4._RK128, 0._RK128, 4_IK)")
-    call disp%show( getLogSpace(4._RK128, 0._RK128, 4_IK) )
-    call disp%show("getLogSpace(4._RK128, 0._RK128, 4_IK, base = 10._RK128)")
-    call disp%show( getLogSpace(4._RK128, 0._RK128, 4_IK, base = 10._RK128) )
-    call disp%show("getLogSpace(4._RK128, 0._RK128, 4_IK, fopen = .true._LK, base = 10._RK128)")
-    call disp%show( getLogSpace(4._RK128, 0._RK128, 4_IK, fopen = .true._LK, base = 10._RK128) )
-    call disp%show("getLogSpace(4._RK128, 0._RK128, 4_IK, lopen = .true._LK, base = 10._RK128)")
-    call disp%show( getLogSpace(4._RK128, 0._RK128, 4_IK, lopen = .true._LK, base = 10._RK128) )
-    call disp%show("getLogSpace(4._RK128, 0._RK128, 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._RK128)")
-    call disp%show( getLogSpace(4._RK128, 0._RK128, 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._RK128) )
+    call disp%show("getLogSpace(4._RKH, 0._RKH, 4_IK)")
+    call disp%show( getLogSpace(4._RKH, 0._RKH, 4_IK) )
+    call disp%show("getLogSpace(4._RKH, 0._RKH, 4_IK, base = 10._RKH)")
+    call disp%show( getLogSpace(4._RKH, 0._RKH, 4_IK, base = 10._RKH) )
+    call disp%show("getLogSpace(4._RKH, 0._RKH, 4_IK, fopen = .true._LK, base = 10._RKH)")
+    call disp%show( getLogSpace(4._RKH, 0._RKH, 4_IK, fopen = .true._LK, base = 10._RKH) )
+    call disp%show("getLogSpace(4._RKH, 0._RKH, 4_IK, lopen = .true._LK, base = 10._RKH)")
+    call disp%show( getLogSpace(4._RKH, 0._RKH, 4_IK, lopen = .true._LK, base = 10._RKH) )
+    call disp%show("getLogSpace(4._RKH, 0._RKH, 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._RKH)")
+    call disp%show( getLogSpace(4._RKH, 0._RKH, 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._RKH) )
     call disp%skip
 
     call disp%skip
@@ -135,31 +135,31 @@ program example
     call disp%skip
 
     call disp%skip
-    call disp%show("getLogSpace((1._CK32,1._CK32), (4._CK32,4._CK32), 4_IK)")
-    call disp%show( getLogSpace((1._CK32,1._CK32), (4._CK32,4._CK32), 4_IK) )
-    call disp%show("getLogSpace((1._CK32,1._CK32), (4._CK32,4._CK32), 4_IK, base = 10._CK32)")
-    call disp%show( getLogSpace((1._CK32,1._CK32), (4._CK32,4._CK32), 4_IK, base = 10._CK32) )
-    call disp%show("getLogSpace((0._CK32,0._CK32), (4._CK32,4._CK32), 4_IK, fopen = .true._LK, base = 10._CK32)")
-    call disp%show( getLogSpace((0._CK32,0._CK32), (4._CK32,4._CK32), 4_IK, fopen = .true._LK, base = 10._CK32) )
-    call disp%show("getLogSpace((0._CK32,0._CK32), (4._CK32,4._CK32), 4_IK, lopen = .true._LK, base = 10._CK32)")
-    call disp%show( getLogSpace((0._CK32,0._CK32), (4._CK32,4._CK32), 4_IK, lopen = .true._LK, base = 10._CK32) )
-    call disp%show("getLogSpace((0._CK32,0._CK32), (4._CK32,4._CK32), 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._CK32)")
-    call disp%show( getLogSpace((0._CK32,0._CK32), (4._CK32,4._CK32), 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._CK32) )
+    call disp%show("getLogSpace((1._CKS,1._CKS), (4._CKS,4._CKS), 4_IK)")
+    call disp%show( getLogSpace((1._CKS,1._CKS), (4._CKS,4._CKS), 4_IK) )
+    call disp%show("getLogSpace((1._CKS,1._CKS), (4._CKS,4._CKS), 4_IK, base = 10._CKS)")
+    call disp%show( getLogSpace((1._CKS,1._CKS), (4._CKS,4._CKS), 4_IK, base = 10._CKS) )
+    call disp%show("getLogSpace((0._CKS,0._CKS), (4._CKS,4._CKS), 4_IK, fopen = .true._LK, base = 10._CKS)")
+    call disp%show( getLogSpace((0._CKS,0._CKS), (4._CKS,4._CKS), 4_IK, fopen = .true._LK, base = 10._CKS) )
+    call disp%show("getLogSpace((0._CKS,0._CKS), (4._CKS,4._CKS), 4_IK, lopen = .true._LK, base = 10._CKS)")
+    call disp%show( getLogSpace((0._CKS,0._CKS), (4._CKS,4._CKS), 4_IK, lopen = .true._LK, base = 10._CKS) )
+    call disp%show("getLogSpace((0._CKS,0._CKS), (4._CKS,4._CKS), 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._CKS)")
+    call disp%show( getLogSpace((0._CKS,0._CKS), (4._CKS,4._CKS), 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._CKS) )
     call disp%skip
 
     ! Generate sequence in reverse.
 
     call disp%skip
-    call disp%show("getLogSpace((4._CK32,-4._CK32), (-4._CK32,+4._CK32), 4_IK)")
-    call disp%show( getLogSpace((4._CK32,-4._CK32), (-4._CK32,+4._CK32), 4_IK) )
-    call disp%show("getLogSpace((4._CK32,-4._CK32), (-4._CK32,+4._CK32), 4_IK, base = 10._CK32)")
-    call disp%show( getLogSpace((4._CK32,-4._CK32), (-4._CK32,+4._CK32), 4_IK, base = 10._CK32) )
-    call disp%show("getLogSpace((4._CK32,-4._CK32), (-4._CK32,+4._CK32), 4_IK, fopen = .true._LK, base = 10._CK32)")
-    call disp%show( getLogSpace((4._CK32,-4._CK32), (-4._CK32,+4._CK32), 4_IK, fopen = .true._LK, base = 10._CK32) )
-    call disp%show("getLogSpace((4._CK32,-4._CK32), (-4._CK32,+4._CK32), 4_IK, lopen = .true._LK, base = 10._CK32)")
-    call disp%show( getLogSpace((4._CK32,-4._CK32), (-4._CK32,+4._CK32), 4_IK, lopen = .true._LK, base = 10._CK32) )
-    call disp%show("getLogSpace((4._CK32,-4._CK32), (-4._CK32,+4._CK32), 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._CK32)")
-    call disp%show( getLogSpace((4._CK32,-4._CK32), (-4._CK32,+4._CK32), 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._CK32) )
+    call disp%show("getLogSpace((4._CKS,-4._CKS), (-4._CKS,+4._CKS), 4_IK)")
+    call disp%show( getLogSpace((4._CKS,-4._CKS), (-4._CKS,+4._CKS), 4_IK) )
+    call disp%show("getLogSpace((4._CKS,-4._CKS), (-4._CKS,+4._CKS), 4_IK, base = 10._CKS)")
+    call disp%show( getLogSpace((4._CKS,-4._CKS), (-4._CKS,+4._CKS), 4_IK, base = 10._CKS) )
+    call disp%show("getLogSpace((4._CKS,-4._CKS), (-4._CKS,+4._CKS), 4_IK, fopen = .true._LK, base = 10._CKS)")
+    call disp%show( getLogSpace((4._CKS,-4._CKS), (-4._CKS,+4._CKS), 4_IK, fopen = .true._LK, base = 10._CKS) )
+    call disp%show("getLogSpace((4._CKS,-4._CKS), (-4._CKS,+4._CKS), 4_IK, lopen = .true._LK, base = 10._CKS)")
+    call disp%show( getLogSpace((4._CKS,-4._CKS), (-4._CKS,+4._CKS), 4_IK, lopen = .true._LK, base = 10._CKS) )
+    call disp%show("getLogSpace((4._CKS,-4._CKS), (-4._CKS,+4._CKS), 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._CKS)")
+    call disp%show( getLogSpace((4._CKS,-4._CKS), (-4._CKS,+4._CKS), 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._CKS) )
     call disp%skip
 
     call disp%skip
@@ -169,31 +169,31 @@ program example
     call disp%skip
 
     call disp%skip
-    call disp%show("getLogSpace((0._CK64,0._CK64), (4._CK64,4._CK64), 4_IK)")
-    call disp%show( getLogSpace((0._CK64,0._CK64), (4._CK64,4._CK64), 4_IK) )
-    call disp%show("getLogSpace((0._CK64,0._CK64), (4._CK64,4._CK64), 4_IK, base = 10._CK64)")
-    call disp%show( getLogSpace((0._CK64,0._CK64), (4._CK64,4._CK64), 4_IK, base = 10._CK64) )
-    call disp%show("getLogSpace((0._CK64,0._CK64), (4._CK64,4._CK64), 4_IK, fopen = .true._LK, base = 10._CK64)")
-    call disp%show( getLogSpace((0._CK64,0._CK64), (4._CK64,4._CK64), 4_IK, fopen = .true._LK, base = 10._CK64) )
-    call disp%show("getLogSpace((0._CK64,0._CK64), (4._CK64,4._CK64), 4_IK, lopen = .true._LK, base = 10._CK64)")
-    call disp%show( getLogSpace((0._CK64,0._CK64), (4._CK64,4._CK64), 4_IK, lopen = .true._LK, base = 10._CK64) )
-    call disp%show("getLogSpace((0._CK64,0._CK64), (4._CK64,4._CK64), 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._CK64)")
-    call disp%show( getLogSpace((0._CK64,0._CK64), (4._CK64,4._CK64), 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._CK64) )
+    call disp%show("getLogSpace((0._CKD,0._CKD), (4._CKD,4._CKD), 4_IK)")
+    call disp%show( getLogSpace((0._CKD,0._CKD), (4._CKD,4._CKD), 4_IK) )
+    call disp%show("getLogSpace((0._CKD,0._CKD), (4._CKD,4._CKD), 4_IK, base = 10._CKD)")
+    call disp%show( getLogSpace((0._CKD,0._CKD), (4._CKD,4._CKD), 4_IK, base = 10._CKD) )
+    call disp%show("getLogSpace((0._CKD,0._CKD), (4._CKD,4._CKD), 4_IK, fopen = .true._LK, base = 10._CKD)")
+    call disp%show( getLogSpace((0._CKD,0._CKD), (4._CKD,4._CKD), 4_IK, fopen = .true._LK, base = 10._CKD) )
+    call disp%show("getLogSpace((0._CKD,0._CKD), (4._CKD,4._CKD), 4_IK, lopen = .true._LK, base = 10._CKD)")
+    call disp%show( getLogSpace((0._CKD,0._CKD), (4._CKD,4._CKD), 4_IK, lopen = .true._LK, base = 10._CKD) )
+    call disp%show("getLogSpace((0._CKD,0._CKD), (4._CKD,4._CKD), 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._CKD)")
+    call disp%show( getLogSpace((0._CKD,0._CKD), (4._CKD,4._CKD), 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._CKD) )
     call disp%skip
 
     ! Generate sequence in reverse.
 
     call disp%skip
-    call disp%show("getLogSpace((4._CK64,-4._CK64), (-4._CK64,+4._CK64), 4_IK)")
-    call disp%show( getLogSpace((4._CK64,-4._CK64), (-4._CK64,+4._CK64), 4_IK) )
-    call disp%show("getLogSpace((4._CK64,-4._CK64), (-4._CK64,+4._CK64), 4_IK, base = 10._CK64)")
-    call disp%show( getLogSpace((4._CK64,-4._CK64), (-4._CK64,+4._CK64), 4_IK, base = 10._CK64) )
-    call disp%show("getLogSpace((4._CK64,-4._CK64), (-4._CK64,+4._CK64), 4_IK, fopen = .true._LK, base = 10._CK64)")
-    call disp%show( getLogSpace((4._CK64,-4._CK64), (-4._CK64,+4._CK64), 4_IK, fopen = .true._LK, base = 10._CK64) )
-    call disp%show("getLogSpace((4._CK64,-4._CK64), (-4._CK64,+4._CK64), 4_IK, lopen = .true._LK, base = 10._CK64)")
-    call disp%show( getLogSpace((4._CK64,-4._CK64), (-4._CK64,+4._CK64), 4_IK, lopen = .true._LK, base = 10._CK64) )
-    call disp%show("getLogSpace((4._CK64,-4._CK64), (-4._CK64,+4._CK64), 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._CK64)")
-    call disp%show( getLogSpace((4._CK64,-4._CK64), (-4._CK64,+4._CK64), 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._CK64) )
+    call disp%show("getLogSpace((4._CKD,-4._CKD), (-4._CKD,+4._CKD), 4_IK)")
+    call disp%show( getLogSpace((4._CKD,-4._CKD), (-4._CKD,+4._CKD), 4_IK) )
+    call disp%show("getLogSpace((4._CKD,-4._CKD), (-4._CKD,+4._CKD), 4_IK, base = 10._CKD)")
+    call disp%show( getLogSpace((4._CKD,-4._CKD), (-4._CKD,+4._CKD), 4_IK, base = 10._CKD) )
+    call disp%show("getLogSpace((4._CKD,-4._CKD), (-4._CKD,+4._CKD), 4_IK, fopen = .true._LK, base = 10._CKD)")
+    call disp%show( getLogSpace((4._CKD,-4._CKD), (-4._CKD,+4._CKD), 4_IK, fopen = .true._LK, base = 10._CKD) )
+    call disp%show("getLogSpace((4._CKD,-4._CKD), (-4._CKD,+4._CKD), 4_IK, lopen = .true._LK, base = 10._CKD)")
+    call disp%show( getLogSpace((4._CKD,-4._CKD), (-4._CKD,+4._CKD), 4_IK, lopen = .true._LK, base = 10._CKD) )
+    call disp%show("getLogSpace((4._CKD,-4._CKD), (-4._CKD,+4._CKD), 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._CKD)")
+    call disp%show( getLogSpace((4._CKD,-4._CKD), (-4._CKD,+4._CKD), 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._CKD) )
     call disp%skip
 
     call disp%skip
@@ -203,31 +203,31 @@ program example
     call disp%skip
 
     call disp%skip
-    call disp%show("getLogSpace((0._CK128,0._CK128), (4._CK128,4._CK128), 4_IK)")
-    call disp%show( getLogSpace((0._CK128,0._CK128), (4._CK128,4._CK128), 4_IK) )
-    call disp%show("getLogSpace((0._CK128,0._CK128), (4._CK128,4._CK128), 4_IK, base = 10._CK128)")
-    call disp%show( getLogSpace((0._CK128,0._CK128), (4._CK128,4._CK128), 4_IK, base = 10._CK128) )
-    call disp%show("getLogSpace((0._CK128,0._CK128), (4._CK128,4._CK128), 4_IK, fopen = .true._LK, base = 10._CK128)")
-    call disp%show( getLogSpace((0._CK128,0._CK128), (4._CK128,4._CK128), 4_IK, fopen = .true._LK, base = 10._CK128) )
-    call disp%show("getLogSpace((0._CK128,0._CK128), (4._CK128,4._CK128), 4_IK, lopen = .true._LK, base = 10._CK128)")
-    call disp%show( getLogSpace((0._CK128,0._CK128), (4._CK128,4._CK128), 4_IK, lopen = .true._LK, base = 10._CK128) )
-    call disp%show("getLogSpace((0._CK128,0._CK128), (4._CK128,4._CK128), 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._CK128)")
-    call disp%show( getLogSpace((0._CK128,0._CK128), (4._CK128,4._CK128), 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._CK128) )
+    call disp%show("getLogSpace((0._CKH,0._CKH), (4._CKH,4._CKH), 4_IK)")
+    call disp%show( getLogSpace((0._CKH,0._CKH), (4._CKH,4._CKH), 4_IK) )
+    call disp%show("getLogSpace((0._CKH,0._CKH), (4._CKH,4._CKH), 4_IK, base = 10._CKH)")
+    call disp%show( getLogSpace((0._CKH,0._CKH), (4._CKH,4._CKH), 4_IK, base = 10._CKH) )
+    call disp%show("getLogSpace((0._CKH,0._CKH), (4._CKH,4._CKH), 4_IK, fopen = .true._LK, base = 10._CKH)")
+    call disp%show( getLogSpace((0._CKH,0._CKH), (4._CKH,4._CKH), 4_IK, fopen = .true._LK, base = 10._CKH) )
+    call disp%show("getLogSpace((0._CKH,0._CKH), (4._CKH,4._CKH), 4_IK, lopen = .true._LK, base = 10._CKH)")
+    call disp%show( getLogSpace((0._CKH,0._CKH), (4._CKH,4._CKH), 4_IK, lopen = .true._LK, base = 10._CKH) )
+    call disp%show("getLogSpace((0._CKH,0._CKH), (4._CKH,4._CKH), 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._CKH)")
+    call disp%show( getLogSpace((0._CKH,0._CKH), (4._CKH,4._CKH), 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._CKH) )
     call disp%skip
 
     ! Generate sequence in reverse.
 
     call disp%skip
-    call disp%show("getLogSpace((4._CK128,-4._CK128), (-4._CK128,+4._CK128), 4_IK)")
-    call disp%show( getLogSpace((4._CK128,-4._CK128), (-4._CK128,+4._CK128), 4_IK) )
-    call disp%show("getLogSpace((4._CK128,-4._CK128), (-4._CK128,+4._CK128), 4_IK, base = 10._CK128)")
-    call disp%show( getLogSpace((4._CK128,-4._CK128), (-4._CK128,+4._CK128), 4_IK, base = 10._CK128) )
-    call disp%show("getLogSpace((4._CK128,-4._CK128), (-4._CK128,+4._CK128), 4_IK, fopen = .true._LK, base = 10._CK128)")
-    call disp%show( getLogSpace((4._CK128,-4._CK128), (-4._CK128,+4._CK128), 4_IK, fopen = .true._LK, base = 10._CK128) )
-    call disp%show("getLogSpace((4._CK128,-4._CK128), (-4._CK128,+4._CK128), 4_IK, lopen = .true._LK, base = 10._CK128)")
-    call disp%show( getLogSpace((4._CK128,-4._CK128), (-4._CK128,+4._CK128), 4_IK, lopen = .true._LK, base = 10._CK128) )
-    call disp%show("getLogSpace((4._CK128,-4._CK128), (-4._CK128,+4._CK128), 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._CK128)")
-    call disp%show( getLogSpace((4._CK128,-4._CK128), (-4._CK128,+4._CK128), 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._CK128) )
+    call disp%show("getLogSpace((4._CKH,-4._CKH), (-4._CKH,+4._CKH), 4_IK)")
+    call disp%show( getLogSpace((4._CKH,-4._CKH), (-4._CKH,+4._CKH), 4_IK) )
+    call disp%show("getLogSpace((4._CKH,-4._CKH), (-4._CKH,+4._CKH), 4_IK, base = 10._CKH)")
+    call disp%show( getLogSpace((4._CKH,-4._CKH), (-4._CKH,+4._CKH), 4_IK, base = 10._CKH) )
+    call disp%show("getLogSpace((4._CKH,-4._CKH), (-4._CKH,+4._CKH), 4_IK, fopen = .true._LK, base = 10._CKH)")
+    call disp%show( getLogSpace((4._CKH,-4._CKH), (-4._CKH,+4._CKH), 4_IK, fopen = .true._LK, base = 10._CKH) )
+    call disp%show("getLogSpace((4._CKH,-4._CKH), (-4._CKH,+4._CKH), 4_IK, lopen = .true._LK, base = 10._CKH)")
+    call disp%show( getLogSpace((4._CKH,-4._CKH), (-4._CKH,+4._CKH), 4_IK, lopen = .true._LK, base = 10._CKH) )
+    call disp%show("getLogSpace((4._CKH,-4._CKH), (-4._CKH,+4._CKH), 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._CKH)")
+    call disp%show( getLogSpace((4._CKH,-4._CKH), (-4._CKH,+4._CKH), 4_IK, fopen = .true._LK, lopen = .true._LK, base = 10._CKH) )
     call disp%skip
 
 end program example

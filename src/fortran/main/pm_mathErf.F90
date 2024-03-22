@@ -172,9 +172,9 @@ module pm_mathErf
     !>  \include{lineno} example/pm_mathErf/getErfInv/main.py
     !>  \vis{getErfInv}
     !>  \image html pm_mathErf/getErfInv/getErfInv.RK.png width=700
-    !>  \image html pm_mathErf/getErfInv/getErfInv.RK32.abserr.png width=700
-    !>  \image html pm_mathErf/getErfInv/getErfInv.RK64.abserr.png width=700
-    !>  \image html pm_mathErf/getErfInv/getErfInv.RK128.abserr.png width=700
+    !>  \image html pm_mathErf/getErfInv/getErfInv.RKS.abserr.png width=700
+    !>  \image html pm_mathErf/getErfInv/getErfInv.RKD.abserr.png width=700
+    !>  \image html pm_mathErf/getErfInv/getErfInv.RKH.abserr.png width=700
     !>
     !>  \test
     !>  [test_pm_mathErf](@ref test_pm_mathErf)
@@ -321,9 +321,9 @@ module pm_mathErf
     !>  \include{lineno} example/pm_mathErf/setErfInv/main.py
     !>  \vis{setErfInv}
     !>  \image html pm_mathErf/setErfInv/setErfInv.RK.png width=700
-    !>  \image html pm_mathErf/setErfInv/setErfInv.RK32.abserr.png width=700
-    !>  \image html pm_mathErf/setErfInv/setErfInv.RK64.abserr.png width=700
-    !>  \image html pm_mathErf/setErfInv/setErfInv.RK128.abserr.png width=700
+    !>  \image html pm_mathErf/setErfInv/setErfInv.RKS.abserr.png width=700
+    !>  \image html pm_mathErf/setErfInv/setErfInv.RKD.abserr.png width=700
+    !>  \image html pm_mathErf/setErfInv/setErfInv.RKH.abserr.png width=700
     !>
     !>  \test
     !>  [test_pm_mathErf](@ref test_pm_mathErf)

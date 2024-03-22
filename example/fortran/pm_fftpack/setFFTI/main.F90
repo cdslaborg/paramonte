@@ -15,7 +15,7 @@ program example
     disp = display_type(file = "main.out.F90")
 
     block
-        use pm_kind, only: CKC => CK32
+        use pm_kind, only: CKC => CKS
         complex(CKC), allocatable :: data(:), coef(:), work(:)
         call disp%skip()
         call disp%show("data = [complex(CKC) :: (1., -6.), (2., -5.), (3., -4.), (4., -3.), (5., -2.), (6., -1.)]")
@@ -47,7 +47,7 @@ program example
     end block
 
     block
-        use pm_kind, only: CKC => CK64
+        use pm_kind, only: CKC => CKD
         complex(CKC), allocatable :: data(:), coef(:), work(:)
         call disp%skip()
         call disp%show("data = [complex(CKC) :: (1., -6.), (2., -5.), (3., -4.), (4., -3.), (5., -2.), (6., -1.)]")
@@ -79,7 +79,7 @@ program example
     end block
 
     block
-        use pm_kind, only: CKC => CK128
+        use pm_kind, only: CKC => CKH
         complex(CKC), allocatable :: data(:), coef(:), work(:)
         call disp%skip()
         call disp%show("data = [complex(CKC) :: (1., -6.), (2., -5.), (3., -4.), (4., -3.), (5., -2.), (6., -1.)]")
@@ -111,7 +111,7 @@ program example
     end block
 
     block
-        use pm_kind, only: RKC => RK32
+        use pm_kind, only: RKC => RKS
         real(RKC), allocatable :: data(:), coef(:), work(:)
         call disp%skip()
         call disp%show("data = [real(RKC) :: 1., 2., 3., 4., 5., 6.5]")
@@ -143,7 +143,7 @@ program example
     end block
 
     block
-        use pm_kind, only: RKC => RK64
+        use pm_kind, only: RKC => RKD
         real(RKC), allocatable :: data(:), coef(:), work(:)
         call disp%skip()
         call disp%show("data = [real(RKC) :: 1., 2., 3., 4., 5., 6.5]")
@@ -175,7 +175,7 @@ program example
     end block
 
     block
-        use pm_kind, only: RKC => RK128
+        use pm_kind, only: RKC => RKH
         real(RKC), allocatable :: data(:), coef(:), work(:)
         call disp%skip()
         call disp%show("data = [real(RKC) :: 1., 2., 3., 4., 5., 6.5]")

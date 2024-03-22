@@ -602,11 +602,11 @@ module pm_sampling
     !>  \image html example/pm_sampling/mvn/mvn.traceplot.png width=700
     !>  \image html example/pm_sampling/mvn/mvn.scatterplot.png width=700
     !>  \image html example/pm_sampling/mvn/mvn.adaptationMeasure.png width=700
-    !>  
+    !>
     !>  \example{himmelblau}
     !>  \include{lineno} example/pm_sampling/himmelblau/main.F90
-    !>  \inputnml{mvn, input.nml}
-    !>  \include{lineno} example/pm_sampling/mvn/input.nml
+    !>  \inputnml{himmelblau, input.nml}
+    !>  \include{lineno} example/pm_sampling/himmelblau/input.nml
     !>  \compilef{himmelblau}
     !>  \postproc{himmelblau}
     !>  \include{lineno} example/pm_sampling/himmelblau/main.py
@@ -614,7 +614,35 @@ module pm_sampling
     !>  \image html example/pm_sampling/himmelblau/himmelblau.traceplot.png width=700
     !>  \image html example/pm_sampling/himmelblau/himmelblau.scatterplot.png width=700
     !>  \image html example/pm_sampling/himmelblau/himmelblau.adaptationMeasure.png width=700
-    !>  
+    !>
+    !>  \example{mixture}
+    !>  \include{lineno} example/pm_sampling/mixture/main.F90
+    !>  \inputnml{mixture, input.nml}
+    !>  \include{lineno} example/pm_sampling/mixture/input.nml
+    !>  \compilef{mixture}
+    !>  \postproc{mixture}
+    !>  \include{lineno} example/pm_sampling/mixture/main.py
+    !>  \vis{mixture}
+    !>  \image html example/pm_sampling/mixture/mixLogNormLogNorm.traceplot.png width=700
+    !>  \image html example/pm_sampling/mixture/mixLogNormLogNorm.scatterplot.png width=700
+    !>  \image html example/pm_sampling/mixture/mixLogNormLogNorm.adaptationMeasure.png width=700
+    !>  \image html example/pm_sampling/mixture/mixLogNormLogNorm.hist.png width=700
+    !>  <br>
+    !>  \image html example/pm_sampling/mixture/mixFlatPowetoFlatPowetTapered.traceplot.png width=700
+    !>  \image html example/pm_sampling/mixture/mixFlatPowetoFlatPowetTapered.scatterplot.png width=700
+    !>  \image html example/pm_sampling/mixture/mixFlatPowetoFlatPowetTapered.adaptationMeasure.png width=700
+    !>  \image html example/pm_sampling/mixture/mixFlatPowetoFlatPowetTapered.hist.png width=700
+    !>  <br>
+    !>  \image html example/pm_sampling/mixture/mixLogNormFlatPowetTapered.traceplot.png width=700
+    !>  \image html example/pm_sampling/mixture/mixLogNormFlatPowetTapered.scatterplot.png width=700
+    !>  \image html example/pm_sampling/mixture/mixLogNormFlatPowetTapered.adaptationMeasure.png width=700
+    !>  \image html example/pm_sampling/mixture/mixLogNormFlatPowetTapered.hist.png width=700
+    !>  <br>
+    !>  \image html example/pm_sampling/mixture/mixFlatPowetLogNorm.traceplot.png width=700
+    !>  \image html example/pm_sampling/mixture/mixFlatPowetLogNorm.scatterplot.png width=700
+    !>  \image html example/pm_sampling/mixture/mixFlatPowetLogNorm.adaptationMeasure.png width=700
+    !>  \image html example/pm_sampling/mixture/mixFlatPowetLogNorm.hist.png width=700
+    !>
     !>  \test
     !>  [test_pm_sampling](@ref test_pm_sampling)
     !>

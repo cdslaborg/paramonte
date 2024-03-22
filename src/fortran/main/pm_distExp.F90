@@ -21,9 +21,9 @@
 !>  Specifically, this module contains routines for computing the following quantities of the <b>Exponential distribution</b>:<br>
 !>  <ol>
 !>      <li>    the Probability Density Function (**PDF**)
-!>      <li>    the **Cumulative Distribution Function (**CDF**)
-!>      <li>    the random number generation from the distribution (**RNG**)
-!>      <li>    the **Inverse Cumulative Distribution Function (ICDF)** or the **Quantile Function**
+!>      <li>    the Cumulative Distribution Function (**CDF**)
+!>      <li>    the Random Number Generation from the distribution (**RNG**)
+!>      <li>    the Inverse Cumulative Distribution Function **(ICDF)** or the **Quantile Function**
 !>  </ol>
 !>
 !>  The **PDF** of the **Exponential distribution** with the two location and scale parameters \f$(\mu, \sigma)\f$ is defined as,<br>

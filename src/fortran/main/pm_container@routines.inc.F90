@@ -25,19 +25,25 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     isless_ENABLED
-        less = con1%val < con2%val
+        itis = allocated(con1%val) .and. allocated(con2%val)
+        if (itis) itis = con1%val < con2%val
 #elif   ismore_ENABLED
-        more = con1%val > con2%val
+        itis = allocated(con1%val) .and. allocated(con2%val)
+        if (itis) itis = con1%val > con2%val
 #elif   isleq_ENABLED
-        leq = con1%val <= con2%val
+        itis = allocated(con1%val) .and. allocated(con2%val)
+        if (itis) itis = con1%val <= con2%val
 #elif   ismeq_ENABLED
-        meq = con1%val >= con2%val
+        itis = allocated(con1%val) .and. allocated(con2%val)
+        if (itis) itis = con1%val >= con2%val
 #elif   isneq_ENABLED
-        neq = con1%val /= con2%val
+        itis = allocated(con1%val) .and. allocated(con2%val)
+        if (itis) itis = con1%val /= con2%val
 #elif   iseq_ENABLED
-        eq = con1%val == con2%val
+        itis = allocated(con1%val) .and. allocated(con2%val)
+        if (itis) itis = con1%val == con2%val
 #elif   assign_ENABLED
-        destin%val = source%val
+        if (allocated(source%val)) destin%val = source%val
 #elif   constructCon_ENABLED && (IK_ENABLED || LK_ENABLED || CK_ENABLED || RK_ENABLED)
         container%val = val
 #elif   constructCon_ENABLED && PK_ENABLED
@@ -50,6 +56,8 @@
             end if
         end if
         container%val = trim(val)
+#elif   getVal_ENABLED
+        if (allocated(con%val)) val = con%val
 #else
 #error  "Unrecognized interface."
 #endif

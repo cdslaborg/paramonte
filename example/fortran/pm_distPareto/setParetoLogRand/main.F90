@@ -8,7 +8,7 @@ program example
 
     implicit none
 
-    real                    :: LogX(3)
+    real                    :: logx(3)
 
     type(display_type)      :: disp
     disp = display_type(file = "main.out.F90")
@@ -20,17 +20,17 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("call setParetoLogRand(LogX(1), negExpRand = getNegExpRand(1.), alpha = -2., logMinX = -2.) ! Pareto distribution.")
-                    call setParetoLogRand(LogX(1), negExpRand = getNegExpRand(1.), alpha = -2., logMinX = -2.) ! Pareto distribution.
-    call disp%show("LogX(1)")
-    call disp%show( LogX(1) )
+    call disp%show("call setParetoLogRand(logx(1), negExpRand = getNegExpRand(1.), alpha = -2., logMinX = -2.) ! Pareto distribution.")
+                    call setParetoLogRand(logx(1), negExpRand = getNegExpRand(1.), alpha = -2., logMinX = -2.) ! Pareto distribution.
+    call disp%show("logx(1)")
+    call disp%show( logx(1) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("call setParetoLogRand(LogX(1:3), negExpRand = getNegExpRand([1., 1., 1.]), alpha = -[+2., +3., +4.], logMinX = -2.) ! Pareto distribution.")
-                    call setParetoLogRand(LogX(1:3), negExpRand = getNegExpRand([1., 1., 1.]), alpha = -[+2., +3., +4.], logMinX = -2.) ! Pareto distribution.
-    call disp%show("LogX(1:3)")
-    call disp%show( LogX(1:3) )
+    call disp%show("call setParetoLogRand(logx(1:3), negExpRand = getNegExpRand([1., 1., 1.]), alpha = -[+2., +3., +4.], logMinX = -2.) ! Pareto distribution.")
+                    call setParetoLogRand(logx(1:3), negExpRand = getNegExpRand([1., 1., 1.]), alpha = -[+2., +3., +4.], logMinX = -2.) ! Pareto distribution.
+    call disp%show("logx(1:3)")
+    call disp%show( logx(1:3) )
     call disp%skip()
 
     call disp%skip()
@@ -40,35 +40,35 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("call setParetoLogRand(LogX(1), negExpRand = getNegExpRand(1.), alpha = -2., logMinX = -2., logCDFNF = getParetoLogCDFNF(alpha = -2., logMinX = -2., logMaxX = 5.)) ! Truncated Pareto distribution.")
-                    call setParetoLogRand(LogX(1), negExpRand = getNegExpRand(1.), alpha = -2., logMinX = -2., logCDFNF = getParetoLogCDFNF(alpha = -2., logMinX = -2., logMaxX = 5.)) ! Truncated Pareto distribution.
-    call disp%show("LogX(1)")
-    call disp%show( LogX(1) )
+    call disp%show("call setParetoLogRand(logx(1), negExpRand = getNegExpRand(1.), alpha = -2., logMinX = -2., logCDFNF = getParetoLogCDFNF(alpha = -2., logMinX = -2., logMaxX = 5.)) ! Truncated Pareto distribution.")
+                    call setParetoLogRand(logx(1), negExpRand = getNegExpRand(1.), alpha = -2., logMinX = -2., logCDFNF = getParetoLogCDFNF(alpha = -2., logMinX = -2., logMaxX = 5.)) ! Truncated Pareto distribution.
+    call disp%show("logx(1)")
+    call disp%show( logx(1) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("call setParetoLogRand(LogX(1:3), negExpRand = getNegExpRand([1., 1., 1.]), alpha = -[+2., +3., +4.], logMinX = -2., logCDFNF = getParetoLogCDFNF(alpha = -[+2., +3., +4.], logMinX = -2., logMaxX = 5.)) ! Truncated Pareto distribution.")
-                    call setParetoLogRand(LogX(1:3), negExpRand = getNegExpRand([1., 1., 1.]), alpha = -[+2., +3., +4.], logMinX = -2., logCDFNF = getParetoLogCDFNF(alpha = -[+2., +3., +4.], logMinX = -2., logMaxX = 5.)) ! Truncated Pareto distribution.
-    call disp%show("LogX(1:3)")
-    call disp%show( LogX(1:3) )
+    call disp%show("call setParetoLogRand(logx(1:3), negExpRand = getNegExpRand([1., 1., 1.]), alpha = -[+2., +3., +4.], logMinX = -2., logCDFNF = getParetoLogCDFNF(alpha = -[+2., +3., +4.], logMinX = -2., logMaxX = 5.)) ! Truncated Pareto distribution.")
+                    call setParetoLogRand(logx(1:3), negExpRand = getNegExpRand([1., 1., 1.]), alpha = -[+2., +3., +4.], logMinX = -2., logCDFNF = getParetoLogCDFNF(alpha = -[+2., +3., +4.], logMinX = -2., logMaxX = 5.)) ! Truncated Pareto distribution.
+    call disp%show("logx(1:3)")
+    call disp%show( logx(1:3) )
     call disp%skip()
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    ! Output an example LogX array for visualization.
+    ! Output an example array for visualization.
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     block
         use pm_arraySpace, only: setLinSpace
-        real :: Alpha(3), LogMinX(3), LogMaxX(3), LogX(3)
+        real :: alpha(3), logMinX(3), logMaxX(3), logx(3)
         integer(IK) :: fileUnit, i
-        Alpha = -[.5, 1., 10.]
-        LogMinX = log([3., 1., 2.])
-        LogMaxX = log([5., 4., huge(0.)])
+        alpha = -[.5, 1., 10.]
+        logMinX = log([3., 1., 2.])
+        logMaxX = log([5., 4., huge(0.)])
         open(newunit = fileUnit, file = "setParetoLogRand.RK.txt")
         do i = 1, 2000_IK
-            call setParetoLogRand(LogX(1:2), getNegExpRand([1., 1.]), Alpha(1:2), LogMinX(1:2), getParetoLogCDFNF(Alpha(1:2), LogMinX(1:2), LogMaxX(1:2)))
-            call setParetoLogRand(LogX(3), getNegExpRand(1.), Alpha(3), LogMinX(3), 0.)
-            write(fileUnit, "(*(g0,:,', '))") exp(LogX)
+            call setParetoLogRand(logx(1:2), getNegExpRand([1., 1.]), alpha(1:2), logMinX(1:2), getParetoLogCDFNF(alpha(1:2), logMinX(1:2), logMaxX(1:2)))
+            call setParetoLogRand(logx(3), getNegExpRand(1.), alpha(3), logMinX(3), 0.)
+            write(fileUnit, "(*(g0,:,', '))") exp(logx)
         end do
         close(fileUnit)
     end block

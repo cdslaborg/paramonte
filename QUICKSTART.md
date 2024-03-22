@@ -4,7 +4,7 @@
     ```bash
     git clone git@github.com:cdslaborg/paramonte.git
     ```
-    Alternatively, you can optionally download the **OpenBLAS** and **other ParaMonte submodules** via,
+    Alternatively, you can **optionally** download the **OpenBLAS** and **other ParaMonte submodules** via,
     ```bash
     git clone --recurse-submodules git@github.com:cdslaborg/paramonte.git
     ```
@@ -25,7 +25,7 @@
         install.bat --lang fortran
         ```
 
-    See the relevant installation instructions in [install.bat.md](./install.bat.md).    
+    See more on the relevant installation instructions in [install.bat.md](./install.bat.md).    
 
 5.  Using a Unix `Bash` terminal, type,
     +   For the ParaMonte C library build,
@@ -40,7 +40,7 @@
         ```bash
         install.sh --lang fortran
         ```
-    See the relevant installation instructions in [install.sh.md](./install.sh.md).    
+    See more on the relevant installation instructions in [install.sh.md](./install.sh.md).    
 
 See [install.md](./install.md), [install.config.md](./install.config.md), [install.bat.md](./install.bat.md), [install.sh.md](./install.sh.md), and [CMakeLists.md](./CMakeLists.md) 
 for more library build options and guidelines.

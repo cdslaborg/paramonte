@@ -444,7 +444,7 @@ contains
             SKC_"            equivalent to gelmanFactor-squared multiplied by 5."//NL2//&
             SKC_"Note, however, that the result of Gelman et al. paper applies only to multivariate normal proposal distributions, in the limit &
                 &of infinite dimensions. Therefore, care must be taken when using Gelman's scaling factor with non-Gaussian proposals and target &
-                &objective functions. Note that only the product symbol (*) can be parsed in the string value of `proposalScaleFactor`. &
+                &objective functions. Note that only the product symbol `*` can be parsed in the string value of `proposalScaleFactor`. &
                 &The presence of other mathematical symbols or multiple appearances of the product symbol will lead to a simulation crash. &
                 &Also, note that the prescription of an acceptance range specified by the input variable `targetAcceptanceRate` will lead &
                 &to dynamic modification of the initial input value of `proposalScaleFactor` throughout sampling for `proposalAdaptationCount` times. &

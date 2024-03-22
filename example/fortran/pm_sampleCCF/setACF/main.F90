@@ -36,7 +36,7 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! All other real types are also supported, e.g., RK32, RK64, RK128.
+        use pm_kind, only: TKC => RKS ! All other real types are also supported.
         integer(IK), allocatable :: factor(:), lag(:)
         real(TKC), allocatable :: seq(:), f(:), g(:), acf(:), coef(:), range(:)
         real(TKC), parameter :: ZERO = 0._TKC

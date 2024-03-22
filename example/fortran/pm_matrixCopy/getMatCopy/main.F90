@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK, LK
-    use pm_kind, only: SKC => SK, IKC => IK32, LKC => LK, RKC => RK32, CKC => CK32 ! all processor types and kinds are supported.
+    use pm_kind, only: SKC => SK, IKC => IKS, LKC => LK, RKC => RKS, CKC => CKS ! all processor types and kinds are supported.
     use pm_matrixCopy, only: getMatCopy, transSymm, transHerm
     use pm_matrixCopy, only: dia, lowDia, uppDia, uppLow
     use pm_matrixCopy, only: rdpack, lfpack, rfpack

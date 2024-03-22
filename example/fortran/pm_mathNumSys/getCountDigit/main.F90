@@ -1,13 +1,13 @@
 program example
 
     use pm_kind, only: SK, IK
-    use pm_kind, only: IK32, IK64 ! all integer kinds are supported.
+    use pm_kind, only: IKS, IKD ! all integer kinds are supported.
     use pm_io, only: display_type
     use pm_mathNumSys, only: getCountDigit
 
     implicit none
 
-    integer(IK64), allocatable :: IntList(:)
+    integer(IKD), allocatable :: IntList(:)
 
     integer(IK) :: i
     type(display_type) :: disp
@@ -20,32 +20,32 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("getCountDigit(5_IK32)")
-    call disp%show( getCountDigit(5_IK32) )
+    call disp%show("getCountDigit(5_IKS)")
+    call disp%show( getCountDigit(5_IKS) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("getCountDigit(5_IK64)")
-    call disp%show( getCountDigit(5_IK64) )
+    call disp%show("getCountDigit(5_IKD)")
+    call disp%show( getCountDigit(5_IKD) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("[-huge(0_IK32), huge(0_IK32)]")
-    call disp%show( [-huge(0_IK32), huge(0_IK32)] )
-    call disp%show("getCountDigit([-huge(0_IK32), huge(0_IK32)])")
-    call disp%show( getCountDigit([-huge(0_IK32), huge(0_IK32)]) )
+    call disp%show("[-huge(0_IKS), huge(0_IKS)]")
+    call disp%show( [-huge(0_IKS), huge(0_IKS)] )
+    call disp%show("getCountDigit([-huge(0_IKS), huge(0_IKS)])")
+    call disp%show( getCountDigit([-huge(0_IKS), huge(0_IKS)]) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("[-huge(0_IK64), huge(0_IK64)]")
-    call disp%show( [-huge(0_IK64), huge(0_IK64)] )
-    call disp%show("getCountDigit([-huge(0_IK64), huge(0_IK64)])")
-    call disp%show( getCountDigit([-huge(0_IK64), huge(0_IK64)]) )
+    call disp%show("[-huge(0_IKD), huge(0_IKD)]")
+    call disp%show( [-huge(0_IKD), huge(0_IKD)] )
+    call disp%show("getCountDigit([-huge(0_IKD), huge(0_IKD)])")
+    call disp%show( getCountDigit([-huge(0_IKD), huge(0_IKD)]) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("IntList = [(2_IK64**i, i = 0, 63, 16)]")
-                    IntList = [(2_IK64**i, i = 0, 63, 16)]
+    call disp%show("IntList = [(2_IKD**i, i = 0, 63, 16)]")
+                    IntList = [(2_IKD**i, i = 0, 63, 16)]
     call disp%show("IntList")
     call disp%show( IntList )
     call disp%show("getCountDigit(IntList)")

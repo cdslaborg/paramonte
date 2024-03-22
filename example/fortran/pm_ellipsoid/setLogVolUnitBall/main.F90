@@ -1,6 +1,6 @@
 program example
 
-    use pm_kind, only: SK, IK, LK, RKC => RK128
+    use pm_kind, only: SK, IK, LK, RKC => RKH
     use pm_io, only: display_type
     use pm_ellipsoid, only: setLogVolUnitBall
 

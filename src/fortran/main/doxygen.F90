@@ -383,6 +383,7 @@
 !>  +   The abbreviation `normed`   stands for **normalized** mostly in the context of statistical samples. Example: `NormedSample`.
 !>  +   The abbreviation `pdf`      stands for **Probability Density Function** in the context of statistics. Example: `getNormLogPDF()`.
 !>  +   The abbreviation `pos`      stands for **positive**. Example: `getInvPosDefMat()`.
+!>  +   The abbreviation `piwi`     stands for `piecewise`, mostly in the context of statistical applications. Example: `pm_PiwiPoweto()`.
 !>  +   The abbreviation `prob`     stands for `probability`, mostly in the context of statistical applications. Example: `getLogProb()`.
 !>  +   The abbreviation `proc`     stands for `procedure`, particularly, when it appears as the suffix `_proc` in `abstract interface` definitions.
 !>      <br>

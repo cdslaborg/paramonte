@@ -1,6 +1,6 @@
 program example
 
-    use pm_kind, only: IKC => IK32 ! any integer kind is supported.
+    use pm_kind, only: IKC => IKS ! any integer kind is supported.
     use pm_kind, only: SK, IK, LK, RKD
     use pm_io, only: display_type
     use pm_distLogUnif, only: getLogUnifRand

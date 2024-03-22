@@ -74,7 +74,7 @@ program example
     end block
 
     block
-        use pm_kind, only: CKC => CK32
+        use pm_kind, only: CKC => CKS
         complex(CKC), allocatable :: table(:,:)
         call disp%skip
         call disp%show("table = getUnifRand((-1., -1.), (+1., +1.), 4_IK, 2_IK)")

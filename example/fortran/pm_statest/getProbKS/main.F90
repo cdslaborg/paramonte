@@ -26,7 +26,7 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! all other real kinds are also acceptable: RK, RK32, RK64, RK128
+        use pm_kind, only: TKC => RKS ! all other real kinds are also supported.
         integer(IK), allocatable :: iweight1(:)
         real(TKC), allocatable :: rweight1(:)
         real(TKC), allocatable :: sample1(:)
@@ -80,7 +80,7 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! all other real kinds are also acceptable: RK, RK32, RK64, RK128
+        use pm_kind, only: TKC => RKS ! all other real kinds are also supported.
         integer(IK), allocatable :: iweight1(:)
         real(TKC), allocatable :: rweight1(:)
         real(TKC), allocatable :: sample1(:)
@@ -134,7 +134,7 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! all other real kinds are also acceptable: RK, RK32, RK64, RK128
+        use pm_kind, only: TKC => RKS ! all other real kinds are also supported.
         integer(IK), allocatable :: iweight1(:), iweight2(:)
         real(TKC), allocatable :: rweight1(:), rweight2(:)
         real(TKC), allocatable :: sample1(:), sample2(:)

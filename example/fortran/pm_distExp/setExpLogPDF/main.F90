@@ -6,7 +6,7 @@ program example
 
     implicit none
 
-    real :: LogPDF(3)
+    real :: logPDF(3)
     type(display_type) :: disp
     disp = display_type(file = "main.out.F90")
 
@@ -23,31 +23,31 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("call setExpLogPDF(LogPDF(1), x = +.5)")
-                    call setExpLogPDF(LogPDF(1), x = +.5)
-    call disp%show("LogPDF(1)")
-    call disp%show( LogPDF(1) )
+    call disp%show("call setExpLogPDF(logPDF(1), x = +.5)")
+                    call setExpLogPDF(logPDF(1), x = +.5)
+    call disp%show("logPDF(1)")
+    call disp%show( logPDF(1) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("call setExpLogPDF(LogPDF(1), x = +.5, mu = 0.)")
-                    call setExpLogPDF(LogPDF(1), x = +.5, mu = 0.)
-    call disp%show("LogPDF(1)")
-    call disp%show( LogPDF(1) )
+    call disp%show("call setExpLogPDF(logPDF(1), x = +.5, mu = 0.)")
+                    call setExpLogPDF(logPDF(1), x = +.5, mu = 0.)
+    call disp%show("logPDF(1)")
+    call disp%show( logPDF(1) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("call setExpLogPDF(LogPDF(1), x = +.5, invSigma = 1., logInvSigma = log(1.))")
-                    call setExpLogPDF(LogPDF(1), x = +.5, invSigma = 1., logInvSigma = log(1.))
-    call disp%show("LogPDF(1)")
-    call disp%show( LogPDF(1) )
+    call disp%show("call setExpLogPDF(logPDF(1), x = +.5, invSigma = 1., logInvSigma = log(1.))")
+                    call setExpLogPDF(logPDF(1), x = +.5, invSigma = 1., logInvSigma = log(1.))
+    call disp%show("logPDF(1)")
+    call disp%show( logPDF(1) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("call setExpLogPDF(LogPDF(1), x = +.5, mu = 0., invSigma = 1., logInvSigma = log(1.))")
-                    call setExpLogPDF(LogPDF(1), x = +.5, mu = 0., invSigma = 1., logInvSigma = log(1.))
-    call disp%show("LogPDF(1)")
-    call disp%show( LogPDF(1) )
+    call disp%show("call setExpLogPDF(logPDF(1), x = +.5, mu = 0., invSigma = 1., logInvSigma = log(1.))")
+                    call setExpLogPDF(logPDF(1), x = +.5, mu = 0., invSigma = 1., logInvSigma = log(1.))
+    call disp%show("logPDF(1)")
+    call disp%show( logPDF(1) )
     call disp%skip()
 
     call disp%skip()
@@ -57,51 +57,51 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("call setExpLogPDF(LogPDF(1:3), x = +[.5, 1., 2.])")
-                    call setExpLogPDF(LogPDF(1:3), x = +[.5, 1., 2.])
-    call disp%show("LogPDF(1:3)")
-    call disp%show( LogPDF(1:3) )
+    call disp%show("call setExpLogPDF(logPDF(1:3), x = +[.5, 1., 2.])")
+                    call setExpLogPDF(logPDF(1:3), x = +[.5, 1., 2.])
+    call disp%show("logPDF(1:3)")
+    call disp%show( logPDF(1:3) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("call setExpLogPDF(LogPDF(1:3), x = +[.5, 1., 2.], mu = 0.)")
-                    call setExpLogPDF(LogPDF(1:3), x = +[.5, 1., 2.], mu = 0.)
-    call disp%show("LogPDF(1:3)")
-    call disp%show( LogPDF(1:3) )
+    call disp%show("call setExpLogPDF(logPDF(1:3), x = +[.5, 1., 2.], mu = 0.)")
+                    call setExpLogPDF(logPDF(1:3), x = +[.5, 1., 2.], mu = 0.)
+    call disp%show("logPDF(1:3)")
+    call disp%show( logPDF(1:3) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("call setExpLogPDF(LogPDF(1:3), x = +[.5, 1., 2.], invSigma = [2., 1., .5], logInvSigma = log([2., 1., .5]))")
-                    call setExpLogPDF(LogPDF(1:3), x = +[.5, 1., 2.], invSigma = [2., 1., .5], logInvSigma = log([2., 1., .5]))
-    call disp%show("LogPDF(1:3)")
-    call disp%show( LogPDF(1:3) )
+    call disp%show("call setExpLogPDF(logPDF(1:3), x = +[.5, 1., 2.], invSigma = [2., 1., .5], logInvSigma = log([2., 1., .5]))")
+                    call setExpLogPDF(logPDF(1:3), x = +[.5, 1., 2.], invSigma = [2., 1., .5], logInvSigma = log([2., 1., .5]))
+    call disp%show("logPDF(1:3)")
+    call disp%show( logPDF(1:3) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("call setExpLogPDF(LogPDF(1:3), x = +[.5, 1., 2.], mu = [-1., 0., +1.], invSigma = 1., logInvSigma = log(1.))")
-                    call setExpLogPDF(LogPDF(1:3), x = +[.5, 1., 2.], mu = [-1., 0., +1.], invSigma = 1., logInvSigma = log(1.))
-    call disp%show("LogPDF(1:3)")
-    call disp%show( LogPDF(1:3) )
+    call disp%show("call setExpLogPDF(logPDF(1:3), x = +[.5, 1., 2.], mu = [-1., 0., +1.], invSigma = 1., logInvSigma = log(1.))")
+                    call setExpLogPDF(logPDF(1:3), x = +[.5, 1., 2.], mu = [-1., 0., +1.], invSigma = 1., logInvSigma = log(1.))
+    call disp%show("logPDF(1:3)")
+    call disp%show( logPDF(1:3) )
     call disp%skip()
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    ! Output an example PDF array for visualization.
+    ! Output an example array for visualization.
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     block
         use pm_arraySpace, only: getLinSpace
-        real, parameter :: InvSigma(3) = [2., 1., .5]
-        real, parameter :: Mu(3) = [-2., 0., 2.]
+        real, parameter :: invSigma(3) = [2., 1., .5]
+        real, parameter :: mu(3) = [-2., 0., 2.]
         real :: Point(1000)
         integer :: fileUnit, i, j
         Point = getLinSpace(-4., +8., size(Point,1,IK))
         open(newunit = fileUnit, file = "setExpLogPDF.RK.txt")
         do i = 1, size(Point)
-            do j = 1, size(LogPDF)
-                LogPDF(j) = -huge(0.)
-                if (Mu(j) <= Point(i)) call setExpLogPDF(LogPDF(j), Point(i), Mu(j), InvSigma(j), log(InvSigma(j)))
+            do j = 1, size(logPDF)
+                logPDF(j) = -huge(0.)
+                if (mu(j) <= Point(i)) call setExpLogPDF(logPDF(j), Point(i), mu(j), invSigma(j), log(invSigma(j)))
             end do
-            write(fileUnit,"(*(g0,:,', '))") Point(i), exp(LogPDF)
+            write(fileUnit,"(*(g0,:,', '))") Point(i), exp(logPDF)
         end do
         close(fileUnit)
     end block

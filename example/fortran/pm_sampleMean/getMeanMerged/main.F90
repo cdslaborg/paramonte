@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK, RK
-    use pm_kind, only: RKC => RK32 ! All other real types are also supported.
+    use pm_kind, only: RKC => RKS ! All other real types are also supported.
     use pm_sampleMean, only: getMean
     use pm_sampleMean, only: getMeanMerged
     use pm_arrayRebind, only: setRebound

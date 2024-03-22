@@ -10,79 +10,83 @@ program example
 
     implicit none
 
-    integer(IK) , parameter :: NP = 4_IK
-    real        , allocatable :: Alpha(:), LogNormFac(:), LogLimX(:), CumSumArea(:)
-
+    real :: logPDFNF(3)
     type(display_type) :: disp
     disp = display_type(file = "main.out.F90")
 
-    Alpha = [getUnifRand(-5., +5., NP - 1), -3.]
-    LogLimX = [getLinSpace(log(0.001), log(20.), NP), log(huge(0.))]
-    allocate(CumSumArea, mold = LogLimX)
-    allocate(LogNormFac, mold = Alpha)
-
     call disp%skip()
-    call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
-    call disp%show("! Compute the natural logarithm of the normalization factor of the Poweto distribution.")
-    call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+    call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+    call disp%show("! Compute the natural logarithm of the normalization factor of the (Truncated) Poweto distribution PDF.")
+    call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
     call disp%skip()
-    call disp%show("Alpha")
-    call disp%show( Alpha )
-    call disp%show("LogLimX")
-    call disp%show( LogLimX )
-    call disp%show("LogNormFac = getPowetoLogPDFNF(Alpha, LogLimX)")
-                    LogNormFac = getPowetoLogPDFNF(Alpha, LogLimX)
-    call disp%show("LogNormFac")
-    call disp%show( LogNormFac )
+    call disp%show("logPDFNF(1) = getPowetoLogPDFNF(alpha = -1., logMinX = 1.)")
+                    logPDFNF(1) = getPowetoLogPDFNF(alpha = -1., logMinX = 1.)
+    call disp%show("logPDFNF(1)")
+    call disp%show( logPDFNF(1) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("Alpha")
-    call disp%show( Alpha )
-    call disp%show("LogLimX")
-    call disp%show( LogLimX )
-    call disp%show("LogNormFac = getPowetoLogPDFNF(Alpha, LogLimX, CumSumArea)")
-                    LogNormFac = getPowetoLogPDFNF(Alpha, LogLimX, CumSumArea)
-    call disp%show("LogNormFac")
-    call disp%show( LogNormFac )
-    call disp%show("CumSumArea")
-    call disp%show( CumSumArea )
+    call disp%show("logPDFNF(1:3) = getPowetoLogPDFNF(alpha = -2., logMinX = log([1., 2., 3.]))")
+                    logPDFNF(1:3) = getPowetoLogPDFNF(alpha = -2., logMinX = log([1., 2., 3.]))
+    call disp%show("logPDFNF(1:3)")
+    call disp%show( logPDFNF(1:3) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
-    call disp%show("! Compute the natural logarithm of the normalization factor of the Truncated Poweto distribution.")
-    call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+    call disp%show("logPDFNF(1:3) = getPowetoLogPDFNF(alpha = -[+2., +3., +4.], logMinX = log([1., 2., 3.]))")
+                    logPDFNF(1:3) = getPowetoLogPDFNF(alpha = -[+2., +3., +4.], logMinX = log([1., 2., 3.]))
+    call disp%show("logPDFNF(1:3)")
+    call disp%show( logPDFNF(1:3) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("Alpha(1 : NP - 1)")
-    call disp%show( Alpha(1 : NP - 1) )
-    call disp%show("LogLimX(1 : NP)")
-    call disp%show( LogLimX(1 : NP) )
-    call disp%show("LogNormFac = getPowetoLogPDFNF(Alpha(1 : NP - 1), LogLimX(1 : NP), CumSumArea(1 : NP)) ! `LogLimX(NP)` is serves as the upper bound of the support of the distribution.")
-                    LogNormFac = getPowetoLogPDFNF(Alpha(1 : NP - 1), LogLimX(1 : NP), CumSumArea(1 : NP))
-    call disp%show("LogNormFac")
-    call disp%show( LogNormFac )
-    call disp%show("CumSumArea")
-    call disp%show( CumSumArea )
+    call disp%show("logPDFNF(1:3) = getPowetoLogPDFNF(alpha = -[+2., +3., +4.], logMinX = log([1., 2., 3.]), logMaxX = log(20.))")
+                    logPDFNF(1:3) = getPowetoLogPDFNF(alpha = -[+2., +3., +4.], logMinX = log([1., 2., 3.]), logMaxX = log(20.))
+    call disp%show("logPDFNF(1:3)")
+    call disp%show( logPDFNF(1:3) )
+    call disp%skip()
+
+    call disp%skip()
+    call disp%show("logPDFNF(1) = getPowetoLogPDFNF(alpha = 1., logMaxX = 1.)")
+                    logPDFNF(1) = getPowetoLogPDFNF(alpha = 1., logMaxX = 1.)
+    call disp%show("logPDFNF(1)")
+    call disp%show( logPDFNF(1) )
+    call disp%skip()
+
+    call disp%skip()
+    call disp%show("logPDFNF(1:3) = getPowetoLogPDFNF(alpha = 2., logMaxX = log([1., 2., 3.]))")
+                    logPDFNF(1:3) = getPowetoLogPDFNF(alpha = 2., logMaxX = log([1., 2., 3.]))
+    call disp%show("logPDFNF(1:3)")
+    call disp%show( logPDFNF(1:3) )
+    call disp%skip()
+
+    call disp%skip()
+    call disp%show("logPDFNF(1:3) = getPowetoLogPDFNF(alpha = [+2., +3., +4.], logMaxX = log([1., 2., 3.]))")
+                    logPDFNF(1:3) = getPowetoLogPDFNF(alpha = [+2., +3., +4.], logMaxX = log([1., 2., 3.]))
+    call disp%show("logPDFNF(1:3)")
+    call disp%show( logPDFNF(1:3) )
+    call disp%skip()
+
+    call disp%skip()
+    call disp%show("logPDFNF(1:3) = getPowetoLogPDFNF(alpha = [+2., +3., +4.], logMinX = log([1., 2., 3.]), logMaxX = log(20.))")
+                    logPDFNF(1:3) = getPowetoLogPDFNF(alpha = [+2., +3., +4.], logMinX = log([1., 2., 3.]), logMaxX = log(20.))
+    call disp%show("logPDFNF(1:3)")
+    call disp%show( logPDFNF(1:3) )
     call disp%skip()
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    ! Output an example PDF array for visualization.
+    ! Output an example array for visualization.
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     block
         integer :: fileUnit, i
-        Alpha = getLinSpace(-5., 5., count = 100_IK)
-        LogLimX = getLinSpace(log(0.001), log(20.), count = size(Alpha, 1, IK) + 1_IK)
-        LogNormFac = getPowetoLogPDFNF(Alpha, LogLimX)
-        deallocate(CumSumArea); allocate(CumSumArea, mold = LogLimX)
-        LogNormFac = getPowetoLogPDFNF(Alpha, LogLimX, CumSumArea)
+        real, allocatable :: alpha(:), logPDFNF(:)
+        alpha = getLinSpace(-10., +10., count = 500_IK)
+        logPDFNF = getPowetoLogPDFNF(alpha, logMinX = -1., logMaxX = +1.)
         open(newunit = fileUnit, file = "getPowetoLogPDFNF.RK.txt")
-        write(fileUnit,"(2(g0,:,' '))") (exp(LogLimX(i)), CumSumArea(i), i = 1, size(CumSumArea))
+        write(fileUnit,"(2(g0,:,' '))") (alpha(i), exp(logPDFNF(i)), i = 1, size(logPDFNF))
         close(fileUnit)
     end block
 

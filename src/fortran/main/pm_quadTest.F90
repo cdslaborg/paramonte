@@ -1350,7 +1350,7 @@ module pm_quadTest
         real(RKH)                   :: kappa        !<  \public The shape parameter of the GenExpGamma distribution.
         real(RKH)                   :: invOmega     !<  \public The inverse of the scale parameter of the GenExpGamma distribution.
         real(RKH)                   :: logSigma     !<  \public The location parameter of the GenExpGamma distribution.
-        real(RKH)                   :: logNormFac   !<  \public The natural logarithm of the normalization factor of the GenExpGamma distribution.
+        real(RKH)                   :: logPDFNF     !<  \public The natural logarithm of the normalization factor of the GenExpGamma distribution.
     contains
         procedure                   :: get => getIntGenExpGammaPDF
     end type

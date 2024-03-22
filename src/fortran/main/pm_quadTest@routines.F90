@@ -433,7 +433,7 @@ contains
         self%kappa = getOption(1._RKC, kappa)
         self%invOmega = getOption(1._RKC, invOmega)
         self%logSigma = getOption(0._RKC, logSigma)
-        self%logNormFac = getGenExpGammaLogPDFNF(self%kappa, self%invOmega)
+        self%logPDFNF = getGenExpGammaLogPDFNF(self%kappa, self%invOmega)
         CHECK_ASSERTION(__LINE__, 0._RKC < self%kappa, SK_"@constructIntGenExpGammaPDF(): The condition `0._RKC < kappa` must hold. kappa = "//getStr(self%kappa))
         CHECK_ASSERTION(__LINE__, 0._RKC < self%invOmega, SK_"@constructIntGenExpGammaPDF(): The condition `0._RKC < invOmega` must hold. invOmega = "//getStr(self%invOmega))
         self%integral = 1._RKC !getGenExpGammaCDF(exp(self%ub), self%mu, self%sigma) - getGenExpGammaCDF(self%lb, self%mu, self%sigma)
@@ -444,7 +444,7 @@ contains
         use pm_kind, only: RKC => RKH
         use pm_distGenExpGamma, only: setGenExpGammaLogPDF
         CHECK_ASSERTION(__LINE__, self%lb <= x .and. x <= self%ub, SK_"@getIntGenExpGammaPDF(): The condition `self%lb <= x .and. x <= self%ub` must hold. self%lb, x, self%ub = "//getStr([self%lb, x, self%ub]))
-        call setGenExpGammaLogPDF(func, x, self%logNormFac, self%kappa, self%invOmega, self%logSigma)
+        call setGenExpGammaLogPDF(func, x, self%logPDFNF, self%kappa, self%invOmega, self%logSigma)
         func = exp(func)
     end procedure
 

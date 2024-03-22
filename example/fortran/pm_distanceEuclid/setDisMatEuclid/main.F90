@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK, LK, RKH
-    use pm_kind, only: RKC => RK32 ! all processor kinds are supported.
+    use pm_kind, only: RKC => RKS ! all processor kinds are supported.
     use pm_io, only: display_type
     use pm_distanceEuclid, only: setDisMatEuclid, rdpack, uppLow, uppLowDia, euclid, euclidu, euclidsq
     use pm_arrayResize, only: setResized

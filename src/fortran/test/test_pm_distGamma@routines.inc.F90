@@ -39,7 +39,7 @@
         real(RKC)               :: PDF(NP)
         real(RKC)               :: X(NP)
         real(RKC)               :: Kappa(NP)
-        real(RKC)               :: InvSigma(NP)
+        real(RKC)               :: invSigma(NP)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -47,7 +47,7 @@
         assertion = .true._LK
         call setUnifRand(X, epsilon(0._RKC), 1000._RKC)
         call setUnifRand(Kappa, epsilon(0._RKC), 10._RKC)
-        call setUnifRand(InvSigma, epsilon(0._RKC), 10._RKC)
+        call setUnifRand(invSigma, epsilon(0._RKC), 10._RKC)
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -75,11 +75,11 @@
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        PDF_ref = getGenGammaLogPDF(X, Kappa, InvSigma = InvSigma)
+        PDF_ref = getGenGammaLogPDF(X, Kappa, invSigma = invSigma)
 #if     getGammaLogPDF_ENABLED
-        PDF = getGammaLogPDF(X, Kappa, InvSigma)
+        PDF = getGammaLogPDF(X, Kappa, invSigma)
 #elif   setGammaLogPDF_ENABLED
-        call setGammaLogPDF(PDF, X, getGammaLogPDFNF(Kappa, InvSigma), Kappa, InvSigma)
+        call setGammaLogPDF(PDF, X, getGammaLogPDFNF(Kappa, invSigma), Kappa, invSigma)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -100,7 +100,7 @@
                 if (test%traceable .and. .not. assertion) then
                     ! LCOV_EXCL_START
                     write(test%disp%unit,"(*(g0,:,', '))")
-                    write(test%disp%unit,"(*(g0,:,', '))") "InvSigma   ", InvSigma(i)
+                    write(test%disp%unit,"(*(g0,:,', '))") "invSigma   ", invSigma(i)
                     write(test%disp%unit,"(*(g0,:,', '))") "Kappa      ", Kappa(i)
                     write(test%disp%unit,"(*(g0,:,', '))") "PDF_ref    ", PDF_ref(i)
                     write(test%disp%unit,"(*(g0,:,', '))") "PDF        ", PDF(i)

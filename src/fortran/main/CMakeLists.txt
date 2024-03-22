@@ -160,8 +160,10 @@ set(grandpa
     pm_distNegExp
     pm_distNorm
     pm_distPareto
+    pm_distPiwiPoweto
     pm_distPower
     pm_distPoweto
+    #pm_distPowetoTapered
     pm_distPois
     pm_distUnif
     pm_distUnifSphere
@@ -194,6 +196,7 @@ set(grandpa
     pm_mathSubAdd
     pm_polynomial
     pm_arrayRange
+    pm_mathFisher
     pm_mathRoot
     pm_mathRootTest
     pm_mathSqrt
@@ -972,7 +975,10 @@ if (FPP_ENABLED)
     if(OpenMP_Fortran_FOUND)
         target_link_libraries(genfpp.exe PUBLIC OpenMP::OpenMP_Fortran)
     endif()
-    target_compile_options(genfpp.exe BEFORE PRIVATE "${FC_FLAGS}" "${FCL_FLAGS}")
+    if (${csid_is_gnu})
+        #target_compile_options(genfpp.exe BEFORE PRIVATE "${FC_FLAGS}" "${FCL_FLAGS}")
+        target_compile_options(genfpp.exe BEFORE PRIVATE "-std=gnu" "-ffree-line-length-none")
+    endif()
     include(setParaMonteFPP)
 endif()
 

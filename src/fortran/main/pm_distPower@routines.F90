@@ -37,6 +37,7 @@ call setAsserted(ASSERTION,getFine(__FILE__,LINE)//MODULE_NAME//MSG);
 #endif
 
     use pm_mathMinMax, only: getMinMax
+    use pm_distNegExp, only: getNegExpRand
     use pm_mathLogSubExp, only: getLogSubExp
     use pm_mathLogAddExp, only: getLogAddExp
     implicit none

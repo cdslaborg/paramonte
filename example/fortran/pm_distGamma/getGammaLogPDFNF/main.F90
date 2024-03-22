@@ -10,14 +10,14 @@ program example
     implicit none
 
     integer(IK) , parameter :: NP = 1000_IK
-    real        , allocatable :: InvSigma(:), LogNormFac(:), Kappa(:)
+    real        , allocatable :: invSigma(:), logPDFNF(:), Kappa(:)
 
     type(display_type) :: disp
     disp = display_type(file = "main.out.F90")
 
     Kappa = getLinSpace(0.01, 10., count = NP)
-    InvSigma = getLinSpace(0.01, 10., count = NP)
-    allocate(LogNormFac, mold = Kappa)
+    invSigma = getLinSpace(0.01, 10., count = NP)
+    allocate(logPDFNF, mold = Kappa)
 
     call disp%skip()
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
@@ -34,12 +34,12 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("[Kappa(1), InvSigma(1)]")
-    call disp%show( [Kappa(1), InvSigma(1)] )
-    call disp%show("LogNormFac(1) = getGammaLogPDFNF(kappa = Kappa(1), invSigma = InvSigma(1))")
-                    LogNormFac(1) = getGammaLogPDFNF(kappa = Kappa(1), invSigma = InvSigma(1))
-    call disp%show("LogNormFac(1)")
-    call disp%show( LogNormFac(1) )
+    call disp%show("[Kappa(1), invSigma(1)]")
+    call disp%show( [Kappa(1), invSigma(1)] )
+    call disp%show("logPDFNF(1) = getGammaLogPDFNF(kappa = Kappa(1), invSigma = invSigma(1))")
+                    logPDFNF(1) = getGammaLogPDFNF(kappa = Kappa(1), invSigma = invSigma(1))
+    call disp%show("logPDFNF(1)")
+    call disp%show( logPDFNF(1) )
     call disp%skip()
 
     call disp%skip()
@@ -49,50 +49,50 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("[Kappa(1), InvSigma(1)]")
-    call disp%show( [Kappa(1), InvSigma(1)] )
-    call disp%show("LogNormFac(1) = getGammaLogPDFNF(kappa = Kappa(1), invSigma = InvSigma(1))")
-                    LogNormFac(1) = getGammaLogPDFNF(kappa = Kappa(1), invSigma = InvSigma(1))
-    call disp%show("LogNormFac(1)")
-    call disp%show( LogNormFac(1) )
+    call disp%show("[Kappa(1), invSigma(1)]")
+    call disp%show( [Kappa(1), invSigma(1)] )
+    call disp%show("logPDFNF(1) = getGammaLogPDFNF(kappa = Kappa(1), invSigma = invSigma(1))")
+                    logPDFNF(1) = getGammaLogPDFNF(kappa = Kappa(1), invSigma = invSigma(1))
+    call disp%show("logPDFNF(1)")
+    call disp%show( logPDFNF(1) )
     call disp%skip()
 
     call disp%skip()
     call disp%show("Kappa(1:NP:NP/5)")
     call disp%show( Kappa(1:NP:NP/5) )
-    call disp%show("LogNormFac(1:NP:NP/5) = getGammaLogPDFNF(kappa = Kappa(1:NP:NP/5), invSigma = 1.)")
-                    LogNormFac(1:NP:NP/5) = getGammaLogPDFNF(kappa = Kappa(1:NP:NP/5), invSigma = 1.)
-    call disp%show("LogNormFac(1:NP:NP/5)")
-    call disp%show( LogNormFac(1:NP:NP/5) )
+    call disp%show("logPDFNF(1:NP:NP/5) = getGammaLogPDFNF(kappa = Kappa(1:NP:NP/5), invSigma = 1.)")
+                    logPDFNF(1:NP:NP/5) = getGammaLogPDFNF(kappa = Kappa(1:NP:NP/5), invSigma = 1.)
+    call disp%show("logPDFNF(1:NP:NP/5)")
+    call disp%show( logPDFNF(1:NP:NP/5) )
     call disp%skip()
 
     call disp%skip()
     call disp%show("Kappa(1:NP:NP/5)")
     call disp%show( Kappa(1:NP:NP/5) )
-    call disp%show("LogNormFac(1:NP:NP/5) = getGammaLogPDFNF(kappa = 1., invSigma = InvSigma(1:NP:NP/5))")
-                    LogNormFac(1:NP:NP/5) = getGammaLogPDFNF(kappa = 1., invSigma = InvSigma(1:NP:NP/5))
-    call disp%show("LogNormFac(1:NP:NP/5)")
-    call disp%show( LogNormFac(1:NP:NP/5) )
+    call disp%show("logPDFNF(1:NP:NP/5) = getGammaLogPDFNF(kappa = 1., invSigma = invSigma(1:NP:NP/5))")
+                    logPDFNF(1:NP:NP/5) = getGammaLogPDFNF(kappa = 1., invSigma = invSigma(1:NP:NP/5))
+    call disp%show("logPDFNF(1:NP:NP/5)")
+    call disp%show( logPDFNF(1:NP:NP/5) )
     call disp%skip()
 
     call disp%skip()
     call disp%show("Kappa(1:NP:NP/5)")
     call disp%show( Kappa(1:NP:NP/5) )
-    call disp%show("LogNormFac(1:NP:NP/5) = getGammaLogPDFNF(kappa = Kappa(1:NP:NP/5), invSigma = InvSigma(1:NP:NP/5))")
-                    LogNormFac(1:NP:NP/5) = getGammaLogPDFNF(kappa = Kappa(1:NP:NP/5), invSigma = InvSigma(1:NP:NP/5))
-    call disp%show("LogNormFac(1:NP:NP/5)")
-    call disp%show( LogNormFac(1:NP:NP/5) )
+    call disp%show("logPDFNF(1:NP:NP/5) = getGammaLogPDFNF(kappa = Kappa(1:NP:NP/5), invSigma = invSigma(1:NP:NP/5))")
+                    logPDFNF(1:NP:NP/5) = getGammaLogPDFNF(kappa = Kappa(1:NP:NP/5), invSigma = invSigma(1:NP:NP/5))
+    call disp%show("logPDFNF(1:NP:NP/5)")
+    call disp%show( logPDFNF(1:NP:NP/5) )
     call disp%skip()
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    ! Output an example PDF array for visualization.
+    ! Output an example array for visualization.
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     block
         integer :: fileUnit, i
-        LogNormFac = getGammaLogPDFNF(Kappa, InvSigma)
+        logPDFNF = getGammaLogPDFNF(Kappa, invSigma)
         open(newunit = fileUnit, file = "getGammaLogPDFNF.RK.txt")
-        write(fileUnit,"(2(g0,:,' '))") (Kappa(i), exp(LogNormFac(i)), i = 1, size(LogNormFac))
+        write(fileUnit,"(2(g0,:,' '))") (Kappa(i), exp(logPDFNF(i)), i = 1, size(logPDFNF))
         close(fileUnit)
     end block
 

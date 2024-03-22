@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: LK, SK
-    use pm_kind, only: CKC => CK32 ! all complex kinds are supported.
+    use pm_kind, only: CKC => CKS ! all complex kinds are supported.
     use pm_complexDiv, only: getDiv
     use pm_io, only: display_type
 

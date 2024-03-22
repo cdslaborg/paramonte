@@ -1,6 +1,6 @@
 program example
 
-    use pm_kind, only: SK, IK, SP => RK32, DP => RK64, QP => RK128 ! all real kinds are supported.
+    use pm_kind, only: SK, IK, SP => RKS, DP => RKD, QP => RKH ! all real kinds are supported.
     use pm_distPareto, only: getParetoLogCDF
     use pm_distPareto, only: getParetoLogPDF
     use pm_distNorm, only: getNormLogPDF

@@ -21,7 +21,7 @@
 !>  Specifically, this module contains routines for computing the following quantities of the <b>MultiVariate Uniform Ellipsoid (MVUE) distribution</b>:<br>
 !>  <ol>
 !>      <li>    the Probability Density Function (**PDF**)
-!>      <li>    the random number generation from the distribution (**RNG**)
+!>      <li>    the Random Number Generation from the distribution (**RNG**)
 !>  </ol>
 !>
 !>  An \f$\ndim\f$-dimensional MVUE distribution is represented by an \f$\ndim\f$-dimensional hyper-ellipsoid support.<br>

@@ -17,10 +17,11 @@ xlab =  { "CK" : "X ( real/imaginary components )"
         , "IK" : "X ( integer-valued )"
         , "RK" : "X ( real-valued )"
         }
-legends =   [ r"5-piece Poweto"
-            , r"3-piece left-truncated Poweto"
-            , r"4-piece right-truncated Poweto"
-            , r"4-piece doubly-truncated Poweto"
+legends =   [ r"$\alpha = -2., x_{min} = +3., x_{max} = +8$"
+            , r"$\alpha = -1., x_{min} = +3., x_{max} = +8$"
+            , r"$\alpha = 0.0, x_{min} = +3., x_{max} = +8$"
+            , r"$\alpha = +1., x_{min} = +3., x_{max} = +8$"
+            , r"$\alpha = +2., x_{min} = +3., x_{max} = +8$"
             ]
 
 for kind in ["IK", "CK", "RK"]:
@@ -36,13 +37,13 @@ for kind in ["IK", "CK", "RK"]:
 
         if kind == "CK":
             plt.plot( df.values[:,0]
-                    , df.values[:,[2,4]]
+                    , df.values[:,1:]
                     , marker[kind]
                     , linewidth = linewidth
                    #, color = "r"
                     )
             plt.plot( df.values[:,1]
-                    , df.values[:,[3,5]]
+                    , df.values[:,1:]
                     , marker[kind]
                     , linewidth = linewidth
                    #, color = "blue"
@@ -55,7 +56,7 @@ for kind in ["IK", "CK", "RK"]:
                    #, color = "r"
                     )
             ax.legend   ( legends
-                        , fontsize = fontsize
+                        , fontsize = fontsize - 5
                         )
 
         plt.xticks(fontsize = fontsize - 2)

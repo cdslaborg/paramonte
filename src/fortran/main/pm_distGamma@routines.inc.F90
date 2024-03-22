@@ -38,11 +38,11 @@
 
         CHECK_ASSERTION(__LINE__, kappa > 0._RKC, SK_"@getGammaLogPDFNF(): The condition `kappa > 0.` must hold. kappa = "//getStr(kappa))
 #if     KD_ENABLED
-        logNormFac = -log_gamma(kappa)
+        logPDFNF = -log_gamma(kappa)
 #elif   KS_ENABLED
         CHECK_ASSERTION(__LINE__, invSigma > 0._RKC, SK_"@getGammaLogPDFNF(): The condition invSigma > 0.` must hold. invSigma = "//getStr(invSigma))
-        logNormFac = getGammaLogPDFNF(kappa)
-        if (invSigma /= 1._RKC) logNormFac = logNormFac + log(invSigma)
+        logPDFNF = getGammaLogPDFNF(kappa)
+        if (invSigma /= 1._RKC) logPDFNF = logPDFNF + log(invSigma)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -66,20 +66,20 @@
 #elif   NKD_ENABLED
         CHECK_ASSERTION(__LINE__, x > 0._RKC, SK_"@setGammaLogPDF(): The condition `x > 0.` must hold. x = "//getStr(x))
         CHECK_ASSERTION(__LINE__, kappa > 0._RKC, SK_"@setGammaLogPDF(): The condition `kappa > 0.` must hold. kappa = "//getStr(kappa))
-        CHECK_ASSERTION(__LINE__, abs(logNormFac - getGammaLogPDFNF(kappa)) < sqrt(epsilon(0._RKC)), \
-        SK_"@setGammaLogPDF(): The condition `abs(logNormFac - getGammaLogPDFNF(kappa)) < sqrt(epsilon(0._RKC)` must hold. logNormFac, getGammaLogPDFNF(kappa) = "// \
-        getStr([logNormFac, getGammaLogPDFNF(kappa)]))
-        logPDF = logNormFac + (kappa - 1._RKC) * log(x) - x
+        CHECK_ASSERTION(__LINE__, abs(logPDFNF - getGammaLogPDFNF(kappa)) < sqrt(epsilon(0._RKC)), \
+        SK_"@setGammaLogPDF(): The condition `abs(logPDFNF - getGammaLogPDFNF(kappa)) < sqrt(epsilon(0._RKC)` must hold. logPDFNF, getGammaLogPDFNF(kappa) = "// \
+        getStr([logPDFNF, getGammaLogPDFNF(kappa)]))
+        logPDF = logPDFNF + (kappa - 1._RKC) * log(x) - x
 #elif   NKS_ENABLED
         real(RKC) :: y
         y = x * invSigma
         CHECK_ASSERTION(__LINE__, x > 0._RKC, SK_"@setGammaLogPDF(): The condition `x > 0.` must hold. x = "//getStr(x))
         CHECK_ASSERTION(__LINE__, kappa > 0._RKC, SK_"@setGammaLogPDF(): The condition `kappa > 0.` must hold. kappa = "//getStr(kappa))
         CHECK_ASSERTION(__LINE__, invSigma > 0._RKC, SK_"@setGammaLogPDF(): The condition `invSigma > 0.` must hold. invSigma = "//getStr(invSigma))
-        CHECK_ASSERTION(__LINE__, abs(logNormFac - getGammaLogPDFNF(kappa, invSigma)) < sqrt(epsilon(0._RKC)), \
-        SK_"@setGammaLogPDF(): The condition `abs(logNormFac - getGammaLogPDFNF(kappa, invSigma)) < sqrt(epsilon(0._RKC)` must hold. logNormFac, getGammaLogPDFNF(kappa, invSigma) = "// \
-        getStr([logNormFac, getGammaLogPDFNF(kappa, invSigma)]))
-        logPDF = logNormFac + (kappa - 1._RKC) * log(y) - y
+        CHECK_ASSERTION(__LINE__, abs(logPDFNF - getGammaLogPDFNF(kappa, invSigma)) < sqrt(epsilon(0._RKC)), \
+        SK_"@setGammaLogPDF(): The condition `abs(logPDFNF - getGammaLogPDFNF(kappa, invSigma)) < sqrt(epsilon(0._RKC)` must hold. logPDFNF, getGammaLogPDFNF(kappa, invSigma) = "// \
+        getStr([logPDFNF, getGammaLogPDFNF(kappa, invSigma)]))
+        logPDF = logPDFNF + (kappa - 1._RKC) * log(y) - y
 #else
 #error  "Unrecognized interface."
 #endif

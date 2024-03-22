@@ -2,7 +2,7 @@ program example
 
     use pm_kind, only: SK
     use pm_kind, only: IK
-    use pm_kind, only: RK => RK32 ! all other real kinds are also acceptable: RK, RK32, RK64, RK128
+    use pm_kind, only: RK => RKS ! all other real kinds are also supported.
     use pm_io, only: display_type
     use pm_arraySpace, only: getLinSpace
     use pm_arraySpace, only: getLogSpace
@@ -94,7 +94,7 @@ program example
     call disp%skip()
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    ! Output an example CDF array for visualization.
+    ! Output an example array for visualization.
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     block

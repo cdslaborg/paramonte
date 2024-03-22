@@ -2,7 +2,7 @@
 program benchmark
 
     use iso_fortran_env, only: error_unit
-    use pm_kind, only: IK, RKC => RK32, RK, SK
+    use pm_kind, only: IK, RKC => RKS, RK, SK
     use pm_distUnif, only: setUnifRand
     use pm_bench, only: bench_type
 

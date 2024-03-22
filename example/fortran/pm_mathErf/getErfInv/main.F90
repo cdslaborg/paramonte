@@ -52,7 +52,7 @@ program example
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     block
-        use pm_kind, only: RKB, RKC => RKH, RKL => RK32, RK32, RK64
+        use pm_kind, only: RKB, RKC => RKH, RKL => RKS, RKS, RKD
         use pm_arraySpace, only: setLinSpace
         integer(IK) , parameter :: NP = 2000
         integer :: fileUnit, i
@@ -60,20 +60,20 @@ program example
         call setLinSpace(erfval, -1._RKC + epsilon(0._RKL), 1._RKC - epsilon(0._RKL))
         open(newunit = fileUnit, file = "getErfInv.RK.txt")
         do i = 1, NP
-            write(fileUnit, "(*(g0,:,' '))") real(erfval(i), RK64), getErfInv(real(erfval(i), RK64))
+            write(fileUnit, "(*(g0,:,' '))") real(erfval(i), RKD), getErfInv(real(erfval(i), RKD))
         end do
         close(fileUnit)
-        open(newunit = fileUnit, file = "getErfInv.RK32.abserr.txt")
+        open(newunit = fileUnit, file = "getErfInv.RKS.abserr.txt")
         do i = 1, NP
-            write(fileUnit, "(*(g0,:,' '))") real(erfval(i), RK32), real(erfval(i), RK32) - erf(real(getErfInv(real(erfval(i), RK32)), RKB))
+            write(fileUnit, "(*(g0,:,' '))") real(erfval(i), RKS), real(erfval(i), RKS) - erf(real(getErfInv(real(erfval(i), RKS)), RKB))
         end do
         close(fileUnit)
-        open(newunit = fileUnit, file = "getErfInv.RK64.abserr.txt")
+        open(newunit = fileUnit, file = "getErfInv.RKD.abserr.txt")
         do i = 1, NP
-            write(fileUnit, "(*(g0,:,' '))") real(erfval(i), RK64), real(erfval(i), RK64) - erf(real(getErfInv(real(erfval(i), RK64)), RKB))
+            write(fileUnit, "(*(g0,:,' '))") real(erfval(i), RKD), real(erfval(i), RKD) - erf(real(getErfInv(real(erfval(i), RKD)), RKB))
         end do
         close(fileUnit)
-        open(newunit = fileUnit, file = "getErfInv.RK128.abserr.txt")
+        open(newunit = fileUnit, file = "getErfInv.RKH.abserr.txt")
         do i = 1, NP
             write(fileUnit, "(*(g0,:,' '))") real(erfval(i), RKH), real(erfval(i), RKH) - erf(real(getErfInv(real(erfval(i), RKH)), RKB))
         end do

@@ -21,9 +21,9 @@
 !>  Specifically, this module contains routines for computing the following quantities of the <b>(Truncated) Power distribution</b>:<br>
 !>  <ol>
 !>      <li>    the Probability Density Function (**PDF**)
-!>      <li>    the **Cumulative Distribution Function (**CDF**)
-!>      <li>    the random number generation from the distribution (**RNG**)
-!>      <li>    the **Inverse Cumulative Distribution Function (ICDF)** or the **Quantile Function**
+!>      <li>    the Cumulative Distribution Function (**CDF**)
+!>      <li>    the Random Number Generation from the distribution (**RNG**)
+!>      <li>    the Inverse Cumulative Distribution Function **(ICDF)** or the **Quantile Function**
 !>  </ol>
 !>
 !>  The **PDF** of the <b>(Truncated) Power distribution</b> over a strictly-positive support \f$x \in [x_\mathrm{min}, x_\mathrm{max}]\f$
@@ -1253,9 +1253,9 @@ module pm_distPower
     !>  \param[in]  logCDF      :   The input scalar (or array of the same rank, shape, and size as other array like arguments), of the same type and kind as `alpha`,
     !>                              containing the natural logarithm of the desired CDF value of the distribution corresponding to the output quantile.<br>
     !>  \param[in]  alpha       :   The input scalar (or array of the same rank, shape, and size as other array like arguments), of <br>
-    !>                              <ul>
+    !>                              <ol>
     !>                                  <li>    type `real` of kind \RKALL, <br>
-    !>                              </ul>
+    !>                              </ol>
     !>                              containing the shape parameter (\f$\alpha\f$) of the distribution.<br>
     !>  \param[in]  logMinX     :   The input scalar (or array of the same rank, shape, and size as other array like arguments), of the same type and kind as `alpha`,
     !>                              containing the natural logarithm of the first scale parameter of the distribution, representing the minimum of the support of the distribution.<br>
@@ -1446,9 +1446,9 @@ module pm_distPower
     !>  \param[in]  logCDF      :   The input scalar (or array of the same rank, shape, and size as other array like arguments), of the same type and kind as `alpha`,
     !>                              containing the natural logarithm of the desired CDF value of the distribution corresponding to the output quantile.<br>
     !>  \param[in]  alpha       :   The input scalar (or array of the same rank, shape, and size as other array like arguments), of <br>
-    !>                              <ul>
+    !>                              <ol>
     !>                                  <li>    type `real` of kind \RKALL, <br>
-    !>                              </ul>
+    !>                              </ol>
     !>                              containing the shape parameter (\f$\alpha\f$) of the distribution.<br>
     !>  \param[in]  logMinX     :   The input scalar (or array of the same rank, shape, and size as other array like arguments), of the same type and kind as `alpha`,
     !>                              containing the natural logarithm of the first scale parameter of the distribution, representing the minimum of the support of the distribution.<br>
@@ -1628,9 +1628,9 @@ module pm_distPower
     !>  See the documentation of [pm_distPower](@ref pm_distPower) for more information on the (Truncated) Power distribution.<br>
     !>
     !>  \param[in]  alpha       :   The input scalar (or array of the same rank, shape, and size as other array like arguments), of <br>
-    !>                              <ul>
+    !>                              <ol>
     !>                                  <li>    type `real` of kind \RKALL, <br>
-    !>                              </ul>
+    !>                              </ol>
     !>                              containing the shape parameter (\f$\alpha\f$) of the distribution.<br>
     !>  \param[in]  logMinX     :   The input scalar (or array of the same rank, shape, and size as other array like arguments), of the same type and kind as `alpha`,
     !>                              containing the natural logarithm of the first scale parameter of the distribution, representing the minimum of the support of the distribution.<br>
@@ -1819,9 +1819,9 @@ module pm_distPower
     !>                              containing a random value from the standard Negative Exponential distribution (\f$\mu = 0, \sigma = 1.\f$).<br>
     !>                              This argument can be readily obtained by calling [getNegExpRand(sigma = 1.)](@ref pm_distNegExp::getNegExpRand).<br>
     !>  \param[in]  alpha       :   The input scalar (or array of the same rank, shape, and size as other array like arguments), of <br>
-    !>                              <ul>
+    !>                              <ol>
     !>                                  <li>    type `real` of kind \RKALL, <br>
-    !>                              </ul>
+    !>                              </ol>
     !>                              containing the shape parameter (\f$\alpha\f$) of the distribution.<br>
     !>  \param[in]  logMinX     :   The input scalar (or array of the same rank, shape, and size as other array like arguments), of the same type and kind as `alpha`,
     !>                              containing the natural logarithm of the first scale parameter of the distribution, representing the minimum of the support of the distribution.<br>

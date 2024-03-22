@@ -3,7 +3,7 @@ program benchmark
 
     use pm_bench, only: bench_type
     use pm_arraySpace, only: getLinSpace
-    use pm_kind, only: IK, LK, RK1 => RK64, RK2 => RK32, RK, SK
+    use pm_kind, only: IK, LK, RK1 => RKD, RK2 => RKS, RK, SK
     use iso_fortran_env, only: error_unit
 
     implicit none

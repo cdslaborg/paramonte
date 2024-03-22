@@ -27,7 +27,7 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         CHECK_ASSERTION(__LINE__, kappa > 0._RKC, SK_"@getExpGammaLogPDFNF(): The condition `kappa > 0.` must hold. kappa = "//getStr(kappa))
-        logNormFac = -log_gamma(kappa)
+        logPDFNF = -log_gamma(kappa)
 
         !%%%%%%%%%%%%%%%%%%%%%%%%
 #elif   getExpGammaLogPDF_ENABLED
@@ -46,9 +46,9 @@
         logPDF = x - exp(x)
 #elif   NKD_ENABLED
         CHECK_ASSERTION(__LINE__, 0._RKC < kappa, SK_"@getExpGammaLogPDFNF(): The condition `0. < kappa` must hold. kappa = "//getStr(kappa))
-        logPDF = logNormFac + kappa * x - exp(x)
+        logPDF = logPDFNF + kappa * x - exp(x)
 #elif   NKS_ENABLED
-        call setExpGammaLogPDF(logPDF, x - logSigma, logNormFac, kappa)
+        call setExpGammaLogPDF(logPDF, x - logSigma, logPDFNF, kappa)
 #else
 #error  "Unrecognized interface."
 #endif

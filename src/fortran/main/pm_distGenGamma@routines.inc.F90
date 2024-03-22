@@ -27,23 +27,23 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         CHECK_ASSERTION(__LINE__, kappa > 0._RKC, SK_"@getGenGammaLogPDFNF(): The condition `kappa > 0.` must hold. kappa = "//getStr(kappa)) ! fpp
-        logNormFac = -log_gamma(kappa)
+        logPDFNF = -log_gamma(kappa)
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 #elif   getGenGammaLogPDFNF_ENABLED && KOD_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         CHECK_ASSERTION(__LINE__, invOmega > 0._RKC, SK_"@getGenGammaLogPDFNF(): The condition `invOmega > 0.` must hold. invOmega = "//getStr(invOmega)) ! fpp
-        logNormFac = getGenGammaLogPDFNF(kappa)
-        if (invOmega /= 1._RKC) logNormFac = logNormFac + log(invOmega)
+        logPDFNF = getGenGammaLogPDFNF(kappa)
+        if (invOmega /= 1._RKC) logPDFNF = logPDFNF + log(invOmega)
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 #elif   getGenGammaLogPDFNF_ENABLED && KOS_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         CHECK_ASSERTION(__LINE__, invSigma > 0._RKC, SK_"@getGenGammaLogPDFNF(): The condition `invSigma > 0.` must hold. invSigma = "//getStr(invSigma)) ! fpp
-        logNormFac = getGenGammaLogPDFNF(kappa, invOmega)
-        if (invSigma /= 1._RKC) logNormFac = logNormFac + log(invSigma)
+        logPDFNF = getGenGammaLogPDFNF(kappa, invOmega)
+        if (invSigma /= 1._RKC) logPDFNF = logPDFNF + log(invSigma)
 
         !%%%%%%%%%%%%%%%%%%%%%%%%
 #elif   getGenGammaLogPDF_ENABLED
@@ -68,10 +68,10 @@
 
         CHECK_ASSERTION(__LINE__, x > 0._RKC, SK_"@getGenGammaLogPDFNF(): The condition `x > 0.` must hold. x = "//getStr(x)) ! fpp
         CHECK_ASSERTION(__LINE__, kappa > 0._RKC, SK_"@getGenGammaLogPDFNF(): The condition `kappa > 0.` must hold. kappa = "//getStr(kappa)) ! fpp
-        CHECK_ASSERTION(__LINE__, abs(getGenGammaLogPDFNF(kappa) - logNormFac) <= 100 * epsilon(0._RKC), \
-        SK_"@setGenGammaLogPDF(): The condition `abs(getGenGammaLogPDFNF(kappa) - logNormFac) <= 100 * epsilon(0._RKC)` must hold. getGenGammaLogPDFNF(kappa), logNormFac = " \
-        //getStr([getGenGammaLogPDFNF(kappa), logNormFac])) ! fpp
-        logPDF = logNormFac + log(x) * (kappa - 1._RKC) - x
+        CHECK_ASSERTION(__LINE__, abs(getGenGammaLogPDFNF(kappa) - logPDFNF) <= 100 * epsilon(0._RKC), \
+        SK_"@setGenGammaLogPDF(): The condition `abs(getGenGammaLogPDFNF(kappa) - logPDFNF) <= 100 * epsilon(0._RKC)` must hold. getGenGammaLogPDFNF(kappa), logPDFNF = " \
+        //getStr([getGenGammaLogPDFNF(kappa), logPDFNF])) ! fpp
+        logPDF = logPDFNF + log(x) * (kappa - 1._RKC) - x
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 #elif   setGenGammaLogPDF_ENABLED && NKOD_ENABLED
@@ -80,10 +80,10 @@
         CHECK_ASSERTION(__LINE__, x > 0._RKC, SK_"@getGenGammaLogPDFNF(): The condition `x > 0.` must hold. x = "//getStr(x)) ! fpp
         CHECK_ASSERTION(__LINE__, kappa > 0._RKC, SK_"@getGenGammaLogPDFNF(): The condition `kappa > 0.` must hold. kappa = "//getStr(kappa)) ! fpp
         CHECK_ASSERTION(__LINE__, invOmega > 0._RKC, SK_"@setGenGammaLogPDF(): The condition `invOmega > 0.` must hold. invOmega = "//getStr(invOmega)) ! fpp
-        CHECK_ASSERTION(__LINE__, abs(getGenGammaLogPDFNF(kappa, invOmega) - logNormFac) <= 100 * epsilon(0._RKC), \
-        SK_"@setGenGammaLogPDF(): The condition `abs(getGenGammaLogPDFNF(kappa, invOmega) - logNormFac) <= 100 * epsilon(0._RKC)` must hold. getGenGammaLogPDFNF(kappa, invOmega), logNormFac = " \
-        //getStr([getGenGammaLogPDFNF(kappa, invOmega), logNormFac])) ! fpp
-        logPDF = logNormFac + log(x) * (kappa * invOmega - 1._RKC) - x**invOmega
+        CHECK_ASSERTION(__LINE__, abs(getGenGammaLogPDFNF(kappa, invOmega) - logPDFNF) <= 100 * epsilon(0._RKC), \
+        SK_"@setGenGammaLogPDF(): The condition `abs(getGenGammaLogPDFNF(kappa, invOmega) - logPDFNF) <= 100 * epsilon(0._RKC)` must hold. getGenGammaLogPDFNF(kappa, invOmega), logPDFNF = " \
+        //getStr([getGenGammaLogPDFNF(kappa, invOmega), logPDFNF])) ! fpp
+        logPDF = logPDFNF + log(x) * (kappa * invOmega - 1._RKC) - x**invOmega
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 #elif   setGenGammaLogPDF_ENABLED && NKOS_ENABLED
@@ -95,10 +95,10 @@
         CHECK_ASSERTION(__LINE__, kappa > 0._RKC, SK_"@getGenGammaLogPDFNF(): The condition `kappa > 0.` must hold. kappa = "//getStr(kappa)) ! fpp
         CHECK_ASSERTION(__LINE__, invOmega > 0._RKC, SK_"@setGenGammaLogPDF(): The condition `invOmega > 0.` must hold. invOmega = "//getStr(invOmega)) ! fpp
         CHECK_ASSERTION(__LINE__, invSigma > 0._RKC, SK_"@setGenGammaLogPDF(): The condition `invSigma > 0.` must hold. invSigma = "//getStr(invSigma)) ! fpp
-        CHECK_ASSERTION(__LINE__, abs(getGenGammaLogPDFNF(kappa, invOmega, invSigma) - logNormFac) <= 100 * epsilon(0._RKC), \
-        SK_"@setGenGammaLogPDF(): The condition `abs(getGenGammaLogPDFNF(kappa, invOmega, invSigma) - logNormFac) <= 100 * epsilon(0._RKC)` must hold. getGenGammaLogPDFNF(kappa, invOmega, invSigma), logNormFac = " \
-        //getStr([getGenGammaLogPDFNF(kappa, invOmega, invSigma), logNormFac])) ! fpp
-        logPDF = logNormFac + log(y) * (kappa * invOmega - 1._RKC) - y**invOmega
+        CHECK_ASSERTION(__LINE__, abs(getGenGammaLogPDFNF(kappa, invOmega, invSigma) - logPDFNF) <= 100 * epsilon(0._RKC), \
+        SK_"@setGenGammaLogPDF(): The condition `abs(getGenGammaLogPDFNF(kappa, invOmega, invSigma) - logPDFNF) <= 100 * epsilon(0._RKC)` must hold. getGenGammaLogPDFNF(kappa, invOmega, invSigma), logPDFNF = " \
+        //getStr([getGenGammaLogPDFNF(kappa, invOmega, invSigma), logPDFNF])) ! fpp
+        logPDF = logPDFNF + log(y) * (kappa * invOmega - 1._RKC) - y**invOmega
 
         !%%%%%%%%%%%%%%%%%%%%%
 #elif   getGenGammaCDF_ENABLED

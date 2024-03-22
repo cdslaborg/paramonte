@@ -12,7 +12,7 @@ program example
     disp = display_type(file = "main.out.F90")
 
     block
-        use pm_kind, only: RKC => RKS ! All other real types are also supported, e.g., RK32, RK64, RK128.
+        use pm_kind, only: RKC => RKS ! All other real types are also supported.
         integer(RKC), allocatable :: weight(:)
         real(RKC) :: correction
         do itry = 1, ntry

@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK, LK
-    use pm_kind, only: RK, RK32, RK64, RK128
+    use pm_kind, only: RK, RKS, RKD, RKH
     use pm_io, only: display_type
     use pm_distBern, only: isHead
 
@@ -25,16 +25,16 @@ program example
     call disp%show( isHead(size = 5_IK) )
     call disp%skip()
 
-    call disp%show("isHead(p = 0.5_RK32) ! flip a fair coin with real-32bit precision.")
-    call disp%show( isHead(p = 0.5_RK32) )
+    call disp%show("isHead(p = 0.5_RKS) ! flip a fair coin with real-32bit precision.")
+    call disp%show( isHead(p = 0.5_RKS) )
     call disp%skip()
 
-    call disp%show("isHead(p = 0.5_RK64) ! flip a fair coin with real-64bit precision.")
-    call disp%show( isHead(p = 0.5_RK64) )
+    call disp%show("isHead(p = 0.5_RKD) ! flip a fair coin with real-64bit precision.")
+    call disp%show( isHead(p = 0.5_RKD) )
     call disp%skip()
 
-    call disp%show("isHead(p = 0.5_RK128) ! flip a fair coin with real-128bit precision.")
-    call disp%show( isHead(p = 0.5_RK128) )
+    call disp%show("isHead(p = 0.5_RKH) ! flip a fair coin with real-128bit precision.")
+    call disp%show( isHead(p = 0.5_RKH) )
     call disp%skip()
 
     call disp%show("isHead(0.25) ! flip an unfair coin with 0.25 odds of success.")

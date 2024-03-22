@@ -82,7 +82,7 @@ program example
     end block
 
     block
-        use pm_kind, only: CKC => CK32
+        use pm_kind, only: CKC => CKS
         complex(CKC), allocatable :: array(:), cumsum(:)
         call disp%skip
         call disp%show("array = cmplx([real(CKC) :: 1, 2, 3, 4], -[real(CKC) :: 1, 2, 3, 4], CKC)")
@@ -113,7 +113,7 @@ program example
     end block
 
     block
-        use pm_kind, only: CKC => CK32
+        use pm_kind, only: CKC => CKS
         complex(CKC), allocatable :: array(:), cumsum(:), reference(:)
         call disp%skip
         call disp%show("reference = cmplx([real(CKC) :: 1, 2, 3, 4], -[real(CKC) :: 1, 2, 3, 4], CKC)")

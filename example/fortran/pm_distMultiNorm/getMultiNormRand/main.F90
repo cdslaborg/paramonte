@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK
-    use pm_kind, only: IK, LK, RKC => RK32 ! all real kinds are supported.
+    use pm_kind, only: IK, LK, RKC => RKS ! all real kinds are supported.
     use pm_io, only: display_type
     use pm_matrixChol, only: getMatChol, uppDia
     use pm_distMultiNorm, only: getMultiNormRand

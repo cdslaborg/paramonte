@@ -1,8 +1,8 @@
 program example
 
     use pm_kind, only: SK, IK, LK
-    use pm_kind, only: CKC => CK32 ! all processor types and kinds are supported.
-    use pm_kind, only: RKC => RK32 ! all processor types and kinds are supported.
+    use pm_kind, only: CKC => CKS ! all processor types and kinds are supported.
+    use pm_kind, only: RKC => RKS ! all processor types and kinds are supported.
     use pm_matrixMulTri, only: upperDiag, lowerDiag
     use pm_matrixMulTri, only: upperUnit, lowerUnit
     use pm_matrixMulTri, only: transSymm, transHerm

@@ -140,8 +140,6 @@
 #elif   getPowerLogRand_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%
 
-        use pm_distNegExp, only: getNegExpRand
-        use pm_distPower, only: getPowerLogCDFNF
 #if     ALD_ENABLED
         call setPowerLogRand(logRand, getNegExpRand(1._RKC), alpha, getPowerLogCDFNF(alpha, logMaxX))
 #elif   ALL_ENABLED
@@ -155,7 +153,6 @@
 #elif   setPowerLogRand_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%
 
-        use pm_distPower, only: setPowerLogQuan
         CHECK_ASSERTION(__LINE__, alpha > 0._RKC, SK_"@setPowerLogRand(): The condition `alpha > 0._RKC` must hold. alpha = "//getStr(alpha))
         CHECK_ASSERTION(__LINE__, negExpRand <= 0._RKC, SK_"@setPowerLogRand(): The condition `negExpRand <= 0._RKC` must hold. alpha = "//getStr(negExpRand))
 #if     LNALD_ENABLED

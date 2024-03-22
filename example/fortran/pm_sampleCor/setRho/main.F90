@@ -36,7 +36,7 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: RKC => RKS ! All other real types are also supported, e.g., RK32, RK64, RK128.
+        use pm_kind, only: RKC => RKS ! All other real types are also supported.
         integer(IK) :: ndim, nsam
         real(RKC), allocatable :: sample(:,:)
         format = getFormat(mold = [0._RKC], ed = SK_"es", signed = .true._LK)
@@ -107,7 +107,7 @@ program example
 
     block
         use pm_arrayVerbose, only: getVerbose
-        use pm_kind, only: RKC => RKS ! All other real types are also supported, e.g., RK32, RK64, RK128.
+        use pm_kind, only: RKC => RKS ! All other real types are also supported.
         integer(IK) :: ndim, nsam
         integer(IK), allocatable :: iweight(:)
         real(RKC), allocatable :: sample(:,:)

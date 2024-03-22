@@ -28,7 +28,7 @@ program example
     end block
 
     block
-        use pm_kind, only: CKC => CK32
+        use pm_kind, only: CKC => CKS
         complex(CKC), allocatable :: array(:)
         call disp%skip
         call disp%show("array = cmplx([real(CKC) :: 1, 2, 3, 4], -[real(CKC) :: 1, 2, 3, 4], CKC)")
@@ -45,7 +45,7 @@ program example
     end block
 
     block
-        use pm_kind, only: RKC => RK32
+        use pm_kind, only: RKC => RKS
         real(RKC), allocatable :: array(:)
         call disp%skip
         call disp%show("array = [1, 2, 3, 4]")

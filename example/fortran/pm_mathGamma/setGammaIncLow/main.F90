@@ -3,28 +3,28 @@ program example
     use pm_kind, only: SK
     use pm_kind, only: IK
     use pm_kind, only: LK
-    use pm_kind, only: RK32, RK64, RK128
+    use pm_kind, only: RKS, RKD, RKH
     use pm_io, only: display_type
     use pm_mathGamma, only: setGammaIncLow
 
     implicit none
 
     integer(IK) , parameter :: NP = 1000_IK
-    real(RK128)             :: gamIncLow_RK128, x_RK128, kappa_RK128
-    real(RK64 )             :: gamIncLow_RK64 , x_RK64 , kappa_RK64
-    real(RK32 )             :: gamIncLow_RK32 , x_RK32 , kappa_RK32
+    real(RKH)               :: gamIncLow_RKH, x_RKH, kappa_RKH
+    real(RKD)               :: gamIncLow_RKD, x_RKD, kappa_RKD
+    real(RKS)               :: gamIncLow_RKS, x_RKS, kappa_RKS
     integer(IK)             :: info
 
     type(display_type) :: disp
     disp = display_type(file = "main.out.F90")
 
-    kappa_RK128 = 1.5_RK128
-    kappa_RK64  = 1.5_RK64
-    kappa_RK32  = 1.5_RK32
+    kappa_RKH = 1.5_RKH
+    kappa_RKD = 1.5_RKD
+    kappa_RKS = 1.5_RKS
 
-    x_RK128 = 2._RK128
-    x_RK64  = 2._RK64
-    x_RK32  = 2._RK32
+    x_RKH = 2._RKH
+    x_RKD = 2._RKD
+    x_RKS = 2._RKS
 
     call disp%skip()
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
@@ -35,40 +35,40 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("x_RK32")
-    call disp%show( x_RK32 )
-    call disp%show("kappa_RK32")
-    call disp%show( kappa_RK32 )
-    call disp%show("call setGammaIncLow(gamIncLow_RK32, x_RK32, logGammaKappa = log_gamma(kappa_RK32), kappa = kappa_RK32, info = info)")
-                    call setGammaIncLow(gamIncLow_RK32, x_RK32, logGammaKappa = log_gamma(kappa_RK32), kappa = kappa_RK32, info = info)
-    call disp%show("gamIncLow_RK32")
-    call disp%show( gamIncLow_RK32 )
+    call disp%show("x_RKS")
+    call disp%show( x_RKS )
+    call disp%show("kappa_RKS")
+    call disp%show( kappa_RKS )
+    call disp%show("call setGammaIncLow(gamIncLow_RKS, x_RKS, logGammaKappa = log_gamma(kappa_RKS), kappa = kappa_RKS, info = info)")
+                    call setGammaIncLow(gamIncLow_RKS, x_RKS, logGammaKappa = log_gamma(kappa_RKS), kappa = kappa_RKS, info = info)
+    call disp%show("gamIncLow_RKS")
+    call disp%show( gamIncLow_RKS )
     call disp%show("info")
     call disp%show( info )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("x_RK64")
-    call disp%show( x_RK64 )
-    call disp%show("kappa_RK64")
-    call disp%show( kappa_RK64 )
-    call disp%show("call setGammaIncLow(gamIncLow_RK64, x_RK64, logGammaKappa = log_gamma(kappa_RK64), kappa = kappa_RK64, info = info)")
-                    call setGammaIncLow(gamIncLow_RK64, x_RK64, logGammaKappa = log_gamma(kappa_RK64), kappa = kappa_RK64, info = info)
-    call disp%show("gamIncLow_RK64")
-    call disp%show( gamIncLow_RK64 )
+    call disp%show("x_RKD")
+    call disp%show( x_RKD)
+    call disp%show("kappa_RKD")
+    call disp%show( kappa_RKD)
+    call disp%show("call setGammaIncLow(gamIncLow_RKD, x_RKD, logGammaKappa = log_gamma(kappa_RKD), kappa = kappa_RKD, info = info)")
+                    call setGammaIncLow(gamIncLow_RKD, x_RKD, logGammaKappa = log_gamma(kappa_RKD), kappa = kappa_RKD, info = info)
+    call disp%show("gamIncLow_RKD")
+    call disp%show( gamIncLow_RKD)
     call disp%show("info")
     call disp%show( info )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("x_RK128")
-    call disp%show( x_RK128 )
-    call disp%show("kappa_RK128")
-    call disp%show( kappa_RK128 )
-    call disp%show("call setGammaIncLow(gamIncLow_RK128, x_RK128, logGammaKappa = log_gamma(kappa_RK128), kappa = kappa_RK128, info = info)")
-                    call setGammaIncLow(gamIncLow_RK128, x_RK128, logGammaKappa = log_gamma(kappa_RK128), kappa = kappa_RK128, info = info)
-    call disp%show("gamIncLow_RK128")
-    call disp%show( gamIncLow_RK128 )
+    call disp%show("x_RKH")
+    call disp%show( x_RKH )
+    call disp%show("kappa_RKH")
+    call disp%show( kappa_RKH )
+    call disp%show("call setGammaIncLow(gamIncLow_RKH, x_RKH, logGammaKappa = log_gamma(kappa_RKH), kappa = kappa_RKH, info = info)")
+                    call setGammaIncLow(gamIncLow_RKH, x_RKH, logGammaKappa = log_gamma(kappa_RKH), kappa = kappa_RKH, info = info)
+    call disp%show("gamIncLow_RKH")
+    call disp%show( gamIncLow_RKH )
     call disp%show("info")
     call disp%show( info )
     call disp%skip()
@@ -80,14 +80,14 @@ program example
     block
 
         use pm_arraySpace, only: setLinSpace
-        real(RK32) :: x_RK32(NP)
+        real(RKS) :: x_RKS(NP)
         integer :: fileUnit, i
 
-        call setLinSpace(x_RK32, 0._RK32, 8._RK32)
+        call setLinSpace(x_RKS, 0._RKS, 8._RKS)
         open(newunit = fileUnit, file = "setGammaIncLow.RK.txt")
         do i = 1, NP
-            call setGammaIncLow(gamIncLow_RK32, x_RK32(i), logGammaKappa = log_gamma(kappa_RK32), kappa = kappa_RK32, info = info)
-            write(fileUnit,"(2(g0,:,' '))") x_RK32(i), gamIncLow_RK32
+            call setGammaIncLow(gamIncLow_RKS, x_RKS(i), logGammaKappa = log_gamma(kappa_RKS), kappa = kappa_RKS, info = info)
+            write(fileUnit,"(2(g0,:,' '))") x_RKS(i), gamIncLow_RKS
         end do
         close(fileUnit)
 

@@ -14,7 +14,7 @@ program example
     disp = display_type(file = "main.out.F90")
 
     block
-        use pm_kind, only: TKC => CK32
+        use pm_kind, only: TKC => CKS
         complex(TKC), allocatable :: coef(:)
         call disp%skip()
         call disp%show("allocate(coef(13))")
@@ -31,7 +31,7 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => RK32
+        use pm_kind, only: TKC => RKS
         real(TKC), allocatable :: coef(:)
         call disp%skip()
         call disp%show("allocate(coef(13))")
@@ -48,7 +48,7 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => RK32
+        use pm_kind, only: TKC => RKS
         real(TKC), allocatable :: coef(:)
         call disp%skip()
         call disp%show("allocate(coef(273))")

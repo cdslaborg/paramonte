@@ -10,14 +10,14 @@ program example
     implicit none
 
     integer(IK), parameter  :: NP = 1000_IK
-    real(RK), dimension(NP) :: LogX, Mu, InvSigma, LogPDF
+    real(RK), dimension(NP) :: logx, mu, invSigma, logPDF
 
     type(display_type) :: disp
     disp = display_type(file = "main.out.F90")
 
-    call setLinSpace(Mu, x1 = -5._RK, x2 = +5._RK)
-    call setLinSpace(LogX, x1 = log(0.0001_RK), x2 = log(5._RK))
-    call setLogSpace(InvSigma, logx1 = log(0.1_RK), logx2 = log(10._RK))
+    call setLinSpace(mu, x1 = -5._RK, x2 = +5._RK)
+    call setLinSpace(logx, x1 = log(0.0001_RK), x2 = log(5._RK))
+    call setLogSpace(invSigma, logx1 = log(0.1_RK), logx2 = log(10._RK))
 
     call disp%skip()
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
@@ -32,12 +32,12 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("LogX(NP/2)")
-    call disp%show( LogX(NP/2) )
-    call disp%show("call setLogNormLogPDF(LogPDF(1), LogX(NP/2))")
-                    call setLogNormLogPDF(LogPDF(1), LogX(NP/2))
-    call disp%show("LogPDF(1)")
-    call disp%show( LogPDF(1) )
+    call disp%show("logx(NP/2)")
+    call disp%show( logx(NP/2) )
+    call disp%show("call setLogNormLogPDF(logPDF(1), logx(NP/2))")
+                    call setLogNormLogPDF(logPDF(1), logx(NP/2))
+    call disp%show("logPDF(1)")
+    call disp%show( logPDF(1) )
     call disp%skip()
 
     call disp%skip()
@@ -47,14 +47,14 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("Mu(1)")
-    call disp%show( Mu(1) )
-    call disp%show("LogX(1)")
-    call disp%show( LogX(1) )
-    call disp%show("call setLogNormLogPDF(LogPDF(1), LogX(1), Mu(1))")
-                    call setLogNormLogPDF(LogPDF(1), LogX(1), Mu(1))
-    call disp%show("LogPDF(1)")
-    call disp%show( LogPDF(1) )
+    call disp%show("mu(1)")
+    call disp%show( mu(1) )
+    call disp%show("logx(1)")
+    call disp%show( logx(1) )
+    call disp%show("call setLogNormLogPDF(logPDF(1), logx(1), mu(1))")
+                    call setLogNormLogPDF(logPDF(1), logx(1), mu(1))
+    call disp%show("logPDF(1)")
+    call disp%show( logPDF(1) )
     call disp%skip()
 
     call disp%skip()
@@ -64,14 +64,14 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("InvSigma(1)")
-    call disp%show( InvSigma(1) )
-    call disp%show("LogX(1)")
-    call disp%show( LogX(1) )
-    call disp%show("call setLogNormLogPDF(LogPDF(1), LogX(1), InvSigma(1), log(InvSigma(1)))")
-                    call setLogNormLogPDF(LogPDF(1), LogX(1), InvSigma(1), log(InvSigma(1)))
-    call disp%show("LogPDF(1)")
-    call disp%show( LogPDF(1) )
+    call disp%show("invSigma(1)")
+    call disp%show( invSigma(1) )
+    call disp%show("logx(1)")
+    call disp%show( logx(1) )
+    call disp%show("call setLogNormLogPDF(logPDF(1), logx(1), invSigma(1), log(invSigma(1)))")
+                    call setLogNormLogPDF(logPDF(1), logx(1), invSigma(1), log(invSigma(1)))
+    call disp%show("logPDF(1)")
+    call disp%show( logPDF(1) )
     call disp%skip()
 
     call disp%skip()
@@ -81,16 +81,16 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("Mu(1)")
-    call disp%show( Mu(1) )
-    call disp%show("InvSigma(1)")
-    call disp%show( InvSigma(1) )
-    call disp%show("LogX(1)")
-    call disp%show( LogX(1) )
-    call disp%show("call setLogNormLogPDF(LogPDF(1), LogX(1), Mu(1), InvSigma(1), log(InvSigma(1)))")
-                    call setLogNormLogPDF(LogPDF(1), LogX(1), Mu(1), InvSigma(1), log(InvSigma(1)))
-    call disp%show("LogPDF(1)")
-    call disp%show( LogPDF(1) )
+    call disp%show("mu(1)")
+    call disp%show( mu(1) )
+    call disp%show("invSigma(1)")
+    call disp%show( invSigma(1) )
+    call disp%show("logx(1)")
+    call disp%show( logx(1) )
+    call disp%show("call setLogNormLogPDF(logPDF(1), logx(1), mu(1), invSigma(1), log(invSigma(1)))")
+                    call setLogNormLogPDF(logPDF(1), logx(1), mu(1), invSigma(1), log(invSigma(1)))
+    call disp%show("logPDF(1)")
+    call disp%show( logPDF(1) )
     call disp%skip()
 
     call disp%skip()
@@ -100,16 +100,16 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("Mu(1)")
-    call disp%show( Mu(1) )
-    call disp%show("InvSigma(1)")
-    call disp%show( InvSigma(1) )
-    call disp%show("LogX(1:NP:NP/5)")
-    call disp%show( LogX(1:NP:NP/5) )
-    call disp%show("call setLogNormLogPDF(LogPDF(1:NP:NP/5), LogX(1:NP:NP/5), Mu(1), InvSigma(1), log(InvSigma(1)))")
-                    call setLogNormLogPDF(LogPDF(1:NP:NP/5), LogX(1:NP:NP/5), Mu(1), InvSigma(1), log(InvSigma(1)))
-    call disp%show("LogPDF(1:NP:NP/5)")
-    call disp%show( LogPDF(1:NP:NP/5) )
+    call disp%show("mu(1)")
+    call disp%show( mu(1) )
+    call disp%show("invSigma(1)")
+    call disp%show( invSigma(1) )
+    call disp%show("logx(1:NP:NP/5)")
+    call disp%show( logx(1:NP:NP/5) )
+    call disp%show("call setLogNormLogPDF(logPDF(1:NP:NP/5), logx(1:NP:NP/5), mu(1), invSigma(1), log(invSigma(1)))")
+                    call setLogNormLogPDF(logPDF(1:NP:NP/5), logx(1:NP:NP/5), mu(1), invSigma(1), log(invSigma(1)))
+    call disp%show("logPDF(1:NP:NP/5)")
+    call disp%show( logPDF(1:NP:NP/5) )
     call disp%skip()
 
     call disp%skip()
@@ -119,16 +119,16 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("Mu(1:NP:NP/5)")
-    call disp%show( Mu(1:NP:NP/5) )
-    call disp%show("InvSigma(1:NP:NP/5)")
-    call disp%show( InvSigma(1:NP:NP/5) )
-    call disp%show("LogX(1)")
-    call disp%show( LogX(1) )
-    call disp%show("call setLogNormLogPDF(LogPDF(1:NP:NP/5), LogX(1), Mu(1:NP:NP/5), InvSigma(1:NP:NP/5), log(InvSigma(1:NP:NP/5)))")
-                    call setLogNormLogPDF(LogPDF(1:NP:NP/5), LogX(1), Mu(1:NP:NP/5), InvSigma(1:NP:NP/5), log(InvSigma(1:NP:NP/5)))
-    call disp%show("LogPDF(1:NP:NP/5)")
-    call disp%show( LogPDF(1:NP:NP/5) )
+    call disp%show("mu(1:NP:NP/5)")
+    call disp%show( mu(1:NP:NP/5) )
+    call disp%show("invSigma(1:NP:NP/5)")
+    call disp%show( invSigma(1:NP:NP/5) )
+    call disp%show("logx(1)")
+    call disp%show( logx(1) )
+    call disp%show("call setLogNormLogPDF(logPDF(1:NP:NP/5), logx(1), mu(1:NP:NP/5), invSigma(1:NP:NP/5), log(invSigma(1:NP:NP/5)))")
+                    call setLogNormLogPDF(logPDF(1:NP:NP/5), logx(1), mu(1:NP:NP/5), invSigma(1:NP:NP/5), log(invSigma(1:NP:NP/5)))
+    call disp%show("logPDF(1:NP:NP/5)")
+    call disp%show( logPDF(1:NP:NP/5) )
     call disp%skip()
 
     call disp%skip()
@@ -138,29 +138,29 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("Mu(1:NP:NP/5)")
-    call disp%show( Mu(1:NP:NP/5) )
-    call disp%show("InvSigma(1:NP:NP/5)")
-    call disp%show( InvSigma(1:NP:NP/5) )
-    call disp%show("LogX(1:NP:NP/5)")
-    call disp%show( LogX(1:NP:NP/5) )
-    call disp%show("call setLogNormLogPDF(LogPDF(1:NP:NP/5), LogX(1:NP:NP/5), Mu(1:NP:NP/5), InvSigma(1:NP:NP/5), log(InvSigma(1:NP:NP/5)))")
-                    call setLogNormLogPDF(LogPDF(1:NP:NP/5), LogX(1:NP:NP/5), Mu(1:NP:NP/5), InvSigma(1:NP:NP/5), log(InvSigma(1:NP:NP/5)))
-    call disp%show("LogPDF(1:NP:NP/5)")
-    call disp%show( LogPDF(1:NP:NP/5) )
+    call disp%show("mu(1:NP:NP/5)")
+    call disp%show( mu(1:NP:NP/5) )
+    call disp%show("invSigma(1:NP:NP/5)")
+    call disp%show( invSigma(1:NP:NP/5) )
+    call disp%show("logx(1:NP:NP/5)")
+    call disp%show( logx(1:NP:NP/5) )
+    call disp%show("call setLogNormLogPDF(logPDF(1:NP:NP/5), logx(1:NP:NP/5), mu(1:NP:NP/5), invSigma(1:NP:NP/5), log(invSigma(1:NP:NP/5)))")
+                    call setLogNormLogPDF(logPDF(1:NP:NP/5), logx(1:NP:NP/5), mu(1:NP:NP/5), invSigma(1:NP:NP/5), log(invSigma(1:NP:NP/5)))
+    call disp%show("logPDF(1:NP:NP/5)")
+    call disp%show( logPDF(1:NP:NP/5) )
     call disp%skip()
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    ! Output an example LogPDF array for visualization.
+    ! Output an example logPDF array for visualization.
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     block
         integer(IK) :: fileUnit, i
-        real(RK), parameter :: InvSigma(*) = 1._RK / [2.00_RK, 1.00_RK, 0.50_RK, 0.25_RK]
+        real(RK), parameter :: invSigma(*) = 1._RK / [2.00_RK, 1.00_RK, 0.50_RK, 0.25_RK]
         open(newunit = fileUnit, file = "setLogNormLogPDF.RK.txt")
         do i = 1, NP
-            call setLogNormLogPDF(LogPDF(1:4), LogX(i), +0._RK, InvSigma, log(InvSigma))
-            write(fileUnit, "(*(E20.8e4,:,' '))") exp(LogX(i)), exp(LogPDF(1:4))
+            call setLogNormLogPDF(logPDF(1:4), logx(i), +0._RK, invSigma, log(invSigma))
+            write(fileUnit, "(*(E20.8e4,:,' '))") exp(logx(i)), exp(logPDF(1:4))
         end do
         close(fileUnit)
     end block

@@ -121,10 +121,10 @@ module pm_container
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
-    !>  This is the [css_type](@ref css_type) type for generating instances of <b>c</b>ontainer of <b>s</b>calar of <b>s</b>tring objects.<br>
+    !>  This is the [css_type](@ref pm_container::css_type) type for generating instances of <b>c</b>ontainer of <b>s</b>calar of <b>s</b>tring objects.<br>
     !>
     !>  \details
-    !>  The [css_type](@ref css_type) container is widely known as **varying string** or **string container** within the Fortran language.<br>
+    !>  The [css_type](@ref pm_container::css_type) container is widely known as **varying string** or **string container** within the Fortran language.<br>
     !>  The constructor of this derived type takes the following arguments.<br>
     !>
     !>  \param[in]  val     :   The input scalar or array of arbitrary rank of type `character` of default kind \SK.<br>
@@ -134,7 +134,7 @@ module pm_container
     !>                          (**optional**, default = `.false.`, i.e., the trailing blanks in all input `val` will be trimmed).
     !>
     !>  \return
-    !>  `container`         :   The output object of type [css_type](@ref css_type) of the same kind, rank, and shape
+    !>  `container`         :   The output object of type [css_type](@ref pm_container::css_type) of the same kind, rank, and shape
     !>                          as the input `val`, each element of which contains the corresponding element of the input `val`.
     !>
     !>  \interface{css_type}
@@ -209,7 +209,7 @@ module pm_container
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
-    !>  This is the [csi_type](@ref csi_type) type for generating instances of <b>c</b>ontainer of <b>s</b>calar of <b>i</b>nteger objects.<br>
+    !>  This is the [csi_type](@ref pm_container::csi_type) type for generating instances of <b>c</b>ontainer of <b>s</b>calar of <b>i</b>nteger objects.<br>
     !>
     !>  \details
     !>  The constructor of this derived type takes the following arguments.<br>
@@ -217,7 +217,7 @@ module pm_container
     !>  \param[in]  val     :   The input scalar or array of arbitrary rank of type `integer` of default kind \LK.<br>
     !>
     !>  \return
-    !>  `container`         :   The output object of type [csi_type](@ref csi_type) of the same kind, rank, and shape
+    !>  `container`         :   The output object of type [csi_type](@ref pm_container::csi_type) of the same kind, rank, and shape
     !>                          as the input `val`, each element of which contains the corresponding element of the input `val`.
     !>
     !>  \interface{csi_type}
@@ -278,7 +278,7 @@ module pm_container
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
-    !>  This is the [csl_type](@ref csl_type) type for generating instances of <b>c</b>ontainer of <b>s</b>calar of <b>l</b>ogical objects.<br>
+    !>  This is the [csl_type](@ref pm_container::csl_type) type for generating instances of <b>c</b>ontainer of <b>s</b>calar of <b>l</b>ogical objects.<br>
     !>
     !>  \details
     !>  The constructor of this derived type takes the following arguments.<br>
@@ -286,7 +286,7 @@ module pm_container
     !>  \param[in]  val     :   The input scalar or array of arbitrary rank of type `logical` of default kind \LK.<br>
     !>
     !>  \return
-    !>  `container`         :   The output object of type [csl_type](@ref csl_type) of the same kind, rank, and shape
+    !>  `container`         :   The output object of type [csl_type](@ref pm_container::csl_type) of the same kind, rank, and shape
     !>                          as the input `val`, each element of which contains the corresponding element of the input `val`.
     !>
     !>  \interface{csl_type}
@@ -347,7 +347,7 @@ module pm_container
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
-    !>  This is the [csc_type](@ref csc_type) type for generating instances of <b>c</b>ontainer of <b>s</b>calar of <b>l</b>ogical objects.<br>
+    !>  This is the [csc_type](@ref pm_container::csc_type) type for generating instances of <b>c</b>ontainer of <b>s</b>calar of <b>l</b>ogical objects.<br>
     !>
     !>  \details
     !>  The constructor of this derived type takes the following arguments.<br>
@@ -355,7 +355,7 @@ module pm_container
     !>  \param[in]  val     :   The input scalar or array of arbitrary rank of type `complex` of default kind \CK.<br>
     !>
     !>  \return
-    !>  `container`         :   The output object of type [csc_type](@ref csc_type) of the same kind, rank, and shape
+    !>  `container`         :   The output object of type [csc_type](@ref pm_container::csc_type) of the same kind, rank, and shape
     !>                          as the input `val`, each element of which contains the corresponding element of the input `val`.
     !>
     !>  \interface{csc_type}
@@ -416,7 +416,7 @@ module pm_container
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
-    !>  This is the [csr_type](@ref csr_type) type for generating instances of <b>c</b>ontainer of <b>s</b>calar of <b>l</b>ogical objects.<br>
+    !>  This is the [csr_type](@ref pm_container::csr_type) type for generating instances of <b>c</b>ontainer of <b>s</b>calar of <b>l</b>ogical objects.<br>
     !>
     !>  \details
     !>  The constructor of this derived type takes the following arguments.<br>
@@ -424,7 +424,7 @@ module pm_container
     !>  \param[in]  val     :   The input scalar or array of arbitrary rank of type `real` of default kind \RK.<br>
     !>
     !>  \return
-    !>  `container`         :   The output object of type [csr_type](@ref csr_type) of the same kind, rank, and shape
+    !>  `container`         :   The output object of type [csr_type](@ref pm_container::csr_type) of the same kind, rank, and shape
     !>                          as the input `val`, each element of which contains the corresponding element of the input `val`.
     !>
     !>  \interface{csr_type}
@@ -485,7 +485,7 @@ module pm_container
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
-    !>  This is the [csp_type](@ref csp_type) type for generating instances of <b>c</b>ontainer of <b>s</b>calar unlimited <b>p</b>olymorphic objects.<br>
+    !>  This is the [csp_type](@ref pm_container::csp_type) type for generating instances of <b>c</b>ontainer of <b>s</b>calar unlimited <b>p</b>olymorphic objects.<br>
     !>
     !>  \details
     !>  The constructor of this derived type takes the following arguments.<br>
@@ -493,7 +493,7 @@ module pm_container
     !>  \param[in]  val     :   The input scalar or array of arbitrary rank of any type of any kind.<br>
     !>
     !>  \return
-    !>  `container`         :   The output object of type [csp_type](@ref csp_type) of the same kind, rank, and shape
+    !>  `container`         :   The output object of type [csp_type](@ref pm_container::csp_type) of the same kind, rank, and shape
     !>                          as the input `val`, each element of which contains the corresponding element of the input `val`.
     !>
     !>  \interface{csp_type}
@@ -717,10 +717,10 @@ module pm_container
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
-    !>  This is the [css_pdt](@ref css_pdt) parameterized type for generating instances of <b>c</b>ontainer of <b>s</b>calar of <b>s</b>tring objects of kind \SKALL.<br>
+    !>  This is the [css_pdt](@ref pm_container::css_pdt) parameterized type for generating instances of <b>c</b>ontainer of <b>s</b>calar of <b>s</b>tring objects of kind \SKALL.<br>
     !>
     !>  \details
-    !>  The [css_pdt](@ref css_pdt) container is widely known as **varying string** or **string container** within the Fortran language.<br>
+    !>  The [css_pdt](@ref pm_container::css_pdt) container is widely known as **varying string** or **string container** within the Fortran language.<br>
     !>  The constructor of this derived type takes the following arguments.<br>
     !>
     !>  \param[in]  val     :   The input scalar or array of arbitrary rank of type `character` of kind \SKALL.<br>
@@ -730,7 +730,7 @@ module pm_container
     !>                          (**optional**, default = `.false.`, i.e., all input `val` will be left-adjusted and trimmed).
     !>
     !>  \return
-    !>  `container`         :   The output object of type [css_pdt(kind(val)](@ref css_pdt) of the same kind, rank, and shape
+    !>  `container`         :   The output object of type [css_pdt(kind(val)](@ref pm_container::css_pdt) of the same kind, rank, and shape
     !>                          as the input `val`, each element of which contains the corresponding element of the input `val`.
     !>
     !>  \interface{css_pdt}
@@ -881,7 +881,7 @@ module pm_container
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
-    !>  This is the [csi_pdt](@ref csi_pdt) parameterized type for generating instances of <b>c</b>ontainer of <b>s</b>calar of <b>i</b>nteger objects of kind \IKALL.<br>
+    !>  This is the [csi_pdt](@ref pm_container::csi_pdt) parameterized type for generating instances of <b>c</b>ontainer of <b>s</b>calar of <b>i</b>nteger objects of kind \IKALL.<br>
     !>
     !>  \details
     !>  The constructor of this derived type takes the following arguments.<br>
@@ -889,7 +889,7 @@ module pm_container
     !>  \param[in]  val     :   The input scalar or array of arbitrary rank of type `integer` of kind \IKALL.<br>
     !>
     !>  \return
-    !>  `container`         :   The output object of type [csi_pdt(kind(val))](@ref csi_pdt) of the same kind, rank, and shape
+    !>  `container`         :   The output object of type [csi_pdt(kind(val))](@ref pm_container::csi_pdt) of the same kind, rank, and shape
     !>                          as the input `val`, each element of which contains the corresponding element of the input `val`.
     !>
     !>  \interface{csi_pdt}
@@ -1020,7 +1020,7 @@ module pm_container
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
-    !>  This is the [csl_pdt](@ref csl_pdt) parameterized type for generating instances of <b>c</b>ontainer of <b>s</b>calar of <b>l</b>ogical objects of kind \LKALL.<br>
+    !>  This is the [csl_pdt](@ref pm_container::csl_pdt) parameterized type for generating instances of <b>c</b>ontainer of <b>s</b>calar of <b>l</b>ogical objects of kind \LKALL.<br>
     !>
     !>  \details
     !>  The constructor of this derived type takes the following arguments.<br>
@@ -1028,7 +1028,7 @@ module pm_container
     !>  \param[in]  val     :   The input scalar or array of arbitrary rank of type `integer` of kind \LKALL.<br>
     !>
     !>  \return
-    !>  `container`         :   The output object of type [csl_pdt(kind(val))](@ref csl_pdt) of the same kind, rank, and shape
+    !>  `container`         :   The output object of type [csl_pdt(kind(val))](@ref pm_container::csl_pdt) of the same kind, rank, and shape
     !>                          as the input `val`, each element of which contains the corresponding element of the input `val`.
     !>
     !>  \interface{csl_pdt}
@@ -1159,7 +1159,7 @@ module pm_container
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
-    !>  This is the [csc_pdt](@ref csc_pdt) parameterized type for generating instances of <b>c</b>ontainer of <b>s</b>calar of <b>c</b>omplex objects of kind \CKALL.<br>
+    !>  This is the [csc_pdt](@ref pm_container::csc_pdt) parameterized type for generating instances of <b>c</b>ontainer of <b>s</b>calar of <b>c</b>omplex objects of kind \CKALL.<br>
     !>
     !>  \details
     !>  The constructor of this derived type takes the following arguments.<br>
@@ -1167,7 +1167,7 @@ module pm_container
     !>  \param[in]  val     :   The input scalar or array of arbitrary rank of type `complex` of kind \CKALL.<br>
     !>
     !>  \return
-    !>  `container`         :   The output object of type [csc_pdt(kind(val))](@ref csc_pdt) of the same kind, rank, and shape
+    !>  `container`         :   The output object of type [csc_pdt(kind(val))](@ref pm_container::csc_pdt) of the same kind, rank, and shape
     !>                          as the input `val`, each element of which contains the corresponding element of the input `val`.
     !>
     !>  \interface{csc_pdt}
@@ -1298,7 +1298,7 @@ module pm_container
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
-    !>  This is the [csr_pdt](@ref csr_pdt) parameterized type for generating instances of <b>c</b>ontainer of <b>s</b>calar of <b>r</b>eal objects of kind \RKALL.<br>
+    !>  This is the [csr_pdt](@ref pm_container::csr_pdt) parameterized type for generating instances of <b>c</b>ontainer of <b>s</b>calar of <b>r</b>eal objects of kind \RKALL.<br>
     !>
     !>  \details
     !>  The constructor of this derived type takes the following arguments.<br>
@@ -1306,7 +1306,7 @@ module pm_container
     !>  \param[in]  val     :   The input scalar or array of arbitrary rank of type `complex` of kind \RKALL.<br>
     !>
     !>  \return
-    !>  `container`         :   The output object of type [csr_pdt(kind(val))](@ref csr_pdt) of the same kind, rank, and shape
+    !>  `container`         :   The output object of type [csr_pdt(kind(val))](@ref pm_container::csr_pdt) of the same kind, rank, and shape
     !>                          as the input `val`, each element of which contains the corresponding element of the input `val`.
     !>
     !>  \interface{csr_pdt}
@@ -1442,21 +1442,21 @@ module pm_container
     !>
     !>  \param[in]  con1    :   The input scalar or array of the same rank and shape as the input array-like `con2` of,
     !>                          <ol>
-    !>                              <li>    type [css_type](@ref css_type)
-    !>                              <li>    type [csi_type](@ref csi_type)
-    !>                              <li>    type [csl_type](@ref csl_type)
-    !>                              <li>    type [csc_type](@ref csc_type)
-    !>                              <li>    type [csr_type](@ref csr_type)
-    !>                              <li>    type [css_pdt](@ref css_pdt)
-    !>                              <li>    type [csi_pdt](@ref csi_pdt)
-    !>                              <li>    type [csl_pdt](@ref csl_pdt)
-    !>                              <li>    type [csc_pdt](@ref csc_pdt)
-    !>                              <li>    type [csr_pdt](@ref csr_pdt)
+    !>                              <li>    type [css_type](@ref pm_container::css_type)
+    !>                              <li>    type [csi_type](@ref pm_container::csi_type)
+    !>                              <li>    type [csl_type](@ref pm_container::csl_type)
+    !>                              <li>    type [csc_type](@ref pm_container::csc_type)
+    !>                              <li>    type [csr_type](@ref pm_container::csr_type)
+    !>                              <li>    type [css_pdt](@ref pm_container::css_pdt)
+    !>                              <li>    type [csi_pdt](@ref pm_container::csi_pdt)
+    !>                              <li>    type [csl_pdt](@ref pm_container::csl_pdt)
+    !>                              <li>    type [csc_pdt](@ref pm_container::csc_pdt)
+    !>                              <li>    type [csr_pdt](@ref pm_container::csr_pdt)
     !>                          </ol>
     !>  \param[in]  con2    :   The input scalar, or array of the same rank as the input array-like `con1`, of the same type and kind as `con1`.<br>
     !>
     !>  \return
-    !>  `less`              :   The output scalar or array of the same shape as the input array-like arguments of
+    !>  `itis`              :   The output scalar or array of the same shape as the input array-like arguments of
     !>                          type `logical` of default kind \LK containing the result of the comparison of the
     !>                          values of the two input containers of scalar values via the `<` operator.
     !>
@@ -1464,9 +1464,9 @@ module pm_container
     !>  \code{.F90}
     !>
     !>      use pm_container, only: operator(<)
-    !>      logical(LK) :: less
+    !>      logical(LK) :: itis
     !>
-    !>      less = con1 <= con2
+    !>      itis = con1 <= con2
     !>
     !>  \endcode
     !>
@@ -1514,359 +1514,359 @@ module pm_container
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    pure elemental module function isless_D0_D0_BSSK(con1, con2) result(less)
+    pure elemental module function isless_D0_D0_BSSK(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_BSSK
 #endif
         type(css_type)          , intent(in)                :: con1
         type(css_type)          , intent(in)                :: con2
-        logical(LK)                                         :: less
+        logical(LK)                                         :: itis
     end function
 
-    pure elemental module function isless_D0_D0_BSIK(con1, con2) result(less)
+    pure elemental module function isless_D0_D0_BSIK(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_BSIK
 #endif
         type(csi_type)          , intent(in)                :: con1
         type(csi_type)          , intent(in)                :: con2
-        logical(LK)                                         :: less
+        logical(LK)                                         :: itis
     end function
 
-    pure elemental module function isless_D0_D0_BSLK(con1, con2) result(less)
+    pure elemental module function isless_D0_D0_BSLK(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_BSLK
 #endif
         type(csl_type)          , intent(in)                :: con1
         type(csl_type)          , intent(in)                :: con2
-        logical(LK)                                         :: less
+        logical(LK)                                         :: itis
     end function
 
-    pure elemental module function isless_D0_D0_BSCK(con1, con2) result(less)
+    pure elemental module function isless_D0_D0_BSCK(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_BSCK
 #endif
         type(csc_type)          , intent(in)                :: con1
         type(csc_type)          , intent(in)                :: con2
-        logical(LK)                                         :: less
+        logical(LK)                                         :: itis
     end function
 
-    pure elemental module function isless_D0_D0_BSRK(con1, con2) result(less)
+    pure elemental module function isless_D0_D0_BSRK(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_BSRK
 #endif
         type(csr_type)          , intent(in)                :: con1
         type(csr_type)          , intent(in)                :: con2
-        logical(LK)                                         :: less
+        logical(LK)                                         :: itis
     end function
 
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if SK5_ENABLED
-    pure elemental module function isless_D0_D0_PSSK5(con1, con2) result(less)
+    pure elemental module function isless_D0_D0_PSSK5(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSSK5
 #endif
         use pm_kind, only: SKC => SK5
         type(css_pdt(SKC))      , intent(in)                :: con1
         type(css_pdt(SKC))      , intent(in)                :: con2
-        logical(LK)                                         :: less
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if SK4_ENABLED
-    pure elemental module function isless_D0_D0_PSSK4(con1, con2) result(less)
+    pure elemental module function isless_D0_D0_PSSK4(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSSK4
 #endif
         use pm_kind, only: SKC => SK4
         type(css_pdt(SKC))      , intent(in)                :: con1
         type(css_pdt(SKC))      , intent(in)                :: con2
-        logical(LK)                                         :: less
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if SK3_ENABLED
-    pure elemental module function isless_D0_D0_PSSK3(con1, con2) result(less)
+    pure elemental module function isless_D0_D0_PSSK3(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSSK3
 #endif
         use pm_kind, only: SKC => SK3
         type(css_pdt(SKC))      , intent(in)                :: con1
         type(css_pdt(SKC))      , intent(in)                :: con2
-        logical(LK)                                         :: less
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if SK2_ENABLED
-    pure elemental module function isless_D0_D0_PSSK2(con1, con2) result(less)
+    pure elemental module function isless_D0_D0_PSSK2(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSSK2
 #endif
         use pm_kind, only: SKC => SK2
         type(css_pdt(SKC))      , intent(in)                :: con1
         type(css_pdt(SKC))      , intent(in)                :: con2
-        logical(LK)                                         :: less
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if SK1_ENABLED
-    pure elemental module function isless_D0_D0_PSSK1(con1, con2) result(less)
+    pure elemental module function isless_D0_D0_PSSK1(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSSK1
 #endif
         use pm_kind, only: SKC => SK1
         type(css_pdt(SKC))      , intent(in)                :: con1
         type(css_pdt(SKC))      , intent(in)                :: con2
-        logical(LK)                                         :: less
+        logical(LK)                                         :: itis
     end function
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if IK5_ENABLED
-    pure elemental module function isless_D0_D0_PSIK5(con1, con2) result(less)
+    pure elemental module function isless_D0_D0_PSIK5(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSIK5
 #endif
         use pm_kind, only: IKC => IK5
         type(csi_pdt(IKC))      , intent(in)                :: con1
         type(csi_pdt(IKC))      , intent(in)                :: con2
-        logical(LK)                                         :: less
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if IK4_ENABLED
-    pure elemental module function isless_D0_D0_PSIK4(con1, con2) result(less)
+    pure elemental module function isless_D0_D0_PSIK4(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSIK4
 #endif
         use pm_kind, only: IKC => IK4
         type(csi_pdt(IKC))      , intent(in)                :: con1
         type(csi_pdt(IKC))      , intent(in)                :: con2
-        logical(LK)                                         :: less
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if IK3_ENABLED
-    pure elemental module function isless_D0_D0_PSIK3(con1, con2) result(less)
+    pure elemental module function isless_D0_D0_PSIK3(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSIK3
 #endif
         use pm_kind, only: IKC => IK3
         type(csi_pdt(IKC))      , intent(in)                :: con1
         type(csi_pdt(IKC))      , intent(in)                :: con2
-        logical(LK)                                         :: less
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if IK2_ENABLED
-    pure elemental module function isless_D0_D0_PSIK2(con1, con2) result(less)
+    pure elemental module function isless_D0_D0_PSIK2(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSIK2
 #endif
         use pm_kind, only: IKC => IK2
         type(csi_pdt(IKC))      , intent(in)                :: con1
         type(csi_pdt(IKC))      , intent(in)                :: con2
-        logical(LK)                                         :: less
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if IK1_ENABLED
-    pure elemental module function isless_D0_D0_PSIK1(con1, con2) result(less)
+    pure elemental module function isless_D0_D0_PSIK1(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSIK1
 #endif
         use pm_kind, only: IKC => IK1
         type(csi_pdt(IKC))      , intent(in)                :: con1
         type(csi_pdt(IKC))      , intent(in)                :: con2
-        logical(LK)                                         :: less
+        logical(LK)                                         :: itis
     end function
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if LK5_ENABLED
-    pure elemental module function isless_D0_D0_PSLK5(con1, con2) result(less)
+    pure elemental module function isless_D0_D0_PSLK5(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSLK5
 #endif
         use pm_kind, only: LKC => LK5
         type(csl_pdt(LKC))      , intent(in)                :: con1
         type(csl_pdt(LKC))      , intent(in)                :: con2
-        logical(LK)                                         :: less
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if LK4_ENABLED
-    pure elemental module function isless_D0_D0_PSLK4(con1, con2) result(less)
+    pure elemental module function isless_D0_D0_PSLK4(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSLK4
 #endif
         use pm_kind, only: LKC => LK4
         type(csl_pdt(LKC))      , intent(in)                :: con1
         type(csl_pdt(LKC))      , intent(in)                :: con2
-        logical(LK)                                         :: less
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if LK3_ENABLED
-    pure elemental module function isless_D0_D0_PSLK3(con1, con2) result(less)
+    pure elemental module function isless_D0_D0_PSLK3(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSLK3
 #endif
         use pm_kind, only: LKC => LK3
         type(csl_pdt(LKC))      , intent(in)                :: con1
         type(csl_pdt(LKC))      , intent(in)                :: con2
-        logical(LK)                                         :: less
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if LK2_ENABLED
-    pure elemental module function isless_D0_D0_PSLK2(con1, con2) result(less)
+    pure elemental module function isless_D0_D0_PSLK2(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSLK2
 #endif
         use pm_kind, only: LKC => LK2
         type(csl_pdt(LKC))      , intent(in)                :: con1
         type(csl_pdt(LKC))      , intent(in)                :: con2
-        logical(LK)                                         :: less
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if LK1_ENABLED
-    pure elemental module function isless_D0_D0_PSLK1(con1, con2) result(less)
+    pure elemental module function isless_D0_D0_PSLK1(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSLK1
 #endif
         use pm_kind, only: LKC => LK1
         type(csl_pdt(LKC))      , intent(in)                :: con1
         type(csl_pdt(LKC))      , intent(in)                :: con2
-        logical(LK)                                         :: less
+        logical(LK)                                         :: itis
     end function
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if CK5_ENABLED
-    pure elemental module function isless_D0_D0_PSCK5(con1, con2) result(less)
+    pure elemental module function isless_D0_D0_PSCK5(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSCK5
 #endif
         use pm_kind, only: CKC => CK5
         type(csc_pdt(CKC))      , intent(in)                :: con1
         type(csc_pdt(CKC))      , intent(in)                :: con2
-        logical(LK)                                         :: less
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if CK4_ENABLED
-    pure elemental module function isless_D0_D0_PSCK4(con1, con2) result(less)
+    pure elemental module function isless_D0_D0_PSCK4(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSCK4
 #endif
         use pm_kind, only: CKC => CK4
         type(csc_pdt(CKC))      , intent(in)                :: con1
         type(csc_pdt(CKC))      , intent(in)                :: con2
-        logical(LK)                                         :: less
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if CK3_ENABLED
-    pure elemental module function isless_D0_D0_PSCK3(con1, con2) result(less)
+    pure elemental module function isless_D0_D0_PSCK3(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSCK3
 #endif
         use pm_kind, only: CKC => CK3
         type(csc_pdt(CKC))      , intent(in)                :: con1
         type(csc_pdt(CKC))      , intent(in)                :: con2
-        logical(LK)                                         :: less
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if CK2_ENABLED
-    pure elemental module function isless_D0_D0_PSCK2(con1, con2) result(less)
+    pure elemental module function isless_D0_D0_PSCK2(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSCK2
 #endif
         use pm_kind, only: CKC => CK2
         type(csc_pdt(CKC))      , intent(in)                :: con1
         type(csc_pdt(CKC))      , intent(in)                :: con2
-        logical(LK)                                         :: less
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if CK1_ENABLED
-    pure elemental module function isless_D0_D0_PSCK1(con1, con2) result(less)
+    pure elemental module function isless_D0_D0_PSCK1(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSCK1
 #endif
         use pm_kind, only: CKC => CK1
         type(csc_pdt(CKC))      , intent(in)                :: con1
         type(csc_pdt(CKC))      , intent(in)                :: con2
-        logical(LK)                                         :: less
+        logical(LK)                                         :: itis
     end function
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    pure elemental module function isless_D0_D0_PSRK5(con1, con2) result(less)
+    pure elemental module function isless_D0_D0_PSRK5(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSRK5
 #endif
         use pm_kind, only: RKC => RK5
         type(csr_pdt(RKC))      , intent(in)                :: con1
         type(csr_pdt(RKC))      , intent(in)                :: con2
-        logical(LK)                                         :: less
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if RK4_ENABLED
-    pure elemental module function isless_D0_D0_PSRK4(con1, con2) result(less)
+    pure elemental module function isless_D0_D0_PSRK4(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSRK4
 #endif
         use pm_kind, only: RKC => RK4
         type(csr_pdt(RKC))      , intent(in)                :: con1
         type(csr_pdt(RKC))      , intent(in)                :: con2
-        logical(LK)                                         :: less
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if RK3_ENABLED
-    pure elemental module function isless_D0_D0_PSRK3(con1, con2) result(less)
+    pure elemental module function isless_D0_D0_PSRK3(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSRK3
 #endif
         use pm_kind, only: RKC => RK3
         type(csr_pdt(RKC))      , intent(in)                :: con1
         type(csr_pdt(RKC))      , intent(in)                :: con2
-        logical(LK)                                         :: less
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if RK2_ENABLED
-    pure elemental module function isless_D0_D0_PSRK2(con1, con2) result(less)
+    pure elemental module function isless_D0_D0_PSRK2(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSRK2
 #endif
         use pm_kind, only: RKC => RK2
         type(csr_pdt(RKC))      , intent(in)                :: con1
         type(csr_pdt(RKC))      , intent(in)                :: con2
-        logical(LK)                                         :: less
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if RK1_ENABLED
-    pure elemental module function isless_D0_D0_PSRK1(con1, con2) result(less)
+    pure elemental module function isless_D0_D0_PSRK1(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSRK1
 #endif
         use pm_kind, only: RKC => RK1
         type(csr_pdt(RKC))      , intent(in)                :: con1
         type(csr_pdt(RKC))      , intent(in)                :: con2
-        logical(LK)                                         :: less
+        logical(LK)                                         :: itis
     end function
 #endif
 
@@ -1882,21 +1882,21 @@ module pm_container
     !>
     !>  \param[in]  con1    :   The input scalar or array of the same rank and shape as the input array-like `con2` of,
     !>                          <ol>
-    !>                              <li>    type [css_type](@ref css_type)
-    !>                              <li>    type [csi_type](@ref csi_type)
-    !>                              <li>    type [csl_type](@ref csl_type)
-    !>                              <li>    type [csc_type](@ref csc_type)
-    !>                              <li>    type [csr_type](@ref csr_type)
-    !>                              <li>    type [css_pdt](@ref css_pdt)
-    !>                              <li>    type [csi_pdt](@ref csi_pdt)
-    !>                              <li>    type [csl_pdt](@ref csl_pdt)
-    !>                              <li>    type [csc_pdt](@ref csc_pdt)
-    !>                              <li>    type [csr_pdt](@ref csr_pdt)
+    !>                              <li>    type [css_type](@ref pm_container::css_type)
+    !>                              <li>    type [csi_type](@ref pm_container::csi_type)
+    !>                              <li>    type [csl_type](@ref pm_container::csl_type)
+    !>                              <li>    type [csc_type](@ref pm_container::csc_type)
+    !>                              <li>    type [csr_type](@ref pm_container::csr_type)
+    !>                              <li>    type [css_pdt](@ref pm_container::css_pdt)
+    !>                              <li>    type [csi_pdt](@ref pm_container::csi_pdt)
+    !>                              <li>    type [csl_pdt](@ref pm_container::csl_pdt)
+    !>                              <li>    type [csc_pdt](@ref pm_container::csc_pdt)
+    !>                              <li>    type [csr_pdt](@ref pm_container::csr_pdt)
     !>                          </ol>
     !>  \param[in]  con2    :   The input scalar, or array of the same rank as the input array-like `con1`, of the same type and kind as `con1`.<br>
     !>
     !>  \return
-    !>  `more`              :   The output scalar or array of the same shape as the input array-like arguments of
+    !>  `itis`              :   The output scalar or array of the same shape as the input array-like arguments of
     !>                          type `logical` of default kind \LK containing the result of the comparison of the
     !>                          values of the two input containers of scalar values via the `>` operator.
     !>
@@ -1904,9 +1904,9 @@ module pm_container
     !>  \code{.F90}
     !>
     !>      use pm_container, only: operator(>)
-    !>      logical(LK) :: more
+    !>      logical(LK) :: itis
     !>
-    !>      more = con1 > con2
+    !>      itis = con1 > con2
     !>
     !>  \endcode
     !>
@@ -1958,11 +1958,11 @@ module pm_container
     !>
     !>      contains
     !>
-    !>          pure elemental function ismore(con1, con2) result(more)
+    !>          pure elemental function ismore(con1, con2) result(itis)
     !>              type(strc), intent(in) :: con1
     !>              type(strc), intent(in) :: con2
-    !>              logical(LK) :: more
-    !>              more = con1%val > con2%val
+    !>              logical(LK) :: itis
+    !>              itis = con1%val > con2%val
     !>          end function
     !>
     !>      end program elementalBugGfortran10
@@ -1996,359 +1996,359 @@ module pm_container
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    pure elemental module function ismore_D0_D0_BSSK(con1, con2) result(more)
+    pure elemental module function ismore_D0_D0_BSSK(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_BSSK
 #endif
         type(css_type)          , intent(in)                :: con1
         type(css_type)          , intent(in)                :: con2
-        logical(LK)                                         :: more
+        logical(LK)                                         :: itis
     end function
 
-    pure elemental module function ismore_D0_D0_BSIK(con1, con2) result(more)
+    pure elemental module function ismore_D0_D0_BSIK(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_BSIK
 #endif
         type(csi_type)          , intent(in)                :: con1
         type(csi_type)          , intent(in)                :: con2
-        logical(LK)                                         :: more
+        logical(LK)                                         :: itis
     end function
 
-    pure elemental module function ismore_D0_D0_BSLK(con1, con2) result(more)
+    pure elemental module function ismore_D0_D0_BSLK(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_BSLK
 #endif
         type(csl_type)          , intent(in)                :: con1
         type(csl_type)          , intent(in)                :: con2
-        logical(LK)                                         :: more
+        logical(LK)                                         :: itis
     end function
 
-    pure elemental module function ismore_D0_D0_BSCK(con1, con2) result(more)
+    pure elemental module function ismore_D0_D0_BSCK(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_BSCK
 #endif
         type(csc_type)          , intent(in)                :: con1
         type(csc_type)          , intent(in)                :: con2
-        logical(LK)                                         :: more
+        logical(LK)                                         :: itis
     end function
 
-    pure elemental module function ismore_D0_D0_BSRK(con1, con2) result(more)
+    pure elemental module function ismore_D0_D0_BSRK(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_BSRK
 #endif
         type(csr_type)          , intent(in)                :: con1
         type(csr_type)          , intent(in)                :: con2
-        logical(LK)                                         :: more
+        logical(LK)                                         :: itis
     end function
 
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if SK5_ENABLED
-    pure elemental module function ismore_D0_D0_PSSK5(con1, con2) result(more)
+    pure elemental module function ismore_D0_D0_PSSK5(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSSK5
 #endif
         use pm_kind, only: SKC => SK5
         type(css_pdt(SKC))      , intent(in)                :: con1
         type(css_pdt(SKC))      , intent(in)                :: con2
-        logical(LK)                                         :: more
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if SK4_ENABLED
-    pure elemental module function ismore_D0_D0_PSSK4(con1, con2) result(more)
+    pure elemental module function ismore_D0_D0_PSSK4(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSSK4
 #endif
         use pm_kind, only: SKC => SK4
         type(css_pdt(SKC))      , intent(in)                :: con1
         type(css_pdt(SKC))      , intent(in)                :: con2
-        logical(LK)                                         :: more
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if SK3_ENABLED
-    pure elemental module function ismore_D0_D0_PSSK3(con1, con2) result(more)
+    pure elemental module function ismore_D0_D0_PSSK3(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSSK3
 #endif
         use pm_kind, only: SKC => SK3
         type(css_pdt(SKC))      , intent(in)                :: con1
         type(css_pdt(SKC))      , intent(in)                :: con2
-        logical(LK)                                         :: more
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if SK2_ENABLED
-    pure elemental module function ismore_D0_D0_PSSK2(con1, con2) result(more)
+    pure elemental module function ismore_D0_D0_PSSK2(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSSK2
 #endif
         use pm_kind, only: SKC => SK2
         type(css_pdt(SKC))      , intent(in)                :: con1
         type(css_pdt(SKC))      , intent(in)                :: con2
-        logical(LK)                                         :: more
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if SK1_ENABLED
-    pure elemental module function ismore_D0_D0_PSSK1(con1, con2) result(more)
+    pure elemental module function ismore_D0_D0_PSSK1(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSSK1
 #endif
         use pm_kind, only: SKC => SK1
         type(css_pdt(SKC))      , intent(in)                :: con1
         type(css_pdt(SKC))      , intent(in)                :: con2
-        logical(LK)                                         :: more
+        logical(LK)                                         :: itis
     end function
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if IK5_ENABLED
-    pure elemental module function ismore_D0_D0_PSIK5(con1, con2) result(more)
+    pure elemental module function ismore_D0_D0_PSIK5(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSIK5
 #endif
         use pm_kind, only: IKC => IK5
         type(csi_pdt(IKC))      , intent(in)                :: con1
         type(csi_pdt(IKC))      , intent(in)                :: con2
-        logical(LK)                                         :: more
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if IK4_ENABLED
-    pure elemental module function ismore_D0_D0_PSIK4(con1, con2) result(more)
+    pure elemental module function ismore_D0_D0_PSIK4(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSIK4
 #endif
         use pm_kind, only: IKC => IK4
         type(csi_pdt(IKC))      , intent(in)                :: con1
         type(csi_pdt(IKC))      , intent(in)                :: con2
-        logical(LK)                                         :: more
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if IK3_ENABLED
-    pure elemental module function ismore_D0_D0_PSIK3(con1, con2) result(more)
+    pure elemental module function ismore_D0_D0_PSIK3(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSIK3
 #endif
         use pm_kind, only: IKC => IK3
         type(csi_pdt(IKC))      , intent(in)                :: con1
         type(csi_pdt(IKC))      , intent(in)                :: con2
-        logical(LK)                                         :: more
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if IK2_ENABLED
-    pure elemental module function ismore_D0_D0_PSIK2(con1, con2) result(more)
+    pure elemental module function ismore_D0_D0_PSIK2(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSIK2
 #endif
         use pm_kind, only: IKC => IK2
         type(csi_pdt(IKC))      , intent(in)                :: con1
         type(csi_pdt(IKC))      , intent(in)                :: con2
-        logical(LK)                                         :: more
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if IK1_ENABLED
-    pure elemental module function ismore_D0_D0_PSIK1(con1, con2) result(more)
+    pure elemental module function ismore_D0_D0_PSIK1(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSIK1
 #endif
         use pm_kind, only: IKC => IK1
         type(csi_pdt(IKC))      , intent(in)                :: con1
         type(csi_pdt(IKC))      , intent(in)                :: con2
-        logical(LK)                                         :: more
+        logical(LK)                                         :: itis
     end function
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if LK5_ENABLED
-    pure elemental module function ismore_D0_D0_PSLK5(con1, con2) result(more)
+    pure elemental module function ismore_D0_D0_PSLK5(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSLK5
 #endif
         use pm_kind, only: LKC => LK5
         type(csl_pdt(LKC))      , intent(in)                :: con1
         type(csl_pdt(LKC))      , intent(in)                :: con2
-        logical(LK)                                         :: more
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if LK4_ENABLED
-    pure elemental module function ismore_D0_D0_PSLK4(con1, con2) result(more)
+    pure elemental module function ismore_D0_D0_PSLK4(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSLK4
 #endif
         use pm_kind, only: LKC => LK4
         type(csl_pdt(LKC))      , intent(in)                :: con1
         type(csl_pdt(LKC))      , intent(in)                :: con2
-        logical(LK)                                         :: more
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if LK3_ENABLED
-    pure elemental module function ismore_D0_D0_PSLK3(con1, con2) result(more)
+    pure elemental module function ismore_D0_D0_PSLK3(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSLK3
 #endif
         use pm_kind, only: LKC => LK3
         type(csl_pdt(LKC))      , intent(in)                :: con1
         type(csl_pdt(LKC))      , intent(in)                :: con2
-        logical(LK)                                         :: more
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if LK2_ENABLED
-    pure elemental module function ismore_D0_D0_PSLK2(con1, con2) result(more)
+    pure elemental module function ismore_D0_D0_PSLK2(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSLK2
 #endif
         use pm_kind, only: LKC => LK2
         type(csl_pdt(LKC))      , intent(in)                :: con1
         type(csl_pdt(LKC))      , intent(in)                :: con2
-        logical(LK)                                         :: more
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if LK1_ENABLED
-    pure elemental module function ismore_D0_D0_PSLK1(con1, con2) result(more)
+    pure elemental module function ismore_D0_D0_PSLK1(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSLK1
 #endif
         use pm_kind, only: LKC => LK1
         type(csl_pdt(LKC))      , intent(in)                :: con1
         type(csl_pdt(LKC))      , intent(in)                :: con2
-        logical(LK)                                         :: more
+        logical(LK)                                         :: itis
     end function
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if CK5_ENABLED
-    pure elemental module function ismore_D0_D0_PSCK5(con1, con2) result(more)
+    pure elemental module function ismore_D0_D0_PSCK5(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSCK5
 #endif
         use pm_kind, only: CKC => CK5
         type(csc_pdt(CKC))      , intent(in)                :: con1
         type(csc_pdt(CKC))      , intent(in)                :: con2
-        logical(LK)                                         :: more
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if CK4_ENABLED
-    pure elemental module function ismore_D0_D0_PSCK4(con1, con2) result(more)
+    pure elemental module function ismore_D0_D0_PSCK4(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSCK4
 #endif
         use pm_kind, only: CKC => CK4
         type(csc_pdt(CKC))      , intent(in)                :: con1
         type(csc_pdt(CKC))      , intent(in)                :: con2
-        logical(LK)                                         :: more
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if CK3_ENABLED
-    pure elemental module function ismore_D0_D0_PSCK3(con1, con2) result(more)
+    pure elemental module function ismore_D0_D0_PSCK3(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSCK3
 #endif
         use pm_kind, only: CKC => CK3
         type(csc_pdt(CKC))      , intent(in)                :: con1
         type(csc_pdt(CKC))      , intent(in)                :: con2
-        logical(LK)                                         :: more
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if CK2_ENABLED
-    pure elemental module function ismore_D0_D0_PSCK2(con1, con2) result(more)
+    pure elemental module function ismore_D0_D0_PSCK2(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSCK2
 #endif
         use pm_kind, only: CKC => CK2
         type(csc_pdt(CKC))      , intent(in)                :: con1
         type(csc_pdt(CKC))      , intent(in)                :: con2
-        logical(LK)                                         :: more
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if CK1_ENABLED
-    pure elemental module function ismore_D0_D0_PSCK1(con1, con2) result(more)
+    pure elemental module function ismore_D0_D0_PSCK1(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSCK1
 #endif
         use pm_kind, only: CKC => CK1
         type(csc_pdt(CKC))      , intent(in)                :: con1
         type(csc_pdt(CKC))      , intent(in)                :: con2
-        logical(LK)                                         :: more
+        logical(LK)                                         :: itis
     end function
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    pure elemental module function ismore_D0_D0_PSRK5(con1, con2) result(more)
+    pure elemental module function ismore_D0_D0_PSRK5(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSRK5
 #endif
         use pm_kind, only: RKC => RK5
         type(csr_pdt(RKC))      , intent(in)                :: con1
         type(csr_pdt(RKC))      , intent(in)                :: con2
-        logical(LK)                                         :: more
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if RK4_ENABLED
-    pure elemental module function ismore_D0_D0_PSRK4(con1, con2) result(more)
+    pure elemental module function ismore_D0_D0_PSRK4(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSRK4
 #endif
         use pm_kind, only: RKC => RK4
         type(csr_pdt(RKC))      , intent(in)                :: con1
         type(csr_pdt(RKC))      , intent(in)                :: con2
-        logical(LK)                                         :: more
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if RK3_ENABLED
-    pure elemental module function ismore_D0_D0_PSRK3(con1, con2) result(more)
+    pure elemental module function ismore_D0_D0_PSRK3(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSRK3
 #endif
         use pm_kind, only: RKC => RK3
         type(csr_pdt(RKC))      , intent(in)                :: con1
         type(csr_pdt(RKC))      , intent(in)                :: con2
-        logical(LK)                                         :: more
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if RK2_ENABLED
-    pure elemental module function ismore_D0_D0_PSRK2(con1, con2) result(more)
+    pure elemental module function ismore_D0_D0_PSRK2(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSRK2
 #endif
         use pm_kind, only: RKC => RK2
         type(csr_pdt(RKC))      , intent(in)                :: con1
         type(csr_pdt(RKC))      , intent(in)                :: con2
-        logical(LK)                                         :: more
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if RK1_ENABLED
-    pure elemental module function ismore_D0_D0_PSRK1(con1, con2) result(more)
+    pure elemental module function ismore_D0_D0_PSRK1(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSRK1
 #endif
         use pm_kind, only: RKC => RK1
         type(csr_pdt(RKC))      , intent(in)                :: con1
         type(csr_pdt(RKC))      , intent(in)                :: con2
-        logical(LK)                                         :: more
+        logical(LK)                                         :: itis
     end function
 #endif
 
@@ -2364,21 +2364,21 @@ module pm_container
     !>
     !>  \param[in]  con1    :   The input scalar or array of the same rank and shape as the input array-like `con2` of,
     !>                          <ol>
-    !>                              <li>    type [css_type](@ref css_type)
-    !>                              <li>    type [csi_type](@ref csi_type)
-    !>                              <li>    type [csl_type](@ref csl_type)
-    !>                              <li>    type [csc_type](@ref csc_type)
-    !>                              <li>    type [csr_type](@ref csr_type)
-    !>                              <li>    type [css_pdt](@ref css_pdt)
-    !>                              <li>    type [csi_pdt](@ref csi_pdt)
-    !>                              <li>    type [csl_pdt](@ref csl_pdt)
-    !>                              <li>    type [csc_pdt](@ref csc_pdt)
-    !>                              <li>    type [csr_pdt](@ref csr_pdt)
+    !>                              <li>    type [css_type](@ref pm_container::css_type)
+    !>                              <li>    type [csi_type](@ref pm_container::csi_type)
+    !>                              <li>    type [csl_type](@ref pm_container::csl_type)
+    !>                              <li>    type [csc_type](@ref pm_container::csc_type)
+    !>                              <li>    type [csr_type](@ref pm_container::csr_type)
+    !>                              <li>    type [css_pdt](@ref pm_container::css_pdt)
+    !>                              <li>    type [csi_pdt](@ref pm_container::csi_pdt)
+    !>                              <li>    type [csl_pdt](@ref pm_container::csl_pdt)
+    !>                              <li>    type [csc_pdt](@ref pm_container::csc_pdt)
+    !>                              <li>    type [csr_pdt](@ref pm_container::csr_pdt)
     !>                          </ol>
     !>  \param[in]  con2    :   The input scalar, or array of the same rank as the input array-like `con1`, of the same type and kind as `con1`.<br>
     !>
     !>  \return
-    !>  `leq`               :   The output scalar or array of the same shape as the input array-like arguments of
+    !>  `itis`              :   The output scalar or array of the same shape as the input array-like arguments of
     !>                          type `logical` of default kind \LK containing the result of the comparison of the
     !>                          values of the two input containers of scalar values via the `<=` operator.
     !>
@@ -2386,9 +2386,9 @@ module pm_container
     !>  \code{.F90}
     !>
     !>      use pm_container, only: operator(<=)
-    !>      logical(LK) :: leq
+    !>      logical(LK) :: itis
     !>
-    !>      leq = con1 <= con2
+    !>      itis = con1 <= con2
     !>
     !>  \endcode
     !>
@@ -2436,359 +2436,359 @@ module pm_container
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    pure elemental module function isleq_D0_D0_BSSK(con1, con2) result(leq)
+    pure elemental module function isleq_D0_D0_BSSK(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_BSSK
 #endif
         type(css_type)          , intent(in)                :: con1
         type(css_type)          , intent(in)                :: con2
-        logical(LK)                                         :: leq
+        logical(LK)                                         :: itis
     end function
 
-    pure elemental module function isleq_D0_D0_BSIK(con1, con2) result(leq)
+    pure elemental module function isleq_D0_D0_BSIK(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_BSIK
 #endif
         type(csi_type)          , intent(in)                :: con1
         type(csi_type)          , intent(in)                :: con2
-        logical(LK)                                         :: leq
+        logical(LK)                                         :: itis
     end function
 
-    pure elemental module function isleq_D0_D0_BSLK(con1, con2) result(leq)
+    pure elemental module function isleq_D0_D0_BSLK(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_BSLK
 #endif
         type(csl_type)          , intent(in)                :: con1
         type(csl_type)          , intent(in)                :: con2
-        logical(LK)                                         :: leq
+        logical(LK)                                         :: itis
     end function
 
-    pure elemental module function isleq_D0_D0_BSCK(con1, con2) result(leq)
+    pure elemental module function isleq_D0_D0_BSCK(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_BSCK
 #endif
         type(csc_type)          , intent(in)                :: con1
         type(csc_type)          , intent(in)                :: con2
-        logical(LK)                                         :: leq
+        logical(LK)                                         :: itis
     end function
 
-    pure elemental module function isleq_D0_D0_BSRK(con1, con2) result(leq)
+    pure elemental module function isleq_D0_D0_BSRK(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_BSRK
 #endif
         type(csr_type)          , intent(in)                :: con1
         type(csr_type)          , intent(in)                :: con2
-        logical(LK)                                         :: leq
+        logical(LK)                                         :: itis
     end function
 
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if SK5_ENABLED
-    pure elemental module function isleq_D0_D0_PSSK5(con1, con2) result(leq)
+    pure elemental module function isleq_D0_D0_PSSK5(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSSK5
 #endif
         use pm_kind, only: SKC => SK5
         type(css_pdt(SKC))      , intent(in)                :: con1
         type(css_pdt(SKC))      , intent(in)                :: con2
-        logical(LK)                                         :: leq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if SK4_ENABLED
-    pure elemental module function isleq_D0_D0_PSSK4(con1, con2) result(leq)
+    pure elemental module function isleq_D0_D0_PSSK4(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSSK4
 #endif
         use pm_kind, only: SKC => SK4
         type(css_pdt(SKC))      , intent(in)                :: con1
         type(css_pdt(SKC))      , intent(in)                :: con2
-        logical(LK)                                         :: leq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if SK3_ENABLED
-    pure elemental module function isleq_D0_D0_PSSK3(con1, con2) result(leq)
+    pure elemental module function isleq_D0_D0_PSSK3(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSSK3
 #endif
         use pm_kind, only: SKC => SK3
         type(css_pdt(SKC))      , intent(in)                :: con1
         type(css_pdt(SKC))      , intent(in)                :: con2
-        logical(LK)                                         :: leq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if SK2_ENABLED
-    pure elemental module function isleq_D0_D0_PSSK2(con1, con2) result(leq)
+    pure elemental module function isleq_D0_D0_PSSK2(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSSK2
 #endif
         use pm_kind, only: SKC => SK2
         type(css_pdt(SKC))      , intent(in)                :: con1
         type(css_pdt(SKC))      , intent(in)                :: con2
-        logical(LK)                                         :: leq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if SK1_ENABLED
-    pure elemental module function isleq_D0_D0_PSSK1(con1, con2) result(leq)
+    pure elemental module function isleq_D0_D0_PSSK1(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSSK1
 #endif
         use pm_kind, only: SKC => SK1
         type(css_pdt(SKC))      , intent(in)                :: con1
         type(css_pdt(SKC))      , intent(in)                :: con2
-        logical(LK)                                         :: leq
+        logical(LK)                                         :: itis
     end function
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if IK5_ENABLED
-    pure elemental module function isleq_D0_D0_PSIK5(con1, con2) result(leq)
+    pure elemental module function isleq_D0_D0_PSIK5(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSIK5
 #endif
         use pm_kind, only: IKC => IK5
         type(csi_pdt(IKC))      , intent(in)                :: con1
         type(csi_pdt(IKC))      , intent(in)                :: con2
-        logical(LK)                                         :: leq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if IK4_ENABLED
-    pure elemental module function isleq_D0_D0_PSIK4(con1, con2) result(leq)
+    pure elemental module function isleq_D0_D0_PSIK4(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSIK4
 #endif
         use pm_kind, only: IKC => IK4
         type(csi_pdt(IKC))      , intent(in)                :: con1
         type(csi_pdt(IKC))      , intent(in)                :: con2
-        logical(LK)                                         :: leq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if IK3_ENABLED
-    pure elemental module function isleq_D0_D0_PSIK3(con1, con2) result(leq)
+    pure elemental module function isleq_D0_D0_PSIK3(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSIK3
 #endif
         use pm_kind, only: IKC => IK3
         type(csi_pdt(IKC))      , intent(in)                :: con1
         type(csi_pdt(IKC))      , intent(in)                :: con2
-        logical(LK)                                         :: leq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if IK2_ENABLED
-    pure elemental module function isleq_D0_D0_PSIK2(con1, con2) result(leq)
+    pure elemental module function isleq_D0_D0_PSIK2(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSIK2
 #endif
         use pm_kind, only: IKC => IK2
         type(csi_pdt(IKC))      , intent(in)                :: con1
         type(csi_pdt(IKC))      , intent(in)                :: con2
-        logical(LK)                                         :: leq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if IK1_ENABLED
-    pure elemental module function isleq_D0_D0_PSIK1(con1, con2) result(leq)
+    pure elemental module function isleq_D0_D0_PSIK1(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSIK1
 #endif
         use pm_kind, only: IKC => IK1
         type(csi_pdt(IKC))      , intent(in)                :: con1
         type(csi_pdt(IKC))      , intent(in)                :: con2
-        logical(LK)                                         :: leq
+        logical(LK)                                         :: itis
     end function
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if LK5_ENABLED
-    pure elemental module function isleq_D0_D0_PSLK5(con1, con2) result(leq)
+    pure elemental module function isleq_D0_D0_PSLK5(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSLK5
 #endif
         use pm_kind, only: LKC => LK5
         type(csl_pdt(LKC))      , intent(in)                :: con1
         type(csl_pdt(LKC))      , intent(in)                :: con2
-        logical(LK)                                         :: leq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if LK4_ENABLED
-    pure elemental module function isleq_D0_D0_PSLK4(con1, con2) result(leq)
+    pure elemental module function isleq_D0_D0_PSLK4(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSLK4
 #endif
         use pm_kind, only: LKC => LK4
         type(csl_pdt(LKC))      , intent(in)                :: con1
         type(csl_pdt(LKC))      , intent(in)                :: con2
-        logical(LK)                                         :: leq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if LK3_ENABLED
-    pure elemental module function isleq_D0_D0_PSLK3(con1, con2) result(leq)
+    pure elemental module function isleq_D0_D0_PSLK3(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSLK3
 #endif
         use pm_kind, only: LKC => LK3
         type(csl_pdt(LKC))      , intent(in)                :: con1
         type(csl_pdt(LKC))      , intent(in)                :: con2
-        logical(LK)                                         :: leq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if LK2_ENABLED
-    pure elemental module function isleq_D0_D0_PSLK2(con1, con2) result(leq)
+    pure elemental module function isleq_D0_D0_PSLK2(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSLK2
 #endif
         use pm_kind, only: LKC => LK2
         type(csl_pdt(LKC))      , intent(in)                :: con1
         type(csl_pdt(LKC))      , intent(in)                :: con2
-        logical(LK)                                         :: leq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if LK1_ENABLED
-    pure elemental module function isleq_D0_D0_PSLK1(con1, con2) result(leq)
+    pure elemental module function isleq_D0_D0_PSLK1(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSLK1
 #endif
         use pm_kind, only: LKC => LK1
         type(csl_pdt(LKC))      , intent(in)                :: con1
         type(csl_pdt(LKC))      , intent(in)                :: con2
-        logical(LK)                                         :: leq
+        logical(LK)                                         :: itis
     end function
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if CK5_ENABLED
-    pure elemental module function isleq_D0_D0_PSCK5(con1, con2) result(leq)
+    pure elemental module function isleq_D0_D0_PSCK5(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSCK5
 #endif
         use pm_kind, only: CKC => CK5
         type(csc_pdt(CKC))      , intent(in)                :: con1
         type(csc_pdt(CKC))      , intent(in)                :: con2
-        logical(LK)                                         :: leq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if CK4_ENABLED
-    pure elemental module function isleq_D0_D0_PSCK4(con1, con2) result(leq)
+    pure elemental module function isleq_D0_D0_PSCK4(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSCK4
 #endif
         use pm_kind, only: CKC => CK4
         type(csc_pdt(CKC))      , intent(in)                :: con1
         type(csc_pdt(CKC))      , intent(in)                :: con2
-        logical(LK)                                         :: leq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if CK3_ENABLED
-    pure elemental module function isleq_D0_D0_PSCK3(con1, con2) result(leq)
+    pure elemental module function isleq_D0_D0_PSCK3(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSCK3
 #endif
         use pm_kind, only: CKC => CK3
         type(csc_pdt(CKC))      , intent(in)                :: con1
         type(csc_pdt(CKC))      , intent(in)                :: con2
-        logical(LK)                                         :: leq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if CK2_ENABLED
-    pure elemental module function isleq_D0_D0_PSCK2(con1, con2) result(leq)
+    pure elemental module function isleq_D0_D0_PSCK2(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSCK2
 #endif
         use pm_kind, only: CKC => CK2
         type(csc_pdt(CKC))      , intent(in)                :: con1
         type(csc_pdt(CKC))      , intent(in)                :: con2
-        logical(LK)                                         :: leq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if CK1_ENABLED
-    pure elemental module function isleq_D0_D0_PSCK1(con1, con2) result(leq)
+    pure elemental module function isleq_D0_D0_PSCK1(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSCK1
 #endif
         use pm_kind, only: CKC => CK1
         type(csc_pdt(CKC))      , intent(in)                :: con1
         type(csc_pdt(CKC))      , intent(in)                :: con2
-        logical(LK)                                         :: leq
+        logical(LK)                                         :: itis
     end function
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    pure elemental module function isleq_D0_D0_PSRK5(con1, con2) result(leq)
+    pure elemental module function isleq_D0_D0_PSRK5(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSRK5
 #endif
         use pm_kind, only: RKC => RK5
         type(csr_pdt(RKC))      , intent(in)                :: con1
         type(csr_pdt(RKC))      , intent(in)                :: con2
-        logical(LK)                                         :: leq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if RK4_ENABLED
-    pure elemental module function isleq_D0_D0_PSRK4(con1, con2) result(leq)
+    pure elemental module function isleq_D0_D0_PSRK4(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSRK4
 #endif
         use pm_kind, only: RKC => RK4
         type(csr_pdt(RKC))      , intent(in)                :: con1
         type(csr_pdt(RKC))      , intent(in)                :: con2
-        logical(LK)                                         :: leq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if RK3_ENABLED
-    pure elemental module function isleq_D0_D0_PSRK3(con1, con2) result(leq)
+    pure elemental module function isleq_D0_D0_PSRK3(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSRK3
 #endif
         use pm_kind, only: RKC => RK3
         type(csr_pdt(RKC))      , intent(in)                :: con1
         type(csr_pdt(RKC))      , intent(in)                :: con2
-        logical(LK)                                         :: leq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if RK2_ENABLED
-    pure elemental module function isleq_D0_D0_PSRK2(con1, con2) result(leq)
+    pure elemental module function isleq_D0_D0_PSRK2(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSRK2
 #endif
         use pm_kind, only: RKC => RK2
         type(csr_pdt(RKC))      , intent(in)                :: con1
         type(csr_pdt(RKC))      , intent(in)                :: con2
-        logical(LK)                                         :: leq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if RK1_ENABLED
-    pure elemental module function isleq_D0_D0_PSRK1(con1, con2) result(leq)
+    pure elemental module function isleq_D0_D0_PSRK1(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSRK1
 #endif
         use pm_kind, only: RKC => RK1
         type(csr_pdt(RKC))      , intent(in)                :: con1
         type(csr_pdt(RKC))      , intent(in)                :: con2
-        logical(LK)                                         :: leq
+        logical(LK)                                         :: itis
     end function
 #endif
 
@@ -2804,21 +2804,21 @@ module pm_container
     !>
     !>  \param[in]  con1    :   The input scalar or array of the same rank and shape as the input array-like `con2` of,
     !>                          <ol>
-    !>                              <li>    type [css_type](@ref css_type)
-    !>                              <li>    type [csi_type](@ref csi_type)
-    !>                              <li>    type [csl_type](@ref csl_type)
-    !>                              <li>    type [csc_type](@ref csc_type)
-    !>                              <li>    type [csr_type](@ref csr_type)
-    !>                              <li>    type [css_pdt](@ref css_pdt)
-    !>                              <li>    type [csi_pdt](@ref csi_pdt)
-    !>                              <li>    type [csl_pdt](@ref csl_pdt)
-    !>                              <li>    type [csc_pdt](@ref csc_pdt)
-    !>                              <li>    type [csr_pdt](@ref csr_pdt)
+    !>                              <li>    type [css_type](@ref pm_container::css_type)
+    !>                              <li>    type [csi_type](@ref pm_container::csi_type)
+    !>                              <li>    type [csl_type](@ref pm_container::csl_type)
+    !>                              <li>    type [csc_type](@ref pm_container::csc_type)
+    !>                              <li>    type [csr_type](@ref pm_container::csr_type)
+    !>                              <li>    type [css_pdt](@ref pm_container::css_pdt)
+    !>                              <li>    type [csi_pdt](@ref pm_container::csi_pdt)
+    !>                              <li>    type [csl_pdt](@ref pm_container::csl_pdt)
+    !>                              <li>    type [csc_pdt](@ref pm_container::csc_pdt)
+    !>                              <li>    type [csr_pdt](@ref pm_container::csr_pdt)
     !>                          </ol>
     !>  \param[in]  con2    :   The input scalar, or array of the same rank as the input array-like `con1`, of the same type and kind as `con1`.<br>
     !>
     !>  \return
-    !>  `meq`               :   The output scalar or array of the same shape as the input array-like arguments of
+    !>  `itis`              :   The output scalar or array of the same shape as the input array-like arguments of
     !>                          type `logical` of default kind \LK containing the result of the comparison of the
     !>                          values of the two input containers of scalar values via the `>=` operator.
     !>
@@ -2826,9 +2826,9 @@ module pm_container
     !>  \code{.F90}
     !>
     !>      use pm_container, only: operator(>=)
-    !>      logical(LK) :: meq
+    !>      logical(LK) :: itis
     !>
-    !>      meq = con1 >= con2
+    !>      itis = con1 >= con2
     !>
     !>  \endcode
     !>
@@ -2876,359 +2876,359 @@ module pm_container
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    pure elemental module function ismeq_D0_D0_BSSK(con1, con2) result(meq)
+    pure elemental module function ismeq_D0_D0_BSSK(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_BSSK
 #endif
         type(css_type)          , intent(in)                :: con1
         type(css_type)          , intent(in)                :: con2
-        logical(LK)                                         :: meq
+        logical(LK)                                         :: itis
     end function
 
-    pure elemental module function ismeq_D0_D0_BSIK(con1, con2) result(meq)
+    pure elemental module function ismeq_D0_D0_BSIK(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_BSIK
 #endif
         type(csi_type)          , intent(in)                :: con1
         type(csi_type)          , intent(in)                :: con2
-        logical(LK)                                         :: meq
+        logical(LK)                                         :: itis
     end function
 
-    pure elemental module function ismeq_D0_D0_BSLK(con1, con2) result(meq)
+    pure elemental module function ismeq_D0_D0_BSLK(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_BSLK
 #endif
         type(csl_type)          , intent(in)                :: con1
         type(csl_type)          , intent(in)                :: con2
-        logical(LK)                                         :: meq
+        logical(LK)                                         :: itis
     end function
 
-    pure elemental module function ismeq_D0_D0_BSCK(con1, con2) result(meq)
+    pure elemental module function ismeq_D0_D0_BSCK(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_BSCK
 #endif
         type(csc_type)          , intent(in)                :: con1
         type(csc_type)          , intent(in)                :: con2
-        logical(LK)                                         :: meq
+        logical(LK)                                         :: itis
     end function
 
-    pure elemental module function ismeq_D0_D0_BSRK(con1, con2) result(meq)
+    pure elemental module function ismeq_D0_D0_BSRK(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_BSRK
 #endif
         type(csr_type)          , intent(in)                :: con1
         type(csr_type)          , intent(in)                :: con2
-        logical(LK)                                         :: meq
+        logical(LK)                                         :: itis
     end function
 
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if SK5_ENABLED
-    pure elemental module function ismeq_D0_D0_PSSK5(con1, con2) result(meq)
+    pure elemental module function ismeq_D0_D0_PSSK5(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSSK5
 #endif
         use pm_kind, only: SKC => SK5
         type(css_pdt(SKC))      , intent(in)                :: con1
         type(css_pdt(SKC))      , intent(in)                :: con2
-        logical(LK)                                         :: meq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if SK4_ENABLED
-    pure elemental module function ismeq_D0_D0_PSSK4(con1, con2) result(meq)
+    pure elemental module function ismeq_D0_D0_PSSK4(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSSK4
 #endif
         use pm_kind, only: SKC => SK4
         type(css_pdt(SKC))      , intent(in)                :: con1
         type(css_pdt(SKC))      , intent(in)                :: con2
-        logical(LK)                                         :: meq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if SK3_ENABLED
-    pure elemental module function ismeq_D0_D0_PSSK3(con1, con2) result(meq)
+    pure elemental module function ismeq_D0_D0_PSSK3(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSSK3
 #endif
         use pm_kind, only: SKC => SK3
         type(css_pdt(SKC))      , intent(in)                :: con1
         type(css_pdt(SKC))      , intent(in)                :: con2
-        logical(LK)                                         :: meq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if SK2_ENABLED
-    pure elemental module function ismeq_D0_D0_PSSK2(con1, con2) result(meq)
+    pure elemental module function ismeq_D0_D0_PSSK2(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSSK2
 #endif
         use pm_kind, only: SKC => SK2
         type(css_pdt(SKC))      , intent(in)                :: con1
         type(css_pdt(SKC))      , intent(in)                :: con2
-        logical(LK)                                         :: meq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if SK1_ENABLED
-    pure elemental module function ismeq_D0_D0_PSSK1(con1, con2) result(meq)
+    pure elemental module function ismeq_D0_D0_PSSK1(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSSK1
 #endif
         use pm_kind, only: SKC => SK1
         type(css_pdt(SKC))      , intent(in)                :: con1
         type(css_pdt(SKC))      , intent(in)                :: con2
-        logical(LK)                                         :: meq
+        logical(LK)                                         :: itis
     end function
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if IK5_ENABLED
-    pure elemental module function ismeq_D0_D0_PSIK5(con1, con2) result(meq)
+    pure elemental module function ismeq_D0_D0_PSIK5(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSIK5
 #endif
         use pm_kind, only: IKC => IK5
         type(csi_pdt(IKC))      , intent(in)                :: con1
         type(csi_pdt(IKC))      , intent(in)                :: con2
-        logical(LK)                                         :: meq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if IK4_ENABLED
-    pure elemental module function ismeq_D0_D0_PSIK4(con1, con2) result(meq)
+    pure elemental module function ismeq_D0_D0_PSIK4(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSIK4
 #endif
         use pm_kind, only: IKC => IK4
         type(csi_pdt(IKC))      , intent(in)                :: con1
         type(csi_pdt(IKC))      , intent(in)                :: con2
-        logical(LK)                                         :: meq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if IK3_ENABLED
-    pure elemental module function ismeq_D0_D0_PSIK3(con1, con2) result(meq)
+    pure elemental module function ismeq_D0_D0_PSIK3(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSIK3
 #endif
         use pm_kind, only: IKC => IK3
         type(csi_pdt(IKC))      , intent(in)                :: con1
         type(csi_pdt(IKC))      , intent(in)                :: con2
-        logical(LK)                                         :: meq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if IK2_ENABLED
-    pure elemental module function ismeq_D0_D0_PSIK2(con1, con2) result(meq)
+    pure elemental module function ismeq_D0_D0_PSIK2(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSIK2
 #endif
         use pm_kind, only: IKC => IK2
         type(csi_pdt(IKC))      , intent(in)                :: con1
         type(csi_pdt(IKC))      , intent(in)                :: con2
-        logical(LK)                                         :: meq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if IK1_ENABLED
-    pure elemental module function ismeq_D0_D0_PSIK1(con1, con2) result(meq)
+    pure elemental module function ismeq_D0_D0_PSIK1(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSIK1
 #endif
         use pm_kind, only: IKC => IK1
         type(csi_pdt(IKC))      , intent(in)                :: con1
         type(csi_pdt(IKC))      , intent(in)                :: con2
-        logical(LK)                                         :: meq
+        logical(LK)                                         :: itis
     end function
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if LK5_ENABLED
-    pure elemental module function ismeq_D0_D0_PSLK5(con1, con2) result(meq)
+    pure elemental module function ismeq_D0_D0_PSLK5(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSLK5
 #endif
         use pm_kind, only: LKC => LK5
         type(csl_pdt(LKC))      , intent(in)                :: con1
         type(csl_pdt(LKC))      , intent(in)                :: con2
-        logical(LK)                                         :: meq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if LK4_ENABLED
-    pure elemental module function ismeq_D0_D0_PSLK4(con1, con2) result(meq)
+    pure elemental module function ismeq_D0_D0_PSLK4(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSLK4
 #endif
         use pm_kind, only: LKC => LK4
         type(csl_pdt(LKC))      , intent(in)                :: con1
         type(csl_pdt(LKC))      , intent(in)                :: con2
-        logical(LK)                                         :: meq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if LK3_ENABLED
-    pure elemental module function ismeq_D0_D0_PSLK3(con1, con2) result(meq)
+    pure elemental module function ismeq_D0_D0_PSLK3(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSLK3
 #endif
         use pm_kind, only: LKC => LK3
         type(csl_pdt(LKC))      , intent(in)                :: con1
         type(csl_pdt(LKC))      , intent(in)                :: con2
-        logical(LK)                                         :: meq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if LK2_ENABLED
-    pure elemental module function ismeq_D0_D0_PSLK2(con1, con2) result(meq)
+    pure elemental module function ismeq_D0_D0_PSLK2(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSLK2
 #endif
         use pm_kind, only: LKC => LK2
         type(csl_pdt(LKC))      , intent(in)                :: con1
         type(csl_pdt(LKC))      , intent(in)                :: con2
-        logical(LK)                                         :: meq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if LK1_ENABLED
-    pure elemental module function ismeq_D0_D0_PSLK1(con1, con2) result(meq)
+    pure elemental module function ismeq_D0_D0_PSLK1(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSLK1
 #endif
         use pm_kind, only: LKC => LK1
         type(csl_pdt(LKC))      , intent(in)                :: con1
         type(csl_pdt(LKC))      , intent(in)                :: con2
-        logical(LK)                                         :: meq
+        logical(LK)                                         :: itis
     end function
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if CK5_ENABLED
-    pure elemental module function ismeq_D0_D0_PSCK5(con1, con2) result(meq)
+    pure elemental module function ismeq_D0_D0_PSCK5(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSCK5
 #endif
         use pm_kind, only: CKC => CK5
         type(csc_pdt(CKC))      , intent(in)                :: con1
         type(csc_pdt(CKC))      , intent(in)                :: con2
-        logical(LK)                                         :: meq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if CK4_ENABLED
-    pure elemental module function ismeq_D0_D0_PSCK4(con1, con2) result(meq)
+    pure elemental module function ismeq_D0_D0_PSCK4(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSCK4
 #endif
         use pm_kind, only: CKC => CK4
         type(csc_pdt(CKC))      , intent(in)                :: con1
         type(csc_pdt(CKC))      , intent(in)                :: con2
-        logical(LK)                                         :: meq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if CK3_ENABLED
-    pure elemental module function ismeq_D0_D0_PSCK3(con1, con2) result(meq)
+    pure elemental module function ismeq_D0_D0_PSCK3(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSCK3
 #endif
         use pm_kind, only: CKC => CK3
         type(csc_pdt(CKC))      , intent(in)                :: con1
         type(csc_pdt(CKC))      , intent(in)                :: con2
-        logical(LK)                                         :: meq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if CK2_ENABLED
-    pure elemental module function ismeq_D0_D0_PSCK2(con1, con2) result(meq)
+    pure elemental module function ismeq_D0_D0_PSCK2(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSCK2
 #endif
         use pm_kind, only: CKC => CK2
         type(csc_pdt(CKC))      , intent(in)                :: con1
         type(csc_pdt(CKC))      , intent(in)                :: con2
-        logical(LK)                                         :: meq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if CK1_ENABLED
-    pure elemental module function ismeq_D0_D0_PSCK1(con1, con2) result(meq)
+    pure elemental module function ismeq_D0_D0_PSCK1(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSCK1
 #endif
         use pm_kind, only: CKC => CK1
         type(csc_pdt(CKC))      , intent(in)                :: con1
         type(csc_pdt(CKC))      , intent(in)                :: con2
-        logical(LK)                                         :: meq
+        logical(LK)                                         :: itis
     end function
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    pure elemental module function ismeq_D0_D0_PSRK5(con1, con2) result(meq)
+    pure elemental module function ismeq_D0_D0_PSRK5(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSRK5
 #endif
         use pm_kind, only: RKC => RK5
         type(csr_pdt(RKC))      , intent(in)                :: con1
         type(csr_pdt(RKC))      , intent(in)                :: con2
-        logical(LK)                                         :: meq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if RK4_ENABLED
-    pure elemental module function ismeq_D0_D0_PSRK4(con1, con2) result(meq)
+    pure elemental module function ismeq_D0_D0_PSRK4(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSRK4
 #endif
         use pm_kind, only: RKC => RK4
         type(csr_pdt(RKC))      , intent(in)                :: con1
         type(csr_pdt(RKC))      , intent(in)                :: con2
-        logical(LK)                                         :: meq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if RK3_ENABLED
-    pure elemental module function ismeq_D0_D0_PSRK3(con1, con2) result(meq)
+    pure elemental module function ismeq_D0_D0_PSRK3(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSRK3
 #endif
         use pm_kind, only: RKC => RK3
         type(csr_pdt(RKC))      , intent(in)                :: con1
         type(csr_pdt(RKC))      , intent(in)                :: con2
-        logical(LK)                                         :: meq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if RK2_ENABLED
-    pure elemental module function ismeq_D0_D0_PSRK2(con1, con2) result(meq)
+    pure elemental module function ismeq_D0_D0_PSRK2(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSRK2
 #endif
         use pm_kind, only: RKC => RK2
         type(csr_pdt(RKC))      , intent(in)                :: con1
         type(csr_pdt(RKC))      , intent(in)                :: con2
-        logical(LK)                                         :: meq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if RK1_ENABLED
-    pure elemental module function ismeq_D0_D0_PSRK1(con1, con2) result(meq)
+    pure elemental module function ismeq_D0_D0_PSRK1(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSRK1
 #endif
         use pm_kind, only: RKC => RK1
         type(csr_pdt(RKC))      , intent(in)                :: con1
         type(csr_pdt(RKC))      , intent(in)                :: con2
-        logical(LK)                                         :: meq
+        logical(LK)                                         :: itis
     end function
 #endif
 
@@ -3244,21 +3244,21 @@ module pm_container
     !>
     !>  \param[in]  con1    :   The input scalar or array of the same rank and shape as the input array-like `con2` of,
     !>                          <ol>
-    !>                              <li>    type [css_type](@ref css_type)
-    !>                              <li>    type [csi_type](@ref csi_type)
-    !>                              <li>    type [csl_type](@ref csl_type)
-    !>                              <li>    type [csc_type](@ref csc_type)
-    !>                              <li>    type [csr_type](@ref csr_type)
-    !>                              <li>    type [css_pdt](@ref css_pdt)
-    !>                              <li>    type [csi_pdt](@ref csi_pdt)
-    !>                              <li>    type [csl_pdt](@ref csl_pdt)
-    !>                              <li>    type [csc_pdt](@ref csc_pdt)
-    !>                              <li>    type [csr_pdt](@ref csr_pdt)
+    !>                              <li>    type [css_type](@ref pm_container::css_type)
+    !>                              <li>    type [csi_type](@ref pm_container::csi_type)
+    !>                              <li>    type [csl_type](@ref pm_container::csl_type)
+    !>                              <li>    type [csc_type](@ref pm_container::csc_type)
+    !>                              <li>    type [csr_type](@ref pm_container::csr_type)
+    !>                              <li>    type [css_pdt](@ref pm_container::css_pdt)
+    !>                              <li>    type [csi_pdt](@ref pm_container::csi_pdt)
+    !>                              <li>    type [csl_pdt](@ref pm_container::csl_pdt)
+    !>                              <li>    type [csc_pdt](@ref pm_container::csc_pdt)
+    !>                              <li>    type [csr_pdt](@ref pm_container::csr_pdt)
     !>                          </ol>
     !>  \param[in]  con2    :   The input scalar, or array of the same rank as the input array-like `con1`, of the same type and kind as `con1`.<br>
     !>
     !>  \return
-    !>  `neq`               :   The output scalar or array of the same shape as the input array-like arguments of
+    !>  `itis`              :   The output scalar or array of the same shape as the input array-like arguments of
     !>                          type `logical` of default kind \LK containing the result of the comparison of the
     !>                          values of the two input containers of scalar values via the `/=` operator.
     !>
@@ -3266,9 +3266,9 @@ module pm_container
     !>  \code{.F90}
     !>
     !>      use pm_container, only: operator(/=)
-    !>      logical(LK) :: neq
+    !>      logical(LK) :: itis
     !>
-    !>      neq = con1 /= con2
+    !>      itis = con1 /= con2
     !>
     !>  \endcode
     !>
@@ -3316,359 +3316,359 @@ module pm_container
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    pure elemental module function isneq_D0_D0_BSSK(con1, con2) result(neq)
+    pure elemental module function isneq_D0_D0_BSSK(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_BSSK
 #endif
         type(css_type)          , intent(in)                :: con1
         type(css_type)          , intent(in)                :: con2
-        logical(LK)                                         :: neq
+        logical(LK)                                         :: itis
     end function
 
-    pure elemental module function isneq_D0_D0_BSIK(con1, con2) result(neq)
+    pure elemental module function isneq_D0_D0_BSIK(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_BSIK
 #endif
         type(csi_type)          , intent(in)                :: con1
         type(csi_type)          , intent(in)                :: con2
-        logical(LK)                                         :: neq
+        logical(LK)                                         :: itis
     end function
 
-    pure elemental module function isneq_D0_D0_BSLK(con1, con2) result(neq)
+    pure elemental module function isneq_D0_D0_BSLK(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_BSLK
 #endif
         type(csl_type)          , intent(in)                :: con1
         type(csl_type)          , intent(in)                :: con2
-        logical(LK)                                         :: neq
+        logical(LK)                                         :: itis
     end function
 
-    pure elemental module function isneq_D0_D0_BSCK(con1, con2) result(neq)
+    pure elemental module function isneq_D0_D0_BSCK(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_BSCK
 #endif
         type(csc_type)          , intent(in)                :: con1
         type(csc_type)          , intent(in)                :: con2
-        logical(LK)                                         :: neq
+        logical(LK)                                         :: itis
     end function
 
-    pure elemental module function isneq_D0_D0_BSRK(con1, con2) result(neq)
+    pure elemental module function isneq_D0_D0_BSRK(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_BSRK
 #endif
         type(csr_type)          , intent(in)                :: con1
         type(csr_type)          , intent(in)                :: con2
-        logical(LK)                                         :: neq
+        logical(LK)                                         :: itis
     end function
 
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if SK5_ENABLED
-    pure elemental module function isneq_D0_D0_PSSK5(con1, con2) result(neq)
+    pure elemental module function isneq_D0_D0_PSSK5(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSSK5
 #endif
         use pm_kind, only: SKC => SK5
         type(css_pdt(SKC))      , intent(in)                :: con1
         type(css_pdt(SKC))      , intent(in)                :: con2
-        logical(LK)                                         :: neq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if SK4_ENABLED
-    pure elemental module function isneq_D0_D0_PSSK4(con1, con2) result(neq)
+    pure elemental module function isneq_D0_D0_PSSK4(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSSK4
 #endif
         use pm_kind, only: SKC => SK4
         type(css_pdt(SKC))      , intent(in)                :: con1
         type(css_pdt(SKC))      , intent(in)                :: con2
-        logical(LK)                                         :: neq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if SK3_ENABLED
-    pure elemental module function isneq_D0_D0_PSSK3(con1, con2) result(neq)
+    pure elemental module function isneq_D0_D0_PSSK3(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSSK3
 #endif
         use pm_kind, only: SKC => SK3
         type(css_pdt(SKC))      , intent(in)                :: con1
         type(css_pdt(SKC))      , intent(in)                :: con2
-        logical(LK)                                         :: neq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if SK2_ENABLED
-    pure elemental module function isneq_D0_D0_PSSK2(con1, con2) result(neq)
+    pure elemental module function isneq_D0_D0_PSSK2(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSSK2
 #endif
         use pm_kind, only: SKC => SK2
         type(css_pdt(SKC))      , intent(in)                :: con1
         type(css_pdt(SKC))      , intent(in)                :: con2
-        logical(LK)                                         :: neq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if SK1_ENABLED
-    pure elemental module function isneq_D0_D0_PSSK1(con1, con2) result(neq)
+    pure elemental module function isneq_D0_D0_PSSK1(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSSK1
 #endif
         use pm_kind, only: SKC => SK1
         type(css_pdt(SKC))      , intent(in)                :: con1
         type(css_pdt(SKC))      , intent(in)                :: con2
-        logical(LK)                                         :: neq
+        logical(LK)                                         :: itis
     end function
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if IK5_ENABLED
-    pure elemental module function isneq_D0_D0_PSIK5(con1, con2) result(neq)
+    pure elemental module function isneq_D0_D0_PSIK5(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSIK5
 #endif
         use pm_kind, only: IKC => IK5
         type(csi_pdt(IKC))      , intent(in)                :: con1
         type(csi_pdt(IKC))      , intent(in)                :: con2
-        logical(LK)                                         :: neq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if IK4_ENABLED
-    pure elemental module function isneq_D0_D0_PSIK4(con1, con2) result(neq)
+    pure elemental module function isneq_D0_D0_PSIK4(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSIK4
 #endif
         use pm_kind, only: IKC => IK4
         type(csi_pdt(IKC))      , intent(in)                :: con1
         type(csi_pdt(IKC))      , intent(in)                :: con2
-        logical(LK)                                         :: neq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if IK3_ENABLED
-    pure elemental module function isneq_D0_D0_PSIK3(con1, con2) result(neq)
+    pure elemental module function isneq_D0_D0_PSIK3(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSIK3
 #endif
         use pm_kind, only: IKC => IK3
         type(csi_pdt(IKC))      , intent(in)                :: con1
         type(csi_pdt(IKC))      , intent(in)                :: con2
-        logical(LK)                                         :: neq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if IK2_ENABLED
-    pure elemental module function isneq_D0_D0_PSIK2(con1, con2) result(neq)
+    pure elemental module function isneq_D0_D0_PSIK2(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSIK2
 #endif
         use pm_kind, only: IKC => IK2
         type(csi_pdt(IKC))      , intent(in)                :: con1
         type(csi_pdt(IKC))      , intent(in)                :: con2
-        logical(LK)                                         :: neq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if IK1_ENABLED
-    pure elemental module function isneq_D0_D0_PSIK1(con1, con2) result(neq)
+    pure elemental module function isneq_D0_D0_PSIK1(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSIK1
 #endif
         use pm_kind, only: IKC => IK1
         type(csi_pdt(IKC))      , intent(in)                :: con1
         type(csi_pdt(IKC))      , intent(in)                :: con2
-        logical(LK)                                         :: neq
+        logical(LK)                                         :: itis
     end function
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if LK5_ENABLED
-    pure elemental module function isneq_D0_D0_PSLK5(con1, con2) result(neq)
+    pure elemental module function isneq_D0_D0_PSLK5(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSLK5
 #endif
         use pm_kind, only: LKC => LK5
         type(csl_pdt(LKC))      , intent(in)                :: con1
         type(csl_pdt(LKC))      , intent(in)                :: con2
-        logical(LK)                                         :: neq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if LK4_ENABLED
-    pure elemental module function isneq_D0_D0_PSLK4(con1, con2) result(neq)
+    pure elemental module function isneq_D0_D0_PSLK4(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSLK4
 #endif
         use pm_kind, only: LKC => LK4
         type(csl_pdt(LKC))      , intent(in)                :: con1
         type(csl_pdt(LKC))      , intent(in)                :: con2
-        logical(LK)                                         :: neq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if LK3_ENABLED
-    pure elemental module function isneq_D0_D0_PSLK3(con1, con2) result(neq)
+    pure elemental module function isneq_D0_D0_PSLK3(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSLK3
 #endif
         use pm_kind, only: LKC => LK3
         type(csl_pdt(LKC))      , intent(in)                :: con1
         type(csl_pdt(LKC))      , intent(in)                :: con2
-        logical(LK)                                         :: neq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if LK2_ENABLED
-    pure elemental module function isneq_D0_D0_PSLK2(con1, con2) result(neq)
+    pure elemental module function isneq_D0_D0_PSLK2(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSLK2
 #endif
         use pm_kind, only: LKC => LK2
         type(csl_pdt(LKC))      , intent(in)                :: con1
         type(csl_pdt(LKC))      , intent(in)                :: con2
-        logical(LK)                                         :: neq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if LK1_ENABLED
-    pure elemental module function isneq_D0_D0_PSLK1(con1, con2) result(neq)
+    pure elemental module function isneq_D0_D0_PSLK1(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSLK1
 #endif
         use pm_kind, only: LKC => LK1
         type(csl_pdt(LKC))      , intent(in)                :: con1
         type(csl_pdt(LKC))      , intent(in)                :: con2
-        logical(LK)                                         :: neq
+        logical(LK)                                         :: itis
     end function
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if CK5_ENABLED
-    pure elemental module function isneq_D0_D0_PSCK5(con1, con2) result(neq)
+    pure elemental module function isneq_D0_D0_PSCK5(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSCK5
 #endif
         use pm_kind, only: CKC => CK5
         type(csc_pdt(CKC))      , intent(in)                :: con1
         type(csc_pdt(CKC))      , intent(in)                :: con2
-        logical(LK)                                         :: neq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if CK4_ENABLED
-    pure elemental module function isneq_D0_D0_PSCK4(con1, con2) result(neq)
+    pure elemental module function isneq_D0_D0_PSCK4(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSCK4
 #endif
         use pm_kind, only: CKC => CK4
         type(csc_pdt(CKC))      , intent(in)                :: con1
         type(csc_pdt(CKC))      , intent(in)                :: con2
-        logical(LK)                                         :: neq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if CK3_ENABLED
-    pure elemental module function isneq_D0_D0_PSCK3(con1, con2) result(neq)
+    pure elemental module function isneq_D0_D0_PSCK3(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSCK3
 #endif
         use pm_kind, only: CKC => CK3
         type(csc_pdt(CKC))      , intent(in)                :: con1
         type(csc_pdt(CKC))      , intent(in)                :: con2
-        logical(LK)                                         :: neq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if CK2_ENABLED
-    pure elemental module function isneq_D0_D0_PSCK2(con1, con2) result(neq)
+    pure elemental module function isneq_D0_D0_PSCK2(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSCK2
 #endif
         use pm_kind, only: CKC => CK2
         type(csc_pdt(CKC))      , intent(in)                :: con1
         type(csc_pdt(CKC))      , intent(in)                :: con2
-        logical(LK)                                         :: neq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if CK1_ENABLED
-    pure elemental module function isneq_D0_D0_PSCK1(con1, con2) result(neq)
+    pure elemental module function isneq_D0_D0_PSCK1(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSCK1
 #endif
         use pm_kind, only: CKC => CK1
         type(csc_pdt(CKC))      , intent(in)                :: con1
         type(csc_pdt(CKC))      , intent(in)                :: con2
-        logical(LK)                                         :: neq
+        logical(LK)                                         :: itis
     end function
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    pure elemental module function isneq_D0_D0_PSRK5(con1, con2) result(neq)
+    pure elemental module function isneq_D0_D0_PSRK5(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSRK5
 #endif
         use pm_kind, only: RKC => RK5
         type(csr_pdt(RKC))      , intent(in)                :: con1
         type(csr_pdt(RKC))      , intent(in)                :: con2
-        logical(LK)                                         :: neq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if RK4_ENABLED
-    pure elemental module function isneq_D0_D0_PSRK4(con1, con2) result(neq)
+    pure elemental module function isneq_D0_D0_PSRK4(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSRK4
 #endif
         use pm_kind, only: RKC => RK4
         type(csr_pdt(RKC))      , intent(in)                :: con1
         type(csr_pdt(RKC))      , intent(in)                :: con2
-        logical(LK)                                         :: neq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if RK3_ENABLED
-    pure elemental module function isneq_D0_D0_PSRK3(con1, con2) result(neq)
+    pure elemental module function isneq_D0_D0_PSRK3(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSRK3
 #endif
         use pm_kind, only: RKC => RK3
         type(csr_pdt(RKC))      , intent(in)                :: con1
         type(csr_pdt(RKC))      , intent(in)                :: con2
-        logical(LK)                                         :: neq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if RK2_ENABLED
-    pure elemental module function isneq_D0_D0_PSRK2(con1, con2) result(neq)
+    pure elemental module function isneq_D0_D0_PSRK2(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSRK2
 #endif
         use pm_kind, only: RKC => RK2
         type(csr_pdt(RKC))      , intent(in)                :: con1
         type(csr_pdt(RKC))      , intent(in)                :: con2
-        logical(LK)                                         :: neq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if RK1_ENABLED
-    pure elemental module function isneq_D0_D0_PSRK1(con1, con2) result(neq)
+    pure elemental module function isneq_D0_D0_PSRK1(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSRK1
 #endif
         use pm_kind, only: RKC => RK1
         type(csr_pdt(RKC))      , intent(in)                :: con1
         type(csr_pdt(RKC))      , intent(in)                :: con2
-        logical(LK)                                         :: neq
+        logical(LK)                                         :: itis
     end function
 #endif
 
@@ -3684,21 +3684,21 @@ module pm_container
     !>
     !>  \param[in]  con1    :   The input scalar or array of the same rank and shape as the input array-like `con2` of,
     !>                          <ol>
-    !>                              <li>    type [css_type](@ref css_type)
-    !>                              <li>    type [csi_type](@ref csi_type)
-    !>                              <li>    type [csl_type](@ref csl_type)
-    !>                              <li>    type [csc_type](@ref csc_type)
-    !>                              <li>    type [csr_type](@ref csr_type)
-    !>                              <li>    type [css_pdt](@ref css_pdt)
-    !>                              <li>    type [csi_pdt](@ref csi_pdt)
-    !>                              <li>    type [csl_pdt](@ref csl_pdt)
-    !>                              <li>    type [csc_pdt](@ref csc_pdt)
-    !>                              <li>    type [csr_pdt](@ref csr_pdt)
+    !>                              <li>    type [css_type](@ref pm_container::css_type)
+    !>                              <li>    type [csi_type](@ref pm_container::csi_type)
+    !>                              <li>    type [csl_type](@ref pm_container::csl_type)
+    !>                              <li>    type [csc_type](@ref pm_container::csc_type)
+    !>                              <li>    type [csr_type](@ref pm_container::csr_type)
+    !>                              <li>    type [css_pdt](@ref pm_container::css_pdt)
+    !>                              <li>    type [csi_pdt](@ref pm_container::csi_pdt)
+    !>                              <li>    type [csl_pdt](@ref pm_container::csl_pdt)
+    !>                              <li>    type [csc_pdt](@ref pm_container::csc_pdt)
+    !>                              <li>    type [csr_pdt](@ref pm_container::csr_pdt)
     !>                          </ol>
     !>  \param[in]  con2    :   The input scalar, or array of the same rank as the input array-like `con1`, of the same type and kind as `con1`.<br>
     !>
     !>  \return
-    !>  `eq`                :   The output scalar or array of the same rank and shape as the input array-like arguments, of type `logical` of default kind \LK,
+    !>  `itis`              :   The output scalar or array of the same rank and shape as the input array-like arguments, of type `logical` of default kind \LK,
     !>                          containing the result of the comparison of the values of the two input containers via the `==` operator.
     !>
     !>  \interface{iseq}
@@ -3757,359 +3757,359 @@ module pm_container
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    pure elemental module function iseq_D0_D0_BSSK(con1, con2) result(eq)
+    pure elemental module function iseq_D0_D0_BSSK(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_BSSK
 #endif
         type(css_type)          , intent(in)                :: con1
         type(css_type)          , intent(in)                :: con2
-        logical(LK)                                         :: eq
+        logical(LK)                                         :: itis
     end function
 
-    pure elemental module function iseq_D0_D0_BSIK(con1, con2) result(eq)
+    pure elemental module function iseq_D0_D0_BSIK(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_BSIK
 #endif
         type(csi_type)          , intent(in)                :: con1
         type(csi_type)          , intent(in)                :: con2
-        logical(LK)                                         :: eq
+        logical(LK)                                         :: itis
     end function
 
-    pure elemental module function iseq_D0_D0_BSLK(con1, con2) result(eq)
+    pure elemental module function iseq_D0_D0_BSLK(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_BSLK
 #endif
         type(csl_type)          , intent(in)                :: con1
         type(csl_type)          , intent(in)                :: con2
-        logical(LK)                                         :: eq
+        logical(LK)                                         :: itis
     end function
 
-    pure elemental module function iseq_D0_D0_BSCK(con1, con2) result(eq)
+    pure elemental module function iseq_D0_D0_BSCK(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_BSCK
 #endif
         type(csc_type)          , intent(in)                :: con1
         type(csc_type)          , intent(in)                :: con2
-        logical(LK)                                         :: eq
+        logical(LK)                                         :: itis
     end function
 
-    pure elemental module function iseq_D0_D0_BSRK(con1, con2) result(eq)
+    pure elemental module function iseq_D0_D0_BSRK(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_BSRK
 #endif
         type(csr_type)          , intent(in)                :: con1
         type(csr_type)          , intent(in)                :: con2
-        logical(LK)                                         :: eq
+        logical(LK)                                         :: itis
     end function
 
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if SK5_ENABLED
-    pure elemental module function iseq_D0_D0_PSSK5(con1, con2) result(eq)
+    pure elemental module function iseq_D0_D0_PSSK5(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSSK5
 #endif
         use pm_kind, only: SKC => SK5
         type(css_pdt(SKC))      , intent(in)                :: con1
         type(css_pdt(SKC))      , intent(in)                :: con2
-        logical(LK)                                         :: eq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if SK4_ENABLED
-    pure elemental module function iseq_D0_D0_PSSK4(con1, con2) result(eq)
+    pure elemental module function iseq_D0_D0_PSSK4(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSSK4
 #endif
         use pm_kind, only: SKC => SK4
         type(css_pdt(SKC))      , intent(in)                :: con1
         type(css_pdt(SKC))      , intent(in)                :: con2
-        logical(LK)                                         :: eq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if SK3_ENABLED
-    pure elemental module function iseq_D0_D0_PSSK3(con1, con2) result(eq)
+    pure elemental module function iseq_D0_D0_PSSK3(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSSK3
 #endif
         use pm_kind, only: SKC => SK3
         type(css_pdt(SKC))      , intent(in)                :: con1
         type(css_pdt(SKC))      , intent(in)                :: con2
-        logical(LK)                                         :: eq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if SK2_ENABLED
-    pure elemental module function iseq_D0_D0_PSSK2(con1, con2) result(eq)
+    pure elemental module function iseq_D0_D0_PSSK2(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSSK2
 #endif
         use pm_kind, only: SKC => SK2
         type(css_pdt(SKC))      , intent(in)                :: con1
         type(css_pdt(SKC))      , intent(in)                :: con2
-        logical(LK)                                         :: eq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if SK1_ENABLED
-    pure elemental module function iseq_D0_D0_PSSK1(con1, con2) result(eq)
+    pure elemental module function iseq_D0_D0_PSSK1(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSSK1
 #endif
         use pm_kind, only: SKC => SK1
         type(css_pdt(SKC))      , intent(in)                :: con1
         type(css_pdt(SKC))      , intent(in)                :: con2
-        logical(LK)                                         :: eq
+        logical(LK)                                         :: itis
     end function
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if IK5_ENABLED
-    pure elemental module function iseq_D0_D0_PSIK5(con1, con2) result(eq)
+    pure elemental module function iseq_D0_D0_PSIK5(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSIK5
 #endif
         use pm_kind, only: IKC => IK5
         type(csi_pdt(IKC))      , intent(in)                :: con1
         type(csi_pdt(IKC))      , intent(in)                :: con2
-        logical(LK)                                         :: eq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if IK4_ENABLED
-    pure elemental module function iseq_D0_D0_PSIK4(con1, con2) result(eq)
+    pure elemental module function iseq_D0_D0_PSIK4(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSIK4
 #endif
         use pm_kind, only: IKC => IK4
         type(csi_pdt(IKC))      , intent(in)                :: con1
         type(csi_pdt(IKC))      , intent(in)                :: con2
-        logical(LK)                                         :: eq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if IK3_ENABLED
-    pure elemental module function iseq_D0_D0_PSIK3(con1, con2) result(eq)
+    pure elemental module function iseq_D0_D0_PSIK3(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSIK3
 #endif
         use pm_kind, only: IKC => IK3
         type(csi_pdt(IKC))      , intent(in)                :: con1
         type(csi_pdt(IKC))      , intent(in)                :: con2
-        logical(LK)                                         :: eq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if IK2_ENABLED
-    pure elemental module function iseq_D0_D0_PSIK2(con1, con2) result(eq)
+    pure elemental module function iseq_D0_D0_PSIK2(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSIK2
 #endif
         use pm_kind, only: IKC => IK2
         type(csi_pdt(IKC))      , intent(in)                :: con1
         type(csi_pdt(IKC))      , intent(in)                :: con2
-        logical(LK)                                         :: eq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if IK1_ENABLED
-    pure elemental module function iseq_D0_D0_PSIK1(con1, con2) result(eq)
+    pure elemental module function iseq_D0_D0_PSIK1(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSIK1
 #endif
         use pm_kind, only: IKC => IK1
         type(csi_pdt(IKC))      , intent(in)                :: con1
         type(csi_pdt(IKC))      , intent(in)                :: con2
-        logical(LK)                                         :: eq
+        logical(LK)                                         :: itis
     end function
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if LK5_ENABLED
-    pure elemental module function iseq_D0_D0_PSLK5(con1, con2) result(eq)
+    pure elemental module function iseq_D0_D0_PSLK5(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSLK5
 #endif
         use pm_kind, only: LKC => LK5
         type(csl_pdt(LKC))      , intent(in)                :: con1
         type(csl_pdt(LKC))      , intent(in)                :: con2
-        logical(LK)                                         :: eq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if LK4_ENABLED
-    pure elemental module function iseq_D0_D0_PSLK4(con1, con2) result(eq)
+    pure elemental module function iseq_D0_D0_PSLK4(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSLK4
 #endif
         use pm_kind, only: LKC => LK4
         type(csl_pdt(LKC))      , intent(in)                :: con1
         type(csl_pdt(LKC))      , intent(in)                :: con2
-        logical(LK)                                         :: eq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if LK3_ENABLED
-    pure elemental module function iseq_D0_D0_PSLK3(con1, con2) result(eq)
+    pure elemental module function iseq_D0_D0_PSLK3(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSLK3
 #endif
         use pm_kind, only: LKC => LK3
         type(csl_pdt(LKC))      , intent(in)                :: con1
         type(csl_pdt(LKC))      , intent(in)                :: con2
-        logical(LK)                                         :: eq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if LK2_ENABLED
-    pure elemental module function iseq_D0_D0_PSLK2(con1, con2) result(eq)
+    pure elemental module function iseq_D0_D0_PSLK2(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSLK2
 #endif
         use pm_kind, only: LKC => LK2
         type(csl_pdt(LKC))      , intent(in)                :: con1
         type(csl_pdt(LKC))      , intent(in)                :: con2
-        logical(LK)                                         :: eq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if LK1_ENABLED
-    pure elemental module function iseq_D0_D0_PSLK1(con1, con2) result(eq)
+    pure elemental module function iseq_D0_D0_PSLK1(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSLK1
 #endif
         use pm_kind, only: LKC => LK1
         type(csl_pdt(LKC))      , intent(in)                :: con1
         type(csl_pdt(LKC))      , intent(in)                :: con2
-        logical(LK)                                         :: eq
+        logical(LK)                                         :: itis
     end function
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if CK5_ENABLED
-    pure elemental module function iseq_D0_D0_PSCK5(con1, con2) result(eq)
+    pure elemental module function iseq_D0_D0_PSCK5(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSCK5
 #endif
         use pm_kind, only: CKC => CK5
         type(csc_pdt(CKC))      , intent(in)                :: con1
         type(csc_pdt(CKC))      , intent(in)                :: con2
-        logical(LK)                                         :: eq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if CK4_ENABLED
-    pure elemental module function iseq_D0_D0_PSCK4(con1, con2) result(eq)
+    pure elemental module function iseq_D0_D0_PSCK4(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSCK4
 #endif
         use pm_kind, only: CKC => CK4
         type(csc_pdt(CKC))      , intent(in)                :: con1
         type(csc_pdt(CKC))      , intent(in)                :: con2
-        logical(LK)                                         :: eq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if CK3_ENABLED
-    pure elemental module function iseq_D0_D0_PSCK3(con1, con2) result(eq)
+    pure elemental module function iseq_D0_D0_PSCK3(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSCK3
 #endif
         use pm_kind, only: CKC => CK3
         type(csc_pdt(CKC))      , intent(in)                :: con1
         type(csc_pdt(CKC))      , intent(in)                :: con2
-        logical(LK)                                         :: eq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if CK2_ENABLED
-    pure elemental module function iseq_D0_D0_PSCK2(con1, con2) result(eq)
+    pure elemental module function iseq_D0_D0_PSCK2(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSCK2
 #endif
         use pm_kind, only: CKC => CK2
         type(csc_pdt(CKC))      , intent(in)                :: con1
         type(csc_pdt(CKC))      , intent(in)                :: con2
-        logical(LK)                                         :: eq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if CK1_ENABLED
-    pure elemental module function iseq_D0_D0_PSCK1(con1, con2) result(eq)
+    pure elemental module function iseq_D0_D0_PSCK1(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSCK1
 #endif
         use pm_kind, only: CKC => CK1
         type(csc_pdt(CKC))      , intent(in)                :: con1
         type(csc_pdt(CKC))      , intent(in)                :: con2
-        logical(LK)                                         :: eq
+        logical(LK)                                         :: itis
     end function
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    pure elemental module function iseq_D0_D0_PSRK5(con1, con2) result(eq)
+    pure elemental module function iseq_D0_D0_PSRK5(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSRK5
 #endif
         use pm_kind, only: RKC => RK5
         type(csr_pdt(RKC))      , intent(in)                :: con1
         type(csr_pdt(RKC))      , intent(in)                :: con2
-        logical(LK)                                         :: eq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if RK4_ENABLED
-    pure elemental module function iseq_D0_D0_PSRK4(con1, con2) result(eq)
+    pure elemental module function iseq_D0_D0_PSRK4(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSRK4
 #endif
         use pm_kind, only: RKC => RK4
         type(csr_pdt(RKC))      , intent(in)                :: con1
         type(csr_pdt(RKC))      , intent(in)                :: con2
-        logical(LK)                                         :: eq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if RK3_ENABLED
-    pure elemental module function iseq_D0_D0_PSRK3(con1, con2) result(eq)
+    pure elemental module function iseq_D0_D0_PSRK3(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSRK3
 #endif
         use pm_kind, only: RKC => RK3
         type(csr_pdt(RKC))      , intent(in)                :: con1
         type(csr_pdt(RKC))      , intent(in)                :: con2
-        logical(LK)                                         :: eq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if RK2_ENABLED
-    pure elemental module function iseq_D0_D0_PSRK2(con1, con2) result(eq)
+    pure elemental module function iseq_D0_D0_PSRK2(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSRK2
 #endif
         use pm_kind, only: RKC => RK2
         type(csr_pdt(RKC))      , intent(in)                :: con1
         type(csr_pdt(RKC))      , intent(in)                :: con2
-        logical(LK)                                         :: eq
+        logical(LK)                                         :: itis
     end function
 #endif
 
 #if RK1_ENABLED
-    pure elemental module function iseq_D0_D0_PSRK1(con1, con2) result(eq)
+    pure elemental module function iseq_D0_D0_PSRK1(con1, con2) result(itis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSRK1
 #endif
         use pm_kind, only: RKC => RK1
         type(csr_pdt(RKC))      , intent(in)                :: con1
         type(csr_pdt(RKC))      , intent(in)                :: con2
-        logical(LK)                                         :: eq
+        logical(LK)                                         :: itis
     end function
 #endif
 
@@ -4125,16 +4125,16 @@ module pm_container
     !>
     !>  \param[out] destin  :   The output scalar or array of the arbitrary rank and shape that can be of,
     !>                          <ol>
-    !>                              <li>    type [css_type](@ref css_type)
-    !>                              <li>    type [csi_type](@ref csi_type)
-    !>                              <li>    type [csl_type](@ref csl_type)
-    !>                              <li>    type [csc_type](@ref csc_type)
-    !>                              <li>    type [csr_type](@ref csr_type)
-    !>                              <li>    type [css_pdt](@ref css_pdt)
-    !>                              <li>    type [csi_pdt](@ref csi_pdt)
-    !>                              <li>    type [csl_pdt](@ref csl_pdt)
-    !>                              <li>    type [csc_pdt](@ref csc_pdt)
-    !>                              <li>    type [csr_pdt](@ref csr_pdt)
+    !>                              <li>    type [css_type](@ref pm_container::css_type)
+    !>                              <li>    type [csi_type](@ref pm_container::csi_type)
+    !>                              <li>    type [csl_type](@ref pm_container::csl_type)
+    !>                              <li>    type [csc_type](@ref pm_container::csc_type)
+    !>                              <li>    type [csr_type](@ref pm_container::csr_type)
+    !>                              <li>    type [css_pdt](@ref pm_container::css_pdt)
+    !>                              <li>    type [csi_pdt](@ref pm_container::csi_pdt)
+    !>                              <li>    type [csl_pdt](@ref pm_container::csl_pdt)
+    !>                              <li>    type [csc_pdt](@ref pm_container::csc_pdt)
+    !>                              <li>    type [csr_pdt](@ref pm_container::csr_pdt)
     !>                          </ol>
     !>                          whose contents will be the taken from the contents of the input `source` argument upon return.
     !>  \param[in]  source  :   The input scalar, or array of the same rank as the input array-like `destin`,
@@ -4160,7 +4160,7 @@ module pm_container
     !>  \elemental
     !>
     !>  \remark
-    !>  This generic primarily exists to circumvent the gfortran bug as of version 11 in intrinsic assignment of arrays of type [css_pdt](@ref css_pdt).<br>
+    !>  This generic primarily exists to circumvent the gfortran bug as of version 11 in intrinsic assignment of arrays of type [css_pdt](@ref pm_container::css_pdt).<br>
     !>
     !>  \see
     !>  [operator(==)](@ref pm_container_iseq)<br>
@@ -4532,17 +4532,17 @@ module pm_container
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     ! >  \brief
-    ! >  This is the [csis_type](@ref csis_type) type for generating instances of <b>c</b>ontainer of <b>s</b>calar of <b>i</b>nteger and <b>s</b>tring.<br>
+    ! >  This is the [csis_type](@ref pm_container::csis_type) type for generating instances of <b>c</b>ontainer of <b>s</b>calar of <b>i</b>nteger and <b>s</b>tring.<br>
     ! >
     ! >  \details
-    ! >  The [csis_type](@ref csis_type) container is frequently used within the ParaMonte library for encapsulate an `integer` number and its conversion to string.<br>
+    ! >  The [csis_type](@ref pm_container::csis_type) container is frequently used within the ParaMonte library for encapsulate an `integer` number and its conversion to string.<br>
     ! >  The constructor of this derived type takes the following arguments.<br>
     ! >
     ! >  \param[in]  int     :   The input scalar or array of arbitrary rank of type `integer` of default kind \IK.<br>
     ! >  \param[in]  str     :   The input scalar or array of arbitrary rank of type `character` of default kind \SK.<br>
     ! >
     ! >  \return
-    ! >  `container`         :   The output object of type [csis_type](@ref csis_type) of the same kind, rank, and shape
+    ! >  `container`         :   The output object of type [csis_type](@ref pm_container::csis_type) of the same kind, rank, and shape
     ! >                          as the input array-like arguments `val`, each element of which contains the corresponding element of the input `val`.
     ! >
     ! >  \interface{csis_type}
@@ -4600,6 +4600,121 @@ module pm_container
     !    integer(IK) :: int
     !    character(:, SK), allocatable :: str
     !end type
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+!    !>  \brief
+!    !>  Generate and return the extraction of the `val` component of the input scalar container.
+!    !>
+!    !>  \details
+!    !>  In simple words, this generic interface extracts the value of the input container(s).<br>
+!    !>  When the input container(s) is of type [css_type](@ref pm_container::css_type),
+!    !>  the output values will have a length type parameter that
+!    !>  is the maximum of the input `val` components.<br>
+!    !>
+!    !>  \param[in]  con     :   The input scalar or array of arbitrary rank `1` of,
+!    !>                          <ol>
+!    !>                              <li>    type [css_type](@ref pm_container::css_type)
+!    !>                              <li>    type [csi_type](@ref pm_container::csi_type)
+!    !>                              <li>    type [csl_type](@ref pm_container::csl_type)
+!    !>                              <li>    type [csc_type](@ref pm_container::csc_type)
+!    !>                              <li>    type [csr_type](@ref pm_container::csr_type)
+!    !>                          </ol>
+!    !>
+!    !>  \return
+!    !>  `val`               :   The output scalar or array of the same rank and shape as the input array-like argument `con`,
+!    !>                          of the same type, kind, and value as the `val` component of the input container(s).
+!    !>
+!    !>  \interface{getVal}
+!    !>  \code{.F90}
+!    !>
+!    !>      use pm_container, only: getVal
+!    !>
+!    !>      val(@shape(con)) = getVal(con(..))
+!    !>
+!    !>  \endcode
+!    !>
+!    !>  \note
+!    !>  If the `val` component of the input argument `con` is unallocated,
+!    !>  the output `val` will remain uninitialized on output.
+!    !>
+!    !>  \pure
+!    !>
+!    !>  \elemental
+!    !>
+!    !>  \see
+!    !>  [getCharSeq](@ref pm_str::getCharSeq)<br>
+!    !>  [getCharVec](@ref pm_str::getCharVec)<br>
+!    !>
+!    !>  \example{getVal}
+!    !>  \include{lineno} example/pm_container/getVal/main.F90
+!    !>  \compilef{getVal}
+!    !>  \output{getVal}
+!    !>  \include{lineno} example/pm_container/getVal/main.out.F90
+!    !>
+!    !>  \test
+!    !>  [test_pm_container](@ref test_pm_container)
+!    !>
+!    !>  \todo
+!    !>  \pvlow The functionality of this generic interface can be extended to input containers of higher rank component.<br>
+!    !>
+!    !>  \finmain{getVal}
+!    !>
+!    !>  \author
+!    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+!    interface getVal
+!
+!    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!
+!    pure elemental module function getVal_D0_BSSK(con) result(val)
+!#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+!        !DEC$ ATTRIBUTES DLLEXPORT :: getVal_D0_BSSK
+!#endif
+!        use pm_kind, only: SKC => SK
+!        type(css_type)          , intent(in)                :: con
+!        character(len(con%val, IK),SKC)                     :: val
+!    end function
+!
+!    pure elemental module function getVal_D0_BSIK(con) result(val)
+!#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+!        !DEC$ ATTRIBUTES DLLEXPORT :: getVal_D0_BSIK
+!#endif
+!        use pm_kind, only: IKC => IK
+!        type(csi_type)          , intent(in)                :: con
+!        integer(IKC)                                        :: val
+!    end function
+!
+!    pure elemental module function getVal_D0_BSLK(con) result(val)
+!#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+!        !DEC$ ATTRIBUTES DLLEXPORT :: getVal_D0_BSLK
+!#endif
+!        use pm_kind, only: LKC => LK
+!        type(csl_type)          , intent(in)                :: con
+!        logical(LKC)                                        :: val
+!    end function
+!
+!    pure elemental module function getVal_D0_BSCK(con) result(val)
+!#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+!        !DEC$ ATTRIBUTES DLLEXPORT :: getVal_D0_BSCK
+!#endif
+!        use pm_kind, only: CKC => CK
+!        type(csc_type)          , intent(in)                :: con
+!        complex(CKC)                                        :: val
+!    end function
+!
+!    pure elemental module function getVal_D0_BSRK(con) result(val)
+!#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+!        !DEC$ ATTRIBUTES DLLEXPORT :: getVal_D0_BSRK
+!#endif
+!        use pm_kind, only: RKC => RK
+!        type(csr_type)          , intent(in)                :: con
+!        real(RKC)                                           :: val
+!    end function
+!
+!
+!    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!
+!    end interface
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

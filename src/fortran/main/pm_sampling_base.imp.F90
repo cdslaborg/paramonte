@@ -667,9 +667,9 @@ contains
             SKC_"The simulation specification `description` is a scalar string of maximum length "//getStr(len(description, IK))//&
             SKC_" characters containing general information about the simulation to be performed. It has no effects &
             &on the simulation and serves only as a general description of the simulation for future reference. &
-            &The sampler parser automatically recognizes the C-style '\n' escape sequence as the new-line character &
-            &and '\\' as the backslash character '\' if used in the contents of `description`. For example, '\\n' &
-            &will be converted to '\n' on the output, while '\n' translates to the new-line character. &
+            &The sampler parser automatically recognizes the C-style `'\n'` escape sequence as the new-line character &
+            &and `'\\'` as the backslash character `'\'` if used in the contents of `description`. For example, `'\\n'` &
+            &will be converted to `'\n'` on the output, while `'\n'` translates to the new-line character. &
             &The default value for description is '"//spec%description%def//SKC_"'."
             !$omp master
             description = spec%description%null

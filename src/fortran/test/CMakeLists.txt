@@ -66,7 +66,7 @@ set(ParaMonteTest_SOURCE_FILES
     ${paramonte_src_fortran_test_dir}/test_pm_distExp.F90
     ${paramonte_src_fortran_test_dir}/test_pm_distGamma.F90
     ${paramonte_src_fortran_test_dir}/test_pm_distGenExpGamma.F90
-    ${paramonte_src_fortran_test_dir}/test_pm_distPoweto.F90
+    ${paramonte_src_fortran_test_dir}/test_pm_distPiwiPoweto.F90
     ${paramonte_src_fortran_test_dir}/test_pm_distPower.F90
     ${paramonte_src_fortran_test_dir}/test_pm_distPareto.F90
     ${paramonte_src_fortran_test_dir}/test_pm_except.F90
@@ -136,7 +136,7 @@ set(ParaMonteTest_SOURCE_FILES
     ${paramonte_src_fortran_test_dir}/test_pm_distExp@routines.F90
     ${paramonte_src_fortran_test_dir}/test_pm_distGamma@routines.F90
     ${paramonte_src_fortran_test_dir}/test_pm_distGenExpGamma@routines.F90
-    ${paramonte_src_fortran_test_dir}/test_pm_distPoweto@routines.F90
+    ${paramonte_src_fortran_test_dir}/test_pm_distPiwiPoweto@routines.F90
     ${paramonte_src_fortran_test_dir}/test_pm_distPareto@routines.F90
     ${paramonte_src_fortran_test_dir}/test_pm_distPower@routines.F90
     ${paramonte_src_fortran_test_dir}/test_pm_except@routines.F90
@@ -325,7 +325,7 @@ set_source_files_properties(${paramonte_src_fortran_test_dir}/test_pm_distanceMa
 set_source_files_properties(${paramonte_src_fortran_test_dir}/test_pm_distExp@routines.F90 PROPERTIES OBJECT_DEPENDS ${paramonte_src_fortran_test_dir}/test_pm_distExp@routines.inc.F90)
 set_source_files_properties(${paramonte_src_fortran_test_dir}/test_pm_distGamma@routines.F90 PROPERTIES OBJECT_DEPENDS ${paramonte_src_fortran_test_dir}/test_pm_distGamma@routines.inc.F90)
 set_source_files_properties(${paramonte_src_fortran_test_dir}/test_pm_distGenExpGamma@routines.F90 PROPERTIES OBJECT_DEPENDS ${paramonte_src_fortran_test_dir}/test_pm_distGenExpGamma@routines.inc.F90)
-set_source_files_properties(${paramonte_src_fortran_test_dir}/test_pm_distPoweto@routines.F90 PROPERTIES OBJECT_DEPENDS ${paramonte_src_fortran_test_dir}/test_pm_distPoweto@routines.inc.F90)
+set_source_files_properties(${paramonte_src_fortran_test_dir}/test_pm_distPiwiPoweto@routines.F90 PROPERTIES OBJECT_DEPENDS ${paramonte_src_fortran_test_dir}/test_pm_distPiwiPoweto@routines.inc.F90)
 set_source_files_properties(${paramonte_src_fortran_test_dir}/test_pm_distPareto@routines.F90 PROPERTIES OBJECT_DEPENDS ${paramonte_src_fortran_test_dir}/test_pm_distPareto@routines.inc.F90)
 set_source_files_properties(${paramonte_src_fortran_test_dir}/test_pm_distPower@routines.F90 PROPERTIES OBJECT_DEPENDS ${paramonte_src_fortran_test_dir}/test_pm_distPower@routines.inc.F90)
 

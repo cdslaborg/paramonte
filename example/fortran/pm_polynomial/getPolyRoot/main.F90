@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK, LK
-    use pm_kind, only: CKC => CK32 ! all processor real and complex kinds are supported.
+    use pm_kind, only: CKC => CKS ! all processor real and complex kinds are supported.
     use pm_io, only: display_type
     use pm_polynomial, only: getPolyRoot, getPolyVal
     use pm_polynomial, only: eigen, jenkins, laguerre

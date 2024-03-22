@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK, LK
-    use pm_kind, only: RKC => RK128 ! all processor kinds are supported.
+    use pm_kind, only: RKC => RKH ! all processor kinds are supported.
     use pm_io, only: display_type
     use pm_distBand, only: setBandUCDF
 

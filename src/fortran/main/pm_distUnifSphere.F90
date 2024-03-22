@@ -22,7 +22,7 @@
 !>  the uniform distribution of points on the surface of a an arbitrary `n`-dimensional sphere:<br>
 !>  <ol>
 !>      <li>    the Probability Density Function (**PDF**)
-!>      <li>    the random number generation from the distribution (**RNG**)
+!>      <li>    the Random Number Generation from the distribution (**RNG**)
 !>  </ol>
 !>
 !>  n-sphere

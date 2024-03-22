@@ -34,16 +34,16 @@ program example
     call disp%skip()
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    ! Output an example PDF array for visualization.
+    ! Output an example array for visualization.
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     block
         integer :: fileUnit, i
-        real, allocatable :: LogMaxX(:), PDFNF(:)
-        LogMaxX = getLinSpace(0.01, 10., count = 500_IK)
-        PDFNF = getLogUnifPDFNF(logMinX = 0., logMaxX = LogMaxX)
+        real, allocatable :: logMaxX(:), PDFNF(:)
+        logMaxX = getLinSpace(0.01, 10., count = 500_IK)
+        PDFNF = getLogUnifPDFNF(logMinX = 0., logMaxX = logMaxX)
         open(newunit = fileUnit, file = "getLogUnifPDFNF.RK.txt")
-        write(fileUnit,"(2(g0,:,' '))") (exp(LogMaxX(i)), PDFNF(i), i = 1, size(PDFNF))
+        write(fileUnit,"(2(g0,:,' '))") (exp(logMaxX(i)), PDFNF(i), i = 1, size(PDFNF))
         close(fileUnit)
     end block
 

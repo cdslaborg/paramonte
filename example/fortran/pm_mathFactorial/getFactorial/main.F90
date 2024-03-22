@@ -1,6 +1,6 @@
 program example
 
-    use pm_kind, only: IK32, IK64
+    use pm_kind, only: IKS, IKD
     use pm_kind, only: SK, IK, LK
     use pm_io, only: display_type
     use pm_mathFactorial, only: getFactorial
@@ -21,23 +21,23 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("getFactorial(5_IK32)")
-    call disp%show( getFactorial(5_IK32) )
+    call disp%show("getFactorial(5_IKS)")
+    call disp%show( getFactorial(5_IKS) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("getFactorial(5_IK64)")
-    call disp%show( getFactorial(5_IK64) )
+    call disp%show("getFactorial(5_IKD)")
+    call disp%show( getFactorial(5_IKD) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("getFactorial(int([(i, i = 1,13,2)],IK32))")
-    call disp%show( getFactorial(int([(i, i = 1,13,2)],IK32)) )
+    call disp%show("getFactorial(int([(i, i = 1,13,2)],IKS))")
+    call disp%show( getFactorial(int([(i, i = 1,13,2)],IKS)) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("getFactorial(int([(i, i = 1,20,2)],IK64))")
-    call disp%show( getFactorial(int([(i, i = 1,20,2)],IK64)) )
+    call disp%show("getFactorial(int([(i, i = 1,20,2)],IKD))")
+    call disp%show( getFactorial(int([(i, i = 1,20,2)],IKD)) )
     call disp%skip()
 
 end program example

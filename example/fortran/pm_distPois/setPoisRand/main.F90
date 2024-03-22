@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK
-    use pm_kind, only: RKC => RK32 ! all real kinds are supported.
+    use pm_kind, only: RKC => RKS ! all real kinds are supported.
     use pm_distUnif, only: xoshiro256ssw_type
     use pm_distPois, only: setPoisRand
     use pm_arraySpace, only: setLinSpace

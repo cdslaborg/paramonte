@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK, LK, RK
-    use pm_kind, only: TKC => RK32 ! All other real types are also supported, e.g., RK32, RK64, RK128.
+    use pm_kind, only: TKC => RKS ! All other real types are also supported.
     use pm_io, only: display_type
     use pm_sampleVar, only: getVar
     use pm_sampleMean, only: getMean

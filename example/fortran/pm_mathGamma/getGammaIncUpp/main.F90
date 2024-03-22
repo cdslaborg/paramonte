@@ -3,7 +3,7 @@ program example
     use pm_kind, only: SK
     use pm_kind, only: IK
     use pm_kind, only: LK
-    use pm_kind, only: RK32, RK64, RK128
+    use pm_kind, only: RKS, RKD, RKH
     use pm_io, only: display_type
     use pm_mathGamma, only: getGammaIncUpp
 
@@ -21,18 +21,18 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("getGammaIncUpp(x = 1.5_RK32, kappa = 2._RK32)")
-    call disp%show( getGammaIncUpp(x = 1.5_RK32, kappa = 2._RK32) )
+    call disp%show("getGammaIncUpp(x = 1.5_RKS, kappa = 2._RKS)")
+    call disp%show( getGammaIncUpp(x = 1.5_RKS, kappa = 2._RKS) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("getGammaIncUpp(x = 1.5_RK64, kappa = 2._RK64)")
-    call disp%show( getGammaIncUpp(x = 1.5_RK64, kappa = 2._RK64) )
+    call disp%show("getGammaIncUpp(x = 1.5_RKD, kappa = 2._RKD)")
+    call disp%show( getGammaIncUpp(x = 1.5_RKD, kappa = 2._RKD) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("getGammaIncUpp(x = 1.5_RK128, kappa = 2._RK128)")
-    call disp%show( getGammaIncUpp(x = 1.5_RK128, kappa = 2._RK128) )
+    call disp%show("getGammaIncUpp(x = 1.5_RKH, kappa = 2._RKH)")
+    call disp%show( getGammaIncUpp(x = 1.5_RKH, kappa = 2._RKH) )
     call disp%skip()
 
 
@@ -44,18 +44,18 @@ program example
 
 
     call disp%skip()
-    call disp%show("getGammaIncUpp(x = [0._RK32, 1._RK32, 10._RK32], kappa = 2._RK32)")
-    call disp%show( getGammaIncUpp(x = [0._RK32, 1._RK32, 10._RK32], kappa = 2._RK32) )
+    call disp%show("getGammaIncUpp(x = [0._RKS, 1._RKS, 10._RKS], kappa = 2._RKS)")
+    call disp%show( getGammaIncUpp(x = [0._RKS, 1._RKS, 10._RKS], kappa = 2._RKS) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("getGammaIncUpp(x = [0._RK64, 1._RK64, 10._RK64], kappa = 2._RK64)")
-    call disp%show( getGammaIncUpp(x = [0._RK64, 1._RK64, 10._RK64], kappa = 2._RK64) )
+    call disp%show("getGammaIncUpp(x = [0._RKD, 1._RKD, 10._RKD], kappa = 2._RKD)")
+    call disp%show( getGammaIncUpp(x = [0._RKD, 1._RKD, 10._RKD], kappa = 2._RKD) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("getGammaIncUpp(x = [0._RK128, 1._RK128, 10._RK128], kappa = 2._RK128)")
-    call disp%show( getGammaIncUpp(x = [0._RK128, 1._RK128, 10._RK128], kappa = 2._RK128) )
+    call disp%show("getGammaIncUpp(x = [0._RKH, 1._RKH, 10._RKH], kappa = 2._RKH)")
+    call disp%show( getGammaIncUpp(x = [0._RKH, 1._RKH, 10._RKH], kappa = 2._RKH) )
     call disp%skip()
 
 
@@ -67,18 +67,18 @@ program example
 
 
     call disp%skip()
-    call disp%show("getGammaIncUpp(x = 1._RK32, kappa = [0.1_RK32, 1._RK32, 10._RK32])")
-    call disp%show( getGammaIncUpp(x = 1._RK32, kappa = [0.1_RK32, 1._RK32, 10._RK32]) )
+    call disp%show("getGammaIncUpp(x = 1._RKS, kappa = [0.1_RKS, 1._RKS, 10._RKS])")
+    call disp%show( getGammaIncUpp(x = 1._RKS, kappa = [0.1_RKS, 1._RKS, 10._RKS]) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("getGammaIncUpp(x = 1._RK64, kappa = [0.1_RK64, 1._RK64, 10._RK64])")
-    call disp%show( getGammaIncUpp(x = 1._RK64, kappa = [0.1_RK64, 1._RK64, 10._RK64]) )
+    call disp%show("getGammaIncUpp(x = 1._RKD, kappa = [0.1_RKD, 1._RKD, 10._RKD])")
+    call disp%show( getGammaIncUpp(x = 1._RKD, kappa = [0.1_RKD, 1._RKD, 10._RKD]) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("getGammaIncUpp(x = 1._RK128, kappa = [0.1_RK128, 1._RK128, 10._RK128])")
-    call disp%show( getGammaIncUpp(x = 1._RK128, kappa = [0.1_RK128, 1._RK128, 10._RK128]) )
+    call disp%show("getGammaIncUpp(x = 1._RKH, kappa = [0.1_RKH, 1._RKH, 10._RKH])")
+    call disp%show( getGammaIncUpp(x = 1._RKH, kappa = [0.1_RKH, 1._RKH, 10._RKH]) )
     call disp%skip()
 
 
@@ -90,18 +90,18 @@ program example
 
 
     call disp%skip()
-    call disp%show("getGammaIncUpp(x = [1._RK32, 1._RK32, 1._RK32], kappa = [0.1_RK32, 1._RK32, 10._RK32])")
-    call disp%show( getGammaIncUpp(x = [1._RK32, 1._RK32, 1._RK32], kappa = [0.1_RK32, 1._RK32, 10._RK32]) )
+    call disp%show("getGammaIncUpp(x = [1._RKS, 1._RKS, 1._RKS], kappa = [0.1_RKS, 1._RKS, 10._RKS])")
+    call disp%show( getGammaIncUpp(x = [1._RKS, 1._RKS, 1._RKS], kappa = [0.1_RKS, 1._RKS, 10._RKS]) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("getGammaIncUpp(x = [1._RK64, 1._RK64, 1._RK64], kappa = [0.1_RK64, 1._RK64, 10._RK64])")
-    call disp%show( getGammaIncUpp(x = [1._RK64, 1._RK64, 1._RK64], kappa = [0.1_RK64, 1._RK64, 10._RK64]) )
+    call disp%show("getGammaIncUpp(x = [1._RKD, 1._RKD, 1._RKD], kappa = [0.1_RKD, 1._RKD, 10._RKD])")
+    call disp%show( getGammaIncUpp(x = [1._RKD, 1._RKD, 1._RKD], kappa = [0.1_RKD, 1._RKD, 10._RKD]) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("getGammaIncUpp(x = [1._RK128, 1._RK128, 1._RK128], kappa = [0.1_RK128, 1._RK128, 10._RK128])")
-    call disp%show( getGammaIncUpp(x = [1._RK128, 1._RK128, 1._RK128], kappa = [0.1_RK128, 1._RK128, 10._RK128]) )
+    call disp%show("getGammaIncUpp(x = [1._RKH, 1._RKH, 1._RKH], kappa = [0.1_RKH, 1._RKH, 10._RKH])")
+    call disp%show( getGammaIncUpp(x = [1._RKH, 1._RKH, 1._RKH], kappa = [0.1_RKH, 1._RKH, 10._RKH]) )
     call disp%skip()
 
 
@@ -112,8 +112,8 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("getGammaIncUpp(x = 1._RK128, kappa = 2._RK128, tol = [1.e-8_RK128, 1.e-16_RK128, 1.e-32_RK128])")
-    call disp%show( getGammaIncUpp(x = 1._RK128, kappa = 2._RK128, tol = [1.e-8_RK128, 1.e-16_RK128, 1.e-32_RK128]) )
+    call disp%show("getGammaIncUpp(x = 1._RKH, kappa = 2._RKH, tol = [1.e-8_RKH, 1.e-16_RKH, 1.e-32_RKH])")
+    call disp%show( getGammaIncUpp(x = 1._RKH, kappa = 2._RKH, tol = [1.e-8_RKH, 1.e-16_RKH, 1.e-32_RKH]) )
     call disp%skip()
 
 
@@ -125,13 +125,13 @@ program example
 
         use pm_arraySpace, only: setLinSpace
         integer(IK) , parameter :: NP = 1000_IK
-        real(RK32) :: x_RK32(NP)
+        real(RKS) :: x_RKS(NP)
         integer :: fileUnit, i
 
-        call setLinSpace(x_RK32, 0._RK32, 10._RK32)
+        call setLinSpace(x_RKS, 0._RKS, 10._RKS)
         open(newunit = fileUnit, file = "getGammaIncUpp.RK.txt")
         do i = 1, NP
-            write(fileUnit, "(*(g0,:,' '))" ) x_RK32(i), getGammaIncUpp(x_RK32(i), kappa = [1.0_RK32, 2.5_RK32, 5.0_RK32])
+            write(fileUnit, "(*(g0,:,' '))" ) x_RKS(i), getGammaIncUpp(x_RKS(i), kappa = [1.0_RKS, 2.5_RKS, 5.0_RKS])
         end do
         close(fileUnit)
 

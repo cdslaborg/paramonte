@@ -1,8 +1,8 @@
 program example
 
     use pm_kind, only: SK, IK
-    use pm_kind, only: RK32, RK64, RK128 ! all processor types and kinds are supported.
-    use pm_kind, only: CK32, CK64, CK128 ! all processor types and kinds are supported.
+    use pm_kind, only: RKS, RKD, RKH ! all processor types and kinds are supported.
+    use pm_kind, only: CKS, CKD, CKH ! all processor types and kinds are supported.
     use pm_io, only: display_type
     use pm_except, only: getInfNeg
     use pm_except, only: getInfPos

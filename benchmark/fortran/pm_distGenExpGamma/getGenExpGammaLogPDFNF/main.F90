@@ -18,8 +18,8 @@ program benchmark
     type(bench_type)                    :: Bench(NBENCH)                !<  The Benchmark array.
 
     Bench(1) = bench_type(name = SK_"scalarAddition", exec = scalarAddition, overhead = setOverhead)
-    Bench(2) = bench_type(name = SK_"logNormFacWithShape", exec = logNormFacWithShape, overhead = setOverhead)
-    Bench(3) = bench_type(name = SK_"logNormFacWithShapeScale", exec = logNormFacWithShapeScale, overhead = setOverhead)
+    Bench(2) = bench_type(name = SK_"logPDFNFWithShape", exec = logPDFNFWithShape, overhead = setOverhead)
+    Bench(3) = bench_type(name = SK_"logPDFNFWithShapeScale", exec = logPDFNFWithShapeScale, overhead = setOverhead)
 
     arraySize = [( 2**isize, isize = 1, NSIZE )]
 
@@ -77,13 +77,13 @@ contains
         summation = shape + invScale
     end function
 
-    subroutine logNormFacWithShape()
+    subroutine logPDFNFWithShape()
         use pm_distGenExpGamma, only: getGenExpGammaLogPDFNF
         call initialize()
         dummy = dummy + sum(getGenExpGammaLogPDFNF(shape))
     end subroutine
 
-    subroutine logNormFacWithShapeScale()
+    subroutine logPDFNFWithShapeScale()
         use pm_distGenExpGamma, only: getGenExpGammaLogPDFNF
         call initialize()
         dummy = dummy + sum(getGenExpGammaLogPDFNF(shape, InvScale))

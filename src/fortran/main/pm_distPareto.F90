@@ -21,9 +21,9 @@
 !>  Specifically, this module contains routines for computing the following quantities of the <b>(Truncated) Pareto distribution</b>:<br>
 !>  <ol>
 !>      <li>    the Probability Density Function (**PDF**)
-!>      <li>    the **Cumulative Distribution Function (**CDF**)
-!>      <li>    the random number generation from the distribution (**RNG**)
-!>      <li>    the **Inverse Cumulative Distribution Function (ICDF)** or the **Quantile Function**
+!>      <li>    the Cumulative Distribution Function (**CDF**)
+!>      <li>    the Random Number Generation from the distribution (**RNG**)
+!>      <li>    the Inverse Cumulative Distribution Function **(ICDF)** or the **Quantile Function**
 !>  </ol>
 !>
 !>  The **PDF** of the <b>(Truncated) Pareto distribution</b> over a strictly-positive support \f$x \in [x_\mathrm{min}, x_\mathrm{max}]\f$
@@ -711,7 +711,8 @@ module pm_distPareto
     !>
     !>      use pm_distPareto, only: getParetoLogCDFNF
     !>
-    !>      logCDFNF = getParetoLogCDFNF(alpha, logMinX, logMaxX) ! Truncated Pareto distribution. The norm. fac. of Pareto is trivially `1`, that is, `logCDFNF = 0.`
+    !>      logCDFNF = getParetoLogCDFNF(alpha, logMinX) ! = 0: Pareto distribution.
+    !>      logCDFNF = getParetoLogCDFNF(alpha, logMinX, logMaxX) ! Truncated Pareto distribution.
     !>      !
     !>  \endcode
     !>
@@ -752,6 +753,63 @@ module pm_distPareto
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
     interface getParetoLogCDFNF
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if RK5_ENABLED
+    PURE elemental module function getParetoLogCDFNFALD_RK5(alpha, logMinX) result(logCDFNF)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogCDFNFALD_RK5
+#endif
+        use pm_kind, only: RKC => RK5
+        real(RKC)   , intent(in)                :: alpha, logMinX
+        real(RKC)                               :: logCDFNF
+    end function
+#endif
+
+#if RK4_ENABLED
+    PURE elemental module function getParetoLogCDFNFALD_RK4(alpha, logMinX) result(logCDFNF)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogCDFNFALD_RK4
+#endif
+        use pm_kind, only: RKC => RK4
+        real(RKC)   , intent(in)                :: alpha, logMinX
+        real(RKC)                               :: logCDFNF
+    end function
+#endif
+
+#if RK3_ENABLED
+    PURE elemental module function getParetoLogCDFNFALD_RK3(alpha, logMinX) result(logCDFNF)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogCDFNFALD_RK3
+#endif
+        use pm_kind, only: RKC => RK3
+        real(RKC)   , intent(in)                :: alpha, logMinX
+        real(RKC)                               :: logCDFNF
+    end function
+#endif
+
+#if RK2_ENABLED
+    PURE elemental module function getParetoLogCDFNFALD_RK2(alpha, logMinX) result(logCDFNF)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogCDFNFALD_RK2
+#endif
+        use pm_kind, only: RKC => RK2
+        real(RKC)   , intent(in)                :: alpha, logMinX
+        real(RKC)                               :: logCDFNF
+    end function
+#endif
+
+#if RK1_ENABLED
+    PURE elemental module function getParetoLogCDFNFALD_RK1(alpha, logMinX) result(logCDFNF)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogCDFNFALD_RK1
+#endif
+        use pm_kind, only: RKC => RK1
+        real(RKC)   , intent(in)                :: alpha, logMinX
+        real(RKC)                               :: logCDFNF
+    end function
+#endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

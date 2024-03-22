@@ -31,7 +31,7 @@
         real(RK)    , parameter     :: TOL = epsilon(1._RK) * 100_IK
         real(RK)    , parameter     :: Point(*) = [-3.5_RK, -1._RK, 0._RK, .95_RK, 1.5_RK]
         real(RK)    , allocatable   :: LogPDF_ref(:)
-        real(RK)    , allocatable   :: LogPDF(:)
+        real(RK)    , allocatable   :: logPDF(:)
         real(RK)    , allocatable   :: diff(:)
         real(RK)    , allocatable   :: logInvStd
         real(RK)    , allocatable   :: invStd
@@ -40,7 +40,7 @@
 
         assertion = .true._LK
 
-        ! Compute the LogPDF with mean and invStd
+        ! Compute the logPDF with mean and invStd
 
         mean = 2.5_RK
         invStd = 1._RK / 3.3_RK
@@ -52,68 +52,68 @@
                         , -2.15877468395442593417453168797713593_RK & ! LCOV_EXCL_LINE
                         ]
 
-        LogPDF = [( getNormLogPDF(Point(i), mean, invStd, logInvStd), i = 1, size(Point) )]
+        logPDF = [( getNormLogPDF(Point(i), mean, invStd, logInvStd), i = 1, size(Point) )]
         call report()
-        call test%assert(assertion, desc = "The LogPDF must be computed correctly with an input mean and invStd.")
+        call test%assert(assertion, desc = "The logPDF must be computed correctly with an input mean and invStd.")
 
-        LogPDF = getNormLogPDF(Point-mean, invStd, logInvStd)
+        logPDF = getNormLogPDF(Point-mean, invStd, logInvStd)
         call report()
         call test%assert(assertion, desc = "The procedure must be able to act on 1D array inputs with an input invStd.")
 
-        ! Compute the LogPDF with mean and invStd
+        ! Compute the logPDF with mean and invStd
 
         mean = 2.5_RK
         invStd = 1._RK / 3.3_RK
         logInvStd = log(invStd)
         LogPDF_ref = getNormLogPDF(Point, mean, invStd, logInvStd)
 
-        LogPDF = [( getNormLogPDF(Point(i) - mean, invStd, logInvStd), i = 1, size(Point) )]
+        logPDF = [( getNormLogPDF(Point(i) - mean, invStd, logInvStd), i = 1, size(Point) )]
         call report()
-        call test%assert(assertion, desc = "The LogPDF must be computed correctly with an input invStd.")
+        call test%assert(assertion, desc = "The logPDF must be computed correctly with an input invStd.")
 
-        LogPDF = getNormLogPDF(Point, mean, invStd, logInvStd)
+        logPDF = getNormLogPDF(Point, mean, invStd, logInvStd)
         call report()
         call test%assert(assertion, desc = "The procedure must be able to act on 1D array inputs with an input mean and invStd.")
 
-        ! Compute the LogPDF with mean
+        ! Compute the logPDF with mean
 
         mean = 2.5_RK
         invStd = 1._RK
         logInvStd = 0._RK
         LogPDF_ref = getNormLogPDF(Point, mean, invStd, logInvStd)
 
-        LogPDF = [( getNormLogPDF(Point(i), mean), i = 1, size(Point) )]
+        logPDF = [( getNormLogPDF(Point(i), mean), i = 1, size(Point) )]
         call report()
-        call test%assert(assertion, desc = "The LogPDF must be computed correctly with an input mean.")
+        call test%assert(assertion, desc = "The logPDF must be computed correctly with an input mean.")
 
-        LogPDF = getNormLogPDF(Point, mean)
+        logPDF = getNormLogPDF(Point, mean)
         call report()
         call test%assert(assertion, desc = "The procedure must be able to act on 1D array inputs with an input mean.")
 
-        ! Compute the LogPDF with mean
+        ! Compute the logPDF with mean
 
         mean = 0._RK
         invStd = 1._RK
         LogPDF_ref = getNormLogPDF(Point, mean, invStd, logInvStd)
 
-        LogPDF = [( getNormLogPDF(Point(i)), i = 1, size(Point) )]
+        logPDF = [( getNormLogPDF(Point(i)), i = 1, size(Point) )]
         call report()
-        call test%assert(assertion, desc = "The LogPDF must be computed correctly.")
+        call test%assert(assertion, desc = "The logPDF must be computed correctly.")
 
-        LogPDF = getNormLogPDF(Point)
+        logPDF = getNormLogPDF(Point)
         call report()
         call test%assert(assertion, desc = "The procedure must be able to act on 1D array inputs.")
 
     contains
 
         subroutine report()
-            diff = abs(LogPDF - LogPDF_ref)
+            diff = abs(logPDF - LogPDF_ref)
             assertion = all(diff < TOL)
             if (test%traceable .and. .not. assertion) then
                 ! LCOV_EXCL_START
                 write(test%disp%unit,"(*(g0,:,', '))")
                 write(test%disp%unit,"(*(g0,:,', '))") "LogPDF_ref ", LogPDF_ref
-                write(test%disp%unit,"(*(g0,:,', '))") "LogPDF     ", LogPDF
+                write(test%disp%unit,"(*(g0,:,', '))") "logPDF     ", logPDF
                 write(test%disp%unit,"(*(g0,:,', '))") "diff       ", diff
                 write(test%disp%unit,"(*(g0,:,', '))") "TOL        ", TOL
                 write(test%disp%unit,"(*(g0,:,', '))")

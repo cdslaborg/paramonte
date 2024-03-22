@@ -1,6 +1,6 @@
 program example
 
-    use pm_kind, only: SK, IK, LK, TKC => RK32
+    use pm_kind, only: SK, IK, LK, TKC => RKS
     use pm_matrixMulAdd, only: symmetric, hermitian
     use pm_matrixMulAdd, only: transSymm, transHerm
     use pm_matrixMulAdd, only: uppDia, lowDia
@@ -28,7 +28,7 @@ program example
 
     block
 
-        use pm_kind, only: TKC => IK32
+        use pm_kind, only: TKC => IKS
         integer(TKC) :: alpha, beta
         integer(TKC), parameter :: DUM = huge(DUM)
         integer(TKC), allocatable :: matA(:,:), matB(:), matC(:), refC(:)
@@ -666,7 +666,7 @@ program example
 
     block
 
-        use pm_kind, only: TKC => CK32
+        use pm_kind, only: TKC => CKS
         use pm_distUnif, only: setUnifRand
         complex(TKC), allocatable, dimension(:,:) :: matA, matB, matC, refC
         complex(TKC) :: alpha, beta
@@ -824,7 +824,7 @@ program example
 
     block
 
-        use pm_kind, only: TKC => CK32
+        use pm_kind, only: TKC => CKS
         complex(TKC) :: alpha, beta
         complex(TKC), parameter :: COMPLEXDUM = cmplx(huge(0._TKC), huge(0._TKC), TKC)
         complex(TKC), allocatable, dimension(:,:) :: matA, matB, matC, refC
@@ -1017,7 +1017,7 @@ program example
 
     block
 
-        use pm_kind, only: TKC => CK32
+        use pm_kind, only: TKC => CKS
         complex(TKC) :: alpha, beta
         real(TKC), parameter :: DUM = huge(DUM)
         complex(TKC), parameter :: COMPLEXDUM = cmplx(huge(0._TKC), huge(0._TKC), TKC)
@@ -1450,7 +1450,7 @@ program example
 
     block
 
-        use pm_kind, only: TKC => CK32
+        use pm_kind, only: TKC => CKS
         complex(TKC)    :: alpha, beta
         real(TKC)       , parameter :: DUM = huge(DUM)
         complex(TKC)    , parameter :: COMPLEXDUM = cmplx(huge(0._TKC), huge(0._TKC), TKC)

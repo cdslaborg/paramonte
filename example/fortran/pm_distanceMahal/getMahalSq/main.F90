@@ -28,7 +28,7 @@ program example
 
     block
 
-        use pm_kind, only: RKC => RK32 ! all other real kinds are also acceptable: RK, RK32, RK64, RK128
+        use pm_kind, only: RKC => RKS ! all other real kinds are also supported.
         real(RKC), allocatable :: point(:,:), mahalSq(:,:), mean(:,:), invCov(:,:,:)
 
         call disp%show("ndim = 3; npnt = 5; nsam = 2")
@@ -125,7 +125,7 @@ program example
 
     block
 
-        use pm_kind, only: CKC => CK32 ! all other complex kinds are also acceptable: CK, CK32, CK64, CK128
+        use pm_kind, only: CKC => CKS ! all other complex kinds are also supported.
         complex(CKC), allocatable :: point(:,:), mahalSq(:,:), mean(:,:), invCov(:,:,:)
 
         call disp%show("ndim = 3; npnt = 5; nsam = 2")

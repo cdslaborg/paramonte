@@ -17,7 +17,7 @@ program example
 
     do i = 1, 5
     block
-        use pm_kind, only: TKC => CK32
+        use pm_kind, only: TKC => CKS
         real(TKC) :: reltol
         complex(TKC), allocatable :: data(:), adat(:)
         call disp%show("lenData = getUnifRand(5, 100)")
@@ -45,7 +45,7 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => CK64
+        use pm_kind, only: TKC => CKD
         real(TKC) :: reltol
         complex(TKC), allocatable :: data(:), adat(:)
         call disp%show("lenData = getUnifRand(5, 100)")
@@ -73,7 +73,7 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => CK128
+        use pm_kind, only: TKC => CKH
         real(TKC) :: reltol
         complex(TKC), allocatable :: data(:), adat(:)
         call disp%show("lenData = getUnifRand(5, 100)")
@@ -101,7 +101,7 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => RK32
+        use pm_kind, only: TKC => RKS
         real(TKC) :: reltol
         real(TKC), allocatable :: data(:), adat(:)
         call disp%show("lenData = getUnifRand(5, 100)")
@@ -129,7 +129,7 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => RK64
+        use pm_kind, only: TKC => RKD
         real(TKC) :: reltol
         real(TKC), allocatable :: data(:), adat(:)
         call disp%show("lenData = getUnifRand(5, 100)")
@@ -157,7 +157,7 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => RK128
+        use pm_kind, only: TKC => RKH
         real(TKC) :: reltol
         real(TKC), allocatable :: data(:), adat(:)
         call disp%show("lenData = getUnifRand(5, 100)")

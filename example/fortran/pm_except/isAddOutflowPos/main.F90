@@ -1,9 +1,9 @@
 program example
 
     use pm_kind, only: SK, IK
-    use pm_kind, only: IK32, IK64 ! all processor types and kinds are supported.
-    use pm_kind, only: RK32, RK64 ! all processor types and kinds are supported.
-    use pm_kind, only: CK32, CK64 ! all processor types and kinds are supported.
+    use pm_kind, only: IKS, IKD ! all processor types and kinds are supported.
+    use pm_kind, only: RKS, RKD ! all processor types and kinds are supported.
+    use pm_kind, only: CKS, CKD ! all processor types and kinds are supported.
     use pm_except, only: isAddOutflowPos
     use pm_io, only: display_type
 

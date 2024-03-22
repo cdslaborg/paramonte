@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK, LK
-    use pm_kind, only: RKC => RK128 ! all processor kinds are supported.
+    use pm_kind, only: RKC => RKH ! all processor kinds are supported.
     use pm_io, only: display_type
     use pm_batse, only: getLogPbol
 
@@ -13,7 +13,7 @@ program example
 
     block
 
-        use pm_kind, only: RKC => RK64
+        use pm_kind, only: RKC => RKD
 
         call disp%skip()
         call disp%show("getLogPbol(logEpk = 2._RKC, logPF53 = 0._RKC)")

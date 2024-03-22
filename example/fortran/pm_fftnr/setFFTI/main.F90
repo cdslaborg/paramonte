@@ -14,7 +14,7 @@ program example
     disp = display_type(file = "main.out.F90")
 
     block
-        use pm_kind, only: TKC => CK32
+        use pm_kind, only: TKC => CKS
         complex(TKC), allocatable :: data(:)
         complex(TKC), parameter :: ZERO = 0._TKC
         call disp%skip()
@@ -33,7 +33,7 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => CK64
+        use pm_kind, only: TKC => CKD
         complex(TKC), allocatable :: data(:)
         complex(TKC), parameter :: ZERO = 0._TKC
         call disp%skip()
@@ -71,7 +71,7 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => RK32
+        use pm_kind, only: TKC => RKS
         real(TKC), allocatable :: data(:)
         real(TKC), parameter :: ZERO = 0._TKC
         call disp%skip()
@@ -90,7 +90,7 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => RK64
+        use pm_kind, only: TKC => RKD
         real(TKC), allocatable :: data(:)
         real(TKC), parameter :: ZERO = 0._TKC
         call disp%skip()

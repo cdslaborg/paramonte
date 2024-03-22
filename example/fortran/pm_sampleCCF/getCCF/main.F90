@@ -32,7 +32,7 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! All other real types are also supported, e.g., RK32, RK64, RK128.
+        use pm_kind, only: TKC => RKS ! All other real types are also supported.
         integer(IK), allocatable :: lag(:)
         real(TKC), allocatable :: f(:), g(:)
         real(TKC), allocatable :: range(:), ccf(:)
@@ -71,7 +71,7 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => RKS ! All other real types are also supported, e.g., RK32, RK64, RK128.
+        use pm_kind, only: TKC => RKS ! All other real types are also supported.
         complex(TKC), allocatable :: f(:), g(:)
         complex(TKC), allocatable :: range(:), ccf(:)
         format = getFormat(deliml = '', subsep = SK_'', delimr = 'i', subcount = 2_IK, signed = .true._LK)

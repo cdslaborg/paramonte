@@ -1,6 +1,6 @@
 program example
 
-    use pm_kind, only: SK, IK, RK128 ! All real kinds are supported.
+    use pm_kind, only: SK, IK, RKH ! All real kinds are supported.
     use pm_cosmology, only: getHubbleParamNormedSq
     use pm_io, only: display_type
 
@@ -20,8 +20,8 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("getHubbleParamNormedSq(zplus1 = 1.1_RK128)")
-    call disp%show( getHubbleParamNormedSq(zplus1 = 1.1_RK128) )
+    call disp%show("getHubbleParamNormedSq(zplus1 = 1.1_RKH)")
+    call disp%show( getHubbleParamNormedSq(zplus1 = 1.1_RKH) )
     call disp%skip()
 
     call disp%skip()

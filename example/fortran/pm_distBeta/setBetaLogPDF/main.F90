@@ -10,7 +10,7 @@ program example
     implicit none
 
     integer(IK), parameter  :: NP = 999_IK
-    real                    :: Point(NP), LogPDF(NP)
+    real                    :: Point(NP), logPDF(NP)
 
     type(display_type)      :: disp
     disp = display_type(file = "main.out.F90")
@@ -28,10 +28,10 @@ program example
     call disp%skip()
     call disp%show("Point(1)")
     call disp%show( Point(1) )
-    call disp%show("call setBetaLogPDF(LogPDF(1), Point(1), 2., 2.)")
-                    call setBetaLogPDF(LogPDF(1), Point(1), 2., 2.)
-    call disp%show("LogPDF(1)")
-    call disp%show( LogPDF(1) )
+    call disp%show("call setBetaLogPDF(logPDF(1), Point(1), 2., 2.)")
+                    call setBetaLogPDF(logPDF(1), Point(1), 2., 2.)
+    call disp%show("logPDF(1)")
+    call disp%show( logPDF(1) )
     call disp%skip()
 
     call disp%skip()
@@ -43,10 +43,10 @@ program example
     call disp%skip()
     call disp%show("Point(NP/2)")
     call disp%show( Point(NP/2) )
-    call disp%show("call setBetaLogPDF(LogPDF(NP/2), Point(NP/2), 2., 2., getLogBeta(2., 2.))")
-                    call setBetaLogPDF(LogPDF(NP/2), Point(NP/2), 2., 2., getLogBeta(2., 2.))
-    call disp%show("LogPDF(NP/2)")
-    call disp%show( LogPDF(NP/2) )
+    call disp%show("call setBetaLogPDF(logPDF(NP/2), Point(NP/2), 2., 2., getLogBeta(2., 2.))")
+                    call setBetaLogPDF(logPDF(NP/2), Point(NP/2), 2., 2., getLogBeta(2., 2.))
+    call disp%show("logPDF(NP/2)")
+    call disp%show( logPDF(NP/2) )
     call disp%skip()
 
     call disp%skip()
@@ -58,10 +58,10 @@ program example
     call disp%skip()
     call disp%show("Point(1:NP:NP/4)")
     call disp%show( Point(1:NP:NP/4) )
-    call disp%show("call setBetaLogPDF(LogPDF(1:NP:NP/4), Point(1:NP:NP/4), alpha = 0.5, beta = 5.)")
-                    call setBetaLogPDF(LogPDF(1:NP:NP/4), Point(1:NP:NP/4), alpha = 0.5, beta = 5.)
-    call disp%show("LogPDF(1:NP:NP/4)")
-    call disp%show( LogPDF(1:NP:NP/4) )
+    call disp%show("call setBetaLogPDF(logPDF(1:NP:NP/4), Point(1:NP:NP/4), alpha = 0.5, beta = 5.)")
+                    call setBetaLogPDF(logPDF(1:NP:NP/4), Point(1:NP:NP/4), alpha = 0.5, beta = 5.)
+    call disp%show("logPDF(1:NP:NP/4)")
+    call disp%show( logPDF(1:NP:NP/4) )
     call disp%skip()
 
     call disp%skip()
@@ -73,10 +73,10 @@ program example
     call disp%skip()
     call disp%show("Point(NP/4)")
     call disp%show( Point(NP/4) )
-    call disp%show("call setBetaLogPDF(LogPDF(1:NP:NP/4), Point(NP/4), alpha = getLinSpace(0.5, 5., 5), beta = getLinSpace(5., .5, 5))")
-                    call setBetaLogPDF(LogPDF(1:NP:NP/4), Point(NP/4), alpha = getLinSpace(0.5, 5., 5), beta = getLinSpace(5., .5, 5))
-    call disp%show("LogPDF(1:NP:NP/4)")
-    call disp%show( LogPDF(1:NP:NP/4) )
+    call disp%show("call setBetaLogPDF(logPDF(1:NP:NP/4), Point(NP/4), alpha = getLinSpace(0.5, 5., 5), beta = getLinSpace(5., .5, 5))")
+                    call setBetaLogPDF(logPDF(1:NP:NP/4), Point(NP/4), alpha = getLinSpace(0.5, 5., 5), beta = getLinSpace(5., .5, 5))
+    call disp%show("logPDF(1:NP:NP/4)")
+    call disp%show( logPDF(1:NP:NP/4) )
     call disp%skip()
 
     call disp%skip()
@@ -88,22 +88,22 @@ program example
     call disp%skip()
     call disp%show("Point(1:NP:NP/4)")
     call disp%show( Point(1:NP:NP/4) )
-    call disp%show("call setBetaLogPDF(LogPDF(1:NP:NP/4), Point(1:NP:NP/4), alpha = getLinSpace(0.5, 5., 5), beta = getLinSpace(5., .5, 5))")
-                    call setBetaLogPDF(LogPDF(1:NP:NP/4), Point(1:NP:NP/4), alpha = getLinSpace(0.5, 5., 5), beta = getLinSpace(5., .5, 5))
-    call disp%show("LogPDF(1:NP:NP/4)")
-    call disp%show( LogPDF(1:NP:NP/4) )
+    call disp%show("call setBetaLogPDF(logPDF(1:NP:NP/4), Point(1:NP:NP/4), alpha = getLinSpace(0.5, 5., 5), beta = getLinSpace(5., .5, 5))")
+                    call setBetaLogPDF(logPDF(1:NP:NP/4), Point(1:NP:NP/4), alpha = getLinSpace(0.5, 5., 5), beta = getLinSpace(5., .5, 5))
+    call disp%show("logPDF(1:NP:NP/4)")
+    call disp%show( logPDF(1:NP:NP/4) )
     call disp%skip()
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    ! Output an example LogPDF array for visualization.
+    ! Output an example logPDF array for visualization.
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     block
         integer(IK) :: fileUnit, i
         open(newunit = fileUnit, file = "setBetaLogPDF.RK.txt")
         do i = 1, NP
-            call setBetaLogPDF(LogPDF(1:4), Point(i), alpha = [0.5, 2.0, 2.0, 5.0], beta = [0.5, 2.0, 5.0, 2.0])
-            write(fileUnit,"(5(g0,:,' '))") Point(i), exp(LogPDF(1:4))
+            call setBetaLogPDF(logPDF(1:4), Point(i), alpha = [0.5, 2.0, 2.0, 5.0], beta = [0.5, 2.0, 5.0, 2.0])
+            write(fileUnit,"(5(g0,:,' '))") Point(i), exp(logPDF(1:4))
         end do
         close(fileUnit)
     end block

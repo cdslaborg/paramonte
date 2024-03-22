@@ -2323,6 +2323,63 @@ contains
 #undef assign_ENABLED
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!
+!#define getVal_ENABLED 1
+!
+!    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!
+!#define  D0_ENABLED 1
+!
+!    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!
+!#define SK_ENABLED 1
+!    module procedure getVal_D0_BSSK
+!        use pm_kind, only: SKC => SK
+!#include "pm_container@routines.inc.F90"
+!    end procedure
+!#undef  SK_ENABLED
+!
+!#define IK_ENABLED 1
+!    module procedure getVal_D0_BSIK
+!        use pm_kind, only: IKC => IK
+!#include "pm_container@routines.inc.F90"
+!    end procedure
+!#undef  IK_ENABLED
+!
+!#define LK_ENABLED 1
+!    module procedure getVal_D0_BSLK
+!        use pm_kind, only: LKC => LK
+!#include "pm_container@routines.inc.F90"
+!    end procedure
+!#undef  LK_ENABLED
+!
+!#define CK_ENABLED 1
+!    module procedure getVal_D0_BSCK
+!        use pm_kind, only: CKC => CK
+!#include "pm_container@routines.inc.F90"
+!    end procedure
+!#undef  CK_ENABLED
+!
+!#define RK_ENABLED 1
+!    module procedure getVal_D0_BSRK
+!        use pm_kind, only: RKC => RK
+!#include "pm_container@routines.inc.F90"
+!    end procedure
+!#undef  RK_ENABLED
+!
+!    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!
+!#undef D0_ENABLED
+!
+!    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!
+!#undef getVal_ENABLED
+!
+!!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #undef CHECK_ASSERTION
 
