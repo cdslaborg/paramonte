@@ -555,7 +555,7 @@ Value               | Usage
 > The ParaMonte extended precision tests are prone to failure.
 > This is due to GNU compiler bugs for extended precision arithmetic.
 > To avoid bug-induced test failures when using GNU compilers, 
-> you can additionally specify the [`--rki 1,2`](#rki) build 
+> you can additionally specify the [`--rki "1;2"`](#rki) build 
 > to build the library and its test for only the 
 > single and double `real` type precisions.
 
