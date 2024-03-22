@@ -14,12 +14,12 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-!>  \brief This module contains tests of the module [pm_quantile](@ref pm_quantile).
+!>  \brief This module contains tests of the module [pm_sampleQuan](@ref pm_sampleQuan).
 !>  \author Amir Shahmoradi
 
-module test_pm_quantile
+module test_pm_sampleQuan
 
-    use pm_quantile
+    use pm_sampleQuan
     use pm_err, only: err_type
     use pm_test, only: test_type, LK
     implicit none
@@ -461,4 +461,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module test_pm_quantile
+end module test_pm_sampleQuan

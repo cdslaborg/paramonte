@@ -93,9 +93,9 @@ module pm_mathExp
     !>  \elemental
     !>
     !>  \see
-    !>  [isIntPow](@ref pm_mathExpPast::isIntPow)<br>
-    !>  [getExpNext](@ref pm_mathExpPast::getExpNext)<br>
-    !>  [getExpPrev](@ref pm_mathExpPast::getExpPrev)<br>
+    !>  [isIntPow](@ref pm_mathExp::isIntPow)<br>
+    !>  [getExpNext](@ref pm_mathExp::getExpNext)<br>
+    !>  [getExpPrev](@ref pm_mathExp::getExpPrev)<br>
     !>
     !>  \example
     !>  \include{lineno} example/pm_mathExp/isIntPow/main.F90
@@ -289,9 +289,9 @@ module pm_mathExp
     !>  One can envision a distant future human society with advanced computers capable of representing higher precision integer value for which \RK32 or \RK64 would be insufficient.<br>
     !>
     !>  \see
-    !>  [isIntPow](@ref pm_mathExpPast::isIntPow)<br>
-    !>  [getExpNext](@ref pm_mathExpPast::getExpNext)<br>
-    !>  [getExpPrev](@ref pm_mathExpPast::getExpPrev)<br>
+    !>  [isIntPow](@ref pm_mathExp::isIntPow)<br>
+    !>  [getExpNext](@ref pm_mathExp::getExpNext)<br>
+    !>  [getExpPrev](@ref pm_mathExp::getExpPrev)<br>
     !>
     !>  \example
     !>  \include{lineno} example/pm_mathExp/getExpNext/main.F90
@@ -490,9 +490,9 @@ module pm_mathExp
     !>  One can envision a distant future human society with advanced computers capable of representing higher precision integer value for which \RK32 or \RK64 would be insufficient.<br>
     !>
     !>  \see
-    !>  [isIntPow](@ref pm_mathExpPast::isIntPow)<br>
-    !>  [getExpNext](@ref pm_mathExpPast::getExpNext)<br>
-    !>  [getExpPrev](@ref pm_mathExpPast::getExpPrev)<br>
+    !>  [isIntPow](@ref pm_mathExp::isIntPow)<br>
+    !>  [getExpNext](@ref pm_mathExp::getExpNext)<br>
+    !>  [getExpPrev](@ref pm_mathExp::getExpPrev)<br>
     !>
     !>  \example
     !>  \include{lineno} example/pm_mathExp/getExpPrev/main.F90

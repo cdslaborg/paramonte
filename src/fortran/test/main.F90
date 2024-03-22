@@ -129,7 +129,7 @@ block; use test_pm_timer; call setTest(); end block
 !!block; use test_pm_io; call setTest(); end block
 !!block; use Test_FileContents_pmod; call setTest(); end block
 !!block; use test_pm_io; call setTest(); end block
-!!block; use test_pm_fitGeoCyclic; call setTest(); end block
+!!block; use test_pm_distGeomCyclic; call setTest(); end block
 !!block; use test_pm_knn; call setTest(); end block
 !!block; use test_pm_ellipsoid; call setTest(); end block
 !!block; use test_pm_histogram; call setTest(); end block
@@ -137,7 +137,7 @@ block; use test_pm_timer; call setTest(); end block
 !!block; use test_pm_val2int; call setTest(); end block
 !!!block; use test_pm_polation; call setTest(); end block
 !!block; use test_pm_quadRomb; call setTest(); end block
-!!block; use test_pm_interpLinear; call setTest(); end block
+!!block; use test_pm_polation; call setTest(); end block
 !!block; use test_pm_clustering; call setTest(); end block
 !!block; use test_pm_logicalCompare; call setTest(); end block
 !!block; use test_pm_val2logical; call setTest(); end block
@@ -150,7 +150,7 @@ block; use test_pm_timer; call setTest(); end block
 !
 !block; use test_pm_matrix; call setTest(); end block
 !block; use test_pm_matrixDet; call setTest(); end block
-!block; use test_pm_matrixInitDia; call setTest(); end block
+!block; use test_pm_matrixInit; call setTest(); end block
 !block; use test_pm_matrixCopy; call setTest(); end block
 !block; use test_pm_matrixTrans; call setTest(); end block
 !
@@ -166,7 +166,7 @@ block; use test_pm_timer; call setTest(); end block
 !block; use test_pm_parallelism; call setTest(); end block
 !block; use test_pm_sysPath; call setTest(); end block
 !!block; use test_pm_processPoisson; call setTest(); end block
-!block; use test_pm_quantile; call setTest(); end block
+!block; use test_pm_sampleQuan; call setTest(); end block
 !block; use test_pm_randomSeed; call setTest(); end block
 !block; use test_pm_val2real; call setTest(); end block
 !block; use Test_SampleCovMat_pmod; call setTest(); end block

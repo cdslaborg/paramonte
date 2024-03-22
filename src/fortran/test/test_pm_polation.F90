@@ -14,12 +14,19 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-!>  \brief This module contains tests of the module [pm_interpLinear](@ref pm_interpLinear).
-!>  \author Amir Shahmoradi
+!>  \brief 
+!>  This module contains tests of the module [pm_polation](@ref pm_polation).
+!>
+!>  \fintest
+!>
+!>  \author 
+!>  Amir Shahmoradi
 
-module test_pm_interpLinear
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    use pm_interpLinear
+module test_pm_polation
+
+    use pm_polation
     use pm_err, only: err_type
     use pm_test, only: test_type, LK
     implicit none
@@ -124,4 +131,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module test_pm_interpLinear
+end module test_pm_polation

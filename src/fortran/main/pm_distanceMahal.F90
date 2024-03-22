@@ -34,7 +34,7 @@
 !>
 !>  \benchmarks
 !>
-!>  \benchmark{row_vs_col_major, The runtime performance of [getMatInit](@ref pm_distanceMahal::getMatInit) vs. [setMatInit](@ref pm_distanceMahal::setMatInit)}
+!>  \benchmark{row_vs_col_major, The runtime performance of [getMahalSq](@ref pm_distanceMahal::getMahalSq) vs. [setMahalSq](@ref pm_distanceMahal::setMahalSq)}
 !>  \include{lineno} benchmark/pm_distanceMahal/row_vs_col_major/main.F90
 !>  \compilefb{row_vs_col_major}
 !>  \postprocb{row_vs_col_major}
@@ -49,7 +49,7 @@
 !>      -#  This is particularly relevant when one matrix is symmetric square and the other is a vector,
 !>          which is case with the procedures of the generic interface [getMahalSq](@ref pm_distanceMahal::getMahalSq).<br>
 !>
-!>  \benchmark{looping_vs_intrinsic, The runtime performance of [getMatInit](@ref pm_distanceMahal::getMatInit) vs. [setMatInit](@ref pm_distanceMahal::setMatInit)}
+!>  \benchmark{looping_vs_intrinsic, The runtime performance of [getMahalSq](@ref pm_distanceMahal::getMahalSq) vs. [setMahalSq](@ref pm_distanceMahal::setMahalSq)}
 !>  \include{lineno} benchmark/pm_distanceMahal/looping_vs_intrinsic/main.F90
 !>  \compilefb{looping_vs_intrinsic}
 !>  \postprocb{looping_vs_intrinsic}

@@ -21,7 +21,7 @@ for file in files:
     # traceplot
 
     #print(df.values)
-    fig = plt.figure(figsize=(8, 6))
+    fig = plt.figure(figsize = (8, 6))
     ax = plt.subplot(1,1,1)
     ax.plot ( range(len(df.values[:,0]))
             , df.values[:, sindex:]
@@ -42,7 +42,7 @@ for file in files:
 
     if len(df.values[1, sindex:]) > 1:
         #print(df.values)
-        fig = plt.figure(figsize=(8, 6))
+        fig = plt.figure(figsize = (8, 6))
         ax = plt.subplot(1,1,1)
         ax.scatter  ( df.values[:, sindex]
                     , df.values[:, sindex + 1]
@@ -66,7 +66,7 @@ for file in files:
     #print(df.values)
     if "adaptationMeasure" in df.columns.values:
         if any(df["adaptationMeasure"].values != 0):
-            fig = plt.figure(figsize=(8, 6))
+            fig = plt.figure(figsize = (8, 6))
             ax = plt.subplot(1,1,1)
             ax.scatter  ( range(len(df.values[:,0]))
                         , df["adaptationMeasure"].values

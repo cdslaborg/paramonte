@@ -287,13 +287,13 @@ module pm_distanceEuclid
     !>                                  (**optional**, default = `[(0., i = 1, size(point, 1))]`. It can be present **only if** the input argument `point` is also present.)
     !>  \param[in]      method      :   The input scalar that can be,<br>
     !>                                  <ol>
-    !>                                      <li>    the constant [euclid](@ref pm_diatanceEuclid::euclid) or an object of type [euclid_type](@ref pm_distanceEuclid::euclid_type),
+    !>                                      <li>    the constant [euclid](@ref pm_distanceEuclid::euclid) or an object of type [euclid_type](@ref pm_distanceEuclid::euclid_type),
     !>                                              implying that all distance calculations must be done without undue numerical overflow.<br>
     !>                                              This option is computationally the most expensive method.<br>
-    !>                                      <li>    the constant [euclidu](@ref pm_diatanceEuclid::euclidu) or an object of type [euclidu_type](@ref pm_distanceEuclid::euclidu_type),
+    !>                                      <li>    the constant [euclidu](@ref pm_distanceEuclid::euclidu) or an object of type [euclidu_type](@ref pm_distanceEuclid::euclidu_type),
     !>                                              implying that all distance calculations must be **without** runtime checks for numerical overflow.<br>
-    !>                                              This option is computationally faster than the [euclid](@ref pm_diatanceEuclid::euclid) method.<br>
-    !>                                      <li>    the constant [euclidsq](@ref pm_diatanceEuclid::euclidsq) or an object of type [euclidsq_type](@ref pm_distanceEuclid::euclidsq_type)
+    !>                                              This option is computationally faster than the [euclid](@ref pm_distanceEuclid::euclid) method.<br>
+    !>                                      <li>    the constant [euclidsq](@ref pm_distanceEuclid::euclidsq) or an object of type [euclidsq_type](@ref pm_distanceEuclid::euclidsq_type)
     !>                                              implying that the **squared** values of all distance calculations must be returned **without** runtime checks for numerical overflow.<br>
     !>                                              This option is computationally the fastest approach to computing the distances because it avoid costly `sqrt()` operations and runtime overflow checks.<br>
     !>                                  </ol>
@@ -885,13 +885,13 @@ module pm_distanceEuclid
     !>                                  (**optional**, default = `[(0., i = 1, size(point, 1))]`.)
     !>  \param[in]      method      :   The input scalar that can be,<br>
     !>                                  <ol>
-    !>                                      <li>    the constant [euclid](@ref pm_diatanceEuclid::euclid) or an object of type [euclid_type](@ref pm_distanceEuclid::euclid_type),
+    !>                                      <li>    the constant [euclid](@ref pm_distanceEuclid::euclid) or an object of type [euclid_type](@ref pm_distanceEuclid::euclid_type),
     !>                                              implying that all distance calculations must be done without undue numerical overflow.<br>
     !>                                              This option is computationally the most expensive method.<br>
-    !>                                      <li>    the constant [euclidu](@ref pm_diatanceEuclid::euclidu) or an object of type [euclidu_type](@ref pm_distanceEuclid::euclidu_type),
+    !>                                      <li>    the constant [euclidu](@ref pm_distanceEuclid::euclidu) or an object of type [euclidu_type](@ref pm_distanceEuclid::euclidu_type),
     !>                                              implying that all distance calculations must be **without** runtime checks for numerical overflow.<br>
-    !>                                              This option is computationally faster than the [euclid](@ref pm_diatanceEuclid::euclid) method.<br>
-    !>                                      <li>    the constant [euclidsq](@ref pm_diatanceEuclid::euclidsq) or an object of type [euclidsq_type](@ref pm_distanceEuclid::euclidsq_type)
+    !>                                              This option is computationally faster than the [euclid](@ref pm_distanceEuclid::euclid) method.<br>
+    !>                                      <li>    the constant [euclidsq](@ref pm_distanceEuclid::euclidsq) or an object of type [euclidsq_type](@ref pm_distanceEuclid::euclidsq_type)
     !>                                              implying that the **squared** values of all distance calculations must be returned **without** runtime checks for numerical overflow.<br>
     !>                                              This option is computationally the fastest approach to computing the distances because it avoid costly `sqrt()` operations and runtime overflow checks.<br>
     !>                                  </ol>
@@ -2212,7 +2212,7 @@ module pm_distanceEuclid
     !>
     !>  \param[in]      pack        :   The input scalar that can be:
     !>                                  <ol>
-    !>                                      <li>    the constant [rdpack](@ref pm_matrixPack::rdpack) or an object of type [rdpack_type](@ref pm_matrixSubset::rdpack_type),
+    !>                                      <li>    the constant [rdpack](@ref pm_matrixPack::rdpack) or an object of type [rdpack_type](@ref pm_matrixPack::rdpack_type),
     !>                                              implying the use of Rectangular Default Packing format for the output matrix.<br>
     !>                                  </ol>
     !>  \param[in]      subset      :   The input scalar that can be:
@@ -2241,13 +2241,13 @@ module pm_distanceEuclid
     !>                                  whose distances with respect to each other must be computed and returned.<br>
     !>  \param[in]      method      :   The input scalar that can be,<br>
     !>                                  <ol>
-    !>                                      <li>    the constant [euclid](@ref pm_diatanceEuclid::euclid) or an object of type [euclid_type](@ref pm_distanceEuclid::euclid_type),
+    !>                                      <li>    the constant [euclid](@ref pm_distanceEuclid::euclid) or an object of type [euclid_type](@ref pm_distanceEuclid::euclid_type),
     !>                                              implying that all distance calculations must be done without undue numerical overflow.<br>
     !>                                              This option is computationally the most expensive method.<br>
-    !>                                      <li>    the constant [euclidu](@ref pm_diatanceEuclid::euclidu) or an object of type [euclidu_type](@ref pm_distanceEuclid::euclidu_type),
+    !>                                      <li>    the constant [euclidu](@ref pm_distanceEuclid::euclidu) or an object of type [euclidu_type](@ref pm_distanceEuclid::euclidu_type),
     !>                                              implying that all distance calculations must be **without** runtime checks for numerical overflow.<br>
-    !>                                              This option is computationally faster than the [euclid](@ref pm_diatanceEuclid::euclid) method.<br>
-    !>                                      <li>    the constant [euclidsq](@ref pm_diatanceEuclid::euclidsq) or an object of type [euclidsq_type](@ref pm_distanceEuclid::euclidsq_type)
+    !>                                              This option is computationally faster than the [euclid](@ref pm_distanceEuclid::euclid) method.<br>
+    !>                                      <li>    the constant [euclidsq](@ref pm_distanceEuclid::euclidsq) or an object of type [euclidsq_type](@ref pm_distanceEuclid::euclidsq_type)
     !>                                              implying that the **squared** values of all distance calculations must be returned **without** runtime checks for numerical overflow.<br>
     !>                                              This option is computationally the fastest approach to constructing the distance matrix because it avoid costly `sqrt()` operations and runtime overflow checks.<br>
     !>                                  </ol>
@@ -2542,7 +2542,7 @@ module pm_distanceEuclid
     !>                                  Any element of `distance` that is not included in the specified `subset` will remain intact, if any such element exists.<br>
     !>  \param[in]      pack        :   The input scalar that can be:
     !>                                  <ol>
-    !>                                      <li>    the constant [rdpack](@ref pm_matrixPack::rdpack) or an object of type [rdpack_type](@ref pm_matrixSubset::rdpack_type),
+    !>                                      <li>    the constant [rdpack](@ref pm_matrixPack::rdpack) or an object of type [rdpack_type](@ref pm_matrixPack::rdpack_type),
     !>                                              implying the use of Rectangular Default Packing format for the output matrix.<br>
     !                                       <li>    the constant [lfpack](@ref pm_matrixPack::lfpack) or an object of type [lfpack_type](@ref pm_matrixSubset::lfpack_type),
     !                                               implying the use of Linear Full Packing format for the output matrix.<br>
@@ -2571,6 +2571,7 @@ module pm_distanceEuclid
     !>                                                  nn1loc = merge(nn1loc, nn1loc + 1, getRange(1, npnt) <= nn1loc)
     !>                                              \endcode
     !>                                              where `nn1loc` is the vector of indices of the first nearest neighbors such that `point(:,nn1loc(i))` is the nearest neighbor to `point(:,i)`.<br>
+    !>  \cond excluded
     !                                       <li>    the constant [uppDia](@ref pm_matrixSubset::uppDia) or an object of type [uppDia_type](@ref pm_matrixSubset::uppDia_type),
     !                                               implying that only the upper-diagonal subset of the distance matrix must be returned.<br>
     !                                       <li>    the constant [lowDia](@ref pm_matrixSubset::lowDia) or an object of type [lowDia_type](@ref pm_matrixSubset::lowDia_type),
@@ -2579,6 +2580,7 @@ module pm_distanceEuclid
     !                                               implying that only the upper-diagonal subset of the distance matrix must be returned.<br>
     !                                       <li>    the constant [low](@ref pm_matrixSubset::low) or an object of type [low_type](@ref pm_matrixSubset::low_type),
     !                                               implying that only the lower-diagonal subset of the distance matrix must be returned.<br>
+    !>  \endcond excluded
     !>                                  </ol>
     !>  \param[in]      point       :   The input `contiguous` matrix of shape `(1:ndim, 1:npnt)` of,
     !>                                  <ol>
@@ -2588,13 +2590,13 @@ module pm_distanceEuclid
     !>                                  whose distances with respect to each other must be computed and returned.<br>
     !>  \param[in]      method      :   The input scalar that can be,<br>
     !>                                  <ol>
-    !>                                      <li>    the constant [euclid](@ref pm_diatanceEuclid::euclid) or an object of type [euclid_type](@ref pm_distanceEuclid::euclid_type),
+    !>                                      <li>    the constant [euclid](@ref pm_distanceEuclid::euclid) or an object of type [euclid_type](@ref pm_distanceEuclid::euclid_type),
     !>                                              implying that all distance calculations must be done without undue numerical overflow.<br>
     !>                                              This option is computationally the most expensive method.<br>
-    !>                                      <li>    the constant [euclidu](@ref pm_diatanceEuclid::euclidu) or an object of type [euclidu_type](@ref pm_distanceEuclid::euclidu_type),
+    !>                                      <li>    the constant [euclidu](@ref pm_distanceEuclid::euclidu) or an object of type [euclidu_type](@ref pm_distanceEuclid::euclidu_type),
     !>                                              implying that all distance calculations must be **without** runtime checks for numerical overflow.<br>
-    !>                                              This option is computationally faster than the [euclid](@ref pm_diatanceEuclid::euclid) method.<br>
-    !>                                      <li>    the constant [euclidsq](@ref pm_diatanceEuclid::euclidsq) or an object of type [euclidsq_type](@ref pm_distanceEuclid::euclidsq_type)
+    !>                                              This option is computationally faster than the [euclid](@ref pm_distanceEuclid::euclid) method.<br>
+    !>                                      <li>    the constant [euclidsq](@ref pm_distanceEuclid::euclidsq) or an object of type [euclidsq_type](@ref pm_distanceEuclid::euclidsq_type)
     !>                                              implying that the **squared** values of all distance calculations must be returned **without** runtime checks for numerical overflow.<br>
     !>                                              This option is computationally the fastest approach to constructing the distance matrix because it avoid costly `sqrt()` operations and runtime overflow checks.<br>
     !>                                  </ol>

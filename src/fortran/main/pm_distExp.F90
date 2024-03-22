@@ -64,8 +64,8 @@
 !>  Note that the mean of the Exponential distribution is the scale parameter: \f$\mathrm{mean} = \sigma\f$).<br>
 !>
 !>  \see
-!>  [pm_distExpNeg](@ref pm_distExpNeg)<br>
 !>  [pm_distUnif](@ref pm_distUnif)<br>
+!>  [pm_distNegExp](@ref pm_distNegExp)<br>
 !>
 !>  \benchmarks
 !>

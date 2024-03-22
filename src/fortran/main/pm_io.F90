@@ -10093,7 +10093,7 @@ module pm_io
     !>  \param[in]  count       :   The input scalar `integer` of default kind \IK representing the number of times each input value has to be displayed.
     !>                              (**optional**, default = `1`. It can be present <b>if and only if</b> the `optional` input argument `file` is missing.)
     !>  \param[in]  sticky      :   The input scalar of type `logical` of default kind \LK.<br>
-    !>                              If `.true.`, the global properties (i.e., components) of the object of class [display_type](@ref pm_io:display_type)
+    !>                              If `.true.`, the global properties (i.e., components) of the object of class [display_type](@ref pm_io::display_type)
     !>                              can be overridden by the corresponding arguments passed to the dynamic methods of the object.<br>
     !>                              (**optional**, default = `.false.`)
     !>  \param[in]  text        :   The input scalar of type [wrap_type](@ref pm_io::wrap_type) containing the runtime settings and a method to wrap strings within a fixed width.<br>

@@ -2113,12 +2113,12 @@ module pm_quadPack
     !>  \param[in]  lb              :   The input scalar argument that can be either,<br>
     !>                                  <ul>
     !>                                      <li>    a value of type `real` of the same kind as the kind for the output `abserr`, representing the lower limit of integration, or<br>
-    !>                                      <li>    the constant [ninf](@ref pm_quadPack::ninf), representing negative infinity (\f$-\infty\f$) as the lower limit of integration.<br>
+    !>                                      <li>    the constant [ninf](@ref pm_mathConst::ninf), representing negative infinity (\f$-\infty\f$) as the lower limit of integration.<br>
     !>                                  </ul>
     !>  \param[in]  ub              :   The input scalar argument that can be either,<br>
     !>                                  <ul>
     !>                                      <li>    a value of type `real` of the same kind as the kind for the output `abserr`, representing the upper limit of integration, or<br>
-    !>                                      <li>    the constant [pinf](@ref pm_quadPack::pinf), representing positive infinity (\f$+\infty\f$) as the upper limit of integration.<br>
+    !>                                      <li>    the constant [pinf](@ref pm_mathConst::pinf), representing positive infinity (\f$+\infty\f$) as the upper limit of integration.<br>
     !>                                  </ul>
     !>  \param[out] qrule           :   The input scalar constant argument that can be either,<br>
     !>                                  <ul>
@@ -5398,12 +5398,12 @@ module pm_quadPack
     !>  \param[in]  lb              :   The input scalar argument that can be either,<br>
     !>                                  <ul>
     !>                                      <li>    a value of type `real` of the same kind as `integral`, representing the lower limit of integration, or<br>
-    !>                                      <li>    the constant [ninf](@ref pm_quadPack::ninf), representing negative infinity (\f$-\infty\f$) as the lower limit of integration.<br>
+    !>                                      <li>    the constant [ninf](@ref pm_mathConst::ninf), representing negative infinity (\f$-\infty\f$) as the lower limit of integration.<br>
     !>                                  </ul>
     !>  \param[in]  ub              :   The input scalar argument that can be either,<br>
     !>                                  <ul>
     !>                                      <li>    a value of type `real` of the same kind as `integral`, representing the upper limit of integration, or<br>
-    !>                                      <li>    the constant [pinf](@ref pm_quadPack::pinf), representing positive infinity (\f$+\infty\f$) as the upper limit of integration.<br>
+    !>                                      <li>    the constant [pinf](@ref pm_mathConst::pinf), representing positive infinity (\f$+\infty\f$) as the upper limit of integration.<br>
     !>                                  </ul>
     !>  \param[in]  abstol          :   The input scalar argument of the same type and kind as `integral`, representing the absolute tolerance of integration.<br>
     !>                                  If the estimated integration error reaches a value below this threshold, the integration is assumed to have converged.<br>
@@ -5548,7 +5548,7 @@ module pm_quadPack
     !>
     !>  \see
     !>  [getQuadGK](@ref  pm_quadPack::getQuadGK).<br>
-    !>  [getQuadErr](@ref pm_quadRomb::getQuadErr)<br>
+    !>  [getQuadErr](@ref pm_quadPack::getQuadErr)<br>
     !>  [getQuadRomb](@ref pm_quadRomb::getQuadRomb)<br>
     !>  [isFailedQuad](@ref pm_quadPack::isFailedQuad).<br>
     !>

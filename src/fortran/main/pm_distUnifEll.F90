@@ -419,7 +419,7 @@ module pm_distUnifEll
     !>  optionally with the specified input `mean(1:ndim)` and the specified `subset` of the Cholesky Factorization of the Gramian matrix of the MVUE distribution.
     !>
     !>  \details
-    !>  The procedures of this generic interface are merely wrappers around the subroutine interface [setUnifRand](@ref pm_distUnifEll::setUnifRand).<br>
+    !>  The procedures of this generic interface are merely wrappers around the subroutine interface [setUnifRand](@ref pm_distUnifEll::setUnifEllRand).<br>
     !>
     !>  \param[inout]   rng     :   The input/output scalar that can be an object of,
     !>                              <ol>
@@ -2641,14 +2641,14 @@ module pm_distUnifEll
     !>
     !>  \impure
     !>  The procedures of this generic interface are `pure` when the input argument `rng` is set to
-    !>  [xoshiro256ssw_type](@ref pm_distUnifRand::xoshiro256ssw_type) and the compile-time macro `CHECK_ENABLED` is set to `0` or is undefined.<br>
+    !>  [xoshiro256ssw_type](@ref pm_distUnif::xoshiro256ssw_type) and the compile-time macro `CHECK_ENABLED` is set to `0` or is undefined.<br>
     !>
     !>  \impure
     !>
     !>  \see
     !>  [getNormRand](@ref pm_distNorm::getNormRand)<br>
     !>  [setNormRand](@ref pm_distNorm::setNormRand)<br>
-    !>  [getNormLogPDF](@ref pm_distMultiNorm::getNormLogPDF)<br>
+    !>  [getNormLogPDF](@ref pm_distMultiNorm::getMultiNormLogPDF)<br>
     !>
     !>  \example{setUnifEllRand}
     !>  \include{lineno} example/pm_distUnifEll/setUnifEllRand/main.F90

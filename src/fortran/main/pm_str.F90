@@ -99,7 +99,7 @@ module pm_str
     !>      <li>    the length of at least one of the input strings is `1` and
     !>              each character of the other string equals the input string
     !>              with the length of `1`.
-    !>  <ol>
+    !>  </ol>
     !>  The functionality of this generic interface is equivalent to the Fortran intrinsic `all()` for array entities.
     !>
     !>  \param[in]  str1    :   The input scalar `character` of kind \SKALL of arbitrary length type parameter.
@@ -112,7 +112,7 @@ module pm_str
     !>                              <li>    the length of at least one of the input strings is `1` and
     !>                                      each character of the other string equals the input string
     !>                                      with the length of `1`.
-    !>                          <ol>
+    !>                          </ol>
     !>
     !>  \interface{alleq}
     !>  \code{.F90}
@@ -1394,7 +1394,7 @@ module pm_str
     !>  \pure
     !>
     !>  \see
-    !>  [setTrimmedTZ](@ref pm_str::setTrimmedTZ)<br>
+    !>  [pm_arrayStrip](@ref pm_arrayStrip)<br>
     !>
     !>  \example{getTrimmedTZ}
     !>  \include{lineno} example/pm_str/getTrimmedTZ/main.F90

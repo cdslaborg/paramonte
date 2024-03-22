@@ -49,9 +49,9 @@ module pm_sampling
     !>  Objects of this derived type are not meant to be used directly by the end users.<br>
     !>  Instead use one of the appropriate derived types:<br>
     !>  <ol>
-    !>      <li>    [paradram_type](@ref pm_sampling_scio::paradram_type)
-    !>      <li>    [paranest_type](@ref pm_sampling_scio::paranest_type)
-    !>      <li>    [paradise_type](@ref pm_sampling_scio::paradise_type)
+    !>      <li>    [paradram_type](@ref pm_sampling::paradram_type)
+    !>      <li>    [paranest_type](@ref pm_sampling::paranest_type)
+    !>      <li>    [paradise_type](@ref pm_sampling::paradise_type)
     !>  </ol>
     !>
     !>  \note
@@ -66,9 +66,9 @@ module pm_sampling
     !>  </ol>
     !>
     !>  \see
-    !>  [paradram_type](@ref pm_sampling_scio::paradram_type)<br>
-    !>  [paranest_type](@ref pm_sampling_scio::paranest_type)<br>
-    !>  [paradise_type](@ref pm_sampling_scio::paradise_type)<br>
+    !>  [paradram_type](@ref pm_sampling::paradram_type)<br>
+    !>  [paranest_type](@ref pm_sampling::paranest_type)<br>
+    !>  [paradise_type](@ref pm_sampling::paradise_type)<br>
     !>  [getErrSampling](@ref pm_sampling::getErrSampling)<br>
     !>
     !>  \finmain{sampler_type}
@@ -178,9 +178,9 @@ module pm_sampling
     !>  Objects of this derived type are not meant to be used directly by the end users.<br>
     !>  Instead use one of the appropriate derived types:<br>
     !>  <ol>
-    !>      <li>    [paradram_type](@ref pm_sampling_scio::paradram_type)
-    !>      <li>    [paranest_type](@ref pm_sampling_scio::paranest_type)
-    !>      <li>    [paradise_type](@ref pm_sampling_scio::paradise_type)
+    !>      <li>    [paradram_type](@ref pm_sampling::paradram_type)
+    !>      <li>    [paranest_type](@ref pm_sampling::paranest_type)
+    !>      <li>    [paradise_type](@ref pm_sampling::paradise_type)
     !>  </ol>
     !>
     !>  \note
@@ -195,9 +195,9 @@ module pm_sampling
     !>  </ol>
     !>
     !>  \see
-    !>  [paradram_type](@ref pm_sampling_scio::paradram_type)<br>
-    !>  [paranest_type](@ref pm_sampling_scio::paranest_type)<br>
-    !>  [paradise_type](@ref pm_sampling_scio::paradise_type)<br>
+    !>  [paradram_type](@ref pm_sampling::paradram_type)<br>
+    !>  [paranest_type](@ref pm_sampling::paranest_type)<br>
+    !>  [paradise_type](@ref pm_sampling::paradise_type)<br>
     !>  [getErrSampling](@ref pm_sampling::getErrSampling)<br>
     !>
     !>  \finmain{paramcmc_type}
@@ -235,9 +235,9 @@ module pm_sampling
     !>  </ol>
     !>
     !>  \see
-    !>  [paradram_type](@ref pm_sampling_scio::paradram_type)<br>
-    !>  [paranest_type](@ref pm_sampling_scio::paranest_type)<br>
-    !>  [paradise_type](@ref pm_sampling_scio::paradise_type)<br>
+    !>  [paradram_type](@ref pm_sampling::paradram_type)<br>
+    !>  [paranest_type](@ref pm_sampling::paranest_type)<br>
+    !>  [paradise_type](@ref pm_sampling::paradise_type)<br>
     !>  [getErrSampling](@ref pm_sampling::getErrSampling)<br>
     !>
     !>  \finmain{paradram_type}
@@ -269,9 +269,9 @@ module pm_sampling
     !>  </ol>
     !>
     !>  \see
-    !>  [paradram_type](@ref pm_sampling_scio::paradram_type)<br>
-    !>  [paranest_type](@ref pm_sampling_scio::paranest_type)<br>
-    !>  [paradise_type](@ref pm_sampling_scio::paradise_type)<br>
+    !>  [paradram_type](@ref pm_sampling::paradram_type)<br>
+    !>  [paranest_type](@ref pm_sampling::paranest_type)<br>
+    !>  [paradise_type](@ref pm_sampling::paradise_type)<br>
     !>  [getErrSampling](@ref pm_sampling::getErrSampling)<br>
     !>
     !>  \finmain{paradise_type}
@@ -297,9 +297,9 @@ module pm_sampling
     !>  </ol>
     !>
     !>  \see
-    !>  [paradram_type](@ref pm_sampling_scio::paradram_type)<br>
-    !>  [paranest_type](@ref pm_sampling_scio::paranest_type)<br>
-    !>  [paradise_type](@ref pm_sampling_scio::paradise_type)<br>
+    !>  [paradram_type](@ref pm_sampling::paradram_type)<br>
+    !>  [paranest_type](@ref pm_sampling::paranest_type)<br>
+    !>  [paradise_type](@ref pm_sampling::paradise_type)<br>
     !>  [getErrSampling](@ref pm_sampling::getErrSampling)<br>
     !>  [getErrSampling](@ref pm_sampling::getErrSampling)<br>
     !>
@@ -486,9 +486,9 @@ module pm_sampling
     !>
     !>  \param[in]  sampler     :   The input scalar object that can be of,<br>
     !>                              <ol>
-    !>                                  <li>    type [paradram_type](@ref pm_sampling_scio::paradram_type) indicating the use of the ParaDRAM sampler,<br>
-    !>                                  <li>    type [paradise_type](@ref pm_sampling_scio::paradise_type) indicating the use of the ParaDISE sampler,<br>
-    !>                                  <li>    type [paranest_type](@ref pm_sampling_scio::paranest_type) indicating the use of the ParaNest sampler,<br>
+    !>                                  <li>    type [paradram_type](@ref pm_sampling::paradram_type) indicating the use of the ParaDRAM sampler,<br>
+    !>                                  <li>    type [paradise_type](@ref pm_sampling::paradise_type) indicating the use of the ParaDISE sampler,<br>
+    !>                                  <li>    type [paranest_type](@ref pm_sampling::paranest_type) indicating the use of the ParaNest sampler,<br>
     !>                              </ol>
     !>  \param[in]  getLogFunc  :   The input user-specified `function` that takes an input `contiguous` vector of shape `state(1:ndim)` of type `real` of kind \RKALL.<br>
     !>                              On input, `state` represents a state (point) from within the domain of the user-specified target density function whose function value must be returned.<br>

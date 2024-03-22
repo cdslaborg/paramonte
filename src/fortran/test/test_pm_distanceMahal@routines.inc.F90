@@ -23,7 +23,7 @@
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        use pm_matrixInitDia, only: setMatDia
+        use pm_matrixInit, only: setMatDia
         use pm_distUnif, only: setUnifRand
 
 #if     getMahalSq_CK_ENABLED || setMahalSq_CK_ENABLED

@@ -14,13 +14,8 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-!>  \brief
-!>  This module contains tests of the module [pm_sysShell](@ref pm_sysShell).
-!>
-!>  \fintest
-!>
-!>  \author
-!>  Amir Shahmoradi
+!>  \brief This module contains tests of the module [pm_sysShell](@ref pm_sysShell).
+!>  \author Amir Shahmoradi
 
 module test_pm_sys
 

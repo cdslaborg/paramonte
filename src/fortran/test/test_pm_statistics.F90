@@ -14,8 +14,15 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-!>  \brief This module contains tests of the module [pm_statistics](@ref pm_statistics).
-!>  \author Amir Shahmoradi
+!>  \brief
+!>  This module contains tests of the statistics modules.
+!>
+!>  \fintest
+!>
+!>  \author
+!>  Amir Shahmoradi
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 module test_pm_statistics
 
@@ -1034,7 +1041,7 @@ contains
 
     function test_getRandCorMat_1() result(assertion)
         use pm_kind, only: IK, RK
-        use pm_matrix, only: isPosDef
+        use pm_matrixDet, only: isPosDef
         implicit none
         logical(LK)             :: assertion
         integer(IK) , parameter :: nd = 2_IK
@@ -1070,7 +1077,7 @@ contains
 
     function test_getRandCorMatRejection_1() result(assertion)
         use pm_kind, only: IK, RK
-        use pm_matrix, only: isPosDef
+        use pm_matrixDet, only: isPosDef
         implicit none
         logical(LK)             :: assertion, assertionCurrent
         integer(IK) , parameter :: nd = 2_IK

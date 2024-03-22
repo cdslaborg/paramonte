@@ -106,8 +106,8 @@ module pm_distanceKolm
     !>                                  (**optional**, the default is the CDF of the [Uniform distribution](@ref pm_distUnif). It must be present **if and only if** the input argument `sample2` is missing.)
     !>  \param[in]      order       :   The input scalar that can be,<br>
     !>                                  <ol>
-    !>                                      <li>    the constant [ascending](@ref pm_array:::ascending) or
-    !>                                              an object of type [ascending_type](@ref pm_array:::ascending_type),
+    !>                                      <li>    the constant [ascending](@ref pm_array::ascending) or
+    !>                                              an object of type [ascending_type](@ref pm_array::ascending_type),
     !>                                              implying that the input samples are both sorted in ascending order.<br>
     !>                                  </ol>
     !>                                  (**optional**. If missing, the samples will be sorted in ascending order before computing the distance.)
@@ -2019,8 +2019,8 @@ module pm_distanceKolm
     !>                                  (**optional**, the default is the CDF of the [Uniform distribution](@ref pm_distUnif). It must be present **if and only if** the input argument `sample2` is missing.)
     !>  \param[in]      order       :   The input scalar that can be,<br>
     !>                                  <ol>
-    !>                                      <li>    the constant [ascending](@ref pm_array:::ascending) or
-    !>                                              an object of type [ascending_type](@ref pm_array:::ascending_type),
+    !>                                      <li>    the constant [ascending](@ref pm_array::ascending) or
+    !>                                              an object of type [ascending_type](@ref pm_array::ascending_type),
     !>                                              implying that the input samples are both sorted in ascending order.<br>
     !>                                  </ol>
     !>                                  (**optional**. If missing, the samples will be sorted in ascending order before computing the distance.)

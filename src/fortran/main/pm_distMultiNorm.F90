@@ -344,7 +344,7 @@ module pm_distMultiNorm
     !>                                  (**optional**, default = `[( 0., integer :: i = 1, size(X) )]`)
     !>  \param[in]  invCov          :   The input square matrix (of shape `(ndim,ndim)`) of the same type and kind as the input `X`,
     !>                                  containing the inverse of the covariance matrix of the MVN distribution.<br>
-    !>                                  (**optional**, default = Identity Matrix : [getMatInit([size(X), size(X)], uppLowDia_type(), 0., 0., 1.)](@ref pm_matrixInitDia::getMatInit))
+    !>                                  (**optional**, default = Identity Matrix : [getMatInit([size(X), size(X)], uppLowDia_type(), 0., 0., 1.)](@ref pm_matrixInit::getMatInit))
     !>  \param[in]  logPDFNF        :   The input scalar of the same type and kind as the input `X`
     !>                                  containing the normalization factor of the MVN distribution.<br>
     !>                                  Specifying this input argument can lead to faster runtime when the log(PDF) must be computed
@@ -393,7 +393,6 @@ module pm_distMultiNorm
     !>  \postproc{getMultiNormLogPDF}
     !>  \include{lineno} example/pm_distMultiNorm/getMultiNormLogPDF/main.py
     !>  \vis{getMultiNormLogPDF}
-    !>  \image html pm_distMultiNorm/getMultiNormLogPDF/getMultiNormLogPDF.D1.RK.png width=700
     !>  \image html pm_distMultiNorm/getMultiNormLogPDF/getMultiNormLogPDF.D2.RK.png width=700
     !>  \test
     !>  [test_pm_distMultiNorm](@ref test_pm_distMultiNorm)<br>
@@ -3173,12 +3172,12 @@ module pm_distMultiNorm
     !>
     !>  \impure
     !>  The procedures of this generic interface are `pure` when the input argument `rng` is set to
-    !>  [xoshiro256ssw_type](@ref pm_distUnifRand::xoshiro256ssw_type) and the compile-time macro `CHECK_ENABLED` is set to `0` or is undefined.<br>
+    !>  [xoshiro256ssw_type](@ref pm_distUnif::xoshiro256ssw_type) and the compile-time macro `CHECK_ENABLED` is set to `0` or is undefined.<br>
     !>
     !>  \see
     !>  [getNormRand](@ref pm_distNorm::getNormRand)<br>
     !>  [setNormRand](@ref pm_distNorm::setNormRand)<br>
-    !>  [getNormLogPDF](@ref pm_distMultiNorm::getNormLogPDF)<br>
+    !>  [getNormLogPDF](@ref pm_distMultiNorm::getMultiNormLogPDF)<br>
     !>
     !>  \example{setMultiNormRand}
     !>  \include{lineno} example/pm_distMultiNorm/setMultiNormRand/main.F90

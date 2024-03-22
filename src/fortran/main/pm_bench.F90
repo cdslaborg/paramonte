@@ -360,11 +360,10 @@ module pm_bench
     !>  \endcode
     !>
     !>  \see
-    !>  [benchBase_type](@ref pm_bench::benchBase_type)<br>
     !>  [benchMulti_type](@ref pm_bench::benchMulti_type)<br>
-    !>  [bench_type](@ref pm_bench::bench_type)<br>
-    !>  [Stat_type](@ref pm_bench::Stat_type)<br>
+    !>  [benchBase_type](@ref pm_bench::benchBase_type)<br>
     !>  [timing_type](@ref pm_bench::timing_type)<br>
+    !>  [bench_type](@ref pm_bench::bench_type)<br>
     !>  [timer_type](@ref pm_timer::timer_type)<br>
     !>  [timerDAT_type](@ref pm_timer::timerDAT_type)<br>
     !>  [timerMPI_type](@ref pm_timer::timerMPI_type)<br>

@@ -14,14 +14,20 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-!>  \brief This module contains tests of the module [pm_fitGeoCyclic](@ref pm_fitGeoCyclic).
-!>  \author Amir Shahmoradi
+!>  \brief 
+!>  This module contains tests of the module [pm_distGeomCyclic](@ref pm_distGeomCyclic).
+!>
+!>  \fintest
+!>
+!>  \author 
+!>  Amir Shahmoradi
 
-module test_pm_fitGeoCyclic
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+module test_pm_distGeomCyclic
 
     use pm_test, only: test_type, LK
-    use pm_kind, only: LK
-    use pm_fitGeoCyclic
+    use pm_distGeomCyclic
     implicit none
 
     private
@@ -92,4 +98,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module test_pm_fitGeoCyclic
+end module test_pm_distGeomCyclic

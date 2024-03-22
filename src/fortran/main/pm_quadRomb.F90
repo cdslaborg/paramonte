@@ -377,7 +377,7 @@ module pm_quadRomb
     !>  </ul>
     !>
     !>  \see
-    !>  [getQuadRombOpened](@ref pm_quadRomb::getQuadRombOpened)<br>
+    !>  [getQuadErr](@ref pm_quadPack::getQuadErr)<br>
     !>
     !>  \example
     !>  \include{lineno} example/pm_quadRomb/getQuadRomb/main.F90

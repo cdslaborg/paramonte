@@ -184,13 +184,13 @@ set(ParaMonteTest_SOURCE_FILES
 #    ${paramonte_src_fortran_test_dir}/test_pm_err.F90
 #    ${paramonte_src_fortran_test_dir}/test_pm_io.F90
 #    ${paramonte_src_fortran_test_dir}/Test_FileContents_pmod.F90
-#    ${paramonte_src_fortran_test_dir}/test_pm_fitGeoCyclic.F90
+#    ${paramonte_src_fortran_test_dir}/test_pm_distGeomCyclic.F90
 #    ${paramonte_src_fortran_test_dir}/test_pm_knn.F90
 #    ${paramonte_src_fortran_test_dir}/test_pm_histogram.F90
 #    ${paramonte_src_fortran_test_dir}/pm_statest.F90
 #    ${paramonte_src_fortran_test_dir}/test_pm_val2int.F90
 #    ${paramonte_src_fortran_test_dir}/test_pm_val2int@routines.F90
-#    ${paramonte_src_fortran_test_dir}/test_pm_interpLinear.F90
+#    ${paramonte_src_fortran_test_dir}/test_pm_polation.F90
 #    #${paramonte_src_fortran_test_dir}/test_pm_polation.F90
 #    ${paramonte_src_fortran_test_dir}/test_pm_clustering.F90
 #    ${paramonte_src_fortran_test_dir}/test_pm_logicalCompare.F90
@@ -239,7 +239,7 @@ set(ParaMonteTest_SOURCE_FILES
 #    ${paramonte_src_fortran_test_dir}/test_pm_paraDISE_RefinedChain.F90
 #    #${paramonte_src_fortran_test_dir}/test_pm_paraNest_RefinedChain.F90
 #    ${paramonte_src_fortran_test_dir}/test_pm_sysPath.F90
-#    ${paramonte_src_fortran_test_dir}/test_pm_quantile.F90
+#    ${paramonte_src_fortran_test_dir}/test_pm_sampleQuan.F90
 #    ${paramonte_src_fortran_test_dir}/test_pm_randomSeed.F90
 #    ${paramonte_src_fortran_test_dir}/test_pm_val2real.F90
 #    ${paramonte_src_fortran_test_dir}/test_pm_val2real@routines.F90

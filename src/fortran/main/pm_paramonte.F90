@@ -557,28 +557,28 @@ contains
     !>
     !>  \param[in]      width   :   The input scalar `integer` of default kind \IK, containing the width of the splash **including** the lengths of the left and right margins.<br>
     !>                              (**optional**, default = `132`.)
-    !>  \param[in]      lwsize  :   The input scalar `integer` of default kind \IK representing the width of the left-margin of each line of the output `splash`.<br>
+    !>  \param[in]      lwsize  :   The input scalar `integer` of default kind \IK representing the width of the left wrapper margin of each line of the output `splash`.<br>
     !>                              (**optional**, default = `4`.)
-    !>  \param[in]      twsize  :   The input scalar `integer` of default kind \IK representing the width of the top-margin of the output `splash`.<br>
+    !>  \param[in]      twsize  :   The input scalar `integer` of default kind \IK representing the width of the top wrapper margin of the output `splash`.<br>
     !>                              (**optional**, default = `2`.)
-    !>  \param[in]      rwsize  :   The input scalar `integer` of default kind \IK representing the width of the right-margin of each line of the output `splash`.<br>
+    !>  \param[in]      rwsize  :   The input scalar `integer` of default kind \IK representing the width of the right wrapper margin of each line of the output `splash`.<br>
     !>                              (**optional**, default = `4`.)
-    !>  \param[in]      twsize  :   The input scalar `integer` of default kind \IK representing the width of the bottom-margin of the output `splash`.<br>
+    !>  \param[in]      bwsize  :   The input scalar `integer` of default kind \IK representing the width of the bottom wrapper margin of the output `splash`.<br>
     !>                              (**optional**, default = `2`.)
     !>  \param[in]      fill    :   The input scalar of the same type and kind as the output `slpash`, of length type parameter `1`,
     !>                              containing the value to fill the new elements (if any, excluding the margins) surrounding the splash text in each line of the output splash.<br>
     !>                              (**optional**, default = `" "`, the whitespace character.)
     !>  \param[in]      lwfill  :   The input scalar of the same type and kind as the output `slpash`, of length type parameter `1`,
-    !>                              containing the value to fill the left margin (if any) of each line of the output `splash`.<br>
+    !>                              containing the value to fill the left wrapper margin (if any) of each line of the output `splash`.<br>
     !>                              (**optional**, default = `"%"`.)
     !>  \param[in]      twfill  :   The input scalar of the same type and kind as the output `slpash`, of length type parameter `1`,
-    !>                              containing the value to fill the top margin (if any) of the output `splash`.<br>
+    !>                              containing the value to fill the top wrapper margin (if any) of the output `splash`.<br>
     !>                              (**optional**, default = `"%"`.)
     !>  \param[in]      rwfill  :   The input scalar of the same type and kind as the output `slpash`, of length type parameter `1`,
-    !>                              containing the value to fill the right margin (if any) of each line of the output `splash`.<br>
+    !>                              containing the value to fill the right wrapper margin (if any) of each line of the output `splash`.<br>
     !>                              (**optional**, default = `"%"`.)
     !>  \param[in]      bwfill  :   The input scalar of the same type and kind as the output `slpash`, of length type parameter `1`,
-    !>                              containing the value to fill the bottom margin (if any) of the output `splash`.<br>
+    !>                              containing the value to fill the bottom wrapper margin (if any) of the output `splash`.<br>
     !>                              (**optional**, default = `"%"`.)
     !>
     !>  \return

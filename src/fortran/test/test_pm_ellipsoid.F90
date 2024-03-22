@@ -14,7 +14,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-!>  \brief This module contains tests of the module [pm_ellipsoid](@ref pm_math).
+!>  \brief This module contains tests of the module [pm_ellipsoid](@ref pm_ellipsoid).
 !>  \author Amir Shahmoradi
 
 module test_pm_ellipsoid
@@ -22,7 +22,6 @@ module test_pm_ellipsoid
     use pm_ellipsoid
     use pm_err, only: err_type
     use pm_test, only: test_type, LK
-    use pm_math, only: PI_RK
     use pm_kind, only: LK
 
     implicit none
@@ -62,7 +61,7 @@ contains
         logical(LK)             :: assertion
         integer(IK) , parameter :: nd = 10_IK
         real(RK)    , parameter :: tolerance = 1.e-10_RK
-        real(RK)    , parameter :: ellVolCoef_ref = PI_RK**(0.5_RK*nd) / gamma(0.5_RK*nd+1._RK) ! 2.550164039877345_RK
+        real(RK)    , parameter :: ellVolCoef_ref = acos(-1._RK)**(0.5_RK*nd) / gamma(0.5_RK*nd+1._RK) ! 2.550164039877345_RK
         real(RK)                :: ellVolCoef
         real(RK)                :: difference
         ellVolCoef = getEllVolCoef(nd = nd)
@@ -85,7 +84,7 @@ contains
         logical(LK)             :: assertion
         integer(IK) , parameter :: nd = 11_IK
         real(RK)    , parameter :: tolerance = 1.e-10_RK
-        real(RK)    , parameter :: ellVolCoef_ref = PI_RK**(0.5_RK*nd) / gamma(0.5_RK*nd+1._RK) ! 1.884103879389900_RK
+        real(RK)    , parameter :: ellVolCoef_ref = acos(-1._RK)**(0.5_RK*nd) / gamma(0.5_RK*nd+1._RK) ! 1.884103879389900_RK
         real(RK)                :: ellVolCoef
         real(RK)                :: difference
         !integer(IK)             :: i
@@ -111,7 +110,7 @@ contains
         logical(LK)             :: assertion
         integer(IK) , parameter :: nd = 10_IK
         real(RK)    , parameter :: tolerance = 1.e-10_RK
-        real(RK)    , parameter :: logEllVolCoef_ref = log( PI_RK**(0.5_RK*nd) / gamma(0.5_RK*nd+1._RK) ) ! 0.936157686464955_RK
+        real(RK)    , parameter :: logEllVolCoef_ref = log( acos(-1._RK)**(0.5_RK*nd) / gamma(0.5_RK*nd+1._RK) ) ! 0.936157686464955_RK
         real(RK)                :: logEllVolCoef
         real(RK)                :: difference
         logEllVolCoef = getLogEllVolCoef(nd = nd)
@@ -134,7 +133,7 @@ contains
         logical(LK)             :: assertion
         integer(IK) , parameter :: nd = 11_IK
         real(RK)    , parameter :: tolerance = 1.e-10_RK
-        real(RK)    , parameter :: logEllVolCoef_ref = log( PI_RK**(0.5_RK*nd) / gamma(0.5_RK*nd+1._RK) ) ! 0.633452312314559_RK
+        real(RK)    , parameter :: logEllVolCoef_ref = log( acos(-1._RK)**(0.5_RK*nd) / gamma(0.5_RK*nd+1._RK) ) ! 0.633452312314559_RK
         real(RK)                :: logEllVolCoef
         real(RK)                :: difference
         !integer(IK)             :: i
@@ -160,7 +159,7 @@ contains
         logical(LK)             :: assertion
         integer(IK) , parameter :: nd = 10_IK
         real(RK)    , parameter :: tolerance = 1.e-10_RK
-        real(RK)    , parameter :: logVolUnitBall_ref = log( PI_RK**(0.5_RK*nd) / gamma(0.5_RK*nd+1._RK) ) ! .9361576864649548_RK
+        real(RK)    , parameter :: logVolUnitBall_ref = log( acos(-1._RK)**(0.5_RK*nd) / gamma(0.5_RK*nd+1._RK) ) ! .9361576864649548_RK
         real(RK)                :: logVolUnitBall
         real(RK)                :: difference
         logVolUnitBall = getLogVolUnitBall(nd = nd)
@@ -183,7 +182,7 @@ contains
         logical(LK)             :: assertion
         integer(IK) , parameter :: nd = 11_IK
         real(RK)    , parameter :: tolerance = 1.e-10_RK
-        real(RK)    , parameter :: logVolUnitBall_ref = log( PI_RK**(0.5_RK*nd) / gamma(0.5_RK*nd+1._RK) ) ! .6334523123145592_RK
+        real(RK)    , parameter :: logVolUnitBall_ref = log( acos(-1._RK)**(0.5_RK*nd) / gamma(0.5_RK*nd+1._RK) ) ! .6334523123145592_RK
         real(RK)                :: logVolUnitBall
         real(RK)                :: difference
         !integer(IK)             :: i
@@ -211,7 +210,7 @@ contains
         logical(LK)             :: assertion
         integer(IK)             :: nd
         real(RK)    , parameter :: tolerance = 1.e-10_RK
-        real(RK)    , parameter :: LogVolUnitBall_ref(0:6) = log([1._RK, 2._RK, PI_RK, 4*PI_RK/3, PI_RK**2/2, 8*PI_RK**2/15, PI_RK**3/6])
+        real(RK)    , parameter :: LogVolUnitBall_ref(0:6) = log([1._RK, 2._RK, acos(-1._RK), 4*acos(-1._RK)/3, acos(-1._RK)**2/2, 8*acos(-1._RK)**2/15, acos(-1._RK)**3/6])
         real(RK)                :: logVolUnitBall
         real(RK)                :: difference
         do nd = 0_IK, 6_IK
@@ -239,7 +238,7 @@ contains
         logical(LK)             :: assertion
         integer(IK)             :: nd
         real(RK)    , parameter :: tolerance = 1.e-10_RK
-        real(RK)    , parameter :: SurfUnitBall_ref(0:8) = [0._RK, 2._RK, 2*PI_RK, 4*PI_RK, 2*PI_RK**2, 8*PI_RK**2/3, PI_RK**3, 16*PI_RK**3/15, PI_RK**4/3]
+        real(RK)    , parameter :: SurfUnitBall_ref(0:8) = [0._RK, 2._RK, 2*acos(-1._RK), 4*acos(-1._RK), 2*acos(-1._RK)**2, 8*acos(-1._RK)**2/3, acos(-1._RK)**3, 16*acos(-1._RK)**3/15, acos(-1._RK)**4/3]
         real(RK)                :: surfUnitBall
         real(RK)                :: difference
         do nd = 0, 8
@@ -286,7 +285,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
-    !> Test the accuracy of [pm_ellipsoid::getLogVolEll_D1()](@ref pm_ellipsoid::getLogVolEll_D1).
+    !> Test the accuracy of [pm_ellipsoid::getLogVolEll()](@ref pm_ellipsoid::getLogVolEll).
     function test_getLogVolEll_2() result(assertion)
         use pm_kind, only: RK, IK
         implicit none

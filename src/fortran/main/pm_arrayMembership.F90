@@ -892,7 +892,7 @@ module pm_arrayMembership
     !>
     !>  \note
     !>  This generic interface offers a neat way of checking a value against a range returned by either
-    !>  [getMinMax()](@ref pm_mathMinMx::getMinMax) or [operator(.subadd.)](@ref pm_mathSubAdd_subadd) or [operator(.divmul.)](@ref pm_mathDivMul_divmul).
+    !>  [getMinMax()](@ref pm_mathMinMax::getMinMax) or [operator(.subadd.)](@ref pm_mathSubAdd_subadd) or [operator(.divmul.)](@ref pm_mathDivMul_divmul).
     !>
     !>  \see
     !>  [operator(.in.)](@ref pm_arrayMembership_in)<br>
@@ -2141,7 +2141,7 @@ module pm_arrayMembership
     !>
     !>  \note
     !>  This generic interface offers a neat way of checking a value against a range returned by either
-    !>  [getMinMax()](@ref pm_mathMinMx::getMinMax) or [operator(.subadd.)](@ref pm_mathSubAdd_subadd) or [operator(.divmul.)](@ref pm_mathDivMul_divmul).<br>
+    !>  [getMinMax()](@ref pm_mathMinMax::getMinMax) or [operator(.subadd.)](@ref pm_mathSubAdd_subadd) or [operator(.divmul.)](@ref pm_mathDivMul_divmul).<br>
     !>
     !>  \see
     !>  [operator(.in.)](@ref pm_arrayMembership_in)<br>
@@ -3074,7 +3074,7 @@ module pm_arrayMembership
     !>
     !>  \note
     !>  This generic interface offers a neat way of checking a value against a range returned by either
-    !>  [getMinMax()](@ref pm_mathMinMx::getMinMax) or [operator(.subadd.)](@ref pm_mathSubAdd_subadd) or [operator(.divmul.)](@ref pm_mathDivMul_divmul).<br>
+    !>  [getMinMax()](@ref pm_mathMinMax::getMinMax) or [operator(.subadd.)](@ref pm_mathSubAdd_subadd) or [operator(.divmul.)](@ref pm_mathDivMul_divmul).<br>
     !>
     !>  \see
     !>  [operator(.in.)](@ref pm_arrayMembership_in)<br>

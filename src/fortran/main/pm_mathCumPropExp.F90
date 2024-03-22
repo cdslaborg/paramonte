@@ -29,8 +29,8 @@
 !>  \image html benchmark/pm_mathCumPropExp/getCumPropExp_vs_setCumPropExp/benchmark.getCumPropExp_vs_setCumPropExp.runtime.png width=1000
 !>  \image html benchmark/pm_mathCumPropExp/getCumPropExp_vs_setCumPropExp/benchmark.getCumPropExp_vs_setCumPropExp.runtime.ratio.png width=1000
 !>  \moralb{getCumPropExp_vs_setCumPropExp}
-!>      -#  The procedures under the generic interface [getCumPropExp](@ref pm_distExp::getCumPropExp) are functions while
-!>          the procedures under the generic interface [setCumPropExp](@ref pm_distExp::setCumPropExp) are subroutines.<br>
+!>      -#  The procedures under the generic interface [getCumPropExp](@ref pm_mathCumPropExp::getCumPropExp) are functions while
+!>          the procedures under the generic interface [setCumPropExp](@ref pm_mathCumPropExp::setCumPropExp) are subroutines.<br>
 !>          From the benchmark results, it appears that the functional interface performs significantly worse than the procedural interface.<br>
 !>          However, the difference appears to diminish toward larger array sizes.<br>
 !>

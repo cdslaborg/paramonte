@@ -40,7 +40,7 @@
 !>  If the two known points are given by the coordinates \f$(x_{0},y_{0})\f$ and \f$(x_{1},y_{1})\f$,
 !>  the linear interpolant is the straight line between these points.<br>
 !>  For a value \f$x\f$ in the interval \f$(x_{0},x_{1})\f$, the value \f$y\f$ along the straight line is given from the equation of slopes
-!>  \\f{equation}{
+!>  \f{equation}{
 !>      \frac {y-y_{0}}{x-x_{0}} = \frac{y_{1}-y_{0}}{x_{1}-x_{0}} ~,
 !>  \f}
 !>  which can be derived geometrically from the figure on the right.<br>
@@ -171,7 +171,7 @@ module pm_polation
     !>  [neinext_type](@ref pm_polation::neinext_type)<br>
     !>  [neiprev_type](@ref pm_polation::neiprev_type)<br>
     !>  [monopol_type](@ref pm_polation::monopol_type) <br>
-    !>  [piwipoly_type](@ref pm_polation::piwipoly_type)<br>
+    !>  [piwipol_type](@ref pm_polation::piwipol_type)<br>
     !>
     !>  \finmain{neimean_type}
     !>
@@ -204,7 +204,7 @@ module pm_polation
     !>  [neinext_type](@ref pm_polation::neinext_type)<br>
     !>  [neiprev_type](@ref pm_polation::neiprev_type)<br>
     !>  [monopol_type](@ref pm_polation::monopol_type) <br>
-    !>  [piwipoly_type](@ref pm_polation::piwipoly_type)<br>
+    !>  [piwipol_type](@ref pm_polation::piwipol_type)<br>
     !>
     !>  \finmain{neinear_type}
     !>
@@ -237,7 +237,7 @@ module pm_polation
     !>  [neinext_type](@ref pm_polation::neinext_type)<br>
     !>  [neiprev_type](@ref pm_polation::neiprev_type)<br>
     !>  [monopol_type](@ref pm_polation::monopol_type) <br>
-    !>  [piwipoly_type](@ref pm_polation::piwipoly_type)<br>
+    !>  [piwipol_type](@ref pm_polation::piwipol_type)<br>
     !>
     !>  \finmain{neinext_type}
     !>
@@ -270,7 +270,7 @@ module pm_polation
     !>  [neinext_type](@ref pm_polation::neinext_type)<br>
     !>  [neiprev_type](@ref pm_polation::neiprev_type)<br>
     !>  [monopol_type](@ref pm_polation::monopol_type) <br>
-    !>  [piwipoly_type](@ref pm_polation::piwipoly_type)<br>
+    !>  [piwipol_type](@ref pm_polation::piwipol_type)<br>
     !>
     !>  \finmain{neiprev_type}
     !>
@@ -302,7 +302,7 @@ module pm_polation
     !>  [neinext_type](@ref pm_polation::neinext_type)<br>
     !>  [neiprev_type](@ref pm_polation::neiprev_type)<br>
     !>  [monopol_type](@ref pm_polation::monopol_type) <br>
-    !>  [piwipoly_type](@ref pm_polation::piwipoly_type)<br>
+    !>  [piwipol_type](@ref pm_polation::piwipol_type)<br>
     !>
     !>  \finmain{piwilin_type}
     !>
@@ -334,7 +334,7 @@ module pm_polation
     !>  [neinext_type](@ref pm_polation::neinext_type)<br>
     !>  [neiprev_type](@ref pm_polation::neiprev_type)<br>
     !>  [monopol_type](@ref pm_polation::monopol_type) <br>
-    !>  [piwipoly_type](@ref pm_polation::piwipoly_type)<br>
+    !>  [piwipol_type](@ref pm_polation::piwipol_type)<br>
     !>
     !>  \finmain{monopol_type}
     !>
@@ -352,11 +352,6 @@ module pm_polation
     !>  the procedures within the various generic interfaces of the ParaMonte library.<br>
     !>  As such, this concrete derived type does not contain any attributes.<br>
     !>
-    !>  \note
-    !>  This concrete derived type is not meant to be directly accessed by the end users.<br>
-    !>  Instead, the end users should use the specific object parameter instance of this derived type
-    !>  (e.g., [piwipoly](@ref pm_polation::piwipoly)) as directed by the documentation of the specific procedure they intend to use.<br>
-    !>
     !>  \see
     !>  [neimean](@ref pm_polation::neimean)<br>
     !>  [neinext](@ref pm_polation::neinext)<br>
@@ -366,13 +361,13 @@ module pm_polation
     !>  [neinext_type](@ref pm_polation::neinext_type)<br>
     !>  [neiprev_type](@ref pm_polation::neiprev_type)<br>
     !>  [monopol_type](@ref pm_polation::monopol_type) <br>
-    !>  [piwipoly_type](@ref pm_polation::piwipoly_type)<br>
+    !>  [piwipol_type](@ref pm_polation::piwipol_type)<br>
     !>
-    !>  \finmain{piwipoly_type}
+    !>  \finmain{piwipol_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
-    type :: piwipoly_type
+    type :: piwipol_type
         integer(IK) :: degree   !<  \public The scalar `integer` of default kind \IK, containing the degree of the piecewise polynomials.
     end type
 

@@ -192,14 +192,13 @@ contains
 
     function test_getLogPF53() result(assertion)
 
-        use pm_math, only: LOG_TEN_RK
         integer(IK) , parameter :: np = 86
         logical(LK)             :: assertion
         integer(IK)             :: ip
         real(RK), parameter     :: tolerance = 1.e-12_RK
 
         do ip = 1,np
-            assertion = abs( getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL) - getLogPF53(LOG10EPK_LOG10PH(1,ip)*LOG_TEN_RK,LOG10PBOL) / LOG_TEN_RK) < tolerance
+            assertion = abs( getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL) - getLogPF53(LOG10EPK_LOG10PH(1,ip)*log(10._RK),LOG10PBOL) / log(10._RK)) < tolerance
             if (assertion) cycle
             ! LCOV_EXCL_START
             if (test%traceable) then
@@ -216,7 +215,6 @@ contains
 
     function test_getLogPbol() result(assertion)
 
-        use pm_math, only: LOG_TEN_RK
         implicit none
         integer(IK) , parameter :: np = 86
         logical(LK)             :: assertion
@@ -226,7 +224,7 @@ contains
         assertion = .true._LK
         do ip = 1,np
             assertion = abs ( getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL) &
-                            + getLogPbol(LOG10EPK_LOG10PH(1,ip)*LOG_TEN_RK,LOG10PBOL) / LOG_TEN_RK &
+                            + getLogPbol(LOG10EPK_LOG10PH(1,ip)*log(10._RK),LOG10PBOL) / log(10._RK) &
                             - LOG10PBOL &
                             ) < tolerance
             if (assertion) cycle

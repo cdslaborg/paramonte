@@ -48,13 +48,13 @@
 ///
 /// &emsp;<a href="https://www.cdslab.org/paramonte" target="_blank"><b>https://www.cdslab.org/paramonte</b></a>
 ///
-/// [⛓](#ParaMonteCppDocumentation)
-/// \section ParaMonteCppDocumentation ParaMonte C++ Documentation Website
+/// [⛓](#ParaMonteLangDocumentation)
+/// \section ParaMonteLangDocumentation ParaMonte C++ Documentation Website
 ///
 /// The documentation for the latest version of the ParaMonte C++ library is always <a href="../../../cpp/latest/html/index.html" target="_blank"><b>available on this page</b></a>.<br>
 ///
-/// [⛓](#ParaMonteCppModules)
-/// \section ParaMonteCppModules ParaMonte C++ Library Modules
+/// [⛓](#ParaMonteLangModules)
+/// \section ParaMonteLangModules ParaMonte C++ Library Modules
 ///
 /// The ParaMonte C++ library currently contains,
 ///
@@ -77,13 +77,13 @@
 /// pm_quadPack             | This module contains procedures for non-adaptive and adaptive global numerical quadrature.
 /// pm_quadRomb             | This module contains procedures for numerical integrations.
 ///
-/// [⛓](#ParaMonteCppNamingConventions)
-/// \section ParaMonteCppNamingConventions ParaMonte C++ Naming Conventions
+/// [⛓](#ParaMonteLangNamingConventions)
+/// \section ParaMonteLangNamingConventions ParaMonte C++ Naming Conventions
 ///
 /// +   The **CamelCase** naming style is enforced throughout the ParaMonte C++ library.
 ///
-/// [⛓⛓](#ParaMonteCppNamingConventionsVariables)
-/// \subsection ParaMonteCppNamingConventionsVariables ParaMonte C++ Naming Conventions: Variables
+/// [⛓⛓](#ParaMonteLangNamingConventionsVariables)
+/// \subsection ParaMonteLangNamingConventionsVariables ParaMonte C++ Naming Conventions: Variables
 ///
 /// By convention in this library,
 ///
@@ -104,8 +104,8 @@
 ///     +   Occasionally, names that begin with the verb `is` can also be used to label `_Bool` objects.<br>
 ///     +   But as a general rule, names that begin with a verb should be reserved for procedures.<br>
 ///
-/// [⛓⛓](#ParaMonteCppNamingConventionsProcedures)
-/// \subsection ParaMonteCppNamingConventionsProcedures ParaMonte C++ Naming Conventions: Procedures
+/// [⛓⛓](#ParaMonteLangNamingConventionsProcedures)
+/// \subsection ParaMonteLangNamingConventionsProcedures ParaMonte C++ Naming Conventions: Procedures
 ///
 /// +   Procedure names should be descriptive of the action performed by the procedure. For example,
 ///
@@ -131,8 +131,8 @@
 ///     and <i>get</i> a new object as their results, rather they <b>(re)set</b> the state of existing objects passed to them.<br>
 /// +   A more appropriate prefix for `void` functions is `set`, i.e., `setReplaced()`.
 ///
-/// [⛓](#ParaMonteCppAbbreviationGuidlines)
-/// \section ParaMonteCppAbbreviationGuidlines ParaMonte C++ Abbreviation Guidelines
+/// [⛓](#ParaMonteLangAbbreviationGuidlines)
+/// \section ParaMonteLangAbbreviationGuidlines ParaMonte C++ Abbreviation Guidelines
 ///
 /// The following list of abbreviations is in alphabetical order to enable faster search:
 ///
@@ -188,14 +188,14 @@
 /// +   The abbreviation `upp`      stands for **upper triangle of a matrix** or **upper limits**. Example: `setChoUpp()`.
 /// +   The abbreviation `vec`      stands for **vector**. Example: `stdVec`.
 ///
-/// [⛓](#ParaMonteCppDeveloperWarnings)
-/// \section ParaMonteCppDeveloperWarnings ParaMonte C++ Developer Guidelines and Warnings
+/// [⛓](#ParaMonteLangDeveloperWarnings)
+/// \section ParaMonteLangDeveloperWarnings ParaMonte C++ Developer Guidelines and Warnings
 ///
 /// The ParaMonte C++ library development and guidelines are summarized in
 /// <a href="https://github.com/cdslaborg/paramonte/blob/main/src/cpp/CONTRIBUTING.md" target="_blank">CONTRIBUTING.md</a>.
 ///
-/// [⛓](#ParaMonteCppDocumentationGuidelines)
-/// \section ParaMonteCppDocumentationGuidelines ParaMonte C++ Documentation Guidelines
+/// [⛓](#ParaMonteLangDocumentationGuidelines)
+/// \section ParaMonteLangDocumentationGuidelines ParaMonte C++ Documentation Guidelines
 ///
 /// +   **Doxygen custom command orderings**.
 ///
@@ -204,7 +204,7 @@
 ///     +   The Doxygen tag `\details`, if it exists, must always immediately follow the Doxygen tag `\brief`.<br>
 ///         Example: [pm_array](@ref pm_array).<br>
 ///     +   The Doxygen tag `\param`, if any number of it exists, must always immediately follow the Doxygen tag `\brief` (or `\details` if it exists).<br>
-///         Example: [getMean()](@ref pm_sampleWeight::getMean).<br>
+///         Example: [getMean()](@ref pm_sampleMean::getMean).<br>
 ///     +   The Doxygen tag `\return`, must be exclusively used to indicate the return value of functions.<br>
 ///         If it exists, it must appear immediately after the set of `\param` tags. Example: [getMean()](@ref pm_sampleMean::getMean).<br>
 ///     +   If a generic interface is being documented, the ParaMonte custom command <tt>\\interface</tt> must appear immediately
@@ -224,7 +224,7 @@
 ///         immediately before the ParaMonte custom command tag `\see` if it exists, otherwise immediately before <tt>\\example</tt> for examples (if it exists).<br>
 ///     +   The Doxygen tag `\see`, if it exists, must appear after all `\warning` and `\remark` and `\note` tags.<br>
 ///         If more than one item for the `\see` command exists, each must be written on a separate line and each line must end with the HTML line-break tag `<br>`.
-///         Example: See [below](#example-ParaMonteCppDocumentationGuidelines).<br>
+///         Example: See [below](#example-ParaMonteLangDocumentationGuidelines).<br>
 ///     +   If any example exists, it must appear immediately after the `\see` tag, otherwise after `\note`, `\remark`, `\warning`, `\param`, `\details`, or `\brief` if any exists.<br>
 ///         ParaMonte examples are initiated by the custom command <tt>\\example</tt> devised in the `config.txt` file of ParaMonte Doxygen documentation.<br>
 ///         If the example exists in an external file, then it must be included via the Doxygen `\include` command, followed immediately by
@@ -233,7 +233,7 @@
 ///         of any other visualization or postprocessing scripts and output.<br>
 ///         <b>In all steps, it is imperative to not leave any empty lines between the successive commands of the example
 ///         section</b>, designated by the <tt>\\example</tt>, otherwise, each empty line will start a new paragraph in the documentation.<br>
-///         Example: See [below](#example-ParaMonteCppDocumentationGuidelines).<br>
+///         Example: See [below](#example-ParaMonteLangDocumentationGuidelines).<br>
 ///     +   The Doxygen `\test` tag, if any exists, must appear immediately after the example section designated by the <tt>\\example</tt> tag.<br>
 ///     +   The Doxygen `\todo` tag, if any exists, must appear immediately after the `\test` tag or any other tag immediately preceding it.<br>
 ///     +   The Doxygen `\bug` tag, if any exists, must appear immediately after the `\todo` tag or any other tag immediately preceding it.<br>
@@ -298,7 +298,7 @@
 ///
 /// +   Avoid the insertion of an empty documentation line between any two lines of a single Doxygen paragraph.<br>
 ///     This is crucial when the whole paragraph is indented by a vertical line as is done by Doxygen for `\warning`, `\remark`, `\note` and other similar tags.<br>
-///     \example{ParaMonteCppDocumentationGuidelines}
+///     \example{ParaMonteLangDocumentationGuidelines}
 ///     The following is an example documentation for a procedure:
 ///     \verbatim
 ///
@@ -430,27 +430,27 @@
 ///
 ///     \endverbatim
 ///     <br>
-///     The above example documentation snippet will generate [an HTML similar to this documentation](@ref pm_sampleWeight::getVar).<br>
+///     The above example documentation snippet will generate [an HTML similar to this documentation](@ref pm_sampleVar::getVar).<br>
 ///     Note the lack of an empty line among the commands that immediately follow <tt>\\example</tt>.<br>
 ///     This is essential to keep the entire example section in the same paragraph.
 ///
 /// <br>
 ///
-/// [⛓](#ParaMonteCppExamples)
-/// \section ParaMonteCppExamples ParaMonte C++ Language Examples
+/// [⛓](#ParaMonteLangExamples)
+/// \section ParaMonteLangExamples ParaMonte C++ Language Examples
 ///
 /// The ParaMonte C++ library ships with tens of thousands of example usage that are available in the `example/cpp` folder in the root directory of the project repository.<br>
 /// These examples are also available and discussed in the documentations of individual modules and procedures of this this documentation website.<br>
 ///
-/// [⛓](#ParaMonteCppBenchmarks)
-/// \section ParaMonteCppBenchmarks ParaMonte C++ Language Benchmarks
+/// [⛓](#ParaMonteLangBenchmarks)
+/// \section ParaMonteLangBenchmarks ParaMonte C++ Language Benchmarks
 ///
 /// The ParaMonte C++ library currently does not ship with any benchmarks.<br>
 /// If you would like to see a relevant benchmark currently not included, [discuss it here](@ref https://github.com/cdslaborg/paramonte/discussions)
 /// or [raise an issue here](https://github.com/cdslaborg/paramonte/issues) for consideration or volunteer to implement it!<br>
 ///
-/// [⛓](#ParaMonteCppDocumentationTroubleshooting)
-/// \section ParaMonteCppDocumentationTroubleshooting ParaMonte C++ Documentation Troubleshooting
+/// [⛓](#ParaMonteLangDocumentationTroubleshooting)
+/// \section ParaMonteLangDocumentationTroubleshooting ParaMonte C++ Documentation Troubleshooting
 ///
 /// <ol>
 ///     <li>    **Side navigation pane disappears in some documentation pages.**<br>

@@ -282,7 +282,7 @@ module pm_complexMinMax
     !>  \brief
     !>  Generate and return the component-wise minimum value of (both real and imaginary parts of) the input `complex`.
     !>
-    !>  \detail
+    !>  \details
     !>  This generic interfaces extends the behavior of the intrinsic Fortran `minval(a, dim = dim)` for arguments of `real` type to arguments of type `complex`.<br>
     !>
     !>  \param[in]  array   :   The input array of rank `(1..2)` of type `complex` of kind \CKALL.
@@ -587,7 +587,7 @@ module pm_complexMinMax
     !>  \brief
     !>  Generate and return the component-wise maximum value of (both real and imaginary parts of) the input `complex`.
     !>
-    !>  \detail
+    !>  \details
     !>  This generic interfaces extends the behavior of the intrinsic Fortran `maxval(a, dim = dim)` for arguments of `real` type to arguments of type `complex`.<br>
     !>
     !>  \param[in]  array   :   The input array of rank `(1..2)` of type `complex` of kind \CKALL.
@@ -892,7 +892,7 @@ module pm_complexMinMax
     !>  \brief
     !>  Generate and return the component-wise location of the minimum value of (both real and imaginary parts of) the input `complex`.
     !>
-    !>  \detail
+    !>  \details
     !>  This generic interfaces extends the behavior of the intrinsic Fortran `minloc(a, dim = dim)` for arguments of `real` type to arguments of type `complex`.<br>
     !>
     !>  \param[in]  array   :   The input array of rank `(1..2)` of type `complex` of kind \CKALL.
@@ -1210,7 +1210,7 @@ module pm_complexMinMax
     !>  \brief
     !>  Generate and return the component-wise location of the maximum value of (both real and imaginary parts of) the input `complex`.
     !>
-    !>  \detail
+    !>  \details
     !>  This generic interfaces extends the behavior of the intrinsic Fortran `maxloc(a, dim = dim)` for arguments of `real` type to arguments of type `complex`.<br>
     !>
     !>  \param[in]  array   :   The input array of rank `(1..2)` of type `complex` of kind \CKALL.

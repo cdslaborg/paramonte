@@ -146,7 +146,7 @@
 !>          Note that `%%userprofile%` expands to `%%SystemDrive%\Users\{username}` and is equivalent to the `$HOME` environment variable in Unix/Linux.<br>
 !>          Note that `%%homedrive%%%homepath%` also frequently (but not always) refers to **home directory** on Windows.<br>
 !>          Note that the `%%homedrive%` environment variable typically expands to the network root profile directory.<br>
-!>          Note that the `%%systemdrive%` (typically `c:`) is the partition with the directory `%%systemroot%` (typically <tt>C:\WINDOWS</tt>).<br>
+!>          Note that the `%%systemdrive%` (typically `c:`) is the partition with the directory `%%systemroot%` (typically <tt>C:\\WINDOWS</tt>).<br>
 !>      -#  The `%%OS%` environment variable expands to operating system name on the user workstation.<br>
 !>      -#  **Windows path normalization**.<br>
 !>          Almost all paths passed to Windows APIs are normalized. During normalization, Windows performs the following steps:

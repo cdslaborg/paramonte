@@ -380,10 +380,10 @@ module pm_kind
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
      !>  \cond excluded
-     integer    , parameter , private   :: IRL = minval([IR1, IR2, IR3, IR4, IR5], mask = 0 < [IR1, IR2, IR3, IR4, IR5])
-     integer    , parameter , private   :: RPL = minval([RP1, RP2, RP3, RP4, RP5], mask = 0 < [RP1, RP2, RP3, RP4, RP5])
-     integer    , parameter , private   :: IRH = maxval([IR1, IR2, IR3, IR4, IR5])
-     integer    , parameter , private   :: RPH = maxval([RP1, RP2, RP3, RP4, RP5])
+     integer    , parameter , private   :: IRL = minval([IR1, IR2, IR3, IR4, IR5], mask = 0 < [IR1, IR2, IR3, IR4, IR5]) ! Integer Range Lowest
+     integer    , parameter , private   :: RPL = minval([RP1, RP2, RP3, RP4, RP5], mask = 0 < [RP1, RP2, RP3, RP4, RP5]) ! Real Precision Lowest
+     integer    , parameter , private   :: IRH = maxval([IR1, IR2, IR3, IR4, IR5]) ! Integer Range Highest
+     integer    , parameter , private   :: RPH = maxval([RP1, RP2, RP3, RP4, RP5]) ! Real Precision Highest
      !>  \endcond excluded
 
     !>  \brief

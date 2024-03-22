@@ -542,7 +542,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
-    !> Compare performance of [pm_statest::getCumDenComKS()](@ref pm_statest::getCumDenComKS)` with [pm_statest::getProbKS()](@ref pm_statest::getProbKS).
+    !> Compare performance of [getCumDenComKS()](@ref pm_statest)` with [pm_statest::getProbKS()](@ref pm_statest::getProbKS).
     !> Results indicated that [pm_statest::getProbKS()](@ref pm_statest::getProbKS) is approximately 2-3 times faster.
     function test_performance_1() result(assertion)
         use pm_kind, only: RK, IK

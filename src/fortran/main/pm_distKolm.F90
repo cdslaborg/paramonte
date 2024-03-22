@@ -64,7 +64,7 @@
 !>
 !>  \see
 !>  [pm_distUnif](@ref pm_distUnif)<br>
-!>  [pm_distanceKS](@ref pm_distanceKS)<br>
+!>  [pm_distanceKolm](@ref pm_distanceKolm)<br>
 !>
 !>  \test
 !>  [test_pm_distKolm](@ref test_pm_distKolm)

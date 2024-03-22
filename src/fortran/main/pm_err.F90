@@ -904,7 +904,7 @@ module pm_err
 
     !>  \brief
     !>  This is the derived type for constructing objects that contain the specifications of the generic interface [setMarked](@ref pm_err::setMarked)
-    !>  along with a dynamic method [show](@ref pm_err:show) that acts as a convenience wrapper around the generic interface [setMarked](@ref pm_err::setMarked).<br>
+    !>  along with a dynamic method [show](@ref pm_err_show) that acts as a convenience wrapper around the generic interface [setMarked](@ref pm_err::setMarked).<br>
     !>
     !>  \details
     !>  See the documentation of the parent type [message_type](@ref pm_err::message_type) for more details and inherited derived type components.<br>
@@ -1058,7 +1058,7 @@ module pm_err
 
     !>  \brief
     !>  This is the derived type for constructing objects that contain the specifications of the generic interface [setNoted](@ref pm_err::setNoted)
-    !>  along with a dynamic method [show](@ref pm_err:show) that acts as a convenience wrapper around the generic interface [setNoted](@ref pm_err::setNoted).<br>
+    !>  along with a dynamic method [show](@ref pm_err_show) that acts as a convenience wrapper around the generic interface [setNoted](@ref pm_err::setNoted).<br>
     !>
     !>  \details
     !>  See the documentation of the parent type [message_type](@ref pm_err::message_type) for more details and inherited derived type components.<br>
@@ -1212,7 +1212,7 @@ module pm_err
 
     !>  \brief
     !>  This is the derived type for constructing objects that contain the specifications of the generic interface [setWarned](@ref pm_err::setWarned)
-    !>  along with a dynamic method [show](@ref pm_err:show) that acts as a convenience wrapper around the generic interface [setWarned](@ref pm_err::setWarned).<br>
+    !>  along with a dynamic method [show](@ref pm_err_show) that acts as a convenience wrapper around the generic interface [setWarned](@ref pm_err::setWarned).<br>
     !>
     !>  \details
     !>  See the documentation of the parent type [message_type](@ref pm_err::message_type) for more details and inherited derived type components.<br>
@@ -1363,7 +1363,7 @@ module pm_err
 
     !>  \brief
     !>  This is the derived type for constructing objects that contain the specifications of the generic interface [setAborted](@ref pm_err::setAborted)
-    !>  along with a dynamic method [show](@ref pm_err:show) that acts as a convenience wrapper around the generic interface [setAborted](@ref pm_err::setAborted).<br>
+    !>  along with a dynamic method [show](@ref pm_err_show) that acts as a convenience wrapper around the generic interface [setAborted](@ref pm_err::setAborted).<br>
     !>
     !>  \details
     !>  See the documentation of the parent type [message_type](@ref pm_err::message_type) for more details and inherited derived type components.<br>
@@ -1532,6 +1532,7 @@ module pm_err
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
+    !>  \anchor pm_err_show
     !>  Write the input string `msg` in the format of a notification/warning/abortion message to the output.<br>
     !>
     !>  \details

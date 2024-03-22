@@ -579,9 +579,9 @@ contains
     !> When the `pointLogVolNormed` is missing, the properties of singular clusters must be correctly computed from 
     !> the properties of non-singular clusters.
     function test_setKmeans_4() result(assertion)
+        use pm_mathCumSum, only: getCumSum
         use pm_val2str, only: getStr
         use pm_kind, only: IK, RK
-        use pm_math, only: getCumSum
         implicit none
         integer(IK) , parameter     :: nc = 2_IK
         integer(IK) , parameter     :: nd = 2_IK

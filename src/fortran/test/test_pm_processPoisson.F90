@@ -300,7 +300,7 @@ contains
     !> Test `getPosteriorDistSortedExpDiff()` with a uniform cubic distribution.
     function test_getPosteriorDistSortedExpDiff_1() result(assertion)
 
-        use pm_math, only: getLogSpace, getLinSpace
+        use pm_arraySpace, only: getLogSpace, getLinSpace
         use pm_knn, only: setDisSortedExpDiff
         use pm_ellipsoid, only: getLogVolUnitBall
         use pm_domainBall, only: getUnifRand
@@ -311,7 +311,7 @@ contains
 
         use pm_sampleWeight, only: setChoLowCovUpp
         use pm_distanceMahal, only: getMahalSq
-        use pm_matrix, only: getMatInvFromChoLow
+        use pm_matrixDet, only: getMatInvFromChoLow
         use pm_matrixChol, only: setChoLow
         use pm_matrixInit, only: setMatInit
 
@@ -390,7 +390,7 @@ contains
 #if     MAHAL_TRANSFORM_ENABLED
         block
             use pm_sampleWeight, only: transform
-            use pm_matrix, only: getLogPDF
+            use pm_matrixDet, only: getLogPDF
             real(RK)    :: InvMatLow(nd,nd)!, invCov(nd,nd), mahalSq(np)
 
             mean = sum(Sample, dim = 2) / np
@@ -487,7 +487,7 @@ contains
         block
             use iso_fortran_env, only: output_unit
             use pm_arraySort, only: setSorted
-            use pm_math, only: getCumSum
+            use pm_mathCumSum, only: getCumSum
             integer(IK)                 :: ip
             integer(IK)                 :: fileUnit
             real(RK)                    :: BetaArray(np)
@@ -578,7 +578,7 @@ contains
         end block
 
         block
-            use pm_math, only: getCumSum
+            use pm_mathCumSum, only: getCumSum
             real(RK), allocatable :: CumSumReverseAlpha(:)
            !CumSumReverseAlpha = getCumSumReverse(np,ProbKS)
             CumSumReverseAlpha = getCumSum(ProbKS, backward = .true._LK, reversed = .true._LK)

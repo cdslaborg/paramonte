@@ -19,7 +19,7 @@ for file in files:
     df = pd.read_csv(file, delimiter = "\t")
 
     #print(df.values)
-    fig = plt.figure(figsize=(8, 6))
+    fig = plt.figure(figsize = (8, 6))
     ax = plt.subplot(1,1,1)
     ax.plot ( df.values[:,0]
             , df.values[:,1]

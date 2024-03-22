@@ -94,7 +94,7 @@ for kind in ["IK", "CK", "RK"]:
         fig = plt.figure(figsize = 1.25 * np.array([6.4,4.8]), dpi = 300)
         ax = fig.add_subplot(1, 1, 1, projection = '3d')
         
-        ax.plot_surface(gridx, gridy, gridz, cmap = 'viridis', linewidth = 0)
+        ax.plot_surface(gridx, gridy, gridz, cmap = 'GnBu', linewidth = 0)
         ax.set_xlabel('X axis')
         ax.set_ylabel('Y axis')
         ax.set_zlabel("PDF", fontsize = 17)

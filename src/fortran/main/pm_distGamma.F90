@@ -1122,7 +1122,7 @@ module pm_distGamma
     !>  \param[in]      kappa   :   The input scalar (or array of the same shape as other array-like arguments) of the same type and kind as `rand`,
     !>                              representing the shape parameter of the Gamma distribution.<br>
     !>  \param[in]      sigma   :   The input scalar (or array of the same shape as other array-like arguments) of the same type and kind as `rand`,
-    !>                              representing the scale parameter of the [Gamma distribution](@ref pm_distGamma#details).<br>
+    !>                              representing the scale parameter of the [Gamma distribution](@ref pm_distGamma).<br>
     !>
     !>  \interface{setGammaRand}
     !>  \code{.F90}

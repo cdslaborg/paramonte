@@ -14,12 +14,19 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-!>  \brief This module contains tests of the module [pm_matrix](@ref pm_matrix).
-!>  \author Amir Shahmoradi
+!>  \brief 
+!>  This module contains tests of the module [pm_matrixDet](@ref pm_matrixDet).
+!>
+!>  \fintest
+!>
+!>  \author 
+!>  Amir Shahmoradi
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 module test_pm_matrix
 
-    use pm_matrix ! LCOV_EXCL_LINE
+    use pm_matrixDet ! LCOV_EXCL_LINE
     use pm_err, only: err_type
     use pm_test, only: test_type, LK
     use pm_kind, only: LK

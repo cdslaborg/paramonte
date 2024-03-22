@@ -18,16 +18,6 @@
 !>  This module contains a collection of example functions
 !>  for testing or examining the root-finding routines of the ParaMonte library.
 !>
-!>  \details
-!>  The routines to be tested include but are not limited to those of<br>
-!>  <ul>
-!>      <li>    [pm_quadBrent](@ref pm_quadBrent)
-!>      <li>    [pm_quadBisection](@ref pm_quadBisection)
-!>  </ul>
-!>
-!>  These modules were intentionally broken into multiple separate modules due to their sizes and relative independence, despite the algorithmic similarities.<br>
-!>  All test functions are wrapped in a derived type of the base abstract class [func_type](@ref pm_mathRootTest::func_type).<br>
-!>
 !>  \see
 !>  [pm_mathRoot](@ref pm_mathRoot)<br>
 !>  [pm_mathRoot](@ref pm_mathRoot)<br>

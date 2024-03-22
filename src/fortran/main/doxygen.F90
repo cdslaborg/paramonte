@@ -49,13 +49,13 @@
 !>
 !>  &emsp;<a href="https://www.cdslab.org/paramonte" target="_blank"><b>https://www.cdslab.org/paramonte</b></a>
 !>
-!>  [⛓](#ParaMonteFortranDocumentation)
-!>  \section ParaMonteFortranDocumentation ParaMonte Fortran Documentation Website
+!>  [⛓](#ParaMonteLangDocumentation)
+!>  \section ParaMonteLangDocumentation ParaMonte Fortran Documentation Website
 !>
 !>  The documentation for the latest version of the ParaMonte Fortran library is always <a href="../../../fortran/latest/html/index.html" target="_blank"><b>available on this page</b></a>.<br>
 !>
-!>  [⛓](#ParaMonteFortranModules)
-!>  \section ParaMonteFortranModules ParaMonte Fortran Library Modules
+!>  [⛓](#ParaMonteLangModules)
+!>  \section ParaMonteLangModules ParaMonte Fortran Library Modules
 !>
 !>  The ParaMonte Fortran library contains,
 !>
@@ -257,13 +257,13 @@
 !>  pm_val2str              | This module contains the generic procedures for converting values of different types and kinds to Fortran strings.
 !>  pm_ziggurat             | This module contains procedures and generic interfaces for computing the Ziggurat set for for pseudo-random number sampling.
 !>
-!>  [⛓](#ParaMonteFortranNamingConventions)
-!>  \section ParaMonteFortranNamingConventions ParaMonte Naming Conventions
+!>  [⛓](#ParaMonteLangNamingConventions)
+!>  \section ParaMonteLangNamingConventions ParaMonte Naming Conventions
 !>
 !>  +   The **CamelCase** naming style is enforced throughout the ParaMonte Fortran library.
 !>
-!>  [⛓⛓](#ParaMonteFortranNamingConventionsVariables)
-!>  \subsection ParaMonteFortranNamingConventionsVariables ParaMonte Naming Conventions: Variables
+!>  [⛓⛓](#ParaMonteLangNamingConventionsVariables)
+!>  \subsection ParaMonteLangNamingConventionsVariables ParaMonte Naming Conventions: Variables
 !>
 !>  The Fortran language is case-insensitive. However, by convention in this library,
 !>
@@ -293,8 +293,8 @@
 !>      +   Occasionally, names that begin with the verb `is` can also be used to label `logical` objects.<br>
 !>      +   But as a general rule, names that begin with a verb should be reserved for procedures.<br>
 !>
-!>  [⛓⛓](#ParaMonteFortranNamingConventionsProcedures)
-!>  \subsection ParaMonteFortranNamingConventionsProcedures ParaMonte Naming Conventions: Procedures
+!>  [⛓⛓](#ParaMonteLangNamingConventionsProcedures)
+!>  \subsection ParaMonteLangNamingConventionsProcedures ParaMonte Naming Conventions: Procedures
 !>
 !>  +   Procedure (whether function, subroutine, or type-bound procedure) names
 !>      should be descriptive of the action performed by the procedure. For example,
@@ -308,8 +308,8 @@
 !>      +   the procedure name is exceptionally famous, or
 !>      +   it is very inconvenient to prefix the procedure name with a verb, or the prefixes `get`, or `set`.
 !>
-!>  [⛓⛓⛓](#ParaMonteFortranNamingConventionsProceduresFunctions)
-!>  \subsubsection ParaMonteFortranNamingConventionsProceduresFunctions ParaMonte Naming Conventions: Functions
+!>  [⛓⛓⛓](#ParaMonteLangNamingConventionsProceduresFunctions)
+!>  \subsubsection ParaMonteLangNamingConventionsProceduresFunctions ParaMonte Naming Conventions: Functions
 !>
 !>  +   Function names should preferably begin with <b>`get`</b>.<br>
 !>      The reasoning is simple: Functions *generate and obtain* a **new** object instead of changing (resetting) the state of an existing object.<br>
@@ -320,15 +320,15 @@
 !>      be named such that the name begins with a verb and reads as a proposition, evaluating to
 !>      either `.true.` or `.false.`.
 !>
-!>  [⛓⛓⛓](#ParaMonteFortranNamingConventionsProceduresSubroutines)
-!>  \subsubsection ParaMonteFortranNamingConventionsProceduresSubroutines ParaMonte Naming Conventions: Subroutines
+!>  [⛓⛓⛓](#ParaMonteLangNamingConventionsProceduresSubroutines)
+!>  \subsubsection ParaMonteLangNamingConventionsProceduresSubroutines ParaMonte Naming Conventions: Subroutines
 !>
 !>  +   The keyword <b>`get`</b> should be avoided as a prefix for subroutine names since unlike functions, subroutines do not
 !>      generate and <i>get</i> a new object as their results, rather they <b>(re)set</b> the state of existing objects passed to them.<br>
 !>  +   As such, <b>subroutine names should be always prefixed with `set`</b>, as in, for example, [setReplaced](@ref pm_arrayReplace::setReplaced).
 !>
-!>  [⛓](#ParaMonteFortranAbbreviationGuidlines)
-!>  \section ParaMonteFortranAbbreviationGuidlines ParaMonte Abbreviation Guidelines
+!>  [⛓](#ParaMonteLangAbbreviationGuidlines)
+!>  \section ParaMonteLangAbbreviationGuidlines ParaMonte Abbreviation Guidelines
 !>
 !>  The following list of abbreviations is in alphabetical order to enable faster search:
 !>
@@ -409,14 +409,14 @@
 !>  +   The abbreviation `upp`      stands for **upper triangle of a matrix** or **upper limits**. Example: `setChoUpp()`.
 !>  +   The abbreviation `vec`      stands for **vector**. Example: `stdVec`.
 !>
-!>  [⛓](#ParaMonteFortranDeveloperWarnings)
-!>  \section ParaMonteFortranDeveloperWarnings ParaMonte Developer Guidelines and Warnings
+!>  [⛓](#ParaMonteLangDeveloperWarnings)
+!>  \section ParaMonteLangDeveloperWarnings ParaMonte Developer Guidelines and Warnings
 !>
 !>  The ParaMonte Fortran library development and guidelines are summarized in
 !>  <a href="https://github.com/cdslaborg/paramonte/blob/main/src/fortran/CONTRIBUTING.md" target="_blank">CONTRIBUTING.md</a>.
 !>
-!>  [⛓](#ParaMonteFortranDocumentationGuidelines)
-!>  \section ParaMonteFortranDocumentationGuidelines ParaMonte Fortran Documentation Guidelines
+!>  [⛓](#ParaMonteLangDocumentationGuidelines)
+!>  \section ParaMonteLangDocumentationGuidelines ParaMonte Fortran Documentation Guidelines
 !>
 !>  +   **Doxygen custom command orderings**.
 !>
@@ -425,7 +425,7 @@
 !>      +   The Doxygen tag `\details`, if it exists, must always immediately follow the Doxygen tag `\brief`.<br>
 !>          Example: [pm_array](@ref pm_array).<br>
 !>      +   The Doxygen tag `\param`, if any number of it exists, must always immediately follow the Doxygen tag `\brief` (or `\details` if it exists).<br>
-!>          Example: [getMean()](@ref pm_sampleWeight::getMean).<br>
+!>          Example: [getMean()](@ref pm_sampleMean::getMean).<br>
 !>      +   The Doxygen tag `\return`, must be exclusively used to indicate the return value of functions.<br>
 !>          If it exists, it must appear immediately after the set of `\param` tags. Example: [getMean()](@ref pm_sampleMean::getMean).<br>
 !>      +   If a generic interface is being documented, the ParaMonte custom command <tt>\\interface</tt> must appear immediately
@@ -445,7 +445,7 @@
 !>          immediately before the ParaMonte custom command tag `\see` if it exists, otherwise immediately before <tt>\\example</tt> for examples (if it exists).<br>
 !>      +   The Doxygen tag `\see`, if it exists, must appear after all `\warning` and `\remark` and `\note` tags.<br>
 !>          If more than one item for the `\see` command exists, each must be written on a separate line and each line must end with the HTML line-break tag `<br>`.
-!>          Example: See [below](#example-ParaMonteFortranDocumentationGuidelines).<br>
+!>          Example: See [below](#example-ParaMonteLangDocumentationGuidelines).<br>
 !>      +   If any example exists, it must appear immediately after the `\see` tag, otherwise after `\note`, `\remark`, `\warning`, `\param`, `\details`, or `\brief` if any exists.<br>
 !>          ParaMonte examples are initiated by the custom command <tt>\\example</tt> devised in the `config.txt` file of ParaMonte Doxygen documentation.<br>
 !>          If the example exists in an external file, then it must be included via the Doxygen `\include` command, followed immediately by
@@ -454,7 +454,7 @@
 !>          of any other visualization or postprocessing scripts and output.<br>
 !>          <b>In all steps, it is imperative to not leave any empty lines between the successive commands of the example
 !>          section</b>, designated by the <tt>\\example</tt>, otherwise, each empty line will start a new paragraph in the documentation.<br>
-!>          Example: See [below](#example-ParaMonteFortranDocumentationGuidelines).<br>
+!>          Example: See [below](#example-ParaMonteLangDocumentationGuidelines).<br>
 !>      +   The Doxygen `\test` tag, if any exists, must appear immediately after the example section designated by the <tt>\\example</tt> tag.<br>
 !>      +   The Doxygen `\todo` tag, if any exists, must appear immediately after the `\test` tag or any other tag immediately preceding it.<br>
 !>      +   The Doxygen `\bug` tag, if any exists, must appear immediately after the `\todo` tag or any other tag immediately preceding it.<br>
@@ -519,7 +519,7 @@
 !>
 !>  +   Avoid the insertion of an empty documentation line between any two lines of a single Doxygen paragraph.<br>
 !>      This is crucial when the whole paragraph is indented by a vertical line as is done by Doxygen for `\warning`, `\remark`, `\note` and other similar tags.<br>
-!>      \example{ParaMonteFortranDocumentationGuidelines}
+!>      \example{ParaMonteLangDocumentationGuidelines}
 !>      The following is an example documentation for a procedure:
 !>      \verbatim
 !>
@@ -591,20 +591,20 @@
 !>
 !>      \endverbatim
 !>      <br>
-!>      The above example documentation snippet will generate [an HTML similar to this documentation](@ref pm_sampleWeight::getVar).<br>
+!>      The above example documentation snippet will generate [an HTML similar to this documentation](@ref pm_sampleVar::getVar).<br>
 !>      Note the lack of an empty line among the commands that immediately follow <tt>\\example</tt>.<br>
 !>      This is essential to keep the entire example section in the same paragraph.
 !>
 !>  <br>
 !>
-!>  [⛓](#ParaMonteFortranExamples)
-!>  \section ParaMonteFortranExamples ParaMonte Fortran Language Examples
+!>  [⛓](#ParaMonteLangExamples)
+!>  \section ParaMonteLangExamples ParaMonte Fortran Language Examples
 !>
 !>  The ParaMonte Fortran library ships with tens of thousands of example usage that are available in the `example/fortran` folder in the root directory of the project repository.<br>
 !>  These examples are also available and discussed in the documentations of individual modules and procedures of this this documentation website.<br>
 !>
-!>  [⛓](#ParaMonteFortranBenchmarks)
-!>  \section ParaMonteFortranBenchmarks ParaMonte Fortran Language Benchmarks
+!>  [⛓](#ParaMonteLangBenchmarks)
+!>  \section ParaMonteLangBenchmarks ParaMonte Fortran Language Benchmarks
 !>
 !>  The ParaMonte Fortran library ships with a large number of performance benchmarks that are available in the `benchmark/fortran` folder in the root directory of the project repository.<br>
 !>  These benchmarks are also available and discussed in the [benchmark listing page](@ref benchmarks) of this this documentation website.<br>
@@ -612,8 +612,8 @@
 !>  If you would like to see a relevant benchmark currently not included, [discuss it here](@ref https://github.com/cdslaborg/paramonte/discussions) 
 !>  or [raise an issue here](https://github.com/cdslaborg/paramonte/issues) for consideration or volunteer to implement it!<br>
 !>
-!>  [⛓](#ParaMonteFortranDocumentationTroubleshooting)
-!>  \section ParaMonteFortranDocumentationTroubleshooting ParaMonte Fortran Documentation Troubleshooting
+!>  [⛓](#ParaMonteLangDocumentationTroubleshooting)
+!>  \section ParaMonteLangDocumentationTroubleshooting ParaMonte Fortran Documentation Troubleshooting
 !>
 !>  <ol>
 !>      <li>    **Side navigation pane disappears in some documentation pages.**<br>

@@ -50,7 +50,7 @@
 !>
 !>  See the documentation of [pm_distNorm](@ref pm_distNorm) for information on the CDF of the Normal distribution.<br>
 !>
-!>  The quantile function of the standard normal distribution is called the [**probit function**](@ref https://en.wikipedia.org/wiki/Probit),
+!>  The quantile function of the standard normal distribution is called the [**probit function**](https://en.wikipedia.org/wiki/Probit),
 !>  and can be expressed in terms of the inverse error function:
 !>  \f{equation}{
 !>      \Phi^{-1}(p) = {\sqrt{2}}\ms{erf}^{-1}(2p - 1), \quad p \in (0,1) ~.
@@ -1434,9 +1434,8 @@ module pm_distNorm
     !>  for the `real` kind used to generate the constant array [ZIG_RKB](@ref pm_distNorm::ZIG_RKB).<br>
     !>
     !>  \see
-    !>  [setZig](@ref pm_ziggurat::setZig)
+    !>  [setZig](@ref pm_ziggurat::getZig)
     !>  [ZIG_RKB](@ref pm_distNorm::ZIG_RKB)
-    !>  [setNormZig](@ref pm_distNorm::setNormZig)
     !>  [setNormRand](@ref pm_distNorm::setNormRand)
     !>  [ZIG_PRECISION](@ref pm_distNorm::ZIG_PRECISION)
     !>
@@ -1722,9 +1721,8 @@ module pm_distNorm
     !>  As such, care must be taken to not use this default Ziggurat set on processors with higher precision than used to generate this set.<br>
     !>
     !>  \see
-    !>  [setZig](@ref pm_ziggurat::setZig)
+    !>  [setZig](@ref pm_ziggurat::getZig)
     !>  [ZIG_RKB](@ref pm_distNorm::ZIG_RKB)
-    !>  [setNormZig](@ref pm_distNorm::setNormZig)
     !>  [setNormRand](@ref pm_distNorm::setNormRand)
     !>  [ZIG_PRECISION](@ref pm_distNorm::ZIG_PRECISION)
     !>
@@ -3209,7 +3207,7 @@ module pm_distNorm
     !>
     !>  \details
     !>  See the documentation of [pm_ziggurat](@ref pm_ziggurat) for information on the Ziggurat method.<br>
-    !>  See the documentation of [getZig::pm_ziggurat](@ref getZig::pm_ziggurat) for the meaning of the elements of the output array.<br>
+    !>  See the documentation of [getZig](@ref pm_ziggurat::getZig) for the meaning of the elements of the output array.<br>
     !>
     !>  \param[in]  nlay    :   See the documentation of the corresponding argument of [getZig](@ref pm_ziggurat::getZig).<br>
     !>  \param[in]  abserr  :   See the documentation of the corresponding argument of [getZig](@ref pm_ziggurat::getZig).<br>

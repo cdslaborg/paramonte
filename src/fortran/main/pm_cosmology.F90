@@ -162,7 +162,7 @@ module pm_cosmology
     !>      -#  \f$D_S\f$ is the cosmological Universe Size,
     !>      -#  \f$E(z; \cdots)\f$ is the [dimensionless Hubble Parameter](@ref pm_cosmology::getHubbleParamNormedSq),
     !>      -#  \f$D_H = \frac{C}{H_0}\f$ is the [Hubble Distance](@ref pm_cosmology::HUBBLE_DISTANCE_MPC),
-    !>      -#  \f$T_H = \frac{1}{H_0}\f$ is the [Hubble Time](@ref pm_cosmology::HUBBLE_TIME),
+    !>      -#  \f$T_H = \frac{1}{H_0}\f$ is the [Hubble Time](@ref pm_cosmology::HUBBLE_TIME_GYR),
     !>      -#  \f$H_0\f$ is the [Hubble Constant](@ref pm_cosmology::HUBBLE_CONST).
     !>      -#  \f$C\f$ is the [speed of light](@ref pm_cosmology::LIGHT_SPEED),
     !>
@@ -594,7 +594,7 @@ module pm_cosmology
     !>      -#  \f$T_L\f$ is the cosmological Lookback Time,
     !>      -#  \f$E(z; \cdots)\f$ is the [dimensionless Hubble Parameter](@ref pm_cosmology::getHubbleParamNormedSq),
     !>      -#  \f$D_H = \frac{C}{H_0}\f$ is the [Hubble Distance](@ref pm_cosmology::HUBBLE_DISTANCE_MPC),
-    !>      -#  \f$T_H = \frac{1}{H_0}\f$ is the [Hubble Time](@ref pm_cosmology::HUBBLE_TIME),
+    !>      -#  \f$T_H = \frac{1}{H_0}\f$ is the [Hubble Time](@ref pm_cosmology::HUBBLE_TIME_GYR),
     !>      -#  \f$H_0\f$ is the [Hubble Constant](@ref pm_cosmology::HUBBLE_CONST).
     !>      -#  \f$C\f$ is the [speed of light](@ref pm_cosmology::LIGHT_SPEED),
     !>

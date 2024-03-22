@@ -94,7 +94,7 @@ module pm_except
     !>  A complex addition is considered an outflow if either real or imaginary component addition causes an outflow.
     !>
     !>  \see
-    !>  [getFactorial](@ref pm_except::getFactorial)<br>
+    !>  [getFactorial](@ref pm_mathFactorial::getFactorial)<br>
     !>
     !>  \example{isAddOutflow}
     !>  \include{lineno} example/pm_except/isAddOutflow/main.F90
@@ -329,7 +329,7 @@ module pm_except
     !>  A complex addition is considered an outflow if either real or imaginary component addition causes an outflow.
     !>
     !>  \see
-    !>  [getFactorial](@ref pm_except::getFactorial)<br>
+    !>  [getFactorial](@ref pm_mathFactorial::getFactorial)<br>
     !>
     !>  \example{isAddOutflowNeg}
     !>  \include{lineno} example/pm_except/isAddOutflowNeg/main.F90
@@ -564,7 +564,7 @@ module pm_except
     !>  A complex addition is considered an outflow if either real or imaginary component addition causes an outflow.
     !>
     !>  \see
-    !>  [getFactorial](@ref pm_except::getFactorial)<br>
+    !>  [getFactorial](@ref pm_mathFactorial::getFactorial)<br>
     !>
     !>  \example{isAddOutflowPos}
     !>  \include{lineno} example/pm_except/isAddOutflowPos/main.F90

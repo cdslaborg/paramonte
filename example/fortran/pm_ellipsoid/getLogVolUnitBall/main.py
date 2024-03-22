@@ -24,7 +24,7 @@ for kind in ["RK"]:
        #spacing = 0.015
 
         # start with a square Figure
-        fig = plt.figure() # figsize=(8, 6)
+        fig = plt.figure() # figsize = (8, 6)
 
         plt.rcParams.update({'font.size': fontsize - 2})
         ax = plt.subplot()

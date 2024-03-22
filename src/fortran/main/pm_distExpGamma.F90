@@ -68,9 +68,9 @@
 !>
 !>  \note
 !>  The relationship between the [ExpGamma](@ref pm_distExpGamma) and [Gamma](@ref pm_distGamma) distributions
-!>  is similar to that of the [Normal](@ref DistNormalPDF_pmod) and [LogNormal](@ref DistLogNormalPDF_pmod) distributions.<br>
-!>  In other words, a better more consistent naming for the ExpGamma and Gamma distributions could have been [Gamma](@ref pm_distGamma) and [LogGamma](@ref DistLogGammaPDF_pmod) distributions,
-!>  respectively, similar to [Normal](@ref DistNormalPDF_pmod) and [LogNormal](@ref DistLogNormalPDF_pmod) distributions.<br>
+!>  is similar to that of the [Normal](@ref pm_distNorm) and [LogNormal](@ref pm_distLogNorm) distributions.<br>
+!>  In other words, a more consistent naming for the [ExpGamma](@ref pm_distExpGamma) and Gamma distributions could have been
+!>  Gamma and LogGamma respectively, similar to [Normal](@ref pm_distNorm) and [LogNormal](@ref pm_distLogNorm) distributions.<br>
 !>
 !>  \see
 !>  [pm_distGamma](@ref pm_distGamma)<br>

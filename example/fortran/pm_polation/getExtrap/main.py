@@ -20,7 +20,7 @@ for kind in ["neimean", "neinear", "neinext", "neiprev", "piwilin", "monopol", "
         df = pd.read_csv(file, delimiter = ",")
 
         # start with a square Figure
-        fig = plt.figure(figsize=(8, 6))
+        fig = plt.figure(figsize = (8, 6))
         ax = plt.subplot(1,1,1)
 
         ax.scatter  ( df.values[:,0]

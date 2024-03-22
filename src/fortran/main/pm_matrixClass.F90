@@ -1882,7 +1882,7 @@ module pm_matrixClass
     !>  (as opposed to the [Frobenius matrix](@ref pm_matrixClass::frobenius_type) definition which has the matrix differing
     !>  from the identity matrix in a single column below the diagonal).<br>
     !>  The following example shows a 4-by-4 Gauss matrix with its 3rd row differing from the identity matrix.<br>
-    !>  \begin{equation}{
+    !>  \f{equation}{
     !>      A =
     !>      \begin{pmatrix}
     !>          1&0&0&0\\

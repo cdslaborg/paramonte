@@ -122,7 +122,7 @@ module pm_distPiwiPoweto
     !>                              area underneath the distribution from the minimum of the support `exp(logLimX(1))` to the corresponding element of `exp(logLimX)`.<br>
     !>                              By definition, the conditions `cumSumArea(1) == 0.` and `cumSumArea(size(cumSumArea)) == 1.` and [isAscending(cumSumArea)](@ref pm_arraySort::isAscending) hold.<br>
     !>                              This output vector is a side-product of the computation of the normalization factors.<br>
-    !>                              It is also required for [random number generation from the (Truncated) PiwiPoweto distribution](@ref DistPiwiPowetoRand_pmod).<br>
+    !>                              It is also required for random number generation from the (Truncated) PiwiPoweto distribution.<br>
     !>                              Precomputing and supplying this vector to the random number generator routines significantly improves the runtime performance.<br>
     !>                              (**optional**. If missing, it will be computed implicitly within the algorithm and discarded upon return.)
     !>
@@ -687,7 +687,7 @@ module pm_distPiwiPoweto
     !>                              area underneath the distribution from the minimum of the support `exp(logLimX(1))` to the corresponding element of `exp(logLimX)`.<br>
     !>                              By definition, `cumSumArea(1) == 0.` and `cumSumArea(size(cumSumArea)) == 1.`, and [isAscending(cumSumArea)](@ref pm_arraySort::isAscending) hold.<br>
     !>                              This output vector is a side-product of the computation of the normalization factors.<br>
-    !>                              It is also required for [random number generation from the (Truncated) PiwiPoweto distribution](@ref DistPiwiPowetoRand_pmod).<br>
+    !>                              It is also required for random number generation from the (Truncated) PiwiPoweto distribution.<br>
     !>                              Precomputing and supplying this vector to the random number generator routines significantly improves the runtime performance.<br>
     !>                              (**optional**. It must be present <b>if and only if</b> `logPDFNF` is also present.
     !>                              The default is set by [getPiwiPowetoLogPDFNF(alpha, logLimX, cumSumArea)](@ref pm_distPiwiPoweto::getPiwiPowetoLogPDFNF).)<br>
@@ -916,7 +916,7 @@ module pm_distPiwiPoweto
     !>                              area underneath the distribution from the minimum of the support `exp(logLimX(1))` to the corresponding element of `exp(logLimX)`.<br>
     !>                              By definition, `cumSumArea(1) == 0.` and `cumSumArea(size(cumSumArea)) == 1.`, and [isAscending(cumSumArea)](@ref pm_arraySort::isAscending) hold.<br>
     !>                              This output vector is a side-product of the computation of the normalization factors.<br>
-    !>                              It is also required for [random number generation from the (Truncated) PiwiPoweto distribution](@ref DistPiwiPowetoRand_pmod).<br>
+    !>                              It is also required for random number generation from the (Truncated) PiwiPoweto distribution.<br>
     !>                              Precomputing and supplying this vector to the random number generator routines significantly improves the runtime performance.<br>
     !>                              This vector can be readily obtained by calling [getPiwiPowetoLogPDFNF(alpha, logLimX, cumSumArea)](@ref pm_distPiwiPoweto::getPiwiPowetoLogPDFNF).<br>
     !>

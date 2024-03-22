@@ -462,11 +462,11 @@ list(TRANSFORM paramonte_src_main_fortran_paths_refined_abs PREPEND "${paramonte
 #    set(SRC_LEVEL_DEBUG_FLAG "-g")
 #elseif(${csid_is_intel})
 #    if (WIN32)
-#        set_source_files_properties(${paramonte_src_fortran_main_dir}/pm_paraDRAM@Input_smod.F90 PROPERTIES COMPILE_FLAGS "/debug")
-#        set_source_files_properties(${paramonte_src_fortran_main_dir}/pm_paraDISE@Input_smod.F90 PROPERTIES COMPILE_FLAGS "/debug")
+#        set_source_files_properties(${paramonte_src_fortran_main_dir}/pm_sampling@Input_smod.F90 PROPERTIES COMPILE_FLAGS "/debug")
+#        set_source_files_properties(${paramonte_src_fortran_main_dir}/pm_sampling@Input_smod.F90 PROPERTIES COMPILE_FLAGS "/debug")
 #    elseif (UNIX OR APPLE)
-#        set_source_files_properties(${paramonte_src_fortran_main_dir}/pm_paraDRAM@Input_smod.F90 PROPERTIES COMPILE_FLAGS "-g")
-#        set_source_files_properties(${paramonte_src_fortran_main_dir}/pm_paraDISE@Input_smod.F90 PROPERTIES COMPILE_FLAGS "-g") # ${INTEL_Fortran_DEBUG_FLAGS}
+#        set_source_files_properties(${paramonte_src_fortran_main_dir}/pm_sampling@Input_smod.F90 PROPERTIES COMPILE_FLAGS "-g")
+#        set_source_files_properties(${paramonte_src_fortran_main_dir}/pm_sampling@Input_smod.F90 PROPERTIES COMPILE_FLAGS "-g") # ${INTEL_Fortran_DEBUG_FLAGS}
 #    endif()
 #endif()
 

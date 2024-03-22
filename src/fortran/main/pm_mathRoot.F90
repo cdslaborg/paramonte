@@ -237,7 +237,8 @@
 !>              One should therefore review the assumptions before using the Newton method.<br>
 !>              For situations where the method fails to converge, it is because the assumptions made in the proof convergence are not met.<br>
 !>      <li>    **The Newton method can overshoot.**<br>
-!>              If the first derivative is not well behaved in the neighborhood of a particular root, the method may overshoot, and diverge from that root. An example of a function with one root, for which the derivative is not well behaved in the neighborhood of the root, is
+!>              If the first derivative is not well behaved in the neighborhood of a particular root, the method may overshoot, and diverge from that root.<br>
+!>              An example of a function with one root, for which the derivative is not well behaved in the neighborhood of the root, is
 !>              \f{equation}{
 !>                  \large
 !>                  f(x) = |x|^{a} ~, \quad 0 < a < \frac{1}{2} ~,

@@ -89,7 +89,7 @@ module pm_sampleACT
     !>  Generate and return the integrated auto-correlation time (ACT) of the discrete signal.<br>
     !>
     !>  \details
-    !>  This generic interface a flexible wrapper for the lower-level potentially faster generic interface [setACF](@ref pm_sampleACT::setACF).<br>
+    !>  This generic interface a flexible wrapper for the lower-level potentially faster generic interface [setACF](@ref pm_sampleCCF::setACF).<br>
     !>  See the documentation of the parent module [pm_sampleACT](@ref pm_sampleACT) for algorithmic details and auto-correlation definition.<br>
     !>
     !>  \param[in]  seq         :   The input `contiguous` vector of arbitrary size (of minimum `2`) of,

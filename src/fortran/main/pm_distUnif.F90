@@ -4030,7 +4030,7 @@ module pm_distUnif
     !>  \warning
     !>  The condition `len(lb) == len(ub) .or. len(lb) == 1 .or. len(ub) == 1` for the corresponding input arguments of type `character`.<br>
     !>  The condition `lb <= ub` must hold for the corresponding input arguments where
-    !>  logical values are compared by the procedures of module [pm_logiclaCompare](@ref pm_logiclaCompare) and
+    !>  logical values are compared by the procedures of module [pm_logicalCompare](@ref pm_logicalCompare) and
     !>  complex values are compared by the procedures of module [pm_complexCompareAll](@ref pm_complexCompareAll).<br>
     !>  \vericons
     !>
@@ -10943,7 +10943,7 @@ module pm_distUnif
     !>  \warning
     !>  The condition `len(lb) == len(ub) .or. len(lb) == 1 .or. len(ub) == 1` for the corresponding input arguments of type `character`.<br>
     !>  The condition `lb <= ub` must hold for the corresponding input arguments where
-    !>  logical values are compared by the procedures of module [pm_logiclaCompare](@ref pm_logiclaCompare) and
+    !>  logical values are compared by the procedures of module [pm_logicalCompare](@ref pm_logicalCompare) and
     !>  complex values are compared by the procedures of module [pm_complexCompareAll](@ref pm_complexCompareAll).<br>
     !>  \vericons
     !>

@@ -81,9 +81,9 @@
 !>
 !>  \note
 !>  The relationship between the [GenExpGamma](@ref pm_distGenExpGamma) and [GenGamma](@ref pm_distGenGamma) distributions
-!>  is similar to that of the [Normal](@ref DistNormalPDF_pmod) and [LogNormal](@ref DistLogNormalPDF_pmod) distributions.<br>
+!>  is similar to that of the [Normal](@ref pm_distNorm) and [LogNormal](@ref pm_distLogNorm) distributions.<br>
 !>  In other words, a better more consistent naming for the GenExpGamma and GenGamma distributions could have been *GenGamma* and *GenLogGamma* distributions,
-!>  respectively, similar to [Normal](@ref DistNormalPDF_pmod) and [LogNormal](@ref DistLogNormalPDF_pmod) distributions.<br>
+!>  respectively, similar to [Normal](@ref pm_distNorm) and [LogNormal](@ref pm_distLogNorm) distributions.<br>
 !>
 !>  \see
 !>  [pm_distGamma](@ref pm_distGamma)<br>

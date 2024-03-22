@@ -166,14 +166,14 @@
 !>  There are also special matrix operations that mix **inversion** with Symmetric
 !>  and Hermitian each having corresponding [matrix classes](@ref pm_matrixClass):**<br>
 !>  <ol>
-!>      <li>    **[Orthogonal transposition](@ref pm_matrixInv::transOrth_type)**<br>
+!>      <li>    **[Orthogonal transposition](@ref pm_matrixTrans::transOrth_type)**<br>
 !>              A square matrix whose transpose is equal to its inverse is called an Orthogonal matrix.<br>
 !>              In other words, \f$A\f$ is Orthogonal if \f$\mathbf{A}^{\up{T}} = \mathbf{A}^{-1}\f$.<br>
-!>              The corresponding transposition is called [Orthogonal](@ref pm_matrixInv::transOrth_type) denoted by the operator \f$\cdot^{\up{-T}}\f$.<br>
-!>      <li>    **[Unitary transposition](@ref pm_matrixInv::transUnit_type)**<br>
+!>              The corresponding transposition is called [Orthogonal](@ref pm_matrixTrans::transOrth_type) denoted by the operator \f$\cdot^{\up{-T}}\f$.<br>
+!>      <li>    **[Unitary transposition](@ref pm_matrixTrans::transUnit_type)**<br>
 !>              A square complex matrix whose transpose is equal to its conjugate inverse is called a Unitary matrix.<br>
 !>              In other words, \f$A\f$ is Unitary if \f$\mathbf{A}^{\up{T}} = {\overline{\mathbf{A}^{-1}}}\f$.<br>
-!>              The corresponding transposition is called [Unitary](@ref pm_matrixInv::transUnit_type) denoted by the operator \f$\cdot^{\up{-H}}\f$.<br>
+!>              The corresponding transposition is called [Unitary](@ref pm_matrixTrans::transUnit_type) denoted by the operator \f$\cdot^{\up{-H}}\f$.<br>
 !>  </ol>
 !>
 !>  \see
@@ -267,8 +267,8 @@ module pm_matrixInv
     !>  For example usage, see the documentation of the target procedure requiring this object.<br>
     !>
     !>  \see
-    !>  [trans](@ref pm_matrixInv::trans)<br>
     !>  [nothing](@ref pm_array::nothing)<br>
+    !>  [trans](@ref pm_matrixTrans::trans)<br>
     !>
     !>  \finmain{inversion}
     !>

@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 #pip install paramonte
 
-modelName = "P15"
-filePrefix = "getLogRateDensity" + modelName
+import os
+examname = os.path.basename(os.getcwd())
+modelName = examname[-3:]
 
 ##################################################################
 
@@ -12,7 +13,7 @@ import numpy as np
 
 fontsize = 17
 
-df = pd.read_csv(filePrefix + ".csv", delimiter = ",")
+df = pd.read_csv(examname + ".csv", delimiter = ",")
 
 fig = plt.figure(figsize = 1.25*np.array([6.4,4.8]), dpi = 200)
 ax = plt.subplot()
@@ -42,30 +43,47 @@ plt.xticks(fontsize = fontsize)
 plt.yticks(fontsize = fontsize)
 
 plt.tight_layout()
-plt.savefig(filePrefix + ".z.png")
+plt.savefig(examname + ".z.png")
 
 ##################################################################
 
-if False:
-    import paramonte as pm
-    sim = pm.Paradram()
-    sim.readSample()
-    sim.sampleList[0].plot.histplot()
-    sim.sampleList[0].plot.histplot.funcout.axes.set_xlim([0,3])
-    sim.sampleList[0].plot.histplot.funcout.axes.set_xlabel("log( z + 1 )")
-    import matplotlib.pyplot as plt
-    plt.title("Histogram of the simulated redshifts from\nthe rate density model of " + modelName)
-    plt.tight_layout()
-    sim.sampleList[0].plot.histplot.savefig(fname = filePrefix + ".logzplus1.sample.png")
+#### Visualize MCMC
 
-    # Plot the histogram of the corresponding redshift values.
+import glob
+linewidth = 2
+fontsize = 17
+files = glob.glob("./*_sample.txt")
 
-    import numpy as np
-    sim.sampleList[0].df["z"] = np.exp(sim.sampleList[0].contents.logzplus1) - 1
-    sim.sampleList[0].plot.histplot(xcolumns = "z")
-    sim.sampleList[0].plot.histplot.funcout.axes.set_xlim([0,12])
-    sim.sampleList[0].plot.histplot.funcout.axes.set_xlabel("redshift: z")
-    import matplotlib.pyplot as plt
-    plt.title("Histogram of the simulated redshifts from\nthe rate density model of " + modelName)
-    plt.tight_layout()
-    sim.sampleList[0].plot.histplot.savefig(fname = filePrefix + ".z.sample.png")
+for file in files:
+
+    #basename = file.split("_")[0]
+    df = pd.read_csv(file, delimiter = ",")
+    if "_chain.txt" in file:
+        sindex = 7 # start column index.
+    elif "_sample.txt" in file:
+        sindex = 1 # start column index.
+    else:
+        sys.exit("Unrecognized simulation output file: " + file)
+
+    # histogram
+
+    for histname in ["z", "logzplus1"]:
+
+        fig = plt.figure(figsize = (8, 6))
+        ax = plt.subplot(1,1,1)
+        if histname == "z":
+            ax.hist(df.values[:, sindex:])
+        elif histname == "logzplus1":
+            ax.hist(np.log(df.values[:, sindex:]))
+        else:
+            sys.exit("Unrecognized histogram name: " + histname)
+        plt.minorticks_on()
+        #ax.set_xscale("log")
+        ax.set_ylabel("Count", fontsize = 17)
+        ax.set_xlabel("log( z + 1 )", fontsize = 17)
+        ax.tick_params(axis = "x", which = "minor")
+        ax.tick_params(axis = "y", which = "minor")
+        plt.grid(visible = True, which = "both", axis = "both", color = "0.85", linestyle = "-")
+        plt.title("Histogram of the simulated redshifts from\nthe rate density model of " + modelName)
+        plt.tight_layout()
+        plt.savefig(examname + "." + histname + ".sample.png")

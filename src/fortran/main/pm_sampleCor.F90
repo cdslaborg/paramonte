@@ -86,8 +86,8 @@
 !>      <li>    **discordant** if \f$\ms{sgn}(X_{i} - X_{j}) \neq \ms{sgn}(Y_{i} - Y_{j})\f$.<br>
 !>  </ol>
 !>
-!>  The generic interfaces [getCordance](@ref pm_sampleCor::getCordance) and [setCordance](@ref pm_sampleCor::setCordance) of this
-!>  module return the **sample cordance tuple/vector** comprised of the number of x-ties, y-ties, concordant pairs, and discordant pairs.<br>
+!>  The generic interface [setCordance](@ref pm_sampleCor::setCordance) of this module returns 
+!>  the **sample cordance tuple/vector** comprised of the number of x-ties, y-ties, concordant pairs, and discordant pairs.<br>
 !>
 !>  Sample Cordance Algorithm
 !>  -------------------------
