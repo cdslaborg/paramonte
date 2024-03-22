@@ -445,7 +445,6 @@ module pm_sysPath
     !>
     !>  \warning
     !>  It is critical for this constant to begin with the character `\`.<br>
-    !>  This order is used to validate Windows-style paths in [isValidPathWinCMD](@ref pm_sysPath::isValidPathWinCMD).<br>
     !>
     !>  \finmain{WINDOWS_RESERVED_STR}
     !>
@@ -459,7 +458,6 @@ module pm_sysPath
     !>
     !>  \warning
     !>  The first character must always be the Windows directory separator `\`.<br>
-    !>  This order is used to validate Windows-style paths in [isValidPathWinCMD](@ref pm_sysPath::isValidPathWinCMD).<br>
     !>
     !>  \finmain{WINDOWS_RESERVED_CHR}
     !>
@@ -6040,10 +6038,6 @@ module pm_sysPath
     !>  \vericon
     !>
     !>  \warnpure
-    !>
-    !>  \note
-    !>  See [getIndexFileName](@ref pm_sysPath::getIndexFileName) for a faster
-    !>  method of getting the filename segment of a path that avoids memory allocation.<br>
     !>
     !>  \see
     !>  [getDirName](@ref pm_sysPath::getDirName)<br>

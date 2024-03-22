@@ -446,7 +446,7 @@
 /// \section ParaMonteLangBenchmarks ParaMonte C++ Language Benchmarks
 ///
 /// The ParaMonte C++ library currently does not ship with any benchmarks.<br>
-/// If you would like to see a relevant benchmark currently not included, [discuss it here](@ref https://github.com/cdslaborg/paramonte/discussions)
+/// If you would like to see a relevant benchmark currently not included, [discuss it here](https://github.com/cdslaborg/paramonte/discussions)
 /// or [raise an issue here](https://github.com/cdslaborg/paramonte/issues) for consideration or volunteer to implement it!<br>
 ///
 /// [⛓](#ParaMonteLangDocumentationTroubleshooting)

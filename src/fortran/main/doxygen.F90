@@ -609,7 +609,7 @@
 !>  The ParaMonte Fortran library ships with a large number of performance benchmarks that are available in the `benchmark/fortran` folder in the root directory of the project repository.<br>
 !>  These benchmarks are also available and discussed in the [benchmark listing page](@ref benchmarks) of this this documentation website.<br>
 !>
-!>  If you would like to see a relevant benchmark currently not included, [discuss it here](@ref https://github.com/cdslaborg/paramonte/discussions) 
+!>  If you would like to see a relevant benchmark currently not included, [discuss it here](https://github.com/cdslaborg/paramonte/discussions) 
 !>  or [raise an issue here](https://github.com/cdslaborg/paramonte/issues) for consideration or volunteer to implement it!<br>
 !>
 !>  [⛓](#ParaMonteLangDocumentationTroubleshooting)

@@ -25,7 +25,9 @@ banner = getShield()
 banner = """
 
 <div align="center">
-<a href="https://www.cdslab.org/paramonte" target="_blank"><img src="https://github.com/cdslaborg/paramonte/blob/main/img/paramonte.png" alt="ParaMonte: Parallel Monte Carlo and Machine Learning Library" style="height:500px" /></a>
+<a href="https://www.cdslab.org/paramonte" target="_blank">
+    <img src="https://github.com/cdslaborg/paramonte/blob/main/img/paramonte.png" alt="ParaMonte: Parallel Monte Carlo and Machine Learning Library" style="max-height:500px;width:auto;" />
+</a>
 <br>
 """ + banner + """
 <br><br>
