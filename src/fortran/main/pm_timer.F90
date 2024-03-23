@@ -533,7 +533,7 @@ contains
     !>              <ol>
     !>                  <li>    [timerMPI_type](@ref pm_timer::timerMPI_type) if the ParaMonte library is built with preprocessor macro `MPI_ENABLED` defined.
     !>                  <li>    [timerOMP_type](@ref pm_timer::timerOMP_type) if the ParaMonte library is built with preprocessor macro `OMP_ENABLED` defined.
-    !>                  <li>    [timerSYS_type](@ref pm_timer::timerSYS_type) if the ParaMonte library is build is serial mode.
+    !>                  <li>    [timerSYS_type](@ref pm_timer::timerSYS_type) if the ParaMonte library is built is serial mode.
     !>              </ol>
     !>
     !>  \interface{constructTimer}

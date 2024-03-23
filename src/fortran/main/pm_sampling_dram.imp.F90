@@ -179,7 +179,7 @@ contains
                 &In such cases, the resulting output sample may have a zero size. In general, when good mixing occurs &
                 &(e.g., when the input variable `outputChainSize` is reasonably large), then any specific &
                 &value of `burninAdaptationMeasure` becomes practically irrelevant. &
-                &The default value for `burninAdaptationMeasure` is "//getStr(spec%burninAdaptationMeasure%def)//SKC_", implying that the &
+                &The default value for `burninAdaptationMeasure` is `"//getStr(spec%burninAdaptationMeasure%def)//SKC_"`, implying that the &
                 &entire chain (excluding of an initial automatically-determined burnin period) will be used to generate the final output sample."
             !$omp master
             call setNAN(burninAdaptationMeasure)
@@ -199,7 +199,7 @@ contains
                 &it may be appropriate to ensure the condition `outputChainSize >> proposalAdaptationPeriod * proposalAdaptationCount` &
                 &holds to improve the ergodicity and stationarity of the MCMC sampler. If `proposalAdaptationCount` is zero, &
                 &then the proposal distribution parameters will be fixed to the initial input values &
-                &throughout the entire MCMC sampling. The default value is "//getStr(spec%proposalAdaptationCount%def)//SKC_"."
+                &throughout the entire MCMC sampling. The default value is `"//getStr(spec%proposalAdaptationCount%def)//SKC_"`."
             !$omp master
             proposalAdaptationCount = spec%proposalAdaptationCount%null
             !$omp end master
@@ -232,7 +232,7 @@ contains
                 &Every `proposalAdaptationPeriod` calls to the objective function, the parameters of the proposal distribution will be updated. &
                 &The smaller the value of `proposalAdaptationPeriod`, the easier it will be for the sampler kernel to adapt the proposal distribution &
                 &to the covariance structure of the objective function. However, this will happen at the expense of slower simulation runtime as the &
-                &adaptation process can become computationally expensive, in particular, for very high dimensional objective functions (ndim >> 1). &
+                &adaptation process can become computationally expensive, in particular, for very high dimensional objective functions (`ndim >> 1`). &
                 &The larger the value of `proposalAdaptationPeriod`, the easier it will be for the sampler kernel to keep the sampling efficiency &
                 &close to the requested target acceptance rate range (if specified via the input variable targetAcceptanceRate). However, too large &
                 &values for `proposalAdaptationPeriod` will only delay the adaptation of the proposal distribution to the global structure of &
@@ -254,10 +254,10 @@ contains
                 &to the previously accepted point (state). The condition `"//&
                 getStr(spec%proposalDelayedRejectionCount%min)//" <= proposalDelayedRejectionCount <= "//getStr(spec%proposalDelayedRejectionCount%max)//&
             SKC_"` must hold. Possible values are:"//NL2//&
-            SKC_"    proposalDelayedRejectionCount = 0"//NL2//&
-            SKC_"            indicating no deployment of the delayed rejection algorithm."//NL2//&
-            SKC_"    proposalDelayedRejectionCount > 0"//NL2//&
-            SKC_"            which implies a maximum proposalDelayedRejectionCount number of rejections will be tolerated."//NL2//&
+            SKC_"+   `proposalDelayedRejectionCount = 0`"//NL2//&
+            SKC_"    indicating no deployment of the delayed rejection algorithm."//NL2//&
+            SKC_"+   `proposalDelayedRejectionCount > 0`"//NL2//&
+            SKC_"    which implies a maximum proposalDelayedRejectionCount number of rejections will be tolerated."//NL2//&
             SKC_"For example, setting `proposalDelayedRejectionCount` to `1` means that at any point during the sampling, if a proposal is rejected, &
                 &the MCMC sampler will not go back to the last sampled state. Instead, it will continue to propose a new state from the last &
                 &rejected proposal. If the new state is again rejected based on the rules of the MCMC sampler, then the algorithm will not &

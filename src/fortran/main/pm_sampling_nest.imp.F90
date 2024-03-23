@@ -306,7 +306,7 @@ contains
                 &Every `domainPartitionAdaptationPeriod` calls to the objective function, the approximated shape of the domain of the objective function will be updated. &
                 &The smaller the value of `domainPartitionAdaptationPeriod`, the easier it will be for the integrator to adapt the domain sampler to the constrained &
                 &shape of the domain of the objective function. However, this will happen at the expense of slower simulation runtime because the adaptation &
-                &process is generally computationally expensive, in particular, for very high dimensional objective functions (ndim >> 1). &
+                &process is generally computationally expensive, in particular, for very high dimensional objective functions (`ndim >> 1`). &
                 &The larger the value of `domainPartitionAdaptationPeriod`, the easier it will be for the integrator kernel to keep the &
                 &sampling efficiency close to the requested target acceptance rate range (specified via the `targetAcceptanceRate`). &
                 &However, too large values for `domainPartitionAdaptationPeriod` will only delay the adaptation of the domain &
@@ -515,26 +515,26 @@ contains
             SKC_"The simulation specification `domainPartitionMethod` is a scalar string of default kind of maximum length "//getStr(domainPartitionMethod)//SKC_" containing &
                 &the name of the method to be used for the domain partitioning within the Nested sampler. The string value must be enclosed by either single or double &
                 &quotation marks when provided as input. Options that are currently supported include:"//NL2//&
-            SKC_"    domainPartitionMethod = 'ParaMonte' or 'ParaMonte optimal', all case-INsensitive."//NL2//&
-            SKC_"            This is equivalent to the constrained rejection sampling via partitions &
-                            &formed by bounding objects around the set of live (active) points using a complex method that optimizes the shapes &
-                            &and count of bounding objects for the most-likely (optimal) density of live points within each bounding object."//NL2//&
-            SKC_"    domainPartitionMethod = 'ParaMonte MinVol' or 'ParaMonte Minimum Volume', all case-INsensitive."//NL2//&
-            SKC_"            This is equivalent to the constrained rejection sampling via partitions &
-                            &formed by bounding objects around the set of live (active) points using a complex method that optimizes the shapes &
-                            &and count of the bounding objects to achieve a minimum overall domain volume."//NL2//&
-            SKC_"    domainPartitionMethod = 'MultiNest', all case-INsensitive."//NL2//&
-            SKC_"            in which case, the method of partitioning based on volume-minimization used by the MultiNest Fortran &
-                            &library will be used to find the optimal partitioning of the domain of the objective function. &
-                            &The 'MultiNest' method of partitioning is similar to 'ParaMonte-MinVol' in the sense that both methods &
-                            &minimize the collective volumes of the bounding objects. However, the minimization approach taken by MultiNest is much &
-                            &more aggressive and often results in systematically biased results, especially in high-dimensional problems."//NL2//&
-            SKC_"    domainPartitionMethod = 'Dynesty', all case-INsensitive."//NL2//&
-            SKC_"            in which case, the method of partitioning based on volume-minimization used by the Dynesty Python &
-                            &library will be used to find the optimal partitioning of the domain of the objective function. &
-                            &The 'often' method of partitioning is similar to 'ParaMonte-MinVol' in the sense that both methods &
-                            &minimize the collective volumes of the bounding objects. However, the minimization approach taken by often is less &
-                            &aggressive and often results in lower efficiencies for the Nested Sampler."//NL2//&
+            SKC_"+   domainPartitionMethod = 'ParaMonte' or 'ParaMonte optimal', all case-INsensitive."//NL2//&
+            SKC_"    This is equivalent to the constrained rejection sampling via partitions &
+                     &formed by bounding objects around the set of live (active) points using a complex method that optimizes the shapes &
+                     &and count of bounding objects for the most-likely (optimal) density of live points within each bounding object."//NL2//&
+            SKC_"+   domainPartitionMethod = 'ParaMonte MinVol' or 'ParaMonte Minimum Volume', all case-INsensitive."//NL2//&
+            SKC_"    This is equivalent to the constrained rejection sampling via partitions &
+                     &formed by bounding objects around the set of live (active) points using a complex method that optimizes the shapes &
+                     &and count of the bounding objects to achieve a minimum overall domain volume."//NL2//&
+            SKC_"+   domainPartitionMethod = 'MultiNest', all case-INsensitive."//NL2//&
+            SKC_"    in which case, the method of partitioning based on volume-minimization used by the MultiNest Fortran &
+                     &library will be used to find the optimal partitioning of the domain of the objective function. &
+                     &The 'MultiNest' method of partitioning is similar to 'ParaMonte-MinVol' in the sense that both methods &
+                     &minimize the collective volumes of the bounding objects. However, the minimization approach taken by MultiNest is much &
+                     &more aggressive and often results in systematically biased results, especially in high-dimensional problems."//NL2//&
+            SKC_"+   domainPartitionMethod = 'Dynesty', all case-INsensitive."//NL2//&
+            SKC_"    in which case, the method of partitioning based on volume-minimization used by the Dynesty Python &
+                     &library will be used to find the optimal partitioning of the domain of the objective function. &
+                     &The 'often' method of partitioning is similar to 'ParaMonte-MinVol' in the sense that both methods &
+                     &minimize the collective volumes of the bounding objects. However, the minimization approach taken by often is less &
+                     &aggressive and often results in lower efficiencies for the Nested Sampler."//NL2//&
             SKC_"Note that all values are case-INsensitive and all hyphens (dashes, -), white-space, or other separators are ignored.&
                 &The default value is '"//spec%domainPartitionMethod%def//SKC_"'. Choose the other non-default methods ONLY if you know the implications or &
                 &if you want to perform benchmarks."
