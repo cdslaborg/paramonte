@@ -312,19 +312,19 @@
 /// a Monte Carlo sample of the specified input mathematical objective function, otherwise, return `0`.
 ///
 /// \details
-/// This interface group is the entry point to all ParaMonte Monte Carlo samplers of mathematical density functions.<br>
+/// This interface group is the entry point to all **C-style interfaces** to the ParaDRAM samplers of mathematical density functions.<br>
 /// Although the procedures of this generic interface return a single scalar of type `int32_t`, the procedures generate
 /// massive amounts of information about each simulation which are stored in appropriate external hard drive files.<br>
 ///
 /// \param[in]  getLogFunc  :   The input user-specified procedure pointer to the natural logarithm of the target density function.<br>
-///                             On input, the function must an input vector `state` of size `ndim` of type floating-point of kind \RKALL
+///                             On input, the function must take an input vector `state` of size `ndim` of type floating-point of kind \C_RKALL
 ///                             representing a state (point) from within the domain of the user-specified target density function whose function value must be returned.<br>
 ///                             On output, the user-specified procedure `getLogFunc()` must return the function value corresponding to the input `state[ndim]`.<br>
 ///                             The following illustrate the generic interface of input function pointer `getLogFunc(state, ndim)`,
 ///                             \code{.F90}
 ///                                 REAL getLogFunc(REAL[] state, int32_t ndim);
 ///                             \endcode
-///                             where `REAL` can be a floating-point type of kind \RKALL for the corresponding varying-precision sampler interfaces:<br>
+///                             where `REAL` can be a floating-point type of kind \C_RKALL for the corresponding varying-precision sampler interfaces:<br>
 ///                             <ol>
 ///                                 <li>    [runParaDRAMF](@ref runParaDRAMF),
 ///                                 <li>    [runParaDRAMD](@ref runParaDRAMD),

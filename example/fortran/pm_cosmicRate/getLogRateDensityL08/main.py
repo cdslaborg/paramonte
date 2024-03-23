@@ -15,11 +15,11 @@ fontsize = 17
 
 df = pd.read_csv(examname + ".csv", delimiter = ",")
 
-fig = plt.figure(figsize = 1.25*np.array([6.4,4.8]), dpi = 200)
+fig = plt.figure(figsize = 1.25 * np.array([6.4, 4.8]), dpi = 200)
 ax = plt.subplot()
 
 for colname in df.columns[1:]:
-    plt.plot( df.values[:,0]
+    plt.plot( df.values[:, 0]
             , df[colname].values
             , linestyle = "-"
             , linewidth = 2

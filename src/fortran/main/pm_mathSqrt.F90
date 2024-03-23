@@ -118,7 +118,8 @@ module pm_mathSqrt
     !>  The procedures of this generic interface compute the integer square root method without undue overflow.<br>
     !>
     !>  \see
-    !>  [getFactorial](@ref pm_mathSqrt::getFactorial)<br>
+    !>  [getLog1p](@ref pm_mathLog1p::getLog1p)<br>
+    !>  [get1mexp](@ref pm_math1mexp::get1mexp)<br>
     !>
     !>  \example{getSqrt}
     !>  \include{lineno} example/pm_mathSqrt/getSqrt/main.F90

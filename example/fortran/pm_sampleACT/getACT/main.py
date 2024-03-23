@@ -21,11 +21,11 @@ for file in files:
     #print(df.values)
     fig = plt.figure(figsize = (8, 6))
     ax = plt.subplot(1,1,1)
-    ax.plot ( df.values[:,0]
+    ax.plot ( df.values[:, 0]
             , df.values[:,1]
             , zorder = 1000
             )
-    #ax.scatter  ( df.values[:,0]
+    #ax.scatter  ( df.values[:, 0]
     #            , df.values[:,1]
     #            , zorder = 1000
     #            , s = 1

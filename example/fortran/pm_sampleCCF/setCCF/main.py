@@ -17,7 +17,7 @@ for kind in ["sin.cos.RK"]:
     #print(df.values)
     fig = plt.figure(figsize = (8, 6))
     ax = plt.subplot(1,1,1)
-    ax.plot ( df.values[:,0]
+    ax.plot ( df.values[:, 0]
             , df.values[:,1:]
             , zorder = 1000
             )
@@ -35,7 +35,7 @@ for kind in ["sin.cos.RK"]:
     df = pd.read_csv(file, delimiter = ",")
     fig = plt.figure(figsize = (8, 6))
     ax = plt.subplot(1,1,1)
-    ax.plot ( df.values[:,0]
+    ax.plot ( df.values[:, 0]
             , df.values[:,1]
             , zorder = 1000
             )

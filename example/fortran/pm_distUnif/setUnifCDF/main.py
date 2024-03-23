@@ -19,11 +19,11 @@ for kind in ["IK", "RK", "CK"]:
 
     df = pd.read_csv("main.unif.cdf."+kind+".txt", delimiter = " ")
 
-    fig = plt.figure(figsize = 1.25*np.array([6.4,4.8]), dpi = 200)
+    fig = plt.figure(figsize = 1.25 * np.array([6.4, 4.8]), dpi = 200)
     ax = plt.subplot()
 
     if kind == "CK":
-        plt.plot( df.values[:,0]
+        plt.plot( df.values[:, 0]
                 , df.values[:,2]
                 , marker[kind]
                 , color = "r"
@@ -37,7 +37,7 @@ for kind in ["IK", "RK", "CK"]:
                     , fontsize = fontsize
                     )
     else:
-        plt.plot( df.values[:,0]
+        plt.plot( df.values[:, 0]
                 , df.values[:,1]
                 , marker[kind]
                 , color = "r"

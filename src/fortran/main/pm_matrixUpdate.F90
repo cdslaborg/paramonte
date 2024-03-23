@@ -80,13 +80,13 @@
 !>  The generic interfaces of this module dispatch to optimized BLAS libraries where available.<br>
 !>  Otherwise, reference implementations of BLAS algorithms are used.<br>
 !>
-!>  \note
+!>  \warning
 !>  This module is still a work in progress.<br>
 !>  However, all available interfaces and functions of this module are fully functional and tested.<br>
 !>  But the interfaces may change over time as more functionalities are added.<br>
 !>  In particular, the generic interfaces [setMatUpdateR1](@ref pm_matrixUpdate::setMatUpdateR1)
 !>  and [setMatUpdateTriang](@ref pm_matrixUpdate::setMatUpdateTriang) will be merged with
-!>  [setMatUpdateR](@ref pm_matrixUpdate::setMatUpdateR) in future library releases.<br>
+!>  [setMatUpdateR1](@ref pm_matrixUpdate::setMatUpdateR1) in future library releases.<br>
 !>
 !>  \lapack{3.11}
 !>  `SSHRK`, `DSHRK`, `CSHRK`, `ZSHRK`.<br>

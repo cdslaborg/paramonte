@@ -177,9 +177,8 @@ module pm_sampleACT
     !>  \postproc{getACT}
     !>  \include{lineno} example/pm_sampleACT/getACT/main.py
     !>  \vis{getACT}
-    !>  \image html pm_sampleACT/getACT/getACT.duluth.png width=700
-    !>  \image html pm_sampleACT/getACT/getACT.duluth.batchMeans.png width=700
     !>  \image html pm_sampleACT/getACT/getACT.duluth.thinned.png width=700
+    !>  \image html pm_sampleACT/getACT/getACT.duluth.batchMeans.png width=700
     !>
     !>  \test
     !>  [test_pm_sampleACT](@ref test_pm_sampleACT)

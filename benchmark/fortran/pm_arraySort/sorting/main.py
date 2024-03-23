@@ -29,11 +29,11 @@ for dtype in dtypes:
     df[dtype] = pd.read_csv("main.{}.out".format(dtype))
     colnames = list(df[dtype].columns.values[1:])
 
-    ax = plt.figure(figsize = 1.25*np.array([9.4,4.8]), dpi = 200)
+    ax = plt.figure(figsize = 1.25 * np.array([9.4,4.8]), dpi = 200)
     ax = plt.subplot()
 
     for colname in colnames:
-        plt.plot( df[dtype].values[:,0]
+        plt.plot( df[dtype].values[:, 0]
                 , df[dtype][colname].values / df[dtype]["setSortedQsorti"].values
                 , linewidth = 2
                 )
@@ -60,11 +60,11 @@ for dtype in dtypes:
 
 ####################################################################################################################################
 
-ax = plt.figure(figsize = 1.25*np.array([9.4,4.8]), dpi = 200)
+ax = plt.figure(figsize = 1.25 * np.array([9.4,4.8]), dpi = 200)
 ax = plt.subplot()
 
 for colname in colnames:
-    plt.plot( df["random"].values[:,0]
+    plt.plot( df["random"].values[:, 0]
             , df["sorted"][colname].values / df["random"][colname].values
             , linewidth = 2
             )

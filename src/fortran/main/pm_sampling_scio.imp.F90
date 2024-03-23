@@ -34,6 +34,7 @@
     use pm_kind, only: SK, IK, LK, SKC => SK
     use pm_sysPath, only: PATHLEN => MAX_LEN_FILE_PATH
     use pm_strASCII, only: getStrLower, setStrLower
+    use pm_arrayReplace, only: getReplaced
     use pm_io, only: setContentsFrom
     use pm_val2str, only: getStr
 
@@ -518,24 +519,27 @@ end if;
             ! Close the input file and read its contents.
             if (opened) then
                 close(unit, iostat = iostat, iomsg = iomsg)
-                RETURN_IF_ERRED(__LINE__, iostat /= 0, SK_": Failed to close the user-specified input file: '"//trim(inputFile)//SK_"'. "//trim(adjustl(iomsg)))
+                RETURN_IF_ERRED(__LINE__, iostat /= 0, SK_"Failed to close the user-specified input file: '"//trim(inputFile)//SK_"'. "//trim(adjustl(iomsg)))
             end if
             call setContentsFrom(inputFile, contents, iostat, iomsg)
             !open(newunit = unit, file = inputFile, form = "formatted", access = "sequential", status = "old", action = "read", iostat = iostat, iomsg = iomsg SHARED)
-            RETURN_IF_ERRED(__LINE__, iostat /= 0, SK_": Failed to open the user-specified input file: '"//trim(inputFile)//SK_"'. "//trim(adjustl(iomsg)))
+            RETURN_IF_ERRED(__LINE__, iostat /= 0, SK_"Failed to open the user-specified input file: '"//trim(inputFile)//SK_"'. "//trim(adjustl(iomsg)))
         else
             contents = inputFile
         end if
+
+        iostat = index(getReplaced(contents, SK_" ", SK_""), SK_"&"//lcmethod, kind = IK)
+        RETURN_IF_ERRED(__LINE__, iostat == 0, SK_"Failed to find a `&"//lcmethod//SK_" namelist group in user-specified input file: '"//trim(inputFile)//SK_"'. ")
 
         ! Now write the contents to a temporary file for the processor to parse it.
         ! The rewrite is important to avoid gfortran end of file IO errors.
 
         open(newunit = unit, form = "formatted", access = "sequential", status = "scratch", action = "readwrite", iostat = iostat, iomsg = iomsg)
-        RETURN_IF_ERRED(__LINE__, iostat /= 0, SK_": Failed to open a temporary input file to hold user-specified simulation specifications: "//trim(adjustl(iomsg)))
+        RETURN_IF_ERRED(__LINE__, iostat /= 0, SK_"Failed to open a temporary input file to hold user-specified simulation specifications: "//trim(adjustl(iomsg)))
         write(unit, "(A)", iostat = iostat, iomsg = iomsg) contents//new_line(contents) ! The new line is essential for successful namelist content parsing by the GNU compiler.
-        RETURN_IF_ERRED(__LINE__, iostat /= 0, SK_": Failed to write the user-specified simulation specifications to a temporary input file: "//trim(adjustl(iomsg)))
+        RETURN_IF_ERRED(__LINE__, iostat /= 0, SK_"Failed to write the user-specified simulation specifications to a temporary input file: "//trim(adjustl(iomsg)))
         rewind(unit, iostat = iostat, iomsg = iomsg)
-        RETURN_IF_ERRED(__LINE__, iostat /= 0, SK_": Failed to rewind the temporary input file containing the user-specified simulation specifications: "//trim(adjustl(iomsg)))
+        RETURN_IF_ERRED(__LINE__, iostat /= 0, SK_"Failed to rewind the temporary input file containing the user-specified simulation specifications: "//trim(adjustl(iomsg)))
         lcmethod = getStrLower(method)
         if (lcmethod == SK_"paradise") then
             read(unit, nml = paradise, iostat = iostat, iomsg = iomsg)

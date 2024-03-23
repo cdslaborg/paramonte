@@ -49,7 +49,7 @@ for kind in ["RK"]:
                         , zorder = 1000
                         )
 
-       #ax_histx.hist(df.values[:,0], bins = 50, zorder = 1000)
+       #ax_histx.hist(df.values[:, 0], bins = 50, zorder = 1000)
        #ax_histy.hist(df.values[:,1], bins = 50, orientation = "horizontal", zorder= 1000)
 
         ax.set_aspect("equal")

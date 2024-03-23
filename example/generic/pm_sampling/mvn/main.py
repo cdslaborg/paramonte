@@ -23,7 +23,7 @@ for file in files:
     #print(df.values)
     fig = plt.figure(figsize = (8, 6))
     ax = plt.subplot(1,1,1)
-    ax.plot ( range(len(df.values[:,0]))
+    ax.plot ( range(len(df.values[:, 0]))
             , df.values[:, sindex:]
             , zorder = 1000
             )
@@ -68,7 +68,7 @@ for file in files:
         if any(df["adaptationMeasure"].values != 0):
             fig = plt.figure(figsize = (8, 6))
             ax = plt.subplot(1,1,1)
-            ax.scatter  ( range(len(df.values[:,0]))
+            ax.scatter  ( range(len(df.values[:, 0]))
                         , df["adaptationMeasure"].values
                         , zorder = 1000
                         , alpha = 0.5

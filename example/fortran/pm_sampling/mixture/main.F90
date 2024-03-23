@@ -157,7 +157,7 @@ module lognorm_mod
     implicit none
 
     type, extends(model_type) :: lognorm_type
-        real(RKC), private :: avg, logstd, std
+        real(RKC), private :: avg, invstd, loginvstd
     contains
         procedure :: getParam, setParam, getLogPDF
     end type
@@ -186,26 +186,26 @@ contains
         class(lognorm_type), intent(inout) :: self
         real(RKC), intent(in), contiguous :: param(:)
         if (size(param) /= self%npar) error stop "`lognorm_type%setParam()` takes a vector of two parameters representing `avg` and `logstd`."
-        self%std = exp(param(2))
-        self%logstd = param(2)
+        self%invstd = exp(-param(2))
+        self%loginvstd = -param(2)
         self%avg = param(1)
     end subroutine
 
     function getParam(self) result(param)
         class(lognorm_type), intent(in) :: self
         real(RKC) :: param(self%npar)
-        param = [self%avg, self%logstd]
+        param = [self%avg, -self%loginvstd]
     end function
 
     impure elemental function getLogPDF(self, obs) result(logPDF)
-        use pm_distNorm, only: getNormLogPDF
+        use pm_distNorm, only: setNormLogPDF
         use data_mod, only: obs_type, posuniv_type
         class(lognorm_type), intent(in) :: self
         class(obs_type), intent(in):: obs
         real(RKC) :: logPDF
         select type (obs)
         type is (posuniv_type)
-            logPDF = getNormLogPDF(obs%log, mu = self%avg, sigma = self%std)
+            call setNormLogPDF(logPDF, obs%log, mu = self%avg, invSigma = self%invstd, logInvSigma = self%loginvstd)
         class default
             error stop "Unrecognized data."
         end select

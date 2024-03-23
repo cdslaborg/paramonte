@@ -12,10 +12,10 @@ df = pd.read_csv("main.out")
 #### Plot the runtimes.
 ####################################################################################################################################
 
-ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)
+ax = plt.figure(figsize = 1.25 * np.array([6.4,4.6]), dpi = 200)
 ax = plt.subplot()
 
-plt.plot( df.values[:,0]
+plt.plot( df.values[:, 0]
         , df.values[:,1:]
         , linewidth = 2
         )
@@ -44,18 +44,18 @@ plt.savefig("benchmark.setUnifRand_vs_random_number.runtime.png")
 #### Plot the runtime ratios.
 ####################################################################################################################################
 
-ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)
+ax = plt.figure(figsize = 1.25 * np.array([6.4,4.6]), dpi = 200)
 ax = plt.subplot()
 
 # baseline
 
-plt.plot( df.values[:,0]
+plt.plot( df.values[:, 0]
         , np.ones( len(df["arraySize"].values) )
         , linestyle = "-"
         , linewidth = 2
         )
 for colname in df.columns.values[2:]:
-    plt.plot( df.values[:,0]
+    plt.plot( df.values[:, 0]
             , df[colname].values / df.values[:,1]
             , linewidth = 2
             )

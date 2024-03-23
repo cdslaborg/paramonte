@@ -18,7 +18,7 @@ df = pd.read_csv("main.out")
 #### Plot the runtimes.
 ####################################################################################################################################
 
-ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)
+ax = plt.figure(figsize = 1.25 * np.array([6.4,4.6]), dpi = 200)
 ax = plt.subplot()
 
 for colname in colnames:
@@ -53,7 +53,7 @@ plt.savefig("benchmark." + dirname + ".runtime.png")
 #### Plot the runtime ratios.
 ####################################################################################################################################
 
-ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)
+ax = plt.figure(figsize = 1.25 * np.array([6.4,4.6]), dpi = 200)
 ax = plt.subplot()
 
 for colname in colnames[1:]:

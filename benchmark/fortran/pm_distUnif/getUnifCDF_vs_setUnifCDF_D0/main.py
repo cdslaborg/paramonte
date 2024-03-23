@@ -14,7 +14,7 @@ df = pd.read_csv("main.out")
 #### Plot the runtimes.
 ####################################################################################################################################
 
-ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)
+ax = plt.figure(figsize = 1.25 * np.array([6.4,4.6]), dpi = 200)
 ax = plt.subplot()
 
 for method in methods:
@@ -49,7 +49,7 @@ plt.savefig("benchmark.getUnifCDF_vs_setUnifCDF_D0.runtime.png")
 #### Plot the runtime ratios.
 ####################################################################################################################################
 
-ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)
+ax = plt.figure(figsize = 1.25 * np.array([6.4,4.6]), dpi = 200)
 ax = plt.subplot()
 
 plt.hist( np.log10(df["getUnifCDF"].values / df["setUnifCDF"].values)

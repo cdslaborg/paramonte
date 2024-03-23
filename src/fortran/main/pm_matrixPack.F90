@@ -66,7 +66,7 @@
 !>                  <li>    \f$k(i, j) = i - 1 + j * (j - 1) / 2\f$ for a column-major matrix layout (Fortran-style).
 !>                  <li>    \f$k(i, j) = j - 1 + (i - 1) * (2 * n - i) / 2\f$ for a row-major matrix layout (C-style).
 !>              </ol>
-!>      <li>    <b>Rectangular Band packing (RBP or [rbpack](@ref pm_matrixPack::rbpack))</b> which is to be added to this module.<br>
+!>      <li>    <b>Rectangular Band packing (RBP or [rbpack](@ref pm_matrixPack))</b> which is to be added to this module.<br>
 !>      <li>    <b>Rectangular Full packing (RFP or [rfpack](@ref pm_matrixPack::rfpack))</b> for symmetric, Hermitian, or triangular matrices.<br>
 !>              The Rectangular Full packing is a combination of the contiguous and triangular packings.<br>
 !>              It can be used to pack the upper or lower triangle of a symmetric, Hermitian, or triangular matrix **contiguously**.<br>

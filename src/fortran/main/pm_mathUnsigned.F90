@@ -110,7 +110,7 @@ module pm_mathUnsigned
     !>  \elemental
     !>
     !>  \see
-    !>  [getFactorial](@ref pm_mathUnsigned::getFactorial)<br>
+    !>  [pm_distUnif](@ref pm_distUnif)<br>
     !>
     !>  \example{uadd}
     !>  \include{lineno} example/pm_mathUnsigned/uadd/main.F90

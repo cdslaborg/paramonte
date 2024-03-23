@@ -34,11 +34,11 @@ for kind in ["IK", "CK", "RK"]:
 
         df = pd.read_csv(fileList[0], delimiter = ",")
 
-        fig = plt.figure(figsize = 1.25*np.array([6.4,4.8]), dpi = 300)
+        fig = plt.figure(figsize = 1.25 * np.array([6.4, 4.8]), dpi = 300)
         ax = plt.subplot()
 
         if kind == "CK":
-            plt.plot( df.values[:,0]
+            plt.plot( df.values[:, 0]
                     , df.values[:,1:5]
                     , marker[kind]
                     , linewidth = linewidth
@@ -51,7 +51,7 @@ for kind in ["IK", "CK", "RK"]:
                    #, color = "blue"
                     )
         else:
-            plt.plot( df.values[:,0]
+            plt.plot( df.values[:, 0]
                     , df.values[:,1:5]
                     , marker[kind]
                     , linewidth = linewidth
@@ -85,13 +85,13 @@ for kind in ["IK", "CK", "RK"]:
         df = pd.read_csv(fileList[0], delimiter = ",", header = None)
         df = df.values
 
-        npnt = math.isqrt(len(df[:,0]))
-        gridx = np.reshape(df[:,0], newshape = (npnt, npnt), order = 'F')
+        npnt = math.isqrt(len(df[:, 0]))
+        gridx = np.reshape(df[:, 0], newshape = (npnt, npnt), order = 'F')
         gridy = np.reshape(df[:,1], newshape = (npnt, npnt), order = 'F')
         gridz = np.reshape(df[:,2], newshape = (npnt, npnt), order = 'C')
 
         fig, ax = plt.subplots(subplot_kw = {"projection": "3d"})
-        fig = plt.figure(figsize = 1.25 * np.array([6.4,4.8]), dpi = 300)
+        fig = plt.figure(figsize = 1.25 * np.array([6.4, 4.8]), dpi = 300)
         ax = fig.add_subplot(1, 1, 1, projection = '3d')
         
         ax.plot_surface(gridx, gridy, gridz, cmap = 'viridis', linewidth = 0)

@@ -16,7 +16,7 @@ fontsize = 14
 df = pd.read_csv("main.normal.out")
 colnames = list(df.columns.values)
 
-ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)
+ax = plt.figure(figsize = 1.25 * np.array([6.4,4.6]), dpi = 200)
 ax = plt.subplot()
 
 for colname in colnames[1:]:
@@ -54,7 +54,7 @@ plt.savefig("benchmark." + dirname + ".normal.png")
 df = pd.read_csv("main.underflow.out")
 colnames = list(df.columns.values)
 
-ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)
+ax = plt.figure(figsize = 1.25 * np.array([6.4,4.6]), dpi = 200)
 ax = plt.subplot()
 
 for colname in colnames[1:]:

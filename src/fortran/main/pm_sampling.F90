@@ -617,31 +617,25 @@ module pm_sampling
     !>
     !>  \example{mixture}
     !>  \include{lineno} example/pm_sampling/mixture/main.F90
-    !>  \inputnml{mixture, input.nml}
-    !>  \include{lineno} example/pm_sampling/mixture/input.nml
     !>  \compilef{mixture}
     !>  \postproc{mixture}
     !>  \include{lineno} example/pm_sampling/mixture/main.py
     !>  \vis{mixture}
-    !>  \image html example/pm_sampling/mixture/mixLogNormLogNorm.traceplot.png width=700
-    !>  \image html example/pm_sampling/mixture/mixLogNormLogNorm.scatterplot.png width=700
-    !>  \image html example/pm_sampling/mixture/mixLogNormLogNorm.adaptationMeasure.png width=700
     !>  \image html example/pm_sampling/mixture/mixLogNormLogNorm.hist.png width=700
+    !>  \image html example/pm_sampling/mixture/mixLogNormLogNorm.traceplot.png width=700
+    !>  \image html example/pm_sampling/mixture/mixLogNormLogNorm.adaptationMeasure.png width=700
     !>  <br>
-    !>  \image html example/pm_sampling/mixture/mixFlatPowetoFlatPowetTapered.traceplot.png width=700
-    !>  \image html example/pm_sampling/mixture/mixFlatPowetoFlatPowetTapered.scatterplot.png width=700
-    !>  \image html example/pm_sampling/mixture/mixFlatPowetoFlatPowetTapered.adaptationMeasure.png width=700
-    !>  \image html example/pm_sampling/mixture/mixFlatPowetoFlatPowetTapered.hist.png width=700
+    !>  \image html example/pm_sampling/mixture/mixFlatPowetoFlatPowetoTapered.hist.png width=700
+    !>  \image html example/pm_sampling/mixture/mixFlatPowetoFlatPowetoTapered.traceplot.png width=700
+    !>  \image html example/pm_sampling/mixture/mixFlatPowetoFlatPowetoTapered.adaptationMeasure.png width=700
     !>  <br>
-    !>  \image html example/pm_sampling/mixture/mixLogNormFlatPowetTapered.traceplot.png width=700
-    !>  \image html example/pm_sampling/mixture/mixLogNormFlatPowetTapered.scatterplot.png width=700
-    !>  \image html example/pm_sampling/mixture/mixLogNormFlatPowetTapered.adaptationMeasure.png width=700
-    !>  \image html example/pm_sampling/mixture/mixLogNormFlatPowetTapered.hist.png width=700
+    !>  \image html example/pm_sampling/mixture/mixLogNormFlatPowetoTapered.hist.png width=700
+    !>  \image html example/pm_sampling/mixture/mixLogNormFlatPowetoTapered.traceplot.png width=700
+    !>  \image html example/pm_sampling/mixture/mixLogNormFlatPowetoTapered.adaptationMeasure.png width=700
     !>  <br>
-    !>  \image html example/pm_sampling/mixture/mixFlatPowetLogNorm.traceplot.png width=700
-    !>  \image html example/pm_sampling/mixture/mixFlatPowetLogNorm.scatterplot.png width=700
-    !>  \image html example/pm_sampling/mixture/mixFlatPowetLogNorm.adaptationMeasure.png width=700
-    !>  \image html example/pm_sampling/mixture/mixFlatPowetLogNorm.hist.png width=700
+    !>  \image html example/pm_sampling/mixture/mixFlatPowetoLogNorm.hist.png width=700
+    !>  \image html example/pm_sampling/mixture/mixFlatPowetoLogNorm.traceplot.png width=700
+    !>  \image html example/pm_sampling/mixture/mixFlatPowetoLogNorm.adaptationMeasure.png width=700
     !>
     !>  \test
     !>  [test_pm_sampling](@ref test_pm_sampling)
@@ -729,43 +723,151 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function runParaDRAML(getLogFuncPtr, ndim, input) result(failed) bind(C, name = "runParaDRAML")
+    !>  \name runParaDRAM
+    !>  \{
+    !>
+    !>  \brief
+    !>  Generate and return a non-zero value (`1`) if the procedure fails to fully accomplish the task of generating
+    !>  a Monte Carlo sample of the specified input mathematical objective function, otherwise, return `0`.
+    !>
+    !>  \details
+    !>  This interface group is the entry point to all **C-style interfaces** to the ParaDRAM samplers of mathematical density functions.<br>
+    !>  Although the procedures of this generic interface return a single scalar of type `int32_t`, the procedures generate
+    !>  massive amounts of information about each simulation which are stored in appropriate external hard drive files.<br>
+    !>
+    !>  \param[in]  getLogFunc  :   The input user-specified procedure pointer to the natural logarithm of the target density function.<br>
+    !>                              On input, the function must take an input vector `state` of size `ndim` of floating-point type of kind \C_RKALL
+    !>                              representing a state (point) from within the domain of the user-specified target density function whose function value must be returned.<br>
+    !>                              On output, the user-specified procedure `getLogFunc()` must return the function value corresponding to the input `state[ndim]`.<br>
+    !>                              The following illustrate the generic interface of input function pointer `getLogFunc(state, ndim)`,
+    !>                              \code{.F90}
+    !>                                  REAL getLogFunc(REAL[] state, int32_t ndim);
+    !>                              \endcode
+    !>                              where `REAL` can be a floating-point type of kind \C_RKALL for the corresponding varying-precision sampler interfaces:<br>
+    !>                              <ol>
+    !>                                  <li>    [runParaDRAMF](@ref runParaDRAMF),
+    !>                                  <li>    [runParaDRAMD](@ref runParaDRAMD),
+    !>                                  <li>    [runParaDRAML](@ref runParaDRAML).
+    !>                              </ol>
+    !>  \param[in]  ndim        :   The input scalar constant of type `int32_t` representing the number of dimensions of the domain of the objective function.
+    !>  \param[in]  input       :   The input scalar pointer of type `char` representing the null-terminated C string
+    !>                              that contains either,
+    !>                              <ol>
+    !>                                  <li>    the path to an external input file containing the namelist group of ParaDRAM sampler specifications
+    !>                                          as outlined in the corresponding page of [ParaMonte library cross-language documentation website](\pmdoc).<br>
+    !>                                  <li>    the namelist group of ParaDRAM sampler specifications as the can appear in an external input specification file.<br>
+    !>                              </ol>
+    !>                              While all input simulation specifications are optional, it is highly recommended to pay
+    !>                              attention to the default settings of the domain boundaries and sampler starting point.<br>
+    !>                              (**optional**. It is considered as missing if set to `null()`.)
+    !>
+    !>  \return
+    !>  `stat`                  :   The output scalar of type `int32_t` that is `0` **if and only if**
+    !>                              the sampler succeeds in sampling the specified density function.<br>
+    !>
+    !>  \interface{runParaDRAM}
+    !>  \code{.F90}
+    !>
+    !>      stat = runParaDRAMF(getLogFunc, ndim, input)
+    !>      stat = runParaDRAMD(getLogFunc, ndim, input)
+    !>      stat = runParaDRAML(getLogFunc, ndim, input)
+    !>
+    !>  \endcode
+    !>
+    !>  \warning
+    !>  Beware that the definition of extended precision real type `long double` is compiler and platform dependent
+    !>  making the use of `long double` with precompiled ParaMonte libraries problematic and non-functional.<br>
+    !>
+    !>  \warning
+    !>  The condition `0 < ndim` must hold for the corresponding input arguments.<br>
+    !>  \vericon
+    !>
+    !>  \example{runParaDRAM}
+    !>  \include{lineno} example/pm_sampling/runParaDRAM/main.F90
+    !>  \compilef{runParaDRAM}
+    !>  \postproc{runParaDRAM}
+    !>  \include{lineno} example/pm_sampling/runParaDRAM/main.py
+    !>  \vis{runParaDRAM}
+    !>  \image html example/pm_sampling/runParaDRAM/runParaDRAM.traceplot.png width=700
+    !>  \image html example/pm_sampling/runParaDRAM/runParaDRAM.scatterplot.png width=700
+    !>  \image html example/pm_sampling/runParaDRAM/runParaDRAM.adaptationMeasure.png width=700
+    !>
+    !>  \test
+    !>  [test_pm_sampling](@ref test_pm_sampling)
+    !>
+    !>  \bug
+    !>  \status \unresolved
+    !>  \source \ifx{2024.0.0 20231017}
+    !>  \desc
+    !>  \ifx This interface yields a segmentation fault error for all `real` types supported when linked with the ParaMonte library built with \ifx.
+    !>  \remedy
+    !>  For now, only \ifort will be used.<br>
+    !>
+    !>  \bug
+    !>  \status \unresolved
+    !>  \source \ifort{2021.11.0 20231010}
+    !>  \desc
+    !>  The `runParaDRAML` interface for `long double` yields a segmentation fault error.
+    !>  \remedy
+    !>  None as of today.<br>
+    !>
+    !>  \todo
+    !>  \pvhigh
+    !>  The current tests for `long double` interface fail with \ifx and \icx compilers.<br>
+    !>  Apparently, there is a mismatch between `long double` and `c_long_double` storage.<br>
+    !>  This issue does not exist with GNU compilers, although the GNU definition of `long double`
+    !>  appears to yield incorrect values in some calculations, e.g., in `isFailedGeomCyclicFit()` of the ParaMonte library.<br>
+    !>
+    !>  \finminc{runParaDRAM}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin
+    function runParaDRAML(getLogFunc, ndim, input) result(stat) bind(C, name = "runParaDRAML")
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: runParaDRAML
 #endif
         use, intrinsic :: iso_c_binding, only: SK => c_char, IK => c_int32_t, c_long_double
         integer, parameter :: RKC = merge(c_long_double, RKH, any(c_long_double == RKALL))
+        character(1, SK), intent(in), optional :: input(*)
+        type(c_funptr), intent(in), value :: getLogFunc
+        integer(IK), intent(in), value :: ndim
+        integer(IK) :: stat
 #define runParaDRAM_ENABLED 1
 #include "pm_sampling@routines.inc.F90"
 #undef  runParaDRAM_ENABLED
     end function
 
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    function runParaDRAMD(getLogFuncPtr, ndim, input) result(failed) bind(C, name = "runParaDRAMD")
+    function runParaDRAMD(getLogFunc, ndim, input) result(stat) bind(C, name = "runParaDRAMD")
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: runParaDRAMD
 #endif
         use, intrinsic :: iso_c_binding, only: SK => c_char, IK => c_int32_t, c_double
         integer, parameter :: RKC = merge(c_double, RKD, any(c_double == RKALL))
+        character(1, SK), intent(in), optional :: input(*)
+        type(c_funptr), intent(in), value :: getLogFunc
+        integer(IK), intent(in), value :: ndim
+        integer(IK) :: stat
 #define runParaDRAM_ENABLED 1
 #include "pm_sampling@routines.inc.F90"
 #undef  runParaDRAM_ENABLED
     end function
 
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    function runParaDRAMF(getLogFuncPtr, ndim, input) result(failed) bind(C, name = "runParaDRAMF")
+    function runParaDRAMF(getLogFunc, ndim, input) result(stat) bind(C, name = "runParaDRAMF")
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: runParaDRAMF
 #endif
         use pm_kind, only: RKALL
         use, intrinsic :: iso_c_binding, only: SK => c_char, IK => c_int32_t, c_float
         integer, parameter :: RKC = merge(c_float, RKL, any(c_float == RKALL))
+        character(1, SK), intent(in), optional :: input(*)
+        type(c_funptr), intent(in), value :: getLogFunc
+        integer(IK), intent(in), value :: ndim
+        integer(IK) :: stat
 #define runParaDRAM_ENABLED 1
 #include "pm_sampling@routines.inc.F90"
 #undef  runParaDRAM_ENABLED
     end function
+    !>  \}
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -15,7 +15,7 @@ prefixes =  { "setMember" : "Memberships based on initial centers."
 for prefix in list(prefixes.keys()):
 
     legends = []
-    fig = plt.figure(figsize = 1.25 * np.array([6.4,4.8]), dpi = 200)
+    fig = plt.figure(figsize = 1.25 * np.array([6.4, 4.8]), dpi = 200)
     ax = plt.subplot()
 
     fileList = glob.glob(prefix + "*.txt")
@@ -37,7 +37,7 @@ for prefix in list(prefixes.keys()):
             elif kind == "sample":
                 ax.scatter  ( df.values[:,1]
                             , df.values[:,2]
-                            , c = df.values[:,0]
+                            , c = df.values[:, 0]
                             , s = 10
                             )
                 legends.append("sample")

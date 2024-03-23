@@ -31,7 +31,7 @@ for kind in ["IK", "CK", "RK"]:
 
         df = pd.read_csv(fileList[0], delimiter = " ", header = None)
 
-        fig = plt.figure(figsize = 1.25*np.array([6.4,4.8]), dpi = 200)
+        fig = plt.figure(figsize = 1.25 * np.array([6.4, 4.8]), dpi = 200)
         ax = plt.subplot()
 
         for j in range(len(df.values[0,:]) - 1):
@@ -54,7 +54,7 @@ for kind in ["IK", "CK", "RK"]:
         plt.yticks(fontsize = fontsize - 2)
         ax.set_xlabel(xlab[kind], fontsize = 17)
         ax.set_ylabel("Count", fontsize = 17)
-        ax.set_title("Histograms of {} Poisson random values".format(len(df.values[:,0])), fontsize = 17)
+        ax.set_title("Histograms of {} Poisson random values".format(len(df.values[:, 0])), fontsize = 17)
 
         plt.grid(visible = True, which = "both", axis = "both", color = "0.85", linestyle = "-")
         ax.tick_params(axis = "y", which = "minor")

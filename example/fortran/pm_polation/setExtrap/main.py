@@ -23,13 +23,13 @@ for kind in ["neimean", "neinear", "neinext", "neiprev", "piwilin", "monopol", "
         fig = plt.figure(figsize = (8, 6))
         ax = plt.subplot(1,1,1)
 
-        ax.scatter  ( df.values[:,0]
+        ax.scatter  ( df.values[:, 0]
                     , df.values[:,1]
                     , zorder = 1000
                     , c = "black"
                     , s = 8
                     )
-        ax.scatter  ( crd.values[:,0]
+        ax.scatter  ( crd.values[:, 0]
                     , crd.values[:,1]
                     , zorder = 1000
                     , c = "red"

@@ -1657,7 +1657,7 @@ module pm_sampleCov
     !>  \output{setCov}
     !>  \include{lineno} example/pm_sampleCov/setCov/main.out.F90
     !>
-    !>  \benchmarks{setCov}
+    !>  \benchmarks
     !>
     !>  \benchmark{setCov_dim1_vs_dim2, The runtime performance of [setCov](@ref pm_sampleCov::setCov) along different sample dimensions.}
     !>  \include{lineno} benchmark/pm_sampleCov/setCov_dim1_vs_dim2/main.F90
@@ -5261,7 +5261,7 @@ module pm_sampleCov
     !>  \output{setCovMean}
     !>  \include{lineno} example/pm_sampleCov/setCovMean/main.out.F90
     !>
-    !>  \benchmarks{setCovMean}
+    !>  \benchmarks
     !>
     !>  \benchmark{setCovMean_dim1_vs_dim2, The runtime performance of [setCovMean](@ref pm_sampleCov::setCovMean) along different sample dimensions.}
     !>  \include{lineno} benchmark/pm_sampleCov/setCovMean_dim1_vs_dim2/main.F90

@@ -89,7 +89,7 @@ end if;
 
         abstract interface
 #if     OMP_ENABLED && (MATLAB_ENABLED || PYTHON_ENABLED || R_ENABLED)
-        recursive function getLogFunc_proc(logFuncState, ndim, njob, avgTimePerFunCall, avgCommPerFunCall) result(mold) bind(C)
+        recursive function getLogFuncPtr_proc(logFuncState, ndim, njob, avgTimePerFunCall, avgCommPerFunCall) result(mold) bind(C)
             import :: IK, RKC, RKD
             integer(IK), intent(in), value :: ndim, njob
             real(RKD), intent(inout) :: avgTimePerFunCall, avgCommPerFunCall
@@ -97,7 +97,7 @@ end if;
             real(RKC) :: mold
         end function
 #else
-        recursive function getLogFunc_proc(state, ndim) result(logFunc) bind(C)
+        recursive function getLogFuncPtr_proc(state, ndim) result(logFunc) bind(C)
             import :: IK, RKC
             integer(IK), intent(in), value :: ndim
             real(RKC), intent(in) :: state(ndim)
@@ -105,16 +105,12 @@ end if;
         end function
 #endif
         end interface
-        integer(IK) :: failed
-        integer(IK), intent(in), value :: ndim
-        type(c_funptr), intent(in), value :: getLogFuncPtr
-        character(1, SK), intent(in), optional :: input(*)
-        procedure(getLogFunc_proc), pointer :: getLogFunc
-        !procedure(real(RKC)), pointer :: getLogFunc
+        procedure(getLogFuncPtr_proc), pointer :: getLogFuncPtr
+        !procedure(real(RKC)), pointer :: getLogFuncPtr
         type(paradram_type) :: sampler
         type(err_type) :: err
         integer(IK) :: lenin
-        failed = 0_IK
+        stat = 0_IK
 
         ! Reconstruct the input file.
 
@@ -136,10 +132,10 @@ end if;
 
         ! Associate the input C procedure pointer to a Fortran procedure pointer.
 
-        call c_f_procpointer(cptr = getLogFuncPtr, fptr = getLogFunc)
+        call c_f_procpointer(cptr = getLogFunc, fptr = getLogFuncPtr)
         err = getErrSampling(sampler, getLogFuncWrapper, ndim) ! run ParaDRAM.
-        if (err%occurred) failed = 1_IK
-        nullify(getLogFunc)
+        if (err%occurred) stat = 1_IK
+        nullify(getLogFuncPtr)
 
     contains
 
@@ -148,13 +144,13 @@ end if;
             real(RKC), intent(inout), contiguous :: logFuncState(0:,:)
             real(RKD), intent(inout) :: avgTimePerFunCall, avgCommPerFunCall
             real(RKC) :: mold
-            mold = getLogFunc(logFuncState, ndim, size(logFuncState, 2, IK), avgTimePerFunCall, avgCommPerFunCall)
+            mold = getLogFuncPtr(logFuncState, ndim, size(logFuncState, 2, IK), avgTimePerFunCall, avgCommPerFunCall)
         end function
 #else
         recursive function getLogFuncWrapper(state) result(logFunc)
             real(RKC), intent(in), contiguous :: state(:)
             real(RKC) :: logFunc
-            logFunc = getLogFunc(state, ndim)
+            logFunc = getLogFuncPtr(state, ndim)
             !write(*,"(1I5,5E30.20,:,', ')") precision(state), state!, logFunc
         end function
 #endif

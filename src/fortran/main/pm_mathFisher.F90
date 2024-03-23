@@ -138,6 +138,10 @@ module pm_mathFisher
     !>  \compilef{getFisher}
     !>  \output{getFisher}
     !>  \include{lineno} example/pm_mathFisher/getFisher/main.out.F90
+    !>  \postproc{getFisher}
+    !>  \include{lineno} example/pm_mathFisher/getFisher/main.py
+    !>  \vis{getFisher}
+    !>  \image html pm_mathFisher/getFisher/getFisher.png width=700
     !>
     !>  \test
     !>  [test_pm_mathFisher](@ref test_pm_mathFisher)
@@ -316,6 +320,10 @@ module pm_mathFisher
     !>  \compilef{getFisherInv}
     !>  \output{getFisherInv}
     !>  \include{lineno} example/pm_mathFisher/getFisherInv/main.out.F90
+    !>  \postproc{getFisherInv}
+    !>  \include{lineno} example/pm_mathFisher/getFisherInv/main.py
+    !>  \vis{getFisherInv}
+    !>  \image html pm_mathFisher/getFisherInv/getFisherInv.png width=700
     !>
     !>  \test
     !>  [test_pm_mathFisher](@ref test_pm_mathFisher)

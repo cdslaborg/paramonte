@@ -17692,9 +17692,9 @@ module pm_matrixCopy
     !>
     !>  \see
     !>  [setMatCopy](@ref pm_matrixCopy::setMatCopy)<br>
-    !>  [setMatInit](@ref pm_matrixCopy::setMatInit)<br>
     !>  [setCopyIndexed](@ref pm_arrayCopy::setCopyIndexed)<br>
     !>  [setCopyStrided](@ref pm_arrayCopy::setCopyStrided)<br>
+    !>  [setMatInit](@ref pm_matrixInit::setMatInit)<br>
     !>
     !>  \example{setMatCopy}
     !>  \include{lineno} example/pm_matrixCopy/setMatCopy/main.F90

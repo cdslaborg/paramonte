@@ -97,7 +97,7 @@ module pm_mathFactoring
     !>  \warnpure
     !>
     !>  \see
-    !>  [getFactorial](@ref pm_mathFactoring::getFactorial)<br>
+    !>  [getFactorial](@ref pm_mathFactorial::getFactorial)<br>
     !>
     !>  \example{getFactoring}
     !>  \include{lineno} example/pm_mathFactoring/getFactoring/main.F90

@@ -609,7 +609,7 @@
 !>  The ParaMonte Fortran library ships with a large number of performance benchmarks that are available in the `benchmark/fortran` folder in the root directory of the project repository.<br>
 !>  These benchmarks are also available and discussed in the [benchmark listing page](@ref benchmarks) of this this documentation website.<br>
 !>
-!>  If you would like to see a relevant benchmark currently not included, [discuss it here](https://github.com/cdslaborg/paramonte/discussions) 
+!>  If you would like to see a relevant benchmark currently not included, [discuss it here](https://github.com/cdslaborg/paramonte/discussions)
 !>  or [raise an issue here](https://github.com/cdslaborg/paramonte/issues) for consideration or volunteer to implement it!<br>
 !>
 !>  [⛓](#ParaMonteLangDocumentationTroubleshooting)
@@ -631,5 +631,27 @@
 !>              changing the documentation of source codes whenever it occurs.<br>
 !>              For example, additions or removals as small as a line break \f$\ms{<br>}\f$ can resolve the bug.<br>
 !>  </ol>
+!>
+!>  [⛓](#ParaMonteLangToDo)
+!>  \section ParaMonteLangToDo ParaMonte Fortran ToDO List
+!>
+!>  For the full listing of all tasks to do see the dedicated [ToDo listing page](./todo.html).<br>
+!>  The following are the library tasks that need to be accomplished.<br>
+!>
+!>  \todo
+!>  \pvhigh
+!>  The module `pm_distanceHellinger` for computing the Hellinger metric distance must be added to the library.<br>
+!>  The module `pm_distanceManhattan` for computing the Manhattan metric distance must be added to the library.<br>
+!>  The module `pm_distanceMinkowski` for computing the Minkowski metric distance must be added to the library.<br>
+!>
+!>  \todo
+!>  \pvhigh
+!>  The module `pm_sampleConv` for timer series convolution must be added to the library.<br>
+!>  The implementation of such module is straightforward and follows that of the existing module [pm_sampleCCF](@ref pm_sampleCCF).<br>
+!>
+!>  \todo
+!>  \pvhigh
+!>  The ParaNest and ParaDISE samplers must be added to the module [pm_sampling](@ref pm_sampling).<br>
+!>  This is a task that only \AmirShahmoradi can achieve.<br>
 !>
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

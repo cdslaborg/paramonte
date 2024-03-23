@@ -21,12 +21,12 @@ if len(fileList) == 1:
 
     df = pd.read_csv(fileList[0], delimiter = " ")
 
-    fig = plt.figure(figsize = 1.25*np.array([6.4,4.8]), dpi = 200)
+    fig = plt.figure(figsize = 1.25 * np.array([6.4, 4.8]), dpi = 200)
     ax = plt.subplot()
 
     for i in range(1,len(df.values[0,:]+1)):
 
-        plt.plot( df.values[:,0]
+        plt.plot( df.values[:, 0]
                 , df.values[:,i]
                 , linewidth = 2
                 )

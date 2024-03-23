@@ -6,10 +6,10 @@ import numpy as np
 
 rand = pd.read_csv("main.unif.rand.txt")
 
-fig = plt.figure(figsize = 1.25*np.array([6.4,4.8]), dpi = 200)
+fig = plt.figure(figsize = 1.25 * np.array([6.4, 4.8]), dpi = 200)
 ax = plt.subplot()
 
-plt.plot( rand.values[:,0]
+plt.plot( rand.values[:, 0]
         , rand.values[:,1]
         , "."
         , color = "r"

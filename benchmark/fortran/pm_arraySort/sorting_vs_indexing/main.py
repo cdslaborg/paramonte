@@ -16,11 +16,11 @@ for dtype in dtypes:
 
     #### Plot timings.
 
-    ax = plt.figure(figsize = 1.25*np.array([9.4,4.8]), dpi = 200)
+    ax = plt.figure(figsize = 1.25 * np.array([9.4,4.8]), dpi = 200)
     ax = plt.subplot()
 
     for colname in df.columns[1:]:
-        plt.plot( df.values[:,0]
+        plt.plot( df.values[:, 0]
                 , df[colname].values
                 , linewidth = 2
                 )
@@ -47,13 +47,13 @@ for dtype in dtypes:
 
     #### Plot timing ratios.
 
-    ax = plt.figure(figsize = 1.25*np.array([9.4,4.8]), dpi = 200)
+    ax = plt.figure(figsize = 1.25 * np.array([9.4,4.8]), dpi = 200)
     ax = plt.subplot()
 
     start = 0
 
-    plt.plot( df.values[:,0]
-            , np.ones(len(df.values[:,0]))
+    plt.plot( df.values[:, 0]
+            , np.ones(len(df.values[:, 0]))
             , linestyle = "--"
             , linewidth = 2
            #, color = "black"

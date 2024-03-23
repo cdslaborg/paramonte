@@ -14,7 +14,7 @@ methods = ["direct method", "sequence", "selection"]
 
 df = pd.read_csv("main.normal.out")
 
-ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)
+ax = plt.figure(figsize = 1.25 * np.array([6.4,4.6]), dpi = 200)
 ax = plt.subplot()
 
 plt.plot( df["arraySize"].values
@@ -58,7 +58,7 @@ plt.savefig("benchmark.setCumPropExp.normal.png")
 
 df = pd.read_csv("main.underflow.out")
 
-ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)
+ax = plt.figure(figsize = 1.25 * np.array([6.4,4.6]), dpi = 200)
 ax = plt.subplot()
 
 plt.plot( df["arraySize"].values

@@ -1976,7 +1976,7 @@ module pm_sampleMean
     !>  \output{setMean}
     !>  \include{lineno} example/pm_sampleMean/setMean/main.out.F90
     !>
-    !>  \benchmarks{setMean}
+    !>  \benchmarks
     !>
     !>  \benchmark{setMean_dim1_vs_dim2, The runtime performance of [setMean](@ref pm_sampleMean::setMean) along different sample dimensions.}
     !>  \include{lineno} benchmark/pm_sampleMean/setMean_dim1_vs_dim2/main.F90

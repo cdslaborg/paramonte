@@ -4414,7 +4414,6 @@ module pm_quadPack
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    !>  \cond excluded
     !>  \brief
     !>  The scalar `integer` of default kind \IK, containing the maximum size of the Table of Epsilon algorithm.
     !>
@@ -4433,7 +4432,6 @@ module pm_quadPack
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     integer(IK) , parameter :: MAXLEN_EPSTAB = 50_IK
-    !>  \endcond excluded
 
     !>  \brief
     !>  This is the indicator type for generating instances of objects that indicate the use of Epsilon extrapolation method of

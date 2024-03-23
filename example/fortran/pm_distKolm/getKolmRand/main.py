@@ -28,11 +28,11 @@ for kind in ["IK", "CK", "RK"]:
 
         df = pd.read_csv(fileList[0], delimiter = ",")
 
-        fig = plt.figure(figsize = 1.25*np.array([6.4,4.8]), dpi = 200)
+        fig = plt.figure(figsize = 1.25 * np.array([6.4, 4.8]), dpi = 200)
         ax = plt.subplot()
 
         if kind == "CK":
-            ax.hist ( df.values[:,0]
+            ax.hist ( df.values[:, 0]
                     , bins = 30
                     , histtype = "stepfilled"
                     , density = True

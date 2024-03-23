@@ -641,7 +641,7 @@ contains
     !>  The MPI library must be initialized and not finalized prior to calling this routine for MPI-parallel applications.<br>
     !>  Otherwise, the MPI library will automatically be initialized, which may fail if it has been already finalized.<br>
     !>
-    !>  \denote
+    !>  \note
     !>  Th C-binding of this routine is required for automatic detection of the use of `mpiexec` launcher in dynamic programming languages.
     !>
     !>  \test

@@ -15,7 +15,7 @@ for file in files:
 
     df = pd.read_csv(file)
 
-    fig = plt.figure(figsize = 1.25*np.array([6.4,4.8]), dpi = 200)
+    fig = plt.figure(figsize = 1.25 * np.array([6.4, 4.8]), dpi = 200)
     ax = plt.subplot()
 
     plt.plot( df["sample"].values

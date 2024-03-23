@@ -149,7 +149,7 @@ program example
         integer(IK) :: fileUnit, i, info(size(betaInc))
         real(RKC)   :: x(nx)
         call setLinSpace(x, 0._RKC, 1._RKC, fopen = .true._LK, lopen = .true._LK)
-        open(newunit = fileUnit, file = "getBetaInc.RK.txt")
+        open(newunit = fileUnit, file = "setBetaInc.RK.txt")
         do i = 1, nx
             call setBetaInc(betaInc, x(i), alphas, betas, getLogBeta(alphas, betas), signed = .false._LK, info = info)
             if (any(info /= 0)) error stop

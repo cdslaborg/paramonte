@@ -29,12 +29,12 @@ for kind in ["RK"]:
         ax.tick_params(axis = "x", which = "minor")
 
         # the scatter plot:
-        ax.plot     ( df.values[:,0]
+        ax.plot     ( df.values[:, 0]
                     , df.values[:,1]
                     , linewidth = 2
                     , color = "black"
                     )
-        ax.scatter  ( df.values[:,0]
+        ax.scatter  ( df.values[:, 0]
                     , df.values[:,1]
                     , s = 8
                     , zorder = 1000

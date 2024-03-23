@@ -16,7 +16,7 @@ if len(fileList) == 1:
 
     #### plot histogram
 
-    fig = plt.figure(figsize = 1.25 * np.array([6.4,4.8]), dpi = 200)
+    fig = plt.figure(figsize = 1.25 * np.array([6.4, 4.8]), dpi = 200)
     ax = plt.subplot()
 
     plt.hist( df["zmode"].values
@@ -47,7 +47,7 @@ if len(fileList) == 1:
 
     dfz = df[df["zreal"] > 0]
 
-    fig = plt.figure(figsize = 1.25 * np.array([6.4,4.8]), dpi = 200)
+    fig = plt.figure(figsize = 1.25 * np.array([6.4, 4.8]), dpi = 200)
     ax = plt.subplot()
 
     ax.plot ( [0, 1] # [.1, .1]
