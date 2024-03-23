@@ -170,13 +170,13 @@ contains
                 &within the ParaMonte library whose value, between 0 and 1, represents the adaptation measure threshold below which &
                 &the simulated Markov chain will be used to generate the output sample. In other words, any point in the output Markov &
                 &chain that has been sampled during significant adaptation of the proposal distribution (set by `burninAdaptationMeasure`) &
-                &will not be included in the construction of the final MCMC output sample. &
+                &will not be included in constructing the final MCMC output sample. &
                 &This is to ensure that the generation of the output sample will be based only on the part of the simulated chain that &
                 &is practically guaranteed to be Markovian and ergodic. If this variable is set to 0, then the output sample will be &
                 &generated from the part of the chain where no proposal adaptation has occurred. This non-adaptive or minimally-adaptive &
                 &part of the chain may not even exist if the total adaptation period of the simulation, set by `proposalAdaptationCount` &
                 &and `proposalAdaptationPeriod` input variables, is longer than the total length of the output MCMC chain. &
-                &In such cases, the resulting output sample may have a zero size. In general, when good mixing occurs &
+                &In such cases, the resulting output sample may be zero size. In general, when good mixing occurs &
                 &(e.g., when the input variable `outputChainSize` is reasonably large), then any specific &
                 &value of `burninAdaptationMeasure` becomes practically irrelevant. &
                 &The default value for `burninAdaptationMeasure` is `"//getStr(spec%burninAdaptationMeasure%def)//SKC_"`, implying that the &
@@ -214,9 +214,9 @@ contains
                 &count of initial ""greedy"" adaptive updates the sampler will apply to the proposal distribution before starting regular adaptation. &
                 &Greedy adaptations are made using only the 'unique' accepted points in the MCMC chain. This is useful, for example, when the function &
                 &to be sampled by the sampler is high dimensional, in which case, the adaptive updates to proposal distribution will less likely lead to &
-                &numerical instabilities, for example, a singular covariance matrix for the multivariate proposal sampler. &
+                &numerical instabilities, such as a singular covariance matrix for the multivariate proposal sampler. &
                 &The variable `proposalAdaptationCountGreedy` must be less than the specified value for `proposalAdaptationCount`. &
-                &If it is larger, it will be automatically reset to `proposalAdaptationCount` for the simulation. &
+                &If larger, it will be automatically reset to `proposalAdaptationCount` for the simulation. &
                 &The default value is "//getStr(spec%proposalAdaptationCountGreedy%def)//SKC_"."
             !$omp master
             proposalAdaptationCountGreedy = spec%proposalAdaptationCountGreedy%null
@@ -232,7 +232,7 @@ contains
                 &Every `proposalAdaptationPeriod` calls to the objective function, the parameters of the proposal distribution will be updated. &
                 &The smaller the value of `proposalAdaptationPeriod`, the easier it will be for the sampler kernel to adapt the proposal distribution &
                 &to the covariance structure of the objective function. However, this will happen at the expense of slower simulation runtime as the &
-                &adaptation process can become computationally expensive, in particular, for very high dimensional objective functions (`ndim >> 1`). &
+                &adaptation process can become computationally expensive, particularly for very high dimensional objective functions (`ndim >> 1`). &
                 &The larger the value of `proposalAdaptationPeriod`, the easier it will be for the sampler kernel to keep the sampling efficiency &
                 &close to the requested target acceptance rate range (if specified via the input variable targetAcceptanceRate). However, too large &
                 &values for `proposalAdaptationPeriod` will only delay the adaptation of the proposal distribution to the global structure of &
@@ -275,7 +275,7 @@ contains
             spec%proposalDelayedRejectionScaleFactor%desc = &
             "The simulation specification `proposalDelayedRejectionScaleFactor` is a positive-valued vector of type `real` of the &
             &highest precision available within the ParaMonte library, of length `(1 : proposalDelayedRejectionCount)`, by which &
-            &the covariance matrix of the proposal distribution of MCMC sampler is scaled when the Delayed Rejection (DR) scheme &
+            &the covariance matrix of the proposal distribution of the MCMC sampler is scaled when the Delayed Rejection (DR) scheme &
             &is activated (by setting `proposalDelayedRejectionCount` to a positive value). At each `i`th stage of the DR process, &
             &the proposal distribution from the last stage is scaled by the factor `proposalDelayedRejectionScaleFactor(i)`. &
             &Missing elements of the `proposalDelayedRejectionScaleFactor` in the input external file to the sampler will be set to &

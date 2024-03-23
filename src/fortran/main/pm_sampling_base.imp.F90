@@ -594,7 +594,7 @@ contains
             SKC_"The simulation specification `ndim` is a positive scalar of type `integer` of kind 32bit, &
                 &representing the number of dimensions of the domain of the objective function. &
                 &Unlike most other simulation specifications, `ndim` cannot be set from within an external input function &
-                &and the user must always specify it along with the objective function at the time of calling the exploration routine, &
+                &and the user must always specify it along with the objective function at the time of calling the exploration routine &
                 &separately from the rest of the (optional) simulation specifications. &
                 &As such, `ndim` has no default value and is always user-supplied."
         end block ndim_block
@@ -615,7 +615,7 @@ contains
                 &The following density function exploration methods are currently or will be supported by the ParaMonte library:"//NL2//&
             SKC_"   ParaDRAM"//NL2//&
             SKC_"       The ParaDRAM acronym stands for Parallel Delayed-Rejection Adaptive Metropolis Markov Chain Monte Carlo. &
-                        &The ParaDRAM sampler is capable of optimizing and exploring the landscape of objective functions stochastically. &
+                        &The ParaDRAM sampler can optimize and explore the landscape of objective functions stochastically. &
                         &For more details of the ParaDRAM sampling scheme, refer to the references section in the documentation of the ParaMonte library:"//NL2//&
             SKC_"           https://www.cdslab.org/paramonte"
         end block method_block
@@ -628,9 +628,9 @@ contains
             SKC_"The simulation specification `modelr` is an object whose components contain the &
                 &characteristics of `real` (float) data type model (hence the name `modelr`) used for (most) computations during the simulation. &
                 &The real/float type used within the simulation is the same as that of the input and output values to and from the objective function. &
-                &It is set by user at the time of calling the sampler. As such, unlike most other simulation specifications, `modelr` cannot be set from &
-                &within an external input function and the user always specifies it at the time of calling the corresponding sampler. &
-                &Therefore, `modelr` has no default value and is always user-supplied at the time of calling the sampler. &
+                &It is set by the user when the sampler is called. As such, unlike most other simulation specifications, `modelr` cannot be set from &
+                &within an external input function, the user always specifies it when calling the corresponding sampler. &
+                &Therefore, `modelr` has no default value and is always user-supplied when calling the sampler. &
                 &The components of `modelr` are important for future determination of the type and kind of the real/float used in the simulation. &
                 &The `modelr` object contains the following real/float characteristics:"//NL2//&
             SKC_"+   `digits`"//NL2//&
@@ -666,7 +666,7 @@ contains
             spec%description%desc = &
             SKC_"The simulation specification `description` is a scalar string of maximum length "//getStr(len(description, IK))//&
             SKC_" characters containing general information about the simulation to be performed. It has no effects &
-            &on the simulation and serves only as a general description of the simulation for future reference. &
+            &on the simulation and serves only as a general description for future reference. &
             &The sampler parser automatically recognizes the C-style `'\n'` escape sequence as the new-line character &
             &and `'\\'` as the backslash character `'\'` if used in the contents of `description`. For example, `'\\n'` &
             &will be converted to `'\n'` on the output, while `'\n'` translates to the new-line character. &
@@ -687,20 +687,20 @@ contains
             spec%domain%def    = spec%domain%cube
             spec%domain%desc   = &
             SKC_"The simulation specification `domain` is a scalar string of maximum length "//getStr(len(domain, IK))//SKC_", &
-                &containing the name of the model that defines the domain of the objective function. &
+                &containing the model's name that defines the objective function's domain. &
                 &The string value must be enclosed by either single or double quotation marks when provided as input. &
                 &The following domain models are currently supported:"//NL2//&
             SKC_"+   `domain = '"//spec%domain%cube//SKC_"'`"//NL2//&
             SKC_"    This is equivalent to an `ndim`-dimensional hyper-cube (n-cube) whose upper and lower bounds are specified &
                      &by the input simulation specifications `domainCubeLimitUpper` and `domainCubeLimitLower` respectively."//NL2//&
             SKC_"+   `domain = '"//spec%domain%ball//SKC_"'`"//NL2//&
-            SKC_"    This is equivalent to an ndim-dimensional hyper-ellipsoid (n-ball) whose center and covariance matrix can be &
+            SKC_"    This is equivalent to an `ndim`-dimensional hyper-ellipsoid (n-ball) whose center and covariance matrix can be &
                      &specified by the input simulation specification `domainBallCenter` and `domainBallCovMat` respectively. Alternatively, &
-                     &the user can let the ParaMonte samplers construct the covariance matrix of ellipsoidal domain from the input &
+                     &the user can let the ParaMonte samplers construct the covariance matrix of the ellipsoidal domain from the input &
                      &values for the `domainBallCorMat` and `domainBallStdVec` simulation specifications. Note that a spherical &
                      &domain can be defined by dropping the `domainBallCovMat` and `domainBallCorMat` specifications from the input &
                      &and setting all elements of `domainBallStdVec` to the desired radius of the domain."//NL2//&
-            SKC_"The default value is an infinite cube in case of the ParaDRAM and ParaDISE samplers, and a unit-sized cube for the ParaNest sampler."
+            SKC_"The default value is an infinite cube in the case of the ParaDRAM and ParaDISE samplers, and a unit-sized cube for the ParaNest sampler."
             !$omp master
             domain = spec%domain%null
             !$omp end master
@@ -716,10 +716,10 @@ contains
                 spec%domainAxisName%def(idim) = spec%domainAxisName%prefix//getStr(idim)
             end do
             spec%domainAxisName%desc = &
-            SKC_"The simulation specification `domainAxisName` is a vector of scalar string values each element of which contains &
-                &the names of the corresponding axis of the domain of the density function (that is to be explored/sampled). &
+            SKC_"The simulation specification `domainAxisName` is a vector of scalar string values, each element of which contains &
+                &the names of the corresponding axis of the density function domain (to be explored/sampled). &
                 &It is used to construct the headers of the simulation output files. &
-                &Any element of `domainAxisName` that is not set by the user will automatically be assigned a default name. &
+                &Any element of `domainAxisName` not set by the user will automatically be assigned a default name. &
                 &If all elements of `domainAxisName` are set to the same value, then a number will be suffixed to each element &
                 &representing the ID of the corresponding dimension of the domain of the density function. &
                 &The default value is '"//spec%domainAxisName%prefix//SKC_"i' where integer `'i'` at the &
@@ -736,7 +736,7 @@ contains
             spec%domainBallCenter%desc = &
             SKC_"The simulation specification `domainBallCenter` is a vector of type `real` of highest precision supported by the ParaMonte library, &
                 &of size `ndim` containing the coordinates of the center of the hyper-ellipsoidal (or spherical) `ndim`-dimensional domain of the objective function. &
-                &When passed to the sampler from withing an external input file, every missing element of `domainBallCenter` will be set to the origin (zero). &
+                &When passed to the sampler from within an external input file, every missing element of `domainBallCenter` will be set to the origin (zero). &
                 &Together with `domainBallCovMat`, or with `domainBallCorMat` and `domainBallStdVec`, it forms a hyper-ellipsoidal &
                 &or hyper-spherical domain for the ParaMonte samplers. Note that an ellipsoidal/spherical domain is used if only if the &
                 &input simulation specification `domain` is set to 'ellipsoid' or 'sphere' or `ball`. Otherwise, a cubical domain will be used. &
@@ -753,10 +753,10 @@ contains
             spec%domainBallCorMat%desc = &
             SKC_"The simulation specification `domainBallCorMat` is a positive-definite matrix of type `real` of highest precision available in the ParaMonte Library &
                 &of size `(ndim, ndim)` representing the correlation matrix of the domain of the objective function, where `ndim` is the dimension of the domain. &
-                &Combined with the input simulation specification `domainBallStdVec`, it defines the hyper-ellipsoidal (or spherical) domain of the objective function. &
+                &Combined with the input simulation specification `domainBallStdVec` it defines the objective function's hyper-ellipsoidal (or spherical) domain. &
                 &If the input simulation specification `domainBallCovMat` is provided by the user, then any values set &
                 &for `domainBallCorMat` and `domainBallStdVec` will be automatically ignored. The input specification `domainBallCorMat` &
-                &along with `proposalStdVec` are especially useful in situations where the covariance matrix computation is non-trivial. &
+                &along with `proposalStdVec` are especially useful when covariance matrix computation is non-trivial. &
                 &When passed to the sampler from within an external input sampler specification file, any missing element of `domainBallCovMat` &
                 &will be set to the appropriate default value. The default value of `domainBallCorMat` is an `ndim`-by-`ndim` Identity matrix."
             !$omp master
@@ -776,18 +776,18 @@ contains
             call setResized(spec%domainBallCovMat%def, [ndim, ndim])
             call setResized(spec%domainBallCovMat%val, [ndim, ndim])
             spec%domainBallCovMat%desc = &
-            SKC_"The simulation specification `domainBallCovMat` is a positive-definite matrix of type `real` of highest precision available in the ParaMonte Library &
+            SKC_"The simulation specification `domainBallCovMat` is a positive-definite matrix of type `real` of the highest precision available in the ParaMonte Library &
                 &of size `(ndim, ndim)` representing the Gramian matrix of the domain of the objective function, where `ndim` is the dimension of the domain. &
-                &If this input simulation specification is provided by the user, then any values set for the input simulation &
+                &If the user provides this input simulation specification, then any values set for the input simulation &
                 &specifications `domainBallCorMat` and `domainBallStdVec` will be automatically ignored. When set from inside an external &
                 &input ParaMonte specification file, any missing element of `domainBallCovMat` will be set to the appropriate default value. &
                 &To specify an ndim-dimensional spherical domain, set `domainBallCovMat` to the identity matrix whose diagonal elements are &
                 &radius-squared of the desired hyper-sphere (n-ball). The default value of `domainBallCovMat` is an ndim-by-ndim Identity matrix &
-                &for simulations (such as the ParaNest integrator) that require a finite domain and an ndim-by-ndim  diagonal matrix whose diagonals &
-                &are practically set to infinity for simulations that do not require a finite domain (such the ParaDRAM and ParaDISE MCMC samplers)."//NL2//&
+                &for simulations (such as the ParaNest integrator) that require a finite domain and an `ndim`-by-`ndim` diagonal matrix whose diagonals &
+                &are practically set to infinity for simulations that do not require a finite domain (such as the ParaDRAM and ParaDISE MCMC samplers)."//NL2//&
             SKC_"NAMING CLARIFICATION: The use of `CovMat` in the name of this simulation specification is theoretically incorrect as the domain &
-                &of the objective function is not a distribution. Even if it is considered as a hyper-ellipsoidal uniform distribution, &
-                &this specification would still not represent its covariance matrix, because it represents the Gramian matrix. &
+                &of the objective function is not a distribution. Even if it is considered a hyper-ellipsoidal uniform distribution &
+                &this specification would still not represent its covariance matrix because it represents the Gramian matrix. &
                 &However, the decision was made to name this specification as `CovMat` because of its nice fit to the rest of &
                 &the relevant simulation specifications and user familiarity with keywords."
             !$omp master
@@ -806,7 +806,7 @@ contains
             spec%domainBallStdVec%desc = &
             SKC_"The simulation specification `domainBallStdVec` is a positive-valued vector of type `real` of the highest precision available &
                 &within the ParaMonte library, of size `ndim`, where `ndim` is the dimension of the domain of the objective function. &
-                &It represents the square-roots of the diagonal elements of the covariance matrix of the domain of the objective function. &
+                &It represents the square roots of the diagonal elements of the covariance matrix of the domain of the objective function. &
                 &If the covariance matrix of the ellipsoidal/spherical domain (`domainBallCovMat`) is missing from the input specifications &
                 &to the sampler, then `domainBallStdVec` (along with the input specification `domainBallCorMat`) will be used to &
                 &construct the covariance matrix of the domain of the objective function. However, if `domainBallCovMat` is present &
@@ -831,9 +831,9 @@ contains
             end if
             spec%domainCubeLimitLower%desc = &
             SKC_"The simulation specification `domainCubeLimitLower` is a vector of type `real` of the highest precision available within &
-                &by the ParaMonte library, of size `ndim` where `ndim` is the number dimensions of the domain of the target density function. &
+                &by the ParaMonte library, of size `ndim` where `ndim` is the number of dimensions of the domain of the target density function. &
                 &It contains the lower boundaries of the cubical domain of the objective function to be sampled. &
-                &When `domainCubeLimitLower` is specified inside inside an external input file supplied to the sampler, &
+                &When `domainCubeLimitLower` is specified inside an external input file supplied to the sampler, &
                 &it is also possible to assign only select values of `domainCubeLimitLower` &
                 &and leave the rest of the components to be assigned the default value. &
                 &For example, having the following inside the input file, "//NL2//&
@@ -842,10 +842,10 @@ contains
             SKC_"+   `domainCubeLimitLower(1) = -100, domainCubeLimitLower(2) = -1.e6`"//NL2//&
             SKC_"    will set the lower limit on the first dimension to `-100`, and `1.e6` on the second dimension, or,"//NL2//&
             SKC_"+   `domainCubeLimitLower = 3*-2.5e100`"//NL2//&
-            SKC_"    will only set the lower limits on the first, second, and the third dimensions to `-2.5*10^100`, while the &
+            SKC_"    will only set the lower limits on the first, second, and third dimensions to `-2.5*10^100`, while the &
                      &rest of the lower limits for the missing dimensions will be automatically set to the default value."//NL2//&
             SKC_"The default value for all elements of `domainCubeLimitLower` is `"//getStr(spec%domainCubeLimitLower%def)//SKC_"`."//NL1//&
-            SKC_"Beware that some ParaMonte samplers such as ParaNest require an explicit specification of the domain boundaries by the user."
+            SKC_"Beware that some ParaMonte samplers such as ParaNest require the user to explicitly specify the domain boundaries."
             !$omp master
             call setResized(domainCubeLimitLower, ndim)
             call setNAN(domainCubeLimitLower)
@@ -861,9 +861,9 @@ contains
             end if
             spec%domainCubeLimitUpper%desc = &
             SKC_"The simulation specification `domainCubeLimitUpper` is a vector of type `real` of the highest precision available within &
-                &by the ParaMonte library, of size `ndim` where `ndim` is the number dimensions of the domain of the target density function. &
+                &by the ParaMonte library, of size `ndim` where `ndim` is the number of dimensions of the domain of the target density function. &
                 &It contains the upper boundaries of the cubical domain of the objective function to be sampled. &
-                &When `domainCubeLimitUpper` is specified inside inside an external input file supplied to the sampler, &
+                &When `domainCubeLimitUpper` is specified inside an external input file supplied to the sampler, &
                 &it is also possible to assign only select values of `domainCubeLimitUpper` &
                 &and leave the rest of the components to be assigned the default value. &
                 &For example,"//NL2//&
@@ -872,10 +872,10 @@ contains
             SKC_"+   `domainCubeLimitUpper(1) = 100, domainCubeLimitUpper(2) = 1.e6`"//NL2//&
             SKC_"    will set the upper limit on the first dimension to `100`, and 1.e6 on the second dimension, or,"//NL2//&
             SKC_"+   `domainCubeLimitUpper = 3 * 2.5e100`"//NL2//&
-            SKC_"    will only set the upper limits on the first, second, and the third dimensions to `2.5*10^100`, while the &
+            SKC_"    will only set the upper limits on the first, second, and third dimensions to `2.5*10^100`, while the &
                      &rest of the upper limits for the missing dimensions will be automatically set to the default value."//NL2//&
             SKC_"The default value for all elements of `domainCubeLimitUpper` is `"//getStr(spec%domainCubeLimitUpper%def)//SKC_"`."//NL1//&
-            SKC_"Beware that some ParaMonte samplers such as ParaNest require an explicit specification of the domain boundaries by the user."
+            SKC_"Beware that some ParaMonte samplers such as ParaNest require the user to specify the domain boundaries explicitly."
             !$omp master
             call setResized(domainCubeLimitUpper, ndim)
             call setNAN(domainCubeLimitUpper)
@@ -888,12 +888,12 @@ contains
             spec%domainErrCount%def = 10000_IK
             spec%domainErrCount%desc = &
             SKC_"The simulation specification `domainErrCount` is a scalar of type `integer` beyond which the user will be warned &
-                &about the newly-proposed points excessively falling outside the domain of the objective function. For every `domainErrCount` &
-                &consecutively-proposed new points that fall outside the domain of the objective function, the user will be warned until &
+                &about the newly proposed points excessively falling outside the domain of the objective function. For every `domainErrCount` &
+                &consecutively-proposed new points that fall outside the domain of the objective function the user will be warned until &
                 &`domainErrCount = domainErrCountMax`, in which case the sampler returns a fatal error and the program stops globally. &
                 &The counter for this warning is reset after a proposal sample from within the domain of the objective function is obtained. &
-                &When out-of-domain sampling happens frequently, it is a strong indication of something fundamentally wrong in the simulation. &
-                &It is, therefore, important to closely inspect and monitor for such frequent out-of-domain samplings. &
+                &When out-of-domain sampling happens frequently, it strongly indicates something fundamentally wrong in the simulation. &
+                &It is, therefore, important to closely inspect and monitor for frequent out-of-domain samplings. &
                 &This can be done by setting `domainErrCount` to an appropriate value determined by the user. &
                 &The default value is `"//getStr(spec%domainErrCount%def)//SKC_"`."
             !$omp master
@@ -909,8 +909,8 @@ contains
             SKC_"The simulation specification `domainErrCountMax` is a scalar of type `integer` beyond which the program will stop globally &
                 &with a fatal error message declaring that the maximum number of proposal-out-of-domain-bounds has reached. &
                 &The counter for this global-stop request is reset after a proposal is accepted as a sample from within the domain of the objective function. &
-                &When out-of-domain sampling happens frequently, it is a strong indication of something fundamentally wrong in the simulation. &
-                &It is, therefore, important to closely inspect and monitor for such frequent out-of-domain samplings. &
+                &When out-of-domain sampling happens frequently, it strongly indicates something fundamentally wrong in the simulation. &
+                &It is, therefore, important to closely inspect and monitor for frequent out-of-domain samplings. &
                 &This can be done by setting `domainErrCountMax` to an appropriate value determined by the user. &
                 &The default value is `"//getStr(spec%domainErrCountMax%def)//SKC_"`."
             !$omp master
@@ -924,15 +924,15 @@ contains
             spec%inputFileHasPriority%desc = &
             SKC_"The simulation specification `inputFileHasPriority` is a scalar of type `logical` (Boolean) of default kind. &
             &If it is set to the logical true value (e.g., `.true.`, `true` or `.t.` from within an external input file), &
-            &then the input specifications of the simulation will be read from the user-specified input specification file &
+            &then, the input specifications of the simulation will be read from the user-specified input specification file &
             &and the simulation specification assignments from within the programming language environment (if any are made) &
             &will be completely ignored. If `inputFileHasPriority` is set to the logical false value, then all simulation &
             &specifications that are taken from the user-specified input file will be overwritten by their corresponding &
-            &user-set input values from within the user programming environment (if any such specifications is set). &
-            &This feature is useful when, for example, some simulation specifications have to computed and specified &
-            &at runtime and therefore, cannot be specified before the program execution. Currently, this functionality &
+            &user-set input values from within the user programming environment (if such specifications are set). &
+            &This feature is useful when, for example, some simulation specifications have to be computed and specified &
+            &at runtime and, therefore, cannot be specified before the program execution. Currently, this functionality &
             &(i.e., prioritizing the input file values to input-procedure-argument values) is available only in the Fortran &
-            &interface to the ParaMonte library routines. It can be set exclusively within an external input file and its &
+            &interface to the ParaMonte library routines. It can be set exclusively within an external input file, and its &
             &value is ignored in non-Fortran programming language simulation environments. &
             &The default value is `"//getStr(spec%inputFileHasPriority%def)//SKC_"`."
             !$omp master
@@ -952,25 +952,25 @@ contains
             spec%outputChainFileFormat%null = repeat(SUB, len(outputChainFileFormat, IK))
             spec%outputChainFileFormat%desc = &
             SKC_"The simulation specification `outputChainFileFormat` is a scalar string of maximum length "//getStr(len(outputChainFileFormat, IK))//SKC_" characters &
-                &representing the sampler output chain file(s) format. It must be singly or doubly quoted if specified from within an external input file. &
+                &representing the sampler output chain file(s) format. If specified within an external input file, it must be singly or doubly quoted. &
                 &Three values are possible:"//NL2//&
             SKC_"+   `outputChainFileFormat = 'compact'` or `outputChainFileFormat = 'ascii'`"//NL2//&
-            SKC_"    This is the ASCII (text) file format which is human-readable but does not preserve the full accuracy of the output values. &
-                     &It is also a significantly slower mode of chain file generation, compared to the binary file format (see below). &
+            SKC_"    This is the ASCII (text) file format, which is human-readable but does not preserve the full accuracy of the output values. &
+                     &It is also a significantly slower chain file generation mode than the binary file format (see below). &
                      &If the compact format is specified, each of the repeating visited states in the simulation will be condensed into a single entry (row) &
-                     &in the output simulation chain file. Each entry will be then assigned a sample-weight that is equal to the number of repetitions of &
+                     &in the output simulation chain file. Each entry will be then assigned a sample weight that is equal to the number of repetitions of &
                      &that state in the chain. Thus, each row in the output chain file will represent a unique sample from the objective function. &
-                     &This will lead to a significantly smaller ASCII chain file and faster output size compared to the verbose chain file format (see below)."//NL2//&
+                     &This will lead to a significantly smaller ASCII chain file and faster output size than the verbose chain file format (see below)."//NL2//&
             SKC_"+   `outputChainFileFormat = 'verbose'`"//NL2//&
-            SKC_"    This is the ASCII (text) file format which is human-readable but does not preserve the full accuracy of the output values. &
-                     &It is also a significantly slower mode of chain file generation, compared to both compact and binary chain file formats (see above and below). &
-                     &If the verbose format is specified, all visited states will have equal sampling-weights of `1` in the output simulation chain file. &
+            SKC_"    This is the ASCII (text) file format, which is human-readable but does not preserve the full accuracy of the output values. &
+                     &It is also a significantly slower chain file generation mode compared to compact and binary chain file formats (see above and below). &
+                     &If the verbose format is specified, all visited states will have equal sampling weights of `1` in the output simulation chain file. &
                      &The verbose format can lead to much larger chain file sizes than the compact and binary file formats. &
-                     &This is especially true if the target objective function has a very high-dimensional domain."//NL2//&
+                     &This is especially true if the target objective function has a high-dimensional domain."//NL2//&
             SKC_"+   `outputChainFileFormat = '"//spec%outputChainFileFormat%binary//SKC_"'`"//NL2//&
-            SKC_"    This is the binary file format which is not human-readable, but preserves the exact values in the output chain file. &
+            SKC_"    This is the binary file format, which is not human-readable but preserves the exact values in the output chain file. &
                      &It is also often the fastest mode of chain file generation. If the binary file format is chosen, the chain will be &
-                     &automatically output in the compact format (but as binary) to ensure the production of the smallest-possible output chain file. &
+                     &automatically output in the compact format (but as binary) to ensure the production of the smallest possible output chain file. &
                      &Binary chain files will have the "//filext%binary//SKC_" file extensions. Use the binary format if you need full accuracy &
                      &representation of the output values while having the smallest-size output chain file in the shortest time possible."//NL2//&
             SKC_"The default value is `outputChainFileFormat = '"//spec%outputChainFileFormat%def//SKC_"'` as it provides a reasonable trade-off &
@@ -1002,7 +1002,7 @@ contains
             character(10,SKC):: time
             call date_and_time(date,time)
             spec%outputFileName%def = method//SKC_"_"//date//SKC_"_"//time(1:6)//SKC_"_"//time(8:10)
-            ! set the default outputFileName the same on all parallel images.
+            ! Set the default outputFileName to the same on all parallel images.
 #if         CAF_ENABLED
             block
                 character(63,SKC), save :: co_outputFileNameDef[*]
@@ -1018,7 +1018,7 @@ contains
             block
                 use mpi !mpi_f08, only: mpi_character, mpi_comm_world, mpi_bcast
                 integer :: ierrMPI
-                character(63) :: co_outputFileNameDef ! This must be default kind.
+                character(63) :: co_outputFileNameDef ! This must be the default kind.
                 co_outputFileNameDef = spec%outputFileName%def
                 ! bcast co_outputFileNameDef from image one to all others.
                 call mpi_bcast  ( co_outputFileNameDef  & ! buffer
@@ -1044,13 +1044,13 @@ contains
                 &the default `outputFileName` is constructed from the current date and time:"//NL2//&
             SKC_"    sampler_yyyymmdd_hhmmss_mmm"//NL2//&
             SKC_"where `sampler` is replaced with the name of the ParaMonte sampler invoked, and `yyyy`, `mm`, `dd`, `hh`, `mm`, `ss`, &
-                &and `mmm` are replaced respectively with the current year, month, day, hour, minute, second, and millisecond. &
-                &In such a case, the default directory for the output files will be the current working directory of the sampler. &
-                &If `outputFileName` is provided, but ends with a separator character '/' or '\' (as in Unix or Windows OS), &
+                &and `mmm` are replaced with the current year, month, day, hour, minute, second, and millisecond. &
+                &In such a case, the output files' default directory will be the sampler's current working directory. &
+                &If `outputFileName` is provided but ends with a separator character '/' or '\' (as in Unix or Windows OS), &
                 &then its value will be used as the directory to which the sampler output files will be written. &
                 &In this case, the default output file naming convention described above will be used. &
                 &The specified directory will be automatically created if it does not exist already. &
-                &Note that the specified path is left-adjusted and right-padded erasing all trailing whitespace characters. &
+                &Note that the specified path is left-adjusted and right-padded, erasing all trailing whitespace characters. &
                 &The value of `outputFileName` is always automatically suffixed with `_run<i>_pid<j>_<type>.<ext>` where "//NL2//&
             SKC_"+   `<ext>` is replaced with an appropriate file extension, typically `.txt` or `.bin` depending on the type of the file contents,"//NL2//&
             SKC_"+   `<type>` is replaced with the simulation file type (e.g., `chain`, `report`, `sample`, `restart`, etc),"//NL2//&
@@ -1104,15 +1104,15 @@ contains
             spec%outputRestartFileFormat%null = repeat(SUB, len(outputRestartFileFormat, IK))
             spec%outputRestartFileFormat%desc = &
             SKC_"The simulation specification `outputRestartFileFormat` is a scalar string of maximum length "//getStr(len(outputRestartFileFormat, IK))//SKC_" &
-                &representing the format of the output restart file(s) which are used to restart an interrupted simulation. &
+                &representing the output restart file(s) format used to restart an interrupted simulation. &
                 &Two values are possible:"//NL2//&
             SKC_"+   `outputRestartFileFormat = '"//spec%outputRestartFileFormat%binary//SKC_"'`"//NL2//&
-            SKC_"    This is the binary file format which is not human-readable, but preserves the exact values of the &
+            SKC_"    This is the binary file format which is not human-readable but preserves the exact values of the &
                      &specification variables required for the simulation restart. This full accuracy representation is required &
                      &to exactly reproduce an interrupted simulation. The binary format is also normally the fastest mode of restart file &
                      &generation. Binary restart files will have the `"//filext%binary//SKC_"` file extensions."//NL2//&
             SKC_"+   `outputRestartFileFormat = '"//spec%outputRestartFileFormat%ascii//SKC_"'`"//NL2//&
-            SKC_"    This is the ASCII (text) file format which is human-readable but does not preserve the full accuracy of &
+            SKC_"    This is the ASCII (text) file format, which is human-readable but does not preserve the full accuracy of &
                      &the specification variables required for the simulation restart. It is also a significantly slower mode of &
                      &restart file generation, compared to the binary format. Therefore, its usage should be limited to situations where &
                      &the user wants to track the dynamics of simulation specifications throughout the simulation time. &
@@ -1133,8 +1133,8 @@ contains
                 &(hopefully, independent and identically distributed [i.i.d.]) samples to be drawn from the user-provided objective function.&
                 &Three ranges of values are possible. If"//NL2//&
             SKC_"+   `outputSampleSize < 0`,"//NL2//&
-            SKC_"    then, the absolute value of outputSampleSize dictates the sample size in units of the effective sample size. &
-                     &The effective sample is by definition i.i.d., and free from duplicates and residual autocorrelation. The &
+            SKC_"    then, the absolute value of `outputSampleSize` dictates the sample size in units of the effective sample size. &
+                     &The effective sample is, by definition, i.i.d., free from duplicates and residual autocorrelation. The &
                      &effective sample size is automatically determined by the sampler toward the end of the simulation. &
                      &For example:"//NL2//&
             SKC_"    +   `outputSampleSize = -1` yields the effective i.i.d. sample drawn from the objective function."//NL2//&
@@ -1192,10 +1192,10 @@ contains
             SKC_"    Under this option, the splash screen will be hidden from the standard output but other information will be displayed as usual. &
                      &This is the default behavior in dynamic language environments (e.g., MATLAB, Python, R, ...)."//NL2//&
             SKC_"+   `outputSplashMode = '"//spec%outputSplashMode%silent//SKC_"'`"//NL2//&
-            SKC_"    Under this option, no information will be shown on screen about the simulation. &
+            SKC_"    Under this option, no information about the simulation will be shown on screen. &
                      &Use this option if the simulations are expected to be short and straightforward &
                      &or there is a limit on the amount of text allowed for display in standard output. &
-                     &This situation happens for example, in online code coverage and CI platforms."//NL2//&
+                     &This situation happens, for example, in online code coverage and CI platforms."//NL2//&
             SKC_"The default value is `outputSplashMode = 'normal'` in compiled programming language environments &
                 &and `'quiet'` in dynamic programming language environments. Note that the input values are case-INsensitive."
             !$omp master
@@ -1212,8 +1212,8 @@ contains
             spec%outputStatus%null = repeat(SUB, len(outputStatus, IK))
             spec%outputStatus%desc = &
             SKC_"The simulation specification `outputStatus` is a scalar string of maximum "//getStr(len(outputStatus, IK))//SKC_" characters, &
-                &whose value describes the protocol for dealing and handling the simulation output files in relation to potentially-existing past simulations. &
-                &The string value must be enclosed by either single or double quotation marks when provided as input in an external input file. &
+                &whose value describes the protocol for dealing with and handling the simulation output files concerning potentially existing past simulations. &
+                &The string value must be enclosed by single or double quotation marks when provided as input in an external input file. &
                 &Three values are possible:"//NL2//&
             SKC_"+   `outputStatus = 'extend'`"//NL2//&
             SKC_"    This is the default behavior where the sampler will search for any prior simulation output files &
@@ -1223,18 +1223,18 @@ contains
                      &The restart operation may fail if the user has modified or tampered with the old simulation output files. &
                      &If prior simulation files exist and represent a complete simulation, &
                      &a new simulation run will be performed with a new set of output files starting from the last successful run. &
-                     &The parameters of the new simulation are initialized based the output of the most recent successful simulation. &
+                     &The parameters of the new simulation are initialized based on the output of the most recent successful simulation. &
                      &For MCMC type of simulations, this means starting from the last sampled point in the output sample file of the previous &
                      &simulation and using an initial proposal covariance matrix constructed from the output sample of the previous simulation. &
-                     &If the sampler does not find any prior simulations with the same output file names, it will start a new simulation. &
-                     &This default behavior allows seamless restart functionality while ensuring old potentially-valuable computationally &
+                     &A new simulation will start if the sampler does not find any prior simulations with the same output file names. &
+                     &This default behavior allows seamless restart functionality while ensuring old potentially valuable computationally &
                      &expensive simulations are not inadvertently erased and replaced by the new simulation output files."//NL2//&
             SKC_"+   `outputStatus = 'repeat'`"//NL2//&
             SKC_"    This option is nearly identical to 'extend' except for the fact that the new simulation specifications &
                      &are not initialized from the specifications of the last successful simulation run (if any exists). &
                      &Instead, a new set of simulation files will be generated as if the last simulation run is replicated. &
                      &If the simulation configuration has not changed since the last successful simulation run, then the new simulation &
-                     &output sample, chain, and restart files will be identical to the those of the last successful simulation. &
+                     &output sample, chain, and restart files will be identical to those of the last successful simulation. &
                      &This outputting is primarily useful for cross-platform or cross-compiler testing and development."//NL2//&
             SKC_"+   `outputStatus = 'retry'`"//NL2//&
             SKC_"    This option is nearly identical to 'repeat' except for the fact that the new simulation starts afresh and overwrites &
@@ -1251,7 +1251,7 @@ contains
             !SKC_"    outputStatus = 'copy-extend'"//NL2//&
             !SKC_"            This option is nearly identical to the default behavior 'extend' except for the fact that the most &
             !                &recent existing simulation output are copied into the new simulation file before starting the new simulation. &
-            !                &If there is no existing simulation, the sampler will start a new simulation as in the default behavior 'extend'. &
+            !                &If no simulation exists, the sampler will start a new simulation as in the default behavior 'extend'. &
             !                &If the most recent existing simulation is incomplete, the sampler will &
             !                &complete the interrupted simulation as in the default behavior 'extend'. &
             !                &Unlike 'extend', however, if the sampler detects any old completed simulation files, it will duplicate &
@@ -1282,21 +1282,21 @@ contains
             spec%parallelism%desc = &
             SKC_"The simulation specification `parallelism` is a scalar string of maximum length `"//getStr(len(spec%parallelism%null, IK))//SKC_"` &
                 &that represents the parallelization method to be used in the simulation. &
-                &The string value must be enclosed by either single or double quotation marks when provided in an external input file. &
+                &The string value must be enclosed by single or double quotation marks when provided in an external input file. &
                 &Two options are currently supported:"//NL2//&
             SKC_"+   `parallelism = '"//spec%parallelism%multiChain//SKC_"'`"//NL2//&
             SKC_"    This method uses the Prefect Parallelism scheme in which multiple MCMC chains are generated &
                      &independently of each other. In this case, multiple output MCMC chain files will also be generated. &
-                     &The Perfect parallelism is currently available only in Coarray/MPI-enabled (and not in OpenMP or other shared-memory) parallel simulations. &
+                     &The Perfect parallelism is available only in Coarray/MPI-enabled parallel simulations (not in OpenMP or other shared-memory). &
                      &However, it can be readily emulated by running multiple independent simulations concurrently in any programming environment."//NL2//&
             SKC_"+   `parallelism = '"//spec%parallelism%singleChain//SKC_"'`"//NL2//&
-            SKC_"    This method uses the fork-style parallelization scheme. A single MCMC chain file will be generated in this case. &
-                     &At each MCMC step multiple proposal steps will be checked in parallel until one proposal is accepted. &
+            SKC_"    This method uses the fork-style parallelization scheme. In this case, a single MCMC chain file will be generated. &
+                     &At each MCMC step, multiple proposal steps will be checked in parallel until one proposal is accepted. &
                      &This is the default for all parallelism paradigms supported by the ParaMonte library and the only option for shared memory parallelism."//NL2//&
-            SKC_"Note that in serial mode, there is no parallelism. Therefore, this option does not affect non-parallel simulations and its value is ignored. &
+            SKC_"Note that in serial mode, there is no parallelism. Therefore, this option does not affect non-parallel simulations and ignores its value. &
                 &The serial mode is equivalent to either of the parallelism methods with only one simulation image (processor, core, or thread). &
                 &The default value is `parallelism = '"//spec%parallelism%def//SKC_"'`. &
-                &Note that the input values are case-INsensitive and white-space characters are ignored."
+                &Note that the input values are case-INsensitive and whitespace characters are ignored."
             !$omp master
             parallelism = spec%parallelism%null
             !$omp end master
@@ -1313,8 +1313,8 @@ contains
                 &ParaMonte library to finalize the MPI communications for you. When this specification is set within an external input file, &
                 &the values `F`, `False`, `false`, `FALSE`, and `.false.` all represent the logical true value and &
                 &the values `T`, `True`, `true`, `TRUE`, and `.true.` all represent the logical true value. &
-                &This is a low-level simulation specification variable, relevant to simulations that directly involve MPI parallelism. &
-                &If you do not use any MPI-routine calls in your main program, you can safely ignore this variable with its default value. &
+                &This is a low-level simulation specification variable relevant to MPI parallelism simulations. &
+                &If you do not use MPI-routine calls in your main program, you can safely ignore this variable with its default value. &
                 &If you intend the ParaMonte samplers or other MPI-enabled ParaMonte routines repeatedly in one run &
                 &then you will have to `parallelismMpiFinalizeEnabled` to the logical `false` value to prevent early finalization of the MPI-library. &
                 &Note that in non-MPI-enabled simulations, such as serial and Coarray-enabled simulations, &
@@ -1336,7 +1336,7 @@ contains
                 &This specification is currently relevant to only OpenMP-enabled parallel ParaMonte library builds or in the context of dynamic &
                 &interpreted programming languages such as those mentioned above. As such, its value or presence is ignored in serial simulations &
                 &or Coarray/MPI -enabled parallel simulations. Specifying `0` leads to using all available CPU threads for the requested simulation. &
-                &The default value for `parallelismNumThread` is `0` which implies using the maximum number of available threads in concurrent or &
+                &The default value for `parallelismNumThread` is `0`, which implies using the maximum number of available threads in concurrent or &
                 &OpenMP-enabled builds of the ParaMonte library."
             !$omp master
             parallelismNumThread = spec%parallelismNumThread%null
@@ -1363,7 +1363,7 @@ contains
                 &whose value serves as the seed of the random number generator. When specified by the user, &
                 &the seed of the simulation random number generator will be set in a specific deterministic manner to enable future &
                 &replications of the simulation with the same configuration and input specifications. The default for `randomSeed` &
-                &is processor-dependent random value to ensure complete simulation randomness at every run. &
+                &is a processor-dependent random value to ensure complete simulation randomness at every run. &
                 &In parallel simulations, the seed, whether default or user-specified, is uniquely set on &
                 &all processors, threads, cores, or images in all circumstances to ensure simulation randomness."
             !$omp master
@@ -1389,10 +1389,10 @@ contains
             spec%targetAcceptanceRate%def = [0._RKC, 1._RKC]
             spec%targetAcceptanceRate%desc = &
             SKC_"The simulation specification `targetAcceptanceRate` is a vector of type `real` of size `2` of the highest precision &
-                &available within the ParaMonte library whose values (in the range `[0, 1]`) determine optimal target range for the &
+                &available within the ParaMonte library whose values (in the range `[0, 1]`) determine the optimal target range for the &
                 &simulation efficiency, defined as the ratio of the number of accepted objective function calls to the total number of &
                 &function calls made through the simulation. The first and the second elements of `targetAcceptanceRate` determine the &
-                &lower and upper bounds of the desired acceptance rate respectively. When the acceptance rate of the sampler is outside the &
+                &lower and upper bounds of the desired acceptance rate, respectively. When the acceptance rate of the sampler is outside the &
                 &specified limits, the simulation settings will be automatically adjusted to bring the overall acceptance rate to within the &
                 &user-specified limits given by `targetAcceptanceRate`. When assigned from within a dynamic-language programming environment &
                 &(such as MATLAB, Python, or R) or from within an input file, `targetAcceptanceRate` can also be a scalar real number in the &

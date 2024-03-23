@@ -242,7 +242,7 @@ contains
             spec%outputChainSize%def    = 100000_IK
             spec%outputChainSize%desc   = &
             SKC_"The simulation specification `outputChainSize` is a positive scalar of type `integer` whose value determines the number &
-                &of non-refined, potentially auto-correlated, but unique, samples drawn by the MCMC sampler before stopping the sampling. &
+                &of non-refined, potentially auto-correlated, but unique samples drawn by the MCMC sampler before stopping the sampling. &
                 &For example, if `outputChainSize = 10000`, then `10000` unique sample points (with no duplicates) will be drawn from the &
                 &target objective function that the user has provided. &
                 &The input value for `outputChainSize` must be a positive integer of a minimum value `ndim + 1` or larger, &
@@ -263,11 +263,11 @@ contains
                 &When `outputSampleSize < 0`, the value of `outputSampleRefinementCount` dictates the maximum number of times &
                 &the MCMC chain will be refined to remove the autocorrelation within the output MCMC sample. For example,"//NL2//&
             SKC_"+   if `outputSampleRefinementCount = 0`,"//NL2//&
-            SKC_"    no refinement of the output MCMC chain will be performed. The resulting MCMC sample will simply correspond &
+            SKC_"    no refinement of the output MCMC chain will be performed. The resulting MCMC sample will correspond &
                      &to the full MCMC chain in verbose format (i.e., each sampled state has a weight of one)."//NL2//&
             SKC_"+   if `outputSampleRefinementCount = 1`,"//NL2//&
             SKC_"    the refinement of the output MCMC chain will be done only once if needed, and no more, &
-                     &even though there may still exist some residual autocorrelation in the output MCMC sample. &
+                     &even though some residual autocorrelation in the output MCMC sample may still exist. &
                      &In practice, only one refinement of the final output MCMC chain should be enough to remove &
                      &the existing autocorrelations in the final output sample. Exceptions occur when the integrated &
                      &Autocorrelation (ACT) of the output MCMC chain is comparable to or larger than the length of the chain. &
@@ -279,13 +279,13 @@ contains
                      &the lack of convergence to the target objective function."//NL2//&
             SKC_"+   if `outputSampleRefinementCount > 1`,"//NL2//&
             SKC_"    the refinement of the output MCMC chain will be done for a maximum `outputSampleRefinementCount` number of &
-                     &times, even though there may still exist some residual autocorrelation in the final output MCMC sample."//NL2//&
+                     &times, even though some residual autocorrelation in the final output MCMC sample may still exist."//NL2//&
             SKC_"+   if `outputSampleRefinementCount >> 1` (e.g., comparable to or larger than the length of the MCMC chain),"//NL2//&
             SKC_"    the refinement of the output MCMC chain will continue until the integrated autocorrelation of the resulting &
                      &final sample is less than 2, virtually implying that an independent identically-distributed (i.i.d.) sample &
                      &from the target objective function has finally been obtained."//NL2//&
             SKC_"Note that to obtain i.i.d. samples from a multidimensional chain, the sampler will, by default, use the maximum of &
-                &integrated Autocorrelation (ACT) among all dimensions of the chain to refine the chain. &
+                &integrated Autocorrelation (ACT) among all chain dimensions to refine the chain. &
                 &Note that the value specified for `outputSampleRefinementCount` is used only when the variable outputSampleSize < 0, &
                 &otherwise, it will be ignored. The default value is `outputSampleRefinementCount = "//getStr(spec%outputSampleRefinementCount%def)//SKC_"`."
             !!$omp master
@@ -305,26 +305,26 @@ contains
             SKC_"+  `outputSampleRefinementMethod = '"//spec%outputSampleRefinementMethod%batchMeans//SKC_"'`"//NL2//&
             SKC_"    This method of computing the integrated Autocorrelation Time is based on the approach described in &
                      &**SCHMEISER, B., 1982, Batch size effects in the analysis of simulation output, Oper. Res. 30 556-568**. The &
-                     &batch sizes in the BatchMeans method are chosen to be `int(N^(2/3))` where `N` is the length of the MCMC chain. &
+                     &batch sizes in the BatchMeans method are chosen to be `int(N^(2/3))`, where `N` is the length of the MCMC chain. &
                      &As long as the batch size is larger than the ACT of the chain and there are significantly more than 10 &
                      &batches, the BatchMeans method will provide reliable estimates of the ACT. &
                      &Note that the refinement strategy involves two separate phases of sample decorrelation. At the first stage, &
                      &the Markov chain is decorrelated recursively (for as long as needed) based on the ACT of its compact format, &
-                     &where only the uniquely-visited states are kept in the (compact) chain. Once the Markov chain is refined &
-                     &such that its compact format is fully decorrelated, the second phase of the decorrelation begins during which &
+                     &where only the uniquely visited states are kept in the (compact) chain. Once the Markov chain is refined &
+                     &such that its compact format is fully decorrelated, the second phase of the decorrelation begins, during which &
                      &the Markov chain is decorrelated based on the ACT of the chain in its verbose (Markov) format. This process &
-                     &is repeated recursively for as long as there is any residual autocorrelation in the refined sample."//NL2//&
+                     &is repeated recursively for as long as residual autocorrelation exists in the refined sample."//NL2//&
             SKC_"+   `outputSampleRefinementMethod = '"//spec%outputSampleRefinementMethod%batchMeans//SKC_"-compact'`"//NL2//&
             SKC_"    This is the same as the first case in the above, except that only the first phase of the sample refinement &
-                     &described in the above will be performed, that is, the (verbose) Markov chain is refined only based on the &
-                     &ACT computed from the compact format of the Markov chain. This will lead to a larger final refined sample. &
+                     &described in the above will be performed; that is, the (verbose) Markov chain is refined only based on the &
+                     &ACT computed from the compact format of the Markov chain. This will lead to a larger, final, refined sample. &
                      &However, the final sample will likely not be fully decorrelated."//NL2//&
             SKC_"+   `outputSampleRefinementMethod = '"//spec%outputSampleRefinementMethod%batchMeans//SKC_"-verbose'`"//NL2//&
             SKC_"    This is the same as the first case in the above, except that only the second phase of the sample refinement &
-                     &described in the above will be performed, that is, the (verbose) Markov chain is refined only based on the ACT &
+                     &described in the above will be performed; that is, the (verbose) Markov chain is refined only based on the ACT &
                      &computed from the verbose format of the Markov chain. While the resulting refined sample will be fully decorrelated, &
                      &the size of the refined sample may be smaller than the default choice in the first case in the above."//NL2//&
-            SKC_"Note that in order to obtain i.i.d. samples from a multidimensional chain, the sampler will use the average of the &
+            SKC_"Note that to obtain i.i.d. samples from a multidimensional chain, the sampler will use the average of the &
                 &ACT among all dimensions of the chain to refine the chain. If the maximum, minimum, or the median of IACs is preferred &
                 &add `'-max'` (or `'-maximum'`), `'-min'` (or `'-minimum'`), `'-med'` (or `'-median'`), respectively, to the value of &
                 &`outputSampleRefinementMethod`. For example, "//NL2//&
@@ -396,15 +396,15 @@ contains
             spec%proposalCovMat%isUserSet = .false._LK
             spec%proposalCovMat%desc = &
             SKC_"The simulation specification `proposalCovMat` is a square positive-definite matrix of type `real` of the highest precision &
-                &available within the ParaMonte library, of shape `(ndim, ndim)`, where `ndim` is the number of dimension of the sampling space. &
+                &available within the ParaMonte library, of shape `(ndim, ndim)`, where `ndim` is the number of dimensions of the sampling space. &
                 &It serves as the best-guess starting covariance matrix of the proposal distribution. &
                 &To bring the sampling efficiency of the sampler to within the desired requested range, the covariance matrix will &
                 &be adaptively updated throughout the simulation, according to the user-specified schedule. If `proposalCovMat` &
                 &is not provided by the user or it is completely missing from the input file, its value will be automatically &
                 &computed via the input variables `proposalCorMat` and `proposalStdVec` (or via their default values, if not provided). &
                 &If the simulation specification `outputStatus` is set to ""extend"" and a successful prior simulation run exists, &
-                &then `proposalCovMat` will be set to the covariance matrix of the output sample from most recent simulation run. &
-                &In this case, any user-specified value will be overridden by the computed `proposalCovMat`. &
+                &then `proposalCovMat` will be set to the covariance matrix of the output sample from the most recent simulation run. &
+                &In this case, the computed `proposalCovMat` will override any user-specified value. &
                 &Otherwise, the default value of `proposalCovMat` is a square Identity matrix of rank `ndim`."
             !!$omp master
             if (allocated(proposalCovMat)) deallocate(proposalCovMat)
@@ -437,14 +437,14 @@ contains
             SKC_"+   `proposalScaleFactor = '2.5'`"//NL2//&
             SKC_"    multiplies the ndim-dimensional proposal covariance matrix by 2.5."//NL2//&
             SKC_"+   `proposalScaleFactor = '2.5*Gelman'`"//NL2//&
-            SKC_"    multiplies the ndim-dimensional proposal covariance matrix by 2.5 * 2.38/sqrt(ndim)."//NL2//&
+            SKC_"    multiplies the `ndim`-dimensional proposal covariance matrix by 2.5 * 2.38/sqrt(ndim)."//NL2//&
             SKC_"+   `proposalScaleFactor = ""2.5 * gelman""`"//NL2//&
-            SKC_"    same as the previous example, but with double-quotation marks. space characters are ignored."//NL2//&
+            SKC_"    same as the previous example but with double-quotation marks. space characters are ignored."//NL2//&
             SKC_"+   `proposalScaleFactor = ""2.5 * gelman*gelman*2""`"//NL2//&
             SKC_"    equivalent to gelmanFactor-squared multiplied by `5`."//NL2//&
             SKC_"Note, however, that the result of Gelman et al. paper applies only to multivariate normal proposal distributions, in the limit &
                 &of infinite dimensions. Therefore, care must be taken when using Gelman's scaling factor with non-Gaussian proposals and target &
-                &objective functions. Note that only the product symbol `*` can be parsed in the string value of `proposalScaleFactor`. &
+                &objective functions. Only the product symbol `*` can be parsed in the string value of `proposalScaleFactor`. &
                 &The presence of other mathematical symbols or multiple appearances of the product symbol will lead to a simulation crash. &
                 &Also, note that the prescription of an acceptance range specified by the input variable `targetAcceptanceRate` will lead &
                 &to dynamic modification of the initial input value of `proposalScaleFactor` throughout sampling for `proposalAdaptationCount` times. &
@@ -483,7 +483,7 @@ contains
                 &in the ParaMonet library of size `ndim` is the number of dimensions of the domain of the objective function. It contains the &
                 &lower boundaries of the cubical domain from which the starting point(s) of the MCMC chain(s) will be initialized randomly &
                 &(only if requested via the input variable `proposalStartRandomized`). &
-                &This happens only when some or all of the elements of the input specification `proposalStart` are missing. &
+                &This happens only when some or all of the input specification `proposalStart` elements are missing. &
                 &In such cases, every missing value of the input `proposalStart` will be set to the center point between &
                 &`proposalStartDomainCubeLimitLower` and `proposalStartDomainCubeLimitUpper` in the corresponding dimension. &
                 &If `proposalStartRandomized` is set to the logical/Boolean true value, then the missing elements of &
@@ -514,7 +514,7 @@ contains
                 &in the ParaMonet library of size `ndim` is the number of dimensions of the domain of the objective function. It contains the &
                 &upper boundaries of the cubical domain from which the starting point(s) of the MCMC chain(s) will be initialized randomly &
                 &(only if requested via the input variable `proposalStartRandomized`). &
-                &This happens only when some or all of the elements of the input specification `proposalStart` are missing. &
+                &This happens only when some or all of the input specification `proposalStart` elements are missing. &
                 &In such cases, every missing value of the input `proposalStart` will be set to the center point between &
                 &`proposalStartDomainCubeLimitLower` and `proposalStartDomainCubeLimitUpper` in the corresponding dimension. &
                 &If `proposalStartRandomized` is set to the logical/Boolean true value, then the missing elements of &
@@ -563,12 +563,12 @@ contains
             spec%proposalStdVec%desc = &
             SKC_"The simulation specification `proposalStdVec` is a positive-valued vector of type `real` of the highest precision available &
                 &within the ParaMonte library, of size `ndim`, where `ndim` is the dimension of the domain of the objective function. &
-                &It serves as the best-guess starting Standard Deviation of each of the components of the proposal distribution. &
+                &It serves as the best-guess starting standard deviation for each component of the proposal distribution. &
                 &If the initial covariance matrix (`proposalCovMat`) is missing as an input specification to the sampler, &
                 &then `proposalStdVec` (along with the specified `proposalCorMat`) will be used to construct &
                 &the initial covariance matrix of the proposal distribution of the MCMC sampler. &
                 &However, if `proposalCovMat` is specified for the sampler, then the input `proposalStdVec` and `proposalCorMat` will &
-                &be completely ignored and the input value for `proposalCovMat` will be used to construct the initial covariance matrix &
+                &be completely ignored, and the input value for `proposalCovMat` will be used to construct the initial covariance matrix &
                 &of the proposal distribution. The default value of `proposalStdVec` is a vector of size `ndim` of unit values (i.e., ones)."
             !!$omp master
             call setResized(proposalStdVec, ndim)
