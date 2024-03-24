@@ -64,7 +64,7 @@
 ///                             that contains either,
 ///                             <ol>
 ///                                 <li>    the path to an external input file containing the namelist group of ParaDRAM sampler specifications
-///                                         as outlined in the corresponding page of [ParaMonte library cross-language documentation website](\pmdoc).<br>
+///                                         as outlined in the corresponding page of [ParaMonte library generic documentation website](\pmdoc_usage_sampling/paradram/specifications/).<br>
 ///                                 <li>    the namelist group of ParaDRAM sampler specifications as the can appear in an external input specification file.<br>
 ///                             </ol>
 ///                             While all input simulation specifications are optional, it is highly recommended to pay

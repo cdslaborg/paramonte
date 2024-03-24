@@ -291,7 +291,7 @@ contains
                 &will be updated until either the total number of adaptive updates reaches the value of `domainPartitionAdaptationCount`. &
                 &If the condition `domainPartitionAdaptationCount == 0`, then the domain sampler parameters will be fixed to &
                 &the initial input values throughout the entire sampling/integration. &
-                &The default value is "//getStr(spec%domainPartitionAdaptationCount%def)//SKC_"."
+                &The default value is `"//getStr(spec%domainPartitionAdaptationCount%def)//SKC_"`."
             !$omp master
             domainPartitionAdaptationCount = spec%domainPartitionAdaptationCount%null
             !$omp end master
@@ -311,7 +311,7 @@ contains
                 &sampling efficiency close to the requested target acceptance rate range (specified via the `targetAcceptanceRate`). &
                 &However, too large values for `domainPartitionAdaptationPeriod` will only delay the adaptation of the domain &
                 &sampler to the global structure of the domain of the objective function that is being sampled. &
-                &The default value is "//getStr(spec%domainPartitionAdaptationPeriod%def)//SKC_"."
+                &The default value is `"//getStr(spec%domainPartitionAdaptationPeriod%def)//SKC_"`."
             !$omp master
             domainPartitionAdaptationPeriod = spec%domainPartitionAdaptationPeriod%null
             !$omp end master
@@ -325,7 +325,7 @@ contains
                 &When `domainPartitionBiasCorrectionEnabled` is set to the logical true value (equivalent to `.true.`, `.t.`, or `true`, all case-INsensitive, &
                 &in an external input file, or True from within Python environment or true from within a MATLAB session), the final scales of the partitions of &
                 &the live points of the sampler will be optimized. This will minimize the inaccuracies in the partitioning of the domain of the objective &
-                &function, although, it comes with an extra cost in terms of sampler runtime efficiency. The default value is "//getStr(spec%domainPartitionBiasCorrectionEnabled%def)//SKC_"."
+                &function, although, it comes with an extra cost in terms of sampler runtime efficiency. The default value is `"//getStr(spec%domainPartitionBiasCorrectionEnabled%def)//SKC_"`."
             !$omp master
             domainPartitionBiasCorrectionEnabled = spec%domainPartitionBiasCorrectionEnabled%def
             !$omp end master
@@ -342,7 +342,7 @@ contains
                 &a single partition (e.g., ellipsoid) will be used to constrain the domain of the objective function. &
                 &Note that the condition `1 =< domainPartitionCountMax =< liveSampleSize / (ndim + 1)` must hold in all simulations where `ndim` &
                 &is the number of dimensions of the domain of the density function to be sampled. Do not set this simulation specification to small &
-                &numbers unless you know the consequences. Doing so, may cause the sampler to become highly inefficient. The default value is "//getStr(spec%domainPartitionCountMax%def)//SKC_"."
+                &numbers unless you know the consequences. Doing so, may cause the sampler to become highly inefficient. The default value is `"//getStr(spec%domainPartitionCountMax%def)//SKC_"`."
             !$omp master
             domainPartitionCountMax = spec%domainPartitionCountMax%null
             !$omp end master
@@ -358,7 +358,7 @@ contains
                 &Setting `domainPartitionFactorExpansion << 1` may lead to biased and unreliable results. &
                 &Conversely, setting `domainPartitionFactorExpansion >> 1` will lead to conservative inefficient &
                 &partitioning of the domain and slow sampling and integration of the objective function. &
-                &The default value is "//getStr(spec%domainPartitionFactorExpansion%def)//SKC_"."
+                &The default value is `"//getStr(spec%domainPartitionFactorExpansion%def)//SKC_"`."
                 !&If ellipsoidalBoundingVolume < domainPartitionFactorExpansion * actualLivePointVolume, then, further partitioning of the live &
                 !&points will be performed. Conversely, if ellipsoidalBoundingVolume >= domainPartitionFactorExpansion * actualLivePointVolume, &
                 !&then, no further partitioning of the live points will be performed and the estimated ellipsoidalBoundingVolume will be enlarged &
@@ -381,7 +381,7 @@ contains
                 &to match `domainPartitionFactorShrinkage * actualLivePointVolume`. This is a low-level simulation specification. &
                 &Setting `domainPartitionFactorShrinkage << 1` may lead to biased and unreliable results. &
                 &Conversely, setting `domainPartitionFactorShrinkage >> 1` will lead to conservative inefficient partitioning of &
-                &the domain and slow sampling and integration of the objective function. The default value is "//getStr(spec%domainPartitionFactorShrinkage%def)//SKC_"."
+                &the domain and slow sampling and integration of the objective function. The default value is `"//getStr(spec%domainPartitionFactorShrinkage%def)//SKC_"`."
             !$omp master
             call setNAN(domainPartitionFactorShrinkage)
             !$omp end master
@@ -410,7 +410,7 @@ contains
             &size of the clusters allowed to be identified by the Kmeans clustering algorithms when partitioning any subsets of the live sample of the sampler. &
             &Note that the condition `0 <= domainPartitionKmeansClusterSizeMin <= liveSampleSize` must hold. Do not set this simulation specification to values &
             &significantly larger than `ndim + 1` where `ndim` is the number of dimensions of the domain of the objective function. Doing so may cause the &
-            &sampler to become highly inefficient. The default value is "//getStr(spec%domainPartitionKmeansClusterSizeMin%def)//SKC_"."
+            &sampler to become highly inefficient. The default value is `"//getStr(spec%domainPartitionKmeansClusterSizeMin%def)//SKC_"`."
             !$omp master
             domainPartitionKmeansClusterSizeMin = spec%domainPartitionKmeansClusterSizeMin%null
             !$omp end master
@@ -425,7 +425,7 @@ contains
                 &from inside the input file or `True` from inside Python or `true` from inside MATLAB), any subset of live points will be standardized before being passed &
                 &to the Kmeans algorithm. Enabling this option will lead to better behavior of the Kmeans algorithm and potentially better &
                 &identification of the subclusters in data. This improvement, however, comes with an extra cost in terms of runtime &
-                &efficiency of the "//spec%method%val//SKC_" sampler. The default value is "//getStr(spec%domainPartitionKmeansNormalizationEnabled%def)//SKC_"."
+                &efficiency of the "//spec%method%val//SKC_" sampler. The default value is `"//getStr(spec%domainPartitionKmeansNormalizationEnabled%def)//SKC_"`."
             !$omp master
             domainPartitionKmeansNormalizationEnabled = spec%domainPartitionKmeansNormalizationEnabled%def
             !$omp end master
@@ -440,7 +440,7 @@ contains
                 &that sets the maximum allowed number of Kmeans clustering failures at each clustering try within simulations that employ the rejection sampling method. &
                 &This is a low-level simulation specification whose value should not be changed from the default unless the consequences are well understood. &
                 &Setting this simulation property to a small value, for example, on the order of ten, may lead to highly inefficient simulations. &
-                &The default value is "//getStr(spec%domainPartitionKmeansNumFailMax%def)//SKC_"."
+                &The default value is `"//getStr(spec%domainPartitionKmeansNumFailMax%def)//SKC_"`."
             !$omp master
             domainPartitionKmeansNumFailMax = spec%domainPartitionKmeansNumFailMax%null
             !$omp end master
@@ -455,7 +455,7 @@ contains
                 &that sets the maximum allowed number of Kmeans convergence iterations in simulations that employ the rejection sampling method. &
                 &This is a low-level simulation specification whose value should not be changed from the default unless the consequences are well understood. &
                 &Setting this simulation property to a small value, for example, on the order of ten, may lead to highly inefficient "//spec%method%val//SKC_" simulations. &
-                &The default value is "//getStr(spec%domainPartitionKmeansNumRecursionMax%def)//SKC_"."
+                &The default value is `"//getStr(spec%domainPartitionKmeansNumRecursionMax%def)//SKC_"`."
             !$omp master
             domainPartitionKmeansNumRecursionMax = spec%domainPartitionKmeansNumRecursionMax%null
             !$omp end master
@@ -469,7 +469,7 @@ contains
             SKC_"The simulation specification `domainPartitionKmeansNumTry` is a positive scalar of type `integer` of default kind &
                 &that sets the number of Kmeans clustering tries at each level of partitioning of the set of live points during the simulation. &
                 &This simulation specification should be not be set to very large values (e.g., >> 10) because the simulation will significantly &
-                &slow down. The default value is "//getStr(spec%domainPartitionKmeansNumTry%def)//SKC_"."
+                &slow down. The default value is `"//getStr(spec%domainPartitionKmeansNumTry%def)//SKC_"`."
             !$omp master
             domainPartitionKmeansNumTry = spec%domainPartitionKmeansNumTry%null
             !$omp end master
@@ -484,7 +484,7 @@ contains
             &that sets the maximum allowed number of volume minimization convergence iterations in simulations that employ the rejection sampling method. &
             &This is a low-level simulation specification whose value should not be changed from the default unless the consequences are well understood. &
             &Setting this simulation property to a small value, for example, on the order of ten, may lead to highly inefficient "//spec%method%val//SKC_" simulations. &
-            &The default value is "//getStr(spec%domainPartitionKvolumeNumRecursionMax%def)//SKC_"."
+            &The default value is `"//getStr(spec%domainPartitionKvolumeNumRecursionMax%def)//SKC_"`."
             !$omp master
             domainPartitionKvolumeNumRecursionMax = spec%domainPartitionKvolumeNumRecursionMax%null
             !$omp end master
@@ -501,7 +501,7 @@ contains
                 &Reasonable values include `0` or `1`. This is a low-level simulation specification whose value should not be changed from the default &
                 &unless the consequences are well understood. Setting this simulation property to any values other than the default value can drastically &
                 &affect the performance or even convergence and success of the simulations when the rejection sampling method is used. &
-                &The default value for `domainPartitionKvolumeWeightExponent` is "//getStr(spec%domainPartitionKvolumeWeightExponent%def)//SKC_"."
+                &The default value for `domainPartitionKvolumeWeightExponent` is `"//getStr(spec%domainPartitionKvolumeWeightExponent%def)//SKC_"`."
             !$omp master
             call setNAN(domainPartitionKvolumeWeightExponent)
             !$omp end master
@@ -536,7 +536,7 @@ contains
                      &minimize the collective volumes of the bounding objects. However, the minimization approach taken by often is less &
                      &aggressive and often results in lower efficiencies for the Nested Sampler."//NL2//&
             SKC_"Note that all values are case-INsensitive and all hyphens (dashes, -), white-space, or other separators are ignored.&
-                &The default value is '"//spec%domainPartitionMethod%def//SKC_"'. Choose the other non-default methods ONLY if you know the implications or &
+                &The default value is `'"//spec%domainPartitionMethod%def//SKC_"'`. Choose the other non-default methods ONLY if you know the implications or &
                 &if you want to perform benchmarks."
             !$omp master
             domainPartitionMethod = spec%domainPartitionMethod%null
@@ -554,7 +554,7 @@ contains
             SKC_"    domainPartitionObject = 'ball'"//NL2//&
             SKC_"            This is equivalent to using hyper-ellipsoids to partition the domain of the objective function."//NL2//&
             SKC_"Note that all values are case-INsensitive and all hyphens (dashes, -) and white-space characters are ignored.&
-                &The default value is '"//spec%domainPartitionObject%def//SKC_"'."
+                &The default value is `'"//spec%domainPartitionObject%def//SKC_"'`."
             !$omp master
             domainPartitionObject = spec%domainPartitionObject%null
             !$omp end master
@@ -569,7 +569,7 @@ contains
                 &from within an external input file or `True` from inside Python or `true` from inside MATLAB, the final scales of the partitions of the live &
                 &points of the sampler will be optimized. This will minimize the inaccuracies in the partitioning of the domain of the objective &
                 &function, although, it comes with an extra cost in terms of runtime efficiency of the "//spec%method%val//SKC_" sampler. &
-                &The default value is "//getStr(spec%domainPartitionOptimizationScaleEnabled%def)//SKC_"."
+                &The default value is `"//getStr(spec%domainPartitionOptimizationScaleEnabled%def)//SKC_"`."
             !$omp master
             domainPartitionOptimizationScaleEnabled = spec%domainPartitionOptimizationScaleEnabled%def
             !$omp end master
@@ -584,7 +584,7 @@ contains
                 &or True (from inside Python) or true (from inside MATLAB), the final centers and shapes and sizes of the partitions of the &
                 &live points of the sampler will be optimized. This will minimize the inaccuracies in the partitioning of the domain of &
                 &the objective function, although, it comes with an extra cost in terms of runtime efficiency of the "//spec%method%val//SKC_" sampler. &
-                &The default value is "//getStr(spec%domainPartitionOptimizationShapeEnabled%def)//SKC_"."
+                &The default value is `"//getStr(spec%domainPartitionOptimizationShapeEnabled%def)//SKC_"`."
             !$omp master
             domainPartitionOptimizationShapeEnabled = spec%domainPartitionOptimizationShapeEnabled%def
             !$omp end master
@@ -599,7 +599,7 @@ contains
                 &from within an external input file or `True` from inside Python or `true` from inside MATLAB, the final centers and shapes and sizes of the partitions &
                 &of the live live points of the sampler will be enlarged for as much as possible. This will minimize the inaccuracies in the &
                 &partitioning of the domain of the objective function, although, it comes with an extra cost in terms of runtime efficiency &
-                &of the "//spec%method%val//SKC_" sampler. The default value is "//getStr(spec%domainPartitionOptimizationShapeScaleEnabled%def)//SKC_"."
+                &of the "//spec%method%val//SKC_" sampler. The default value is `"//getStr(spec%domainPartitionOptimizationShapeScaleEnabled%def)//SKC_"`."
             !$omp master
             domainPartitionOptimizationShapeScaleEnabled = spec%domainPartitionOptimizationShapeScaleEnabled%def
             !$omp end master
@@ -613,7 +613,7 @@ contains
                 &ParaMonte library representing the factor by which the effective radius of the rejection sampling region is enlarged to ensure a minimally-biased integration. &
                 &Values smaller than 1 will lead to highly biased simulation results whereas values significantly larger than 1 will lead to highly inefficient simulations. &
                 &Relevant `domainPartitionScaleFactor` values are generally bound to the range `1 < domainPartitionScaleFactor < 2`. &
-                &The default value for `domainPartitionScaleFactor` is "//getStr(spec%domainPartitionScaleFactor%def)//SKC_"."
+                &The default value for `domainPartitionScaleFactor` is `"//getStr(spec%domainPartitionScaleFactor%def)//SKC_"`."
             !$omp master
             call setNAN(domainPartitionScaleFactor)
             !$omp end master
@@ -629,7 +629,7 @@ contains
                 &Options that are currently supported include:"//NL2//&
             SKC_"    domainSampler = 'rejection'"//NL2//&
             SKC_"            This is equivalent to the constrained rejection sampling via partitions formed by bounding objects around the set of live (active) points."//NL2//&
-            SKC_"Note that all values are case-INsensitive and all hyphens (dashes, -) and white-space characters are ignored. The default value for `domainSampler` is '"//spec%domainSampler%def//SKC_"'."
+            SKC_"Note that all values are case-INsensitive and all hyphens (dashes, -) and white-space characters are ignored. The default value for `domainSampler` is `'"//spec%domainSampler%def//SKC_"'`."
             !$omp master
             domainSampler = spec%domainSampler%null
             !$omp end master
@@ -650,7 +650,7 @@ contains
                 &You can think of `liveSampleSize` (the number of live (active) points) as a random meshing of the integration domain of objective function. &
                 &Therefore, a larger `liveSampleSize` means a finer mesh for the integration, thus yielding more accurate results. &
                 &In general, higher-dimensional domains require larger the values specified for `liveSampleSize`. &
-                &The default value for `liveSampleSize` is "//getStr(spec%liveSampleSize%def)//SKC_"."
+                &The default value for `liveSampleSize` is `"//getStr(spec%liveSampleSize%def)//SKC_"`."
             !$omp master
             liveSampleSize = spec%liveSampleSize%null
             !$omp end master
@@ -664,7 +664,7 @@ contains
             SKC_"The simulation specification `tolerance` is a positive scalar of type `real` of the highest precision available within the ParaMonte library &
                 &representing the threshold below which the integration of the objective function by the "//spec%method%val//" sampler is assumed to have converged. &
                 &Typical values are around `0.1 - 1`. Avoid setting this number to extremely tiny values on the order of `1e-6` or smaller, otherwise the integration &
-                &result is not guaranteed to converge and the simulation might never end. The default value for `tolerance` is "//getStr(spec%tolerance%def)//SKC_"."
+                &result is not guaranteed to converge and the simulation might never end. The default value for `tolerance` is `"//getStr(spec%tolerance%def)//SKC_"`."
             !$omp master
             call setNAN(tolerance)
             !$omp end master

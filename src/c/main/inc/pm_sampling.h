@@ -64,7 +64,7 @@
 ///                             that contains either,
 ///                             <ol>
 ///                                 <li>    the path to an external input file containing the namelist group of ParaDRAM sampler specifications
-///                                         as outlined in the corresponding page of [ParaMonte library cross-language documentation website](\pmdoc).<br>
+///                                         as outlined in the corresponding page of [ParaMonte library generic documentation website](\pmdoc_usage_sampling/paradram/specifications/).<br>
 ///                                 <li>    the namelist group of ParaDRAM sampler specifications as the can appear in an external input specification file.<br>
 ///                             </ol>
 ///                             While all input simulation specifications are optional, it is highly recommended to pay
@@ -96,7 +96,7 @@
 ///
 /// \example{mvn}
 /// \include{lineno} example/pm_sampling/mvn/main.c
-/// \inputnml{mvn, input.nml}
+/// \inputfile{mvn, input.nml, example specifications namelist input file}
 /// \include{lineno} example/pm_sampling/mvn/input.nml
 /// \cmakefile{mvn}
 /// \include{lineno} example/pm_sampling/mvn/CMakeLists.txt
@@ -110,8 +110,8 @@
 ///
 /// \example{himmelblau}
 /// \include{lineno} example/pm_sampling/himmelblau/main.c
-/// \inputnml{mvn, input.nml}
-/// \include{lineno} example/pm_sampling/mvn/input.nml
+/// \inputfile{himmelblau, input.nml, example specifications namelist input file}
+/// \include{lineno} example/pm_sampling/himmelblau/input.nml
 /// \cmakefile{himmelblau}
 /// \include{lineno} example/pm_sampling/himmelblau/CMakeLists.txt
 /// \cmakerun{himmelblau}

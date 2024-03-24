@@ -439,10 +439,6 @@ contains
         !>
         !>  \note
         !>  Other than the call to `warn%show()`, this procedure is `pure`.<br>
-        !>
-        !>  \remark
-        !>  For information on the meaning of `adaptationMeasure`, see the paper by Shahmoradi and Bagheri, 2020, whose PDF is available at:
-        !>  [https://www.cdslab.org/paramonte/notes/overview/preface/#the-paradram-sampler](https://www.cdslab.org/paramonte/notes/overview/preface/#the-paradram-sampler)
         subroutine setProposalAdapted(spec, proposal, sampleState, sampleWeight, adaptationIsGreedy, meanAccRateSinceStart, adaptationSucceeded, adaptationMeasure, err)
             use pm_sampleMean, only: setMean
             use pm_matrixTrace, only: getMatMulTraceLog

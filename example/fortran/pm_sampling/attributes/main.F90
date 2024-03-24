@@ -29,7 +29,7 @@ contains
         call spec%disp%show("example/fortran/pm_sampling/attributes/main.F90 example script.", bmsize = 0_IK)
         call spec%disp%show("{% endcomment %}")
 
-        call spec%disp%show("## Basic specifications")
+        call spec%disp%show("## Base specifications")
 
         call spec%disp%show("### description")
         call spec%disp%show(getStrWrapped(spec%description%desc, width = 99999_IK))

@@ -248,7 +248,7 @@ contains
                 &The input value for `outputChainSize` must be a positive integer of a minimum value `ndim + 1` or larger, &
                 &where `ndim` is the number of dimensions of the domain of the objective function to be sampled. &
                 &Note that `outputChainSize` is different from and always smaller than the length of the constructed MCMC chain. &
-                &The default value is `outputChainSize = "//getStr(spec%outputChainSize%def)//SKC_"`."
+                &The default value for `outputChainSize` is `"//getStr(spec%outputChainSize%def)//SKC_"`."
             !!$omp master
             outputChainSize = spec%outputChainSize%null
             !!$omp end master
@@ -286,8 +286,8 @@ contains
                      &from the target objective function has finally been obtained."//NL2//&
             SKC_"Note that to obtain i.i.d. samples from a multidimensional chain, the sampler will, by default, use the maximum of &
                 &integrated Autocorrelation (ACT) among all chain dimensions to refine the chain. &
-                &Note that the value specified for `outputSampleRefinementCount` is used only when the variable outputSampleSize < 0, &
-                &otherwise, it will be ignored. The default value is `outputSampleRefinementCount = "//getStr(spec%outputSampleRefinementCount%def)//SKC_"`."
+                &Note that the value specified for `outputSampleRefinementCount` is used only when the variable `outputSampleSize < 0`, &
+                &otherwise, it will be ignored. The default value for `outputSampleRefinementCount` is `"//getStr(spec%outputSampleRefinementCount%def)//SKC_"`."
             !!$omp master
             outputSampleRefinementCount = spec%outputSampleRefinementCount%null
             !!$omp end master
@@ -298,16 +298,16 @@ contains
             spec%outputSampleRefinementMethod%def = spec%outputSampleRefinementMethod%batchMeans
             spec%outputSampleRefinementMethod%null = repeat(SUB, len(outputSampleRefinementMethod, IK))
             spec%outputSampleRefinementMethod%desc = &
-            SKC_"The simulation specification `outputSampleRefinementMethod` is a scalar string of maximum length "//getStr(len(outputSampleRefinementMethod, IK))//&
-            SKC_" representing the method of computing the (integrated) AutoCorrelation Time (ACT) to be used in the simulation for refining &
+            SKC_"The simulation specification `outputSampleRefinementMethod` is a scalar string of maximum length `"//getStr(len(outputSampleRefinementMethod, IK))//&
+            SKC_"` representing the method of computing the (integrated) AutoCorrelation Time (ACT) to be used in the simulation for refining &
                 &the final output MCMC chain and sample. If specified within an external input file, it must be either singly or doubly quoted. &
                 &Methods that are currently supported include:"//NL2//&
             SKC_"+  `outputSampleRefinementMethod = '"//spec%outputSampleRefinementMethod%batchMeans//SKC_"'`"//NL2//&
-            SKC_"    This method of computing the integrated Autocorrelation Time is based on the approach described in &
-                     &**SCHMEISER, B., 1982, Batch size effects in the analysis of simulation output, Oper. Res. 30 556-568**. The &
-                     &batch sizes in the BatchMeans method are chosen to be `int(N^(2/3))`, where `N` is the length of the MCMC chain. &
-                     &As long as the batch size is larger than the ACT of the chain and there are significantly more than 10 &
-                     &batches, the BatchMeans method will provide reliable estimates of the ACT. &
+            SKC_"    This method of computing the integrated Autocorrelation Time is based on the approach described in"//NL2//&
+            SKC_"        SCHMEISER, B., 1982, Batch size effects in the analysis of simulation output, Oper. Res. 30 556-568."//NL2//&
+            SKC_"    The batch sizes in the BatchMeans method are chosen to be `int(N^(2/3))`, where `N` is the length of the MCMC chain. &
+                     &As long as the batch size is larger than the ACT of the chain and there are significantly more than `10` batches, &
+                     &the BatchMeans method will provide reliable estimates of the ACT. &
                      &Note that the refinement strategy involves two separate phases of sample decorrelation. At the first stage, &
                      &the Markov chain is decorrelated recursively (for as long as needed) based on the ACT of its compact format, &
                      &where only the uniquely visited states are kept in the (compact) chain. Once the Markov chain is refined &
@@ -332,9 +332,9 @@ contains
             SKC_"or, "//NL2//&
             SKC_"+   `outputSampleRefinementMethod = '"//spec%outputSampleRefinementMethod%batchMeans//SKC_"-compact-max'`"//NL2//&
             SKC_"or, "//NL2//&
-            SKC_"    `outputSampleRefinementMethod = '"//spec%outputSampleRefinementMethod%batchMeans//SKC_"-max-compact'`"//NL2//&
+            SKC_"+   `outputSampleRefinementMethod = '"//spec%outputSampleRefinementMethod%batchMeans//SKC_"-max-compact'`"//NL2//&
             SKC_"Note that the specified `outputSampleRefinementCount` is used only when the condition `outputSampleSize < 0` holds. &
-                &Otherwise, it is ignored. The default value is `outputSampleRefinementMethod = '"//spec%outputSampleRefinementMethod%def//SKC_"'`. &
+                &Otherwise, it is ignored. The default value for `outputSampleRefinementMethod` is `'"//spec%outputSampleRefinementMethod%def//SKC_"'`. &
                 &Note that the input values are case-INsensitive and white-space characters are ignored."
             !!$omp master
             outputSampleRefinementMethod = spec%outputSampleRefinementMethod%null
@@ -350,7 +350,7 @@ contains
             spec%proposal%def = spec%proposal%normal
             spec%proposal%null = repeat(SUB, len(proposal, IK))
             spec%proposal%desc = &
-            SKC_"The simulation specification `proposal` is a scalar string of maximum length "//getStr(len(proposal, IK))//SKC_" containing &
+            SKC_"The simulation specification `proposal` is a scalar string of maximum length `"//getStr(len(proposal, IK))//SKC_"` containing &
                 &the name of the proposal distribution for the MCMC sampler. When specified from within an external input file, it must &
                 &be singly or doubly quoted. Options that are currently supported include:"//NL2//&
             SKC_"+   `proposal = '"//spec%proposal%normal//SKC_"'`"//NL2//&
@@ -359,7 +359,7 @@ contains
             SKC_"+   `proposal = '"//spec%proposal%uniform//SKC_"'`"//NL2//&
             SKC_"    The proposals will be drawn uniformly from within a ndim-dimensional ellipsoid whose covariance matrix &
                      &and scale are initialized by the user and optionally adaptively updated throughout the simulation."//NL2//&
-            SKC_"The default value is `'"//spec%proposal%def//SKC_"'`."
+            SKC_"The default value for `proposal` is `'"//spec%proposal%def//SKC_"'`."
             !!$omp master
             proposal = spec%proposal%null
             !!$omp end master
@@ -379,7 +379,7 @@ contains
                 &If the covariance matrix is specified as input to the sampler, any input values for `proposalCorMat`, &
                 &and `proposalStdVec` will be automatically ignored. Specifying `proposalCorMat` along with `proposalStdVec` is especially &
                 &useful when obtaining the best-guess covariance matrix is not trivial. &
-                &The default value of `proposalCorMat` is a square Identity matrix of rank `ndim`."
+                &The default value for `proposalCorMat` is a square Identity matrix of rank `ndim`."
             !!$omp master
             if (allocated(proposalCorMat)) deallocate(proposalCorMat)
             allocate(proposalCorMat(ndim, ndim))
@@ -405,7 +405,7 @@ contains
                 &If the simulation specification `outputStatus` is set to ""extend"" and a successful prior simulation run exists, &
                 &then `proposalCovMat` will be set to the covariance matrix of the output sample from the most recent simulation run. &
                 &In this case, the computed `proposalCovMat` will override any user-specified value. &
-                &Otherwise, the default value of `proposalCovMat` is a square Identity matrix of rank `ndim`."
+                &Otherwise, the default value for `proposalCovMat` is a square Identity matrix of rank `ndim`."
             !!$omp master
             if (allocated(proposalCovMat)) deallocate(proposalCovMat)
             allocate(proposalCovMat(ndim, ndim))
@@ -419,12 +419,12 @@ contains
             spec%proposalScaleFactor%valdef = 2.38_RKC / sqrt(real(ndim, RKC)) ! Gelman, Roberts, Gilks (1996): Efficient Metropolis Jumping Rules.
             spec%proposalScaleFactor%null = repeat(SUB, len(proposalScaleFactor, IK))
             spec%proposalScaleFactor%desc = &
-            SKC_"The simulation specification `proposalScaleFactor` is a scalar string of maximum length "//getStr(len(proposalScaleFactor, IK))//SKC_" &
+            SKC_"The simulation specification `proposalScaleFactor` is a scalar string of maximum length `"//getStr(len(proposalScaleFactor, IK))//SKC_"` &
                 &containing a positive real-valued number whose square will be multiplied with the covariance matrix of the proposal distribution &
                 &of the MCMC sampler to shrink or enlarge it. In other words, the proposal distribution will be scaled in every direction &
-                &by the specified numeric value of `proposalScaleFactor`. It can also be given in units of the string keyword 'gelman' &
+                &by the specified numeric value of `proposalScaleFactor`. It can also be given in units of the string keyword `'gelman'` &
                 &(which is case-INsensitive) after the paper:"//NL2//&
-            SKC_"    Gelman, Roberts, and Gilks (1996): 'Efficient Metropolis Jumping Rules'."//NL2//&
+            SKC_"    Gelman, Roberts, and Gilks (1996), Efficient Metropolis Jumping Rules."//NL2//&
             SKC_"The paper finds that the optimal scaling factor for a Multivariate Gaussian proposal distribution for the Metropolis-Hastings &
                 &Markov Chain Monte Carlo sampling of a target Multivariate Normal Distribution of dimension `ndim` is given by:"//NL2//&
             SKC_"    proposalScaleFactor = 2.38 / sqrt(ndim)  ,  in the limit of ndim -> Infinity."//NL2//&
@@ -448,7 +448,7 @@ contains
                 &The presence of other mathematical symbols or multiple appearances of the product symbol will lead to a simulation crash. &
                 &Also, note that the prescription of an acceptance range specified by the input variable `targetAcceptanceRate` will lead &
                 &to dynamic modification of the initial input value of `proposalScaleFactor` throughout sampling for `proposalAdaptationCount` times. &
-                &The default string value for `proposalScaleFactor` is ""gelman"" (for all proposal distributions), &
+                &The default string value for `proposalScaleFactor` is `""gelman""` (for all proposal distributions), &
                 &which is subsequently converted to `2.38 / sqrt(ndim)`."
             !!$omp master
             proposalScaleFactor = spec%proposalScaleFactor%null
@@ -530,7 +530,7 @@ contains
             SKC_"+   `proposalStartDomainCubeLimitUpper = 3*-2.5e100`"//NL2//&
             SKC_"    will only set the upper limits on the first, second, and the third dimensions to `-2.5*10**100`, while &
                      &the rest of the upper limits for the missing dimensions will be automatically set to the default value."//NL2//&
-            SKC_"The default values for all elements of proposalStartDomainCubeLimitUpper are &
+            SKC_"The default values for all elements of `proposalStartDomainCubeLimitUpper` are &
                 &taken from the corresponding values in the input variable `domainCubeLimitUpper`."
             !!$omp master
             call setResized(proposalStartDomainCubeLimitUpper, ndim)

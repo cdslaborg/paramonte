@@ -200,13 +200,13 @@
 /// +   **Doxygen custom command orderings**.
 ///
 ///     +   The Doxygen tag `\brief` must always be the first line of the documentation of modules, types, and procedures.<br>
-///         Example: [pm_array](@ref pm_array).<br>
+///         Example: [pm_sampling](@ref pm_sampling).<br>
 ///     +   The Doxygen tag `\details`, if it exists, must always immediately follow the Doxygen tag `\brief`.<br>
-///         Example: [pm_array](@ref pm_array).<br>
+///         Example: [pm_sampling](@ref pm_sampling).<br>
 ///     +   The Doxygen tag `\param`, if any number of it exists, must always immediately follow the Doxygen tag `\brief` (or `\details` if it exists).<br>
-///         Example: [getMean()](@ref pm_sampleMean::getMean).<br>
+///         Example: [runParaDRAMD()](@ref pm_sampling::runParaDRAMD).<br>
 ///     +   The Doxygen tag `\return`, must be exclusively used to indicate the return value of functions.<br>
-///         If it exists, it must appear immediately after the set of `\param` tags. Example: [getMean()](@ref pm_sampleMean::getMean).<br>
+///         If it exists, it must appear immediately after the set of `\param` tags. Example: [runParaDRAMD()](@ref pm_sampling::runParaDRAMD).<br>
 ///     +   If a generic interface is being documented, the ParaMonte custom command <tt>\\interface</tt> must appear immediately
 ///         after the Doxygen `\return`, `\param`, `\details`, or `\brief` tags in the specified order, if any exists.<br>
 ///     +   The Doxygen tag `\warning`, if any number of it exists, must immediately follow the Doxygen tag `\return` if it exists,
@@ -290,7 +290,6 @@
 ///             To print a backslash character to the output one should escape it via `\\`.<br>
 ///         +   Also, the use of the percentage symbol `%` requires special care in some instances.<br>
 ///             This is particularly important when defining Windows environment variables that should typically be enclosed with percentage character.<br>
-///             See the [pm_sysPath](@ref pm_sysPath) for instances of such definitions and how they are handled.<br>
 ///     <br>
 ///
 ///     For more information, see [the relevant page on Doxygen documentation website](https://www.doxygen.nl/manual/commands.html#cmdfdollar).
@@ -301,7 +300,6 @@
 ///     \example{ParaMonteLangDocumentationGuidelines}
 ///     The following is an example documentation for a procedure:
 ///     \verbatim
-///
 ///
 /// \ingroup pm_sampling
 ///
@@ -335,7 +333,7 @@
 ///                             that contains either,
 ///                             <ol>
 ///                                 <li>    the path to an external input file containing the namelist group of ParaDRAM sampler specifications
-///                                         as outlined in the corresponding page of [ParaMonte library cross-language documentation website](\pmdoc).<br>
+///                                         as outlined in the corresponding page of [ParaMonte library generic documentation website](\pmdoc_usage_sampling/paradram/specifications/).<br>
 ///                                 <li>    the namelist group of ParaDRAM sampler specifications as the can appear in an external input specification file.<br>
 ///                             </ol>
 ///                             While all input simulation specifications are optional, it is highly recommended to pay
@@ -367,7 +365,7 @@
 ///
 /// \example{mvn}
 /// \include{lineno} example/pm_sampling/mvn/main.c
-/// \inputnml{mvn, input.nml}
+/// \inputfile{mvn, input.nml, example specifications namelist input file}
 /// \include{lineno} example/pm_sampling/mvn/input.nml
 /// \cmakefile{mvn}
 /// \include{lineno} example/pm_sampling/mvn/CMakeLists.txt
@@ -381,7 +379,7 @@
 ///
 /// \example{himmelblau}
 /// \include{lineno} example/pm_sampling/himmelblau/main.c
-/// \inputnml{mvn, input.nml}
+/// \inputfile{mvn, input.nml, example specifications namelist input file}
 /// \include{lineno} example/pm_sampling/mvn/input.nml
 /// \cmakefile{himmelblau}
 /// \include{lineno} example/pm_sampling/himmelblau/CMakeLists.txt
@@ -426,7 +424,7 @@
 ///
 ///     \endverbatim
 ///     <br>
-///     The above example documentation snippet will generate [an HTML similar to this documentation](@ref pm_sampleVar::getVar).<br>
+///     The above example documentation snippet will generate [an HTML similar to this documentation](@ref runParaDRAM).<br>
 ///     Note the lack of an empty line among the commands that immediately follow <tt>\\example</tt>.<br>
 ///     This is essential to keep the entire example section in the same paragraph.
 ///

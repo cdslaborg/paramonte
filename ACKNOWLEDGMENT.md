@@ -109,4 +109,4 @@ If you use ParaMonte, please acknowledge it by citing the ParaMonte library's ma
   
 <br>
   
-For more information, visit [the ParaMonte library homepage](https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work).  
+For more information, visit [the ParaMonte library homepage](https://www.cdslab.org/paramonte/generic/latest/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work).  

@@ -591,7 +591,7 @@ contains
            !spec%ndim%sqpndim = ndim**2 + ndim
             spec%ndim%str = getStr(ndim)
             spec%ndim%desc = &
-            SKC_"The simulation specification `ndim` is a positive scalar of type `integer` of kind 32bit, &
+            SKC_"The simulation specification `ndim` is a positive scalar of type `integer` of kind 32-bit, &
                 &representing the number of dimensions of the domain of the objective function. &
                 &Unlike most other simulation specifications, `ndim` cannot be set from within an external input function &
                 &and the user must always specify it along with the objective function at the time of calling the exploration routine &
@@ -664,13 +664,13 @@ contains
             spec%description%null = repeat(SUB, len(description, IK))
             spec%description%def = UNDEFINED
             spec%description%desc = &
-            SKC_"The simulation specification `description` is a scalar string of maximum length "//getStr(len(description, IK))//&
-            SKC_" characters containing general information about the simulation to be performed. It has no effects &
+            SKC_"The simulation specification `description` is a scalar string of maximum length `"//getStr(len(description, IK))//&
+            SKC_"` characters containing general information about the simulation to be performed. It has no effects &
             &on the simulation and serves only as a general description for future reference. &
             &The sampler parser automatically recognizes the C-style `'\n'` escape sequence as the new-line character &
             &and `'\\'` as the backslash character `'\'` if used in the contents of `description`. For example, `'\\n'` &
             &will be converted to `'\n'` on the output, while `'\n'` translates to the new-line character. &
-            &The default value for description is `'"//spec%description%def//SKC_"'`."
+            &The default value for `description` is `'"//spec%description%def//SKC_"'`."
             !$omp master
             description = spec%description%null
             !$omp end master
@@ -686,7 +686,7 @@ contains
             spec%domain%null   = repeat(SUB, len(domain, IK))
             spec%domain%def    = spec%domain%cube
             spec%domain%desc   = &
-            SKC_"The simulation specification `domain` is a scalar string of maximum length "//getStr(len(domain, IK))//SKC_", &
+            SKC_"The simulation specification `domain` is a scalar string of maximum length `"//getStr(len(domain, IK))//SKC_"`, &
                 &containing the model's name that defines the objective function's domain. &
                 &The string value must be enclosed by either single or double quotation marks when provided as input. &
                 &The following domain models are currently supported:"//NL2//&
@@ -700,7 +700,7 @@ contains
                      &values for the `domainBallCorMat` and `domainBallStdVec` simulation specifications. Note that a spherical &
                      &domain can be defined by dropping the `domainBallCovMat` and `domainBallCorMat` specifications from the input &
                      &and setting all elements of `domainBallStdVec` to the desired radius of the domain."//NL2//&
-            SKC_"The default value is an infinite cube in the case of the ParaDRAM and ParaDISE samplers, and a unit-sized cube for the ParaNest sampler."
+            SKC_"The default value for `domain` is an infinite cube in the case of the ParaDRAM and ParaDISE samplers, and a unit-sized cube for the ParaNest sampler."
             !$omp master
             domain = spec%domain%null
             !$omp end master
@@ -722,7 +722,7 @@ contains
                 &Any element of `domainAxisName` not set by the user will automatically be assigned a default name. &
                 &If all elements of `domainAxisName` are set to the same value, then a number will be suffixed to each element &
                 &representing the ID of the corresponding dimension of the domain of the density function. &
-                &The default value is '"//spec%domainAxisName%prefix//SKC_"i' where integer `'i'` at the &
+                &The default value for `domainAxisName` is '"//spec%domainAxisName%prefix//SKC_"i' where integer `'i'` at the &
                 &end of the name is replaced by the index of the corresponding domain axis."
             !$omp master
             call setResized(domainAxisName, ndim)
@@ -740,7 +740,7 @@ contains
                 &Together with `domainBallCovMat`, or with `domainBallCorMat` and `domainBallStdVec`, it forms a hyper-ellipsoidal &
                 &or hyper-spherical domain for the ParaMonte samplers. Note that an ellipsoidal/spherical domain is used if only if the &
                 &input simulation specification `domain` is set to 'ellipsoid' or 'sphere' or `ball`. Otherwise, a cubical domain will be used. &
-                &The default value is the origin (i.e., a zero-valued vector of size `ndim`)."
+                &The default value for `domainBallCenter` is the origin (i.e., a zero-valued vector of size `ndim`)."
             !$omp master
             call setResized(domainBallCenter, ndim)
             call setNAN(domainBallCenter(1 : ndim))
@@ -758,7 +758,7 @@ contains
                 &for `domainBallCorMat` and `domainBallStdVec` will be automatically ignored. The input specification `domainBallCorMat` &
                 &along with `proposalStdVec` are especially useful when covariance matrix computation is non-trivial. &
                 &When passed to the sampler from within an external input sampler specification file, any missing element of `domainBallCovMat` &
-                &will be set to the appropriate default value. The default value of `domainBallCorMat` is an `ndim`-by-`ndim` Identity matrix."
+                &will be set to the appropriate default value. The default value for `domainBallCorMat` is an `ndim`-by-`ndim` Identity matrix."
             !$omp master
             call setResized(domainBallCorMat, [ndim, ndim])
             call setNAN(domainBallCorMat)
@@ -782,10 +782,10 @@ contains
                 &specifications `domainBallCorMat` and `domainBallStdVec` will be automatically ignored. When set from inside an external &
                 &input ParaMonte specification file, any missing element of `domainBallCovMat` will be set to the appropriate default value. &
                 &To specify an ndim-dimensional spherical domain, set `domainBallCovMat` to the identity matrix whose diagonal elements are &
-                &radius-squared of the desired hyper-sphere (n-ball). The default value of `domainBallCovMat` is an ndim-by-ndim Identity matrix &
+                &radius-squared of the desired hyper-sphere (n-ball). The default value for `domainBallCovMat` is an `ndim`-by-`ndim` Identity matrix &
                 &for simulations (such as the ParaNest integrator) that require a finite domain and an `ndim`-by-`ndim` diagonal matrix whose diagonals &
                 &are practically set to infinity for simulations that do not require a finite domain (such as the ParaDRAM and ParaDISE MCMC samplers)."//NL2//&
-            SKC_"NAMING CLARIFICATION: The use of `CovMat` in the name of this simulation specification is theoretically incorrect as the domain &
+            SKC_"> **Note**: The use of `CovMat` in the name of this simulation specification is theoretically incorrect as the domain &
                 &of the objective function is not a distribution. Even if it is considered a hyper-ellipsoidal uniform distribution &
                 &this specification would still not represent its covariance matrix because it represents the Gramian matrix. &
                 &However, the decision was made to name this specification as `CovMat` because of its nice fit to the rest of &
@@ -895,7 +895,7 @@ contains
                 &When out-of-domain sampling happens frequently, it strongly indicates something fundamentally wrong in the simulation. &
                 &It is, therefore, important to closely inspect and monitor for frequent out-of-domain samplings. &
                 &This can be done by setting `domainErrCount` to an appropriate value determined by the user. &
-                &The default value is `"//getStr(spec%domainErrCount%def)//SKC_"`."
+                &The default value for `domainErrCount` is `"//getStr(spec%domainErrCount%def)//SKC_"`."
             !$omp master
             domainErrCount = spec%domainErrCount%null
             !$omp end master
@@ -912,7 +912,7 @@ contains
                 &When out-of-domain sampling happens frequently, it strongly indicates something fundamentally wrong in the simulation. &
                 &It is, therefore, important to closely inspect and monitor for frequent out-of-domain samplings. &
                 &This can be done by setting `domainErrCountMax` to an appropriate value determined by the user. &
-                &The default value is `"//getStr(spec%domainErrCountMax%def)//SKC_"`."
+                &The default value for `domainErrCountMax` is `"//getStr(spec%domainErrCountMax%def)//SKC_"`."
             !$omp master
             domainErrCountMax = spec%domainErrCountMax%null
             !$omp end master
@@ -934,7 +934,7 @@ contains
             &(i.e., prioritizing the input file values to input-procedure-argument values) is available only in the Fortran &
             &interface to the ParaMonte library routines. It can be set exclusively within an external input file, and its &
             &value is ignored in non-Fortran programming language simulation environments. &
-            &The default value is `"//getStr(spec%inputFileHasPriority%def)//SKC_"`."
+            &The default value for `inputFileHasPriority` is `"//getStr(spec%inputFileHasPriority%def)//SKC_"`."
             !$omp master
             inputFileHasPriority = spec%inputFileHasPriority%def
             !$omp end master
@@ -951,7 +951,7 @@ contains
             spec%outputChainFileFormat%def = spec%outputChainFileFormat%compact
             spec%outputChainFileFormat%null = repeat(SUB, len(outputChainFileFormat, IK))
             spec%outputChainFileFormat%desc = &
-            SKC_"The simulation specification `outputChainFileFormat` is a scalar string of maximum length "//getStr(len(outputChainFileFormat, IK))//SKC_" characters &
+            SKC_"The simulation specification `outputChainFileFormat` is a scalar string of maximum length `"//getStr(len(outputChainFileFormat, IK))//SKC_"` characters &
                 &representing the sampler output chain file(s) format. If specified within an external input file, it must be singly or doubly quoted. &
                 &Three values are possible:"//NL2//&
             SKC_"+   `outputChainFileFormat = 'compact'` or `outputChainFileFormat = 'ascii'`"//NL2//&
@@ -973,7 +973,7 @@ contains
                      &automatically output in the compact format (but as binary) to ensure the production of the smallest possible output chain file. &
                      &Binary chain files will have the "//filext%binary//SKC_" file extensions. Use the binary format if you need full accuracy &
                      &representation of the output values while having the smallest-size output chain file in the shortest time possible."//NL2//&
-            SKC_"The default value is `outputChainFileFormat = '"//spec%outputChainFileFormat%def//SKC_"'` as it provides a reasonable trade-off &
+            SKC_"The default value for `outputChainFileFormat` is `'"//spec%outputChainFileFormat%def//SKC_"'` as it provides a reasonable trade-off &
                 &between speed and output file size for the specified simulation task. The input values are case-INsensitive."
             !$omp master
             outputChainFileFormat = spec%outputChainFileFormat%null
@@ -990,7 +990,7 @@ contains
                 &If it is set to zero, the sampler will ensure to set the width of each output element &
                 &to the minimum possible width without losing the requested output precision. In other words, &
                 &setting `outputColumnWidth = 0` will result in the smallest-size for the formatted output files that are in ASCII format. &
-                &The default value is `"//getStr(spec%outputColumnWidth%def)//SKC_"`."
+                &The default value for `outputColumnWidth` is `"//getStr(spec%outputColumnWidth%def)//SKC_"`."
             !$omp master
             outputColumnWidth = spec%outputColumnWidth%null
             !$omp end master
@@ -1039,7 +1039,7 @@ contains
 #endif
             spec%outputFileName%null = repeat(SUB, len(outputFileName, IK))
             spec%outputFileName%desc = &
-            SKC_"The simulation specification `outputFileName` is a scalar string of maximum length "//getStr(len(outputFileName, IK))//SKC_" &
+            SKC_"The simulation specification `outputFileName` is a scalar string of maximum length `"//getStr(len(outputFileName, IK))//SKC_"` &
                 &containing the path and the base of the filename for the sampler output files. If not provided by the user, &
                 &the default `outputFileName` is constructed from the current date and time:"//NL2//&
             SKC_"    sampler_yyyymmdd_hhmmss_mmm"//NL2//&
@@ -1075,7 +1075,7 @@ contains
                 &(or to larger values) if full reproducibility of the simulation is needed in the future. However, keep in mind that higher &
                 &precisions result in larger-size output files. This variable is ignored for binary output (if any occurs during the simulation). &
                 &The binary output files preserve the full precision of numbers. &
-                &The default value depends on the `real` precision, e.g., `"//getStr(spec%outputPrecision%def)//SKC_"`."
+                &The default value for `outputPrecision` depends on the `real` precision, e.g., `"//getStr(spec%outputPrecision%def)//SKC_"`."
             !$omp master
             outputPrecision = spec%outputPrecision%null
             !$omp end master
@@ -1088,7 +1088,7 @@ contains
             spec%outputReportPeriod%desc = &
             SKC_"The simulation specification `outputReportPeriod` is a positive-valued scalar of type `integer`. &
                 &Every `outputReportPeriod` calls to the objective function, the sampling progress will be reported to the progress file. &
-                &The default value is `"//getStr(spec%outputReportPeriod%def)//SKC_"`."
+                &The default value for `outputReportPeriod` is `"//getStr(spec%outputReportPeriod%def)//SKC_"`."
             !$omp master
             outputReportPeriod = spec%outputReportPeriod%null
             !$omp end master
@@ -1103,7 +1103,7 @@ contains
             spec%outputRestartFileFormat%def = spec%outputRestartFileFormat%binary
             spec%outputRestartFileFormat%null = repeat(SUB, len(outputRestartFileFormat, IK))
             spec%outputRestartFileFormat%desc = &
-            SKC_"The simulation specification `outputRestartFileFormat` is a scalar string of maximum length "//getStr(len(outputRestartFileFormat, IK))//SKC_" &
+            SKC_"The simulation specification `outputRestartFileFormat` is a scalar string of maximum length `"//getStr(len(outputRestartFileFormat, IK))//SKC_"` &
                 &representing the output restart file(s) format used to restart an interrupted simulation. &
                 &Two values are possible:"//NL2//&
             SKC_"+   `outputRestartFileFormat = '"//spec%outputRestartFileFormat%binary//SKC_"'`"//NL2//&
@@ -1117,7 +1117,7 @@ contains
                      &restart file generation, compared to the binary format. Therefore, its usage should be limited to situations where &
                      &the user wants to track the dynamics of simulation specifications throughout the simulation time. &
                      &ASCII restart file(s) will have the `"//filext%ascii//SKC_"` file extensions."//NL2//&
-            SKC_"The default value is `outputRestartFileFormat = '"//spec%outputRestartFileFormat%def//SKC_"'`. &
+            SKC_"The default value for `outputRestartFileFormat` is `'"//spec%outputRestartFileFormat%def//SKC_"'`. &
                 &Note that the input values are case-INsensitive."
             !$omp master
             outputRestartFileFormat = spec%outputRestartFileFormat%null
@@ -1148,7 +1148,7 @@ contains
             SKC_"    +  `outputSampleSize = 1000` yields a `1000`-points sample from the objective function."//NL2//&
            !SKC_"    outputSampleSize = 0,"//NL2//&
            !SKC_"            then, no sample file will be generated."//NL2//&
-            SKC_"The default value is `outputSampleSize = "//getStr(spec%outputSampleSize%def)//SKC_"`."
+            SKC_"The default value for `outputSampleSize` is `"//getStr(spec%outputSampleSize%def)//SKC_"`."
             !$omp master
             outputSampleSize = spec%outputSampleSize%null
             !$omp end master
@@ -1159,7 +1159,7 @@ contains
             spec%outputSeparator%null = repeat(SUB, len(outputSeparator, IK))
             spec%outputSeparator%def = SKC_","
             spec%outputSeparator%desc = &
-            SKC_"The simulation specification `outputSeparator` is a scalar string of maximum length "//getStr(len(outputSeparator, IK))//SKC_" &
+            SKC_"The simulation specification `outputSeparator` is a scalar string of maximum length `"//getStr(len(outputSeparator, IK))//SKC_"` &
                 &containing a sequence of one or more allowed characters used to separate fields within records of tabular contents &
                 &in the simulation output files. Digits, the period symbol `'.'`, and the addition and subtraction operators: `'+'` and `'-'`) are not allowed. &
                 &To output in Comma-Separated-Values (CSV) format, set `outputSeparator = ','`. If the input value is not provided, &
@@ -1167,7 +1167,7 @@ contains
                 &space character, '"//spec%outputSeparator%def//SKC_"' will be used when input `outputColumnWidth > 0`. &
                 &A value of `'\t'` is interpreted as the TAB character. To avoid this interpretation, &
                 &use '\\\t' to yield '\t' without being interpreted as the TAB character. &
-                &The default value is `'"//spec%outputSeparator%def//SKC_"'`."
+                &The default value for `outputSeparator` is `'"//spec%outputSeparator%def//SKC_"'`."
             !$omp master
             outputSeparator = spec%outputSeparator%null
             !$omp end master
@@ -1196,7 +1196,7 @@ contains
                      &Use this option if the simulations are expected to be short and straightforward &
                      &or there is a limit on the amount of text allowed for display in standard output. &
                      &This situation happens, for example, in online code coverage and CI platforms."//NL2//&
-            SKC_"The default value is `outputSplashMode = 'normal'` in compiled programming language environments &
+            SKC_"The default value for `outputSplashMode` is `'normal'` in compiled programming language environments &
                 &and `'quiet'` in dynamic programming language environments. Note that the input values are case-INsensitive."
             !$omp master
             outputSplashMode = spec%outputSplashMode%null
@@ -1211,7 +1211,7 @@ contains
             spec%outputStatus%def = SKC_"extend"
             spec%outputStatus%null = repeat(SUB, len(outputStatus, IK))
             spec%outputStatus%desc = &
-            SKC_"The simulation specification `outputStatus` is a scalar string of maximum "//getStr(len(outputStatus, IK))//SKC_" characters, &
+            SKC_"The simulation specification `outputStatus` is a scalar string of maximum `"//getStr(len(outputStatus, IK))//SKC_"` characters, &
                 &whose value describes the protocol for dealing with and handling the simulation output files concerning potentially existing past simulations. &
                 &The string value must be enclosed by single or double quotation marks when provided as input in an external input file. &
                 &Three values are possible:"//NL2//&
@@ -1243,7 +1243,7 @@ contains
                      &completion status. This option is effectively equivalent to deleting the set of output files from the last simulation &
                      &run and rerunning the simulation with the default value 'extend' for the specification `outputStatus`. &
                      &Use this option for quick tests or small exploratory problems where lots of quick runs must be performed."//NL2//&
-            SKC_"The default value is `outputStatus = '"//spec%outputStatus%def//SKC_"'`. The input values are case-INsensitive."
+            SKC_"The default value for `outputStatus` is `'"//spec%outputStatus%def//SKC_"'`. The input values are case-INsensitive."
             !$omp master
             outputStatus = spec%outputStatus%null
             !$omp end master
@@ -1295,7 +1295,7 @@ contains
                      &This is the default for all parallelism paradigms supported by the ParaMonte library and the only option for shared memory parallelism."//NL2//&
             SKC_"Note that in serial mode, there is no parallelism. Therefore, this option does not affect non-parallel simulations and ignores its value. &
                 &The serial mode is equivalent to either of the parallelism methods with only one simulation image (processor, core, or thread). &
-                &The default value is `parallelism = '"//spec%parallelism%def//SKC_"'`. &
+                &The default value for `parallelism` is `'"//spec%parallelism%def//SKC_"'`. &
                 &Note that the input values are case-INsensitive and whitespace characters are ignored."
             !$omp master
             parallelism = spec%parallelism%null
@@ -1318,7 +1318,7 @@ contains
                 &If you intend the ParaMonte samplers or other MPI-enabled ParaMonte routines repeatedly in one run &
                 &then you will have to `parallelismMpiFinalizeEnabled` to the logical `false` value to prevent early finalization of the MPI-library. &
                 &Note that in non-MPI-enabled simulations, such as serial and Coarray-enabled simulations, &
-                &the value of this variable is completely ignored. The default value is `"//getStr(spec%parallelismMpiFinalizeEnabled%def)//SKC_"`."
+                &the value of this variable is completely ignored. The default value for `parallelismMpiFinalizeEnabled` is `"//getStr(spec%parallelismMpiFinalizeEnabled%def)//SKC_"`."
             !$omp master
             parallelismMpiFinalizeEnabled = spec%parallelismMpiFinalizeEnabled%def
             !$omp end master
@@ -1329,7 +1329,7 @@ contains
             spec%parallelismNumThread%null = -huge(spec%parallelismNumThread%null)
             spec%parallelismNumThread%def = 0_IK
             spec%parallelismNumThread%desc = &
-            SKC_"The simulation specification `parallelismNumThread` is a non-negative scalar of type `integer` of kind 32bit, &
+            SKC_"The simulation specification `parallelismNumThread` is a non-negative scalar of type `integer` of kind 32-bit, &
                 &representing the number of parallel user-specified objective function evaluations in a Fork-Join shared-memory parallelism. &
                 &Such parallelism paradigms include OpenMP-enabled shared-memory parallel simulations in C, C++, and Fortran or shared-memory &
                 &simulations in higher-level programming language environments such as MATLAB, Python, and R. &
@@ -1348,8 +1348,8 @@ contains
         !    spec%plang%null = repeat(SUB, len(plang, IK))
         !    spec%plang%def = envname
         !    spec%plang%desc = &
-        !    SKC_"The simulation specification `plang` is a scalar string of maximum length "//getStr(spec%plang%null)//&
-        !    SKC_". It is an internal ParaMonte variable used to provide information about other languages interface with the ParaMonte routines."
+        !    SKC_"The simulation specification `plang` is a scalar string of maximum length `"//getStr(spec%plang%null)//&
+        !    SKC_"`. It is an internal ParaMonte variable used to provide information about other languages interface with the ParaMonte routines."
         !    !$omp master
         !    plang = spec%plang%null
         !    !$omp end master

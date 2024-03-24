@@ -29,11 +29,11 @@
 !>  \image html benchmark/pm_arrayReplace/getReplaced_vs_setReplaced/benchmark.getReplaced_vs_setReplaced.runtime.ratio.png width=1000
 !>  \moralb{getReplaced_vs_setReplaced}
 !>      -#  The procedures under the generic interface [getReplaced](@ref pm_arrayReplace::getReplaced) are functions while
-!>          the procedures under the generic interface [setReplaced](@ref pm_arrayReplace::setReplaced) are subroutines.
-!>          From the benchmark results, it appears that the functional interface performs slightly less efficiently than the subroutine interface.
-!>          Note that this benchmark does not even include the cost of repeated reallcations, that is, the allocation of `Replaced` happen only once in all tests.
+!>          the procedures under the generic interface [setReplaced](@ref pm_arrayReplace::setReplaced) are subroutines.<br>
+!>          From the benchmark results, it appears that the functional interface performs slightly less efficiently than the subroutine interface.<br>
+!>          Note that this benchmark does not even include the cost of repeated reallcations, that is, the allocation of `Replaced` happen only once in all tests.<br>
 !>      -#  Furthermore, the recursive `getReplaced()` implementation with recursive allocations appears to be 3-33 times
-!>          slower than the subroutine implementation, depending on the size of the array within which the pattern is to be replaced.
+!>          slower than the subroutine implementation, depending on the size of the array within which the pattern is to be replaced.<br>
 !>      -#  Note that this benchmark considers the worst-case scenario where all elements of the input `array` match the
 !>          input `pattern` and must be therefore, replaced.<br>
 !>

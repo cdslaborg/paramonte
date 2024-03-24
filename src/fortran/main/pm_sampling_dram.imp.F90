@@ -217,7 +217,7 @@ contains
                 &numerical instabilities, such as a singular covariance matrix for the multivariate proposal sampler. &
                 &The variable `proposalAdaptationCountGreedy` must be less than the specified value for `proposalAdaptationCount`. &
                 &If larger, it will be automatically reset to `proposalAdaptationCount` for the simulation. &
-                &The default value is "//getStr(spec%proposalAdaptationCountGreedy%def)//SKC_"."
+                &The default value is `"//getStr(spec%proposalAdaptationCountGreedy%def)//SKC_"`."
             !$omp master
             proposalAdaptationCountGreedy = spec%proposalAdaptationCountGreedy%null
             !$omp end master
@@ -263,7 +263,7 @@ contains
                 &rejected proposal. If the new state is again rejected based on the rules of the MCMC sampler, then the algorithm will not &
                 &tolerate further rejections, because the maximum number of rejections to be tolerated has been set by the user to be &
                 &`proposalDelayedRejectionCount = 1`. The algorithm then goes back to the original last-accepted state and will begin &
-                &proposing new states from that location. The default value is "// getStr(spec%proposalDelayedRejectionCount%def)//SKC_"."
+                &proposing new states from that location. The default value is `"//getStr(spec%proposalDelayedRejectionCount%def)//SKC_"`."
             !$omp master
             proposalDelayedRejectionCount = spec%proposalDelayedRejectionCount%null
             !$omp end master

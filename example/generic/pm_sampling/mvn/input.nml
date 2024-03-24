@@ -25,11 +25,11 @@
 !
 !      For comprehensive guidelines on the input file organization and rules, visit:
 !
-!           https://www.cdslab.org/paramonte/notes/usage/paradram/input/
+!           https://www.cdslab.org/paramonte/generic/latest/usage/sampling/paradram/input/
 !
 !      To see detailed descriptions of each of variables, visit:
 !
-!           https://www.cdslab.org/paramonte/notes/usage/paradram/specifications/
+!           https://www.cdslab.org/paramonte/generic/latest/usage/sampling/paradram/specifications/
 !
 &paradram
 

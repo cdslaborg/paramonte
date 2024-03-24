@@ -276,11 +276,11 @@ module pm_kind
 ! Default kind type parameters of the ParaMonte library.
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    integer     , parameter ::  SK      =    SK_DEF !<  \public The default `character` kind in the ParaMonte library: `kind("a")`      in Fortran, `c_char`            in \CFI mode.
-    integer     , parameter ::  IK      =    IK_DEF !<  \public The default `integer`   kind in the ParaMonte library: `int32`          in Fortran, `c_int32_t`         in \CFI mode.
-    integer     , parameter ::  LK      =    LK_DEF !<  \public The default `logical`   kind in the ParaMonte library: `kind(.true.)`   in Fortran, `kind(.true.)`      in \CFI mode.
-    integer     , parameter ::  CK      =    CK_DEF !<  \public The default `complex`   kind in the ParaMonte library: `real64`         in Fortran, `c_double_complex`  in \CFI mode.
-    integer     , parameter ::  RK      =    RK_DEF !<  \public The default `real`      kind in the ParaMonte library: `real64`         in Fortran, `c_double`          in \CFI mode.
+    integer     , parameter ::  SK      =    SK_DEF !<  \public The default `character` kind in the ParaMonte library: `kind("a")`      in Fortran, `c_char`            in \cfi mode.
+    integer     , parameter ::  IK      =    IK_DEF !<  \public The default `integer`   kind in the ParaMonte library: `int32`          in Fortran, `c_int32_t`         in \cfi mode.
+    integer     , parameter ::  LK      =    LK_DEF !<  \public The default `logical`   kind in the ParaMonte library: `kind(.true.)`   in Fortran, `kind(.true.)`      in \cfi mode.
+    integer     , parameter ::  CK      =    CK_DEF !<  \public The default `complex`   kind in the ParaMonte library: `real64`         in Fortran, `c_double_complex`  in \cfi mode.
+    integer     , parameter ::  RK      =    RK_DEF !<  \public The default `real`      kind in the ParaMonte library: `real64`         in Fortran, `c_double`          in \cfi mode.
 
     integer     , parameter ::  IK64    =  IK64_DEF !<  \public The `integer`   kind for a  64-bits container.
     integer     , parameter ::  IK32    =  IK32_DEF !<  \public The `integer`   kind for a  32-bits container.
