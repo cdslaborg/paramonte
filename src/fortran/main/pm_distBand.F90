@@ -118,7 +118,7 @@ module pm_distBand
     real(RKB), parameter :: MEAN_ALPHA = -1.1_RKB
 
     !>  \brief
-    !>  The scalar constant of type `real` of kind \RKH,
+    !>  The scalar constant of type `real` of kind \RKB,
     !>  containing the average reported value for the high-energy exponent of the Band photon distribution model \f$\beta\f$.<br>
     !>  This reported average value is primarily based on the analyses of data collected by
     !>  the BATSE telescope onboard the Compton Gamma-Ray Observatory (CGRO).<br>

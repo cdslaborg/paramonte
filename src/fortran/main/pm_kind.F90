@@ -179,46 +179,56 @@ module pm_kind
 #if CK5_ENABLED
     integer , parameter :: CK5 = real_kinds(CK5_ENABLED)
     integer , parameter :: CP5 = precision(0._CK5)
+    integer , parameter :: CR5 = range(0._CK5)
     !>  \cond excluded
 #else
     integer , parameter :: CK5 = -1
     integer , parameter :: CP5 = 0
+    integer , parameter :: CR5 = 0
     !>  \endcond excluded
 #endif
 #if CK4_ENABLED
     integer , parameter :: CK4 = real_kinds(CK4_ENABLED)
     integer , parameter :: CP4 = precision(0._CK4)
+    integer , parameter :: CR4 = range(0._CK4)
     !>  \cond excluded
 #else
     integer , parameter :: CK4 = -1
     integer , parameter :: CP4 = 0
+    integer , parameter :: CR4 = 0
     !>  \endcond excluded
 #endif
 #if CK3_ENABLED
     integer , parameter :: CK3 = real_kinds(CK3_ENABLED)
     integer , parameter :: CP3 = precision(0._CK3)
+    integer , parameter :: CR3 = range(0._CK3)
     !>  \cond excluded
 #else
     integer , parameter :: CK3 = -1
     integer , parameter :: CP3 = 0
+    integer , parameter :: CR3 = 0
     !>  \endcond excluded
 #endif
 #if CK2_ENABLED
     integer , parameter :: CK2 = real_kinds(CK2_ENABLED)
     integer , parameter :: CP2 = precision(0._CK2)
+    integer , parameter :: CR2 = range(0._CK2)
     !>  \cond excluded
 #else
     integer , parameter :: CK2 = -1
     integer , parameter :: CP2 = 0
+    integer , parameter :: CR2 = 0
     !>  \endcond excluded
 #endif
 #if CK1_ENABLED
     integer , parameter :: CK1 = real_kinds(CK1_ENABLED)
     integer , parameter :: CP1 = precision(0._CK1)
+    integer , parameter :: CR1 = range(0._CK1)
     !>  \cond excluded
 #else
     integer , parameter :: CK1 = -1
     integer , parameter :: CP1 = 0
+    integer , parameter :: CR1 = 0
     !>  \endcond excluded
 #endif
 
@@ -227,46 +237,56 @@ module pm_kind
 #if RK5_ENABLED
     integer , parameter :: RK5 = real_kinds(RK5_ENABLED)
     integer , parameter :: RP5 = precision(0._RK5)
+    integer , parameter :: RR5 = range(0._RK5)
     !>  \cond excluded
 #else
     integer , parameter :: RK5 = -1
     integer , parameter :: RP5 = 0
+    integer , parameter :: RR5 = 0
     !>  \endcond excluded
 #endif
 #if RK4_ENABLED
     integer , parameter :: RK4 = real_kinds(RK4_ENABLED)
     integer , parameter :: RP4 = precision(0._RK4)
+    integer , parameter :: RR4 = range(0._RK4)
     !>  \cond excluded
 #else
     integer , parameter :: RK4 = -1
     integer , parameter :: RP4 = 0
+    integer , parameter :: RR4 = 0
     !>  \endcond excluded
 #endif
 #if RK3_ENABLED
     integer , parameter :: RK3 = real_kinds(RK3_ENABLED)
     integer , parameter :: RP3 = precision(0._RK3)
+    integer , parameter :: RR3 = range(0._RK3)
     !>  \cond excluded
 #else
     integer , parameter :: RK3 = -1
     integer , parameter :: RP3 = 0
+    integer , parameter :: RR3 = 0
     !>  \endcond excluded
 #endif
 #if RK2_ENABLED
     integer , parameter :: RK2 = real_kinds(RK2_ENABLED)
     integer , parameter :: RP2 = precision(0._RK2)
+    integer , parameter :: RR2 = range(0._RK2)
     !>  \cond excluded
 #else
     integer , parameter :: RK2 = -1
     integer , parameter :: RP2 = 0
+    integer , parameter :: RR2 = 0
     !>  \endcond excluded
 #endif
 #if RK1_ENABLED
     integer , parameter :: RK1 = real_kinds(RK1_ENABLED)
     integer , parameter :: RP1 = precision(0._RK1)
+    integer , parameter :: RR1 = range(0._RK1)
     !>  \cond excluded
 #else
     integer , parameter :: RK1 = -1
     integer , parameter :: RP1 = 0
+    integer , parameter :: RR1 = 0
     !>  \endcond excluded
 #endif
 
@@ -376,18 +396,105 @@ module pm_kind
     integer     , parameter             :: RKALL(*) = pack([RK1, RK2, RK3, RK4, RK5], 0 < [RK1, RK2, RK3, RK4, RK5])
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-! The highest and the lowest kinds supported by the ParaMonte library.
+! The highest and the lowest rnages and precisions for the kind type parameters supported by the ParaMonte library.
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-     !>  \cond excluded
-     integer    , parameter , private   :: IRL = minval([IR1, IR2, IR3, IR4, IR5], mask = 0 < [IR1, IR2, IR3, IR4, IR5]) ! Integer Range Lowest
-     integer    , parameter , private   :: RPL = minval([RP1, RP2, RP3, RP4, RP5], mask = 0 < [RP1, RP2, RP3, RP4, RP5]) ! Real Precision Lowest
-     integer    , parameter , private   :: IRH = maxval([IR1, IR2, IR3, IR4, IR5]) ! Integer Range Highest
-     integer    , parameter , private   :: RPH = maxval([RP1, RP2, RP3, RP4, RP5]) ! Real Precision Highest
-     !>  \endcond excluded
+    !>  \brief
+    !>  The scalar `integer` constant of intrinsic default kind, representing the <b>l</b>owest range among all `integer` kinds supported by the specific library build.<br>
+    !>
+    !>  \finmain{IRL}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+     integer    , parameter             :: IRL = minval([IR1, IR2, IR3, IR4, IR5], mask = 0 < [IR1, IR2, IR3, IR4, IR5]) ! Integer Range Lowest
 
     !>  \brief
-    !>  The scalar `integer` constant of intrinsic default kind, representing the <b>l</b>owest range `integer` kind available in the specific library build.<br>
+    !>  The scalar `integer` constant of intrinsic default kind, representing the <b>h</b>ighest range among all `integer` kinds supported by the specific library build.<br>
+    !>
+    !>  \finmain{IRH}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+     integer    , parameter             :: IRH = maxval([IR1, IR2, IR3, IR4, IR5], mask = 0 < [IR1, IR2, IR3, IR4, IR5]) ! Integer Range Highest
+
+    !>  \brief
+    !>  The scalar `integer` constant of intrinsic default kind, representing the <b>l</b>owest precision among all `complex` kinds supported by the specific library build.<br>
+    !>
+    !>  \finmain{CPL}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+     integer    , parameter             :: CPL = minval([CP1, CP2, CP3, CP4, CP5], mask = 0 < [CP1, CP2, CP3, CP4, CP5]) ! Complex Precision Lowest
+
+    !>  \brief
+    !>  The scalar `integer` constant of intrinsic default kind, representing the <b>h</b>ighest precision among all `complex` kinds supported by the specific library build.<br>
+    !>
+    !>  \finmain{CPH}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+     integer    , parameter             :: CPH = maxval([CP1, CP2, CP3, CP4, CP5], mask = 0 < [CP1, CP2, CP3, CP4, CP5]) ! Complex Precision Highest
+
+    !>  \brief
+    !>  The scalar `integer` constant of intrinsic default kind, representing the <b>l</b>owest decimal exponent range among all `complex` kinds supported by the specific library build.<br>
+    !>
+    !>  \finmain{CRL}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+     integer    , parameter             :: CRL = minval([CR1, CR2, CR3, CR4, CR5], mask = 0 < [CR1, CR2, CR3, CR4, CR5]) ! Complex Range Lowest
+
+    !>  \brief
+    !>  The scalar `integer` constant of intrinsic default kind, representing the <b>h</b>ighest decimal exponent range among all `complex` kinds supported by the specific library build.<br>
+    !>
+    !>  \finmain{CRH}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+     integer    , parameter             :: CRH = maxval([CR1, CR2, CR3, CR4, CR5], mask = 0 < [CR1, CR2, CR3, CR4, CR5]) ! Complex Range Lowest
+
+    !>  \brief
+    !>  The scalar `integer` constant of intrinsic default kind, representing the <b>l</b>owest precision among all `real` kinds supported by the specific library build.<br>
+    !>
+    !>  \finmain{RPL}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+     integer    , parameter             :: RPL = minval([RP1, RP2, RP3, RP4, RP5], mask = 0 < [RP1, RP2, RP3, RP4, RP5]) ! Real Precision Lowest
+
+    !>  \brief
+    !>  The scalar `integer` constant of intrinsic default kind, representing the <b>h</b>ighest precision among all `real` kinds supported by the specific library build.<br>
+    !>
+    !>  \finmain{RPH}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+     integer    , parameter             :: RPH = maxval([RP1, RP2, RP3, RP4, RP5], mask = 0 < [RP1, RP2, RP3, RP4, RP5]) ! Real Precision Highest
+
+    !>  \brief
+    !>  The scalar `integer` constant of intrinsic default kind, representing the <b>l</b>owest decimal exponent range among all `real` kinds supported by the specific library build.<br>
+    !>
+    !>  \finmain{RRL}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+     integer    , parameter             :: RRL = minval([RR1, RR2, RR3, RR4, RR5], mask = 0 < [RR1, RR2, RR3, RR4, RR5]) ! Real Range Lowest
+
+    !>  \brief
+    !>  The scalar `integer` constant of intrinsic default kind, representing the <b>h</b>ighest decimal exponent range among all `real` kinds supported by the specific library build.<br>
+    !>
+    !>  \finmain{RRH}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+     integer    , parameter             :: RRH = maxval([RR1, RR2, RR3, RR4, RR5], mask = 0 < [RR1, RR2, RR3, RR4, RR5]) ! Real Range Lowest
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+! The lowest precision/range kinds supported by the ParaMonte library.
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !>  \brief
+    !>  The scalar `integer` constant of intrinsic default kind, representing the <b>l</b>owest range `integer` kind type parameter available in the specific library build.<br>
     !>
     !>  \details
     !>  Although the value of \IKL is the same as the value of \IKW under normal (default) library builds, the two are not necessarily the same.<br>
@@ -402,7 +509,22 @@ module pm_kind
     integer     , parameter             :: IKL  = selected_int_kind(IRL)
 
     !>  \brief
-    !>  The scalar `integer` constant of intrinsic default kind, representing the <b>l</b>owest-precision `real` kind available in the specific library build.<br>
+    !>  The scalar `integer` constant of intrinsic default kind, representing the <b>l</b>owest-precision `complex` kind type parameter available in the specific library build.<br>
+    !>
+    !>  \details
+    !>  Although the value of \CKL is the same as the value of \CKW under normal (default) library builds, the two are not necessarily the same.<br>
+    !>  This situation occurs when the library is built for `complex` kind type parameters that exclude the lowest-precision kind <b>supported by the processor</b>.<br>
+    !>  In other words, the lowest-precision `complex` kind \CKL <b>supported by a specific library build</b>  is not necessarily the same as the worst-precision `complex` kind \CKW <b>supported by the processor</b>.<br>
+    !>  While all relevant routines of the library are guaranteed to support the lowest-precision `complex` kind of the library \CKL, the same does not hold for \CKW when its value is different from \CKL.<br>
+    !>
+    !>  \finmain{CKL}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    integer     , parameter             :: CKL  = selected_real_kind(CPL)
+
+    !>  \brief
+    !>  The scalar `integer` constant of intrinsic default kind, representing the <b>l</b>owest-precision `real` kind type parameter available in the specific library build.<br>
     !>
     !>  \details
     !>  Although the value of \RKL is the same as the value of \RKW under normal (default) library builds, the two are not necessarily the same.<br>
@@ -417,22 +539,41 @@ module pm_kind
     integer     , parameter             :: RKL  = selected_real_kind(RPL)
 
     !>  \brief
-    !>  The scalar `integer` constant of intrinsic default kind, representing the <b>l</b>owest-precision `complex` kind available in the specific library build.<br>
+    !>  The scalar `integer` constant of intrinsic default kind, representing the <b>h</b>ighest-decimal-exponent-range `complex` kind type parameter available in the specific library build.<br>
     !>
     !>  \details
-    !>  Although the value of \CKL is the same as the value of \CKW under normal (default) library builds, the two are not necessarily the same.<br>
-    !>  This situation occurs when the library is built for `complex` kind type parameters that exclude the lowest-precision kind <b>supported by the processor</b>.<br>
-    !>  In other words, the lowest-precision `complex` kind \CKL <b>supported by a specific library build</b>  is not necessarily the same as the worst-precision `complex` kind \CKW <b>supported by the processor</b>.<br>
-    !>  While all relevant routines of the library are guaranteed to support the lowest-precision `complex` kind of the library \CKL, the same does not hold for \CKW when its value is different from \CKL.<br>
+    !>  Although the value of \CKLR is the same as the value of \CKWR under normal (default) library builds, the two are not necessarily the same.<br>
+    !>  This situation occurs when the library is built for `complex` kind type parameters that exclude the highest-range kind <b>supported by the processor</b>.<br>
+    !>  In other words, the highest-range `complex` kind \CKLR <b>supported by a specific library build</b>  is not necessarily the same as the best-range `complex` kind \CKWR <b>supported by the processor</b>.<br>
+    !>  While all relevant routines of the library are guaranteed to support the highest-range `complex` kind of the library \CKLR, the same does not hold for \CKWR when its value is different from \CKLR.<br>
     !>
     !>  \finmain{CKL}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
-    integer     , parameter             :: CKL  = selected_real_kind(RPL)
+    integer     , parameter             :: CKLR = selected_real_kind(r = CRL)
 
     !>  \brief
-    !>  The scalar `integer` constant of intrinsic default kind, representing the <b>h</b>ighest range `integer` kind available in the specific library build.<br>
+    !>  The scalar `integer` constant of intrinsic default kind, representing the <b>h</b>ighest-decimal-exponent-range `real` kind type parameter available in the specific library build.<br>
+    !>
+    !>  \details
+    !>  Although the value of \RKLR is the same as the value of \RKWR under normal (default) library builds, the two are not necessarily the same.<br>
+    !>  This situation occurs when the library is built for `real` kind type parameters that exclude the highest-range kind <b>supported by the processor</b>.<br>
+    !>  In other words, the highest-range `real` kind \RKLR <b>supported by a specific library build</b>  is not necessarily the same as the best-range `real` kind \RKWR <b>supported by the processor</b>.<br>
+    !>  While all relevant routines of the library are guaranteed to support the highest-range `real` kind of the library \RKLR, the same does not hold for \RKWR when its value is different from \RKLR.<br>
+    !>
+    !>  \finmain{RKL}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    integer     , parameter             :: RKLR = selected_real_kind(r = RRL)
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+! The highest precision/range kinds supported by the ParaMonte library.
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !>  \brief
+    !>  The scalar `integer` constant of intrinsic default kind, representing the <b>h</b>ighest range `integer` kind type parameter available in the specific library build.<br>
     !>
     !>  \details
     !>  Although the value of \IKH is the same as the value of \IKB under normal (default) library builds, the two are not necessarily the same.<br>
@@ -447,7 +588,22 @@ module pm_kind
     integer     , parameter             :: IKH  = selected_int_kind(IRH)
 
     !>  \brief
-    !>  The scalar `integer` constant of intrinsic default kind, representing the <b>h</b>ighest-precision `real` kind available in the specific library build.<br>
+    !>  The scalar `integer` constant of intrinsic default kind, representing the <b>h</b>ighest-precision `complex` kind type parameter available in the specific library build.<br>
+    !>
+    !>  \details
+    !>  Although the value of \CKH is the same as the value of \CKB under normal (default) library builds, the two are not necessarily the same.<br>
+    !>  This situation occurs when the library is built for `complex` kind type parameters that exclude the highest-precision kind <b>supported by the processor</b>.<br>
+    !>  In other words, the highest-precision `complex` kind \CKH <b>supported by a specific library build</b>  is not necessarily the same as the best-precision `complex` kind \CKB <b>supported by the processor</b>.<br>
+    !>  While all relevant routines of the library are guaranteed to support the highest-precision `complex` kind of the library \CKH, the same does not hold for \CKB when its value is different from \CKH.<br>
+    !>
+    !>  \finmain{CKH}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    integer     , parameter             :: CKH  = selected_real_kind(CPH)
+
+    !>  \brief
+    !>  The scalar `integer` constant of intrinsic default kind, representing the <b>h</b>ighest-precision `real` kind type parameter available in the specific library build.<br>
     !>
     !>  \details
     !>  Although the value of \RKH is the same as the value of \RKB under normal (default) library builds, the two are not necessarily the same.<br>
@@ -461,23 +617,52 @@ module pm_kind
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     integer     , parameter             :: RKH  = selected_real_kind(RPH)
 
+    integer     , parameter , private   :: CKHR_VEC_RAW(*)= [ selected_real_kind(merge(huge(1), CP5, CP5 < 1), r = CRH) &
+                                                            , selected_real_kind(merge(huge(1), CP4, CP4 < 1), r = CRH) &
+                                                            , selected_real_kind(merge(huge(1), CP3, CP3 < 1), r = CRH) &
+                                                            , selected_real_kind(merge(huge(1), CP2, CP2 < 1), r = CRH) &
+                                                            , selected_real_kind(merge(huge(1), CP1, CP1 < 1), r = CRH) ]
+    integer     , parameter , private   :: CKHR_VEC(*) = pack(CKHR_VEC_RAW, 0 <= CKHR_VEC_RAW)
+
     !>  \brief
-    !>  The scalar `integer` constant of intrinsic default kind, representing the <b>h</b>ighest-precision `complex` kind available in the specific library build.<br>
+    !>  The scalar `integer` constant of intrinsic default kind, representing the <b>h</b>ighest-decimal-exponent-range `complex` kind type parameter available in the specific library build.<br>
     !>
     !>  \details
-    !>  Although the value of \CKH is the same as the value of \CKB under normal (default) library builds, the two are not necessarily the same.<br>
-    !>  This situation occurs when the library is built for `complex` kind type parameters that exclude the highest-precision kind <b>supported by the processor</b>.<br>
-    !>  In other words, the highest-precision `complex` kind \CKH <b>supported by a specific library build</b>  is not necessarily the same as the best-precision `complex` kind \CKB <b>supported by the processor</b>.<br>
-    !>  While all relevant routines of the library are guaranteed to support the highest-precision `complex` kind of the library \CKH, the same does not hold for \CKB when its value is different from \CKH.<br>
+    !>  Although the value of \CKHR is the same as the value of \CKBR under normal (default) library builds, the two are not necessarily the same.<br>
+    !>  This situation occurs when the library is built for `complex` kind type parameters that exclude the highest-range kind <b>supported by the processor</b>.<br>
+    !>  In other words, the highest-range `complex` kind \CKHR <b>supported by a specific library build</b>  is not necessarily the same as the best-range `complex` kind \CKBR <b>supported by the processor</b>.<br>
+    !>  While all relevant routines of the library are guaranteed to support the highest-range `complex` kind of the library \CKHR, the same does not hold for \CKBR when its value is different from \CKHR.<br>
     !>
     !>  \finmain{CKH}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
-    integer     , parameter             :: CKH  = selected_real_kind(RPH)
+    integer     , parameter             :: CKHR = CKHR_VEC(1)
+
+    integer     , parameter , private   :: RKHR_VEC_RAW(*)= [ selected_real_kind(merge(huge(1), RP5, RP5 < 1), r = RRH) &
+                                                            , selected_real_kind(merge(huge(1), RP4, RP4 < 1), r = RRH) &
+                                                            , selected_real_kind(merge(huge(1), RP3, RP3 < 1), r = RRH) &
+                                                            , selected_real_kind(merge(huge(1), RP2, RP2 < 1), r = RRH) &
+                                                            , selected_real_kind(merge(huge(1), RP1, RP1 < 1), r = RRH) ]
+    integer     , parameter , private   :: RKHR_VEC(*) = pack(RKHR_VEC_RAW, 0 <= RKHR_VEC_RAW)
+
+    !>  \brief
+    !>  The scalar `integer` constant of intrinsic default kind, representing the <b>h</b>ighest-decimal-exponent-range `real` kind type parameter available in the specific library build.<br>
+    !>
+    !>  \details
+    !>  Although the value of \RKHR is the same as the value of \RKBR under normal (default) library builds, the two are not necessarily the same.<br>
+    !>  This situation occurs when the library is built for `real` kind type parameters that exclude the highest-range kind <b>supported by the processor</b>.<br>
+    !>  In other words, the highest-range `real` kind \RKHR <b>supported by a specific library build</b>  is not necessarily the same as the best-range `real` kind \RKBR <b>supported by the processor</b>.<br>
+    !>  While all relevant routines of the library are guaranteed to support the highest-range `real` kind of the library \RKHR, the same does not hold for \RKBR when its value is different from \RKHR.<br>
+    !>
+    !>  \finmain{RKH}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    integer     , parameter             :: RKHR = RKHR_VEC(1)
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-! The highest and the lowest (the best and the worst) kinds supported by the processor.
+! The worst range/precision kind type parameters supported by the processor.
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
@@ -496,6 +681,21 @@ module pm_kind
     integer     , parameter             :: IKW  = selected_int_kind(1)
 
     !>  \brief
+    !>  The scalar `integer` constant of intrinsic default kind, representing the <b>W</b>orst-precision `complex` kind **supported by the processor**.<br>
+    !>
+    !>  \details
+    !>  Although the value of \CKL is the same as the value of \CKW under normal (default) library builds, the two are not necessarily the same.<br>
+    !>  This situation occurs when the library is built for `complex` kind type parameters that exclude the lowest-precision kind <b>supported by the processor</b>.<br>
+    !>  In other words, the lowest-precision `complex` kind \CKL <b>supported by a specific library build</b>  is not necessarily the same as the worst-precision `complex` kind \CKW <b>supported by the processor</b>.<br>
+    !>  While all relevant routines of the library are guaranteed to support the lowest-precision `complex` kind of the library \CKL, the same does not hold for \CKW when its value is different from \CKL.<br>
+    !>
+    !>  \finmain{CKW}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    integer     , parameter             :: CKW  = selected_real_kind(1)
+
+    !>  \brief
     !>  The scalar `integer` constant of intrinsic default kind, representing the <b>W</b>orst-precision `real` kind **supported by the processor**.<br>
     !>
     !>  \details
@@ -511,21 +711,39 @@ module pm_kind
     integer     , parameter             :: RKW  = selected_real_kind(1)
 
     !>  \brief
-    !>  The scalar `integer` constant of intrinsic default kind, representing the <b>W</b>orst-precision `complex` kind **supported by the processor**.<br>
+    !>  The scalar `integer` constant of intrinsic default kind, representing the <b>W</b>orst-decimal-exponent-range `complex` kind **supported by the processor**.<br>
     !>
     !>  \details
-    !>  Although the value of \CKL is the same as the value of \CKW under normal (default) library builds, the two are not necessarily the same.<br>
-    !>  This situation occurs when the library is built for `complex` kind type parameters that exclude the lowest-precision kind <b>supported by the processor</b>.<br>
-    !>  In other words, the lowest-precision `complex` kind \CKL <b>supported by a specific library build</b>  is not necessarily the same as the worst-precision `complex` kind \CKW <b>supported by the processor</b>.<br>
-    !>  While all relevant routines of the library are guaranteed to support the lowest-precision `complex` kind of the library \CKL, the same does not hold for \CKW when its value is different from \CKL.<br>
+    !>  Although the value of \CKLR is the same as the value of \CKWR under normal (default) library builds, the two are not necessarily the same.<br>
+    !>  This situation occurs when the library is built for `complex` kind type parameters that exclude the lowest-decimal-exponent-range kind <b>supported by the processor</b>.<br>
+    !>  In other words, the lowest-decimal-exponent-range `complex` kind \CKLR <b>supported by a specific library build</b>  is not necessarily the same as the worst-decimal-exponent-range `complex` kind \CKWR <b>supported by the processor</b>.<br>
+    !>  While all relevant routines of the library are guaranteed to support the lowest-decimal-exponent-range `complex` kind of the library \CKLR, the same does not hold for \CKWR when its value is different from \CKLR.<br>
     !>
-    !>  \finmain{CKW}
+    !>  \finmain{CKWR}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
-    integer     , parameter             :: CKW  = selected_real_kind(1)
+    integer     , parameter             :: CKWR = selected_real_kind(r = 1)
 
-    !>  \cond excluded
+    !>  \brief
+    !>  The scalar `integer` constant of intrinsic default kind, representing the <b>W</b>orst-decimal-exponent-range `real` kind **supported by the processor**.<br>
+    !>
+    !>  \details
+    !>  Although the value of \RKLR is the same as the value of \RKWR under normal (default) library builds, the two are not necessarily the same.<br>
+    !>  This situation occurs when the library is built for `real` kind type parameters that exclude the lowest-decimal-exponent-range kind <b>supported by the processor</b>.<br>
+    !>  In other words, the lowest-decimal-exponent-range `real` kind \RKLR <b>supported by a specific library build</b>  is not necessarily the same as the worst-decimal-exponent-range `real` kind \RKWR <b>supported by the processor</b>.<br>
+    !>  While all relevant routines of the library are guaranteed to support the lowest-decimal-exponent-range `real` kind of the library \RKLR, the same does not hold for \RKWR when its value is different from \RKLR.<br>
+    !>
+    !>  \finmain{RKWR}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    integer     , parameter             :: RKWR = selected_real_kind(r = 1)
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+! The best range/precision kind type parameters supported by the processor.
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     integer     , parameter , private   :: IKB_VEC_RAW(*) = [ selected_int_kind(IRH + 9 * range(int(0, IKW))) &
                                                             , selected_int_kind(IRH + 8 * range(int(0, IKW))) &
                                                             , selected_int_kind(IRH + 4 * range(int(0, IKW))) &
@@ -540,24 +758,134 @@ module pm_kind
                                                             , selected_int_kind(IRH + 1 * range(int(0, IKW))) &
                                                             , selected_int_kind(IRH + 0 * range(int(0, IKW))) &
                                                             ]
-    integer     , parameter , private   :: RKB_VEC_RAW(*) = [ selected_real_kind(RPH + 9 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 8 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 4 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 8 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 8 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 7 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 6 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 5 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 4 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 3 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 2 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 1 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 0 * precision(real(0, RKW))) &
+    integer     , parameter , private   :: RKB_VEC_RAW(*) = [ selected_real_kind(RPH + 29 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH + 28 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH + 24 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH + 28 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH + 28 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH + 27 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH + 26 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH + 25 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH + 24 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH + 23 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH + 22 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH + 21 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH + 20 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH + 19 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH + 18 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH + 14 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH + 18 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH + 18 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH + 17 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH + 16 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH + 15 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH + 14 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH + 13 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH + 12 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH + 11 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH + 10 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH +  9 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH +  8 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH +  4 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH +  8 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH +  8 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH +  7 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH +  6 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH +  5 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH +  4 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH +  3 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH +  2 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH +  1 * precision(real(0, RKW))) &
+                                                            , selected_real_kind(RPH +  0 * precision(real(0, RKW))) &
                                                             ]
     integer     , parameter , private   :: IKB_VEC(*) = pack(IKB_VEC_RAW, 0 <= IKB_VEC_RAW)
     integer     , parameter , private   :: RKB_VEC(*) = pack(RKB_VEC_RAW, 0 <= RKB_VEC_RAW)
     integer     , parameter , private   :: CKB_VEC(*) = RKB_VEC
-    !>  \endcond excluded
+
+    integer     , parameter , private   :: RKBR_VEC_TMP(*)= [ selected_real_kind(r = 30 * RRH) &
+                                                            , selected_real_kind(r = 29 * RRH) &
+                                                            , selected_real_kind(r = 28 * RRH) &
+                                                            , selected_real_kind(r = 24 * RRH) &
+                                                            , selected_real_kind(r = 28 * RRH) &
+                                                            , selected_real_kind(r = 28 * RRH) &
+                                                            , selected_real_kind(r = 27 * RRH) &
+                                                            , selected_real_kind(r = 26 * RRH) &
+                                                            , selected_real_kind(r = 25 * RRH) &
+                                                            , selected_real_kind(r = 24 * RRH) &
+                                                            , selected_real_kind(r = 23 * RRH) &
+                                                            , selected_real_kind(r = 22 * RRH) &
+                                                            , selected_real_kind(r = 21 * RRH) &
+                                                            , selected_real_kind(r = 20 * RRH) &
+                                                            , selected_real_kind(r = 19 * RRH) &
+                                                            , selected_real_kind(r = 18 * RRH) &
+                                                            , selected_real_kind(r = 14 * RRH) &
+                                                            , selected_real_kind(r = 18 * RRH) &
+                                                            , selected_real_kind(r = 18 * RRH) &
+                                                            , selected_real_kind(r = 17 * RRH) &
+                                                            , selected_real_kind(r = 16 * RRH) &
+                                                            , selected_real_kind(r = 15 * RRH) &
+                                                            , selected_real_kind(r = 14 * RRH) &
+                                                            , selected_real_kind(r = 13 * RRH) &
+                                                            , selected_real_kind(r = 12 * RRH) &
+                                                            , selected_real_kind(r = 11 * RRH) &
+                                                            , selected_real_kind(r = 10 * RRH) &
+                                                            , selected_real_kind(r =  9 * RRH) &
+                                                            , selected_real_kind(r =  8 * RRH) &
+                                                            , selected_real_kind(r =  4 * RRH) &
+                                                            , selected_real_kind(r =  8 * RRH) &
+                                                            , selected_real_kind(r =  8 * RRH) &
+                                                            , selected_real_kind(r =  7 * RRH) &
+                                                            , selected_real_kind(r =  6 * RRH) &
+                                                            , selected_real_kind(r =  5 * RRH) &
+                                                            , selected_real_kind(r =  4 * RRH) &
+                                                            , selected_real_kind(r =  3 * RRH) &
+                                                            , selected_real_kind(r =  2 * RRH) &
+                                                            , selected_real_kind(r =  1 * RRH) &
+                                                            ]
+    integer     , parameter , private   :: RKBR_PACK(*) = pack(RKBR_VEC_TMP, 0 <= RKBR_VEC_TMP)
+    integer     , parameter , private   :: RKBR_RANGE = range(real(0, RKBR_PACK(1)))
+    integer     , parameter , private   :: RKBR_VEC_RAW(*)= [ selected_real_kind(RPH + 29 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH + 28 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH + 24 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH + 28 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH + 28 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH + 27 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH + 26 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH + 25 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH + 24 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH + 23 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH + 22 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH + 21 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH + 20 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH + 19 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH + 18 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH + 14 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH + 18 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH + 18 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH + 17 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH + 16 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH + 15 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH + 14 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH + 13 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH + 12 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH + 11 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH + 10 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH +  9 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH +  8 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH +  4 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH +  8 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH +  8 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH +  7 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH +  6 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH +  5 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH +  4 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH +  3 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH +  2 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH +  1 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            , selected_real_kind(RPH +  0 * precision(real(0, RKW)), r = RKBR_RANGE) &
+                                                            ]
+    integer     , parameter , private   :: RKBR_VEC(*) = pack(RKBR_VEC_RAW, 0 <= RKBR_VEC_RAW)
+    integer     , parameter , private   :: CKBR_VEC(*) = RKBR_VEC
 
     !>  \brief
     !>  The scalar `integer` constant of intrinsic default kind, representing the <b>B</b>est-range `integer` kind **supported by the processor**.<br>
@@ -578,6 +906,24 @@ module pm_kind
     integer     , parameter             :: IKB  = IKB_VEC(1) ! maxval([(selected_int_kind(i), i = 1, 1000)]) ! merge(IKH6, merge(IKH5, merge(IKH4, merge(IKH3, merge(IKH2, IKS, IKH2 > 0), IKH3 > 0), IKH4 > 0), IKH5 > 0), IKH6 > 0) ! only up to `3` times more precise than the double range kind.
 
     !>  \brief
+    !>  The scalar `integer` constant of intrinsic default kind, representing the <b>B</b>est-precision `complex` kind **supported by the processor**.<br>
+    !>
+    !>  \details
+    !>  Although the value of \CKH is the same as the value of \CKB under normal (default) library builds, the two are not necessarily the same.<br>
+    !>  This situation occurs when the library is built for `complex` kind type parameters that exclude the highest-precision kind <b>supported by the processor</b>.<br>
+    !>  In other words, the highest-precision `complex` kind \CKH <b>supported by a specific library build</b>  is not necessarily the same as the best-precision `complex` kind \CKB <b>supported by the processor</b>.<br>
+    !>  While all relevant routines of the library are guaranteed to support the highest-precision `complex` kind of the library \CKH, the same does not hold for \CKB when its value is different from \CKH.<br>
+    !>
+    !>  The current Fortran standard does not allow automatic selection of the highest-precision `complex` kind made available by the processor.<br>
+    !>  However, such a kind is essential for defining `complex` constants of highest-precision that can be later coerced to `complex` kinds of lower precision.<br>
+    !>
+    !>  \finmain{CKB}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    integer     , parameter             :: CKB  = CKB_VEC(1)
+
+    !>  \brief
     !>  The scalar `integer` constant of intrinsic default kind, representing the <b>B</b>est-precision `real` kind **supported by the processor**.<br>
     !>
     !>  \details
@@ -596,22 +942,40 @@ module pm_kind
     integer     , parameter             :: RKB  = RKB_VEC(1) ! maxval([(selected_real_kind(i), i = 1, 1000)]) ! merge(RKH6, merge(RKH5, merge(RKH4, merge(RKH3, merge(RKH2, RKS, RKH2 > 0), RKH3 > 0), RKH4 > 0), RKH5 > 0), RKH6 > 0) ! only up to `3` times more precise than the double precision kind.
 
     !>  \brief
-    !>  The scalar `integer` constant of intrinsic default kind, representing the <b>B</b>est-precision `complex` kind **supported by the processor**.<br>
+    !>  The scalar `integer` constant of intrinsic default kind, representing the <b>B</b>est-decimal-exponent-range `complex` kind **supported by the processor**.<br>
     !>
     !>  \details
-    !>  Although the value of \CKH is the same as the value of \CKB under normal (default) library builds, the two are not necessarily the same.<br>
-    !>  This situation occurs when the library is built for `complex` kind type parameters that exclude the highest-precision kind <b>supported by the processor</b>.<br>
-    !>  In other words, the highest-precision `complex` kind \CKH <b>supported by a specific library build</b>  is not necessarily the same as the best-precision `complex` kind \CKB <b>supported by the processor</b>.<br>
-    !>  While all relevant routines of the library are guaranteed to support the highest-precision `complex` kind of the library \CKH, the same does not hold for \CKB when its value is different from \CKH.<br>
+    !>  Although the value of \CKHR is the same as the value of \CKBR under normal (default) library builds, the two are not necessarily the same.<br>
+    !>  This situation occurs when the library is built for `complex` kind type parameters that exclude the highest-decimal-exponent-range kind <b>supported by the processor</b>.<br>
+    !>  In other words, the highest-decimal-exponent-range `complex` kind \CKHR <b>supported by a specific library build</b>  is not necessarily the same as the best-decimal-exponent-range `complex` kind \CKBR <b>supported by the processor</b>.<br>
+    !>  While all relevant routines of the library are guaranteed to support the highest-decimal-exponent-range `complex` kind of the library \CKHR, the same does not hold for \CKBR when its value is different from \CKHR.<br>
     !>
-    !>  The current Fortran standard does not allow automatic selection of the highest-precision `complex` kind made available by the processor.<br>
-    !>  However, such a kind is essential for defining `complex` constants of highest-precision that can be later coerced to `complex` kinds of lower precision.<br>
+    !>  The current Fortran standard does not allow automatic selection of the highest-decimal-exponent-range `complex` kind made available by the processor.<br>
+    !>  However, such a kind is essential for defining `complex` constants of highest-decimal-exponent-range that can be later coerced to `complex` kinds of lower decimal-exponent-range.<br>
     !>
-    !>  \finmain{CKB}
+    !>  \finmain{CKBR}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
-    integer     , parameter             :: CKB  = RKB
+    integer     , parameter             :: CKBR = CKBR_VEC(1)
+
+    !>  \brief
+    !>  The scalar `integer` constant of intrinsic default kind, representing the <b>B</b>est-decimal-exponent-range `real` kind **supported by the processor**.<br>
+    !>
+    !>  \details
+    !>  Although the value of \RKHR is the same as the value of \RKBR under normal (default) library builds, the two are not necessarily the same.<br>
+    !>  This situation occurs when the library is built for `real` kind type parameters that exclude the highest-decimal-exponent-range kind <b>supported by the processor</b>.<br>
+    !>  In other words, the highest-decimal-exponent-range `real` kind \RKHR <b>supported by a specific library build</b>  is not necessarily the same as the best-decimal-exponent-range `real` kind \RKBR <b>supported by the processor</b>.<br>
+    !>  While all relevant routines of the library are guaranteed to support the highest-decimal-exponent-range `real` kind of the library \RKHR, the same does not hold for \RKBR when its value is different from \RKHR.<br>
+    !>
+    !>  The current Fortran standard does not allow automatic selection of the highest-decimal-exponent-range `real` kind made available by the processor.<br>
+    !>  However, such a kind is essential for defining `real` constants of highest-decimal-exponent-range that can be later coerced to `real` kinds of lower decimal-exponent-range.<br>
+    !>
+    !>  \finmain{RKBR}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    integer     , parameter             :: RKBR = RKBR_VEC(1)
 
     ! Constants for kind precisions.<br>
 
@@ -958,7 +1322,7 @@ module pm_kind
                                         !!          EPSILON makes it easy to select a delta for algorithms (such as root locators) that search until the calculation is within delta of an estimate.<br>
                                         !!          If delta is too small (smaller than the decimal resolution of the data type), the algorithm might never halt.<br>
                                         !!          By scaling the value returned by EPSILON to the estimate, you obtain a delta that ensures search termination.<br>
-        real(RKH)   :: huge             !<  \public The scalar `real` of the highest kind \RKH supported by the ParaMonte library,
+        real(RKHR)  :: huge             !<  \public The scalar `real` of the highest kind \RKHR supported by the ParaMonte library,
                                         !!          representing the largest value in the model that includes the `real` data type of interest.<br>
         integer(IK) :: maxexponent      !<  \public The scalar `integer` of default kind \IK, representing the maximum exponent in the model that includes the `real` data type of interest.<br>
                                         !!          This corresponds to \f$e_{max}\f$ in the model set for the `real` data type detailed in [model_type](@ref pm_kind::model_type).<br>
@@ -968,7 +1332,7 @@ module pm_kind
                                         !!          in the model representing real numbers with the same type parameter value as the `real` data type of interest.<br>
                                         !!          The value is `int((p - 1) * log10(b)) + k` where `k` is `1` if `b` is an integral power of `10` and `0` otherwise.<br>
                                         !!          The meaning of the `real` data type model parameters are detailed in [model_type](@ref pm_kind::model_type).<br>
-        real(RKH)   :: tiny             !<  \public The scalar `real` of the highest kind \RKH supported by the ParaMonte library,
+        real(RKHR)  :: tiny             !<  \public The scalar `real` of the highest kind \RKHR supported by the ParaMonte library,
                                         !!          representing the smallest positive number \f$b^{e_min} - 1\f$ in the model that includes the `real` data type of interest.<br>
                                         !!          The meaning of the `real` data type model parameters are detailed in [model_type](@ref pm_kind::model_type).<br>
     end type

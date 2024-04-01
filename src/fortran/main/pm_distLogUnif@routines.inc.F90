@@ -90,7 +90,7 @@
 
         integer, parameter :: RKC = selected_real_kind(r = range(rand), radix = radix(rand))
         rand = int(getLogUnifRand(real(minx, RKC), real(maxx, RKC)), kind = IKC)
-        !use pm_kind, only: RKS, RKD, RKQ, RKH
+        !use pm_kind, only: RKS, RKD, RKQ, RKHR
         !if (real(huge(rand), RKH) < real(huge(0._RKS), RKH)) then
         !    rand = int(getLogUnifRand(real(minx, RKS), real(maxx, RKS)), kind = IKC)
         !    return

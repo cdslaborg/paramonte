@@ -88,8 +88,8 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("getStr([9.e1000_RKH, -123456._RKH])")
-    call disp%show( getStr([9.e1000_RKH, -123456._RKH]) , deliml = SK_"""" )
+    call disp%show("getStr([9.e100_RKH, -123456._RKH])")
+    call disp%show( getStr([9.e100_RKH, -123456._RKH]) , deliml = SK_"""" )
     call disp%skip()
 
     call disp%skip()

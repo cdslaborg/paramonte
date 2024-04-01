@@ -849,12 +849,11 @@ else() # static lib
 endif()
 
 #### Bypass the (potential) GNU gfortran 13.2 bug for PPC arch in `pm_kind`:
-
-foreach(srcfile ${paramonte_src_main_fortran_paths_refined_abs})
-    if ("${srcfile}" MATCHES ".*pm_kind.*")
-        set_source_files_properties("${srcfile}" PROPERTIES COMPILE_FLAGS "-fno-range-check")
-    endif()
-endforeach()
+#foreach(srcfile ${paramonte_src_main_fortran_paths_refined_abs})
+#    if ("${srcfile}" MATCHES ".*pm_kind.*")
+#        set_source_files_properties("${srcfile}" PROPERTIES COMPILE_FLAGS "-fno-range-check")
+#    endif()
+#endforeach()
 
 #set_target_properties("${libname}" PROPERTIES VERSION "${ParaMonteVersion}" SOVERSION "${ParaMonteVersionMajor}")
 
