@@ -297,7 +297,7 @@ endforeach()
 
 set(depscan_enabled ON)
 if ("${mod}" STREQUAL "reset")
-    set(mod "${mod_old}" CACHE "default module list to compile." FORCE)
+    set(mod "${mod_old}" CACHE STRING "default module list to compile." FORCE)
 elseif (DEFINED paramonte_src_main_fortran_paths_refined)
     if ("${mod}" STREQUAL "" OR "${mod}" STREQUAL "${mod_old}") # if not set ever or if equal to the past value.
         set(depscan_enabled OFF)
@@ -847,6 +847,14 @@ else() # static lib
     endif()
 
 endif()
+
+#### Bypass the (potential) GNU gfortran 13.2 bug for PPC arch in `pm_kind`:
+
+foreach(srcfile ${paramonte_src_main_fortran_paths_refined_abs})
+    if ("${srcfile}" MATCHES ".*pm_kind.*")
+        set_source_files_properties("${srcfile}" PROPERTIES COMPILE_FLAGS "-fno-range-check")
+    endif()
+endforeach()
 
 #set_target_properties("${libname}" PROPERTIES VERSION "${ParaMonteVersion}" SOVERSION "${ParaMonteVersionMajor}")
 

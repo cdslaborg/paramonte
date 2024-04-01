@@ -18,7 +18,7 @@
 #   This Bash script can be called by `install.sh` or any Bash script that needs the following initialization and definitions.
 #   This script takes one input argument `caller_name` that is the name of the caller script to set the user notes. default: caller_name=`""`
 
-IFS=";" # Bash element separator in lists.
+#IFS=";" # Bash element separator in lists.
 
 paramonte_dir="$( cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd )"
 paramonte_dir="$(dirname "${paramonte_dir}")"; export paramonte_dir

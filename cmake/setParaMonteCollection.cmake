@@ -656,7 +656,7 @@ if (EXISTS "${origin}")
         #### Loop over all collection items to add the custom commands.
 
         if (DEFINED paramonte_${collection}BR_dir_list)
-            set(counter 1)
+            #set(counter 1)
             foreach(paramonte_${collection}BR_dir_rel ${paramonte_${collection}BR_dir_list})
                 set(paramonte_${collection}BR_dir_abs "${destin}/${paramonte_${collection}BR_dir_rel}")
                 set(paramonte_collection_build_script_path "${paramonte_${collection}BR_dir_abs}/${paramonte_collection_build_script}")
@@ -668,14 +668,20 @@ if (EXISTS "${origin}")
                     string(REPLACE "/" "_" mod_proc_name "${mod_proc_name}")
                     string(REPLACE "." "_" mod_proc_name "${mod_proc_name}")
                     string(REPLACE "-" "_" mod_proc_name "${mod_proc_name}")
-                    add_custom_target(  "${mod_proc_name}BR" #ALL
-                                        WORKING_DIRECTORY "${paramonte_${collection}BR_dir_abs}"
-                                        COMMAND "${paramonte_collection_build_script_path}"
-                                        COMMENT "${pmattn} Building and running the ${collection} scripts: ${BoldCyan} ${paramonte_collection_build_script_path} ${ColorReset}"
-                                        USES_TERMINAL
-                                        )
-                    add_dependencies(${collection} "${mod_proc_name}BR")
-                    math(EXPR counter "${counter}+1")
+                    # ensure the target name is unique.
+                    # This target counting is crucial when the user-specified collection keywords overlap.
+                    if (TARGET "${mod_proc_name}BR")
+                        message(NOTICE "${pmwarn} Target \"${mod_proc_name}BR\" has been already added. skipping...")
+                    else()
+                        add_custom_target(  "${mod_proc_name}BR" #ALL
+                                            WORKING_DIRECTORY "${paramonte_${collection}BR_dir_abs}"
+                                            COMMAND "${paramonte_collection_build_script_path}"
+                                            COMMENT "${pmattn} Building and running the ${collection} scripts: ${BoldCyan} ${paramonte_collection_build_script_path} ${ColorReset}"
+                                            USES_TERMINAL
+                                            )
+                        add_dependencies(${collection} "${mod_proc_name}BR")
+                    endif()
+                    #math(EXPR counter "${counter}+1")
                 endif()
             endforeach()
         else()
@@ -702,7 +708,7 @@ if (EXISTS "${origin}")
 
             unset(paramonte_${collection}PP_dir_list)
 
-            if (NOT "${collection}PP" STREQUAL "")
+            if ("${collection}PP" STREQUAL "")
                 if (DEFINED paramonte_${collection}BR_dir_list)
                     set(paramonte_${collection}PP_dir_list "${paramonte_${collection}BR_dir_list}")
                 endif()
@@ -779,7 +785,7 @@ if (EXISTS "${origin}")
             # Run the ${collection}PP list.
 
             if (DEFINED paramonte_${collection}PP_dir_list)
-                set(counter 1)
+                #set(counter 1)
                 foreach(paramonte_${collection}PP_dir_rel ${paramonte_${collection}PP_dir_list})
                     set(paramonte_${collection}PP_dir_abs "${destin}/${paramonte_${collection}PP_dir_rel}")
                     set(paramonte_collection_build_script_path "${paramonte_${collection}PP_dir_abs}/${paramonte_collection_build_script}")
@@ -810,6 +816,8 @@ if (EXISTS "${origin}")
                            #                     )
                            # add_dependencies("${mod_proc_name}PP" "${mod_proc_name}BR")
                            ##add_dependencies(${collection}PP${counter} ${collection}BR${counter})
+                        elseif (TARGET "${mod_proc_name}PP")
+                            message(NOTICE "${pmwarn} Target \"${mod_proc_name}PP\" has been already added. skipping...")
                         else()
                            #add_custom_target(  ${collection}PP${counter} #ALL
                             add_custom_target(  "${mod_proc_name}PP" #ALL
@@ -822,7 +830,7 @@ if (EXISTS "${origin}")
                            #add_dependencies(${collection} ${collection}PP${counter})
                         endif()
                     endif()
-                    math(EXPR counter "${counter}+1")
+                    #math(EXPR counter "${counter}+1")
                 endforeach()
             else()
                 printUsage()

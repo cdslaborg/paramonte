@@ -24,9 +24,9 @@
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        !%%%%%%%%%%%%%%%%%%%%%%%%
+        !%%%%%%%%%%%%%%%%%%%%%%%
 #if     construct_modeli_ENABLED
-        !%%%%%%%%%%%%%%%%%%%%%%%%
+        !%%%%%%%%%%%%%%%%%%%%%%%
 
         model%digits        = digits(mold)
         model%huge          = huge(mold)
@@ -35,16 +35,16 @@
         model%radix         = radix(mold)
         model%storage_size  = storage_size(mold)
 
-        !%%%%%%%%%%%%%%%%%%%%%%%%
+        !%%%%%%%%%%%%%%%%%%%%%%%
 #elif   construct_modelb_ENABLED
-        !%%%%%%%%%%%%%%%%%%%%%%%%
+        !%%%%%%%%%%%%%%%%%%%%%%%
 
         model%modeli_type = modeli_type(mold)
         model%bit_size = bit_size(mold)
 
-        !%%%%%%%%%%%%%%%%%%%%%%%%%
+        !%%%%%%%%%%%%%%%%%%%%%%%
 #elif   construct_modelr_ENABLED
-        !%%%%%%%%%%%%%%%%%%%%%%%%%
+        !%%%%%%%%%%%%%%%%%%%%%%%
 
         model%digits        = digits(mold)
         model%epsilon       = epsilon(mold)

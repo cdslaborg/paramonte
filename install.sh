@@ -445,7 +445,7 @@ fi
 # Configure and build the ParaMonte library.
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-for fc in ${list_fc//;/$'\n'}; do
+for fc in ${list_fc//;/$'\n'}; do # replace `;` with newline character.
 
     #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
     # Set up the CMake fc flag.
@@ -477,7 +477,7 @@ for fc in ${list_fc//;/$'\n'}; do
     # Build the ParaMonte library with the specified compiler.
     #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-    for lang in $list_lang; do
+    for lang in ${list_lang//;/$'\n'}; do # replace `;` with newline character.
 
         flag_lang="-Dlang=${lang}"
 
@@ -491,23 +491,23 @@ for fc in ${list_fc//;/$'\n'}; do
         #    flag_fpp="-Dfpp=generic"
         #fi
 
-        for build in $list_build; do
+        for build in ${list_build//;/$'\n'}; do # replace `;` with newline character.
 
             flag_build="-Dbuild=${build}"
 
-            for lib in $list_lib; do
+            for lib in ${list_lib//;/$'\n'}; do # replace `;` with newline character.
 
                 flag_lib="-Dlib=${lib}"
 
-                for mem in $list_mem; do
+                for mem in ${list_mem//;/$'\n'}; do # replace `;` with newline character.
 
                     flag_mem="-Dmem=${mem}"
 
-                    for par in $list_par; do
+                    for par in ${list_par//;/$'\n'}; do # replace `;` with newline character.
 
                         flag_par="-Dpar=${par}"
 
-                        for checking in $list_checking; do
+                        for checking in ${list_checking//;/$'\n'}; do # replace `;` with newline character.
 
                             flag_checking="-Dchecking=${checking}"
 
