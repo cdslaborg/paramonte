@@ -18,6 +18,63 @@
 !>  This module defines the relevant Fortran kind type-parameters frequently used in the ParaMonte library
 !>  for the two standard supported Fortran and C-Fortran Interoperation (**CFI**) modes.<br>
 !>
+!>  \details
+!>  The current implementation of the ParaMonte library can recognize up to five kind type parameters for each of the
+!>  five intrinsic types in the latest Fortran programming language standard 2023:
+!>  <ol>
+!>      <li>    `character` kinds are prefixed by `SK` standing for **string kind** type:
+!>              <ol>
+!>                  <li>    [SK5](pm_kind::SK5)
+!>                  <li>    [SK4](pm_kind::SK4)
+!>                  <li>    [SK3](pm_kind::SK3)
+!>                  <li>    [SK2](pm_kind::SK2)
+!>                  <li>    [SK1](pm_kind::SK1)
+!>              </ol>
+!>      <li>    `integer` kinds are prefixed by `IK` standing for **integer kind** type:
+!>              <ol>
+!>                  <li>    [IK5](pm_kind::IK5)
+!>                  <li>    [IK4](pm_kind::IK4)
+!>                  <li>    [IK3](pm_kind::IK3)
+!>                  <li>    [IK2](pm_kind::IK2)
+!>                  <li>    [IK1](pm_kind::IK1)
+!>              </ol>
+!>      <li>    `logical` kinds are prefixed by `LK` standing for **logical kind** type:
+!>              <ol>
+!>                  <li>    [LK5](pm_kind::LK5)
+!>                  <li>    [LK4](pm_kind::LK4)
+!>                  <li>    [LK3](pm_kind::LK3)
+!>                  <li>    [LK2](pm_kind::LK2)
+!>                  <li>    [LK1](pm_kind::LK1)
+!>              </ol>
+!>      <li>    `complex` kinds are prefixed by `CK` standing for **complex kind** type:
+!>              <ol>
+!>                  <li>    [CK5](pm_kind::CK5)
+!>                  <li>    [CK4](pm_kind::CK4)
+!>                  <li>    [CK3](pm_kind::CK3)
+!>                  <li>    [CK2](pm_kind::CK2)
+!>                  <li>    [CK1](pm_kind::CK1)
+!>              </ol>
+!>      <li>    `real` kinds are prefixed by `CK` standing for **real kind** type:
+!>              <ol>
+!>                  <li>    [RK5](pm_kind::RK5)
+!>                  <li>    [RK4](pm_kind::RK4)
+!>                  <li>    [RK3](pm_kind::RK3)
+!>                  <li>    [RK2](pm_kind::RK2)
+!>                  <li>    [RK1](pm_kind::RK1)
+!>              </ol>
+!>  </ol>
+!>
+!>  A few remarks are in order:
+!>  <ol>
+!>      <li>    Not all five kinds per intrinsic type may be available on a given platform or compiler or desired for a particular library build.<br>
+!>      <li>    The availability of the above kind type parameters can be also controlled via the
+!>              [optional library build flags](https://github.com/cdslaborg/paramonte/blob/main/install.config.md#TIER-4-ParaMonte-library-build-configuration-flags).<br>
+!>      <li>    The above kind type parameters are considered internal library implementations.<br>
+!>      <li>    An end user must never use these kind type parameters from this module.<br>
+!>  </ol>
+!>
+!>  
+!>
 !>  \finmain
 !>
 !>  \author
