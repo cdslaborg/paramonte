@@ -24,7 +24,7 @@
 #   A variable reference has the form ${variable_name} and is evaluated inside a Quoted Argument or an Unquoted Argument.
 #   A variable reference is replaced by the value of the variable, or by the empty string if the variable is not set.
 #
-#   For usage guidelines, see the contents of `cmake.usage.txt` file in the root directory of the project.
+#   For usage guidelines, see the contents of `CMakeLists.md` file in the root directory of the project.
 #
 #   Commands to build ParaMonte on TACC:
 #
@@ -95,7 +95,7 @@ if (TRUE)
     set(missing "${BoldMagenta}MISSING${ColorReset}")
 
     function(printUsage)
-        file(READ "${CMAKE_SOURCE_DIR}/cmake.usage.txt" paramonte_cmake_usage)
+        file(READ "${CMAKE_SOURCE_DIR}/CMakeLists.md" paramonte_cmake_usage)
         message("\n${pmnote} CMake Usage Guidelines:${ColorReset}\n")
         message("${paramonte_cmake_usage}")
     endfunction()
