@@ -19,53 +19,204 @@
 !>  for the two standard supported Fortran and C-Fortran Interoperation (**CFI**) modes.<br>
 !>
 !>  \details
-!>  The current implementation of the ParaMonte library can recognize up to five kind type parameters for each of the
-!>  five intrinsic types in the latest Fortran programming language standard 2023:
+!>
+!>  Default Kind Type Parameters
+!>  ----------------------------
+!>
+!>  The following list contains the default kind type parameters of interest to the end users of the ParaMonte library.<br>
+!>  Note that the default kind type parameters may not necessarily correspond to the default kind type parameters used by the processor.<br>
+!>
 !>  <ol>
-!>      <li>    `character` kinds are prefixed by `SK` standing for **string kind** type:
+!>      <li>    The constant [SK](@ref pm_kind::SK) represents the default `character` kind type parameter used within the entire ParaMonte library.
+!>      <li>    The constant [IK](@ref pm_kind::IK) represents the default `integer` kind type parameter used within the entire ParaMonte library.
+!>      <li>    The constant [LK](@ref pm_kind::LK) represents the default `logical` kind type parameter used within the entire ParaMonte library.
+!>      <li>    The constant [CK](@ref pm_kind::CK) represents the default `complex` kind type parameter used within the entire ParaMonte library.
+!>      <li>    The constant [RK](@ref pm_kind::RK) represents the default `real` kind type parameter used within the entire ParaMonte library.
+!>  </ol>
+!>
+!>  Single-Range/Precision Kind Type Parameters
+!>  -------------------------------------------
+!>
+!>  <ol>
+!>      <li>    The constant [IKS](@ref pm_kind::IKS) represents the single-range `integer` kind type parameter used within the entire ParaMonte library.<br>
+!>              This corresponds to the default `integer` kind type parameter of the processor.<br>
+!>      <li>    The constant [CKS](@ref pm_kind::CKS) represents the single-precision `complex` kind type parameter used within the entire ParaMonte library.<br>
+!>              This corresponds to the default `real` kind type parameter of the processor.<br>
+!>      <li>    The constant [RKS](@ref pm_kind::RKS) represents the single-precision `real` kind type parameter used within the entire ParaMonte library.<br>
+!>              This corresponds to the default `real` kind type parameter of the processor.<br>
+!>  </ol>
+!>  All of the above kind type parameters are guaranteed by the standard to exist and be supported.<br>
+!>
+!>  Double-Range/Precision Kind Type Parameters
+!>  -------------------------------------------
+!>
+!>  <ol>
+!>      <li>    The constant [IKD](@ref pm_kind::IKD) represents the double-range `integer` kind type parameter used within the entire ParaMonte library.<br>
+!>              This corresponds to the default `integer` kind type parameter of the processor.<br>
+!>      <li>    The constant [CKD](@ref pm_kind::CKD) represents the double-precision `complex` kind type parameter used within the entire ParaMonte library.<br>
+!>              This corresponds to the default `real` kind type parameter of the processor.<br>
+!>      <li>    The constant [RKD](@ref pm_kind::RKD) represents the double-precision `real` kind type parameter used within the entire ParaMonte library.<br>
+!>              This corresponds to the default `real` kind type parameter of the processor.<br>
+!>  </ol>
+!>  All of the above kind type parameters are guaranteed by the standard to exist and be supported.<br>
+!>
+!>  Quadru-Range/Precision Kind Type Parameters
+!>  -------------------------------------------
+!>
+!>  <ol>
+!>      <li>    The constant [IKQ](@ref pm_kind::IKQ) represents the quadru-range `integer` kind type parameter used within the entire ParaMonte library.<br>
+!>              This corresponds to the default `integer` kind type parameter of the processor.<br>
+!>      <li>    The constant [CKQ](@ref pm_kind::CKQ) represents the quadru-precision `complex` kind type parameter used within the entire ParaMonte library.<br>
+!>              This corresponds to the default `real` kind type parameter of the processor.<br>
+!>      <li>    The constant [RKQ](@ref pm_kind::RKQ) represents the quadru-precision `real` kind type parameter used within the entire ParaMonte library.<br>
+!>              This corresponds to the default `real` kind type parameter of the processor.<br>
+!>  </ol>
+!>  There is no guarantee of the existence of the above kind type parameters on all processors and compilers.<br>
+!>  If a kind type parameter does not exist, the processor assigns a negative value to it.<br>
+!>
+!>  Lowest-Range Kind Type Parameters
+!>  ---------------------------------
+!>
+!>  This module specifies the kind type parameters that yield the lowest range intrinsic `integer`, `complex`, 
+!>  and `real` types that are supported by the specific ParaMonte library build as in the following:
+!>
+!>  <ol>
+!>      <li>    The constant [IKL](@ref pm_kind::IKL) represents the lowest-range `integer` kind type parameter supported by the ParaMonte library.
+!>      <li>    The constant [CKLR](@ref pm_kind::CKLR) represents the lowest-range `complex` kind type parameter supported by the ParaMonte library.
+!>      <li>    The constant [RKLR](@ref pm_kind::RKLR) represents the lowest-range `real` kind type parameter supported by the ParaMonte library.
+!>  </ol>
+!>
+!>  Highest-Range Kind Type Parameters
+!>  ----------------------------------
+!>
+!>  This module specifies the kind type parameters that yield the highest range intrinsic `integer`, `complex`, 
+!>  and `real` types that are supported by the specific ParaMonte library build as in the following:
+!>
+!>  <ol>
+!>      <li>    The constant [IKH](@ref pm_kind::IKH) represents the highest-range `integer` kind type parameter supported by the ParaMonte library.
+!>      <li>    The constant [CKHR](@ref pm_kind::CKHR) represents the highest-range `complex` kind type parameter supported by the ParaMonte library.
+!>      <li>    The constant [RKHR](@ref pm_kind::RKHR) represents the highest-range `real` kind type parameter supported by the ParaMonte library.
+!>  </ol>
+!>
+!>  Lowest-Precision Kind Type Parameters
+!>  -------------------------------------
+!>
+!>  This module specifies the kind type parameters that yield the lowest precision intrinsic `complex` and 
+!>  and `real` types that are supported by the specific ParaMonte library build as in the following:
+!>
+!>  <ol>
+!>      <li>    The constant [CKL](@ref pm_kind::CKL) represents the lowest-precision `complex` kind type parameter supported by the ParaMonte library.
+!>      <li>    The constant [RKL](@ref pm_kind::RKL) represents the lowest-precision `real` kind type parameter supported by the ParaMonte library.
+!>  </ol>
+!>
+!>  Highest-Precision Kind Type Parameters
+!>  --------------------------------------
+!>
+!>  This module specifies the kind type parameters that yield the highest precision intrinsic `complex` and 
+!>  and `real` types that are supported by the specific ParaMonte library build as in the following:
+!>
+!>  <ol>
+!>      <li>    The constant [CKH](@ref pm_kind::CKH) represents the highest-precision `complex` kind type parameter supported by the ParaMonte library.
+!>      <li>    The constant [RKH](@ref pm_kind::RKH) represents the highest-precision `real` kind type parameter supported by the ParaMonte library.
+!>  </ol>
+!>
+!>  Worst-Range Kind Type Parameters
+!>  --------------------------------
+!>
+!>  This module specifies the kind type parameters that yield the worst range intrinsic `integer`, `complex`, 
+!>  and `real` types that supported by the processor (whether or not supported by the specific ParaMonte library build) as in the following:
+!>
+!>  <ol>
+!>      <li>    The constant [IKW](@ref pm_kind::IKW) represents the worst-range `integer` kind type parameter supported by the processor.
+!>      <li>    The constant [CKWR](@ref pm_kind::CKWR) represents the worst-range `complex` kind type parameter supported by the processor.
+!>      <li>    The constant [RKWR](@ref pm_kind::RKWR) represents the worst-range `real` kind type parameter supported by the processor.
+!>  </ol>
+!>
+!>  Best-Range Kind Type Parameters
+!>  -------------------------------
+!>
+!>  This module specifies the kind type parameters that yield the highest range intrinsic `integer`, `complex`, 
+!>  and `real` types that supported by the processor (whether or not supported by the specific ParaMonte library build) as in the following:
+!>
+!>  <ol>
+!>      <li>    The constant [IKB](@ref pm_kind::IKB) represents the highest-range `integer` kind type parameter supported by the processor.
+!>      <li>    The constant [CKBR](@ref pm_kind::CKBR) represents the highest-range `complex` kind type parameter supported by the processor.
+!>      <li>    The constant [RKBR](@ref pm_kind::RKBR) represents the highest-range `real` kind type parameter supported by the processor.
+!>  </ol>
+!>
+!>  Worst-Precision Kind Type Parameters
+!>  ------------------------------------
+!>
+!>  This module specifies the kind type parameters that yield the worst precision intrinsic `complex` and 
+!>  and `real` types that supported by the processor (whether or not supported by the specific ParaMonte library build) as in the following:
+!>
+!>  <ol>
+!>      <li>    The constant [CKW](@ref pm_kind::CKW) represents the worst-precision `complex` kind type parameter supported by the processor.
+!>      <li>    The constant [RKW](@ref pm_kind::RKW) represents the worst-precision `real` kind type parameter supported by the processor.
+!>  </ol>
+!>
+!>  Best-Precision Kind Type Parameters
+!>  -----------------------------------
+!>
+!>  This module specifies the kind type parameters that yield the highest precision intrinsic `complex` and 
+!>  and `real` types that supported by the processor (whether or not supported by the specific ParaMonte library build) as in the following:
+!>
+!>  <ol>
+!>      <li>    The constant [CKB](@ref pm_kind::CKB) represents the highest-precision `complex` kind type parameter supported by the processor.
+!>      <li>    The constant [RKB](@ref pm_kind::RKB) represents the highest-precision `real` kind type parameter supported by the processor.
+!>  </ol>
+!>
+!>  Developer Guidelines
+!>  ====================
+!>
+!>  The current implementation of the ParaMonte library can recognize up to five kind type parameters 
+!>  for each of the five intrinsic types in the latest Fortran programming language standard 2023:<br>
+!>  <ol>
+!>      <li>    The `character` kinds are prefixed by `SK` standing for **string kind** type:
 !>              <ol>
-!>                  <li>    [SK5](pm_kind::SK5)
-!>                  <li>    [SK4](pm_kind::SK4)
-!>                  <li>    [SK3](pm_kind::SK3)
-!>                  <li>    [SK2](pm_kind::SK2)
-!>                  <li>    [SK1](pm_kind::SK1)
+!>                  <li>    [SK5](@ref pm_kind::SK5)
+!>                  <li>    [SK4](@ref pm_kind::SK4)
+!>                  <li>    [SK3](@ref pm_kind::SK3)
+!>                  <li>    [SK2](@ref pm_kind::SK2)
+!>                  <li>    [SK1](@ref pm_kind::SK1)
 !>              </ol>
-!>      <li>    `integer` kinds are prefixed by `IK` standing for **integer kind** type:
+!>      <li>    The `integer` kinds are prefixed by `IK` standing for **integer kind** type:
 !>              <ol>
-!>                  <li>    [IK5](pm_kind::IK5)
-!>                  <li>    [IK4](pm_kind::IK4)
-!>                  <li>    [IK3](pm_kind::IK3)
-!>                  <li>    [IK2](pm_kind::IK2)
-!>                  <li>    [IK1](pm_kind::IK1)
+!>                  <li>    [IK5](@ref pm_kind::IK5)
+!>                  <li>    [IK4](@ref pm_kind::IK4)
+!>                  <li>    [IK3](@ref pm_kind::IK3)
+!>                  <li>    [IK2](@ref pm_kind::IK2)
+!>                  <li>    [IK1](@ref pm_kind::IK1)
 !>              </ol>
-!>      <li>    `logical` kinds are prefixed by `LK` standing for **logical kind** type:
+!>      <li>    The `logical` kinds are prefixed by `LK` standing for **logical kind** type:
 !>              <ol>
-!>                  <li>    [LK5](pm_kind::LK5)
-!>                  <li>    [LK4](pm_kind::LK4)
-!>                  <li>    [LK3](pm_kind::LK3)
-!>                  <li>    [LK2](pm_kind::LK2)
-!>                  <li>    [LK1](pm_kind::LK1)
+!>                  <li>    [LK5](@ref pm_kind::LK5)
+!>                  <li>    [LK4](@ref pm_kind::LK4)
+!>                  <li>    [LK3](@ref pm_kind::LK3)
+!>                  <li>    [LK2](@ref pm_kind::LK2)
+!>                  <li>    [LK1](@ref pm_kind::LK1)
 !>              </ol>
-!>      <li>    `complex` kinds are prefixed by `CK` standing for **complex kind** type:
+!>      <li>    The `complex` kinds are prefixed by `CK` standing for **complex kind** type:
 !>              <ol>
-!>                  <li>    [CK5](pm_kind::CK5)
-!>                  <li>    [CK4](pm_kind::CK4)
-!>                  <li>    [CK3](pm_kind::CK3)
-!>                  <li>    [CK2](pm_kind::CK2)
-!>                  <li>    [CK1](pm_kind::CK1)
+!>                  <li>    [CK5](@ref pm_kind::CK5)
+!>                  <li>    [CK4](@ref pm_kind::CK4)
+!>                  <li>    [CK3](@ref pm_kind::CK3)
+!>                  <li>    [CK2](@ref pm_kind::CK2)
+!>                  <li>    [CK1](@ref pm_kind::CK1)
 !>              </ol>
-!>      <li>    `real` kinds are prefixed by `CK` standing for **real kind** type:
+!>      <li>    The `real` kinds are prefixed by `CK` standing for **real kind** type:
 !>              <ol>
-!>                  <li>    [RK5](pm_kind::RK5)
-!>                  <li>    [RK4](pm_kind::RK4)
-!>                  <li>    [RK3](pm_kind::RK3)
-!>                  <li>    [RK2](pm_kind::RK2)
-!>                  <li>    [RK1](pm_kind::RK1)
+!>                  <li>    [RK5](@ref pm_kind::RK5)
+!>                  <li>    [RK4](@ref pm_kind::RK4)
+!>                  <li>    [RK3](@ref pm_kind::RK3)
+!>                  <li>    [RK2](@ref pm_kind::RK2)
+!>                  <li>    [RK1](@ref pm_kind::RK1)
 !>              </ol>
 !>  </ol>
 !>
 !>  A few remarks are in order:
 !>  <ol>
+!>      <li>    Any unsupported or non-existing kind type parameter is given a negative value.<br>
 !>      <li>    Not all five kinds per intrinsic type may be available on a given platform or compiler or desired for a particular library build.<br>
 !>      <li>    The availability of the above kind type parameters can be also controlled via the
 !>              [optional library build flags](https://github.com/cdslaborg/paramonte/blob/main/install.config.md#TIER-4-ParaMonte-library-build-configuration-flags).<br>
@@ -73,7 +224,39 @@
 !>      <li>    An end user must never use these kind type parameters from this module.<br>
 !>  </ol>
 !>
-!>  
+!>  Precision Parameters
+!>  --------------------
+!>
+!>  The precisions of the corresponding `real` and `complex` kind type parameters are represented by the letter `R`.
+!>  <ol>
+!>      <li>    `complex` precisions are prefixed by `CP` standing for **complex precision**:
+!>              <ol>
+!>                  <li>    [CP5](@ref pm_kind::CP5)
+!>                  <li>    [CP4](@ref pm_kind::CP4)
+!>                  <li>    [CP3](@ref pm_kind::CP3)
+!>                  <li>    [CP2](@ref pm_kind::CP2)
+!>                  <li>    [CP1](@ref pm_kind::CP1)
+!>              </ol>
+!>      <li>    `real` kinds are prefixed by `CK` standing for **real precision**:
+!>              <ol>
+!>                  <li>    [RP5](@ref pm_kind::RP5)
+!>                  <li>    [RP4](@ref pm_kind::RP4)
+!>                  <li>    [RP3](@ref pm_kind::RP3)
+!>                  <li>    [RP2](@ref pm_kind::RP2)
+!>                  <li>    [RP1](@ref pm_kind::RP1)
+!>              </ol>
+!>  </ol>
+!>  The precision of non-existing kind type parameters are set to zero.<br>
+!>
+!>  Intrinsic Type Representation Models
+!>  ------------------------------------
+!>
+!>  The following representation model derived types also exist in this module:<br>
+!>  <ol>
+!>      <li>    [modelb_type](@ref pm_kind::modelb_type) can hold information about binary (bit) containers.<br>
+!>      <li>    [modeli_type](@ref pm_kind::modeli_type) can hold information about `integer` containers of various kinds.<br>
+!>      <li>    [modelr_type](@ref pm_kind::modelr_type) can hold information about `complex` and `real` containers of various kinds.<br>
+!>  </ol>
 !>
 !>  \finmain
 !>
@@ -379,14 +562,14 @@ module pm_kind
     integer     , parameter :: SKA  = selected_char_kind("ascii")               !<  \public The ASCII   string  kind in Fortran mode.
     integer     , parameter :: IKS  = kind(1)                                   !<  \public The single-precision integer kind in Fortran mode. On most platforms, this is a 32-bit integer kind.
     integer     , parameter :: IKD  = selected_int_kind(18)                     !<  \public The double precision integer kind in Fortran mode. On most platforms, this is a 64-bit integer kind.
-    integer     , parameter :: IKQ  = selected_int_kind(36)                     !<  \public The quadro-precision integer kind in Fortran mode. On most platforms, this is a 128-bit integer kind.
+    integer     , parameter :: IKQ  = selected_int_kind(36)                     !<  \public The quadru-precision integer kind in Fortran mode. On most platforms, this is a 128-bit integer kind.
                                                                                 !!          There is no guarantee of the existence of this kind (e.g., Intel does not support this).
     integer     , parameter :: RKS  = kind(1.)                                  !<  \public The single-precision real kind in Fortran mode. On most platforms, this is an 32-bit real kind.
     integer     , parameter :: RKD  = kind(1.d0)                                !<  \public The double precision real kind in Fortran mode. On most platforms, this is an 64-bit real kind.
-    integer     , parameter :: RKQ  = selected_real_kind(2*precision(1._RKD))   !<  \public The quadro-precision real kind in Fortran mode. On most platforms, this is an 128-bit real kind.
+    integer     , parameter :: RKQ  = selected_real_kind(2*precision(1._RKD))   !<  \public The quadru-precision real kind in Fortran mode. On most platforms, this is an 128-bit real kind.
     integer     , parameter :: CKS  = RKS                                       !<  \public The single-precision complex kind in Fortran mode. On most platforms, this is a 32-bit real kind.
     integer     , parameter :: CKD  = RKD                                       !<  \public The double precision complex kind in Fortran mode. On most platforms, this is a 64-bit real kind.
-    integer     , parameter :: CKQ  = RKQ                                       !<  \public The quadro-precision complex kind in Fortran mode. On most platforms, this is a 128-bit real kind.
+    integer     , parameter :: CKQ  = RKQ                                       !<  \public The quadru-precision complex kind in Fortran mode. On most platforms, this is a 128-bit real kind.
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 ! Define the vector of all type kinds supported by the ParaMonte library.
