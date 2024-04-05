@@ -924,6 +924,7 @@ for %%C in ("!list_fc:;=" "!") do (
                             echo.****************************************************************************************************
                             echo.
 
+                            set PATH=!PATH!;!paramonte_bld_dir!\lib
                             cd "!paramonte_bld_dir!" && cmake --build "!paramonte_bld_dir!" !flag_j! && (
                                 echo.
                                 echo.!pmnote! !BoldGreen!ParaMonte build appears to have succeeded.!ColorReset!
