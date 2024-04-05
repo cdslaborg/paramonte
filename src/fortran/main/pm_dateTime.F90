@@ -267,7 +267,7 @@
 !>              <ul>
 !>                  <li>    Should the uniformly randomly generated Gregorian Calendar date be a UTC date and time (i.e., `zone = 0`),
 !>                          then convert the uniformly randomly generated Julian Day (`randJD`) to the Gregorian Calendar date by calling [getDateTime(randJD)](@ref pm_dateTime::getDateTime).<br>
-!>                  <li>    Should the uniformly randomly generated Gregorian Calendar date be local to a specific timezone `zone`,
+!>                  <li>    Should the uniformly randomly generated Gregorian Calendar date be local to a specific time zone `zone`,
 !>                          then convert the uniformly randomly generated Julian Day (`randJD`) to the Gregorian Calendar date by calling [getDateTime(randJD, zone)](@ref pm_dateTime::getDateTime).<br>
 !>              </ul>
 !>  </ol>
@@ -318,12 +318,12 @@ module pm_dateTime
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    integer(IK) , parameter :: ZONE_MIN = -12_IK * 60_IK    !<   \public The scalar constant of default `integer` kind \IK representing the current minimum existing timezone value in the work in units of minutes.
+    integer(IK) , parameter :: ZONE_MIN = -12_IK * 60_IK    !<   \public The scalar constant of default `integer` kind \IK representing the current minimum existing time zone value in the work in units of minutes.
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: ZONE_MIN
 #endif
 
-    integer(IK) , parameter :: ZONE_MAX = +14_IK * 60_IK    !<   \public The scalar constant of default `integer` kind \IK representing the current maximum existing timezone value in the work in units of minutes.
+    integer(IK) , parameter :: ZONE_MAX = +14_IK * 60_IK    !<   \public The scalar constant of default `integer` kind \IK representing the current maximum existing time zone value in the work in units of minutes.
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: ZONE_MAX
 #endif
@@ -1023,13 +1023,13 @@ module pm_dateTime
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
-    !>  This is the derived type for generating object parameters containing a list of timezones and their representative abbreviations.<br>
+    !>  This is the derived type for generating object parameters containing a list of time zones and their representative abbreviations.<br>
     !>
     !>  \details
-    !>  The timezone abbreviation is difficult to infer and generally requires communication with the operating system, which may or may not have it.<br>
-    !>  The current implementation of this generic interface relies on a predefined internal list of timezone abbreviations to convert the specified `zone` **in units of minutes** to an abbreviation.<br>
-    !>  Where there are multiple timezone abbreviations available for a single timezone, only a single representative abbreviation is kept in the list.<br>
-    !>  The following is the current list of internal timezone abbreviations used in the ParaMonte library.<br>
+    !>  The time zone abbreviation is difficult to infer and generally requires communication with the operating system, which may or may not have it.<br>
+    !>  The current implementation of this generic interface relies on a predefined internal list of time zone abbreviations to convert the specified `zone` **in units of minutes** to an abbreviation.<br>
+    !>  Where there are multiple time zone abbreviations available for a single time zone, only a single representative abbreviation is kept in the list.<br>
+    !>  The following is the current list of internal time zone abbreviations used in the ParaMonte library.<br>
     !>
     !>  Timezone                    |   Abbreviation        |   Timezone name
     !>  ----------------------------|-----------------------|----------------------------------------
@@ -1074,14 +1074,14 @@ module pm_dateTime
     !>  \f$+60 \times 14     \f$    |   \f$\ms{LINT }\f$    |   Line Islands Time
     !>
     !>  \see
-    !>  [timezone](@ref pm_dateTime::timezone)<br>
+    !>  [timeZone](@ref pm_dateTime::timeZone)<br>
     !>  [getZoneAbbr](@ref pm_dateTime::getZoneAbbr)<br>
     !>
-    !>  \finmain{timezone_type}
+    !>  \finmain{timeZone_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, January 30, 2021, 5:36 AM, Dallas, TX
-    type :: timezone_type
+    type :: timeZone_type
         integer(IK)     :: Zone(39) =   [ -60 * 12          &
                                         , -60 * 11          &
                                         , -60 * 10          &
@@ -1165,39 +1165,39 @@ module pm_dateTime
     end type
 
     !>  \brief
-    !>  This is an object parameter of type [timezone_type](@ref pm_dateTime::timezone_type) containing a list of timezones and their representative abbreviations.<br>
+    !>  This is an object parameter of type [timeZone_type](@ref pm_dateTime::timeZone_type) containing a list of time zones and their representative abbreviations.<br>
     !>
     !>  \details
     !>  This list contains only a representative set of zone abbreviations.<br>
-    !>  See the documentation of [timezone_type](@ref pm_dateTime::timezone_type) for more information.<br>
+    !>  See the documentation of [timeZone_type](@ref pm_dateTime::timeZone_type) for more information.<br>
     !>  See the documentation of [getZoneAbbr](@ref pm_dateTime::getZoneAbbr) for relevant usage and examples.<br>
     !>  The primary use case of this object is in the implementation of [getZoneAbbr()](@ref pm_dateTime::getZoneAbbr).<br>
     !>
     !>  \see
     !>  [getZoneAbbr](@ref pm_dateTime::getZoneAbbr)<br>
-    !>  [timezone_type](@ref pm_dateTime::timezone_type)<br>
+    !>  [timeZone_type](@ref pm_dateTime::timeZone_type)<br>
     !>
-    !>  \finmain{timezone}
+    !>  \finmain{timeZone}
     !>
     !>  \author
     !>  \AmirShahmoradi, January 30, 2021, 5:36 AM, Dallas, TX
-    type(timezone_type), parameter :: timezone = timezone_type()
+    type(timeZone_type), parameter :: timeZone = timeZone_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-    !DIR$ ATTRIBUTES DLLEXPORT :: timezone
+    !DIR$ ATTRIBUTES DLLEXPORT :: timeZone
 #endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
-    !>  Generate and return the timezone abbreviation corresponding to the current local time or the specified `zone` in **minutes**.
+    !>  Generate and return the time zone abbreviation corresponding to the current local time or the specified `zone` in **minutes**.
     !>
     !>  \details
-    !>  The timezone abbreviation is difficult to infer and generally requires communication with the operating system, which may or may not have it.<br>
-    !>  The current implementation of this generic interface relies on a predefined internal list of timezone abbreviations to convert the specified `zone` **in units of minutes** to an abbreviation.<br>
-    !>  Where there are multiple timezone abbreviations available for a single timezone, only a single representative abbreviation is kept in the list.<br>
-    !>  See the documentation of [timezone_type](@ref pm_dateTime::timezone_type) for the current internal list of zones and abbreviations used by the ParaMonte library.<br>
+    !>  The time zone abbreviation is difficult to infer and generally requires communication with the operating system, which may or may not have it.<br>
+    !>  The current implementation of this generic interface relies on a predefined internal list of time zone abbreviations to convert the specified `zone` **in units of minutes** to an abbreviation.<br>
+    !>  Where there are multiple time zone abbreviations available for a single time zone, only a single representative abbreviation is kept in the list.<br>
+    !>  See the documentation of [timeZone_type](@ref pm_dateTime::timeZone_type) for the current internal list of zones and abbreviations used by the ParaMonte library.<br>
     !>
-    !>  \param[in]  zone    :   The input scalar of type `integer` of default kind \IK, containing the <b>local timezone</b> of the Gregorian calendar <b>in minutes</b>.<br>
+    !>  \param[in]  zone    :   The input scalar of type `integer` of default kind \IK, containing the <b>local time zone</b> of the Gregorian calendar <b>in minutes</b>.<br>
     !>                          (**optional**, default = [getZone()](@ref pm_dateTime::getZone))
     !>  \return
     !>  `abbr`              :   The output scalar of type `integer` of default kind \IK containing the local
@@ -1390,7 +1390,7 @@ module pm_dateTime
     !>                              (**optional**, default = `1` (or the current value if all input arguments are missing). It can be present only if `year` is present.)
     !>  \param[in]  day         :   The input scalar of type `integer` of default kind \IK, containing the day of the month of the year of the Gregorian calendar.<br>
     !>                              (**optional**, default = `1`. (or the current value if all input arguments are missing). It can be present only if `month` is present.)
-    !>  \param[in]  zone        :   The input scalar of type `integer` of default kind \IK, containing the <b>timezone</b> of the Gregorian calendar <b>in minutes</b>.<br>
+    !>  \param[in]  zone        :   The input scalar of type `integer` of default kind \IK, containing the <b>time zone</b> of the Gregorian calendar <b>in minutes</b>.<br>
     !>                              (**optional**, default = `0` (UTC) (or the current value if all input arguments are missing). It can be present only if `day` is present.)
     !>  \param[in]  hour        :   The input scalar of type `integer` of default kind \IK, containing the hour of the day of the Gregorian calendar.<br>
     !>                              (**optional**, default = `0` (or the current value if all input arguments are missing). It can be present only if `zone` is present.)
@@ -1570,7 +1570,7 @@ module pm_dateTime
     !>                              (**optional**, default = `1` (or the current value if all input arguments are missing). It can be present only if `year` is also present.)
     !>  \param[in]  day         :   The input scalar of type `integer` of default kind \IK, containing the day of the month of the year of the Gregorian calendar.<br>
     !>                              (**optional**, default = `1`. (or the current value if all input arguments are missing). It can be present only if `month` is also present.)
-    !>  \param[in]  zone        :   The input scalar of type `integer` of default kind \IK, containing the <b>local timezone</b> of the Gregorian calendar <b>in minutes</b>.<br>
+    !>  \param[in]  zone        :   The input scalar of type `integer` of default kind \IK, containing the <b>local time zone</b> of the Gregorian calendar <b>in minutes</b>.<br>
     !>                              The input argument `zone` has no effects on the output shifted date and time. It is only used to construct the output date and time vector.<br>
     !>                              (**optional**, default = `0` (UTC) (or the current value if all input arguments are missing). It can be present only if `day` is also present.)
     !>  \param[in]  hour        :   The input scalar of type `integer` of default kind \IK, containing the hour of the day of the Gregorian calendar.<br>
@@ -1590,7 +1590,7 @@ module pm_dateTime
     !>  `dateTimeShifted(1:8)`  :   The output vector of size `8` of type `integer` of default kind \IK containing
     !>                              the requested local date and time of the Gregorian Calendar corresponding to the input
     !>                              date and time shifted by the specified `amount` in the order `[year, month, day, zone, hour, minute, seconds, milliseconds]`.
-    !>                              By definition, `dateTimeShifted(4)` (corresponding to the local timezone) is the same as `values(4)` or the `zone` input argument.
+    !>                              By definition, `dateTimeShifted(4)` (corresponding to the local time zone) is the same as `values(4)` or the `zone` input argument.
     !>
     !>  \interface{getDateTimeShifted}
     !>  \code{.F90}
@@ -1620,7 +1620,7 @@ module pm_dateTime
     !>  \warning
     !>  The input `month` must be a number between `1` and `12`.<br>
     !>  The input `day` must be a number between `1` and `31` and be consistent with the specified month and (leap) year.<br>
-    !>  The input `zone` must be a valid timezone in units of minutes.<br>
+    !>  The input `zone` must be a valid time zone in units of minutes.<br>
     !>  The input `hour` must be a number between `0` and `23`.<br>
     !>  The input `minute` must be a number between `0` and `59`.<br>
     !>  The input `second` must be a number between `0` and `59`.<br>
@@ -1748,7 +1748,7 @@ module pm_dateTime
     !>  Generate and return the calendarical difference in days between the two input Gregorian dates octuples (Values1(:) - Values2(:)).
     !>
     !>  \details
-    !>  This algorithm carefully takes into account the possibility of leap years and different timezones.<br>
+    !>  This algorithm carefully takes into account the possibility of leap years and different time zones.<br>
     !>  If `Values1` is smaller than `Values2` the difference between the two dates is negative.
     !>
     !>  \param[in]  Values1 :   The input `contiguous` vector of size `8` of type `integer` of default kind \IK, containing the octuple
@@ -1779,7 +1779,7 @@ module pm_dateTime
     !>  The sizes of the two input vector arguments must be the same and equal to `8`.<br>
     !>  The input `month` must be a number between `1` and `12`.<br>
     !>  The input `day` must be a number between `1` and `31` and be consistent with the specified month and (leap) year.<br>
-    !>  The input `zone` must be a valid timezone in units of minutes.<br>
+    !>  The input `zone` must be a valid time zone in units of minutes.<br>
     !>  The input `hour` must be a number between `0` and `23`.<br>
     !>  The input `minute` must be a number between `0` and `59`.<br>
     !>  The input `second` must be a number between `0` and `59`.<br>
@@ -1828,7 +1828,7 @@ module pm_dateTime
     !>
     !>  \details
     !>  The first four input arguments or the first four elements of the input vector `values(:)`
-    !>  are mandatory and must be provided since they determine the date and local timezone of interest.<br>
+    !>  are mandatory and must be provided since they determine the date and local time zone of interest.<br>
     !>  The rest of the elements containing the time of the day of the Gregorian Calendar are optional and taken to be zero if not provided.<br>
     !>
     !>  \param[in]  year        :   The input scalar of type `integer` of default kind \IK, containing the year of the Gregorian calendar.<br>
@@ -1837,7 +1837,7 @@ module pm_dateTime
     !>                              (**optional**, default = `1` (or the current value if all input arguments are missing). It **must** be present if `year` is also present.)
     !>  \param[in]  day         :   The input scalar of type `integer` of default kind \IK, containing the day of the month of the year of the Gregorian calendar.<br>
     !>                              (**optional**, default = `1`. (or the current value if all input arguments are missing). It **must**  be present if `month` is also present.)
-    !>  \param[in]  zone        :   The input scalar of type `integer` of default kind \IK, containing the <b>local timezone</b> of the Gregorian calendar <b>in minutes</b>.<br>
+    !>  \param[in]  zone        :   The input scalar of type `integer` of default kind \IK, containing the <b>local time zone</b> of the Gregorian calendar <b>in minutes</b>.<br>
     !>                              (**optional**, default = `0` (UTC) (or the current value if all input arguments are missing). It **must** be present if `day` is also present.)
     !>  \param[in]  hour        :   The input scalar of type `integer` of default kind \IK, containing the hour of the day of the Gregorian calendar.<br>
     !>                              (**optional**, default = `0` (or the current value if all input arguments are missing). It can be present only if `zone` is present.)
@@ -1856,7 +1856,7 @@ module pm_dateTime
     !>  `DateTimeUTC(1:8)`      :   The output vector of size `8` of type `integer` of default kind \IK containing
     !>                              the requested UTC date and time of the Gregorian Calendar corresponding to the input local date and time
     !>                              in the order `[year, month, day, zone, hour, minute, seconds, milliseconds]`.
-    !>                              By definition, `DateTimeUTC(4)` (corresponding to the UTC timezone) is always zero.
+    !>                              By definition, `DateTimeUTC(4)` (corresponding to the UTC time zone) is always zero.
     !>
     !>  \interface{getDateTimeUTC}
     !>  \code{.F90}
@@ -1885,7 +1885,7 @@ module pm_dateTime
     !>  This is in accordance with the convention in astronomical year numbering and the international standard date system, **ISO 8601**.<br>
     !>  The input `month` must be a number between `1` and `12`.<br>
     !>  The input `day` must be a number between `1` and `31` and be consistent with the specified month and (leap) year.<br>
-    !>  The input `zone` must be a valid timezone in units of minutes.<br>
+    !>  The input `zone` must be a valid time zone in units of minutes.<br>
     !>  The input `hour` must be a number between `0` and `23`.<br>
     !>  The input `minute` must be a number between `0` and `59`.<br>
     !>  The input `second` must be a number between `0` and `59`.<br>
@@ -2000,22 +2000,22 @@ module pm_dateTime
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
-    !>  Generate and return the current or the requested date and time in the requested timezone `newzone` (in units of minutes) as an integer-valued array of size `8`.<br>
+    !>  Generate and return the current or the requested date and time in the requested time zone `newzone` (in units of minutes) as an integer-valued array of size `8`.<br>
     !>
     !>  \details
     !>  If there is no input argument besides `newzone`, then the output is the current date and time in the specified zone `newzone`.<br>
     !>  When the input argument `values(:)` is present, the first four input arguments or the first four elements of the input vector `values(:)`
-    !>  are mandatory and must be provided since they determine the old date and timezone of interest to be converted to the new timezone.<br>
+    !>  are mandatory and must be provided since they determine the old date and time zone of interest to be converted to the new time zone.<br>
     !>  The rest of the elements containing the time of the day of the Gregorian Calendar are optional and taken to be zero if not provided.<br>
     !>
-    !>  \param[in]  newzone     :   The input scalar of type `integer` of default kind \IK, containing the new <b>timezone</b> of the Gregorian calendar <b>in minutes</b>.<br>
+    !>  \param[in]  newzone     :   The input scalar of type `integer` of default kind \IK, containing the new <b>time zone</b> of the Gregorian calendar <b>in minutes</b>.<br>
     !>  \param[in]  year        :   The input scalar of type `integer` of default kind \IK, containing the year of the Gregorian calendar.<br>
     !>                              (**optional**, default =  the current value if all input arguments are missing. It can be present only if `values` is missing.)
     !>  \param[in]  month       :   The input scalar of type `integer` of default kind \IK, containing the month of the year of the Gregorian calendar.<br>
     !>                              (**optional**, default = `1` (or the current value if all input arguments are missing). It **must** be present if `year` is also present.)
     !>  \param[in]  day         :   The input scalar of type `integer` of default kind \IK, containing the day of the month of the year of the Gregorian calendar.<br>
     !>                              (**optional**, default = `1`. (or the current value if all input arguments are missing). It **must**  be present if `month` is also present.)
-    !>  \param[in]  zone        :   The input scalar of type `integer` of default kind \IK, containing the <b>local timezone</b> of the Gregorian calendar <b>in minutes</b>
+    !>  \param[in]  zone        :   The input scalar of type `integer` of default kind \IK, containing the <b>local time zone</b> of the Gregorian calendar <b>in minutes</b>
     !>                              to be used to convert the UTC date and time to the local date and time.<br>
     !>                              (**optional**, default = `0` (UTC) (or the current value if all input arguments are missing). It **must** be present if `day` is also present.)
     !>  \param[in]  hour        :   The input scalar of type `integer` of default kind \IK, containing the hour of the day of the Gregorian calendar.<br>
@@ -2033,7 +2033,7 @@ module pm_dateTime
     !>
     !>  \return
     !>  `DateTimeNewZone(1:8)`  :   The output vector of size `8` of type `integer` of default kind \IK containing
-    !>                              the requested date and time of the Gregorian Calendar in the new timezone `newzone` corresponding
+    !>                              the requested date and time of the Gregorian Calendar in the new time zone `newzone` corresponding
     !>                              to the input date and time in the order `[year, month, day, zone, hour, minute, seconds, milliseconds]`.
     !>                              By definition, `DateTimeNewZone(4)` (corresponding to the zone in minutes) has the same values as the input argument `newzone`.
     !>
@@ -2064,7 +2064,7 @@ module pm_dateTime
     !>  This is in accordance with the convention in astronomical year numbering and the international standard date system, **ISO 8601**.<br>
     !>  The input `month` must be a number between `1` and `12`.<br>
     !>  The input `day` must be a number between `1` and `31` and be consistent with the specified month and (leap) year.<br>
-    !>  The input `zone` must be a valid timezone in units of minutes.<br>
+    !>  The input `zone` must be a valid time zone in units of minutes.<br>
     !>  The input `hour` must be a number between `0` and `23`.<br>
     !>  The input `minute` must be a number between `0` and `59`.<br>
     !>  The input `second` must be a number between `0` and `59`.<br>
@@ -2244,8 +2244,8 @@ module pm_dateTime
     !>  \f$\ms{%X}\f$   |   14:55:02                |   Time representation *
     !>  \f$\ms{%y}\f$   |   01                      |   Year, last two digits (00-99)
     !>  \f$\ms{%Y}\f$   |   2001                    |   Year
-    !>  \f$\ms{%z}\f$   |   +0100                   |   ISO 8601 offset from UTC in timezone in units of minutes (as returned by the Fortran intrinsic `date_and_time()`).
-    !>  \f$\ms{%Z}\f$   |   CDT                     |   Timezone abbreviation (**daylight saving not implemented**; different from the C/C++ `strftime` behavior which uses system timezone name)
+    !>  \f$\ms{%z}\f$   |   +0100                   |   ISO 8601 offset from UTC in time zone in units of minutes (as returned by the Fortran intrinsic `date_and_time()`).
+    !>  \f$\ms{%Z}\f$   |   CDT                     |   Time zone abbreviation (**daylight saving not implemented**; different from the C/C++ `strftime` behavior which uses system time zone name)
     !>  \f$\ms{%%}\f$   |   \%                      |   A `%` sign
     !>
     !>  \param[in]  format      :   The input scalar or array of the same shape as other array-like arguments of type `character` of default kind \SK,
@@ -2259,7 +2259,7 @@ module pm_dateTime
     !>                              (**optional**, default = `1` or the current value if all arguments are missing or only `format` is present. It can be present only if `year` is present.)
     !>  \param[in]  day         :   The input scalar of type `integer` of default kind \IK, containing the day of the month of the year of the Gregorian calendar.<br>
     !>                              (**optional**, default = `1` or the current value if all arguments are missing or only `format` is present. It can be present only if `month` is present.)
-    !>  \param[in]  zone        :   The input scalar of type `integer` of default kind \IK, containing the <b>timezone</b> of the Gregorian calendar <b>in minutes</b>.<br>
+    !>  \param[in]  zone        :   The input scalar of type `integer` of default kind \IK, containing the <b>time zone</b> of the Gregorian calendar <b>in minutes</b>.<br>
     !>                              (**optional**, default = `0` (UTC) or the current value if all arguments are missing or only `format` is present. It can be present only if either `day` or `julianDay` (but noth both) is present.)
     !>  \param[in]  hour        :   The input scalar of type `integer` of default kind \IK, containing the hour of the day of the Gregorian calendar.<br>
     !>                              (**optional**, default = `0` or the current value if all arguments are missing or only `format` is present. It can be present only if `zone` is present.)
@@ -2312,7 +2312,7 @@ module pm_dateTime
     !>  This is in accordance with the convention in astronomical year numbering and the international standard date system, **ISO 8601**.<br>
     !>  The input `month` must be a number between `1` and `12`.<br>
     !>  The input `day` must be a number between `1` and `31` and be consistent with the specified month and (leap) year.<br>
-    !>  The input `zone` must be a valid timezone in units of minutes.<br>
+    !>  The input `zone` must be a valid time zone in units of minutes.<br>
     !>  The input `hour` must be a number between `0` and `23`.<br>
     !>  The input `minute` must be a number between `0` and `59`.<br>
     !>  The input `second` must be a number between `0` and `59`.<br>
@@ -2721,7 +2721,7 @@ module pm_dateTime
     !>                              (**optional**, default = any value that yields a valid date given the other input argument. It can be present only if the input argument `year` is present.)
     !>  \param[in]  day         :   The input scalar, or array of the same shape as other array-like arguments, of type `integer` of default kind \IK, containing a day of a month of a year of the Gregorian calendar.<br>
     !>                              (**optional**, default = any value that yields a valid date given the other input argument. It can be present only if the input argument `month` is present.)
-    !>  \param[in]  zone        :   The input scalar, or array of the same shape as other array-like arguments, of type `integer` of default kind \IK, containing a timezone of the Gregorian calendar.<br>
+    !>  \param[in]  zone        :   The input scalar, or array of the same shape as other array-like arguments, of type `integer` of default kind \IK, containing a time zone of the Gregorian calendar.<br>
     !>                              (**optional**, default = any value that yields a valid date given the other input argument. It can be present only if the input argument `day` is present.)
     !>  \param[in]  hour        :   The input scalar, or array of the same shape as other array-like arguments, of type `integer` of default kind \IK, containing the hour of a day of the Gregorian calendar.<br>
     !>                              (**optional**, default = any value that yields a valid date given the other input argument. It can be present only if the input argument `zone` is present.)
@@ -3804,11 +3804,11 @@ module pm_dateTime
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
-    !>  Generate and return `.true.` if the hour in the current or the input timezone `(-720 : +840)` is **Ante Meridiem** (before noon).
+    !>  Generate and return `.true.` if the hour in the current or the input time zone `(-720 : +840)` is **Ante Meridiem** (before noon).
     !>
     !>  \param[in]  zone        :   The input scalar or array of arbitrary shape of type `integer`
-    !>                              of default kind \IK containing the timezone of interest in units of minutes.<br>
-    !>                              (**optional**, default = the current local timezone.)
+    !>                              of default kind \IK containing the time zone of interest in units of minutes.<br>
+    !>                              (**optional**, default = the current local time zone.)
     !>  \param[in]  julianDay   :   The input scalar or array of arbitrary shape of type `real` of default
     !>                              kind \RK containing the (possibly proleptic) Julian Day.<br>
     !>                              (**optional**, default = the current locale Julian Day.)
@@ -3913,10 +3913,10 @@ module pm_dateTime
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
-    !>  Generate and return `.true.` is the input timezone `zone` in **units of minutes** is valid (i.e., `-12 * 60 <= zone <= +14 * 60`).<br>
+    !>  Generate and return `.true.` is the input time zone `zone` in **units of minutes** is valid (i.e., `-12 * 60 <= zone <= +14 * 60`).<br>
     !>
     !>  \param[in]  zone    :   The output scalar, or array of arbitrary shape, rank, and size, of type `integer` of default kind \IK, containing
-    !>                          the timezone, that is, the time difference **in minutes** with respect to the Coordinated Universal Time (UTC).
+    !>                          the time zone, that is, the time difference **in minutes** with respect to the Coordinated Universal Time (UTC).
     !>
     !>  \return
     !>  `isValid`           :   The output scalar or array of the same shape, rank, and size as the input `zone`, of type `logical` of default kind \LK,
@@ -3940,7 +3940,7 @@ module pm_dateTime
     !>
     !>  \note
     !>  This generic interface is meant to be primarily used for internal testing purposes of the ParaMonte library.<br>
-    !>  The timezone settings are highly fluid and flexible across the world.<br>
+    !>  The time zone settings are highly fluid and flexible across the world.<br>
     !>  The current minimum and maximum time zones can change in future.<br>
     !>
     !>  \see
@@ -4476,7 +4476,7 @@ end block;
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
-    !>  Generate and return the current local hour of the current day of the Gregorian calendar, or the hour at the specified timezone `zone` in **minutes**.
+    !>  Generate and return the current local hour of the current day of the Gregorian calendar, or the hour at the specified time zone `zone` in **minutes**.
     !>
     !>  \param[in]  zone    :   The output scalar of type `integer` of default kind \IK containing the time
     !>                          difference **in minutes** with respect to the Coordinated Universal Time (UTC).<br>
@@ -4491,8 +4491,8 @@ end block;
     !>      use pm_dateTime, only: getHour
     !>      integer(IK) :: hour
     !>
-    !>      hour = getHour() ! current hour at local timezone
-    !>      hour = getHour(zone) ! current hour at the specified timezone in minutes
+    !>      hour = getHour() ! current hour at local time zone
+    !>      hour = getHour(zone) ! current hour at the specified time zone in minutes
     !>      !
     !>  \endcode
     !>
