@@ -48,7 +48,7 @@
 #if     SK_ENABLED && D0_ENABLED
         character(1,SKC) :: temp
 #elif   SK_ENABLED && D1_ENABLED
-        character(len(Array),SKC) :: temp
+        character(len(array),SKC) :: temp
 #elif   IK_ENABLED && D1_ENABLED
         integer(IKC) :: temp
 #elif   LK_ENABLED && D1_ENABLED
@@ -69,26 +69,26 @@
         ! Begin the reversal.
 #if     Old_ENABLED
         integer(IK) :: lb, ub
-        lb = GET_LBOUND(Array)
-        ub = GEN_UBOUND(Array)
+        lb = GET_LBOUND(array)
+        ub = GEN_UBOUND(array)
         do
             if (lb >= ub) exit
-            temp = Array(GET_INDEX(lb))
-            Array(GET_INDEX(lb)) = Array(GET_INDEX(ub))
-            Array(GET_INDEX(ub)) = temp
+            temp = array(GET_INDEX(lb))
+            array(GET_INDEX(lb)) = array(GET_INDEX(ub))
+            array(GET_INDEX(ub)) = temp
             ub = ub - 1_IK
             lb = lb + 1_IK
         end do
 #elif   New_ENABLED
         integer(IK) :: i, lenArray
-        lenArray = GET_SIZE(Array, kind = IK)
+        lenArray = GET_SIZE(array, kind = IK)
 #if     setReversed_ENABLED
-        CHECK_ASSERTION(__LINE__, GET_SIZE(Array, kind = IK) == GET_SIZE(ArrayReversed, kind = IK), \
+        CHECK_ASSERTION(__LINE__, GET_SIZE(array, kind = IK) == GET_SIZE(ArrayReversed, kind = IK), \
         SK_"@setReversed(): The sizes of the input `array` and `ArrayReversed` must equal. lenArray, lenArrayNew = "\
-        //getStr([GET_SIZE(Array, kind = IK), GET_SIZE(ArrayReversed, kind = IK)]))
+        //getStr([GET_SIZE(array, kind = IK), GET_SIZE(ArrayReversed, kind = IK)]))
 #endif
         do i = 1_IK, lenArray
-            ArrayReversed(GET_INDEX(i)) = Array(GET_INDEX(lenArray - i + 1_IK))
+            ArrayReversed(GET_INDEX(i)) = array(GET_INDEX(lenArray - i + 1_IK))
         end do
 #else
 #error  "Unrecognized interface."

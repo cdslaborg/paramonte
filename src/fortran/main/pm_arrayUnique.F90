@@ -2688,7 +2688,7 @@ module pm_arrayUnique
 #if SK5_ENABLED
     PURE module function getUniArbDefCom_D0_SK5(array) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueDefCom_D0_SK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbDefCom_D0_SK5
 #endif
         use pm_kind, only: SKC => SK5
         character(*,SKC)            , intent(in)                :: array
@@ -2699,7 +2699,7 @@ module pm_arrayUnique
 #if SK4_ENABLED
     PURE module function getUniArbDefCom_D0_SK4(array) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueDefCom_D0_SK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbDefCom_D0_SK4
 #endif
         use pm_kind, only: SKC => SK4
         character(*,SKC)            , intent(in)                :: array
@@ -2710,7 +2710,7 @@ module pm_arrayUnique
 #if SK3_ENABLED
     PURE module function getUniArbDefCom_D0_SK3(array) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueDefCom_D0_SK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbDefCom_D0_SK3
 #endif
         use pm_kind, only: SKC => SK3
         character(*,SKC)            , intent(in)                :: array
@@ -2721,7 +2721,7 @@ module pm_arrayUnique
 #if SK2_ENABLED
     PURE module function getUniArbDefCom_D0_SK2(array) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueDefCom_D0_SK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbDefCom_D0_SK2
 #endif
         use pm_kind, only: SKC => SK2
         character(*,SKC)            , intent(in)                :: array
@@ -2732,7 +2732,7 @@ module pm_arrayUnique
 #if SK1_ENABLED
     PURE module function getUniArbDefCom_D0_SK1(array) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueDefCom_D0_SK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbDefCom_D0_SK1
 #endif
         use pm_kind, only: SKC => SK1
         character(*,SKC)            , intent(in)                :: array
@@ -2745,7 +2745,7 @@ module pm_arrayUnique
 #if SK5_ENABLED
     PURE module function getUniArbDefCom_D1_SK5(array) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueDefCom_D1_SK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbDefCom_D1_SK5
 #endif
         use pm_kind, only: SKC => SK5
         character(*,SKC)            , intent(in), contiguous    :: array(:)
@@ -2756,7 +2756,7 @@ module pm_arrayUnique
 #if SK4_ENABLED
     PURE module function getUniArbDefCom_D1_SK4(array) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueDefCom_D1_SK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbDefCom_D1_SK4
 #endif
         use pm_kind, only: SKC => SK4
         character(*,SKC)            , intent(in), contiguous    :: array(:)
@@ -2767,7 +2767,7 @@ module pm_arrayUnique
 #if SK3_ENABLED
     PURE module function getUniArbDefCom_D1_SK3(array) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueDefCom_D1_SK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbDefCom_D1_SK3
 #endif
         use pm_kind, only: SKC => SK3
         character(*,SKC)            , intent(in), contiguous    :: array(:)
@@ -2778,7 +2778,7 @@ module pm_arrayUnique
 #if SK2_ENABLED
     PURE module function getUniArbDefCom_D1_SK2(array) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueDefCom_D1_SK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbDefCom_D1_SK2
 #endif
         use pm_kind, only: SKC => SK2
         character(*,SKC)            , intent(in), contiguous    :: array(:)
@@ -2789,7 +2789,7 @@ module pm_arrayUnique
 #if SK1_ENABLED
     PURE module function getUniArbDefCom_D1_SK1(array) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueDefCom_D1_SK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbDefCom_D1_SK1
 #endif
         use pm_kind, only: SKC => SK1
         character(*,SKC)            , intent(in), contiguous    :: array(:)
@@ -2802,7 +2802,7 @@ module pm_arrayUnique
 #if IK5_ENABLED
     PURE module function getUniArbDefCom_D1_IK5(array) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueDefCom_D1_IK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbDefCom_D1_IK5
 #endif
         use pm_kind, only: IKC => IK5
         integer(IKC)                , intent(in), contiguous    :: array(:)
@@ -2813,7 +2813,7 @@ module pm_arrayUnique
 #if IK4_ENABLED
     PURE module function getUniArbDefCom_D1_IK4(array) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueDefCom_D1_IK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbDefCom_D1_IK4
 #endif
         use pm_kind, only: IKC => IK4
         integer(IKC)                , intent(in), contiguous    :: array(:)
@@ -2824,7 +2824,7 @@ module pm_arrayUnique
 #if IK3_ENABLED
     PURE module function getUniArbDefCom_D1_IK3(array) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueDefCom_D1_IK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbDefCom_D1_IK3
 #endif
         use pm_kind, only: IKC => IK3
         integer(IKC)                , intent(in), contiguous    :: array(:)
@@ -2835,7 +2835,7 @@ module pm_arrayUnique
 #if IK2_ENABLED
     PURE module function getUniArbDefCom_D1_IK2(array) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueDefCom_D1_IK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbDefCom_D1_IK2
 #endif
         use pm_kind, only: IKC => IK2
         integer(IKC)                , intent(in), contiguous    :: array(:)
@@ -2846,7 +2846,7 @@ module pm_arrayUnique
 #if IK1_ENABLED
     PURE module function getUniArbDefCom_D1_IK1(array) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueDefCom_D1_IK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbDefCom_D1_IK1
 #endif
         use pm_kind, only: IKC => IK1
         integer(IKC)                , intent(in), contiguous    :: array(:)
@@ -2859,7 +2859,7 @@ module pm_arrayUnique
 #if LK5_ENABLED
     PURE module function getUniArbDefCom_D1_LK5(array) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueDefCom_D1_LK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbDefCom_D1_LK5
 #endif
         use pm_kind, only: LKC => LK5
         logical(LKC)                , intent(in), contiguous    :: array(:)
@@ -2870,7 +2870,7 @@ module pm_arrayUnique
 #if LK4_ENABLED
     PURE module function getUniArbDefCom_D1_LK4(array) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueDefCom_D1_LK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbDefCom_D1_LK4
 #endif
         use pm_kind, only: LKC => LK4
         logical(LKC)                , intent(in), contiguous    :: array(:)
@@ -2881,7 +2881,7 @@ module pm_arrayUnique
 #if LK3_ENABLED
     PURE module function getUniArbDefCom_D1_LK3(array) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueDefCom_D1_LK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbDefCom_D1_LK3
 #endif
         use pm_kind, only: LKC => LK3
         logical(LKC)                , intent(in), contiguous    :: array(:)
@@ -2892,7 +2892,7 @@ module pm_arrayUnique
 #if LK2_ENABLED
     PURE module function getUniArbDefCom_D1_LK2(array) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueDefCom_D1_LK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbDefCom_D1_LK2
 #endif
         use pm_kind, only: LKC => LK2
         logical(LKC)                , intent(in), contiguous    :: array(:)
@@ -2903,7 +2903,7 @@ module pm_arrayUnique
 #if LK1_ENABLED
     PURE module function getUniArbDefCom_D1_LK1(array) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueDefCom_D1_LK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbDefCom_D1_LK1
 #endif
         use pm_kind, only: LKC => LK1
         logical(LKC)                , intent(in), contiguous    :: array(:)
@@ -2916,7 +2916,7 @@ module pm_arrayUnique
 #if CK5_ENABLED
     PURE module function getUniArbDefCom_D1_CK5(array) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueDefCom_D1_CK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbDefCom_D1_CK5
 #endif
         use pm_kind, only: CKC => CK5
         complex(CKC)                , intent(in), contiguous    :: array(:)
@@ -2927,7 +2927,7 @@ module pm_arrayUnique
 #if CK4_ENABLED
     PURE module function getUniArbDefCom_D1_CK4(array) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueDefCom_D1_CK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbDefCom_D1_CK4
 #endif
         use pm_kind, only: CKC => CK4
         complex(CKC)                , intent(in), contiguous    :: array(:)
@@ -2938,7 +2938,7 @@ module pm_arrayUnique
 #if CK3_ENABLED
     PURE module function getUniArbDefCom_D1_CK3(array) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueDefCom_D1_CK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbDefCom_D1_CK3
 #endif
         use pm_kind, only: CKC => CK3
         complex(CKC)                , intent(in), contiguous    :: array(:)
@@ -2949,7 +2949,7 @@ module pm_arrayUnique
 #if CK2_ENABLED
     PURE module function getUniArbDefCom_D1_CK2(array) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueDefCom_D1_CK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbDefCom_D1_CK2
 #endif
         use pm_kind, only: CKC => CK2
         complex(CKC)                , intent(in), contiguous    :: array(:)
@@ -2960,7 +2960,7 @@ module pm_arrayUnique
 #if CK1_ENABLED
     PURE module function getUniArbDefCom_D1_CK1(array) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueDefCom_D1_CK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbDefCom_D1_CK1
 #endif
         use pm_kind, only: CKC => CK1
         complex(CKC)                , intent(in), contiguous    :: array(:)
@@ -2973,7 +2973,7 @@ module pm_arrayUnique
 #if RK5_ENABLED
     PURE module function getUniArbDefCom_D1_RK5(array) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueDefCom_D1_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbDefCom_D1_RK5
 #endif
         use pm_kind, only: RKC => RK5
         real(RKC)                   , intent(in), contiguous    :: array(:)
@@ -2984,7 +2984,7 @@ module pm_arrayUnique
 #if RK4_ENABLED
     PURE module function getUniArbDefCom_D1_RK4(array) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueDefCom_D1_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbDefCom_D1_RK4
 #endif
         use pm_kind, only: RKC => RK4
         real(RKC)                   , intent(in), contiguous    :: array(:)
@@ -2995,7 +2995,7 @@ module pm_arrayUnique
 #if RK3_ENABLED
     PURE module function getUniArbDefCom_D1_RK3(array) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueDefCom_D1_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbDefCom_D1_RK3
 #endif
         use pm_kind, only: RKC => RK3
         real(RKC)                   , intent(in), contiguous    :: array(:)
@@ -3006,7 +3006,7 @@ module pm_arrayUnique
 #if RK2_ENABLED
     PURE module function getUniArbDefCom_D1_RK2(array) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueDefCom_D1_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbDefCom_D1_RK2
 #endif
         use pm_kind, only: RKC => RK2
         real(RKC)                   , intent(in), contiguous    :: array(:)
@@ -3017,7 +3017,7 @@ module pm_arrayUnique
 #if RK1_ENABLED
     PURE module function getUniArbDefCom_D1_RK1(array) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueDefCom_D1_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbDefCom_D1_RK1
 #endif
         use pm_kind, only: RKC => RK1
         real(RKC)                   , intent(in), contiguous    :: array(:)
@@ -3032,7 +3032,7 @@ module pm_arrayUnique
 #if SK5_ENABLED
     module function getUniArbCusCom_D0_SK5(array, iseq) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueCusCom_D0_SK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbCusCom_D0_SK5
 #endif
         use pm_kind, only: SKC => SK5
         character(*,SKC)            , intent(in)                :: array
@@ -3044,7 +3044,7 @@ module pm_arrayUnique
 #if SK4_ENABLED
     module function getUniArbCusCom_D0_SK4(array, iseq) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueCusCom_D0_SK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbCusCom_D0_SK4
 #endif
         use pm_kind, only: SKC => SK4
         character(*,SKC)            , intent(in)                :: array
@@ -3056,7 +3056,7 @@ module pm_arrayUnique
 #if SK3_ENABLED
     module function getUniArbCusCom_D0_SK3(array, iseq) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueCusCom_D0_SK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbCusCom_D0_SK3
 #endif
         use pm_kind, only: SKC => SK3
         character(*,SKC)            , intent(in)                :: array
@@ -3068,7 +3068,7 @@ module pm_arrayUnique
 #if SK2_ENABLED
     module function getUniArbCusCom_D0_SK2(array, iseq) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueCusCom_D0_SK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbCusCom_D0_SK2
 #endif
         use pm_kind, only: SKC => SK2
         character(*,SKC)            , intent(in)                :: array
@@ -3080,7 +3080,7 @@ module pm_arrayUnique
 #if SK1_ENABLED
     module function getUniArbCusCom_D0_SK1(array, iseq) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueCusCom_D0_SK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbCusCom_D0_SK1
 #endif
         use pm_kind, only: SKC => SK1
         character(*,SKC)            , intent(in)                :: array
@@ -3094,7 +3094,7 @@ module pm_arrayUnique
 #if SK5_ENABLED
     module function getUniArbCusCom_D1_SK5(array, iseq) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueCusCom_D1_SK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbCusCom_D1_SK5
 #endif
         use pm_kind, only: SKC => SK5
         character(*,SKC)            , intent(in), contiguous    :: array(:)
@@ -3106,7 +3106,7 @@ module pm_arrayUnique
 #if SK4_ENABLED
     module function getUniArbCusCom_D1_SK4(array, iseq) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueCusCom_D1_SK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbCusCom_D1_SK4
 #endif
         use pm_kind, only: SKC => SK4
         character(*,SKC)            , intent(in), contiguous    :: array(:)
@@ -3118,7 +3118,7 @@ module pm_arrayUnique
 #if SK3_ENABLED
     module function getUniArbCusCom_D1_SK3(array, iseq) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueCusCom_D1_SK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbCusCom_D1_SK3
 #endif
         use pm_kind, only: SKC => SK3
         character(*,SKC)            , intent(in), contiguous    :: array(:)
@@ -3130,7 +3130,7 @@ module pm_arrayUnique
 #if SK2_ENABLED
     module function getUniArbCusCom_D1_SK2(array, iseq) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueCusCom_D1_SK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbCusCom_D1_SK2
 #endif
         use pm_kind, only: SKC => SK2
         character(*,SKC)            , intent(in), contiguous    :: array(:)
@@ -3142,7 +3142,7 @@ module pm_arrayUnique
 #if SK1_ENABLED
     module function getUniArbCusCom_D1_SK1(array, iseq) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueCusCom_D1_SK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbCusCom_D1_SK1
 #endif
         use pm_kind, only: SKC => SK1
         character(*,SKC)            , intent(in), contiguous    :: array(:)
@@ -3156,7 +3156,7 @@ module pm_arrayUnique
 #if IK5_ENABLED
     module function getUniArbCusCom_D1_IK5(array, iseq) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueCusCom_D1_IK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbCusCom_D1_IK5
 #endif
         use pm_kind, only: IKC => IK5
         integer(IKC)                , intent(in), contiguous    :: array(:)
@@ -3168,7 +3168,7 @@ module pm_arrayUnique
 #if IK4_ENABLED
     module function getUniArbCusCom_D1_IK4(array, iseq) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueCusCom_D1_IK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbCusCom_D1_IK4
 #endif
         use pm_kind, only: IKC => IK4
         integer(IKC)                , intent(in), contiguous    :: array(:)
@@ -3180,7 +3180,7 @@ module pm_arrayUnique
 #if IK3_ENABLED
     module function getUniArbCusCom_D1_IK3(array, iseq) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueCusCom_D1_IK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbCusCom_D1_IK3
 #endif
         use pm_kind, only: IKC => IK3
         integer(IKC)                , intent(in), contiguous    :: array(:)
@@ -3192,7 +3192,7 @@ module pm_arrayUnique
 #if IK2_ENABLED
     module function getUniArbCusCom_D1_IK2(array, iseq) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueCusCom_D1_IK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbCusCom_D1_IK2
 #endif
         use pm_kind, only: IKC => IK2
         integer(IKC)                , intent(in), contiguous    :: array(:)
@@ -3204,7 +3204,7 @@ module pm_arrayUnique
 #if IK1_ENABLED
     module function getUniArbCusCom_D1_IK1(array, iseq) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueCusCom_D1_IK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbCusCom_D1_IK1
 #endif
         use pm_kind, only: IKC => IK1
         integer(IKC)                , intent(in), contiguous    :: array(:)
@@ -3218,7 +3218,7 @@ module pm_arrayUnique
 #if LK5_ENABLED
     module function getUniArbCusCom_D1_LK5(array, iseq) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueCusCom_D1_LK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbCusCom_D1_LK5
 #endif
         use pm_kind, only: LKC => LK5
         logical(LKC)                , intent(in), contiguous    :: array(:)
@@ -3230,7 +3230,7 @@ module pm_arrayUnique
 #if LK4_ENABLED
     module function getUniArbCusCom_D1_LK4(array, iseq) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueCusCom_D1_LK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbCusCom_D1_LK4
 #endif
         use pm_kind, only: LKC => LK4
         logical(LKC)                , intent(in), contiguous    :: array(:)
@@ -3242,7 +3242,7 @@ module pm_arrayUnique
 #if LK3_ENABLED
     module function getUniArbCusCom_D1_LK3(array, iseq) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueCusCom_D1_LK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbCusCom_D1_LK3
 #endif
         use pm_kind, only: LKC => LK3
         logical(LKC)                , intent(in), contiguous    :: array(:)
@@ -3254,7 +3254,7 @@ module pm_arrayUnique
 #if LK2_ENABLED
     module function getUniArbCusCom_D1_LK2(array, iseq) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueCusCom_D1_LK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbCusCom_D1_LK2
 #endif
         use pm_kind, only: LKC => LK2
         logical(LKC)                , intent(in), contiguous    :: array(:)
@@ -3266,7 +3266,7 @@ module pm_arrayUnique
 #if LK1_ENABLED
     module function getUniArbCusCom_D1_LK1(array, iseq) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueCusCom_D1_LK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbCusCom_D1_LK1
 #endif
         use pm_kind, only: LKC => LK1
         logical(LKC)                , intent(in), contiguous    :: array(:)
@@ -3280,7 +3280,7 @@ module pm_arrayUnique
 #if CK5_ENABLED
     module function getUniArbCusCom_D1_CK5(array, iseq) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueCusCom_D1_CK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbCusCom_D1_CK5
 #endif
         use pm_kind, only: CKC => CK5
         complex(CKC)                , intent(in), contiguous    :: array(:)
@@ -3292,7 +3292,7 @@ module pm_arrayUnique
 #if CK4_ENABLED
     module function getUniArbCusCom_D1_CK4(array, iseq) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueCusCom_D1_CK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbCusCom_D1_CK4
 #endif
         use pm_kind, only: CKC => CK4
         complex(CKC)                , intent(in), contiguous    :: array(:)
@@ -3304,7 +3304,7 @@ module pm_arrayUnique
 #if CK3_ENABLED
     module function getUniArbCusCom_D1_CK3(array, iseq) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueCusCom_D1_CK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbCusCom_D1_CK3
 #endif
         use pm_kind, only: CKC => CK3
         complex(CKC)                , intent(in), contiguous    :: array(:)
@@ -3316,7 +3316,7 @@ module pm_arrayUnique
 #if CK2_ENABLED
     module function getUniArbCusCom_D1_CK2(array, iseq) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueCusCom_D1_CK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbCusCom_D1_CK2
 #endif
         use pm_kind, only: CKC => CK2
         complex(CKC)                , intent(in), contiguous    :: array(:)
@@ -3328,7 +3328,7 @@ module pm_arrayUnique
 #if CK1_ENABLED
     module function getUniArbCusCom_D1_CK1(array, iseq) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueCusCom_D1_CK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbCusCom_D1_CK1
 #endif
         use pm_kind, only: CKC => CK1
         complex(CKC)                , intent(in), contiguous    :: array(:)
@@ -3342,7 +3342,7 @@ module pm_arrayUnique
 #if RK5_ENABLED
     module function getUniArbCusCom_D1_RK5(array, iseq) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueCusCom_D1_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbCusCom_D1_RK5
 #endif
         use pm_kind, only: RKC => RK5
         real(RKC)                   , intent(in), contiguous    :: array(:)
@@ -3354,7 +3354,7 @@ module pm_arrayUnique
 #if RK4_ENABLED
     module function getUniArbCusCom_D1_RK4(array, iseq) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueCusCom_D1_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbCusCom_D1_RK4
 #endif
         use pm_kind, only: RKC => RK4
         real(RKC)                   , intent(in), contiguous    :: array(:)
@@ -3366,7 +3366,7 @@ module pm_arrayUnique
 #if RK3_ENABLED
     module function getUniArbCusCom_D1_RK3(array, iseq) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueCusCom_D1_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbCusCom_D1_RK3
 #endif
         use pm_kind, only: RKC => RK3
         real(RKC)                   , intent(in), contiguous    :: array(:)
@@ -3378,7 +3378,7 @@ module pm_arrayUnique
 #if RK2_ENABLED
     module function getUniArbCusCom_D1_RK2(array, iseq) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueCusCom_D1_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbCusCom_D1_RK2
 #endif
         use pm_kind, only: RKC => RK2
         real(RKC)                   , intent(in), contiguous    :: array(:)
@@ -3390,7 +3390,7 @@ module pm_arrayUnique
 #if RK1_ENABLED
     module function getUniArbCusCom_D1_RK1(array, iseq) result(unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUniqueCusCom_D1_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: getUniArbCusCom_D1_RK1
 #endif
         use pm_kind, only: RKC => RK1
         real(RKC)                   , intent(in), contiguous    :: array(:)
@@ -3561,7 +3561,7 @@ module pm_arrayUnique
 #if SK5_ENABLED
     PURE module subroutine setUniArbDefCom_D0_SK5(array, unique, count, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueDefCom_D0_SK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbDefCom_D0_SK5
 #endif
         use pm_kind, only: SKC => SK5
         character(*,SKC)        , intent(in)                            :: array
@@ -3575,7 +3575,7 @@ module pm_arrayUnique
 #if SK4_ENABLED
     PURE module subroutine setUniArbDefCom_D0_SK4(array, unique, count, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueDefCom_D0_SK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbDefCom_D0_SK4
 #endif
         use pm_kind, only: SKC => SK4
         character(*,SKC)        , intent(in)                            :: array
@@ -3589,7 +3589,7 @@ module pm_arrayUnique
 #if SK3_ENABLED
     PURE module subroutine setUniArbDefCom_D0_SK3(array, unique, count, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueDefCom_D0_SK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbDefCom_D0_SK3
 #endif
         use pm_kind, only: SKC => SK3
         character(*,SKC)        , intent(in)                            :: array
@@ -3603,7 +3603,7 @@ module pm_arrayUnique
 #if SK2_ENABLED
     PURE module subroutine setUniArbDefCom_D0_SK2(array, unique, count, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueDefCom_D0_SK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbDefCom_D0_SK2
 #endif
         use pm_kind, only: SKC => SK2
         character(*,SKC)        , intent(in)                            :: array
@@ -3617,7 +3617,7 @@ module pm_arrayUnique
 #if SK1_ENABLED
     PURE module subroutine setUniArbDefCom_D0_SK1(array, unique, count, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueDefCom_D0_SK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbDefCom_D0_SK1
 #endif
         use pm_kind, only: SKC => SK1
         character(*,SKC)        , intent(in)                            :: array
@@ -3633,7 +3633,7 @@ module pm_arrayUnique
 #if SK5_ENABLED
     PURE module subroutine setUniArbDefCom_D1_SK5(array, unique, count, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueDefCom_D1_SK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbDefCom_D1_SK5
 #endif
         use pm_kind, only: SKC => SK5
         character(*,SKC)        , intent(in)    , contiguous            :: array(:)
@@ -3647,7 +3647,7 @@ module pm_arrayUnique
 #if SK4_ENABLED
     PURE module subroutine setUniArbDefCom_D1_SK4(array, unique, count, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueDefCom_D1_SK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbDefCom_D1_SK4
 #endif
         use pm_kind, only: SKC => SK4
         character(*,SKC)        , intent(in)    , contiguous            :: array(:)
@@ -3661,7 +3661,7 @@ module pm_arrayUnique
 #if SK3_ENABLED
     PURE module subroutine setUniArbDefCom_D1_SK3(array, unique, count, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueDefCom_D1_SK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbDefCom_D1_SK3
 #endif
         use pm_kind, only: SKC => SK3
         character(*,SKC)        , intent(in)    , contiguous            :: array(:)
@@ -3675,7 +3675,7 @@ module pm_arrayUnique
 #if SK2_ENABLED
     PURE module subroutine setUniArbDefCom_D1_SK2(array, unique, count, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueDefCom_D1_SK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbDefCom_D1_SK2
 #endif
         use pm_kind, only: SKC => SK2
         character(*,SKC)        , intent(in)    , contiguous            :: array(:)
@@ -3689,7 +3689,7 @@ module pm_arrayUnique
 #if SK1_ENABLED
     PURE module subroutine setUniArbDefCom_D1_SK1(array, unique, count, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueDefCom_D1_SK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbDefCom_D1_SK1
 #endif
         use pm_kind, only: SKC => SK1
         character(*,SKC)        , intent(in)    , contiguous            :: array(:)
@@ -3705,7 +3705,7 @@ module pm_arrayUnique
 #if IK5_ENABLED
     PURE module subroutine setUniArbDefCom_D1_IK5(array, unique, count, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueDefCom_D1_IK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbDefCom_D1_IK5
 #endif
         use pm_kind, only: IKC => IK5
         integer(IKC)            , intent(in)    , contiguous            :: array(:)
@@ -3719,7 +3719,7 @@ module pm_arrayUnique
 #if IK4_ENABLED
     PURE module subroutine setUniArbDefCom_D1_IK4(array, unique, count, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueDefCom_D1_IK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbDefCom_D1_IK4
 #endif
         use pm_kind, only: IKC => IK4
         integer(IKC)            , intent(in)    , contiguous            :: array(:)
@@ -3733,7 +3733,7 @@ module pm_arrayUnique
 #if IK3_ENABLED
     PURE module subroutine setUniArbDefCom_D1_IK3(array, unique, count, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueDefCom_D1_IK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbDefCom_D1_IK3
 #endif
         use pm_kind, only: IKC => IK3
         integer(IKC)            , intent(in)    , contiguous            :: array(:)
@@ -3748,7 +3748,7 @@ module pm_arrayUnique
 #if IK2_ENABLED
     PURE module subroutine setUniArbDefCom_D1_IK2(array, unique, count, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueDefCom_D1_IK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbDefCom_D1_IK2
 #endif
         use pm_kind, only: IKC => IK2
         integer(IKC)            , intent(in)    , contiguous            :: array(:)
@@ -3762,7 +3762,7 @@ module pm_arrayUnique
 #if IK1_ENABLED
     PURE module subroutine setUniArbDefCom_D1_IK1(array, unique, count, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueDefCom_D1_IK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbDefCom_D1_IK1
 #endif
         use pm_kind, only: IKC => IK1
         integer(IKC)            , intent(in)    , contiguous            :: array(:)
@@ -3778,7 +3778,7 @@ module pm_arrayUnique
 #if LK5_ENABLED
     PURE module subroutine setUniArbDefCom_D1_LK5(array, unique, count, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueDefCom_D1_LK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbDefCom_D1_LK5
 #endif
         use pm_kind, only: LKC => LK5
         logical(LKC)            , intent(in)    , contiguous            :: array(:)
@@ -3792,7 +3792,7 @@ module pm_arrayUnique
 #if LK4_ENABLED
     PURE module subroutine setUniArbDefCom_D1_LK4(array, unique, count, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueDefCom_D1_LK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbDefCom_D1_LK4
 #endif
         use pm_kind, only: LKC => LK4
         logical(LKC)            , intent(in)    , contiguous            :: array(:)
@@ -3806,7 +3806,7 @@ module pm_arrayUnique
 #if LK3_ENABLED
     PURE module subroutine setUniArbDefCom_D1_LK3(array, unique, count, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueDefCom_D1_LK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbDefCom_D1_LK3
 #endif
         use pm_kind, only: LKC => LK3
         logical(LKC)            , intent(in)    , contiguous            :: array(:)
@@ -3820,7 +3820,7 @@ module pm_arrayUnique
 #if LK2_ENABLED
     PURE module subroutine setUniArbDefCom_D1_LK2(array, unique, count, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueDefCom_D1_LK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbDefCom_D1_LK2
 #endif
         use pm_kind, only: LKC => LK2
         logical(LKC)            , intent(in)    , contiguous            :: array(:)
@@ -3834,7 +3834,7 @@ module pm_arrayUnique
 #if LK1_ENABLED
     PURE module subroutine setUniArbDefCom_D1_LK1(array, unique, count, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueDefCom_D1_LK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbDefCom_D1_LK1
 #endif
         use pm_kind, only: LKC => LK1
         logical(LKC)            , intent(in)    , contiguous            :: array(:)
@@ -3850,7 +3850,7 @@ module pm_arrayUnique
 #if CK5_ENABLED
     PURE module subroutine setUniArbDefCom_D1_CK5(array, unique, count, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueDefCom_D1_CK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbDefCom_D1_CK5
 #endif
         use pm_kind, only: CKC => CK5
         complex(CKC)            , intent(in)    , contiguous            :: array(:)
@@ -3864,7 +3864,7 @@ module pm_arrayUnique
 #if CK4_ENABLED
     PURE module subroutine setUniArbDefCom_D1_CK4(array, unique, count, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueDefCom_D1_CK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbDefCom_D1_CK4
 #endif
         use pm_kind, only: CKC => CK4
         complex(CKC)            , intent(in)    , contiguous            :: array(:)
@@ -3878,7 +3878,7 @@ module pm_arrayUnique
 #if CK3_ENABLED
     PURE module subroutine setUniArbDefCom_D1_CK3(array, unique, count, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueDefCom_D1_CK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbDefCom_D1_CK3
 #endif
         use pm_kind, only: CKC => CK3
         complex(CKC)            , intent(in)    , contiguous            :: array(:)
@@ -3892,7 +3892,7 @@ module pm_arrayUnique
 #if CK2_ENABLED
     PURE module subroutine setUniArbDefCom_D1_CK2(array, unique, count, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueDefCom_D1_CK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbDefCom_D1_CK2
 #endif
         use pm_kind, only: CKC => CK2
         complex(CKC)            , intent(in)    , contiguous            :: array(:)
@@ -3906,7 +3906,7 @@ module pm_arrayUnique
 #if CK1_ENABLED
     PURE module subroutine setUniArbDefCom_D1_CK1(array, unique, count, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueDefCom_D1_CK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbDefCom_D1_CK1
 #endif
         use pm_kind, only: CKC => CK1
         complex(CKC)            , intent(in)    , contiguous            :: array(:)
@@ -3922,7 +3922,7 @@ module pm_arrayUnique
 #if RK5_ENABLED
     PURE module subroutine setUniArbDefCom_D1_RK5(array, unique, count, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueDefCom_D1_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbDefCom_D1_RK5
 #endif
         use pm_kind, only: RKC => RK5
         real(RKC)               , intent(in)    , contiguous            :: array(:)
@@ -3936,7 +3936,7 @@ module pm_arrayUnique
 #if RK4_ENABLED
     PURE module subroutine setUniArbDefCom_D1_RK4(array, unique, count, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueDefCom_D1_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbDefCom_D1_RK4
 #endif
         use pm_kind, only: RKC => RK4
         real(RKC)               , intent(in)    , contiguous            :: array(:)
@@ -3950,7 +3950,7 @@ module pm_arrayUnique
 #if RK3_ENABLED
     PURE module subroutine setUniArbDefCom_D1_RK3(array, unique, count, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueDefCom_D1_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbDefCom_D1_RK3
 #endif
         use pm_kind, only: RKC => RK3
         real(RKC)               , intent(in)    , contiguous            :: array(:)
@@ -3964,7 +3964,7 @@ module pm_arrayUnique
 #if RK2_ENABLED
     PURE module subroutine setUniArbDefCom_D1_RK2(array, unique, count, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueDefCom_D1_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbDefCom_D1_RK2
 #endif
         use pm_kind, only: RKC => RK2
         real(RKC)               , intent(in)    , contiguous            :: array(:)
@@ -3978,7 +3978,7 @@ module pm_arrayUnique
 #if RK1_ENABLED
     PURE module subroutine setUniArbDefCom_D1_RK1(array, unique, count, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueDefCom_D1_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbDefCom_D1_RK1
 #endif
         use pm_kind, only: RKC => RK1
         real(RKC)               , intent(in)    , contiguous            :: array(:)
@@ -4000,7 +4000,7 @@ module pm_arrayUnique
 #if SK5_ENABLED
     module subroutine setUniArbCusCom_D0_SK5(array, unique, count, iseq, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueCusCom_D0_SK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbCusCom_D0_SK5
 #endif
         use pm_kind, only: SKC => SK5
         character(*,SKC)        , intent(in)                            :: array
@@ -4015,7 +4015,7 @@ module pm_arrayUnique
 #if SK4_ENABLED
     module subroutine setUniArbCusCom_D0_SK4(array, unique, count, iseq, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueCusCom_D0_SK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbCusCom_D0_SK4
 #endif
         use pm_kind, only: SKC => SK4
         character(*,SKC)        , intent(in)                            :: array
@@ -4030,7 +4030,7 @@ module pm_arrayUnique
 #if SK3_ENABLED
     module subroutine setUniArbCusCom_D0_SK3(array, unique, count, iseq, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueCusCom_D0_SK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbCusCom_D0_SK3
 #endif
         use pm_kind, only: SKC => SK3
         character(*,SKC)        , intent(in)                            :: array
@@ -4045,7 +4045,7 @@ module pm_arrayUnique
 #if SK2_ENABLED
     module subroutine setUniArbCusCom_D0_SK2(array, unique, count, iseq, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueCusCom_D0_SK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbCusCom_D0_SK2
 #endif
         use pm_kind, only: SKC => SK2
         character(*,SKC)        , intent(in)                            :: array
@@ -4060,7 +4060,7 @@ module pm_arrayUnique
 #if SK1_ENABLED
     module subroutine setUniArbCusCom_D0_SK1(array, unique, count, iseq, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueCusCom_D0_SK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbCusCom_D0_SK1
 #endif
         use pm_kind, only: SKC => SK1
         character(*,SKC)        , intent(in)                            :: array
@@ -4077,7 +4077,7 @@ module pm_arrayUnique
 #if SK5_ENABLED
     module subroutine setUniArbCusCom_D1_SK5(array, unique, count, iseq, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueCusCom_D1_SK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbCusCom_D1_SK5
 #endif
         use pm_kind, only: SKC => SK5
         character(*,SKC)        , intent(in)    , contiguous            :: array(:)
@@ -4092,7 +4092,7 @@ module pm_arrayUnique
 #if SK4_ENABLED
     module subroutine setUniArbCusCom_D1_SK4(array, unique, count, iseq, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueCusCom_D1_SK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbCusCom_D1_SK4
 #endif
         use pm_kind, only: SKC => SK4
         character(*,SKC)        , intent(in)    , contiguous            :: array(:)
@@ -4107,7 +4107,7 @@ module pm_arrayUnique
 #if SK3_ENABLED
     module subroutine setUniArbCusCom_D1_SK3(array, unique, count, iseq, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueCusCom_D1_SK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbCusCom_D1_SK3
 #endif
         use pm_kind, only: SKC => SK3
         character(*,SKC)        , intent(in)    , contiguous            :: array(:)
@@ -4122,7 +4122,7 @@ module pm_arrayUnique
 #if SK2_ENABLED
     module subroutine setUniArbCusCom_D1_SK2(array, unique, count, iseq, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueCusCom_D1_SK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbCusCom_D1_SK2
 #endif
         use pm_kind, only: SKC => SK2
         character(*,SKC)        , intent(in)    , contiguous            :: array(:)
@@ -4137,7 +4137,7 @@ module pm_arrayUnique
 #if SK1_ENABLED
     module subroutine setUniArbCusCom_D1_SK1(array, unique, count, iseq, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueCusCom_D1_SK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbCusCom_D1_SK1
 #endif
         use pm_kind, only: SKC => SK1
         character(*,SKC)        , intent(in)    , contiguous            :: array(:)
@@ -4154,7 +4154,7 @@ module pm_arrayUnique
 #if IK5_ENABLED
     module subroutine setUniArbCusCom_D1_IK5(array, unique, count, iseq, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueCusCom_D1_IK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbCusCom_D1_IK5
 #endif
         use pm_kind, only: IKC => IK5
         integer(IKC)            , intent(in)    , contiguous            :: array(:)
@@ -4169,7 +4169,7 @@ module pm_arrayUnique
 #if IK4_ENABLED
     module subroutine setUniArbCusCom_D1_IK4(array, unique, count, iseq, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueCusCom_D1_IK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbCusCom_D1_IK4
 #endif
         use pm_kind, only: IKC => IK4
         integer(IKC)            , intent(in)    , contiguous            :: array(:)
@@ -4184,7 +4184,7 @@ module pm_arrayUnique
 #if IK3_ENABLED
     module subroutine setUniArbCusCom_D1_IK3(array, unique, count, iseq, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueCusCom_D1_IK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbCusCom_D1_IK3
 #endif
         use pm_kind, only: IKC => IK3
         integer(IKC)            , intent(in)    , contiguous            :: array(:)
@@ -4200,7 +4200,7 @@ module pm_arrayUnique
 #if IK2_ENABLED
     module subroutine setUniArbCusCom_D1_IK2(array, unique, count, iseq, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueCusCom_D1_IK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbCusCom_D1_IK2
 #endif
         use pm_kind, only: IKC => IK2
         integer(IKC)            , intent(in)    , contiguous            :: array(:)
@@ -4215,7 +4215,7 @@ module pm_arrayUnique
 #if IK1_ENABLED
     module subroutine setUniArbCusCom_D1_IK1(array, unique, count, iseq, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueCusCom_D1_IK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbCusCom_D1_IK1
 #endif
         use pm_kind, only: IKC => IK1
         integer(IKC)            , intent(in)    , contiguous            :: array(:)
@@ -4232,7 +4232,7 @@ module pm_arrayUnique
 #if LK5_ENABLED
     module subroutine setUniArbCusCom_D1_LK5(array, unique, count, iseq, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueCusCom_D1_LK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbCusCom_D1_LK5
 #endif
         use pm_kind, only: LKC => LK5
         logical(LKC)            , intent(in)    , contiguous            :: array(:)
@@ -4247,7 +4247,7 @@ module pm_arrayUnique
 #if LK4_ENABLED
     module subroutine setUniArbCusCom_D1_LK4(array, unique, count, iseq, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueCusCom_D1_LK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbCusCom_D1_LK4
 #endif
         use pm_kind, only: LKC => LK4
         logical(LKC)            , intent(in)    , contiguous            :: array(:)
@@ -4262,7 +4262,7 @@ module pm_arrayUnique
 #if LK3_ENABLED
     module subroutine setUniArbCusCom_D1_LK3(array, unique, count, iseq, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueCusCom_D1_LK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbCusCom_D1_LK3
 #endif
         use pm_kind, only: LKC => LK3
         logical(LKC)            , intent(in)    , contiguous            :: array(:)
@@ -4277,7 +4277,7 @@ module pm_arrayUnique
 #if LK2_ENABLED
     module subroutine setUniArbCusCom_D1_LK2(array, unique, count, iseq, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueCusCom_D1_LK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbCusCom_D1_LK2
 #endif
         use pm_kind, only: LKC => LK2
         logical(LKC)            , intent(in)    , contiguous            :: array(:)
@@ -4292,7 +4292,7 @@ module pm_arrayUnique
 #if LK1_ENABLED
     module subroutine setUniArbCusCom_D1_LK1(array, unique, count, iseq, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueCusCom_D1_LK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbCusCom_D1_LK1
 #endif
         use pm_kind, only: LKC => LK1
         logical(LKC)            , intent(in)    , contiguous            :: array(:)
@@ -4309,7 +4309,7 @@ module pm_arrayUnique
 #if CK5_ENABLED
     module subroutine setUniArbCusCom_D1_CK5(array, unique, count, iseq, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueCusCom_D1_CK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbCusCom_D1_CK5
 #endif
         use pm_kind, only: CKC => CK5
         complex(CKC)            , intent(in)    , contiguous            :: array(:)
@@ -4324,7 +4324,7 @@ module pm_arrayUnique
 #if CK4_ENABLED
     module subroutine setUniArbCusCom_D1_CK4(array, unique, count, iseq, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueCusCom_D1_CK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbCusCom_D1_CK4
 #endif
         use pm_kind, only: CKC => CK4
         complex(CKC)            , intent(in)    , contiguous            :: array(:)
@@ -4339,7 +4339,7 @@ module pm_arrayUnique
 #if CK3_ENABLED
     module subroutine setUniArbCusCom_D1_CK3(array, unique, count, iseq, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueCusCom_D1_CK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbCusCom_D1_CK3
 #endif
         use pm_kind, only: CKC => CK3
         complex(CKC)            , intent(in)    , contiguous            :: array(:)
@@ -4354,7 +4354,7 @@ module pm_arrayUnique
 #if CK2_ENABLED
     module subroutine setUniArbCusCom_D1_CK2(array, unique, count, iseq, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueCusCom_D1_CK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbCusCom_D1_CK2
 #endif
         use pm_kind, only: CKC => CK2
         complex(CKC)            , intent(in)    , contiguous            :: array(:)
@@ -4369,7 +4369,7 @@ module pm_arrayUnique
 #if CK1_ENABLED
     module subroutine setUniArbCusCom_D1_CK1(array, unique, count, iseq, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueCusCom_D1_CK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbCusCom_D1_CK1
 #endif
         use pm_kind, only: CKC => CK1
         complex(CKC)            , intent(in)    , contiguous            :: array(:)
@@ -4386,7 +4386,7 @@ module pm_arrayUnique
 #if RK5_ENABLED
     module subroutine setUniArbCusCom_D1_RK5(array, unique, count, iseq, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueCusCom_D1_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbCusCom_D1_RK5
 #endif
         use pm_kind, only: RKC => RK5
         real(RKC)               , intent(in)    , contiguous            :: array(:)
@@ -4401,7 +4401,7 @@ module pm_arrayUnique
 #if RK4_ENABLED
     module subroutine setUniArbCusCom_D1_RK4(array, unique, count, iseq, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueCusCom_D1_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbCusCom_D1_RK4
 #endif
         use pm_kind, only: RKC => RK4
         real(RKC)               , intent(in)    , contiguous            :: array(:)
@@ -4416,7 +4416,7 @@ module pm_arrayUnique
 #if RK3_ENABLED
     module subroutine setUniArbCusCom_D1_RK3(array, unique, count, iseq, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueCusCom_D1_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbCusCom_D1_RK3
 #endif
         use pm_kind, only: RKC => RK3
         real(RKC)               , intent(in)    , contiguous            :: array(:)
@@ -4431,7 +4431,7 @@ module pm_arrayUnique
 #if RK2_ENABLED
     module subroutine setUniArbCusCom_D1_RK2(array, unique, count, iseq, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueCusCom_D1_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbCusCom_D1_RK2
 #endif
         use pm_kind, only: RKC => RK2
         real(RKC)               , intent(in)    , contiguous            :: array(:)
@@ -4446,7 +4446,7 @@ module pm_arrayUnique
 #if RK1_ENABLED
     module subroutine setUniArbCusCom_D1_RK1(array, unique, count, iseq, index, order)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setUniqueCusCom_D1_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUniArbCusCom_D1_RK1
 #endif
         use pm_kind, only: RKC => RK1
         real(RKC)               , intent(in)    , contiguous            :: array(:)

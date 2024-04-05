@@ -4079,7 +4079,7 @@ end block;
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
     function getDateTimeIntValues(self) result(values)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructDateTimeInt
+        !DEC$ ATTRIBUTES DLLEXPORT :: getDateTimeIntValues
 #endif
         class(dateTimeInt_type), intent(in) :: self
         integer(IK) :: values(8)

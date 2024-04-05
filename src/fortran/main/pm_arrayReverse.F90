@@ -51,11 +51,11 @@ module pm_arrayReverse
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
-    !>  Generate and return an output array whose elements are the reversed-order elements of the input `Array`, such that <br>
-    !>  &nbsp; `Array = Array(lenArray:1:-1)`, <br>
-    !>  &nbsp; where `lenArray = len(Array)` if `array` is a scalar character, or `lenArray = size(Array)` is an array of rank `1`.
+    !>  Generate and return an output array whose elements are the reversed-order elements of the input `array`, such that <br>
+    !>  &nbsp; `array = array(lenArray:1:-1)`, <br>
+    !>  &nbsp; where `lenArray = len(array)` if `array` is a scalar character, or `lenArray = size(array)` is an array of rank `1`.
     !>
-    !>  \param[in]  Array   :   The input `contiguous` array of shape `(:)` of either <br>
+    !>  \param[in]  array   :   The input `contiguous` array of shape `(:)` of either <br>
     !>                          <ul>
     !>                              <li>    type [css_pdt](@ref pm_container::css_pdt) or,<br>
     !>                              <li>    type `character` of kind \SKALL, or <br>
@@ -78,7 +78,7 @@ module pm_arrayReverse
     !>
     !>      use pm_arrayReverse, only: getReversed
     !>
-    !>      ArrayReversed = getReversed(Array)
+    !>      ArrayReversed = getReversed(array)
     !>
     !>  \endcode
     !>
@@ -122,404 +122,404 @@ module pm_arrayReverse
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if SK5_ENABLED
-    PURE module function getReversedNew_D0_SK5(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D0_SK5(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D0_SK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D0_SK5
 #endif
         use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                    :: Array
-        character(len(Array,IK),SKC)                                :: ArrayReversed
+        character(*,SKC)            , intent(in)                    :: array
+        character(len(array,IK),SKC)                                :: ArrayReversed
     end function
 #endif
 
 #if SK4_ENABLED
-    PURE module function getReversedNew_D0_SK4(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D0_SK4(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D0_SK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D0_SK4
 #endif
         use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                    :: Array
-        character(len(Array,IK),SKC)                                :: ArrayReversed
+        character(*,SKC)            , intent(in)                    :: array
+        character(len(array,IK),SKC)                                :: ArrayReversed
     end function
 #endif
 
 #if SK3_ENABLED
-    PURE module function getReversedNew_D0_SK3(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D0_SK3(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D0_SK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D0_SK3
 #endif
         use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                    :: Array
-        character(len(Array,IK),SKC)                                :: ArrayReversed
+        character(*,SKC)            , intent(in)                    :: array
+        character(len(array,IK),SKC)                                :: ArrayReversed
     end function
 #endif
 
 #if SK2_ENABLED
-    PURE module function getReversedNew_D0_SK2(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D0_SK2(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D0_SK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D0_SK2
 #endif
         use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                    :: Array
-        character(len(Array,IK),SKC)                                :: ArrayReversed
+        character(*,SKC)            , intent(in)                    :: array
+        character(len(array,IK),SKC)                                :: ArrayReversed
     end function
 #endif
 
 #if SK1_ENABLED
-    PURE module function getReversedNew_D0_SK1(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D0_SK1(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D0_SK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D0_SK1
 #endif
         use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                    :: Array
-        character(len(Array,IK),SKC)                                :: ArrayReversed
+        character(*,SKC)            , intent(in)                    :: array
+        character(len(array,IK),SKC)                                :: ArrayReversed
     end function
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if SK5_ENABLED
-    PURE module function getReversedNew_D1_SK5(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D1_SK5(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D1_SK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D1_SK5
 #endif
         use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: Array(:)
-        character(len(Array,IK),SKC)                                :: ArrayReversed(size(Array))
+        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKC)                                :: ArrayReversed(size(array))
     end function
 #endif
 
 #if SK4_ENABLED
-    PURE module function getReversedNew_D1_SK4(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D1_SK4(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D1_SK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D1_SK4
 #endif
         use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: Array(:)
-        character(len(Array,IK),SKC)                                :: ArrayReversed(size(Array))
+        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKC)                                :: ArrayReversed(size(array))
     end function
 #endif
 
 #if SK3_ENABLED
-    PURE module function getReversedNew_D1_SK3(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D1_SK3(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D1_SK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D1_SK3
 #endif
         use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: Array(:)
-        character(len(Array,IK),SKC)                                :: ArrayReversed(size(Array))
+        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKC)                                :: ArrayReversed(size(array))
     end function
 #endif
 
 #if SK2_ENABLED
-    PURE module function getReversedNew_D1_SK2(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D1_SK2(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D1_SK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D1_SK2
 #endif
         use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: Array(:)
-        character(len(Array,IK),SKC)                                :: ArrayReversed(size(Array))
+        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKC)                                :: ArrayReversed(size(array))
     end function
 #endif
 
 #if SK1_ENABLED
-    PURE module function getReversedNew_D1_SK1(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D1_SK1(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D1_SK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D1_SK1
 #endif
         use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: Array(:)
-        character(len(Array,IK),SKC)                                :: ArrayReversed(size(Array))
+        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKC)                                :: ArrayReversed(size(array))
     end function
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if IK5_ENABLED
-    PURE module function getReversedNew_D1_IK5(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D1_IK5(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D1_IK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D1_IK5
 #endif
         use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: Array(:)
-        integer(IKC)                                                :: ArrayReversed(size(Array))
+        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        integer(IKC)                                                :: ArrayReversed(size(array))
     end function
 #endif
 
 #if IK4_ENABLED
-    PURE module function getReversedNew_D1_IK4(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D1_IK4(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D1_IK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D1_IK4
 #endif
         use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: Array(:)
-        integer(IKC)                                                :: ArrayReversed(size(Array))
+        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        integer(IKC)                                                :: ArrayReversed(size(array))
     end function
 #endif
 
 #if IK3_ENABLED
-    PURE module function getReversedNew_D1_IK3(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D1_IK3(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D1_IK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D1_IK3
 #endif
         use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: Array(:)
-        integer(IKC)                                                :: ArrayReversed(size(Array))
+        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        integer(IKC)                                                :: ArrayReversed(size(array))
     end function
 #endif
 
 #if IK2_ENABLED
-    PURE module function getReversedNew_D1_IK2(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D1_IK2(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D1_IK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D1_IK2
 #endif
         use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: Array(:)
-        integer(IKC)                                                :: ArrayReversed(size(Array))
+        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        integer(IKC)                                                :: ArrayReversed(size(array))
     end function
 #endif
 
 #if IK1_ENABLED
-    PURE module function getReversedNew_D1_IK1(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D1_IK1(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D1_IK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D1_IK1
 #endif
         use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: Array(:)
-        integer(IKC)                                                :: ArrayReversed(size(Array))
+        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        integer(IKC)                                                :: ArrayReversed(size(array))
     end function
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if LK5_ENABLED
-    PURE module function getReversedNew_D1_LK5(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D1_LK5(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D1_LK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D1_LK5
 #endif
         use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: Array(:)
-        logical(LKC)                                                :: ArrayReversed(size(Array))
+        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        logical(LKC)                                                :: ArrayReversed(size(array))
     end function
 #endif
 
 #if LK4_ENABLED
-    PURE module function getReversedNew_D1_LK4(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D1_LK4(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D1_LK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D1_LK4
 #endif
         use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: Array(:)
-        logical(LKC)                                                :: ArrayReversed(size(Array))
+        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        logical(LKC)                                                :: ArrayReversed(size(array))
     end function
 #endif
 
 #if LK3_ENABLED
-    PURE module function getReversedNew_D1_LK3(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D1_LK3(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D1_LK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D1_LK3
 #endif
         use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: Array(:)
-        logical(LKC)                                                :: ArrayReversed(size(Array))
+        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        logical(LKC)                                                :: ArrayReversed(size(array))
     end function
 #endif
 
 #if LK2_ENABLED
-    PURE module function getReversedNew_D1_LK2(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D1_LK2(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D1_LK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D1_LK2
 #endif
         use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: Array(:)
-        logical(LKC)                                                :: ArrayReversed(size(Array))
+        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        logical(LKC)                                                :: ArrayReversed(size(array))
     end function
 #endif
 
 #if LK1_ENABLED
-    PURE module function getReversedNew_D1_LK1(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D1_LK1(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D1_LK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D1_LK1
 #endif
         use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: Array(:)
-        logical(LKC)                                                :: ArrayReversed(size(Array))
+        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        logical(LKC)                                                :: ArrayReversed(size(array))
     end function
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if CK5_ENABLED
-    PURE module function getReversedNew_D1_CK5(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D1_CK5(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D1_CK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D1_CK5
 #endif
         use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: Array(:)
-        complex(CKC)                                                :: ArrayReversed(size(Array))
+        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        complex(CKC)                                                :: ArrayReversed(size(array))
     end function
 #endif
 
 #if CK4_ENABLED
-    PURE module function getReversedNew_D1_CK4(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D1_CK4(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D1_CK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D1_CK4
 #endif
         use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: Array(:)
-        complex(CKC)                                                :: ArrayReversed(size(Array))
+        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        complex(CKC)                                                :: ArrayReversed(size(array))
     end function
 #endif
 
 #if CK3_ENABLED
-    PURE module function getReversedNew_D1_CK3(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D1_CK3(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D1_CK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D1_CK3
 #endif
         use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: Array(:)
-        complex(CKC)                                                :: ArrayReversed(size(Array))
+        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        complex(CKC)                                                :: ArrayReversed(size(array))
     end function
 #endif
 
 #if CK2_ENABLED
-    PURE module function getReversedNew_D1_CK2(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D1_CK2(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D1_CK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D1_CK2
 #endif
         use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: Array(:)
-        complex(CKC)                                                :: ArrayReversed(size(Array))
+        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        complex(CKC)                                                :: ArrayReversed(size(array))
     end function
 #endif
 
 #if CK1_ENABLED
-    PURE module function getReversedNew_D1_CK1(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D1_CK1(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D1_CK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D1_CK1
 #endif
         use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: Array(:)
-        complex(CKC)                                                :: ArrayReversed(size(Array))
+        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        complex(CKC)                                                :: ArrayReversed(size(array))
     end function
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE module function getReversedNew_D1_RK5(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D1_RK5(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D1_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D1_RK5
 #endif
         use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: Array(:)
-        real(RKC)                                                   :: ArrayReversed(size(Array))
+        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        real(RKC)                                                   :: ArrayReversed(size(array))
     end function
 #endif
 
 #if RK4_ENABLED
-    PURE module function getReversedNew_D1_RK4(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D1_RK4(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D1_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D1_RK4
 #endif
         use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: Array(:)
-        real(RKC)                                                   :: ArrayReversed(size(Array))
+        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        real(RKC)                                                   :: ArrayReversed(size(array))
     end function
 #endif
 
 #if RK3_ENABLED
-    PURE module function getReversedNew_D1_RK3(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D1_RK3(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D1_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D1_RK3
 #endif
         use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: Array(:)
-        real(RKC)                                                   :: ArrayReversed(size(Array))
+        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        real(RKC)                                                   :: ArrayReversed(size(array))
     end function
 #endif
 
 #if RK2_ENABLED
-    PURE module function getReversedNew_D1_RK2(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D1_RK2(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D1_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D1_RK2
 #endif
         use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: Array(:)
-        real(RKC)                                                   :: ArrayReversed(size(Array))
+        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        real(RKC)                                                   :: ArrayReversed(size(array))
     end function
 #endif
 
 #if RK1_ENABLED
-    PURE module function getReversedNew_D1_RK1(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D1_RK1(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D1_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D1_RK1
 #endif
         use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: Array(:)
-        real(RKC)                                                   :: ArrayReversed(size(Array))
+        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        real(RKC)                                                   :: ArrayReversed(size(array))
     end function
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if SK5_ENABLED
-    PURE module function getReversedNew_D1_PSSK5(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D1_PSSK5(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D1_PSSK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D1_PSSK5
 #endif
         use pm_kind, only: SKC => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))       , intent(in)    , contiguous    :: Array(:)
-        type(css_pdt(SKC))                                       :: ArrayReversed(size(Array))
+        type(css_pdt(SKC))       , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKC))                                       :: ArrayReversed(size(array))
     end function
 #endif
 
 #if SK4_ENABLED
-    PURE module function getReversedNew_D1_PSSK4(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D1_PSSK4(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D1_PSSK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D1_PSSK4
 #endif
         use pm_kind, only: SKC => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))       , intent(in)    , contiguous    :: Array(:)
-        type(css_pdt(SKC))                                       :: ArrayReversed(size(Array))
+        type(css_pdt(SKC))       , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKC))                                       :: ArrayReversed(size(array))
     end function
 #endif
 
 #if SK3_ENABLED
-    PURE module function getReversedNew_D1_PSSK3(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D1_PSSK3(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D1_PSSK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D1_PSSK3
 #endif
         use pm_kind, only: SKC => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))       , intent(in)    , contiguous    :: Array(:)
-        type(css_pdt(SKC))                                       :: ArrayReversed(size(Array))
+        type(css_pdt(SKC))       , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKC))                                       :: ArrayReversed(size(array))
     end function
 #endif
 
 #if SK2_ENABLED
-    PURE module function getReversedNew_D1_PSSK2(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D1_PSSK2(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D1_PSSK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D1_PSSK2
 #endif
         use pm_kind, only: SKC => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))       , intent(in)    , contiguous    :: Array(:)
-        type(css_pdt(SKC))                                       :: ArrayReversed(size(Array))
+        type(css_pdt(SKC))       , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKC))                                       :: ArrayReversed(size(array))
     end function
 #endif
 
 #if SK1_ENABLED
-    PURE module function getReversedNew_D1_PSSK1(Array) result(ArrayReversed)
+    PURE module function getReversedNew_D1_PSSK1(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getReversed_D1_PSSK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: getReversedNew_D1_PSSK1
 #endif
         use pm_kind, only: SKC => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))       , intent(in)    , contiguous    :: Array(:)
-        type(css_pdt(SKC))                                       :: ArrayReversed(size(Array))
+        type(css_pdt(SKC))       , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKC))                                       :: ArrayReversed(size(array))
     end function
 #endif
 
@@ -534,11 +534,11 @@ module pm_arrayReverse
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
-    !>  Reverse the order of the elements of the input `Array`, such that <br>
-    !>  &nbsp; `Array = Array(lenArray:1:-1)`, <br>
-    !>  &nbsp; where `lenArray = len(Array)` if `array` is a scalar character, or `lenArray = size(Array)` is an array of rank `1`.
+    !>  Reverse the order of the elements of the input `array`, such that <br>
+    !>  &nbsp; `array = array(lenArray:1:-1)`, <br>
+    !>  &nbsp; where `lenArray = len(array)` if `array` is a scalar character, or `lenArray = size(array)` is an array of rank `1`.
     !>
-    !>  \param[inout]   Array       :   The **input** or **input/output** `contiguous` array of shape `(:)` of either <br>
+    !>  \param[inout]   array       :   The **input** or **input/output** `contiguous` array of shape `(:)` of either <br>
     !>                                  <ul>
     !>                                      <li>    type [css_pdt](@ref pm_container::css_pdt) or,<br>
     !>                                      <li>    type `character` of kind \SKALL, or <br>
@@ -551,7 +551,7 @@ module pm_arrayReverse
     !>                                  <ul>
     !>                                      <li>    a scalar `character` of kind \SKALL of arbitrary length type parameter,<br>
     !>                                  </ul>
-    !>                                  whose elements will be reversed in order, such that the first element becomes the last and the last becomes the first in Array.<br>
+    !>                                  whose elements will be reversed in order, such that the first element becomes the last and the last becomes the first in array.<br>
     !>                                  <ul>
     !>                                      <li>    If the input argument `ArrayReversed` is specified, then `array` has `intent(in)` and will not change.<br>
     !>                                      <li>    If the input argument `ArrayReversed` is missing, then `array` will be reversed on output.<br>
@@ -564,13 +564,13 @@ module pm_arrayReverse
     !>
     !>      use pm_arrayReverse, only: setReversed
     !>
-    !>      call setReversed(Array)
-    !>      call setReversed(Array, ArrayReversed)
+    !>      call setReversed(array)
+    !>      call setReversed(array, ArrayReversed)
     !>
     !>  \endcode
     !>
     !>  \warning
-    !>  If `ArrayReversed` is present, its size must equal that of `Array`.<br>
+    !>  If `ArrayReversed` is present, its size must equal that of `array`.<br>
     !>  \vericon
     !>
     !>  \warnpure
@@ -583,7 +583,7 @@ module pm_arrayReverse
     !>  See [pm_arrayReverse](@ref pm_arrayReverse) for the relevant benchmarks.<br>
     !>
     !>  \note
-    !>  Upon return, if `array` is `allocatable, intent(inout) :: Array` argument, then it is guaranteed to have the same lower and upper bounds as before.
+    !>  Upon return, if `array` is `allocatable, intent(inout) :: array` argument, then it is guaranteed to have the same lower and upper bounds as before.
     !>  This condition happens when `ArrayReversed` is missing in the arguments list.
     !>
     !>  \see
@@ -617,369 +617,369 @@ module pm_arrayReverse
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if SK5_ENABLED
-    PURE module subroutine setReversedOld_D0_SK5(Array)
+    PURE module subroutine setReversedOld_D0_SK5(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D0_SK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D0_SK5
 #endif
         use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(inout)                 :: Array
+        character(*,SKC)            , intent(inout)                 :: array
     end subroutine
 #endif
 
 #if SK4_ENABLED
-    PURE module subroutine setReversedOld_D0_SK4(Array)
+    PURE module subroutine setReversedOld_D0_SK4(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D0_SK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D0_SK4
 #endif
         use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(inout)                 :: Array
+        character(*,SKC)            , intent(inout)                 :: array
     end subroutine
 #endif
 
 #if SK3_ENABLED
-    PURE module subroutine setReversedOld_D0_SK3(Array)
+    PURE module subroutine setReversedOld_D0_SK3(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D0_SK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D0_SK3
 #endif
         use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(inout)                 :: Array
+        character(*,SKC)            , intent(inout)                 :: array
     end subroutine
 #endif
 
 #if SK2_ENABLED
-    PURE module subroutine setReversedOld_D0_SK2(Array)
+    PURE module subroutine setReversedOld_D0_SK2(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D0_SK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D0_SK2
 #endif
         use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(inout)                 :: Array
+        character(*,SKC)            , intent(inout)                 :: array
     end subroutine
 #endif
 
 #if SK1_ENABLED
-    PURE module subroutine setReversedOld_D0_SK1(Array)
+    PURE module subroutine setReversedOld_D0_SK1(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D0_SK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D0_SK1
 #endif
         use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(inout)                 :: Array
+        character(*,SKC)            , intent(inout)                 :: array
     end subroutine
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if SK5_ENABLED
-    PURE module subroutine setReversedOld_D1_SK5(Array)
+    PURE module subroutine setReversedOld_D1_SK5(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D1_SK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D1_SK5
 #endif
         use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(inout) , contiguous    :: Array(:)
+        character(*,SKC)            , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
 #if SK4_ENABLED
-    PURE module subroutine setReversedOld_D1_SK4(Array)
+    PURE module subroutine setReversedOld_D1_SK4(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D1_SK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D1_SK4
 #endif
         use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(inout) , contiguous    :: Array(:)
+        character(*,SKC)            , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
 #if SK3_ENABLED
-    PURE module subroutine setReversedOld_D1_SK3(Array)
+    PURE module subroutine setReversedOld_D1_SK3(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D1_SK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D1_SK3
 #endif
         use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(inout) , contiguous    :: Array(:)
+        character(*,SKC)            , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
 #if SK2_ENABLED
-    PURE module subroutine setReversedOld_D1_SK2(Array)
+    PURE module subroutine setReversedOld_D1_SK2(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D1_SK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D1_SK2
 #endif
         use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(inout) , contiguous    :: Array(:)
+        character(*,SKC)            , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
 #if SK1_ENABLED
-    PURE module subroutine setReversedOld_D1_SK1(Array)
+    PURE module subroutine setReversedOld_D1_SK1(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D1_SK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D1_SK1
 #endif
         use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(inout) , contiguous    :: Array(:)
+        character(*,SKC)            , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if IK5_ENABLED
-    PURE module subroutine setReversedOld_D1_IK5(Array)
+    PURE module subroutine setReversedOld_D1_IK5(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D1_IK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D1_IK5
 #endif
         use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(inout) , contiguous    :: Array(:)
+        integer(IKC)                , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
 #if IK4_ENABLED
-    PURE module subroutine setReversedOld_D1_IK4(Array)
+    PURE module subroutine setReversedOld_D1_IK4(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D1_IK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D1_IK4
 #endif
         use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(inout) , contiguous    :: Array(:)
+        integer(IKC)                , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
 #if IK3_ENABLED
-    PURE module subroutine setReversedOld_D1_IK3(Array)
+    PURE module subroutine setReversedOld_D1_IK3(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D1_IK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D1_IK3
 #endif
         use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(inout) , contiguous    :: Array(:)
+        integer(IKC)                , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
 #if IK2_ENABLED
-    PURE module subroutine setReversedOld_D1_IK2(Array)
+    PURE module subroutine setReversedOld_D1_IK2(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D1_IK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D1_IK2
 #endif
         use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(inout) , contiguous    :: Array(:)
+        integer(IKC)                , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
 #if IK1_ENABLED
-    PURE module subroutine setReversedOld_D1_IK1(Array)
+    PURE module subroutine setReversedOld_D1_IK1(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D1_IK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D1_IK1
 #endif
         use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(inout) , contiguous    :: Array(:)
+        integer(IKC)                , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if LK5_ENABLED
-    PURE module subroutine setReversedOld_D1_LK5(Array)
+    PURE module subroutine setReversedOld_D1_LK5(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D1_LK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D1_LK5
 #endif
         use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(inout) , contiguous    :: Array(:)
+        logical(LKC)                , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
 #if LK4_ENABLED
-    PURE module subroutine setReversedOld_D1_LK4(Array)
+    PURE module subroutine setReversedOld_D1_LK4(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D1_LK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D1_LK4
 #endif
         use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(inout) , contiguous    :: Array(:)
+        logical(LKC)                , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
 #if LK3_ENABLED
-    PURE module subroutine setReversedOld_D1_LK3(Array)
+    PURE module subroutine setReversedOld_D1_LK3(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D1_LK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D1_LK3
 #endif
         use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(inout) , contiguous    :: Array(:)
+        logical(LKC)                , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
 #if LK2_ENABLED
-    PURE module subroutine setReversedOld_D1_LK2(Array)
+    PURE module subroutine setReversedOld_D1_LK2(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D1_LK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D1_LK2
 #endif
         use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(inout) , contiguous    :: Array(:)
+        logical(LKC)                , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
 #if LK1_ENABLED
-    PURE module subroutine setReversedOld_D1_LK1(Array)
+    PURE module subroutine setReversedOld_D1_LK1(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D1_LK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D1_LK1
 #endif
         use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(inout) , contiguous    :: Array(:)
+        logical(LKC)                , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if CK5_ENABLED
-    PURE module subroutine setReversedOld_D1_CK5(Array)
+    PURE module subroutine setReversedOld_D1_CK5(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D1_CK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D1_CK5
 #endif
         use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(inout) , contiguous    :: Array(:)
+        complex(CKC)                , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
 #if CK4_ENABLED
-    PURE module subroutine setReversedOld_D1_CK4(Array)
+    PURE module subroutine setReversedOld_D1_CK4(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D1_CK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D1_CK4
 #endif
         use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(inout) , contiguous    :: Array(:)
+        complex(CKC)                , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
 #if CK3_ENABLED
-    PURE module subroutine setReversedOld_D1_CK3(Array)
+    PURE module subroutine setReversedOld_D1_CK3(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D1_CK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D1_CK3
 #endif
         use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(inout) , contiguous    :: Array(:)
+        complex(CKC)                , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
 #if CK2_ENABLED
-    PURE module subroutine setReversedOld_D1_CK2(Array)
+    PURE module subroutine setReversedOld_D1_CK2(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D1_CK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D1_CK2
 #endif
         use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(inout) , contiguous    :: Array(:)
+        complex(CKC)                , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
 #if CK1_ENABLED
-    PURE module subroutine setReversedOld_D1_CK1(Array)
+    PURE module subroutine setReversedOld_D1_CK1(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D1_CK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D1_CK1
 #endif
         use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(inout) , contiguous    :: Array(:)
+        complex(CKC)                , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE module subroutine setReversedOld_D1_RK5(Array)
+    PURE module subroutine setReversedOld_D1_RK5(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D1_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D1_RK5
 #endif
         use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(inout) , contiguous    :: Array(:)
+        real(RKC)                   , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
 #if RK4_ENABLED
-    PURE module subroutine setReversedOld_D1_RK4(Array)
+    PURE module subroutine setReversedOld_D1_RK4(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D1_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D1_RK4
 #endif
         use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(inout) , contiguous    :: Array(:)
+        real(RKC)                   , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
 #if RK3_ENABLED
-    PURE module subroutine setReversedOld_D1_RK3(Array)
+    PURE module subroutine setReversedOld_D1_RK3(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D1_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D1_RK3
 #endif
         use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(inout) , contiguous    :: Array(:)
+        real(RKC)                   , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
 #if RK2_ENABLED
-    PURE module subroutine setReversedOld_D1_RK2(Array)
+    PURE module subroutine setReversedOld_D1_RK2(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D1_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D1_RK2
 #endif
         use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(inout) , contiguous    :: Array(:)
+        real(RKC)                   , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
 #if RK1_ENABLED
-    PURE module subroutine setReversedOld_D1_RK1(Array)
+    PURE module subroutine setReversedOld_D1_RK1(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D1_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D1_RK1
 #endif
         use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(inout) , contiguous    :: Array(:)
+        real(RKC)                   , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if SK5_ENABLED
-    PURE module subroutine setReversedOld_D1_PSSK5(Array)
+    PURE module subroutine setReversedOld_D1_PSSK5(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D1_PSSK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D1_PSSK5
 #endif
         use pm_kind, only: SKC => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))       , intent(inout) , contiguous    :: Array(:)
+        type(css_pdt(SKC))       , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
 #if SK4_ENABLED
-    PURE module subroutine setReversedOld_D1_PSSK4(Array)
+    PURE module subroutine setReversedOld_D1_PSSK4(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D1_PSSK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D1_PSSK4
 #endif
         use pm_kind, only: SKC => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))       , intent(inout) , contiguous    :: Array(:)
+        type(css_pdt(SKC))       , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
 #if SK3_ENABLED
-    PURE module subroutine setReversedOld_D1_PSSK3(Array)
+    PURE module subroutine setReversedOld_D1_PSSK3(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D1_PSSK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D1_PSSK3
 #endif
         use pm_kind, only: SKC => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))       , intent(inout) , contiguous    :: Array(:)
+        type(css_pdt(SKC))       , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
 #if SK2_ENABLED
-    PURE module subroutine setReversedOld_D1_PSSK2(Array)
+    PURE module subroutine setReversedOld_D1_PSSK2(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D1_PSSK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D1_PSSK2
 #endif
         use pm_kind, only: SKC => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))       , intent(inout) , contiguous    :: Array(:)
+        type(css_pdt(SKC))       , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
 #if SK1_ENABLED
-    PURE module subroutine setReversedOld_D1_PSSK1(Array)
+    PURE module subroutine setReversedOld_D1_PSSK1(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setReversed_D1_PSSK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setReversedOld_D1_PSSK1
 #endif
         use pm_kind, only: SKC => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))       , intent(inout) , contiguous    :: Array(:)
+        type(css_pdt(SKC))       , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -992,56 +992,56 @@ module pm_arrayReverse
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if SK5_ENABLED
-    PURE module subroutine setReversedNew_D0_SK5(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D0_SK5(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D0_SK5
 #endif
         use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                    :: Array
+        character(*,SKC)            , intent(in)                    :: array
         character(*,SKC)            , intent(out)                   :: ArrayReversed
     end subroutine
 #endif
 
 #if SK4_ENABLED
-    PURE module subroutine setReversedNew_D0_SK4(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D0_SK4(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D0_SK4
 #endif
         use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                    :: Array
+        character(*,SKC)            , intent(in)                    :: array
         character(*,SKC)            , intent(out)                   :: ArrayReversed
     end subroutine
 #endif
 
 #if SK3_ENABLED
-    PURE module subroutine setReversedNew_D0_SK3(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D0_SK3(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D0_SK3
 #endif
         use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                    :: Array
+        character(*,SKC)            , intent(in)                    :: array
         character(*,SKC)            , intent(out)                   :: ArrayReversed
     end subroutine
 #endif
 
 #if SK2_ENABLED
-    PURE module subroutine setReversedNew_D0_SK2(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D0_SK2(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D0_SK2
 #endif
         use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                    :: Array
+        character(*,SKC)            , intent(in)                    :: array
         character(*,SKC)            , intent(out)                   :: ArrayReversed
     end subroutine
 #endif
 
 #if SK1_ENABLED
-    PURE module subroutine setReversedNew_D0_SK1(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D0_SK1(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D0_SK1
 #endif
         use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                    :: Array
+        character(*,SKC)            , intent(in)                    :: array
         character(*,SKC)            , intent(out)                   :: ArrayReversed
     end subroutine
 #endif
@@ -1049,56 +1049,56 @@ module pm_arrayReverse
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if SK5_ENABLED
-    PURE module subroutine setReversedNew_D1_SK5(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D1_SK5(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D1_SK5
 #endif
         use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: Array(:)
+        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
         character(*,SKC)            , intent(out)   , contiguous    :: ArrayReversed(:)
     end subroutine
 #endif
 
 #if SK4_ENABLED
-    PURE module subroutine setReversedNew_D1_SK4(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D1_SK4(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D1_SK4
 #endif
         use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: Array(:)
+        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
         character(*,SKC)            , intent(out)   , contiguous    :: ArrayReversed(:)
     end subroutine
 #endif
 
 #if SK3_ENABLED
-    PURE module subroutine setReversedNew_D1_SK3(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D1_SK3(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D1_SK3
 #endif
         use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: Array(:)
+        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
         character(*,SKC)            , intent(out)   , contiguous    :: ArrayReversed(:)
     end subroutine
 #endif
 
 #if SK2_ENABLED
-    PURE module subroutine setReversedNew_D1_SK2(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D1_SK2(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D1_SK2
 #endif
         use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: Array(:)
+        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
         character(*,SKC)            , intent(out)   , contiguous    :: ArrayReversed(:)
     end subroutine
 #endif
 
 #if SK1_ENABLED
-    PURE module subroutine setReversedNew_D1_SK1(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D1_SK1(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D1_SK1
 #endif
         use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: Array(:)
+        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
         character(*,SKC)            , intent(out)   , contiguous    :: ArrayReversed(:)
     end subroutine
 #endif
@@ -1106,56 +1106,56 @@ module pm_arrayReverse
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if IK5_ENABLED
-    PURE module subroutine setReversedNew_D1_IK5(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D1_IK5(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D1_IK5
 #endif
         use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: Array(:)
+        integer(IKC)                , intent(in)    , contiguous    :: array(:)
         integer(IKC)                , intent(out)   , contiguous    :: ArrayReversed(:)
     end subroutine
 #endif
 
 #if IK4_ENABLED
-    PURE module subroutine setReversedNew_D1_IK4(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D1_IK4(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D1_IK4
 #endif
         use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: Array(:)
+        integer(IKC)                , intent(in)    , contiguous    :: array(:)
         integer(IKC)                , intent(out)   , contiguous    :: ArrayReversed(:)
     end subroutine
 #endif
 
 #if IK3_ENABLED
-    PURE module subroutine setReversedNew_D1_IK3(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D1_IK3(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D1_IK3
 #endif
         use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: Array(:)
+        integer(IKC)                , intent(in)    , contiguous    :: array(:)
         integer(IKC)                , intent(out)   , contiguous    :: ArrayReversed(:)
     end subroutine
 #endif
 
 #if IK2_ENABLED
-    PURE module subroutine setReversedNew_D1_IK2(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D1_IK2(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D1_IK2
 #endif
         use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: Array(:)
+        integer(IKC)                , intent(in)    , contiguous    :: array(:)
         integer(IKC)                , intent(out)   , contiguous    :: ArrayReversed(:)
     end subroutine
 #endif
 
 #if IK1_ENABLED
-    PURE module subroutine setReversedNew_D1_IK1(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D1_IK1(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D1_IK1
 #endif
         use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: Array(:)
+        integer(IKC)                , intent(in)    , contiguous    :: array(:)
         integer(IKC)                , intent(out)   , contiguous    :: ArrayReversed(:)
     end subroutine
 #endif
@@ -1163,56 +1163,56 @@ module pm_arrayReverse
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if LK5_ENABLED
-    PURE module subroutine setReversedNew_D1_LK5(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D1_LK5(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D1_LK5
 #endif
         use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: Array(:)
+        logical(LKC)                , intent(in)    , contiguous    :: array(:)
         logical(LKC)                , intent(out)   , contiguous    :: ArrayReversed(:)
     end subroutine
 #endif
 
 #if LK4_ENABLED
-    PURE module subroutine setReversedNew_D1_LK4(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D1_LK4(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D1_LK4
 #endif
         use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: Array(:)
+        logical(LKC)                , intent(in)    , contiguous    :: array(:)
         logical(LKC)                , intent(out)   , contiguous    :: ArrayReversed(:)
     end subroutine
 #endif
 
 #if LK3_ENABLED
-    PURE module subroutine setReversedNew_D1_LK3(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D1_LK3(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D1_LK3
 #endif
         use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: Array(:)
+        logical(LKC)                , intent(in)    , contiguous    :: array(:)
         logical(LKC)                , intent(out)   , contiguous    :: ArrayReversed(:)
     end subroutine
 #endif
 
 #if LK2_ENABLED
-    PURE module subroutine setReversedNew_D1_LK2(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D1_LK2(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D1_LK2
 #endif
         use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: Array(:)
+        logical(LKC)                , intent(in)    , contiguous    :: array(:)
         logical(LKC)                , intent(out)   , contiguous    :: ArrayReversed(:)
     end subroutine
 #endif
 
 #if LK1_ENABLED
-    PURE module subroutine setReversedNew_D1_LK1(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D1_LK1(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D1_LK1
 #endif
         use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: Array(:)
+        logical(LKC)                , intent(in)    , contiguous    :: array(:)
         logical(LKC)                , intent(out)   , contiguous    :: ArrayReversed(:)
     end subroutine
 #endif
@@ -1220,56 +1220,56 @@ module pm_arrayReverse
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if CK5_ENABLED
-    PURE module subroutine setReversedNew_D1_CK5(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D1_CK5(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D1_CK5
 #endif
         use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: Array(:)
+        complex(CKC)                , intent(in)    , contiguous    :: array(:)
         complex(CKC)                , intent(out)   , contiguous    :: ArrayReversed(:)
     end subroutine
 #endif
 
 #if CK4_ENABLED
-    PURE module subroutine setReversedNew_D1_CK4(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D1_CK4(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D1_CK4
 #endif
         use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: Array(:)
+        complex(CKC)                , intent(in)    , contiguous    :: array(:)
         complex(CKC)                , intent(out)   , contiguous    :: ArrayReversed(:)
     end subroutine
 #endif
 
 #if CK3_ENABLED
-    PURE module subroutine setReversedNew_D1_CK3(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D1_CK3(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D1_CK3
 #endif
         use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: Array(:)
+        complex(CKC)                , intent(in)    , contiguous    :: array(:)
         complex(CKC)                , intent(out)   , contiguous    :: ArrayReversed(:)
     end subroutine
 #endif
 
 #if CK2_ENABLED
-    PURE module subroutine setReversedNew_D1_CK2(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D1_CK2(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D1_CK2
 #endif
         use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: Array(:)
+        complex(CKC)                , intent(in)    , contiguous    :: array(:)
         complex(CKC)                , intent(out)   , contiguous    :: ArrayReversed(:)
     end subroutine
 #endif
 
 #if CK1_ENABLED
-    PURE module subroutine setReversedNew_D1_CK1(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D1_CK1(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D1_CK1
 #endif
         use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: Array(:)
+        complex(CKC)                , intent(in)    , contiguous    :: array(:)
         complex(CKC)                , intent(out)   , contiguous    :: ArrayReversed(:)
     end subroutine
 #endif
@@ -1277,56 +1277,56 @@ module pm_arrayReverse
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE module subroutine setReversedNew_D1_RK5(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D1_RK5(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D1_RK5
 #endif
         use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: Array(:)
+        real(RKC)                   , intent(in)    , contiguous    :: array(:)
         real(RKC)                   , intent(out)   , contiguous    :: ArrayReversed(:)
     end subroutine
 #endif
 
 #if RK4_ENABLED
-    PURE module subroutine setReversedNew_D1_RK4(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D1_RK4(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D1_RK4
 #endif
         use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: Array(:)
+        real(RKC)                   , intent(in)    , contiguous    :: array(:)
         real(RKC)                   , intent(out)   , contiguous    :: ArrayReversed(:)
     end subroutine
 #endif
 
 #if RK3_ENABLED
-    PURE module subroutine setReversedNew_D1_RK3(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D1_RK3(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D1_RK3
 #endif
         use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: Array(:)
+        real(RKC)                   , intent(in)    , contiguous    :: array(:)
         real(RKC)                   , intent(out)   , contiguous    :: ArrayReversed(:)
     end subroutine
 #endif
 
 #if RK2_ENABLED
-    PURE module subroutine setReversedNew_D1_RK2(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D1_RK2(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D1_RK2
 #endif
         use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: Array(:)
+        real(RKC)                   , intent(in)    , contiguous    :: array(:)
         real(RKC)                   , intent(out)   , contiguous    :: ArrayReversed(:)
     end subroutine
 #endif
 
 #if RK1_ENABLED
-    PURE module subroutine setReversedNew_D1_RK1(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D1_RK1(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D1_RK1
 #endif
         use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: Array(:)
+        real(RKC)                   , intent(in)    , contiguous    :: array(:)
         real(RKC)                   , intent(out)   , contiguous    :: ArrayReversed(:)
     end subroutine
 #endif
@@ -1334,61 +1334,61 @@ module pm_arrayReverse
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if SK5_ENABLED
-    PURE module subroutine setReversedNew_D1_PSSK5(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D1_PSSK5(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D1_PSSK5
 #endif
         use pm_kind, only: SKC => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))       , intent(in)    , contiguous    :: Array(:)
+        type(css_pdt(SKC))       , intent(in)    , contiguous    :: array(:)
         type(css_pdt(SKC))       , intent(out)   , contiguous    :: ArrayReversed(:)
     end subroutine
 #endif
 
 #if SK4_ENABLED
-    PURE module subroutine setReversedNew_D1_PSSK4(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D1_PSSK4(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D1_PSSK4
 #endif
         use pm_kind, only: SKC => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))       , intent(in)    , contiguous    :: Array(:)
+        type(css_pdt(SKC))       , intent(in)    , contiguous    :: array(:)
         type(css_pdt(SKC))       , intent(out)   , contiguous    :: ArrayReversed(:)
     end subroutine
 #endif
 
 #if SK3_ENABLED
-    PURE module subroutine setReversedNew_D1_PSSK3(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D1_PSSK3(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D1_PSSK3
 #endif
         use pm_kind, only: SKC => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))       , intent(in)    , contiguous    :: Array(:)
+        type(css_pdt(SKC))       , intent(in)    , contiguous    :: array(:)
         type(css_pdt(SKC))       , intent(out)   , contiguous    :: ArrayReversed(:)
     end subroutine
 #endif
 
 #if SK2_ENABLED
-    PURE module subroutine setReversedNew_D1_PSSK2(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D1_PSSK2(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D1_PSSK2
 #endif
         use pm_kind, only: SKC => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))       , intent(in)    , contiguous    :: Array(:)
+        type(css_pdt(SKC))       , intent(in)    , contiguous    :: array(:)
         type(css_pdt(SKC))       , intent(out)   , contiguous    :: ArrayReversed(:)
     end subroutine
 #endif
 
 #if SK1_ENABLED
-    PURE module subroutine setReversedNew_D1_PSSK1(Array, ArrayReversed)
+    PURE module subroutine setReversedNew_D1_PSSK1(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReversedNew_D1_PSSK1
 #endif
         use pm_kind, only: SKC => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))       , intent(in)    , contiguous    :: Array(:)
+        type(css_pdt(SKC))       , intent(in)    , contiguous    :: array(:)
         type(css_pdt(SKC))       , intent(out)   , contiguous    :: ArrayReversed(:)
     end subroutine
 #endif

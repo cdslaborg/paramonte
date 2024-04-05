@@ -146,7 +146,7 @@ module pm_arrayChange
 #if SK5_ENABLED
     module function getChangeUnifRNGD_SK5(count, start, stop, step, unique) result(change)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getChangeRNGD_SK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: getChangeUnifRNGD_SK5
 #endif
         use pm_kind, only: SKC => SK5
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -160,7 +160,7 @@ module pm_arrayChange
 #if SK4_ENABLED
     module function getChangeUnifRNGD_SK4(count, start, stop, step, unique) result(change)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getChangeRNGD_SK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: getChangeUnifRNGD_SK4
 #endif
         use pm_kind, only: SKC => SK4
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -174,7 +174,7 @@ module pm_arrayChange
 #if SK3_ENABLED
     module function getChangeUnifRNGD_SK3(count, start, stop, step, unique) result(change)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getChangeRNGD_SK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: getChangeUnifRNGD_SK3
 #endif
         use pm_kind, only: SKC => SK3
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -188,7 +188,7 @@ module pm_arrayChange
 #if SK2_ENABLED
     module function getChangeUnifRNGD_SK2(count, start, stop, step, unique) result(change)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getChangeRNGD_SK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: getChangeUnifRNGD_SK2
 #endif
         use pm_kind, only: SKC => SK2
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -202,7 +202,7 @@ module pm_arrayChange
 #if SK1_ENABLED
     module function getChangeUnifRNGD_SK1(count, start, stop, step, unique) result(change)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getChangeRNGD_SK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: getChangeUnifRNGD_SK1
 #endif
         use pm_kind, only: SKC => SK1
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -218,7 +218,7 @@ module pm_arrayChange
 #if IK5_ENABLED
     module function getChangeUnifRNGD_IK5(count, start, stop, step, unique) result(change)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getChangeRNGD_IK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: getChangeUnifRNGD_IK5
 #endif
         use pm_kind, only: IKC => IK5
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -231,7 +231,7 @@ module pm_arrayChange
 #if IK4_ENABLED
     module function getChangeUnifRNGD_IK4(count, start, stop, step, unique) result(change)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getChangeRNGD_IK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: getChangeUnifRNGD_IK4
 #endif
         use pm_kind, only: IKC => IK4
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -244,7 +244,7 @@ module pm_arrayChange
 #if IK3_ENABLED
     module function getChangeUnifRNGD_IK3(count, start, stop, step, unique) result(change)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getChangeRNGD_IK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: getChangeUnifRNGD_IK3
 #endif
         use pm_kind, only: IKC => IK3
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -257,7 +257,7 @@ module pm_arrayChange
 #if IK2_ENABLED
     module function getChangeUnifRNGD_IK2(count, start, stop, step, unique) result(change)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getChangeRNGD_IK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: getChangeUnifRNGD_IK2
 #endif
         use pm_kind, only: IKC => IK2
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -270,7 +270,7 @@ module pm_arrayChange
 #if IK1_ENABLED
     module function getChangeUnifRNGD_IK1(count, start, stop, step, unique) result(change)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getChangeRNGD_IK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: getChangeUnifRNGD_IK1
 #endif
         use pm_kind, only: IKC => IK1
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -285,7 +285,7 @@ module pm_arrayChange
 #if RK5_ENABLED
     module function getChangeUnifRNGD_RK5(count, start, stop, step, unique) result(change)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getChangeRNGD_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: getChangeUnifRNGD_RK5
 #endif
         use pm_kind, only: RKC => RK5
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -298,7 +298,7 @@ module pm_arrayChange
 #if RK4_ENABLED
     module function getChangeUnifRNGD_RK4(count, start, stop, step, unique) result(change)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getChangeRNGD_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: getChangeUnifRNGD_RK4
 #endif
         use pm_kind, only: RKC => RK4
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -311,7 +311,7 @@ module pm_arrayChange
 #if RK3_ENABLED
     module function getChangeUnifRNGD_RK3(count, start, stop, step, unique) result(change)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getChangeRNGD_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: getChangeUnifRNGD_RK3
 #endif
         use pm_kind, only: RKC => RK3
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -324,7 +324,7 @@ module pm_arrayChange
 #if RK2_ENABLED
     module function getChangeUnifRNGD_RK2(count, start, stop, step, unique) result(change)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getChangeRNGD_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: getChangeUnifRNGD_RK2
 #endif
         use pm_kind, only: RKC => RK2
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -337,7 +337,7 @@ module pm_arrayChange
 #if RK1_ENABLED
     module function getChangeUnifRNGD_RK1(count, start, stop, step, unique) result(change)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getChangeRNGD_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: getChangeUnifRNGD_RK1
 #endif
         use pm_kind, only: RKC => RK1
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -456,7 +456,7 @@ module pm_arrayChange
 #if SK5_ENABLED
     module subroutine setChangeUnifRNGF_SK5(rng, change, start, stop, step, unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeRNGF_SK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeUnifRNGF_SK5
 #endif
         use pm_kind, only: SKC => SK5
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -470,7 +470,7 @@ module pm_arrayChange
 #if SK4_ENABLED
     module subroutine setChangeUnifRNGF_SK4(rng, change, start, stop, step, unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeRNGF_SK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeUnifRNGF_SK4
 #endif
         use pm_kind, only: SKC => SK4
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -484,7 +484,7 @@ module pm_arrayChange
 #if SK3_ENABLED
     module subroutine setChangeUnifRNGF_SK3(rng, change, start, stop, step, unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeRNGF_SK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeUnifRNGF_SK3
 #endif
         use pm_kind, only: SKC => SK3
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -498,7 +498,7 @@ module pm_arrayChange
 #if SK2_ENABLED
     module subroutine setChangeUnifRNGF_SK2(rng, change, start, stop, step, unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeRNGF_SK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeUnifRNGF_SK2
 #endif
         use pm_kind, only: SKC => SK2
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -512,7 +512,7 @@ module pm_arrayChange
 #if SK1_ENABLED
     module subroutine setChangeUnifRNGF_SK1(rng, change, start, stop, step, unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeRNGF_SK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeUnifRNGF_SK1
 #endif
         use pm_kind, only: SKC => SK1
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -528,7 +528,7 @@ module pm_arrayChange
 #if IK5_ENABLED
     module subroutine setChangeUnifRNGF_IK5(rng, change, start, stop, step, unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeRNGF_IK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeUnifRNGF_IK5
 #endif
         use pm_kind, only: IKC => IK5
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -541,7 +541,7 @@ module pm_arrayChange
 #if IK4_ENABLED
     module subroutine setChangeUnifRNGF_IK4(rng, change, start, stop, step, unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeRNGF_IK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeUnifRNGF_IK4
 #endif
         use pm_kind, only: IKC => IK4
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -554,7 +554,7 @@ module pm_arrayChange
 #if IK3_ENABLED
     module subroutine setChangeUnifRNGF_IK3(rng, change, start, stop, step, unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeRNGF_IK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeUnifRNGF_IK3
 #endif
         use pm_kind, only: IKC => IK3
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -567,7 +567,7 @@ module pm_arrayChange
 #if IK2_ENABLED
     module subroutine setChangeUnifRNGF_IK2(rng, change, start, stop, step, unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeRNGF_IK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeUnifRNGF_IK2
 #endif
         use pm_kind, only: IKC => IK2
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -580,7 +580,7 @@ module pm_arrayChange
 #if IK1_ENABLED
     module subroutine setChangeUnifRNGF_IK1(rng, change, start, stop, step, unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeRNGF_IK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeUnifRNGF_IK1
 #endif
         use pm_kind, only: IKC => IK1
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -595,7 +595,7 @@ module pm_arrayChange
 #if RK5_ENABLED
     module subroutine setChangeUnifRNGF_RK5(rng, change, start, stop, step, unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeRNGF_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeUnifRNGF_RK5
 #endif
         use pm_kind, only: RKC => RK5
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -608,7 +608,7 @@ module pm_arrayChange
 #if RK4_ENABLED
     module subroutine setChangeUnifRNGF_RK4(rng, change, start, stop, step, unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeRNGF_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeUnifRNGF_RK4
 #endif
         use pm_kind, only: RKC => RK4
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -621,7 +621,7 @@ module pm_arrayChange
 #if RK3_ENABLED
     module subroutine setChangeUnifRNGF_RK3(rng, change, start, stop, step, unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeRNGF_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeUnifRNGF_RK3
 #endif
         use pm_kind, only: RKC => RK3
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -634,7 +634,7 @@ module pm_arrayChange
 #if RK2_ENABLED
     module subroutine setChangeUnifRNGF_RK2(rng, change, start, stop, step, unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeRNGF_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeUnifRNGF_RK2
 #endif
         use pm_kind, only: RKC => RK2
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -647,7 +647,7 @@ module pm_arrayChange
 #if RK1_ENABLED
     module subroutine setChangeUnifRNGF_RK1(rng, change, start, stop, step, unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeRNGF_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeUnifRNGF_RK1
 #endif
         use pm_kind, only: RKC => RK1
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -668,7 +668,7 @@ module pm_arrayChange
 #if SK5_ENABLED
     PURE module subroutine setChangeUnifRNGX_SK5(rng, change, start, stop, step, unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeRNGX_SK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeUnifRNGX_SK5
 #endif
         use pm_kind, only: SKC => SK5
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -682,7 +682,7 @@ module pm_arrayChange
 #if SK4_ENABLED
     PURE module subroutine setChangeUnifRNGX_SK4(rng, change, start, stop, step, unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeRNGX_SK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeUnifRNGX_SK4
 #endif
         use pm_kind, only: SKC => SK4
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -696,7 +696,7 @@ module pm_arrayChange
 #if SK3_ENABLED
     PURE module subroutine setChangeUnifRNGX_SK3(rng, change, start, stop, step, unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeRNGX_SK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeUnifRNGX_SK3
 #endif
         use pm_kind, only: SKC => SK3
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -710,7 +710,7 @@ module pm_arrayChange
 #if SK2_ENABLED
     PURE module subroutine setChangeUnifRNGX_SK2(rng, change, start, stop, step, unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeRNGX_SK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeUnifRNGX_SK2
 #endif
         use pm_kind, only: SKC => SK2
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -724,7 +724,7 @@ module pm_arrayChange
 #if SK1_ENABLED
     PURE module subroutine setChangeUnifRNGX_SK1(rng, change, start, stop, step, unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeRNGX_SK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeUnifRNGX_SK1
 #endif
         use pm_kind, only: SKC => SK1
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -740,7 +740,7 @@ module pm_arrayChange
 #if IK5_ENABLED
     PURE module subroutine setChangeUnifRNGX_IK5(rng, change, start, stop, step, unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeRNGX_IK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeUnifRNGX_IK5
 #endif
         use pm_kind, only: IKC => IK5
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -753,7 +753,7 @@ module pm_arrayChange
 #if IK4_ENABLED
     PURE module subroutine setChangeUnifRNGX_IK4(rng, change, start, stop, step, unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeRNGX_IK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeUnifRNGX_IK4
 #endif
         use pm_kind, only: IKC => IK4
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -766,7 +766,7 @@ module pm_arrayChange
 #if IK3_ENABLED
     PURE module subroutine setChangeUnifRNGX_IK3(rng, change, start, stop, step, unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeRNGX_IK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeUnifRNGX_IK3
 #endif
         use pm_kind, only: IKC => IK3
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -779,7 +779,7 @@ module pm_arrayChange
 #if IK2_ENABLED
     PURE module subroutine setChangeUnifRNGX_IK2(rng, change, start, stop, step, unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeRNGX_IK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeUnifRNGX_IK2
 #endif
         use pm_kind, only: IKC => IK2
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -792,7 +792,7 @@ module pm_arrayChange
 #if IK1_ENABLED
     PURE module subroutine setChangeUnifRNGX_IK1(rng, change, start, stop, step, unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeRNGX_IK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeUnifRNGX_IK1
 #endif
         use pm_kind, only: IKC => IK1
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -807,7 +807,7 @@ module pm_arrayChange
 #if RK5_ENABLED
     PURE module subroutine setChangeUnifRNGX_RK5(rng, change, start, stop, step, unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeRNGX_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeUnifRNGX_RK5
 #endif
         use pm_kind, only: RKC => RK5
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -820,7 +820,7 @@ module pm_arrayChange
 #if RK4_ENABLED
     PURE module subroutine setChangeUnifRNGX_RK4(rng, change, start, stop, step, unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeRNGX_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeUnifRNGX_RK4
 #endif
         use pm_kind, only: RKC => RK4
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -833,7 +833,7 @@ module pm_arrayChange
 #if RK3_ENABLED
     PURE module subroutine setChangeUnifRNGX_RK3(rng, change, start, stop, step, unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeRNGX_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeUnifRNGX_RK3
 #endif
         use pm_kind, only: RKC => RK3
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -846,7 +846,7 @@ module pm_arrayChange
 #if RK2_ENABLED
     PURE module subroutine setChangeUnifRNGX_RK2(rng, change, start, stop, step, unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeRNGX_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeUnifRNGX_RK2
 #endif
         use pm_kind, only: RKC => RK2
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -859,7 +859,7 @@ module pm_arrayChange
 #if RK1_ENABLED
     PURE module subroutine setChangeUnifRNGX_RK1(rng, change, start, stop, step, unique)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeRNGX_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setChangeUnifRNGX_RK1
 #endif
         use pm_kind, only: RKC => RK1
         logical(LK)                 , intent(in)    , optional      :: unique
