@@ -78,8 +78,19 @@ module pm_str
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     character(*, SK), parameter :: SPACE = SK_" "                               !<  \public The space `character` of default kind \SK of length `1`.
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: SPACE
+#endif
+
     character(*, SK), parameter :: NLC = new_line(SK_"a")                       !<  \public The newline `character` of default kind \SK as returned by `new_line(SK_"a")`.
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: NLC
+#endif
+
     character(*, SK), parameter :: UNDEFINED = SK_"UNDEFINED"                   !<  \public The scalar `character` parameter of default kind \SK containing `"UNDEFINED"`.
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: UNDEFINED
+#endif
 
     ! Intel compilers cannot apply `minval()` or `maxval()` to empty character array constants as of 2022.
     ! Until this internal compiler bug is resolved, the following constants are commented out.

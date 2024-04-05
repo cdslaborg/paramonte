@@ -319,7 +319,14 @@ module pm_dateTime
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     integer(IK) , parameter :: ZONE_MIN = -12_IK * 60_IK    !<   \public The scalar constant of default `integer` kind \IK representing the current minimum existing timezone value in the work in units of minutes.
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: ZONE_MIN
+#endif
+
     integer(IK) , parameter :: ZONE_MAX = +14_IK * 60_IK    !<   \public The scalar constant of default `integer` kind \IK representing the current maximum existing timezone value in the work in units of minutes.
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: ZONE_MAX
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -338,6 +345,9 @@ module pm_dateTime
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
     integer(IK) , parameter :: ORIGIN(8) = [integer(IK) :: 1, 1, 1, 0, 0, 0, 0, 0]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: ORIGIN
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -377,6 +387,9 @@ module pm_dateTime
                                                         , "Friday   " &
                                                         , "Saturday " &
                                                         ]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: WEEKDAY_NAME
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -413,6 +426,9 @@ module pm_dateTime
                                                             , "Saturday " &
                                                             , "Sunday   " &
                                                             ]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: WEEKDAY_NAME_ISO
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -449,6 +465,9 @@ module pm_dateTime
                                                     , "November " &
                                                     , "December " &
                                                     ]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: MONTH_NAME
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -472,6 +491,9 @@ module pm_dateTime
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
     integer(IK) , parameter :: DAYS_OF_MONTH(12) = [integer(IK) :: 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: DAYS_OF_MONTH
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -499,6 +521,9 @@ module pm_dateTime
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
     integer(IK) , parameter :: DAYS_OF_MONTH_LEAP(12) = [integer(IK) :: 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: DAYS_OF_MONTH_LEAP
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -513,6 +538,9 @@ module pm_dateTime
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
     integer(IK) , parameter :: SECONDS_PER_DAY = 86400_IK
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: SECONDS_PER_DAY
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -527,6 +555,9 @@ module pm_dateTime
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
     integer(IK) , parameter :: MINUTES_PER_DAY = 1440_IK
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: MINUTES_PER_DAY
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -553,6 +584,9 @@ module pm_dateTime
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
     real(RK)    , parameter :: MEAN_DAYS_PER_MONTH = 0.25_RK * (0.25_RK * sum(DAYS_OF_MONTH) + sum(DAYS_OF_MONTH_LEAP) / 12._RK) ! = 30.4375_RK
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: MEAN_DAYS_PER_MONTH
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -579,6 +613,9 @@ module pm_dateTime
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
     real(RK)    , parameter :: MEAN_WEEKS_PER_MONTH = MEAN_DAYS_PER_MONTH / 7._RK ! = 4.34821428571428571428571428571429_RK
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: MEAN_WEEKS_PER_MONTH
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -605,6 +642,9 @@ module pm_dateTime
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
     real(RK)    , parameter :: MEAN_HOURS_PER_MONTH = 24_IK * MEAN_DAYS_PER_MONTH ! = 730.5_RK
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: MEAN_HOURS_PER_MONTH
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -631,6 +671,9 @@ module pm_dateTime
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
     real(RK)    , parameter :: MEAN_MINUTES_PER_MONTH = 60_IK * MEAN_HOURS_PER_MONTH ! = 43830._RK
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: MEAN_MINUTES_PER_MONTH
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -657,6 +700,9 @@ module pm_dateTime
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
     real(RK)    , parameter :: MEAN_SECONDS_PER_MONTH = 60_IK * MEAN_MINUTES_PER_MONTH ! = 2629800._RK
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: MEAN_SECONDS_PER_MONTH
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -683,6 +729,9 @@ module pm_dateTime
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
     real(RK)    , parameter :: MEAN_DAYS_PER_YEAR = 0.25_RK * (3 * 365 + 366) ! = 365.25_RK
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: MEAN_DAYS_PER_YEAR
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -709,6 +758,9 @@ module pm_dateTime
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
     real(RK)    , parameter :: MEAN_WEEKS_PER_YEAR = MEAN_DAYS_PER_YEAR / 7._RK ! = 52.1785714285714285714285714285714_RK
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: MEAN_WEEKS_PER_YEAR
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -735,6 +787,9 @@ module pm_dateTime
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
     real(RK)    , parameter :: MEAN_HOURS_PER_YEAR = 24_IK * MEAN_DAYS_PER_YEAR ! = 8766._RK
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: MEAN_HOURS_PER_YEAR
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -761,6 +816,9 @@ module pm_dateTime
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
     real(RK)    , parameter :: MEAN_MINUTES_PER_YEAR = 60_IK * MEAN_HOURS_PER_YEAR ! = 525960._RK
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: MEAN_MINUTES_PER_YEAR
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -787,6 +845,9 @@ module pm_dateTime
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
     real(RK)    , parameter :: MEAN_SECONDS_PER_YEAR = 60_IK * MEAN_MINUTES_PER_YEAR ! = 31557600._RK
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: MEAN_SECONDS_PER_YEAR
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -800,9 +861,9 @@ module pm_dateTime
     !>  \code{.F90}
     !>
     !>      use pm_dateTime, only: dateTimeInt_type
-    !>      type(dateTimeInt_type) :: DateTimeInt
+    !>      type(dateTimeInt_type) :: dateTimeInt
     !>
-    !>      DateTimeInt = dateTimeInt_type( year = year &
+    !>      dateTimeInt = dateTimeInt_type( year = year &
     !>                                    , month = month &
     !>                                    , day = day &
     !>                                    , zone = zone &
@@ -815,7 +876,7 @@ module pm_dateTime
     !>  \endcode
     !>
     !>  \see
-    !>  [constructDateTimeInt](@ref pm_dateTime::constructDateTimeInt) (class constructor)<br>
+    !>  [dateTimeInt_typer](@ref pm_dateTime::dateTimeInt_typer) (class constructor)<br>
     !>  [dateTimeStr_type](@ref pm_dateTime::dateTimeStr_type)<br>
     !>
     !>  \example{dateTimeInt_type}
@@ -847,7 +908,7 @@ module pm_dateTime
     end type
 
     interface dateTimeInt_type
-        module procedure :: constructDateTimeInt
+        module procedure :: dateTimeInt_typer
     end interface
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -862,9 +923,9 @@ module pm_dateTime
     !>  \code{.F90}
     !>
     !>      use pm_dateTime, only: dateTimeStr_type
-    !>      type(dateTimeStr_type) :: DateTimeStr
+    !>      type(dateTimeStr_type) :: dateTimeStr
     !>
-    !>      DateTimeStr = dateTimeStr_type( year = year &
+    !>      dateTimeStr = dateTimeStr_type( year = year &
     !>                                    , month = month &
     !>                                    , day = day &
     !>                                    , zone = zone &
@@ -877,7 +938,7 @@ module pm_dateTime
     !>  \endcode
     !>
     !>  \see
-    !>  [constructDateTimeStr](@ref pm_dateTime::constructDateTimeStr) (class constructor)<br>
+    !>  [dateTimeStr_typer](@ref pm_dateTime::dateTimeStr_typer) (class constructor)<br>
     !>  [dateTimeInt_type](@ref pm_dateTime::dateTimeInt_type)<br>
     !>
     !>  \example{dateTimeStr_type}
@@ -913,7 +974,7 @@ module pm_dateTime
     end type
 
     interface dateTimeStr_type
-        module procedure :: constructDateTimeStr
+        module procedure :: dateTimeStr_typer
     end interface
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1121,6 +1182,9 @@ module pm_dateTime
     !>  \author
     !>  \AmirShahmoradi, January 30, 2021, 5:36 AM, Dallas, TX
     type(timezone_type), parameter :: timezone = timezone_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: timezone
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -3545,7 +3609,7 @@ module pm_dateTime
     !>  \elemental
     !>
     !>  \see
-    !>  [constructDateTimeInt](@ref pm_dateTime::constructDateTimeInt) (class constructor)<br>
+    !>  [dateTimeInt_typer](@ref pm_dateTime::dateTimeInt_typer) (class constructor)<br>
     !>  [dateTimeStr_type](@ref pm_dateTime::dateTimeStr_type)<br>
     !>
     !>  \example{getCountDays}
@@ -3626,7 +3690,7 @@ module pm_dateTime
     !>  \elemental
     !>
     !>  \see
-    !>  [constructDateTimeInt](@ref pm_dateTime::constructDateTimeInt) (class constructor)<br>
+    !>  [dateTimeInt_typer](@ref pm_dateTime::dateTimeInt_typer) (class constructor)<br>
     !>  [dateTimeStr_type](@ref pm_dateTime::dateTimeStr_type)<br>
     !>
     !>  \example{getCountWeeks}
@@ -4002,15 +4066,15 @@ end block;
     !>  See also the documentation details of [dateTimeInt_type](@ref pm_dateTime::dateTimeInt_type).
     !>
     !>  \return
-    !>  `DateTimeInt`   :   The output scalar object of class [dateTimeInt_type](@ref pm_dateTime::dateTimeInt_type).
+    !>  `dateTimeInt`   :   The output scalar object of class [dateTimeInt_type](@ref pm_dateTime::dateTimeInt_type).
     !>
-    !>  \interface{constructDateTimeInt}
+    !>  \interface{dateTimeInt_typer}
     !>  \code{.F90}
     !>
     !>      use pm_dateTime, only: dateTimeInt_type
-    !>      type(dateTimeInt_type) :: DateTimeInt
+    !>      type(dateTimeInt_type) :: dateTimeInt
     !>
-    !>      DateTimeInt = dateTimeInt_type()
+    !>      dateTimeInt = dateTimeInt_type()
     !>
     !>  \endcode
     !>
@@ -4021,26 +4085,26 @@ end block;
     !>  \remark
     !>  See the documentation of [dateTimeInt_type](@ref pm_dateTime::dateTimeInt_type) for example usage.
     !>
-    !>  \finmain{constructDateTimeInt}
+    !>  \finmain{dateTimeInt_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
-    function constructDateTimeInt() result(DateTimeInt)
+    function dateTimeInt_typer() result(dateTimeInt)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructDateTimeInt
+        !DEC$ ATTRIBUTES DLLEXPORT :: dateTimeInt_typer
 #endif
-        type(dateTimeInt_type) :: DateTimeInt
+        type(dateTimeInt_type) :: dateTimeInt
         integer(IK) :: values(8)
         call date_and_time(values = values)
-        CHECK_ASSERTION(__LINE__, all(values /= -huge(values)), SK_"@constructDateTimeInt(): The processor does not provide date and time.") ! fpp
-        DateTimeInt%year        = values(1)
-        DateTimeInt%month       = values(2)
-        DateTimeInt%day         = values(3)
-        DateTimeInt%zone        = values(4)
-        DateTimeInt%hour        = values(5)
-        DateTimeInt%minute      = values(6)
-        DateTimeInt%second      = values(7)
-        DateTimeInt%millisecond = values(8)
+        CHECK_ASSERTION(__LINE__, all(values /= -huge(values)), SK_"@dateTimeInt_typer(): The processor does not provide date and time.") ! fpp
+        dateTimeInt%year        = values(1)
+        dateTimeInt%month       = values(2)
+        dateTimeInt%day         = values(3)
+        dateTimeInt%zone        = values(4)
+        dateTimeInt%hour        = values(5)
+        dateTimeInt%minute      = values(6)
+        dateTimeInt%second      = values(7)
+        dateTimeInt%millisecond = values(8)
     end function
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -4064,9 +4128,9 @@ end block;
     !>  \code{.F90}
     !>
     !>      use pm_dateTime, only: dateTimeInt_type
-    !>      type(dateTimeInt_type) :: DateTimeInt
+    !>      type(dateTimeInt_type) :: dateTimeInt
     !>
-    !>      DateTimeInt = dateTimeInt_type()
+    !>      dateTimeInt = dateTimeInt_type()
     !>
     !>  \endcode
     !>
@@ -4103,15 +4167,15 @@ end block;
     !>  See also the documentation details of [dateTimeStr_type](@ref pm_dateTime::dateTimeStr_type).
     !>
     !>  \return
-    !>  `DateTimeStr`   :   The output scalar object of class [dateTimeStr_type](@ref pm_dateTime::dateTimeStr_type).
+    !>  `dateTimeStr`   :   The output scalar object of class [dateTimeStr_type](@ref pm_dateTime::dateTimeStr_type).
     !>
-    !>  \interface{constructDateTimeStr}
+    !>  \interface{dateTimeStr_typer}
     !>  \code{.F90}
     !>
     !>      use pm_dateTime, only: dateTimeStr_type
-    !>      type(dateTimeStr_type) :: DateTimeStr
+    !>      type(dateTimeStr_type) :: dateTimeStr
     !>
-    !>      DateTimeStr = dateTimeStr_type()
+    !>      dateTimeStr = dateTimeStr_type()
     !>
     !>  \endcode
     !>
@@ -4122,29 +4186,29 @@ end block;
     !>  \remark
     !>  See the documentation of [dateTimeStr_type](@ref pm_dateTime::dateTimeStr_type) for example usage.
     !>
-    !>  \finmain{constructDateTimeStr}
+    !>  \finmain{dateTimeStr_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
-    function constructDateTimeStr() result(DateTimeStr)
+    function dateTimeStr_typer() result(dateTimeStr)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructDateTimeStr
+        !DEC$ ATTRIBUTES DLLEXPORT :: dateTimeStr_typer
 #endif
-        type(dateTimeStr_type)  :: DateTimeStr
+        type(dateTimeStr_type)  :: dateTimeStr
         character(10)           :: time
         character(8)            :: date
         character(5)            :: zone
         call date_and_time(date = date, time = time, zone = zone)
-        CHECK_ASSERTION(__LINE__, len_trim(date) /= 0 .or. len_trim(time) /= 0 .or. len_trim(zone) /= 0, SK_"@constructDateTimeStr(): The processor does not provide date and time.") ! fpp
-       !DateTimeStr%century            = date(1:2)
-        DateTimeStr%year               = date(1:4)
-        DateTimeStr%month              = date(5:6)
-        DateTimeStr%day                = date(7:8)
-        DateTimeStr%zone               = zone
-        DateTimeStr%hour               = time(1:2)
-        DateTimeStr%minute             = time(3:4)
-        DateTimeStr%second             = time(5:6)
-        DateTimeStr%millisecond        = time(8:10)
+        CHECK_ASSERTION(__LINE__, len_trim(date) /= 0 .or. len_trim(time) /= 0 .or. len_trim(zone) /= 0, SK_"@dateTimeStr_typer(): The processor does not provide date and time.") ! fpp
+       !dateTimeStr%century            = date(1:2)
+        dateTimeStr%year               = date(1:4)
+        dateTimeStr%month              = date(5:6)
+        dateTimeStr%day                = date(7:8)
+        dateTimeStr%zone               = zone
+        dateTimeStr%hour               = time(1:2)
+        dateTimeStr%minute             = time(3:4)
+        dateTimeStr%second             = time(5:6)
+        dateTimeStr%millisecond        = time(8:10)
     end function
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

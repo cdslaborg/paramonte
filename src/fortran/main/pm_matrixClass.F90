@@ -198,6 +198,9 @@ module pm_matrixClass
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(genrecmat_type), parameter :: genrecmat = genrecmat_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: genrecmat
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -278,6 +281,9 @@ module pm_matrixClass
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(square_type), parameter :: square = square_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: square
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -358,6 +364,9 @@ module pm_matrixClass
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(invertible_type), parameter :: invertible = invertible_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: invertible
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -438,6 +447,9 @@ module pm_matrixClass
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(factoring_type), parameter :: factoring = factoring_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: factoring
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -518,6 +530,9 @@ module pm_matrixClass
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(cholesky_type), parameter :: cholesky = cholesky_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: cholesky
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -598,6 +613,9 @@ module pm_matrixClass
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(choLow_type), parameter :: choLow = choLow_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: choLow
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -678,6 +696,9 @@ module pm_matrixClass
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(choUpp_type), parameter :: choUpp = choUpp_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: choUpp
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -758,6 +779,9 @@ module pm_matrixClass
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(lup_type), parameter :: lup = lup_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: lup
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -838,6 +862,9 @@ module pm_matrixClass
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(symmetric_type), parameter :: symmetric = symmetric_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: symmetric
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -918,6 +945,9 @@ module pm_matrixClass
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(hermitian_type), parameter :: hermitian = hermitian_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: hermitian
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -998,6 +1028,9 @@ module pm_matrixClass
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(posdefmat_type), parameter :: posdefmat = posdefmat_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: posdefmat
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1105,6 +1138,9 @@ module pm_matrixClass
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(triang_type), parameter :: triang = triang_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: triang
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1185,6 +1221,9 @@ module pm_matrixClass
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(upperDiag_type), parameter :: upperDiag = upperDiag_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: upperDiag
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1263,6 +1302,9 @@ module pm_matrixClass
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(upperUnit_type), parameter :: upperUnit = upperUnit_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: upperUnit
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1341,6 +1383,9 @@ module pm_matrixClass
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(upperZero_type), parameter :: upperZero = upperZero_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: upperZero
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1421,6 +1466,9 @@ module pm_matrixClass
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(lowerDiag_type), parameter :: lowerDiag = lowerDiag_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: lowerDiag
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1499,6 +1547,9 @@ module pm_matrixClass
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(lowerUnit_type), parameter :: lowerUnit = lowerUnit_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: lowerUnit
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1577,6 +1628,9 @@ module pm_matrixClass
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(lowerZero_type), parameter :: lowerZero = lowerZero_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: lowerZero
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1663,6 +1717,9 @@ module pm_matrixClass
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(unitTriang_type), parameter :: unitTriang = unitTriang_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: unitTriang
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1749,6 +1806,9 @@ module pm_matrixClass
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(atomicTriang_type), parameter :: atomicTriang = atomicTriang_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: atomicTriang
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1863,6 +1923,9 @@ module pm_matrixClass
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(frobenius_type), parameter :: frobenius = frobenius_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: frobenius
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1962,6 +2025,9 @@ module pm_matrixClass
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(gauss_type), parameter :: gauss = gauss_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: gauss
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

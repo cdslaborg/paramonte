@@ -85,6 +85,9 @@ module pm_sampleScale
     !>  \FatemehBagheri, Thursday 12:45 AM, August 20, 2021, Dallas, TX
     type :: stdscale_type; end type
     type(stdscale_type), parameter :: stdscale = stdscale_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: stdscale
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

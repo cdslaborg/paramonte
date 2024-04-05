@@ -85,6 +85,9 @@ module pm_sampleShift
     !>  \FatemehBagheri, Thursday 12:45 AM, August 20, 2021, Dallas, TX
     type :: meanshift_type; end type
     type(meanshift_type), parameter :: meanshift = meanshift_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: meanshift
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -603,7 +603,6 @@ module pm_quadPack
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    !   \cond excluded
     !>  \brief
     !>  This is the indicator type for generating instances of objects that indicate the use of 7-point Gauss-Legendre quadrature with 15-point Kronrod
     !>  extension formulae as the drivers in the (Adaptive) Global Gauss-Kronrod Quadrature of [getQuadGK](@ref pm_quadPack::getQuadGK).
@@ -645,7 +644,6 @@ module pm_quadPack
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type :: GK15_type
     end type
-    !   \endcond excluded
 
     !>  \brief
     !>  The scalar constant object of type [GK15_type](@ref pm_quadPack::GK15_type) that indicates the use of 7-point Gauss-Legendre quadrature
@@ -674,8 +672,10 @@ module pm_quadPack
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(GK15_type) , parameter :: GK15 = GK15_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: GK15
+#endif
 
-    !   \cond excluded
     !>  \brief
     !>  A vector of type `real` of the highest-precision kind available by the processor,
     !>  containing the abscissas of the 7-points Gauss quadrature rule.
@@ -700,6 +700,9 @@ module pm_quadPack
     , 4.0584515137739716690660641207696146334738201409937012638704325179466381322612565532831268972774658776528675866604802e-01_RKB &
     , 7.4153118559939443986386477328078840707414764714139026011995535196742987467218051379282683236686324705969251809311201e-01_RKB &
     , 9.4910791234275852452618968404785126240077093767061778354876910391306333035484014080573077002792572414430073966699522e-01_RKB ]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: nodeG7
+#endif
 
     !>  \brief
     !>  A vector of type `real` of the highest-precision kind available by the processor,
@@ -725,6 +728,9 @@ module pm_quadPack
     , 3.8183005050511894495036977548897513387836508353386273475108345103070554643412970834868465934404480145031467176458536e-01_RKB &
     , 2.7970539148927666790146777142377958248692506522659876453701403269361881043056267681324094290119761876632337521337205e-01_RKB &
     , 1.2948496616886969327061143267908201832858740225994666397720863872465523497204230871562541816292084508948440200163443e-01_RKB ]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: weightG7
+#endif
 
     !>  \brief
     !>  A vector of type `real` of the highest-precision kind available by the processor,
@@ -754,6 +760,9 @@ module pm_quadPack
     , 8.6486442335976907278971278864092620121097230707408814860145771276706770813259572103585847859604590541475281326027862e-01_RKB &
     , 9.4910791234275852452618968404785126240077093767061778354876910391306333035484014080573077002792572414430073966699522e-01_RKB &
     , 9.9145537112081263920685469752632851664204433837033470129108741357244173934653407235924503509626841760744349505339308e-01_RKB ]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: nodeK15
+#endif
 
     !>  \brief
     !>  A vector of type `real` of the highest-precision kind available by the processor,
@@ -783,11 +792,12 @@ module pm_quadPack
     , 1.0479001032225018383987632254151801744375665421383061189339065133963746321576289524167571627509311333949422518201492e-01_RKB &
     , 6.3092092629978553290700663189204286665071157211550707113605545146983997477964874928199170264504441995865872491871943e-02_RKB &
     , 2.2935322010529224963732008058969591993560811275746992267507430254711815787976075946156368168156289483493617134063245e-02_RKB ]
-    !   \endcond excluded
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: weightK15
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    !   \cond excluded
     !>  \brief
     !>  This is the indicator type for generating instances of objects that indicate the use of 10-point Gauss-Legendre quadrature with 11-point Kronrod
     !>  extension formulae as the drivers in the (Adaptive) Global Gauss-Kronrod Quadrature of [getQuadGK](@ref pm_quadPack::getQuadGK).
@@ -829,7 +839,6 @@ module pm_quadPack
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type :: GK21_type
     end type
-    !   \endcond excluded
 
     !>  \brief
     !>  The scalar constant object of type [GK21_type](@ref pm_quadPack::GK21_type) that indicates the use of 10-point Gauss-Legendre quadrature
@@ -859,8 +868,10 @@ module pm_quadPack
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(GK21_type) , parameter :: GK21 = GK21_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: GK21
+#endif
 
-    !   \cond excluded
     !>  \brief
     !>  A vector of type `real` of the highest-precision kind available by the processor,
     !>  containing the abscissas of the 10-points Gauss quadrature rule.
@@ -886,6 +897,9 @@ module pm_quadPack
     , 6.7940956829902440623432736511487357576929471183480946766481718895255857539507492461507857357048037949983390204739932e-01_RKB &
     , 8.6506336668898451073209668842349304852754301496533045252195973184537475513805556135679072894604577069440463108641177e-01_RKB &
     , 9.7390652851717172007796401208445205342826994669238211923121206669659520323463615962572356495626855625823304251877421e-01_RKB ]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: nodeG10
+#endif
 
     !>  \brief
     !>  A vector of type `real` of the highest-precision kind available by the processor,
@@ -912,6 +926,9 @@ module pm_quadPack
     , 2.1908636251598204399553493422816319245877187052267708988095654363519991065295128124268399317720219278659121687281289e-01_RKB &
     , 1.4945134915058059314577633965769733240255663966942736783547726875323865472663001094594726463473195191400575256104544e-01_RKB &
     , 6.6671344308688137593568809893331792857864834320158145128694881613412064084087101776785509685058877821090054714520419e-02_RKB ]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: weightG10
+#endif
 
     !>  \brief
     !>  A vector of type `real` of the highest-precision kind available by the processor,
@@ -944,6 +961,9 @@ module pm_quadPack
     , 9.3015749135570822600120718005950834622516790998193924230349406866828415983091673055011194572851007884702013619684320e-01_RKB &
     , 9.7390652851717172007796401208445205342826994669238211923121206669659520323463615962572356495626855625823304251877421e-01_RKB &
     , 9.9565716302580808073552728068900284792126058721947892436337916111757023046774867357152325996912076724298149077812671e-01_RKB ]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: nodeK21
+#endif
 
     !>  \brief
     !>  A vector of type `real` of the highest-precision kind available by the processor,
@@ -976,10 +996,12 @@ module pm_quadPack
     , 5.4755896574351996031381300244580176373721114058333557524432615804784098927818975325116301569003298086458722055550981e-02_RKB &
     , 3.2558162307964727478818972459389760617388939845662609571537504232714121820165498692381607605384626494546068817765276e-02_RKB &
     , 1.1694638867371874278064396062192048396217332481931888927598147525622222058064992651806736704969967250888097490233242e-02_RKB ]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: weightK21
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    !   \cond excluded
     !>  \brief
     !>  This is the indicator type for generating instances of objects that indicate the use of 15-point Gauss-Legendre quadrature with 31-point Kronrod
     !>  extension formulae as the drivers in the (Adaptive) Global Gauss-Kronrod Quadrature of [getQuadGK](@ref pm_quadPack::getQuadGK).
@@ -1021,7 +1043,6 @@ module pm_quadPack
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type :: GK31_type
     end type
-    !   \endcond excluded
 
     !>  \brief
     !>  The scalar constant object of type [GK31_type](@ref pm_quadPack::GK31_type) that indicates the use of 15-point Gauss-Legendre quadrature
@@ -1051,6 +1072,9 @@ module pm_quadPack
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(GK31_type) , parameter :: GK31 = GK31_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: GK31
+#endif
 
     !>  \brief
     !>  A vector of type `real` of the highest-precision kind available by the processor,
@@ -1080,6 +1104,9 @@ module pm_quadPack
     , 8.4820658341042721620064832077421685136625617473699263409572755876067507517414548519760771975082148085090373835713340e-01_RKB &
     , 9.3727339240070590430775894771020947124399627351530445790136307635020297379704552795054758617426808659746824044603157e-01_RKB &
     , 9.8799251802048542848956571858661258114697281712376148999999751558738843736901942471272205036831914497667516843990079e-01_RKB ]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: nodeG15
+#endif
 
     !>  \brief
     !>  A vector of type `real` of the highest-precision kind available by the processor,
@@ -1109,6 +1136,9 @@ module pm_quadPack
     , 1.0715922046717193501186954668586930341554371575810198068702238912187799485231579972568585713760862404439808767837506e-01_RKB &
     , 7.0366047488108124709267416450667338466708032754330719825907292914387055512874237044840452066693939219355489858595041e-02_RKB &
     , 3.0753241996117268354628393577204417721748144833434074264228285504237189467117168039038770732399404002516991188859473e-02_RKB ]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT ::
+#endif
 
     !>  \brief
     !>  A vector of type `real` of the highest-precision kind available by the processor,
@@ -1146,6 +1176,9 @@ module pm_quadPack
     , 9.6773907567913913425734797878433722528335733730013163797468062226335804249452174804319385048203118506304424717089291e-01_RKB &
     , 9.8799251802048542848956571858661258114697281712376148999999751558738843736901942471272205036831914497667516843990079e-01_RKB &
     , 9.9800229869339706028517284015227120907340644231555723034839427970683348682837134566648979907760125278631896777136104e-01_RKB ]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: nodeK31
+#endif
 
     !>  \brief
     !>  A vector of type `real` of the highest-precision kind available by the processor,
@@ -1183,11 +1216,12 @@ module pm_quadPack
     , 2.5460847326715320186874001019653359397271745046864640508377984982400903447009185267605205778819712848080691366407461e-02_RKB &
     , 1.5007947329316122538374763075807268094639436437387634979291759700896494746154334398961710227490402528151677469993935e-02_RKB &
     , 5.3774798729233489877920514301276498183080402431284197876486169536848635554354599213793172596490038991436925569025913e-03_RKB ]
-    !   \endcond excluded
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: weightK31
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    !   \cond excluded
     !>  \brief
     !>  This is the indicator type for generating instances of objects that indicate the use of 20-point Gauss-Legendre quadrature with 41-point Kronrod
     !>  extension formulae as the drivers in the (Adaptive) Global Gauss-Kronrod Quadrature of [getQuadGK](@ref pm_quadPack::getQuadGK).
@@ -1229,7 +1263,6 @@ module pm_quadPack
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type :: GK41_type
     end type
-    !   \endcond excluded
 
     !>  \brief
     !>  The scalar constant object of type [GK41_type](@ref pm_quadPack::GK41_type) that indicates the use of 20-point Gauss-Legendre quadrature
@@ -1259,8 +1292,10 @@ module pm_quadPack
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(GK41_type) , parameter :: GK41 = GK41_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: GK41
+#endif
 
-    !   \cond excluded
     !>  \brief
     !>  A vector of type `real` of the highest-precision kind available by the processor,
     !>  containing the abscissas of the 21-points Gauss quadrature rule.
@@ -1291,6 +1326,9 @@ module pm_quadPack
     , 9.1223442825132590586775244120329811304918479742369177479588221915807089120871907893644472619292138737876039175464603e-01_RKB &
     , 9.6397192727791379126766613119727722191206032780618885606353759389204158078438305698001812525596471563131043491596423e-01_RKB &
     , 9.9312859918509492478612238847132027822264713090165589614818413121798471762775378083944940249657220927472894034724419e-01_RKB ]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: nodeG20
+#endif
 
     !>  \brief
     !>  A vector of type `real` of the highest-precision kind available by the processor,
@@ -1322,6 +1360,9 @@ module pm_quadPack
     , 6.2672048334109063569506535187041606351601076578436364099584345437974811033665678644563766056832203512603253399592073e-02_RKB &
     , 4.0601429800386941331039952274932109879090639989951536817606854561832296750987328295538920623044384976189825709675075e-02_RKB &
     , 1.7614007139152118311861962351852816362143105543336732524349326677348419259621847817403105542146097668703716227512570e-02_RKB ]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: weightG20
+#endif
 
     !>  \brief
     !>  A vector of type `real` of the highest-precision kind available by the processor,
@@ -1364,6 +1405,9 @@ module pm_quadPack
     , 9.8150787745025025919334299472021694456725093981023759869077533318793098857465723460898060491887511355706497739384103e-01_RKB &
     , 9.9312859918509492478612238847132027822264713090165589614818413121798471762775378083944940249657220927472894034724419e-01_RKB &
     , 9.9885903158827766383831557654586300999957020432629666866666860339324411793311982967839129772854179884971700274369367e-01_RKB ]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: nodeK41
+#endif
 
     !>  \brief
     !>  A vector of type `real` of the highest-precision kind available by the processor,
@@ -1406,11 +1450,12 @@ module pm_quadPack
     , 1.4626169256971252983787960308868356163881050162249770342103474631076960029748751959380482484308382288261238476948520e-02_RKB &
     , 8.6002698556429421986617879501023472521289227667077976622450602031426535362696437838448828009554532025301579670206091e-03_RKB &
     , 3.0735837185205315012182932460309874880335046882543449198461628212114333665590378156706265241414469306987988292234740e-03_RKB ]
-    !   \endcond excluded
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: weightK41
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    !   \cond excluded
     !>  \brief
     !>  This is the indicator type for generating instances of objects that indicate the use of 25-point Gauss-Legendre quadrature with 51-point Kronrod
     !>  extension formulae as the drivers in the (Adaptive) Global Gauss-Kronrod Quadrature of [getQuadGK](@ref pm_quadPack::getQuadGK).
@@ -1452,7 +1497,6 @@ module pm_quadPack
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type :: GK51_type
     end type
-    !   \endcond excluded
 
     !>  \brief
     !>  The scalar constant object of type [GK51_type](@ref pm_quadPack::GK51_type) that indicates the use of 25-point Gauss-Legendre quadrature
@@ -1482,8 +1526,10 @@ module pm_quadPack
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(GK51_type) , parameter :: GK51 = GK51_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: GK51
+#endif
 
-    !   \cond excluded
     !>  \brief
     !>  A vector of type `real` of the highest-precision kind available by the processor,
     !>  containing the abscissas of the 25-points Gauss quadrature rule.
@@ -1517,6 +1563,9 @@ module pm_quadPack
     , 9.4297457122897433941401116965847053190520157060899014192745249713729532254404926130890521815127348327109666786665572e-01_RKB &
     , 9.7666392145951751149831538647959406774537055531440674467098742731616386753588055389644670948300617866819865983054648e-01_RKB &
     , 9.9555696979049809790878494689390161725756264940480817121080493113293348134372793448728802635294700756868258870429256e-01_RKB ]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: nodeG25
+#endif
 
     !>  \brief
     !>  A vector of type `real` of the highest-precision kind available by the processor,
@@ -1551,6 +1600,9 @@ module pm_quadPack
     , 4.0939156701306312655623487711645953660845783364104346504698414899297432880215512770478971055110424130123527015425511e-02_RKB &
     , 2.6354986615032137261901815295299144935963281703322468755366165783870934008879499371529821528172928890350362464605104e-02_RKB &
     , 1.1393798501026287947902964113234773603320526292909696448948061116189891729766743355923677112945033505688431618009664e-02_RKB ]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: weightG25
+#endif
 
     !>  \brief
     !>  A vector of type `real` of the highest-precision kind available by the processor,
@@ -1598,6 +1650,9 @@ module pm_quadPack
     , 9.8803579453407724763733101457740622707248415209160748131449972199405186821347293686245404742032360498210710718706868e-01_RKB &
     , 9.9555696979049809790878494689390161725756264940480817121080493113293348134372793448728802635294700756868258870429256e-01_RKB &
     , 9.9926210499260983419345748654034059370452496042279618586228697762904524428167719073818746102238075978747461480736921e-01_RKB ]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: nodeK51
+#endif
 
     !>  \brief
     !>  A vector of type `real` of the highest-precision kind available by the processor,
@@ -1645,11 +1700,12 @@ module pm_quadPack
     , 9.4739733861741516072077105236553238716453268483726334971394029603529306140359023187904705754719643032594360138998941e-03_RKB &
     , 5.5619321353567137580402369010655220701769295496290984052961210793810038857581724171021610100708799763006942755331129e-03_RKB &
     , 1.9873838923303159265078518828434098894299804282505973837653346298985629336820118753523093675303476883723992297810124e-03_RKB ]
-    !   \endcond excluded
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: weightK51
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    !   \cond excluded
     !>  \brief
     !>  This is the indicator type for generating instances of objects that indicate the use of 30-point Gauss-Legendre quadrature with 61-point Kronrod
     !>  extension formulae as the drivers in the (Adaptive) Global Gauss-Kronrod Quadrature of [getQuadGK](@ref pm_quadPack::getQuadGK).
@@ -1691,7 +1747,6 @@ module pm_quadPack
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type :: GK61_type
     end type
-    !   \endcond excluded
 
     !>  \brief
     !>  The scalar constant object of type [GK61_type](@ref pm_quadPack::GK61_type) that indicates the use of 30-point Gauss-Legendre quadrature
@@ -1721,8 +1776,10 @@ module pm_quadPack
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(GK61_type) , parameter :: GK61 = GK61_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: GK61
+#endif
 
-    !   \cond excluded
     !>  \brief
     !>  A vector of type `real` of the highest-precision kind available by the processor,
     !>  containing the abscissas of the 30-points Gauss quadrature rule.
@@ -1758,6 +1815,9 @@ module pm_quadPack
     , 9.6002186496830751221687102558179766293035921740392339948566167242493995770706842922718944370380002378239172677454384e-01_RKB &
     , 9.8366812327974720997003258160566280194031785470971136351718001015114429536479104370207597166035471368057762560137209e-01_RKB &
     , 9.9689348407464954027163005091869528334088203811775079010809429780238769521016374081588201955806171741257405095963817e-01_RKB ]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: nodeG30
+#endif
 
     !>  \brief
     !>  A vector of type `real` of the highest-precision kind available by the processor,
@@ -1794,7 +1854,9 @@ module pm_quadPack
     , 2.8784707883323369349719179611292043639588894546287496474180122608145988940013933101730206711484171554940392262251283e-02_RKB &
     , 1.8466468311090959142302131912047269096206533968181403371298365514585599521307973654080519029675417955638095832046164e-02_RKB &
     , 7.9681924961666056154658834746736224504806965871517212294851633569200384329013332941536616922861735209846506562158817e-03_RKB ]
-
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: weightG30
+#endif
 
     !>  \brief
     !>  A vector of type `real` of the highest-precision kind available by the processor,
@@ -1847,6 +1909,9 @@ module pm_quadPack
     , 9.9163099687040459485862836610948572485050033374616325510019923349807489603260796605556191495843575227494654783755353e-01_RKB &
     , 9.9689348407464954027163005091869528334088203811775079010809429780238769521016374081588201955806171741257405095963817e-01_RKB &
     , 9.9948441005049063757132589570581081946887394701850801923632642830748016674843587830656468823145435723317885056396548e-01_RKB ]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: nodeK61
+#endif
 
     !>  \brief
     !>  A vector of type `real` of the highest-precision kind available by the processor,
@@ -1899,7 +1964,9 @@ module pm_quadPack
     , 6.6307039159312921733198263697501681336283882177812585973955597357837568277731921327731815844512598157843672104469554e-03_RKB &
     , 3.8904611270998840512672018445155032785151429848864649214200101281144733676455451061226273655941038347210163533085954e-03_RKB &
     , 1.3890136986770076245515912267596996810488412919632724534411055332301367130989865366956251556423820479579333920310978e-03_RKB ]
-    !   \endcond excluded
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: weightK61
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -4482,6 +4549,9 @@ module pm_quadPack
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(weps_type) , parameter :: weps = weps_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: weps
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

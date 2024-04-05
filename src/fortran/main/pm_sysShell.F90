@@ -70,6 +70,9 @@ module pm_sysShell
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     character(4, SK), parameter :: VARENV_DIRTEMP_WINDOWS(*) = [character(4, SK) :: "TEMP", "TMP"]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: VARENV_DIRTEMP_WINDOWS
+#endif
 
     !>  \brief
     !>  The constant vector of scalars of type `character` of default kind \SK,
@@ -95,6 +98,9 @@ module pm_sysShell
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     character(7, SK), parameter :: VARENV_DIRTEMP_UNIX(*) = [character(7, SK) :: "TMPDIR", "TMP", "TEMP", "TEMPDIR"]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: VARENV_DIRTEMP_UNIX
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

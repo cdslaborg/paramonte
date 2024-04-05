@@ -314,6 +314,9 @@ module pm_io
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(filext_type), parameter :: filext = filext_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: filext
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -324,54 +327,90 @@ module pm_io
     !>  \brief
     !>  The scalar `character` of default kind \SK  of `len = 1` representing the default string that is used for filling the margins of the display or wrapped texts.
     character(*, SK), parameter :: MFILL = SK_"%"
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: MFILL
+#endif
 
     !>  \brief
     !>  The scalar `character` of default kind \SK of `len = 4` representing representing ASCII character: Horizontal Tab, which is frequently used in external files as column or field separators.
     character(1, SK), parameter :: TAB = achar(9, SK)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: TAB
+#endif
 
     !>  \brief
     !>  The scalar `character` of default kind \SK of `len = 4` representing the default string that is used in place of the tab character in the display.
     character(*, SK), parameter :: TABEQV = repeat(SK_" ", 4)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: TABEQV
+#endif
 
     !>  \brief
     !>  The scalar `character` of default kind \SK of the same value as [TABEQV](@ref pm_io::TABEQV) representing the default indentation of text in the display, when indentation is needed.
     character(*, SK), parameter :: INDENT = TABEQV !//TABEQV
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: INDENT
+#endif
 
     !>  \brief
     !>  The scalar `character` of default kind \SK containing the generic IO whitespace-separated IO format.
     character(*, SK), parameter :: FORMAT_GENERIC_BLANK = SK_"(*(g0,:,' '))"
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: FORMAT_GENERIC_BLANK
+#endif
 
     !>  \brief
     !>  The scalar `character` of default kind \SK containing the generic IO whitespace-separated IO format with in an initial [INDENT](@ref pm_io::INDENT).
     character(*, SK), parameter :: FORMAT_GENERIC_BLANK_TABBED = SK_"('"//INDENT//SK_"',*(g0,:,' '))"
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: FORMAT_GENERIC_BLANK_TABBED
+#endif
 
     !>  \brief
     !>  The scalar `character` of default kind \SK containing the generic signed comma-space-separated format used as the default within objects of [display_type](@ref pm_io::display_type).
     character(*, SK), parameter :: FORMAT_GENERIC_DISPLAY = SK_"(sp,*(g0,:,', '))"
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: FORMAT_GENERIC_DISPLAY
+#endif
 
     !>  \brief
     !>  The scalar `character` of default kind \SK containing the generic signed comma-space-separated format that
     !>  can be used as the math-style complex formatting when constructing objects of [display_type](@ref pm_io::display_type).
     character(*, SK), parameter :: FORMAT_GENERIC_DISPLAY_COMPLEX_MATH = SK_"(sp,*(2g0,'i',:,', '))"
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: FORMAT_GENERIC_DISPLAY_COMPLEX_MATH
+#endif
 
     !>  \brief
     !>  The scalar `character` of default kind \SK containing the generic signed comma-space-separated format that
     !>  can be used as the Fortran-style complex formatting when constructing objects of [display_type](@ref pm_io::display_type).
     character(*, SK), parameter :: FORMAT_GENERIC_DISPLAY_COMPLEX_FORTRAN = SK_"(sp,*('(',g0,', ',g0,')',:,', '))"
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: FORMAT_GENERIC_DISPLAY_COMPLEX_FORTRAN
+#endif
 
     !>  \brief
     !>  The scalar `character(1, SK)` of default kind \SK of size `4`, containing the four characters used to display a spinning command line cursor.
     character(1, SK), parameter :: SPINNER(4) = [ "|" , "/" , "-" , "\" ]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: SPINNER
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     integer(IK)     , parameter :: LEN_IOMSG = 511_IK   !<  \public The scalar `integer` of default kind \IK representing the maximum
                                                         !!          length of an IO error message returned by the Fortran intrinsic routines.
                                                         !!          Note that this an arbitrary length defined globally for consistency.
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: LEN_IOMSG
+#endif
 
     integer(IK)     , parameter :: LEN_RECORD = 8191_IK !<  \public The scalar `integer` of default kind \IK representing the
                                                         !!          effective maximum length of a record in a record-oriented file.
                                                         !!          Note that this is an arbitrary length defined globally for consistency.
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: LEN_RECORD
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -551,6 +590,9 @@ module pm_io
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(unknown_type), parameter :: unknown = unknown_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: unknown
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -613,6 +655,9 @@ module pm_io
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(unformatted_type), parameter :: unformatted = unformatted_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: unformatted
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -675,6 +720,9 @@ module pm_io
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(formatted_type), parameter :: formatted = formatted_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: formatted
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -737,6 +785,9 @@ module pm_io
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(csv_type), parameter :: csv = csv_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: csv
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -799,6 +850,9 @@ module pm_io
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(fld_type), parameter :: fld = fld_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: fld
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -10960,6 +11014,9 @@ module pm_io
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(display_type) :: disp
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: disp
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

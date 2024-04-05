@@ -152,6 +152,9 @@ module pm_sampleNorm
     !>  \FatemehBagheri, Thursday 12:45 AM, August 20, 2021, Dallas, TX
     type :: zscore_type; end type
     type(zscore_type), parameter :: zscore = zscore_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: zscore
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

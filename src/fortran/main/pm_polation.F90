@@ -179,6 +179,9 @@ module pm_polation
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type :: neimean_type; end type
     type(neimean_type), parameter :: neimean = neimean_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: neimean
+#endif
 
     !>  \brief
     !>  This is a concrete derived type whose instances are exclusively used
@@ -212,6 +215,9 @@ module pm_polation
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type :: neinear_type; end type
     type(neinear_type), parameter :: neinear = neinear_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: neinear
+#endif
 
     !>  \brief
     !>  This is a concrete derived type whose instances are exclusively used
@@ -245,6 +251,9 @@ module pm_polation
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type :: neinext_type; end type
     type(neinext_type), parameter :: neinext = neinext_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: neinext
+#endif
 
     !>  \brief
     !>  This is a concrete derived type whose instances are exclusively used
@@ -278,6 +287,9 @@ module pm_polation
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type :: neiprev_type; end type
     type(neiprev_type), parameter :: neiprev = neiprev_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: neiprev
+#endif
 
     !>  \brief
     !>  This is a concrete derived type whose instances are exclusively used
@@ -310,6 +322,9 @@ module pm_polation
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type :: piwilin_type; end type
     type(piwilin_type), parameter :: piwilin = piwilin_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: piwilin
+#endif
 
     !>  \brief
     !>  This is a concrete derived type whose instances are exclusively used
@@ -342,6 +357,9 @@ module pm_polation
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type :: monopol_type; end type
     type(monopol_type), parameter :: monopol = monopol_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: monopol
+#endif
 
     !>  \brief
     !>  This is a concrete derived type whose instances are exclusively used

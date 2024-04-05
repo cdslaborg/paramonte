@@ -2843,6 +2843,9 @@ module pm_distUnif
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(rngf_type) :: rngf! = rngf_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: rngf
+#endif
 
     !>  \cond excluded
     interface rngf_type
