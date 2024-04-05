@@ -49,6 +49,7 @@ if (WIN32)
     /Qdiag-disable=5268     # Extension to standard: The text exceeds right hand column allowed on the line.
     /Qdiag-disable=7025     # This directive is not standard Fxx.
     /Qdiag-disable=10346    # optimization reporting will be enabled at link time when performing interprocedural optimizations.
+    /Qdiag-disable:10448    # Disable ifort deprecation message.
     )
     if (MT_ENABLED)
         set(FCL_FLAGS "${FCL_FLAGS}"

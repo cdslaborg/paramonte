@@ -26,7 +26,7 @@
 
         ! Define the compiler specs.
 #if     INTEL_ENABLED && WINDOWS_ENABLED
-#define INTEL_SHARED_FILE, SHARED & ! LCOV_EXCL_LINE
+#define INTEL_SHARED_FILE, SHARED
 #else
 #define INTEL_SHARED_FILE
 #endif

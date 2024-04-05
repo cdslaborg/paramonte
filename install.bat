@@ -196,8 +196,8 @@ if not "%1"=="" (
 
     echo.!pmnote! processing: %1
 
-    set FLAG=%1
-    set VALUE=%2
+    set FLAG=%~1
+    set VALUE=%~2
     REM call :getLowerCase FLAG
     REM call :getLowerCase VALUE
 
@@ -875,7 +875,7 @@ for %%C in ("!list_fc:;=" "!") do (
                             REM
 
                             if not defined bdir (
-                                set paramonte_bld_dir=!paramonte_dir!bld\!os!\!arch!\!csid!\!csvs!\%%~B\%%~L\%%~M\!parname!\%%~G\%%~H"
+                                set "paramonte_bld_dir=!paramonte_dir!bld\!os!\!arch!\!csid!\!csvs!\%%~B\%%~L\%%~M\!parname!\%%~G\%%~H"
                                 if "!flag_perfprof!" == "-Dperfprof=all" set paramonte_bld_dir=!paramonte_bld_dir!\perfprof
                                 if "!flag_codecov!" == "-Dcodecov=all" set paramonte_bld_dir=!paramonte_bld_dir!\codecov
                                 echo.!pmnote! The ParaMonte library build directory paramonte_bld_dir="!paramonte_bld_dir!"
@@ -903,18 +903,19 @@ for %%C in ("!list_fc:;=" "!") do (
                             echo.!pmnote! Invoking CMake as:
                             echo.
 
-                            @echo on
+                            echo.cd "!paramonte_bld_dir!"
+                            echo.cmake !paramonte_dir! !flag_G! -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON !flag_build! !flag_checking! !flag_lib! !flag_mem! !flag_par! !flag_fc!
+                            echo.!flag_ddir! !flag_bench! !flag_benchpp! !flag_blas! !flag_codecov! !flag_cfi! !flag_deps! !flag_exam! !flag_exampp! !flag_fpp! !flag_fresh! !flag_lapack! !flag_matlabdir!
+                            echo.!flag_lang! !flag_me! !flag_mod! !flag_nproc! !flag_perfprof! !flag_pdt! !flag_purity! !flag_test! !flag_ski! !flag_iki! !flag_lki! !flag_cki! !flag_rki!
+
                             cd "!paramonte_bld_dir!"
-                            REM cmake "!paramonte_dir!" !flag_g! ""!cmakeBuildGenerator!"" "-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON" !flag_ddir! ^
                             cmake !paramonte_dir! !flag_G! -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON !flag_build! !flag_checking! !flag_lib! !flag_mem! !flag_par! !flag_fc! ^
                             !flag_ddir! !flag_bench! !flag_benchpp! !flag_blas! !flag_codecov! !flag_cfi! !flag_deps! !flag_exam! !flag_exampp! !flag_fpp! !flag_fresh! !flag_lapack! !flag_matlabdir! ^
                             !flag_lang! !flag_me! !flag_mod! !flag_nproc! !flag_perfprof! !flag_pdt! !flag_purity! !flag_test! !flag_ski! !flag_iki! !flag_lki! !flag_cki! !flag_rki! ^
                             && (
-                                @echo off
                                 echo.
                                 echo.!pmnote! !BoldGreen!ParaMonte configuration with CMake appears to have succeeded.!ColorReset!
                             ) || (
-                                @echo off
                                 echo.
                                 echo.!pmfatal! !BoldRed!ParaMonte configuration with CMake appears to have failed.!ColorReset!
                                 goto LABEL_ERR

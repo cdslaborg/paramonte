@@ -62,6 +62,9 @@ contains
 #define test_isFailedQuad_ENABLED 1
     ! \bug gfortran cannot recognize the procedure arguments without duplicating the full interface in the submodule.
     module subroutine test_isFailedQuad_RKH(disp, integrand, abstol, reltol)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: test_isFailedQuad_RKH
+#endif
         use pm_kind, only: RKC => RKH
         use pm_io, only: display_type
         type(display_type)      , intent(inout)         :: disp
