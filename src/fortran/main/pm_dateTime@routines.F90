@@ -109,12 +109,12 @@ contains
         use pm_arraySearch, only: getBin
         use pm_kind, only: SKC => SK
         integer(IK) :: bin
-        CHECK_ASSERTION(__LINE__, isAscending(TIMEZONE%zone), SK_"@getZoneAbbr(): The condition `isAscending(TIMEZONE%zone)` must hold. TIMEZONE%zone = "//getStr(TIMEZONE%zone)) ! fpp
-        bin = getBin(TIMEZONE%zone, zone) ! we cannot use `findloc()` intrinsic because the time and zone may not be in the constant TIMEZONE.
-        if (0_IK < bin .and. bin < size(TIMEZONE%zone, kind = IK)) then
-            abbr = trim(TIMEZONE%Abbr(bin))
+        CHECK_ASSERTION(__LINE__, isAscending(timzone%zone), SK_"@getZoneAbbr(): The condition `isAscending(timzone%zone)` must hold. timzone%zone = "//getStr(timzone%zone)) ! fpp
+        bin = getBin(timzone%zone, zone) ! we cannot use `findloc()` intrinsic because the time and zone may not be in the constant timzone.
+        if (0_IK < bin .and. bin < size(timzone%zone, kind = IK)) then
+            abbr = trim(timzone%Abbr(bin))
         elseif (zone == int(14 * 60, kind(zone))) then
-            abbr = trim(TIMEZONE%Abbr(size(TIMEZONE%zone, kind = IK)))
+            abbr = trim(timzone%Abbr(size(timzone%zone, kind = IK)))
         else
             abbr = SKC_""
         end if
