@@ -6312,7 +6312,7 @@ module pm_sampleVar
 #if CK5_ENABLED
     PURE module subroutine setVarMeanALL_WNODD_D1_CK5(var, mean, sample, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D1_CK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D1_CK5
 #endif
         use pm_kind, only: TKC => CK5
         complex(TKC)    , intent(in)    , contiguous                :: sample(:)
@@ -6325,7 +6325,7 @@ module pm_sampleVar
 #if CK4_ENABLED
     PURE module subroutine setVarMeanALL_WNODD_D1_CK4(var, mean, sample, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D1_CK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D1_CK4
 #endif
         use pm_kind, only: TKC => CK4
         complex(TKC)    , intent(in)    , contiguous                :: sample(:)
@@ -6338,7 +6338,7 @@ module pm_sampleVar
 #if CK3_ENABLED
     PURE module subroutine setVarMeanALL_WNODD_D1_CK3(var, mean, sample, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D1_CK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D1_CK3
 #endif
         use pm_kind, only: TKC => CK3
         complex(TKC)    , intent(in)    , contiguous                :: sample(:)
@@ -6351,7 +6351,7 @@ module pm_sampleVar
 #if CK2_ENABLED
     PURE module subroutine setVarMeanALL_WNODD_D1_CK2(var, mean, sample, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D1_CK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D1_CK2
 #endif
         use pm_kind, only: TKC => CK2
         complex(TKC)    , intent(in)    , contiguous                :: sample(:)
@@ -6364,7 +6364,7 @@ module pm_sampleVar
 #if CK1_ENABLED
     PURE module subroutine setVarMeanALL_WNODD_D1_CK1(var, mean, sample, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D1_CK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D1_CK1
 #endif
         use pm_kind, only: TKC => CK1
         complex(TKC)    , intent(in)    , contiguous                :: sample(:)
@@ -6379,7 +6379,7 @@ module pm_sampleVar
 #if RK5_ENABLED
     PURE module subroutine setVarMeanALL_WNODD_D1_RK5(var, mean, sample, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D1_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D1_RK5
 #endif
         use pm_kind, only: TKC => RK5
         real(TKC)       , intent(in)    , contiguous                :: sample(:)
@@ -6392,7 +6392,7 @@ module pm_sampleVar
 #if RK4_ENABLED
     PURE module subroutine setVarMeanALL_WNODD_D1_RK4(var, mean, sample, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D1_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D1_RK4
 #endif
         use pm_kind, only: TKC => RK4
         real(TKC)       , intent(in)    , contiguous                :: sample(:)
@@ -6405,7 +6405,7 @@ module pm_sampleVar
 #if RK3_ENABLED
     PURE module subroutine setVarMeanALL_WNODD_D1_RK3(var, mean, sample, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D1_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D1_RK3
 #endif
         use pm_kind, only: TKC => RK3
         real(TKC)       , intent(in)    , contiguous                :: sample(:)
@@ -6418,7 +6418,7 @@ module pm_sampleVar
 #if RK2_ENABLED
     PURE module subroutine setVarMeanALL_WNODD_D1_RK2(var, mean, sample, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D1_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D1_RK2
 #endif
         use pm_kind, only: TKC => RK2
         real(TKC)       , intent(in)    , contiguous                :: sample(:)
@@ -6431,7 +6431,7 @@ module pm_sampleVar
 #if RK1_ENABLED
     PURE module subroutine setVarMeanALL_WNODD_D1_RK1(var, mean, sample, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D1_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D1_RK1
 #endif
         use pm_kind, only: TKC => RK1
         real(TKC)       , intent(in)    , contiguous                :: sample(:)
@@ -6452,7 +6452,7 @@ module pm_sampleVar
 #if CK5_ENABLED
     PURE module subroutine setVarMeanALL_WTISD_D1_CK5(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D1_CK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D1_CK5
 #endif
         use pm_kind, only: TKC => CK5
         integer(IK)     , intent(out)                               :: weisum
@@ -6467,7 +6467,7 @@ module pm_sampleVar
 #if CK4_ENABLED
     PURE module subroutine setVarMeanALL_WTISD_D1_CK4(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D1_CK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D1_CK4
 #endif
         use pm_kind, only: TKC => CK4
         integer(IK)     , intent(out)                               :: weisum
@@ -6482,7 +6482,7 @@ module pm_sampleVar
 #if CK3_ENABLED
     PURE module subroutine setVarMeanALL_WTISD_D1_CK3(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D1_CK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D1_CK3
 #endif
         use pm_kind, only: TKC => CK3
         integer(IK)     , intent(out)                               :: weisum
@@ -6497,7 +6497,7 @@ module pm_sampleVar
 #if CK2_ENABLED
     PURE module subroutine setVarMeanALL_WTISD_D1_CK2(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D1_CK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D1_CK2
 #endif
         use pm_kind, only: TKC => CK2
         integer(IK)     , intent(out)                               :: weisum
@@ -6512,7 +6512,7 @@ module pm_sampleVar
 #if CK1_ENABLED
     PURE module subroutine setVarMeanALL_WTISD_D1_CK1(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D1_CK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D1_CK1
 #endif
         use pm_kind, only: TKC => CK1
         integer(IK)     , intent(out)                               :: weisum
@@ -6529,7 +6529,7 @@ module pm_sampleVar
 #if RK5_ENABLED
     PURE module subroutine setVarMeanALL_WTISD_D1_RK5(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D1_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D1_RK5
 #endif
         use pm_kind, only: TKC => RK5
         integer(IK)     , intent(out)                               :: weisum
@@ -6544,7 +6544,7 @@ module pm_sampleVar
 #if RK4_ENABLED
     PURE module subroutine setVarMeanALL_WTISD_D1_RK4(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D1_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D1_RK4
 #endif
         use pm_kind, only: TKC => RK4
         integer(IK)     , intent(out)                               :: weisum
@@ -6559,7 +6559,7 @@ module pm_sampleVar
 #if RK3_ENABLED
     PURE module subroutine setVarMeanALL_WTISD_D1_RK3(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D1_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D1_RK3
 #endif
         use pm_kind, only: TKC => RK3
         integer(IK)     , intent(out)                               :: weisum
@@ -6574,7 +6574,7 @@ module pm_sampleVar
 #if RK2_ENABLED
     PURE module subroutine setVarMeanALL_WTISD_D1_RK2(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D1_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D1_RK2
 #endif
         use pm_kind, only: TKC => RK2
         integer(IK)     , intent(out)                               :: weisum
@@ -6589,7 +6589,7 @@ module pm_sampleVar
 #if RK1_ENABLED
     PURE module subroutine setVarMeanALL_WTISD_D1_RK1(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D1_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D1_RK1
 #endif
         use pm_kind, only: TKC => RK1
         integer(IK)     , intent(out)                               :: weisum
@@ -6612,7 +6612,7 @@ module pm_sampleVar
 #if CK5_ENABLED
     PURE module subroutine setVarMeanALL_WTRSD_D1_CK5(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D1_CK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D1_CK5
 #endif
         use pm_kind, only: TKC => CK5
         real(TKC)       , intent(out)                               :: weisum
@@ -6627,7 +6627,7 @@ module pm_sampleVar
 #if CK4_ENABLED
     PURE module subroutine setVarMeanALL_WTRSD_D1_CK4(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D1_CK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D1_CK4
 #endif
         use pm_kind, only: TKC => CK4
         real(TKC)       , intent(out)                               :: weisum
@@ -6642,7 +6642,7 @@ module pm_sampleVar
 #if CK3_ENABLED
     PURE module subroutine setVarMeanALL_WTRSD_D1_CK3(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D1_CK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D1_CK3
 #endif
         use pm_kind, only: TKC => CK3
         real(TKC)       , intent(out)                               :: weisum
@@ -6657,7 +6657,7 @@ module pm_sampleVar
 #if CK2_ENABLED
     PURE module subroutine setVarMeanALL_WTRSD_D1_CK2(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D1_CK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D1_CK2
 #endif
         use pm_kind, only: TKC => CK2
         real(TKC)       , intent(out)                               :: weisum
@@ -6672,7 +6672,7 @@ module pm_sampleVar
 #if CK1_ENABLED
     PURE module subroutine setVarMeanALL_WTRSD_D1_CK1(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D1_CK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D1_CK1
 #endif
         use pm_kind, only: TKC => CK1
         real(TKC)       , intent(out)                               :: weisum
@@ -6689,7 +6689,7 @@ module pm_sampleVar
 #if RK5_ENABLED
     PURE module subroutine setVarMeanALL_WTRSD_D1_RK5(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D1_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D1_RK5
 #endif
         use pm_kind, only: TKC => RK5
         real(TKC)       , intent(out)                               :: weisum
@@ -6704,7 +6704,7 @@ module pm_sampleVar
 #if RK4_ENABLED
     PURE module subroutine setVarMeanALL_WTRSD_D1_RK4(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D1_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D1_RK4
 #endif
         use pm_kind, only: TKC => RK4
         real(TKC)       , intent(out)                               :: weisum
@@ -6719,7 +6719,7 @@ module pm_sampleVar
 #if RK3_ENABLED
     PURE module subroutine setVarMeanALL_WTRSD_D1_RK3(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D1_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D1_RK3
 #endif
         use pm_kind, only: TKC => RK3
         real(TKC)       , intent(out)                               :: weisum
@@ -6734,7 +6734,7 @@ module pm_sampleVar
 #if RK2_ENABLED
     PURE module subroutine setVarMeanALL_WTRSD_D1_RK2(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D1_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D1_RK2
 #endif
         use pm_kind, only: TKC => RK2
         real(TKC)       , intent(out)                               :: weisum
@@ -6749,7 +6749,7 @@ module pm_sampleVar
 #if RK1_ENABLED
     PURE module subroutine setVarMeanALL_WTRSD_D1_RK1(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D1_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D1_RK1
 #endif
         use pm_kind, only: TKC => RK1
         real(TKC)       , intent(out)                               :: weisum
@@ -6782,7 +6782,7 @@ module pm_sampleVar
 #if CK5_ENABLED
     PURE module subroutine setVarMeanALL_WNODD_D2_CK5(var, mean, sample, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D2_CK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D2_CK5
 #endif
         use pm_kind, only: TKC => CK5
         complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
@@ -6795,7 +6795,7 @@ module pm_sampleVar
 #if CK4_ENABLED
     PURE module subroutine setVarMeanALL_WNODD_D2_CK4(var, mean, sample, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D2_CK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D2_CK4
 #endif
         use pm_kind, only: TKC => CK4
         complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
@@ -6808,7 +6808,7 @@ module pm_sampleVar
 #if CK3_ENABLED
     PURE module subroutine setVarMeanALL_WNODD_D2_CK3(var, mean, sample, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D2_CK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D2_CK3
 #endif
         use pm_kind, only: TKC => CK3
         complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
@@ -6821,7 +6821,7 @@ module pm_sampleVar
 #if CK2_ENABLED
     PURE module subroutine setVarMeanALL_WNODD_D2_CK2(var, mean, sample, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D2_CK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D2_CK2
 #endif
         use pm_kind, only: TKC => CK2
         complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
@@ -6834,7 +6834,7 @@ module pm_sampleVar
 #if CK1_ENABLED
     PURE module subroutine setVarMeanALL_WNODD_D2_CK1(var, mean, sample, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D2_CK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D2_CK1
 #endif
         use pm_kind, only: TKC => CK1
         complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
@@ -6849,7 +6849,7 @@ module pm_sampleVar
 #if RK5_ENABLED
     PURE module subroutine setVarMeanALL_WNODD_D2_RK5(var, mean, sample, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D2_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D2_RK5
 #endif
         use pm_kind, only: TKC => RK5
         real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
@@ -6862,7 +6862,7 @@ module pm_sampleVar
 #if RK4_ENABLED
     PURE module subroutine setVarMeanALL_WNODD_D2_RK4(var, mean, sample, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D2_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D2_RK4
 #endif
         use pm_kind, only: TKC => RK4
         real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
@@ -6875,7 +6875,7 @@ module pm_sampleVar
 #if RK3_ENABLED
     PURE module subroutine setVarMeanALL_WNODD_D2_RK3(var, mean, sample, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D2_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D2_RK3
 #endif
         use pm_kind, only: TKC => RK3
         real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
@@ -6888,7 +6888,7 @@ module pm_sampleVar
 #if RK2_ENABLED
     PURE module subroutine setVarMeanALL_WNODD_D2_RK2(var, mean, sample, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D2_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D2_RK2
 #endif
         use pm_kind, only: TKC => RK2
         real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
@@ -6901,7 +6901,7 @@ module pm_sampleVar
 #if RK1_ENABLED
     PURE module subroutine setVarMeanALL_WNODD_D2_RK1(var, mean, sample, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D2_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D2_RK1
 #endif
         use pm_kind, only: TKC => RK1
         real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
@@ -6922,7 +6922,7 @@ module pm_sampleVar
 #if CK5_ENABLED
     PURE module subroutine setVarMeanALL_WTISD_D2_CK5(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D2_CK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D2_CK5
 #endif
         use pm_kind, only: TKC => CK5
         integer(IK)     , intent(out)                               :: weisum
@@ -6937,7 +6937,7 @@ module pm_sampleVar
 #if CK4_ENABLED
     PURE module subroutine setVarMeanALL_WTISD_D2_CK4(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D2_CK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D2_CK4
 #endif
         use pm_kind, only: TKC => CK4
         integer(IK)     , intent(out)                               :: weisum
@@ -6952,7 +6952,7 @@ module pm_sampleVar
 #if CK3_ENABLED
     PURE module subroutine setVarMeanALL_WTISD_D2_CK3(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D2_CK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D2_CK3
 #endif
         use pm_kind, only: TKC => CK3
         integer(IK)     , intent(out)                               :: weisum
@@ -6967,7 +6967,7 @@ module pm_sampleVar
 #if CK2_ENABLED
     PURE module subroutine setVarMeanALL_WTISD_D2_CK2(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D2_CK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D2_CK2
 #endif
         use pm_kind, only: TKC => CK2
         integer(IK)     , intent(out)                               :: weisum
@@ -6982,7 +6982,7 @@ module pm_sampleVar
 #if CK1_ENABLED
     PURE module subroutine setVarMeanALL_WTISD_D2_CK1(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D2_CK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D2_CK1
 #endif
         use pm_kind, only: TKC => CK1
         integer(IK)     , intent(out)                               :: weisum
@@ -6999,7 +6999,7 @@ module pm_sampleVar
 #if RK5_ENABLED
     PURE module subroutine setVarMeanALL_WTISD_D2_RK5(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D2_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D2_RK5
 #endif
         use pm_kind, only: TKC => RK5
         integer(IK)     , intent(out)                               :: weisum
@@ -7014,7 +7014,7 @@ module pm_sampleVar
 #if RK4_ENABLED
     PURE module subroutine setVarMeanALL_WTISD_D2_RK4(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D2_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D2_RK4
 #endif
         use pm_kind, only: TKC => RK4
         integer(IK)     , intent(out)                               :: weisum
@@ -7029,7 +7029,7 @@ module pm_sampleVar
 #if RK3_ENABLED
     PURE module subroutine setVarMeanALL_WTISD_D2_RK3(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D2_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D2_RK3
 #endif
         use pm_kind, only: TKC => RK3
         integer(IK)     , intent(out)                               :: weisum
@@ -7044,7 +7044,7 @@ module pm_sampleVar
 #if RK2_ENABLED
     PURE module subroutine setVarMeanALL_WTISD_D2_RK2(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D2_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D2_RK2
 #endif
         use pm_kind, only: TKC => RK2
         integer(IK)     , intent(out)                               :: weisum
@@ -7059,7 +7059,7 @@ module pm_sampleVar
 #if RK1_ENABLED
     PURE module subroutine setVarMeanALL_WTISD_D2_RK1(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D2_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D2_RK1
 #endif
         use pm_kind, only: TKC => RK1
         integer(IK)     , intent(out)                               :: weisum
@@ -7082,7 +7082,7 @@ module pm_sampleVar
 #if CK5_ENABLED
     PURE module subroutine setVarMeanALL_WTRSD_D2_CK5(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D2_CK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D2_CK5
 #endif
         use pm_kind, only: TKC => CK5
         real(TKC)       , intent(out)                               :: weisum
@@ -7097,7 +7097,7 @@ module pm_sampleVar
 #if CK4_ENABLED
     PURE module subroutine setVarMeanALL_WTRSD_D2_CK4(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D2_CK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D2_CK4
 #endif
         use pm_kind, only: TKC => CK4
         real(TKC)       , intent(out)                               :: weisum
@@ -7112,7 +7112,7 @@ module pm_sampleVar
 #if CK3_ENABLED
     PURE module subroutine setVarMeanALL_WTRSD_D2_CK3(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D2_CK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D2_CK3
 #endif
         use pm_kind, only: TKC => CK3
         real(TKC)       , intent(out)                               :: weisum
@@ -7127,7 +7127,7 @@ module pm_sampleVar
 #if CK2_ENABLED
     PURE module subroutine setVarMeanALL_WTRSD_D2_CK2(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D2_CK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D2_CK2
 #endif
         use pm_kind, only: TKC => CK2
         real(TKC)       , intent(out)                               :: weisum
@@ -7142,7 +7142,7 @@ module pm_sampleVar
 #if CK1_ENABLED
     PURE module subroutine setVarMeanALL_WTRSD_D2_CK1(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D2_CK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D2_CK1
 #endif
         use pm_kind, only: TKC => CK1
         real(TKC)       , intent(out)                               :: weisum
@@ -7159,7 +7159,7 @@ module pm_sampleVar
 #if RK5_ENABLED
     PURE module subroutine setVarMeanALL_WTRSD_D2_RK5(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D2_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D2_RK5
 #endif
         use pm_kind, only: TKC => RK5
         real(TKC)       , intent(out)                               :: weisum
@@ -7174,7 +7174,7 @@ module pm_sampleVar
 #if RK4_ENABLED
     PURE module subroutine setVarMeanALL_WTRSD_D2_RK4(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D2_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D2_RK4
 #endif
         use pm_kind, only: TKC => RK4
         real(TKC)       , intent(out)                               :: weisum
@@ -7189,7 +7189,7 @@ module pm_sampleVar
 #if RK3_ENABLED
     PURE module subroutine setVarMeanALL_WTRSD_D2_RK3(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D2_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D2_RK3
 #endif
         use pm_kind, only: TKC => RK3
         real(TKC)       , intent(out)                               :: weisum
@@ -7204,7 +7204,7 @@ module pm_sampleVar
 #if RK2_ENABLED
     PURE module subroutine setVarMeanALL_WTRSD_D2_RK2(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D2_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D2_RK2
 #endif
         use pm_kind, only: TKC => RK2
         real(TKC)       , intent(out)                               :: weisum
@@ -7219,7 +7219,7 @@ module pm_sampleVar
 #if RK1_ENABLED
     PURE module subroutine setVarMeanALL_WTRSD_D2_RK1(var, mean, sample, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D2_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D2_RK1
 #endif
         use pm_kind, only: TKC => RK1
         real(TKC)       , intent(out)                               :: weisum
@@ -7252,7 +7252,7 @@ module pm_sampleVar
 #if CK5_ENABLED
     PURE module subroutine setVarMeanDIM_WNODD_D1_CK5(var, mean, sample, dim, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D1_CK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D1_CK5
 #endif
         use pm_kind, only: TKC => CK5
         complex(TKC)    , intent(in)    , contiguous                :: sample(:)
@@ -7266,7 +7266,7 @@ module pm_sampleVar
 #if CK4_ENABLED
     PURE module subroutine setVarMeanDIM_WNODD_D1_CK4(var, mean, sample, dim, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D1_CK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D1_CK4
 #endif
         use pm_kind, only: TKC => CK4
         complex(TKC)    , intent(in)    , contiguous                :: sample(:)
@@ -7280,7 +7280,7 @@ module pm_sampleVar
 #if CK3_ENABLED
     PURE module subroutine setVarMeanDIM_WNODD_D1_CK3(var, mean, sample, dim, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D1_CK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D1_CK3
 #endif
         use pm_kind, only: TKC => CK3
         complex(TKC)    , intent(in)    , contiguous                :: sample(:)
@@ -7294,7 +7294,7 @@ module pm_sampleVar
 #if CK2_ENABLED
     PURE module subroutine setVarMeanDIM_WNODD_D1_CK2(var, mean, sample, dim, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D1_CK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D1_CK2
 #endif
         use pm_kind, only: TKC => CK2
         complex(TKC)    , intent(in)    , contiguous                :: sample(:)
@@ -7308,7 +7308,7 @@ module pm_sampleVar
 #if CK1_ENABLED
     PURE module subroutine setVarMeanDIM_WNODD_D1_CK1(var, mean, sample, dim, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D1_CK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D1_CK1
 #endif
         use pm_kind, only: TKC => CK1
         complex(TKC)    , intent(in)    , contiguous                :: sample(:)
@@ -7324,7 +7324,7 @@ module pm_sampleVar
 #if RK5_ENABLED
     PURE module subroutine setVarMeanDIM_WNODD_D1_RK5(var, mean, sample, dim, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D1_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D1_RK5
 #endif
         use pm_kind, only: TKC => RK5
         real(TKC)       , intent(in)    , contiguous                :: sample(:)
@@ -7338,7 +7338,7 @@ module pm_sampleVar
 #if RK4_ENABLED
     PURE module subroutine setVarMeanDIM_WNODD_D1_RK4(var, mean, sample, dim, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D1_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D1_RK4
 #endif
         use pm_kind, only: TKC => RK4
         real(TKC)       , intent(in)    , contiguous                :: sample(:)
@@ -7352,7 +7352,7 @@ module pm_sampleVar
 #if RK3_ENABLED
     PURE module subroutine setVarMeanDIM_WNODD_D1_RK3(var, mean, sample, dim, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D1_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D1_RK3
 #endif
         use pm_kind, only: TKC => RK3
         real(TKC)       , intent(in)    , contiguous                :: sample(:)
@@ -7366,7 +7366,7 @@ module pm_sampleVar
 #if RK2_ENABLED
     PURE module subroutine setVarMeanDIM_WNODD_D1_RK2(var, mean, sample, dim, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D1_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D1_RK2
 #endif
         use pm_kind, only: TKC => RK2
         real(TKC)       , intent(in)    , contiguous                :: sample(:)
@@ -7380,7 +7380,7 @@ module pm_sampleVar
 #if RK1_ENABLED
     PURE module subroutine setVarMeanDIM_WNODD_D1_RK1(var, mean, sample, dim, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D1_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D1_RK1
 #endif
         use pm_kind, only: TKC => RK1
         real(TKC)       , intent(in)    , contiguous                :: sample(:)
@@ -7402,7 +7402,7 @@ module pm_sampleVar
 #if CK5_ENABLED
     PURE module subroutine setVarMeanDIM_WTISD_D1_CK5(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D1_CK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D1_CK5
 #endif
         use pm_kind, only: TKC => CK5
         integer(IK)     , intent(out)                               :: weisum
@@ -7418,7 +7418,7 @@ module pm_sampleVar
 #if CK4_ENABLED
     PURE module subroutine setVarMeanDIM_WTISD_D1_CK4(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D1_CK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D1_CK4
 #endif
         use pm_kind, only: TKC => CK4
         integer(IK)     , intent(out)                               :: weisum
@@ -7434,7 +7434,7 @@ module pm_sampleVar
 #if CK3_ENABLED
     PURE module subroutine setVarMeanDIM_WTISD_D1_CK3(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D1_CK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D1_CK3
 #endif
         use pm_kind, only: TKC => CK3
         integer(IK)     , intent(out)                               :: weisum
@@ -7450,7 +7450,7 @@ module pm_sampleVar
 #if CK2_ENABLED
     PURE module subroutine setVarMeanDIM_WTISD_D1_CK2(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D1_CK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D1_CK2
 #endif
         use pm_kind, only: TKC => CK2
         integer(IK)     , intent(out)                               :: weisum
@@ -7466,7 +7466,7 @@ module pm_sampleVar
 #if CK1_ENABLED
     PURE module subroutine setVarMeanDIM_WTISD_D1_CK1(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D1_CK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D1_CK1
 #endif
         use pm_kind, only: TKC => CK1
         integer(IK)     , intent(out)                               :: weisum
@@ -7484,7 +7484,7 @@ module pm_sampleVar
 #if RK5_ENABLED
     PURE module subroutine setVarMeanDIM_WTISD_D1_RK5(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D1_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D1_RK5
 #endif
         use pm_kind, only: TKC => RK5
         integer(IK)     , intent(out)                               :: weisum
@@ -7500,7 +7500,7 @@ module pm_sampleVar
 #if RK4_ENABLED
     PURE module subroutine setVarMeanDIM_WTISD_D1_RK4(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D1_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D1_RK4
 #endif
         use pm_kind, only: TKC => RK4
         integer(IK)     , intent(out)                               :: weisum
@@ -7516,7 +7516,7 @@ module pm_sampleVar
 #if RK3_ENABLED
     PURE module subroutine setVarMeanDIM_WTISD_D1_RK3(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D1_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D1_RK3
 #endif
         use pm_kind, only: TKC => RK3
         integer(IK)     , intent(out)                               :: weisum
@@ -7532,7 +7532,7 @@ module pm_sampleVar
 #if RK2_ENABLED
     PURE module subroutine setVarMeanDIM_WTISD_D1_RK2(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D1_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D1_RK2
 #endif
         use pm_kind, only: TKC => RK2
         integer(IK)     , intent(out)                               :: weisum
@@ -7548,7 +7548,7 @@ module pm_sampleVar
 #if RK1_ENABLED
     PURE module subroutine setVarMeanDIM_WTISD_D1_RK1(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D1_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D1_RK1
 #endif
         use pm_kind, only: TKC => RK1
         integer(IK)     , intent(out)                               :: weisum
@@ -7572,7 +7572,7 @@ module pm_sampleVar
 #if CK5_ENABLED
     PURE module subroutine setVarMeanDIM_WTRSD_D1_CK5(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D1_CK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D1_CK5
 #endif
         use pm_kind, only: TKC => CK5
         real(TKC)       , intent(out)                               :: weisum
@@ -7588,7 +7588,7 @@ module pm_sampleVar
 #if CK4_ENABLED
     PURE module subroutine setVarMeanDIM_WTRSD_D1_CK4(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D1_CK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D1_CK4
 #endif
         use pm_kind, only: TKC => CK4
         real(TKC)       , intent(out)                               :: weisum
@@ -7604,7 +7604,7 @@ module pm_sampleVar
 #if CK3_ENABLED
     PURE module subroutine setVarMeanDIM_WTRSD_D1_CK3(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D1_CK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D1_CK3
 #endif
         use pm_kind, only: TKC => CK3
         real(TKC)       , intent(out)                               :: weisum
@@ -7620,7 +7620,7 @@ module pm_sampleVar
 #if CK2_ENABLED
     PURE module subroutine setVarMeanDIM_WTRSD_D1_CK2(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D1_CK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D1_CK2
 #endif
         use pm_kind, only: TKC => CK2
         real(TKC)       , intent(out)                               :: weisum
@@ -7636,7 +7636,7 @@ module pm_sampleVar
 #if CK1_ENABLED
     PURE module subroutine setVarMeanDIM_WTRSD_D1_CK1(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D1_CK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D1_CK1
 #endif
         use pm_kind, only: TKC => CK1
         real(TKC)       , intent(out)                               :: weisum
@@ -7654,7 +7654,7 @@ module pm_sampleVar
 #if RK5_ENABLED
     PURE module subroutine setVarMeanDIM_WTRSD_D1_RK5(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D1_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D1_RK5
 #endif
         use pm_kind, only: TKC => RK5
         real(TKC)       , intent(out)                               :: weisum
@@ -7670,7 +7670,7 @@ module pm_sampleVar
 #if RK4_ENABLED
     PURE module subroutine setVarMeanDIM_WTRSD_D1_RK4(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D1_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D1_RK4
 #endif
         use pm_kind, only: TKC => RK4
         real(TKC)       , intent(out)                               :: weisum
@@ -7686,7 +7686,7 @@ module pm_sampleVar
 #if RK3_ENABLED
     PURE module subroutine setVarMeanDIM_WTRSD_D1_RK3(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D1_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D1_RK3
 #endif
         use pm_kind, only: TKC => RK3
         real(TKC)       , intent(out)                               :: weisum
@@ -7702,7 +7702,7 @@ module pm_sampleVar
 #if RK2_ENABLED
     PURE module subroutine setVarMeanDIM_WTRSD_D1_RK2(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D1_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D1_RK2
 #endif
         use pm_kind, only: TKC => RK2
         real(TKC)       , intent(out)                               :: weisum
@@ -7718,7 +7718,7 @@ module pm_sampleVar
 #if RK1_ENABLED
     PURE module subroutine setVarMeanDIM_WTRSD_D1_RK1(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D1_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D1_RK1
 #endif
         use pm_kind, only: TKC => RK1
         real(TKC)       , intent(out)                               :: weisum
@@ -7752,7 +7752,7 @@ module pm_sampleVar
 #if CK5_ENABLED
     PURE module subroutine setVarMeanDIM_WNODD_D2_CK5(var, mean, sample, dim, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D2_CK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D2_CK5
 #endif
         use pm_kind, only: TKC => CK5
         integer(IK)     , intent(in)                                :: dim
@@ -7766,7 +7766,7 @@ module pm_sampleVar
 #if CK4_ENABLED
     PURE module subroutine setVarMeanDIM_WNODD_D2_CK4(var, mean, sample, dim, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D2_CK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D2_CK4
 #endif
         use pm_kind, only: TKC => CK4
         integer(IK)     , intent(in)                                :: dim
@@ -7780,7 +7780,7 @@ module pm_sampleVar
 #if CK3_ENABLED
     PURE module subroutine setVarMeanDIM_WNODD_D2_CK3(var, mean, sample, dim, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D2_CK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D2_CK3
 #endif
         use pm_kind, only: TKC => CK3
         integer(IK)     , intent(in)                                :: dim
@@ -7794,7 +7794,7 @@ module pm_sampleVar
 #if CK2_ENABLED
     PURE module subroutine setVarMeanDIM_WNODD_D2_CK2(var, mean, sample, dim, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D2_CK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D2_CK2
 #endif
         use pm_kind, only: TKC => CK2
         integer(IK)     , intent(in)                                :: dim
@@ -7808,7 +7808,7 @@ module pm_sampleVar
 #if CK1_ENABLED
     PURE module subroutine setVarMeanDIM_WNODD_D2_CK1(var, mean, sample, dim, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D2_CK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D2_CK1
 #endif
         use pm_kind, only: TKC => CK1
         integer(IK)     , intent(in)                                :: dim
@@ -7824,7 +7824,7 @@ module pm_sampleVar
 #if RK5_ENABLED
     PURE module subroutine setVarMeanDIM_WNODD_D2_RK5(var, mean, sample, dim, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D2_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D2_RK5
 #endif
         use pm_kind, only: TKC => RK5
         integer(IK)     , intent(in)                                :: dim
@@ -7838,7 +7838,7 @@ module pm_sampleVar
 #if RK4_ENABLED
     PURE module subroutine setVarMeanDIM_WNODD_D2_RK4(var, mean, sample, dim, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D2_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D2_RK4
 #endif
         use pm_kind, only: TKC => RK4
         integer(IK)     , intent(in)                                :: dim
@@ -7852,7 +7852,7 @@ module pm_sampleVar
 #if RK3_ENABLED
     PURE module subroutine setVarMeanDIM_WNODD_D2_RK3(var, mean, sample, dim, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D2_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D2_RK3
 #endif
         use pm_kind, only: TKC => RK3
         integer(IK)     , intent(in)                                :: dim
@@ -7866,7 +7866,7 @@ module pm_sampleVar
 #if RK2_ENABLED
     PURE module subroutine setVarMeanDIM_WNODD_D2_RK2(var, mean, sample, dim, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D2_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D2_RK2
 #endif
         use pm_kind, only: TKC => RK2
         integer(IK)     , intent(in)                                :: dim
@@ -7880,7 +7880,7 @@ module pm_sampleVar
 #if RK1_ENABLED
     PURE module subroutine setVarMeanDIM_WNODD_D2_RK1(var, mean, sample, dim, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWNODD_D2_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D2_RK1
 #endif
         use pm_kind, only: TKC => RK1
         integer(IK)     , intent(in)                                :: dim
@@ -7902,7 +7902,7 @@ module pm_sampleVar
 #if CK5_ENABLED
     PURE module subroutine setVarMeanDIM_WTISD_D2_CK5(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D2_CK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D2_CK5
 #endif
         use pm_kind, only: TKC => CK5
         integer(IK)     , intent(in)                                :: dim
@@ -7918,7 +7918,7 @@ module pm_sampleVar
 #if CK4_ENABLED
     PURE module subroutine setVarMeanDIM_WTISD_D2_CK4(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D2_CK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D2_CK4
 #endif
         use pm_kind, only: TKC => CK4
         integer(IK)     , intent(in)                                :: dim
@@ -7934,7 +7934,7 @@ module pm_sampleVar
 #if CK3_ENABLED
     PURE module subroutine setVarMeanDIM_WTISD_D2_CK3(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D2_CK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D2_CK3
 #endif
         use pm_kind, only: TKC => CK3
         integer(IK)     , intent(in)                                :: dim
@@ -7950,7 +7950,7 @@ module pm_sampleVar
 #if CK2_ENABLED
     PURE module subroutine setVarMeanDIM_WTISD_D2_CK2(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D2_CK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D2_CK2
 #endif
         use pm_kind, only: TKC => CK2
         integer(IK)     , intent(in)                                :: dim
@@ -7966,7 +7966,7 @@ module pm_sampleVar
 #if CK1_ENABLED
     PURE module subroutine setVarMeanDIM_WTISD_D2_CK1(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D2_CK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D2_CK1
 #endif
         use pm_kind, only: TKC => CK1
         integer(IK)     , intent(in)                                :: dim
@@ -7984,7 +7984,7 @@ module pm_sampleVar
 #if RK5_ENABLED
     PURE module subroutine setVarMeanDIM_WTISD_D2_RK5(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D2_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D2_RK5
 #endif
         use pm_kind, only: TKC => RK5
         integer(IK)     , intent(in)                                :: dim
@@ -8000,7 +8000,7 @@ module pm_sampleVar
 #if RK4_ENABLED
     PURE module subroutine setVarMeanDIM_WTISD_D2_RK4(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D2_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D2_RK4
 #endif
         use pm_kind, only: TKC => RK4
         integer(IK)     , intent(in)                                :: dim
@@ -8016,7 +8016,7 @@ module pm_sampleVar
 #if RK3_ENABLED
     PURE module subroutine setVarMeanDIM_WTISD_D2_RK3(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D2_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D2_RK3
 #endif
         use pm_kind, only: TKC => RK3
         integer(IK)     , intent(in)                                :: dim
@@ -8032,7 +8032,7 @@ module pm_sampleVar
 #if RK2_ENABLED
     PURE module subroutine setVarMeanDIM_WTISD_D2_RK2(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D2_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D2_RK2
 #endif
         use pm_kind, only: TKC => RK2
         integer(IK)     , intent(in)                                :: dim
@@ -8048,7 +8048,7 @@ module pm_sampleVar
 #if RK1_ENABLED
     PURE module subroutine setVarMeanDIM_WTISD_D2_RK1(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTISD_D2_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D2_RK1
 #endif
         use pm_kind, only: TKC => RK1
         integer(IK)     , intent(in)                                :: dim
@@ -8072,7 +8072,7 @@ module pm_sampleVar
 #if CK5_ENABLED
     PURE module subroutine setVarMeanDIM_WTRSD_D2_CK5(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D2_CK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D2_CK5
 #endif
         use pm_kind, only: TKC => CK5
         integer(IK)     , intent(in)                                :: dim
@@ -8088,7 +8088,7 @@ module pm_sampleVar
 #if CK4_ENABLED
     PURE module subroutine setVarMeanDIM_WTRSD_D2_CK4(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D2_CK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D2_CK4
 #endif
         use pm_kind, only: TKC => CK4
         integer(IK)     , intent(in)                                :: dim
@@ -8104,7 +8104,7 @@ module pm_sampleVar
 #if CK3_ENABLED
     PURE module subroutine setVarMeanDIM_WTRSD_D2_CK3(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D2_CK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D2_CK3
 #endif
         use pm_kind, only: TKC => CK3
         integer(IK)     , intent(in)                                :: dim
@@ -8120,7 +8120,7 @@ module pm_sampleVar
 #if CK2_ENABLED
     PURE module subroutine setVarMeanDIM_WTRSD_D2_CK2(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D2_CK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D2_CK2
 #endif
         use pm_kind, only: TKC => CK2
         integer(IK)     , intent(in)                                :: dim
@@ -8136,7 +8136,7 @@ module pm_sampleVar
 #if CK1_ENABLED
     PURE module subroutine setVarMeanDIM_WTRSD_D2_CK1(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D2_CK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D2_CK1
 #endif
         use pm_kind, only: TKC => CK1
         integer(IK)     , intent(in)                                :: dim
@@ -8154,7 +8154,7 @@ module pm_sampleVar
 #if RK5_ENABLED
     PURE module subroutine setVarMeanDIM_WTRSD_D2_RK5(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D2_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D2_RK5
 #endif
         use pm_kind, only: TKC => RK5
         integer(IK)     , intent(in)                                :: dim
@@ -8170,7 +8170,7 @@ module pm_sampleVar
 #if RK4_ENABLED
     PURE module subroutine setVarMeanDIM_WTRSD_D2_RK4(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D2_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D2_RK4
 #endif
         use pm_kind, only: TKC => RK4
         integer(IK)     , intent(in)                                :: dim
@@ -8186,7 +8186,7 @@ module pm_sampleVar
 #if RK3_ENABLED
     PURE module subroutine setVarMeanDIM_WTRSD_D2_RK3(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D2_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D2_RK3
 #endif
         use pm_kind, only: TKC => RK3
         integer(IK)     , intent(in)                                :: dim
@@ -8202,7 +8202,7 @@ module pm_sampleVar
 #if RK2_ENABLED
     PURE module subroutine setVarMeanDIM_WTRSD_D2_RK2(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D2_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D2_RK2
 #endif
         use pm_kind, only: TKC => RK2
         integer(IK)     , intent(in)                                :: dim
@@ -8218,7 +8218,7 @@ module pm_sampleVar
 #if RK1_ENABLED
     PURE module subroutine setVarMeanDIM_WTRSD_D2_RK1(var, mean, sample, dim, weight, weisum, meang)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setMeanWTRSD_D2_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D2_RK1
 #endif
         use pm_kind, only: TKC => RK1
         integer(IK)     , intent(in)                                :: dim
