@@ -77,7 +77,7 @@
 !>  Lowest-Range Kind Type Parameters
 !>  ---------------------------------
 !>
-!>  This module specifies the kind type parameters that yield the lowest range intrinsic `integer`, `complex`, 
+!>  This module specifies the kind type parameters that yield the lowest range intrinsic `integer`, `complex`,
 !>  and `real` types that are supported by the specific ParaMonte library build as in the following:
 !>
 !>  <ol>
@@ -89,7 +89,7 @@
 !>  Highest-Range Kind Type Parameters
 !>  ----------------------------------
 !>
-!>  This module specifies the kind type parameters that yield the highest range intrinsic `integer`, `complex`, 
+!>  This module specifies the kind type parameters that yield the highest range intrinsic `integer`, `complex`,
 !>  and `real` types that are supported by the specific ParaMonte library build as in the following:
 !>
 !>  <ol>
@@ -101,7 +101,7 @@
 !>  Lowest-Precision Kind Type Parameters
 !>  -------------------------------------
 !>
-!>  This module specifies the kind type parameters that yield the lowest precision intrinsic `complex` and 
+!>  This module specifies the kind type parameters that yield the lowest precision intrinsic `complex` and
 !>  and `real` types that are supported by the specific ParaMonte library build as in the following:
 !>
 !>  <ol>
@@ -112,7 +112,7 @@
 !>  Highest-Precision Kind Type Parameters
 !>  --------------------------------------
 !>
-!>  This module specifies the kind type parameters that yield the highest precision intrinsic `complex` and 
+!>  This module specifies the kind type parameters that yield the highest precision intrinsic `complex` and
 !>  and `real` types that are supported by the specific ParaMonte library build as in the following:
 !>
 !>  <ol>
@@ -123,7 +123,7 @@
 !>  Worst-Range Kind Type Parameters
 !>  --------------------------------
 !>
-!>  This module specifies the kind type parameters that yield the worst range intrinsic `integer`, `complex`, 
+!>  This module specifies the kind type parameters that yield the worst range intrinsic `integer`, `complex`,
 !>  and `real` types that supported by the processor (whether or not supported by the specific ParaMonte library build) as in the following:
 !>
 !>  <ol>
@@ -135,7 +135,7 @@
 !>  Best-Range Kind Type Parameters
 !>  -------------------------------
 !>
-!>  This module specifies the kind type parameters that yield the highest range intrinsic `integer`, `complex`, 
+!>  This module specifies the kind type parameters that yield the highest range intrinsic `integer`, `complex`,
 !>  and `real` types that supported by the processor (whether or not supported by the specific ParaMonte library build) as in the following:
 !>
 !>  <ol>
@@ -147,7 +147,7 @@
 !>  Worst-Precision Kind Type Parameters
 !>  ------------------------------------
 !>
-!>  This module specifies the kind type parameters that yield the worst precision intrinsic `complex` and 
+!>  This module specifies the kind type parameters that yield the worst precision intrinsic `complex` and
 !>  and `real` types that supported by the processor (whether or not supported by the specific ParaMonte library build) as in the following:
 !>
 !>  <ol>
@@ -158,7 +158,7 @@
 !>  Best-Precision Kind Type Parameters
 !>  -----------------------------------
 !>
-!>  This module specifies the kind type parameters that yield the highest precision intrinsic `complex` and 
+!>  This module specifies the kind type parameters that yield the highest precision intrinsic `complex` and
 !>  and `real` types that supported by the processor (whether or not supported by the specific ParaMonte library build) as in the following:
 !>
 !>  <ol>
@@ -169,7 +169,7 @@
 !>  Developer Guidelines
 !>  ====================
 !>
-!>  The current implementation of the ParaMonte library can recognize up to five kind type parameters 
+!>  The current implementation of the ParaMonte library can recognize up to five kind type parameters
 !>  for each of the five intrinsic types in the latest Fortran programming language standard 2023:<br>
 !>  <ol>
 !>      <li>    The `character` kinds are prefixed by `SK` standing for **string kind** type:
@@ -984,148 +984,335 @@ module pm_kind
 ! The best range/precision kind type parameters supported by the processor.
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    integer     , parameter , private   :: IKB_VEC_RAW(*) = [ selected_int_kind(IRH + 9 * range(int(0, IKW))) &
-                                                            , selected_int_kind(IRH + 8 * range(int(0, IKW))) &
-                                                            , selected_int_kind(IRH + 4 * range(int(0, IKW))) &
-                                                            , selected_int_kind(IRH + 8 * range(int(0, IKW))) &
-                                                            , selected_int_kind(IRH + 8 * range(int(0, IKW))) &
-                                                            , selected_int_kind(IRH + 7 * range(int(0, IKW))) &
-                                                            , selected_int_kind(IRH + 6 * range(int(0, IKW))) &
-                                                            , selected_int_kind(IRH + 5 * range(int(0, IKW))) &
-                                                            , selected_int_kind(IRH + 4 * range(int(0, IKW))) &
-                                                            , selected_int_kind(IRH + 3 * range(int(0, IKW))) &
-                                                            , selected_int_kind(IRH + 2 * range(int(0, IKW))) &
-                                                            , selected_int_kind(IRH + 1 * range(int(0, IKW))) &
-                                                            , selected_int_kind(IRH + 0 * range(int(0, IKW))) &
-                                                            ]
-    integer     , parameter , private   :: RKB_VEC_RAW(*) = [ selected_real_kind(RPH + 29 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 28 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 24 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 28 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 28 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 27 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 26 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 25 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 24 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 23 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 22 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 21 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 20 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 19 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 18 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 14 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 18 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 18 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 17 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 16 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 15 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 14 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 13 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 12 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 11 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH + 10 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH +  9 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH +  8 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH +  4 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH +  8 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH +  8 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH +  7 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH +  6 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH +  5 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH +  4 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH +  3 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH +  2 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH +  1 * precision(real(0, RKW))) &
-                                                            , selected_real_kind(RPH +  0 * precision(real(0, RKW))) &
-                                                            ]
-    integer     , parameter , private   :: IKB_VEC(*) = pack(IKB_VEC_RAW, 0 <= IKB_VEC_RAW)
-    integer     , parameter , private   :: RKB_VEC(*) = pack(RKB_VEC_RAW, 0 <= RKB_VEC_RAW)
-    integer     , parameter , private   :: CKB_VEC(*) = RKB_VEC
+    !>  \brief
+    !>  The vector of `integer` constants of intrinsic default kind, representing the vector of `50` possible `integer`
+    !>  ranges of the kinds provided in `integer_kinds` of the intrinsic Fortran module `iso_fortran_env`.<br>
+    !>
+    !>  \details
+    !>  This nightmare is necessary to identify the highest-range `integer` kind type parameter supported by the processor.
+    !>
+    !>  \warning
+    !>  The current implementation assumes the `integer_kinds` vector of the intrinsic Fortran module `iso_fortran_env` has a maximum length of `50`.<br>
+    !>  While this assumption will likely hold for many more decades to come, it is bound to fail in the distant future.<br>
+    !>
+    !>  \finmain{integer_kinds_range}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    integer     , parameter , private   :: integer_kinds_range(*) = [ range(int(0, kind = integer_kinds(min(size(integer_kinds),  1)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds),  2)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds),  3)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds),  4)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds),  5)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds),  6)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds),  7)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds),  8)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds),  9)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 10)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 11)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 12)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 13)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 14)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 15)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 16)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 17)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 18)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 19)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 20)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 21)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 22)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 23)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 24)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 25)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 26)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 27)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 28)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 29)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 30)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 31)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 32)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 33)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 34)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 35)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 36)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 37)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 38)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 39)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 40)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 40)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 41)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 42)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 43)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 44)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 45)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 46)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 47)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 48)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 49)))) &
+                                                                    , range(int(0, kind = integer_kinds(min(size(integer_kinds), 50)))) &
+                                                                    ]
 
-    integer     , parameter , private   :: RKBR_VEC_TMP(*)= [ selected_real_kind(r = 30 * RRH) &
-                                                            , selected_real_kind(r = 29 * RRH) &
-                                                            , selected_real_kind(r = 28 * RRH) &
-                                                            , selected_real_kind(r = 24 * RRH) &
-                                                            , selected_real_kind(r = 28 * RRH) &
-                                                            , selected_real_kind(r = 28 * RRH) &
-                                                            , selected_real_kind(r = 27 * RRH) &
-                                                            , selected_real_kind(r = 26 * RRH) &
-                                                            , selected_real_kind(r = 25 * RRH) &
-                                                            , selected_real_kind(r = 24 * RRH) &
-                                                            , selected_real_kind(r = 23 * RRH) &
-                                                            , selected_real_kind(r = 22 * RRH) &
-                                                            , selected_real_kind(r = 21 * RRH) &
-                                                            , selected_real_kind(r = 20 * RRH) &
-                                                            , selected_real_kind(r = 19 * RRH) &
-                                                            , selected_real_kind(r = 18 * RRH) &
-                                                            , selected_real_kind(r = 14 * RRH) &
-                                                            , selected_real_kind(r = 18 * RRH) &
-                                                            , selected_real_kind(r = 18 * RRH) &
-                                                            , selected_real_kind(r = 17 * RRH) &
-                                                            , selected_real_kind(r = 16 * RRH) &
-                                                            , selected_real_kind(r = 15 * RRH) &
-                                                            , selected_real_kind(r = 14 * RRH) &
-                                                            , selected_real_kind(r = 13 * RRH) &
-                                                            , selected_real_kind(r = 12 * RRH) &
-                                                            , selected_real_kind(r = 11 * RRH) &
-                                                            , selected_real_kind(r = 10 * RRH) &
-                                                            , selected_real_kind(r =  9 * RRH) &
-                                                            , selected_real_kind(r =  8 * RRH) &
-                                                            , selected_real_kind(r =  4 * RRH) &
-                                                            , selected_real_kind(r =  8 * RRH) &
-                                                            , selected_real_kind(r =  8 * RRH) &
-                                                            , selected_real_kind(r =  7 * RRH) &
-                                                            , selected_real_kind(r =  6 * RRH) &
-                                                            , selected_real_kind(r =  5 * RRH) &
-                                                            , selected_real_kind(r =  4 * RRH) &
-                                                            , selected_real_kind(r =  3 * RRH) &
-                                                            , selected_real_kind(r =  2 * RRH) &
-                                                            , selected_real_kind(r =  1 * RRH) &
-                                                            ]
-    integer     , parameter , private   :: RKBR_PACK(*) = pack(RKBR_VEC_TMP, 0 <= RKBR_VEC_TMP)
-    integer     , parameter , private   :: RKBR_RANGE = range(real(0, RKBR_PACK(1)))
-    integer     , parameter , private   :: RKBR_VEC_RAW(*)= [ selected_real_kind(RPH + 29 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH + 28 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH + 24 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH + 28 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH + 28 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH + 27 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH + 26 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH + 25 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH + 24 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH + 23 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH + 22 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH + 21 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH + 20 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH + 19 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH + 18 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH + 14 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH + 18 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH + 18 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH + 17 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH + 16 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH + 15 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH + 14 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH + 13 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH + 12 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH + 11 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH + 10 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH +  9 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH +  8 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH +  4 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH +  8 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH +  8 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH +  7 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH +  6 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH +  5 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH +  4 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH +  3 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH +  2 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH +  1 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            , selected_real_kind(RPH +  0 * precision(real(0, RKW)), r = RKBR_RANGE) &
-                                                            ]
-    integer     , parameter , private   :: RKBR_VEC(*) = pack(RKBR_VEC_RAW, 0 <= RKBR_VEC_RAW)
-    integer     , parameter , private   :: CKBR_VEC(*) = RKBR_VEC
+    !>  \brief
+    !>  The vector of `integer` constants of intrinsic default kind, representing the vector of `50` possible `real`
+    !>  precisions of the kinds provided in `real_kinds` of the intrinsic Fortran module `iso_fortran_env`.<br>
+    !>
+    !>  \details
+    !>  This nightmare is necessary to identify the highest-range/precision `real` kind type parameter supported by the processor.
+    !>
+    !>  \warning
+    !>  The current implementation assumes the `real_kinds` vector of the intrinsic Fortran module `iso_fortran_env` has a maximum length of `50`.<br>
+    !>  While this assumption will likely hold for many more decades to come, it is bound to fail in the distant future.<br>
+    !>
+    !>  \finmain{real_kinds_range}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    integer     , parameter , private   :: real_kinds_range(*) =    [ range(real(0, kind = real_kinds(min(size(real_kinds),  1)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds),  2)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds),  3)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds),  4)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds),  5)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds),  6)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds),  7)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds),  8)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds),  9)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 10)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 11)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 12)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 13)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 14)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 15)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 16)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 17)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 18)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 19)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 20)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 21)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 22)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 23)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 24)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 25)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 26)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 27)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 28)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 29)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 30)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 31)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 32)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 33)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 34)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 35)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 36)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 37)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 38)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 39)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 40)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 40)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 41)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 42)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 43)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 44)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 45)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 46)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 47)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 48)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 49)))) &
+                                                                    , range(real(0, kind = real_kinds(min(size(real_kinds), 50)))) &
+                                                                    ]
+
+    !>  \brief
+    !>  The vector of `integer` constants of intrinsic default kind, representing the vector of `50` possible `real`
+    !>  highest-range precisions of the kinds provided in `real_kinds` of the intrinsic Fortran module `iso_fortran_env`.<br>
+    !>
+    !>  \details
+    !>  This nightmare is necessary to identify the highest-range highest-precision `real` kind type parameter supported by the processor.
+    !>
+    !>  \warning
+    !>  The current implementation assumes the `real_kinds` vector of the intrinsic Fortran module `iso_fortran_env` has a maximum length of `50`.<br>
+    !>  While this assumption will likely hold for many more decades to come, it is bound to fail in the distant future.<br>
+    !>
+    !>  \finmain{real_kinds_precision}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    integer     , parameter , private   :: real_kinds_precision(*)= [ precision(real(0, kind = real_kinds(min(size(real_kinds),  1)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds),  2)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds),  3)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds),  4)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds),  5)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds),  6)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds),  7)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds),  8)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds),  9)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 10)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 11)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 12)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 13)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 14)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 15)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 16)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 17)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 18)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 19)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 20)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 21)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 22)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 23)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 24)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 25)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 26)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 27)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 28)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 29)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 30)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 31)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 32)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 33)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 34)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 35)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 36)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 37)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 38)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 39)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 40)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 40)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 41)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 42)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 43)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 44)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 45)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 46)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 47)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 48)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 49)))) &
+                                                                    , precision(real(0, kind = real_kinds(min(size(real_kinds), 50)))) &
+                                                                    ]
+
+    !>  \brief
+    !>  The scalar `integer` constant of intrinsic default kind, representing the
+    !>  highest-decimal-exponent-range of `real` types made available by the processor.
+    !>
+    !>  \finmain{real_kinds_range_max}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    integer     , parameter , private   :: real_kinds_range_max = maxval(real_kinds_range, dim = 1)
+
+    !>  \brief
+    !>  The scalar `integer` constant of intrinsic default kind, representing
+    !>  the highest-precision of `real` types made available by the processor.
+    !>
+    !>  \finmain{real_kinds_precision_max}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    integer     , parameter , private   :: real_kinds_precision_max = maxval(real_kinds_precision, dim = 1)
+
+    !>  \brief
+    !>  The scalar `integer` constant of intrinsic default kind, representing
+    !>  the lowest-precision of `real` types made available by the processor.
+    !>
+    !>  \finmain{real_kinds_precision_min}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    integer     , parameter , private   :: real_kinds_precision_min = minval(real_kinds_precision, dim = 1)
+
+    !>  \brief
+    !>  The scalar `real` constant of intrinsic default kind, representing
+    !>  the step size between the highest and lowest-precision of `real` types made available by the processor.
+    !>
+    !>  \details
+    !>  This constant is internally used within the module to identify the highest-range highest-precision `real` kind type parameter.
+    !>
+    !>  \finmain{real_kinds_precision_hop}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    real        , parameter , private   :: real_kinds_precision_hop = real(real_kinds_precision_max - real_kinds_precision_min) / size(real_kinds_precision)
+
+    !>  \brief
+    !>  The vector of `integer` constants of intrinsic default kind, representing the `50` possible `real`
+    !>  highest-range precisions of the kinds provided in `real_kinds` of the intrinsic Fortran module `iso_fortran_env`.<br>
+    !>
+    !>  \details
+    !>  This nightmare is necessary to identify the highest-range highest-precision `real` kind type parameter supported by the processor.
+    !>
+    !>  \warning
+    !>  The current implementation assumes the `real_kinds` vector of the intrinsic Fortran module `iso_fortran_env` has a maximum length of `50`.<br>
+    !>  While this assumption will likely hold for many more decades to come, it is bound to fail in the distant future.<br>
+    !>
+    !>  \finmain{real_kinds_prmax_kind}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    integer     , parameter , private   :: real_kinds_prmax_kind(*) =   [ selected_real_kind(p = real_kinds_precision_max, r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop *  0)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop *  1)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop *  2)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop *  3)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop *  4)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop *  5)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop *  6)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop *  7)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop *  8)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop *  9)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 10)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 11)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 12)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 13)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 14)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 15)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 16)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 17)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 18)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 19)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 20)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 21)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 22)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 23)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 24)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 25)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 26)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 27)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 28)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 29)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 30)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 31)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 32)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 33)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 34)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 35)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 36)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 37)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 38)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 39)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 40)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 41)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 42)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 43)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 44)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 45)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 46)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 47)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 48)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 49)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = max(real_kinds_precision_min, nint(real_kinds_precision_max - real_kinds_precision_hop * 50)), r = real_kinds_range_max) &
+                                                                        , selected_real_kind(p = real_kinds_precision_min, r = real_kinds_range_max) &
+                                                                        ]
+
+    !>  \brief
+    !>  The vector of `integer` constants of intrinsic default kind, containing all maximum-range `real` kind type parameters
+    !>  corresponding to various precisions provided in `real_kinds` of the intrinsic Fortran module `iso_fortran_env`.<br>
+    !>
+    !>  \details
+    !>  This nightmare is necessary to identify the highest-range highest-precision `real` kind type parameter supported by the processor.
+    !>
+    !>  \finmain{real_kinds_prmax_kind_avail}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+    integer     , parameter , private   :: real_kinds_prmax_kind_avail(*) = pack(real_kinds_prmax_kind, 0 <= real_kinds_prmax_kind)
 
     !>  \brief
     !>  The scalar `integer` constant of intrinsic default kind, representing the <b>B</b>est-range `integer` kind **supported by the processor**.<br>
@@ -1143,7 +1330,8 @@ module pm_kind
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
-    integer     , parameter             :: IKB  = IKB_VEC(1) ! maxval([(selected_int_kind(i), i = 1, 1000)]) ! merge(IKH6, merge(IKH5, merge(IKH4, merge(IKH3, merge(IKH2, IKS, IKH2 > 0), IKH3 > 0), IKH4 > 0), IKH5 > 0), IKH6 > 0) ! only up to `3` times more precise than the double range kind.
+    ! maxval([(selected_int_kind(i), i = 1, 1000)]) ! merge(IKH6, merge(IKH5, merge(IKH4, merge(IKH3, merge(IKH2, IKS, IKH2 > 0), IKH3 > 0), IKH4 > 0), IKH5 > 0), IKH6 > 0) ! only up to `3` times more precise than the double range kind.
+    integer     , parameter             :: IKB = selected_int_kind(maxval(integer_kinds_range, dim = 1))
 
     !>  \brief
     !>  The scalar `integer` constant of intrinsic default kind, representing the <b>B</b>est-precision `complex` kind **supported by the processor**.<br>
@@ -1161,7 +1349,7 @@ module pm_kind
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
-    integer     , parameter             :: CKB  = CKB_VEC(1)
+    integer     , parameter             :: CKB = selected_int_kind(maxval(real_kinds_precision, dim = 1))
 
     !>  \brief
     !>  The scalar `integer` constant of intrinsic default kind, representing the <b>B</b>est-precision `real` kind **supported by the processor**.<br>
@@ -1179,7 +1367,8 @@ module pm_kind
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
-    integer     , parameter             :: RKB  = RKB_VEC(1) ! maxval([(selected_real_kind(i), i = 1, 1000)]) ! merge(RKH6, merge(RKH5, merge(RKH4, merge(RKH3, merge(RKH2, RKS, RKH2 > 0), RKH3 > 0), RKH4 > 0), RKH5 > 0), RKH6 > 0) ! only up to `3` times more precise than the double precision kind.
+    ! maxval([(selected_real_kind(i), i = 1, 1000)]) ! merge(RKH6, merge(RKH5, merge(RKH4, merge(RKH3, merge(RKH2, RKS, RKH2 > 0), RKH3 > 0), RKH4 > 0), RKH5 > 0), RKH6 > 0) ! only up to `3` times more precise than the double precision kind.
+    integer     , parameter             :: RKB = selected_int_kind(maxval(real_kinds_precision, dim = 1))
 
     !>  \brief
     !>  The scalar `integer` constant of intrinsic default kind, representing the <b>B</b>est-decimal-exponent-range `complex` kind **supported by the processor**.<br>
@@ -1197,7 +1386,7 @@ module pm_kind
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
-    integer     , parameter             :: CKBR = CKBR_VEC(1)
+    integer     , parameter             :: CKBR = real_kinds_prmax_kind_avail(1)
 
     !>  \brief
     !>  The scalar `integer` constant of intrinsic default kind, representing the <b>B</b>est-decimal-exponent-range `real` kind **supported by the processor**.<br>
@@ -1215,7 +1404,7 @@ module pm_kind
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
-    integer     , parameter             :: RKBR = RKBR_VEC(1)
+    integer     , parameter             :: RKBR = real_kinds_prmax_kind_avail(1)
 
     ! Constants for kind precisions.<br>
 
