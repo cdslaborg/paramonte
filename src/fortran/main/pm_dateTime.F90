@@ -1074,14 +1074,14 @@ module pm_dateTime
     !>  \f$+60 \times 14     \f$    |   \f$\ms{LINT }\f$    |   Line Islands Time
     !>
     !>  \see
-    !>  [TIMEZONE](@ref pm_dateTime::TIMEZONE)<br>
+    !>  [timezone](@ref pm_dateTime::timezone)<br>
     !>  [getZoneAbbr](@ref pm_dateTime::getZoneAbbr)<br>
     !>
-    !>  \finmain{TimeZone_type}
+    !>  \finmain{timeZone_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, January 30, 2021, 5:36 AM, Dallas, TX
-    type :: TimeZone_type
+    type :: timeZone_type
         integer(IK)     :: Zone(39) =   [ -60 * 12          &
                                         , -60 * 11          &
                                         , -60 * 10          &
@@ -1165,23 +1165,26 @@ module pm_dateTime
     end type
 
     !>  \brief
-    !>  This is an object parameter of type [TimeZone_type](@ref pm_dateTime::TimeZone_type) containing a list of timezones and their representative abbreviations.<br>
+    !>  This is an object parameter of type [timeZone_type](@ref pm_dateTime::timeZone_type) containing a list of timezones and their representative abbreviations.<br>
     !>
     !>  \details
     !>  This list contains only a representative set of zone abbreviations.<br>
-    !>  See the documentation of [TimeZone_type](@ref pm_dateTime::TimeZone_type) for more information.<br>
+    !>  See the documentation of [timeZone_type](@ref pm_dateTime::timeZone_type) for more information.<br>
     !>  See the documentation of [getZoneAbbr](@ref pm_dateTime::getZoneAbbr) for relevant usage and examples.<br>
     !>  The primary use case of this object is in the implementation of [getZoneAbbr()](@ref pm_dateTime::getZoneAbbr).<br>
     !>
     !>  \see
     !>  [getZoneAbbr](@ref pm_dateTime::getZoneAbbr)<br>
-    !>  [TimeZone_type](@ref pm_dateTime::TimeZone_type)<br>
+    !>  [timeZone_type](@ref pm_dateTime::timeZone_type)<br>
     !>
-    !>  \finmain{TIMEZONE}
+    !>  \finmain{timezone}
     !>
     !>  \author
     !>  \AmirShahmoradi, January 30, 2021, 5:36 AM, Dallas, TX
-    type(TimeZone_type), parameter :: TIMEZONE = TimeZone_type()
+    type(timeZone_type), parameter :: timezone = timeZone_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: timezone
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1192,7 +1195,7 @@ module pm_dateTime
     !>  The timezone abbreviation is difficult to infer and generally requires communication with the operating system, which may or may not have it.<br>
     !>  The current implementation of this generic interface relies on a predefined internal list of timezone abbreviations to convert the specified `zone` **in units of minutes** to an abbreviation.<br>
     !>  Where there are multiple timezone abbreviations available for a single timezone, only a single representative abbreviation is kept in the list.<br>
-    !>  See the documentation of [TimeZone_type](@ref pm_dateTime::TimeZone_type) for the current internal list of zones and abbreviations used by the ParaMonte library.<br>
+    !>  See the documentation of [timeZone_type](@ref pm_dateTime::timeZone_type) for the current internal list of zones and abbreviations used by the ParaMonte library.<br>
     !>
     !>  \param[in]  zone    :   The input scalar of type `integer` of default kind \IK, containing the <b>local timezone</b> of the Gregorian calendar <b>in minutes</b>.<br>
     !>                          (**optional**, default = [getZone()](@ref pm_dateTime::getZone))

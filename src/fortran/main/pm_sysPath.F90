@@ -287,17 +287,48 @@ module pm_sysPath
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     integer(IK)     , parameter ::  MAX_LEN_FILE_NAME = MAX_NAME    !<  \public The scalar `integer` constant of default kind \IK, representing the maximum system-allowed path length (`260` on Windows,  `255` on Unix).<br>
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: MAX_LEN_FILE_NAME
+#endif
+
     integer(IK)     , parameter ::  MAX_LEN_FILE_PATH = MAX_PATH    !<  \public The scalar `integer` constant of default kind \IK, representing the maximum system-allowed path length (`260` on Windows, `4096` on Unix).<br>
                                                                     !!          Note that the maximum file length path supported by the Intel compilers is also `4096`.<br>
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: MAX_LEN_FILE_PATH
+#endif
     character(*, SK), parameter ::  DIR_SEP_WINDOWS_ALL = SK_"\/"   !<  \public The scalar `character` constant of default kind \SK, containing the directory separator characters recognized by the Windows operating systems.<br>
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: DIR_SEP_WINDOWS_ALL
+#endif
     character(*, SK), parameter ::  DIR_SEP_POSIX_ALL = SK_"/"      !<  \public The scalar `character` constant of default kind \SK, containing the directory separator characters recognized by the POSIX-compliant systems.<br>
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: DIR_SEP_POSIX_ALL
+#endif
     character(*, SK), parameter ::  DIR_SEP_WINDOWS = SK_"\"        !<  \public The scalar `character` constant of default kind \SK, containing the preferred directory separator character on Windows operating systems.<br>
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: DIR_SEP_WINDOWS
+#endif
     character(*, SK), parameter ::  DIR_SEP_POSIX = SK_"/"          !<  \public The scalar `character` constant of default kind \SK, containing the preferred directory separator character on POSIX-compliant systems.<br>
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: DIR_SEP_POSIX
+#endif
     character(*, SK), parameter ::  DIR_SEP_ALL = SK_"/\"           !<  \public The scalar `character` constant of default kind \SK, containing the directory separator characters recognized by all platforms supported in this library (POSIX and Windows).<br>
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: DIR_SEP_ALL
+#endif
 
     character(*, SK), parameter ::  PATH_SEP_WINDOWS = SK_";"       !<  \public The scalar `character` constant of default kind \SK, containing the preferred directory separator character on Windows operating systems.<br>
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: PATH_SEP_WINDOWS
+#endif
     character(*, SK), parameter ::  PATH_SEP_POSIX = SK_":"         !<  \public The scalar `character` constant of default kind \SK, containing the preferred directory separator character on POSIX-compliant systems.<br>
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: PATH_SEP_POSIX
+#endif
     character(*, SK), parameter ::  PATH_SEP_ALL = SK_":;"          !<  \public The scalar `character` constant of default kind \SK, containing the directory separator characters recognized by all platforms supported in this library (POSIX and Windows).<br>
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: PATH_SEP_ALL
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -334,6 +365,9 @@ module pm_sysPath
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:56 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(verbatim_type), parameter :: verbatim = verbatim_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: verbatim
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -366,6 +400,9 @@ module pm_sysPath
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:56 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     character(*, SK), parameter ::  WIN32_NAMESPACE_FILE = SK_"\\?\"
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: WIN32_NAMESPACE_FILE
+#endif
 
     !>  \brief
     !>  The scalar `character` constant of default kind \SK, containing the operating systems path-separator symbol (`"\"` in Windows, `"/"` in Unix).<br>
@@ -391,6 +428,9 @@ module pm_sysPath
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:56 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     character(*, SK), parameter ::  WIN32_NAMESPACE_DEVICE = SK_"\\.\"
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: WIN32_NAMESPACE_DEVICE
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -436,6 +476,9 @@ module pm_sysPath
                                                         achar(30, SK)   // &
                                                         achar(31, SK)   // &
                                                         achar(127,SK)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: ASCII_CONTROL_STR
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -451,6 +494,9 @@ module pm_sysPath
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:56 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     character(*, SK), parameter :: WINDOWS_RESERVED_STR =  SK_'\/<>:"|?*'//ASCII_CONTROL_STR ! do not change the first character here.<br>
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: WINDOWS_RESERVED_STR
+#endif
 
     !>  \brief
     !>  The vector `character` constant of default kind \SK of `len = 1`
@@ -464,6 +510,9 @@ module pm_sysPath
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     character(1, SK), parameter :: WINDOWS_RESERVED_CHR(*) = [( WINDOWS_RESERVED_STR(i:i), i = 1_IK, len(WINDOWS_RESERVED_STR,IK) )]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: WINDOWS_RESERVED_CHR
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -478,6 +527,9 @@ module pm_sysPath
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:56 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     character(*, SK), parameter :: WINDOWS_CMD_METACHAR_STR = SK_'()%!^"<>&|'
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: WINDOWS_CMD_METACHAR_STR
+#endif
 
     !>  \brief
     !>  The vector `character` constant of default kind \SK of `len = 1`
@@ -488,6 +540,9 @@ module pm_sysPath
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     character(1, SK), parameter :: WINDOWS_CMD_METACHAR_CHR(*) = [( WINDOWS_CMD_METACHAR_STR(i:i), i = 1_IK, len(WINDOWS_CMD_METACHAR_STR,IK) )]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: WINDOWS_CMD_METACHAR_CHR
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -544,6 +599,9 @@ module pm_sysPath
                                                                     , SK_"lpt8" &
                                                                     , SK_"lpt9" &
                                                                     ]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: WINDOWS_RESERVED_DEVICE_NAME
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -601,6 +659,9 @@ module pm_sysPath
                                                         SK_"}" // & ! needs to be escaped in zsh, other shells are more lenient when there is no matching opening brace.<br>
                                                         SK_"~" // & ! home directory expansion when at the beginning of a filename; zsh wildcard; safe when it is the last character.<br>
                                                         ASCII_CONTROL_STR
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: POSIX_RESERVED_STR
+#endif
 
     !stupid gfortran (possibly version 8.3) gives error with the above syntax.<br>
     !character(*, SK), parameter :: POSIX_RESERVED_STR = " !"//'"#$&'//"'()*,;<=>?[\]^`{|}~"
@@ -613,6 +674,9 @@ module pm_sysPath
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     character(1, SK), parameter :: POSIX_RESERVED_CHR(*) = [( POSIX_RESERVED_STR(i:i), i = 1_IK, len(POSIX_RESERVED_STR,IK) )]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: POSIX_RESERVED_CHR
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -628,6 +692,9 @@ module pm_sysPath
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     character(*, SK), parameter :: POSIX_RESERVED_DQUOTE_STR = SK_"`$\"""//achar(10, SK) ! space character
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: POSIX_RESERVED_DQUOTE_STR
+#endif
 
     !>  \brief
     !>  The vector `character` constant of default kind \SK of `len = 1` containing the individual characters in [POSIX_RESERVED_DQUOTE_STR](@ref pm_sysPath::POSIX_RESERVED_DQUOTE_STR).<br>
@@ -637,6 +704,9 @@ module pm_sysPath
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     character(1, SK), parameter :: POSIX_RESERVED_DQUOTE_CHR(*) = [( POSIX_RESERVED_DQUOTE_STR(i:i), i = 1_IK, len(POSIX_RESERVED_DQUOTE_STR,IK) )]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: POSIX_RESERVED_DQUOTE_CHR
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

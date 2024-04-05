@@ -234,7 +234,7 @@ module pm_matrixInv
 
     !>  \brief
     !>  This is a concrete derived type whose instances are exclusively used
-    !>  to request Inversion operation on a given matrix within an interface of a procedure of the ParaMonte library.<br>
+    !>  to request inversion operation on a given matrix within an interface of a procedure of the ParaMonte library.<br>
     !>
     !>  \details
     !>  Objects instantiated from this derived type are exclusively used to differentiate
@@ -275,6 +275,9 @@ module pm_matrixInv
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type(inversion_type), parameter :: inversion = inversion_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: inversion
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
