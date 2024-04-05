@@ -1349,7 +1349,7 @@ module pm_kind
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
-    integer     , parameter             :: CKB = selected_int_kind(maxval(real_kinds_precision, dim = 1))
+    integer     , parameter             :: CKB = selected_real_kind(maxval(real_kinds_precision, dim = 1))
 
     !>  \brief
     !>  The scalar `integer` constant of intrinsic default kind, representing the <b>B</b>est-precision `real` kind **supported by the processor**.<br>
@@ -1368,7 +1368,7 @@ module pm_kind
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     ! maxval([(selected_real_kind(i), i = 1, 1000)]) ! merge(RKH6, merge(RKH5, merge(RKH4, merge(RKH3, merge(RKH2, RKS, RKH2 > 0), RKH3 > 0), RKH4 > 0), RKH5 > 0), RKH6 > 0) ! only up to `3` times more precise than the double precision kind.
-    integer     , parameter             :: RKB = selected_int_kind(maxval(real_kinds_precision, dim = 1))
+    integer     , parameter             :: RKB = selected_real_kind(maxval(real_kinds_precision, dim = 1))
 
     !>  \brief
     !>  The scalar `integer` constant of intrinsic default kind, representing the <b>B</b>est-decimal-exponent-range `complex` kind **supported by the processor**.<br>
