@@ -574,7 +574,7 @@ module pm_bench
     interface getTiming
     module function getTimingMethod(self, minsec, miniter) result(timing)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getTiming
+        !DEC$ ATTRIBUTES DLLEXPORT :: getTimingMethod
 #endif
         use pm_kind, only: IK, RKD
         class(bench_type)   , intent(inout)             :: self
@@ -643,7 +643,7 @@ module pm_bench
     interface setTiming
     module subroutine setTimingMethod(self, minsec, miniter)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setTiming
+        !DEC$ ATTRIBUTES DLLEXPORT :: setTimingMethod
 #endif
         use pm_kind, only: IK, RKD
         class(bench_type)   , intent(inout)             :: self
