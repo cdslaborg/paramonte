@@ -30,7 +30,6 @@ use pm_test, only: setSummary
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if BASIC_TEST_ENABLED && 1
 block; use test_pm_arrayCenter; call setTest(); end block
 block; use test_pm_arrayChange; call setTest(); end block
 block; use test_pm_arrayChoice; call setTest(); end block
@@ -100,7 +99,6 @@ block; use test_pm_timer; call setTest(); end block
 
 !!block; use test_pm_matrixInit; call setTest(); end block
 
-
 !!block; use test_pm_distBand; call setTest(); end block
 !!block; use test_pm_batse; call setTest(); end block
 !!block; use test_pm_except; call setTest(); end block
@@ -114,12 +112,6 @@ block; use test_pm_timer; call setTest(); end block
 !!block; use test_pm_distUnifEll; call setTest(); end block
 !!block; use test_pm_distMultiSkewNorm; call setTest(); end block
 !!block; use test_pm_distNorm; call setTest(); end block
-!!block; use test_pm_distNorm; call setTest(); end block
-!!block; use test_pm_distNorm; call setTest(); end block
-!!block; use test_pm_distNorm; call setTest(); end block
-!!block; use test_pm_distNorm; call setTest(); end block
-!!block; use test_pm_distNorm; call setTest(); end block
-
 
 !!block; use test_pm_distUnif; call setTest(); end block
 !!block; use test_pm_distUnif; call setTest(); end block
@@ -184,7 +176,6 @@ block; use test_pm_timer; call setTest(); end block
 !block; use test_pm_timer; call setTest(); end block
 !block; use test_pm_timer; call setTest(); end block
 !block; use test_pm_tranGaus; call setTest(); end block
-#endif
 
 #if SAMPLER_TEST_ENABLED && 1
 !block; use test_pm_paraDRAM; call setTest(); end block
@@ -194,7 +185,6 @@ block; use test_pm_timer; call setTest(); end block
 !block; use test_pm_paraDISE_RefinedChain; call setTest(); end block
 !block; use test_pm_paraDRAM_ChainFileContents; call setTest(); end block
 !block; use test_pm_paraDISE_ChainFileContents; call setTest(); end block
-
 !!block; use test_pm_paraNest_ChainFileContents; call setTest(); end block
 #endif
 

@@ -480,7 +480,7 @@ contains
             write(*, "(*(g0.8,:,', '))") "(volumeAvg - volumeRef) / volumeStd", (volumeAvg - volumeRef) / volumeStd
         end block
 
-#if     (CHECK_ENABLED || BASIC_TEST_ENABLED)
+#if     CHECK_ENABLED
 
         ! Write the weights to output files.
 

@@ -16,7 +16,7 @@
 ####################################################################################################################################
 
 ####    See the file install.sh.usage in the same folder for usage guidelines of this Batch script.
-####    
+####
 ####    NOTE: Do not change the contents of this file unless you know what the consequences are.
 ####    This is the Bash script file that builds objects, shared libraries,
 ####    as well as the test and example binaries of the ParaMonte library in
@@ -24,13 +24,13 @@
 ####    Upon invocation of this file from a Bash command-line interface,
 ####    this script will parse the user-provided flags and their values
 ####    to build the ParaMonte library.
-####    
+####
 ####    To redirect the output to an external file (e.g., install.sh.out), try:
-####    
+####
 ####        install.sh >install.sh.out 2>&1
-####    
+####
 ####    to redirect output to the external file install.sh.out and run the installation in background, try:
-####    
+####
 ####        install.sh >install.sh.out 2>&1 &; jobs; disown
 ####        jobs; disown
 
@@ -692,8 +692,7 @@ for fc in ${list_fc//;/$'\n'}; do # replace `;` with newline character.
                                     parallelismText="Serial"
                                     htmlSubDir="serial"
                                 fi
-                                htmlDir="${paramonte_external_codecov_fortran_dir}/${htmlSubDir}"
-                                #htmlDir="${paramonte_external_codecov_fortran_dir}/${paramonte_version_fortran}/${PMLIB_BASE_NAME}"
+                                htmlDir="${paramonte_external_doc_out_dir}/fortran/${paramonte_version_major_fortran}/codecov/${htmlSubDir}"
                                 htmlTitleCodeCov="ParaMonte ${paramonte_version_fortran} :: ${parallelismText} Fortran - Code Coverage Report"
 
                                 if [[ ${csid} == [gG][nN][uU] ]]; then
@@ -704,259 +703,265 @@ for fc in ${list_fc//;/$'\n'}; do # replace `;` with newline character.
                                         echo >&2 "${pmnote} GNU gcov detected at: ${gcovPath}"
                                         echo >&2 "${pmnote} Invoking gcov to generate coverage report..."
 
-                                        gcovFortranDataDir=$(find "${paramonte_bld_dir}" -name pm_blas*.o)
-                                        gcovFortranDataDir=$(dirname "${gcovFortranDataDir}")
+                                        #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+                                        #### GCOV main source: Generate *.gcda *.gcno codecov files for the Fortran main source files
+                                        #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-                                        if [ -d "${gcovFortranDataDir}" ]; then
+                                        # pm_blas is a unique file name. That is why we choose and use it.
+                                        sobjFortranMainDataDir=$(find "${paramonte_bld_dir}" -name pm_blas*.o)
+                                        sobjFortranMainDataDir=$(dirname "${sobjFortranMainDataDir}")
 
-                                            gcovFortranDir="${paramonte_bld_dir}"/gcov
-                                            if [ -d "${gcovFortranDir}" ]; then
-                                                echo >&2 "${pmnote} Removing the old existing gcov files directory: ${gcovFortranDir}"
-                                                rm -rf "${gcovFortranDir}"
-                                            fi
-                                            echo >&2 "${pmnote} Generating the gcov files directory: ${gcovFortranDir}"
-                                            mkdir -p "${gcovFortranDir}"
-                                            cd "${gcovFortranDir}"
+                                        gcovFortranMainDataDir=$(find "${paramonte_bld_dir}" -name pm_blas*.gcno)
+                                        gcovFortranMainDataDir=$(dirname "${gcovFortranMainDataDir}")
 
-                                            #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-                                            #### GCOV Fortran source: Generate *.gcda *.gcno codecov files for the Fortran source files
-                                            #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+                                        if [ -d "${sobjFortranMainDataDir}" ] && [ -d "${gcovFortranMainDataDir}" ]; then
 
-                                            for srcFileName in "${paramonte_src_fortran_dir}"/*.F90; do
-                                                if ! [[ "${srcFileName}" =~ .*"pm_array.F90".* ]]; then
+                                            # paramonte_bld_gcov_dir="${paramonte_bld_dir}"/gcov
+                                            # if [ -d "${paramonte_bld_gcov_dir}" ]; then
+                                            #     echo >&2 "${pmnote} Removing the old existing gcov files directory: ${paramonte_bld_gcov_dir}"
+                                            #     rm -rf "${paramonte_bld_gcov_dir}"
+                                            # fi
+                                            # echo >&2 "${pmnote} Generating the gcov files directory: ${paramonte_bld_gcov_dir}"
+                                            # mkdir -p "${paramonte_bld_gcov_dir}"
+                                            # cd "${paramonte_bld_gcov_dir}"
+                                            # echo >&2 "${pmnote} Copying the main *.gcda and *.gcno gcov files..."
+                                            # echo >&2 "${pmnote}     from: ${sobjFortranMainDataDir}"
+                                            # echo >&2 "${pmnote}       to: ${paramonte_bld_gcov_dir}"
+                                            # cp -arf "${sobjFortranMainDataDir}"/*.gcda "${paramonte_bld_gcov_dir}"
+                                            # cp -arf "${sobjFortranMainDataDir}"/*.gcno "${paramonte_bld_gcov_dir}"
 
-                                                    srcFileNameBase=$(basename -- "${srcFileName}")
-                                                    #if ! [[ "${srcFileName}" =~ .*".inc.F90".* ]]; then
-                                                    #objFilePath=$(find "${gcovFortranDataDir}" -name ${srcFileNameBase}.o)
-                                                    # The following assumes that cmake names the object files with full source file name (including file extension).
-                                                    objFilePath="${gcovFortranDataDir}/${srcFileNameBase}.o"
-                                                    echo >&2 Now running: gcov "${paramonte_src_fortran_dir}/${srcFileName}" -o "${objFilePath}"
-
-                                                    gcov "${paramonte_src_fortran_dir}/${srcFileName}" -o "${objFilePath}" || {
-                                                        echo >&2 "${pmfatal} Fatal Error: Code Coverage analysis via GNU gcov tool failed."
-                                                        exit 1
-                                                    }
-                                                    #fi
-
-                                                fi
+                                            cd "${gcovFortranMainDataDir}"
+                                            for objFileName in "${sobjFortranMainDataDir}"/*.o; do
+                                                srcFileName=$(basename -- "${objFileName}")
+                                                objFilePath="${sobjFortranMainDataDir}/${objFileName}"
+                                                srcFilePath="${paramonte_src_fortran_main_dir}/${srcFileName}"
+                                                echo >&2 gcov "${srcFilePath}" -o "${objFilePath}"
+                                                         gcov "${srcFilePath}" -o "${objFilePath}" \
+                                                         || {
+                                                             echo >&2 "${pmwarn} The ParaMonte Code Coverage analysis of the main object files via GNU gcov tool failed."
+                                                             echo >&2 "${pmwarn} The ParaMonte main source file: ${srcFilePath}"
+                                                             echo >&2 "${pmwarn} The ParaMonte main object file: ${objFilePath}"
+                                                         }
                                             done
 
-                                            #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-                                            #### GCOV TEST SOURCE: Generate *.gcda *.gcno codecov files for the Fortran test source files
-                                            #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+                                        else
 
-                                            #### first attempt to infer the cmake object files' directory
+                                            echo >&2 "${pmwarn} Failed to detect the *.o, *.gcda, and *.gcno data files for the ParaMonte main source files."
+                                            echo >&2 "${pmwarn} The expected directory path for the object files: ${sobjFortranMainDataDir}"
+                                            echo >&2 "${pmwarn} The expected directory path for the GCOV   files: ${gcovFortranMainDataDir}"
+                                            echo >&2 "${pmwarn} The coverage report for the ParaMonte main source file will not be included."
+                                            echo >&2 "${pmwarn} Skipping the GCOV code coverage report generation for the main files..."
 
-                                            gcovFortranTestDataDir=$(find "${paramonte_bld_dir}" -name main.F90.o)
-                                            gcovFortranTestDataDir=$(dirname "${gcovFortranTestDataDir}")
+                                        fi
 
-                                            if [ -d "${gcovFortranTestDataDir}" ]; then
-                                                gcovFortranTestDir="${paramonte_bld_dir}"/gcov
-                                                #rm -rf "${gcovFortranTestDir}" This would also the new Fortran coverage files.
-                                                if ! [ -d "${gcovFortranTestDir}" ]; then
-                                                    mkdir -p "${gcovFortranTestDir}"
+                                        #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+                                        #### GCOV test source: Generate *.gcda *.gcno codecov files for the Fortran test source files
+                                        #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+                                        #### First attempt to infer the cmake object files' directory.
+
+                                        sobjFortranTestDataDir=$(find "${paramonte_bld_dir}" -name main*.o)
+                                        sobjFortranTestDataDir=$(dirname "${sobjFortranTestDataDir}")
+
+                                        gcovFortranTestDataDir=$(find "${paramonte_bld_dir}" -name main*.gcno)
+                                        gcovFortranTestDataDir=$(dirname "${gcovFortranTestDataDir}")
+
+                                        if [ -d "${sobjFortranTestDataDir}" ] && [ -d "${gcovFortranTestDataDir}" ]; then
+
+                                            #gcovFortranTestDir="${sobjFortranTestDataDir}"/gcov
+                                            ##rm -rf "${gcovFortranTestDir}" This would also the new Fortran coverage files.
+                                            #if ! [ -d "${gcovFortranTestDir}" ]; then
+                                            #    mkdir -p "${gcovFortranTestDir}"
+                                            #fi
+                                            #cd "${gcovFortranTestDir}"
+                                            cd "${gcovFortranTestDataDir}"
+                                            for objFileName in "${sobjFortranTestDataDir}"/*.o; do
+                                                srcFileName=$(basename -- "${objFileName}")
+                                                objFilePath="${sobjFortranTestDataDir}/${objFileName}"
+                                                srcFilePath="${paramonte_src_fortran_test_dir}/${srcFileName}"
+                                                echo >&2 gcov "${srcFilePath}" -o "${objFilePath}"
+                                                         gcov "${srcFilePath}" -o "${objFilePath}" \
+                                                         || {
+                                                             echo >&2 "${pmwarn} The ParaMonte Code Coverage analysis of the test object files via GNU gcov tool failed."
+                                                             echo >&2 "${pmwarn} The ParaMonte test source file: ${srcFilePath}"
+                                                             echo >&2 "${pmwarn} The ParaMonte test object file: ${objFilePath}"
+                                                         }
+                                            done
+
+                                        else
+
+                                            echo >&2 "${pmwarn} Failed to detect the *.o, *.gcda, and *.gcno data files for the ParaMonte test source files."
+                                            echo >&2 "${pmwarn} The expected directory path for the object files: ${sobjFortranTestDataDir}"
+                                            echo >&2 "${pmwarn} The expected directory path for the GCOV   files: ${gcovFortranTestDataDir}"
+                                            echo >&2 "${pmwarn} The coverage report for the ParaMonte test source file will not be included."
+                                            echo >&2 "${pmwarn} Skipping the GCOV code coverage report generation for the test files..."
+
+                                        fi
+
+                                        #::::::::::::::::::::::::::::::::::::::::
+                                        # LCOV: generate lcov summary report file
+                                        #::::::::::::::::::::::::::::::::::::::::
+
+                                        if command -v lcov >/dev/null 2>&1; then
+
+                                            #### generate the Fortran code coverage report file
+
+                                            paramonte_bld_lcov_dir="${paramonte_bld_dir}"/lcov
+                                            rm -rf "${paramonte_bld_lcov_dir}"
+                                            mkdir -p "${paramonte_bld_lcov_dir}"
+                                            cd "${paramonte_bld_lcov_dir}"
+
+                                            lcovOutputFortranFilePath="${paramonte_bld_lcov_dir}/paramonte.fortran.coverage.info"
+
+                                            unset branchCoverageFlag
+                                            # Add the following flag to lcov to enable branch coverage:
+                                            # branchCoverageFlag="--rc lcov_branch_coverage=1"
+                                            # "${branchCoverageFlag}"
+
+                                            lcov --capture \
+                                            --directory "${gcovFortranMainDataDir}" \
+                                            --output-file "${lcovOutputFortranFilePath}" \
+                                            || {
+                                                echo >&2 "${pmwarn} Code Coverage report generation via LCOV tool failed."
+                                                #exit 1
+                                            }
+
+                                            #### generate the fortran code coverage report file
+
+                                            lcovOutputCombinedFilePath="${paramonte_bld_lcov_dir}/paramonte.combined.coverage.info"
+
+                                            unset lcovOutputTestFilePath
+                                            echo >&2 "${pmnote} generating the code coverage report file for the ParaMonte test files..."
+                                            lcovOutputTestFilePath="${paramonte_bld_lcov_dir}/paramonte.test.coverage.info"
+                                            lcov --capture \
+                                            --directory "${sobjFortranTestDataDir}" \
+                                            --output-file "${lcovOutputTestFilePath}" \
+                                            && {
+                                                echo >&2 "${pmnote} Combining all LCOV code coverage report files as a single final report file..."
+                                                lcov --add-tracefile "${lcovOutputFortranFilePath}" -a "${lcovOutputTestFilePath}" -o "${lcovOutputCombinedFilePath}"
+                                            } || {
+                                                echo >&2 "${pmwarn} Code Coverage report generation for the ParaMonte test source files via lcov tool failed."
+                                                echo >&2 "${pmwarn} Skipping..."
+                                            }
+
+                                            #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+                                            # HTML: convert the lcov summary file to the final html report files
+                                            #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+                                            if command -v genhtml >/dev/null 2>&1; then
+
+                                                if [ -d "${htmlDir}" ]; then
+                                                    rm -rf "${htmlDir}"
+                                                else
+                                                    mkdir -p "${htmlDir}"
                                                 fi
-                                                cd "${gcovFortranTestDir}"
-                                                for srcFileName in "${paramonte_src_fortran_test_dir}"/*.F90; do
-                                                    if ! [[ "${srcFileName}" =~ .*"main.F90".* ]]; then
 
-                                                        srcFileNameBase=$(basename -- "${srcFileName}")
-                                                        objFilePath="${gcovFortranTestDataDir}/${srcFileNameBase}.o"
-                                                        echo >&2 gcov "${paramonte_src_fortran_test_dir}/${srcFileName}" -o "${objFilePath}"
+                                                if ! [ -f "${lcovOutputCombinedFilePath}" ]; then
+                                                    cp "${lcovOutputFortranFilePath}" "${lcovOutputCombinedFilePath}" || {
+                                                        echo >&2 "${pmwarn} Copy action failed:"
+                                                        echo >&2 "${pmwarn} from: ${lcovOutputFortranFilePath}"
+                                                        echo >&2 "${pmwarn}   to: ${lcovOutputCombinedFilePath}"
+                                                    }
+                                                fi
 
-                                                        gcov "${paramonte_src_fortran_test_dir}/${srcFileName}" -o "${objFilePath}" \
-                                                        || {
-                                                            echo >&2 "${pmwarn} The ParaMonte Code Coverage analysis of the test source files via GNU gcov tool failed."
-                                                            echo >&2 "${pmwarn} The ParaMonte test source file: ${paramonte_src_fortran_test_dir}/${srcFileName}"
-                                                            echo >&2 "${pmwarn} Skipping..."
-                                                        }
-                                                        #fi
-                                                    fi
-                                                done
-                                            else
-                                                echo >&2 "${pmwarn} The directory for the *.gcda *.gcno codecov data files does not exist."
-                                                echo >&2 "${pmwarn} The expected directory path: ${gcovFortranTestDataDir}"
-                                                echo >&2 "${pmwarn} Skipping code coverage report generation for the test files..."
-                                            fi
+                                                genhtml \
+                                                "${lcovOutputCombinedFilePath}" \
+                                                --output-directory "${htmlDir}" \
+                                                --legend \
+                                                --title "${htmlTitleCodeCov}" \
+                                                && {
 
-                                            #::::::::::::::::::::::::::::::::::::::::
-                                            # LCOV: generate lcov summary report file
-                                            #::::::::::::::::::::::::::::::::::::::::
+                                                    echo >&2 "${pmnote} The code coverage build files are stored at: ${paramonte_bld_dir}"
+                                                    echo >&2 "${pmnote} The code coverage report files are stored at: ${htmlDir}"
 
-                                            if command -v lcov >/dev/null 2>&1; then
+                                                    # postprocess the html files
 
-                                                #### generate the Fortran code coverage report file
+                                                    pmlinkopen='<a href="https:\/\/www.cdslab.org\/paramonte\/" target="_blank">'
+                                                    pmlinklogo='<img alt="The ParaMonte Documentation Website" src="https:\/\/cdslaborg.github.io\/paramonted/fortran\/html\/logo.png"\/>'
+                                                    pmlinkclose='<\/a>'
 
-                                                lcovFortranDir="${paramonte_bld_dir}"/lcov
-                                                rm -rf "${lcovFortranDir}"
-                                                mkdir -p "${lcovFortranDir}"
-                                                cd "${lcovFortranDir}"
+                                                    original='<tr><td class="title">Code Coverage Report<\/td><\/tr>'
+                                                    modified='<tr><td class="title">'
+                                                    modified+="${pmlinkopen}"
+                                                    modified+="${pmlinklogo}"
+                                                    modified+="${pmlinkclose}"
+                                                    modified+='<\/td><\/tr>'
 
-                                                lcovOutputFortranFilePath="${lcovFortranDir}/paramonte.fortran.coverage.info"
+                                                    footer='<tr><td class="versionInfo">'
+                                                    footer+='<a href="https:\/\/www.cdslab.org\/paramonte"><b>ParaMonte: Parallel Monte Carlo and Machine Learning Library<\/b><\/a>&nbsp;<br>'
+                                                    footer+='<a href="https:\/\/www.cdslab.org" target="_blank"><b>The Computational Data Science Lab<\/b><\/a><br>'
+                                                    footer+="&copy; Copyright 2012 - $(date +%Y)"
+                                                    footer+='<\/td><\/tr>'
 
-                                                unset branchCoverageFlag
-                                                # Add the following flag to lcov to enable branch coverage:
-                                                # branchCoverageFlag="--rc lcov_branch_coverage=1"
-                                                # "${branchCoverageFlag}"
+                                                    shopt -s globstar
+                                                    for htmlFilePath in "${htmlDir}"/**/*.html; do # Whitespace-safe and recursive
+                                                        sed -i "s/${original}/${modified}/g" "${htmlFilePath}"
+                                                        sed -i "/<tr><td class=\"versionInfo\">/c\\${footer}" "${htmlFilePath}"
+                                                    done
 
-                                                lcov --capture \
-                                                --directory "${gcovFortranDataDir}" \
-                                                --output-file "${lcovOutputFortranFilePath}" \
-                                                || {
-                                                    echo >&2 "${pmwarn} Code Coverage report generation via LCOV tool failed."
-                                                    #exit 1
+                                                    #scfile="${paramonte_dir}/auxil/sc.html"
+                                                    #if [ -f "${scfile}" ]; then
+                                                    #    echo >&2
+                                                    #    echo >&2 "${pmnote} processing the sc file contents..."
+                                                    #    echo >&2
+                                                    #    sccontents=`cat "${paramonte_dir}/auxil/sc.html"`
+                                                    #    sed -e '/<\/body>/r${scfile}' "${htmlFilePath}"
+                                                    #else
+                                                    #    echo >&2
+                                                    #    echo >&2 "${pmnote} ${warning} ${paramonte_dir}/auxil/sc.html is missing in your clone."
+                                                    #    echo >&2 "${pmnote} ${warning} This is not critical, unless you are a ParaMonte developer and"
+                                                    #    echo >&2 "${pmnote} ${warning} aim to publicly release this code coverage report. To obtain a "
+                                                    #    echo >&2 "${pmnote} ${warning} copy of the file, contact the ParaMonte lead developer at"
+                                                    #    echo >&2 "${pmnote} ${warning} "
+                                                    #    echo >&2 "${pmnote} ${warning} shahmoradi@utexas.edu"
+                                                    #    echo >&2
+                                                    #fi
+
+                                                } || {
+
+                                                    echo >&2 "${pmwarn} Code Coverage report generation via genhtml failed."
+
                                                 }
+                                                # "${branchCoverageFlag}" \
+                                                #--title "<a href=\"https://github.com/cdslaborg/paramonte\" target=\"_blank\">ParaMonte Fortran</a> code coverage report" \
 
-                                                #### generate the fortran code coverage report file
-
-                                                lcovOutputCombinedFilePath="${lcovFortranDir}/paramonte.combined.coverage.info"
-
-                                                unset lcovOutputTestFilePath
-                                                if ls "${gcovFortranTestDir}"/*.gcov 1> /dev/null 2>&1; then
-                                                    echo >&2 "${pmnote} generating the code coverage report file for the ParaMonte test files..."
-                                                    lcovOutputTestFilePath="${lcovFortranDir}/paramonte.test.coverage.info"
-                                                    lcov --capture \
-                                                    --directory "${gcovFortranTestDataDir}" \
-                                                    --output-file "${lcovOutputTestFilePath}" \
-                                                    && {
-                                                        echo >&2 "${pmnote} Combining all LCOV code coverage report files as a single final report file..."
-                                                        lcov --add-tracefile "${lcovOutputFortranFilePath}" -a "${lcovOutputTestFilePath}" -o "${lcovOutputCombinedFilePath}"
-                                                    } || {
-                                                        echo >&2 "${pmwarn} Code Coverage report generation for the ParaMonte test source files via lcov tool failed."
-                                                        echo >&2 "${pmwarn} Skipping..."
-                                                    }
-                                                else
-                                                    echo >&2 "${pmwarn} Failed to detect the *.gcda *.gcno codecov data files for the ParaMonte test source files."
-                                                    echo >&2 "${pmwarn} The expected directory path for the files: ${gcovFortranTestDir}"
-                                                    echo >&2 "${pmwarn} The coverage report for the ParaMonte test source file will not be included."
-                                                    echo >&2 "${pmwarn} Skipping the lcov code coverage report generation for the test files..."
-                                                fi
-
-                                                #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-                                                # HTML: convert the lcov summary file to the final html report files
-                                                #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-                                                if command -v genhtml >/dev/null 2>&1; then
-
-                                                    if [ -d "${htmlDir}" ]; then
-                                                        rm -rf "${htmlDir}"
-                                                    else
-                                                        mkdir -p "${htmlDir}"
-                                                    fi
-
-                                                    if ! [ -f "${lcovOutputCombinedFilePath}" ]; then
-                                                        cp "${lcovOutputFortranFilePath}" "${lcovOutputCombinedFilePath}" || {
-                                                            echo >&2 "${pmwarn} Copy action failed:"
-                                                            echo >&2 "${pmwarn} from: ${lcovOutputFortranFilePath}"
-                                                            echo >&2 "${pmwarn}   to: ${lcovOutputCombinedFilePath}"
-                                                        }
-                                                    fi
-
-                                                    genhtml \
-                                                    "${lcovOutputCombinedFilePath}" \
-                                                    --output-directory "${htmlDir}" \
-                                                    --legend \
-                                                    --title "${htmlTitleCodeCov}" \
-                                                    && {
-
-                                                        echo >&2 "${pmnote} The code coverage build files are stored at: ${paramonte_bld_dir}"
-                                                        echo >&2 "${pmnote} The code coverage report files are stored at: ${htmlDir}"
-
-                                                        # postprocess the html files
-
-                                                        pmlinkopen='<a href="https:\/\/www.cdslab.org\/paramonte\/" target="_blank">'
-                                                        pmlinklogo='<img alt="The ParaMonte Documentation Website" src="https:\/\/cdslaborg.github.io\/paramonted/fortran\/html\/logo.png"\/>'
-                                                        pmlinkclose='<\/a>'
-
-                                                        original='<tr><td class="title">LCOV - code coverage report<\/td><\/tr>'
-                                                        modified='<tr><td class="title">'
-                                                        modified+="${pmlinkopen}"
-                                                        modified+="${pmlinklogo}"
-                                                        modified+="${pmlinkclose}"
-                                                        modified+='<\/td><\/tr>'
-
-                                                        footer='<tr><td class="versionInfo">'
-                                                        footer+='<a href="https:\/\/www.cdslab.org\/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library<\/b><\/a>&nbsp;<br>'
-                                                        footer+='<a href="https:\/\/www.cdslab.org" target="_blank"><b>The Computational Data Science Lab<\/b><\/a><br>'
-                                                        footer+="&copy; Copyright 2012 - $(date +%Y)"
-                                                        footer+='<\/td><\/tr>'
-
-                                                        shopt -s globstar
-                                                        for htmlFilePath in "${htmlDir}"/**/*.html; do # Whitespace-safe and recursive
-                                                            sed -i "s/${original}/${modified}/g" "${htmlFilePath}"
-                                                            sed -i "/<tr><td class=\"versionInfo\">/c\\${footer}" "${htmlFilePath}"
-                                                        done
-
-                                                        #scfile="${paramonte_dir}/auxil/sc.html"
-                                                        #if [ -f "${scfile}" ]; then
-                                                        #    echo >&2
-                                                        #    echo >&2 "${pmnote} processing the sc file contents..."
-                                                        #    echo >&2
-                                                        #    sccontents=`cat "${paramonte_dir}/auxil/sc.html"`
-                                                        #    sed -e '/<\/body>/r${scfile}' "${htmlFilePath}"
-                                                        #else
-                                                        #    echo >&2
-                                                        #    echo >&2 "${pmnote} ${warning} ${paramonte_dir}/auxil/sc.html is missing in your clone."
-                                                        #    echo >&2 "${pmnote} ${warning} This is not critical, unless you are a ParaMonte developer and"
-                                                        #    echo >&2 "${pmnote} ${warning} aim to publicly release this code coverage report. To obtain a "
-                                                        #    echo >&2 "${pmnote} ${warning} copy of the file, contact the ParaMonte lead developer at"
-                                                        #    echo >&2 "${pmnote} ${warning} "
-                                                        #    echo >&2 "${pmnote} ${warning} shahmoradi@utexas.edu"
-                                                        #    echo >&2
-                                                        #fi
-
-                                                    } || {
-
-                                                        echo >&2 "${pmwarn} Code Coverage report generation via genhtml failed."
-
-                                                    }
-                                                    # "${branchCoverageFlag}" \
-                                                    #--title "<a href=\"https://github.com/cdslaborg/paramonte\" target=\"_blank\">ParaMonte Fortran</a> code coverage report" \
-
-                                                    ## generate test files code coverage
-                                                    #
-                                                    #gcovFortranTestDataDir=$(find "${paramonte_bld_obj_dir}" -name test_pm_*.o)
-                                                    #gcovFortranTestDataDir=$(dirname "${gcovFortranTestDataDir}")
-                                                    #
-                                                    #lcovFortranTestDir="${paramonte_bld_dir}"/test/lcov
-                                                    #mkdir -p "${lcovFortranTestDir}"
-                                                    #cd "${lcovFortranTestDir}"
-                                                    #
-                                                    #lcov --capture --directory "${gcovFortranTestDataDir}" --output-file ./paramonte.coverage.info
-                                                    #
-                                                    #genhtml paramonte.coverage.info --output-directory "${lcovFortranTestDir}/html"
-
-                                                else
-                                                    echo >&2 "${pmwarn} Failed to find the GENHTML test coverage summarizer."
-                                                    echo >&2 "${pmwarn} The genhtml program is required to generate the coverage report."
-                                                    echo >&2 "${pmwarn} If you believe genhtml is already installed on your system,"
-                                                    echo >&2 "${pmwarn} please make sure the path its directory is added to the"
-                                                    echo >&2 "${pmwarn} PATH environmental variable of your terminal."
-                                                    echo >&2 "${pmwarn} Once added, rerun the ParaMonte code coverage."
-                                                fi
+                                                ## generate test files code coverage
+                                                #
+                                                #sobjFortranTestDataDir=$(find "${paramonte_bld_obj_dir}" -name test_pm_*.o)
+                                                #sobjFortranTestDataDir=$(dirname "${sobjFortranTestDataDir}")
+                                                #
+                                                #lcovFortranTestDir="${paramonte_bld_dir}"/test/lcov
+                                                #mkdir -p "${lcovFortranTestDir}"
+                                                #cd "${lcovFortranTestDir}"
+                                                #
+                                                #lcov --capture --directory "${sobjFortranTestDataDir}" --output-file ./paramonte.coverage.info
+                                                #
+                                                #genhtml paramonte.coverage.info --output-directory "${lcovFortranTestDir}/html"
 
                                             else
-                                                echo >&2 "${pmwarn} Failed to find the LCOV test coverage summarizer."
-                                                echo >&2 "${pmwarn} The lcov program is required to generate the coverage report."
-                                                echo >&2 "${pmwarn} If you believe lcov is already installed on your system,"
+                                                echo >&2 "${pmwarn} Failed to find the GENHTML test coverage summarizer."
+                                                echo >&2 "${pmwarn} The genhtml program is required to generate the coverage report."
+                                                echo >&2 "${pmwarn} If you believe genhtml is already installed on your system,"
                                                 echo >&2 "${pmwarn} please make sure the path its directory is added to the"
                                                 echo >&2 "${pmwarn} PATH environmental variable of your terminal."
                                                 echo >&2 "${pmwarn} Once added, rerun the ParaMonte code coverage."
                                             fi
 
-                                            cd "${paramonte_dir}"
-
                                         else
-                                            echo >&2 "${pmfatal} Failed to find the ParaMonte library objects directory."
-                                            echo >&2 "${pmfatal} "
-                                            echo >&2 "${pmfatal} gracefully exiting The ParaMonte build script."
-                                            exit 1
+                                            echo >&2 "${pmwarn} Failed to find the LCOV test coverage summarizer."
+                                            echo >&2 "${pmwarn} The lcov program is required to generate the coverage report."
+                                            echo >&2 "${pmwarn} If you believe lcov is already installed on your system,"
+                                            echo >&2 "${pmwarn} please make sure the path its directory is added to the"
+                                            echo >&2 "${pmwarn} PATH environmental variable of your terminal."
+                                            echo >&2 "${pmwarn} Once added, rerun the ParaMonte code coverage."
                                         fi
 
+                                        cd "${paramonte_dir}"
+
                                     else
-                                        echo >&2 "${pmfatal} Fatal Error: Failed to find the GNU gcov test coverage program."
-                                        echo >&2 "${pmfatal} The gcov program is required to generate the coverage report."
-                                        echo >&2 "${pmfatal} If you believe gcov is already installed on your system,"
+                                        echo >&2 "${pmfatal} Fatal Error: Failed to find the GNU GCOV test coverage software."
+                                        echo >&2 "${pmfatal} The GCOV program is required to generate the coverage report."
+                                        echo >&2 "${pmfatal} If you believe GCOV is already installed on your system,"
                                         echo >&2 "${pmfatal} please make sure the path its directory is added to the"
                                         echo >&2 "${pmfatal} PATH environmental variable of your terminal."
                                         echo >&2 "${pmfatal} Once added, rerun the ParaMonte code coverage."

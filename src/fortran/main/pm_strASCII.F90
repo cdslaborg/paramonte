@@ -135,6 +135,9 @@ module pm_strASCII
     !>  \brief
     !>  The constant array of type `character` of default kind \SK containing the uppercase English letters.<br>
     character(1, SK), parameter :: ALPHA_UPPER_VEC_SK(*) = [(ALPHA_UPPER_STR_SK(i:i), i = 1, len(ALPHA_UPPER_STR_SK))]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: ALPHA_UPPER_VEC_SK
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -145,6 +148,9 @@ module pm_strASCII
     !>  \brief
     !>  The constant array of type `character` of default kind \SK containing the lowercase English letters.<br>
     character(1, SK), parameter :: ALPHA_LOWER_VEC_SK(*) = [(ALPHA_LOWER_STR_SK(i:i), i = 1, len(ALPHA_LOWER_STR_SK))]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: ALPHA_LOWER_VEC_SK
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -155,6 +161,9 @@ module pm_strASCII
     !>  \brief
     !>  The constant array of type `character` of default kind \SK containing the ASCII uppercase and lowercase English letters.<br>
     character(1, SK), parameter :: ALPHA_VEC_SK(*) = [ALPHA_UPPER_VEC_SK, ALPHA_LOWER_VEC_SK]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: ALPHA_VEC_SK
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -171,6 +180,9 @@ module pm_strASCII
     !>  \brief
     !>  The constant array of type `character` of default kind \SK containing the English numbers.<br>
     character(1, SK), parameter :: DIGIT_VEC_SK(*) = [(DIGIT_STR_SK(i:i), i = 1, len(DIGIT_STR_SK))]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: DIGIT_VEC_SK
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -181,6 +193,9 @@ module pm_strASCII
     !>  \brief
     !>  The constant array of type `character` of default kind \SK containing the English numbers and alphabets.<br>
     character(1, SK), parameter :: ALPHANUM_VEC_SK(*) = [DIGIT_VEC_SK, ALPHA_VEC_SK]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: ALPHANUM_VEC_SK
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -191,6 +206,9 @@ module pm_strASCII
     !>  \brief
     !>  The constant array of type `character` of default kind \SK containing characters that might be used for integer number representation.<br>
     character(1, SK), parameter :: INTEGER_VEC_SK(*) = [(INTEGER_STR_SK(i:i), i = 1, len(INTEGER_STR_SK))]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: INTEGER_VEC_SK
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -201,6 +219,9 @@ module pm_strASCII
     !>  \brief
     !>  The constant array of type `character` of default kind \SK containing characters that might be used for real number representation.<br>
     character(1, SK), parameter :: REAL_VEC_SK(*) = [(REAL_STR_SK(i:i), i = 1, len(REAL_STR_SK))]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: REAL_VEC_SK
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -211,6 +232,9 @@ module pm_strASCII
     !>  \brief
     !>  The constant array of type `character` of default kind \SK containing characters that might be used for complex number representation.<br>
     character(1, SK), parameter :: COMPLEX_VEC_SK(*) = [(COMPLEX_STR_SK(i:i), i = 1, len(COMPLEX_STR_SK))]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: COMPLEX_VEC_SK
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -30,8 +30,8 @@ paramonte_benchmark_dir="${paramonte_dir}/benchmark"; export paramonte_benchmark
 paramonte_src_fortran_dir="${paramonte_src_dir}/fortran"; export paramonte_src_fortran_dir
 paramonte_src_fortran_main_dir="${paramonte_src_fortran_dir}/main"; export paramonte_src_fortran_main_dir
 paramonte_src_fortran_test_dir="${paramonte_src_fortran_dir}/test"; export paramonte_src_fortran_test_dir
-paramonte_external_codecov_dir="${paramonte_external_dir}/paramontec"; export paramonte_external_codecov_dir
-paramonte_external_codecov_fortran_dir="${paramonte_external_codecov_dir}/fortran"; export paramonte_external_codecov_fortran_dir
+paramonte_external_doc_dir="${paramonte_external_dir}/paramonted"; export paramonte_external_doc_dir
+paramonte_external_doc_out_dir="${paramonte_external_doc_dir}/paramonte"; export paramonte_external_doc_out_dir
 paramonte_req_dir="${paramonte_dir}/prerequisites"; export paramonte_req_dir
 
 paramonte_web_github="https://github.com/cdslaborg/paramonte"; export paramonte_req_dir

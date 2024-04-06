@@ -176,6 +176,9 @@
         character(31,SKC)                   :: sampleLogFunc = "sampleLogFunc"
     end type
     type(cfhbase_type)      , parameter     :: cfhbase = cfhbase_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: cfhbase
+#endif
 
     !>  \brief
     !>  This is the `abstract` derived type containing the components for storing the basic properties of output chain files by [ParaMonte samplers](@ref pm_sampling).<br>
@@ -222,6 +225,9 @@
         character(31,SKC)                   :: sampleWeight = "sampleWeight"
     end type
     type(cfhmcmc_type)      , parameter     :: cfhmcmc = cfhmcmc_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: cfhmcmc
+#endif
 
     !type :: size_type
     !    integer(IK) :: compact, verbose
@@ -266,6 +272,10 @@
         character(31,SKC)                   :: adaptationMeasure = "adaptationMeasure"
     end type
     type(cfhdram_type)      , parameter     :: cfhdram = cfhdram_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: cfhdram
+#endif
+
     character(31,SKC)       , parameter     :: chainFileColNameDRAM(*) =[ cfhdram%processID &
                                                                         , cfhdram%delayedRejectionStage &
                                                                         , cfhdram%meanAcceptanceRate &
@@ -274,6 +284,9 @@
                                                                         , cfhdram%sampleWeight &
                                                                         , cfhdram%sampleLogFunc &
                                                                         ]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: chainFileColNameDRAM
+#endif
 
     !>  \brief
     !>  This is the `abstract` derived type containing the components for storing the DRAM properties of output chain files by [ParaMonte samplers](@ref pm_sampling).<br>
@@ -311,6 +324,10 @@
     type, extends(cfhdram_type)             :: cfhdise_type
     end type
     type(cfhdise_type)      , parameter     :: cfhdise = cfhdise_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: cfhdise
+#endif
+
     character(31,SKC)       , parameter     :: chainFileColNameDISE(*) =[ cfhdise%processID &
                                                                         , cfhdise%delayedRejectionStage &
                                                                         , cfhdise%meanAcceptanceRate &
@@ -319,6 +336,9 @@
                                                                         , cfhdise%sampleWeight &
                                                                         , cfhdise%sampleLogFunc &
                                                                         ]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: chainFileColNameDISE
+#endif
 
     !>  \brief
     !>  This is the `abstract` derived type containing the components for storing the DISE properties of output chain files by [ParaMonte samplers](@ref pm_sampling).<br>
@@ -357,6 +377,10 @@
         character(31,SKC)                   :: sampleLogWeight = "sampleLogWeight"
     end type
     type(cfhnest_type)      , parameter     :: cfhnest = cfhnest_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: cfhnest
+#endif
+
     character(31,SKC)       , parameter     :: chainFileColNameNest(*) =[ cfhnest%processID &
                                                                         , cfhnest%meanAcceptanceRate &
                                                                         , cfhnest%domainLogVol &
@@ -364,6 +388,9 @@
                                                                         , cfhnest%sampleLogWeight &
                                                                         , cfhnest%sampleLogFunc &
                                                                         ]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: chainFileColNameNest
+#endif
 
     !>  \brief
     !>  This is the derived type containing `allocatable` storage for columns of data in output chain files resulting from [ParaNest](@ref pm_sampling::paranest_type) simulations.
