@@ -81,7 +81,7 @@ def getShield():
                         + "\n\n"
                         + "WARNING: skipping the code coverage import into the shields html.")
             else:
-                search = "code%20coverage-" + parDict[par] + "%20fortran"
+                search = "fortran%20code%20coverage-" + parDict[par]
                 #substitute = "code%20coverage%20%2d%20" + parDict[par] + "%20fortran-" + str(coverage) + "%25"
                 substitute = search + "%20:%20" + str(coverage) + "%25"
                 print(search)
