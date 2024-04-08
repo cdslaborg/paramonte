@@ -163,6 +163,62 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#define ParaDISE_ENABLED 1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define RK_ENABLED 1
+
+#if RK5_ENABLED
+    module procedure getErrParaDISE_RK5
+#define pm_sampling_kernel pm_sampling_kernel_dram_RK5
+#include "pm_sampling@routines.inc.F90"
+#undef pm_sampling_kernel
+    end procedure
+#endif
+
+#if RK4_ENABLED
+    module procedure getErrParaDISE_RK4
+#define pm_sampling_kernel pm_sampling_kernel_dram_RK4
+#include "pm_sampling@routines.inc.F90"
+#undef pm_sampling_kernel
+    end procedure
+#endif
+
+#if RK3_ENABLED
+    module procedure getErrParaDISE_RK3
+#define pm_sampling_kernel pm_sampling_kernel_dram_RK3
+#include "pm_sampling@routines.inc.F90"
+#undef pm_sampling_kernel
+    end procedure
+#endif
+
+#if RK2_ENABLED
+    module procedure getErrParaDISE_RK2
+#define pm_sampling_kernel pm_sampling_kernel_dram_RK2
+#include "pm_sampling@routines.inc.F90"
+#undef pm_sampling_kernel
+    end procedure
+#endif
+
+#if RK1_ENABLED
+    module procedure getErrParaDISE_RK1
+#define pm_sampling_kernel pm_sampling_kernel_dram_RK1
+#include "pm_sampling@routines.inc.F90"
+#undef pm_sampling_kernel
+    end procedure
+#endif
+
+#undef RK_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef ParaDISE_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 #undef getErrSampling_ENABLED
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

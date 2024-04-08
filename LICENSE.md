@@ -2,7 +2,7 @@ ParaMonte License
 
 Copyright (c) 2012 - present, The Computational Data Science Lab
 
-This software is distributed under the MIT license with additional terms as outlined below.
+This software is distributed under the [MIT license](LICENSE.MIT) with additional terms as outlined below.
 
 1.  If you use any parts or concepts from this library, you must acknowledge 
     the usage by citing the relevant publications of the ParaMonte library.

@@ -158,6 +158,10 @@ if (EXISTS "${origin}")
 
         #### Build the contents of CMakeLists.
 
+        # WARNING
+        # The first paramonet library path search option below in `find_library` is 
+        # essential for correct (original) library identification in code coverage builds.
+        
         string( CONCAT
                 collection_cmakelists_contents
                 "${collection_cmakelists_contents}"
@@ -174,7 +178,7 @@ if (EXISTS "${origin}")
                 "add_executable(binary main${lang_ext})\n"
                 "set_target_properties(binary PROPERTIES OUTPUT_NAME \"main\" SUFFIX \".exe\")\n"
                 "target_include_directories(binary PUBLIC \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../inc\")\n"
-                "find_library(pmlib NAMES ${libname} ${libname}.a ${libname}.dll ${libname}.dylib ${libname}.lib ${libname}.so PATHS \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../lib\")\n"
+                "find_library(pmlib NAMES ${libname} ${libname}.a ${libname}.dll ${libname}.dylib ${libname}.lib ${libname}.so PATHS \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../../lib\" \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../lib\")\n"
                 "target_link_libraries(binary PUBLIC \"\${pmlib}\")\n"
                 )
 
@@ -213,6 +217,11 @@ if (EXISTS "${origin}")
                     set(binary_compile_options "${binary_compile_options}" -O0 -g -fcheck=all -fbacktrace)
                 else()
                     set(binary_compile_options "${binary_compile_options}" -O3)
+                endif()
+
+                if (${codecov_enabled})
+                    set(binary_link_options "${binary_link_options}" "--coverage")
+                    set(binary_compile_options "${binary_compile_options}" "--coverage")
                 endif()
 
             elseif (${csid_is_intel})

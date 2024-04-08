@@ -1788,18 +1788,23 @@ foreach(fitem ${fresh})
         break()
     endif()
 endforeach()
-message(NOTICE  "${pmattn} Setting the rule for copying the paramonte::${lang} library include files to the package directory...\n"
-                "${pmattn}      - from: ${origin}\n"
-                "${pmattn}      -   to: ${destin}")
-add_custom_target(deploy COMMAND ${CMAKE_COMMAND} -E copy_directory "${origin}" "${destin}")
-add_dependencies(deploy package)
 
-message(NOTICE  "${pmattn} Adding the rule for creating the paramonte::${lang} library binary installation directory...")
-if (NOT EXISTS "${paramonte_bin_dir}")
-    #file(MAKE_DIRECTORY "${paramonte_bin_dir}")
-    add_custom_target(makeBinDir ALL COMMAND ${CMAKE_COMMAND} -E make_directory "${paramonte_bin_dir}")
-    add_dependencies(deploy makeBinDir) # ensure the folder is created before deployment.
+if (NOT ${codecov_enabled})
+    message(NOTICE  "${pmattn} Adding the rule for creating the paramonte::${lang} library binary installation directory...")
+    if (NOT EXISTS "${paramonte_bin_dir}")
+        #file(MAKE_DIRECTORY "${paramonte_bin_dir}")
+        add_custom_target(makeBinDir ALL COMMAND ${CMAKE_COMMAND} -E make_directory "${paramonte_bin_dir}")
+        add_dependencies(deploy makeBinDir) # ensure the folder is created before deployment.
+    endif()
+    message(NOTICE  "${pmattn} Setting the rule for copying the paramonte::${lang} library package to the final binary installation directory...\n"
+                    "${pmattn}      - from: ${origin}\n"
+                    "${pmattn}      -   to: ${destin}")
+    add_custom_target(deploy COMMAND ${CMAKE_COMMAND} -E copy_directory "${origin}" "${destin}")
+else()
+    message(NOTICE  "${pmattn} Skipping the rule for copying the paramonte::${lang} library package to the final binary installation directory...")
+    add_custom_target(deploy)
 endif()
+add_dependencies(deploy package)
 
 if (FALSE)
     #### There is no need for this check anymore as the

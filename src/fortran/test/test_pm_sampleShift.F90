@@ -144,7 +144,7 @@ contains
 #if     CK5_ENABLED
         call test%run(test_getShifted_CK5, SK_"test_getShifted_CK5")
 #endif
-#if     CK5_ENABLED
+#if     CK4_ENABLED
         call test%run(test_getShifted_CK4, SK_"test_getShifted_CK4")
 #endif
 #if     CK3_ENABLED
@@ -162,7 +162,7 @@ contains
 #if     RK5_ENABLED
         call test%run(test_getShifted_RK5, SK_"test_getShifted_RK5")
 #endif
-#if     RK5_ENABLED
+#if     RK4_ENABLED
         call test%run(test_getShifted_RK4, SK_"test_getShifted_RK4")
 #endif
 #if     RK3_ENABLED
@@ -186,7 +186,7 @@ contains
 #if     CK5_ENABLED
         call test%run(test_setShifted_CK5, SK_"test_setShifted_CK5")
 #endif
-#if     CK5_ENABLED
+#if     CK4_ENABLED
         call test%run(test_setShifted_CK4, SK_"test_setShifted_CK4")
 #endif
 #if     CK3_ENABLED
@@ -204,7 +204,7 @@ contains
 #if     RK5_ENABLED
         call test%run(test_setShifted_RK5, SK_"test_setShifted_RK5")
 #endif
-#if     RK5_ENABLED
+#if     RK4_ENABLED
         call test%run(test_setShifted_RK4, SK_"test_setShifted_RK4")
 #endif
 #if     RK3_ENABLED

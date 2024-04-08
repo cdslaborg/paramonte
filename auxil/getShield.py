@@ -20,7 +20,12 @@
 
 import sys
 import urllib.request
-urlBase = "https://cdslaborg.github.io/paramonte-codecov/kernel/"
+codecov = dict()
+codecov["url"] = "https://www.cdslab.org/paramonte/codecov"
+codecov["fortran"] = codecov["url"] + "/fortran/1"
+
+# <a href="https://www.cdslab.org/paramonte/codecov/fortran/1/mpi/" target="_blank"><img src="https://img.shields.io/badge/Fortran%20code%20coverage-MPI-brightgreen?style=flat-square" alt="Fortran code coverage - MPI" /></a>
+# <a href="https://www.cdslab.org/paramonte/codecov/fortran/1/caf/" target="_blank"><img src="https://img.shields.io/badge/Fortran%20code%20coverage-Coarray-brightgreen?style=flat-square" alt="Fortran code coverage - Coarray" /></a>
 
 def getShield():
 
@@ -31,11 +36,9 @@ def getShield():
 <a href="https://pypi.org/project/paramonte/" target="_blank"><img src="https://img.shields.io/pypi/v/paramonte?color=orange&label=pypi%20release&style=flat-square" alt="PyPI - release version" /></a>
 <a href="https://travis-ci.com/cdslaborg/paramonte" target="_blank"><img src="https://travis-ci.com/cdslaborg/paramonte.svg?branch=main&style=flat-square" alt="Build Status" /></a>
 <a href="https://github.com/cdslaborg/paramonte/releases" target="_blank"><img src="https://img.shields.io/pypi/status/paramonte?style=flat-square" alt="PyPI - Status" /></a>
-<a href="https://cdslaborg.github.io/paramonte-codecov/kernel/serial/" target="_blank"><img src="https://img.shields.io/badge/Fortran%20code%20coverage-serial-brightgreen?style=flat-square" alt="Fortran code coverage - serial" /></a>
-<a href="https://cdslaborg.github.io/paramonte-codecov/kernel/mpi/" target="_blank"><img src="https://img.shields.io/badge/Fortran%20code%20coverage-MPI-brightgreen?style=flat-square" alt="Fortran code coverage - MPI" /></a>
-<a href="https://cdslaborg.github.io/paramonte-codecov/kernel/caf/" target="_blank"><img src="https://img.shields.io/badge/Fortran%20code%20coverage-Coarray-brightgreen?style=flat-square" alt="Fortran code coverage - Coarray" /></a>
+<a href="https://www.cdslab.org/paramonte/codecov/fortran/2/serial/" target="_blank"><img src="https://img.shields.io/badge/Fortran%20code%20coverage-serial-brightgreen?style=flat-square" alt="Fortran code coverage - serial" /></a>
 <a href="https://github.com/cdslaborg/paramonte/issues" target="_blank"><img src="https://img.shields.io/github/issues/cdslaborg/paramonte?style=flat-square" alt="GitHub issues" /></a>
-<a href="https://github.com/cdslaborg/paramonte/tree/main/src/interface" target="_blank"><img src="https://img.shields.io/badge/available%20in-C%20%2F%20C%2B%2B%20%2F%20Fortran%20%2F%20MATLAB%20%2F%20Python-brightgreen?style=flat-square" alt="supported languages" /></a>
+<a href="https://github.com/cdslaborg/paramonte/tree/main/src" target="_blank"><img src="https://img.shields.io/badge/available%20in-C%20%2F%20C%2B%2B%20%2F%20Fortran%20%2F%20MATLAB%20%2F%20Python-brightgreen?style=flat-square" alt="supported languages" /></a>
 <a href="https://www.openhub.net/p/paramonte" target="_blank"><img src="https://img.shields.io/badge/Open%20Hub-stats?color=brightgreen&label=stats&message=Open%20Hub&style=flat-square" alt="stats - Open Hub" /></a>
 <a href="https://github.com/cdslaborg/paramonte/graphs/traffic" target="_blank"><img src="https://img.shields.io/github/downloads/cdslaborg/paramonte/total?color=brightgreen&label=GitHub%20downloads&style=flat-square" alt="GitHub All Releases" /></a>
 <a href="https://libraries.io/pypi/paramonte" target="_blank"><img src="https://img.shields.io/pypi/dm/paramonte?color=brightgreen&label=PyPI%20downloads&style=flat-square" alt="PyPI - Downloads" /></a>
@@ -61,7 +64,7 @@ def getShield():
 
     for par in parDict.keys():
         try:
-            request = urllib.request.Request(urlBase + par)
+            request = urllib.request.Request(codecov + par)
             response = urllib.request.urlopen(request)
             html = response.read().decode("utf8")
             coverage = float(html.split('headerCovTableEntryHi">')[1].split("%")[0])

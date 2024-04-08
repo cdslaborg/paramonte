@@ -197,7 +197,6 @@ contains
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if 0
 #if     RK5_ENABLED
         call test%run(test_getDisMatEuclid_RK5, SK_"test_getDisMatEuclid_RK5")
 #endif
@@ -212,7 +211,6 @@ contains
 #endif
 #if     RK1_ENABLED
         call test%run(test_getDisMatEuclid_RK1, SK_"test_getDisMatEuclid_RK1")
-#endif
 #endif
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

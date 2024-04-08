@@ -58,9 +58,9 @@
         !%%%%%%%%%%%%%%%%%%%%%%
 
         if (0._RKC < alpha) then
-            call setParetoLogPDF(logPDF, logx, alpha, logPDFNF)
-        elseif (alpha < 0._RKC) then
             call setPowerLogPDF(logPDF, logx, alpha, logPDFNF)
+        elseif (alpha < 0._RKC) then
+            call setParetoLogPDF(logPDF, logx, alpha, logPDFNF)
         else
             logPDF = logPDFNF - logx
         end if

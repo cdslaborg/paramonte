@@ -131,7 +131,7 @@
                         elseif (same_type_as(method(imethod)%val, euclidsq)) then
                             call setDisEuclid(distance(iref,ipnt), point(:,ipnt), euclidsq)
                         else
-                            error stop "@test_pm_distanceEuclid@test_setDisEuclid(): Internal library error occurred. Unrecognized `method`."
+                            error stop "@test_pm_distanceEuclid@test_setDisEuclid(): Internal library error occurred. Unrecognized `method`." ! LCOV_EXCL_LINE
                         end if
                         diff(iref,ipnt) = abs(distance(iref,ipnt) - distance_ref(iref,ipnt))
                         assertion = assertion .and. diff(iref,ipnt) < EPS
@@ -148,7 +148,7 @@
                         elseif (same_type_as(method(imethod)%val, euclidsq)) then
                             call setDisEuclid(distance(iref,:), point(:,:), euclidsq)
                         else
-                            error stop "@test_pm_distanceEuclid@test_setDisEuclid(): Internal library error occurred. Unrecognized `method`."
+                            error stop "@test_pm_distanceEuclid@test_setDisEuclid(): Internal library error occurred. Unrecognized `method`." ! LCOV_EXCL_LINE
                         end if
                         diff(iref,:) = abs(distance(iref,:) - distance_ref(iref,:))
                         assertion = assertion .and. all(diff(iref,:) < EPS)
@@ -166,7 +166,7 @@
                         elseif (same_type_as(method(imethod)%val, euclidsq)) then
                             call setDisEuclid(distance(iref,ipnt), point(:,ipnt), ref(:,iref), euclidsq)
                         else
-                            error stop "@test_pm_distanceEuclid@test_setDisEuclid(): Internal library error occurred. Unrecognized `method`."
+                            error stop "@test_pm_distanceEuclid@test_setDisEuclid(): Internal library error occurred. Unrecognized `method`." ! LCOV_EXCL_LINE
                         end if
                         diff(iref,ipnt) = abs(distance(iref,ipnt) - distance_ref(iref,ipnt))
                         assertion = assertion .and. diff(iref,ipnt) < EPS
@@ -183,7 +183,7 @@
                         elseif (same_type_as(method(imethod)%val, euclidsq)) then
                             call setDisEuclid(distance(:,ipnt), point(:,ipnt), ref(:,:), euclidsq)
                         else
-                            error stop "@test_pm_distanceEuclid@test_setDisEuclid(): Internal library error occurred. Unrecognized `method`."
+                            error stop "@test_pm_distanceEuclid@test_setDisEuclid(): Internal library error occurred. Unrecognized `method`." ! LCOV_EXCL_LINE
                         end if
                         diff(:,ipnt) = abs(distance(:,ipnt) - distance_ref(:,ipnt))
                         assertion = assertion .and. all(diff(:,ipnt) < EPS)
@@ -200,7 +200,7 @@
                         elseif (same_type_as(method(imethod)%val, euclidsq)) then
                             call setDisEuclid(distance(iref,:), point(:,:), ref(:,iref), euclidsq)
                         else
-                            error stop "@test_pm_distanceEuclid@test_setDisEuclid(): Internal library error occurred. Unrecognized `method`."
+                            error stop "@test_pm_distanceEuclid@test_setDisEuclid(): Internal library error occurred. Unrecognized `method`." ! LCOV_EXCL_LINE
                         end if
                         diff(iref,:) = abs(distance(iref,:) - distance_ref(iref,:))
                         assertion = assertion .and. all(diff(iref,:) < EPS)
@@ -215,7 +215,7 @@
                         elseif (same_type_as(method(imethod)%val, euclidsq)) then
                             call setDisEuclid(distance(:,:), point(:,:), ref(:,:), euclidsq)
                         else
-                            error stop "@test_pm_distanceEuclid@test_setDisEuclid(): Internal library error occurred. Unrecognized `method`."
+                            error stop "@test_pm_distanceEuclid@test_setDisEuclid(): Internal library error occurred. Unrecognized `method`." ! LCOV_EXCL_LINE
                         end if
                         diff(:,:) = abs(distance(:,:) - distance_ref(:,:))
                         assertion = assertion .and. all(diff(:,:) < EPS)
@@ -271,6 +271,7 @@
             call test%assert(assertion, SK_"The procedure setDisEuclid() must correctly correctly compute the distance.", int(line, IK))
         end subroutine
 
+        ! LCOV_EXCL_START
         subroutine display(object, name)
             real(TKC), intent(in) :: object(..)
             character(*, SK), intent(in) :: name
@@ -288,6 +289,7 @@
                 error stop "Unrecognized rank for `object`."
             end select
         end subroutine
+        ! LCOV_EXCL_STOP
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 #elif   getDisMatEuclid_ENABLED || setDisMatEuclid_ENABLED
@@ -398,7 +400,7 @@
                     call setResized(distance_ref, [npnt, npnt])
                     distance_ref = getDisEuclid(point, point, method)
                 else
-                    error stop "Unrecognized `pack` value."
+                    error stop "Unrecognized `pack` value." ! LCOV_EXCL_LINE
                 end if
             type is (uppLow_type)
                 call setResized(distance_ref, [npnt - 1, npnt])
@@ -418,10 +420,10 @@
                         distance_ref(ipnt, ipnt + 1 : npnt) = distance_ref(ipnt : npnt - 1, ipnt)
                     end do
                 else
-                    error stop "Unrecognized `pack` value."
+                    error stop "Unrecognized `pack` value." ! LCOV_EXCL_LINE
                 end if
             class default
-                error stop "Unrecognized `subset` value."
+                error stop "Unrecognized `subset` value." ! LCOV_EXCL_LINE
             end select
         end function
 
@@ -450,6 +452,7 @@
             call test%assert(assertion, SK_"The procedure setDisMatEuclid() must correctly correctly compute the distance.", int(line, IK))
         end subroutine
 
+        ! LCOV_EXCL_START
         subroutine display(object, name)
             real(TKC), intent(in) :: object(..)
             character(*, SK), intent(in) :: name
@@ -469,6 +472,7 @@
                 error stop "Unrecognized rank for `object`."
             end select
         end subroutine
+        ! LCOV_EXCL_STOP
 
 #else
         !%%%%%%%%%%%%%%%%%%%%%%%%

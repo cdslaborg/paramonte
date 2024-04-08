@@ -55,6 +55,10 @@ program example
                     if (isFailedMove(from, to)) error stop 'movement failed.'
     call disp%show("[isFile(from), isFile(to//getDirSep()//from)]")
     call disp%show( [isFile(from), isFile(to//getDirSep()//from)] )
+    call disp%show("if (isFailedMove(to, from)) error stop 'movement failed.'")
+                    if (isFailedMove(to, from)) error stop 'movement failed.'
+    call disp%show("[isFile(from), isFile(to)]")
+    call disp%show( [isFile(from), isFile(to)] )
     call disp%skip()
 
 end program example
