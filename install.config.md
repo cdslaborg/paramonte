@@ -669,6 +669,10 @@ Value               | Usage
 > This option is currently only tested and verified to work with GNU GCOV and LCOV software.
 > This option is currently only tested and verified to work with the `install.sh` build script.
 
+> **WARNING**
+> Generating Code Coverage report currently requires the GNU Fortran compiler `>10.3` and a **compatible-version** of **gcov** and **lcov** software.
+> The coverage report generation is bound to fail if the compiler and GCOV software version are incompatible.
+
 **optional**. The default value for `codecov` is `none`.
 
 ### `deps`
