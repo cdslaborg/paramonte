@@ -20,9 +20,9 @@
 
 import sys
 import urllib.request
-codecov = dict()
-codecov["url"] = "https://www.cdslab.org/paramonte/codecov"
-codecov["fortran"] = codecov["url"] + "/fortran/1"
+
+url_codecov_base = "https://www.cdslab.org/paramonte/codecov"
+url_codecov = {"fortran" : url_codecov_base + "/fortran/2"}
 
 # <a href="https://github.com/cdslaborg/paramonte#license" target="_blank"><img src="https://img.shields.io/github/license/cdslaborg/paramonte?color=orange&style=flat-square" alt="GitHub" /></a>
 # <a href="https://www.cdslab.org/paramonte/codecov/fortran/1/mpi/" target="_blank"><img src="https://img.shields.io/badge/Fortran%20code%20coverage-MPI-brightgreen?style=flat-square" alt="Fortran code coverage - MPI" /></a>
@@ -58,23 +58,36 @@ def getShield():
 #<a href="https://joss.theoj.org/papers/f964b6e22c71515c310fbe3843ad4513"><img src="https://joss.theoj.org/papers/f964b6e22c71515c310fbe3843ad4513/status.svg"></a>
 
     parDict =   { "serial"  : "serial"
-                , "mpi"     : "MPI"
-                , "caf"     : "Coarray"
+               #, "mpi"     : "MPI"
+               #, "caf"     : "Coarray"
                 }
-
     for par in parDict.keys():
         try:
-            request = urllib.request.Request(codecov + par)
+            request = urllib.request.Request(url_codecov["fortran"] + "/" + par)
             response = urllib.request.urlopen(request)
             html = response.read().decode("utf8")
-            coverage = float(html.split('headerCovTableEntryHi">')[1].split("%")[0])
-            search = "code%20coverage-" + parDict[par] + "%20fortran"
-            #substitute = "code%20coverage%20%2d%20" + parDict[par] + "%20fortran-" + str(coverage) + "%25"
-            substitute = search + "%20:%20" + str(coverage) + "%25"
-            print(search)
-            print(substitute)
-            shields = shields.replace(search, substitute)
-            print(parDict[par] + " code coverage {}%".format(coverage))
+            for id in ["headerCovTableEntryLow", "headerCovTableEntryMed", "headerCovTableEntryHi"]:
+                ids = id + '">'
+                try: 
+                    coverage = float(html.split(ids)[1].split("%")[0])
+                    break
+                except Exception as errmsg:
+                    errmsg = str(errmsg)
+                    coverage = None
+            if coverage is None:
+                print   ( "WARNING: Failed to fetch the ParaMonte Fortran code coverage percentage from the web.\n"
+                        + "WARNING: Here is the full exception message:\n\n"
+                        + errmsg
+                        + "\n\n"
+                        + "WARNING: skipping the code coverage import into the shields html.")
+            else:
+                search = "code%20coverage-" + parDict[par] + "%20fortran"
+                #substitute = "code%20coverage%20%2d%20" + parDict[par] + "%20fortran-" + str(coverage) + "%25"
+                substitute = search + "%20:%20" + str(coverage) + "%25"
+                print(search)
+                print(substitute)
+                shields = shields.replace(search, substitute)
+                print(parDict[par] + " code coverage {}%".format(coverage))
         except Exception as errmsg:
             print   ( "WARNING: Failed to fetch the ParaMonte Fortran code coverage percentage from the web.\n"
                     + "WARNING: Here is the full exception message:\n\n"
