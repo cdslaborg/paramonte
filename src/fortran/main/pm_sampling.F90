@@ -652,7 +652,7 @@ module pm_sampling
 #endif
         use pm_kind, only: RKC => RK5
         procedure(getLogFunc_proc_RK5) :: getLogFunc
-        type(paradram_type) , intent(in) :: sampler
+        type(paradram_type), intent(in) :: sampler
         integer(IK), intent(in) :: ndim
         type(err_type) :: err
     end function
@@ -665,7 +665,7 @@ module pm_sampling
 #endif
         use pm_kind, only: RKC => RK4
         procedure(getLogFunc_proc_RK4) :: getLogFunc
-        type(paradram_type) , intent(in) :: sampler
+        type(paradram_type), intent(in) :: sampler
         integer(IK), intent(in) :: ndim
         type(err_type) :: err
     end function
@@ -678,7 +678,7 @@ module pm_sampling
 #endif
         use pm_kind, only: RKC => RK3
         procedure(getLogFunc_proc_RK3) :: getLogFunc
-        type(paradram_type) , intent(in) :: sampler
+        type(paradram_type), intent(in) :: sampler
         integer(IK), intent(in) :: ndim
         type(err_type) :: err
     end function
@@ -691,7 +691,7 @@ module pm_sampling
 #endif
         use pm_kind, only: RKC => RK2
         procedure(getLogFunc_proc_RK2) :: getLogFunc
-        type(paradram_type) , intent(in) :: sampler
+        type(paradram_type), intent(in) :: sampler
         integer(IK), intent(in) :: ndim
         type(err_type) :: err
     end function
@@ -704,7 +704,74 @@ module pm_sampling
 #endif
         use pm_kind, only: RKC => RK1
         procedure(getLogFunc_proc_RK1) :: getLogFunc
-        type(paradram_type) , intent(in) :: sampler
+        type(paradram_type), intent(in) :: sampler
+        integer(IK), intent(in) :: ndim
+        type(err_type) :: err
+    end function
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if RK5_ENABLED
+    impure module function getErrParaDISE_RK5(sampler, getLogFunc, ndim) result(err)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getErrParaDISE_RK5
+#endif
+        use pm_kind, only: RKC => RK5
+        procedure(getLogFunc_proc_RK5) :: getLogFunc
+        type(paradise_type), intent(in) :: sampler
+        integer(IK), intent(in) :: ndim
+        type(err_type) :: err
+    end function
+#endif
+
+#if RK4_ENABLED
+    impure module function getErrParaDISE_RK4(sampler, getLogFunc, ndim) result(err)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getErrParaDISE_RK4
+#endif
+        use pm_kind, only: RKC => RK4
+        procedure(getLogFunc_proc_RK4) :: getLogFunc
+        type(paradise_type), intent(in) :: sampler
+        integer(IK), intent(in) :: ndim
+        type(err_type) :: err
+    end function
+#endif
+
+#if RK3_ENABLED
+    impure module function getErrParaDISE_RK3(sampler, getLogFunc, ndim) result(err)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getErrParaDISE_RK3
+#endif
+        use pm_kind, only: RKC => RK3
+        procedure(getLogFunc_proc_RK3) :: getLogFunc
+        type(paradise_type), intent(in) :: sampler
+        integer(IK), intent(in) :: ndim
+        type(err_type) :: err
+    end function
+#endif
+
+#if RK2_ENABLED
+    impure module function getErrParaDISE_RK2(sampler, getLogFunc, ndim) result(err)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getErrParaDISE_RK2
+#endif
+        use pm_kind, only: RKC => RK2
+        procedure(getLogFunc_proc_RK2) :: getLogFunc
+        type(paradise_type), intent(in) :: sampler
+        integer(IK), intent(in) :: ndim
+        type(err_type) :: err
+    end function
+#endif
+
+#if RK1_ENABLED
+    impure module function getErrParaDISE_RK1(sampler, getLogFunc, ndim) result(err)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getErrParaDISE_RK1
+#endif
+        use pm_kind, only: RKC => RK1
+        procedure(getLogFunc_proc_RK1) :: getLogFunc
+        type(paradise_type), intent(in) :: sampler
         integer(IK), intent(in) :: ndim
         type(err_type) :: err
     end function

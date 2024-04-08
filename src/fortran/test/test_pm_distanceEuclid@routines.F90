@@ -25,11 +25,12 @@
 
 submodule (test_pm_distanceEuclid) routines
 
+    use pm_container, only: csp_type, css_type
     use pm_arrayResize, only: setResized
     use pm_distUnif, only: getUnifRand
     use pm_arrayFill, only: getFilled
     use pm_arrayRange, only: getRange
-    use pm_container, only: csp_type, css_type
+
     implicit none
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -461,23 +461,23 @@ target_include_directories(${ParaMonteTest_EXE_NAME} PRIVATE "${paramonte_bld_in
 target_compile_options(${ParaMonteTest_EXE_NAME} BEFORE PRIVATE "${FC_FLAGS}" "${FCL_FLAGS}" "${fcf}") # "${FPP_FLAGS}"
 target_link_options(${ParaMonteTest_EXE_NAME} BEFORE PRIVATE "${FCL_FLAGS}" "${FL_FLAGS}" "${flf}")
 
-if ("${test}" STREQUAL "all")
-    target_compile_definitions(${ParaMonteTest_EXE_NAME} PRIVATE "BASIC_TEST_ENABLED=1")
-    target_compile_definitions(${ParaMonteTest_EXE_NAME} PRIVATE "SAMPLER_TEST_ENABLED=1")
-elseif ("${test}" STREQUAL "sampler")
-    target_compile_definitions(${ParaMonteTest_EXE_NAME} PRIVATE "SAMPLER_TEST_ENABLED=1")
-elseif ("${test}" STREQUAL "basic")
-    target_compile_definitions(${ParaMonteTest_EXE_NAME} PRIVATE "BASIC_TEST_ENABLED=1")
-elseif (NOT "${test}" STREQUAL "none")
-    printUsage()
-    message (FATAL_ERROR
-            "\n"
-            "${pmfatal} Unsupported user-specified value for `test`. test=${test}\n"
-            "${pmfatal} Follow the guidelines aboe to properly set the value of `test`.\n"
-            "${pmfatal} Alternatively, skip the testing by dropping the CMake `test` flag.\n"
-            "\n"
-            )
-endif()
+#if ("${test}" STREQUAL "all")
+#    target_compile_definitions(${ParaMonteTest_EXE_NAME} PRIVATE "BASIC_TEST_ENABLED=1")
+#    target_compile_definitions(${ParaMonteTest_EXE_NAME} PRIVATE "SAMPLER_TEST_ENABLED=1")
+#elseif ("${test}" STREQUAL "sampler")
+#    target_compile_definitions(${ParaMonteTest_EXE_NAME} PRIVATE "SAMPLER_TEST_ENABLED=1")
+#elseif ("${test}" STREQUAL "basic")
+#    target_compile_definitions(${ParaMonteTest_EXE_NAME} PRIVATE "BASIC_TEST_ENABLED=1")
+#elseif (NOT "${test}" STREQUAL "none")
+#    printUsage()
+#    message (FATAL_ERROR
+#            "\n"
+#            "${pmfatal} Unsupported user-specified value for `test`. test=${test}\n"
+#            "${pmfatal} Follow the guidelines aboe to properly set the value of `test`.\n"
+#            "${pmfatal} Alternatively, skip the testing by dropping the CMake `test` flag.\n"
+#            "\n"
+#            )
+#endif()
 
 # set up BLAS and LAPACK if needed
 

@@ -78,10 +78,22 @@ module pm_sampleACT
         integer(IK) :: step = 1_IK          !<  \public The scalar `integer` of default kind \IK, containing the jump in batch size to be considered.
     end type
 
-    type(cumSum_type        ), parameter :: cumSum          = cumSum_type       ()
-    type(cumSumMax_type     ), parameter :: cumSumMax       = cumSumMax_type    ()
-    type(batchMeans_type    ), parameter :: batchMeans      = batchMeans_type   ()
-    type(batchMeansMax_type ), parameter :: batchMeansMax   = batchMeansMax_type()
+    type(cumSum_type), parameter :: cumSum = cumSum_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: cumSum
+#endif
+    type(cumSumMax_type), parameter :: cumSumMax = cumSumMax_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: cumSumMax
+#endif
+    type(batchMeans_type), parameter :: batchMeans = batchMeans_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: batchMeans
+#endif
+    type(batchMeansMax_type ), parameter :: batchMeansMax = batchMeansMax_type()
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: batchMeansMax
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -2638,6 +2638,9 @@ module pm_distUnif
                                                                                 , -3051731464161248980_IK64 &
                                                                                 , -6244198995065845334_IK64 &
                                                                                 , +4155657270789760540_IK64 ]
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+    !DIR$ ATTRIBUTES DLLEXPORT :: xoshiro256ssJump128
+#endif
 
     !>  \brief
     !>  The constant vector of size [xoshiro256ssStateSize](@ref pm_distUnif::xoshiro256ssStateSize)

@@ -466,6 +466,8 @@ pm_mathExp/isIntPow
 pm_mathFactorial/getFactorial
 pm_mathFactorial/getLogFactorial
 pm_mathFactoring/getFactoring
+pm_mathFisher/getFisher
+pm_mathFisher/getFisherInv
 pm_mathGamma/getGammaIncLow
 pm_mathGamma/getGammaIncUpp
 pm_mathGamma/setGammaIncLow
@@ -474,6 +476,7 @@ pm_mathGamma/setGammaIncUpp
 pm_mathGamma/setGammaIncUppContFrac
 pm_mathLog1p/getLog1p
 pm_mathLogAddExp/getLogAddExp
+pm_mathLogSubExp/getLogSubExp
 pm_mathLogSumExp/getLogSumExp
 pm_mathMinMax/getMinMax
 pm_mathMinMax/setMinMax
@@ -525,6 +528,7 @@ pm_option/getOption
 pm_os/isDarwin
 pm_os/isLinux
 pm_os/isWindows
+pm_parallelism/setForkJoinScaling
 pm_paramonte/PARAMONTE_BUILD_DATE
 pm_paramonte/PARAMONTE_SPLASH
 pm_paramonte/PARAMONTE_VERSION
@@ -606,9 +610,10 @@ pm_sampleWeight/setReweight
 pm_sampling/attributes
 pm_sampling/getErrSampling
 pm_sampling/himmelblau
-pm_sampling/mixture
+!pm_sampling/mixture
 pm_sampling/mvn
 pm_sampling/quadratic
+pm_sampling/runParaDRAM
 pm_statest/getProbKS
 pm_statest/setProbKS
 pm_str/alleq

@@ -20,22 +20,25 @@
 
 import sys
 import urllib.request
-urlBase = "https://cdslaborg.github.io/paramonte-codecov/kernel/"
+
+url_codecov_base = "https://www.cdslab.org/paramonte/codecov"
+url_codecov = {"fortran" : url_codecov_base + "/fortran/2"}
+
+# <a href="https://github.com/cdslaborg/paramonte#license" target="_blank"><img src="https://img.shields.io/github/license/cdslaborg/paramonte?color=orange&style=flat-square" alt="GitHub" /></a>
+# <a href="https://www.cdslab.org/paramonte/codecov/fortran/1/mpi/" target="_blank"><img src="https://img.shields.io/badge/Fortran%20code%20coverage-MPI-brightgreen?style=flat-square" alt="Fortran code coverage - MPI" /></a>
+# <a href="https://www.cdslab.org/paramonte/codecov/fortran/1/caf/" target="_blank"><img src="https://img.shields.io/badge/Fortran%20code%20coverage-Coarray-brightgreen?style=flat-square" alt="Fortran code coverage - Coarray" /></a>
 
 def getShield():
 
     shields = """
-<a href="https://github.com/cdslaborg/paramonte#license" target="_blank"><img src="https://img.shields.io/github/license/cdslaborg/paramonte?color=orange&style=flat-square" alt="GitHub" /></a>
 <a href="https://github.com/cdslaborg/paramonte/releases" target="_blank"><img src="https://img.shields.io/github/release-date/cdslaborg/paramonte?color=orange&style=flat-square" alt="GitHub Release Date" /></a>
 <a href="https://github.com/cdslaborg/paramonte/releases" target="_blank"><img src="https://img.shields.io/github/v/release/cdslaborg/paramonte?color=purple&label=release%20version&style=flat-square" alt="GitHub release (latest by date)" /></a>
 <a href="https://pypi.org/project/paramonte/" target="_blank"><img src="https://img.shields.io/pypi/v/paramonte?color=orange&label=pypi%20release&style=flat-square" alt="PyPI - release version" /></a>
 <a href="https://travis-ci.com/cdslaborg/paramonte" target="_blank"><img src="https://travis-ci.com/cdslaborg/paramonte.svg?branch=main&style=flat-square" alt="Build Status" /></a>
 <a href="https://github.com/cdslaborg/paramonte/releases" target="_blank"><img src="https://img.shields.io/pypi/status/paramonte?style=flat-square" alt="PyPI - Status" /></a>
-<a href="https://cdslaborg.github.io/paramonte-codecov/kernel/serial/" target="_blank"><img src="https://img.shields.io/badge/Fortran%20code%20coverage-serial-brightgreen?style=flat-square" alt="Fortran code coverage - serial" /></a>
-<a href="https://cdslaborg.github.io/paramonte-codecov/kernel/mpi/" target="_blank"><img src="https://img.shields.io/badge/Fortran%20code%20coverage-MPI-brightgreen?style=flat-square" alt="Fortran code coverage - MPI" /></a>
-<a href="https://cdslaborg.github.io/paramonte-codecov/kernel/caf/" target="_blank"><img src="https://img.shields.io/badge/Fortran%20code%20coverage-Coarray-brightgreen?style=flat-square" alt="Fortran code coverage - Coarray" /></a>
+<a href="https://www.cdslab.org/paramonte/codecov/fortran/2/serial/" target="_blank"><img src="https://img.shields.io/badge/Fortran%20code%20coverage-serial-brightgreen?style=flat-square" alt="Fortran code coverage - serial" /></a>
 <a href="https://github.com/cdslaborg/paramonte/issues" target="_blank"><img src="https://img.shields.io/github/issues/cdslaborg/paramonte?style=flat-square" alt="GitHub issues" /></a>
-<a href="https://github.com/cdslaborg/paramonte/tree/main/src/interface" target="_blank"><img src="https://img.shields.io/badge/available%20in-C%20%2F%20C%2B%2B%20%2F%20Fortran%20%2F%20MATLAB%20%2F%20Python-brightgreen?style=flat-square" alt="supported languages" /></a>
+<a href="https://github.com/cdslaborg/paramonte/tree/main/src" target="_blank"><img src="https://img.shields.io/badge/available%20in-C%20%2F%20C%2B%2B%20%2F%20Fortran%20%2F%20MATLAB%20%2F%20Python-brightgreen?style=flat-square" alt="supported languages" /></a>
 <a href="https://www.openhub.net/p/paramonte" target="_blank"><img src="https://img.shields.io/badge/Open%20Hub-stats?color=brightgreen&label=stats&message=Open%20Hub&style=flat-square" alt="stats - Open Hub" /></a>
 <a href="https://github.com/cdslaborg/paramonte/graphs/traffic" target="_blank"><img src="https://img.shields.io/github/downloads/cdslaborg/paramonte/total?color=brightgreen&label=GitHub%20downloads&style=flat-square" alt="GitHub All Releases" /></a>
 <a href="https://libraries.io/pypi/paramonte" target="_blank"><img src="https://img.shields.io/pypi/dm/paramonte?color=brightgreen&label=PyPI%20downloads&style=flat-square" alt="PyPI - Downloads" /></a>
@@ -55,23 +58,36 @@ def getShield():
 #<a href="https://joss.theoj.org/papers/f964b6e22c71515c310fbe3843ad4513"><img src="https://joss.theoj.org/papers/f964b6e22c71515c310fbe3843ad4513/status.svg"></a>
 
     parDict =   { "serial"  : "serial"
-                , "mpi"     : "MPI"
-                , "caf"     : "Coarray"
+               #, "mpi"     : "MPI"
+               #, "caf"     : "Coarray"
                 }
-
     for par in parDict.keys():
         try:
-            request = urllib.request.Request(urlBase + par)
+            request = urllib.request.Request(url_codecov["fortran"] + "/" + par)
             response = urllib.request.urlopen(request)
             html = response.read().decode("utf8")
-            coverage = float(html.split('headerCovTableEntryHi">')[1].split("%")[0])
-            search = "code%20coverage-" + parDict[par] + "%20fortran"
-            #substitute = "code%20coverage%20%2d%20" + parDict[par] + "%20fortran-" + str(coverage) + "%25"
-            substitute = search + "%20:%20" + str(coverage) + "%25"
-            print(search)
-            print(substitute)
-            shields = shields.replace(search, substitute)
-            print(parDict[par] + " code coverage {}%".format(coverage))
+            for id in ["headerCovTableEntryLow", "headerCovTableEntryMed", "headerCovTableEntryHi"]:
+                ids = id + '">'
+                try: 
+                    coverage = float(html.split(ids)[1].split("%")[0])
+                    break
+                except Exception as errmsg:
+                    errmsg = str(errmsg)
+                    coverage = None
+            if coverage is None:
+                print   ( "WARNING: Failed to fetch the ParaMonte Fortran code coverage percentage from the web.\n"
+                        + "WARNING: Here is the full exception message:\n\n"
+                        + errmsg
+                        + "\n\n"
+                        + "WARNING: skipping the code coverage import into the shields html.")
+            else:
+                search = "Fortran%20code%20coverage-" + parDict[par]
+                #substitute = "code%20coverage%20%2d%20" + parDict[par] + "%20fortran-" + str(coverage) + "%25"
+                substitute = search + "%20:%20" + str(coverage) + "%25"
+                print(search)
+                print(substitute)
+                shields = shields.replace(search, substitute)
+                print(parDict[par] + " code coverage {}%".format(coverage))
         except Exception as errmsg:
             print   ( "WARNING: Failed to fetch the ParaMonte Fortran code coverage percentage from the web.\n"
                     + "WARNING: Here is the full exception message:\n\n"
