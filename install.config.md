@@ -547,6 +547,7 @@ Value               | Usage
 `none`              | The build is configured for no testing.
 `all`               | The build activates all library tests.
 
+> **WARNING**
 > Enabling tests requires setting the value of the build flag `mod` to `"all"`.
 > This is particularly important for the programming languages other than Fortran
 > where the default value of `mod` is usually not `"all"`.
