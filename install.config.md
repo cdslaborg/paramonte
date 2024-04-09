@@ -238,6 +238,7 @@ where
 +   `${lib}`    is replaced with the specified value for the `lib` configuration flag (`static`, `shared`, ...),
 +   `${mem}`    is replaced with the specified value for the `mem` configuration flag (`stack`, `heap`, ...),
 +   `${par}`    is replaced with a value determined from the `mem` configuration flag:
+    <br>
     Value               | Scenario
     --------------------|---------
     `cafsingle`         | If the library is built for Coarray single-image parallelism.
