@@ -3955,7 +3955,7 @@ module pm_distUnif
     interface setUnifRandState
     impure module subroutine setUnifRandStateDef(seed, imageID)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandStateDef
+        !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandStateDef
 #endif
         use pm_kind, only: IK
         integer(IK) , intent(in)    , optional  :: seed, imageID
