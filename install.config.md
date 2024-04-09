@@ -238,18 +238,18 @@ where
 +   `${lib}`    is replaced with the specified value for the `lib` configuration flag (`static`, `shared`, ...),
 +   `${mem}`    is replaced with the specified value for the `mem` configuration flag (`stack`, `heap`, ...),
 +   `${par}`    is replaced with a value determined from the `mem` configuration flag:  
-    <br>
-    Value               | Scenario
-    --------------------|---------
-    `cafsingle`         | If the library is built for Coarray single-image parallelism.
-    `cafshared`         | If the library is built for Coarray shared-memory parallelism
-    `cafdist`           | If the library is built for Coarray distributed-memory parallelism.
-    `mpi`               | If the library is built for MPI parallelism using an unknown MPI distribution.
-    `impi`              | If the library is built for MPI parallelism using an Intel MPI distribution.
-    `mpich`             | If the library is built for MPI parallelism using an MPICH MPI distribution.
-    `openmpi`           | If the library is built for MPI parallelism using an OpenMPI distribution.
-    `openmp`            | If the library is built for OpenMP parallelism.
-    `serial`            | If the library is built for serial applications.
+
+Value               | Scenario  
+--------------------|--------------------------------------------------------------  
+`cafsingle`         | If the library is built for Coarray single-image parallelism.  
+`cafshared`         | If the library is built for Coarray shared-memory parallelism.  
+`cafdist`           | If the library is built for Coarray distributed-memory parallelism.  
+`mpi`               | If the library is built for MPI parallelism using an unknown MPI distribution.  
+`impi`              | If the library is built for MPI parallelism using an Intel MPI distribution.  
+`mpich`             | If the library is built for MPI parallelism using an MPICH MPI distribution.  
+`openmpi`           | If the library is built for MPI parallelism using an OpenMPI distribution.  
+`openmp`            | If the library is built for OpenMP parallelism.  
+`serial`            | If the library is built for serial applications.  
 
 ### `bench`
 
