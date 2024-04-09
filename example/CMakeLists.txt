@@ -23,4 +23,5 @@ set(${collection}BR "${exam}")
 set(${collection}PP "${exampp}")
 set(origin "${paramonte_example_dir}/${lang}/") # The ending forward slash is essential for copying the contents of the ${collection} language folder.
 set(destin "${paramonte_bld_pkg_example_dir}")
+
 include(setParaMonteCollection)

@@ -182,6 +182,14 @@ endif()
 # Print an error message on an attempt to build inside the source directory tree:
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
+if ("${lib}" STREQUAL "")
+    set(lib "shared" CACHE STRING "ParaMonte library type: shared, static" FORCE)
+endif()
+
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# Print an error message on an attempt to build inside the source directory tree:
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
 if (TRUE)
     if ("${CMAKE_CURRENT_SOURCE_DIR}" STREQUAL "${CMAKE_CURRENT_BINARY_DIR}")
         printUsage()
@@ -801,7 +809,7 @@ if (TRUE)
         set(lang "fortran")
         message(NOTICE
                 "${pmwarn} Unspecified target language. You can set the target language via -Dlang=target_lang\n"
-                "${pmwarn} where `target_lang` is the name of the target language as written most commonly."
+                "${pmwarn} where `target_lang` is the name of the target language as written most commonly.\n"
                 "${pmwarn} Defaulting to `${lang}` as the target language of choice."
                 )
     else()
@@ -1790,16 +1798,16 @@ foreach(fitem ${fresh})
 endforeach()
 
 if (NOT ${codecov_enabled})
+    message(NOTICE  "${pmattn} Setting the rule for copying the paramonte::${lang} library package to the final binary installation directory...\n"
+                    "${pmattn}      - from: ${origin}\n"
+                    "${pmattn}      -   to: ${destin}")
+    add_custom_target(deploy COMMAND ${CMAKE_COMMAND} -E copy_directory "${origin}" "${destin}")
     message(NOTICE  "${pmattn} Adding the rule for creating the paramonte::${lang} library binary installation directory...")
     if (NOT EXISTS "${paramonte_bin_dir}")
         #file(MAKE_DIRECTORY "${paramonte_bin_dir}")
         add_custom_target(makeBinDir ALL COMMAND ${CMAKE_COMMAND} -E make_directory "${paramonte_bin_dir}")
         add_dependencies(deploy makeBinDir) # ensure the folder is created before deployment.
     endif()
-    message(NOTICE  "${pmattn} Setting the rule for copying the paramonte::${lang} library package to the final binary installation directory...\n"
-                    "${pmattn}      - from: ${origin}\n"
-                    "${pmattn}      -   to: ${destin}")
-    add_custom_target(deploy COMMAND ${CMAKE_COMMAND} -E copy_directory "${origin}" "${destin}")
 else()
     message(NOTICE  "${pmattn} Skipping the rule for copying the paramonte::${lang} library package to the final binary installation directory...")
     add_custom_target(deploy)
@@ -1974,5 +1982,5 @@ endif()
 #: Add a distclean target to the Makefile
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-add_custom_target(distclean COMMAND ${CMAKE_COMMAND} -P ${CMAKE_MODULE_PATH}/distclean.cmake)
-add_custom_target(dclean COMMAND ${CMAKE_COMMAND} -P ${CMAKE_MODULE_PATH}/distclean.cmake)
+#add_custom_target(distclean COMMAND ${CMAKE_COMMAND} -P ${CMAKE_MODULE_PATH}/distclean.cmake)
+#add_custom_target(dclean COMMAND ${CMAKE_COMMAND} -P ${CMAKE_MODULE_PATH}/distclean.cmake)
