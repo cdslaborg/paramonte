@@ -228,7 +228,6 @@ bdir="${root}/bld/${os}/${arch}/${csid}${csvs}/${build}/${lib}/${mem}/${par}/${c
 
 where
 
-
 +   `${root}`   is replaced with the path to the root directory of the project where the LICENSE file exists.
 +   `${os}`     is replaced with the lower-case operating system name (`windows`, `linux`, `darwin`, `mingw`, `msys`, ...),
 +   `${arch}`   is replaced with the lower-case CPU architecture (`amd64`, `arm64`, ...),
@@ -237,19 +236,19 @@ where
 +   `${bld}`    is replaced with the specified value for the `build` configuration flag (`debug`, `release`, ...),
 +   `${lib}`    is replaced with the specified value for the `lib` configuration flag (`static`, `shared`, ...),
 +   `${mem}`    is replaced with the specified value for the `mem` configuration flag (`stack`, `heap`, ...),
-+   `${par}`    is replaced with a value determined from the `mem` configuration flag:  
++   `${par}`    is replaced with a value determined from the `mem` configuration flag:
 
-Value               | Scenario  
---------------------|--------------------------------------------------------------  
-`cafsingle`         | If the library is built for Coarray single-image parallelism.  
-`cafshared`         | If the library is built for Coarray shared-memory parallelism.  
-`cafdist`           | If the library is built for Coarray distributed-memory parallelism.  
-`mpi`               | If the library is built for MPI parallelism using an unknown MPI distribution.  
-`impi`              | If the library is built for MPI parallelism using an Intel MPI distribution.  
-`mpich`             | If the library is built for MPI parallelism using an MPICH MPI distribution.  
-`openmpi`           | If the library is built for MPI parallelism using an OpenMPI distribution.  
-`openmp`            | If the library is built for OpenMP parallelism.  
-`serial`            | If the library is built for serial applications.  
+    Value               | Scenario  
+    --------------------|--------------------------------------------------------------  
+    `cafsingle`         | If the library is built for Coarray single-image parallelism.  
+    `cafshared`         | If the library is built for Coarray shared-memory parallelism.  
+    `cafdist`           | If the library is built for Coarray distributed-memory parallelism.  
+    `mpi`               | If the library is built for MPI parallelism using an unknown MPI distribution.  
+    `impi`              | If the library is built for MPI parallelism using an Intel MPI distribution.  
+    `mpich`             | If the library is built for MPI parallelism using an MPICH MPI distribution.  
+    `openmpi`           | If the library is built for MPI parallelism using an OpenMPI distribution.  
+    `openmp`            | If the library is built for OpenMP parallelism.  
+    `serial`            | If the library is built for serial applications.  
 
 ### `bench`
 
