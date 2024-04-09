@@ -162,25 +162,32 @@ if (EXISTS "${origin}")
         # The first paramonet library path search option below in `find_library` is 
         # essential for correct (original) library identification in code coverage builds.
         
-        string( CONCAT
-                collection_cmakelists_contents
-                "${collection_cmakelists_contents}"
-                "cmake_minimum_required(VERSION 3.14)\n"
-                "if (NOT DEFINED CMAKE_BUILD_TYPE)\n"
-                "    set(CMAKE_BUILD_TYPE ${CMAKE_BUILD_TYPE})\n"
-                "endif()\n"
-                "if (NOT DEFINED CMAKE_Fortran_COMPILER)\n"
-                "    set(CMAKE_Fortran_COMPILER \"${binary_compiler}\")\n"
-                "endif()\n"
-                "project(main LANGUAGES ${binary_lang})\n"
-                "set(CMAKE_MACOSX_RPATH ON)\n"
-                "set(CMAKE_INSTALL_RPATH_USE_LINK_PATH ON)\n"
-                "add_executable(binary main${lang_ext})\n"
-                "set_target_properties(binary PROPERTIES OUTPUT_NAME \"main\" SUFFIX \".exe\")\n"
-                "target_include_directories(binary PUBLIC \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../inc\")\n"
-                "find_library(pmlib NAMES ${libname} ${libname}.a ${libname}.dll ${libname}.dylib ${libname}.lib ${libname}.so PATHS \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../../lib\" \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../lib\")\n"
-                "target_link_libraries(binary PUBLIC \"\${pmlib}\")\n"
-                )
+        string(CONCAT collection_cmakelists_contents "${collection_cmakelists_contents}"
+            "cmake_minimum_required(VERSION 3.14)\n"
+            "if (NOT DEFINED CMAKE_BUILD_TYPE)\n"
+            "    set(CMAKE_BUILD_TYPE ${CMAKE_BUILD_TYPE})\n"
+            "endif()\n"
+            "if (NOT DEFINED CMAKE_Fortran_COMPILER)\n"
+            "    set(CMAKE_Fortran_COMPILER \"${binary_compiler}\")\n"
+            "endif()\n"
+            "project(main LANGUAGES ${binary_lang})\n"
+            "set(CMAKE_MACOSX_RPATH ON)\n"
+            "set(CMAKE_INSTALL_RPATH_USE_LINK_PATH ON)\n"
+            "add_executable(binary main${lang_ext})\n"
+            "set_target_properties(binary PROPERTIES OUTPUT_NAME \"main\" SUFFIX \".exe\")\n"
+            "target_include_directories(binary PUBLIC \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../inc\")\n"
+            "find_library(pmlib NAMES ${libname} ${libname}.a ${libname}.dll ${libname}.dylib ${libname}.lib ${libname}.so PATHS \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../../lib\" \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../lib\")\n"
+            "target_link_libraries(binary PUBLIC \"\${pmlib}\")\n"
+        )
+        #if (${csid_is_gnu} AND ${codecov_enabled})
+        #    string(CONCAT collection_cmakelists_contents "${collection_cmakelists_contents}"
+        #    "find_library(pmlib NAMES ${libname} ${libname}.a ${libname}.dll ${libname}.dylib ${libname}.lib ${libname}.so PATHS \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../../lib\" \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../lib\")\n"
+        #    )
+        #else()
+        #    string(CONCAT collection_cmakelists_contents "${collection_cmakelists_contents}"
+        #    "find_library(pmlib NAMES ${libname} ${libname}.a ${libname}.dll ${libname}.dylib ${libname}.lib ${libname}.so PATHS \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../lib\")\n"
+        #    )
+        #endif()
 
             #set(CMAKE_MACOSX_RPATH 1)
             #set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
@@ -230,7 +237,8 @@ if (EXISTS "${origin}")
                     set(binary_ipo_options /Qipo)
                     set(mkl_compile_options /Qmkl:sequential)
                     set(mkl_compile_definitions /DMKL_ENABLED=1)
-                    set(binary_compile_options "${binary_compile_options}" /standard-semantics /fpp)
+                    set(binary_link_options "${binary_link_options}" /F0x1000000000)
+                    set(binary_compile_options "${binary_compile_options}" /F0x1000000000 /standard-semantics /fpp /heap-arrays)
                     if ("${build}" STREQUAL "testing")
                         set(binary_compile_options "${binary_compile_options}" /O2)
                     elseif ("${build}" STREQUAL "debug")
@@ -373,7 +381,8 @@ if (EXISTS "${origin}")
             string( CONCAT
                     collection_cmakelists_bash_contents
                     "${collection_cmakelists_bash_contents}"
-                    "Add the library path to the PATH environment variable.\n"
+                    "# Add the library path to the\n"
+                    "# PATH environment variable.\n"
                     "export PATH=../../../lib:$PATH\n"
                     )
         endif()
@@ -386,7 +395,7 @@ if (EXISTS "${origin}")
         string( CONCAT
                 collection_cmakelists_batch_contents
                 "REM Add the library path to the\n"
-                "REM environment PATH variable.\n"
+                "REM PATH environment variable.\n"
                 "setlocal EnableDelayedExpansion\n"
                 "set \"PATH=..\\..\\..\\lib;%PATH%\"\n"
                 "REM Generate build, build, and run\n"

@@ -216,10 +216,14 @@ to the directory where the library should be built.
 > This option cannot be specified as a flag to the CMake binary
 > because the CMake build scripts must already exist in this folder.
 
+> **WARNING**
+> The specified value for this flag must be an **absolute** (full) path.
+> Relative paths currently result in library build failure.
+
 **optional**. The default value for `cmake_build_directory_path` is,
 
 ```bash
-bdir="${root}/bld/${os}/${arch}/${csid}${csvs}/${bld}/${lib}/${mem}/${par}"
+bdir="${root}/bld/${os}/${arch}/${csid}${csvs}/${build}/${lib}/${mem}/${par}/${checking}/${lang}"
 ```
 
 where
