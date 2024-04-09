@@ -237,7 +237,7 @@ where
 +   `${bld}`    is replaced with the specified value for the `build` configuration flag (`debug`, `release`, ...),
 +   `${lib}`    is replaced with the specified value for the `lib` configuration flag (`static`, `shared`, ...),
 +   `${mem}`    is replaced with the specified value for the `mem` configuration flag (`stack`, `heap`, ...),
-+   `${par}`    is replaced with a value determined from the `mem` configuration flag:
++   `${par}`    is replaced with a value determined from the `mem` configuration flag:  
     <br>
     Value               | Scenario
     --------------------|---------
