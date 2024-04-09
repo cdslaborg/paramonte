@@ -237,8 +237,8 @@ if (EXISTS "${origin}")
                     set(binary_ipo_options /Qipo)
                     set(mkl_compile_options /Qmkl:sequential)
                     set(mkl_compile_definitions /DMKL_ENABLED=1)
-                    set(binary_link_options "${binary_link_options}" /F0x1000000000)
-                    set(binary_compile_options "${binary_compile_options}" /F0x1000000000 /standard-semantics /fpp /heap-arrays)
+                    #set(binary_link_options "${binary_link_options}" /F0x1000000000) The intel /F flag does not seem to work anymore.
+                    set(binary_compile_options "${binary_compile_options}" /standard-semantics /fpp) # /F0x1000000000 /heap-arrays We use editbin software now to increase stack size.
                     if ("${build}" STREQUAL "testing")
                         set(binary_compile_options "${binary_compile_options}" /O2)
                     elseif ("${build}" STREQUAL "debug")
@@ -374,7 +374,7 @@ if (EXISTS "${origin}")
         set(collection_cmakelists_bash_path "${CMAKE_CURRENT_BINARY_DIR}/${collection_cmakelists_bash_name}")
         set(collection_cmakelists_batch_path "${CMAKE_CURRENT_BINARY_DIR}/${collection_cmakelists_batch_name}")
 
-        set(binary_cmake_build_run "cmake . -G \"${CMAKE_GENERATOR}\" && ${CMAKE_MAKE_PROGRAM} && ${CMAKE_MAKE_PROGRAM} run\n")
+        set(binary_cmake_build "cmake . -G \"${CMAKE_GENERATOR}\" && ${CMAKE_MAKE_PROGRAM}\n")
 
         set(collection_cmakelists_bash_contents "#!/bin/bash\n")
         if (WIN32)
@@ -389,7 +389,8 @@ if (EXISTS "${origin}")
         string( CONCAT
                 collection_cmakelists_bash_contents
                 "${collection_cmakelists_bash_contents}"
-                "${binary_cmake_build_run}"
+                "${binary_cmake_build}\n"
+                "${CMAKE_MAKE_PROGRAM} run"
                 )
 
         string( CONCAT
@@ -398,8 +399,14 @@ if (EXISTS "${origin}")
                 "REM PATH environment variable.\n"
                 "setlocal EnableDelayedExpansion\n"
                 "set \"PATH=..\\..\\..\\lib;%PATH%\"\n"
-                "REM Generate build, build, and run\n"
-                "${binary_cmake_build_run}"
+                "REM Enlarge the library stack size.\n"
+                "editbin ..\\..\\..\\lib\\*.dll /stack:1000000000\n"
+                "REM Generate build scripts.\n"
+                "${binary_cmake_build}\n"
+                "REM Enlarge the binary stack size.\n"
+                "editbin *.exe /stack:1000000000\n"
+                "REM Run the binary.\n"
+                "${CMAKE_MAKE_PROGRAM} run"
                 )
 
         #### Write the files.
