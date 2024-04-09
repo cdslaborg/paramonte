@@ -9,7 +9,7 @@
 >       Placing the library in the drive root directory will shorten the length 
 >       of the full build path and will likely resolve the build failures.
 > 2.    Specify a custom short path for the build directory via the 
->       installation configuration flag [--bdir](install.config.md#bdir).
+>       installation configuration flag [--bdir](./install.config.md#bdir).
 
 ##  Building via `install.bat` script in Windows CMD terminal
 
