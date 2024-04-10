@@ -1109,6 +1109,13 @@ corresponding constant vectors from the `iso_fortran_env` intrinsic module).
 > that is supported by the compiler but not fully implemented and not functional.
 > As such, the type kind parameter corresponding to uniccode is dropped in the library build.
 
+> **WARNING**
+> If you specify any of the optional kind-type-parameter-selection command arguments,
+> always ensure to minimally specify the default supported kind type parameters by the processor.
+> For example, the Fortran standard requires support for at least two `real` kind type parameters.
+> Additionally, the standard requires minimal support for at least two `integer` kind type parameters.
+> Additionally, the standard requires minimal support for at least one `logical` kind type parameters.
+
 ### `cki`
 
 Specifies a list of `complex` kind indices
