@@ -1,6 +1,6 @@
 program example
 
-    use pm_kind, only: SK, IK, RK => RKH ! testing with highest real precision available. all other real kinds are also supported.
+    use pm_kind, only: SK, IK, RKC => RKH ! testing with highest real precision available. all other real kinds are also supported.
     use pm_quadpack, only: nodeK15, weightK15, weightG7
     use pm_quadpack, only: nodeK21, weightK21, weightG10
     use pm_quadpack, only: nodeK31, weightK31, weightG15
@@ -13,8 +13,8 @@ program example
     implicit none
 
     integer(IK) , parameter     :: MAX_NPG = 30_IK  !   MAXimum Number of Points in the Gauss quadrature rule considered in this example.
-    real(RK)                    :: nodeK(MAX_NPG+1), weightK(MAX_NPG+1), weightG(MAX_NPG+1)
-    real(RK)    , allocatable   :: RefNodeK(:), RefWeightK(:), RefWeightG(:)
+    real(RKC)                   :: nodeK(MAX_NPG+1), weightK(MAX_NPG+1), weightG(MAX_NPG+1)
+    real(RKC)   , allocatable   :: refNodeK(:), refWeightK(:), refWeightG(:)
 
     type(display_type) :: disp
     disp = display_type(file = "main.out.F90")
@@ -25,9 +25,9 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-    allocate(RefWeightG, source = weightG7)
-    allocate(RefWeightK, source = weightK15)
-    allocate(RefNodeK, source = nodeK15)
+    refWeightG = real(weightG7, RKC)
+    refWeightK = real(weightK15, RKC)
+    refNodeK = real(nodeK15, RKC)
     call setNodeWeight(npg = 7)
 
     call disp%skip()
@@ -36,9 +36,9 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-    allocate(RefWeightG, source = weightG10)
-    allocate(RefWeightK, source = weightK21)
-    allocate(RefNodeK, source = nodeK21)
+    refWeightG = real(weightG10, RKC)
+    refWeightK = real(weightK21, RKC)
+    refNodeK = real(nodeK21, RKC)
     call setNodeWeight(npg = 10)
 
     call disp%skip()
@@ -47,9 +47,9 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-    allocate(RefWeightG, source = weightG15)
-    allocate(RefWeightK, source = weightK31)
-    allocate(RefNodeK, source = nodeK31)
+    refWeightG = real(weightG15, RKC)
+    refWeightK = real(weightK31, RKC)
+    refNodeK = real(nodeK31, RKC)
     call setNodeWeight(npg = 15)
 
     call disp%skip()
@@ -58,9 +58,9 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-    allocate(RefWeightG, source = weightG20)
-    allocate(RefWeightK, source = weightK41)
-    allocate(RefNodeK, source = nodeK41)
+    refWeightG = real(weightG20, RKC)
+    refWeightK = real(weightK41, RKC)
+    refNodeK = real(nodeK41, RKC)
     call setNodeWeight(npg = 20)
 
     call disp%skip()
@@ -69,9 +69,9 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-    allocate(RefWeightG, source = weightG25)
-    allocate(RefWeightK, source = weightK51)
-    allocate(RefNodeK, source = nodeK51)
+    refWeightG = real(weightG25, RKC)
+    refWeightK = real(weightK51, RKC)
+    refNodeK = real(nodeK51, RKC)
     call setNodeWeight(npg = 25)
 
     call disp%skip()
@@ -80,9 +80,9 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-    allocate(RefWeightG, source = weightG30)
-    allocate(RefWeightK, source = weightK61)
-    allocate(RefNodeK, source = nodeK61)
+    refWeightG = real(weightG30, RKC)
+    refWeightK = real(weightK61, RKC)
+    refNodeK = real(nodeK61, RKC)
     call setNodeWeight(npg = 30)
 
 contains
@@ -110,13 +110,13 @@ contains
         do i = 1, npk
             j = npk - i + 1
             if (mod(i, 2_IK) == 0_IK) then
-                call disp%show( [nodeK(i) - RefNodeK(j), weightK(i) - RefWeightK(j), weightG(i/2) - RefWeightG(size(RefWeightG) - i/2 + 1)] )
+                call disp%show( [nodeK(i) - refNodeK(j), weightK(i) - refWeightK(j), weightG(i/2) - refWeightG(size(refWeightG) - i/2 + 1)] )
             else
-                call disp%show( [nodeK(i) - RefNodeK(j), weightK(i) - RefWeightK(j)] )
+                call disp%show( [nodeK(i) - refNodeK(j), weightK(i) - refWeightK(j)] )
             end if
         end do
         call disp%skip()
-        deallocate(RefNodeK, RefWeightG, RefWeightK)
+        deallocate(refNodeK, refWeightG, refWeightK)
     end subroutine
 
 end program example
