@@ -1005,7 +1005,7 @@ module pm_mathGamma
 #if RK1_ENABLED
     PURE elemental module subroutine setGammaIncUppContFrac_RK1(gammaIncUpp, x, logGammaKappa, kappa, info, tol)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setGammaIncUppContFrac_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setGammaIncUppContFrac_RK1
 #endif
         use pm_kind, only: RKC => RK1
         real(RKC)   , intent(out)               :: gammaIncUpp
