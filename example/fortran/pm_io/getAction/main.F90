@@ -25,6 +25,8 @@ program example
     call disp%show( getAction('temp.tmp') , deliml = SK_"""" )
     call disp%show("getAction(unit)")
     call disp%show( getAction(unit) , deliml = SK_"""" )
+    call disp%show("close(unit)")
+                    close(unit)
     call disp%skip
 
     call disp%skip
@@ -34,6 +36,8 @@ program example
     call disp%show( getAction('temp.tmp') , deliml = SK_"""" )
     call disp%show("getAction(unit)")
     call disp%show( getAction(unit) , deliml = SK_"""" )
+    call disp%show("close(unit)")
+                    close(unit)
     call disp%skip
 
     call disp%skip
@@ -43,6 +47,8 @@ program example
     call disp%show( getAction('temp.tmp') , deliml = SK_"""" )
     call disp%show("getAction(unit)")
     call disp%show( getAction(unit) , deliml = SK_"""" )
+    call disp%show("close(unit)")
+                    close(unit)
     call disp%skip
 
     call disp%skip
