@@ -269,7 +269,7 @@ module pm_sysInfo
 
     impure module function constructKernelFailedMsg(failed, errmsg) result(kernel)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructKernelFailed
+        !DEC$ ATTRIBUTES DLLEXPORT :: constructKernelFailedMsg
 #endif
         use pm_kind, only: SKC => SK
         logical(LK)     , intent(out)       :: failed
