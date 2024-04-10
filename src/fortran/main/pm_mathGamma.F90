@@ -849,7 +849,7 @@ module pm_mathGamma
 #if RK1_ENABLED
     PURE elemental module subroutine setGammaIncLowSeries_RK1(gammaIncLow, x, logGammaKappa, kappa, info, tol)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setGammaIncLowSeries_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setGammaIncLowSeries_RK1
 #endif
         use pm_kind, only: RKC => RK1
         real(RKC)   , intent(out)               :: gammaIncLow
