@@ -6,7 +6,7 @@ program example
 
     implicit none
 
-    character(:, SK), allocatable :: from, to, dir, subdir, destination
+    character(:, SK), allocatable :: from, to
 
     type(display_type) :: disp
     disp = display_type(file = "main.out.F90")
