@@ -11,7 +11,6 @@ program benchmark
     integer(IK)                         :: iarr                         !<  The array size counter.
     integer(IK)                         :: fileUnit                     !<  The output file unit for benchmark results.
     integer(IK)     , parameter         :: NARR = 18_IK                 !<  The number of benchmark array sizes.
-    integer(IK)     , allocatable       :: rperm(:)                     !<  The permutation vector for LUP factorization.
     real(RKC)       , allocatable       :: samdim1(:,:)                 !<  The positive-definite matrix.
     real(RKC)       , allocatable       :: samdim2(:,:)                 !<  The positive-definite matrix.
     type(bench_type), allocatable       :: bench(:)                     !<  The Benchmark array.

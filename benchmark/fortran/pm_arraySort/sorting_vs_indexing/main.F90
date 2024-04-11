@@ -1,8 +1,10 @@
 program benchmark
 
-    use pm_kind, only: IK, LK, RK
-    use pm_bench, only: bench_type
+    use pm_kind, only: IK, LK, RKC => RK
+    use pm_arrayResize, only: setResized
+    use pm_distUnif, only: getUnifRand
     use pm_arraySort, only: setSorted
+    use pm_bench, only: bench_type
 
     implicit none
 
@@ -12,7 +14,7 @@ program benchmark
     integer(IK) , parameter             :: NARR = 12_IK             !< The number of benchmark array sizes.
     integer(IK) , parameter             :: NBENCH = 3_IK            !< The number of benchmark wrappers.
     integer(IK)                         :: arraySize(NARR)          !< The benchmarking array sizes.
-    real(RK)    , allocatable           :: array(:)                 !< The arrays to be sorted.
+    real(RKC)   , allocatable           :: array(:)                 !< The arrays to be sorted.
     integer(IK) , allocatable           :: index(:)                 !< The arrays to be sorted.
     logical(LK)                         :: issorted
     type(bench_type)                    :: bench(2,NBENCH)
@@ -40,7 +42,8 @@ program benchmark
 
         write(*,"(*(g0,:,' '))") "Benchmarking with array size", arraySize(iarr)
 
-        allocate(array(arraySize(iarr)), index(arraySize(iarr)))
+        array = getUnifRand(1._RKC, 2._RKC, arraySize(iarr))
+        call setResized(index, arraySize(isize))
 
         issorted = .false._LK
         do i = 1, NBENCH
@@ -56,8 +59,6 @@ program benchmark
 
         write(fileUnitSorted,"(*(g0,:,','))") arraySize(iarr), (bench(2,i)%timing%mean, i = 1, NBENCH)
 
-        deallocate(array, index)
-
     end do loopOverarraySize
 
     close(fileUnitRandom)
@@ -68,7 +69,7 @@ contains
     subroutine setarray()
         use pm_arraySpace, only: getLinSpace
         if (issorted) then
-            array(:) = getLinSpace(0._RK, 1._RK, count = size(array, kind = IK))
+            array(:) = getLinSpace(0._RKC, 1._RKC, count = size(array, kind = IK))
         else
             call random_number(array)
         end if

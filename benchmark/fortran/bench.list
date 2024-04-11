@@ -13,10 +13,10 @@
 !pm_arrayRemove/setRemoved-scalarPattern_vs_vectorPattern
 !pm_arrayReplace/getReplaced_vs_setReplaced
 !pm_arrayResize/setResized_vs_direct
-pm_arrayReverse/getReversed_vs_setReversed
-pm_arraySearch/getBin-isLessArg_vs_default
-pm_arraySelect/getSelected_vs_setSelected
-pm_arrayShuffle/getShuffled_vs_setShuffled
+!pm_arrayReverse/getReversed_vs_setReversed
+!pm_arraySearch/getBin-isLessArg_vs_default
+!pm_arraySelect/getSelected_vs_setSelected
+!pm_arrayShuffle/getShuffled_vs_setShuffled
 pm_arraySort/sorting
 pm_arraySort/sorting_vs_indexing
 pm_arraySplit/scalarSep_vs_vectorSep
