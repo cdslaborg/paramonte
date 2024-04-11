@@ -626,7 +626,7 @@
 !pm_str/getMinVal
 !pm_str/getStrWrapped
 !pm_str/getTrimmedTZ
-pm_str/isEndedWith
+!pm_str/isEndedWith
 !pm_strASCII/getAsciiFromEscaped
 !pm_strASCII/getCharLower
 !pm_strASCII/getCharUpper
