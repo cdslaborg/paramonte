@@ -89,17 +89,17 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructKernelIs
+    module procedure kernelis_typer
         character(255, SK) :: errmsg
         logical(LK) :: failed
         errmsg = SK_""
         kernelis = kernelis_type(failed, errmsg)
-        if (failed) error stop MODULE_NAME//SK_"@constructKernelIs(): "//trim(errmsg) ! LCOV_EXCL_LINE
+        if (failed) error stop MODULE_NAME//SK_"@kernelis_typer(): "//trim(errmsg) ! LCOV_EXCL_LINE
     end procedure
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructKernelIsFailed
+    module procedure kernelis_typerFailed
         character(255, SK) :: errmsg
         errmsg = SK_""
         kernelis = kernelis_type(failed, errmsg)
@@ -107,7 +107,7 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructKernelIsFailedMsg
+    module procedure kernelis_typerFailedMsg
         if (allocated(mc_kernel)) then
             kernelis = mc_kernel%is
             failed = .false._LK
@@ -116,7 +116,7 @@ contains
             if (allocated(mc_kernel)) then
                 kernelis = mc_kernel%is
             else
-                errmsg = MODULE_NAME//SK_"@constructKernelIsFailedMsg(): "//trim(errmsg) ! LCOV_EXCL_LINE
+                errmsg = MODULE_NAME//SK_"@kernelis_typerFailedMsg(): "//trim(errmsg) ! LCOV_EXCL_LINE
                 return ! LCOV_EXCL_LINE
             end if
         end if
@@ -124,17 +124,17 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructKernel
+    module procedure kernel_typer
         character(255, SK) :: errmsg
         logical(LK) :: failed
         errmsg = SK_""
         kernel = kernel_type(failed, errmsg)
-        if (failed) error stop MODULE_NAME//SK_"@constructKernel(): "//trim(errmsg) ! LCOV_EXCL_LINE
+        if (failed) error stop MODULE_NAME//SK_"@kernel_typer(): "//trim(errmsg) ! LCOV_EXCL_LINE
     end procedure
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructKernelFailed
+    module procedure kernel_typerFailed
         character(31, SK) :: errmsg
         errmsg = SK_""
         kernel = kernel_type(failed, errmsg)
@@ -142,9 +142,9 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructKernelFailedMsg
+    module procedure kernel_typerFailedMsg
         use pm_kind, only: SKC => SK
-        character(*, SK), parameter :: PROCEDURE_NAME = MODULE_NAME//SK_"@constructKernel()"
+        character(*, SK), parameter :: PROCEDURE_NAME = MODULE_NAME//SK_"@kernel_typer()"
         if (allocated(mc_kernel)) then
             failed = .false._LK
             kernel = mc_kernel

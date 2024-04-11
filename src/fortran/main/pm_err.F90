@@ -165,9 +165,9 @@ module pm_err
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     interface err_type
-    pure module function constructErr(occurred, stat, msg) result(err)
+    pure module function err_typer(occurred, stat, msg) result(err)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructErr
+        !DEC$ ATTRIBUTES DLLEXPORT :: err_typer
 #endif
         use pm_kind, only: SK, IK
         logical(LK)         , intent(in)    , optional  :: occurred
@@ -998,7 +998,7 @@ module pm_err
 
     !>  \cond excluded
     interface mark_type
-        module procedure :: constructMark
+        module procedure :: mark_typer
     end interface
     !>  \endcond excluded
 
@@ -1036,9 +1036,9 @@ module pm_err
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
-    pure module function constructMark(prefix, indent, break, newline, width, maxwidth, tmsize, bmsize, unit, sticky) result(self)
+    pure module function mark_typer(prefix, indent, break, newline, width, maxwidth, tmsize, bmsize, unit, sticky) result(self)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructMark
+        !DEC$ ATTRIBUTES DLLEXPORT :: mark_typer
 #endif
         character(*, SK), intent(in), optional  :: prefix
         character(*, SK), intent(in), optional  :: indent
@@ -1152,7 +1152,7 @@ module pm_err
 
     !>  \cond excluded
     interface note_type
-        module procedure :: constructNote
+        module procedure :: note_typer
     end interface
     !>  \endcond excluded
 
@@ -1190,9 +1190,9 @@ module pm_err
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
-    pure module function constructNote(prefix, indent, break, newline, width, maxwidth, tmsize, bmsize, unit, sticky) result(self)
+    pure module function note_typer(prefix, indent, break, newline, width, maxwidth, tmsize, bmsize, unit, sticky) result(self)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructNote
+        !DEC$ ATTRIBUTES DLLEXPORT :: note_typer
 #endif
         character(*, SK), intent(in), optional  :: prefix
         character(*, SK), intent(in), optional  :: indent
@@ -1303,7 +1303,7 @@ module pm_err
 
     !>  \cond excluded
     interface warn_type
-        module procedure :: constructWarn
+        module procedure :: warn_typer
     end interface
     !>  \endcond excluded
 
@@ -1341,9 +1341,9 @@ module pm_err
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
-    pure module function constructWarn(prefix, indent, break, newline, width, maxwidth, tmsize, bmsize, unit, sticky) result(self)
+    pure module function warn_typer(prefix, indent, break, newline, width, maxwidth, tmsize, bmsize, unit, sticky) result(self)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructWarn
+        !DEC$ ATTRIBUTES DLLEXPORT :: warn_typer
 #endif
         character(*, SK), intent(in), optional  :: prefix
         character(*, SK), intent(in), optional  :: indent
@@ -1470,7 +1470,7 @@ module pm_err
 
     !>  \cond excluded
     interface stop_type
-        module procedure :: constructStop
+        module procedure :: stop_typer
     end interface
     !>  \endcond excluded
 
@@ -1508,9 +1508,9 @@ module pm_err
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
-    pure module function constructStop(prefix, indent, break, newline, width, maxwidth, tmsize, bmsize, unit, sticky, help, stat, renabled) result(self)
+    pure module function stop_typer(prefix, indent, break, newline, width, maxwidth, tmsize, bmsize, unit, sticky, help, stat, renabled) result(self)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructStop
+        !DEC$ ATTRIBUTES DLLEXPORT :: stop_typer
 #endif
         character(*, SK), intent(in), optional  :: prefix
         character(*, SK), intent(in), optional  :: indent

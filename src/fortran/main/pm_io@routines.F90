@@ -68,7 +68,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructOpenArg
+    module procedure openArg_typer
 
         !character(:, SK), allocatable :: msg
         !if (allocated(msg)) deallocate(msg)
@@ -357,7 +357,7 @@ contains
 
 #define constructField_ENABLED 1
 
-    module procedure constructField
+    module procedure field_typer
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -4747,14 +4747,14 @@ contains
 #define constructDisplay_ENABLED 1
 
 #define File_ENABLED 1
-    module procedure constructDisplayFile
+    module procedure display_typer_file
         use pm_kind, only: SKC => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 #undef File_ENABLED
 
 #define Unit_ENABLED 1
-    module procedure constructDisplayUnit
+    module procedure display_typer_unit
         use pm_kind, only: SKC => SK
 #include "pm_io@routines.inc.F90"
     end procedure

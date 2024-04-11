@@ -304,13 +304,13 @@ module pm_quadTest
     !>  \param[in]  ub      :   The input scalar of the same type and kind as `lb`, containing the upper limit of integration.<br>
     !>                          (**optional**, default = [getInfPos(real(0,kind(ub))](@ref pm_except::getInfPos))<br>
     !>
-    !>  \interface{Int1_type}
+    !>  \interface{int1_type}
     !>  \code{.F90}
     !>
-    !>      use pm_quadTest, only: Int1_type
-    !>      type(Int1_type) :: integrand
+    !>      use pm_quadTest, only: int1_type
+    !>      type(int1_type) :: integrand
     !>
-    !>      integrand = Int1_type(lb = lb, ub = ub)
+    !>      integrand = int1_type(lb = lb, ub = ub)
     !>      print *, "description: ", integrand%desc
     !>      print *, "lower limit: ", integrand%lb
     !>      print *, "upper limit: ", integrand%ub
@@ -324,24 +324,24 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{Int1_type}
+    !>  \finmain{int1_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
-    type, extends(integrand_type)   :: Int1_type
+    type, extends(integrand_type)   :: int1_type
     contains
         procedure                   :: get => getInt1
     end type
 
     !>  \cond excluded
-    interface Int1_type
-    module function constructInt1(lb, ub) result(self)
+    interface int1_type
+    module function int1_typer(lb, ub) result(self)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructInt1
+        !DEC$ ATTRIBUTES DLLEXPORT :: int1_typer
 #endif
         use pm_kind, only: RKC => RKH
         real(RKC), intent(in), optional :: lb, ub
-        type(Int1_type)                 :: self
+        type(int1_type)                 :: self
     end function
     end interface
     !>  \endcond excluded
@@ -354,7 +354,7 @@ module pm_quadTest
         !DEC$ ATTRIBUTES DLLEXPORT :: getInt1
 #endif
         use pm_kind, only: RKC => RKH
-        class(Int1_type)    , intent(in)    :: self
+        class(int1_type)    , intent(in)    :: self
         real(RKC)           , intent(in)    :: x
         real(RKC)                           :: func
     end function
@@ -385,13 +385,13 @@ module pm_quadTest
     !>  \param[in]  b       :   The input positive-valued scalar of type `real` of kind \RKH, such that `a / b` represents the upper limit of integration.<br>
     !>                          (**optional**, default = `1.`)<br>
     !>
-    !>  \interface{Int2_type}
+    !>  \interface{int2_type}
     !>  \code{.F90}
     !>
-    !>      use pm_quadTest, only: Int2_type
-    !>      type(IntSinCos_type) :: integrand
+    !>      use pm_quadTest, only: int2_type
+    !>      type(intSinCos_type) :: integrand
     !>
-    !>      integrand = Int2_type(a = a, b = b)
+    !>      integrand = int2_type(a = a, b = b)
     !>      print *, "description: ", integrand%desc
     !>      print *, "lower limit: ", integrand%lb
     !>      print *, "upper limit: ", integrand%ub
@@ -405,25 +405,25 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{Int2_type}
+    !>  \finmain{int2_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
-    type, extends(integrand_type)   :: Int2_type
+    type, extends(integrand_type)   :: int2_type
         real(RKH)                   :: a, b
     contains
         procedure                   :: get => getInt2
     end type
 
     !>  \cond excluded
-    interface Int2_type
-    module function constructInt2(a, b) result(self)
+    interface int2_type
+    module function int2_typer(a, b) result(self)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructInt2
+        !DEC$ ATTRIBUTES DLLEXPORT :: int2_typer
 #endif
         use pm_kind, only: RKC => RKH
         real(RKC), intent(in), optional :: a, b
-        type(Int2_type)                 :: self
+        type(int2_type)                 :: self
     end function
     end interface
     !>  \endcond excluded
@@ -434,7 +434,7 @@ module pm_quadTest
         !DEC$ ATTRIBUTES DLLEXPORT :: getInt2
 #endif
         use pm_kind, only: RKC => RKH
-        class(Int2_type)    , intent(in)    :: self
+        class(int2_type)    , intent(in)    :: self
         real(RKC)           , intent(in)    :: x
         real(RKC)                           :: func
     end function
@@ -462,13 +462,13 @@ module pm_quadTest
     !>  \param[in]  ub      :   The input positive scalar of type `real` of kind \RKH, containing the upper limit of integration.<br>
     !>                          (**optional**, default = `1.`)<br>
     !>
-    !>  \interface{Int3_type}
+    !>  \interface{int3_type}
     !>  \code{.F90}
     !>
-    !>      use pm_quadTest, only: Int3_type
-    !>      type(IntSinCos_type) :: integrand
+    !>      use pm_quadTest, only: int3_type
+    !>      type(intSinCos_type) :: integrand
     !>
-    !>      integrand = Int3_type(ub = ub)
+    !>      integrand = int3_type(ub = ub)
     !>      print *, "description: ", integrand%desc
     !>      print *, "lower limit: ", integrand%lb
     !>      print *, "upper limit: ", integrand%ub
@@ -482,24 +482,24 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{Int3_type}
+    !>  \finmain{int3_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
-    type, extends(integrand_type)   :: Int3_type
+    type, extends(integrand_type)   :: int3_type
     contains
         procedure                   :: get => getInt3
     end type
 
     !>  \cond excluded
-    interface Int3_type
-    module function constructInt3(ub) result(self)
+    interface int3_type
+    module function int3_typer(ub) result(self)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructInt3
+        !DEC$ ATTRIBUTES DLLEXPORT :: int3_typer
 #endif
         use pm_kind, only: RKC => RKH
         real(RKC), intent(in), optional :: ub
-        type(Int3_type)                 :: self
+        type(int3_type)                 :: self
     end function
     end interface
     !>  \endcond excluded
@@ -510,7 +510,7 @@ module pm_quadTest
         !DEC$ ATTRIBUTES DLLEXPORT :: getInt3
 #endif
         use pm_kind, only: RKC => RKH
-        class(Int3_type)    , intent(in)    :: self
+        class(int3_type)    , intent(in)    :: self
         real(RKC)           , intent(in)    :: x
         real(RKC)                           :: func
     end function
@@ -531,13 +531,13 @@ module pm_quadTest
     !>  with an integral of `-0.189275187882093321180367135892330338053417661540147291526012234`.<br>
     !>  This integrand is inspired by the examples of John Burkardt test suite for QAGWS routine of QuadPack.<br>
     !>
-    !>  \interface{Int4_type}
+    !>  \interface{int4_type}
     !>  \code{.F90}
     !>
-    !>      use pm_quadTest, only: Int4_type
-    !>      type(Int4_type) :: integrand
+    !>      use pm_quadTest, only: int4_type
+    !>      type(int4_type) :: integrand
     !>
-    !>      integrand = Int4_type()
+    !>      integrand = int4_type()
     !>      print *, "description: ", integrand%desc
     !>      print *, "lower limit: ", integrand%lb
     !>      print *, "upper limit: ", integrand%ub
@@ -551,23 +551,23 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{Int4_type}
+    !>  \finmain{int4_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
-    type, extends(integrand_type)   :: Int4_type
+    type, extends(integrand_type)   :: int4_type
     contains
         procedure                   :: get => getInt4
     end type
 
     !>  \cond excluded
-    interface Int4_type
-    module function constructInt4() result(self)
+    interface int4_type
+    module function int4_typer() result(self)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructInt4
+        !DEC$ ATTRIBUTES DLLEXPORT :: int4_typer
 #endif
         use pm_kind, only: RKC => RKH
-        type(Int4_type) :: self
+        type(int4_type) :: self
     end function
     end interface
     !>  \endcond excluded
@@ -578,7 +578,7 @@ module pm_quadTest
         !DEC$ ATTRIBUTES DLLEXPORT :: getInt4
 #endif
         use pm_kind, only: RKC => RKH
-        class(Int4_type), intent(in)    :: self
+        class(int4_type), intent(in)    :: self
         real(RKC)       , intent(in)    :: x
         real(RKC)                       :: func
     end function
@@ -610,13 +610,13 @@ module pm_quadTest
     !>  \param[in]  ub      :   The input scalar of the same type and kind as `lb`, containing the upper limit of integration.<br>
     !>                          (**optional**, default = `3.`)<br>
     !>
-    !>  \interface{Int5_type}
+    !>  \interface{int5_type}
     !>  \code{.F90}
     !>
-    !>      use pm_quadTest, only: Int5_type
-    !>      type(Int5_type) :: integrand
+    !>      use pm_quadTest, only: int5_type
+    !>      type(int5_type) :: integrand
     !>
-    !>      integrand = Int5_type(lb = lb, ub = ub)
+    !>      integrand = int5_type(lb = lb, ub = ub)
     !>      print *, "description: ", integrand%desc
     !>      print *, "lower limit: ", integrand%lb
     !>      print *, "upper limit: ", integrand%ub
@@ -630,24 +630,24 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{Int5_type}
+    !>  \finmain{int5_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
-    type, extends(integrand_type)   :: Int5_type
+    type, extends(integrand_type)   :: int5_type
     contains
         procedure                   :: get => getInt5
     end type
 
     !>  \cond excluded
-    interface Int5_type
-    module function constructInt5(lb, ub) result(self)
+    interface int5_type
+    module function int5_typer(lb, ub) result(self)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructInt5
+        !DEC$ ATTRIBUTES DLLEXPORT :: int5_typer
 #endif
         use pm_kind, only: RKC => RKH
         real(RKC), intent(in)   :: lb, ub
-        type(Int5_type)         :: self
+        type(int5_type)         :: self
     end function
     end interface
     !>  \endcond excluded
@@ -658,7 +658,7 @@ module pm_quadTest
         !DEC$ ATTRIBUTES DLLEXPORT :: getInt5
 #endif
         use pm_kind, only: RKC => RKH
-        class(Int5_type), intent(in)    :: self
+        class(int5_type), intent(in)    :: self
         real(RKC)       , intent(in)    :: x
         real(RKC)                       :: func
     end function
@@ -679,13 +679,13 @@ module pm_quadTest
     !>  with an integral of \f$-\pi\frac{\log(10)}{20}\f$.<br>
     !>  This integrand is inspired by the examples of John Burkardt test suite for QAGI routine of QuadPack.<br>
     !>
-    !>  \interface{Int6_type}
+    !>  \interface{int6_type}
     !>  \code{.F90}
     !>
-    !>      use pm_quadTest, only: Int6_type
-    !>      type(Int6_type) :: integrand
+    !>      use pm_quadTest, only: int6_type
+    !>      type(int6_type) :: integrand
     !>
-    !>      integrand = Int6_type()
+    !>      integrand = int6_type()
     !>      print *, "description: ", integrand%desc
     !>      print *, "lower limit: ", integrand%lb
     !>      print *, "upper limit: ", integrand%ub
@@ -699,23 +699,23 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{Int6_type}
+    !>  \finmain{int6_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
-    type, extends(integrand_type)   :: Int6_type
+    type, extends(integrand_type)   :: int6_type
     contains
         procedure                   :: get => getInt6
     end type
 
     !>  \cond excluded
-    interface Int6_type
-    module function constructInt6() result(self)
+    interface int6_type
+    module function int6_typer() result(self)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructInt6
+        !DEC$ ATTRIBUTES DLLEXPORT :: int6_typer
 #endif
         use pm_kind, only: RKC => RKH
-        type(Int6_type) :: self
+        type(int6_type) :: self
     end function
     end interface
     !>  \endcond excluded
@@ -726,7 +726,7 @@ module pm_quadTest
         !DEC$ ATTRIBUTES DLLEXPORT :: getInt6
 #endif
         use pm_kind, only: RKC => RKH
-        class(Int6_type), intent(in)    :: self
+        class(int6_type), intent(in)    :: self
         real(RKC)       , intent(in)    :: x
         real(RKC)                       :: func
     end function
@@ -747,13 +747,13 @@ module pm_quadTest
     !>  with an integral of \f$52.7407483834714449977291997202299809\f$.<br>
     !>  The integrand has singularities and break points at `break = [1 / sqrt(2), 1]`.<br>
     !>
-    !>  \interface{Int7_type}
+    !>  \interface{int7_type}
     !>  \code{.F90}
     !>
-    !>      use pm_quadTest, only: Int7_type
-    !>      type(Int7_type) :: integrand
+    !>      use pm_quadTest, only: int7_type
+    !>      type(int7_type) :: integrand
     !>
-    !>      integrand = Int7_type()
+    !>      integrand = int7_type()
     !>      print *, "description: ", integrand%desc
     !>      print *, "lower limit: ", integrand%lb
     !>      print *, "upper limit: ", integrand%ub
@@ -762,9 +762,9 @@ module pm_quadTest
     !>  \endcode
     !>
     !>  \remark
-    !>  This integrand is a transformation of [Int5_type](@ref pm_quadTest::Int5_type) such that
-    !>  the integral of `Int5_type%get(1/x) / x**2` over `(0, 3)` equals
-    !>  the integral of `Int7_type%get(x)` over `(1/3, +Inf)`.<br>
+    !>  This integrand is a transformation of [int5_type](@ref pm_quadTest::int5_type) such that
+    !>  the integral of `int5_type%get(1/x) / x**2` over `(0, 3)` equals
+    !>  the integral of `int7_type%get(x)` over `(1/3, +Inf)`.<br>
     !>
     !>  \see
     !>  [integrand_type](@ref pm_quadTest::integrand_type)<br>
@@ -772,23 +772,23 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{Int7_type}
+    !>  \finmain{int7_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
-    type, extends(integrand_type)   :: Int7_type
+    type, extends(integrand_type)   :: int7_type
     contains
         procedure                   :: get => getInt7
     end type
 
     !>  \cond excluded
-    interface Int7_type
-    module function constructInt7() result(self)
+    interface int7_type
+    module function int7_typer() result(self)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructInt7
+        !DEC$ ATTRIBUTES DLLEXPORT :: int7_typer
 #endif
         use pm_kind, only: RKC => RKH
-        type(Int7_type) :: self
+        type(int7_type) :: self
     end function
     end interface
     !>  \endcond excluded
@@ -799,7 +799,7 @@ module pm_quadTest
         !DEC$ ATTRIBUTES DLLEXPORT :: getInt7
 #endif
         use pm_kind, only: RKC => RKH
-        class(Int7_type), intent(in)    :: self
+        class(int7_type), intent(in)    :: self
         real(RKC)       , intent(in)    :: x
         real(RKC)                       :: func
     end function
@@ -820,13 +820,13 @@ module pm_quadTest
     !>  with an integral of \f$52.7407483834714449977291997202299809\f$.<br>
     !>  The integrand has singularities and break points at `break = [-1, -1 / sqrt(2)]`.<br>
     !>
-    !>  \interface{Int8_type}
+    !>  \interface{int8_type}
     !>  \code{.F90}
     !>
-    !>      use pm_quadTest, only: Int8_type
-    !>      type(Int8_type) :: integrand
+    !>      use pm_quadTest, only: int8_type
+    !>      type(int8_type) :: integrand
     !>
-    !>      integrand = Int8_type()
+    !>      integrand = int8_type()
     !>      print *, "description: ", integrand%desc
     !>      print *, "lower limit: ", integrand%lb
     !>      print *, "upper limit: ", integrand%ub
@@ -835,9 +835,9 @@ module pm_quadTest
     !>  \endcode
     !>
     !>  \remark
-    !>  This integrand is a transformation of [Int7_type](@ref pm_quadTest::Int7_type) such that
-    !>  the integral of `-Int7_type%get(-x)` over `(1/3, +Inf)` equals
-    !>  the integral of `Int8_type%get(x)` over `(-Inf, -1/3)`.<br>
+    !>  This integrand is a transformation of [int7_type](@ref pm_quadTest::int7_type) such that
+    !>  the integral of `-int7_type%get(-x)` over `(1/3, +Inf)` equals
+    !>  the integral of `int8_type%get(x)` over `(-Inf, -1/3)`.<br>
     !>
     !>  \see
     !>  [integrand_type](@ref pm_quadTest::integrand_type)<br>
@@ -845,23 +845,23 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{Int8_type}
+    !>  \finmain{int8_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
-    type, extends(integrand_type)   :: Int8_type
+    type, extends(integrand_type)   :: int8_type
     contains
         procedure                   :: get => getInt8
     end type
 
     !>  \cond excluded
-    interface Int8_type
-    module function constructInt8() result(self)
+    interface int8_type
+    module function int8_typer() result(self)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructInt8
+        !DEC$ ATTRIBUTES DLLEXPORT :: int8_typer
 #endif
         use pm_kind, only: RKC => RKH
-        type(Int8_type) :: self
+        type(int8_type) :: self
     end function
     end interface
     !>  \endcond excluded
@@ -872,7 +872,7 @@ module pm_quadTest
         !DEC$ ATTRIBUTES DLLEXPORT :: getInt8
 #endif
         use pm_kind, only: RKC => RKH
-        class(Int8_type), intent(in)    :: self
+        class(int8_type), intent(in)    :: self
         real(RKC)       , intent(in)    :: x
         real(RKC)                       :: func
     end function
@@ -898,13 +898,13 @@ module pm_quadTest
     !>  with an integral of \f$53.7407483834714449977291997202299809\f$.<br>
     !>  The integrand has singularities and break points at `break = [-10, -9, 1 / sqrt(2), 1]`.<br>
     !>
-    !>  \interface{Int9_type}
+    !>  \interface{int9_type}
     !>  \code{.F90}
     !>
-    !>      use pm_quadTest, only: Int9_type
-    !>      type(Int9_type) :: integrand
+    !>      use pm_quadTest, only: int9_type
+    !>      type(int9_type) :: integrand
     !>
-    !>      integrand = Int9_type()
+    !>      integrand = int9_type()
     !>      print *, "description: ", integrand%desc
     !>      print *, "lower limit: ", integrand%lb
     !>      print *, "upper limit: ", integrand%ub
@@ -913,7 +913,7 @@ module pm_quadTest
     !>  \endcode
     !>
     !>  \remark
-    !>  This integrand is a transformation of [Int7_type](@ref pm_quadTest::Int7_type)
+    !>  This integrand is a transformation of [int7_type](@ref pm_quadTest::int7_type)
     !>  mixed with the PDF of the Beta distribution for the shape parameters \f$(0.5, 0.5)\f$.<br>
     !>
     !>  \see
@@ -922,23 +922,23 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{Int9_type}
+    !>  \finmain{int9_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
-    type, extends(integrand_type)   :: Int9_type
+    type, extends(integrand_type)   :: int9_type
     contains
         procedure                   :: get => getInt9
     end type
 
     !>  \cond excluded
-    interface Int9_type
-    module function constructInt9() result(self)
+    interface int9_type
+    module function int9_typer() result(self)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructInt9
+        !DEC$ ATTRIBUTES DLLEXPORT :: int9_typer
 #endif
         use pm_kind, only: RKC => RKH
-        type(Int9_type) :: self
+        type(int9_type) :: self
     end function
     end interface
     !>  \endcond excluded
@@ -949,7 +949,7 @@ module pm_quadTest
         !DEC$ ATTRIBUTES DLLEXPORT :: getInt9
 #endif
         use pm_kind, only: RKC => RKH
-        class(Int9_type), intent(in)    :: self
+        class(int9_type), intent(in)    :: self
         real(RKC)       , intent(in)    :: x
         real(RKC)                       :: func
     end function
@@ -991,13 +991,13 @@ module pm_quadTest
     !>  \param[in]  beta    :   The input scalar of type `integer` of default kind \IK, standing for Upper Factor, such that `ub = uf * pi` is the upper bound of integration.<br>
     !>                          (**optional**, default = `+1.`)<br>
     !>
-    !>  \interface{IntGamUpp_type}
+    !>  \interface{intGamUpp_type}
     !>  \code{.F90}
     !>
-    !>      use pm_quadTest, only: IntGamUpp_type
-    !>      type(IntGamUpp_type) :: integrand
+    !>      use pm_quadTest, only: intGamUpp_type
+    !>      type(intGamUpp_type) :: integrand
     !>
-    !>      integrand = IntGamUpp_type()
+    !>      integrand = intGamUpp_type()
     !>      print *, "description: ", integrand%desc
     !>      print *, "lower limit: ", integrand%alpha
     !>      print *, "lower limit: ", integrand%beta
@@ -1018,11 +1018,11 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{IntGamUpp_type}
+    !>  \finmain{intGamUpp_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
-    type, extends(integrand_type)   :: IntGamUpp_type
+    type, extends(integrand_type)   :: intGamUpp_type
         real(RKH)                   :: alpha, beta
         real(RKH)                   :: normfac
     contains
@@ -1030,14 +1030,14 @@ module pm_quadTest
     end type
 
     !>  \cond excluded
-    interface IntGamUpp_type
-    module function constructIntGamUpp(lb, ub, alpha, beta) result(self)
+    interface intGamUpp_type
+    module function intGamUpp_typer(lb, ub, alpha, beta) result(self)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructIntGamUpp
+        !DEC$ ATTRIBUTES DLLEXPORT :: intGamUpp_typer
 #endif
         use pm_kind, only: RKC => RKH
         real(RKC), intent(in), optional :: lb, ub, alpha, beta
-        type(IntGamUpp_type) :: self
+        type(intGamUpp_type) :: self
     end function
     end interface
     !>  \endcond excluded
@@ -1048,7 +1048,7 @@ module pm_quadTest
         !DEC$ ATTRIBUTES DLLEXPORT :: getIntGamUpp
 #endif
         use pm_kind, only: RKC => RKH
-        class(IntGamUpp_type), intent(in) :: self
+        class(intGamUpp_type), intent(in) :: self
         real(RKC), intent(in) :: x
         real(RKC) :: func
     end function
@@ -1084,13 +1084,13 @@ module pm_quadTest
     !>  \param[in]  b       :   The input scalar of the same type and kind as `a`.<br>
     !>                          (**optional**, default = `+1.`)<br>
     !>
-    !>  \interface{IntSinCos_type}
+    !>  \interface{intSinCos_type}
     !>  \code{.F90}
     !>
-    !>      use pm_quadTest, only: IntSinCos_type
-    !>      type(IntSinCos_type) :: integrand
+    !>      use pm_quadTest, only: intSinCos_type
+    !>      type(intSinCos_type) :: integrand
     !>
-    !>      integrand = IntSinCos_type(lb = lb, ub = ub, a = a, b = b)
+    !>      integrand = intSinCos_type(lb = lb, ub = ub, a = a, b = b)
     !>      print *, "description: ", integrand%desc
     !>      print *, "lower limit: ", integrand%lb
     !>      print *, "upper limit: ", integrand%ub
@@ -1104,11 +1104,11 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{IntSinCos_type}
+    !>  \finmain{intSinCos_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
-    type, extends(integrand_type)   :: IntSinCos_type
+    type, extends(integrand_type)   :: intSinCos_type
         integer(IK)                 :: lf, uf
         real(RKH)                   :: a, b
     contains
@@ -1116,15 +1116,15 @@ module pm_quadTest
     end type
 
     !>  \cond excluded
-    interface IntSinCos_type
-    module function constructIntSinCos(lf, uf, a, b) result(self)
+    interface intSinCos_type
+    module function intSinCos_typer(lf, uf, a, b) result(self)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructIntSinCos
+        !DEC$ ATTRIBUTES DLLEXPORT :: intSinCos_typer
 #endif
         use pm_kind, only: RKC => RKH
         integer(IK) , intent(in), optional  :: lf, uf
         real(RKC)   , intent(in), optional  :: a, b
-        type(IntSinCos_type)                :: self
+        type(intSinCos_type)                :: self
     end function
     end interface
     !>  \endcond excluded
@@ -1135,7 +1135,7 @@ module pm_quadTest
         !DEC$ ATTRIBUTES DLLEXPORT :: getIntSinCos
 #endif
         use pm_kind, only: RKC => RKH
-        class(IntSinCos_type)  , intent(in) :: self
+        class(intSinCos_type)  , intent(in) :: self
         real(RKC)           , intent(in)    :: x
         real(RKC)                           :: func
     end function
@@ -1163,13 +1163,13 @@ module pm_quadTest
     !>  \param[in]  sigma   :   The input scalar of the same type and kind as `lb`, representing the scale parameter of the Normal distribution.<br>
     !>                          (**optional**, default = `1.`)<br>
     !>
-    !>  \interface{IntNormPDF_type}
+    !>  \interface{intNormPDF_type}
     !>  \code{.F90}
     !>
-    !>      use pm_quadTest, only: IntNormPDF_type
-    !>      type(IntNormPDF_type) :: integrand
+    !>      use pm_quadTest, only: intNormPDF_type
+    !>      type(intNormPDF_type) :: integrand
     !>
-    !>      integrand = IntNormPDF_type(lb = lb, ub = ub, mu = mu, sigma = sigma)
+    !>      integrand = intNormPDF_type(lb = lb, ub = ub, mu = mu, sigma = sigma)
     !>      print *, "description: ", integrand%desc
     !>      print *, "lower limit: ", integrand%lb
     !>      print *, "upper limit: ", integrand%ub
@@ -1183,11 +1183,11 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{IntNormPDF_type}
+    !>  \finmain{intNormPDF_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
-    type, extends(integrand_type)   :: IntNormPDF_type
+    type, extends(integrand_type)   :: intNormPDF_type
         real(RKH)                   :: mu               !<  \public The location parameter of the Normal distribution.
         real(RKH)                   :: sigma            !<  \public The scale parameter (standard deviation) of the Normal distribution.
         real(RKH)                   :: invSigma         !<  \public The inverse scale parameter (standard deviation) of the Normal distribution.
@@ -1197,14 +1197,14 @@ module pm_quadTest
     end type
 
     !>  \cond excluded
-    interface IntNormPDF_type
-    module function constructIntNormPDF(lb, ub, mu, sigma) result(self)
+    interface intNormPDF_type
+    module function intNormPDF_typer(lb, ub, mu, sigma) result(self)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructIntNormPDF
+        !DEC$ ATTRIBUTES DLLEXPORT :: intNormPDF_typer
 #endif
         use pm_kind, only: RKC => RKH
         real(RKC), intent(in), optional :: lb, ub, mu, sigma
-        type(IntNormPDF_type)           :: self
+        type(intNormPDF_type)           :: self
     end function
     end interface
     !>  \endcond excluded
@@ -1215,7 +1215,7 @@ module pm_quadTest
         !DEC$ ATTRIBUTES DLLEXPORT :: getIntNormPDF
 #endif
         use pm_kind, only: RKC => RKH
-        class(IntNormPDF_type)  , intent(in)    :: self
+        class(intNormPDF_type)  , intent(in)    :: self
         real(RKC)               , intent(in)    :: x
         real(RKC)                               :: func
     end function
@@ -1244,13 +1244,13 @@ module pm_quadTest
     !>  \param[in]  sigma   :   The input scalar of the same type and kind as `lb`, representing the scale parameter of the Lognormal distribution.<br>
     !>                          (**optional**, default = `1.`)<br>
     !>
-    !>  \interface{IntLogNormPDF_type}
+    !>  \interface{intLogNormPDF_type}
     !>  \code{.F90}
     !>
-    !>      use pm_quadTest, only: IntLogNormPDF_type
-    !>      type(IntLogNormPDF_type) :: integrand
+    !>      use pm_quadTest, only: intLogNormPDF_type
+    !>      type(intLogNormPDF_type) :: integrand
     !>
-    !>      integrand = IntLogNormPDF_type(lb = lb, ub = ub, mu = mu, sigma = sigma)
+    !>      integrand = intLogNormPDF_type(lb = lb, ub = ub, mu = mu, sigma = sigma)
     !>      print *, "description: ", integrand%desc
     !>      print *, "lower limit: ", integrand%lb
     !>      print *, "upper limit: ", integrand%ub
@@ -1264,11 +1264,11 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{IntLogNormPDF_type}
+    !>  \finmain{intLogNormPDF_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
-    type, extends(integrand_type)   :: IntLogNormPDF_type
+    type, extends(integrand_type)   :: intLogNormPDF_type
         real(RKH)                   :: mu               !<  \public The location parameter of the Normal distribution.
         real(RKH)                   :: sigma            !<  \public The scale parameter (standard deviation) of the Lognormal distribution.
         real(RKH)                   :: invSigma         !<  \public The inverse scale parameter (standard deviation) of the Lognormal distribution.
@@ -1278,14 +1278,14 @@ module pm_quadTest
     end type
 
     !>  \cond excluded
-    interface IntLogNormPDF_type
-    module function constructIntLogNormPDF(lb, ub, mu, sigma) result(self)
+    interface intLogNormPDF_type
+    module function intLogNormPDF_typer(lb, ub, mu, sigma) result(self)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructIntLogNormPDF
+        !DEC$ ATTRIBUTES DLLEXPORT :: intLogNormPDF_typer
 #endif
         use pm_kind, only: RKC => RKH
         real(RKC), intent(in), optional :: lb, ub, mu, sigma
-        type(IntLogNormPDF_type)        :: self
+        type(intLogNormPDF_type)        :: self
     end function
     end interface
     !>  \endcond excluded
@@ -1296,7 +1296,7 @@ module pm_quadTest
         !DEC$ ATTRIBUTES DLLEXPORT :: getIntLogNormPDF
 #endif
         use pm_kind, only: RKC => RKH
-        class(IntLogNormPDF_type)   , intent(in)    :: self
+        class(intLogNormPDF_type)   , intent(in)    :: self
         real(RKC)                   , intent(in)    :: x
         real(RKC)                                   :: func
     end function
@@ -1322,13 +1322,13 @@ module pm_quadTest
     !>  \param[in]  logSigma    :   The input scalar of the same type and kind as `lb`, representing the location parameter of the GenExpGamma distribution.<br>
     !>                              (**optional**, default = `0`)<br>
     !>
-    !>  \interface{IntGenExpGammaPDF_type}
+    !>  \interface{intGenExpGammaPDF_type}
     !>  \code{.F90}
     !>
-    !>      use pm_quadTest, only: IntGenExpGammaPDF_type
-    !>      type(IntGenExpGammaPDF_type) :: integrand
+    !>      use pm_quadTest, only: intGenExpGammaPDF_type
+    !>      type(intGenExpGammaPDF_type) :: integrand
     !>
-    !>      integrand = IntGenExpGammaPDF_type(lb = lb, ub = ub, kappa = kappa, invOmega = invOmega, logSigma = logSigma)
+    !>      integrand = intGenExpGammaPDF_type(lb = lb, ub = ub, kappa = kappa, invOmega = invOmega, logSigma = logSigma)
     !>      print *, "description: ", integrand%desc
     !>      print *, "lower limit: ", integrand%lb
     !>      print *, "upper limit: ", integrand%ub
@@ -1342,11 +1342,11 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{IntGenExpGammaPDF_type}
+    !>  \finmain{intGenExpGammaPDF_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
-    type, extends(integrand_type)   :: IntGenExpGammaPDF_type
+    type, extends(integrand_type)   :: intGenExpGammaPDF_type
         real(RKH)                   :: kappa        !<  \public The shape parameter of the GenExpGamma distribution.
         real(RKH)                   :: invOmega     !<  \public The inverse of the scale parameter of the GenExpGamma distribution.
         real(RKH)                   :: logSigma     !<  \public The location parameter of the GenExpGamma distribution.
@@ -1356,14 +1356,14 @@ module pm_quadTest
     end type
 
     !>  \cond excluded
-    interface IntGenExpGammaPDF_type
-    module function constructIntGenExpGammaPDF(lb, ub, kappa, invOmega, logSigma) result(self)
+    interface intGenExpGammaPDF_type
+    module function intGenExpGammaPDF_typer(lb, ub, kappa, invOmega, logSigma) result(self)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructIntGenExpGammaPDF
+        !DEC$ ATTRIBUTES DLLEXPORT :: intGenExpGammaPDF_typer
 #endif
         use pm_kind, only: RKC => RKH
         real(RKC)   , intent(in), optional  :: lb, ub, kappa, invOmega, logSigma
-        type(IntGenExpGammaPDF_type)        :: self
+        type(intGenExpGammaPDF_type)        :: self
     end function
     end interface
     !>  \endcond excluded
@@ -1374,7 +1374,7 @@ module pm_quadTest
         !DEC$ ATTRIBUTES DLLEXPORT :: getIntGenExpGammaPDF
 #endif
         use pm_kind, only: RKC => RKH
-        class(IntGenExpGammaPDF_type)   , intent(in)    :: self
+        class(intGenExpGammaPDF_type)   , intent(in)    :: self
         real(RKC)                       , intent(in)    :: x
         real(RKC)                                       :: func
     end function
@@ -1401,13 +1401,13 @@ module pm_quadTest
     !>  The integrand has five singularities and break points at \f$\ms{break} = [-9, -5, 2, 5, 7]\f$.<br>
     !>  By definition, the integral of the integrand over the entire fully-infinite integration range is `5.`.<br>
     !>
-    !>  \interface{IntPentaGammaInf_type}
+    !>  \interface{intPentaGammaInf_type}
     !>  \code{.F90}
     !>
-    !>      use pm_quadTest, only: IntPentaGammaInf_type
-    !>      type(IntPentaGammaInf_type) :: integrand
+    !>      use pm_quadTest, only: intPentaGammaInf_type
+    !>      type(intPentaGammaInf_type) :: integrand
     !>
-    !>      integrand = IntPentaGammaInf_type()
+    !>      integrand = intPentaGammaInf_type()
     !>      print *, "description: ", integrand%desc
     !>      print *, "lower limit: ", integrand%lb
     !>      print *, "upper limit: ", integrand%ub
@@ -1421,23 +1421,23 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{IntPentaGammaInf_type}
+    !>  \finmain{intPentaGammaInf_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
-    type, extends(integrand_type)   :: IntPentaGammaInf_type
+    type, extends(integrand_type)   :: intPentaGammaInf_type
     contains
         procedure                   :: get => getIntPentaGammaInf
     end type
 
     !>  \cond excluded
-    interface IntPentaGammaInf_type
-    module function constructIntPentaGammaInf() result(self)
+    interface intPentaGammaInf_type
+    module function intPentaGammaInf_typer() result(self)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructIntPentaGammaInf
+        !DEC$ ATTRIBUTES DLLEXPORT :: intPentaGammaInf_typer
 #endif
         use pm_kind, only: RKC => RKH
-        type(IntPentaGammaInf_type) :: self
+        type(intPentaGammaInf_type) :: self
     end function
     end interface
     !>  \endcond excluded
@@ -1448,7 +1448,7 @@ module pm_quadTest
         !DEC$ ATTRIBUTES DLLEXPORT :: getIntPentaGammaInf
 #endif
         use pm_kind, only: RKC => RKH
-        class(IntPentaGammaInf_type), intent(in)    :: self
+        class(intPentaGammaInf_type), intent(in)    :: self
         real(RKC)                   , intent(in)    :: x
         real(RKC)                                   :: func
     end function
@@ -1479,13 +1479,13 @@ module pm_quadTest
     !>  \param[in]  ub      :   The input positive scalar of the same type and kind as `lb`, containing the upper limit of integration.<br>
     !>                          (**optional**, default = [getInfPos(0._RKC)](@ref pm_except::getInfPos))<br>
     !>
-    !>  \interface{IntDoncker1_type}
+    !>  \interface{intDoncker1_type}
     !>  \code{.F90}
     !>
-    !>      use pm_quadTest, only: IntDoncker1_type
-    !>      type(IntSinCos_type) :: integrand
+    !>      use pm_quadTest, only: intDoncker1_type
+    !>      type(intSinCos_type) :: integrand
     !>
-    !>      integrand = IntDoncker1_type(lb = lb, ub = ub)
+    !>      integrand = intDoncker1_type(lb = lb, ub = ub)
     !>      print *, "description: ", integrand%desc
     !>      print *, "lower limit: ", integrand%lb
     !>      print *, "upper limit: ", integrand%ub
@@ -1499,24 +1499,24 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{IntDoncker1_type}
+    !>  \finmain{intDoncker1_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
-    type, extends(integrand_type)   :: IntDoncker1_type
+    type, extends(integrand_type)   :: intDoncker1_type
     contains
         procedure                   :: get => getIntDoncker1
     end type
 
     !>  \cond excluded
-    interface IntDoncker1_type
-    module function constructIntDoncker1(lb, ub) result(self)
+    interface intDoncker1_type
+    module function intDoncker1_typer(lb, ub) result(self)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructIntDoncker1
+        !DEC$ ATTRIBUTES DLLEXPORT :: intDoncker1_typer
 #endif
         use pm_kind, only: RKC => RKH
         real(RKC), intent(in), optional :: lb, ub
-        type(IntDoncker1_type)          :: self
+        type(intDoncker1_type)          :: self
     end function
     end interface
     !>  \endcond excluded
@@ -1527,7 +1527,7 @@ module pm_quadTest
         !DEC$ ATTRIBUTES DLLEXPORT :: getIntDoncker1
 #endif
         use pm_kind, only: RKC => RKH
-        class(IntDoncker1_type) , intent(in)    :: self
+        class(intDoncker1_type) , intent(in)    :: self
         real(RKC)               , intent(in)    :: x
         real(RKC)                               :: func
     end function
@@ -1558,13 +1558,13 @@ module pm_quadTest
     !>  \param[in]  ub      :   The input positive scalar of the same type and kind as `lb`, containing the upper limit of integration.<br>
     !>                          (**optional**, default = `0._RK`)<br>
     !>
-    !>  \interface{IntDoncker2_type}
+    !>  \interface{intDoncker2_type}
     !>  \code{.F90}
     !>
-    !>      use pm_quadTest, only: IntDoncker2_type
-    !>      type(IntSinCos_type) :: integrand
+    !>      use pm_quadTest, only: intDoncker2_type
+    !>      type(intSinCos_type) :: integrand
     !>
-    !>      integrand = IntDoncker2_type(lb = lb, ub = ub)
+    !>      integrand = intDoncker2_type(lb = lb, ub = ub)
     !>      print *, "description: ", integrand%desc
     !>      print *, "lower limit: ", integrand%lb
     !>      print *, "upper limit: ", integrand%ub
@@ -1582,24 +1582,24 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{IntDoncker2_type}
+    !>  \finmain{intDoncker2_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
-    type, extends(integrand_type)   :: IntDoncker2_type
+    type, extends(integrand_type)   :: intDoncker2_type
     contains
         procedure                   :: get => getIntDoncker2
     end type
 
     !>  \cond excluded
-    interface IntDoncker2_type
-    module function constructIntDoncker2(lb, ub) result(self)
+    interface intDoncker2_type
+    module function intDoncker2_typer(lb, ub) result(self)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructIntDoncker2
+        !DEC$ ATTRIBUTES DLLEXPORT :: intDoncker2_typer
 #endif
         use pm_kind, only: RKC => RKH
         real(RKC), intent(in), optional :: lb, ub
-        type(IntDoncker2_type)          :: self
+        type(intDoncker2_type)          :: self
     end function
     end interface
     !>  \endcond excluded
@@ -1610,7 +1610,7 @@ module pm_quadTest
         !DEC$ ATTRIBUTES DLLEXPORT :: getIntDoncker2
 #endif
         use pm_kind, only: RKC => RKH
-        class(IntDoncker2_type) , intent(in)    :: self
+        class(intDoncker2_type) , intent(in)    :: self
         real(RKC)               , intent(in)    :: x
         real(RKC)                               :: func
     end function
@@ -1636,13 +1636,13 @@ module pm_quadTest
     !>  \param[in]  cs      :   The input scalar of the same type and kind as `lb`, containing the Cauchy singularity of the integrand.<br>
     !>                          (**optional**, default = `+1.`)<br>
     !>
-    !>  \interface{IntCauchy1_type}
+    !>  \interface{intCauchy1_type}
     !>  \code{.F90}
     !>
-    !>      use pm_quadTest, only: IntCauchy1_type
-    !>      type(IntCauchy1_type) :: integrand
+    !>      use pm_quadTest, only: intCauchy1_type
+    !>      type(intCauchy1_type) :: integrand
     !>
-    !>      integrand = IntCauchy1_type(lb = lb, ub = ub, cs = cs)
+    !>      integrand = intCauchy1_type(lb = lb, ub = ub, cs = cs)
     !>      print *, "description: ", integrand%desc
     !>      print *, "lower limit: ", integrand%lb
     !>      print *, "upper limit: ", integrand%ub
@@ -1658,24 +1658,24 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{IntCauchy1_type}
+    !>  \finmain{intCauchy1_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
-    type, extends(integrand_type)   :: IntCauchy1_type
+    type, extends(integrand_type)   :: intCauchy1_type
     contains
         procedure                   :: get => getIntCauchy1
     end type
 
     !>  \cond excluded
-    interface IntCauchy1_type
-    module function constructIntCauchy1(lb, ub, cs) result(self)
+    interface intCauchy1_type
+    module function intCauchy1_typer(lb, ub, cs) result(self)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructIntCauchy1
+        !DEC$ ATTRIBUTES DLLEXPORT :: intCauchy1_typer
 #endif
         use pm_kind, only: RKC => RKH
         real(RKC)   , intent(in), optional  :: lb, ub, cs
-        type(IntCauchy1_type)               :: self
+        type(intCauchy1_type)               :: self
     end function
     end interface
     !>  \endcond excluded
@@ -1686,7 +1686,7 @@ module pm_quadTest
         !DEC$ ATTRIBUTES DLLEXPORT :: getIntCauchy1
 #endif
         use pm_kind, only: RKC => RKH
-        class(IntCauchy1_type)  , intent(in)    :: self
+        class(intCauchy1_type)  , intent(in)    :: self
         real(RKC)               , intent(in)    :: x
         real(RKC)                               :: func
     end function
@@ -1727,13 +1727,13 @@ module pm_quadTest
     !>                          Note that `cs1 < cs2` must hold.<br>
     !>                          (**optional**, default = `+3.`)<br>
     !>
-    !>  \interface{IntCauchy2_type}
+    !>  \interface{intCauchy2_type}
     !>  \code{.F90}
     !>
-    !>      use pm_quadTest, only: IntCauchy2_type
-    !>      type(IntCauchy2_type) :: integrand
+    !>      use pm_quadTest, only: intCauchy2_type
+    !>      type(intCauchy2_type) :: integrand
     !>
-    !>      integrand = IntCauchy2_type(lb = lb, ub = ub, cs1 = cs1, cs2 = cs2)
+    !>      integrand = intCauchy2_type(lb = lb, ub = ub, cs1 = cs1, cs2 = cs2)
     !>      print *, "description: ", integrand%desc
     !>      print *, "lower limit: ", integrand%lb
     !>      print *, "upper limit: ", integrand%ub
@@ -1753,25 +1753,25 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{IntCauchy2_type}
+    !>  \finmain{intCauchy2_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
-    type, extends(integrand_type)   :: IntCauchy2_type
+    type, extends(integrand_type)   :: intCauchy2_type
         real(RKH)   , private       :: csnot, Pole(2)
     contains
         procedure                   :: get => getIntCauchy2
     end type
 
     !>  \cond excluded
-    interface IntCauchy2_type
-    module function constructIntCauchy2(lb, ub, cs1, cs2) result(self)
+    interface intCauchy2_type
+    module function intCauchy2_typer(lb, ub, cs1, cs2) result(self)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructIntCauchy2
+        !DEC$ ATTRIBUTES DLLEXPORT :: intCauchy2_typer
 #endif
         use pm_kind, only: RKC => RKH
         real(RKC)   , intent(in), optional  :: lb, ub, cs1, cs2
-        type(IntCauchy2_type)               :: self
+        type(intCauchy2_type)               :: self
     end function
     end interface
     !>  \endcond excluded
@@ -1782,7 +1782,7 @@ module pm_quadTest
         !DEC$ ATTRIBUTES DLLEXPORT :: getIntCauchy2
 #endif
         use pm_kind, only: RKC => RKH
-        class(IntCauchy2_type)  , intent(in)    :: self
+        class(intCauchy2_type)  , intent(in)    :: self
         real(RKC)               , intent(in)    :: x
         real(RKC)                               :: func
     end function

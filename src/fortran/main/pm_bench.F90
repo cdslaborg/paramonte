@@ -143,7 +143,7 @@ module pm_bench
     !>  This is the base class for creating low-level benchmark objects.
     !>
     !>  \details
-    !>  See also the [constructor](@ref pm_bench::constructBench) of this type.<br>
+    !>  See also the [constructor](@ref pm_bench::bench_typer) of this type.<br>
     !>
     !>  \interface{benchBase_type}
     !>  \code{.F90}
@@ -169,7 +169,7 @@ module pm_bench
     !>  \endcode
     !>
     !>  \remark
-    !>  See [constructBenchBase](@ref pm_bench::constructBenchBase) for the non-default constructor of this type.<br>
+    !>  See [benchBase_typer](@ref pm_bench::benchBase_typer) for the non-default constructor of this type.<br>
     !>
     !>  \note
     !>  Although it is possible, **this type is not meant to be directly used for benchmarking**.<br>
@@ -177,7 +177,7 @@ module pm_bench
     !>
     !>  \see
     !>  [bench_type](@ref pm_bench::bench_type)<br>
-    !>  [constructBenchBase](@ref pm_bench::constructBenchBase) (constructor of the type)<br>
+    !>  [benchBase_typer](@ref pm_bench::benchBase_typer) (constructor of the type)<br>
     !>  [timer_type](@ref pm_timer::timer_type)<br>
     !>  [timerDAT_type](@ref pm_timer::timerDAT_type)<br>
     !>  [timerMPI_type](@ref pm_timer::timerMPI_type)<br>
@@ -210,7 +210,7 @@ module pm_bench
 
     !>  \cond excluded
     interface benchBase_type
-        module procedure :: constructBenchBase
+        module procedure :: benchBase_typer
     end interface
     !>  \endcond excluded
 
@@ -246,7 +246,7 @@ module pm_bench
     !>  \return
     !>  `benchBase`             :   The output scalar object of type [benchBase_type](@ref pm_bench::benchBase_type).
     !>
-    !>  \interface{constructBenchBase}
+    !>  \interface{benchBase_typer}
     !>  \code{.F90}
     !>
     !>      use pm_kind, only: SK, IK, RKD
@@ -292,7 +292,7 @@ module pm_bench
     !>  [timerSYS_type](@ref pm_timer::timerSYS_type)<br>
     !>  [timer_type](@ref pm_timer::timer_type)<br>
     !>
-    !>  \example{constructBenchBase}
+    !>  \example{benchBase_typer}
     !>  \include{lineno} example/pm_bench/benchBase_type/main.F90
     !>  \compilef
     !>  \output
@@ -301,14 +301,14 @@ module pm_bench
     !>  \test
     !>  [test_pm_bench](@ref test_pm_bench)
     !>
-    !>  \finmain{constructBenchBase}
+    !>  \finmain{benchBase_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
-    interface constructBenchBase
-    module function constructBenchBase(name, minsec, miniter, timer) result(benchBase)
+    interface benchBase_typer
+    module function benchBase_typer(name, minsec, miniter, timer) result(benchBase)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructBenchBase
+        !DEC$ ATTRIBUTES DLLEXPORT :: benchBase_typer
 #endif
         use pm_kind, only: SK, IK, RKD
         use pm_timer, only: timer_type
@@ -334,7 +334,7 @@ module pm_bench
     !>  The latter has a more concise syntax with potentially faster runtime performance
     !>  (which is likely irrelevant in almost all practical scenarios).<br>
     !>
-    !>  See also the [constructor](@ref pm_bench::constructBench) of this type.<br>
+    !>  See also the [constructor](@ref pm_bench::bench_typer) of this type.<br>
     !>
     !>  \interface{bench_type}
     !>  \code{.F90}
@@ -398,7 +398,7 @@ module pm_bench
 
     !>  \cond excluded
     interface bench_type
-        module procedure :: constructBench  !<  This is the [constructor](@ref pm_bench::constructBench) of objects of type [bench_type](@ref pm_bench::bench_type).
+        module procedure :: bench_typer  !<  This is the [constructor](@ref pm_bench::bench_typer) of objects of type [bench_type](@ref pm_bench::bench_type).
     end interface
     !>  \endcond excluded
 
@@ -444,7 +444,7 @@ module pm_bench
     !>  \return
     !>  `bench`                 :   The output scalar object of type [bench_type](@ref pm_bench::bench_type).
     !>
-    !>  \interface{constructBench}
+    !>  \interface{bench_typer}
     !>  \code{.F90}
     !>
     !>      use pm_kind, only: SK, IK, RKD
@@ -482,7 +482,7 @@ module pm_bench
     !>  [timerSYS_type](@ref pm_timer::timerSYS_type)<br>
     !>  [timer_type](@ref pm_timer::timer_type)<br>
     !>
-    !>  \example{constructBench}
+    !>  \example{bench_typer}
     !>  \include{lineno} example/pm_bench/bench_type/main.F90
     !>  \compilef
     !>  \output
@@ -491,14 +491,14 @@ module pm_bench
     !>  \test
     !>  [test_pm_bench](@ref test_pm_bench)
     !>
-    !>  \finmain{constructBench}
+    !>  \finmain{bench_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
-    interface constructBench
-    module function constructBench(name, exec, overhead, minsec, miniter, timer) result(bench)
+    interface bench_typer
+    module function bench_typer(name, exec, overhead, minsec, miniter, timer) result(bench)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructBench
+        !DEC$ ATTRIBUTES DLLEXPORT :: bench_typer
 #endif
         use pm_timer, only: timer_type
         character(*, SK)    , intent(in)            :: name
@@ -697,7 +697,7 @@ module pm_bench
     !>  \details
     !>  This type facilitates comparison of performances of **multiple** user-specified procedure wrappers
     !>  by reducing the amount of code to be written and automating and randomizing the timing schemes.<br>
-    !>  See also [constructBenchMulti](@ref pm_bench::constructBenchMulti), the type constructor.<br>
+    !>  See also [benchMulti_typer](@ref pm_bench::benchMulti_typer), the type constructor.<br>
     !>
     !>  \interface{benchMulti_type}
     !>  \code{.F90}
@@ -710,7 +710,7 @@ module pm_bench
     !>  \endcode
     !>
     !>  \see
-    !>  [constructBenchMulti](@ref pm_bench::constructBenchMulti)<br>
+    !>  [benchMulti_typer](@ref pm_bench::benchMulti_typer)<br>
     !>  [showsum](@ref pm_bench::showsum)<br>
     !>  [bench_type](@ref pm_bench::bench_type)<br>
     !>  [timer_type](@ref pm_timer::timer_type)<br>
@@ -746,7 +746,7 @@ module pm_bench
     end type
 
     interface benchMulti_type
-        module procedure :: constructBenchMulti
+        module procedure :: benchMulti_typer
     end interface
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -774,7 +774,7 @@ module pm_bench
     !>  \return
     !>  `self`                  :   The output scalar object of type [benchMulti_type](@ref pm_bench::benchMulti_type).
     !>
-    !>  \interface{constructBenchMulti}
+    !>  \interface{benchMulti_typer}
     !>  \code{.F90}
     !>
     !>      type(benchMulti_type) :: self(:)
@@ -794,7 +794,7 @@ module pm_bench
     !>  [timerOMP_type](@ref pm_timer::timerOMP_type)<br>
     !>  [timerSYS_type](@ref pm_timer::timerSYS_type)<br>
     !>
-    !>  \example{constructBenchMulti}
+    !>  \example{benchMulti_typer}
     !>  \include{lineno} example/pm_bench/benchMulti_type/main.F90
     !>  \compilef
     !>  \output
@@ -808,14 +808,14 @@ module pm_bench
     !>  The current construction of the `name` component of the output object relies on repeated allocation of `name`.<br>
     !>  This can be improved by removing the redundant allocation in future, although any performance benefits are questionable.<br>
     !>
-    !>  \finmain{constructBenchMulti}
+    !>  \finmain{benchMulti_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
-    interface constructBenchMulti
-    module function constructBenchMulti(case, sorted, repeat) result(self)
+    interface benchMulti_typer
+    module function benchMulti_typer(case, sorted, repeat) result(self)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructBenchMulti
+        !DEC$ ATTRIBUTES DLLEXPORT :: benchMulti_typer
 #endif
         use pm_kind, only: IK, LK
         type(benchMulti_type)                           :: self

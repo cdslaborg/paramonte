@@ -270,7 +270,7 @@ module pm_str
     !>  \status \unresolved
     !>  \source \ifort{2021.11.1 Build 20231117_000000}
     !>  \desc
-    !>  The following example fails on Windows with \ifort{2021.11.1 Build 20231117_000000}.
+    !>  The following example fails on Windows and Linux with \ifort{2021.11.1 Build 20231117_000000}.
     !>  \code{.F90}
     !>      call disp%show("isEndedWith(css_type('ParaMonte'), [css_type('ParaMonte'), css_type('Monte  '), css_type('Monte  ', trimmed = .true._LK), css_type('monte')])")
     !>      call disp%show( isEndedWith(css_type('ParaMonte'), [css_type('ParaMonte'), css_type('Monte  '), css_type('Monte  ', trimmed = .true._LK), css_type('monte')]) )
@@ -280,7 +280,7 @@ module pm_str
     !>      forrtl: severe (408): fort: (8): Attempt to fetch from allocatable variable VAL when it is not allocated.
     !>  \endcode
     !>  Attempts to reproduce this error in an isolated simple case were unsuccessful.<br>
-    !>  The code successfully copiles and runs on Linux platforms with both \gfortran and \ifort.
+    !>  The code successfully compiles and runs using \gfortran.
     !>  \remedy
     !>  For now, the above example is commented out in the example script.<br>
     !>

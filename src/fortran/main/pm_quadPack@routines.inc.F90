@@ -31,7 +31,7 @@
 #define HELP_ARG, breakTrans
 #elif   QAGS_ENABLED || QAGP_ENABLED || QAWC_ENABLED || QAWFS_ENABLED || QAWFC_ENABLED
 #define HELP_ARG, help
-#elif   !(constructWcauchy_ENABLED || constructWsin_ENABLED || constructWcos_ENABLED || getQuadGK_ENABLED || setNodeWeightGK_ENABLED || setErrSorted_ENABLED || setSeqLimEps_ENABLED || setChebExpan_ENABLED)
+#elif   !(wcauchy_typer_ENABLED || wsin_typer_ENABLED || wcos_typer_ENABLED || getQuadGK_ENABLED || setNodeWeightGK_ENABLED || setErrSorted_ENABLED || setSeqLimEps_ENABLED || setChebExpan_ENABLED)
 #error  "Unrecognized interface."
 #endif
         ! Define the GK quadrature arguments.
@@ -39,24 +39,24 @@
 #define QRULE_ARG nodeK, weightK, weightG
 #elif   GK15_ENABLED || GK21_ENABLED || GK31_ENABLED || GK41_ENABLED || GK51_ENABLED || GK61_ENABLED
 #define QRULE_ARG qrule
-#elif   !(constructWcauchy_ENABLED || constructWsin_ENABLED || constructWcos_ENABLED || setNodeWeightGK_ENABLED || setErrSorted_ENABLED || setSeqLimEps_ENABLED || setChebExpan_ENABLED || isFailedQuad_ENABLED)
+#elif   !(wcauchy_typer_ENABLED || wsin_typer_ENABLED || wcos_typer_ENABLED || setNodeWeightGK_ENABLED || setErrSorted_ENABLED || setSeqLimEps_ENABLED || setChebExpan_ENABLED || isFailedQuad_ENABLED)
 #error  "Unrecognized interface."
 #endif
         !%%%%%%%%%%%%%%%%%%%%%%%
-#if     constructWcauchy_ENABLED
+#if     wcauchy_typer_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%
 
         wcauchy%cs = real(cs, RKC)
 
-        !%%%%%%%%%%%%%%%%%%%%
-#elif   constructWsin_ENABLED
-        !%%%%%%%%%%%%%%%%%%%%
+        !%%%%%%%%%%%%%%%%%
+#elif   wsin_typer_ENABLED
+        !%%%%%%%%%%%%%%%%%
 
         wsin%omega = real(omega, RKC)
 
-        !%%%%%%%%%%%%%%%%%%%%
-#elif   constructWcos_ENABLED
-        !%%%%%%%%%%%%%%%%%%%%
+        !%%%%%%%%%%%%%%%%%
+#elif   wcos_typer_ENABLED
+        !%%%%%%%%%%%%%%%%%
 
         wcos%omega = real(omega, RKC)
 

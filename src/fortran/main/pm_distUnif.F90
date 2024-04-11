@@ -2571,7 +2571,7 @@ module pm_distUnif
     !>  [xoshiro256ssw_type](@ref pm_distUnif::xoshiro256ssw_type)<br>
     !>  [xoshiro256ssJump128](@ref pm_distUnif::xoshiro256ssJump128)<br>
     !>  [xoshiro256ssJump192](@ref pm_distUnif::xoshiro256ssJump192)<br>
-    !>  [constructXoshiro256ssw](@ref pm_distUnif::constructXoshiro256ssw)<br>
+    !>  [xoshiro256ssw_typer](@ref pm_distUnif::xoshiro256ssw_typer)<br>
     !>  [xoshiro256ssStateSize](@ref pm_distUnif::xoshiro256ssStateSize)<br>
     !>
     !>  \finmain{xoshiro256ssStateSize}
@@ -2593,7 +2593,7 @@ module pm_distUnif
     !>  [xoshiro256ssw_type](@ref pm_distUnif::xoshiro256ssw_type)<br>
     !>  [xoshiro256ssJump128](@ref pm_distUnif::xoshiro256ssJump128)<br>
     !>  [xoshiro256ssJump192](@ref pm_distUnif::xoshiro256ssJump192)<br>
-    !>  [constructXoshiro256ssw](@ref pm_distUnif::constructXoshiro256ssw)<br>
+    !>  [xoshiro256ssw_typer](@ref pm_distUnif::xoshiro256ssw_typer)<br>
     !>  [xoshiro256ssStateSize](@ref pm_distUnif::xoshiro256ssStateSize)<br>
     !>
     !>  \finmain{xoshiro256ssStateSize}
@@ -2627,7 +2627,7 @@ module pm_distUnif
     !>  [xoshiro256ssw_type](@ref pm_distUnif::xoshiro256ssw_type)<br>
     !>  [xoshiro256ssJump128](@ref pm_distUnif::xoshiro256ssJump128)<br>
     !>  [xoshiro256ssJump192](@ref pm_distUnif::xoshiro256ssJump192)<br>
-    !>  [constructXoshiro256ssw](@ref pm_distUnif::constructXoshiro256ssw)<br>
+    !>  [xoshiro256ssw_typer](@ref pm_distUnif::xoshiro256ssw_typer)<br>
     !>  [xoshiro256ssStateSize](@ref pm_distUnif::xoshiro256ssStateSize)<br>
     !>
     !>  \finmain{xoshiro256ssJump128}
@@ -2667,7 +2667,7 @@ module pm_distUnif
     !>  [xoshiro256ssw_type](@ref pm_distUnif::xoshiro256ssw_type)<br>
     !>  [xoshiro256ssJump128](@ref pm_distUnif::xoshiro256ssJump128)<br>
     !>  [xoshiro256ssJump192](@ref pm_distUnif::xoshiro256ssJump192)<br>
-    !>  [constructXoshiro256ssw](@ref pm_distUnif::constructXoshiro256ssw)<br>
+    !>  [xoshiro256ssw_typer](@ref pm_distUnif::xoshiro256ssw_typer)<br>
     !>  [xoshiro256ssStateSize](@ref pm_distUnif::xoshiro256ssStateSize)<br>
     !>
     !>  \finmain{xoshiro256ssJump192}
@@ -2852,7 +2852,7 @@ module pm_distUnif
 
     !>  \cond excluded
     interface rngf_type
-        module procedure :: constructFRNG
+        module procedure :: rngf_typer
     end interface
     !>  \endcond excluded
 
@@ -2884,14 +2884,14 @@ module pm_distUnif
     !>  \test
     !>  [test_pm_distUnif](@ref test_pm_distUnif)
     !>
-    !>  \finmain{constructFRNG}
+    !>  \finmain{rngf_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
-    interface constructFRNG
-    module function constructFRNG(seed, imageID) result(self)
+    interface rngf_typer
+    module function rngf_typer(seed, imageID) result(self)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructFRNG
+        !DEC$ ATTRIBUTES DLLEXPORT :: rngf_typer
 #endif
         integer(IK) , intent(in), optional  :: seed, imageID
         type(rngf_type)                     :: self
@@ -2963,7 +2963,7 @@ module pm_distUnif
     !>  containing a unique instance of a [Xoshiro256**](https://prng.di.unimi.it/) random number generator (RNG).
     !>
     !>  \details
-    !>  See also the documentation of [constructXoshiro256ssw](@ref pm_distUnif::constructXoshiro256ssw) for information on the constructor of this type.<br>
+    !>  See also the documentation of [xoshiro256ssw_typer](@ref pm_distUnif::xoshiro256ssw_typer) for information on the constructor of this type.<br>
     !>
     !>  Xorshift random number generators, also called **shift-register generators**, are a class of pseudorandom
     !>  number generators that were invented by [George Marsaglia](https://en.wikipedia.org/wiki/George_Marsaglia).<br>
@@ -3007,7 +3007,7 @@ module pm_distUnif
     !>  the user must,<br>
     !>  <ol>
     !>      <li>    declare an object of type [xoshiro256ssw_type](@ref pm_distUnif::xoshiro256ssw_type) and
-    !>              initialize the object via the type constructor [constructXoshiro256ssw](@ref pm_distUnif::constructXoshiro256ssw)
+    !>              initialize the object via the type constructor [xoshiro256ssw_typer](@ref pm_distUnif::xoshiro256ssw_typer)
     !>              (see below for the possible calling interfaces),
     !>      <li>    pass the generated RNG instance to the desired random number generating routines,
     !>              <ol>
@@ -3118,7 +3118,7 @@ module pm_distUnif
 
     !>  \cond excluded
     interface xoshiro256ssw_type
-        module procedure :: constructXoshiro256ssw
+        module procedure :: xoshiro256ssw_typer
     end interface
     !>  \endcond excluded
 
@@ -3163,7 +3163,7 @@ module pm_distUnif
     !>   `rng`              :   The output scalar object of type [xoshiro256ssw_type](@ref pm_distUnif::xoshiro256ssw_type)
     !>                          containing an instance of a [xoshiro256ssw_type](@ref pm_distUnif::xoshiro256ssw_type) random number generator.<br>
     !>
-    !>  \interface{constructXoshiro256ssw}
+    !>  \interface{xoshiro256ssw_typer}
     !>  \code{.F90}
     !>
     !>      use pm_kind, only: IK
@@ -3192,20 +3192,20 @@ module pm_distUnif
     !>  [getUnifRandState](@ref pm_distUnif::getUnifRandState)<br>
     !>  [setUnifRandState](@ref pm_distUnif::setUnifRandState)<br>
     !>  [getUnifRandStateSize](@ref pm_distUnif::getUnifRandStateSize)<br>
-    !>  [constructXoshiro256ssw](@ref pm_distUnif::constructXoshiro256ssw)<br>
-    !>  [constructFRNG](@ref pm_distUnif::constructFRNG)<br>
+    !>  [xoshiro256ssw_typer](@ref pm_distUnif::xoshiro256ssw_typer)<br>
+    !>  [rngf_typer](@ref pm_distUnif::rngf_typer)<br>
     !>
     !>  \test
     !>  [test_pm_distUnif](@ref test_pm_distUnif)<br>
     !>
-    !>  \finmain{constructXoshiro256ssw}
+    !>  \finmain{xoshiro256ssw_typer}
     !>
     !>  \author
     !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX
-    interface constructXoshiro256ssw
-    impure module function constructXoshiro256ssw(seed, imageID, jump) result(rng)
+    interface xoshiro256ssw_typer
+    impure module function xoshiro256ssw_typer(seed, imageID, jump) result(rng)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructXoshiro256ssw
+        !DEC$ ATTRIBUTES DLLEXPORT :: xoshiro256ssw_typer
 #endif
         use pm_kind, only: IKC => IK64
         integer(IKC)            , intent(in), optional  :: seed, jump(:)
@@ -3223,7 +3223,7 @@ module pm_distUnif
     !>  \details
     !>  Unlike the `Xoshiro256**` algorithm as implemented by the derived type [xoshiro256ssw_type](@ref pm_distUnif::xoshiro256ssw_type),
     !>  the greedy version of the algorithm here does not waste any of the randomly generated 64 bits in each update the RNG state.<br>
-    !>  See also the documentation of [constructXoshiro256ssg](@ref pm_distUnif::constructXoshiro256ssg) for information on the constructor of this type.<br>
+    !>  See also the documentation of [xoshiro256ssg_typer](@ref pm_distUnif::xoshiro256ssg_typer) for information on the constructor of this type.<br>
     !>
     !>  \param[in]  seed    :   The input scalar of type `integer` of kind \IK64,
     !>                          containing an integer that serves as the starting point to generate the full deterministic RNG seed.<br>
@@ -3330,7 +3330,7 @@ module pm_distUnif
 
     !>  \cond excluded
     interface xoshiro256ssg_type
-        module procedure :: constructXoshiro256ssg
+        module procedure :: xoshiro256ssg_typer
     end interface
     !>  \endcond excluded
 
@@ -3375,7 +3375,7 @@ module pm_distUnif
     !>   `rng`              :   The output scalar object of type [xoshiro256ssg_type](@ref pm_distUnif::xoshiro256ssg_type)
     !>                          containing an instance of a [xoshiro256ssg_type](@ref pm_distUnif::xoshiro256ssg_type) random number generator.<br>
     !>
-    !>  \interface{constructXoshiro256ssg}
+    !>  \interface{xoshiro256ssg_typer}
     !>  \code{.F90}
     !>
     !>      use pm_kind, only: IK
@@ -3403,20 +3403,20 @@ module pm_distUnif
     !>  [getUnifRandState](@ref pm_distUnif::getUnifRandState)<br>
     !>  [setUnifRandState](@ref pm_distUnif::setUnifRandState)<br>
     !>  [getUnifRandStateSize](@ref pm_distUnif::getUnifRandStateSize)<br>
-    !>  [constructXoshiro256ssw](@ref pm_distUnif::constructXoshiro256ssw)<br>
-    !>  [constructFRNG](@ref pm_distUnif::constructFRNG)<br>
+    !>  [xoshiro256ssw_typer](@ref pm_distUnif::xoshiro256ssw_typer)<br>
+    !>  [rngf_typer](@ref pm_distUnif::rngf_typer)<br>
     !>
     !>  \test
     !>  [test_pm_distUnif](@ref test_pm_distUnif)<br>
     !>
-    !>  \finmain{constructXoshiro256ssw}
+    !>  \finmain{xoshiro256ssw_typer}
     !>
     !>  \author
     !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX
-    interface constructXoshiro256ssg
-    impure module function constructXoshiro256ssg(seed, imageID, jump) result(rng)
+    interface xoshiro256ssg_typer
+    impure module function xoshiro256ssg_typer(seed, imageID, jump) result(rng)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructXoshiro256ssg
+        !DEC$ ATTRIBUTES DLLEXPORT :: xoshiro256ssg_typer
 #endif
         use pm_kind, only: IKC => IK64
         integer(IKC)            , intent(in), optional  :: seed, jump(:)
@@ -3432,7 +3432,7 @@ module pm_distUnif
     !>  containing a unique instance of an [splitmix64](https://doi.org/10.1145/2660193.2660195) random number generator (RNG).
     !>
     !>  \details
-    !>  See also the documentation of [constructSplitmix64](@ref pm_distUnif::constructSplitmix64) for information on the constructor of this type.<br>
+    !>  See also the documentation of [splitmix64_typer](@ref pm_distUnif::splitmix64_typer) for information on the constructor of this type.<br>
     !>
     !>  Splitmix64 is a pseudo-random number generator algorithm that originated from
     !>  the Java programming language and is used in many other programming languages.<br>
@@ -3456,7 +3456,7 @@ module pm_distUnif
     !>  the user must,<br>
     !>  <ol>
     !>      <li>    declare an object of type [splitmix64_type](@ref pm_distUnif::splitmix64_type) and
-    !>              initialize the object via the type constructor [constructSplitmix64](@ref pm_distUnif::constructSplitmix64)
+    !>              initialize the object via the type constructor [splitmix64_typer](@ref pm_distUnif::splitmix64_typer)
     !>              (see below for the possible calling interfaces),
     !>      <li>    pass the generated RNG instance to the desired random number generating routines,
     !>              <ol>
@@ -3563,7 +3563,7 @@ module pm_distUnif
 
     !>  \cond excluded
     interface splitmix64_type
-        module procedure :: constructSplitmix64
+        module procedure :: splitmix64_typer
     end interface
     !>  \endcond excluded
 
@@ -3637,14 +3637,14 @@ module pm_distUnif
     !>  \test
     !>  [test_pm_distUnif](@ref test_pm_distUnif)
     !>
-    !>  \finmain{constructSplitmix64}
+    !>  \finmain{splitmix64_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
-    interface constructSplitmix64
-    impure elemental module function constructSplitmix64(seed, imageID) result(rng)
+    interface splitmix64_typer
+    impure elemental module function splitmix64_typer(seed, imageID) result(rng)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructSplitmix64
+        !DEC$ ATTRIBUTES DLLEXPORT :: splitmix64_typer
 #endif
         use pm_kind, only: IKC => IK64
         integer(IKC)            , intent(in), optional  :: seed

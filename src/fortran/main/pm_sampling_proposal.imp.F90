@@ -93,7 +93,7 @@ end if;
 #endif
         end type
         interface proposal_type
-            procedure :: constructProposal
+            procedure :: proposal_typer
         end interface
 
 contains
@@ -240,7 +240,7 @@ contains
 #endif
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function constructProposal(spec, err) result(proposal)
+        function proposal_typer(spec, err) result(proposal)
             use pm_matrixChol, only: setMatChol, lowDia, transHerm
             use pm_matrixTrace, only: getMatMulTraceLog
             use pm_ellipsoid, only: getLogVolUnitBall ! for uniform proposal.
@@ -248,7 +248,7 @@ contains
             type(err_type), intent(inout) :: err
             type(spec_type), intent(in) :: spec
             type(proposal_type) :: proposal
-            character(*, SK), parameter :: PROCEDURE_NAME = MODULE_NAME//"@constructProposal()"
+            character(*, SK), parameter :: PROCEDURE_NAME = MODULE_NAME//"@proposal_typer()"
             integer(IK) :: info
             !call setNAN(proposal%logSqrtDetOld)
             ndim = spec%ndim%val
@@ -302,7 +302,7 @@ contains
                     end if
                 end block
             end if
-        end function constructProposal
+        end function proposal_typer
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

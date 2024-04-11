@@ -489,9 +489,9 @@ module pm_io
 
     !>  \cond excluded
     interface field_type
-    pure elemental module function constructField(string, integer, logical, complex, real) result(field)
+    pure elemental module function field_typer(string, integer, logical, complex, real) result(field)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructField
+        !DEC$ ATTRIBUTES DLLEXPORT :: field_typer
 #endif
         character(*, SK), intent(in), optional :: string, integer, logical, complex, real
         type(field_type) :: field
@@ -946,7 +946,7 @@ module pm_io
     !>
     !>  \details
     !>  This type is merely meant to provide a convenient storage for file attributes that might be needed at the time of opening files for IO.<br>
-    !>  This type is overloaded with `constructOpenArg()` to verify the consistency of the structure components values.<br>
+    !>  This type is overloaded with `openArg_typer()` to verify the consistency of the structure components values.<br>
     !>  The following optional arguments of the `open()` statement are deliberately excluded from this derived type:<br>
     !>  <ol>
     !>      <li>    `newunit`   :   There is no need for a dedicated component with this name since it is only relevant to calling the `open()` statement.<br>
@@ -1123,7 +1123,7 @@ module pm_io
     !>  `openArg`                       :   The output scalar object of type [openArg_type](@ref pm_io::openArg_type) whose components
     !>                                      are set to the corresponding input values or otherwise set to an appropriate default value.
     !>
-    !>  \interface{constructOpenArg}
+    !>  \interface{openArg_typer}
     !>  \code{.F90}
     !>
     !>      use pm_io, only: openArg_type
@@ -1174,41 +1174,41 @@ module pm_io
     !>  [getFileUnit](@ref pm_io::getFileUnit)<br>
     !>  [isPreconnected](@ref pm_io::isPreconnected)<br>
     !>
-    !>  \example{constructOpenArg}
+    !>  \example{openArg_typer}
     !>  \include{lineno} example/pm_io/openArg_type/main.F90
-    !>  \compilef{constructOpenArg}
-    !>  \output{constructOpenArg}
+    !>  \compilef{openArg_typer}
+    !>  \output{openArg_typer}
     !>  \include{lineno} example/pm_io/openArg_type/main.out.F90
     !>
     !>  \test
     !>  [test_pm_io](@ref test_pm_io)
     !>
-    !>  \finmain{constructOpenArg}
+    !>  \finmain{openArg_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     interface openArg_type
-    impure elemental module function constructOpenArg   ( access        &
-                                                        , action        &
-                                                        , asynchronous  &
-                                                        , blank         &
-                                                        , decimal       &
-                                                        , delim         &
-                                                        , encoding      &
-                                                        , form          &
-                                                        , pad           &
-                                                        , position      &
-                                                        , recl          &
-                                                        , round         &
-                                                        , sign          &
-                                                        , status        &
-                                                        , unit          &
-                                                        , file          &
-                                                        , iostat        &
-                                                        , iomsg         &
-                                                        ) result(openArg)
+    impure elemental module function openArg_typer  ( access        &
+                                                    , action        &
+                                                    , asynchronous  &
+                                                    , blank         &
+                                                    , decimal       &
+                                                    , delim         &
+                                                    , encoding      &
+                                                    , form          &
+                                                    , pad           &
+                                                    , position      &
+                                                    , recl          &
+                                                    , round         &
+                                                    , sign          &
+                                                    , status        &
+                                                    , unit          &
+                                                    , file          &
+                                                    , iostat        &
+                                                    , iomsg         &
+                                                    ) result(openArg)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructOpenArg
+        !DEC$ ATTRIBUTES DLLEXPORT :: openArg_typer
 #endif
         character(*, SK), intent(in)    , optional  :: access
         character(*, SK), intent(in)    , optional  :: action
@@ -11023,9 +11023,9 @@ module pm_io
     !>  \cond excluded
     interface display_type
 
-    module function constructDisplayFile(file, status, position, advance, format, deliml, delimr, tmsize, bmsize, count, sticky, text, mark, note, warn, stop) result(disp)
+    module function display_typer_file(file, status, position, advance, format, deliml, delimr, tmsize, bmsize, count, sticky, text, mark, note, warn, stop) result(disp)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructDisplayFile
+        !DEC$ ATTRIBUTES DLLEXPORT :: display_typer_file
 #endif
         character(*, SK), intent(in)            :: file
         logical(LK)     , intent(in), optional  :: sticky
@@ -11045,9 +11045,9 @@ module pm_io
         type(display_type) :: disp
     end function
 
-    module function constructDisplayUnit(unit, advance, format, deliml, delimr, tmsize, bmsize, count, sticky, text, mark, note, warn, stop) result(disp)
+    module function display_typer_unit(unit, advance, format, deliml, delimr, tmsize, bmsize, count, sticky, text, mark, note, warn, stop) result(disp)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructDisplayUnit
+        !DEC$ ATTRIBUTES DLLEXPORT :: display_typer_unit
 #endif
         integer(IK)     , intent(in), optional  :: unit
         logical(LK)     , intent(in), optional  :: sticky

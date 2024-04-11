@@ -36,7 +36,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructBenchBase
+    module procedure benchBase_typer
         use pm_timer, only: timer_type
         benchBase%name = trim(adjustl(name))
         if (present(minsec)) benchBase%minsec = minsec
@@ -51,7 +51,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructBench
+    module procedure bench_typer
         bench%benchBase_type = benchBase_type(name, minsec = minsec, miniter = miniter, timer = timer)
         if (present(overhead)) then
             bench%overhead => overhead
@@ -82,7 +82,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructBenchMulti
+    module procedure benchMulti_typer
 
         use pm_kind, only: IK, LK
         use pm_arrayRange, only: setRange

@@ -274,7 +274,7 @@ contains
         ! Fortran runtime error: EXECUTE_COMMAND_LINE: Termination status of the command-language interpreter cannot be obtained
 
         call OS%shell%query()
-        call constructShell(OS%Shell)
+        call shell_typer(OS%Shell)
         !assertion = assertion .and. .not. OS%shell%err%occurred
 
         !if (test%traceable .and. .not. assertion) then

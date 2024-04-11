@@ -217,25 +217,25 @@ module pm_sysShell
     !>  \cond excluded
     interface shellis_type
 
-    impure module function constructShellIs() result(shellis)
+    impure module function shellis_typer() result(shellis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructShellIs
+        !DEC$ ATTRIBUTES DLLEXPORT :: shellis_typer
 #endif
         type(shellis_type)              :: shellis
     end function
 
-    impure module function constructShellIsFailed(failed) result(shellis)
+    impure module function shellis_typerFailed(failed) result(shellis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructShellIsFailed
+        !DEC$ ATTRIBUTES DLLEXPORT :: shellis_typerFailed
 #endif
         use pm_kind, only: SKC => SK
         logical(LK)     , intent(out)   :: failed
         type(shellis_type)              :: shellis
     end function
 
-    impure module function constructShellIsFailedMsg(failed, errmsg) result(shellis)
+    impure module function shellis_typerFailedMsg(failed, errmsg) result(shellis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructShellIsFailedMsg
+        !DEC$ ATTRIBUTES DLLEXPORT :: shellis_typerFailedMsg
 #endif
         use pm_kind, only: SKC => SK
         logical(LK)     , intent(out)   :: failed
@@ -331,25 +331,25 @@ module pm_sysShell
     !>  \cond excluded
     interface shell_type
 
-    impure module function constructShell() result(shell)
+    impure module function shell_typer() result(shell)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructShell
+        !DEC$ ATTRIBUTES DLLEXPORT :: shell_typer
 #endif
         type(shell_type)                :: shell
     end function
 
-    impure module function constructShellFailed(failed) result(shell)
+    impure module function shell_typerFailed(failed) result(shell)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructShellFailed
+        !DEC$ ATTRIBUTES DLLEXPORT :: shell_typerFailed
 #endif
         use pm_kind, only: SKC => SK
         logical(LK)     , intent(out)   :: failed
         type(shell_type)                :: shell
     end function
 
-    impure module function constructShellFailedMsg(failed, errmsg) result(shell)
+    impure module function shell_typerFailedMsg(failed, errmsg) result(shell)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructShellFailedMsg
+        !DEC$ ATTRIBUTES DLLEXPORT :: shell_typerFailedMsg
 #endif
         use pm_kind, only: SKC => SK
         logical(LK)     , intent(out)   :: failed

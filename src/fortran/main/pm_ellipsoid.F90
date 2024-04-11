@@ -1411,7 +1411,7 @@ contains
 !    !>  \param[out] failed      :   A logical output value that is `.true.` only if the Cholesky factorization fails.
 !    !>
 !    !>  \return
-!    !>  `ellipsoid` : An object of type [Ellipsoid_type](@ref Ellipsoid_type).
+!    !>  `ellipsoid` : An object of type [ellipsoid_type](@ref ellipsoid_type).
 !    !>
 !    !>  \warning
 !    !>  If any error occurs during the ellipsoid construction, the first element of the `choDia`
@@ -1427,9 +1427,9 @@ contains
 !    !>  \phigh The `isBounding = .false.` scenario still needs work. Perhaps this argument should be changed to `boundingStatus` with three
 !    !>  possible values, corresponding to three different degrees of computations: 1) no bounding, 2) computing scalefactor and logVolNormed,
 !    !>  3) computing (2) as well as scaling the properties.
-!    function constructEllipsoid(ndim, np, Point, isBounding, failed) result(ellipsoid)
+!    function ellipsoid_typer(ndim, np, Point, isBounding, failed) result(ellipsoid)
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-!        !DEC$ ATTRIBUTES DLLEXPORT :: constructEllipsoid
+!        !DEC$ ATTRIBUTES DLLEXPORT :: ellipsoid_typer
 !#endif
 !        use pm_kind, only: IK, LK, RK ! LCOV_EXCL_LINE
 !        use pm_matrixInv, only: getMatInvFromChoLow
@@ -1439,7 +1439,7 @@ contains
 !        real(RKC)   , intent(in)            :: Point(ndim,np)
 !        logical(LK) , intent(in)            :: isBounding
 !        logical(LK) , intent(out)           :: failed
-!        type(Ellipsoid_type)                :: ellipsoid
+!        type(ellipsoid_type)                :: ellipsoid
 !
 !        real(RKC)                           :: scaleFactorSqInverse
 !        real(RKC)                           :: NormedPoint(ndim,np)
@@ -1508,7 +1508,7 @@ contains
 !
 !        ellipsoid%logVolNormed = sum(log(ellipsoid%choDia(1:ndim)))
 !
-!    end function constructEllipsoid
+!    end function ellipsoid_typer
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !

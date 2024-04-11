@@ -127,7 +127,7 @@
     end type
 
     interface specdram_type
-        module procedure :: construct
+        module procedure :: specdram_typer
     end interface
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -150,9 +150,9 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function construct(modelr, method, ndim) result(spec)
+    function specdram_typer(modelr, method, ndim) result(spec)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: construct
+        !DEC$ ATTRIBUTES DLLEXPORT :: specdram_typer
 #endif
         use pm_kind, only: modelr_type
         type(modelr_type), intent(in) :: modelr
@@ -290,7 +290,7 @@ contains
 
         !$omp barrier
 
-    end function construct
+    end function
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

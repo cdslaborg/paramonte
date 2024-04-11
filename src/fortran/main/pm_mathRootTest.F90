@@ -165,9 +165,9 @@ module pm_mathRootTest
 
     !>  \cond excluded
     interface func1_type
-    PURE module function constructFunc1(lb, ub) result(self)
+    PURE module function func1_typer(lb, ub) result(self)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructFunc1
+        !DEC$ ATTRIBUTES DLLEXPORT :: func1_typer
 #endif
         use pm_kind, only: RKC => RKH
         real(RKC), intent(in), optional :: lb, ub

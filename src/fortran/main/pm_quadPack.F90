@@ -210,7 +210,7 @@ module pm_quadPack
     !>  \return
     !>  `wcauchy`       :   The output scalar object of type [wcauchy_type](@ref pm_quadPack::wcauchy_type) containing the Cauchy singularity.<br>
     !>
-    !>  \interface{constructWcauchy}
+    !>  \interface{wcauchy_typer}
     !>  \code{.F90}
     !>
     !>      use pm_quadPack, only: wcauchy_type
@@ -230,7 +230,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)<br>
     !>
-    !>  \finmain{constructWcauchy}
+    !>  \finmain{wcauchy_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -239,9 +239,9 @@ module pm_quadPack
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE elemental module function constructWcauchy_RK5(cs) result(wcauchy)
+    PURE elemental module function wcauchy_typer_RK5(cs) result(wcauchy)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructWcauchy_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: wcauchy_typer_RK5
 #endif
         use pm_kind, only: RKC => RK5
         real(RKC)       , intent(in)            :: cs
@@ -250,9 +250,9 @@ module pm_quadPack
 #endif
 
 #if RK4_ENABLED
-    PURE elemental module function constructWcauchy_RK4(cs) result(wcauchy)
+    PURE elemental module function wcauchy_typer_RK4(cs) result(wcauchy)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructWcauchy_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: wcauchy_typer_RK4
 #endif
         use pm_kind, only: RKC => RK4
         real(RKC)       , intent(in)            :: cs
@@ -261,9 +261,9 @@ module pm_quadPack
 #endif
 
 #if RK3_ENABLED
-    PURE elemental module function constructWcauchy_RK3(cs) result(wcauchy)
+    PURE elemental module function wcauchy_typer_RK3(cs) result(wcauchy)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructWcauchy_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: wcauchy_typer_RK3
 #endif
         use pm_kind, only: RKC => RK3
         real(RKC)       , intent(in)            :: cs
@@ -272,9 +272,9 @@ module pm_quadPack
 #endif
 
 #if RK2_ENABLED
-    PURE elemental module function constructWcauchy_RK2(cs) result(wcauchy)
+    PURE elemental module function wcauchy_typer_RK2(cs) result(wcauchy)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructWcauchy_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: wcauchy_typer_RK2
 #endif
         use pm_kind, only: RKC => RK2
         real(RKC)       , intent(in)            :: cs
@@ -283,9 +283,9 @@ module pm_quadPack
 #endif
 
 #if RK1_ENABLED
-    PURE elemental module function constructWcauchy_RK1(cs) result(wcauchy)
+    PURE elemental module function wcauchy_typer_RK1(cs) result(wcauchy)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructWcauchy_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: wcauchy_typer_RK1
 #endif
         use pm_kind, only: RKC => RK1
         real(RKC)       , intent(in)            :: cs
@@ -361,7 +361,7 @@ module pm_quadPack
     !>  `wsin`              :   The scalar or array of the same shape as `omega` of type `Sin_type` that uniquely
     !>                          determines the type and kind of the Sine weight to be used in the integrand.
     !>
-    !>  \interface{constructWsin}
+    !>  \interface{wsin_typer}
     !>  \code{.F90}
     !>
     !>      use pm_quadPack, only: wsin_type
@@ -382,7 +382,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)<br>
     !>
-    !>  \finmain{constructWsin}
+    !>  \finmain{wsin_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -391,9 +391,9 @@ module pm_quadPack
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE elemental module function constructWsin_RK5(omega) result(wsin)
+    PURE elemental module function wsin_typer_RK5(omega) result(wsin)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructWsin_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: wsin_typer_RK5
 #endif
         use pm_kind, only: RKC => RK5
         real(RKC)       , intent(in)            :: omega
@@ -402,9 +402,9 @@ module pm_quadPack
 #endif
 
 #if RK4_ENABLED
-    PURE elemental module function constructWsin_RK4(omega) result(wsin)
+    PURE elemental module function wsin_typer_RK4(omega) result(wsin)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructWsin_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: wsin_typer_RK4
 #endif
         use pm_kind, only: RKC => RK4
         real(RKC)       , intent(in)            :: omega
@@ -413,9 +413,9 @@ module pm_quadPack
 #endif
 
 #if RK3_ENABLED
-    PURE elemental module function constructWsin_RK3(omega) result(wsin)
+    PURE elemental module function wsin_typer_RK3(omega) result(wsin)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructWsin_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: wsin_typer_RK3
 #endif
         use pm_kind, only: RKC => RK3
         real(RKC)       , intent(in)            :: omega
@@ -424,9 +424,9 @@ module pm_quadPack
 #endif
 
 #if RK2_ENABLED
-    PURE elemental module function constructWsin_RK2(omega) result(wsin)
+    PURE elemental module function wsin_typer_RK2(omega) result(wsin)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructWsin_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: wsin_typer_RK2
 #endif
         use pm_kind, only: RKC => RK2
         real(RKC)       , intent(in)            :: omega
@@ -435,9 +435,9 @@ module pm_quadPack
 #endif
 
 #if RK1_ENABLED
-    PURE elemental module function constructWsin_RK1(omega) result(wsin)
+    PURE elemental module function wsin_typer_RK1(omega) result(wsin)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructWsin_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: wsin_typer_RK1
 #endif
         use pm_kind, only: RKC => RK1
         real(RKC)       , intent(in)            :: omega
@@ -513,7 +513,7 @@ module pm_quadPack
     !>  `wcos`              :   The scalar or array of the same shape as `omega` of type `Sin_type` that uniquely
     !>                          determines the type and kind of the Cosine weight to be used in the integrand.
     !>
-    !>  \interface{constructWcos}
+    !>  \interface{wcos_typer}
     !>  \code{.F90}
     !>
     !>      use pm_quadPack, only: wcos_type
@@ -534,7 +534,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)<br>
     !>
-    !>  \finmain{constructWcos}
+    !>  \finmain{wcos_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -543,9 +543,9 @@ module pm_quadPack
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    PURE elemental module function constructWcos_RK5(omega) result(wcos)
+    PURE elemental module function wcos_typer_RK5(omega) result(wcos)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructWcos_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: wcos_typer_RK5
 #endif
         use pm_kind, only: RKC => RK5
         real(RKC)       , intent(in)            :: omega
@@ -554,9 +554,9 @@ module pm_quadPack
 #endif
 
 #if RK4_ENABLED
-    PURE elemental module function constructWcos_RK4(omega) result(wcos)
+    PURE elemental module function wcos_typer_RK4(omega) result(wcos)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructWcos_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: wcos_typer_RK4
 #endif
         use pm_kind, only: RKC => RK4
         real(RKC)       , intent(in)            :: omega
@@ -565,9 +565,9 @@ module pm_quadPack
 #endif
 
 #if RK3_ENABLED
-    PURE elemental module function constructWcos_RK3(omega) result(wcos)
+    PURE elemental module function wcos_typer_RK3(omega) result(wcos)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructWcos_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: wcos_typer_RK3
 #endif
         use pm_kind, only: RKC => RK3
         real(RKC)       , intent(in)            :: omega
@@ -576,9 +576,9 @@ module pm_quadPack
 #endif
 
 #if RK2_ENABLED
-    PURE elemental module function constructWcos_RK2(omega) result(wcos)
+    PURE elemental module function wcos_typer_RK2(omega) result(wcos)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructWcos_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: wcos_typer_RK2
 #endif
         use pm_kind, only: RKC => RK2
         real(RKC)       , intent(in)            :: omega
@@ -587,9 +587,9 @@ module pm_quadPack
 #endif
 
 #if RK1_ENABLED
-    PURE elemental module function constructWcos_RK1(omega) result(wcos)
+    PURE elemental module function wcos_typer_RK1(omega) result(wcos)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructWcos_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: wcos_typer_RK1
 #endif
         use pm_kind, only: RKC => RK1
         real(RKC)       , intent(in)            :: omega

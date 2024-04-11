@@ -1793,7 +1793,7 @@ module pm_kind
     !>                          </ol>
     !>                          containing the characteristics of the processor representation model used for the input data entity.<br>
     !>
-    !>  \interface{construct_modeli}
+    !>  \interface{modeli_typer}
     !>  \code{.F90}
     !>
     !>      use pm_kind, only: model_type, modeln_type, modeli_type
@@ -1818,16 +1818,16 @@ module pm_kind
     !>  [modeli_type](@ref pm_kind::modeli_type)<br>
     !>  [modeli_type](@ref pm_kind::modeli_type)<br>
     !>
-    !>  \example{construct_modeli}
+    !>  \example{modeli_typer}
     !>  \include{lineno} example/pm_kind/modeli_type/main.F90
-    !>  \compilef{construct_modeli}
-    !>  \output{construct_modeli}
+    !>  \compilef{modeli_typer}
+    !>  \output{modeli_typer}
     !>  \include{lineno} example/pm_kind/modeli_type/main.out.F90
     !>
     !>  \test
     !>  [test_pm_kind](@ref test_pm_kind)
     !>
-    !>  \finmain{construct_modeli}
+    !>  \finmain{modeli_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -1836,9 +1836,9 @@ module pm_kind
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if IK5_ENABLED
-    pure elemental module function construct_modeli_IK5(mold) result(model)
+    pure elemental module function modeli_typer_IK5(mold) result(model)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: construct_modeli_IK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: modeli_typer_IK5
 #endif
         integer(IK5), intent(in)    :: mold
         type(modeli_type)           :: model
@@ -1846,9 +1846,9 @@ module pm_kind
 #endif
 
 #if IK4_ENABLED
-    pure elemental module function construct_modeli_IK4(mold) result(model)
+    pure elemental module function modeli_typer_IK4(mold) result(model)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: construct_modeli_IK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: modeli_typer_IK4
 #endif
         integer(IK4), intent(in)    :: mold
         type(modeli_type)           :: model
@@ -1856,9 +1856,9 @@ module pm_kind
 #endif
 
 #if IK3_ENABLED
-    pure elemental module function construct_modeli_IK3(mold) result(model)
+    pure elemental module function modeli_typer_IK3(mold) result(model)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: construct_modeli_IK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: modeli_typer_IK3
 #endif
         integer(IK3), intent(in)    :: mold
         type(modeli_type)           :: model
@@ -1866,9 +1866,9 @@ module pm_kind
 #endif
 
 #if IK2_ENABLED
-    pure elemental module function construct_modeli_IK2(mold) result(model)
+    pure elemental module function modeli_typer_IK2(mold) result(model)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: construct_modeli_IK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: modeli_typer_IK2
 #endif
         integer(IK2), intent(in)    :: mold
         type(modeli_type)           :: model
@@ -1876,9 +1876,9 @@ module pm_kind
 #endif
 
 #if IK1_ENABLED
-    pure elemental module function construct_modeli_IK1(mold) result(model)
+    pure elemental module function modeli_typer_IK1(mold) result(model)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: construct_modeli_IK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: modeli_typer_IK1
 #endif
         integer(IK1), intent(in)    :: mold
         type(modeli_type)           :: model
@@ -1917,7 +1917,7 @@ module pm_kind
     !>                          </ol>
     !>                          containing the characteristics of the processor representation model used for the input data entity.<br>
     !>
-    !>  \interface{construct_modelb}
+    !>  \interface{modelb_typer}
     !>  \code{.F90}
     !>
     !>      use pm_kind, only: model_type, modeln_type, modelb_type
@@ -1942,16 +1942,16 @@ module pm_kind
     !>  [modelb_type](@ref pm_kind::modelb_type)<br>
     !>  [modelr_type](@ref pm_kind::modelr_type)<br>
     !>
-    !>  \example{construct_modelb}
+    !>  \example{modelb_typer}
     !>  \include{lineno} example/pm_kind/modelb_type/main.F90
-    !>  \compilef{construct_modelb}
-    !>  \output{construct_modelb}
+    !>  \compilef{modelb_typer}
+    !>  \output{modelb_typer}
     !>  \include{lineno} example/pm_kind/modelb_type/main.out.F90
     !>
     !>  \test
     !>  [test_pm_kind](@ref test_pm_kind)
     !>
-    !>  \finmain{construct_modelb}
+    !>  \finmain{modelb_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -1960,9 +1960,9 @@ module pm_kind
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if IK5_ENABLED
-    pure elemental module function construct_modelb_IK5(mold) result(model)
+    pure elemental module function modelb_typer_IK5(mold) result(model)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: construct_modelb_IK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: modelb_typer_IK5
 #endif
         integer(IK5), intent(in)    :: mold
         type(modelb_type)           :: model
@@ -1970,9 +1970,9 @@ module pm_kind
 #endif
 
 #if IK4_ENABLED
-    pure elemental module function construct_modelb_IK4(mold) result(model)
+    pure elemental module function modelb_typer_IK4(mold) result(model)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: construct_modelb_IK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: modelb_typer_IK4
 #endif
         integer(IK4), intent(in)    :: mold
         type(modelb_type)           :: model
@@ -1980,9 +1980,9 @@ module pm_kind
 #endif
 
 #if IK3_ENABLED
-    pure elemental module function construct_modelb_IK3(mold) result(model)
+    pure elemental module function modelb_typer_IK3(mold) result(model)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: construct_modelb_IK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: modelb_typer_IK3
 #endif
         integer(IK3), intent(in)    :: mold
         type(modelb_type)           :: model
@@ -1990,9 +1990,9 @@ module pm_kind
 #endif
 
 #if IK2_ENABLED
-    pure elemental module function construct_modelb_IK2(mold) result(model)
+    pure elemental module function modelb_typer_IK2(mold) result(model)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: construct_modelb_IK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: modelb_typer_IK2
 #endif
         integer(IK2), intent(in)    :: mold
         type(modelb_type)           :: model
@@ -2000,9 +2000,9 @@ module pm_kind
 #endif
 
 #if IK1_ENABLED
-    pure elemental module function construct_modelb_IK1(mold) result(model)
+    pure elemental module function modelb_typer_IK1(mold) result(model)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: construct_modelb_IK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: modelb_typer_IK1
 #endif
         integer(IK1), intent(in)    :: mold
         type(modelb_type)           :: model
@@ -2041,7 +2041,7 @@ module pm_kind
     !>                          </ol>
     !>                          containing the characteristics of the processor representation model used for the input data entity.<br>
     !>
-    !>  \interface{construct_modelr}
+    !>  \interface{modelr_typer}
     !>  \code{.F90}
     !>
     !>      use pm_kind, only: model_type, modeln_type, modelr_type
@@ -2066,16 +2066,16 @@ module pm_kind
     !>  [modelb_type](@ref pm_kind::modelb_type)<br>
     !>  [modelr_type](@ref pm_kind::modelr_type)<br>
     !>
-    !>  \example{construct_modelr}
+    !>  \example{modelr_typer}
     !>  \include{lineno} example/pm_kind/modelr_type/main.F90
-    !>  \compilef{construct_modelr}
-    !>  \output{construct_modelr}
+    !>  \compilef{modelr_typer}
+    !>  \output{modelr_typer}
     !>  \include{lineno} example/pm_kind/modelr_type/main.out.F90
     !>
     !>  \test
     !>  [test_pm_kind](@ref test_pm_kind)
     !>
-    !>  \finmain{construct_modelr}
+    !>  \finmain{modelr_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -2084,9 +2084,9 @@ module pm_kind
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK5_ENABLED
-    pure elemental module function construct_modelr_RK5(mold) result(model)
+    pure elemental module function modelr_typer_RK5(mold) result(model)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: construct_modelr_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: modelr_typer_RK5
 #endif
         real(RK5)   , intent(in)    :: mold
         type(modelr_type)           :: model
@@ -2094,9 +2094,9 @@ module pm_kind
 #endif
 
 #if RK4_ENABLED
-    pure elemental module function construct_modelr_RK4(mold) result(model)
+    pure elemental module function modelr_typer_RK4(mold) result(model)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: construct_modelr_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: modelr_typer_RK4
 #endif
         real(RK4)   , intent(in)    :: mold
         type(modelr_type)           :: model
@@ -2104,9 +2104,9 @@ module pm_kind
 #endif
 
 #if RK3_ENABLED
-    pure elemental module function construct_modelr_RK3(mold) result(model)
+    pure elemental module function modelr_typer_RK3(mold) result(model)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: construct_modelr_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: modelr_typer_RK3
 #endif
         real(RK3)   , intent(in)    :: mold
         type(modelr_type)           :: model
@@ -2114,9 +2114,9 @@ module pm_kind
 #endif
 
 #if RK2_ENABLED
-    pure elemental module function construct_modelr_RK2(mold) result(model)
+    pure elemental module function modelr_typer_RK2(mold) result(model)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: construct_modelr_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: modelr_typer_RK2
 #endif
         real(RK2)   , intent(in)    :: mold
         type(modelr_type)           :: model
@@ -2124,9 +2124,9 @@ module pm_kind
 #endif
 
 #if RK1_ENABLED
-    pure elemental module function construct_modelr_RK1(mold) result(model)
+    pure elemental module function modelr_typer_RK1(mold) result(model)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: construct_modelr_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: modelr_typer_RK1
 #endif
         real(RK1)   , intent(in)    :: mold
         type(modelr_type)           :: model

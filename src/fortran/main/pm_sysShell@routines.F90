@@ -445,17 +445,17 @@ errmsg = PROCEDURE_NAME//getLine(LINE)//SK_": Failed to fetch command output. "/
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructShellIs
+    module procedure shellis_typer
         character(LEN_IOMSG, SK) :: errmsg
         logical(LK) :: failed
         errmsg = SK_""
         shellis = shellis_type(failed, errmsg)
-        if (failed) error stop MODULE_NAME//SK_"@constructShellIs(): "//trim(errmsg) ! LCOV_EXCL_LINE
+        if (failed) error stop MODULE_NAME//SK_"@shellis_typer(): "//trim(errmsg) ! LCOV_EXCL_LINE
     end procedure
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructShellIsFailed
+    module procedure shellis_typerFailed
         character(LEN_IOMSG, SK) :: errmsg
         errmsg = SK_""
         shellis = shellis_type(failed, errmsg)
@@ -463,7 +463,7 @@ errmsg = PROCEDURE_NAME//getLine(LINE)//SK_": Failed to fetch command output. "/
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructShellIsFailedMsg
+    module procedure shellis_typerFailedMsg
         !failed = .not. mc_shellSet
         !if (failed) then
         !    if (allocated(mc_shell)) deallocate(mc_shell); mc_shell = shell_type(failed, errmsg)
@@ -473,7 +473,7 @@ errmsg = PROCEDURE_NAME//getLine(LINE)//SK_": Failed to fetch command output. "/
         type(shell_type) :: shell
         shell = shell_type(failed, errmsg)
         if (failed) then
-            errmsg = MODULE_NAME//SK_"@constructShellIsFailedMsg(): "//trim(errmsg) ! LCOV_EXCL_LINE
+            errmsg = MODULE_NAME//SK_"@shellis_typerFailedMsg(): "//trim(errmsg) ! LCOV_EXCL_LINE
         else
             shellis = shell%is
         end if
@@ -481,17 +481,17 @@ errmsg = PROCEDURE_NAME//getLine(LINE)//SK_": Failed to fetch command output. "/
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructShell
+    module procedure shell_typer
         character(LEN_IOMSG, SK) :: errmsg
         logical(LK) :: failed
         errmsg = SK_""
         shell = shell_type(failed, errmsg)
-        if (failed) error stop MODULE_NAME//SK_"@constructShell(): "//trim(errmsg) ! LCOV_EXCL_LINE
+        if (failed) error stop MODULE_NAME//SK_"@shell_typer(): "//trim(errmsg) ! LCOV_EXCL_LINE
     end procedure
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructShellFailed
+    module procedure shell_typerFailed
         character(31, SK) :: errmsg
         errmsg = SK_""
         shell = shell_type(failed, errmsg)
@@ -499,7 +499,7 @@ errmsg = PROCEDURE_NAME//getLine(LINE)//SK_": Failed to fetch command output. "/
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructShellFailedMsg
+    module procedure shell_typerFailedMsg
 
         use pm_parallelism, only: getImageID
         use pm_sysPath, only: DIR_SEP_WINDOWS, DIR_SEP_WINDOWS_ALL
@@ -511,7 +511,7 @@ errmsg = PROCEDURE_NAME//getLine(LINE)//SK_": Failed to fetch command output. "/
         use pm_err, only: getLine
 
         type(xoshiro256ssw_type)        :: rng
-        character(*, SK), parameter     :: PROCEDURE_NAME = MODULE_NAME//SK_"@constructShell()"
+        character(*, SK), parameter     :: PROCEDURE_NAME = MODULE_NAME//SK_"@shell_typer()"
         character(*, SK), parameter     :: LF = new_line(SK_"a")
         character(:, SK), allocatable   :: filetemp, basetemp
         integer(IK)     , parameter     :: NTRY = 100000_IK
@@ -537,14 +537,14 @@ errmsg = PROCEDURE_NAME//getLine(LINE)//SK_": Failed to fetch shell name. "//tri
 
             failed = isFailedGetDirTemp(basetemp, errmsg)
             if (failed) then
-                basetemp = SKC_"constructShell.tmp."
+                basetemp = SKC_"shell_typer.tmp."
             else
                 !   \todo
                 !   \warning
                 !   The following assumes that all platforms and runtime shells recognize forward slash as a directory separator.
                 !   While this is currently the case, it may not be so in the future. A more robust solution may be necessary.
                 !   One solution is to remove dependence on the temporary directory and create the file in the current directory.
-                basetemp = basetemp//SKC_"/constructShell.tmp."
+                basetemp = basetemp//SKC_"/shell_typer.tmp."
             end if
 
             ! Generate a unique file name to avoid racing conditions in parallel.

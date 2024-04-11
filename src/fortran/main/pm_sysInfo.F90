@@ -129,25 +129,25 @@ module pm_sysInfo
     !>  \cond excluded
     interface kernelis_type
 
-    impure module function constructKernelIs() result(kernelis)
+    impure module function kernelis_typer() result(kernelis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructKernelIs
+        !DEC$ ATTRIBUTES DLLEXPORT :: kernelis_typer
 #endif
         type(kernelis_type)                 :: kernelis
     end function
 
-    impure module function constructKernelIsFailed(failed) result(kernelis)
+    impure module function kernelis_typerFailed(failed) result(kernelis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructKernelIsFailed
+        !DEC$ ATTRIBUTES DLLEXPORT :: kernelis_typerFailed
 #endif
         use pm_kind, only: SKC => SK
         logical(LK)     , intent(out)       :: failed
         type(kernelis_type)                 :: kernelis
     end function
 
-    impure module function constructKernelIsFailedMsg(failed, errmsg) result(kernelis)
+    impure module function kernelis_typerFailedMsg(failed, errmsg) result(kernelis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructKernelIsFailed
+        !DEC$ ATTRIBUTES DLLEXPORT :: kernelis_typerFailed
 #endif
         use pm_kind, only: SKC => SK
         logical(LK)     , intent(out)       :: failed
@@ -251,25 +251,25 @@ module pm_sysInfo
     !>  \cond excluded
     interface kernel_type
 
-    impure module function constructKernel() result(kernel)
+    impure module function kernel_typer() result(kernel)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructKernel
+        !DEC$ ATTRIBUTES DLLEXPORT :: kernel_typer
 #endif
         type(kernel_type)                   :: kernel
     end function
 
-    impure module function constructKernelFailed(failed) result(kernel)
+    impure module function kernel_typerFailed(failed) result(kernel)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructKernelFailed
+        !DEC$ ATTRIBUTES DLLEXPORT :: kernel_typerFailed
 #endif
         use pm_kind, only: SKC => SK
         logical(LK)     , intent(out)       :: failed
         type(kernel_type)                   :: kernel
     end function
 
-    impure module function constructKernelFailedMsg(failed, errmsg) result(kernel)
+    impure module function kernel_typerFailedMsg(failed, errmsg) result(kernel)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructKernelFailedMsg
+        !DEC$ ATTRIBUTES DLLEXPORT :: kernel_typerFailedMsg
 #endif
         use pm_kind, only: SKC => SK
         logical(LK)     , intent(out)       :: failed

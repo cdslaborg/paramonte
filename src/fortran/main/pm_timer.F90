@@ -171,7 +171,7 @@ end block;
     !>      <li>    the **delta** elapsed time (optionally computed since the last call to the timer in seconds).
     !>      <li>    the **resolution** of the timer in seconds.
     !>  </ol>
-    !>  See the documentation of [constructTimer](@ref pm_timer::constructTimer)
+    !>  See the documentation of [timer_typer](@ref pm_timer::timer_typer)
     !>  for the non-default class constructor interface for this type.<br>
     !>  See also the documentation details of [pm_timer](@ref pm_timer).
     !>
@@ -224,7 +224,7 @@ end block;
     end type
 
     interface timer_type
-        module procedure :: constructTimer
+        module procedure :: timer_typer
     end interface
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -234,7 +234,7 @@ end block;
     !>  setting up a timer based on the CPU-clock, using the Fortran intrinsic `cpu_time()`.
     !>
     !>  \details
-    !>  See the documentation of [constructTimerCPU](@ref pm_timer::constructTimerCPU)
+    !>  See the documentation of [timerCPU_typer](@ref pm_timer::timerCPU_typer)
     !>  for the non-default constructor interface of this type.<br>
     !>  See also the documentation details of [pm_timer](@ref pm_timer).
     !>
@@ -275,7 +275,7 @@ end block;
     end type
 
     interface timerCPU_type
-        module procedure            :: constructTimerCPU
+        module procedure            :: timerCPU_typer
     end interface
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -285,7 +285,7 @@ end block;
     !>  setting up a timer based on the system-clock, using the Fortran intrinsic `date_and_time()`.
     !>
     !>  \details
-    !>  See the documentation of [constructTimerDAT](@ref pm_timer::constructTimerDAT)
+    !>  See the documentation of [timerDAT_typer](@ref pm_timer::timerDAT_typer)
     !>  for the non-default constructor interface of this type.<br>
     !>  See also the documentation details of [pm_timer](@ref pm_timer).
     !>
@@ -326,7 +326,7 @@ end block;
     end type
 
     interface timerDAT_type
-        module procedure            :: constructTimerDAT
+        module procedure            :: timerDAT_typer
     end interface
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -336,7 +336,7 @@ end block;
     !>  methods for setting up a timer based on the MPI intrinsic `MPI_Wtime()`.
     !>
     !>  \details
-    !>  See the documentation of [constructTimerMPI](@ref pm_timer::constructTimerMPI)
+    !>  See the documentation of [timerMPI_typer](@ref pm_timer::timerMPI_typer)
     !>  for the non-default constructor interface of this type.<br>
     !>  See also the documentation details of [pm_timer](@ref pm_timer).
     !>
@@ -381,7 +381,7 @@ end block;
     end type
 
     interface timerMPI_type
-        module procedure            :: constructTimerMPI
+        module procedure            :: timerMPI_typer
     end interface
 #endif
 
@@ -392,7 +392,7 @@ end block;
     !>  methods for setting up a timer based on the OpenMP intrinsic `omp_get_wtime()`.
     !>
     !>  \details
-    !>  See the documentation of [constructTimerOMP](@ref pm_timer::constructTimerOMP)
+    !>  See the documentation of [timerOMP_typer](@ref pm_timer::timerOMP_typer)
     !>  for the non-default constructor interface of this type.<br>
     !>  See also the documentation details of [pm_timer](@ref pm_timer).
     !>
@@ -437,7 +437,7 @@ end block;
     end type
 
     interface timerOMP_type
-        module procedure            :: constructTimerOMP
+        module procedure            :: timerOMP_typer
     end interface
 #endif
 
@@ -465,7 +465,7 @@ end block;
     !>  setting up a timer based on the system-clock, using the Fortran intrinsic `system_clock()`.
     !>
     !>  \details
-    !>  See the documentation of [constructTimerSYS](@ref pm_timer::constructTimerSYS)
+    !>  See the documentation of [timerSYS_typer](@ref pm_timer::timerSYS_typer)
     !>  for the non-default constructor interface of this type.<br>
     !>  See also the documentation details of [pm_timer](@ref pm_timer).
     !>
@@ -507,7 +507,7 @@ end block;
     end type
 
     interface timerSYS_type
-        module procedure            :: constructTimerSYS
+        module procedure            :: timerSYS_typer
     end interface
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -536,7 +536,7 @@ contains
     !>                  <li>    [timerSYS_type](@ref pm_timer::timerSYS_type) if the ParaMonte library is built is serial mode.
     !>              </ol>
     !>
-    !>  \interface{constructTimer}
+    !>  \interface{timer_typer}
     !>  \code{.F90}
     !>
     !>      use pm_timer, only: timer_type
@@ -549,13 +549,13 @@ contains
     !>  \remark
     !>  See the documentation of [timer_type](@ref pm_timer::timer_type) for example usage.
     !>
-    !>  \finmain{constructTimer}
+    !>  \finmain{timer_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
-    function constructTimer() result(timer)
+    function timer_typer() result(timer)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructTimer
+        !DEC$ ATTRIBUTES DLLEXPORT :: timer_typer
 #endif
 #if     MPI_ENABLED
         type(timerMPI_type) :: timer
@@ -581,7 +581,7 @@ contains
     !>  \return
     !>  `timer` :   The output scalar object of class [timerCPU_type](@ref pm_timer::timerCPU_type).
     !>
-    !>  \interface{constructTimerCPU}
+    !>  \interface{timerCPU_typer}
     !>  \code{.F90}
     !>
     !>      use pm_timer, only: timerCPU_type
@@ -594,13 +594,13 @@ contains
     !>  \remark
     !>  See the documentation of [timerCPU_type](@ref pm_timer::timerCPU_type) for example usage.
     !>
-    !>  \finmain{constructTimerCPU}
+    !>  \finmain{timerCPU_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
-    function constructTimerCPU() result(timer)
+    function timerCPU_typer() result(timer)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructTimerCPU
+        !DEC$ ATTRIBUTES DLLEXPORT :: timerCPU_typer
 #endif
         type(timerCPU_type) :: timer
         timer%resol = getResTimerCPU()
@@ -618,7 +618,7 @@ contains
     !>  Upon return, the constructor initializes all components of the timer object.<br>
     !>  See also the documentation details of [pm_timer](@ref pm_timer).
     !>
-    !>  \interface{constructTimerDAT}
+    !>  \interface{timerDAT_typer}
     !>  \code{.F90}
     !>
     !>      use pm_timer, only: timerDAT_type
@@ -634,13 +634,13 @@ contains
     !>  \remark
     !>  See the documentation of [timerDAT_type](@ref pm_timer::timerDAT_type) for example usage.
     !>
-    !>  \finmain{constructTimerDAT}
+    !>  \finmain{timerDAT_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
-    function constructTimerDAT() result(timer)
+    function timerDAT_typer() result(timer)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructTimerDAT
+        !DEC$ ATTRIBUTES DLLEXPORT :: timerDAT_typer
 #endif
         type(timerDAT_type) :: timer
         timer%resol = 0.001_RKD
@@ -658,7 +658,7 @@ contains
     !>  Upon return, the constructor initializes all components of the timer object.<br>
     !>  See also the documentation details of [pm_timer](@ref pm_timer).
     !>
-    !>  \interface{constructTimerMPI}
+    !>  \interface{timerMPI_typer}
     !>  \code{.F90}
     !>
     !>      use pm_timer, only: timerMPI_type
@@ -681,14 +681,14 @@ contains
     !>  \remark
     !>  See the documentation of [timerMPI_type](@ref pm_timer::timerMPI_type) for example usage.
     !>
-    !>  \finmain{constructTimerMPI}
+    !>  \finmain{timerMPI_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 02:51 AM, National Institute for Fusion Studies, The University of Texas at Austin
 #if MPI_ENABLED
-    function constructTimerMPI() result(timer)
+    function timerMPI_typer() result(timer)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructTimerMPI
+        !DEC$ ATTRIBUTES DLLEXPORT :: timerMPI_typer
 #endif
         use mpi !mpi_f08, only: mpi_initialized, mpi_init, mpi_wtick
         type(timerMPI_type) :: timer
@@ -701,14 +701,14 @@ contains
 !            logical :: initialized, finalized
 !            integer :: ierrMPI
 !            call mpi_initialized(initialized, ierrMPI)
-!            call setAsserted(ierrMPI /= 0 .and. initialized, MODULE_NAME//SK_"@constructTimerMPI(): The MPI library must be initialized before attempting to call the MPI timer.")
+!            call setAsserted(ierrMPI /= 0 .and. initialized, MODULE_NAME//SK_"@timerMPI_typer(): The MPI library must be initialized before attempting to call the MPI timer.")
 !            call mpi_finalized(finalized, ierrMPI)
-!            call setAsserted(ierrMPI /= 0 .and. finalized, MODULE_NAME//SK_"@constructTimerMPI(): The MPI library must not be finalized prior to calling the MPI timer.")
+!            call setAsserted(ierrMPI /= 0 .and. finalized, MODULE_NAME//SK_"@timerMPI_typer(): The MPI library must not be finalized prior to calling the MPI timer.")
 !        end block
 !#endif
         call mpi_initialized(initialized, ierrMPI)
         if (.not. initialized .and. ierrMPI == 0) call mpi_init(ierrMPI)
-        if (ierrMPI /= 0) error stop MODULE_NAME//SK_"@constructTimerMPI(): Failed to initialize the MPI library."
+        if (ierrMPI /= 0) error stop MODULE_NAME//SK_"@timerMPI_typer(): Failed to initialize the MPI library."
         timer%resol = real(mpi_wtick(), RKD)
         timer%start = timer%time()
         timer%delta = 0._RKD
@@ -725,7 +725,7 @@ contains
     !>  Upon return, the constructor initializes all components of the timer object.<br>
     !>  See also the documentation details of [pm_timer](@ref pm_timer).
     !>
-    !>  \interface{constructTimerOMP}
+    !>  \interface{timerOMP_typer}
     !>  \code{.F90}
     !>
     !>      use pm_timer, only: timerOMP_type
@@ -744,14 +744,14 @@ contains
     !>  \remark
     !>  See the documentation of [timerOMP_type](@ref pm_timer::timerOMP_type) for example usage.
     !>
-    !>  \finmain{constructTimerOMP}
+    !>  \finmain{timerOMP_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
 #if OMP_ENABLED
-    function constructTimerOMP() result(timer)
+    function timerOMP_typer() result(timer)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructTimerOMP
+        !DEC$ ATTRIBUTES DLLEXPORT :: timerOMP_typer
 #endif
         use omp_lib
         type(timerOMP_type) :: timer
@@ -771,7 +771,7 @@ contains
     !>  Upon return, the constructor initializes all components of the timer object.<br>
     !>  See also the documentation details of [pm_timer](@ref pm_timer).
     !>
-    !>  \interface{constructTimerSYS}
+    !>  \interface{timerSYS_typer}
     !>  \code{.F90}
     !>
     !>      use pm_timer, only: timerSYS_type
@@ -787,13 +787,13 @@ contains
     !>  \remark
     !>  See the documentation of [timerSYS_type](@ref pm_timer::timerSYS_type) for example usage.
     !>
-    !>  \finmain{constructTimerSYS}
+    !>  \finmain{timerSYS_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 03:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
-    function constructTimerSYS() result(timer)
+    function timerSYS_typer() result(timer)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructTimerSYS
+        !DEC$ ATTRIBUTES DLLEXPORT :: timerSYS_typer
 #endif
         type(timerSYS_type) :: timer
         timer%resol = getResTimerSYS()

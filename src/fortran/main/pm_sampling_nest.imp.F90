@@ -245,7 +245,7 @@
     end type
 
     interface specnest_type
-        module procedure :: construct
+        module procedure :: specnest_typer
     end interface
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -268,9 +268,9 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function construct(modelr, method, ndim) result(spec)
+    function specnest_typer(modelr, method, ndim) result(spec)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: construct
+        !DEC$ ATTRIBUTES DLLEXPORT :: specnest_typer
 #endif
         use pm_kind, only: modelr_type
         type(modelr_type), intent(in) :: modelr
