@@ -147,7 +147,7 @@ module pm_sysInfo
 
     impure module function kernelis_typerFailedMsg(failed, errmsg) result(kernelis)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: kernelis_typerFailed
+        !DEC$ ATTRIBUTES DLLEXPORT :: kernelis_typerFailedMsg
 #endif
         use pm_kind, only: SKC => SK
         logical(LK)     , intent(out)       :: failed
