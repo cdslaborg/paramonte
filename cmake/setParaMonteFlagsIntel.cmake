@@ -64,6 +64,7 @@ else()
     -diag-disable=7025      # This directive is not standard Fxx.
     -diag-disable=5268      # Extension to standard: The text exceeds right hand column allowed on the line.
     -diag-disable=10346     # optimization reporting will be enabled at link time when performing interprocedural optimizations.
+    -diag-disable=10448     # Disable ifort deprecation message.
     -static-intel
     )
     if (MT_ENABLED)
