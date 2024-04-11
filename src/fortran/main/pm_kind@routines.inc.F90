@@ -25,7 +25,7 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         !%%%%%%%%%%%%%%%%%%%%%%%
-#if     construct_modeli_ENABLED
+#if     modeli_typer_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%
 
         model%digits        = digits(mold)
@@ -36,14 +36,14 @@
         model%storage_size  = storage_size(mold)
 
         !%%%%%%%%%%%%%%%%%%%%%%%
-#elif   construct_modelb_ENABLED
+#elif   modelb_typer_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%
 
         model%modeli_type = modeli_type(mold)
         model%bit_size = bit_size(mold)
 
         !%%%%%%%%%%%%%%%%%%%%%%%
-#elif   construct_modelr_ENABLED
+#elif   modelr_typer_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%
 
         model%digits        = digits(mold)

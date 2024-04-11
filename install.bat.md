@@ -1,5 +1,16 @@
 > See [install.md](./install.md) for general installation guidelines.
 
+> On Windows platforms, the length of the default library build path 
+> is near the maximum value (`250` characters) allowed by CMake software.
+> This can lead to build failures, particularly for library examples and benchmarks.
+> There are two solutions to this limitation on the Windows OS,
+> 1.    Place the ParaMonte library repository near the root Drive on the system,
+>       for example, in the `C:\`, `D:\` or any other system drive available.
+>       Placing the library in the drive root directory will shorten the length 
+>       of the full build path and will likely resolve the build failures.
+> 2.    Specify a custom short path for the build directory via the 
+>       installation configuration flag [--bdir](./install.config.md#bdir).
+
 ##  Building via `install.bat` script in Windows CMD terminal
 
 +   The ParMonte library ships with a Windows Batch script file named `install.bat`

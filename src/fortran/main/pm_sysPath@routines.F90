@@ -66,18 +66,18 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
-!    module procedure constructPathList
+!    module procedure pathList_typer
 !        use pm_kind, only: SKC => SK
 !        use pm_val2str, only: getStr
 !        use pm_sysShell, only: shellis_type
-!        character(*, SK), parameter     :: PROCEDURE_NAME = MODULE_NAME//SK_"@constructPathList()"
+!        character(*, SK), parameter     :: PROCEDURE_NAME = MODULE_NAME//SK_"@pathList_typer()"
 !        character(:, SK), allocatable   :: command
 !        !logical(LK) :: namesorted, datesorted, sizesorted
 !
 !        type(shellis_type) :: shellis
 !        if (present(failed) .and. present(errmsg)) then
 !            shellis = shellis_type(failed, errmsg)
-!            errmsg = MODULE_NAME//SK_"@constructPathList(): "//trim(errmsg)
+!            errmsg = MODULE_NAME//SK_"@pathList_typer(): "//trim(errmsg)
 !            if (failed) return ! LCOV_EXCL_LINE
 !        elseif (present(failed)) then
 !            shellis = shellis_type(failed)

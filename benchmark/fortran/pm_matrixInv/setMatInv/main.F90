@@ -4,6 +4,8 @@ program benchmark
     use pm_kind, only: IK, LK, RKC => RKD, SK
     use pm_matrixCopy, only: setMatCopy, rdpack, uppDia, lowDia, transHerm
     use pm_distUnif, only: rngx_type => xoshiro256ssw_type
+    use pm_arrayResize, only: setResized
+    use pm_distUnif, only: getUnifRand
     use pm_bench, only: bench_type
 
     implicit none
@@ -43,7 +45,9 @@ program benchmark
 
             rank = 2**iarr
             ntry = nsim / rank
-            allocate(mat(rank, rank + 1), inv(rank, rank), rperm(rank))
+            call setResized(rperm, rank)
+            call setResized(inv, [rank, rank])
+            mat = getUnifRand(1._RKC, 2._RKC, rank, rank + 1_IK)
             write(*,"(*(g0,:,' '))") "Benchmarking setMatInv() algorithms with array size", rank, ntry
 
             do i = 1, size(bench)
@@ -51,7 +55,6 @@ program benchmark
             end do
 
             write(fileUnit,"(*(g0,:,','))") rank, (bench(i)%timing%mean / ntry, i = 1, size(bench))
-            deallocate(mat, inv, rperm)
 
         end do loopOverMatrixSize
         write(*,"(*(g0,:,' '))") dumm

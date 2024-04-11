@@ -48,42 +48,42 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#define constructWcauchy_ENABLED 1
+#define wcauchy_typer_ENABLED 1
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #define RK_ENABLED 1
 
 #if RK5_ENABLED
-    module procedure constructWcauchy_RK5
+    module procedure wcauchy_typer_RK5
         use pm_kind, only: RKC => RK5
 #include "pm_quadPack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
-    module procedure constructWcauchy_RK4
+    module procedure wcauchy_typer_RK4
         use pm_kind, only: RKC => RK4
 #include "pm_quadPack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
-    module procedure constructWcauchy_RK3
+    module procedure wcauchy_typer_RK3
         use pm_kind, only: RKC => RK3
 #include "pm_quadPack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
-    module procedure constructWcauchy_RK2
+    module procedure wcauchy_typer_RK2
         use pm_kind, only: RKC => RK2
 #include "pm_quadPack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
-    module procedure constructWcauchy_RK1
+    module procedure wcauchy_typer_RK1
         use pm_kind, only: RKC => RK1
 #include "pm_quadPack@routines.inc.F90"
     end procedure
@@ -93,46 +93,46 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#undef constructWcauchy_ENABLED
+#undef wcauchy_typer_ENABLED
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#define constructWsin_ENABLED 1
+#define wsin_typer_ENABLED 1
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #define RK_ENABLED 1
 
 #if RK5_ENABLED
-    module procedure constructWsin_RK5
+    module procedure wsin_typer_RK5
         use pm_kind, only: RKC => RK5
 #include "pm_quadPack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
-    module procedure constructWsin_RK4
+    module procedure wsin_typer_RK4
         use pm_kind, only: RKC => RK4
 #include "pm_quadPack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
-    module procedure constructWsin_RK3
+    module procedure wsin_typer_RK3
         use pm_kind, only: RKC => RK3
 #include "pm_quadPack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
-    module procedure constructWsin_RK2
+    module procedure wsin_typer_RK2
         use pm_kind, only: RKC => RK2
 #include "pm_quadPack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
-    module procedure constructWsin_RK1
+    module procedure wsin_typer_RK1
         use pm_kind, only: RKC => RK1
 #include "pm_quadPack@routines.inc.F90"
     end procedure
@@ -142,46 +142,46 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#undef constructWsin_ENABLED
+#undef wsin_typer_ENABLED
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#define constructWcos_ENABLED 1
+#define wcos_typer_ENABLED 1
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #define RK_ENABLED 1
 
 #if RK5_ENABLED
-    module procedure constructWcos_RK5
+    module procedure wcos_typer_RK5
         use pm_kind, only: RKC => RK5
 #include "pm_quadPack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
-    module procedure constructWcos_RK4
+    module procedure wcos_typer_RK4
         use pm_kind, only: RKC => RK4
 #include "pm_quadPack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
-    module procedure constructWcos_RK3
+    module procedure wcos_typer_RK3
         use pm_kind, only: RKC => RK3
 #include "pm_quadPack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
-    module procedure constructWcos_RK2
+    module procedure wcos_typer_RK2
         use pm_kind, only: RKC => RK2
 #include "pm_quadPack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
-    module procedure constructWcos_RK1
+    module procedure wcos_typer_RK1
         use pm_kind, only: RKC => RK1
 #include "pm_quadPack@routines.inc.F90"
     end procedure
@@ -191,7 +191,7 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#undef constructWcos_ENABLED
+#undef wcos_typer_ENABLED
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

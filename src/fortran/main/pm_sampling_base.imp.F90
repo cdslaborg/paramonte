@@ -542,7 +542,7 @@
     end type
 
     interface specbase_type
-        module procedure :: construct
+        module procedure :: specbase_typer
     end interface
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -559,9 +559,9 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function construct(modelr, method, ndim) result(spec)
+    function specbase_typer(modelr, method, ndim) result(spec)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: construct
+        !DEC$ ATTRIBUTES DLLEXPORT :: specbase_typer
 #endif
         type(modelr_type), intent(in) :: modelr
         character(*,SKC), intent(in) :: method
@@ -1411,7 +1411,7 @@ contains
 
         !$omp barrier
 
-    end function construct
+    end function   
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

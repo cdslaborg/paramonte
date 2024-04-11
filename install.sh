@@ -555,7 +555,7 @@ for fc in ${list_fc//;/$'\n'}; do # replace `;` with newline character.
                                 fi
 
                                 if [ -z ${bdir+x} ]; then
-                                    paramonte_bld_dir="${paramonte_dir}/bld/${os}/${arch}/${csid}/${csvs}/${build}/${lib}/${mem}/${parname}/${lang}/${checking}"
+                                    paramonte_bld_dir="${paramonte_dir}/bld/${os}/${arch}/${csid}/${csvs}/${build}/${lib}/${mem}/${parname}/${checking}/${lang}"
                                     if [[ "${flag_perfprof}" =~ .*"all".* ]]; then
                                         paramonte_bld_dir="${paramonte_bld_dir}/perfprof"
                                     fi

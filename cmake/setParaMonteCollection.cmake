@@ -162,25 +162,32 @@ if (EXISTS "${origin}")
         # The first paramonet library path search option below in `find_library` is 
         # essential for correct (original) library identification in code coverage builds.
         
-        string( CONCAT
-                collection_cmakelists_contents
-                "${collection_cmakelists_contents}"
-                "cmake_minimum_required(VERSION 3.14)\n"
-                "if (NOT DEFINED CMAKE_BUILD_TYPE)\n"
-                "    set(CMAKE_BUILD_TYPE ${CMAKE_BUILD_TYPE})\n"
-                "endif()\n"
-                "if (NOT DEFINED CMAKE_Fortran_COMPILER)\n"
-                "    set(CMAKE_Fortran_COMPILER \"${binary_compiler}\")\n"
-                "endif()\n"
-                "project(main LANGUAGES ${binary_lang})\n"
-                "set(CMAKE_MACOSX_RPATH ON)\n"
-                "set(CMAKE_INSTALL_RPATH_USE_LINK_PATH ON)\n"
-                "add_executable(binary main${lang_ext})\n"
-                "set_target_properties(binary PROPERTIES OUTPUT_NAME \"main\" SUFFIX \".exe\")\n"
-                "target_include_directories(binary PUBLIC \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../inc\")\n"
-                "find_library(pmlib NAMES ${libname} ${libname}.a ${libname}.dll ${libname}.dylib ${libname}.lib ${libname}.so PATHS \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../../lib\" \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../lib\")\n"
-                "target_link_libraries(binary PUBLIC \"\${pmlib}\")\n"
-                )
+        string(CONCAT collection_cmakelists_contents "${collection_cmakelists_contents}"
+            "cmake_minimum_required(VERSION 3.14)\n"
+            "if (NOT DEFINED CMAKE_BUILD_TYPE)\n"
+            "    set(CMAKE_BUILD_TYPE ${CMAKE_BUILD_TYPE})\n"
+            "endif()\n"
+            "if (NOT DEFINED CMAKE_Fortran_COMPILER)\n"
+            "    set(CMAKE_Fortran_COMPILER \"${binary_compiler}\")\n"
+            "endif()\n"
+            "project(main LANGUAGES ${binary_lang})\n"
+            "set(CMAKE_MACOSX_RPATH ON)\n"
+            "set(CMAKE_INSTALL_RPATH_USE_LINK_PATH ON)\n"
+            "add_executable(binary main${lang_ext})\n"
+            "set_target_properties(binary PROPERTIES OUTPUT_NAME \"main\" SUFFIX \".exe\")\n"
+            "target_include_directories(binary PUBLIC \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../inc\")\n"
+            "find_library(pmlib NAMES ${libname} ${libname}.a ${libname}.dll ${libname}.dylib ${libname}.lib ${libname}.so PATHS \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../../lib\" \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../lib\")\n"
+            "target_link_libraries(binary PUBLIC \"\${pmlib}\")\n"
+        )
+        #if (${csid_is_gnu} AND ${codecov_enabled})
+        #    string(CONCAT collection_cmakelists_contents "${collection_cmakelists_contents}"
+        #    "find_library(pmlib NAMES ${libname} ${libname}.a ${libname}.dll ${libname}.dylib ${libname}.lib ${libname}.so PATHS \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../../lib\" \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../lib\")\n"
+        #    )
+        #else()
+        #    string(CONCAT collection_cmakelists_contents "${collection_cmakelists_contents}"
+        #    "find_library(pmlib NAMES ${libname} ${libname}.a ${libname}.dll ${libname}.dylib ${libname}.lib ${libname}.so PATHS \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../lib\")\n"
+        #    )
+        #endif()
 
             #set(CMAKE_MACOSX_RPATH 1)
             #set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
@@ -230,7 +237,8 @@ if (EXISTS "${origin}")
                     set(binary_ipo_options /Qipo)
                     set(mkl_compile_options /Qmkl:sequential)
                     set(mkl_compile_definitions /DMKL_ENABLED=1)
-                    set(binary_compile_options "${binary_compile_options}" /standard-semantics /fpp)
+                    #set(binary_link_options "${binary_link_options}" /F0x1000000000) The intel /F flag does not seem to work anymore.
+                    set(binary_compile_options "${binary_compile_options}" /standard-semantics /fpp) # /F0x1000000000 /heap-arrays We use editbin software now to increase stack size.
                     if ("${build}" STREQUAL "testing")
                         set(binary_compile_options "${binary_compile_options}" /O2)
                     elseif ("${build}" STREQUAL "debug")
@@ -366,31 +374,39 @@ if (EXISTS "${origin}")
         set(collection_cmakelists_bash_path "${CMAKE_CURRENT_BINARY_DIR}/${collection_cmakelists_bash_name}")
         set(collection_cmakelists_batch_path "${CMAKE_CURRENT_BINARY_DIR}/${collection_cmakelists_batch_name}")
 
-        set(binary_cmake_build_run "cmake . -G \"${CMAKE_GENERATOR}\" && ${CMAKE_MAKE_PROGRAM} && ${CMAKE_MAKE_PROGRAM} run\n")
+        set(binary_cmake_build "cmake . -G \"${CMAKE_GENERATOR}\" && ${CMAKE_MAKE_PROGRAM}")
 
         set(collection_cmakelists_bash_contents "#!/bin/bash\n")
         if (WIN32)
             string( CONCAT
                     collection_cmakelists_bash_contents
                     "${collection_cmakelists_bash_contents}"
-                    "Add the library path to the PATH environment variable.\n"
+                    "# Add the library path to the\n"
+                    "# PATH environment variable.\n"
                     "export PATH=../../../lib:$PATH\n"
                     )
         endif()
         string( CONCAT
                 collection_cmakelists_bash_contents
                 "${collection_cmakelists_bash_contents}"
-                "${binary_cmake_build_run}"
+                "${binary_cmake_build}\n"
+                "${CMAKE_MAKE_PROGRAM} run"
                 )
 
         string( CONCAT
                 collection_cmakelists_batch_contents
                 "REM Add the library path to the\n"
-                "REM environment PATH variable.\n"
+                "REM PATH environment variable.\n"
                 "setlocal EnableDelayedExpansion\n"
                 "set \"PATH=..\\..\\..\\lib;%PATH%\"\n"
-                "REM Generate build, build, and run\n"
-                "${binary_cmake_build_run}"
+                "REM Enlarge the library stack size.\n"
+                "editbin ..\\..\\..\\lib\\*.dll /stack:1000000000\n"
+                "REM Generate build scripts.\n"
+                "${binary_cmake_build}\n"
+                "REM Enlarge the binary stack size.\n"
+                "editbin *.exe /stack:1000000000\n"
+                "REM Run the binary.\n"
+                "${CMAKE_MAKE_PROGRAM} run"
                 )
 
         #### Write the files.

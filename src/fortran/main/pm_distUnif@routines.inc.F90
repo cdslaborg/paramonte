@@ -173,7 +173,7 @@
 #endif
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%
-#elif   constructSplitmix64_ENABLED
+#elif   splitmix64_typer_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         integer(IK64) :: count
@@ -186,7 +186,7 @@
         end if
         if (present(imageID)) then
             CHECK_ASSERTION(__LINE__, 0_IK < imageID, \
-            SK_"@constructSplitmix64(): The condition `0 < imageID` must hold. imageID = "//getStr(imageID))
+            SK_"@splitmix64_typer(): The condition `0 < imageID` must hold. imageID = "//getStr(imageID))
             rng%state = ieor(rng%state, int(imageID, IK64))
         else
             rng%state = ieor(rng%state, 1_IK64)
@@ -219,7 +219,7 @@
         rng%stream = ieor(rng%stream, shiftr(rng%stream, 31))
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-#elif   constructXoshiro256ssg_ENABLED || constructXoshiro256ssw_ENABLED
+#elif   xoshiro256ssg_typer_ENABLED || xoshiro256ssw_typer_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         use pm_kind, only: IKC => IK64, RKC => RK64
@@ -229,7 +229,7 @@
         call setUnifRand(rngsm, rng%state)
         call setStateJump(rng)
         if (present(imageID)) then
-            CHECK_ASSERTION(__LINE__, 0_IK < imageID, SK_"@constructXoshiro256ssw(): The condition `0 < imageID` must hold. imageID = "//getStr(imageID))
+            CHECK_ASSERTION(__LINE__, 0_IK < imageID, SK_"@xoshiro256ssw_typer(): The condition `0 < imageID` must hold. imageID = "//getStr(imageID))
             do ijump = 2_IKC, imageID
                 call setStateJump(rng)
             end do

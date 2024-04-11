@@ -94,7 +94,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructInt1
+    module procedure int1_typer
         use pm_except, only: getInfNeg, getInfPos
         use pm_option, only: getOption
         use pm_kind, only: RKC => RKH
@@ -102,7 +102,7 @@ contains
         self%ub = getOption(getInfPos(0._RKC), ub)
         self%integral   = (atan(self%ub/2._RKC) * 2._RKC - atan(self%ub)) / 3._RKC & ! LCOV_EXCL_LINE
                         - (atan(self%lb/2._RKC) * 2._RKC - atan(self%lb)) / 3._RKC
-        self%desc = "Int1_type: an algebraic integrand of the form f(x) = x**2 / (x**2 + 1) / (x**2 + 4) for x in (lb, ub)"
+        self%desc = "int1_type: an algebraic integrand of the form f(x) = x**2 / (x**2 + 1) / (x**2 + 4) for x in (lb, ub)"
     end procedure
 
     module procedure getInt1
@@ -113,7 +113,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructInt2
+    module procedure int2_typer
         use pm_kind, only: RKC => RKH
         use pm_option, only: getOption
         use pm_except, only: getInfNeg, getInfPos
@@ -122,9 +122,9 @@ contains
         self%ub = self%a / self%b
         self%lb = 0._RKC
         self%integral = 2._RKC * (sqrt(self%a - self%b * self%lb) - sqrt(self%a - self%b * self%ub)) / self%b
-        self%desc = "Int2_type: an algebraic integrand of the form f(x) = 1 / sqrt(a - b * x) for x in (0, a / b) with a > 0 and b > 0 with a singularity at the upper bound of integration"
-        CHECK_ASSERTION(__LINE__, self%a > 0._RKC, SK_"@constructInt2(): The condition `self%a > 0._RKC` must hold. self%lb, self%a = "//getStr(self%a))
-        CHECK_ASSERTION(__LINE__, self%b > 0._RKC, SK_"@constructInt2(): The condition `self%b > 0._RKC` must hold. self%lb, self%a = "//getStr(self%b))
+        self%desc = "int2_type: an algebraic integrand of the form f(x) = 1 / sqrt(a - b * x) for x in (0, a / b) with a > 0 and b > 0 with a singularity at the upper bound of integration"
+        CHECK_ASSERTION(__LINE__, self%a > 0._RKC, SK_"@int2_typer(): The condition `self%a > 0._RKC` must hold. self%lb, self%a = "//getStr(self%a))
+        CHECK_ASSERTION(__LINE__, self%b > 0._RKC, SK_"@int2_typer(): The condition `self%b > 0._RKC` must hold. self%lb, self%a = "//getStr(self%b))
     end procedure
 
     module procedure getInt2
@@ -136,15 +136,15 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructInt3
+    module procedure int3_typer
         use pm_kind, only: RKC => RKH
         use pm_option, only: getOption
         use pm_except, only: getInfNeg, getInfPos
         self%lb = 0._RKC
         self%ub = getOption(+1._RKC, ub)
-        CHECK_ASSERTION(__LINE__, 0._RKC <= self%ub, SK_"@constructInt3(): The condition `0._RKC <= self%ub` must hold. self%ub = "//getStr(self%ub))
+        CHECK_ASSERTION(__LINE__, 0._RKC <= self%ub, SK_"@int3_typer(): The condition `0._RKC <= self%ub` must hold. self%ub = "//getStr(self%ub))
         self%integral = 2._RKC * sqrt(self%ub) * (log(self%ub) - 2._RKC)
-        self%desc = "Int3_type: an algebraic integrand of the form f(x) = log(x) / sqrt(x) for x in (0, ub) with a singularity at the lower limit of integration"
+        self%desc = "int3_type: an algebraic integrand of the form f(x) = log(x) / sqrt(x) for x in (0, ub) with a singularity at the lower limit of integration"
     end procedure
 
     module procedure getInt3
@@ -156,14 +156,14 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructInt4
+    module procedure int4_typer
         use pm_kind, only: RKC => RKH
         use pm_option, only: getOption
         use pm_except, only: getInfNeg, getInfPos
         self%lb = 0._RKC
         self%ub = 1._RKC
         self%integral = -0.189275187882093321180367135892330338053417661540147291526012234_RKC
-        self%desc = "Int4_type: an algebraic integrand of the form f(x) = log(x) / (1. + log(x)**2)**2 for x in (0, 1) with a singularity at the lower limit"
+        self%desc = "int4_type: an algebraic integrand of the form f(x) = log(x) / (1. + log(x)**2)**2 for x in (0, 1) with a singularity at the lower limit"
     end procedure
 
     module procedure getInt4
@@ -175,7 +175,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructInt5
+    module procedure int5_typer
         use pm_kind, only: RKC => RKH
         use pm_option, only: getOption
         use pm_except, only: getInfNeg, getInfPos
@@ -188,7 +188,7 @@ contains
             if (self%lb <= breakList(i) .and. breakList(i) <= self%ub) self%break = [self%break, breakList(i)]
         end do
         self%integral = getIntegral(self%ub) - getIntegral(self%lb)
-        self%desc = "Int5_type: an algebraic integrand of the form f(x) = x**3 log(abs((x**2 - 1) * (x**2 - 2))) for x in ("//getTTZ(getStr([self%lb, self%ub]))//SK_") with 4 possible singularities: [-sqrt(2.), -1., 1., sqrt(2.)]"
+        self%desc = "int5_type: an algebraic integrand of the form f(x) = x**3 log(abs((x**2 - 1) * (x**2 - 2))) for x in ("//getTTZ(getStr([self%lb, self%ub]))//SK_") with 4 possible singularities: [-sqrt(2.), -1., 1., sqrt(2.)]"
     contains
         pure function getIntegral(x) result(integral)
             real(RKC), intent(in)   :: x
@@ -209,14 +209,14 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructInt6
+    module procedure int6_typer
         use pm_kind, only: RKC => RKH
         use pm_option, only: getOption
         use pm_except, only: getInfNeg, getInfPos
         self%lb = 0._RKC
         self%ub = getInfPos(0._RKC)
         self%integral = -acos(-1._RKC) * log(10._RKC) / 20._RKC
-        self%desc = "Int6_type: an algebraic integrand of the form f(x) = log(x) / (1 + 100 * x**2) for x in (0, +Inf) with a singularity at the lower limit"
+        self%desc = "int6_type: an algebraic integrand of the form f(x) = log(x) / (1 + 100 * x**2) for x in (0, +Inf) with a singularity at the lower limit"
     end procedure
 
     module procedure getInt6
@@ -227,7 +227,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructInt7
+    module procedure int7_typer
         use pm_kind, only: RKC => RKH
         use pm_option, only: getOption
         use pm_except, only: getInfNeg, getInfPos
@@ -235,7 +235,7 @@ contains
         self%ub = getInfPos(0._RKC)
         self%break = [1._RKC / sqrt(2._RKC), 1._RKC]
         self%integral = 52.7407483834714449977291997202299809_RKC
-        self%desc = "Int7_type: an algebraic integrand of the form f(x) = -log(abs((1 - x**2) * (1 - 2 * x**2)) / x**4) / x**5 for x in (1./3., +Inf) with two singularities at [1 / sqrt(2), 1]"
+        self%desc = "int7_type: an algebraic integrand of the form f(x) = -log(abs((1 - x**2) * (1 - 2 * x**2)) / x**4) / x**5 for x in (1./3., +Inf) with two singularities at [1 / sqrt(2), 1]"
     end procedure
 
     module procedure getInt7
@@ -249,7 +249,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructInt8
+    module procedure int8_typer
         use pm_kind, only: RKC => RKH
         use pm_option, only: getOption
         use pm_except, only: getInfNeg, getInfPos
@@ -257,7 +257,7 @@ contains
         self%ub = -1._RKC / 3._RKC
         self%break = [-1._RKC, -1._RKC / sqrt(2._RKC)]
         self%integral = 52.7407483834714449977291997202299809_RKC
-        self%desc = "Int8_type: an algebraic integrand of the form f(x) = log(abs((1 - x**2) * (1 - 2 * x**2)) / x**4) / x**5 for x in (-Inf, -1./3.) with two singularities at [-1, -1 / sqrt(2)]"
+        self%desc = "int8_type: an algebraic integrand of the form f(x) = log(abs((1 - x**2) * (1 - 2 * x**2)) / x**4) / x**5 for x in (-Inf, -1./3.) with two singularities at [-1, -1 / sqrt(2)]"
     end procedure
 
     module procedure getInt8
@@ -270,7 +270,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructInt9
+    module procedure int9_typer
         use pm_kind, only: RKC => RKH
         use pm_option, only: getOption
         use pm_except, only: getInfNeg, getInfPos
@@ -278,7 +278,7 @@ contains
         self%ub = getInfPos(0._RKC)
         self%break = [-10._RKC, -9._RKC, 1._RKC / 3._RKC, 1._RKC / sqrt(2._RKC), 1._RKC]
         self%integral = 53.7407483834714449977291997202299809_RKC
-        self%desc = "Int9_type: an algebraic piecewise integrand of the form f(x) = log(abs((1 - x**2) * (1 - 2 * x**2)) / x**4) / x**5 for x in (1./3., +Inf) and 1 / (acos(-1) * sqrt(-(x+10) * (x+9))) for x in (-10, 9), otherwise 0, with two singularities at [-10, -9, 1/3., 1 / sqrt(2), 1]"
+        self%desc = "int9_type: an algebraic piecewise integrand of the form f(x) = log(abs((1 - x**2) * (1 - 2 * x**2)) / x**4) / x**5 for x in (1./3., +Inf) and 1 / (acos(-1) * sqrt(-(x+10) * (x+9))) for x in (-10, 9), otherwise 0, with two singularities at [-10, -9, 1/3., 1 / sqrt(2), 1]"
     end procedure
 
     module procedure getInt9
@@ -296,7 +296,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructIntGamUpp
+    module procedure intGamUpp_typer
         use pm_kind, only: RKC => RKH
         use pm_option, only: getOption
         use pm_except, only: getInfNeg, getInfPos, setNAN, isInfPos
@@ -339,7 +339,7 @@ contains
         else
             call setNAN(self%integral)
         end if
-        self%desc = "IntGamUpp_type: an algebraic integrand of the form f(x; lb, alpha, beta) = (x / lb)**alpha * exp(-beta * (x - lb)) for x in (lb, +Inf), lb > 0."
+        self%desc = "intGamUpp_type: an algebraic integrand of the form f(x; lb, alpha, beta) = (x / lb)**alpha * exp(-beta * (x - lb)) for x in (lb, +Inf), lb > 0."
     end procedure
 
     module procedure getIntGamUpp
@@ -350,7 +350,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructIntSinCos
+    module procedure intSinCos_typer
         use pm_kind, only: RKC => RKH
         use pm_option, only: getOption
         use pm_except, only: getInfNeg, getInfPos
@@ -359,7 +359,7 @@ contains
         self%a = getOption(1._RKC, a)
         self%b = getOption(1._RKC, b)
         self%integral = (self%ub - self%lb) * bessel_j0(self%a)
-        self%desc = "IntSinCos_type(): a highly oscillatory integrand of the form f(x) = cos(a * sin(b * x)) for x in (lb, ub)"
+        self%desc = "intSinCos_typer(): a highly oscillatory integrand of the form f(x) = cos(a * sin(b * x)) for x in (lb, ub)"
     end procedure
 
     module procedure getIntSinCos
@@ -371,7 +371,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructIntNormPDF
+    module procedure intNormPDF_typer
         use pm_kind, only: RKC => RKH
         use pm_option, only: getOption
         use pm_distNorm, only: getNormCDF
@@ -383,7 +383,7 @@ contains
         self%invSigma = 1._RKC / self%sigma
         self%logInvSigma = log(self%invSigma)
         self%integral = getNormCDF(self%ub, self%mu, self%sigma) - getNormCDF(self%lb, self%mu, self%sigma)
-        self%desc = "IntNormPDF_type: f(x) = exp(-0.5 * (log(x) - mu)**2 / sigma**2) / (sigma * sqrt(2 * acos(-1.))) for x in (lb, ub)"
+        self%desc = "intNormPDF_type: f(x) = exp(-0.5 * (log(x) - mu)**2 / sigma**2) / (sigma * sqrt(2 * acos(-1.))) for x in (lb, ub)"
     end procedure
 
     module procedure getIntNormPDF
@@ -397,7 +397,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructIntLogNormPDF
+    module procedure intLogNormPDF_typer
         use pm_kind, only: RKC => RKH
         use pm_option, only: getOption
         use pm_distLogNorm, only: getLogNormCDF
@@ -405,13 +405,13 @@ contains
         self%lb = getOption(0._RKC, lb)
         self%ub = getOption(getInfPos(0._RKC), ub)
         CHECK_ASSERTION(__LINE__, 0._RKC <= self%lb .and. self%lb <= self%ub, \
-        SK_"@constructIntLogNormPDF(): The condition `0._RKC <= self%lb .and. slef%lb <= self%ub` must hold. self%lb, self%ub = "//getStr([self%lb, self%ub]))
+        SK_"@intLogNormPDF_typer(): The condition `0._RKC <= self%lb .and. slef%lb <= self%ub` must hold. self%lb, self%ub = "//getStr([self%lb, self%ub]))
         self%mu = getOption(+0._RKC, mu)
         self%sigma = getOption(1._RKC, sigma)
         self%invSigma = 1._RKC / self%sigma
         self%logInvSigma = log(self%invSigma)
         self%integral = getLogNormCDF(self%ub, self%mu, self%sigma) - getLogNormCDF(self%lb, self%mu, self%sigma)
-        self%desc = "IntLogNormPDF_type: f(x) = exp(-0.5 * (log(x) - mu)**2 / sigma**2) / (x * sigma * sqrt(2 * acos(-1.))) for x in (0 <= lb, ub)"
+        self%desc = "intLogNormPDF_type: f(x) = exp(-0.5 * (log(x) - mu)**2 / sigma**2) / (x * sigma * sqrt(2 * acos(-1.))) for x in (0 <= lb, ub)"
     end procedure
 
     module procedure getIntLogNormPDF
@@ -425,7 +425,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructIntGenExpGammaPDF
+    module procedure intGenExpGammaPDF_typer
         use pm_kind, only: RKC => RKH
         use pm_option, only: getOption
         use pm_except, only: getInfNeg, getInfPos
@@ -437,10 +437,10 @@ contains
         self%invOmega = getOption(1._RKC, invOmega)
         self%logSigma = getOption(0._RKC, logSigma)
         self%logPDFNF = getGenExpGammaLogPDFNF(self%kappa, self%invOmega)
-        CHECK_ASSERTION(__LINE__, 0._RKC < self%kappa, SK_"@constructIntGenExpGammaPDF(): The condition `0._RKC < kappa` must hold. kappa = "//getStr(self%kappa))
-        CHECK_ASSERTION(__LINE__, 0._RKC < self%invOmega, SK_"@constructIntGenExpGammaPDF(): The condition `0._RKC < invOmega` must hold. invOmega = "//getStr(self%invOmega))
+        CHECK_ASSERTION(__LINE__, 0._RKC < self%kappa, SK_"@intGenExpGammaPDF_typer(): The condition `0._RKC < kappa` must hold. kappa = "//getStr(self%kappa))
+        CHECK_ASSERTION(__LINE__, 0._RKC < self%invOmega, SK_"@intGenExpGammaPDF_typer(): The condition `0._RKC < invOmega` must hold. invOmega = "//getStr(self%invOmega))
         self%integral = 1._RKC !getGenExpGammaCDF(exp(self%ub), self%mu, self%sigma) - getGenExpGammaCDF(self%lb, self%mu, self%sigma)
-        self%desc = SK_"IntGenExpGammaPDF_type: f(x) = GenExpGamma(x; kappa = "//getTTZ(getStr(self%kappa))//SK_", omega = "//getTTZ(getStr(1._RKC/self%invOmega))//SK_", logSigma = "//getTTZ(getStr(self%logSigma))//SK_") for x in ("//getTTZ(getStr(self%lb))//SK_", "//getTTZ(getStr(self%ub))//SK_")"
+        self%desc = SK_"intGenExpGammaPDF_type: f(x) = GenExpGamma(x; kappa = "//getTTZ(getStr(self%kappa))//SK_", omega = "//getTTZ(getStr(1._RKC/self%invOmega))//SK_", logSigma = "//getTTZ(getStr(self%logSigma))//SK_") for x in ("//getTTZ(getStr(self%lb))//SK_", "//getTTZ(getStr(self%ub))//SK_")"
     end procedure
 
     module procedure getIntGenExpGammaPDF
@@ -453,7 +453,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructIntPentaGammaInf
+    module procedure intPentaGammaInf_typer
         use pm_kind, only: RKC => RKH
         use pm_option, only: getOption
         use pm_except, only: getInfNeg, getInfPos
@@ -461,7 +461,7 @@ contains
         self%ub = getInfPos(0._RKC)
         self%break = [-9._RKC, -5._RKC, 2._RKC, 5._RKC, 7._RKC]
         self%integral = 5._RKC
-        self%desc = "IntPentaGammaInf_type: f(x) = sum of five Gamma PDFs with five break points in the integration range x in (-Inf, +Inf)"
+        self%desc = "intPentaGammaInf_type: f(x) = sum of five Gamma PDFs with five break points in the integration range x in (-Inf, +Inf)"
     end procedure
 
     module procedure getIntPentaGammaInf
@@ -483,16 +483,16 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructIntDoncker1
+    module procedure intDoncker1_typer
         use pm_kind, only: RKC => RKH
         use pm_except, only: getInfNeg, getInfPos
         use pm_option, only: getOption
         self%lb = getOption(0._RKC, lb)
         self%ub = getOption(getInfPos(0._RKC), ub)
-        CHECK_ASSERTION(__LINE__, 0._RKC <= self%lb, SK_"@constructIntDoncker1(): The condition `0._RKC <= self%lb` must hold. self%ub = "//getStr(self%ub))
-        CHECK_ASSERTION(__LINE__, self%lb < self%ub, SK_"@constructIntDoncker1(): The condition `self%lb <= self%ub` must hold. self%ub = "//getStr([self%lb, self%ub]))
+        CHECK_ASSERTION(__LINE__, 0._RKC <= self%lb, SK_"@intDoncker1_typer(): The condition `0._RKC <= self%lb` must hold. self%ub = "//getStr(self%ub))
+        CHECK_ASSERTION(__LINE__, self%lb < self%ub, SK_"@intDoncker1_typer(): The condition `self%lb <= self%ub` must hold. self%ub = "//getStr([self%lb, self%ub]))
         self%integral = 2._RKC * (atan(sqrt(self%ub)) - atan(sqrt(self%lb)))
-        self%desc = "IntDoncker1_type: f(x) = 1 / (1 + x) / sqrt(x) for x in (0 <= lb, ub) with a square-root singularity at 0"
+        self%desc = "intDoncker1_type: f(x) = 1 / (1 + x) / sqrt(x) for x in (0 <= lb, ub) with a square-root singularity at 0"
     end procedure
 
     module procedure getIntDoncker1
@@ -504,16 +504,16 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructIntDoncker2
+    module procedure intDoncker2_typer
         use pm_kind, only: RKC => RKH
         use pm_option, only: getOption
         use pm_except, only: getInfNeg, getInfPos
         self%lb = getOption(getInfNeg(0._RKC), lb)
         self%ub = getOption(0._RKC, ub)
-        CHECK_ASSERTION(__LINE__, self%ub <= 0._RKC, SK_"@constructIntDoncker2(): The condition `0._RKC <= self%ub` must hold. self%ub = "//getStr(self%ub))
-        CHECK_ASSERTION(__LINE__, self%lb < self%ub, SK_"@constructIntDoncker2(): The condition `self%lb <= self%ub` must hold. self%ub = "//getStr([self%lb, self%ub]))
+        CHECK_ASSERTION(__LINE__, self%ub <= 0._RKC, SK_"@intDoncker2_typer(): The condition `0._RKC <= self%ub` must hold. self%ub = "//getStr(self%ub))
+        CHECK_ASSERTION(__LINE__, self%lb < self%ub, SK_"@intDoncker2_typer(): The condition `self%lb <= self%ub` must hold. self%ub = "//getStr([self%lb, self%ub]))
         self%integral = sqrt(acos(-1._RKC)) * (erf(sqrt(-self%lb)) - erf(sqrt(-self%ub)))
-        self%desc = "IntDoncker2_type: f(x) = exp(x) / sqrt(-x) for x in (lb, ub <= 0) with a square-root singularity at 0"
+        self%desc = "intDoncker2_type: f(x) = exp(x) / sqrt(-x) for x in (lb, ub <= 0) with a square-root singularity at 0"
     end procedure
 
     module procedure getIntDoncker2
@@ -524,14 +524,14 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructIntCauchy1
+    module procedure intCauchy1_typer
         use pm_kind, only: RKC => RKH
         self%lb = getOption(-2._RKC, lb)
         self%ub = getOption(+3._RKC, ub)
         self%wcauchy = wcauchy_type(getOption(+1._RKC, cs))
-        CHECK_ASSERTION(__LINE__, self%lb < self%wcauchy%cs .and. self%wcauchy%cs < self%ub, SK_"@constructIntCauchy1(): The condition `self%lb < self%wcauchy%cs .and. self%wcauchy%cs < self%ub` must hold. self%lb, self%wcauchy%cs, self%ub = "//getStr([self%lb, self%wcauchy%cs, self%ub]))
+        CHECK_ASSERTION(__LINE__, self%lb < self%wcauchy%cs .and. self%wcauchy%cs < self%ub, SK_"@intCauchy1_typer(): The condition `self%lb < self%wcauchy%cs .and. self%wcauchy%cs < self%ub` must hold. self%lb, self%wcauchy%cs, self%ub = "//getStr([self%lb, self%wcauchy%cs, self%ub]))
         self%integral = log(self%ub - self%wcauchy%cs) - log(self%wcauchy%cs - self%lb)
-        self%desc = "IntCauchy1_type: an integrand of the form w(x) * f(x) with Cauchy weight w(x) 1 / (x - cs) and f(x) = 1 ~,~ x \in (lb < cs, cs < ub)"
+        self%desc = "intCauchy1_type: an integrand of the form w(x) * f(x) with Cauchy weight w(x) 1 / (x - cs) and f(x) = 1 ~,~ x \in (lb < cs, cs < ub)"
     end procedure
 
     module procedure getIntCauchy1
@@ -545,7 +545,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructIntCauchy2
+    module procedure intCauchy2_typer
         use pm_kind, only: RKC => RKH
         use pm_val2str, only: getStr
         use pm_swap, only: setSwapped
@@ -562,7 +562,7 @@ contains
         self%csnot = self%pole(2)
         if (self%lb < self%csnot .and. self%csnot < self%ub) call setSwapped(self%wcauchy%cs, self%csnot)
         self%integral = getIntegralIndef(self%ub) - getIntegralIndef(self%lb)
-        self%desc = SK_"IntCauchy2_type: an integrand of the form w(x) * f(x) = 1 / (x "//merge(SK_"+ ", SK_"- ", self%pole(1) < 0._RKC)//getTTZ(getStr(abs(self%pole(1))))// & ! LCOV_EXCL_LINE
+        self%desc = SK_"intCauchy2_type: an integrand of the form w(x) * f(x) = 1 / (x "//merge(SK_"+ ", SK_"- ", self%pole(1) < 0._RKC)//getTTZ(getStr(abs(self%pole(1))))// & ! LCOV_EXCL_LINE
         SK_") / (x "//merge(SK_"+ ", SK_"- ", self%pole(2) < 0._RKC)//getTTZ(getStr(abs(self%pole(2))))// & ! LCOV_EXCL_LINE
         SK_") for x in ("//getTTZ(getStr(self%lb))//SK_", "//getTTZ(getStr(self%ub))//SK_")"
     contains

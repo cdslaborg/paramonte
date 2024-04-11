@@ -39,7 +39,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructErr
+    module procedure err_typer
         if (present(occurred)) err%occurred = occurred
         if (present(stat)) err%stat = stat
         if (present(msg)) then
@@ -52,7 +52,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #define constructMark_ENABLED 1
-    module procedure constructMark
+    module procedure mark_typer
 #include "pm_err@routines.inc.F90"
     end procedure
 #undef constructMark_ENABLED
@@ -60,7 +60,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #define constructNote_ENABLED 1
-    module procedure constructNote
+    module procedure note_typer
 #include "pm_err@routines.inc.F90"
     end procedure
 #undef constructNote_ENABLED
@@ -68,7 +68,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #define constructWarn_ENABLED 1
-    module procedure constructWarn
+    module procedure warn_typer
 #include "pm_err@routines.inc.F90"
     end procedure
 #undef constructWarn_ENABLED
@@ -76,7 +76,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #define constructStop_ENABLED 1
-    module procedure constructStop
+    module procedure stop_typer
 #include "pm_err@routines.inc.F90"
     end procedure
 #undef constructStop_ENABLED

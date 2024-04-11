@@ -1570,27 +1570,27 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#define constructSplitmix64_ENABLED 1
-    module procedure constructSplitmix64
+#define splitmix64_typer_ENABLED 1
+    module procedure splitmix64_typer
 #include "pm_distUnif@routines.inc.F90"
     end procedure
-#undef constructSplitmix64_ENABLED
+#undef splitmix64_typer_ENABLED
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#define constructXoshiro256ssg_ENABLED 1
-    module procedure constructXoshiro256ssg
+#define xoshiro256ssg_typer_ENABLED 1
+    module procedure xoshiro256ssg_typer
 #include "pm_distUnif@routines.inc.F90"
     end procedure
-#undef constructXoshiro256ssg_ENABLED
+#undef xoshiro256ssg_typer_ENABLED
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#define constructXoshiro256ssw_ENABLED 1
-    module procedure constructXoshiro256ssw
+#define xoshiro256ssw_typer_ENABLED 1
+    module procedure xoshiro256ssw_typer
 #include "pm_distUnif@routines.inc.F90"
     end procedure
-#undef constructXoshiro256ssw_ENABLED
+#undef xoshiro256ssw_typer_ENABLED
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1666,7 +1666,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    module procedure constructFRNG
+    module procedure rngf_typer
         call setUnifRandState(seed, imageID)
     end procedure
 

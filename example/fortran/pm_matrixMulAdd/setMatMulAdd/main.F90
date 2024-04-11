@@ -460,7 +460,7 @@ program example
 
     block
 
-        use pm_kind, only: TKC => RKQ
+        use pm_kind, only: TKC => RKH
         real(TKC) :: alpha, beta
         real(TKC), parameter :: DUM = huge(DUM)
         real(TKC), allocatable :: matA(:,:), matB(:), matC(:), refC(:)

@@ -24,7 +24,7 @@
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if     constructFunc1_ENABLED
+#if     func1_typer_ENABLED
         self%lb = getOption(-3._RKC, lb)
         self%ub = getOption(+3._RKC, ub)
         self%root = [-2._RKC, -1._RKC, 0._RKC, 1._RKC, 2._RKC]

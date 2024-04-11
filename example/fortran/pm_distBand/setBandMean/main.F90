@@ -25,8 +25,8 @@ program example
                         call setBandMean(mean, lb, ub, alpha, beta, ebreak, info)
         call disp%show("if (info < 0) error stop")
                         if (info < 0) error stop
-        call disp%show("ERGS2KEV * fluence / mean ! photon fluence 1.084876")
-        call disp%show( ERGS2KEV * fluence / mean )
+        call disp%show("real(ERGS2KEV * fluence / mean, RKC) ! photon fluence 1.084876")
+        call disp%show( real(ERGS2KEV * fluence / mean, RKC) )
         call disp%skip()
 
     end block

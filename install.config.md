@@ -216,14 +216,17 @@ to the directory where the library should be built.
 > This option cannot be specified as a flag to the CMake binary
 > because the CMake build scripts must already exist in this folder.
 
+> **WARNING**
+> The specified value for this flag must be an **absolute** (full) path.
+> Relative paths currently result in library build failure.
+
 **optional**. The default value for `cmake_build_directory_path` is,
 
 ```bash
-bdir="${root}/bld/${os}/${arch}/${csid}${csvs}/${bld}/${lib}/${mem}/${par}"
+bdir="${root}/bld/${os}/${arch}/${csid}${csvs}/${build}/${lib}/${mem}/${par}/${checking}/${lang}"
 ```
 
 where
-
 
 +   `${root}`   is replaced with the path to the root directory of the project where the LICENSE file exists.
 +   `${os}`     is replaced with the lower-case operating system name (`windows`, `linux`, `darwin`, `mingw`, `msys`, ...),
@@ -234,17 +237,18 @@ where
 +   `${lib}`    is replaced with the specified value for the `lib` configuration flag (`static`, `shared`, ...),
 +   `${mem}`    is replaced with the specified value for the `mem` configuration flag (`stack`, `heap`, ...),
 +   `${par}`    is replaced with a value determined from the `mem` configuration flag:
-    Value               | Scenario
-    --------------------|---------
-    `cafsingle`         | If the library is built for Coarray single-image parallelism.
-    `cafshared`         | If the library is built for Coarray shared-memory parallelism
-    `cafdist`           | If the library is built for Coarray distributed-memory parallelism.
-    `mpi`               | If the library is built for MPI parallelism using an unknown MPI distribution.
-    `impi`              | If the library is built for MPI parallelism using an Intel MPI distribution.
-    `mpich`             | If the library is built for MPI parallelism using an MPICH MPI distribution.
-    `openmpi`           | If the library is built for MPI parallelism using an OpenMPI distribution.
-    `openmp`            | If the library is built for OpenMP parallelism.
-    `serial`            | If the library is built for serial applications.
+
+    Value               | Scenario  
+    --------------------|--------------------------------------------------------------  
+    `cafsingle`         | If the library is built for Coarray single-image parallelism.  
+    `cafshared`         | If the library is built for Coarray shared-memory parallelism.  
+    `cafdist`           | If the library is built for Coarray distributed-memory parallelism.  
+    `mpi`               | If the library is built for MPI parallelism using an unknown MPI distribution.  
+    `impi`              | If the library is built for MPI parallelism using an Intel MPI distribution.  
+    `mpich`             | If the library is built for MPI parallelism using an MPICH MPI distribution.  
+    `openmpi`           | If the library is built for MPI parallelism using an OpenMPI distribution.  
+    `openmp`            | If the library is built for OpenMP parallelism.  
+    `serial`            | If the library is built for serial applications.  
 
 ### `bench`
 
@@ -1105,6 +1109,42 @@ corresponding constant vectors from the `iso_fortran_env` intrinsic module).
 > that is supported by the compiler but not fully implemented and not functional.
 > As such, the type kind parameter corresponding to uniccode is dropped in the library build.
 
+> **WARNING**
+> If you specify any of the optional kind-type-parameter-selection command arguments,
+> always ensure to minimally specify the default supported kind type parameters by the processor.
+> For example, the Fortran standard requires support for at least two `real` kind type parameters.
+> Additionally, the standard requires minimal support for at least two `integer` kind type parameters.
+> Additionally, the standard requires minimal support for at least one `logical` kind type parameters.
+
+### `ski`
+
+Specifies a list of `character` kind indices
+for which the ParaMonte library must be built.
+
++   Usage (with `install.bat` or `install.sh`)
+    ```bash
+    --ski "character_kinds_indices"
+    ```
++   Usage (with `cmake` binary executable)
+    ```cmake
+    -Dski="character_kinds_indices"
+    ```
+
+where `character_kinds_indices` is a semicolon-separated list of
+indices of the `character_kinds(:)` constant vector of `iso_fortran_env`
+intrinsic module of Fortran.
+
+For example, setting `character_kinds_indices` to `1;3;6` will
+build the library for the kinds in `character_kinds([1, 3, 6])`.
+
+> No more than fives indices can be simultaneously specified in every single build, because
+> the ParaMonte library is currently configured for builds with up to fives kinds for each type.
+
+> The minimally-required `character` type kind parameter indices for the Intel and GNU compilers are `1`.
+
+**optional**. The default value for `character_kinds_indices`
+is all kind numbers fully supported by the compiler.
+
 ### `cki`
 
 Specifies a list of `complex` kind indices
@@ -1138,7 +1178,7 @@ build the library for the kinds in `complex_kinds([1, 3, 6])`.
 
 > The minimally-required `complex` type kind parameter indices for the Intel and GNU compilers are `1;2`.
 
-> Beware some ParaMonte algorithms require compatible `complex` and `real` kind,
+> **WARNING** Beware some ParaMonte algorithms require compatible `complex` and `real` kind,
 > necessitating the use of the same kind type parameters for both data types.
 
 **optional**. The default value for `complex_kinds_indices`
@@ -1249,39 +1289,10 @@ build the library for the kinds in `real_kinds([1, 3, 6])`.
 
 > The minimally-required `real` type kind parameter indices for the Intel and GNU compilers are `1;2`.
 
-> Beware some ParaMonte algorithms require compatible `complex` and `real` kind,
+> **WARNING** Beware some ParaMonte algorithms require compatible `complex` and `real` kind,
 > necessitating the use of the same kind type parameters for both data types.
 
 **optional**. The default value for `real_kinds_indices` is all kinds
 supported by the compiler for the C/C++/Fortran programming languages
 and only the minimally-required kind type parameters for
 all other programming languages.
-
-### `ski`
-
-Specifies a list of `character` kind indices
-for which the ParaMonte library must be built.
-
-+   Usage (with `install.bat` or `install.sh`)
-    ```bash
-    --ski "character_kinds_indices"
-    ```
-+   Usage (with `cmake` binary executable)
-    ```cmake
-    -Dski="character_kinds_indices"
-    ```
-
-where `character_kinds_indices` is a semicolon-separated list of
-indices of the `character_kinds(:)` constant vector of `iso_fortran_env`
-intrinsic module of Fortran.
-
-For example, setting `character_kinds_indices` to `1;3;6` will
-build the library for the kinds in `character_kinds([1, 3, 6])`.
-
-> No more than fives indices can be simultaneously specified in every single build, because
-> the ParaMonte library is currently configured for builds with up to fives kinds for each type.
-
-> The minimally-required `character` type kind parameter indices for the Intel and GNU compilers are `1`.
-
-**optional**. The default value for `character_kinds_indices`
-is all kind numbers fully supported by the compiler.

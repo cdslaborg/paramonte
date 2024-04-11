@@ -142,7 +142,7 @@ module pm_parallelism
 
     !>  \cond excluded
     interface image_type
-        module procedure :: constructImage
+        module procedure :: image_typer
     end interface
     !>  \endcond excluded
 
@@ -334,7 +334,7 @@ contains
     !>  \return
     !>  `image`             :   The output scalar of type [image_type](@ref pm_parallelism::image_type).
     !>
-    !>  \interface{constructImage}
+    !>  \interface{image_typer}
     !>  \code{.F90}
     !>
     !>      use pm_parallelism, only: image_type
@@ -356,11 +356,11 @@ contains
     !>  The desired number of OpenMP threads can be set at runtime via [setImageCount()](@ref pm_parallelism::setImageCount),
     !>  or directly via the OpenMP intrinsic subroutine `omp_set_num_threads()`.<br>
     !>
-    !>  \finmain{constructImage}
+    !>  \finmain{image_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
-    function constructImage() result(image)
+    function image_typer() result(image)
         type(image_type) :: image
         !integer(IK), intent(in), optional :: nthread
         ! setup general processor / coarray image variables

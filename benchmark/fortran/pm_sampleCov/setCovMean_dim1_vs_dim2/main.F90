@@ -12,14 +12,13 @@ program benchmark
     integer(IK)                         :: iarr                         !<  The array size counter.
     integer(IK)                         :: fileUnit                     !<  The output file unit for benchmark results.
     integer(IK)     , parameter         :: NARR = 18_IK                 !<  The number of benchmark array sizes.
-    integer(IK)     , allocatable       :: rperm(:)                     !<  The permutation vector for LUP factorization.
     real(RKC)       , allocatable       :: samdim1(:,:)                 !<  The positive-definite matrix.
     real(RKC)       , allocatable       :: samdim2(:,:)                 !<  The positive-definite matrix.
     type(bench_type), allocatable       :: bench(:)                     !<  The Benchmark array.
     integer(IK)     , parameter         :: nsammax = 2**NARR            !<  The maximum number of calculation repeats.
     integer(IK)     , parameter         :: ndim = 5_IK                  !<  The number of data attributes.
     real(RKC)                           :: cov(ndim, ndim), mean(ndim)  !<  The mean and covariance.
-    integer(IK)                         :: isam, jdim, nsam             !<  The benchmarking array size.
+    integer(IK)                         :: isam, nsam                   !<  The benchmarking array size.
     real(RKC)                           :: dumm
 
     bench = [ bench_type(name = SK_"setCovMeanDIM1", exec = setCovMeanDIM1, overhead = setOverhead) &

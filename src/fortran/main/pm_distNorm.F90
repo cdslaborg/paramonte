@@ -1992,7 +1992,7 @@ module pm_distNorm
 #if RK5_ENABLED
     impure elemental module subroutine setNormRandUDZD_D0_RK5(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigDRNGZD_D0_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZD_D0_RK5
 #endif
         use pm_kind, only: RKC => RK5
         real(RKC)                   , intent(out)                   :: rand
@@ -2002,7 +2002,7 @@ module pm_distNorm
 #if RK4_ENABLED
     impure elemental module subroutine setNormRandUDZD_D0_RK4(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigDRNGZD_D0_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZD_D0_RK4
 #endif
         use pm_kind, only: RKC => RK4
         real(RKC)                   , intent(out)                   :: rand
@@ -2012,7 +2012,7 @@ module pm_distNorm
 #if RK3_ENABLED
     impure elemental module subroutine setNormRandUDZD_D0_RK3(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigDRNGZD_D0_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZD_D0_RK3
 #endif
         use pm_kind, only: RKC => RK3
         real(RKC)                   , intent(out)                   :: rand
@@ -2022,7 +2022,7 @@ module pm_distNorm
 #if RK2_ENABLED
     impure elemental module subroutine setNormRandUDZD_D0_RK2(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigDRNGZD_D0_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZD_D0_RK2
 #endif
         use pm_kind, only: RKC => RK2
         real(RKC)                   , intent(out)                   :: rand
@@ -2032,7 +2032,7 @@ module pm_distNorm
 #if RK1_ENABLED
     impure elemental module subroutine setNormRandUDZD_D0_RK1(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigDRNGZD_D0_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZD_D0_RK1
 #endif
         use pm_kind, only: RKC => RK1
         real(RKC)                   , intent(out)                   :: rand
@@ -2044,7 +2044,7 @@ module pm_distNorm
 #if RK5_ENABLED
     impure elemental module subroutine setNormRandUFZD_D0_RK5(rng, rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigFRNGZD_D0_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZD_D0_RK5
 #endif
         use pm_kind, only: RKC => RK5
         type(rngf_type)             , intent(in)                    :: rng
@@ -2055,7 +2055,7 @@ module pm_distNorm
 #if RK4_ENABLED
     impure elemental module subroutine setNormRandUFZD_D0_RK4(rng, rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigFRNGZD_D0_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZD_D0_RK4
 #endif
         use pm_kind, only: RKC => RK4
         type(rngf_type)             , intent(in)                    :: rng
@@ -2066,7 +2066,7 @@ module pm_distNorm
 #if RK3_ENABLED
     impure elemental module subroutine setNormRandUFZD_D0_RK3(rng, rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigFRNGZD_D0_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZD_D0_RK3
 #endif
         use pm_kind, only: RKC => RK3
         type(rngf_type)             , intent(in)                    :: rng
@@ -2077,7 +2077,7 @@ module pm_distNorm
 #if RK2_ENABLED
     impure elemental module subroutine setNormRandUFZD_D0_RK2(rng, rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigFRNGZD_D0_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZD_D0_RK2
 #endif
         use pm_kind, only: RKC => RK2
         type(rngf_type)             , intent(in)                    :: rng
@@ -2088,7 +2088,7 @@ module pm_distNorm
 #if RK1_ENABLED
     impure elemental module subroutine setNormRandUFZD_D0_RK1(rng, rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigFRNGZD_D0_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZD_D0_RK1
 #endif
         use pm_kind, only: RKC => RK1
         type(rngf_type)             , intent(in)                    :: rng
@@ -2101,7 +2101,7 @@ module pm_distNorm
 #if RK5_ENABLED
     PURE module subroutine setNormRandUXZD_D0_RK5(rng, rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigXRNGZD_D0_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZD_D0_RK5
 #endif
         use pm_kind, only: RKC => RK5
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
@@ -2112,7 +2112,7 @@ module pm_distNorm
 #if RK4_ENABLED
     PURE module subroutine setNormRandUXZD_D0_RK4(rng, rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigXRNGZD_D0_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZD_D0_RK4
 #endif
         use pm_kind, only: RKC => RK4
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
@@ -2123,7 +2123,7 @@ module pm_distNorm
 #if RK3_ENABLED
     PURE module subroutine setNormRandUXZD_D0_RK3(rng, rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigXRNGZD_D0_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZD_D0_RK3
 #endif
         use pm_kind, only: RKC => RK3
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
@@ -2134,7 +2134,7 @@ module pm_distNorm
 #if RK2_ENABLED
     PURE module subroutine setNormRandUXZD_D0_RK2(rng, rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigXRNGZD_D0_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZD_D0_RK2
 #endif
         use pm_kind, only: RKC => RK2
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
@@ -2145,7 +2145,7 @@ module pm_distNorm
 #if RK1_ENABLED
     PURE module subroutine setNormRandUXZD_D0_RK1(rng, rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigXRNGZD_D0_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZD_D0_RK1
 #endif
         use pm_kind, only: RKC => RK1
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
@@ -2164,7 +2164,7 @@ module pm_distNorm
 #if RK5_ENABLED
     impure module subroutine setNormRandUDZA_D0_RK5(rand, zig)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigDRNGZA_D0_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZA_D0_RK5
 #endif
         use pm_kind, only: RKC => RK5
         real(RKC)                   , intent(out)                   :: rand
@@ -2175,7 +2175,7 @@ module pm_distNorm
 #if RK4_ENABLED
     impure module subroutine setNormRandUDZA_D0_RK4(rand, zig)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigDRNGZA_D0_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZA_D0_RK4
 #endif
         use pm_kind, only: RKC => RK4
         real(RKC)                   , intent(out)                   :: rand
@@ -2186,7 +2186,7 @@ module pm_distNorm
 #if RK3_ENABLED
     impure module subroutine setNormRandUDZA_D0_RK3(rand, zig)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigDRNGZA_D0_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZA_D0_RK3
 #endif
         use pm_kind, only: RKC => RK3
         real(RKC)                   , intent(out)                   :: rand
@@ -2197,7 +2197,7 @@ module pm_distNorm
 #if RK2_ENABLED
     impure module subroutine setNormRandUDZA_D0_RK2(rand, zig)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigDRNGZA_D0_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZA_D0_RK2
 #endif
         use pm_kind, only: RKC => RK2
         real(RKC)                   , intent(out)                   :: rand
@@ -2208,7 +2208,7 @@ module pm_distNorm
 #if RK1_ENABLED
     impure module subroutine setNormRandUDZA_D0_RK1(rand, zig)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigDRNGZA_D0_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZA_D0_RK1
 #endif
         use pm_kind, only: RKC => RK1
         real(RKC)                   , intent(out)                   :: rand
@@ -2227,7 +2227,7 @@ module pm_distNorm
 #if RK5_ENABLED
     impure module subroutine setNormRandUFZA_D0_RK5(rng, rand, zig)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigFRNGZA_D0_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZA_D0_RK5
 #endif
         use pm_kind, only: RKC => RK5
         type(rngf_type)             , intent(in)                    :: rng
@@ -2239,7 +2239,7 @@ module pm_distNorm
 #if RK4_ENABLED
     impure module subroutine setNormRandUFZA_D0_RK4(rng, rand, zig)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigFRNGZA_D0_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZA_D0_RK4
 #endif
         use pm_kind, only: RKC => RK4
         type(rngf_type)             , intent(in)                    :: rng
@@ -2251,7 +2251,7 @@ module pm_distNorm
 #if RK3_ENABLED
     impure module subroutine setNormRandUFZA_D0_RK3(rng, rand, zig)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigFRNGZA_D0_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZA_D0_RK3
 #endif
         use pm_kind, only: RKC => RK3
         type(rngf_type)             , intent(in)                    :: rng
@@ -2263,7 +2263,7 @@ module pm_distNorm
 #if RK2_ENABLED
     impure module subroutine setNormRandUFZA_D0_RK2(rng, rand, zig)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigFRNGZA_D0_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZA_D0_RK2
 #endif
         use pm_kind, only: RKC => RK2
         type(rngf_type)             , intent(in)                    :: rng
@@ -2275,7 +2275,7 @@ module pm_distNorm
 #if RK1_ENABLED
     impure module subroutine setNormRandUFZA_D0_RK1(rng, rand, zig)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigFRNGZA_D0_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZA_D0_RK1
 #endif
         use pm_kind, only: RKC => RK1
         type(rngf_type)             , intent(in)                    :: rng
@@ -2289,7 +2289,7 @@ module pm_distNorm
 #if RK5_ENABLED
     PURE module subroutine setNormRandUXZA_D0_RK5(rng, rand, zig)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigXRNGZA_D0_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZA_D0_RK5
 #endif
         use pm_kind, only: RKC => RK5
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
@@ -2301,7 +2301,7 @@ module pm_distNorm
 #if RK4_ENABLED
     PURE module subroutine setNormRandUXZA_D0_RK4(rng, rand, zig)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigXRNGZA_D0_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZA_D0_RK4
 #endif
         use pm_kind, only: RKC => RK4
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
@@ -2313,7 +2313,7 @@ module pm_distNorm
 #if RK3_ENABLED
     PURE module subroutine setNormRandUXZA_D0_RK3(rng, rand, zig)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigXRNGZA_D0_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZA_D0_RK3
 #endif
         use pm_kind, only: RKC => RK3
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
@@ -2325,7 +2325,7 @@ module pm_distNorm
 #if RK2_ENABLED
     PURE module subroutine setNormRandUXZA_D0_RK2(rng, rand, zig)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigXRNGZA_D0_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZA_D0_RK2
 #endif
         use pm_kind, only: RKC => RK2
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
@@ -2337,7 +2337,7 @@ module pm_distNorm
 #if RK1_ENABLED
     PURE module subroutine setNormRandUXZA_D0_RK1(rng, rand, zig)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigXRNGZA_D0_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZA_D0_RK1
 #endif
         use pm_kind, only: RKC => RK1
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
@@ -2361,7 +2361,7 @@ module pm_distNorm
 #if RK5_ENABLED
     impure module subroutine setNormRandUDZD_D1_RK5(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigDRNGZD_D1_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZD_D1_RK5
 #endif
         use pm_kind, only: RKC => RK5
         real(RKC)                   , intent(out)                   :: rand(:)
@@ -2371,7 +2371,7 @@ module pm_distNorm
 #if RK4_ENABLED
     impure module subroutine setNormRandUDZD_D1_RK4(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigDRNGZD_D1_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZD_D1_RK4
 #endif
         use pm_kind, only: RKC => RK4
         real(RKC)                   , intent(out)                   :: rand(:)
@@ -2381,7 +2381,7 @@ module pm_distNorm
 #if RK3_ENABLED
     impure module subroutine setNormRandUDZD_D1_RK3(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigDRNGZD_D1_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZD_D1_RK3
 #endif
         use pm_kind, only: RKC => RK3
         real(RKC)                   , intent(out)                   :: rand(:)
@@ -2391,7 +2391,7 @@ module pm_distNorm
 #if RK2_ENABLED
     impure module subroutine setNormRandUDZD_D1_RK2(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigDRNGZD_D1_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZD_D1_RK2
 #endif
         use pm_kind, only: RKC => RK2
         real(RKC)                   , intent(out)                   :: rand(:)
@@ -2401,7 +2401,7 @@ module pm_distNorm
 #if RK1_ENABLED
     impure module subroutine setNormRandUDZD_D1_RK1(rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigDRNGZD_D1_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZD_D1_RK1
 #endif
         use pm_kind, only: RKC => RK1
         real(RKC)                   , intent(out)                   :: rand(:)
@@ -2413,7 +2413,7 @@ module pm_distNorm
 #if RK5_ENABLED
     impure module subroutine setNormRandUFZD_D1_RK5(rng, rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigFRNGZD_D1_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZD_D1_RK5
 #endif
         use pm_kind, only: RKC => RK5
         type(rngf_type)             , intent(in)                    :: rng
@@ -2424,7 +2424,7 @@ module pm_distNorm
 #if RK4_ENABLED
     impure module subroutine setNormRandUFZD_D1_RK4(rng, rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigFRNGZD_D1_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZD_D1_RK4
 #endif
         use pm_kind, only: RKC => RK4
         type(rngf_type)             , intent(in)                    :: rng
@@ -2435,7 +2435,7 @@ module pm_distNorm
 #if RK3_ENABLED
     impure module subroutine setNormRandUFZD_D1_RK3(rng, rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigFRNGZD_D1_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZD_D1_RK3
 #endif
         use pm_kind, only: RKC => RK3
         type(rngf_type)             , intent(in)                    :: rng
@@ -2446,7 +2446,7 @@ module pm_distNorm
 #if RK2_ENABLED
     impure module subroutine setNormRandUFZD_D1_RK2(rng, rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigFRNGZD_D1_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZD_D1_RK2
 #endif
         use pm_kind, only: RKC => RK2
         type(rngf_type)             , intent(in)                    :: rng
@@ -2457,7 +2457,7 @@ module pm_distNorm
 #if RK1_ENABLED
     impure module subroutine setNormRandUFZD_D1_RK1(rng, rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigFRNGZD_D1_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZD_D1_RK1
 #endif
         use pm_kind, only: RKC => RK1
         type(rngf_type)             , intent(in)                    :: rng
@@ -2470,7 +2470,7 @@ module pm_distNorm
 #if RK5_ENABLED
     PURE module subroutine setNormRandUXZD_D1_RK5(rng, rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigXRNGZD_D1_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZD_D1_RK5
 #endif
         use pm_kind, only: RKC => RK5
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
@@ -2481,7 +2481,7 @@ module pm_distNorm
 #if RK4_ENABLED
     PURE module subroutine setNormRandUXZD_D1_RK4(rng, rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigXRNGZD_D1_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZD_D1_RK4
 #endif
         use pm_kind, only: RKC => RK4
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
@@ -2492,7 +2492,7 @@ module pm_distNorm
 #if RK3_ENABLED
     PURE module subroutine setNormRandUXZD_D1_RK3(rng, rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigXRNGZD_D1_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZD_D1_RK3
 #endif
         use pm_kind, only: RKC => RK3
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
@@ -2503,7 +2503,7 @@ module pm_distNorm
 #if RK2_ENABLED
     PURE module subroutine setNormRandUXZD_D1_RK2(rng, rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigXRNGZD_D1_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZD_D1_RK2
 #endif
         use pm_kind, only: RKC => RK2
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
@@ -2514,7 +2514,7 @@ module pm_distNorm
 #if RK1_ENABLED
     PURE module subroutine setNormRandUXZD_D1_RK1(rng, rand)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigXRNGZD_D1_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZD_D1_RK1
 #endif
         use pm_kind, only: RKC => RK1
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
@@ -2533,7 +2533,7 @@ module pm_distNorm
 #if RK5_ENABLED
     impure module subroutine setNormRandUDZA_D1_RK5(rand, zig)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigDRNGZA_D1_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZA_D1_RK5
 #endif
         use pm_kind, only: RKC => RK5
         real(RKC)                   , intent(out)                   :: rand(:)
@@ -2544,7 +2544,7 @@ module pm_distNorm
 #if RK4_ENABLED
     impure module subroutine setNormRandUDZA_D1_RK4(rand, zig)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigDRNGZA_D1_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZA_D1_RK4
 #endif
         use pm_kind, only: RKC => RK4
         real(RKC)                   , intent(out)                   :: rand(:)
@@ -2555,7 +2555,7 @@ module pm_distNorm
 #if RK3_ENABLED
     impure module subroutine setNormRandUDZA_D1_RK3(rand, zig)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigDRNGZA_D1_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZA_D1_RK3
 #endif
         use pm_kind, only: RKC => RK3
         real(RKC)                   , intent(out)                   :: rand(:)
@@ -2566,7 +2566,7 @@ module pm_distNorm
 #if RK2_ENABLED
     impure module subroutine setNormRandUDZA_D1_RK2(rand, zig)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigDRNGZA_D1_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZA_D1_RK2
 #endif
         use pm_kind, only: RKC => RK2
         real(RKC)                   , intent(out)                   :: rand(:)
@@ -2577,7 +2577,7 @@ module pm_distNorm
 #if RK1_ENABLED
     impure module subroutine setNormRandUDZA_D1_RK1(rand, zig)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigDRNGZA_D1_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZA_D1_RK1
 #endif
         use pm_kind, only: RKC => RK1
         real(RKC)                   , intent(out)                   :: rand(:)
@@ -2596,7 +2596,7 @@ module pm_distNorm
 #if RK5_ENABLED
     impure module subroutine setNormRandUFZA_D1_RK5(rng, rand, zig)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigFRNGZA_D1_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZA_D1_RK5
 #endif
         use pm_kind, only: RKC => RK5
         type(rngf_type)             , intent(in)                    :: rng
@@ -2608,7 +2608,7 @@ module pm_distNorm
 #if RK4_ENABLED
     impure module subroutine setNormRandUFZA_D1_RK4(rng, rand, zig)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigFRNGZA_D1_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZA_D1_RK4
 #endif
         use pm_kind, only: RKC => RK4
         type(rngf_type)             , intent(in)                    :: rng
@@ -2620,7 +2620,7 @@ module pm_distNorm
 #if RK3_ENABLED
     impure module subroutine setNormRandUFZA_D1_RK3(rng, rand, zig)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigFRNGZA_D1_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZA_D1_RK3
 #endif
         use pm_kind, only: RKC => RK3
         type(rngf_type)             , intent(in)                    :: rng
@@ -2632,7 +2632,7 @@ module pm_distNorm
 #if RK2_ENABLED
     impure module subroutine setNormRandUFZA_D1_RK2(rng, rand, zig)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigFRNGZA_D1_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZA_D1_RK2
 #endif
         use pm_kind, only: RKC => RK2
         type(rngf_type)             , intent(in)                    :: rng
@@ -2644,7 +2644,7 @@ module pm_distNorm
 #if RK1_ENABLED
     impure module subroutine setNormRandUFZA_D1_RK1(rng, rand, zig)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigFRNGZA_D1_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZA_D1_RK1
 #endif
         use pm_kind, only: RKC => RK1
         type(rngf_type)             , intent(in)                    :: rng
@@ -2658,7 +2658,7 @@ module pm_distNorm
 #if RK5_ENABLED
     PURE module subroutine setNormRandUXZA_D1_RK5(rng, rand, zig)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigXRNGZA_D1_RK5
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZA_D1_RK5
 #endif
         use pm_kind, only: RKC => RK5
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
@@ -2670,7 +2670,7 @@ module pm_distNorm
 #if RK4_ENABLED
     PURE module subroutine setNormRandUXZA_D1_RK4(rng, rand, zig)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigXRNGZA_D1_RK4
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZA_D1_RK4
 #endif
         use pm_kind, only: RKC => RK4
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
@@ -2682,7 +2682,7 @@ module pm_distNorm
 #if RK3_ENABLED
     PURE module subroutine setNormRandUXZA_D1_RK3(rng, rand, zig)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigXRNGZA_D1_RK3
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZA_D1_RK3
 #endif
         use pm_kind, only: RKC => RK3
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
@@ -2694,7 +2694,7 @@ module pm_distNorm
 #if RK2_ENABLED
     PURE module subroutine setNormRandUXZA_D1_RK2(rng, rand, zig)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigXRNGZA_D1_RK2
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZA_D1_RK2
 #endif
         use pm_kind, only: RKC => RK2
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
@@ -2706,7 +2706,7 @@ module pm_distNorm
 #if RK1_ENABLED
     PURE module subroutine setNormRandUXZA_D1_RK1(rng, rand, zig)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandZigXRNGZA_D1_RK1
+        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZA_D1_RK1
 #endif
         use pm_kind, only: RKC => RK1
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng

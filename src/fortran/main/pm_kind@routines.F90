@@ -34,38 +34,38 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#define construct_modeli_ENABLED 1
+#define modeli_typer_ENABLED 1
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #define IK_ENABLED 1
 
 #if IK5_ENABLED
-    module procedure construct_modeli_IK5
+    module procedure modeli_typer_IK5
 #include "pm_kind@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
-    module procedure construct_modeli_IK4
+    module procedure modeli_typer_IK4
 #include "pm_kind@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
-    module procedure construct_modeli_IK3
+    module procedure modeli_typer_IK3
 #include "pm_kind@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
-    module procedure construct_modeli_IK2
+    module procedure modeli_typer_IK2
 #include "pm_kind@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
-    module procedure construct_modeli_IK1
+    module procedure modeli_typer_IK1
 #include "pm_kind@routines.inc.F90"
     end procedure
 #endif
@@ -74,42 +74,42 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#undef construct_modeli_ENABLED
+#undef modeli_typer_ENABLED
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#define construct_modelb_ENABLED 1
+#define modelb_typer_ENABLED 1
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #define IK_ENABLED 1
 
 #if IK5_ENABLED
-    module procedure construct_modelb_IK5
+    module procedure modelb_typer_IK5
 #include "pm_kind@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
-    module procedure construct_modelb_IK4
+    module procedure modelb_typer_IK4
 #include "pm_kind@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
-    module procedure construct_modelb_IK3
+    module procedure modelb_typer_IK3
 #include "pm_kind@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
-    module procedure construct_modelb_IK2
+    module procedure modelb_typer_IK2
 #include "pm_kind@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
-    module procedure construct_modelb_IK1
+    module procedure modelb_typer_IK1
 #include "pm_kind@routines.inc.F90"
     end procedure
 #endif
@@ -118,42 +118,42 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#undef construct_modelb_ENABLED
+#undef modelb_typer_ENABLED
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#define construct_modelr_ENABLED 1
+#define modelr_typer_ENABLED 1
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #define RK_ENABLED 1
 
 #if RK5_ENABLED
-    module procedure construct_modelr_RK5
+    module procedure modelr_typer_RK5
 #include "pm_kind@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
-    module procedure construct_modelr_RK4
+    module procedure modelr_typer_RK4
 #include "pm_kind@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
-    module procedure construct_modelr_RK3
+    module procedure modelr_typer_RK3
 #include "pm_kind@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
-    module procedure construct_modelr_RK2
+    module procedure modelr_typer_RK2
 #include "pm_kind@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
-    module procedure construct_modelr_RK1
+    module procedure modelr_typer_RK1
 #include "pm_kind@routines.inc.F90"
     end procedure
 #endif
@@ -162,7 +162,7 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#undef construct_modelr_ENABLED
+#undef modelr_typer_ENABLED
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

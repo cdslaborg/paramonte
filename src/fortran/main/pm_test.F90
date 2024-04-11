@@ -157,7 +157,7 @@ module pm_test
     !>
     !>  \details
     !>  This procedure is a constructor of [test_type](@ref pm_test::test_type).<br>
-    !>  See also the documentation of [constructTest](@ref pm_test::constructTest), the constructor of [test_type](@ref pm_test::test_type).<br>
+    !>  See also the documentation of [test_typer](@ref pm_test::test_typer), the constructor of [test_type](@ref pm_test::test_type).<br>
     !>
     !>  \param[in]  host        :   The input scalar of type `character` of default kind \SK containing the name of the host of the procedure or code that is being tested.<br>
     !>                              Frequently, in modern Fortran, this is the name of the module containing the procedure being tested.<br>
@@ -184,7 +184,7 @@ module pm_test
     !>  \return
     !>  `test`                  :   The output scalar object of type [test_type](@ref pm_test::test_type) containing the specifics of the runtime system shell.<br>
     !>
-    !>  \interface{constructTest}
+    !>  \interface{test_typer}
     !>  \code{.F90}
     !>
     !>      use pm_test, only: test_type
@@ -202,7 +202,7 @@ module pm_test
     !>  \see
     !>  [test_type](@ref pm_test::test_type)<br>
     !>
-    !>  \finmain{constructTest}
+    !>  \finmain{test_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -225,7 +225,7 @@ module pm_test
     end type
 
     interface test_type
-        module procedure :: constructTest
+        module procedure :: test_typer
     end interface
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -387,7 +387,7 @@ contains
     !>  \return
     !>  `test`                  :   The output scalar object of type [test_type](@ref pm_test::test_type) containing the specifics of the runtime system shell.<br>
     !>
-    !>  \interface{constructTest}
+    !>  \interface{test_typer}
     !>  \code{.F90}
     !>
     !>      use pm_test, only: test_type
@@ -405,13 +405,13 @@ contains
     !>  \see
     !>  [test_type](@ref pm_test::test_type)<br>
     !>
-    !>  \finmain{constructTest}
+    !>  \finmain{test_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
-    function constructTest(host, inp, out, traceable) result(test)
+    function test_typer(host, inp, out, traceable) result(test)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructTest
+        !DEC$ ATTRIBUTES DLLEXPORT :: test_typer
 #endif
         use pm_err, only: err_type, setAborted
         use pm_sysPath, only: isFailedMakeDir, isDir
@@ -449,7 +449,7 @@ contains
         end if
         ! mkdir the output directory if it does not exists.
         if (test%image%is%first .and. .not. isDir(test%dir%out)) then
-            if (isFailedMakeDir(test%dir%out)) error stop MODULE_NAME//SK_"@constructTest(): Failed to generate the test module output directory: "//test%dir%out
+            if (isFailedMakeDir(test%dir%out)) error stop MODULE_NAME//SK_"@test_typer(): Failed to generate the test module output directory: "//test%dir%out
         end if
         call test%image%sync()
     end function

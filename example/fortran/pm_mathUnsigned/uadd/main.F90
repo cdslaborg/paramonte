@@ -1,7 +1,6 @@
 program example
 
-    use pm_kind, only: SK, IK
-    use iso_fortran_env, only: int8
+    use pm_kind, only: SK, IK, IKL
     use pm_mathUnsigned, only: operator(.uadd.)
     use pm_io, only: display_type
 
@@ -21,8 +20,8 @@ program example
     call disp%skip
 
     call disp%skip
-    call disp%show("127_int8 .uadd. [huge(0_int8), 127_int8, 1_int8]")
-    call disp%show( 127_int8 .uadd. [huge(0_int8), 127_int8, 1_int8] )
+    call disp%show("127_IKL .uadd. [huge(0_IKL), 127_IKL, 1_IKL]")
+    call disp%show( 127_IKL .uadd. [huge(0_IKL), 127_IKL, 1_IKL] )
     call disp%skip
 
 end program example

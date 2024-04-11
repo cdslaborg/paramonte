@@ -735,7 +735,7 @@ module pm_sysPath
 !
 !
 !
-!    type :: PathList_type
+!    type :: pathList_type
 !        character(:, SK), allocatable   :: parent   !<  \public     The public `allocatable` scalar `character` of default kind \SK containing the directory path whose contents is being returned.<br>
 !        integer(IK)     , private       :: unit     !<  \private    The private scalar `integer` of default kind \IK containing the `unit` connected to the file containing the directory listing results.<br>
 !        logical(LK)     , private       :: done     !<  \private    The private scalar `logical` of default kind \LK. It is `.true.` <b>if and only if</b> the contents of the directory listing is fully exhausted.<br>
@@ -747,10 +747,10 @@ module pm_sysPath
 !    end type
 !
 !    !>  \cond excluded
-!    interface PathList_type
-!    module function constructPathList(path, sort, showdir, showfile, showhidden, failed, errmsg) result(PathList)
+!    interface pathList_type
+!    module function pathList_typer(path, sort, showdir, showfile, showhidden, failed, errmsg) result(PathList)
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-!        !DEC$ ATTRIBUTES DLLEXPORT :: constructPathList
+!        !DEC$ ATTRIBUTES DLLEXPORT :: pathList_typer
 !#endif
 !        use pm_kind, only: SKC => SK
 !        character(*,SKC)    , intent(in)    , optional  :: path
@@ -771,7 +771,7 @@ module pm_sysPath
 !        !DEC$ ATTRIBUTES DLLEXPORT :: isFailedGetNextPathList
 !#endif
 !        use pm_kind, only: SKC => SK
-!        class(PathList_type), intent(inout)                 :: PathList
+!        class(pathList_type), intent(inout)                 :: PathList
 !        character(*,SKC)    , intent(out)   , allocatable   :: path
 !        character(*, SK)    , intent(inout) , optional      :: errmsg
 !        logical(LK)                                         :: failed
@@ -782,7 +782,7 @@ module pm_sysPath
 !        !DEC$ ATTRIBUTES DLLEXPORT :: isFailedGetNextPathListLen
 !#endif
 !        use pm_kind, only: SKC => SK
-!        class(PathList_type), intent(inout)                 :: PathList
+!        class(pathList_type), intent(inout)                 :: PathList
 !        character(*,SKC)    , intent(out)                   :: path
 !        integer(IK)         , intent(out)                   :: pathlen
 !        character(*, SK)    , intent(inout) , optional      :: errmsg
@@ -800,7 +800,7 @@ module pm_sysPath
 !        !DEC$ ATTRIBUTES DLLEXPORT :: isFailedGetNextPathListLen
 !#endif
 !        use pm_kind, only: SKC => SK
-!        type(PathList_type) , intent(inout)                 :: PathList
+!        type(pathList_type) , intent(inout)                 :: PathList
 !    end subroutine
 !    end interface
 !    !>  \endcond excluded

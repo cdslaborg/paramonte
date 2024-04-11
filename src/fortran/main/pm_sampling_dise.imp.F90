@@ -50,7 +50,7 @@
     end type
 
     interface specdise_type
-        module procedure :: construct
+        module procedure :: specdise_typer
     end interface
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -73,9 +73,9 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function construct(modelr, method, ndim) result(spec)
+    function specdise_typer(modelr, method, ndim) result(spec)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: construct
+        !DEC$ ATTRIBUTES DLLEXPORT :: specdise_typer
 #endif
         use pm_kind, only: modelr_type
         type(modelr_type), intent(in) :: modelr

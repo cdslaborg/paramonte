@@ -46,14 +46,14 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#define constructFunc1_ENABLED 1
+#define func1_typer_ENABLED 1
 
-    module procedure constructFunc1
+    module procedure func1_typer
         use pm_kind, only: RKC => RKH
 #include "pm_mathRootTest@routines.inc.F90"
     end procedure
 
-#undef constructFunc1_ENABLED
+#undef func1_typer_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

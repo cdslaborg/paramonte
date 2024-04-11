@@ -194,9 +194,9 @@ module pm_container
 
     !>  \cond excluded
     interface css_type
-    pure elemental module function constructCon_D0_BSSK(val, trimmed) result(container)
+    pure elemental module function css_typer_D0(val, trimmed) result(container)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructCon_D0_BSSK
+        !DEC$ ATTRIBUTES DLLEXPORT :: css_typer_D0
 #endif
         use pm_kind, only: SKC => SK
         character(*,SKC)    , intent(in)                :: val
@@ -264,9 +264,9 @@ module pm_container
 
     !>  \cond excluded
     interface csi_type
-    pure elemental module function constructCon_D0_BSIK(val) result(container)
+    pure elemental module function csi_typer_D0(val) result(container)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructCon_D0_BSIK
+        !DEC$ ATTRIBUTES DLLEXPORT :: csi_typer_D0
 #endif
         use pm_kind, only: IKC => IK
         integer(IKC)        , intent(in)                :: val
@@ -333,9 +333,9 @@ module pm_container
 
     !>  \cond excluded
     interface csl_type
-    pure elemental module function constructCon_D0_BSLK(val) result(container)
+    pure elemental module function csl_typer_D0(val) result(container)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructCon_D0_BSLK
+        !DEC$ ATTRIBUTES DLLEXPORT :: csl_typer_D0
 #endif
         use pm_kind, only: LKC => LK
         logical(LKC)        , intent(in)                :: val
@@ -402,9 +402,9 @@ module pm_container
 
     !>  \cond excluded
     interface csc_type
-    pure elemental module function constructCon_D0_BSCK(val) result(container)
+    pure elemental module function csc_typer_D0(val) result(container)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructCon_D0_BSCK
+        !DEC$ ATTRIBUTES DLLEXPORT :: csc_typer_D0
 #endif
         use pm_kind, only: CKC => CK
         complex(CKC)        , intent(in)                :: val
@@ -471,9 +471,9 @@ module pm_container
 
     !>  \cond excluded
     interface csr_type
-    pure elemental module function constructCon_D0_BSRK(val) result(container)
+    pure elemental module function csr_typer_D0(val) result(container)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructCon_D0_BSRK
+        !DEC$ ATTRIBUTES DLLEXPORT :: csr_typer_D0
 #endif
         use pm_kind, only: RKC => RK
         real(RKC)           , intent(in)                :: val
@@ -536,9 +536,9 @@ module pm_container
 
     !>  \cond excluded
     interface csp_type
-    pure elemental module function constructCon_D0_BSPK(val) result(container)
+    pure elemental module function csp_typer_D0(val) result(container)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructCon_D0_BSPK
+        !DEC$ ATTRIBUTES DLLEXPORT :: csp_typer_D0
 #endif
         use pm_kind, only: RKC => RK
         class(*)            , intent(in)                :: val
@@ -1558,7 +1558,6 @@ module pm_container
         type(csr_type)          , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
-
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
