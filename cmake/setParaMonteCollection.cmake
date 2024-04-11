@@ -374,7 +374,7 @@ if (EXISTS "${origin}")
         set(collection_cmakelists_bash_path "${CMAKE_CURRENT_BINARY_DIR}/${collection_cmakelists_bash_name}")
         set(collection_cmakelists_batch_path "${CMAKE_CURRENT_BINARY_DIR}/${collection_cmakelists_batch_name}")
 
-        set(binary_cmake_build "cmake . -G \"${CMAKE_GENERATOR}\" && ${CMAKE_MAKE_PROGRAM}\n")
+        set(binary_cmake_build "cmake . -G \"${CMAKE_GENERATOR}\" && ${CMAKE_MAKE_PROGRAM}")
 
         set(collection_cmakelists_bash_contents "#!/bin/bash\n")
         if (WIN32)
