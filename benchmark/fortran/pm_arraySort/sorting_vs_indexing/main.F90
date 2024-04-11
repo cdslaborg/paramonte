@@ -43,7 +43,7 @@ program benchmark
         write(*,"(*(g0,:,' '))") "Benchmarking with array size", arraySize(iarr)
 
         array = getUnifRand(1._RKC, 2._RKC, arraySize(iarr))
-        call setResized(index, arraySize(isize))
+        call setResized(index, arraySize(iarr))
 
         issorted = .false._LK
         do i = 1, NBENCH

@@ -473,7 +473,7 @@ contains
         real(RKC), intent(in), contiguous :: param(:)
         integer(IK) :: icomp, lpar, upar
         real(RKC) :: sumfrac, mixfrac
-        if (size(param) /= self%npar) error stop "@mixture_type%setParam(): The condition `size(param) == self%npar` must hold."
+        if (size(param) /= self%npar) error stop "@mixture_type%setParam(): The condition `size(param) == self%npar` must hold. size(param), self%npar = "//getStr([size(param), self%npar])
         lpar = 0
         sumfrac = 0
         do icomp = 1, self%ncomp - 1
