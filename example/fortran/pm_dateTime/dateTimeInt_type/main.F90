@@ -20,11 +20,8 @@ program example
     call disp%skip()
     call disp%show("dti = dateTimeInt_type(year = 2020_IK, zone = -5 * 60_IK, minute = 48_IK)")
                     dti = dateTimeInt_type(year = 2020_IK, zone = -5 * 60_IK, minute = 48_IK)
-    ! Intel compiler bug on Windows OS: forrtl: severe (32): invalid logical unit number, unit -129, file unknown
-#if !__INTEL_COMPILER || !_WIN32
     call disp%show("write(disp%unit, ""(*(g0,:,', '))"") dti")
                     write(disp%unit, "(*(g0,:,', '))") dti
-#endif
     call disp%skip()
 
     call disp%skip()
@@ -36,11 +33,8 @@ program example
     call disp%skip()
     call disp%show("dti = dateTimeInt_type()")
                     dti = dateTimeInt_type()
-    ! Intel compiler bug on Windows OS: forrtl: severe (32): invalid logical unit number, unit -129, file unknown
-#if !__INTEL_COMPILER || !_WIN32
     call disp%show("write(disp%unit, ""(*(g0,:,', '))"") dti")
                     write(disp%unit, "(*(g0,:,', '))") dti
-#endif
     call disp%skip()
 
     call disp%skip()
@@ -52,11 +46,8 @@ program example
     call disp%skip()
     call disp%show("dti = dateTimeInt_type(year = 2020_IK, zone = -5 * 60_IK, minute = 48_IK)")
                     dti = dateTimeInt_type(year = 2020_IK, zone = -5 * 60_IK, minute = 48_IK)
-    ! Intel compiler bug on Windows OS: forrtl: severe (32): invalid logical unit number, unit -129, file unknown
-#if !__INTEL_COMPILER || !_WIN32
     call disp%show("write(disp%unit, ""(*(g0,:,', '))"") dti")
                     write(disp%unit, "(*(g0,:,', '))") dti
-#endif
     call disp%show("dti%getValues()")
     call disp%show( dti%getValues() )
     call disp%show("size(dti%getValues())")

@@ -153,11 +153,11 @@
 !pm_cosmology/getVolComDiffNormed
 !pm_cosmology/getVolComNormed
 !pm_cosmology/setVolComDiffNormed
-!pm_dateTime/DAYS_OF_MONTH
-!pm_dateTime/DAYS_OF_MONTH_LEAP
-!pm_dateTime/MONTH_NAME
-!pm_dateTime/WEEKDAY_NAME
-!pm_dateTime/WEEKDAY_NAME_ISO
+pm_dateTime/DAYS_OF_MONTH
+pm_dateTime/DAYS_OF_MONTH_LEAP
+pm_dateTime/MONTH_NAME
+pm_dateTime/WEEKDAY_NAME
+pm_dateTime/WEEKDAY_NAME_ISO
 pm_dateTime/dateTimeInt_type
 pm_dateTime/dateTimeStr_type
 pm_dateTime/getCountDays

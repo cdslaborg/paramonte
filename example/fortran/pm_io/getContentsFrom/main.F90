@@ -21,6 +21,9 @@ program example
     call disp%show( getCentered(SK_" end of contents ", size = 132_IK, fill = SK_"_") )
     call disp%skip
 
+    ! Intel ifort Windows bug?
+    ! @file(pm_io@routines.inc.F90)@line(235)@pm_io@setContentsFrom(): A non-advancing READ immediately following a non-advancing WRITE on the same unit number is not allowed, unit -129.
+#if !__INTEL_COMPILER || !_WIN32
     call disp%skip
     call disp%show("open(newunit = unit, file = 'main.F90')")
                     open(newunit = unit, file = 'main.F90')
@@ -30,5 +33,6 @@ program example
     call disp%show( contents )
     call disp%show( getCentered(SK_" end of contents ", size = 132_IK, fill = SK_"_") )
     call disp%skip
+#endif
 
 end program example

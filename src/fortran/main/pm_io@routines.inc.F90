@@ -181,12 +181,12 @@ if (present(iostat)) then; iostat = iostat_def; if (present(iomsg)) iomsg = ioms
         integer(IK)                         :: lb, ub, pos, size, recl
         character(10, SK)                   :: access
 #if     CDD_ENABLED
-#define CATCH_ERR_IF_FAILED \
-if (iostat /= 0_IK) error stop MODULE_NAME//SK_"@setContentsFrom(): "//trim(iomsg) ! LCOV_EXCL_LINE
+#define CATCH_ERR_IF_FAILED(FINE) \
+if (iostat /= 0_IK) error stop FINE//MODULE_NAME//SK_"@setContentsFrom(): "//trim(iomsg) ! LCOV_EXCL_LINE
         integer(IK)                         :: iostat
         character(LEN_IOMSG, SK)            :: iomsg
 #elif   CII_ENABLED
-#define CATCH_ERR_IF_FAILED \
+#define CATCH_ERR_IF_FAILED(FINE) \
 if (iostat /= 0_IK) return ! LCOV_EXCL_LINE
 #else
 #error  "Unrecognized interface."
@@ -214,7 +214,7 @@ if (iostat /= 0_IK) return ! LCOV_EXCL_LINE
             do
                 read(unit, rec = pos IOSTAT_IOMSG) contents(lb : ub - LENLF)
                 if (iostat == iostat_end) exit
-                CATCH_ERR_IF_FAILED
+                CATCH_ERR_IF_FAILED(getFine(__FILE__, __LINE__))
                 contents(lb + recl : ub) = LF
                 lb = ub + 1_IK
                 ub = ub + recl
@@ -232,7 +232,7 @@ if (iostat /= 0_IK) return ! LCOV_EXCL_LINE
             do
                 call setRecordFrom(unit, contents, iostat, iomsg, lb = lb, ub = ub, linefed = .true._LK)
                 if (iostat == iostat_end) exit
-                CATCH_ERR_IF_FAILED
+                CATCH_ERR_IF_FAILED(getFine(__FILE__, __LINE__))
                 lb = ub + 1_IK
             end do
             contents = contents(1 : ub - LENLF)
@@ -356,6 +356,7 @@ if (iostat /= 0_IK) return ! LCOV_EXCL_LINE
             if (iostat == iostat_eor) then ! Record reading is complete.
 #if             URII_ENABLED
                 iostat = 0_IK
+                iomsg = getLine(__LINE__)//MODULE_NAME//SK_"@setRecordFrom(): "//trim(iomsg)
 #endif
                 lb_def = lb_def + size + nlen
                 if (present(ub)) then
@@ -373,7 +374,7 @@ if (iostat /= 0_IK) return ! LCOV_EXCL_LINE
                 cycle
             else
 #if             UR_ENABLED
-                error stop MODULE_NAME//SK_"@setRecordFrom(): "//trim(iomsg)
+                error stop getLine(__LINE__)//MODULE_NAME//SK_"@setRecordFrom(): "//trim(iomsg)
 #endif
                 return
             end if

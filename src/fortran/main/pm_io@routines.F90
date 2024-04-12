@@ -42,6 +42,7 @@ call setAsserted(ASSERTION,getFine(__FILE__,LINE)//MODULE_NAME//MSG);
 
     use pm_str, only: NLC
     use pm_kind, only: RKB
+    use pm_err, only: getLine
     use pm_val2str, only: getStr
     use pm_option, only: getOption
     use pm_arrayFind, only: setLoc
