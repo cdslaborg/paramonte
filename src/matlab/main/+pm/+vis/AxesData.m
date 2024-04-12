@@ -222,7 +222,7 @@ classdef AxesData < pm.vis.AxesBase
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function self = AxesData(axesname, dfref)
+        function self = AxesData(axesname, dfref, varargin)
             if  nargin < 2
                 dfref = [];
             end
@@ -240,7 +240,7 @@ classdef AxesData < pm.vis.AxesBase
                         + newline ...
                         );
             end
-            self@pm.vis.AxesBase(axesname);
+            self@pm.vis.AxesBase(axesname, varargin{:});
             self.df = pm.data.DataFrame(dfref);
         end
 
@@ -822,7 +822,7 @@ classdef AxesData < pm.vis.AxesBase
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function resetint(self)
+        function resetint(self, varargin)
             self.rows = [];
             self.fout = struct();
             self.newprop("colx", {});
@@ -832,7 +832,7 @@ classdef AxesData < pm.vis.AxesBase
                     self.newprop("colz", {});
                 end
             end
-            resetint@pm.vis.AxesBase(self);
+            resetint@pm.vis.AxesBase(self, varargin{:});
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -570,7 +570,7 @@ classdef AxesBase < pm.matlab.Handle
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function self = AxesBase(axesname)
+        function self = AxesBase(axesname, varargin)
 
             if  nargin < 1 || ~pm.introspection.istype(axesname, "string", 1) || ~pm.array.len(axesname)
                 help("pm.vis.AxesBase");
@@ -800,7 +800,7 @@ classdef AxesBase < pm.matlab.Handle
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function reset(self)
+        function reset(self, varargin)
             %
             %   Reset the properties of the plot to the original default settings.
             %   Use this method when you change many attributes of the plot and
@@ -826,7 +826,7 @@ classdef AxesBase < pm.matlab.Handle
             %
             %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
             %
-            self.resetint(); % call the internal reset routine.
+            self.resetint(varargin{:}); % call the internal reset routine.
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -839,7 +839,7 @@ classdef AxesBase < pm.matlab.Handle
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function resetint(self)
+        function resetint(self, varargin)
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %%%% RULE 0: Any non-MATLAB-default setting must be preferably set in the make() method to override user null values.
@@ -1140,7 +1140,7 @@ classdef AxesBase < pm.matlab.Handle
             end
 
             self.isdryrun = true;
-            self.make(); % This is the subclass method!
+            self.make(varargin{:}); % This is the subclass method!
             self.isdryrun = false;
 
         end

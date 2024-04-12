@@ -35,11 +35,11 @@ classdef LineScatter < pm.vis.AxesData
     %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
     %
     methods (Access = public)
-        function self = LineScatter(dfref)
+        function self = LineScatter(dfref, varargin)
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.AxesData("LineScatter", dfref);
+            self = self@pm.vis.AxesData("LineScatter", dfref, varargin{:});
         end
     end
 end
