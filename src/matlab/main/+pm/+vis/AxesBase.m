@@ -1,19 +1,19 @@
-classdef Base < pm.matlab.Handle
+classdef AxesBase < pm.matlab.Handle
     %
     %   This is the abstract class for generating instances of objects
     %   that contain the specifications of various types of plots.
     %
     %   This class primarily serves as the superclass for
-    %   the visualization-ready subclass ``pm.vis.axes.BaseDF``
+    %   the visualization-ready subclass ``pm.vis.AxesData``
     %   and its subclasses, all accessible to the end users.
     %
     %   Parameters
     %   ----------
     %
-    %       pname
+    %       axesname
     %
     %           The input scalar MATLAB string containing the name of the
-    %           subclass that whose parent is AbstractAxis (e.g., "heatmap").
+    %           subclass that whose parent is AxesBase (e.g., "heatmap").
     %           Supported plot names are:
     %
     %               line
@@ -35,12 +35,12 @@ classdef Base < pm.matlab.Handle
     %
     %       self
     %
-    %           The output scalar object of class ``pm.vis.axes.Base``.
+    %           The output scalar object of class ``pm.vis.AxesBase``.
     %
     %   Interface
     %   ---------
     %
-    %       axes = pm.vis.axes.Base(pname);
+    %       axes = pm.vis.AxesBase(axesname);
     %
     %   Attributes
     %   ----------
@@ -570,24 +570,24 @@ classdef Base < pm.matlab.Handle
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function self = Base(pname)
+        function self = AxesBase(axesname)
 
-            if  nargin < 1 || ~pm.introspection.istype(pname, "string", 1) || ~pm.array.len(pname)
-                help("pm.vis.axes.Base");
+            if  nargin < 1 || ~pm.introspection.istype(axesname, "string", 1) || ~pm.array.len(axesname)
+                help("pm.vis.AxesBase");
                 error   ( newline ...
-                        + "The input argument ``pname`` is missing." + newline ...
+                        + "The input argument ``axesname`` is missing." + newline ...
                         + "For more information, see the class documentation displayed above." + newline ...
                         + newline ...
                         );
             else
                 % lower the first character.
-                pname = string(pname);
-                pname{1} = lower(pname{1});
+                axesname = string(axesname);
+                axesname{1} = lower(axesname{1});
             end
 
             self.type = struct();
-            self.type.name = pname;
-            pnamel = lower(pname);
+            self.type.name = axesname;
+            pnamel = lower(axesname);
             self.type.is.line           = strcmpi(pnamel, "line"        );
             self.type.is.line3          = strcmpi(pnamel, "line3"       );
             self.type.is.scatter        = strcmpi(pnamel, "scatter"     );
@@ -645,12 +645,12 @@ classdef Base < pm.matlab.Handle
             %   Interface
             %   ---------
             %
-            %       h = pm.vis.axes.Base.make(varargin);
+            %       h = pm.vis.AxesBase.make(varargin);
             %
             %   Example
             %   -------
             %
-            %       h = pm.vis.axes.Base(pname);
+            %       h = pm.vis.AxesBase(axesname);
             %       h.make("xlim", [0, 1])
             %
             %   LICENSE
@@ -670,7 +670,7 @@ classdef Base < pm.matlab.Handle
 
             if  self.type.is.heatmap
                 if ~isempty(self.precision) && ~isnumeric(self.precision)
-                    help("pm.vis.axes.Base");
+                    help("pm.vis.AxesBase");
                     disp("self.precision");
                     disp( self.precision );
                     error   ( newline ...
@@ -819,7 +819,7 @@ classdef Base < pm.matlab.Handle
             %   Interface
             %   ---------
             %
-            %       pm.vis.axes.Base.reset() # reset the plot to the default settings.
+            %       pm.vis.AxesBase.reset() # reset the plot to the default settings.
             %
             %   LICENSE
             %   -------
@@ -1187,7 +1187,7 @@ classdef Base < pm.matlab.Handle
                 disp( comp );
                 error   ( newline ...
                         + "Internal library error: Unrecognized MATLAB function name" + newline ...
-                        + "as ``comp`` argument of object of class ``pm.vis.axes.Base``." + newline ...
+                        + "as ``comp`` argument of object of class ``pm.vis.AxesBase``." + newline ...
                         + newline ...
                         );
             end

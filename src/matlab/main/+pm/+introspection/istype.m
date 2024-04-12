@@ -45,7 +45,7 @@ function itis = istype(varval, vartype, varsize)
     %
     %           The input scalar MATLAB integer representing the
     %           maximum allowed size of the input value ``varval``.
-    %           (**optional**. If missing, the maximum length of the 
+    %           (**optional**. If missing, the maximum length of the
     %           input ``varval`` will not be checked.)
     %
     %   Returns

@@ -1,4 +1,4 @@
-classdef BaseDF < pm.vis.axes.Base
+classdef AxesData < pm.vis.AxesBase
     %
     %   This is the abstract class for generating instances of axes
     %   with various types of plots from one or more columns of data.
@@ -17,7 +17,7 @@ classdef BaseDF < pm.vis.axes.Base
     %   Parameters
     %   ----------
     %
-    %       pname
+    %       axesname
     %
     %           See the documentation of the corresponding
     %           component of the parent class constructor.
@@ -36,12 +36,12 @@ classdef BaseDF < pm.vis.axes.Base
     %
     %       self
     %
-    %           The output scalar object of class ``pm.vis.axes.BaseDF``.
+    %           The output scalar object of class ``pm.vis.AxesData``.
     %
     %   Interface
     %   ---------
     %
-    %       p = pm.vis.axes.BaseDF(pname, dfref);
+    %       p = pm.vis.AxesData(axesname, dfref);
     %
     %   Attributes
     %   ----------
@@ -222,25 +222,25 @@ classdef BaseDF < pm.vis.axes.Base
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function self = BaseDF(pname, dfref)
+        function self = AxesData(axesname, dfref)
             if  nargin < 2
                 dfref = [];
             end
             if  nargin < 1
-                pname = [];
+                axesname = [];
             end
             if  isempty(dfref)
-                help("pm.vis.axes.BaseDF");
+                help("pm.vis.AxesData");
                 error   ( newline ...
                         + "The input argument ``dfref`` is missing or is empty." + newline ...
                         + "Without any input data, visualizations are impossible." + newline ...
                         + "If you merely want to create a template of visualization specifications," + newline ...
-                        + "then use the class ``pm.vis.axes.Base`` which is the superclass of this class." + newline ...
+                        + "then use the class ``pm.vis.AxesBase`` which is the superclass of this class." + newline ...
                         + "For more information, see the class documentation displayed above." + newline ...
                         + newline ...
                         );
             end
-            self@pm.vis.axes.Base(pname);
+            self@pm.vis.AxesBase(axesname);
             self.df = pm.data.DataFrame(dfref);
         end
 
@@ -275,12 +275,12 @@ classdef BaseDF < pm.vis.axes.Base
             %   Interface
             %   ---------
             %
-            %       h = pm.vis.axes.BaseDF.make(varargin);
+            %       h = pm.vis.AxesData.make(varargin);
             %
             %   Example
             %   -------
             %
-            %       h = pm.vis.axes.BaseDF(pname, dfref);
+            %       h = pm.vis.AxesData(axesname, dfref);
             %       h.make("colx", 7 : 10)
             %       h.make("colx", 8)
             %
@@ -289,7 +289,7 @@ classdef BaseDF < pm.vis.axes.Base
             %
             %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
             %
-            make@pm.vis.axes.Base(self, varargin{:});
+            make@pm.vis.AxesBase(self, varargin{:});
             if self.isdryrun; return; end
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -832,7 +832,7 @@ classdef BaseDF < pm.vis.axes.Base
                     self.newprop("colz", {});
                 end
             end
-            resetint@pm.vis.axes.Base(self);
+            resetint@pm.vis.AxesBase(self);
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

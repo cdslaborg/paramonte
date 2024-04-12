@@ -1,7 +1,7 @@
-classdef Histogram2 < pm.vis.axes.BaseDF
+classdef Line < pm.vis.AxesData
     %
-    %   This is the Histogram2 class for generating
-    %   instances of 3-dimensional Histogram2 plots
+    %   This is the Line class for generating
+    %   instances of 2-dimensional Line plots
     %   based on the relevant MATLAB
     %   intrinsic functions.
     %
@@ -11,25 +11,23 @@ classdef Histogram2 < pm.vis.axes.BaseDF
     %       dfref
     %
     %           See the documentation of the corresponding input
-    %           argument of the parent class ``pm.vis.axes.BaseDF``.
+    %           argument of the parent class ``pm.vis.AxesData``.
     %
     %   Attributes
     %   ----------
     %
     %       See the documentation of the attributes
-    %       of the parent class ``pm.vis.axes.BaseDF``.
+    %       of the parent class ``pm.vis.AxesData``.
     %
     %   Returns
     %   -------
     %
-    %       An object of ``pm.vis.axes.Histogram2`` class.
+    %       An object of ``pm.vis.axes.Line`` class.
     %
     %   Interface
     %   ---------
     %
-    %       p = pm.vis.axes.Histogram2(dfref);
-    %       p = pm.vis.axes.Histogram2(dfref, []);
-    %       p = pm.vis.axes.Histogram2(dfref);
+    %       p = pm.vis.axes.Line(dfref);
     %
     %   LICENSE
     %   -------
@@ -37,11 +35,11 @@ classdef Histogram2 < pm.vis.axes.BaseDF
     %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
     %
     methods (Access = public)
-        function self = Histogram2(dfref)
+        function self = Line(dfref)
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.axes.BaseDF("Histogram2", dfref);
+            self = self@pm.vis.AxesData("Line", dfref);
         end
     end
 end

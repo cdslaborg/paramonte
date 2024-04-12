@@ -1,7 +1,7 @@
-classdef LineScatter3 < pm.vis.axes.BaseDF
+classdef Contourf < pm.vis.AxesData
     %
-    %   This is the LineScatter3 class for generating
-    %   instances of 3-dimensional LineScatter3 plots
+    %   This is the Contourf class for generating
+    %   instances of 2-dimensional Contourf plots
     %   based on the relevant MATLAB
     %   intrinsic functions.
     %
@@ -11,23 +11,25 @@ classdef LineScatter3 < pm.vis.axes.BaseDF
     %       dfref
     %
     %           See the documentation of the corresponding input
-    %           argument of the parent class ``pm.vis.axes.BaseDF``.
+    %           argument of the parent class ``pm.vis.AxesData``.
     %
     %   Attributes
     %   ----------
     %
     %       See the documentation of the attributes
-    %       of the parent class ``pm.vis.axes.BaseDF``.
+    %       of the parent class ``pm.vis.AxesData``.
     %
     %   Returns
     %   -------
     %
-    %       An object of ``pm.vis.axes.LineScatter3`` class.
+    %       An object of ``pm.vis.axes.Contourf`` class.
     %
     %   Interface
     %   ---------
     %
-    %       p = pm.vis.axes.LineScatter3(dfref);
+    %       p = pm.vis.axes.Contourf(dfref);
+    %       p = pm.vis.axes.Contourf(dfref, []);
+    %       p = pm.vis.axes.Contourf(dfref);
     %
     %   LICENSE
     %   -------
@@ -35,11 +37,11 @@ classdef LineScatter3 < pm.vis.axes.BaseDF
     %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
     %
     methods (Access = public)
-        function self = LineScatter3(dfref)
+        function self = Contourf(dfref)
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.axes.BaseDF("LineScatter3", dfref);
+            self = self@pm.vis.AxesData("Contourf", dfref);
         end
     end
 end

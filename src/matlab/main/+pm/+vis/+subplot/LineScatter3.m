@@ -1,7 +1,7 @@
-classdef LineScatter < pm.vis.axes.BaseDF
+classdef LineScatter3 < pm.vis.AxesData
     %
-    %   This is the LineScatter class for generating
-    %   instances of 2-dimensional LineScatter plots
+    %   This is the LineScatter3 class for generating
+    %   instances of 3-dimensional LineScatter3 plots
     %   based on the relevant MATLAB
     %   intrinsic functions.
     %
@@ -11,23 +11,23 @@ classdef LineScatter < pm.vis.axes.BaseDF
     %       dfref
     %
     %           See the documentation of the corresponding input
-    %           argument of the parent class ``pm.vis.axes.BaseDF``.
+    %           argument of the parent class ``pm.vis.AxesData``.
     %
     %   Attributes
     %   ----------
     %
     %       See the documentation of the attributes
-    %       of the parent class ``pm.vis.axes.BaseDF``.
+    %       of the parent class ``pm.vis.AxesData``.
     %
     %   Returns
     %   -------
     %
-    %       An object of ``pm.vis.axes.LineScatter`` class.
+    %       An object of ``pm.vis.axes.LineScatter3`` class.
     %
     %   Interface
     %   ---------
     %
-    %       p = pm.vis.axes.LineScatter(dfref);
+    %       p = pm.vis.axes.LineScatter3(dfref);
     %
     %   LICENSE
     %   -------
@@ -35,11 +35,11 @@ classdef LineScatter < pm.vis.axes.BaseDF
     %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
     %
     methods (Access = public)
-        function self = LineScatter(dfref)
+        function self = LineScatter3(dfref)
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.axes.BaseDF("LineScatter", dfref);
+            self = self@pm.vis.AxesData("LineScatter3", dfref);
         end
     end
 end

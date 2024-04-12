@@ -1,7 +1,7 @@
-classdef Line3 < pm.vis.axes.BaseDF
+classdef Contour < pm.vis.AxesData
     %
-    %   This is the Line3 class for generating
-    %   instances of 3-dimensional Line3 plots
+    %   This is the Contour class for generating
+    %   instances of 2-dimensional Contour plots
     %   based on the relevant MATLAB
     %   intrinsic functions.
     %
@@ -11,23 +11,25 @@ classdef Line3 < pm.vis.axes.BaseDF
     %       dfref
     %
     %           See the documentation of the corresponding input
-    %           argument of the parent class ``pm.vis.axes.BaseDF``.
+    %           argument of the parent class ``pm.vis.AxesData``.
     %
     %   Attributes
     %   ----------
     %
     %       See the documentation of the attributes
-    %       of the parent class ``pm.vis.axes.BaseDF``.
+    %       of the parent class ``pm.vis.AxesData``.
     %
     %   Returns
     %   -------
     %
-    %       An object of ``pm.vis.axes.Line3`` class.
+    %       An object of ``pm.vis.axes.Contour`` class.
     %
     %   Interface
     %   ---------
     %
-    %       p = pm.vis.axes.Line3(dfref);
+    %       p = pm.vis.axes.Contour(dfref);
+    %       p = pm.vis.axes.Contour(dfref, []);
+    %       p = pm.vis.axes.Contour(dfref);
     %
     %   LICENSE
     %   -------
@@ -35,11 +37,11 @@ classdef Line3 < pm.vis.axes.BaseDF
     %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
     %
     methods (Access = public)
-        function self = Line3(dfref)
+        function self = Contour(dfref)
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.axes.BaseDF("Line3", dfref);
+            self = self@pm.vis.AxesData("Contour", dfref);
         end
     end
 end

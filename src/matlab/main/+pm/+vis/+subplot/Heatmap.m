@@ -1,4 +1,4 @@
-classdef Heatmap < pm.vis.axes.BaseDF
+classdef Heatmap < pm.vis.AxesData
     %
     %   This is the Heatmap class for generating
     %   instances of 2-dimensional Heatmap plots
@@ -11,13 +11,13 @@ classdef Heatmap < pm.vis.axes.BaseDF
     %       dfref
     %
     %           See the documentation of the corresponding input
-    %           argument of the parent class ``pm.vis.axes.BaseDF``.
+    %           argument of the parent class ``pm.vis.AxesData``.
     %
     %   Attributes
     %   ----------
     %
     %       See the documentation of the attributes
-    %       of the parent class ``pm.vis.axes.BaseDF``.
+    %       of the parent class ``pm.vis.AxesData``.
     %
     %   Returns
     %   -------
@@ -42,7 +42,7 @@ classdef Heatmap < pm.vis.axes.BaseDF
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.axes.BaseDF("Heatmap", dfref);
+            self = self@pm.vis.AxesData("Heatmap", dfref);
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -91,12 +91,12 @@ classdef Heatmap < pm.vis.axes.BaseDF
             %   Interface
             %   ---------
             %
-            %       h = pm.vis.axes.BaseDF.make();
-            %       h = pm.vis.axes.BaseDF.make([]);
-            %       h = pm.vis.axes.BaseDF.make([], []);
-            %       h = pm.vis.axes.BaseDF.make(lb, []);
-            %       h = pm.vis.axes.BaseDF.make([], ub);
-            %       h = pm.vis.axes.BaseDF.make(lb, ub);
+            %       h = pm.vis.AxesData.make();
+            %       h = pm.vis.AxesData.make([]);
+            %       h = pm.vis.AxesData.make([], []);
+            %       h = pm.vis.AxesData.make(lb, []);
+            %       h = pm.vis.AxesData.make([], ub);
+            %       h = pm.vis.AxesData.make(lb, ub);
             %
             %   Example
             %   -------

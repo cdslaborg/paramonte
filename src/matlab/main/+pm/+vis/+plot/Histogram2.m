@@ -1,7 +1,7 @@
-classdef Histogram < pm.vis.axes.BaseDF
+classdef Histogram2 < pm.vis.AxesData
     %
-    %   This is the Histogram class for generating
-    %   instances of 2-dimensional Histogram plots
+    %   This is the Histogram2 class for generating
+    %   instances of 3-dimensional Histogram2 plots
     %   based on the relevant MATLAB
     %   intrinsic functions.
     %
@@ -11,25 +11,25 @@ classdef Histogram < pm.vis.axes.BaseDF
     %       dfref
     %
     %           See the documentation of the corresponding input
-    %           argument of the parent class ``pm.vis.axes.BaseDF``.
+    %           argument of the parent class ``pm.vis.AxesData``.
     %
     %   Attributes
     %   ----------
     %
     %       See the documentation of the attributes
-    %       of the parent class ``pm.vis.axes.BaseDF``.
+    %       of the parent class ``pm.vis.AxesData``.
     %
     %   Returns
     %   -------
     %
-    %       An object of ``pm.vis.axes.Histogram`` class.
+    %       An object of ``pm.vis.axes.Histogram2`` class.
     %
     %   Interface
     %   ---------
     %
-    %       p = pm.vis.axes.Histogram(dfref);
-    %       p = pm.vis.axes.Histogram(dfref, []);
-    %       p = pm.vis.axes.Histogram(dfref);
+    %       p = pm.vis.axes.Histogram2(dfref);
+    %       p = pm.vis.axes.Histogram2(dfref, []);
+    %       p = pm.vis.axes.Histogram2(dfref);
     %
     %   LICENSE
     %   -------
@@ -37,11 +37,11 @@ classdef Histogram < pm.vis.axes.BaseDF
     %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
     %
     methods (Access = public)
-        function self = Histogram(dfref)
+        function self = Histogram2(dfref)
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.axes.BaseDF("Histogram", dfref);
+            self = self@pm.vis.AxesData("Histogram2", dfref);
         end
     end
 end
