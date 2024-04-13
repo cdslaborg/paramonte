@@ -31,7 +31,6 @@
 submodule (pm_io) routines
 
 #if CHECK_ENABLED
-    use pm_err, only: getFine
     use pm_val2str, only: getStr
     use pm_err, only: setAsserted
 #define CHECK_ASSERTION(LINE,ASSERTION,MSG) \
@@ -42,6 +41,7 @@ call setAsserted(ASSERTION,getFine(__FILE__,LINE)//MODULE_NAME//MSG);
 
     use pm_str, only: NLC
     use pm_kind, only: RKB
+    use pm_err, only: getFine
     use pm_err, only: getLine
     use pm_val2str, only: getStr
     use pm_option, only: getOption
