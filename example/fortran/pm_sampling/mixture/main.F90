@@ -663,7 +663,7 @@ program example
 
     ! perform fitting.
 
-    do imodel = 1, 1
+    do imodel = 1, 4
 
         sampler = paradram_type()
 
