@@ -29,33 +29,29 @@
 #elif   !RK_ENABLED
 #error  "Unrecognized interface."
 #endif
-        integer(IK) , parameter :: NP = 10_IK
         integer(IK) :: i
-#if     RK_ENABLED || RK_ENABLED
-        real(RKC)   , parameter :: TOL = epsilon(0._RKC) * 100_IK
-        real(RKC)   , parameter :: invOmega = 1._RKC
-        real(RKC)               :: PDF_ref(NP)
-        real(RKC)               :: diff(NP)
-        real(RKC)               :: PDF(NP)
-        real(RKC)               :: X(NP)
-        real(RKC)               :: Kappa(NP)
-        real(RKC)               :: invSigma(NP)
-#else
-#error  "Unrecognized interface."
-#endif
+        integer(IK) , parameter :: NP = 10_IK
+        real(TKC)   , parameter :: TOL = epsilon(0._TKC) * 100
+        real(TKC)   , parameter :: invOmega = 1._TKC
+        real(TKC)               :: pdf_ref(NP)
+        real(TKC)               :: diff(NP)
+        real(TKC)               :: pdf(NP)
+        real(TKC)               :: point(NP)
+        real(TKC)               :: kappa(NP)
+        real(TKC)               :: invSigma(NP)
 
         assertion = .true._LK
-        call setUnifRand(X, epsilon(0._RKC), 1000._RKC)
-        call setUnifRand(Kappa, epsilon(0._RKC), 10._RKC)
-        call setUnifRand(invSigma, epsilon(0._RKC), 10._RKC)
+        call setUnifRand(point, epsilon(0._TKC), 1000._TKC)
+        call setUnifRand(kappa, epsilon(0._TKC), 10._TKC)
+        call setUnifRand(invSigma, epsilon(0._TKC), 10._TKC)
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        PDF_ref = getGenGammaLogPDF(X)
+        pdf_ref = getGenGammaLogPDF(point)
 #if     getGammaLogPDF_ENABLED
-        PDF = getGammaLogPDF(X)
+        pdf = getGammaLogPDF(point)
 #elif   setGammaLogPDF_ENABLED
-        call setGammaLogPDF(PDF, X)
+        call setGammaLogPDF(pdf, point)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -63,11 +59,11 @@
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        PDF_ref = getGenGammaLogPDF(X, Kappa)
+        pdf_ref = getGenGammaLogPDF(point, kappa)
 #if     getGammaLogPDF_ENABLED
-        PDF = getGammaLogPDF(X, Kappa)
+        pdf = getGammaLogPDF(point, kappa)
 #elif   setGammaLogPDF_ENABLED
-        call setGammaLogPDF(PDF, X, getGammaLogPDFNF(Kappa), Kappa)
+        call setGammaLogPDF(pdf, point, getGammaLogPDFNF(kappa), kappa)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -75,11 +71,11 @@
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        PDF_ref = getGenGammaLogPDF(X, Kappa, invSigma = invSigma)
+        pdf_ref = getGenGammaLogPDF(point, kappa, invSigma = invSigma)
 #if     getGammaLogPDF_ENABLED
-        PDF = getGammaLogPDF(X, Kappa, invSigma)
+        pdf = getGammaLogPDF(point, kappa, invSigma)
 #elif   setGammaLogPDF_ENABLED
-        call setGammaLogPDF(PDF, X, getGammaLogPDFNF(Kappa, invSigma), Kappa, invSigma)
+        call setGammaLogPDF(pdf, point, getGammaLogPDFNF(kappa, invSigma), kappa, invSigma)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -93,19 +89,21 @@
 
         subroutine report(line)
             integer(IK), intent(in) :: line
-            diff = abs(PDF - PDF_ref)
+            diff = abs(pdf - pdf_ref)
             do i = 1, NP
-                call test%assert(assertion, desc = "The PDF of the Gamma distribution must be computed correctly.", line = line)
-                assertion = assertion .and. diff(i) <= TOL
+                call test%assert(assertion, desc = "The pdf of the Gamma distribution must be computed correctly.", line = line)
+                assertion = isClose(pdf_ref(i), pdf(i), reltol = TOL) .and. assertion
                 if (test%traceable .and. .not. assertion) then
                     ! LCOV_EXCL_START
                     write(test%disp%unit,"(*(g0,:,', '))")
                     write(test%disp%unit,"(*(g0,:,', '))") "invSigma   ", invSigma(i)
-                    write(test%disp%unit,"(*(g0,:,', '))") "Kappa      ", Kappa(i)
-                    write(test%disp%unit,"(*(g0,:,', '))") "PDF_ref    ", PDF_ref(i)
-                    write(test%disp%unit,"(*(g0,:,', '))") "PDF        ", PDF(i)
-                    write(test%disp%unit,"(*(g0,:,', '))") "X          ", X(i)
+                    write(test%disp%unit,"(*(g0,:,', '))") "kappa      ", kappa(i)
+                    write(test%disp%unit,"(*(g0,:,', '))") "pdf_ref    ", pdf_ref(i)
+                    write(test%disp%unit,"(*(g0,:,', '))") "pdf        ", pdf(i)
+                    write(test%disp%unit,"(*(g0,:,', '))") "point      ", point(i)
                     write(test%disp%unit,"(*(g0,:,', '))") "diff       ", diff(i)
+                    write(test%disp%unit,"(*(g0,:,', '))") "TOL        ", TOL
+                    write(test%disp%unit,"(*(g0,:,', '))") "diff(i)<TOL", diff(i)<TOL
                     write(test%disp%unit,"(*(g0,:,', '))")
                     ! LCOV_EXCL_STOP
                 end if
