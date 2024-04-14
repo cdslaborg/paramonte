@@ -625,14 +625,14 @@
         if (isWindows()) then
             block
                 intrinsic :: index
-                failed = 0_IK == index(list, CRLF, kind = IK)
+                failed = 0_IK < index(list, CRLF, kind = IK)
             end block
         end if
         if (failed) then
             failed = .not. failed
-            call setSplit(index, list, NLC)
-        else
             call setSplit(index, list, CRLF)
+        else
+            call setSplit(index, list, NLC)
         end if
         do iell = 1, size(index, 2, IK)
             if (.not. isExtant(list(index(1, iell) : index(2, iell)), exitstat, errmsg)) then
