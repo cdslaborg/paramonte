@@ -646,7 +646,6 @@
                 return ! LCOV_EXCL_LINE
             end if
         end do
-        failed = .false._LK
 
     contains
 
