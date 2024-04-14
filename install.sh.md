@@ -3,7 +3,7 @@
 ##  Building via `install.sh` script in Bash terminal (macOS, Linux, MinGW, MSYS2, WSL)
 
 +   The ParMonte library ships with a Bash script file named `install.sh` written in
-    the Bash scripting language in the root directory of the ParaMonte repository.
+    the Bash scripting language, located in the root directory of the ParaMonte repository.
 +   This script is a convenience wrapper around the lower-level CMake build instructions
     below and automates most installation steps on Unix (Bash) terminals.
 +   This is the recommended build mechanism on **macOS** and **Linux** systems.
