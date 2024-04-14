@@ -597,7 +597,7 @@ contains
             real(RKC), allocatable :: logx(:), logPDF(:)
             real(RKC), allocatable :: table(:,:), state(:)
 
-            write(*, "(A)") "Searching for files: "//self%sampler%outputFileName
+            write(*, "(A)") "Searching for files: "//self%sampler%outputFileName//SK_"*"
             path = glob(self%sampler%outputFileName//SK_"*")
             if (size(path) == 0) error stop "There is no sample file in the output folder."
 
