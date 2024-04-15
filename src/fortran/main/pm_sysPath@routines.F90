@@ -57,6 +57,8 @@ call setAsserted(ASSERTION,getFine(__FILE__,LINE)//MODULE_NAME//MSG);
     use pm_str, only: isEndedWith
     use pm_str, only: getCharVec
     use pm_val2str, only: getStr
+    use pm_strASCII, only: CR, LF
+    use pm_strASCII, only: CRLF
 
     implicit none
 

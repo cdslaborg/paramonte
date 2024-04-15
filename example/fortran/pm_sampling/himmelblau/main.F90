@@ -14,7 +14,13 @@ end module logfunc
 program example
     use logfunc, only: NDIM, getLogFunc
     use pm_sampling, only: getErrSampling, paradram_type, err_type
+    type(paradram_type) :: sampler
     type(err_type) :: err
-    err = getErrSampling(paradram_type(outputFileName = './out/himmelblau', inputFile = 'input.nml'), getLogFunc, NDIM)
+    ! \bug
+    ! gfortran bug requires setting sampler components explicitly.
+    sampler = paradram_type()
+    sampler%inputFile = "input.nml"
+    sampler%outputFileName = "./out/himmelblau"
+    err = getErrSampling(sampler, getLogFunc, NDIM)
     if (err%occurred) error stop "sampler failed: "//err%msg
 end program example

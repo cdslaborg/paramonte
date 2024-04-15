@@ -19,8 +19,8 @@ program example
     call disp%skip
 
     call disp%skip
-    call disp%show("open(newunit = unit, file = 'main.F90', status = 'old')")
-                    open(newunit = unit, file = 'main.F90', status = 'old')
+    call disp%show("open(newunit = unit, file = 'main.F90', status = 'old', action = 'read')")
+                    open(newunit = unit, file = 'main.F90', status = 'old', action = 'read')
     call disp%show("getCountRecordLeft(unit)")
     call disp%show( getCountRecordLeft(unit) )
     call disp%show("close(unit)")
@@ -34,8 +34,8 @@ program example
     call disp%skip
 
     call disp%skip
-    call disp%show("open(newunit = unit, file = 'main.F90', status = 'old')")
-                    open(newunit = unit, file = 'main.F90', status = 'old')
+    call disp%show("open(newunit = unit, file = 'main.F90', status = 'old', action = 'read')")
+                    open(newunit = unit, file = 'main.F90', status = 'old', action = 'read')
     call disp%show("read(unit,*); read(unit,*) ! move the position to the beginning of the third record.")
                     read(unit,*); read(unit,*)
     call disp%show("read(unit,'(a)') record; backspace(unit) ! read the current line as a reference to compare.")
@@ -59,8 +59,8 @@ program example
     call disp%skip
 
     call disp%skip
-    call disp%show("open(newunit = unit, file = 'main.F90', status = 'old')")
-                    open(newunit = unit, file = 'main.F90', status = 'old')
+    call disp%show("open(newunit = unit, file = 'main.F90', status = 'old', action = 'read')")
+                    open(newunit = unit, file = 'main.F90', status = 'old', action = 'read')
     call disp%show("getCountRecordLeft(unit, isCountable = isCountable)")
     call disp%show( getCountRecordLeft(unit, isCountable = isCountable) )
     call disp%show("close(unit)")

@@ -6,7 +6,7 @@ program example
 
     implicit none
 
-    type(dateTimeInt_type) :: DTI
+    type(dateTimeInt_type) :: dti
 
     type(display_type) :: disp
     disp = display_type(file = "main.out.F90")
@@ -18,10 +18,10 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("DTI = dateTimeInt_type(year = 2020_IK, zone = -5 * 60_IK, minute = 48_IK)")
-                    DTI = dateTimeInt_type(year = 2020_IK, zone = -5 * 60_IK, minute = 48_IK)
-    call disp%show("write(disp%unit, ""(*(g0,:,', '))"") DTI")
-                    write(disp%unit, "(*(g0,:,', '))") DTI
+    call disp%show("dti = dateTimeInt_type(year = 2020_IK, zone = -5 * 60_IK, minute = 48_IK)")
+                    dti = dateTimeInt_type(year = 2020_IK, zone = -5 * 60_IK, minute = 48_IK)
+    call disp%show("write(disp%unit, ""(*(g0,:,', '))"") dti")
+                    write(disp%unit, "(*(g0,:,', '))") dti
     call disp%skip()
 
     call disp%skip()
@@ -31,10 +31,10 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("DTI = dateTimeInt_type()")
-                    DTI = dateTimeInt_type()
-    call disp%show("write(disp%unit, ""(*(g0,:,', '))"") DTI")
-                    write(disp%unit, "(*(g0,:,', '))") DTI
+    call disp%show("dti = dateTimeInt_type()")
+                    dti = dateTimeInt_type()
+    call disp%show("write(disp%unit, ""(*(g0,:,', '))"") dti")
+                    write(disp%unit, "(*(g0,:,', '))") dti
     call disp%skip()
 
     call disp%skip()
@@ -44,14 +44,14 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("DTI = dateTimeInt_type(year = 2020_IK, zone = -5 * 60_IK, minute = 48_IK)")
-                    DTI = dateTimeInt_type(year = 2020_IK, zone = -5 * 60_IK, minute = 48_IK)
-    call disp%show("write(disp%unit, ""(*(g0,:,', '))"") DTI")
-                    write(disp%unit, "(*(g0,:,', '))") DTI
-    call disp%show("DTI%getValues()")
-    call disp%show( DTI%getValues() )
-    call disp%show("size(DTI%getValues())")
-    call disp%show( size(DTI%getValues()) )
+    call disp%show("dti = dateTimeInt_type(year = 2020_IK, zone = -5 * 60_IK, minute = 48_IK)")
+                    dti = dateTimeInt_type(year = 2020_IK, zone = -5 * 60_IK, minute = 48_IK)
+    call disp%show("write(disp%unit, ""(*(g0,:,', '))"") dti")
+                    write(disp%unit, "(*(g0,:,', '))") dti
+    call disp%show("dti%getValues()")
+    call disp%show( dti%getValues() )
+    call disp%show("size(dti%getValues())")
+    call disp%show( size(dti%getValues()) )
     call disp%skip()
 
 end program example

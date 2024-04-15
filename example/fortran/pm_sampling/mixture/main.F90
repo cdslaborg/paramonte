@@ -176,7 +176,7 @@ contains
         if (present(domain)) then
             self%domain = domain
         else
-            self%domain = domain_type([-LARGE, -LARGE], [+LARGE, +LARGE], [character(20) :: "lognorm_avg", "lognorm_logstd"])
+            self%domain = domain_type([-LARGE, -LARGE], [+LARGE, +LARGE], [character(63) :: "lognorm_avg", "lognorm_logstd"])
         end if
         if (present(param)) call self%setParam(param)
     end function
@@ -245,7 +245,7 @@ contains
         if (present(domain)) then
             self%domain = domain
         else
-            self%domain = domain_type([-LARGE, -LARGE], [+LARGE, +LARGE], [character(20) :: "flatPoweto_logbreak", "flatPoweto_alpha"])
+            self%domain = domain_type([-LARGE, -LARGE], [+LARGE, +LARGE], [character(63) :: "flatPoweto_logbreak", "flatPoweto_alpha"])
         end if
         if (present(param)) call self%setParam(param)
     end function
@@ -340,7 +340,7 @@ contains
         if (present(domain)) then
             self%domain = domain
         else
-            self%domain = domain_type([-LARGE, -LARGE, -LARGE], [+LARGE, +LARGE, +LARGE], [character(20) :: "flatPowetoTapered_logbreak", "flatPowetoTapered_alpha", "flatPowetoTapered_beta"])
+            self%domain = domain_type([-LARGE, -LARGE, -LARGE], [+LARGE, +LARGE, +LARGE], [character(63) :: "flatPowetoTapered_logbreak", "flatPowetoTapered_alpha", "flatPowetoTapered_beta"])
         end if
         if (present(param)) call self%setParam(param)
     end function
@@ -597,13 +597,12 @@ contains
             real(RKC), allocatable :: logx(:), logPDF(:)
             real(RKC), allocatable :: table(:,:), state(:)
 
-            write(*, "(A)") "Searching for files: "//self%sampler%outputFileName
+            write(*, "(A)") "Searching for files: "//self%sampler%outputFileName//SK_"*"
             path = glob(self%sampler%outputFileName//SK_"*")
             if (size(path) == 0) error stop "There is no sample file in the output folder."
 
             stat = getErrTableRead(path(size(path))%val, table, roff = 1_IK)
             if (stat /= 0) error stop "Failed to read output sample."
-
             ibest = maxloc(table(:, 1), dim = 1_IK)
             self%best%loglike = table(ibest, 1)
             self%best%param = table(ibest, 2:)

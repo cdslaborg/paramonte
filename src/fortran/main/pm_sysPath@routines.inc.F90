@@ -591,7 +591,7 @@
 
         if (shell%is%powershell .or. shell%is%cmd) then
             command = SKC_"(Resolve-Path "//getPathVerbatimPowerShell(pattern)//SKC_").path"
-            if (shell%is%cmd) command = SKC_"powershell -command "//command
+            if (shell%is%cmd) command = SKC_"powershell -command """//command//SKC_""""
         elseif (shell%is%bash .or. shell%is%ksh .or. shell%is%zsh) then
             command = getCommandBashStyle(pattern)
         else
@@ -606,6 +606,8 @@
 
         ! Fetch the list.
 
+        !print *, command
+        !call execute_command_line(command)
         failed = isFailedGetOutput(command, list, errmsg_def, exitstat = exitstat)
         if (failed) then
             if (present(errmsg)) errmsg = PROCEDURE_NAME//SK_": "//trim(errmsg_def) ! LCOV_EXCL_LINE
@@ -617,7 +619,21 @@
         end if
 
         exitstat = 0_IK
-        call setSplit(index, list, NLC)
+        if (allocated(index)) deallocate(index)
+        ! On Windows OS, particularly from within the Bash command line, NLC is not necessarily the same as CRLF.
+        ! Therefore, we search for the presence of CRLF on Windows OS first, then split the list of files accordingly.
+        if (isWindows()) then
+            block
+                intrinsic :: index
+                failed = 0_IK < index(list, CRLF, kind = IK)
+            end block
+        end if
+        if (failed) then
+            failed = .not. failed
+            call setSplit(index, list, CRLF)
+        else
+            call setSplit(index, list, NLC)
+        end if
         do iell = 1, size(index, 2, IK)
             if (.not. isExtant(list(index(1, iell) : index(2, iell)), exitstat, errmsg)) then
                 index = reshape([integer(IK) ::], [0, 0])

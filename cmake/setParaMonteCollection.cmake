@@ -164,10 +164,8 @@ if (EXISTS "${origin}")
         
         string(CONCAT collection_cmakelists_contents "${collection_cmakelists_contents}"
             "cmake_minimum_required(VERSION 3.14)\n"
-            "if (NOT DEFINED CMAKE_BUILD_TYPE)\n"
-            "    set(CMAKE_BUILD_TYPE ${CMAKE_BUILD_TYPE})\n"
-            "endif()\n"
-            "if (NOT DEFINED CMAKE_Fortran_COMPILER)\n"
+            "set(CMAKE_BUILD_TYPE ${CMAKE_BUILD_TYPE})\n"
+            "if (\"\${CMAKE_Fortran_COMPILER}\" STREQUAL \"\")\n"
             "    set(CMAKE_Fortran_COMPILER \"${binary_compiler}\")\n"
             "endif()\n"
             "project(main LANGUAGES ${binary_lang})\n"
@@ -176,7 +174,10 @@ if (EXISTS "${origin}")
             "add_executable(binary main${lang_ext})\n"
             "set_target_properties(binary PROPERTIES OUTPUT_NAME \"main\" SUFFIX \".exe\")\n"
             "target_include_directories(binary PUBLIC \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../inc\")\n"
-            "find_library(pmlib NAMES ${libname} ${libname}.a ${libname}.dll ${libname}.dylib ${libname}.lib ${libname}.so PATHS \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../../lib\" \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../lib\")\n"
+            "find_library(pmlib NAMES ${libname} ${libname}.a ${libname}.dll ${libname}.dylib ${libname}.lib ${libname}.so PATHS\n"
+            "            \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../../lib\" # library directory for code coverage.\n"
+            "            \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../lib\" # library directory for examples/benchmarks.\n"
+            "            )\n"
             "target_link_libraries(binary PUBLIC \"\${pmlib}\")\n"
         )
         #if (${csid_is_gnu} AND ${codecov_enabled})
