@@ -27,10 +27,11 @@ contains
 end module logfunc
 
 program example
-    use logfunc, only: SK, IK, RKC, NDIM, getLogFunc
-    use iso_c_binding, only: c_funloc, c_null_char
     use pm_sampling, only: runParaDRAMD
+    use iso_c_binding, only: c_funloc, c_null_char
+    use logfunc, only: SK, IK, RKC, NDIM, getLogFunc
+    character(len(c_null_char), SK), parameter :: NUL = c_null_char
     integer(IK) :: stat
-    stat = runParaDRAMD(c_funloc(getLogFunc), NDIM, SK_"&paradram outputFileName = './out/runParaDRAM', outputStatus = 'retry', outputChainSize = 30000 /"//c_null_char)
+    stat = runParaDRAMD(c_funloc(getLogFunc), NDIM, SK_"&paradram outputFileName = './out/runParaDRAM', outputStatus = 'retry', outputChainSize = 30000 /"//NUL)
     if (stat /= 0) error stop "sampler failed."
 end
