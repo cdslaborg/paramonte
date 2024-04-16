@@ -1,4 +1,4 @@
-classdef Histogram2 < pm.vis.AxesData
+classdef Histogram2 < pm.vis.subplot.Subplot
     %
     %   This is the Histogram2 class for generating
     %   instances of 3-dimensional Histogram2 plots
@@ -11,13 +11,13 @@ classdef Histogram2 < pm.vis.AxesData
     %       dfref
     %
     %           See the documentation of the corresponding input
-    %           argument of the parent class ``pm.vis.AxesData``.
+    %           argument of the parent class ``pm.vis.subplot.Subplot``.
     %
     %   Attributes
     %   ----------
     %
     %       See the documentation of the attributes
-    %       of the parent class ``pm.vis.AxesData``.
+    %       of the parent class ``pm.vis.subplot.Subplot``.
     %
     %   Returns
     %   -------
@@ -28,8 +28,7 @@ classdef Histogram2 < pm.vis.AxesData
     %   ---------
     %
     %       p = pm.vis.axes.Histogram2(dfref);
-    %       p = pm.vis.axes.Histogram2(dfref, []);
-    %       p = pm.vis.axes.Histogram2(dfref);
+    %       p = pm.vis.axes.Histogram2(dfref, varargin);
     %
     %   LICENSE
     %   -------
@@ -37,11 +36,11 @@ classdef Histogram2 < pm.vis.AxesData
     %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
     %
     methods (Access = public)
-        function self = Histogram2(dfref)
+        function self = Histogram2(dfref, varargin)
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.AxesData("Histogram2", dfref);
+            self = self@pm.vis.subplot.Subplot("Histogram2", dfref, varargin{:});
         end
     end
 end

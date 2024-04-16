@@ -1,4 +1,4 @@
-classdef AxesData < pm.vis.AxesBase
+classdef Subplot < pm.vis.Axes
     %
     %   This is the abstract class for generating instances of axes
     %   with various types of plots from one or more columns of data.
@@ -36,12 +36,13 @@ classdef AxesData < pm.vis.AxesBase
     %
     %       self
     %
-    %           The output scalar object of class ``pm.vis.AxesData``.
+    %           The output scalar object of class ``pm.vis.subplot.Subplot``.
     %
     %   Interface
     %   ---------
     %
-    %       p = pm.vis.AxesData(axesname, dfref);
+    %       p = pm.vis.subplot.Subplot(axesname, dfref);
+    %       p = pm.vis.subplot.Subplot(axesname, dfref, varargin);
     %
     %   Attributes
     %   ----------
@@ -222,7 +223,7 @@ classdef AxesData < pm.vis.AxesBase
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function self = AxesData(axesname, dfref, varargin)
+        function self = Subplot(axesname, dfref, varargin)
             if  nargin < 2
                 dfref = [];
             end
@@ -230,18 +231,24 @@ classdef AxesData < pm.vis.AxesBase
                 axesname = [];
             end
             if  isempty(dfref)
-                help("pm.vis.AxesData");
+                help("pm.vis.subplot.Subplot");
                 error   ( newline ...
                         + "The input argument ``dfref`` is missing or is empty." + newline ...
                         + "Without any input data, visualizations are impossible." + newline ...
                         + "If you merely want to create a template of visualization specifications," + newline ...
-                        + "then use the class ``pm.vis.AxesBase`` which is the superclass of this class." + newline ...
+                        + "then use the class ``pm.vis.Axes`` which is the superclass of this class." + newline ...
                         + "For more information, see the class documentation displayed above." + newline ...
                         + newline ...
                         );
             end
-            self@pm.vis.AxesBase(axesname, varargin{:});
-            self.df = pm.data.DataFrame(dfref);
+            self@pm.vis.Axes(axesname, varargin{:});
+            if iscell(dfref) && 1 < length(dfref)
+                for iell = 1 : length(dfref)
+                    self.df = pm.data.DataFrame(dfref);
+                end
+            else
+                self.df = pm.data.DataFrame(dfref);
+            end
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -275,12 +282,12 @@ classdef AxesData < pm.vis.AxesBase
             %   Interface
             %   ---------
             %
-            %       h = pm.vis.AxesData.make(varargin);
+            %       h = pm.vis.subplot.Subplot.make(varargin);
             %
             %   Example
             %   -------
             %
-            %       h = pm.vis.AxesData(axesname, dfref);
+            %       h = pm.vis.subplot.Subplot(axesname, dfref);
             %       h.make("colx", 7 : 10)
             %       h.make("colx", 8)
             %
@@ -289,7 +296,7 @@ classdef AxesData < pm.vis.AxesBase
             %
             %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
             %
-            make@pm.vis.AxesBase(self, varargin{:});
+            make@pm.vis.Axes(self, varargin{:});
             if self.isdryrun; return; end
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -832,7 +839,7 @@ classdef AxesData < pm.vis.AxesBase
                     self.newprop("colz", {});
                 end
             end
-            resetint@pm.vis.AxesBase(self, varargin{:});
+            resetint@pm.vis.Axes(self, varargin{:});
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

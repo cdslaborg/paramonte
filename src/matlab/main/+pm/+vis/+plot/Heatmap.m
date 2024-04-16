@@ -1,4 +1,4 @@
-classdef Heatmap < pm.vis.AxesData
+classdef Heatmap < pm.vis.subplot.Subplot
     %
     %   This is the Heatmap class for generating
     %   instances of 2-dimensional Heatmap plots
@@ -11,13 +11,13 @@ classdef Heatmap < pm.vis.AxesData
     %       dfref
     %
     %           See the documentation of the corresponding input
-    %           argument of the parent class ``pm.vis.AxesData``.
+    %           argument of the parent class ``pm.vis.subplot.Subplot``.
     %
     %   Attributes
     %   ----------
     %
     %       See the documentation of the attributes
-    %       of the parent class ``pm.vis.AxesData``.
+    %       of the parent class ``pm.vis.subplot.Subplot``.
     %
     %   Returns
     %   -------
@@ -28,6 +28,7 @@ classdef Heatmap < pm.vis.AxesData
     %   ---------
     %
     %       p = pm.vis.axes.Heatmap(dfref);
+    %       p = pm.vis.axes.Heatmap(dfref, varargin);
     %
     %   LICENSE
     %   -------
@@ -38,11 +39,11 @@ classdef Heatmap < pm.vis.AxesData
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function self = Heatmap(dfref)
+        function self = Heatmap(dfref, varargin)
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.AxesData("Heatmap", dfref);
+            self = self@pm.vis.subplot.Subplot("Heatmap", dfref, varargin{:});
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -91,12 +92,12 @@ classdef Heatmap < pm.vis.AxesData
             %   Interface
             %   ---------
             %
-            %       h = pm.vis.AxesData.make();
-            %       h = pm.vis.AxesData.make([]);
-            %       h = pm.vis.AxesData.make([], []);
-            %       h = pm.vis.AxesData.make(lb, []);
-            %       h = pm.vis.AxesData.make([], ub);
-            %       h = pm.vis.AxesData.make(lb, ub);
+            %       h = pm.vis.subplot.Subplot.make();
+            %       h = pm.vis.subplot.Subplot.make([]);
+            %       h = pm.vis.subplot.Subplot.make([], []);
+            %       h = pm.vis.subplot.Subplot.make(lb, []);
+            %       h = pm.vis.subplot.Subplot.make([], ub);
+            %       h = pm.vis.subplot.Subplot.make(lb, ub);
             %
             %   Example
             %   -------

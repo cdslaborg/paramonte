@@ -1,4 +1,4 @@
-classdef Contourf < pm.vis.AxesData
+classdef Contourf < pm.vis.subplot.Subplot
     %
     %   This is the Contourf class for generating
     %   instances of 2-dimensional Contourf plots
@@ -11,13 +11,13 @@ classdef Contourf < pm.vis.AxesData
     %       dfref
     %
     %           See the documentation of the corresponding input
-    %           argument of the parent class ``pm.vis.AxesData``.
+    %           argument of the parent class ``pm.vis.subplot.Subplot``.
     %
     %   Attributes
     %   ----------
     %
     %       See the documentation of the attributes
-    %       of the parent class ``pm.vis.AxesData``.
+    %       of the parent class ``pm.vis.subplot.Subplot``.
     %
     %   Returns
     %   -------
@@ -28,8 +28,7 @@ classdef Contourf < pm.vis.AxesData
     %   ---------
     %
     %       p = pm.vis.axes.Contourf(dfref);
-    %       p = pm.vis.axes.Contourf(dfref, []);
-    %       p = pm.vis.axes.Contourf(dfref);
+    %       p = pm.vis.axes.Contourf(dfref, varargin);
     %
     %   LICENSE
     %   -------
@@ -37,11 +36,11 @@ classdef Contourf < pm.vis.AxesData
     %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
     %
     methods (Access = public)
-        function self = Contourf(dfref)
+        function self = Contourf(dfref, varargin)
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.AxesData("Contourf", dfref);
+            self = self@pm.vis.subplot.Subplot("Contourf", dfref, varargin{:});
         end
     end
 end

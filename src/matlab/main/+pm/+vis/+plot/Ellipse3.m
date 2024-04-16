@@ -69,7 +69,7 @@ classdef Ellipse3 < pm.vis.axes.LineScatter
     end
 
     methods (Access = public)
-        function self = Ellipse3(gramref, meanref, zdfref)
+        function self = Ellipse3(gramref, meanref, zdfref, varargin)
             if  nargin < 3
                 zdfref = [];
             end
@@ -93,7 +93,7 @@ classdef Ellipse3 < pm.vis.axes.LineScatter
 
                 end
             && isempty(gramref) && isempty(zdfref)
-            self = self@pm.vis.axes.LineScatter(, gramref);
+            self = self@pm.vis.axes.LineScatter(, gramref, varargin{:});
         end
     end
 end

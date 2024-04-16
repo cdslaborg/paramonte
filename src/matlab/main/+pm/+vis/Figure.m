@@ -9,9 +9,17 @@ classdef Figure < pm.matlab.Handle
     %   Parameters
     %   ----------
     %
-    %       axes
+    %       subplot
     %
-    %           The input cell matrix of MATLAB objects of superclass ``pm.vis.AxesData``.
+    %           The input cell matrix of MATLAB objects of superclass ``pm.vis.subplot.Subplot``.
+    %
+    %       varargin
+    %
+    %           Any ``property, value`` pair of the parent object.
+    %           If the property is a ``struct()``, then its value must be given as a cell array,
+    %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
+    %           Note that all of these property-value pairs can be also directly set via the
+    %           parent object attributes, before calling the ``make()`` method.
     %
     %   Returns
     %   -------
@@ -23,7 +31,7 @@ classdef Figure < pm.matlab.Handle
     %   Interface
     %   ---------
     %
-    %       plot = pm.vis.Figure(axes);
+    %       plot = pm.vis.Figure(subplot);
     %
     %   Attributes
     %   ----------
@@ -33,12 +41,12 @@ classdef Figure < pm.matlab.Handle
     %
     properties (Access = public)
         %
-        %       axes
+        %       subplot
         %
-        %           The input cell matrix of objects of superclass ``pm.vis.AxesData``
+        %           The input cell matrix of objects of superclass ``pm.vis.subplot.Subplot``
         %           representing the set of subplots to display in the figure.
         %
-        axes = cell(0, 0);
+        subplot = cell(0, 0);
         %
         %       figure
         %
@@ -109,19 +117,26 @@ classdef Figure < pm.matlab.Handle
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function self = Figure(axes)
+        function self = Figure(subplot, varargin)
 
-            if  nargin < 1 || ~pm.introspection.istype(axes, "pm.vis.AxesData") || ~pm.array.len(axes)
-                help("pm.vis.Figure");
-                error   ( newline ...
-                        + "The input argument ``axes`` is missing." + newline ...
-                        + "For more information, see the class documentation displayed above." + newline ...
-                        + newline ...
-                        );
+            if  nargin < 1
+                subplot = cell(0, 0);
             end
-            self.axes = axes;
+            for i = 1 : size(self.subplot, 1)
+                for j = 1 : size(self.subplot, 2)
+                    if ~pm.introspection.istype(subplot{i, j}, "pm.vis.subplot.Subplot") || ~pm.array.len(subplot{i, j})
+                        help("pm.vis.Figure");
+                        error   ( newline ...
+                                + "The input argument ``subplot`` must be a matrix of objects of superclass ``pm.vis.subplot.Subplot``." + newline ...
+                                + "For more information, see the class documentation displayed above." + newline ...
+                                + newline ...
+                                );
+                    end
+                end
+            end
             self.figure = struct();
-            self.resetint(); % This is the subclass method!
+            self.reset(varargin{:}); % This is the subclass method!
+            self.subplot = subplot;
 
         end
 
@@ -134,7 +149,7 @@ classdef Figure < pm.matlab.Handle
             %
             %   In making the figure, this method we call the ``make()``
             %   methods of each of the subplot objects stored in the
-            %   ``axes`` component.
+            %   ``subplot`` component.
             %
             %   \warning
             %
@@ -165,7 +180,7 @@ classdef Figure < pm.matlab.Handle
             %   Example
             %   -------
             %
-            %       h = pm.vis.Figure(axes);
+            %       h = pm.vis.Figure(subplot);
             %       h.make()
             %
             %   LICENSE
@@ -189,21 +204,29 @@ classdef Figure < pm.matlab.Handle
 
             if self.isdryrun; return; end
 
-            %%%%%%%%%%%%%%%%
-            %%%% Make plots.
-            %%%%%%%%%%%%%%%%
+            %%%%%%%%%%%%%%%%%
+            %%%% Make figure.
+            %%%%%%%%%%%%%%%%%
 
-            for i = 1 : size(self.axes, 1)
-                for j = 1 : size(self.axes, 1)
-                    self.axes{i, j}.make();
+
+            %%%% get keyword arguments.
+
+            kws = struct();
+            for prop =  [ "figure" ...
+                        ]
+                if  isprop(self, prop)
+                    kws.(prop) = self.comp2hash(prop);
                 end
             end
+
+            self.fout.figure = figure(kws.figure{:}));
+            hold on;
 
         end % function
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function reset(self)
+        function reset(self, varargin)
             %
             %   Reset the properties of the figure to the original default settings.
             %   Use this method when you change many attributes of the plot and
@@ -212,7 +235,13 @@ classdef Figure < pm.matlab.Handle
             %   Parameters
             %   ----------
             %
-            %       None
+            %       varargin
+            %
+            %           Any ``property, value`` pair of the parent object.
+            %           If the property is a ``struct()``, then its value must be given as a cell array,
+            %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
+            %           Note that all of these property-value pairs can be also directly set via the
+            %           parent object attributes, before calling the ``make()`` method.
             %
             %   Returns
             %   -------
@@ -229,7 +258,20 @@ classdef Figure < pm.matlab.Handle
             %
             %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
             %
-            self.resetint(); % call the internal reset routine.
+
+            %for i = 1 : size(self.subplot, 1)
+            %    for j = 1 : size(self.subplot, 2)
+            %        self.subplot{i, j}.reset();
+            %    end
+            %end
+
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% RULE 0: Any non-MATLAB-default setting must be preferably set in the make() method to override user null values.
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            self.isdryrun = true;
+            self.make(varargin{:}); % This is the subclass method!
+            self.isdryrun = false;
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -239,26 +281,6 @@ classdef Figure < pm.matlab.Handle
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     methods (Access = public, Hidden)
-
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-        function resetint(self)
-
-            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-            %%%% RULE 0: Any non-MATLAB-default setting must be preferably set in the make() method to override user null values.
-            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-            for i = 1 : size(self.axes, 1)
-                for j = 1 : size(self.axes, 2)
-                    self.axes{i, j}.reset();
-                end
-            end
-
-            self.isdryrun = true;
-            self.make(); % This is the subclass method!
-            self.isdryrun = false;
-
-        end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -638,8 +660,8 @@ classdef Figure < pm.matlab.Handle
             %
             %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
             %
-            if nargin < 1
-                file = [];
+            if nargin < 2
+                file = '';
             end
             if  0 < pm.array.len(file)
                 if ~pm.introspection.istype(file, "string", 1)
@@ -664,12 +686,12 @@ classdef Figure < pm.matlab.Handle
                 end
             end
             % Focus on the target figure to export.
-            set(0, "CurrentFigure", self.currentFig.figure);
+            set(0, "CurrentFigure", self.fout.figure);
             if any(contains(string(varargin), "-transparent"))
                 istransparent = true;
                 failed = false;
                 try
-                    set(self.currentFig.figure, "color", "none");
+                    set(self.fout.figure, "color", "none");
                 catch
                     failed = true;
                 end

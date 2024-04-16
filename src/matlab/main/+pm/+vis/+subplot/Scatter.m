@@ -1,4 +1,4 @@
-classdef Scatter < pm.vis.AxesData
+classdef Scatter < pm.vis.subplot.Subplot
     %
     %   This is the Scatter class for generating
     %   instances of 2-dimensional Scatter plots
@@ -11,13 +11,13 @@ classdef Scatter < pm.vis.AxesData
     %       dfref
     %
     %           See the documentation of the corresponding input
-    %           argument of the parent class ``pm.vis.AxesData``.
+    %           argument of the parent class ``pm.vis.subplot.Subplot``.
     %
     %   Attributes
     %   ----------
     %
     %       See the documentation of the attributes
-    %       of the parent class ``pm.vis.AxesData``.
+    %       of the parent class ``pm.vis.subplot.Subplot``.
     %
     %   Returns
     %   -------
@@ -28,6 +28,7 @@ classdef Scatter < pm.vis.AxesData
     %   ---------
     %
     %       p = pm.vis.axes.Scatter(dfref);
+    %       p = pm.vis.axes.Scatter(dfref, varargin);
     %
     %   LICENSE
     %   -------
@@ -35,11 +36,11 @@ classdef Scatter < pm.vis.AxesData
     %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
     %
     methods (Access = public)
-        function self = Scatter(dfref)
+        function self = Scatter(dfref, varargin)
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.AxesData("Scatter", dfref);
+            self = self@pm.vis.subplot.Subplot("Scatter", dfref, varargin{:});
         end
     end
 end

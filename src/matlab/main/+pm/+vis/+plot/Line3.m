@@ -1,4 +1,4 @@
-classdef Line3 < pm.vis.AxesData
+classdef Line3 < pm.vis.subplot.Subplot
     %
     %   This is the Line3 class for generating
     %   instances of 3-dimensional Line3 plots
@@ -11,13 +11,13 @@ classdef Line3 < pm.vis.AxesData
     %       dfref
     %
     %           See the documentation of the corresponding input
-    %           argument of the parent class ``pm.vis.AxesData``.
+    %           argument of the parent class ``pm.vis.subplot.Subplot``.
     %
     %   Attributes
     %   ----------
     %
     %       See the documentation of the attributes
-    %       of the parent class ``pm.vis.AxesData``.
+    %       of the parent class ``pm.vis.subplot.Subplot``.
     %
     %   Returns
     %   -------
@@ -28,6 +28,7 @@ classdef Line3 < pm.vis.AxesData
     %   ---------
     %
     %       p = pm.vis.axes.Line3(dfref);
+    %       p = pm.vis.axes.Line3(dfref, varargin);
     %
     %   LICENSE
     %   -------
@@ -35,11 +36,11 @@ classdef Line3 < pm.vis.AxesData
     %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
     %
     methods (Access = public)
-        function self = Line3(dfref)
+        function self = Line3(dfref, varargin)
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.AxesData("Line3", dfref);
+            self = self@pm.vis.subplot.Subplot("Line3", dfref, varargin{:});
         end
     end
 end

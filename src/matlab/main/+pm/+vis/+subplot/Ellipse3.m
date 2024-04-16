@@ -69,7 +69,7 @@ classdef Ellipse3 < pm.vis.axes.LineScatter
     end
 
     methods (Access = public)
-        function self = Ellipse3(gramref, meanref, zdfref)
+        function self = Ellipse3(gramref, meanref, zdfref, varargin)
             if  nargin < 3
                 zdfref = [];
             end
@@ -79,8 +79,48 @@ classdef Ellipse3 < pm.vis.axes.LineScatter
             if  nargin < 1
                 gramref = [];
             end
-            if ~isempty(gramref)
-                if ~isempty(gramref)
+            if ~isempty(gramref) && ~isempty(meanref)
+                asserted = size(gramref, 1) == size(meanref, 1);
+                asserted = size(gramref, 2) == size(meanref, 1) && asserted;
+                asserted =(size(gramref, 3) == size(meanref, 2) || size(gramref, 3) == 1 || size(meanref, 2) == 1) && asserted;
+                if ~asserted
+                    help("pm.vis.axes.Ellipse3")
+                    disp("size(gramref)")
+                    disp( size(gramref) )
+                    disp("size(meanref)")
+                    disp( size(meanref) )
+                    error   ( newline ...
+                            + "The shapes of the specified ``gramref`` and ``meanref`` are incompatible." + newline ...
+                            + "For more information, see the documentation displayed above." + newline ...
+                            + newline ...
+                            );
+                else
+                    ndim = size(gramref, 2);
+                    nell = max(size(gramref, 3), size(meanref, 2));
+                end
+            elseif ~isempty(gramref)
+                ndim = size(gramref, 2);
+                nell = size(gramref, 3);
+                asserted = size(gramref, 1) == size(gramref, 2);
+                if ~asserted
+                    disp("size(gramref)")
+                    disp( size(gramref) )
+                    help("pm.vis.axes.Ellipse3")
+                    error   ( newline ...
+                            + "The first two dimensions of the specified ``gramref`` must equal." + newline ...
+                            + "For more information, see the documentation displayed above." + newline ...
+                            + newline ...
+                            );
+                else
+                    ndim = size(gramref, 2);
+                    nell = max(size(gramref, 3), size(meanref, 2));
+                end
+            else
+                ndim = size(meanref, 1);
+                nell = size(meanref, 2);
+            end
+
+
                 if  size(gramref, 1) ~= size(gramref, 2)
                     help("pm.vis.axes.Ellipse3")
                     error   ( newline ...
@@ -93,7 +133,12 @@ classdef Ellipse3 < pm.vis.axes.LineScatter
 
                 end
             && isempty(gramref) && isempty(zdfref)
-            self = self@pm.vis.axes.LineScatter(, gramref);
+
+                ndim = size(meanref, 1);
+                nell = size(meanref, 1);
+
+
+            self = self@pm.vis.axes.LineScatter(, gramref, varargin{:});
         end
     end
 end

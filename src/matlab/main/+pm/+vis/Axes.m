@@ -1,10 +1,10 @@
-classdef AxesBase < pm.matlab.Handle
+classdef Axes < pm.matlab.Handle
     %
     %   This is the abstract class for generating instances of objects
     %   that contain the specifications of various types of plots.
     %
     %   This class primarily serves as the superclass for
-    %   the visualization-ready subclass ``pm.vis.AxesData``
+    %   the visualization-ready subclass ``pm.vis.subplot.Subplot``
     %   and its subclasses, all accessible to the end users.
     %
     %   Parameters
@@ -13,7 +13,7 @@ classdef AxesBase < pm.matlab.Handle
     %       axesname
     %
     %           The input scalar MATLAB string containing the name of the
-    %           subclass that whose parent is AxesBase (e.g., "heatmap").
+    %           subclass that whose parent is Axes (e.g., "heatmap").
     %           Supported plot names are:
     %
     %               line
@@ -35,12 +35,12 @@ classdef AxesBase < pm.matlab.Handle
     %
     %       self
     %
-    %           The output scalar object of class ``pm.vis.AxesBase``.
+    %           The output scalar object of class ``pm.vis.Axes``.
     %
     %   Interface
     %   ---------
     %
-    %       axes = pm.vis.AxesBase(axesname);
+    %       axes = pm.vis.Axes(axesname);
     %
     %   Attributes
     %   ----------
@@ -570,10 +570,10 @@ classdef AxesBase < pm.matlab.Handle
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function self = AxesBase(axesname, varargin)
+        function self = Axes(axesname, varargin)
 
             if  nargin < 1 || ~pm.introspection.istype(axesname, "string", 1) || ~pm.array.len(axesname)
-                help("pm.vis.AxesBase");
+                help("pm.vis.Axes");
                 error   ( newline ...
                         + "The input argument ``axesname`` is missing." + newline ...
                         + "For more information, see the class documentation displayed above." + newline ...
@@ -611,7 +611,7 @@ classdef AxesBase < pm.matlab.Handle
             self.type.has.line          = self.type.is.line || self.type.is.line3 || self.type.is.lineScatter || self.type.is.lineScatter3;
             self.type.has.scatter       = self.type.is.scatter || self.type.is.scatter3 || self.type.is.lineScatter || self.type.is.lineScatter3;
 
-            self.resetint(); % This is the subclass method!
+            self.resetint(varargin{:}); % This is the subclass method!
 
         end
 
@@ -645,12 +645,12 @@ classdef AxesBase < pm.matlab.Handle
             %   Interface
             %   ---------
             %
-            %       h = pm.vis.AxesBase.make(varargin);
+            %       h = pm.vis.Axes.make(varargin);
             %
             %   Example
             %   -------
             %
-            %       h = pm.vis.AxesBase(axesname);
+            %       h = pm.vis.Axes(axesname);
             %       h.make("xlim", [0, 1])
             %
             %   LICENSE
@@ -670,7 +670,7 @@ classdef AxesBase < pm.matlab.Handle
 
             if  self.type.is.heatmap
                 if ~isempty(self.precision) && ~isnumeric(self.precision)
-                    help("pm.vis.AxesBase");
+                    help("pm.vis.Axes");
                     disp("self.precision");
                     disp( self.precision );
                     error   ( newline ...
@@ -819,7 +819,7 @@ classdef AxesBase < pm.matlab.Handle
             %   Interface
             %   ---------
             %
-            %       pm.vis.AxesBase.reset() # reset the plot to the default settings.
+            %       pm.vis.Axes.reset() # reset the plot to the default settings.
             %
             %   LICENSE
             %   -------
@@ -1187,7 +1187,7 @@ classdef AxesBase < pm.matlab.Handle
                 disp( comp );
                 error   ( newline ...
                         + "Internal library error: Unrecognized MATLAB function name" + newline ...
-                        + "as ``comp`` argument of object of class ``pm.vis.AxesBase``." + newline ...
+                        + "as ``comp`` argument of object of class ``pm.vis.Axes``." + newline ...
                         + newline ...
                         );
             end
