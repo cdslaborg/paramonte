@@ -30,6 +30,14 @@ classdef Axes < pm.matlab.Handle
     %               histfit
     %               heatmap
     %
+    %       varargin
+    %
+    %           Any ``property, value`` pair of the object.
+    %           If the property is a ``struct()``, then its value must be given as a cell array,
+    %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
+    %           Note that all of these property-value pairs can be also directly set via the
+    %           parent object attributes, before calling the ``make()`` method.
+    %
     %   Returns
     %   -------
     %

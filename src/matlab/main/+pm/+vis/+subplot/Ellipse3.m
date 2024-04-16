@@ -8,34 +8,45 @@ classdef Ellipse3 < pm.vis.axes.LineScatter3
     %   Parameters
     %   ----------
     %
-    %       gramref
+    %       gramian
     %
-    %           The input MATLAB array that can be:
+    %           The MATLAB (function handle returning a)
+    %           2D rectangle of shape ``[ndim, ndim]`` or
+    %           3D rectangle of shape ``[ndim, ndim, nell]``, each
+    %           subset ``gramian(1:ndim, 1:ndim, igram)`` of which represents
+    %           the ``igram`` Gramian matrix of an 2D-planar ellipse to visualize,
+    %           where ``ndim`` refers to the number of dimensions of the
+    %           hyper-ellipsoid represented by the ``igram`` Gramian
+    %           and ``nell`` is the number of Gramian matrices.
     %
-    %               A (function handle returning a) 3D rectangle of shape ``[ndim, ndim, nell]``,
-    %               each subset ``gramref(1:ndim, 1:ndim, igram)`` of which represents
-    %               the ``igram`` Gramian matrix of an 2D-planar ellipse to visualize,
-    %               where ``ndim`` refers to the number of dimensions of the
-    %               hyper-ellipsoid represented by the ``igram`` Gramian
-    %               and ``nell`` is the number of Gramian matrices.
+    %           \note
     %
-    %           While it is possible to pass the 3D rectangle directly to this class,
-    %           it is highly recommended to pass a function handle that returns
-    %           such data when called, allowing the visualization data to be
-    %           dynamically updated when needed.
+    %               While it is possible to pass a 3D rectangle directly to this class,
+    %               it is highly recommended to pass a function handle that returns
+    %               such data when called, allowing the visualization data to be
+    %               dynamically updated when needed.
     %
     %       center
     %
-    %           The input vector of MATLAB doubles of size ``2`` containing
-    %           the 2D coordinates of the center of the target 2D ellipsoid
-    %           whose boundary points are to be returned.
-    %           (**optional**, default = ``zeros(2, 1)``)
+    %           The input MATLAB (function handle returning a)
+    %           vector of MATLAB doubles of size ``ndim`` or matrix of
+    %           shape ``[ndim, nell]`` containing the 2D coordinates of the
+    %           centers of the 2D ellipsoids to display.
     %
-    %       npnt
+    %           \note
     %
-    %           The input scalar MATLAB whole number containing the number of
-    %           points to return on the boundary of the target 2D ellipsoid.
-    %           (**optional**, default = ``50``)
+    %               While it is possible to pass a 2D rectangle directly to this class,
+    %               it is highly recommended to pass a function handle that returns
+    %               such data when called, allowing the visualization data to be
+    %               dynamically updated when needed.
+    %
+    %       varargin
+    %
+    %           Any ``property, value`` pair of the object.
+    %           If the property is a ``struct()``, then its value must be given as a cell array,
+    %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
+    %           Note that all of these property-value pairs can be also directly set via the
+    %           parent object attributes, before calling the ``make()`` method.
     %
     %   Attributes
     %   ----------
@@ -46,17 +57,13 @@ classdef Ellipse3 < pm.vis.axes.LineScatter3
     %   Returns
     %   -------
     %
-    %       An object of ``Ellipse3`` class.
+    %       An object of class ``pm.vis.axes.Ellipse3``.
     %
     %   Interface
     %   ---------
     %
-    %       p = pm.vis.axes.Ellipse3(gramref);
-    %       p = pm.vis.axes.Ellipse3(gramref, []);
-    %       p = pm.vis.axes.Ellipse3(gramref, [], []);
-    %       p = pm.vis.axes.Ellipse3(gramref, [], indices);
-    %       p = pm.vis.axes.Ellipse3(gramref, meanref, indices);
-    %       p = pm.vis.axes.Ellipse3([], meanref, indices);
+    %       p = pm.vis.axes.Ellipse3(gramian, center);
+    %       p = pm.vis.axes.Ellipse3(gramian, center, varargin);
     %
     %   LICENSE
     %   -------
@@ -65,93 +72,65 @@ classdef Ellipse3 < pm.vis.axes.LineScatter3
     %
     properties (Access = public)
         %
-        %   resolution
+        %   npnt
         %
-        %       The optional scalar MATLAB whole-number representing
-        %       the number of points used for visualization of ellipses.
-        %       Higher resolution is particularly helpful with visualizing
-        %       elongated ellipses. The default value is ``100``.
+        %       The scalar MATLAB whole number representing the number of
+        %       points with which the 2D ellipsoid boundaries are delineated.
         %
-        resolution = [];
+        npnt = 50;
+        %
+        %   indices
+        %
+        %       The vector of MATLAB whole numbers representing the indices of the 2D
+        %       ellipsoids to display, represented by the input ``gramian`` and ``center``.
+        %       The default is ``indices = pm.array.logrange(start = 1, stop = nell, count = 100);``.
+        %
+        indices = [];
+        %
+        %   names
+        %
+        %       The vector of MATLAB strings containing the names of dimensions
+        %       of the space within which the Gramian matrices are defined.
+        %       The default is ``"Dimension i"`` where ``i`` is replaced
+        %       by the ID of the corresponding axis.
+        %
+        names = [];
     end
 
     properties (Access = Hidden)
         gramref = [];
-        meanref = [];
-        indices = [];
+        centref = [];
     end
 
     methods (Access = public)
-        function self = Ellipse3(gramref, meanref, indices, varargin)
-            if  nargin < 3
-                indices = [];
+
+        function self = Ellipse3(gramian, center, varargin)
+
+            asserted = ~isempty(gramian) && ~isempty(center);
+            if  asserted
+                asserted = asserted && size(gramian, 1) == size(center, 1);
+                asserted = asserted && size(gramian, 2) == size(center, 1);
+                asserted = asserted &&(size(gramian, 3) == size(center, 2) || size(gramian, 3) == 1 || size(center, 2) == 1);
             end
-            if  nargin < 2
-                meanref = [];
-            end
-            if  nargin < 1
-                gramref = [];
-            end
-            if ~isempty(gramref) && ~isempty(meanref)
-                asserted = size(gramref, 1) == size(meanref, 1);
-                asserted = size(gramref, 2) == size(meanref, 1) && asserted;
-                asserted =(size(gramref, 3) == size(meanref, 2) || size(gramref, 3) == 1 || size(meanref, 2) == 1) && asserted;
-                if ~asserted
-                    help("pm.vis.axes.Ellipse3")
-                    disp("size(gramref)")
-                    disp( size(gramref) )
-                    disp("size(meanref)")
-                    disp( size(meanref) )
-                    error   ( newline ...
-                            + "The shapes of the specified ``gramref`` and ``meanref`` are incompatible." + newline ...
-                            + "For more information, see the documentation displayed above." + newline ...
-                            + newline ...
-                            );
-                else
-                    ndim = size(gramref, 2);
-                    nell = max(size(gramref, 3), size(meanref, 2));
-                end
-            elseif ~isempty(gramref)
-                ndim = size(gramref, 2);
-                nell = size(gramref, 3);
-                asserted = size(gramref, 1) == size(gramref, 2);
-                if ~asserted
-                    disp("size(gramref)")
-                    disp( size(gramref) )
-                    help("pm.vis.axes.Ellipse3")
-                    error   ( newline ...
-                            + "The first two dimensions of the specified ``gramref`` must equal." + newline ...
-                            + "For more information, see the documentation displayed above." + newline ...
-                            + newline ...
-                            );
-                else
-                    ndim = size(gramref, 2);
-                    nell = max(size(gramref, 3), size(meanref, 2));
-                end
+
+            if ~asserted
+                help("pm.vis.axes.Ellipse3")
+                disp("size(gramian)")
+                disp( size(gramian) )
+                disp("size(center)")
+                disp( size(center) )
+                error   ( newline ...
+                        + "The shapes of the specified ``gramian`` and ``center`` are incompatible." + newline ...
+                        + "For more information, see the documentation displayed above." + newline ...
+                        + newline ...
+                        );
             else
-                ndim = size(meanref, 1);
-                nell = size(meanref, 2);
+                ndim = size(gramian, 2);
+                nell = max(size(gramian, 3), size(center, 2));
             end
-
-
-                if  size(gramref, 1) ~= size(gramref, 2)
-                    help("pm.vis.axes.Ellipse3")
-                    error   ( newline ...
-                            + "The specified ``gramref`` must be a 3D rectangle." + newline ...
-                            + "For more information, see the documentation displayed above." + newline ...
-                            + newline ...
-                            );
-                end
-                if ~isempty(meanref)
-
-                end
-            && isempty(gramref) && isempty(indices)
-
-                ndim = size(meanref, 1);
-                nell = size(meanref, 1);
-
-
-            self = self@pm.vis.axes.LineScatter3(, gramref, varargin{:});
+            self = self@pm.vis.axes.LineScatter3([], varargin{:});
         end
+
     end
+
 end
