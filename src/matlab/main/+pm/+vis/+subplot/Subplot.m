@@ -17,7 +17,7 @@ classdef Subplot < pm.vis.Axes
     %   Parameters
     %   ----------
     %
-    %       axesname
+    %       ptype
     %
     %           See the documentation of the corresponding
     %           component of the parent class constructor.
@@ -41,8 +41,8 @@ classdef Subplot < pm.vis.Axes
     %   Interface
     %   ---------
     %
-    %       p = pm.vis.subplot.Subplot(axesname, dfref);
-    %       p = pm.vis.subplot.Subplot(axesname, dfref, varargin);
+    %       p = pm.vis.subplot.Subplot(ptype, dfref);
+    %       p = pm.vis.subplot.Subplot(ptype, dfref, varargin);
     %
     %   Attributes
     %   ----------
@@ -223,12 +223,12 @@ classdef Subplot < pm.vis.Axes
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function self = Subplot(axesname, dfref, varargin)
+        function self = Subplot(ptype, dfref, varargin)
             if  nargin < 2
                 dfref = [];
             end
             if  nargin < 1
-                axesname = [];
+                ptype = [];
             end
             if  isempty(dfref)
                 help("pm.vis.subplot.Subplot");
@@ -241,14 +241,8 @@ classdef Subplot < pm.vis.Axes
                         + newline ...
                         );
             end
-            self@pm.vis.Axes(axesname, varargin{:});
-            if iscell(dfref) && 1 < length(dfref)
-                for iell = 1 : length(dfref)
-                    self.df = pm.data.DataFrame(dfref);
-                end
-            else
-                self.df = pm.data.DataFrame(dfref);
-            end
+            self@pm.vis.Axes(ptype, varargin{:});
+            self.df = pm.data.DataFrame(dfref);
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -282,14 +276,14 @@ classdef Subplot < pm.vis.Axes
             %   Interface
             %   ---------
             %
-            %       h = pm.vis.subplot.Subplot.make(varargin);
+            %       pm.vis.subplot.Subplot.make(varargin);
             %
             %   Example
             %   -------
             %
-            %       h = pm.vis.subplot.Subplot(axesname, dfref);
-            %       h.make("colx", 7 : 10)
-            %       h.make("colx", 8)
+            %       dfref = rand(1000, 3);
+            %       p = pm.vis.subplot.Subplot("scatter", dfref);
+            %       p.make("colx", 1, "coly", 2, "colc", 3)
             %
             %   LICENSE
             %   -------

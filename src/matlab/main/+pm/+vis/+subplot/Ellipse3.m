@@ -1,4 +1,4 @@
-classdef Ellipse3 < pm.vis.axes.LineScatter
+classdef Ellipse3 < pm.vis.axes.LineScatter3
     %
     %   This is the Ellipse3 class for generating
     %   instances of 3-dimensional Ellipse3 plots
@@ -12,23 +12,36 @@ classdef Ellipse3 < pm.vis.axes.LineScatter
     %
     %           The input MATLAB array that can be:
     %
-    %               A (function handle returning a) 3D rectangle of shape ``[ndim, ndim, ngram]``,
+    %               A (function handle returning a) 3D rectangle of shape ``[ndim, ndim, nell]``,
     %               each subset ``gramref(1:ndim, 1:ndim, igram)`` of which represents
     %               the ``igram`` Gramian matrix of an 2D-planar ellipse to visualize,
     %               where ``ndim`` refers to the number of dimensions of the
     %               hyper-ellipsoid represented by the ``igram`` Gramian
-    %               and ``ngram`` is the number of Gramian matrices.
+    %               and ``nell`` is the number of Gramian matrices.
     %
     %           While it is possible to pass the 3D rectangle directly to this class,
     %           it is highly recommended to pass a function handle that returns
     %           such data when called, allowing the visualization data to be
     %           dynamically updated when needed.
     %
+    %       center
+    %
+    %           The input vector of MATLAB doubles of size ``2`` containing
+    %           the 2D coordinates of the center of the target 2D ellipsoid
+    %           whose boundary points are to be returned.
+    %           (**optional**, default = ``zeros(2, 1)``)
+    %
+    %       npnt
+    %
+    %           The input scalar MATLAB whole number containing the number of
+    %           points to return on the boundary of the target 2D ellipsoid.
+    %           (**optional**, default = ``50``)
+    %
     %   Attributes
     %   ----------
     %
     %       See below and the documentation of the attributes
-    %       of the parent class ``pm.vis.axes.LineScatter``.
+    %       of the parent class ``pm.vis.axes.LineScatter3``.
     %
     %   Returns
     %   -------
@@ -41,9 +54,9 @@ classdef Ellipse3 < pm.vis.axes.LineScatter
     %       p = pm.vis.axes.Ellipse3(gramref);
     %       p = pm.vis.axes.Ellipse3(gramref, []);
     %       p = pm.vis.axes.Ellipse3(gramref, [], []);
-    %       p = pm.vis.axes.Ellipse3(gramref, [], zdfref);
-    %       p = pm.vis.axes.Ellipse3(gramref, meanref, zdfref);
-    %       p = pm.vis.axes.Ellipse3([], meanref, zdfref);
+    %       p = pm.vis.axes.Ellipse3(gramref, [], indices);
+    %       p = pm.vis.axes.Ellipse3(gramref, meanref, indices);
+    %       p = pm.vis.axes.Ellipse3([], meanref, indices);
     %
     %   LICENSE
     %   -------
@@ -65,13 +78,13 @@ classdef Ellipse3 < pm.vis.axes.LineScatter
     properties (Access = Hidden)
         gramref = [];
         meanref = [];
-        zdfref = [];
+        indices = [];
     end
 
     methods (Access = public)
-        function self = Ellipse3(gramref, meanref, zdfref, varargin)
+        function self = Ellipse3(gramref, meanref, indices, varargin)
             if  nargin < 3
-                zdfref = [];
+                indices = [];
             end
             if  nargin < 2
                 meanref = [];
@@ -132,13 +145,13 @@ classdef Ellipse3 < pm.vis.axes.LineScatter
                 if ~isempty(meanref)
 
                 end
-            && isempty(gramref) && isempty(zdfref)
+            && isempty(gramref) && isempty(indices)
 
                 ndim = size(meanref, 1);
                 nell = size(meanref, 1);
 
 
-            self = self@pm.vis.axes.LineScatter(, gramref, varargin{:});
+            self = self@pm.vis.axes.LineScatter3(, gramref, varargin{:});
         end
     end
 end

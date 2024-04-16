@@ -10,7 +10,7 @@ classdef Axes < pm.matlab.Handle
     %   Parameters
     %   ----------
     %
-    %       axesname
+    %       ptype
     %
     %           The input scalar MATLAB string containing the name of the
     %           subclass that whose parent is Axes (e.g., "heatmap").
@@ -40,7 +40,7 @@ classdef Axes < pm.matlab.Handle
     %   Interface
     %   ---------
     %
-    %       axes = pm.vis.Axes(axesname);
+    %       axes = pm.vis.Axes(ptype);
     %
     %   Attributes
     %   ----------
@@ -570,24 +570,24 @@ classdef Axes < pm.matlab.Handle
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function self = Axes(axesname, varargin)
+        function self = Axes(ptype, varargin)
 
-            if  nargin < 1 || ~pm.introspection.istype(axesname, "string", 1) || ~pm.array.len(axesname)
+            if  nargin < 1 || ~pm.introspection.istype(ptype, "string", 1) || ~pm.array.len(ptype)
                 help("pm.vis.Axes");
                 error   ( newline ...
-                        + "The input argument ``axesname`` is missing." + newline ...
+                        + "The input argument ``ptype`` is missing." + newline ...
                         + "For more information, see the class documentation displayed above." + newline ...
                         + newline ...
                         );
             else
                 % lower the first character.
-                axesname = string(axesname);
-                axesname{1} = lower(axesname{1});
+                ptype = string(ptype);
+                ptype{1} = lower(ptype{1});
             end
 
             self.type = struct();
-            self.type.name = axesname;
-            pnamel = lower(axesname);
+            self.type.name = ptype;
+            pnamel = lower(ptype);
             self.type.is.line           = strcmpi(pnamel, "line"        );
             self.type.is.line3          = strcmpi(pnamel, "line3"       );
             self.type.is.scatter        = strcmpi(pnamel, "scatter"     );
@@ -650,7 +650,7 @@ classdef Axes < pm.matlab.Handle
             %   Example
             %   -------
             %
-            %       h = pm.vis.Axes(axesname);
+            %       h = pm.vis.Axes(ptype);
             %       h.make("xlim", [0, 1])
             %
             %   LICENSE
