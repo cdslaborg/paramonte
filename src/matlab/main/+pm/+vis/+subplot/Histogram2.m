@@ -22,13 +22,13 @@ classdef Histogram2 < pm.vis.subplot.Subplot
     %   Returns
     %   -------
     %
-    %       An object of ``pm.vis.axes.Histogram2`` class.
+    %       An object of ``pm.vis.subplot.Histogram2`` class.
     %
     %   Interface
     %   ---------
     %
-    %       p = pm.vis.axes.Histogram2(dfref);
-    %       p = pm.vis.axes.Histogram2(dfref, varargin);
+    %       p = pm.vis.subplot.Histogram2(dfref);
+    %       p = pm.vis.subplot.Histogram2(dfref, varargin);
     %
     %   LICENSE
     %   -------

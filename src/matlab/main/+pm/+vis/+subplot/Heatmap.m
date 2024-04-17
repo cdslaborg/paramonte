@@ -22,13 +22,13 @@ classdef Heatmap < pm.vis.subplot.Subplot
     %   Returns
     %   -------
     %
-    %       An object of ``pm.vis.axes.Heatmap`` class.
+    %       An object of ``pm.vis.subplot.Heatmap`` class.
     %
     %   Interface
     %   ---------
     %
-    %       p = pm.vis.axes.Heatmap(dfref);
-    %       p = pm.vis.axes.Heatmap(dfref, varargin);
+    %       p = pm.vis.subplot.Heatmap(dfref);
+    %       p = pm.vis.subplot.Heatmap(dfref, varargin);
     %
     %   LICENSE
     %   -------
@@ -102,7 +102,7 @@ classdef Heatmap < pm.vis.subplot.Subplot
             %   Example
             %   -------
             %
-            %       h = pm.vis.axes.Heatmap(dfref);
+            %       h = pm.vis.subplot.Heatmap(dfref);
             %       h.make()
             %       h.setcl() % symmetrize the current range.
             %       h.setcl(1) % set the lower bound to 1.

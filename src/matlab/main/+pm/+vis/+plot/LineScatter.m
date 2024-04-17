@@ -22,13 +22,12 @@ classdef LineScatter < pm.vis.subplot.Subplot
     %   Returns
     %   -------
     %
-    %       An object of ``pm.vis.axes.LineScatter`` class.
+    %       An object of ``pm.vis.subplot.LineScatter`` class.
     %
     %   Interface
     %   ---------
     %
-    %       p = pm.vis.axes.LineScatter(dfref);
-    %       p = pm.vis.axes.LineScatter(dfref, varargin);
+    %       p = pm.vis.subplot.LineScatter(dfref);
     %
     %   LICENSE
     %   -------
@@ -36,11 +35,11 @@ classdef LineScatter < pm.vis.subplot.Subplot
     %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
     %
     methods (Access = public)
-        function self = LineScatter(dfref, varargin)
+        function self = LineScatter(dfref)
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.subplot.Subplot("LineScatter", dfref, varargin{:});
+            self = self@pm.vis.subplot.Subplot("LineScatter", dfref);
         end
     end
 end

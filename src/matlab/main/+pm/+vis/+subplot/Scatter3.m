@@ -22,13 +22,13 @@ classdef Scatter3 < pm.vis.subplot.Subplot
     %   Returns
     %   -------
     %
-    %       An object of ``pm.vis.axes.Scatter3`` class.
+    %       An object of ``pm.vis.subplot.Scatter3`` class.
     %
     %   Interface
     %   ---------
     %
-    %       p = pm.vis.axes.Scatter3(dfref);
-    %       p = pm.vis.axes.Scatter3(dfref, varargin);
+    %       p = pm.vis.subplot.Scatter3(dfref);
+    %       p = pm.vis.subplot.Scatter3(dfref, varargin);
     %
     %   LICENSE
     %   -------

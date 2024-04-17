@@ -36,7 +36,7 @@ classdef Axes < pm.matlab.Handle
     %           If the property is a ``struct()``, then its value must be given as a cell array,
     %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
     %           Note that all of these property-value pairs can be also directly set via the
-    %           parent object attributes, before calling the ``make()`` method.
+    %           parent object attributes, before calling the ``premake()`` method.
     %
     %   Returns
     %   -------
@@ -567,7 +567,6 @@ classdef Axes < pm.matlab.Handle
     %           passed as keyword arguments to the MATLAB intrinsic ``zlim()``.
     %
     properties (Access = protected, Hidden)
-        isdryrun = true; % always false after the first make() method call or reset().
         type = struct();
         cenabled = [];
     end
@@ -625,7 +624,46 @@ classdef Axes < pm.matlab.Handle
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function make(self, varargin)
+        function reset(self, varargin)
+            %
+            %   Reset the properties of the plot to the original default settings.
+            %   Use this method when you change many attributes of the plot and
+            %   you want to clean up and go back to the default settings.
+            %
+            %   Parameters
+            %   ----------
+            %
+            %       None
+            %
+            %   Returns
+            %   -------
+            %
+            %       None
+            %
+            %   Interface
+            %   ---------
+            %
+            %       pm.vis.Axes.reset() # reset the plot to the default settings.
+            %
+            %   LICENSE
+            %   -------
+            %
+            %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
+            %
+            self.resetint(varargin{:}); % call the internal reset routine.
+        end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    end
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    methods (Access = public, Hidden)
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        function premake(self, varargin)
             %
             %   Configure the plot settings and specifications and return nothing.
             %
@@ -643,7 +681,7 @@ classdef Axes < pm.matlab.Handle
             %           If the property is a ``struct()``, then its value must be given as a cell array,
             %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
             %           Note that all of these property-value pairs can be also directly set via the
-            %           parent object attributes, before calling the ``make()`` method.
+            %           parent object attributes, before calling the ``premake()`` method.
             %
             %   Returns
             %   -------
@@ -653,13 +691,13 @@ classdef Axes < pm.matlab.Handle
             %   Interface
             %   ---------
             %
-            %       h = pm.vis.Axes.make(varargin);
+            %       h = pm.vis.Axes.premake(varargin);
             %
             %   Example
             %   -------
             %
             %       h = pm.vis.Axes(ptype);
-            %       h.make("xlim", [0, 1])
+            %       h.premake("xlim", [0, 1])
             %
             %   LICENSE
             %   -------
@@ -808,50 +846,11 @@ classdef Axes < pm.matlab.Handle
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function reset(self, varargin)
-            %
-            %   Reset the properties of the plot to the original default settings.
-            %   Use this method when you change many attributes of the plot and
-            %   you want to clean up and go back to the default settings.
-            %
-            %   Parameters
-            %   ----------
-            %
-            %       None
-            %
-            %   Returns
-            %   -------
-            %
-            %       None
-            %
-            %   Interface
-            %   ---------
-            %
-            %       pm.vis.Axes.reset() # reset the plot to the default settings.
-            %
-            %   LICENSE
-            %   -------
-            %
-            %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-            %
-            self.resetint(varargin{:}); % call the internal reset routine.
-        end
-
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    end
-
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    methods (Access = public, Hidden)
-
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
         function resetint(self, varargin)
 
-            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-            %%%% RULE 0: Any non-MATLAB-default setting must be preferably set in the make() method to override user null values.
-            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% RULE 0: Any non-MATLAB-default setting must be preferably set in the premake() method to override user null values.
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             %%%% axes
 
@@ -1147,9 +1146,7 @@ classdef Axes < pm.matlab.Handle
                 self.target = pm.vis.Target();
             end
 
-            self.isdryrun = true;
-            self.make(varargin{:}); % This is the subclass method!
-            self.isdryrun = false;
+            self.premake(varargin{:}); % This is the subclass method!
 
         end
 

@@ -1,13 +1,9 @@
-function bcrd = getBorder(gramian, center, zval, npnt)
+function bcrd = getBorder(gramian, center, npnt)
     %
     %   Return a matrix of MATLAB doubles of shape ``[npnt, 2]``
-    %   (or of shape ``[npnt, 3]`` if the input argument ``zval`` is present)
     %   containing the coordinates of a set of points on the boundary
     %   of a 2D ellipsoid whose Gramian matrix is specified as input
     %   and whose center is also optionally specified.
-    %
-    %   The third column of the output matrix will contain the
-    %   specified input ``zval`` or otherwise, will not exit.
     %
     %   Parameters
     %   ----------
@@ -26,23 +22,11 @@ function bcrd = getBorder(gramian, center, zval, npnt)
     %           whose boundary points are to be returned.
     %           (**optional**. If not present or empty, the default is ``zeros(2, 1)``.)
     %
-    %       zval
-    %
-    %           The input scalar (or vector of size ``npnt`` of) MATLAB double(s) containing
-    %           the z-axis coordinates of the points of the output 2D ellipsoid border.
-    %           If present, the specified value(s) will occupy the third column of the output ``bcrd``.
-    %           (**optional**. If not present or empty, it will not be present in the output.)
-    %
-    %           \note
-    %
-    %               This argument is present for the sake of convenience and
-    %               better performance of the algorithm to avoid further reallocations.
-    %
     %       npnt
     %
     %           The input scalar MATLAB whole number containing the number of
     %           points to return on the boundary of the target 2D ellipsoid.
-    %           (**optional**, default = ``50`` or ``length(zval)`` if present.)
+    %           (**optional**, default = ``50``.)
     %
     %   Returns
     %   -------
@@ -82,11 +66,8 @@ function bcrd = getBorder(gramian, center, zval, npnt)
     %
     %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
     %
-    if  nargin < 4
-        npnt = [];
-    end
     if  nargin < 3
-        zval = [];
+        npnt = [];
     end
     if  nargin < 2
         center = [];
@@ -95,11 +76,7 @@ function bcrd = getBorder(gramian, center, zval, npnt)
         gramian = [];
     end
     if  isempty(npnt)
-        if  1 < length(zval)
-            npnt = length(zval);
-        else
-            npnt = 50;
-        end
+        npnt = 50;
     end
     if  isempty(center)
         center = zeros(2, 1);
@@ -107,17 +84,11 @@ function bcrd = getBorder(gramian, center, zval, npnt)
     if  isempty(gramian)
         gramian = eye(2);
     end
-    if ~isempty(zval)
-        bcrd = zeros(npnt, 3);
-        bcrd(:, 3) = zval;
-    else
-        bcrd = zeros(npnt, 2);
-    end
     independentVariable = linspace(0, 2 * pi, npnt)';
     xval = cos(independentVariable);
     yval = sin(independentVariable);
     ap = [xval(:) yval(:)]';
     [eigvec, eigval] = eig(gramian);
     eigval = sqrt(eigval); % convert variance to std.
-    bcrd(:, 1 : 2) = transpose(eigvec * eigval * ap + repmat(center(:), 1, npnt));
+    bcrd = transpose(eigvec * eigval * ap + repmat(center(:), 1, npnt));
 end

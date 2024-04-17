@@ -22,13 +22,13 @@ classdef Contour < pm.vis.subplot.Subplot
     %   Returns
     %   -------
     %
-    %       An object of ``pm.vis.axes.Contour`` class.
+    %       An object of ``pm.vis.subplot.Contour`` class.
     %
     %   Interface
     %   ---------
     %
-    %       p = pm.vis.axes.Contour(dfref);
-    %       p = pm.vis.axes.Contour(dfref, varargin);
+    %       p = pm.vis.subplot.Contour(dfref);
+    %       p = pm.vis.subplot.Contour(dfref, varargin);
     %
     %   LICENSE
     %   -------

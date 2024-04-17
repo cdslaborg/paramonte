@@ -22,13 +22,14 @@ classdef Contourf < pm.vis.subplot.Subplot
     %   Returns
     %   -------
     %
-    %       An object of ``pm.vis.axes.Contourf`` class.
+    %       An object of ``pm.vis.subplot.Contourf`` class.
     %
     %   Interface
     %   ---------
     %
-    %       p = pm.vis.axes.Contourf(dfref);
-    %       p = pm.vis.axes.Contourf(dfref, varargin);
+    %       p = pm.vis.subplot.Contourf(dfref);
+    %       p = pm.vis.subplot.Contourf(dfref, []);
+    %       p = pm.vis.subplot.Contourf(dfref);
     %
     %   LICENSE
     %   -------
@@ -36,11 +37,11 @@ classdef Contourf < pm.vis.subplot.Subplot
     %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
     %
     methods (Access = public)
-        function self = Contourf(dfref, varargin)
+        function self = Contourf(dfref)
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.subplot.Subplot("Contourf", dfref, varargin{:});
+            self = self@pm.vis.subplot.Subplot("Contourf", dfref);
         end
     end
 end

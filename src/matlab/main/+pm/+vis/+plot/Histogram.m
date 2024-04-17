@@ -22,13 +22,14 @@ classdef Histogram < pm.vis.subplot.Subplot
     %   Returns
     %   -------
     %
-    %       An object of ``pm.vis.axes.Histogram`` class.
+    %       An object of ``pm.vis.subplot.Histogram`` class.
     %
     %   Interface
     %   ---------
     %
-    %       p = pm.vis.axes.Histogram(dfref);
-    %       p = pm.vis.axes.Histogram(dfref, varargin);
+    %       p = pm.vis.subplot.Histogram(dfref);
+    %       p = pm.vis.subplot.Histogram(dfref, []);
+    %       p = pm.vis.subplot.Histogram(dfref);
     %
     %   LICENSE
     %   -------
@@ -36,11 +37,11 @@ classdef Histogram < pm.vis.subplot.Subplot
     %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
     %
     methods (Access = public)
-        function self = Histogram(dfref, varargin)
+        function self = Histogram(dfref)
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.subplot.Subplot("Histogram", dfref, varargin{:});
+            self = self@pm.vis.subplot.Subplot("Histogram", dfref);
         end
     end
 end

@@ -22,13 +22,14 @@ classdef Histfit < pm.vis.subplot.Subplot
     %   Returns
     %   -------
     %
-    %       An object of ``pm.vis.axes.Histfit`` class.
+    %       An object of ``pm.vis.subplot.Histfit`` class.
     %
     %   Interface
     %   ---------
     %
-    %       p = pm.vis.axes.Histfit(dfref);
-    %       p = pm.vis.axes.Histfit(dfref, varargin);
+    %       p = pm.vis.subplot.Histfit(dfref);
+    %       p = pm.vis.subplot.Histfit(dfref, []);
+    %       p = pm.vis.subplot.Histfit(dfref);
     %
     %   LICENSE
     %   -------
@@ -36,11 +37,11 @@ classdef Histfit < pm.vis.subplot.Subplot
     %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
     %
     methods (Access = public)
-        function self = Histfit(dfref, varargin)
+        function self = Histfit(dfref)
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.subplot.Subplot("Histfit", dfref, varargin{:});
+            self = self@pm.vis.subplot.Subplot("Histfit", dfref);
         end
     end
 end

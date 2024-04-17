@@ -1,4 +1,4 @@
-classdef Ellipse3 < pm.vis.axes.LineScatter
+classdef Ellipse3 < pm.vis.subplot.LineScatter
     %
     %   This is the Ellipse3 class for generating
     %   instances of 3-dimensional Ellipse3 plots
@@ -28,7 +28,7 @@ classdef Ellipse3 < pm.vis.axes.LineScatter
     %   ----------
     %
     %       See below and the documentation of the attributes
-    %       of the parent class ``pm.vis.axes.LineScatter``.
+    %       of the parent class ``pm.vis.subplot.LineScatter``.
     %
     %   Returns
     %   -------
@@ -38,12 +38,12 @@ classdef Ellipse3 < pm.vis.axes.LineScatter
     %   Interface
     %   ---------
     %
-    %       p = pm.vis.axes.Ellipse3(gramref);
-    %       p = pm.vis.axes.Ellipse3(gramref, []);
-    %       p = pm.vis.axes.Ellipse3(gramref, [], []);
-    %       p = pm.vis.axes.Ellipse3(gramref, [], zdfref);
-    %       p = pm.vis.axes.Ellipse3(gramref, meanref, zdfref);
-    %       p = pm.vis.axes.Ellipse3([], meanref, zdfref);
+    %       p = pm.vis.subplot.Ellipse3(gramref);
+    %       p = pm.vis.subplot.Ellipse3(gramref, []);
+    %       p = pm.vis.subplot.Ellipse3(gramref, [], []);
+    %       p = pm.vis.subplot.Ellipse3(gramref, [], zdfref);
+    %       p = pm.vis.subplot.Ellipse3(gramref, meanref, zdfref);
+    %       p = pm.vis.subplot.Ellipse3([], meanref, zdfref);
     %
     %   LICENSE
     %   -------
@@ -69,7 +69,7 @@ classdef Ellipse3 < pm.vis.axes.LineScatter
     end
 
     methods (Access = public)
-        function self = Ellipse3(gramref, meanref, zdfref, varargin)
+        function self = Ellipse3(gramref, meanref, zdfref)
             if  nargin < 3
                 zdfref = [];
             end
@@ -82,7 +82,7 @@ classdef Ellipse3 < pm.vis.axes.LineScatter
             if ~isempty(gramref)
                 if ~isempty(gramref)
                 if  size(gramref, 1) ~= size(gramref, 2)
-                    help("pm.vis.axes.Ellipse3")
+                    help("pm.vis.subplot.Ellipse3")
                     error   ( newline ...
                             + "The specified ``gramref`` must be a 3D rectangle." + newline ...
                             + "For more information, see the documentation displayed above." + newline ...
@@ -93,7 +93,7 @@ classdef Ellipse3 < pm.vis.axes.LineScatter
 
                 end
             && isempty(gramref) && isempty(zdfref)
-            self = self@pm.vis.axes.LineScatter(, gramref, varargin{:});
+            self = self@pm.vis.subplot.LineScatter(, gramref);
         end
     end
 end

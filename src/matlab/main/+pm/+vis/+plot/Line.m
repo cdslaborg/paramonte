@@ -22,13 +22,12 @@ classdef Line < pm.vis.subplot.Subplot
     %   Returns
     %   -------
     %
-    %       An object of ``pm.vis.axes.Line`` class.
+    %       An object of ``pm.vis.subplot.Line`` class.
     %
     %   Interface
     %   ---------
     %
-    %       p = pm.vis.axes.Line(dfref);
-    %       p = pm.vis.axes.Line(dfref, varargin);
+    %       p = pm.vis.subplot.Line(dfref);
     %
     %   LICENSE
     %   -------
@@ -36,11 +35,11 @@ classdef Line < pm.vis.subplot.Subplot
     %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
     %
     methods (Access = public)
-        function self = Line(dfref, varargin)
+        function self = Line(dfref)
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.subplot.Subplot("Line", dfref, varargin{:});
+            self = self@pm.vis.subplot.Subplot("Line", dfref);
         end
     end
 end

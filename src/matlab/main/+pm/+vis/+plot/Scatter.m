@@ -27,8 +27,7 @@ classdef Scatter < pm.vis.subplot.Subplot
     %   Interface
     %   ---------
     %
-    %       p = pm.vis.axes.Scatter(dfref);
-    %       p = pm.vis.axes.Scatter(dfref, varargin);
+    %       p = pm.vis.subplot.Scatter(dfref);
     %
     %   LICENSE
     %   -------
@@ -36,11 +35,11 @@ classdef Scatter < pm.vis.subplot.Subplot
     %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
     %
     methods (Access = public)
-        function self = Scatter(dfref, varargin)
+        function self = Scatter(dfref)
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.subplot.Subplot("Scatter", dfref, varargin{:});
+            self = self@pm.vis.subplot.Subplot("Scatter", dfref);
         end
     end
 end

@@ -22,13 +22,13 @@ classdef LineScatter < pm.vis.subplot.Subplot
     %   Returns
     %   -------
     %
-    %       An object of ``pm.vis.axes.LineScatter`` class.
+    %       An object of ``pm.vis.subplot.LineScatter`` class.
     %
     %   Interface
     %   ---------
     %
-    %       p = pm.vis.axes.LineScatter(dfref);
-    %       p = pm.vis.axes.LineScatter(dfref, varargin);
+    %       p = pm.vis.subplot.LineScatter(dfref);
+    %       p = pm.vis.subplot.LineScatter(dfref, varargin);
     %
     %   LICENSE
     %   -------

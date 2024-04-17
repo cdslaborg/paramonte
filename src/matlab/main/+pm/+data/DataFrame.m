@@ -1,4 +1,4 @@
-classdef DataFrame < pm.matlab.Handle
+classdef DataFrame < pm.data.DataRef
     %
     %   This is the abstract class for generating instances of objects
     %   that can contain basic attributes required for tabular read-only
@@ -15,8 +15,8 @@ classdef DataFrame < pm.matlab.Handle
     %
     %       dfref
     %
-    %           The input MATLAB matrix or table containing the target dataset or
-    %           a function handle that takes no arguments and returns the dataset.
+    %           The input MATLAB 2D matrix or table containing the target dataset
+    %           or function handle that takes no arguments and returns the dataset.
     %           Specifying a function handle is superior to specifying the dataset
     %           directly, because the function handle will always allow the use of
     %           the most updated version of the user table or matrix.
@@ -39,19 +39,6 @@ classdef DataFrame < pm.matlab.Handle
     %
     %       See the class attributes descriptions below.
     %
-    properties (Access = protected, Hidden)
-        %
-        %   dfref
-        %
-        %       A ``protected`` and ``Hidden`` copy of the user-specified input
-        %       dataframe (or its handle) ``dfref`` to the class constructor.
-        %       This is an exact copy of the user-specified function handle,
-        %       or a copy of the input matrix converted to a MATLAB table.
-        %       Users are supposed to access this component only
-        %       via the class method ``pm.data.DataFrame.copy()``.
-        %
-        dfref;
-    end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -66,7 +53,7 @@ classdef DataFrame < pm.matlab.Handle
             if  isempty(dfref)
                 dfref = table(zeros(0, 0));
             end
-            self.dfref = dfref;
+            self = self@pm.data.DataRef(dfref);
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -105,11 +92,7 @@ classdef DataFrame < pm.matlab.Handle
             %
             %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
             %
-            if  isa(self.dfref, 'function_handle')
-                df = self.dfref();
-            else
-                df = self.dfref;
-            end
+            df = copy@pm.data.DataRef(self);
             if ~istable(df)
                 df = array2table(df);
             end

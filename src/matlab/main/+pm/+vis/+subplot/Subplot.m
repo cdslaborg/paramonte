@@ -239,12 +239,11 @@ classdef Subplot < pm.vis.Axes
         function make(self, varargin)
             %
             %   Generate a plot from the selected columns
-            %   of the parent object component ``dfref``.
+            %   of the parent object component ``df``.
             %
-            %   \warning
+            %   \note
             %
-            %       This method has side-effects by manipulating
-            %       the existing attributes of the parent object.
+            %       This method is pure, except for the changes in ``fout`` component.
             %
             %   Parameters
             %   ----------
@@ -279,8 +278,7 @@ classdef Subplot < pm.vis.Axes
             %
             %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
             %
-            make@pm.vis.Axes(self, varargin{:});
-            if self.isdryrun; return; end
+            self.premake(varargin{:});
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %%%% RULE 0: No component of ``self`` is allowed to appear to the left of assignment operator, except ``fout``.
@@ -821,6 +819,53 @@ classdef Subplot < pm.vis.Axes
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     methods (Access = public, Hidden)
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        function premake(self, varargin)
+            %
+            %   Prepare the subplot for visualization.
+            %
+            %   \warning
+            %
+            %       This method has side-effects by manipulating
+            %       the existing attributes of the parent object.
+            %
+            %   Parameters
+            %   ----------
+            %
+            %       varargin
+            %
+            %           Any ``property, value`` pair of the parent object.
+            %           If the property is a ``struct()``, then its value must be given as a cell array,
+            %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
+            %           Note that all of these property-value pairs can be also directly set via the
+            %           parent object attributes, before calling the ``premake()`` method.
+            %
+            %   Returns
+            %   -------
+            %
+            %       None
+            %
+            %   Interface
+            %   ---------
+            %
+            %       pm.vis.subplot.Subplot.premake(varargin);
+            %
+            %   Example
+            %   -------
+            %
+            %       dfref = rand(1000, 3);
+            %       p = pm.vis.subplot.Subplot("scatter", dfref);
+            %       p.premake("colx", 1, "coly", 2, "colc", 3)
+            %
+            %   LICENSE
+            %   -------
+            %
+            %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
+            %
+            premake@pm.vis.Axes(self, varargin{:});
+        end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
