@@ -571,6 +571,10 @@ module pm_sampling
     !>  \code{.F90}
     !>
     !>      use pm_sampling, only: getErrSampling
+    !>      use pm_err, only: err_type
+    !>      use pm_kind, only: IK
+    !>      type(err_type) :: err
+    !>      integer(IK) :: ndim
     !>
     !>      err = getErrSampling(sampler, getLogFunc, ndim)
     !>
