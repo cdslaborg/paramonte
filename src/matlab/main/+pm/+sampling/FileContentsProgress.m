@@ -47,7 +47,7 @@ classdef FileContentsProgress < pm.io.FileContentsTabular
     properties(Hidden)
     end
 
-    methods (Access = public)
+    methods(Access = public)
 
         function self = FileContentsProgress(file, silent, sep)
             %

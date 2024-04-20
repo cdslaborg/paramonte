@@ -24,8 +24,9 @@ classdef (Abstract) Handle < dynamicprops%handle
     %
     %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
     %
-    methods(Access = public)
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    methods(Access = public)
         function doc(self)
             %
             %   Open the documentation of the class
@@ -55,7 +56,11 @@ classdef (Abstract) Handle < dynamicprops%handle
             %
             doc(class(self));
         end
+    end
 
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    methods(Access = public)
         function help(self)
             %
             %   Print help about the class of
@@ -87,7 +92,73 @@ classdef (Abstract) Handle < dynamicprops%handle
         end
     end
 
-    methods(Hidden)
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    methods(Access = public, Hidden)
+        function hash2comp(self, hash)
+            hashlen = length(hash);
+            selfProp = string(properties(self));
+            selfPropLen = length(selfProp);
+            insensitive = true;
+            extensible = true;
+            recursive = true;
+            for i = 1 : 2 : hashlen % walk through input key val.
+                propertyDoesNotExist = true;
+                hashItemString = string(hash{i});
+                for ip = 1 : selfPropLen % walk through object prop val.
+                    if  strcmpi(hashItemString, selfProp(ip))
+                        propertyDoesNotExist = false;
+                        if  i < hashlen % this must be here. checks for the correct pairing of key, val.
+                            if  isa(hash{i + 1}, "cell") && (isstruct(self.(selfProp(ip))) || isa(self.(selfProp(ip)), "handle") || ~isempty(properties(self.(selfProp(ip)))))
+                                self.(selfProp(ip)) = pm.matlab.hashmap.hash2comp(hash{i + 1}, self.(selfProp(ip)), insensitive, extensible, recursive);
+                            else
+                                self.(selfProp(ip)) = hash{i + 1};
+                            end
+                        else
+                            error("The corresponding value for the property """ + string(selfProp(ip)) + """ is missing as input argument.");
+                        end
+                        break;
+                    end
+                end
+                if  propertyDoesNotExist
+                    error("The requested property """ + string(hash{i}) + """ does not exist.");
+                end
+            end
+        end
+    end
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    methods(Access = public, Hidden)
+        function setKeyVal(self, field, key, val)
+            if  nargin < 4
+                if  isempty(self.(field))
+                    self.(field) = key;
+                end
+            else
+                if ~isfield(self.(field), key) || isempty(self.(field).(key))
+                    self.(field).(key) = val;
+                end
+            end
+        end
+    end
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    methods(Access = public, Hidden)
+        function newprop(self, prop, val)
+            if ~any(strcmp(properties(self), prop))
+                self.addprop(prop);
+            end
+            if  2 < nargin
+                self.(prop) = val;
+            end
+        end
+    end
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    methods(Access = public, Hidden)
         function lh = addlistener(varargin)
             lh = addlistener@handle(varargin{:});
         end
@@ -128,5 +199,7 @@ classdef (Abstract) Handle < dynamicprops%handle
         %    TF = isvalid@handle(varargin{:});
         %end
     end
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 end

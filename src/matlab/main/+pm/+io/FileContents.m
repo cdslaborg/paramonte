@@ -68,7 +68,7 @@ classdef FileContents < pm.matlab.Handle
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    methods (Access = public)
+    methods(Access = public)
 
         function self = FileContents(file, silent)
             %
@@ -137,7 +137,7 @@ classdef FileContents < pm.matlab.Handle
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    methods (Access = public, Hidden)
+    methods(Access = public, Hidden)
 
         function warn(self, line, msg)
             if nargin < 3

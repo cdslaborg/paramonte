@@ -39,7 +39,7 @@ classdef Figure < pm.matlab.Handle
     %       See the list of class attributes below.
     %
     %
-    properties (Access = public)
+    properties(Access = public)
         %
         %       subplot
         %
@@ -107,13 +107,13 @@ classdef Figure < pm.matlab.Handle
         fout = struct();
     end
 
-    properties (Access = protected, Hidden)
+    properties(Access = protected, Hidden)
         isdryrun = true; % always false after the first make() method call or reset().
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    methods (Access = public)
+    methods(Access = public)
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -280,7 +280,7 @@ classdef Figure < pm.matlab.Handle
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    methods (Access = public, Hidden)
+    methods(Access = public, Hidden)
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -359,7 +359,7 @@ classdef Figure < pm.matlab.Handle
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    methods (Access = public)
+    methods(Access = public)
 
         function savefig(self, file, varargin)
             %

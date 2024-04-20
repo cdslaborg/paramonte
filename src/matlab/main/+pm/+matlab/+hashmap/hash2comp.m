@@ -34,14 +34,14 @@ function objnew = hash2comp(hashmap, object, insensitive, extensible, recursive)
     %
     %           The input scalar MATLAB logical.
     %           If ``false``, then keys within the input ``hashmap`` will be matched
-    %           against the input ``object`` properties (or fields) case-sensitively.
+    %           against the input ``object`` properties(or fields) case-sensitively.
     %           (**optional**, default = ``false``)
     %
     %       extensible
     %
     %           The input scalar MATLAB logical.
     %           If ``true``, then keys in the input ``hashmap`` that are missing in the
-    %           input ``object`` properties (or fields) will be added to output ``objnew``.
+    %           input ``object`` properties(or fields) will be added to output ``objnew``.
     %           This functionality requires the input ``object`` to be either a MATLAB ``struct``
     %           or an object whose ultimate superclass is the MATLAB ``handle`` class,
     %           which allows adding new properties via ``addprop()`` method.

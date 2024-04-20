@@ -112,7 +112,7 @@
 %
 classdef Target < dynamicprops
 
-    properties (Access = public)
+    properties(Access = public)
         hline
         vline
         values
@@ -123,14 +123,14 @@ classdef Target < dynamicprops
         label
     end
 
-    properties (Hidden)
+    properties(Hidden)
         isdryrun
         counter
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    methods (Hidden)
+    methods(Hidden)
 
         function resetint(self)
 
@@ -188,11 +188,11 @@ classdef Target < dynamicprops
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    methods (Access = public)
+    methods(Access = public)
 
         function self = Target(varargin)
             self.resetint()
-            self.hash2comp(varargin{:});
+            self.hash2comp(varargin);
         end
 
         function make(self, varargin)
@@ -222,7 +222,7 @@ classdef Target < dynamicprops
             %       make("values", [1500, 2; 200, 2.5; 3500, 0.4]) % multiple targets corresponding to each row of `values`
             %       make("hline", {"linewidth", 2})
             %
-            self.hash2comp(varargin{:});
+            self.hash2comp(varargin);
             rgbColor = pm.vis.color.rgb("deep carrot orange");
             %rgbColor = pm.vis.color.rgb("dark midnight blue");
 

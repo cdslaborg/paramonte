@@ -81,7 +81,7 @@ classdef FileContentsRestart < pm.io.FileContents
         lineListLen = [];
     end
 
-    methods (Access = public)
+    methods(Access = public)
 
         function self = FileContentsRestart(file, silent, method)
             %
@@ -169,6 +169,6 @@ classdef FileContentsRestart < pm.io.FileContents
 
         end % constructor
 
-    end % methods (Access = public)
+    end % methods(Access = public)
 
 end % classdef

@@ -92,7 +92,7 @@ classdef FileContentsSample < pm.io.FileContentsTabular
         sampleLogFuncColName = "sampleLogFunc";
     end
 
-    methods (Access = public)
+    methods(Access = public)
 
         function self = FileContentsSample(file, silent, sep)
             %

@@ -220,7 +220,7 @@ classdef Paradram < pm.sampling.Sampler
     %
     %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
     %
-    methods (Access = public)
+    methods(Access = public)
         function self = Paradram()
             %
             %   Construct and return a scalar object of class ``pm.sampling.Paradram``.

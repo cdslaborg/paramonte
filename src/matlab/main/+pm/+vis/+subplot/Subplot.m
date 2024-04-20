@@ -175,7 +175,7 @@ classdef Subplot < pm.vis.Axes
     %               will be plotted with the same color mapping determined by values specified by the elements
     %               of ``colc``. If it is an empty object having length 0, then the default value will be used.
     %
-    properties (Access = public)
+    properties(Access = public)
         %
         %   df
         %
@@ -219,7 +219,7 @@ classdef Subplot < pm.vis.Axes
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    methods (Access = public)
+    methods(Access = public)
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -384,8 +384,14 @@ classdef Subplot < pm.vis.Axes
             if  isprop(self, "colc") && pm.array.len(self.colc)
                 [colindc, colnamc] = pm.str.locname(dfcopy.Properties.VariableNames, self.colc);
             elseif self.type.has.line || self.type.has.scatter
-                coldatc = rowsindex;
-                colnamc = "Row Index";
+                if ~isempty(colnamz) && ~(isempty(coldatz) && isempty(colindz))
+                    coldatc = coldatz;
+                    colindc = colindz;
+                    colnamc = colnamz;
+                else
+                    coldatc = rowsindex;
+                    colnamc = "Row Index";
+                end
             elseif self.type.is.density && ~self.type.is.d1
                 colnamc = "Density";
             end
@@ -818,7 +824,7 @@ classdef Subplot < pm.vis.Axes
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    methods (Access = public, Hidden)
+    methods(Access = public, Hidden)
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -869,7 +875,38 @@ classdef Subplot < pm.vis.Axes
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function resetint(self, varargin)
+        function reset(self, varargin)
+            %
+            %   Reset the properties of the plot to the original default settings.
+            %   Use this method when you change many attributes of the plot and
+            %   you want to clean up and go back to the default settings.
+            %
+            %   Parameters
+            %   ----------
+            %
+            %       varargin
+            %
+            %           Any ``property, value`` pair of the parent object.
+            %           If the property is a ``struct()``, then its value must be given as a cell array,
+            %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
+            %           Note that all of these property-value pairs can be also directly set via the
+            %           parent object attributes, before calling the ``make()`` method.
+            %
+            %   Returns
+            %   -------
+            %
+            %       None
+            %
+            %   Interface
+            %   ---------
+            %
+            %       pm.vis.subplot.Subplot.reset() # reset the plot to the default settings.
+            %
+            %   LICENSE
+            %   -------
+            %
+            %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
+            %
             self.rows = [];
             self.fout = struct();
             self.newprop("colx", {});
@@ -879,7 +916,7 @@ classdef Subplot < pm.vis.Axes
                     self.newprop("colz", {});
                 end
             end
-            resetint@pm.vis.Axes(self, varargin{:});
+            reset@pm.vis.Axes(self, varargin{:});
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -239,7 +239,7 @@ classdef SpecBase < pm.matlab.Handle
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    methods (Hidden)
+    methods(Hidden)
 
         function entries = getEntriesNML(self, ndim)
             %

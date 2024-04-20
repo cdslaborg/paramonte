@@ -35,7 +35,7 @@ classdef Scatter3 < pm.vis.subplot.Subplot
     %
     %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
     %
-    methods (Access = public)
+    methods(Access = public)
         function self = Scatter3(dfref, varargin)
             if nargin < 1
                 dfref = [];

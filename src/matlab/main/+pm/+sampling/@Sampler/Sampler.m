@@ -17,7 +17,7 @@ classdef Sampler < pm.matlab.Handle
     %
     %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
     %
-    properties (Access = public)
+    properties(Access = public)
         %
         %   input
         %
@@ -120,7 +120,7 @@ classdef Sampler < pm.matlab.Handle
         spec = [];
     end
 
-    properties (Access = public, Hidden)
+    properties(Access = public, Hidden)
         mexname = "pm_sampling";
         libtype = "shared";
         partype = "serial";
@@ -153,7 +153,7 @@ classdef Sampler < pm.matlab.Handle
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    methods (Access = public)
+    methods(Access = public)
 
         function self = Sampler(method)
             %
@@ -219,7 +219,7 @@ classdef Sampler < pm.matlab.Handle
 
     end
 
-    methods (Hidden)
+    methods(Hidden)
         finalize(self);
         run(self, getLogFunc, ndim)
         fileList = findfile(self, ftype, pattern);

@@ -50,7 +50,7 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter
     %
     %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
     %
-    properties (Access = public)
+    properties(Access = public)
         %
         %   resolution
         %
@@ -62,13 +62,13 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter
         resolution = [];
     end
 
-    properties (Access = Hidden)
+    properties(Access = Hidden)
         gramref = [];
         meanref = [];
         zdfref = [];
     end
 
-    methods (Access = public)
+    methods(Access = public)
         function self = Ellipse3(gramref, meanref, zdfref)
             if  nargin < 3
                 zdfref = [];

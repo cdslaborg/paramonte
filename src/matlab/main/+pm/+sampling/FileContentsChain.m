@@ -47,7 +47,7 @@ classdef FileContentsChain < pm.sampling.FileContentsSample
     properties(Hidden)
     end
 
-    methods (Access = public)
+    methods(Access = public)
 
         function self = FileContentsChain(file, silent, sep)
             %

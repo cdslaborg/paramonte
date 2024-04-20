@@ -36,7 +36,7 @@ classdef Contour3 < pm.vis.subplot.Subplot
     %
     %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
     %
-    methods (Access = public)
+    methods(Access = public)
         function self = Contour3(dfref)
             if nargin < 1
                 dfref = [];

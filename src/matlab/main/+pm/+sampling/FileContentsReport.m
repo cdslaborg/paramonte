@@ -93,7 +93,7 @@ classdef FileContentsReport < pm.io.FileContents
         method = '';
     end
 
-    methods (Access = public)
+    methods(Access = public)
 
         function self = FileContentsReport(file, silent, method)
             %
@@ -288,7 +288,7 @@ classdef FileContentsReport < pm.io.FileContents
 
         end % constructor
 
-    end % methods (Access = public)
+    end % methods(Access = public)
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

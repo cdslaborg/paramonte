@@ -82,7 +82,7 @@ classdef FileContentsTabular < pm.io.FileContents
         df = [];
     end
 
-    methods (Access = public)
+    methods(Access = public)
 
         function self = FileContentsTabular(file, silent, sep)
             %

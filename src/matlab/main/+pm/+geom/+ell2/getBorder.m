@@ -34,7 +34,6 @@ function bcrd = getBorder(gramian, center, npnt)
     %       bcrd
     %
     %           The output matrix of MATLAB doubles of shape ``[npnt, 2]``
-    %           (or ``[npnt, 3]`` if the input argument ``zval`` is present)
     %           containing the coordinates of a set of ``npnt`` points on
     %           the boundary of the target 2D ellipsoid.
     %
@@ -44,8 +43,8 @@ function bcrd = getBorder(gramian, center, npnt)
     %       pm.geom.ell2.getBorder()
     %       pm.geom.ell2.getBorder(gramian)
     %       pm.geom.ell2.getBorder(gramian, center)
-    %       pm.geom.ell2.getBorder(gramian, center, zval)
-    %       pm.geom.ell2.getBorder(gramian, center, zval, npnt)
+    %       pm.geom.ell2.getBorder(gramian, center, npnt)
+    %       pm.geom.ell2.getBorder([], [], [])
     %
     %   Example
     %   -------

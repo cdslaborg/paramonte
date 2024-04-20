@@ -39,7 +39,7 @@ classdef DataRef < pm.matlab.Handle
     %
     %       See the class attributes descriptions below.
     %
-    properties (Access = protected, Hidden)
+    properties(Access = protected, Hidden)
         %
         %   dfref
         %
@@ -54,7 +54,7 @@ classdef DataRef < pm.matlab.Handle
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    methods (Access = public)
+    methods(Access = public)
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

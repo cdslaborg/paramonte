@@ -109,7 +109,7 @@ classdef FileContentsRestartDRAM < pm.sampling.FileContentsRestart
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    methods (Access = public)
+    methods(Access = public)
 
         function self = FileContentsRestartDRAM(file, silent)
             %
@@ -226,11 +226,11 @@ classdef FileContentsRestartDRAM < pm.sampling.FileContentsRestart
 
         end % constructor
 
-    end % methods (Access = public)
+    end % methods(Access = public)
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    methods (Access = public, Hidden)
+    methods(Access = public, Hidden)
 
         function warn(self)
             warning ( newline ...
@@ -244,7 +244,7 @@ classdef FileContentsRestartDRAM < pm.sampling.FileContentsRestart
                     );
         end
 
-    end % methods (Access = Hidden)
+    end % methods(Access = Hidden)
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
