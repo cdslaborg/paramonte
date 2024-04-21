@@ -330,6 +330,7 @@ if (TRUE)
     set(bdir "${CMAKE_BINARY_DIR}")
     set(paramonte_bld_dir "${bdir}")
     set(ENV{paramonte_bld_dir} "${paramonte_bld_dir}")
+    set(CMAKE_INSTALL_PREFIX "${paramonte_bld_dir}" CACHE BOOL "ParaMonte/OpenBLAS/dependencies install directory prefix." FORCE)
     message(NOTICE "${pmattn} All build files will be stored at paramonte_bld_dir=\"${paramonte_bld_dir}\"")
 
     #### Purge files or folders within the build folder if requested.
@@ -721,7 +722,8 @@ if (TRUE)
             endif()
             #set(USE_THREAD ${OMP_ENABLED} CACHE BOOL "OpenBLAS threading." FORCE)
             set(USE_THREAD 1 CACHE BOOL "OpenBLAS threading." FORCE)
-            set(CMAKE_INSTALL_PREFIX "${paramonte_bld_dir}" CACHE BOOL "OpenBLAS install directory." FORCE)
+            # The following install prefix is now set globally for the entire project.
+            #set(CMAKE_INSTALL_PREFIX "${paramonte_bld_dir}" CACHE BOOL "OpenBLAS install directory." FORCE)
             # setup openblas files directory
             set(paramonte_bld_obl_dir "${paramonte_bld_dir}/obl")
             message(NOTICE "${pmattn} paramonte_bld_obl_dir: ${paramonte_bld_obl_dir}")

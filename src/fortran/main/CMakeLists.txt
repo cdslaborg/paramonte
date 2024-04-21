@@ -969,8 +969,49 @@ set_source_files_properties("${paramonte_src_main_c_paths}" PROPERTIES COMPILE_D
 
 install(TARGETS "${libname}"
         CONFIGURATIONS "${CMAKE_BUILD_TYPE}"
-        DESTINATION "${paramonte_bld_lib_dir}/"
+        DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
         )
+
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# Recipe for installing the runtime dependencies.
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+if (DLL_ENABLED AND DEPS_ENABLED)
+    install(CODE [[
+        function(install_library_with_deps LIBRARY)
+            file(INSTALL
+                DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
+                TYPE SHARED_LIBRARY
+                FOLLOW_SYMLINK_CHAIN
+                FILES "${LIBRARY}"
+            )
+            file(GET_RUNTIME_DEPENDENCIES
+                LIBRARIES ${LIBRARY}
+                RESOLVED_DEPENDENCIES_VAR resolved_deps
+                UNRESOLVED_DEPENDENCIES_VAR unresolved_deps
+            )
+            foreach(FILE ${resolved_deps})
+                if(NOT IS_SYMLINK ${FILE})
+                    install_library_with_deps(${FILE})
+                endif()
+            endforeach()
+            foreach(FILE ${unresolved_deps})
+                message(STATUS "Unresolved from ${LIBRARY}: ${FILE}")
+            endforeach()
+        endfunction()
+        file(GET_RUNTIME_DEPENDENCIES
+            LIBRARIES $<TARGET_SONAME_FILE:libparamonte>
+            RESOLVED_DEPENDENCIES_VAR resolved_deps
+            UNRESOLVED_DEPENDENCIES_VAR unresolved_deps
+        )
+        foreach(FILE ${resolved_deps})
+            install_library_with_deps(${FILE})
+        endforeach()
+        foreach(FILE ${unresolved_deps})
+            message(STATUS "Unresolved: ${FILE}")
+        endforeach()
+    ]])
+endif()
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # Add the executable for build-time FPP source generation.
@@ -1260,7 +1301,7 @@ endif()
 #    #setSubDirList(subDirList "${destin}")
 #    #foreach(subDir ${subDirList})
 #    #    setSubDirList(subSubDirList "${destin}/${subDir}")
-#    #    set(example_current_dir "../../../../lib/libparamonte_fortran_*_intel*.so")
+#    #    set(example_current_dir "../../../../lib/libparamonte*.so")
 #    #    foreach(subSubDir ${subSubDirList})
 #    #        set(example_current_dir "${destin}/${subDir}/${subSubDir}")
 #    #        message(NOTICE "${pmattn} Adding the build scripts to example at: ${example_current_dir}")
