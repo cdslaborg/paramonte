@@ -326,7 +326,7 @@ if not "%1"=="" (
 
     if "!FLAG!"=="--deps" (
         set FLAG_SUPPORTED=true
-        set "flag_deps=-Dblas=!VALUE!"
+        set "flag_deps=-Ddeps=!VALUE!"
         if "!VALUE!"=="" set "VALUE_SUPPORTED=false"
         if /i "!VALUE:~0,2!"=="--" set "VALUE_SUPPORTED=false"
         shift
