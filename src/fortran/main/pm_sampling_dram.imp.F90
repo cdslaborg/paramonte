@@ -105,25 +105,25 @@
         character(:,SKC)    , allocatable   :: desc
     end type
 
-   !real(RKC)               , allocatable   :: proposalDelayedRejectionScaleFactor(:) ! namelist input
-    type                                    :: proposalDelayedRejectionScaleFactor_type
+   !real(RKC)               , allocatable   :: proposalDelayedRejectionScale(:) ! namelist input
+    type                                    :: proposalDelayedRejectionScale_type
         real(RKC)                           :: def
         real(RKC)           , allocatable   :: val(:)
        !real(RKC)           , allocatable   :: log(:)
         character(:,SKC)    , allocatable   :: desc
     end type
 
-    type, extends(specmcmc_type)                        :: specdram_type
-        type(burninAdaptationMeasure_type)              :: burninAdaptationMeasure
-        type(proposalAdaptationCount_type)              :: proposalAdaptationCount
-        type(proposalAdaptationCountGreedy_type)        :: proposalAdaptationCountGreedy
-        type(proposalAdaptationPeriod_type)             :: proposalAdaptationPeriod
-        type(proposalDelayedRejectionCount_type)        :: proposalDelayedRejectionCount
-        type(proposalDelayedRejectionScaleFactor_type)  :: proposalDelayedRejectionScaleFactor
+    type, extends(specmcmc_type)                    :: specdram_type
+        type(burninAdaptationMeasure_type)          :: burninAdaptationMeasure
+        type(proposalAdaptationCount_type)          :: proposalAdaptationCount
+        type(proposalAdaptationCountGreedy_type)    :: proposalAdaptationCountGreedy
+        type(proposalAdaptationPeriod_type)         :: proposalAdaptationPeriod
+        type(proposalDelayedRejectionCount_type)    :: proposalDelayedRejectionCount
+        type(proposalDelayedRejectionScale_type)    :: proposalDelayedRejectionScale
     contains
-        procedure, pass, private                        :: sanitize
-        procedure, pass, private                        :: report
-        procedure, pass, public                         :: set
+        procedure, pass, private                    :: sanitize
+        procedure, pass, private                    :: report
+        procedure, pass, public                     :: set
     end type
 
     interface specdram_type
@@ -269,24 +269,24 @@ contains
             !$omp end master
         end block proposalDelayedRejectionCount_block
 
-        proposalDelayedRejectionScaleFactor_block: block
-            use pm_sampling_scio, only: proposalDelayedRejectionScaleFactor
-            spec%proposalDelayedRejectionScaleFactor%def  = 0.5_RKC**(1._RKC / spec%ndim%val) ! This gives a half volume to the covariance.
-            spec%proposalDelayedRejectionScaleFactor%desc = &
-            "The simulation specification `proposalDelayedRejectionScaleFactor` is a positive-valued vector of type `real` of the &
+        proposalDelayedRejectionScale_block: block
+            use pm_sampling_scio, only: proposalDelayedRejectionScale
+            spec%proposalDelayedRejectionScale%def  = 0.5_RKC**(1._RKC / spec%ndim%val) ! This gives a half volume to the covariance.
+            spec%proposalDelayedRejectionScale%desc = &
+            "The simulation specification `proposalDelayedRejectionScale` is a positive-valued vector of type `real` of the &
             &highest precision available within the ParaMonte library, of length `(1 : proposalDelayedRejectionCount)`, by which &
             &the covariance matrix of the proposal distribution of the MCMC sampler is scaled when the Delayed Rejection (DR) scheme &
             &is activated (by setting `proposalDelayedRejectionCount` to a positive value). At each `i`th stage of the DR process, &
-            &the proposal distribution from the last stage is scaled by the factor `proposalDelayedRejectionScaleFactor(i)`. &
-            &Missing elements of the `proposalDelayedRejectionScaleFactor` in the input external file to the sampler will be set to &
+            &the proposal distribution from the last stage is scaled by the factor `proposalDelayedRejectionScale(i)`. &
+            &Missing elements of the `proposalDelayedRejectionScale` in the input external file to the sampler will be set to &
             &the default value. The default value at all stages is `0.5**(1 / ndim)` where `ndim` is the number of dimensions of the &
             &domain of the objective function. This default value effectively reduces the volume of the covariance matrix &
             &of the proposal distribution by half compared to the last DR stage."
             !$omp master
-            call setResized(proposalDelayedRejectionScaleFactor, spec%proposalDelayedRejectionCount%max)
-            call setNAN(proposalDelayedRejectionScaleFactor)
+            call setResized(proposalDelayedRejectionScale, spec%proposalDelayedRejectionCount%max)
+            call setNAN(proposalDelayedRejectionScale)
             !$omp end master
-        end block proposalDelayedRejectionScaleFactor_block
+        end block proposalDelayedRejectionScale_block
 
         !$omp barrier
 
@@ -361,36 +361,36 @@ contains
                 if (spec%proposalDelayedRejectionCount%val == spec%proposalDelayedRejectionCount%null) spec%proposalDelayedRejectionCount%val = spec%proposalDelayedRejectionCount%def
            end block proposalDelayedRejectionCount_block
 
-            proposalDelayedRejectionScaleFactor_block: block
-                use pm_sampling_scio, only: proposalDelayedRejectionScaleFactor
+            proposalDelayedRejectionScale_block: block
+                use pm_sampling_scio, only: proposalDelayedRejectionScale
                 use pm_arrayFill, only: getFilled
                 integer(IK) :: idel
-                if (spec%overridable .and. allocated(sampler%proposalDelayedRejectionScaleFactor)) then
-                    spec%proposalDelayedRejectionScaleFactor%val = real(sampler%proposalDelayedRejectionScaleFactor, RKC)
+                if (spec%overridable .and. allocated(sampler%proposalDelayedRejectionScale)) then
+                    spec%proposalDelayedRejectionScale%val = real(sampler%proposalDelayedRejectionScale, RKC)
                 else
-                    do idel = size(proposalDelayedRejectionScaleFactor, 1, IK), 1, -1
-                        if (.not. isNAN(proposalDelayedRejectionScaleFactor(idel))) exit
+                    do idel = size(proposalDelayedRejectionScale, 1, IK), 1, -1
+                        if (.not. isNAN(proposalDelayedRejectionScale(idel))) exit
                     end do
-                    spec%proposalDelayedRejectionScaleFactor%val = proposalDelayedRejectionScaleFactor(1 : idel)
+                    spec%proposalDelayedRejectionScale%val = proposalDelayedRejectionScale(1 : idel)
                 end if
-                if (0_IK < size(spec%proposalDelayedRejectionScaleFactor%val, 1, IK)) then
-                    where (isNAN(spec%proposalDelayedRejectionScaleFactor%val))
-                        spec%proposalDelayedRejectionScaleFactor%val = spec%proposalDelayedRejectionScaleFactor%def
+                if (0_IK < size(spec%proposalDelayedRejectionScale%val, 1, IK)) then
+                    where (isNAN(spec%proposalDelayedRejectionScale%val))
+                        spec%proposalDelayedRejectionScale%val = spec%proposalDelayedRejectionScale%def
                     end where
                 elseif (0_IK < spec%proposalDelayedRejectionCount%val) then
-                    spec%proposalDelayedRejectionScaleFactor%val = getFilled(spec%proposalDelayedRejectionScaleFactor%def, spec%proposalDelayedRejectionCount%val)
+                    spec%proposalDelayedRejectionScale%val = getFilled(spec%proposalDelayedRejectionScale%def, spec%proposalDelayedRejectionCount%val)
                 else
-                    call setResized(spec%proposalDelayedRejectionScaleFactor%val, 0_IK)
+                    call setResized(spec%proposalDelayedRejectionScale%val, 0_IK)
                 end if
-            end block proposalDelayedRejectionScaleFactor_block
+            end block proposalDelayedRejectionScale_block
 
             ! Take care of exceptional cases.
 
             block
                 integer(IK) :: idel, remaining
-                remaining = spec%proposalDelayedRejectionCount%val - size(spec%proposalDelayedRejectionScaleFactor%val, 1, IK)
+                remaining = spec%proposalDelayedRejectionCount%val - size(spec%proposalDelayedRejectionScale%val, 1, IK)
                 if (0_IK < remaining) then
-                    spec%proposalDelayedRejectionScaleFactor%val = [spec%proposalDelayedRejectionScaleFactor%val, (spec%proposalDelayedRejectionScaleFactor%def, idel = 1, remaining)]
+                    spec%proposalDelayedRejectionScale%val = [spec%proposalDelayedRejectionScale%val, (spec%proposalDelayedRejectionScale%def, idel = 1, remaining)]
                 end if
             end block
 
@@ -438,13 +438,13 @@ contains
             call spec%disp%show(spec%proposalDelayedRejectionCount%val, format = format)
             call spec%disp%note%show(spec%proposalDelayedRejectionCount%desc)
 
-            call spec%disp%show("proposalDelayedRejectionScaleFactor")
-            if (size(spec%proposalDelayedRejectionScaleFactor%val) == 0) then
+            call spec%disp%show("proposalDelayedRejectionScale")
+            if (size(spec%proposalDelayedRejectionScale%val) == 0) then
                 call spec%disp%show(UNDEFINED, format = format)
             else
-                call spec%disp%show(reshape(spec%proposalDelayedRejectionScaleFactor%val, [size(spec%proposalDelayedRejectionScaleFactor%val), 1]), format = format)
+                call spec%disp%show(reshape(spec%proposalDelayedRejectionScale%val, [size(spec%proposalDelayedRejectionScale%val), 1]), format = format)
             end if
-            call spec%disp%note%show(spec%proposalDelayedRejectionScaleFactor%desc)
+            call spec%disp%note%show(spec%proposalDelayedRejectionScale%desc)
 
         end associate
 
@@ -525,30 +525,30 @@ contains
             end if
         end block proposalDelayedRejectionCount_block
 
-        proposalDelayedRejectionScaleFactor_block: block
-            use pm_sampling_scio, only: proposalDelayedRejectionScaleFactor
+        proposalDelayedRejectionScale_block: block
+            use pm_sampling_scio, only: proposalDelayedRejectionScale
             integer(IK) :: idel
-            if (size(spec%proposalDelayedRejectionScaleFactor%val, 1, IK) /= spec%proposalDelayedRejectionCount%val) then
+            if (size(spec%proposalDelayedRejectionScale%val, 1, IK) /= spec%proposalDelayedRejectionCount%val) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. The length of the vector `proposalDelayedRejectionScaleFactor` ("//&
-                            getStr(size(spec%proposalDelayedRejectionScaleFactor%val))//SKC_") is not equal to proposalDelayedRejectionCount = "//&
-                            getStr(spec%proposalDelayedRejectionCount%val)//SKC_". If you are unsure how to set the values of `proposalDelayedRejectionScaleFactor`, &
-                            &drop it from the input. The sampler will automatically set the appropriate value for `proposalDelayedRejectionScaleFactor`."
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. The length of the vector `proposalDelayedRejectionScale` ("//&
+                            getStr(size(spec%proposalDelayedRejectionScale%val))//SKC_") is not equal to proposalDelayedRejectionCount = "//&
+                            getStr(spec%proposalDelayedRejectionCount%val)//SKC_". If you are unsure how to set the values of `proposalDelayedRejectionScale`, &
+                            &drop it from the input. The sampler will automatically set the appropriate value for `proposalDelayedRejectionScale`."
             end if
-            do idel = 1, size(spec%proposalDelayedRejectionScaleFactor%val, 1, IK)
-                if (spec%proposalDelayedRejectionScaleFactor%val(idel) <= 0._RKC) then
-                !    spec%proposalDelayedRejectionScaleFactor%log(idel) = log(spec%proposalDelayedRejectionScaleFactor%val(idel))
+            do idel = 1, size(spec%proposalDelayedRejectionScale%val, 1, IK)
+                if (spec%proposalDelayedRejectionScale%val(idel) <= 0._RKC) then
+                !    spec%proposalDelayedRejectionScale%log(idel) = log(spec%proposalDelayedRejectionScale%val(idel))
                 !else
                     err%occurred = .true._LK
                     err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. The input value for the element `"//getStr(idel)//&
-                                SKC_"` of the variable proposalDelayedRejectionScaleFactor cannot be smaller than or equal to 0."
+                                SKC_"` of the variable proposalDelayedRejectionScale cannot be smaller than or equal to 0."
                 end if
             end do
             !$omp barrier
             !$omp master
-            if (allocated(proposalDelayedRejectionScaleFactor)) deallocate(proposalDelayedRejectionScaleFactor)
+            if (allocated(proposalDelayedRejectionScale)) deallocate(proposalDelayedRejectionScale)
             !$omp end master
-        end block proposalDelayedRejectionScaleFactor_block
+        end block proposalDelayedRejectionScale_block
 
     end subroutine
 

@@ -579,7 +579,7 @@ contains
         select type (sampler => self%sampler)
         type is (paradram_type)
             if (.not. allocated(sampler%outputChainSize)) sampler%outputChainSize = 30000
-            if (.not. allocated(sampler%proposalScaleFactor)) sampler%proposalScaleFactor = "gelman"
+            if (.not. allocated(sampler%proposalScale)) sampler%proposalScale = "gelman"
             if (.not. allocated(sampler%proposalStart)) sampler%proposalStart = self%model%getParam()
             err = getErrSampling(sampler, getLogLike, self%model%npar)
         end select
@@ -672,8 +672,8 @@ program example
             sampler%proposalStart = [-.2, 0.4, .4, 3.6, -0.2]
             sampler%domainCubeLimitLower = [real(RKC) :: -LARGE, -LARGE, -LARGE, log(3.), -LARGE]
             sampler%domainCubeLimitUpper = [real(RKC) :: log(3.), +LARGE, +LARGE, +LARGE, +LARGE]
-            !sampler%proposalScaleFactor = "0.1 * gelman"
-            sampler%proposalCovMat = reshape( &
+            !sampler%proposalScale = "0.1 * gelman"
+            sampler%proposalCov = reshape   ( &
                                             [  1.6E-2, 5.5E-3, 4.1E-3, 3.9E-3,-2.5E-3 &
                                             ,  5.5E-3, 3.1E-3, 1.7E-3, 1.4E-3,-9.5E-4 &
                                             ,  4.1E-3, 1.7E-3, 1.9E-3, 1.2E-3,-8.8E-4 &
@@ -682,10 +682,10 @@ program example
                                             ], shape = [size(sampler%proposalStart), size(sampler%proposalStart)])
             fit = fit_type(data, mixture_type([con_type(lognorm_type()), con_type(lognorm_type())]), sampler)
         elseif (imodel == 2) then
-            sampler%proposalScaleFactor = "0.1 * gelman"
+            sampler%proposalScale = "0.1 * gelman"
             sampler%outputFileName = "./mixFlatPowetoFlatPowetoTapered"
             sampler%proposalStart = [log(.37), -1.4, .3, log(21.3), -.5, 0.0156]
-            sampler%proposalCovMat = reshape( &
+            sampler%proposalCov = reshape   ( &
                                             [  1.E-2, -3.E-3,  1.E-2, -7.E-3, -1.E-4, -6.E-4 &
                                             , -3.E-3,  3.E-3, -4.E-3,  6.E-3,  1.E-4,  1.E-3 &
                                             ,  1.E-2, -4.E-3,  1.E-1, -7.E-2, -8.E-4,  3.E-4 &
@@ -695,12 +695,12 @@ program example
                                             ], shape = [size(sampler%proposalStart), size(sampler%proposalStart)])
             fit = fit_type(data, mixture_type([con_type(flatPoweto_type(data%stat%lim)), con_type(flatPowetoTapered_type(data%stat%lim))]), sampler)
         elseif (imodel == 3) then
-            sampler%proposalScaleFactor = "0.1 * gelman"
+            sampler%proposalScale = "0.1 * gelman"
             sampler%outputFileName = "./mixLogNormFlatPowetoTapered"
             sampler%proposalStart = [-.2, 0.4, .3, log(21.3), -.5, 0.0156]
             fit = fit_type(data, mixture_type([con_type(lognorm_type()), con_type(flatPowetoTapered_type(data%stat%lim))]), sampler)
         elseif (imodel == 4) then
-            sampler%proposalScaleFactor = "0.1 * gelman"
+            sampler%proposalScale = "0.1 * gelman"
             sampler%outputFileName = "./mixFlatPowetoLogNorm"
             sampler%proposalStart = [log(.37), -1.4, .3, 3.6, -0.2]
             fit = fit_type(data, mixture_type([con_type(flatPoweto_type(data%stat%lim)), con_type(lognorm_type())]), sampler)

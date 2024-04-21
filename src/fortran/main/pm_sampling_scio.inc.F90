@@ -6,10 +6,10 @@
     namelist /NAMELIST/ description
     namelist /NAMELIST/ domain
     namelist /NAMELIST/ domainAxisName
-    namelist /NAMELIST/ domainBallCenter
-    namelist /NAMELIST/ domainBallCorMat
-    namelist /NAMELIST/ domainBallCovMat
-    namelist /NAMELIST/ domainBallStdVec
+    namelist /NAMELIST/ domainBallAvg
+    namelist /NAMELIST/ domainBallCor
+    namelist /NAMELIST/ domainBallCov
+    namelist /NAMELIST/ domainBallStd
     namelist /NAMELIST/ domainCubeLimitLower
     namelist /NAMELIST/ domainCubeLimitUpper
     namelist /NAMELIST/ domainErrCount
@@ -36,21 +36,21 @@
     namelist /NAMELIST/ outputSampleRefinementCount
     namelist /NAMELIST/ outputSampleRefinementMethod
     namelist /NAMELIST/ proposal
-    namelist /NAMELIST/ proposalCorMat
-    namelist /NAMELIST/ proposalCovMat
-    namelist /NAMELIST/ proposalScaleFactor
+    namelist /NAMELIST/ proposalCor
+    namelist /NAMELIST/ proposalCov
+    namelist /NAMELIST/ proposalScale
     namelist /NAMELIST/ proposalStart
     namelist /NAMELIST/ proposalStartDomainCubeLimitLower
     namelist /NAMELIST/ proposalStartDomainCubeLimitUpper
     namelist /NAMELIST/ proposalStartRandomized
-    namelist /NAMELIST/ proposalStdVec
+    namelist /NAMELIST/ proposalStd
     ! specdram
     namelist /NAMELIST/ burninAdaptationMeasure
     namelist /NAMELIST/ proposalAdaptationCount
     namelist /NAMELIST/ proposalAdaptationCountGreedy
     namelist /NAMELIST/ proposalAdaptationPeriod
     namelist /NAMELIST/ proposalDelayedRejectionCount
-    namelist /NAMELIST/ proposalDelayedRejectionScaleFactor
+    namelist /NAMELIST/ proposalDelayedRejectionScale
     ! specnest
     namelist /NAMELIST/ domainPartitionAdaptationCount
     namelist /NAMELIST/ domainPartitionAdaptationPeriod

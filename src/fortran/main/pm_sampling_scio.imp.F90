@@ -59,10 +59,10 @@
     character(8191,SKC)                     :: description ! roughly 66Kb of memory
     character(63,SKC)                       :: domain
     character(63,SKC)       , allocatable   :: domainAxisName(:)
-    real(RKC)               , allocatable   :: domainBallCenter(:)
-    real(RKC)               , allocatable   :: domainBallCorMat(:,:)
-    real(RKC)               , allocatable   :: domainBallCovMat(:,:)
-    real(RKC)               , allocatable   :: domainBallStdVec(:)
+    real(RKC)               , allocatable   :: domainBallAvg(:)
+    real(RKC)               , allocatable   :: domainBallCor(:,:)
+    real(RKC)               , allocatable   :: domainBallCov(:,:)
+    real(RKC)               , allocatable   :: domainBallStd(:)
     real(RKC)               , allocatable   :: domainCubeLimitLower(:)
     real(RKC)               , allocatable   :: domainCubeLimitUpper(:)
     integer(IK)                             :: domainErrCount
@@ -95,14 +95,14 @@
     integer(IK)                             :: outputSampleRefinementCount
     character(63,SKC)                       :: outputSampleRefinementMethod
     character(63,SKC)                       :: proposal
-    real(RKC)               , allocatable   :: proposalCorMat(:,:)
-    real(RKC)               , allocatable   :: proposalCovMat(:,:)
-    character(127,SKC)                      :: proposalScaleFactor
+    real(RKC)               , allocatable   :: proposalCor(:,:)
+    real(RKC)               , allocatable   :: proposalCov(:,:)
+    character(127,SKC)                      :: proposalScale
     real(RKC)               , allocatable   :: proposalStart(:)
     real(RKC)               , allocatable   :: proposalStartDomainCubeLimitLower(:)
     real(RKC)               , allocatable   :: proposalStartDomainCubeLimitUpper(:)
     logical(LK)                             :: proposalStartRandomized
-    real(RKC)               , allocatable   :: proposalStdVec(:)
+    real(RKC)               , allocatable   :: proposalStd(:)
     !>  \endcond excluded
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -114,7 +114,7 @@
     integer(IK)                             :: proposalAdaptationCountGreedy
     integer(IK)                             :: proposalAdaptationPeriod
     integer(IK)                             :: proposalDelayedRejectionCount
-    real(RKC)               , allocatable   :: proposalDelayedRejectionScaleFactor(:)
+    real(RKC)               , allocatable   :: proposalDelayedRejectionScale(:)
     !>  \endcond excluded
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

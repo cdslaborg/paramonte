@@ -35,71 +35,71 @@
 
     ! Base specifications.
 
-    description                             = "
+    description                         = "
 This\n
     is a\n
         multi-line\n
-            description.\\n"                                        ! strings must be enclosed with "" or '' and can be continued on multiple lines.
-                                                                    ! No comments within strings are allowed.
-    domain                                  = "cube"
-    domainAxisName                          = "variable1"
-                                              "variable2"           ! values can appear in multiple lines.
-    domainBallCenter                        = 0 0                   ! values can be separated with blanks or commas.
-    domainBallCorMat                        = 1 0
-                                              0 1
-    domainBallCovMat                        = 1, 0
-                                              0, 1
-    domainBallStdVec                        = 1, 1
-    domainCubeLimitLower                    = 2*-1.e30              ! repetition pattern rules apply here. 2 dimensions => 2-element vector of values.
-    domainCubeLimitUpper(1)                 = +1.e30                ! Elements of vectors can be set individually.
-    domainCubeLimitUpper(2)                 = +1.e30                ! Elements of vectors can be set individually.
-    domainErrCount                          = 100
-    domainErrCountMax                       = 1000
-    inputFileHasPriority                    = FALSE                 ! This is relevant only to simulations within the Fortran programming language.
-    outputChainFileFormat                   = "compact"
-   !outputColumnWidth                       = 25                    ! This is an example of a variable that is commented out.
-                                                                    ! Therefore, its value will not be read by the sampler routine.
-                                                                    ! To pass it to the routine, simply remove the `!` mark at the beginning of the line.
-    outputFileName                          = "./out/himmelblau"    ! A forward-slash character at the end of the string value would indicate the specified path
-                                                                    ! is to be interpreted as the name of the folder to contain the simulation output files.
-                                                                    ! The base name for the simulation output files will be generated from the current date and time.
-                                                                    ! Otherwise, the specified base name at the end of the string will be used in naming the simulation output files.
-    outputPrecision                         = 17
-    outputReportPeriod                      = 1000
-    outputRestartFileFormat                 = "ascii"
-    outputSampleSize                        = -1
-    outputSeparator                         = ","
-    outputSplashMode                        = "normal"              ! or quiet or silent.
-    outputStatus                            = "extend"              ! or retry.
-    parallelism                             = "multi chain"         ! "singleChain" would also work. Similarly, "multichain", "multi chain", or "multiChain".
-    parallelismMpiFinalizeEnabled           = false                 ! TRUE, true, .true., .t., and t would be also all valid logical values representing truth.
-    parallelismNumThread                    = 3                     ! number of threads to use in shared-memory parallelism.
-   !randomSeed                              = 2136275,
-   !targetAcceptanceRate                    = 0.23e0
+            description.\\n"                                    ! strings must be enclosed with "" or '' and can be continued on multiple lines.
+                                                                ! No comments within strings are allowed.
+    domain                              = "cube"
+    domainAxisName                      = "variable1"
+                                          "variable2"           ! values can appear in multiple lines.
+    domainBallAvg                       = 0 0                   ! values can be separated with blanks or commas.
+    domainBallCor                       = 1 0
+                                            0 1
+    domainBallCov                       = 1, 0
+                                            0, 1
+    domainBallStd                       = 1, 1
+    domainCubeLimitLower                = 2*-1.e30              ! repetition pattern rules apply here. 2 dimensions => 2-element vector of values.
+    domainCubeLimitUpper(1)             = +1.e30                ! Elements of vectors can be set individually.
+    domainCubeLimitUpper(2)             = +1.e30                ! Elements of vectors can be set individually.
+    domainErrCount                      = 100
+    domainErrCountMax                   = 1000
+    inputFileHasPriority                = FALSE                 ! This is relevant only to simulations within the Fortran programming language.
+    outputChainFileFormat               = "compact"
+   !outputColumnWidth                   = 25                    ! This is an example of a variable that is commented out.
+                                                                ! Therefore, its value will not be read by the sampler routine.
+                                                                ! To pass it to the routine, simply remove the `!` mark at the beginning of the line.
+    outputFileName                      = "./out/himmelblau"    ! A forward-slash character at the end of the string value would indicate the specified path
+                                                                ! is to be interpreted as the name of the folder to contain the simulation output files.
+                                                                ! The base name for the simulation output files will be generated from the current date and time.
+                                                                ! Otherwise, the specified base name at the end of the string will be used in naming the simulation output files.
+    outputPrecision                     = 17
+    outputReportPeriod                  = 1000
+    outputRestartFileFormat             = "ascii"
+    outputSampleSize                    = -1
+    outputSeparator                     = ","
+    outputSplashMode                    = "normal"              ! or quiet or silent.
+    outputStatus                        = "extend"              ! or retry.
+    parallelism                         = "multi chain"         ! "singleChain" would also work. Similarly, "multichain", "multi chain", or "multiChain".
+    parallelismMpiFinalizeEnabled       = false                 ! TRUE, true, .true., .t., and t would be also all valid logical values representing truth.
+    parallelismNumThread                = 3                     ! number of threads to use in shared-memory parallelism.
+   !randomSeed                          = 2136275,
+   !targetAcceptanceRate                = 0.23e0
 
     ! MCMC specifications.
 
-    outputChainSize                         = 10000
-    outputSampleRefinementCount             = 10
-    outputSampleRefinementMethod            = "BatchMeans"
-    proposal                                = "normal"              ! or "uniform" as you wish.
-    proposalCorMat(:, 1)                    = 1 0                   ! first matrix column.
-    proposalCorMat(:, 2)                    = 0 1                   ! second matrix column.
-    proposalCovMat                          = 1 0 0 1               ! or specify all matrix elements in one statement.
-    proposalScaleFactor                     = "2*0.5*Gelman"        ! The asterisk here means multiplication since it is enclosed within quotation marks.
-    proposalStart                           = 2*1.e0                ! four values of 1.e0 are specified here by the repetition pattern symbol *
-    proposalStartDomainCubeLimitLower       = 2*-100.e0             ! repetition pattern rules apply again here. 2 dimensions => 2-element vector of values.
-    proposalStartDomainCubeLimitUpper       = 2*+100.e0             ! repetition pattern rules apply again here. 2 dimensions => 2-element vector of values.
-    proposalStartRandomized                 = false
-    proposalStdVec                          = 2*1.0                 ! repetition pattern rules apply again here. 2 dimensions => 2-element vector of values.
+    outputChainSize                     = 10000
+    outputSampleRefinementCount         = 10
+    outputSampleRefinementMethod        = "BatchMeans"
+    proposal                            = "normal"              ! or "uniform" as you wish.
+    proposalCor(:, 1)                   = 1 0                   ! first matrix column.
+    proposalCor(:, 2)                   = 0 1                   ! second matrix column.
+    proposalCov                         = 1 0 0 1               ! or specify all matrix elements in one statement.
+    proposalScale                       = "2*0.5*Gelman"        ! The asterisk here means multiplication since it is enclosed within quotation marks.
+    proposalStart                       = 2*1.e0                ! four values of 1.e0 are specified here by the repetition pattern symbol *
+    proposalStartDomainCubeLimitLower   = 2*-100.e0             ! repetition pattern rules apply again here. 2 dimensions => 2-element vector of values.
+    proposalStartDomainCubeLimitUpper   = 2*+100.e0             ! repetition pattern rules apply again here. 2 dimensions => 2-element vector of values.
+    proposalStartRandomized             = false
+    proposalStd                         = 2*1.0                 ! repetition pattern rules apply again here. 2 dimensions => 2-element vector of values.
 
     ! DRAM specifications.
 
-    burninAdaptationMeasure                 = 1.
-    proposalAdaptationCount                 = 10000000
-    proposalAdaptationCountGreedy           = 0
-    proposalAdaptationPeriod                = 35
-    proposalDelayedRejectionCount           = 5
-    proposalDelayedRejectionScaleFactor     = 4*1., 2.              ! The first four elements are 1, followed by 2.
+    burninAdaptationMeasure             = 1.
+    proposalAdaptationCount             = 10000000
+    proposalAdaptationCountGreedy       = 0
+    proposalAdaptationPeriod            = 35
+    proposalDelayedRejectionCount       = 5
+    proposalDelayedRejectionScale       = 4*1., 2.              ! The first four elements are 1, followed by 2.
 
 /

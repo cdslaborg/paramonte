@@ -1,10 +1,11 @@
 program example
 
     use pm_str, only: getStrWrapped
-    use pm_kind, only: modelr_type, IK, RKC => RK2
+    use pm_kind, only: modelr_type, SK, IK, RKC => RK2
     use pm_sampling_base_RK2, only: specbase_type
     use pm_sampling_mcmc_RK2, only: specmcmc_type
     use pm_sampling_dram_RK2, only: specdram_type
+    use pm_container, only: css => css_type
     use pm_io, only: display_type
 
     integer(IK), parameter :: ndim = 1_IK
@@ -36,75 +37,94 @@ contains
 
         call spec%disp%show("### domain")
         call spec%disp%show(getStrWrapped(spec%domain%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"domain"), css(SK_"domainBallAvg"), css(SK_"domainBallCor"), css(SK_"domainBallCor"), css(SK_"domainBallCov"), css(SK_"domainBallStd"), css(SK_"domainCubeLimitLower"), css(SK_"domainCubeLimitUpper")]))
 
         call spec%disp%show("### domainAxisName")
         call spec%disp%show(getStrWrapped(spec%domainAxisName%desc, width = 99999_IK))
 
-        call spec%disp%show("### domainBallCenter")
-        call spec%disp%show(getStrWrapped(spec%domainBallCenter%desc, width = 99999_IK))
+        call spec%disp%show("### domainBallAvg")
+        call spec%disp%show(getStrWrapped(spec%domainBallAvg%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"domain"), css(SK_"domainBallAvg"), css(SK_"domainBallCor"), css(SK_"domainBallCor"), css(SK_"domainBallCov"), css(SK_"domainBallStd")]))
 
-        call spec%disp%show("### domainBallCorMat")
-        call spec%disp%show(getStrWrapped(spec%domainBallCorMat%desc, width = 99999_IK))
+        call spec%disp%show("### domainBallCor")
+        call spec%disp%show(getStrWrapped(spec%domainBallCor%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"domain"), css(SK_"domainBallAvg"), css(SK_"domainBallCor"), css(SK_"domainBallCor"), css(SK_"domainBallCov"), css(SK_"domainBallStd")]))
 
-        call spec%disp%show("### domainBallCovMat")
-        call spec%disp%show(getStrWrapped(spec%domainBallCovMat%desc, width = 99999_IK))
+        call spec%disp%show("### domainBallCov")
+        call spec%disp%show(getStrWrapped(spec%domainBallCov%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"domain"), css(SK_"domainBallAvg"), css(SK_"domainBallCor"), css(SK_"domainBallCor"), css(SK_"domainBallCov"), css(SK_"domainBallStd")]))
 
-        call spec%disp%show("### domainBallStdVec")
-        call spec%disp%show(getStrWrapped(spec%domainBallStdVec%desc, width = 99999_IK))
+        call spec%disp%show("### domainBallStd")
+        call spec%disp%show(getStrWrapped(spec%domainBallStd%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"domain"), css(SK_"domainBallAvg"), css(SK_"domainBallCor"), css(SK_"domainBallCor"), css(SK_"domainBallCov"), css(SK_"domainBallStd")]))
 
         call spec%disp%show("### domainCubeLimitLower")
         call spec%disp%show(getStrWrapped(spec%domainCubeLimitLower%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"domain"), css(SK_"domainCubeLimitLower"), css(SK_"domainCubeLimitUpper")]))
 
         call spec%disp%show("### domainCubeLimitUpper")
         call spec%disp%show(getStrWrapped(spec%domainCubeLimitUpper%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"domain"), css(SK_"domainCubeLimitLower"), css(SK_"domainCubeLimitUpper")]))
 
         call spec%disp%show("### domainErrCount")
         call spec%disp%show(getStrWrapped(spec%domainErrCount%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"domainErrCount"), css(SK_"domainErrCountMax")]))
 
         call spec%disp%show("### domainErrCountMax")
         call spec%disp%show(getStrWrapped(spec%domainErrCountMax%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"domainErrCount"), css(SK_"domainErrCountMax")]))
 
         call spec%disp%show("### inputFileHasPriority")
         call spec%disp%show(getStrWrapped(spec%inputFileHasPriority%desc, width = 99999_IK))
 
         call spec%disp%show("### outputChainFileFormat")
         call spec%disp%show(getStrWrapped(spec%outputChainFileFormat%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"outputChainFileFormat"), css(SK_"outputRestartFileFormat")]))
 
         call spec%disp%show("### outputColumnWidth")
         call spec%disp%show(getStrWrapped(spec%outputColumnWidth%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"outputColumnWidth"), css(SK_"outputPrecision"), css(SK_"outputSeparator")]))
 
         call spec%disp%show("### outputFileName")
         call spec%disp%show(getStrWrapped(spec%outputFileName%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"outputFileName"), css(SK_"outputStatus")]))
 
         call spec%disp%show("### outputPrecision")
         call spec%disp%show(getStrWrapped(spec%outputPrecision%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"outputColumnWidth"), css(SK_"outputPrecision"), css(SK_"outputSeparator")]))
 
         call spec%disp%show("### outputReportPeriod")
         call spec%disp%show(getStrWrapped(spec%outputReportPeriod%desc, width = 99999_IK))
 
         call spec%disp%show("### outputRestartFileFormat")
         call spec%disp%show(getStrWrapped(spec%outputRestartFileFormat%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"outputChainFileFormat"), css(SK_"outputRestartFileFormat")]))
 
         call spec%disp%show("### outputSampleSize")
         call spec%disp%show(getStrWrapped(spec%outputSampleSize%desc, width = 99999_IK))
 
         call spec%disp%show("### outputSeparator")
         call spec%disp%show(getStrWrapped(spec%outputSeparator%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"outputColumnWidth"), css(SK_"outputPrecision"), css(SK_"outputSeparator")]))
 
         call spec%disp%show("### outputSplashMode")
         call spec%disp%show(getStrWrapped(spec%outputSplashMode%desc, width = 99999_IK))
 
         call spec%disp%show("### outputStatus")
         call spec%disp%show(getStrWrapped(spec%outputStatus%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"outputFileName"), css(SK_"outputStatus")]))
 
         call spec%disp%show("### parallelism")
         call spec%disp%show(getStrWrapped(spec%parallelism%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"parallelism"), css(SK_"parallelismMpiFinalizeEnabled"), css(SK_"parallelismNumThread")]))
 
         call spec%disp%show("### parallelismMpiFinalizeEnabled")
         call spec%disp%show(getStrWrapped(spec%parallelismMpiFinalizeEnabled%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"parallelism"), css(SK_"parallelismMpiFinalizeEnabled"), css(SK_"parallelismNumThread")]))
 
         call spec%disp%show("### parallelismNumThread")
         call spec%disp%show(getStrWrapped(spec%parallelismNumThread%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"parallelism"), css(SK_"parallelismMpiFinalizeEnabled"), css(SK_"parallelismNumThread")]))
 
         call spec%disp%show("### randomSeed")
         call spec%disp%show(getStrWrapped(spec%randomSeed%desc, width = 99999_IK))
@@ -122,39 +142,50 @@ contains
 
         call spec%disp%show("### outputChainSize")
         call spec%disp%show(getStrWrapped(spec%outputChainSize%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"outputSampleSize"), css(SK_"outputSampleRefinementCount"), css(SK_"outputSampleRefinementMethod")]))
 
         call spec%disp%show("### outputSampleRefinementCount")
         call spec%disp%show(getStrWrapped(spec%outputSampleRefinementCount%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"outputSampleSize"), css(SK_"outputSampleRefinementCount"), css(SK_"outputSampleRefinementMethod")]))
 
         call spec%disp%show("### outputSampleRefinementMethod")
         call spec%disp%show(getStrWrapped(spec%outputSampleRefinementMethod%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"outputSampleSize"), css(SK_"outputSampleRefinementCount"), css(SK_"outputSampleRefinementMethod")]))
 
         call spec%disp%show("### proposal")
         call spec%disp%show(getStrWrapped(spec%proposal%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"proposal"), css(SK_"proposalCor"), css(SK_"proposalCov"), css(SK_"proposalStd")]))
 
-        call spec%disp%show("### proposalCorMat")
-        call spec%disp%show(getStrWrapped(spec%proposalCorMat%desc, width = 99999_IK))
+        call spec%disp%show("### proposalCor")
+        call spec%disp%show(getStrWrapped(spec%proposalCor%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"proposal"), css(SK_"proposalCor"), css(SK_"proposalCov"), css(SK_"proposalStd")]))
 
-        call spec%disp%show("### proposalCovMat")
-        call spec%disp%show(getStrWrapped(spec%proposalCovMat%desc, width = 99999_IK))
+        call spec%disp%show("### proposalCov")
+        call spec%disp%show(getStrWrapped(spec%proposalCov%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"proposal"), css(SK_"proposalCor"), css(SK_"proposalCov"), css(SK_"proposalStd")]))
 
-        call spec%disp%show("### proposalScaleFactor")
-        call spec%disp%show(getStrWrapped(spec%proposalScaleFactor%desc, width = 99999_IK))
+        call spec%disp%show("### proposalScale")
+        call spec%disp%show(getStrWrapped(spec%proposalScale%desc, width = 99999_IK))
 
         call spec%disp%show("### proposalStart")
         call spec%disp%show(getStrWrapped(spec%proposalStart%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"proposalStart"), css(SK_"proposalStartDomainCubeLimitLower"), css(SK_"proposalStartDomainCubeLimitUpper"), css(SK_"proposalStartRandomized")]))
 
         call spec%disp%show("### proposalStartDomainCubeLimitLower")
         call spec%disp%show(getStrWrapped(spec%proposalStartDomainCubeLimitLower%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"proposalStart"), css(SK_"proposalStartDomainCubeLimitLower"), css(SK_"proposalStartDomainCubeLimitUpper"), css(SK_"proposalStartRandomized")]))
 
         call spec%disp%show("### proposalStartDomainCubeLimitUpper")
         call spec%disp%show(getStrWrapped(spec%proposalStartDomainCubeLimitUpper%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"proposalStart"), css(SK_"proposalStartDomainCubeLimitLower"), css(SK_"proposalStartDomainCubeLimitUpper"), css(SK_"proposalStartRandomized")]))
 
         call spec%disp%show("### proposalStartRandomized")
         call spec%disp%show(getStrWrapped(spec%proposalStartRandomized%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"proposalStart"), css(SK_"proposalStartDomainCubeLimitLower"), css(SK_"proposalStartDomainCubeLimitUpper"), css(SK_"proposalStartRandomized")]))
 
-        call spec%disp%show("### proposalStdVec")
-        call spec%disp%show(getStrWrapped(spec%proposalStdVec%desc, width = 99999_IK))
+        call spec%disp%show("### proposalStd")
+        call spec%disp%show(getStrWrapped(spec%proposalStd%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"proposal"), css(SK_"proposalCor"), css(SK_"proposalCov"), css(SK_"proposalStd")]))
 
     end subroutine
 
@@ -169,32 +200,38 @@ contains
 
         call spec%disp%show("### proposalAdaptationCount")
         call spec%disp%show(getStrWrapped(spec%proposalAdaptationCount%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"proposalAdaptationCount"), css(SK_"proposalAdaptationCountGreedy"), css(SK_"proposalAdaptationPeriod")]))
 
         call spec%disp%show("### proposalAdaptationCountGreedy")
         call spec%disp%show(getStrWrapped(spec%proposalAdaptationCountGreedy%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"proposalAdaptationCount"), css(SK_"proposalAdaptationCountGreedy"), css(SK_"proposalAdaptationPeriod")]))
 
         call spec%disp%show("### proposalAdaptationPeriod")
         call spec%disp%show(getStrWrapped(spec%proposalAdaptationPeriod%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"proposalAdaptationCount"), css(SK_"proposalAdaptationCountGreedy"), css(SK_"proposalAdaptationPeriod")]))
 
         call spec%disp%show("### proposalDelayedRejectionCount")
         call spec%disp%show(getStrWrapped(spec%proposalDelayedRejectionCount%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"proposalDelayedRejectionCount"), css(SK_"proposalDelayedRejectionScale")]))
 
-        call spec%disp%show("### proposalDelayedRejectionScaleFactor")
-        call spec%disp%show(getStrWrapped(spec%proposalDelayedRejectionScaleFactor%desc, width = 99999_IK))
+        call spec%disp%show("### proposalDelayedRejectionScale")
+        call spec%disp%show(getStrWrapped(spec%proposalDelayedRejectionScale%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"proposalDelayedRejectionCount"), css(SK_"proposalDelayedRejectionScale")]))
 
     end subroutine
 
-    function also(attr)
+    function related(attr) result(str)
         use pm_kind, only: SK
-        use pm_container, only: css_type
-        type(css_type), intent(in), contiguous :: attr(:)
+        use pm_strASCII, only: getStrLower
+        type(css), intent(in), contiguous :: attr(:)
         character(:, SK), allocatable :: str
         integer(IK) :: iell
-        str = SK_"See also the input simulation specification ["//attr(iell)%val//SK_"](#"//attr(iell)%val//SK_")"
+        iell = 1
+        str = SK_"Related specifications: ["//attr(iell)%val//SK_"](#"//getStrLower(attr(iell)%val)//SK_")"
         do iell = 2, size(attr)
-            str = str//SK_", ["//attr(iell)%val//SK_"](#"//attr(iell)%val//SK_")"
+            str = str//SK_", ["//attr(iell)%val//SK_"](#"//getStrLower(attr(iell)%val)//SK_")"
         end do
-        str = str//SK_"<br>"
+        str = str//SK_".<br>"
     end function
 
 end program example

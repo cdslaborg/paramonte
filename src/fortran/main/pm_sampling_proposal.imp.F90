@@ -70,14 +70,14 @@ end if;
 #endif
         integer(IK)         , private       :: ndimp1
         integer(IK)         , private       :: ndim
-        type :: scaleFactorSq_type
+        type :: scaleSq_type
             real(RKC) :: default
             real(RKC) :: running
         end type
         type :: proposal_type
             ! the following are made components for the sake of thread-safe save attribute and the restart file generation.
             character(:,SKC), allocatable   :: format
-            type(scaleFactorSq_type)        :: scaleFactorSq
+            type(scaleSq_type)              :: scaleSq
             logical(LK)                     :: delRejEnabled
             integer(IK)                     :: sampleSizeOld
             real(RKC)                       :: logSqrtDetOld
@@ -212,7 +212,7 @@ contains
             do istage = 0, spec%proposalDelayedRejectionCount%val
                 call setMatInv(proposal%invCov(:, 1 : ndim, istage), proposal%covLowChoUpp(:, 2 : ndimp1, istage), choUpp)
                 !proposal%logSqrtDetInvCov(istage) = .5_RKC * getMatMulTraceLog(proposal%covLowChoUpp(:, 2 : ndimp1, istage))
-                proposal%logSqrtDetInvCov(istage) = proposal%logSqrtDetInvCov(istage) - ndim * log(spec%proposalDelayedRejectionScaleFactor%val(istage))
+                proposal%logSqrtDetInvCov(istage) = proposal%logSqrtDetInvCov(istage) - ndim * log(spec%proposalDelayedRejectionScale%val(istage))
             end do
         end subroutine setProposalInvCov
 
@@ -256,26 +256,26 @@ contains
             proposal%format = SKC_"("//spec%ndim%str//SKC_"(g0,:,', '),"//new_line(SKC_"a")//SKC_")"
             proposal%meanOld = spec%proposalStart%val
             proposal%sampleSizeOld = 1_IK ! This initialization is crucial important for proposal adaptation.
-            proposal%scaleFactorSq%running = 1._RKC
-            proposal%scaleFactorSq%default = spec%proposalScaleFactor%val**2
+            proposal%scaleSq%running = 1._RKC
+            proposal%scaleSq%default = spec%proposalScale%val**2
             proposal%delRejEnabled = 0_IK < spec%proposalDelayedRejectionCount%val
-            !proposal%delayedRejection%scaleFactor%val = real(spec%proposalDelayedRejectionScaleFactor%val, RKC)
-            !proposal%delayedRejection%scaleFactor%log = log(proposal%delayedRejection%scaleFactor%val)
+            !proposal%delayedRejection%scale%val = real(spec%proposalDelayedRejectionScale%val, RKC)
+            !proposal%delayedRejection%scale%log = log(proposal%delayedRejection%scale%val)
             !proposal%domainCubeLimitLower = real(spec%domainCubeLimitLower%val, RKC)
             !proposal%domainCubeLimitUpper = real(spec%domainCubeLimitUpper%val, RKC)
-            !if (spec%domain%isFinite) proposal%domainBallCovMatInv = real(spec%domainBallCovMat%inv, RKC)
-            !proposal%domainBallCenter = real(spec%domainBallCenter%val, RKC)
+            !if (spec%domain%isFinite) proposal%domainBallCovInv = real(spec%domainBallCov%inv, RKC)
+            !proposal%domainBallAvg = real(spec%domainBallAvg%val, RKC)
             ! setup covariance matrix
             SET_ParaDISE(call setRebound(proposal%logSqrtDetInvCov, 0_IK, spec%proposalDelayedRejectionCount%val))
             SET_ParaDISE(call setRebound(proposal%invCov, [1_IK, 1_IK, 0_IK], [ndim, ndimp1, spec%proposalDelayedRejectionCount%val]))
             call setRebound(proposal%covLowChoUpp, [1_IK, 1_IK, 0_IK], [ndim, ndimp1, spec%proposalDelayedRejectionCount%val])
             SET_CAF(if (allocated(comv_covLowChoUpp)) deallocate(comv_covLowChoUpp))
             SET_CAF(allocate(comv_covLowChoUpp(ndim, 1 : ndimp1)[*]))
-            proposal%covLowChoUpp(1 : ndim, 1 : ndim, 0) = spec%proposalCovMat%val * proposal%scaleFactorSq%default ! Scale the initial covariance matrix
+            proposal%covLowChoUpp(1 : ndim, 1 : ndim, 0) = spec%proposalCov%val * proposal%scaleSq%default ! Scale the initial covariance matrix
             call setMatChol(proposal%covLowChoUpp(:, 1 : ndim, 0), lowDia, info, proposal%covLowChoUpp(:, 2 : ndimp1, 0), transHerm) ! The `:` instead of `1 : ndim` avoids temporary array creation.
             err%occurred = info /= 0_IK
             if (err%occurred) then
-                err%msg = "Internal erorr: Cholesky factorization of proposalCovMat failed at diagonal #"//getStr(info)//SKC_": "//getStr(transpose(proposal%covLowChoUpp(:, 1 : ndim, 0)), proposal%format)
+                err%msg = "Internal erorr: Cholesky factorization of proposalCov failed at diagonal #"//getStr(info)//SKC_": "//getStr(transpose(proposal%covLowChoUpp(:, 1 : ndim, 0)), proposal%format)
                 return
             end if
             proposal%logSqrtDetOld = .5_RKC * getMatMulTraceLog(proposal%covLowChoUpp(:, 2 : ndimp1, 0))
@@ -286,18 +286,24 @@ contains
             ! read/write the first entry of the restart file
             if (spec%image%is%leader) then
                 block
+                    integer(IK) :: idim
                     real(RKC) :: meanAccRateSinceStart
                     if (spec%run%is%new) then
-                        !if (.not. spec%outputRestartFileFormat%isBinary) then
-                        !    write(spec%restartFile%unit) "ndim"
-                        !    write(spec%restartFile%unit)  ndim
-                        !end if
+                        if (.not. spec%outputRestartFileFormat%isBinary) then
+                            write(spec%restartFile%unit, spec%restartFile%format) "ndim"
+                            write(spec%restartFile%unit, spec%restartFile%format)  ndim
+                            write(spec%restartFile%unit, spec%restartFile%format)  "domainAxisName"
+                            do idim = 1, ndim
+                                write(spec%restartFile%unit, spec%restartFile%format) trim(adjustl(spec%domainAxisName%val(idim)))
+                            end do
+                        end if
                         call writeRestart(spec, proposal, meanAccRateSinceStart = 1._RKC)
                     else
-                        !if (.not. spec%outputRestartFileFormat%isBinary) then
-                        !    read(spec%restartFile%unit)
-                        !    read(spec%restartFile%unit)
-                        !end if
+                        if (.not. spec%outputRestartFileFormat%isBinary) then
+                            do idim = 1, ndim + 3
+                                read(spec%restartFile%unit)
+                            end do
+                        end if
                         call readRestart(spec, meanAccRateSinceStart)
                     end if
                 end block
@@ -321,7 +327,7 @@ contains
                 ! The `do concurrent` version is problematic for OpenMP builds of the ParaMonte library with the Intel ifort 2021.8 on heap, yielding segmentation fault.
                 !do concurrent(idim = 1 : ndim)
                 do idim = 1, ndim
-                    proposal%covLowChoUpp(1 : idim, idim + 1, istage) = proposal%covLowChoUpp(1 : idim, idim + 1, istage - 1) * spec%proposalDelayedRejectionScaleFactor%val(istage)
+                    proposal%covLowChoUpp(1 : idim, idim + 1, istage) = proposal%covLowChoUpp(1 : idim, idim + 1, istage - 1) * spec%proposalDelayedRejectionScale%val(istage)
                 end do
             end do
             ! There is no need to check for positive-definiteness of the covLowChoUpp, it is already checked on the first image.
@@ -355,8 +361,8 @@ contains
                                                                     , meanAccRateSinceStart & ! LCOV_EXCL_LINE
                                                                     , "numFuncCall" & ! LCOV_EXCL_LINE
                                                                     , proposal%sampleSizeOld & ! LCOV_EXCL_LINE
-                                                                    , "proposalAdaptiveScaleFactorSquared" & ! LCOV_EXCL_LINE
-                                                                    , proposal%scaleFactorSq%running * proposal%scaleFactorSq%default & ! LCOV_EXCL_LINE
+                                                                    , "proposalAdaptiveScaleSq" & ! LCOV_EXCL_LINE
+                                                                    , proposal%scaleSq%running * proposal%scaleSq%default & ! LCOV_EXCL_LINE
                                                                     , "proposalLogVolume" & ! LCOV_EXCL_LINE
                                                                     , proposal%logSqrtDetOld & ! LCOV_EXCL_LINE
                                                                     , "proposalMean" & ! LCOV_EXCL_LINE
@@ -408,7 +414,7 @@ contains
                     if (spec%domain%isCube) then
                         if (all(spec%domainCubeLimitLower%val <= stateNew .and. stateNew <= spec%domainCubeLimitUpper%val)) return
                     elseif (spec%domain%isBall) then
-                        if (isMemberEll(spec%domainBallCovMat%inv, spec%domainBallCenter%val, stateNew)) return
+                        if (isMemberEll(spec%domainBallCov%inv, spec%domainBallAvg%val, stateNew)) return
                     end if
                 else
                     return
@@ -490,14 +496,14 @@ contains
                     ! The `do concurrent` version is problematic for OpenMP builds of the ParaMonte library with the Intel ifort 2021.8 on heap, yielding segmentation fault.
                     !do concurrent(jdim = 1 : ndim)
                     do jdim = 1, ndim
-                        proposal%covLowChoUpp(jdim : ndim, jdim, 0) = sampleStateCovLowCurrent(jdim : ndim, jdim) * proposal%scaleFactorSq%default
+                        proposal%covLowChoUpp(jdim : ndim, jdim, 0) = sampleStateCovLowCurrent(jdim : ndim, jdim) * proposal%scaleSq%default
                     end do
                 else blockMergeCovMat
                     ! First scale the new covariance matrix by the default scale factor, which will be then used to get the Cholesky Factor.
                     ! The `do concurrent` version is problematic for OpenMP builds of the ParaMonte library with the Intel ifort 2021.8 on heap, yielding segmentation fault.
                     !do concurrent(jdim = 1 : ndim)
                     do jdim = 1, ndim
-                        sampleStateCovLowCurrent(jdim : ndim, jdim) = sampleStateCovLowCurrent(jdim : ndim, jdim) * proposal%scaleFactorSq%default
+                        sampleStateCovLowCurrent(jdim : ndim, jdim) = sampleStateCovLowCurrent(jdim : ndim, jdim) * proposal%scaleSq%default
                     end do
                     ! Now combine it with the old covariance matrix.
                     ! Do not set the full boundaries' range `(1 : ndim)` for `proposal%covLowChoUpp` in the following subroutine call.
@@ -529,11 +535,11 @@ contains
                 !! perform global adaptive scaling is requested
                 !if (spec%targetAcceptanceRate%enabled) then
                 !    if (meanAccRateSinceStart < spec%targetAcceptanceRate%aim) then
-                !        proposal%scaleFactorSq%running = mc_maxScaleFactorSq**((spec%targetAcceptanceRate%aim-meanAccRateSinceStart)/spec%targetAcceptanceRate%aim)
+                !        proposal%scaleSq%running = mc_maxScaleFactorSq**((spec%targetAcceptanceRate%aim-meanAccRateSinceStart)/spec%targetAcceptanceRate%aim)
                 !    else
-                !        proposal%scaleFactorSq%running = mc_maxScaleFactorSq**((spec%targetAcceptanceRate%aim-meanAccRateSinceStart)/(1._RKC-spec%targetAcceptanceRate%aim))
+                !        proposal%scaleSq%running = mc_maxScaleFactorSq**((spec%targetAcceptanceRate%aim-meanAccRateSinceStart)/(1._RKC-spec%targetAcceptanceRate%aim))
                 !    end if
-                !    proposal%scaleFactorSq%running = proposal%scaleFactorSq%running * (meanAccRateSinceStart/spec%targetAcceptanceRate%aim)**spec%ndim%inv
+                !    proposal%scaleSq%running = proposal%scaleSq%running * (meanAccRateSinceStart/spec%targetAcceptanceRate%aim)**spec%ndim%inv
                 !end if
                 if (spec%targetAcceptanceRate%enabled) scalingNeeded = .true._LK
             else blockSufficientSampleSizeCheck
@@ -558,23 +564,23 @@ contains
             !scalingNeeded = .true._LK
             if (scalingNeeded) then
                 if (meanAccRateSinceStart < spec%targetAcceptanceRate%val(1) .or. spec%targetAcceptanceRate%val(2) < meanAccRateSinceStart) then
-                    proposal%scaleFactorSq%running = (meanAccRateSinceStart / spec%targetAcceptanceRate%aim)**spec%ndim%inv
+                    proposal%scaleSq%running = (meanAccRateSinceStart / spec%targetAcceptanceRate%aim)**spec%ndim%inv
                     !block
                     !    use pm_distUnif, only: getUnifRand
                     !    integer, save :: counter = 0_IK
                     !    counter = counter - 1
-                    !    proposal%scaleFactorSq%running = proposal%scaleFactorSq%running * exp(-counter*getUnifRand(-1._RKC, 1._RKC)/1.e4_RK)
+                    !    proposal%scaleSq%running = proposal%scaleSq%running * exp(-counter*getUnifRand(-1._RKC, 1._RKC)/1.e4_RK)
                     !    !use pm_statistics, only: getUnifRand
-                    !    !proposal%scaleFactorSq%running = proposal%scaleFactorSq%running * exp(real(getUnifRand(-1_IK, 1_IK), RK))
-                    !    !write(*,*) counter, proposal%scaleFactorSq%running
+                    !    !proposal%scaleSq%running = proposal%scaleSq%running * exp(real(getUnifRand(-1_IK, 1_IK), RK))
+                    !    !write(*,*) counter, proposal%scaleSq%running
                     !end block
-                    adaptiveScaleFactor = sqrt(proposal%scaleFactorSq%running)
-                    proposal%covLowChoUpp(1 : ndim, 1, 0) = proposal%covLowChoUpp(1 : ndim, 1, 0) * proposal%scaleFactorSq%running ! Update first column of covariance matrix.
+                    adaptiveScaleFactor = sqrt(proposal%scaleSq%running)
+                    proposal%covLowChoUpp(1 : ndim, 1, 0) = proposal%covLowChoUpp(1 : ndim, 1, 0) * proposal%scaleSq%running ! Update first column of covariance matrix.
                     ! The `do concurrent` version is problematic for OpenMP builds of the ParaMonte library with the Intel ifort 2021.8 on heap, yielding segmentation fault.
                     !do concurrent(jdim = 2 : ndim)
                     do jdim = 2, ndim
                         proposal%covLowChoUpp(1 : jdim - 1, jdim, 0) = proposal%covLowChoUpp(1 : jdim, jdim + 1, 0) * adaptiveScaleFactor ! Update the Cholesky factor.
-                        proposal%covLowChoUpp(jdim : ndim, jdim, 0) = proposal%covLowChoUpp(jdim : ndim, jdim, 0) * proposal%scaleFactorSq%running ! Update covariance matrix.
+                        proposal%covLowChoUpp(jdim : ndim, jdim, 0) = proposal%covLowChoUpp(jdim : ndim, jdim, 0) * proposal%scaleSq%running ! Update covariance matrix.
                     end do
                     proposal%covLowChoUpp(1 : ndim, ndimp1, 0) = proposal%covLowChoUpp(1 : ndim, ndimp1, 0) * adaptiveScaleFactor ! Update last column of Cholesky factor.
                 end if

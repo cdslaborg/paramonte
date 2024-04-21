@@ -110,23 +110,23 @@ call setAsserted(ASSERTION,getFine(__FILE__,LINE)//MODULE_NAME//MSG);
         character(:,SKC)    , allocatable   :: desc
     end type
 
-   !real(RKC)               , allocatable   :: proposalCorMat(:,:) ! namelist input
-    type                                    :: proposalCorMat_type
+   !real(RKC)               , allocatable   :: proposalCor(:,:) ! namelist input
+    type                                    :: proposalCor_type
         real(RKC)           , allocatable   :: val(:,:)
         real(RKC)           , allocatable   :: def(:,:)
         character(:,SKC)    , allocatable   :: desc
     end type
 
-   !real(RKC)               , allocatable   :: proposalCovMat(:,:) ! namelist input
-    type                                    :: proposalCovMat_type
+   !real(RKC)               , allocatable   :: proposalCov(:,:) ! namelist input
+    type                                    :: proposalCov_type
         logical(LK)                         :: isUserSet
         real(RKC)           , allocatable   :: def(:,:)
         real(RKC)           , allocatable   :: val(:,:)
         character(:,SKC)    , allocatable   :: desc
     end type
 
-   !character(127,SKC)                      :: proposalScaleFactor
-    type                                    :: proposalScaleFactor_type
+   !character(127,SKC)                      :: proposalScale
+    type                                    :: proposalScale_type
         real(RKC)                           :: val, valdef
         character(:,SKC)    , allocatable   :: str, strdef, null, desc
     end type
@@ -159,8 +159,8 @@ call setAsserted(ASSERTION,getFine(__FILE__,LINE)//MODULE_NAME//MSG);
         character(:,SKC)    , allocatable   :: desc
     end type
 
-   !real(RKC)               , allocatable   :: proposalStdVec(:) ! namelist input
-    type                                    :: proposalStdVec_type
+   !real(RKC)               , allocatable   :: proposalStd(:) ! namelist input
+    type                                    :: proposalStd_type
         real(RKC)           , allocatable   :: val(:)
         real(RKC)           , allocatable   :: def(:)
         character(:,SKC)    , allocatable   :: desc
@@ -168,17 +168,17 @@ call setAsserted(ASSERTION,getFine(__FILE__,LINE)//MODULE_NAME//MSG);
 
     type, extends(specbase_type)                        :: specmcmc_type
         type(outputChainSize_type)                      :: outputChainSize
-        type(proposal_type)                             :: proposal
-        type(ProposalScaleFactor_type)                  :: ProposalScaleFactor
-        type(proposalStart_type)                        :: proposalStart
-        type(proposalStdVec_type)                       :: proposalStdVec
-        type(proposalCorMat_type)                       :: proposalCorMat
-        type(proposalCovMat_type)                       :: proposalCovMat
         type(outputSampleRefinementCount_type)          :: outputSampleRefinementCount
         type(outputSampleRefinementMethod_type)         :: outputSampleRefinementMethod
+        type(proposal_type)                             :: proposal
+        type(proposalCor_type)                          :: proposalCor
+        type(proposalCov_type)                          :: proposalCov
+        type(proposalScale_type)                        :: proposalScale
+        type(proposalStart_type)                        :: proposalStart
         type(proposalStartRandomized_type)              :: proposalStartRandomized
         type(proposalStartDomainCubeLimitLower_type)    :: proposalStartDomainCubeLimitLower
         type(proposalStartDomainCubeLimitUpper_type)    :: proposalStartDomainCubeLimitUpper
+        type(proposalStd_type)                          :: proposalStd
     contains
         procedure, pass, private                        :: sanitize
         procedure, pass, private                        :: report
@@ -365,95 +365,95 @@ contains
             !!$omp end master
         end block proposal_block
 
-        proposalCorMat_block: block
+        proposalCor_block: block
             use pm_except, only: setNAN
-            use pm_sampling_scio, only: proposalCorMat
+            use pm_sampling_scio, only: proposalCor
             use pm_matrixInit, only: getMatInit, uppLowDia
-            spec%proposalCorMat%def = getMatInit([ndim, ndim], uppLowDia, 0._RKC, 0._RKC, 1._RKC)
-            spec%proposalCorMat%desc = &
-            SKC_"The simulation specification `proposalCorMat` is a positive-definite square matrix of type `real` of the highest precision &
+            spec%proposalCor%def = getMatInit([ndim, ndim], uppLowDia, 0._RKC, 0._RKC, 1._RKC)
+            spec%proposalCor%desc = &
+            SKC_"The simulation specification `proposalCor` is a positive-definite square matrix of type `real` of the highest precision &
                 &available within the ParaMonte library matrix of size `(ndim, ndim)`, where `ndim` is the dimension of the sampling space. &
                 &It serves as the best-guess starting correlation matrix of the proposal distribution used by the sampler. &
-                &It is used (along with the input vector `proposalStdVec`) to construct the covariance matrix of the proposal &
+                &It is used (along with the input vector `proposalStd`) to construct the covariance matrix of the proposal &
                 &distribution when the input covariance matrix is missing in the input list of variables. &
-                &If the covariance matrix is specified as input to the sampler, any input values for `proposalCorMat`, &
-                &and `proposalStdVec` will be automatically ignored. Specifying `proposalCorMat` along with `proposalStdVec` is especially &
+                &If the covariance matrix is specified as input to the sampler, any input values for `proposalCor`, &
+                &and `proposalStd` will be automatically ignored. Specifying `proposalCor` along with `proposalStd` is especially &
                 &useful when obtaining the best-guess covariance matrix is not trivial. &
-                &The default value for `proposalCorMat` is a square Identity matrix of rank `ndim`."
+                &The default value for `proposalCor` is a square Identity matrix of rank `ndim`."
             !!$omp master
-            if (allocated(proposalCorMat)) deallocate(proposalCorMat)
-            allocate(proposalCorMat(ndim, ndim))
-            call setNAN(proposalCorMat)
+            if (allocated(proposalCor)) deallocate(proposalCor)
+            allocate(proposalCor(ndim, ndim))
+            call setNAN(proposalCor)
             !!$omp end master
-        end block proposalCorMat_block
+        end block proposalCor_block
 
-        proposalCovMat_block: block
+        proposalCov_block: block
             use pm_except, only: setNAN
-            use pm_sampling_scio, only: proposalCovMat
+            use pm_sampling_scio, only: proposalCov
             use pm_matrixInit, only: getMatInit, uppLowDia
-            spec%proposalCovMat%def = getMatInit([ndim, ndim], uppLowDia, 0._RKC, 0._RKC, 1._RKC)
+            spec%proposalCov%def = getMatInit([ndim, ndim], uppLowDia, 0._RKC, 0._RKC, 1._RKC)
             ! This must be set here. It is important for the proper setting from inputFile and inputArg.
-            spec%proposalCovMat%isUserSet = .false._LK
-            spec%proposalCovMat%desc = &
-            SKC_"The simulation specification `proposalCovMat` is a square positive-definite matrix of type `real` of the highest precision &
+            spec%proposalCov%isUserSet = .false._LK
+            spec%proposalCov%desc = &
+            SKC_"The simulation specification `proposalCov` is a square positive-definite matrix of type `real` of the highest precision &
                 &available within the ParaMonte library, of shape `(ndim, ndim)`, where `ndim` is the number of dimensions of the sampling space. &
                 &It serves as the best-guess starting covariance matrix of the proposal distribution. &
                 &To bring the sampling efficiency of the sampler to within the desired requested range, the covariance matrix will &
-                &be adaptively updated throughout the simulation, according to the user-specified schedule. If `proposalCovMat` &
+                &be adaptively updated throughout the simulation, according to the user-specified schedule. If `proposalCov` &
                 &is not provided by the user or it is completely missing from the input file, its value will be automatically &
-                &computed via the input variables `proposalCorMat` and `proposalStdVec` (or via their default values, if not provided). &
+                &computed via the input variables `proposalCor` and `proposalStd` (or via their default values, if not provided). &
                 &If the simulation specification `outputStatus` is set to ""extend"" and a successful prior simulation run exists, &
-                &then `proposalCovMat` will be set to the covariance matrix of the output sample from the most recent simulation run. &
-                &In this case, the computed `proposalCovMat` will override any user-specified value. &
-                &Otherwise, the default value for `proposalCovMat` is a square Identity matrix of rank `ndim`."
+                &then `proposalCov` will be set to the covariance matrix of the output sample from the most recent simulation run. &
+                &In this case, the computed `proposalCov` will override any user-specified value. &
+                &Otherwise, the default value for `proposalCov` is a square Identity matrix of rank `ndim`."
             !!$omp master
-            if (allocated(proposalCovMat)) deallocate(proposalCovMat)
-            allocate(proposalCovMat(ndim, ndim))
-            call setNAN(proposalCovMat)
+            if (allocated(proposalCov)) deallocate(proposalCov)
+            allocate(proposalCov(ndim, ndim))
+            call setNAN(proposalCov)
             !!$omp end master
-        end block proposalCovMat_block
+        end block proposalCov_block
 
-        proposalScaleFactor_block: block
-            use pm_sampling_scio, only: proposalScaleFactor
-            spec%proposalScaleFactor%strdef = SKC_"gelman"
-            spec%proposalScaleFactor%valdef = 2.38_RKC / sqrt(real(ndim, RKC)) ! Gelman, Roberts, Gilks (1996): Efficient Metropolis Jumping Rules.
-            spec%proposalScaleFactor%null = repeat(SUB, len(proposalScaleFactor, IK))
-            spec%proposalScaleFactor%desc = &
-            SKC_"The simulation specification `proposalScaleFactor` is a scalar string of maximum length `"//getStr(len(proposalScaleFactor, IK))//SKC_"` &
+        proposalScale_block: block
+            use pm_sampling_scio, only: proposalScale
+            spec%proposalScale%strdef = SKC_"gelman"
+            spec%proposalScale%valdef = 2.38_RKC / sqrt(real(ndim, RKC)) ! Gelman, Roberts, Gilks (1996): Efficient Metropolis Jumping Rules.
+            spec%proposalScale%null = repeat(SUB, len(proposalScale, IK))
+            spec%proposalScale%desc = &
+            SKC_"The simulation specification `proposalScale` is a scalar string of maximum length `"//getStr(len(proposalScale, IK))//SKC_"` &
                 &containing a positive real-valued number whose square will be multiplied with the covariance matrix of the proposal distribution &
                 &of the MCMC sampler to shrink or enlarge it. In other words, the proposal distribution will be scaled in every direction &
-                &by the specified numeric value of `proposalScaleFactor`. It can also be given in units of the string keyword `'gelman'` &
+                &by the specified numeric value of `proposalScale`. It can also be given in units of the string keyword `'gelman'` &
                 &(which is case-INsensitive) after the paper:"//NL2//&
             SKC_"    Gelman, Roberts, and Gilks (1996), Efficient Metropolis Jumping Rules."//NL2//&
             SKC_"The paper finds that the optimal scaling factor for a Multivariate Gaussian proposal distribution for the Metropolis-Hastings &
                 &Markov Chain Monte Carlo sampling of a target Multivariate Normal Distribution of dimension `ndim` is given by:"//NL2//&
-            SKC_"    proposalScaleFactor = 2.38 / sqrt(ndim)  ,  in the limit of ndim -> Infinity."//NL2//&
+            SKC_"    proposalScale = 2.38 / sqrt(ndim)  ,  in the limit of ndim -> Infinity."//NL2//&
             SKC_"Multiples of the Gelman scale factors are also acceptable as input and can be specified like the following examples:"//NL2//&
-            SKC_"+   `proposalScaleFactor = '1'`"//NL2//&
+            SKC_"+   `proposalScale = '1'`"//NL2//&
             SKC_"    multiplies the ndim-dimensional proposal covariance matrix by 1, &
                      &essentially no change occurs to the covariance matrix."//NL2//&
-            SKC_"+   `proposalScaleFactor = ""1""`"//NL2//&
+            SKC_"+   `proposalScale = ""1""`"//NL2//&
             SKC_"    same as the previous example. The double-quotation marks act the same way as single-quotation marks."//NL2//&
-            SKC_"+   `proposalScaleFactor = '2.5'`"//NL2//&
+            SKC_"+   `proposalScale = '2.5'`"//NL2//&
             SKC_"    multiplies the ndim-dimensional proposal covariance matrix by 2.5."//NL2//&
-            SKC_"+   `proposalScaleFactor = '2.5*Gelman'`"//NL2//&
+            SKC_"+   `proposalScale = '2.5*Gelman'`"//NL2//&
             SKC_"    multiplies the `ndim`-dimensional proposal covariance matrix by 2.5 * 2.38/sqrt(ndim)."//NL2//&
-            SKC_"+   `proposalScaleFactor = ""2.5 * gelman""`"//NL2//&
+            SKC_"+   `proposalScale = ""2.5 * gelman""`"//NL2//&
             SKC_"    same as the previous example but with double-quotation marks. space characters are ignored."//NL2//&
-            SKC_"+   `proposalScaleFactor = ""2.5 * gelman*gelman*2""`"//NL2//&
+            SKC_"+   `proposalScale = ""2.5 * gelman*gelman*2""`"//NL2//&
             SKC_"    equivalent to gelmanFactor-squared multiplied by `5`."//NL2//&
             SKC_"Note, however, that the result of Gelman et al. paper applies only to multivariate normal proposal distributions, in the limit &
                 &of infinite dimensions. Therefore, care must be taken when using Gelman's scaling factor with non-Gaussian proposals and target &
-                &objective functions. Only the product symbol `*` can be parsed in the string value of `proposalScaleFactor`. &
+                &objective functions. Only the product symbol `*` can be parsed in the string value of `proposalScale`. &
                 &The presence of other mathematical symbols or multiple appearances of the product symbol will lead to a simulation crash. &
                 &Also, note that the prescription of an acceptance range specified by the input variable `targetAcceptanceRate` will lead &
-                &to dynamic modification of the initial input value of `proposalScaleFactor` throughout sampling for `proposalAdaptationCount` times. &
-                &The default string value for `proposalScaleFactor` is `""gelman""` (for all proposal distributions), &
+                &to dynamic modification of the initial input value of `proposalScale` throughout sampling for `proposalAdaptationCount` times. &
+                &The default string value for `proposalScale` is `""gelman""` (for all proposal distributions), &
                 &which is subsequently converted to `2.38 / sqrt(ndim)`."
             !!$omp master
-            proposalScaleFactor = spec%proposalScaleFactor%null
+            proposalScale = spec%proposalScale%null
             !!$omp end master
-        end block proposalScaleFactor_block
+        end block proposalScale_block
 
         proposalStart_block: block
             use pm_sampling_scio, only: proposalStart
@@ -556,25 +556,25 @@ contains
             !!$omp end master
         end block proposalStartRandomized_block
 
-        proposalStdVec_block: block
+        proposalStd_block: block
             use pm_arrayFill, only: getFilled
-            use pm_sampling_scio, only: proposalStdVec
-            spec%proposalStdVec%def = getFilled(1._RKC, ndim)
-            spec%proposalStdVec%desc = &
-            SKC_"The simulation specification `proposalStdVec` is a positive-valued vector of type `real` of the highest precision available &
+            use pm_sampling_scio, only: proposalStd
+            spec%proposalStd%def = getFilled(1._RKC, ndim)
+            spec%proposalStd%desc = &
+            SKC_"The simulation specification `proposalStd` is a positive-valued vector of type `real` of the highest precision available &
                 &within the ParaMonte library, of size `ndim`, where `ndim` is the dimension of the domain of the objective function. &
                 &It serves as the best-guess starting standard deviation for each component of the proposal distribution. &
-                &If the initial covariance matrix (`proposalCovMat`) is missing as an input specification to the sampler, &
-                &then `proposalStdVec` (along with the specified `proposalCorMat`) will be used to construct &
+                &If the initial covariance matrix (`proposalCov`) is missing as an input specification to the sampler, &
+                &then `proposalStd` (along with the specified `proposalCor`) will be used to construct &
                 &the initial covariance matrix of the proposal distribution of the MCMC sampler. &
-                &However, if `proposalCovMat` is specified for the sampler, then the input `proposalStdVec` and `proposalCorMat` will &
-                &be completely ignored, and the input value for `proposalCovMat` will be used to construct the initial covariance matrix &
-                &of the proposal distribution. The default value of `proposalStdVec` is a vector of size `ndim` of unit values (i.e., ones)."
+                &However, if `proposalCov` is specified for the sampler, then the input `proposalStd` and `proposalCor` will &
+                &be completely ignored, and the input value for `proposalCov` will be used to construct the initial covariance matrix &
+                &of the proposal distribution. The default value of `proposalStd` is a vector of size `ndim` of unit values (i.e., ones)."
             !!$omp master
-            call setResized(proposalStdVec, ndim)
-            call setNAN(proposalStdVec)
+            call setResized(proposalStd, ndim)
+            call setNAN(proposalStd)
             !!$omp end master
-        end block proposalStdVec_block
+        end block proposalStd_block
 
         !!$omp barrier
 
@@ -650,49 +650,49 @@ contains
                 spec%proposal%is%normal = spec%proposal%val == spec%proposal%normal
             end block proposal_block
 
-            proposalCorMat_block: block
-                use pm_sampling_scio, only: proposalCorMat
-                if (spec%overridable .and. allocated(sampler%proposalCorMat)) then
-                    spec%proposalCorMat%val = real(sampler%proposalCorMat, RKC)
+            proposalCor_block: block
+                use pm_sampling_scio, only: proposalCor
+                if (spec%overridable .and. allocated(sampler%proposalCor)) then
+                    spec%proposalCor%val = real(sampler%proposalCor, RKC)
                 else
-                    spec%proposalCorMat%val = proposalCorMat
+                    spec%proposalCor%val = proposalCor
                 end if
-                where (isNAN(spec%proposalCorMat%val))
-                    spec%proposalCorMat%val = spec%proposalCorMat%def
+                where (isNAN(spec%proposalCor%val))
+                    spec%proposalCor%val = spec%proposalCor%def
                 end where
-            end block proposalCorMat_block
+            end block proposalCor_block
 
-            proposalCovMat_block: block
-                use pm_sampling_scio, only: proposalCovMat
+            proposalCov_block: block
+                use pm_sampling_scio, only: proposalCov
                 integer(IK) :: idim, jdim
-                if (spec%overridable .and. allocated(sampler%proposalCovMat)) then
-                    spec%proposalCovMat%val = real(sampler%proposalCovMat, RKC)
+                if (spec%overridable .and. allocated(sampler%proposalCov)) then
+                    spec%proposalCov%val = real(sampler%proposalCov, RKC)
                 else
-                    spec%proposalCovMat%val = proposalCovMat
+                    spec%proposalCov%val = proposalCov
                 end if
                 do jdim = 1, spec%ndim%val
                     do idim = 1, spec%ndim%val
-                        if (isNAN(spec%proposalCovMat%val(idim, jdim))) then
-                            spec%proposalCovMat%val(idim, jdim) = spec%proposalCovMat%def(idim, jdim)
+                        if (isNAN(spec%proposalCov%val(idim, jdim))) then
+                            spec%proposalCov%val(idim, jdim) = spec%proposalCov%def(idim, jdim)
                         else
-                            spec%proposalCovMat%isUserSet = .true._LK
+                            spec%proposalCov%isUserSet = .true._LK
                         end if
                     end do
                 end do
-            end block proposalCovMat_block
+            end block proposalCov_block
 
-            proposalScaleFactor_block: block
-                use pm_sampling_scio, only: proposalScaleFactor
-                if (spec%overridable .and. allocated(sampler%proposalScaleFactor)) then
-                    spec%proposalScaleFactor%str = trim(adjustl(sampler%proposalScaleFactor))
+            proposalScale_block: block
+                use pm_sampling_scio, only: proposalScale
+                if (spec%overridable .and. allocated(sampler%proposalScale)) then
+                    spec%proposalScale%str = trim(adjustl(sampler%proposalScale))
                 else
-                    spec%proposalScaleFactor%str = trim(adjustl(proposalScaleFactor))
+                    spec%proposalScale%str = trim(adjustl(proposalScale))
                 end if
-                if (spec%proposalScaleFactor%str == spec%proposalScaleFactor%null) then
-                    spec%proposalScaleFactor%val = spec%proposalScaleFactor%valdef
-                    spec%proposalScaleFactor%str = spec%proposalScaleFactor%strdef
+                if (spec%proposalScale%str == spec%proposalScale%null) then
+                    spec%proposalScale%val = spec%proposalScale%valdef
+                    spec%proposalScale%str = spec%proposalScale%strdef
                 end if
-            end block proposalScaleFactor_block
+            end block proposalScale_block
 
             proposalStart_block: block
                 use pm_sampling_scio, only: proposalStart
@@ -736,17 +736,17 @@ contains
                 end if
             end block proposalStartRandomized_block
 
-            proposalStdVec_block: block
-                use pm_sampling_scio, only: proposalStdVec
-                if (spec%overridable .and. allocated(sampler%proposalStdVec)) then
-                    spec%proposalStdVec%val = real(sampler%proposalStdVec, RKC)
+            proposalStd_block: block
+                use pm_sampling_scio, only: proposalStd
+                if (spec%overridable .and. allocated(sampler%proposalStd)) then
+                    spec%proposalStd%val = real(sampler%proposalStd, RKC)
                 else
-                    spec%proposalStdVec%val = proposalStdVec
+                    spec%proposalStd%val = proposalStd
                 end if
-                where (isNAN(spec%proposalStdVec%val))
-                    spec%proposalStdVec%val = spec%proposalStdVec%def
+                where (isNAN(spec%proposalStd%val))
+                    spec%proposalStd%val = spec%proposalStd%def
                 end where
-            end block proposalStdVec_block
+            end block proposalStd_block
 
             ! Resolve the conflicting cases.
 
@@ -766,15 +766,15 @@ contains
                         return ! LCOV_EXCL_LINE
                     end if
                     call setMean(spec%proposalStart%val, logFuncState(:, 2 : spec%ndim%val + 1), dim = 1_IK)
-                    call setCov(spec%proposalCovMat%val, uppDia, logFuncState(:, 2 : spec%ndim%val + 1), dim = 1_IK)
-                    call setMatCopy(spec%proposalCovMat%val, rdpack, spec%proposalCovMat%val, rdpack, upp, transHerm)
+                    call setCov(spec%proposalCov%val, uppDia, logFuncState(:, 2 : spec%ndim%val + 1), dim = 1_IK)
+                    call setMatCopy(spec%proposalCov%val, rdpack, spec%proposalCov%val, rdpack, upp, transHerm)
                 end block
             else
                 block
                     use pm_sampleCov, only: getCov, uppDia
                     use pm_distUnif, only: setUnifRand
                     integer(IK) :: idim
-                    if (.not. spec%proposalCovMat%isUserSet) spec%proposalCovMat%val = getCov(spec%proposalCorMat%val, uppDia, spec%proposalStdVec%val)
+                    if (.not. spec%proposalCov%isUserSet) spec%proposalCov%val = getCov(spec%proposalCor%val, uppDia, spec%proposalStd%val)
                     do idim = 1, size(spec%proposalStart%val, 1, IK)
                         if (isNAN(spec%proposalStart%val(idim))) then
                             if (spec%proposalStartRandomized%val) then
@@ -826,17 +826,17 @@ contains
             call spec%disp%show(spec%proposal%val, format = format)
             call spec%disp%note%show(spec%proposal%desc)
 
-            call spec%disp%show("proposalCorMat")
-            call spec%disp%show(spec%proposalCorMat%val, format = format)
-            call spec%disp%note%show(spec%proposalCorMat%desc)
+            call spec%disp%show("proposalCor")
+            call spec%disp%show(spec%proposalCor%val, format = format)
+            call spec%disp%note%show(spec%proposalCor%desc)
 
-            call spec%disp%show("proposalCovMat")
-            call spec%disp%show(spec%proposalCovMat%val, format = format)
-            call spec%disp%note%show(spec%proposalCovMat%desc)
+            call spec%disp%show("proposalCov")
+            call spec%disp%show(spec%proposalCov%val, format = format)
+            call spec%disp%note%show(spec%proposalCov%desc)
 
-            call spec%disp%show("proposalScaleFactor")
-            call spec%disp%show(spec%proposalScaleFactor%str//SKC_" (gelman(ndim = "//getStr(spec%ndim%val)//SKC_") = "//getStr(spec%proposalScaleFactor%valdef)//SKC_")", format = format)
-            call spec%disp%note%show(spec%proposalScaleFactor%desc)
+            call spec%disp%show("proposalScale")
+            call spec%disp%show(spec%proposalScale%str//SKC_" (gelman(ndim = "//getStr(spec%ndim%val)//SKC_") = "//getStr(spec%proposalScale%valdef)//SKC_")", format = format)
+            call spec%disp%note%show(spec%proposalScale%desc)
 
             call spec%disp%show("proposalStart")
             call spec%disp%show(reshape(spec%proposalStart%val, [ndim, 1_IK]), format = format)
@@ -854,9 +854,9 @@ contains
             call spec%disp%show(spec%proposalStartRandomized%val, format = format)
             call spec%disp%note%show(spec%proposalStartRandomized%desc)
 
-            call spec%disp%show("proposalStdVec")
-            call spec%disp%show(reshape(spec%proposalStdVec%val, [ndim, 1_IK]), format = format)
-            call spec%disp%note%show(spec%proposalStdVec%desc)
+            call spec%disp%show("proposalStd")
+            call spec%disp%show(reshape(spec%proposalStd%val, [ndim, 1_IK]), format = format)
+            call spec%disp%note%show(spec%proposalStd%desc)
 
         end associate
 
@@ -924,65 +924,65 @@ contains
             end if
         end block proposal_block
 
-        proposalCorMat_block: block
-            if (.not. isMatClass(spec%proposalCorMat%val, posdefmat)) then
+        proposalCor_block: block
+            if (.not. isMatClass(spec%proposalCor%val, posdefmat)) then
                 err%occurred = .true._LK
-                err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. The specified `proposalCorMat` is not positive-definite: "//getStr(spec%proposalCorMat%val)//SKC_""
+                err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. The specified `proposalCor` is not positive-definite: "//getStr(spec%proposalCor%val)//SKC_""
             end if
-        end block proposalCorMat_block
+        end block proposalCor_block
 
-        proposalCovMat_block: block
-            if (.not. isMatClass(spec%proposalCovMat%val, posdefmat)) then
+        proposalCov_block: block
+            if (.not. isMatClass(spec%proposalCov%val, posdefmat)) then
                 err%occurred = .true._LK
-                err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. The specified `proposalCovMat` is not positive-definite: "//getStr(spec%proposalCovMat%val)//SKC_""
+                err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. The specified `proposalCov` is not positive-definite: "//getStr(spec%proposalCov%val)//SKC_""
             end if
-        end block proposalCovMat_block
+        end block proposalCov_block
 
-        proposalScaleFactor_block: block
+        proposalScale_block: block
             use pm_val2real, only: setReal
             use pm_arraySplit, only: setSplit
             integer(IK), allocatable :: sindex(:,:)
             character(:,SKC), allocatable :: str
             real(RKC) :: conversion
             integer(IK) :: ipart
-            ! First convert the proposalScaleFactor string to real value:
-            str = getRemoved(spec%proposalScaleFactor%str, SKC_" ") ! remove the white spaces.
+            ! First convert the proposalScale string to real value:
+            str = getRemoved(spec%proposalScale%str, SKC_" ") ! remove the white spaces.
             if (len_trim(adjustl(str)) == 0_IK) then
                 err%occurred = .true._LK
                 err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                            &The input string value ("//spec%proposalScaleFactor%str//SKC_") for the variable `proposalScaleFactor` is empty. &
+                            &The input string value ("//spec%proposalScale%str//SKC_") for the variable `proposalScale` is empty. &
                             &Ensure the specified string follows the syntax rules of the sampler for this variable. Otherwise drop &
                             &it from the input list. The sampler will automatically assign an appropriate value to it."
             end if
             ! Now split the string by "*" to real coefficient and character (gelman) parts for further evaluations.
             call setSplit(sindex, str, sep = SKC_"*")
-            spec%proposalScaleFactor%val = 1._RKC
+            spec%proposalScale%val = 1._RKC
             do ipart = 1, size(sindex, 2, IK)
                 if (getStrLower(str(sindex(1, ipart) : sindex(2, ipart))) == SKC_"gelman") then
-                    spec%proposalScaleFactor%val = spec%proposalScaleFactor%val * spec%proposalScaleFactor%valdef
+                    spec%proposalScale%val = spec%proposalScale%val * spec%proposalScale%valdef
                 else
                     call setReal(conversion, str(sindex(1, ipart) : sindex(2, ipart)), iostat = err%stat)
                     if (err%stat /= 0_IK) then
                         err%occurred = .true._LK
                         err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred while reading real number. &
-                        &The input string value for the variable `proposalScaleFactor` ("//spec%proposalScaleFactor%str//SKC_") does not appear to follow &
+                        &The input string value for the variable `proposalScale` ("//spec%proposalScale%str//SKC_") does not appear to follow &
                         &the standard syntax rules of the sampler for this variable. The slice `"//str(sindex(1, ipart) : sindex(1, ipart))//& ! LCOV_EXCL_LINE
                         SKC_"` cannot be parsed into any meaningful token. Please correct the input value, or drop it from the input list &
                         &in which case, the sampler will automatically assign an appropriate value to it."
                     else
-                        spec%proposalScaleFactor%val = spec%proposalScaleFactor%val * conversion
+                        spec%proposalScale%val = spec%proposalScale%val * conversion
                     end if
                 end if
             end do
             ! Now check if the real value is positive
-            if (spec%proposalScaleFactor%val <= 0_IK) then
+            if (spec%proposalScale%val <= 0_IK) then
                 err%occurred = .true._LK
                 err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                &The input string value ("""//spec%proposalScaleFactor%str//""") translates to a non-positive real value: "//getStr(spec%proposalScaleFactor%val)//SKC_". &
+                &The input string value ("""//spec%proposalScale%str//""") translates to a non-positive real value: "//getStr(spec%proposalScale%val)//SKC_". &
                 &Make sure the input string follows the syntax rules of the sampler for this variable. &
                 &Otherwise drop it from the input list. The sampler will automatically assign an appropriate value to it."
             end if
-        end block proposalScaleFactor_block
+        end block proposalScale_block
 
         proposalStart_block: block
             use pm_sampling_scio, only: proposalStart
@@ -1042,17 +1042,17 @@ contains
         proposalStartRandomized_block: block
         end block proposalStartRandomized_block
 
-        proposalStdVec_block: block
+        proposalStd_block: block
             integer(IK) :: idim
             do idim = 1, spec%ndim%val
-                if (spec%proposalStdVec%val(idim) <= 0._RKC) then
+                if (spec%proposalStd%val(idim) <= 0._RKC) then
                     err%occurred = .true._LK
                     err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                                &The input requested value ("//getStr(spec%proposalStdVec%val(idim))//SKC_") for the component "//getStr(idim)//&
-                                SKC_" of the variable proposalStdVec for the proposal distribution of the sampler must be a positive real number."
+                                &The input requested value ("//getStr(spec%proposalStd%val(idim))//SKC_") for the component "//getStr(idim)//&
+                                SKC_" of the variable proposalStd for the proposal distribution of the sampler must be a positive real number."
                 end if
             end do
-        end block proposalStdVec_block
+        end block proposalStd_block
 
         ! Resolve conflicts.
 

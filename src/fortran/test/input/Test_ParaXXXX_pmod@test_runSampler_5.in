@@ -66,16 +66,16 @@ This\n
 
     ! DRAM
 
-    proposalScaleFactor                 = "Gelman"
     proposal                            = "normal"
     proposalAdaptationCount             = 10000000
     proposalAdaptationPeriod            = 35
     proposalAdaptationCountGreedy       = 0
    !proposalDelayedRejectionCount       = 20
-   !proposalDelayedRejectionScaleFactor = 20*1.
+   !proposalDelayedRejectionScale       = 20*1.
    !burninAdaptationMeasure             = 1.
-   !proposalStdVec                      = 1*0.0001e6
-   !proposalCorMat                      = 1000,0,0,1000
-   !proposalCovMat                      = 1 !,0,0,0.1
+    proposalScale                       = "Gelman"
+   !proposalStd                         = 1*0.0001e6
+   !proposalCor                         = 1000,0,0,1000
+   !proposalCov                         = 1 !,0,0,0.1
 
 /

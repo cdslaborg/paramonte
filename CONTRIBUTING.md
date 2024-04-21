@@ -76,7 +76,7 @@ The following coding styles are enforced within all ParaMonte source files in an
         > **NOTE**  
         > It is understandable that occasionally, the `camelCase` style may be hard to follow and enforce in isolated locations in the library. 
         > In such cases, briefly explain the reason for the deviation from the syntax rules of the library where the entity is defined for the first time in the code.  
-+ Functions/subroutines/procedures in any programming language preferably begin with a verb. Example: `getCovarianceMatrix()` or, `getCorMatFromCovMat()`.  
++ Functions/subroutines/procedures in any programming language preferably begin with a verb. Example: `getCov()` or, `getCorFromCov()`.  
 +   All static functions or methods of classes preferably begin with a lowercase verb.
 +   Logical functions preferably begin with `is`. Example: `isDigit()`.  
 +   All variables begin with a lowercase character. 
@@ -86,9 +86,9 @@ The following coding styles are enforced within all ParaMonte source files in an
     > Exceptions to this rule sometimes happen in isolated scenarios. In such cases, we recommend that you provide a minimal comment next to the first appearance of the entity explaining why the deviation from the syntax rules of the library was necessary.  
 +   Function arguments must be separated with a single space on the left side of the argument. For example,  
     ```python  
-    def getCorMatFromCovMat(self, covMat):
+    def getCorFromCov(self, cov):
     ```  
 +   No space should be added immediately after opening brackets or parentheses or before closing them. For example,  
     ```python  
-    def getCorMatFromCovMat(self, covMat):
+    def getCorFromCov(self, cov):
     ```  

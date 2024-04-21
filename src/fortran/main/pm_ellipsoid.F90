@@ -1421,7 +1421,7 @@ contains
 !    !>
 !    !>
 !    !>  \remark
-!    !>  When `isBounding = .true.`, the `scaleFactor`, `scaleFactorSq`, `logVolNormed` are computed as scaled.
+!    !>  When `isBounding = .true.`, the `scale`, `scaleSq`, `logVolNormed` are computed as scaled.
 !    !>
 !    !>  \todo
 !    !>  \phigh The `isBounding = .false.` scenario still needs work. Perhaps this argument should be changed to `boundingStatus` with three
@@ -1441,7 +1441,7 @@ contains
 !        logical(LK) , intent(out)           :: failed
 !        type(ellipsoid_type)                :: ellipsoid
 !
-!        real(RKC)                           :: scaleFactorSqInverse
+!        real(RKC)                           :: scaleSqInverse
 !        real(RKC)                           :: NormedPoint(ndim,np)
 !        integer(IK)                         :: id, ip
 !
@@ -1481,18 +1481,18 @@ contains
 !
 !            ! Compute the scaleFcator of the bounding region.
 !
-!            ellipsoid%scaleFactorSq = NEGBIG_RK
+!            ellipsoid%scaleSq = NEGBIG_RK
 !            do ip = 1, np
 !                ellipsoid%mahalSq(ip) = dot_product( NormedPoint(1:ndim,ip) , matmul(ellipsoid%invCov, NormedPoint(1:ndim,ip)) )
-!                if (ellipsoid%scaleFactorSq < ellipsoid%mahalSq(ip)) ellipsoid%scaleFactorSq = ellipsoid%mahalSq(ip)
+!                if (ellipsoid%scaleSq < ellipsoid%mahalSq(ip)) ellipsoid%scaleSq = ellipsoid%mahalSq(ip)
 !            end do
 !
-!            ellipsoid%scaleFactor = sqrt(ellipsoid%scaleFactorSq)
-!            scaleFactorSqInverse = 1._RK / ellipsoid%scaleFactorSq
+!            ellipsoid%scale = sqrt(ellipsoid%scaleSq)
+!            scaleSqInverse = 1._RK / ellipsoid%scaleSq
 !
-!            ellipsoid%choDia(1:ndim) = ellipsoid%choDia * ellipsoid%scaleFactor
-!            ellipsoid%invCov(1:ndim,1:ndim) = ellipsoid%invCov * scaleFactorSqInverse
-!            do concurrent(id = 1:ndim); ellipsoid%ChoLowCovUpp(id+1:ndim,id) = ellipsoid%ChoLowCovUpp(id+1:ndim,id) * ellipsoid%scaleFactor; end do
+!            ellipsoid%choDia(1:ndim) = ellipsoid%choDia * ellipsoid%scale
+!            ellipsoid%invCov(1:ndim,1:ndim) = ellipsoid%invCov * scaleSqInverse
+!            do concurrent(id = 1:ndim); ellipsoid%ChoLowCovUpp(id+1:ndim,id) = ellipsoid%ChoLowCovUpp(id+1:ndim,id) * ellipsoid%scale; end do
 !
 !!        else
 !!
@@ -1500,8 +1500,8 @@ contains
 !!                ellipsoid%mahalSq(ip) = dot_product( NormedPoint(1:ndim,ip) , matmul(ellipsoid%invCov, NormedPoint(1:ndim,ip)) )
 !!            end do
 !!
-!!            ellipsoid%scaleFactor = 1._RK
-!!            ellipsoid%scaleFactorSq = 1._RK
+!!            ellipsoid%scale = 1._RK
+!!            ellipsoid%scaleSq = 1._RK
 !!            ellipsoid%logVolNormed = sum(log(ellipsoid%choDia(1:ndim)))
 !!
 !!        end if
