@@ -70,14 +70,11 @@
 %       All simulation specifications start with a lowercase letter, including
 %       scalar/vector/matrix int, float, string, or Boolean variables.
 %
-%       Occasionally, variable names representing a vector of values may be suffixed with "Vec",
-%       for example: startPointVec, ...
+%       Occasionally, variable names representing a vector of values may be suffixed with "Vec".
 %
-%       Occasionally, variable names representing a matrix of values may be suffixed with "Mat",
-%       for example: proposalCorMat, ...
+%       Occasionally, variable names representing a matrix of values may be suffixed with "Mat".
 %
-%       Occasionally, variable names representing a list of values may be suffixed with "List",
-%       for example: domainAxisName, ...
+%       Occasionally, variable names representing a list of values may be suffixed with "List".
 %
 %       Frequently, functions or class methods begin with a lowercase verb.
 %

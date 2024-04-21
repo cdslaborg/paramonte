@@ -54,7 +54,7 @@ pmpd.spec.outputSeparator = ",";
 pmpd.spec.chainSize = 15000;
 pmpd.spec.sampleSize = -100;
 pmpd.spec.targetAcceptanceRate = [0.01,0.3];
-pmpd.spec.proposalStdVec = [2,2];
+pmpd.spec.proposalStd = [2,2];
 
 getNegLogRosen = @(point) -log( 100.0 * (point(2)-point(1)^2)^2 + (point(1)-1.0)^2 );
 

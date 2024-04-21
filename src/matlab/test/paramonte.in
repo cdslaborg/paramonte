@@ -99,12 +99,12 @@ This\n
    !delayedRejectionCount               = 5
    !delayedRejectionScaleFactorVec      = 5*1.
    !burninAdaptationMeasure             = 1.
-   !proposalStdVec                 = 4*1.0             ! repetition pattern rules apply again here. 4 dimensions => 4-element vector of values.
-   !proposalCorMat                 =   1,0,0,0,        ! 2-dimensional correlation-matrix definition, although it is commented out and will not be read.
+   !proposalStd                         = 4*1.0             ! repetition pattern rules apply again here. 4 dimensions => 4-element vector of values.
+   !proposalCor                         =   1,0,0,0,        ! 2-dimensional correlation-matrix definition, although it is commented out and will not be read.
    !                                        0,1,0,0,
    !                                        0,0,1,0,
    !                                        0,0,0,1,
-   !proposalCovMat                 =   100,0,0,0,
+   !proposalCov                         =   100,0,0,0,
    !                                        0,100,0,0,
    !                                        0,0,100,0,
    !                                        0,0,0,100,

@@ -122,6 +122,15 @@ classdef Ellipse3 < pm.matlab.Handle
     %
     properties(Access = public)
         %
+        %   names
+        %
+        %       The vector of MATLAB strings containing the names of dimensions
+        %       of the space within which the Gramian matrices are defined.
+        %       The default is ``"Dimension i"`` where ``i`` is replaced
+        %       by the ID of the corresponding axis.
+        %
+        names = [];
+        %
         %   npnt
         %
         %       The scalar MATLAB whole number representing the number of
@@ -143,19 +152,10 @@ classdef Ellipse3 < pm.matlab.Handle
         %       The vector of MATLAB whole numbers representing the ellindex of the 2D
         %       ellipsoids to display, represented by the input ``gramian`` and ``center``.
         %       The specified ellindex will serve as the visualization values on the z-axis.
-        %       The default is ``ellindex = pm.array.logrange(start = 1, stop = nell, count = 100);``,
+        %       The default is ``ellindex = pm.array.logrange(start = 1, stop = nell, count = 150);``,
         %       where ``nell`` represents the number of ellipsoids to visualize.
         %
         ellindex = [];
-        %
-        %   names
-        %
-        %       The vector of MATLAB strings containing the names of dimensions
-        %       of the space within which the Gramian matrices are defined.
-        %       The default is ``"Dimension i"`` where ``i`` is replaced
-        %       by the ID of the corresponding axis.
-        %
-        names = [];
         %
         %   gramian
         %
@@ -178,40 +178,13 @@ classdef Ellipse3 < pm.matlab.Handle
         %
         zval = [];
         %
-        %   colormap
+        %   cval
         %
-        %       A MATLAB ``struct`` whose fields and their values will be passed
-        %       as keyword arguments to the MATLAB intrinsic ``colormap``.
-        %       The following are the default components of ``colormap``:
+        %       A scalar object of class ``pm.data.DataRef``
+        %       containing the user-specified color data in colormap.
+        %       If empty or unspecified, it will be set to ``zval`` component.
         %
-        %           enabled
-        %
-        %               A logical value. If ``true``, the
-        %               colormap will be applied to the axes.
-        %
-        %           map
-        %
-        %               A string or a vector of color triplets or any other value
-        %               that the intrinsic MATLAB ``colormap`` accepts as input.
-        %
-        %       This option is relevant only to visualizations that allow color-mapping.
-        %
-        %       Example usage:
-        %
-        %           1.  self.colormap.enabled = true;
-        %           2.  self.colormap.map = "winter";
-        %           2.  self.colormap.map = "winter";
-        %           3.  self.colormap.map = 'default';
-        %           4.  self.colormap.map = pm.vis.cmap.redblue();
-        %
-        %       \warning
-        %
-        %           Keep in mind that MATLAB keyword arguments are case-INsensitive.
-        %           Hence, ensure you do not add the same keyword as multiple different fields.
-        %           For example, ``colormap.map`` and ``colormap.Map`` are the same,
-        %           and only one of the two will be processed.
-        %
-        colormap = [];
+        cval = [];
         %
         %   lineScatter3
         %
@@ -239,15 +212,29 @@ classdef Ellipse3 < pm.matlab.Handle
         %       It is set to ``max(20, size(gramian, 3), size(center, 2), size(zval, 2))``.
         %
         nell = [];
+        %
+        %   workspace
+        %
+        %       A scalar MATLAB ``struct()`` containing the current visualization information.
+        %       This information is updated with every call to the ``make()`` method.
+        %       The contents of this component are temporary and must remain read-only.
+        %       This component is solely provided for better insight into the internal
+        %       workings of the ``make()`` method of the parent object and
+        %       the resulting visualization.
+        %
+        workspace = [];
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     methods(Access = public)
-        function self = Ellipse3(gramian, center, zval, varargin)
+        function self = Ellipse3(gramian, center, zval, cval, varargin)
 
             %%%% Define the missing optional values as empty with the right rank.
 
+            if  nargin < 3
+                cval = zeros(0, 0);
+            end
             if  nargin < 3
                 zval = zeros(0, 0);
             end
@@ -262,6 +249,7 @@ classdef Ellipse3 < pm.matlab.Handle
             %%%% Convert all data to dataframe reference temporarily.
             %%%%
 
+            self.cval = pm.data.DataRef(cval);
             self.zval = pm.data.DataRef(zval);
             self.center = pm.data.DataRef(center);
             self.gramian = pm.data.DataRef(gramian);
@@ -316,6 +304,7 @@ classdef Ellipse3 < pm.matlab.Handle
             self.ellindex = [];
             self.colormap = struct("enabled", true, "cmap", "winter");
             self.lineScatter3 = pm.vis.subplot.LineScatter3([]);
+            self.lineScatter3.surface.lineWidth = [];
             self.lineScatter3.scatter3.enabled = [];
             self.lineScatter3.surface.enabled = [];
             self.lineScatter3.plot3.enabled = [];
@@ -490,6 +479,133 @@ classdef Ellipse3 < pm.matlab.Handle
                 self.lineScatter3.scatter3.enabled = ~(self.lineScatter3.plot3.enabled || self.lineScatter3.surface.enabled);
             end
 
+            %%%%
+            %%%% Set the visualization specs.
+            %%%%
+
+            if  isempty(self.lineScatter3.surface.lineWidth)
+                self.lineScatter3.surface.lineWidth = 1.5;
+            end
+
+            %%%%
+            %%%% Set the data.
+            %%%%
+
+            self.workspace = struct();
+            self.workspace.zval = self.zval.copy();
+            self.workspace.center = self.center.copy();
+            self.workspace.gramian = self.gramian.copy();
+
+            %%%%
+            %%%% Setup the gramian values.
+            %%%%
+
+            if  numel(self.workspace.gramian) == 0
+                % The gramians of all ellipsoids are equal and identity matrix.
+                self.workspace.gramian = repmat(eye(self.ndim, self.ndim), 1, 1, self.nell);
+            elseif  numel(self.workspace.gramian) == 1
+                % The gramians of all ellipsoids are equal and a multiple of the identity matrix.
+                self.workspace.gramian = repmat(self.workspace.gramian * eye(self.ndim, self.ndim), 1, 1, self.nell);
+            elseif  size(self.workspace.gramian, 1) == self.ndim && size(self.workspace.gramian, 2) == self.ndim && size(self.workspace.gramian, 3) == 1
+                % All ellipsoids have the same user-prescribed self.workspace.gramian matrix.
+                self.workspace.gramian = repmat(self.workspace.gramian(:, :, 1), 1, 1, self.nell);
+            elseif  size(self.workspace.gramian, 1) == 1 && size(self.workspace.gramian, 2) == 1 && size(self.workspace.gramian, 3) == self.nell
+                % Each ellipse has its unique diagonal self.workspace.gramian matrix whose diagonal values are all equal and prescribed by the user.
+                temp = zeros(self.ndim, self.ndim, self.nell);
+                for iell = 1 : self.nell
+                    temp(:, :, iell) = self.workspace.gramian(1, 1, iell) * eye(self.ndim, self.ndim);
+                end
+                self.workspace.gramian = temp;
+            elseif  size(self.workspace.gramian, 1) ~= self.ndim && size(self.workspace.gramian, 2) ~= self.ndim && size(self.workspace.gramian, 3) ~= self.nell
+                help("pm.vis.subplot.Ellipse3")
+                disp("size(gramian)")
+                disp( size(self.workspace.gramian) )
+                disp("[self.ndim, self.nell]")
+                disp( [self.ndim, self.nell] )
+                error   ( newline ...
+                        + "The shapes of the specified ``gramian`` is incompatible with the" + newline ...
+                        + "inferred number of ellipsoid dimensions ``ndim`` and the number of ellipsoids ``nell``." + newline ...
+                        + "For more information, see the documentation of the ``gramian`` component displayed above." + newline ...
+                        + newline ...
+                        );
+            end
+
+            %%%%
+            %%%% Setup the center values.
+            %%%%
+
+            if  numel(self.workspace.center) == 0
+                % The centers of all ellipsoids have the same coordinates and all coordinate axes have zero values.
+                self.workspace.center = zeros(self.ndim, self.nell);
+            elseif  numel(self.workspace.center) == 1
+                % The centers of all ellipsoids have the same coordinates and all coordinate axes have equal non-zero values.
+                self.workspace.center = self.workspace.center * ones(self.ndim, self.nell);
+            elseif  size(self.workspace.center, 1) == self.ndim && size(self.workspace.center, 2) == 1
+                % The centers of all ellipsoids have the same coordinates.
+                self.workspace.center = repmat(self.workspace.center, 1, self.nell);
+            elseif  size(self.workspace.center, 1) == 1 && size(self.workspace.center, 2) == self.nell
+                % All coordinates of each ellipse self.workspace.center are the same.
+                self.workspace.center = repmat(self.workspace.center, self.ndim, 1);
+            elseif  size(self.workspace.center, 1) ~= self.ndim || size(self.workspace.center, 2) ~= self.nell
+                help("pm.vis.subplot.Ellipse3")
+                disp("size(self.workspace.center)")
+                disp( size(self.workspace.center) )
+                disp("[self.ndim, self.nell]")
+                disp( [self.ndim, self.nell] )
+                error   ( newline ...
+                        + "The shapes of the specified ``center`` is incompatible with the" + newline ...
+                        + "inferred number of ellipsoid dimensions ``ndim`` and the number of ellipsoids ``nell``." + newline ...
+                        + "For more information, see the documentation of the ``center`` component displayed above." + newline ...
+                        + newline ...
+                        );
+            end
+
+            %%%%
+            %%%% Setup the zval values.
+            %%%%
+
+            if  numel(self.workspace.zval) == 0
+                % 2D plot in 3D visualization at zero z value.
+                self.workspace.zval = repmat(1 : self.nell, self.npnt, 1);
+                if  isempty(self.lineScatter3.axes.zscale)
+                    self.lineScatter3.axes.zscale = "log";
+                end
+            elseif  numel(self.workspace.zval) == 1
+                % 2D plot in 3D visualization at a non-zero z value.
+                self.workspace.zval = self.workspace.zval * ones(self.npnt, self.nell);
+            elseif  size(self.workspace.zval, 1) == self.npnt && size(self.workspace.zval, 2) == 1
+                % The corresponding points on all ellipsoids have the same z values.
+                self.workspace.zval = repmat(self.workspace.zval, 1, self.nell);
+            elseif  size(self.workspace.zval, 1) == 1 && size(self.workspace.zval, 2) == self.nell
+                % All points on each ellipse have the same z values.
+                self.workspace.zval = repmat(self.workspace.zval, self.npnt, 1);
+            elseif  size(self.workspace.zval, 1) ~= self.npnt || size(self.workspace.zval, 2) ~= self.nell
+                help("pm.vis.subplot.Ellipse3")
+                disp("size(self.workspace.zval)")
+                disp( size(self.workspace.zval) )
+                disp("[self.ndim, self.nell]")
+                disp( [self.ndim, self.nell] )
+                error   ( newline ...
+                        + "The shapes of the specified ``zval`` is incompatible with" + newline ...
+                        + "the inferred number of ellipsoids ``nell`` in the input self.workspace." + newline ...
+                        + "For more information, see the documentation of the ``zval`` component displayed above." + newline ...
+                        + newline ...
+                        );
+            end
+
+           %%%%
+           %%%% Check the consistency of shape of ``self.ellindex``.
+           %%%%
+
+            if ~isempty(self.ellindex)
+                self.workspace.ellindex = self.ellindex;
+            else
+                if ~pm.array.len(self.lineScatter3.axes.colorScale)
+                    self.lineScatter3.axes.colorScale = "log";
+                end
+                self.workspace.ellindex = pm.array.logrange(1, self.nell, 150);
+            end
+
         end
     end
 
@@ -544,127 +660,32 @@ classdef Ellipse3 < pm.matlab.Handle
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             %%%%
-            %%%% Set the data.
+            %%%% Generate column indices.
             %%%%
 
-            data = struct();
-            data.zval = self.zval.copy();
-            data.center = self.center.copy();
-            data.gramian = self.gramian.copy();
+            fields = ["colx", "coly", "colz", "colc"];
+            for icol = 1 : length(fields)
+                field = fields(icol);
+                self.lineScatter3.(field) = length(fields) * ((1 : length(self.workspace.ellindex)) - 1) + icol;
+            end
+            %zmin = min(min(self.workspace.zval(:, self.lineScatter3.colz)));
+            %zmax = max(min(self.workspace.zval(:, self.lineScatter3.colz)));
+            %zrange = zmax - zmin;
 
             %%%%
-            %%%% Setup the gramian values.
+            %%%% Generate ellipse self.workspace.
             %%%%
 
-            if  numel(data.gramian) == 0
-                % The gramians of all ellipsoids are equal and identity matrix.
-                data.gramian = repmat(eye(self.ndim, self.ndim), 1, 1, self.nell);
-            elseif  numel(data.gramian) == 1
-                % The gramians of all ellipsoids are equal and a multiple of the identity matrix.
-                data.gramian = repmat(data.gramian * eye(self.ndim, self.ndim), 1, 1, self.nell);
-            elseif  size(data.gramian, 1) == self.ndim && size(data.gramian, 2) == self.ndim && size(data.gramian, 3) == 1
-                % All ellipsoids have the same user-prescribed data.gramian matrix.
-                data.gramian = repmat(data.gramian(:, :, 1), 1, 1, self.nell);
-            elseif  size(data.gramian, 1) == 1 && size(data.gramian, 2) == 1 && size(data.gramian, 3) == self.nell
-                % Each ellipse has its unique diagonal data.gramian matrix whose diagonal values are all equal and prescribed by the user.
-                temp = zeros(self.ndim, self.ndim, self.nell);
-                for iell = 1 : self.nell
-                    temp(:, :, iell) = data.gramian(1, 1, iell) * eye(self.ndim, self.ndim);
+            %ellindexRange = log(self.workspace.ellindex(end)) - log(self.workspace.ellindex(1));
+            bcrd = zeros(size(self.workspace.zval, 1), length(fields) * length(self.workspace.ellindex));
+            for i = 1 : length(self.workspace.ellindex)
+                iell = self.workspace.ellindex(i);
+                icol = (i - 1) * length(fields) + 1;
+                bcrd(:, icol : icol + 1) = pm.geom.ell2.getBorder(self.workspace.gramian(self.dims, self.dims, iell), self.workspace.center(self.dims, iell), size(self.workspace.zval, 1));
+                bcrd(:, icol + 2) = self.workspace.zval(:, iell);
+                if  3 < length(fields)
+                    bcrd(:, icol + 3) = bcrd(:, icol + 2); %zmin + zrange * (log(iell)^3 - self.workspace.ellindex(1)^3) / ellindexRange;
                 end
-                data.gramian = temp;
-            elseif  size(data.gramian, 1) ~= self.ndim && size(data.gramian, 2) ~= self.ndim && size(data.gramian, 3) ~= self.nell
-                help("pm.vis.subplot.Ellipse3")
-                disp("size(gramian)")
-                disp( size(data.gramian) )
-                disp("[self.ndim, self.nell]")
-                disp( [self.ndim, self.nell] )
-                error   ( newline ...
-                        + "The shapes of the specified ``gramian`` is incompatible with the" + newline ...
-                        + "inferred number of ellipsoid dimensions ``ndim`` and the number of ellipsoids ``nell``." + newline ...
-                        + "For more information, see the documentation of the ``gramian`` component displayed above." + newline ...
-                        + newline ...
-                        );
-            end
-
-            %%%%
-            %%%% Setup the center values.
-            %%%%
-
-            if  numel(data.center) == 0
-                % The centers of all ellipsoids have the same coordinates and all coordinate axes have zero values.
-                data.center = zeros(self.ndim, self.nell);
-            elseif  numel(data.center) == 1
-                % The centers of all ellipsoids have the same coordinates and all coordinate axes have equal non-zero values.
-                data.center = data.center * ones(self.ndim, self.nell);
-            elseif  size(data.center, 1) == self.ndim && size(data.center, 2) == 1
-                % The centers of all ellipsoids have the same coordinates.
-                data.center = repmat(data.center, 1, self.nell);
-            elseif  size(data.center, 1) == 1 && size(data.center, 2) == self.nell
-                % All coordinates of each ellipse data.center are the same.
-                data.center = repmat(data.center, self.ndim, 1);
-            elseif  size(data.center, 2) ~= self.ndim || size(data.center, 2) ~= self.nell
-                help("pm.vis.subplot.Ellipse3")
-                disp("size(data.center)")
-                disp( size(data.center) )
-                disp("[self.ndim, self.nell]")
-                disp( [self.ndim, self.nell] )
-                error   ( newline ...
-                        + "The shapes of the specified ``center`` is incompatible with the" + newline ...
-                        + "inferred number of ellipsoid dimensions ``ndim`` and the number of ellipsoids ``nell``." + newline ...
-                        + "For more information, see the documentation of the ``center`` component displayed above." + newline ...
-                        + newline ...
-                        );
-            end
-
-            %%%%
-            %%%% Setup the zval values.
-            %%%%
-
-            if  numel(data.zval) == 0
-                % 2D plot in 3D visualization at zero z value.
-                data.zval = repmat(1 : self.nell, self.npnt, 1);
-            elseif  numel(data.zval) == 1
-                % 2D plot in 3D visualization at a non-zero z value.
-                data.zval = data.zval * ones(self.npnt, self.nell);
-            elseif  size(data.zval, 1) == self.npnt && size(data.zval, 2) == 1
-                % The corresponding points on all ellipsoids have the same z values.
-                data.zval = repmat(data.zval, 1, self.nell);
-            elseif  size(data.zval, 1) == 1 && size(data.zval, 2) == self.nell
-                % All points on each ellipse have the same z values.
-                data.zval = repmat(data.zval, self.npnt, 1);
-            elseif  size(data.zval, 2) ~= self.npnt || size(data.zval, 2) ~= self.nell
-                help("pm.vis.subplot.Ellipse3")
-                disp("size(data.zval)")
-                disp( size(data.zval) )
-                disp("[self.ndim, self.nell]")
-                disp( [self.ndim, self.nell] )
-                error   ( newline ...
-                        + "The shapes of the specified ``zval`` is incompatible with" + newline ...
-                        + "the inferred number of ellipsoids ``nell`` in the input data." + newline ...
-                        + "For more information, see the documentation of the ``zval`` component displayed above." + newline ...
-                        + newline ...
-                        );
-            end
-
-           %%%%
-           %%%% Check the consistency of shape of ``self.ellindex``.
-           %%%%
-
-            if ~isempty(self.ellindex)
-                data.ellindex = self.ellindex;
-            else
-                data.ellindex = pm.array.logrange(1, self.nell, 100);
-            end
-
-            %%%%
-            %%%% Generate ellipse data.
-            %%%%
-
-            bcrd = zeros(size(data.zval, 1), 3);
-            for iell = 1 : size(data.zval, 2)
-                icol = (iell - 1) * 3 + 1;
-                bcrd(:, icol : icol + 1) = pm.geom.ell2.getBorder(data.gramian(:, :, iell), data.center(:, iell), size(data.zval, 1));
-                bcrd(:, icol + 2) = data.zval(:, iell);
             end
 
             %%%%
@@ -672,29 +693,26 @@ classdef Ellipse3 < pm.matlab.Handle
             %%%%
 
             self.lineScatter3.df = pm.data.DataFrame(bcrd);
-            self.lineScatter3.colx = 3 * (data.ellindex - 1) + 1;
-            self.lineScatter3.coly = 3 * (data.ellindex - 1) + 2;
-            self.lineScatter3.colz = 3 * (data.ellindex - 1) + 3;
 
             %%%%
             %%%% Set the visualization axes names.
             %%%%
 
             if ~isempty(self.names)
-                data.names = string(self.names);
-                data.names = data.names(:);
+                self.workspace.names = string(self.names);
+                self.workspace.names = self.workspace.names(:);
             else
-                data.names = strings(self.ndim, 1);
+                self.workspace.names = strings(self.ndim, 1);
                 for idim = 1 : self.ndim
-                    data.names(idim) = "Dimension " + string(idim);
+                    self.workspace.names(idim) = "Dimension " + string(idim);
                 end
             end
 
             if ~pm.array.len(self.lineScatter3.xlabel.txt)
-                self.lineScatter3.xlabel.txt = data.names(self.dims(1));
+                self.lineScatter3.xlabel.txt = self.workspace.names(self.dims(1));
             end
             if ~pm.array.len(self.lineScatter3.ylabel.txt)
-                self.lineScatter3.ylabel.txt = data.names(self.dims(2));
+                self.lineScatter3.ylabel.txt = self.workspace.names(self.dims(2));
             end
             if ~pm.array.len(self.lineScatter3.zlabel.txt)
                 self.lineScatter3.zlabel.txt = "Z";
@@ -732,6 +750,10 @@ classdef Ellipse3 < pm.matlab.Handle
             %%%%
 
             self.lineScatter3.make();
+            if true % cval is empty
+                self.lineScatter3.fout.colorbar.Ticks = self.lineScatter3.fout.axes.ZTick;
+                %self.lineScatter3.fout.colorbar.Limits = self.lineScatter3.fout.axes.ZLim;
+            end
 
         end
     end

@@ -97,14 +97,14 @@ classdef FileContentsRestartDRAM < pm.sampling.FileContentsRestart
         %
         meanAcceptanceRateSinceStart = [];
         %
-        %   proposalAdaptiveScaleFactorSquared
+        %   proposalAdaptiveScaleSq
         %
         %       The real-valued MATLAB array of rank ``1`` of
         %       shape ``(1:self.count)`` containing the set of
         %       adaptive squared scale factors of the sampler proposal
         %       distribution over the course of the simulation.
         %
-        proposalAdaptiveScaleFactorSquared = [];
+        proposalAdaptiveScaleSq = [];
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -157,67 +157,35 @@ classdef FileContentsRestartDRAM < pm.sampling.FileContentsRestart
             end
             self = self@pm.sampling.FileContentsRestart(file, silent, "ParaDRAM");
 
-            % find ndim
+            %%%%
+            %%%% Parse the restart file contents.
+            %%%%
 
-            self.ndim = 0;
-            rowOffset = 1;
-            while ~contains(self.lineList(rowOffset), "proposalMean")
-                rowOffset = rowOffset + 1;
-                if  self.lineListLen < rowOffset
-                    error   ( newline ...
-                            + "Failed to detected any field named ""proposalMean""" + newline ...
-                            + "in the specified restart file:" + newline ...
-                            + newline ...
-                            + pm.io.tab + file + newline ...
-                            + newline ...
-                            + "The file structure may have been compromized." + newline ...
-                            + newline ...
-                            );
-                end
-            end
-            rowOffset = rowOffset + 1; % the first numeric value of proposalMean.
-            while ~isnan(str2double(self.lineList{self.ndim + rowOffset}))
-                self.ndim = self.ndim + 1;
-            end
-            if  self.ndim == 0
-                error   ( newline ...
-                        + "Failed to infer the value of ``ndim``." + newline ...
-                        + "from the specified restart file:" + newline ...
-                        + newline ...
-                        + pm.io.tab + file + newline ...
-                        + newline ...
-                        + "The file structure may have been compromized." + newline ...
-                        + newline ...
-                        );
-            end
-
-            % parse the restart file contents.
-
-            self.meanAcceptanceRateSinceStart       = zeros(self.count, 1);
-            self.numFuncCall                        = zeros(self.count, 1);
-            self.proposalAdaptiveScaleFactorSquared = zeros(self.count, 1);
-            self.proposalLogVolume                  = zeros(self.count, 1);
-            self.proposalMean                       = zeros(self.ndim, self.count);
-            self.proposalCov                        = zeros(self.ndim, self.ndim, self.count);
-            self.proposalCor                        = zeros(self.ndim, self.ndim, self.count);
+            self.meanAcceptanceRateSinceStart   = zeros(self.count, 1);
+            self.numFuncCall                    = zeros(self.count, 1);
+            self.proposalAdaptiveScaleSq        = zeros(self.count, 1);
+            self.proposalLogVolume              = zeros(self.count, 1);
+            self.proposalMean                   = zeros(self.ndim, self.count);
+            self.proposalCov                    = zeros(self.ndim, self.ndim, self.count);
+            self.proposalCor                    = zeros(self.ndim, self.ndim, self.count);
             skip = 10 + self.ndim * (self.ndim + 3) / 2;
             for icount = 1 : self.count
                 if mod(icount, 10) == 0
                     self.spinner.spin(icount / self.count);
                 end
                 istart = (icount - 1) * skip + 1;
-                rowOffset = 1; self.meanAcceptanceRateSinceStart        (icount) = str2double(self.lineList(istart + rowOffset));
-                rowOffset = 3; self.numFuncCall                         (icount) = str2double(self.lineList(istart + rowOffset));
-                rowOffset = 5; self.proposalAdaptiveScaleFactorSquared  (icount) = str2double(self.lineList(istart + rowOffset));
-                rowOffset = 7; self.proposalLogVolume                   (icount) = str2double(self.lineList(istart + rowOffset));
+                rowOffset = 1; self.meanAcceptanceRateSinceStart(icount) = str2double(self.lineList(self.ilast + istart + rowOffset));
+                rowOffset = 3; self.numFuncCall                 (icount) = str2double(self.lineList(self.ilast + istart + rowOffset));
+                rowOffset = 5; self.proposalAdaptiveScaleSq     (icount) = str2double(self.lineList(self.ilast + istart + rowOffset));
+                rowOffset = 7; self.proposalLogVolume           (icount) = str2double(self.lineList(self.ilast + istart + rowOffset));
                 rowOffset = 9;
                 iend = istart + rowOffset + self.ndim;
-                self.proposalMean(1 : self.ndim, icount) = str2double(self.lineList(istart + rowOffset : iend - 1));
+                self.proposalMean(1 : self.ndim, icount) = str2double(self.lineList(self.ilast + istart + rowOffset : self.ilast + iend - 1));
                 for idim = 1 : self.ndim % covmat
                     istart = iend + 1;
-                    iend = iend + idim;
-                    self.proposalCov(1 : idim, idim, icount) = str2double(self.lineList(istart : iend));
-                    self.proposalCov(idim, 1 : idim - 1, icount) = self.proposalCov(1 : idim - 1, idim, icount);
+                    iend = istart + self.ndim - idim;
+                    self.proposalCov(idim : self.ndim, idim, icount) = str2double(self.lineList(self.ilast + istart : self.ilast + iend));
+                    self.proposalCov(idim, idim + 1 : self.ndim, icount) = self.proposalCov(idim + 1 : self.ndim, idim, icount);
                 end
                 self.proposalCor(:, :, icount) = corrcov(squeeze(self.proposalCov(:, :, icount)));
             end

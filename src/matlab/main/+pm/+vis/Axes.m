@@ -666,16 +666,17 @@ classdef Axes < pm.matlab.Handle
             if ~self.type.is.heatmap
                 self.newprop("axes", struct());
                 self.axes.box = [];
-                self.axes.xgrid = [];
-                self.axes.ygrid = [];
                 self.axes.color = [];
-                self.axes.xscale = [];
-                self.axes.yscale = [];
+                self.axes.colorScale = [];
                 self.axes.fontName = [];
                 self.axes.fontSize = [];
                 self.axes.fontSizeMode = [];
                 self.axes.fontSmoothing = [];
                 self.axes.fontWeight = [];
+                self.axes.xgrid = [];
+                self.axes.xscale = [];
+                self.axes.ygrid = [];
+                self.axes.yscale = [];
                 if  self.type.is.triaxes
                     self.axes.zgrid = [];
                     self.axes.zscale = [];
@@ -738,6 +739,7 @@ classdef Axes < pm.matlab.Handle
                     self.newprop("colorbar", struct());
                     self.colorbar.fontSize = [];
                     self.colorbar.direction = 'normal';
+                    self.colorbar.limits = [];
                     self.colorbar.location = 'eastoutside';
                     self.colorbar.ticks = [];
                     self.colorbar.tickLabels = [];

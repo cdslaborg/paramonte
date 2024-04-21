@@ -52,14 +52,14 @@ classdef SpecMCMC < pm.sampling.SpecBase
         outputSampleRefinementCount         = [];
         outputSampleRefinementMethod        = [];
         proposal                            = [];
-        proposalCorMat                      = [];
-        proposalCovMat                      = [];
-        proposalScaleFactor                 = [];
+        proposalCor                         = [];
+        proposalCov                         = [];
+        proposalScale                       = [];
         proposalStart                       = [];
         proposalStartDomainCubeLimitLower   = [];
         proposalStartDomainCubeLimitUpper   = [];
         proposalStartRandomized             = [];
-        proposalStdVec                      = [];
+        proposalStd                         = [];
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -160,14 +160,14 @@ classdef SpecMCMC < pm.sampling.SpecBase
             if  ~isempty(self.outputSampleRefinementCount       ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("outputSampleRefinementCount      ", self.outputSampleRefinementCount         , "integer", 1); end
             if  ~isempty(self.outputSampleRefinementMethod      ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("outputSampleRefinementMethod     ", self.outputSampleRefinementMethod        , "string" , 1); end
             if  ~isempty(self.proposal                          ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposal                         ", self.proposal                            , "string" , 1); end
-            if  ~isempty(self.proposalCorMat                    ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalCorMat                   ", self.proposalCorMat                      , "real"   , ndim^2); end
-            if  ~isempty(self.proposalCovMat                    ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalCovMat                   ", self.proposalCovMat                      , "real"   , ndim^2); end
-            if  ~isempty(self.proposalScaleFactor               ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalScaleFactor              ", self.proposalScaleFactor                 , "string"  , 1); end
+            if  ~isempty(self.proposalCor                       ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalCor                      ", self.proposalCor                         , "real"   , ndim^2); end
+            if  ~isempty(self.proposalCov                       ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalCov                      ", self.proposalCov                         , "real"   , ndim^2); end
+            if  ~isempty(self.proposalScale                     ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalScale                    ", self.proposalScale                       , "string"  , 1); end
             if  ~isempty(self.proposalStart                     ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalStart                    ", self.proposalStart                       , "real"   , ndim); end
             if  ~isempty(self.proposalStartDomainCubeLimitLower ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalStartDomainCubeLimitLower", self.proposalStartDomainCubeLimitLower   , "real"   , ndim); end
             if  ~isempty(self.proposalStartDomainCubeLimitUpper ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalStartDomainCubeLimitUpper", self.proposalStartDomainCubeLimitUpper   , "real"   , ndim); end
             if  ~isempty(self.proposalStartRandomized           ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalStartRandomized          ", self.proposalStartRandomized             , "logical", 1); end
-            if  ~isempty(self.proposalStdVec                    ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalStdVec                   ", self.proposalStdVec                      , "real"   , ndim); end
+            if  ~isempty(self.proposalStd                       ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalStd                      ", self.proposalStd                         , "real"   , ndim); end
         end
 
     end

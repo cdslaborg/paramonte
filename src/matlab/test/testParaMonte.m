@@ -98,9 +98,9 @@ pmpd.spec.chainSize                             = 1000;                         
     ...ParaDRAM variables...
 %pmpd.spec.scaleFactor                           = "1.2 * gelman";               % Works
 %pmpd.spec.proposalModel                         = "normal";                     % Works
-%pmpd.spec.proposalCovMat                   = [0.5, 0.2; 0.1, 0.3];         % Works
-%pmpd.spec.proposalCorMat                   = [0.4, 0.1; 0.2, 0.3];         % Works
-%pmpd.spec.proposalStdVec                   = [1, 1];                       % Works
+%pmpd.spec.proposalCor                           = [0.4, 0.1; 0.2, 0.3];         % Works
+%pmpd.spec.proposalCov                           = [0.5, 0.2; 0.1, 0.3];         % Works
+%pmpd.spec.proposalStd                           = [1, 1];                       % Works
 %pmpd.spec.adaptiveUpdateCount                   = 2;                            % Works
 %pmpd.spec.adaptiveUpdatePeriod                  = 25;                           % Works
 %pmpd.spec.greedyAdaptationCount                 = 2;                            % Works

@@ -318,11 +318,11 @@ domain
     ParaDRAM - NOTE:     domain = 'ball'
     ParaDRAM - NOTE: 
     ParaDRAM - NOTE:             This is equivalent to an ndim-dimensional hyper-ellipsoid (n-ball) whose center and covariance 
-    ParaDRAM - NOTE:             matrix can be specified by the input simulation specification `domainBallCenter` and `domainBallCovMat` 
+    ParaDRAM - NOTE:             matrix can be specified by the input simulation specification `domainBallCenter` and `domainBallCov` 
     ParaDRAM - NOTE:             respectively. Alternatively, the user can let the ParaMonte samplers construct the covariance 
-    ParaDRAM - NOTE:             matrix of ellipsoidal domain from the input values for the `domainBallCorMat` and `domainBallStdVec` 
-    ParaDRAM - NOTE:             simulation specifications. Note that a spherical domain can be defined by dropping the `domainBallCovMat` 
-    ParaDRAM - NOTE:             and `domainBallCorMat` specifications from the input and setting all elements of `domainBallStdVec` 
+    ParaDRAM - NOTE:             matrix of ellipsoidal domain from the input values for the `domainBallCor` and `domainBallStdVec` 
+    ParaDRAM - NOTE:             simulation specifications. Note that a spherical domain can be defined by dropping the `domainBallCov` 
+    ParaDRAM - NOTE:             and `domainBallCor` specifications from the input and setting all elements of `domainBallStdVec` 
     ParaDRAM - NOTE:             to the desired radius of the domain.
     ParaDRAM - NOTE: 
     ParaDRAM - NOTE: The default value is an infinite cube in case of the ParaDRAM and ParaDISE samplers, and a unit-sized cube 
@@ -350,40 +350,40 @@ domainBallCenter
     ParaDRAM - NOTE: by the ParaMonte library, of size `ndim` containing the coordinates of the center of the hyper-ellipsoidal 
     ParaDRAM - NOTE: (or spherical) ndim-dimensional domain of the objective function. When passed to the sampler from withing 
     ParaDRAM - NOTE: an external input file, every missing element of `domainBallCenter` will be set to the origin (zero). Together 
-    ParaDRAM - NOTE: with `domainBallCovMat`, or with `domainBallCorMat` and `domainBallStdVec`, it forms a hyper-ellipsoidal 
+    ParaDRAM - NOTE: with `domainBallCov`, or with `domainBallCor` and `domainBallStdVec`, it forms a hyper-ellipsoidal 
     ParaDRAM - NOTE: or hyper-spherical domain for the ParaMonte samplers. Note that an ellipsoidal/spherical domain is used 
     ParaDRAM - NOTE: if only if the input simulation specification `domain` is set to 'ellipsoid' or 'sphere' or `ball`. Otherwise, 
     ParaDRAM - NOTE: a cubical domain will be used. The default value is the origin (i.e., a zero-valued vector of size `ndim`).
 
-domainBallCorMat
+domainBallCor
 
     1.0000000000000000 0.0000000000000000
     0.0000000000000000 1.0000000000000000
 
-    ParaDRAM - NOTE: The simulation specification `domainBallCorMat` is a positive-definite matrix of type `real` of highest 
+    ParaDRAM - NOTE: The simulation specification `domainBallCor` is a positive-definite matrix of type `real` of highest 
     ParaDRAM - NOTE: precision available in the ParaMonte Library of size `(ndim, ndim)` representing the correlation matrix 
     ParaDRAM - NOTE: of the domain of the objective function, where `ndim` is the dimension of the domain. Combined with the 
     ParaDRAM - NOTE: input simulation specification `domainBallStdVec`, it defines the hyper-ellipsoidal (or spherical) domain 
-    ParaDRAM - NOTE: of the objective function. If the input simulation specification `domainBallCovMat` is provided by the 
-    ParaDRAM - NOTE: user, then any values set for `domainBallCorMat` and `domainBallStdVec` will be automatically ignored. 
-    ParaDRAM - NOTE: The input specification `domainBallCorMat` along with `proposalStdVec` are especially useful in situations 
+    ParaDRAM - NOTE: of the objective function. If the input simulation specification `domainBallCov` is provided by the 
+    ParaDRAM - NOTE: user, then any values set for `domainBallCor` and `domainBallStdVec` will be automatically ignored. 
+    ParaDRAM - NOTE: The input specification `domainBallCor` along with `proposalStd` are especially useful in situations 
     ParaDRAM - NOTE: where the covariance matrix computation is non-trivial. When passed to the sampler from within an external 
-    ParaDRAM - NOTE: input sampler specification file, any missing element of `domainBallCovMat` will be set to the appropriate 
-    ParaDRAM - NOTE: default value. The default value of `domainBallCorMat` is an ndim-by-ndim Identity matrix.
+    ParaDRAM - NOTE: input sampler specification file, any missing element of `domainBallCov` will be set to the appropriate 
+    ParaDRAM - NOTE: default value. The default value of `domainBallCor` is an ndim-by-ndim Identity matrix.
 
-domainBallCovMat
+domainBallCov
 
     1.0000000000000000 0.0000000000000000
     0.0000000000000000 1.0000000000000000
 
-    ParaDRAM - NOTE: The simulation specification `domainBallCovMat` is a positive-definite matrix of type `real` of highest 
+    ParaDRAM - NOTE: The simulation specification `domainBallCov` is a positive-definite matrix of type `real` of highest 
     ParaDRAM - NOTE: precision available in the ParaMonte Library of size `(ndim, ndim)` representing the Gramian matrix of 
     ParaDRAM - NOTE: the domain of the objective function, where `ndim` is the dimension of the domain. If this input simulation 
-    ParaDRAM - NOTE: specification is provided by the user, then any values set for the input simulation specifications `domainBallCorMat` 
+    ParaDRAM - NOTE: specification is provided by the user, then any values set for the input simulation specifications `domainBallCor` 
     ParaDRAM - NOTE: and `domainBallStdVec` will be automatically ignored. When set from inside an external input ParaMonte 
-    ParaDRAM - NOTE: specification file, any missing element of `domainBallCovMat` will be set to the appropriate default value. 
-    ParaDRAM - NOTE: To specify an ndim-dimensional spherical domain, set `domainBallCovMat` to the identity matrix whose diagonal 
-    ParaDRAM - NOTE: elements are radius-squared of the desired hyper-sphere (n-ball). The default value of `domainBallCovMat` 
+    ParaDRAM - NOTE: specification file, any missing element of `domainBallCov` will be set to the appropriate default value. 
+    ParaDRAM - NOTE: To specify an ndim-dimensional spherical domain, set `domainBallCov` to the identity matrix whose diagonal 
+    ParaDRAM - NOTE: elements are radius-squared of the desired hyper-sphere (n-ball). The default value of `domainBallCov` 
     ParaDRAM - NOTE: is an ndim-by-ndim Identity matrix for simulations (such as the ParaNest integrator) that require a finite 
     ParaDRAM - NOTE: domain and an ndim-by-ndim  diagonal matrix whose diagonals are practically set to infinity for simulations 
     ParaDRAM - NOTE: that do not require a finite domain (such the ParaDRAM and ParaDISE MCMC samplers).
@@ -403,13 +403,13 @@ domainBallStdVec
     ParaDRAM - NOTE: The simulation specification `domainBallStdVec` is a positive-valued vector of type `real` of the highest 
     ParaDRAM - NOTE: precision available within the ParaMonte library, of size `ndim`, where ndim is the dimension of the domain 
     ParaDRAM - NOTE: of the objective function. It represents the square-roots of the diagonal elements of the covariance matrix 
-    ParaDRAM - NOTE: of the domain of the objective function. If the covariance matrix of the ellipsoidal/spherical domain (`domainBallCovMat`) 
+    ParaDRAM - NOTE: of the domain of the objective function. If the covariance matrix of the ellipsoidal/spherical domain (`domainBallCov`) 
     ParaDRAM - NOTE: is missing from the input specifications to the sampler, then `domainBallStdVec` (along with the input 
-    ParaDRAM - NOTE: specification `domainBallCorMat`) will be used to construct the covariance matrix of the domain of the 
-    ParaDRAM - NOTE: objective function. However, if `domainBallCovMat` is present among the input specifications to the sampler, 
-    ParaDRAM - NOTE: then the input values for `domainBallStdVec` and `domainBallCorMat` will be ignored and `domainBallCovMat` 
+    ParaDRAM - NOTE: specification `domainBallCor`) will be used to construct the covariance matrix of the domain of the 
+    ParaDRAM - NOTE: objective function. However, if `domainBallCov` is present among the input specifications to the sampler, 
+    ParaDRAM - NOTE: then the input values for `domainBallStdVec` and `domainBallCor` will be ignored and `domainBallCov` 
     ParaDRAM - NOTE: will be used to construct the domain of the user-specified objective function. To specify an ndim-dimensional 
-    ParaDRAM - NOTE: spherical domain, drop `domainBallCovMat` and `domainBallCorMat` from the input and set all elements of 
+    ParaDRAM - NOTE: spherical domain, drop `domainBallCov` and `domainBallCor` from the input and set all elements of 
     ParaDRAM - NOTE: `domainBallStdVec` to the desired radius of the hyper-spherical domain. The default value for any missing 
     ParaDRAM - NOTE: elements of `domainBallStdVec` is `1` for simulations requiring a finite domain (such as the ParaNest integrator) 
     ParaDRAM - NOTE: and `+Infinity` for simulations not requiring a finite domain (such as the ParaDRAM and ParaDISE samplers).
@@ -1003,47 +1003,47 @@ proposal
     ParaDRAM - NOTE: 
     ParaDRAM - NOTE: The default value is 'normal'.
 
-proposalCorMat
+proposalCor
 
     1.0000000000000000 0.0000000000000000
     0.0000000000000000 1.0000000000000000
 
-    ParaDRAM - NOTE: The simulation specification `proposalCorMat` is a positive-definite square matrix of type `real` of the 
+    ParaDRAM - NOTE: The simulation specification `proposalCor` is a positive-definite square matrix of type `real` of the 
     ParaDRAM - NOTE: highest precision available within the ParaMonte library matrix of size `(ndim, ndim)`, where `ndim` is 
     ParaDRAM - NOTE: the dimension of the sampling space. It serves as the best-guess starting correlation matrix of the proposal 
-    ParaDRAM - NOTE: distribution used by the sampler. It is used (along with the input vector `proposalStdVec`) to construct 
+    ParaDRAM - NOTE: distribution used by the sampler. It is used (along with the input vector `proposalStd`) to construct 
     ParaDRAM - NOTE: the covariance matrix of the proposal distribution when the input covariance matrix is missing in the input 
     ParaDRAM - NOTE: list of variables. If the covariance matrix is specified as input to the sampler, any input values for 
-    ParaDRAM - NOTE: `proposalCorMat`, and `proposalStdVec` will be automatically ignored. Specifying `proposalCorMat` along 
-    ParaDRAM - NOTE: with `proposalStdVec` is especially useful when obtaining the best-guess covariance matrix is not trivial. 
-    ParaDRAM - NOTE: The default value of `proposalCorMat` is a square Identity matrix of rank `ndim`.
+    ParaDRAM - NOTE: `proposalCor`, and `proposalStd` will be automatically ignored. Specifying `proposalCor` along 
+    ParaDRAM - NOTE: with `proposalStd` is especially useful when obtaining the best-guess covariance matrix is not trivial. 
+    ParaDRAM - NOTE: The default value of `proposalCor` is a square Identity matrix of rank `ndim`.
 
-proposalCovMat
+proposalCov
 
     12.510965333280035 0.20771184229156420
     0.20771184229156420 8.7185265491209609
 
-    ParaDRAM - NOTE: The simulation specification `proposalCovMat` is a square positive-definite matrix of type `real` of the 
+    ParaDRAM - NOTE: The simulation specification `proposalCov` is a square positive-definite matrix of type `real` of the 
     ParaDRAM - NOTE: highest precision available within the ParaMonte library, of shape `(ndim, ndim)`, where `ndim` is the 
     ParaDRAM - NOTE: number of dimension of the sampling space. It serves as the best-guess starting covariance matrix of the 
     ParaDRAM - NOTE: proposal distribution. To bring the sampling efficiency of the sampler to within the desired requested 
     ParaDRAM - NOTE: range, the covariance matrix will be adaptively updated throughout the simulation, according to the user-specified 
-    ParaDRAM - NOTE: schedule. If `proposalCovMat` is not provided by the user or it is completely missing from the input file, 
-    ParaDRAM - NOTE: its value will be automatically computed via the input variables `proposalCorMat` and `proposalStdVec` 
+    ParaDRAM - NOTE: schedule. If `proposalCov` is not provided by the user or it is completely missing from the input file, 
+    ParaDRAM - NOTE: its value will be automatically computed via the input variables `proposalCor` and `proposalStd` 
     ParaDRAM - NOTE: (or via their default values, if not provided). If the simulation specification `outputStatus` is set to 
-    ParaDRAM - NOTE: "extend" and a successful prior simulation run exists, then `proposalCovMat` will be set to the covariance 
+    ParaDRAM - NOTE: "extend" and a successful prior simulation run exists, then `proposalCov` will be set to the covariance 
     ParaDRAM - NOTE: matrix of the output sample from most recent simulation run. In this case, any user-specified value will 
-    ParaDRAM - NOTE: be overridden by the computed `proposalCovMat`. Otherwise, the default value of `proposalCovMat` is a square 
+    ParaDRAM - NOTE: be overridden by the computed `proposalCov`. Otherwise, the default value of `proposalCov` is a square 
     ParaDRAM - NOTE: Identity matrix of rank `ndim`.
 
-proposalScaleFactor
+proposalScale
 
     2*0.5*Gelman (gelman(ndim = 2) = 1.6829141392239828)
 
-    ParaDRAM - NOTE: The simulation specification `proposalScaleFactor` is a scalar string of maximum length 127 containing 
+    ParaDRAM - NOTE: The simulation specification `proposalScale` is a scalar string of maximum length 127 containing 
     ParaDRAM - NOTE: a positive real-valued number whose square will be multiplied with the covariance matrix of the proposal 
     ParaDRAM - NOTE: distribution of the MCMC sampler to shrink or enlarge it. In other words, the proposal distribution will 
-    ParaDRAM - NOTE: be scaled in every direction by the specified numeric value of `proposalScaleFactor`. It can also be given 
+    ParaDRAM - NOTE: be scaled in every direction by the specified numeric value of `proposalScale`. It can also be given 
     ParaDRAM - NOTE: in units of the string keyword 'gelman' (which is case-INsensitive) after the paper:
     ParaDRAM - NOTE: 
     ParaDRAM - NOTE:    Gelman, Roberts, and Gilks (1996): 'Efficient Metropolis Jumping Rules'.
@@ -1052,45 +1052,45 @@ proposalScaleFactor
     ParaDRAM - NOTE: Metropolis-Hastings  Markov Chain Monte Carlo sampling of a target Multivariate Normal Distribution of 
     ParaDRAM - NOTE: dimension `ndim` is given by:
     ParaDRAM - NOTE: 
-    ParaDRAM - NOTE:     proposalScaleFactor = 2.38 / sqrt(ndim)  ,  in the limit of ndim -> Infinity.
+    ParaDRAM - NOTE:     proposalScale = 2.38 / sqrt(ndim)  ,  in the limit of ndim -> Infinity.
     ParaDRAM - NOTE: 
     ParaDRAM - NOTE: Multiples of the Gelman scale factors are also acceptable as input and can be specified like the following 
     ParaDRAM - NOTE: examples:
     ParaDRAM - NOTE: 
-    ParaDRAM - NOTE:     proposalScaleFactor = '1'
+    ParaDRAM - NOTE:     proposalScale = '1'
     ParaDRAM - NOTE: 
     ParaDRAM - NOTE:             multiplies the ndim-dimensional proposal covariance matrix by 1, essentially no change occurs 
     ParaDRAM - NOTE:             to the covariance matrix.
     ParaDRAM - NOTE: 
-    ParaDRAM - NOTE:     proposalScaleFactor = "1"
+    ParaDRAM - NOTE:     proposalScale = "1"
     ParaDRAM - NOTE: 
     ParaDRAM - NOTE:             same as the previous example. The double-quotation marks act the same way as single-quotation 
     ParaDRAM - NOTE:             marks.
     ParaDRAM - NOTE: 
-    ParaDRAM - NOTE:     proposalScaleFactor = '2.5'
+    ParaDRAM - NOTE:     proposalScale = '2.5'
     ParaDRAM - NOTE: 
     ParaDRAM - NOTE:             multiplies the ndim-dimensional proposal covariance matrix by 2.5.
     ParaDRAM - NOTE: 
-    ParaDRAM - NOTE:     proposalScaleFactor = '2.5*Gelman'
+    ParaDRAM - NOTE:     proposalScale = '2.5*Gelman'
     ParaDRAM - NOTE: 
     ParaDRAM - NOTE:             multiplies the ndim-dimensional proposal covariance matrix by 2.5 * 2.38/sqrt(ndim).
     ParaDRAM - NOTE: 
-    ParaDRAM - NOTE:     proposalScaleFactor = "2.5 * gelman"
+    ParaDRAM - NOTE:     proposalScale = "2.5 * gelman"
     ParaDRAM - NOTE: 
     ParaDRAM - NOTE:             same as the previous example, but with double-quotation marks. space characters are ignored.
     ParaDRAM - NOTE: 
-    ParaDRAM - NOTE:     proposalScaleFactor = "2.5 * gelman*gelman*2"
+    ParaDRAM - NOTE:     proposalScale = "2.5 * gelman*gelman*2"
     ParaDRAM - NOTE: 
     ParaDRAM - NOTE:             equivalent to gelmanFactor-squared multiplied by 5.
     ParaDRAM - NOTE: 
     ParaDRAM - NOTE: Note, however, that the result of Gelman et al. paper applies only to multivariate normal proposal distributions, 
     ParaDRAM - NOTE: in the limit of infinite dimensions. Therefore, care must be taken when using Gelman's scaling factor with 
     ParaDRAM - NOTE: non-Gaussian proposals and target objective functions. Note that only the product symbol (*) can be parsed 
-    ParaDRAM - NOTE: in the string value of `proposalScaleFactor`. The presence of other mathematical symbols or multiple appearances 
+    ParaDRAM - NOTE: in the string value of `proposalScale`. The presence of other mathematical symbols or multiple appearances 
     ParaDRAM - NOTE: of the product symbol will lead to a simulation crash. Also, note that the prescription of an acceptance 
     ParaDRAM - NOTE: range specified by the input variable `targetAcceptanceRate` will lead to dynamic modification of the initial 
-    ParaDRAM - NOTE: input value of `proposalScaleFactor` throughout sampling for `proposalAdaptationCount` times. The default 
-    ParaDRAM - NOTE: string value for `proposalScaleFactor` is "gelman" (for all proposal distributions), which is subsequently 
+    ParaDRAM - NOTE: input value of `proposalScale` throughout sampling for `proposalAdaptationCount` times. The default 
+    ParaDRAM - NOTE: string value for `proposalScale` is "gelman" (for all proposal distributions), which is subsequently 
     ParaDRAM - NOTE: converted to `2.38 / sqrt(ndim)`.
 
 proposalStart
@@ -1197,20 +1197,20 @@ proposalStartRandomized
     ParaDRAM - NOTE: if `proposalStart` is randomly initialized, its random value will be deterministic between different independent 
     ParaDRAM - NOTE: simulation runs if the input variable `randomSeed` is specified by the user. The default value is FALSE.
 
-proposalStdVec
+proposalStd
 
     1.0000000000000000
     1.0000000000000000
 
-    ParaDRAM - NOTE: The simulation specification `proposalStdVec` is a positive-valued vector of type `real` of the highest 
+    ParaDRAM - NOTE: The simulation specification `proposalStd` is a positive-valued vector of type `real` of the highest 
     ParaDRAM - NOTE: precision available within the ParaMonte library, of size `ndim`, where `ndim` is the dimension of the 
     ParaDRAM - NOTE: domain of the objective function. It serves as the best-guess starting Standard Deviation of each of the 
-    ParaDRAM - NOTE: components of the proposal distribution. If the initial covariance matrix (`proposalCovMat`) is missing 
-    ParaDRAM - NOTE: as an input specification to the sampler, then `proposalStdVec` (along with the specified `proposalCorMat`) 
+    ParaDRAM - NOTE: components of the proposal distribution. If the initial covariance matrix (`proposalCov`) is missing 
+    ParaDRAM - NOTE: as an input specification to the sampler, then `proposalStd` (along with the specified `proposalCor`) 
     ParaDRAM - NOTE: will be used to construct the initial covariance matrix of the proposal distribution of the MCMC sampler. 
-    ParaDRAM - NOTE: However, if `proposalCovMat` is specified for the sampler, then the input `proposalStdVec` and `proposalCorMat` 
-    ParaDRAM - NOTE: will be completely ignored and the input value for `proposalCovMat` will be used to construct the initial 
-    ParaDRAM - NOTE: covariance matrix of the proposal distribution. The default value of `proposalStdVec` is a vector of size 
+    ParaDRAM - NOTE: However, if `proposalCov` is specified for the sampler, then the input `proposalStd` and `proposalCor` 
+    ParaDRAM - NOTE: will be completely ignored and the input value for `proposalCov` will be used to construct the initial 
+    ParaDRAM - NOTE: covariance matrix of the proposal distribution. The default value of `proposalStd` is a vector of size 
     ParaDRAM - NOTE: `ndim` of unit values (i.e., ones).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1311,7 +1311,7 @@ proposalDelayedRejectionCount
     ParaDRAM - NOTE: then goes back to the original last-accepted state and will begin proposing new states from that location. 
     ParaDRAM - NOTE: The default value is 0.
 
-proposalDelayedRejectionScaleFactor
+proposalDelayedRejectionScale
 
     1.0000000000000000
     1.0000000000000000
@@ -1319,12 +1319,12 @@ proposalDelayedRejectionScaleFactor
     1.0000000000000000
     2.0000000000000000
 
-    ParaDRAM - NOTE: The simulation specification `proposalDelayedRejectionScaleFactor` is a positive-valued vector of type 
+    ParaDRAM - NOTE: The simulation specification `proposalDelayedRejectionScale` is a positive-valued vector of type 
     ParaDRAM - NOTE: `real` of the highest precision available within the ParaMonte library, of length `(1 : proposalDelayedRejectionCount)`, 
     ParaDRAM - NOTE: by which the covariance matrix of the proposal distribution of MCMC sampler is scaled when the Delayed 
     ParaDRAM - NOTE: Rejection (DR) scheme is activated (by setting `proposalDelayedRejectionCount > 0`). At each `i`th stage 
-    ParaDRAM - NOTE: of the DR process, the proposal distribution from the last stage is scaled by the factor `proposalDelayedRejectionScaleFactor(i)`. 
-    ParaDRAM - NOTE: Missing elements of the `proposalDelayedRejectionScaleFactor` in the input external file to the sampler 
+    ParaDRAM - NOTE: of the DR process, the proposal distribution from the last stage is scaled by the factor `proposalDelayedRejectionScale(i)`. 
+    ParaDRAM - NOTE: Missing elements of the `proposalDelayedRejectionScale` in the input external file to the sampler 
     ParaDRAM - NOTE: will be set to the default value. The default value at all stages is `0.5**(1 / ndim)` where `ndim` is 
     ParaDRAM - NOTE: the number of dimensions of the domain of the objective function. This default value effectively reduces 
     ParaDRAM - NOTE: the volume of the covariance matrix of the proposal distribution by half compared to the last DR stage.
