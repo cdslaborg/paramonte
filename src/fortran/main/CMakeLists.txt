@@ -970,7 +970,11 @@ set_source_files_properties("${paramonte_src_main_c_paths}" PROPERTIES COMPILE_D
 install(TARGETS "${libname}"
         CONFIGURATIONS "${CMAKE_BUILD_TYPE}"
         DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
+        RUNTIME_DEPENDENCY_SET pmdeps
         )
+#install(RUNTIME_DEPENDENCY_SET pmdeps
+#        DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
+#        )
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # Recipe for installing the runtime dependencies.
@@ -978,6 +982,35 @@ install(TARGETS "${libname}"
 
 if (DLL_ENABLED AND DEPS_ENABLED)
     install(CODE [[
+        ####
+        #### For intel compilers, we take an aggressive approach to find the dependencies
+        #### as several libraries in the Intel OneAPI collection do not link statically.
+        ####
+        if ("${CMAKE_INSTALL_PREFIX}" MATCHES ".*[Ii][Nn][Tt][Ee][Ll].*")
+            execute_process(COMMAND which ifx OUTPUT_VARIABLE ifcpath)
+            string(REGEX REPLACE "\n$" "" ifcpath "${ifcpath}")
+            if (IS_DIRECTORY "${ifcpath}" OR NOT EXISTS "${ifcpath}")
+                execute_process(COMMAND which ifx OUTPUT_VARIABLE ifcpath)
+                string(REGEX REPLACE "\n$" "" ifcpath "${ifcpath}")
+                if (IS_DIRECTORY "${ifcpath}" OR NOT EXISTS "${ifcpath}")
+                    unset(ifcpath)
+                endif()
+            endif()
+        endif()
+        set(ilibdir ".")
+        if (DEFINED ifcpath)
+            get_filename_component(ilibdir "${ifcpath}" DIRECTORY)
+            get_filename_component(ilibdir "${ilibdir}" DIRECTORY)
+            set(ilibdir "${ilibdir}/lib")
+            if (NOT IS_DIRECTORY "${ilibdir}")
+                message(NOTICE "${pmwarn} Failed to find the Intel compilers library path from: ${ifcpath}")
+                message(NOTICE "${pmwarn} The expected Intel compilers library path is: ${ilibdir}")
+                set(ilibdir ".")
+            endif()
+        endif()
+        ####
+        #### Now recursively find dependencies.
+        ####
         function(install_library_with_deps LIBRARY)
             file(INSTALL
                 DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
@@ -989,6 +1022,7 @@ if (DLL_ENABLED AND DEPS_ENABLED)
                 LIBRARIES ${LIBRARY}
                 RESOLVED_DEPENDENCIES_VAR resolved_deps
                 UNRESOLVED_DEPENDENCIES_VAR unresolved_deps
+                DIRECTORIES "${ilibdir}"
             )
             foreach(FILE ${resolved_deps})
                 if(NOT IS_SYMLINK ${FILE})
@@ -996,19 +1030,20 @@ if (DLL_ENABLED AND DEPS_ENABLED)
                 endif()
             endforeach()
             foreach(FILE ${unresolved_deps})
-                message(STATUS "Unresolved from ${LIBRARY}: ${FILE}")
+                message(NOTICE "${pmwarn} Unresolved dependency from ${LIBRARY}: ${FILE}")
             endforeach()
         endfunction()
         file(GET_RUNTIME_DEPENDENCIES
             LIBRARIES $<TARGET_SONAME_FILE:libparamonte>
-            RESOLVED_DEPENDENCIES_VAR resolved_deps
             UNRESOLVED_DEPENDENCIES_VAR unresolved_deps
+            RESOLVED_DEPENDENCIES_VAR resolved_deps
+            DIRECTORIES "${ilibdir}"
         )
         foreach(FILE ${resolved_deps})
             install_library_with_deps(${FILE})
         endforeach()
         foreach(FILE ${unresolved_deps})
-            message(STATUS "Unresolved: ${FILE}")
+            message(NOTICE "${pmwarn} Unresolved dependency: ${FILE}")
         endforeach()
     ]])
 endif()

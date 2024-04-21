@@ -367,7 +367,7 @@ if (EXISTS "${origin}")
         string(CONCAT
             collection_cmakelists_contents
             "${collection_cmakelists_contents}"
-            "add_custom_target(run COMMAND \"${bincmd}\" DEPENDS binary WORKING_DIRECTORY \"\$\{CMAKE_CURRENT_SOURCE_DIR\}\")\n"
+            "add_custom_target(run COMMAND ${bincmd} DEPENDS binary WORKING_DIRECTORY \"\$\{CMAKE_CURRENT_SOURCE_DIR\}\")\n"
             )
         set(collection_cmakelists_bash_name "build.sh") # cmake.sh
         set(collection_cmakelists_batch_name "build.bat") # cmake.bat
