@@ -76,10 +76,18 @@ function run(self, getLogFunc, ndim)
     elseif ~isempty(self.spec.parallelismNumThread) % Sanitize ``self.spec.parallelismNumThread``.
         % The following separate conditions are crucial to remain separate.
         failed = ~pm.introspection.istype(self.spec.parallelismNumThread, "integer", 1);
-        if ~failed; failed = self.spec.parallelismNumThread < 0; end
-        if ~failed; failed = ~pm.matlab.has.parallel; end
+        if ~failed
+            failed = self.spec.parallelismNumThread < 0;
+        end
+        if ~failed
+            failed = ~pm.matlab.has.parallel;
+        end
         if ~failed
             self.partype = "openmp";
+            if  self.spec.parallelismNumThread == 0
+                %%%% Negative threads count indicates to the ParaMonte sampler that the user set `parallelismNumThread` to zero.
+                self.spec.parallelismNumThread = -maxNumCompThreads();
+            end
         else
             help("pm.sampling.Sampler.run");
             error   ( newline ...
@@ -96,7 +104,7 @@ function run(self, getLogFunc, ndim)
                     + "If missing or specified as empty `[]`, the simulation will run in serial mode." + newline ...
                     + "You have specified:" + newline ...
                     + newline ...
-                    + pm.io.tab + "self.spec.parallelismNumThread = " + string(self.njob) + newline ...
+                    + pm.io.tab + "self.spec.parallelismNumThread = " + string(self.parallelismNumThread) + newline ...
                     + newline ...
                     + "Does your matlab have Parallel Computing Toolbox?" + newline ...
                     + newline ...
@@ -127,7 +135,9 @@ function run(self, getLogFunc, ndim)
     % Sanitize ``ndim``.
 
     failed = ~pm.introspection.istype(ndim, "integer", 1);
-    if ~failed; failed = ndim < 1; end
+    if ~failed
+        failed = ndim < 1;
+    end
     if ~failed
         self.ndim = ndim;
     else
@@ -299,13 +309,10 @@ function run(self, getLogFunc, ndim)
         mexcall = string(self.mexname + "(convertStringsToChars(self.method), @getLogFuncConcurrent, ndim, convertStringsToChars(self.nml))");
         if ~self.silent
             delete(gcp("nocreate"));
-            pool = parpool("threads", self.spec.parallelismNumThread);
+            pool = parpool("threads", abs(self.spec.parallelismNumThread));
         else
             evalc('delete(gcp("nocreate")');
-            evalc('pool = parpool("threads", self.spec.parallelismNumThread)');
-        end
-        if  self.spec.parallelismNumThread == 0
-            self.spec.parallelismNumThread = maxNumCompThreads();
+            evalc('pool = parpool("threads", abs(self.spec.parallelismNumThread))');
         end
     else
         mexcall = string(self.mexname + "(convertStringsToChars(self.method), @getLogFuncWrapped, ndim, convertStringsToChars(self.nml))");

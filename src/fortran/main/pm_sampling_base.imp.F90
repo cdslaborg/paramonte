@@ -1447,7 +1447,7 @@ contains
 
         !$omp barrier
 
-    end function   
+    end function
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1872,6 +1872,12 @@ contains
             end if
             if (spec%parallelismNumThread%val == spec%parallelismNumThread%null) spec%parallelismNumThread%val = spec%parallelismNumThread%def
 #if         OMP_ENABLED
+#if         MATLAB_ENABLED || PYTHON_ENABLED || R_ENABLED
+            if (spec%parallelismNumThread%val < 0) then
+                spec%image%count = abs(spec%parallelismNumThread%val)
+                spec%parallelismNumThread%val = 0_IK
+            end if
+#endif
             if (0 < spec%parallelismNumThread%val) spec%image%count = spec%parallelismNumThread%val
 #endif
         end block parallelismNumThread_block

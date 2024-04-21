@@ -132,7 +132,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 
     int32_t stat = 0;
     if (strncmp(method, "ParaDRAM", 8) == 0) {
-        int32_t njob = mxGetScalar(prhs[3]);
+        //int32_t njob = mxGetScalar(prhs[3]);
         stat = runParaDRAM(&getLogFunc, ndim, input);
         if (stat != 0) mexErrMsgIdAndTxt("Mex:ParaMonte", "Runtime Error Occurred.");
     } else {

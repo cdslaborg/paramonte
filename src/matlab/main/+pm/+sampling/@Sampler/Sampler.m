@@ -132,7 +132,7 @@ classdef Sampler < pm.matlab.Handle
         matpath = []; % MATLAB paths.
         method = "";
         ndim = [];
-       %njob = [];
+        %njob = [];
         nml = [];
         %
         %   libspec
