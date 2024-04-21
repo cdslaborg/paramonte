@@ -278,11 +278,14 @@
 module pm_sampleCor
 
     use pm_kind, only: SK, IK, LK, RK
-    use pm_container, only: css_type, css_pdt
     use pm_matrixSubset, only: uppDia_type, uppDia
     use pm_matrixSubset, only: lowDia_type, lowDia
     use pm_matrixSubset, only: upp_type, upp
     use pm_matrixSubset, only: low_type, low
+    use pm_container, only: css_type
+#if PDT_ENABLED
+    use pm_container, only: css_pdt
+#endif
 
     implicit none
 
@@ -7869,6 +7872,8 @@ module pm_sampleCor
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module function getRhoWNO_XY_D1_PSSK5(x, y) result(rho)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -7923,6 +7928,9 @@ module pm_sampleCor
         real(TKR)                                                   :: rho
     end function
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -8193,6 +8201,8 @@ module pm_sampleCor
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module function getRhoWTI_XY_D1_PSSK5(x, y, weight) result(rho)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -8252,6 +8262,9 @@ module pm_sampleCor
         real(TKR)                                                   :: rho
     end function
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -8523,6 +8536,8 @@ module pm_sampleCor
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module function getRhoWTR_XY_D1_PSSK5(x, y, weight) result(rho)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -8582,6 +8597,9 @@ module pm_sampleCor
         real(TKR)                                                   :: rho
     end function
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -8793,6 +8811,8 @@ module pm_sampleCor
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module function getRhoWNO_ULD_PSSK5(sample, dim) result(rho)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -8852,6 +8872,9 @@ module pm_sampleCor
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -9076,6 +9099,8 @@ module pm_sampleCor
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module function getRhoWTI_ULD_PSSK5(sample, dim, weight) result(rho)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -9140,6 +9165,9 @@ module pm_sampleCor
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -9365,6 +9393,8 @@ module pm_sampleCor
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module function getRhoWTR_ULD_PSSK5(sample, dim, weight) result(rho)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -9429,6 +9459,9 @@ module pm_sampleCor
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -9861,6 +9894,8 @@ module pm_sampleCor
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module subroutine setRhoWNO_XY_D1_PSSK5(rho, frankx, franky, x, y)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -9920,6 +9955,9 @@ module pm_sampleCor
         real(TKR)               , intent(out)                       :: rho
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -10211,6 +10249,8 @@ module pm_sampleCor
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module subroutine setRhoWTI_XY_D1_PSSK5(rho, frankx, franky, x, y, weight)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -10275,6 +10315,9 @@ module pm_sampleCor
         real(TKR)               , intent(out)                       :: rho
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -10567,6 +10610,8 @@ module pm_sampleCor
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module subroutine setRhoWTR_XY_D1_PSSK5(rho, frankx, franky, x, y, weight)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -10631,6 +10676,9 @@ module pm_sampleCor
         real(TKR)               , intent(out)                       :: rho
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -10873,6 +10921,8 @@ module pm_sampleCor
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module subroutine setRhoWNO_UXD_PSSK5(rho, subset, frank, sample, dim)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -10942,6 +10992,9 @@ module pm_sampleCor
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -11198,6 +11251,8 @@ module pm_sampleCor
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module subroutine setRhoWTI_UXD_PSSK5(rho, subset, frank, sample, dim, weight)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -11272,6 +11327,9 @@ module pm_sampleCor
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -11529,6 +11587,8 @@ module pm_sampleCor
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module subroutine setRhoWTR_UXD_PSSK5(rho, subset, frank, sample, dim, weight)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -11603,6 +11663,9 @@ module pm_sampleCor
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -11847,6 +11910,8 @@ module pm_sampleCor
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module subroutine setRhoWNO_XLD_PSSK5(rho, subset, frank, sample, dim)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -11916,6 +11981,9 @@ module pm_sampleCor
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -12172,6 +12240,8 @@ module pm_sampleCor
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module subroutine setRhoWTI_XLD_PSSK5(rho, subset, frank, sample, dim, weight)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -12246,6 +12316,9 @@ module pm_sampleCor
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -12503,6 +12576,8 @@ module pm_sampleCor
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module subroutine setRhoWTR_XLD_PSSK5(rho, subset, frank, sample, dim, weight)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -12577,6 +12652,9 @@ module pm_sampleCor
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -12957,6 +13035,8 @@ module pm_sampleCor
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
+!#if PDT_ENABLED
+!
 !#if SK5_ENABLED
 !    PURE module function getTauWNO_XY_D1_PSSK5(x, y) result(tau)
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -13011,6 +13091,9 @@ module pm_sampleCor
 !        real(TKC)                                                   :: tau
 !    end function
 !#endif
+!
+!#endif
+!PDT_ENABLED
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
@@ -13280,6 +13363,8 @@ module pm_sampleCor
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
+!#if PDT_ENABLED
+!
 !#if SK5_ENABLED
 !    PURE module function getTauWTI_XY_D1_PSSK5(x, y, weight) result(tau)
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -13339,6 +13424,9 @@ module pm_sampleCor
 !        real(TKC)                                                   :: tau
 !    end function
 !#endif
+!
+!#endif
+!PDT_ENABLED
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
@@ -13609,6 +13697,8 @@ module pm_sampleCor
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
+!#if PDT_ENABLED
+!
 !#if SK5_ENABLED
 !    PURE module function getTauWTR_XY_D1_PSSK5(x, y, weight) result(tau)
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -13668,6 +13758,9 @@ module pm_sampleCor
 !        real(TKC)                                                   :: tau
 !    end function
 !#endif
+!
+!#endif
+!PDT_ENABLED
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
@@ -13878,6 +13971,8 @@ module pm_sampleCor
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
+!#if PDT_ENABLED
+!
 !#if SK5_ENABLED
 !    PURE module function getTauWNO_ULD_PSSK5(sample, dim) result(tau)
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -13937,6 +14032,9 @@ module pm_sampleCor
 !        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
+!
+!#endif
+!PDT_ENABLED
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
@@ -14160,6 +14258,8 @@ module pm_sampleCor
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
+!#if PDT_ENABLED
+!
 !#if SK5_ENABLED
 !    PURE module function getTauWTI_ULD_PSSK5(sample, dim, weight) result(tau)
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -14224,6 +14324,9 @@ module pm_sampleCor
 !        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
+!
+!#endif
+!PDT_ENABLED
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
@@ -14448,6 +14551,8 @@ module pm_sampleCor
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
+!#if PDT_ENABLED
+!
 !#if SK5_ENABLED
 !    PURE module function getTauWTR_ULD_PSSK5(sample, dim, weight) result(tau)
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -14512,6 +14617,9 @@ module pm_sampleCor
 !        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
+!
+!#endif
+!PDT_ENABLED
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
@@ -14939,6 +15047,8 @@ module pm_sampleCor
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
+!#if PDT_ENABLED
+!
 !#if SK5_ENABLED
 !    PURE module subroutine setTauWNO_XY_D1_PSSK5(tau, frankx, franky, x, y)
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -14998,6 +15108,9 @@ module pm_sampleCor
 !        real(TKC)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
+!
+!#endif
+!PDT_ENABLED
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
@@ -15288,6 +15401,8 @@ module pm_sampleCor
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
+!#if PDT_ENABLED
+!
 !#if SK5_ENABLED
 !    PURE module subroutine setTauWTI_XY_D1_PSSK5(tau, frankx, franky, x, y, weight)
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -15352,6 +15467,9 @@ module pm_sampleCor
 !        real(TKC)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
+!
+!#endif
+!PDT_ENABLED
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
@@ -15643,6 +15761,8 @@ module pm_sampleCor
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
+!#if PDT_ENABLED
+!
 !#if SK5_ENABLED
 !    PURE module subroutine setTauWTR_XY_D1_PSSK5(tau, frankx, franky, x, y, weight)
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -15707,6 +15827,9 @@ module pm_sampleCor
 !        real(TKC)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
+!
+!#endif
+!PDT_ENABLED
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
@@ -15948,6 +16071,8 @@ module pm_sampleCor
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
+!#if PDT_ENABLED
+!
 !#if SK5_ENABLED
 !    PURE module subroutine setTauWNO_UXD_PSSK5(tau, subset, frank, sample, dim)
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -16017,6 +16142,9 @@ module pm_sampleCor
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
 !#endif
+!
+!#endif
+!PDT_ENABLED
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
@@ -16272,6 +16400,8 @@ module pm_sampleCor
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
+!#if PDT_ENABLED
+!
 !#if SK5_ENABLED
 !    PURE module subroutine setTauWTI_UXD_PSSK5(tau, subset, frank, sample, dim, weight)
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -16346,6 +16476,9 @@ module pm_sampleCor
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
 !#endif
+!
+!#endif
+!PDT_ENABLED
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
@@ -16602,6 +16735,8 @@ module pm_sampleCor
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
+!#if PDT_ENABLED
+!
 !#if SK5_ENABLED
 !    PURE module subroutine setTauWTR_UXD_PSSK5(tau, subset, frank, sample, dim, weight)
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -16676,6 +16811,9 @@ module pm_sampleCor
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
 !#endif
+!
+!#endif
+!PDT_ENABLED
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
@@ -16919,6 +17057,8 @@ module pm_sampleCor
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
+!#if PDT_ENABLED
+!
 !#if SK5_ENABLED
 !    PURE module subroutine setTauWNO_XLD_PSSK5(tau, subset, frank, sample, dim)
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -16988,6 +17128,9 @@ module pm_sampleCor
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
 !#endif
+!
+!#endif
+!PDT_ENABLED
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
@@ -17243,6 +17386,8 @@ module pm_sampleCor
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
+!#if PDT_ENABLED
+!
 !#if SK5_ENABLED
 !    PURE module subroutine setTauWTI_XLD_PSSK5(tau, subset, frank, sample, dim, weight)
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -17317,6 +17462,9 @@ module pm_sampleCor
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
 !#endif
+!
+!#endif
+!PDT_ENABLED
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
@@ -17573,6 +17721,8 @@ module pm_sampleCor
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
+!#if PDT_ENABLED
+!
 !#if SK5_ENABLED
 !    PURE module subroutine setTauWTR_XLD_PSSK5(tau, subset, frank, sample, dim, weight)
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -17647,6 +17797,9 @@ module pm_sampleCor
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
 !#endif
+!
+!#endif
+!PDT_ENABLED
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
@@ -17987,6 +18140,8 @@ module pm_sampleCor
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module subroutine setCordanceSum_D1_PSSK5(cordance, tiedx, tiedy, x, y)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -18046,6 +18201,9 @@ module pm_sampleCor
         integer(IK)         , intent(out)                           :: cordance
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -18315,6 +18473,8 @@ module pm_sampleCor
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module subroutine setCordanceAll_D1_PSSK5(concordance, discordance, tiedx, tiedy, x, y)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -18374,6 +18534,9 @@ module pm_sampleCor
         integer(IK)         , intent(out)                           :: concordance, discordance
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -140,8 +140,8 @@
 module pm_sampleCCF
 
     use pm_kind, only: SK, IK, LK
+    use pm_container, only: css_type
     use pm_array, only: nothing, nothing_type
-    use pm_container, only: css_type, css_pdt
     use pm_sampleNorm, only: zscore, zscore_type
     use pm_sampleScale, only: stdscale, stdscale_type
     use pm_sampleShift, only: meanshift, meanshift_type

@@ -5492,7 +5492,7 @@ contains
 !        character(*, SK), parameter     :: PROCEDURE_NAME = MODULE_NAME//SK_"@findUniqueValueCount_IK()"
 !
 !        integer(IK)                     :: lenVector
-!        integer(IK)     , allocatable   :: Indx(:)
+!        integer(IK)     , allocatable   :: indx(:)
 !        integer(IK)                     :: ivec, iuniq, counter
 !        integer(IK)                     :: sorting_def
 !        logical(LK)                         :: isUnique
@@ -5527,16 +5527,16 @@ contains
 !        end do
 !
 !        if (sorting_def /= 0_IK) then
-!            allocate(Indx(lenUnique))
-!            call setSorted(uniqueCount(1:lenUnique), Indx)
+!            allocate(indx(lenUnique))
+!            call setSorted(uniqueCount(1:lenUnique), indx)
 !            if (sorting_def < 0_IK) then
-!                uniqueCount = uniqueCount(Indx(lenUnique:1:-1))
-!                UniqueValue = UniqueValue(Indx(lenUnique:1:-1))
+!                uniqueCount = uniqueCount(indx(lenUnique:1:-1))
+!                UniqueValue = UniqueValue(indx(lenUnique:1:-1))
 !            else
-!                uniqueCount = uniqueCount(Indx)
-!                UniqueValue = UniqueValue(Indx)
+!                uniqueCount = uniqueCount(indx)
+!                UniqueValue = UniqueValue(indx)
 !            end if
-!            deallocate(Indx)
+!            deallocate(indx)
 !        end if
 !
 !        if (present(UniqueIndex)) then

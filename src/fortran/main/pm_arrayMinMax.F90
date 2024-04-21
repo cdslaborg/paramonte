@@ -483,6 +483,8 @@ module pm_arrayMinMax
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     module function getMinMaxVal_D1_PSSK5(array) result(minMaxVal)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -542,6 +544,9 @@ module pm_arrayMinMax
         type(css_pdt(SKC))                                      :: minMaxVal(2)
     end function
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1030,6 +1035,8 @@ module pm_arrayMinMax
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     module subroutine setMinMaxVal_D1_PSSK5(array, vmin, vmax)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -1089,6 +1096,9 @@ module pm_arrayMinMax
         type(css_pdt(SKC))                      , intent(out)                   :: vmin, vmax
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -298,9 +298,7 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-! LCOV_EXCL_START
-!#if  !__GFORTRAN__
-
+#if PDT_ENABLED
 #define PSSK_ENABLED 1
 
 #if SK5_ENABLED
@@ -339,9 +337,7 @@ contains
 #endif
 
 #undef PSSK_ENABLED
-
-!#endif
-! LCOV_EXCL_STOP
+#endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -632,9 +628,7 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-! LCOV_EXCL_START
-!#if  !__GFORTRAN__
-
+#if PDT_ENABLED
 #define PSSK_ENABLED 1
 
 #if SK5_ENABLED
@@ -673,9 +667,7 @@ contains
 #endif
 
 #undef PSSK_ENABLED
-
-!#endif
-! LCOV_EXCL_STOP
+#endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
