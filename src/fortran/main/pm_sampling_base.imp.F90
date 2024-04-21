@@ -228,22 +228,22 @@
         character(:,SKC)    , allocatable   :: prefix
     end type
 
-   !real(RKC)               , allocatable   :: domainBallCenter(:) ! namelist input
-    type                                    :: domainBallCenter_type
+   !real(RKC)               , allocatable   :: domainBallAvg(:) ! namelist input
+    type                                    :: domainBallAvg_type
         real(RKC)           , allocatable   :: val(:)
         real(RKC)                           :: def
         character(:,SKC)    , allocatable   :: desc
     end type
 
-   !real(RKC)               , allocatable   :: domainBallCorMat(:,:) ! namelist input
-    type                                    :: domainBallCorMat_type
+   !real(RKC)               , allocatable   :: domainBallCor(:,:) ! namelist input
+    type                                    :: domainBallCor_type
         real(RKC)           , allocatable   :: val(:,:)
         real(RKC)           , allocatable   :: def(:,:)
         character(:,SKC)    , allocatable   :: desc
     end type
 
-   !real(RKC)               , allocatable   :: domainBallCovMat(:,:) ! namelist input
-    type                                    :: domainBallCovMat_type
+   !real(RKC)               , allocatable   :: domainBallCov(:,:) ! namelist input
+    type                                    :: domainBallCov_type
         logical(LK)                         :: isUserSet
         real(RKC)           , allocatable   :: def(:,:)
         real(RKC)           , allocatable   :: val(:,:)
@@ -251,8 +251,8 @@
         character(:,SKC)    , allocatable   :: desc
     end type
 
-   !real(RKC)               , allocatable   :: domainBallStdVec(:) ! namelist input
-    type                                    :: domainBallStdVec_type
+   !real(RKC)               , allocatable   :: domainBallStd(:) ! namelist input
+    type                                    :: domainBallStd_type
         real(RKC)           , allocatable   :: val(:)
         real(RKC)           , allocatable   :: def
         character(:,SKC)    , allocatable   :: desc
@@ -506,10 +506,10 @@
         type(description_type                   )   :: description
         type(domain_type                        )   :: domain
         type(domainAxisName_type                )   :: domainAxisName
-        type(domainBallCenter_type              )   :: domainBallCenter
-        type(domainBallCorMat_type              )   :: domainBallCorMat
-        type(domainBallCovMat_type              )   :: domainBallCovMat
-        type(domainBallStdVec_type              )   :: domainBallStdVec
+        type(domainBallAvg_type                 )   :: domainBallAvg
+        type(domainBallCor_type                 )   :: domainBallCor
+        type(domainBallCov_type                 )   :: domainBallCov
+        type(domainBallStd_type                 )   :: domainBallStd
         type(domainCubeLimitLower_type          )   :: domainCubeLimitLower
         type(domainCubeLimitUpper_type          )   :: domainCubeLimitUpper
         type(domainErrCount_type                )   :: domainErrCount
@@ -695,11 +695,11 @@ contains
                      &by the input simulation specifications `domainCubeLimitUpper` and `domainCubeLimitLower` respectively."//NL2//&
             SKC_"+   `domain = '"//spec%domain%ball//SKC_"'`"//NL2//&
             SKC_"    This is equivalent to an `ndim`-dimensional hyper-ellipsoid (n-ball) whose center and covariance matrix can be &
-                     &specified by the input simulation specification `domainBallCenter` and `domainBallCovMat` respectively. Alternatively, &
+                     &specified by the input simulation specification `domainBallAvg` and `domainBallCov` respectively. Alternatively, &
                      &the user can let the ParaMonte samplers construct the covariance matrix of the ellipsoidal domain from the input &
-                     &values for the `domainBallCorMat` and `domainBallStdVec` simulation specifications. Note that a spherical &
-                     &domain can be defined by dropping the `domainBallCovMat` and `domainBallCorMat` specifications from the input &
-                     &and setting all elements of `domainBallStdVec` to the desired radius of the domain."//NL2//&
+                     &values for the `domainBallCor` and `domainBallStd` simulation specifications. Note that a spherical &
+                     &domain can be defined by dropping the `domainBallCov` and `domainBallCor` specifications from the input &
+                     &and setting all elements of `domainBallStd` to the desired radius of the domain."//NL2//&
             SKC_"The default value for `domain` is an infinite cube in the case of the ParaDRAM and ParaDISE samplers, and a unit-sized cube for the ParaNest sampler."
             !$omp master
             domain = spec%domain%null
@@ -730,97 +730,133 @@ contains
             !$omp end master
         end block domainAxisName_block
 
-        domainBallCenter_block: block
-            use pm_sampling_scio, only: domainBallCenter
-            spec%domainBallCenter%def = 0._RKC
-            spec%domainBallCenter%desc = &
-            SKC_"The simulation specification `domainBallCenter` is a vector of type `real` of highest precision supported by the ParaMonte library, &
-                &of size `ndim` containing the coordinates of the center of the hyper-ellipsoidal (or spherical) `ndim`-dimensional domain of the objective function. &
-                &When passed to the sampler from within an external input file, every missing element of `domainBallCenter` will be set to the origin (zero). &
-                &Together with `domainBallCovMat`, or with `domainBallCorMat` and `domainBallStdVec`, it forms a hyper-ellipsoidal &
+        domainBallAvg_block: block
+            use pm_sampling_scio, only: domainBallAvg
+            spec%domainBallAvg%def = 0._RKC
+            spec%domainBallAvg%desc = &
+            SKC_"The simulation specification `domainBallAvg` is a vector of type `real` of highest precision supported by the ParaMonte library, &
+                &of size `ndim` containing the coordinates of the center of the hyper-ellipsoidal (or spherical) `ndim`-dimensional domain of the objective function, &
+                &such that all states `X(1 : ndim)` visited by the sampler would obey the following inequality:"//NL2//&
+            SKC_"$$"//NL1//&
+            SKC_"(X - \mu)^T \Sigma^{-1} (X - \mu) \leq 1."//NL1//&
+            SKC_"$$"//NL2//&
+            SKC_"where $$\mu$$ represents the specification `domainBallAvg` and $$\Sigma^{-1}$$ is the inverse of the specification `domainBallCov`."//NL2//&
+            SKC_"When passed to the sampler from within an external input file, every missing element of `domainBallAvg` will be set to the origin (zero). &
+                &Together with `domainBallCov`, or with `domainBallCor` and `domainBallStd`, it forms a hyper-ellipsoidal &
                 &or hyper-spherical domain for the ParaMonte samplers. Note that an ellipsoidal/spherical domain is used if only if the &
                 &input simulation specification `domain` is set to 'ellipsoid' or 'sphere' or `ball`. Otherwise, a cubical domain will be used. &
-                &The default value for `domainBallCenter` is the origin (i.e., a zero-valued vector of size `ndim`)."
+                &The key `Avg` (standing for `Average`) is used in the name of this variable to denote the center of the hyper-ellipsoid. &
+                &The default value for `domainBallAvg` is the origin (i.e., a zero-valued vector of size `ndim`)."
             !$omp master
-            call setResized(domainBallCenter, ndim)
-            call setNAN(domainBallCenter(1 : ndim))
+            call setResized(domainBallAvg, ndim)
+            call setNAN(domainBallAvg(1 : ndim))
             !$omp end master
-        end block domainBallCenter_block
+        end block domainBallAvg_block
 
-        domainBallCorMat_block: block
-            use pm_sampling_scio, only: domainBallCorMat
-            spec%domainBallCorMat%def = getMatInit([ndim, ndim], uppLowDia, vupp = 0._RKC, vlow = 0._RKC, vdia = 1._RKC)
-            spec%domainBallCorMat%desc = &
-            SKC_"The simulation specification `domainBallCorMat` is a positive-definite matrix of type `real` of highest precision available in the ParaMonte Library &
-                &of size `(ndim, ndim)` representing the correlation matrix of the domain of the objective function, where `ndim` is the dimension of the domain. &
-                &Combined with the input simulation specification `domainBallStdVec` it defines the objective function's hyper-ellipsoidal (or spherical) domain. &
-                &If the input simulation specification `domainBallCovMat` is provided by the user, then any values set &
-                &for `domainBallCorMat` and `domainBallStdVec` will be automatically ignored. The input specification `domainBallCorMat` &
-                &along with `proposalStdVec` are especially useful when covariance matrix computation is non-trivial. &
-                &When passed to the sampler from within an external input sampler specification file, any missing element of `domainBallCovMat` &
-                &will be set to the appropriate default value. The default value for `domainBallCorMat` is an `ndim`-by-`ndim` Identity matrix."
+        domainBallCor_block: block
+            use pm_sampling_scio, only: domainBallCor
+            spec%domainBallCor%def = getMatInit([ndim, ndim], uppLowDia, vupp = 0._RKC, vlow = 0._RKC, vdia = 1._RKC)
+            spec%domainBallCor%desc = &
+            SKC_"The simulation specification `domainBallCor` is a positive-definite matrix of type `real` of highest precision available in the ParaMonte Library &
+                &of size `(ndim, ndim)` representing the correlation matrix of the domain of the objective function, where `ndim` is the dimension of the domain, &
+                &such that all states `X(1 : ndim)` visited by the sampler would obey the following inequality:"//NL2//&
+            SKC_"$$"//NL1//&
+            SKC_"(X - \mu)^T \Sigma^{-1} (X - \mu) \leq 1."//NL1//&
+            SKC_"$$"//NL2//&
+            SKC_"where $$\mu$$ represents the specification `domainBallAvg` and $$\Sigma^{-1}$$ is the inverse of $$\Sigma$$ computed as, "//NL2//&
+            SKC_"$$"//NL1//&
+            SKC_"\Sigma = \mathrm{eye}(V) ~ \rho ~ \mathrm{eye}(V)."//NL1//&
+            SKC_"$$"//NL2//&
+            SKC_"where $$\rho$$ stands for specification `domainBallCor` and $$\mathrm{eye}(V)$$ stands &
+                for diagonal matrix whose diagonals are set to the specification `domainBallStd`."//NL2//&
+            SKC_"Combined with the input simulation specification `domainBallStd` it defines the objective function's hyper-ellipsoidal (or spherical) domain. &
+                &If the input simulation specification `domainBallCov` is provided by the user, then any values set &
+                &for `domainBallCor` and `domainBallStd` will be automatically ignored. The input specification `domainBallCor` &
+                &along with `domainBallStd` are especially useful when covariance matrix computation is non-trivial. &
+                &When passed to the sampler from within an external input sampler specification file, any missing element of `domainBallCov` &
+                &will be set to the appropriate default value. The default value for `domainBallCor` is an `ndim`-by-`ndim` Identity matrix."
             !$omp master
-            call setResized(domainBallCorMat, [ndim, ndim])
-            call setNAN(domainBallCorMat)
+            call setResized(domainBallCor, [ndim, ndim])
+            call setNAN(domainBallCor)
             !$omp end master
-        end block domainBallCorMat_block
+        end block domainBallCor_block
 
-        domainBallCovMat_block: block
-            use pm_sampling_scio, only: domainBallCovMat
-            spec%domainBallCovMat%isUserSet = .false._LK ! This must be set here. It is important for the proper setting from inputFile and inputArg.
+        domainBallCov_block: block
+            use pm_sampling_scio, only: domainBallCov
+            spec%domainBallCov%isUserSet = .false._LK ! This must be set here. It is important for the proper setting from inputFile and inputArg.
             if (spec%method%isParaDRAM .or. spec%method%isParaDISE) then
-                spec%domainBallCovMat%def = getMatInit([ndim, ndim], uppLowDia, 0._RKC, 0._RKC, spec%real%large**2)
+                spec%domainBallCov%def = getMatInit([ndim, ndim], uppLowDia, 0._RKC, 0._RKC, spec%real%large**2)
             elseif (spec%method%isParaNest) then
-                spec%domainBallCovMat%def = getMatInit([ndim, ndim], uppLowDia, 0._RKC, 0._RKC, 1._RKC)
+                spec%domainBallCov%def = getMatInit([ndim, ndim], uppLowDia, 0._RKC, 0._RKC, 1._RKC)
             end if
-            call setResized(spec%domainBallCovMat%def, [ndim, ndim])
-            call setResized(spec%domainBallCovMat%val, [ndim, ndim])
-            spec%domainBallCovMat%desc = &
-            SKC_"The simulation specification `domainBallCovMat` is a positive-definite matrix of type `real` of the highest precision available in the ParaMonte Library &
-                &of size `(ndim, ndim)` representing the Gramian matrix of the domain of the objective function, where `ndim` is the dimension of the domain. &
-                &If the user provides this input simulation specification, then any values set for the input simulation &
-                &specifications `domainBallCorMat` and `domainBallStdVec` will be automatically ignored. When set from inside an external &
-                &input ParaMonte specification file, any missing element of `domainBallCovMat` will be set to the appropriate default value. &
-                &To specify an ndim-dimensional spherical domain, set `domainBallCovMat` to the identity matrix whose diagonal elements are &
-                &radius-squared of the desired hyper-sphere (n-ball). The default value for `domainBallCovMat` is an `ndim`-by-`ndim` Identity matrix &
+            call setResized(spec%domainBallCov%def, [ndim, ndim])
+            call setResized(spec%domainBallCov%val, [ndim, ndim])
+            spec%domainBallCov%desc = &
+            SKC_"The simulation specification `domainBallCov` is a positive-definite matrix of type `real` of the highest precision available in the ParaMonte Library &
+                &of size `(ndim, ndim)` representing the Gramian matrix of the domain of the objective function, where `ndim` is the dimension of the domain, &
+                &such that all states `X(1 : ndim)` visited by the sampler would obey the following inequality:"//NL2//&
+            SKC_"$$"//NL1//&
+            SKC_"(X - \mu)^T \Sigma^{-1} (X - \mu) \leq 1."//NL1//&
+            SKC_"$$"//NL2//&
+            SKC_"where $$\mu$$ represents the specification `domainBallAvg` and $$\Sigma^{-1}$$ is the inverse of the specification `domainBallCov`."//NL2//&
+            SKC_"If the user provides this input simulation specification, then any values set for the input simulation &
+                &specifications `domainBallCor` and `domainBallStd` will be automatically ignored. When set from inside an external &
+                &input ParaMonte specification file, any missing element of `domainBallCov` will be set to the appropriate default value. &
+                &To specify an ndim-dimensional spherical domain, set `domainBallCov` to the identity matrix whose diagonal elements are &
+                &radius-squared of the desired hyper-sphere (n-ball). The default value for `domainBallCov` is an `ndim`-by-`ndim` Identity matrix &
                 &for simulations (such as the ParaNest integrator) that require a finite domain and an `ndim`-by-`ndim` diagonal matrix whose diagonals &
                 &are practically set to infinity for simulations that do not require a finite domain (such as the ParaDRAM and ParaDISE MCMC samplers)."//NL2//&
-            SKC_"> **Note**: The use of `CovMat` in the name of this simulation specification is theoretically incorrect as the domain &
+            SKC_"> **Note**: The use of `Cov` in the name of this simulation specification is theoretically incorrect as the domain &
                 &of the objective function is not a distribution. Even if it is considered a hyper-ellipsoidal uniform distribution &
                 &this specification would still not represent its covariance matrix because it represents the Gramian matrix. &
-                &However, the decision was made to name this specification as `CovMat` because of its nice fit to the rest of &
+                &However, the decision was made to name this specification as `Cov` because of its nice fit to the rest of &
                 &the relevant simulation specifications and user familiarity with keywords."
             !$omp master
-            call setResized(domainBallCovMat, [ndim, ndim])
-            call setNAN(domainBallCovMat)
+            call setResized(domainBallCov, [ndim, ndim])
+            call setNAN(domainBallCov)
             !$omp end master
-        end block domainBallCovMat_block
+        end block domainBallCov_block
 
-        domainBallStdVec_block: block
-            use pm_sampling_scio, only: domainBallStdVec
+        domainBallStd_block: block
+            use pm_sampling_scio, only: domainBallStd
             if (spec%method%isParaDRAM .or. spec%method%isParaDISE) then
-                spec%domainBallStdVec%def = spec%real%large
+                spec%domainBallStd%def = spec%real%large
             elseif (spec%method%isParaNest) then
-                spec%domainBallStdVec%def = 1._RKC
+                spec%domainBallStd%def = 1._RKC
             end if
-            spec%domainBallStdVec%desc = &
-            SKC_"The simulation specification `domainBallStdVec` is a positive-valued vector of type `real` of the highest precision available &
+            spec%domainBallStd%desc = &
+            SKC_"The simulation specification `domainBallStd` is a positive-valued vector of type `real` of the highest precision available &
                 &within the ParaMonte library, of size `ndim`, where `ndim` is the dimension of the domain of the objective function. &
-                &It represents the square roots of the diagonal elements of the covariance matrix of the domain of the objective function. &
-                &If the covariance matrix of the ellipsoidal/spherical domain (`domainBallCovMat`) is missing from the input specifications &
-                &to the sampler, then `domainBallStdVec` (along with the input specification `domainBallCorMat`) will be used to &
-                &construct the covariance matrix of the domain of the objective function. However, if `domainBallCovMat` is present &
-                &among the input specifications to the sampler, then the input values for `domainBallStdVec` and `domainBallCorMat` &
-                &will be ignored and `domainBallCovMat` will be used to construct the domain of the user-specified objective function. &
-                &To specify an `ndim`-dimensional spherical domain, drop `domainBallCovMat` and `domainBallCorMat` from the input and &
-                &set all elements of `domainBallStdVec` to the desired radius of the hyper-spherical domain. The default value for &
-                &any missing elements of `domainBallStdVec` is `1` for simulations requiring a finite domain (such as the ParaNest &
-                &integrator) and `+Infinity` for simulations not requiring a finite domain (such as the ParaDRAM and ParaDISE samplers)."
+                &It represents the square roots of the diagonal elements of the covariance matrix of the domain of the objective function, &
+                &such that all states `X(1 : ndim)` visited by the sampler would obey the following inequality:"//NL2//&
+            SKC_"$$"//NL1//&
+            SKC_"(X - \mu)^T \Sigma^{-1} (X - \mu) \leq 1."//NL1//&
+            SKC_"$$"//NL2//&
+            SKC_"where $$\mu$$ represents the specification `domainBallAvg` and $$\Sigma^{-1}$$ is the inverse of $$\Sigma$$ computed as, "//NL2//&
+            SKC_"$$"//NL1//&
+            SKC_"\Sigma = \mathrm{eye}(V) ~ \rho ~ \mathrm{eye}(V)."//NL1//&
+            SKC_"$$"//NL2//&
+            SKC_"where $$\rho$$ stands for specification `domainBallCor` and $$\mathrm{eye}(V)$$ stands &
+                for diagonal matrix whose diagonals are set to the specification `domainBallStd`."//NL2//&
+            SKC_"If the covariance matrix of the ellipsoidal/spherical domain (`domainBallCov`) is missing from the input specifications &
+                &to the sampler, then `domainBallStd` (along with the input specification `domainBallCor`) will be used to &
+                &construct the covariance matrix of the domain of the objective function. However, if `domainBallCov` is present &
+                &among the input specifications to the sampler, then the input values for `domainBallStd` and `domainBallCor` &
+                &will be ignored and `domainBallCov` will be used to construct the domain of the user-specified objective function. &
+                &To specify an `ndim`-dimensional spherical domain, drop `domainBallCov` and `domainBallCor` from the input and &
+                &set all elements of `domainBallStd` to the desired radius of the hyper-spherical domain. The default value for &
+                &any missing elements of `domainBallStd` is `1` for simulations requiring a finite domain (such as the ParaNest &
+                &integrator) and `+Infinity` for simulations not requiring a finite domain (such as the ParaDRAM and ParaDISE samplers)."//NL2//&
+            SKC_"> **Note**: The use of `Std` in the name of this simulation specification is theoretically incorrect as the domain &
+                &of the objective function is not a distribution. Even if it is considered a hyper-ellipsoidal uniform distribution &
+                &this specification would still not represent its vector of standard deviations. &
+                &However, the decision was made to name this specification as `Std` because of its nice fit to the rest of &
+                &the relevant simulation specifications and user familiarity with keywords."
             !$omp master
-            call setResized(domainBallStdVec, ndim)
-            call setNAN(domainBallStdVec)
+            call setResized(domainBallStd, ndim)
+            call setNAN(domainBallStd)
             !$omp end master
-        end block domainBallStdVec_block
+        end block domainBallStd_block
 
         domainCubeLimitLower_block: block
             use pm_sampling_scio, only: domainCubeLimitLower
@@ -1521,73 +1557,73 @@ contains
             end do
         end block domainAxisName_block
 
-        domainBallCenter_block: block
-            use pm_sampling_scio, only: domainBallCenter
-            if (spec%overridable .and. allocated(sampler%domainBallCenter)) then
-                spec%domainBallCenter%val = real(sampler%domainBallCenter, RKC)
+        domainBallAvg_block: block
+            use pm_sampling_scio, only: domainBallAvg
+            if (spec%overridable .and. allocated(sampler%domainBallAvg)) then
+                spec%domainBallAvg%val = real(sampler%domainBallAvg, RKC)
             else
-                spec%domainBallCenter%val = domainBallCenter
+                spec%domainBallAvg%val = domainBallAvg
             end if
-            where (isNAN(spec%domainBallCenter%val))
-                spec%domainBallCenter%val = spec%domainBallCenter%def
+            where (isNAN(spec%domainBallAvg%val))
+                spec%domainBallAvg%val = spec%domainBallAvg%def
             end where
-        end block domainBallCenter_block
+        end block domainBallAvg_block
 
-        domainBallCorMat_block: block
-            use pm_sampling_scio, only: domainBallCorMat
+        domainBallCor_block: block
+            use pm_sampling_scio, only: domainBallCor
             integer(IK) :: idim, jdim
-            if (spec%overridable .and. allocated(sampler%domainBallCorMat)) then
-                spec%domainBallCorMat%val = real(sampler%domainBallCorMat, RKC)
+            if (spec%overridable .and. allocated(sampler%domainBallCor)) then
+                spec%domainBallCor%val = real(sampler%domainBallCor, RKC)
             else
-                spec%domainBallCorMat%val = domainBallCorMat
+                spec%domainBallCor%val = domainBallCor
             end if
             do jdim = 1, spec%ndim%val
                 do idim = 1, spec%ndim%val
-                    if (isNAN(spec%domainBallCorMat%val(idim, jdim))) then
-                        spec%domainBallCorMat%val(idim, jdim) = spec%domainBallCorMat%def(idim, jdim)
+                    if (isNAN(spec%domainBallCor%val(idim, jdim))) then
+                        spec%domainBallCor%val(idim, jdim) = spec%domainBallCor%def(idim, jdim)
                     else
                         spec%domain%isFinite = .true._LK
                     end if
                 end do
             end do
-        end block domainBallCorMat_block
+        end block domainBallCor_block
 
-        domainBallCovMat_block: block
-            use pm_sampling_scio, only: domainBallCovMat
+        domainBallCov_block: block
+            use pm_sampling_scio, only: domainBallCov
             integer(IK) :: idim, jdim
-            if (spec%overridable .and. allocated(sampler%domainBallCovMat)) then
-                spec%domainBallCovMat%val = real(sampler%domainBallCovMat, RKC)
+            if (spec%overridable .and. allocated(sampler%domainBallCov)) then
+                spec%domainBallCov%val = real(sampler%domainBallCov, RKC)
             else
-                spec%domainBallCovMat%val = domainBallCovMat
+                spec%domainBallCov%val = domainBallCov
             end if
             do jdim = 1, spec%ndim%val
                 do idim = 1, spec%ndim%val
-                    if (isNAN(spec%domainBallCovMat%val(idim, jdim))) then
-                        spec%domainBallCovMat%val(idim, jdim) = spec%domainBallCovMat%def(idim, jdim)
+                    if (isNAN(spec%domainBallCov%val(idim, jdim))) then
+                        spec%domainBallCov%val(idim, jdim) = spec%domainBallCov%def(idim, jdim)
                     else
-                        spec%domainBallCovMat%isUserSet = .true._LK
+                        spec%domainBallCov%isUserSet = .true._LK
                     end if
                 end do
             end do
-            spec%domain%isFinite = spec%domain%isFinite .or. spec%domainBallCovMat%isUserSet
-        end block domainBallCovMat_block
+            spec%domain%isFinite = spec%domain%isFinite .or. spec%domainBallCov%isUserSet
+        end block domainBallCov_block
 
-        domainBallStdVec_block: block
-            use pm_sampling_scio, only: domainBallStdVec
+        domainBallStd_block: block
+            use pm_sampling_scio, only: domainBallStd
             integer(IK) :: idim
-            if (spec%overridable .and. allocated(sampler%domainBallStdVec)) then
-                spec%domainBallStdVec%val = real(sampler%domainBallStdVec, RKC)
+            if (spec%overridable .and. allocated(sampler%domainBallStd)) then
+                spec%domainBallStd%val = real(sampler%domainBallStd, RKC)
             else
-                spec%domainBallStdVec%val = domainBallStdVec
+                spec%domainBallStd%val = domainBallStd
             end if
             do idim = 1, spec%ndim%val
-                if (isNAN(spec%domainBallStdVec%val(idim)) .or. isInf(spec%domainBallStdVec%val(idim))) then
-                    spec%domainBallStdVec%val(idim) = spec%domainBallStdVec%def
+                if (isNAN(spec%domainBallStd%val(idim)) .or. isInf(spec%domainBallStd%val(idim))) then
+                    spec%domainBallStd%val(idim) = spec%domainBallStd%def
                 else
                     spec%domain%isFinite = .true._LK
                 end if
             end do
-        end block domainBallStdVec_block
+        end block domainBallStd_block
 
         domainCubeLimitLower_block: block
             use pm_sampling_scio, only: domainCubeLimitLower
@@ -1943,7 +1979,7 @@ contains
 
         block
             use pm_sampleCov, only: getCov, uppDia
-            if (.not. spec%domainBallCovMat%isUserSet) spec%domainBallCovMat%val = getCov(spec%domainBallCorMat%val, uppDia, spec%domainBallStdVec%val)
+            if (.not. spec%domainBallCov%isUserSet) spec%domainBallCov%val = getCov(spec%domainBallCor%val, uppDia, spec%domainBallStd%val)
         end block
 
         if (spec%outputColumnWidth%val /= 0_IK) spec%outputSeparator%val = SKC_" "
@@ -2583,21 +2619,21 @@ contains
             call spec%disp%show(reshape(spec%domainAxisName%val, [ndim, 1_IK]), format = format)
             call spec%disp%note%show(spec%domainAxisName%desc)
 
-            call spec%disp%show("domainBallCenter")
-            call spec%disp%show(reshape(spec%domainBallCenter%val, [ndim, 1_IK]), format = format)
-            call spec%disp%note%show(spec%domainBallCenter%desc)
+            call spec%disp%show("domainBallAvg")
+            call spec%disp%show(reshape(spec%domainBallAvg%val, [ndim, 1_IK]), format = format)
+            call spec%disp%note%show(spec%domainBallAvg%desc)
 
-            call spec%disp%show("domainBallCorMat")
-            call spec%disp%show(spec%domainBallCorMat%val, format = format)
-            call spec%disp%note%show(spec%domainBallCorMat%desc)
+            call spec%disp%show("domainBallCor")
+            call spec%disp%show(spec%domainBallCor%val, format = format)
+            call spec%disp%note%show(spec%domainBallCor%desc)
 
-            call spec%disp%show("domainBallCovMat")
-            call spec%disp%show(spec%domainBallCovMat%val, format = format)
-            call spec%disp%note%show(spec%domainBallCovMat%desc)
+            call spec%disp%show("domainBallCov")
+            call spec%disp%show(spec%domainBallCov%val, format = format)
+            call spec%disp%note%show(spec%domainBallCov%desc)
 
-            call spec%disp%show("domainBallStdVec")
-            call spec%disp%show(reshape(spec%domainBallStdVec%val, [ndim, 1_IK]), format = format)
-            call spec%disp%note%show(spec%domainBallStdVec%desc)
+            call spec%disp%show("domainBallStd")
+            call spec%disp%show(reshape(spec%domainBallStd%val, [ndim, 1_IK]), format = format)
+            call spec%disp%note%show(spec%domainBallStd%desc)
 
             call spec%disp%show("domainCubeLimitLower")
             call spec%disp%show(reshape(spec%domainCubeLimitLower%val, [ndim, 1_IK]), format = format)
@@ -2754,27 +2790,27 @@ contains
             if (redefined) spec%domainAxisName%val(:) = newval
         end block domainAxisName_block
 
-        domainBallCenter_block: block
-            if (.not. all(-huge(0._RKC) < spec%domainBallCenter%val .and. spec%domainBallCenter%val < huge(0._RKC))) then
+        domainBallAvg_block: block
+            if (.not. all(-huge(0._RKC) < spec%domainBallAvg%val .and. spec%domainBallAvg%val < huge(0._RKC))) then
                 err%occurred = .true._LK
                 err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                            &The specified values for `domainBallCenter` must be all finite: "//getStr(spec%domainBallCenter%val)//SKC_"'"
+                            &The specified values for `domainBallAvg` must be all finite: "//getStr(spec%domainBallAvg%val)//SKC_"'"
             end if
-        end block domainBallCenter_block
+        end block domainBallAvg_block
 
-        domainBallCorMat_block: block
+        domainBallCor_block: block
             use pm_matrixClass, only: posdefmat
             use pm_matrixClass, only: isMatClass
             !   There is no need to check for eyeness of the input correlation matrix. Only positive definiteness is enough.
             !   If the input correlation matrix is problematic, it will eventually lead to a non-positive-definite covariance matrix.
-            if (.not. isMatClass(spec%domainBallCorMat%val, posdefmat)) then
+            if (.not. isMatClass(spec%domainBallCor%val, posdefmat)) then
                 err%occurred = .true._LK ! This must be set only when .true.
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. The input requested `domainBallCorMat` for defining the &
-                            &domain of the objective function passed to the sampler is not a positive-definite matrix: "//getStr(spec%domainBallCorMat%val)
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. The input requested `domainBallCor` for defining the &
+                            &domain of the objective function passed to the sampler is not a positive-definite matrix: "//getStr(spec%domainBallCor%val)
             end if
-        end block domainBallCorMat_block
+        end block domainBallCor_block
 
-        domainBallCovMat_block: block
+        domainBallCov_block: block
             use pm_matrixInv, only: setMatInv, choUpp
             use pm_matrixTrace, only: getMatMulTraceLog
             use pm_matrixChol, only: setMatChol, transHerm, lowDia
@@ -2782,30 +2818,30 @@ contains
             integer(IK) :: info
             if (spec%domain%isFinite) then
                 call setResized(chol, [spec%ndim%val, spec%ndim%val])
-                call setResized(spec%domainBallCovMat%inv, [spec%ndim%val, spec%ndim%val])
-                call setMatChol(spec%domainBallCovMat%val, lowDia, info, chol, transHerm)
+                call setResized(spec%domainBallCov%inv, [spec%ndim%val, spec%ndim%val])
+                call setMatChol(spec%domainBallCov%val, lowDia, info, chol, transHerm)
                 if (info /= 0_IK) then
                     err%occurred = .true._LK ! This must be set only when .true.
                     err%msg =   err%msg//&
-                                PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. The input requested `domainBallCovMat` for defining the domain &
-                                &of the objective function passed to the sampler is not a positive-definite matrix :"//getStr(spec%domainBallCovMat%val)
+                                PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. The input requested `domainBallCov` for defining the domain &
+                                &of the objective function passed to the sampler is not a positive-definite matrix :"//getStr(spec%domainBallCov%val)
                 end if
                 spec%domain%logVol = getMatMulTraceLog(chol)
-                call setMatInv(spec%domainBallCovMat%inv, chol, choUpp)
+                call setMatInv(spec%domainBallCov%inv, chol, choUpp)
             end if
-        end block domainBallCovMat_block
+        end block domainBallCov_block
 
-        domainBallStdVec_block: block
+        domainBallStd_block: block
             integer(IK) :: idim
-            do idim = 1, size(spec%domainBallStdVec%val, 1, IK)
-                if (spec%domainBallStdVec%val(idim) <= 0._RKC) then
+            do idim = 1, size(spec%domainBallStd%val, 1, IK)
+                if (spec%domainBallStd%val(idim) <= 0._RKC) then
                     err%occurred = .true._LK
                     err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                                &The input requested value ("//getStr(spec%domainBallStdVec%val(idim))//SKC_") for the component `"//getStr(idim)//&
-                                SKC_"` of the input specification `domainBallStdVec` of the simulation must be a positive real number."
+                                &The input requested value ("//getStr(spec%domainBallStd%val(idim))//SKC_") for the component `"//getStr(idim)//&
+                                SKC_"` of the input specification `domainBallStd` of the simulation must be a positive real number."
                 end if
             end do
-        end block domainBallStdVec_block
+        end block domainBallStd_block
 
         domainCubeLimitLower_block: block
             integer(IK) :: idim

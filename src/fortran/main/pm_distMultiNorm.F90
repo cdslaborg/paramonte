@@ -87,7 +87,7 @@ module pm_distMultiNorm
     !>                                      This input argument can be obtained by passing the covariance matrix of the MVN distribution to
     !>                                      [getMatDetSqrtLog](@ref pm_matrixDet::getMatDetSqrtLog) or [setMatDetSqrtLog](@ref pm_matrixDet::setMatDetSqrtLog) and negating the result.
     !>                                      \code{.F90}
-    !>                                          logSqrtDetInvCov = -getMatDetSqrtLog(CovMat)
+    !>                                          logSqrtDetInvCov = -getMatDetSqrtLog(cov)
     !>                                      \endcode
     !>                                      (**optional**, default = `0`)
     !>  \param[in]  invCov              :   The input square matrix (of shape `(ndim,ndim)`) of the same type and kind as the output `logPDFNF`

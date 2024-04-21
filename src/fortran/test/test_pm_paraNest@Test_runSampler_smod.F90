@@ -56,8 +56,8 @@ contains
                             !, getLogFunc = getLogFuncMVN & ! LCOV_EXCL_LINE
                             !, domainCubeLimitLower = [(-10._RK,i = 1, NDIM)] & ! LCOV_EXCL_LINE
                             !, domainCubeLimitUpper = [(+10._RK,i = 1, NDIM)] & ! LCOV_EXCL_LINE
-                            !, domainBallCenter = [(0._RK,i = 1, NDIM)] & ! LCOV_EXCL_LINE
-                            !, domainBallStdVec = [(5._RK,i = 1, NDIM)] & ! LCOV_EXCL_LINE
+                            !, domainBallAvg = [(0._RK,i = 1, NDIM)] & ! LCOV_EXCL_LINE
+                            !, domainBallStd = [(5._RK,i = 1, NDIM)] & ! LCOV_EXCL_LINE
                             !, domain = "ball" & ! LCOV_EXCL_LINE
 
                             ! NormGrid
@@ -69,8 +69,8 @@ contains
                             !, getLogFunc = getLogFuncDistMultiNormShellMix & ! LCOV_EXCL_LINE
                             !, domainCubeLimitLower = DistMultiNormShellMix%Domain%Cube%Limit%Lower & ! LCOV_EXCL_LINE
                             !, domainCubeLimitUpper = DistMultiNormShellMix%Domain%Cube%Limit%Upper & ! LCOV_EXCL_LINE
-                            !, domainBallCenter = DistMultiNormShellMix%Domain%Ellipsoid%Center & ! LCOV_EXCL_LINE
-                            !, domainBallCovMat = DistMultiNormShellMix%Domain%Ellipsoid%ChoLowCovUpp & ! LCOV_EXCL_LINE
+                            !, domainBallAvg = DistMultiNormShellMix%Domain%Ellipsoid%Center & ! LCOV_EXCL_LINE
+                            !, domainBallCov = DistMultiNormShellMix%Domain%Ellipsoid%ChoLowCovUpp & ! LCOV_EXCL_LINE
                             !, domain = "ball" & ! LCOV_EXCL_LINE
 
                             ! NormLogGammaMix

@@ -19,7 +19,7 @@ program example
     sampler%randomSeed = 284651_IK
     sampler%outputFileName = SK_"./out/"
     sampler%parallelismNumThread = 4_IK
-    sampler%proposalScaleFactor = SK_"4 * gelman"
+    sampler%proposalScale = SK_"4 * gelman"
     sampler%outputChainSize = max(50_IK, ndim + 1_IK)
     err = getErrSampling(sampler, getLogFunc, NDIM)
     if (err%occurred) error stop "sampler failed: "//err%msg

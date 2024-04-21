@@ -281,10 +281,10 @@
 !>      \endcode
 !>
 !>  +   The names of variables that **always** represent vectors of values **can**
-!>      suffixed with `Vec` or `Vector` (for example, `proposalStdVec`, ...).<br>
+!>      suffixed with `Vec` or `Vector` (for example, `proposalStd`, ...).<br>
 !>
 !>  +   The names of variables that **always** represent matrices of values **can**
-!>      be suffixed with `mat` or `Matrix` (for example: `proposalCorMat`, ...).<br>
+!>      be suffixed with `mat` or `Matrix` (for example: `proposalCor`, ...).<br>
 !>
 !>  +   A significant attempt has been made to end all `logical` (Boolean) variables with a passive verb.<br>
 !>      This is to ensure that the full variable name virtually forms a proposition.<br>

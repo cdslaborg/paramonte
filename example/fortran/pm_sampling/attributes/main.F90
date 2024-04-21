@@ -37,26 +37,26 @@ contains
 
         call spec%disp%show("### domain")
         call spec%disp%show(getStrWrapped(spec%domain%desc, width = 99999_IK))
-        call spec%disp%show(related([css(SK_"domain"), css(SK_"domainBallCenter"), css(SK_"domainBallCorMat"), css(SK_"domainBallCorMat"), css(SK_"domainBallCovMat"), css(SK_"domainBallStdVec"), css(SK_"domainCubeLimitLower"), css(SK_"domainCubeLimitUpper")]))
+        call spec%disp%show(related([css(SK_"domain"), css(SK_"domainBallAvg"), css(SK_"domainBallCor"), css(SK_"domainBallCor"), css(SK_"domainBallCov"), css(SK_"domainBallStd"), css(SK_"domainCubeLimitLower"), css(SK_"domainCubeLimitUpper")]))
 
         call spec%disp%show("### domainAxisName")
         call spec%disp%show(getStrWrapped(spec%domainAxisName%desc, width = 99999_IK))
 
-        call spec%disp%show("### domainBallCenter")
-        call spec%disp%show(getStrWrapped(spec%domainBallCenter%desc, width = 99999_IK))
-        call spec%disp%show(related([css(SK_"domain"), css(SK_"domainBallCenter"), css(SK_"domainBallCorMat"), css(SK_"domainBallCorMat"), css(SK_"domainBallCovMat"), css(SK_"domainBallStdVec")]))
+        call spec%disp%show("### domainBallAvg")
+        call spec%disp%show(getStrWrapped(spec%domainBallAvg%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"domain"), css(SK_"domainBallAvg"), css(SK_"domainBallCor"), css(SK_"domainBallCor"), css(SK_"domainBallCov"), css(SK_"domainBallStd")]))
 
-        call spec%disp%show("### domainBallCorMat")
-        call spec%disp%show(getStrWrapped(spec%domainBallCorMat%desc, width = 99999_IK))
-        call spec%disp%show(related([css(SK_"domain"), css(SK_"domainBallCenter"), css(SK_"domainBallCorMat"), css(SK_"domainBallCorMat"), css(SK_"domainBallCovMat"), css(SK_"domainBallStdVec")]))
+        call spec%disp%show("### domainBallCor")
+        call spec%disp%show(getStrWrapped(spec%domainBallCor%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"domain"), css(SK_"domainBallAvg"), css(SK_"domainBallCor"), css(SK_"domainBallCor"), css(SK_"domainBallCov"), css(SK_"domainBallStd")]))
 
-        call spec%disp%show("### domainBallCovMat")
-        call spec%disp%show(getStrWrapped(spec%domainBallCovMat%desc, width = 99999_IK))
-        call spec%disp%show(related([css(SK_"domain"), css(SK_"domainBallCenter"), css(SK_"domainBallCorMat"), css(SK_"domainBallCorMat"), css(SK_"domainBallCovMat"), css(SK_"domainBallStdVec")]))
+        call spec%disp%show("### domainBallCov")
+        call spec%disp%show(getStrWrapped(spec%domainBallCov%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"domain"), css(SK_"domainBallAvg"), css(SK_"domainBallCor"), css(SK_"domainBallCor"), css(SK_"domainBallCov"), css(SK_"domainBallStd")]))
 
-        call spec%disp%show("### domainBallStdVec")
-        call spec%disp%show(getStrWrapped(spec%domainBallStdVec%desc, width = 99999_IK))
-        call spec%disp%show(related([css(SK_"domain"), css(SK_"domainBallCenter"), css(SK_"domainBallCorMat"), css(SK_"domainBallCorMat"), css(SK_"domainBallCovMat"), css(SK_"domainBallStdVec")]))
+        call spec%disp%show("### domainBallStd")
+        call spec%disp%show(getStrWrapped(spec%domainBallStd%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"domain"), css(SK_"domainBallAvg"), css(SK_"domainBallCor"), css(SK_"domainBallCor"), css(SK_"domainBallCov"), css(SK_"domainBallStd")]))
 
         call spec%disp%show("### domainCubeLimitLower")
         call spec%disp%show(getStrWrapped(spec%domainCubeLimitLower%desc, width = 99999_IK))
@@ -154,18 +154,18 @@ contains
 
         call spec%disp%show("### proposal")
         call spec%disp%show(getStrWrapped(spec%proposal%desc, width = 99999_IK))
-        call spec%disp%show(related([css(SK_"proposal"), css(SK_"proposalCorMat"), css(SK_"proposalCovMat"), css(SK_"proposalStdVec")]))
+        call spec%disp%show(related([css(SK_"proposal"), css(SK_"proposalCor"), css(SK_"proposalCov"), css(SK_"proposalStd")]))
 
-        call spec%disp%show("### proposalCorMat")
-        call spec%disp%show(getStrWrapped(spec%proposalCorMat%desc, width = 99999_IK))
-        call spec%disp%show(related([css(SK_"proposal"), css(SK_"proposalCorMat"), css(SK_"proposalCovMat"), css(SK_"proposalStdVec")]))
+        call spec%disp%show("### proposalCor")
+        call spec%disp%show(getStrWrapped(spec%proposalCor%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"proposal"), css(SK_"proposalCor"), css(SK_"proposalCov"), css(SK_"proposalStd")]))
 
-        call spec%disp%show("### proposalCovMat")
-        call spec%disp%show(getStrWrapped(spec%proposalCovMat%desc, width = 99999_IK))
-        call spec%disp%show(related([css(SK_"proposal"), css(SK_"proposalCorMat"), css(SK_"proposalCovMat"), css(SK_"proposalStdVec")]))
+        call spec%disp%show("### proposalCov")
+        call spec%disp%show(getStrWrapped(spec%proposalCov%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"proposal"), css(SK_"proposalCor"), css(SK_"proposalCov"), css(SK_"proposalStd")]))
 
-        call spec%disp%show("### proposalScaleFactor")
-        call spec%disp%show(getStrWrapped(spec%proposalScaleFactor%desc, width = 99999_IK))
+        call spec%disp%show("### proposalScale")
+        call spec%disp%show(getStrWrapped(spec%proposalScale%desc, width = 99999_IK))
 
         call spec%disp%show("### proposalStart")
         call spec%disp%show(getStrWrapped(spec%proposalStart%desc, width = 99999_IK))
@@ -183,9 +183,9 @@ contains
         call spec%disp%show(getStrWrapped(spec%proposalStartRandomized%desc, width = 99999_IK))
         call spec%disp%show(related([css(SK_"proposalStart"), css(SK_"proposalStartDomainCubeLimitLower"), css(SK_"proposalStartDomainCubeLimitUpper"), css(SK_"proposalStartRandomized")]))
 
-        call spec%disp%show("### proposalStdVec")
-        call spec%disp%show(getStrWrapped(spec%proposalStdVec%desc, width = 99999_IK))
-        call spec%disp%show(related([css(SK_"proposal"), css(SK_"proposalCorMat"), css(SK_"proposalCovMat"), css(SK_"proposalStdVec")]))
+        call spec%disp%show("### proposalStd")
+        call spec%disp%show(getStrWrapped(spec%proposalStd%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"proposal"), css(SK_"proposalCor"), css(SK_"proposalCov"), css(SK_"proposalStd")]))
 
     end subroutine
 
@@ -212,11 +212,11 @@ contains
 
         call spec%disp%show("### proposalDelayedRejectionCount")
         call spec%disp%show(getStrWrapped(spec%proposalDelayedRejectionCount%desc, width = 99999_IK))
-        call spec%disp%show(related([css(SK_"proposalDelayedRejectionCount"), css(SK_"proposalDelayedRejectionScaleFactor")]))
+        call spec%disp%show(related([css(SK_"proposalDelayedRejectionCount"), css(SK_"proposalDelayedRejectionScale")]))
 
-        call spec%disp%show("### proposalDelayedRejectionScaleFactor")
-        call spec%disp%show(getStrWrapped(spec%proposalDelayedRejectionScaleFactor%desc, width = 99999_IK))
-        call spec%disp%show(related([css(SK_"proposalDelayedRejectionCount"), css(SK_"proposalDelayedRejectionScaleFactor")]))
+        call spec%disp%show("### proposalDelayedRejectionScale")
+        call spec%disp%show(getStrWrapped(spec%proposalDelayedRejectionScale%desc, width = 99999_IK))
+        call spec%disp%show(related([css(SK_"proposalDelayedRejectionCount"), css(SK_"proposalDelayedRejectionScale")]))
 
     end subroutine
 

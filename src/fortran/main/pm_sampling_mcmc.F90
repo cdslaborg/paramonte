@@ -30,10 +30,10 @@
 !>  Currently, only a cubical domain is supported, which can be difficult to deal with when the density function domain is globular.<br>
 !>  This can be fixed by adding additional specifications:<br>
 !>  <ol>
-!>      <li>    `proposalStartDomainBallCenter`
-!>      <li>    `proposalStartDomainBallCorMat`
-!>      <li>    `proposalStartDomainBallCovMat`
-!>      <li>    `proposalStartDomainBallStdVec`
+!>      <li>    `proposalStartDomainBallAvg`
+!>      <li>    `proposalStartDomainBallCor`
+!>      <li>    `proposalStartDomainBallCov`
+!>      <li>    `proposalStartDomainBallStd`
 !>  </ol>
 !>
 !>  \devnote

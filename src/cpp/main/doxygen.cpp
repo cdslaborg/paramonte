@@ -91,11 +91,9 @@
 ///
 /// +   All constants and parameters should generally be typed in uppercase.
 ///
-/// +   The names of variables that **always** represent vectors of values **can**
-///     suffixed with `Vec` or `Vector` (for example, `proposalStdVec`, ...).
+/// +   The names of variables that **always** represent vectors of values **may** suffixed with `Vec` or `Vector`.
 ///
-/// +   The names of variables that **always** represent matrices of values **can**
-///     be suffixed with `mat` or `Matrix` (for example: `proposalCorMat`, ...).
+/// +   The names of variables that **always** represent matrices of values **can** be suffixed with `Mat` or `Matrix`.
 ///
 /// +   A significant attempt has been made to end all Boolean variables with a passive verb.<br>
 ///     This is to ensure that the full variable name virtually forms a proposition.<br>
