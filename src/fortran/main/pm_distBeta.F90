@@ -23,7 +23,7 @@
 !>      <li>    the Probability Density Function (**PDF**)
 !>      <li>    the Cumulative Distribution Function (**CDF**)
 !>      <li>    the Random Number Generation from the distribution (**RNG**)
-!>      <li>    the Inverse Cumulative Distribution Function **(ICDF)** or the **Quantile Function**
+!>      <li>    the Inverse Cumulative Distribution Function (**ICDF**) or the **Quantile Function**
 !>  </ol>
 !>
 !>  The **PDF** of the Beta distribution is defined with two shape parameters \f$(\alpha > 0, \beta > 0)\f$ as,

@@ -23,7 +23,7 @@
 !>      <li>    the Probability Density Function (**PDF**)
 !>      <li>    the Cumulative Distribution Function (**CDF**)
 !>      <li>    the Random Number Generation from the distribution (**RNG**)
-!>      <li>    the Inverse Cumulative Distribution Function **(ICDF)** or the **Quantile Function**
+!>      <li>    the Inverse Cumulative Distribution Function (**ICDF**) or the **Quantile Function**
 !>  </ol>
 !>
 !>  The **PDF** \f$\pi(\cdot)\f$ of the <b>Raised Cosine distribution</b> over a strictly-positive support \f$x \in [\mu - \sigma, \mu + \sigma]\f$

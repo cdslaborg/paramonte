@@ -23,7 +23,7 @@
 !>      <li>    the Probability Density Function (**PDF**)
 !>      <li>    the Cumulative Distribution Function (**CDF**)
 !>      <li>    the Random Number Generation from the distribution (**RNG**)
-!>      <li>    the Inverse Cumulative Distribution Function **(ICDF)** or the **Quantile Function**
+!>      <li>    the Inverse Cumulative Distribution Function (**ICDF**) or the **Quantile Function**
 !>  </ol>
 !>
 !>  The Kolmogorov distribution is the distribution of the random variable
