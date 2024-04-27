@@ -242,7 +242,7 @@ module pm_sampling
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type, extends(paramcmc_type)                :: paradram_type
-        real(RKH)               , allocatable   :: burninAdaptationMeasure              !<  \specdram{burninadaptationmeasure}
+        real(RKH)               , allocatable   :: proposalAdaptationBurnin             !<  \specdram{proposaladaptationburnin}
         integer(IK)             , allocatable   :: proposalAdaptationCount              !<  \specdram{proposaladaptationcount}
         integer(IK)             , allocatable   :: proposalAdaptationCountGreedy        !<  \specdram{proposaladaptationcountgreedy}
         integer(IK)             , allocatable   :: proposalAdaptationPeriod             !<  \specdram{proposaladaptationperiod}
@@ -600,7 +600,7 @@ module pm_sampling
     !>  \vis{mvn}
     !>  \image html example/pm_sampling/mvn/mvn.traceplot.png width=700
     !>  \image html example/pm_sampling/mvn/mvn.scatterplot.png width=700
-    !>  \image html example/pm_sampling/mvn/mvn.adaptationMeasure.png width=700
+    !>  \image html example/pm_sampling/mvn/mvn.proposalAdaptation.png width=700
     !>
     !>  \example{himmelblau}
     !>  \include{lineno} example/pm_sampling/himmelblau/main.F90
@@ -612,7 +612,7 @@ module pm_sampling
     !>  \vis{himmelblau}
     !>  \image html example/pm_sampling/himmelblau/himmelblau.traceplot.png width=700
     !>  \image html example/pm_sampling/himmelblau/himmelblau.scatterplot.png width=700
-    !>  \image html example/pm_sampling/himmelblau/himmelblau.adaptationMeasure.png width=700
+    !>  \image html example/pm_sampling/himmelblau/himmelblau.proposalAdaptation.png width=700
     !>
     !>  \example{mixture}
     !>  \include{lineno} example/pm_sampling/mixture/main.F90
@@ -622,19 +622,19 @@ module pm_sampling
     !>  \vis{mixture}
     !>  \image html example/pm_sampling/mixture/mixLogNormLogNorm.hist.png width=700
     !>  \image html example/pm_sampling/mixture/mixLogNormLogNorm.traceplot.png width=700
-    !>  \image html example/pm_sampling/mixture/mixLogNormLogNorm.adaptationMeasure.png width=700
+    !>  \image html example/pm_sampling/mixture/mixLogNormLogNorm.proposalAdaptation.png width=700
     !>  <br>
     !>  \image html example/pm_sampling/mixture/mixFlatPowetoFlatPowetoTapered.hist.png width=700
     !>  \image html example/pm_sampling/mixture/mixFlatPowetoFlatPowetoTapered.traceplot.png width=700
-    !>  \image html example/pm_sampling/mixture/mixFlatPowetoFlatPowetoTapered.adaptationMeasure.png width=700
+    !>  \image html example/pm_sampling/mixture/mixFlatPowetoFlatPowetoTapered.proposalAdaptation.png width=700
     !>  <br>
     !>  \image html example/pm_sampling/mixture/mixLogNormFlatPowetoTapered.hist.png width=700
     !>  \image html example/pm_sampling/mixture/mixLogNormFlatPowetoTapered.traceplot.png width=700
-    !>  \image html example/pm_sampling/mixture/mixLogNormFlatPowetoTapered.adaptationMeasure.png width=700
+    !>  \image html example/pm_sampling/mixture/mixLogNormFlatPowetoTapered.proposalAdaptation.png width=700
     !>  <br>
     !>  \image html example/pm_sampling/mixture/mixFlatPowetoLogNorm.hist.png width=700
     !>  \image html example/pm_sampling/mixture/mixFlatPowetoLogNorm.traceplot.png width=700
-    !>  \image html example/pm_sampling/mixture/mixFlatPowetoLogNorm.adaptationMeasure.png width=700
+    !>  \image html example/pm_sampling/mixture/mixFlatPowetoLogNorm.proposalAdaptation.png width=700
     !>
     !>  \test
     !>  [test_pm_sampling](@ref test_pm_sampling)
@@ -858,7 +858,7 @@ contains
     !>  \vis{runParaDRAM}
     !>  \image html example/pm_sampling/runParaDRAM/runParaDRAM.traceplot.png width=700
     !>  \image html example/pm_sampling/runParaDRAM/runParaDRAM.scatterplot.png width=700
-    !>  \image html example/pm_sampling/runParaDRAM/runParaDRAM.adaptationMeasure.png width=700
+    !>  \image html example/pm_sampling/runParaDRAM/runParaDRAM.proposalAdaptation.png width=700
     !>
     !>  \test
     !>  [test_pm_sampling](@ref test_pm_sampling)

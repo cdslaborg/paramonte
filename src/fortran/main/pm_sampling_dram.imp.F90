@@ -64,8 +64,8 @@
     ! specification declarations.
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-   !real(RKC)                               :: burninAdaptationMeasure ! namelist input
-    type                                    :: burninAdaptationMeasure_type
+   !real(RKC)                               :: proposalAdaptationBurnin ! namelist input
+    type                                    :: proposalAdaptationBurnin_type
         real(RKC)                           :: val
         real(RKC)                           :: def
         character(:,SKC)    , allocatable   :: desc
@@ -114,7 +114,7 @@
     end type
 
     type, extends(specmcmc_type)                    :: specdram_type
-        type(burninAdaptationMeasure_type)          :: burninAdaptationMeasure
+        type(proposalAdaptationBurnin_type)         :: proposalAdaptationBurnin
         type(proposalAdaptationCount_type)          :: proposalAdaptationCount
         type(proposalAdaptationCountGreedy_type)    :: proposalAdaptationCountGreedy
         type(proposalAdaptationPeriod_type)         :: proposalAdaptationPeriod
@@ -162,14 +162,14 @@ contains
 
         spec%specmcmc_type = specmcmc_type(modelr, method, ndim)
 
-        burninAdaptationMeasure_block: block
-            use pm_sampling_scio, only: burninAdaptationMeasure
-            spec%burninAdaptationMeasure%def = 1._RKC
-            spec%burninAdaptationMeasure%desc = &
-            SKC_"The simulation specification `burninAdaptationMeasure` is a scalar of type `real` of the highest precision available &
+        proposalAdaptationBurnin_block: block
+            use pm_sampling_scio, only: proposalAdaptationBurnin
+            spec%proposalAdaptationBurnin%def = 1._RKC
+            spec%proposalAdaptationBurnin%desc = &
+            SKC_"The simulation specification `proposalAdaptationBurnin` is a scalar of type `real` of the highest precision available &
                 &within the ParaMonte library whose value, between 0 and 1, represents the adaptation measure threshold below which &
                 &the simulated Markov chain will be used to generate the output sample. In other words, any point in the output Markov &
-                &chain that has been sampled during significant adaptation of the proposal distribution (set by `burninAdaptationMeasure`) &
+                &chain that has been sampled during significant adaptation of the proposal distribution (set by `proposalAdaptationBurnin`) &
                 &will not be included in constructing the final MCMC output sample. &
                 &This is to ensure that the generation of the output sample will be based only on the part of the simulated chain that &
                 &is practically guaranteed to be Markovian and ergodic. If this variable is set to 0, then the output sample will be &
@@ -178,13 +178,13 @@ contains
                 &and `proposalAdaptationPeriod` input variables, is longer than the total length of the output MCMC chain. &
                 &In such cases, the resulting output sample may be zero size. In general, when good mixing occurs &
                 &(e.g., when the input variable `outputChainSize` is reasonably large), then any specific &
-                &value of `burninAdaptationMeasure` becomes practically irrelevant. &
-                &The default value for `burninAdaptationMeasure` is `"//getStr(spec%burninAdaptationMeasure%def)//SKC_"`, implying that the &
+                &value of `proposalAdaptationBurnin` becomes practically irrelevant. &
+                &The default value for `proposalAdaptationBurnin` is `"//getStr(spec%proposalAdaptationBurnin%def)//SKC_"`, implying that the &
                 &entire chain (excluding of an initial automatically-determined burnin period) will be used to generate the final output sample."
             !$omp master
-            call setNAN(burninAdaptationMeasure)
+            call setNAN(proposalAdaptationBurnin)
             !$omp end master
-        end block burninAdaptationMeasure_block
+        end block proposalAdaptationBurnin_block
 
         proposalAdaptationCount_block: block
             use pm_sampling_scio, only: proposalAdaptationCount
@@ -311,15 +311,15 @@ contains
             err = spec%specmcmc_type%set(sampler%paramcmc_type)
             if (err%occurred) return
 
-            burninAdaptationMeasure_block: block
-                use pm_sampling_scio, only: burninAdaptationMeasure
-                if (spec%overridable .and. allocated(sampler%burninAdaptationMeasure)) then
-                    spec%burninAdaptationMeasure%val = real(sampler%burninAdaptationMeasure, RKC)
+            proposalAdaptationBurnin_block: block
+                use pm_sampling_scio, only: proposalAdaptationBurnin
+                if (spec%overridable .and. allocated(sampler%proposalAdaptationBurnin)) then
+                    spec%proposalAdaptationBurnin%val = real(sampler%proposalAdaptationBurnin, RKC)
                 else
-                    spec%burninAdaptationMeasure%val = burninAdaptationMeasure
+                    spec%proposalAdaptationBurnin%val = proposalAdaptationBurnin
                 end if
-                if (isNAN(spec%burninAdaptationMeasure%val)) spec%burninAdaptationMeasure%val = spec%burninAdaptationMeasure%def
-            end block burninAdaptationMeasure_block
+                if (isNAN(spec%proposalAdaptationBurnin%val)) spec%proposalAdaptationBurnin%val = spec%proposalAdaptationBurnin%def
+            end block proposalAdaptationBurnin_block
 
             proposalAdaptationCount_block: block
                 use pm_sampling_scio, only: proposalAdaptationCount
@@ -418,9 +418,9 @@ contains
 
         associate(ndim => spec%ndim%val, format => spec%reportFile%format%generic)
 
-            call spec%disp%show("burninAdaptationMeasure")
-            call spec%disp%show(spec%burninAdaptationMeasure%val, format = format)
-            call spec%disp%note%show(spec%burninAdaptationMeasure%desc)
+            call spec%disp%show("proposalAdaptationBurnin")
+            call spec%disp%show(spec%proposalAdaptationBurnin%val, format = format)
+            call spec%disp%note%show(spec%proposalAdaptationBurnin%desc)
 
             call spec%disp%show("proposalAdaptationCount")
             call spec%disp%show(spec%proposalAdaptationCount%val, format = format)
@@ -461,22 +461,22 @@ contains
         class(specdram_type), intent(inout) :: spec
         character(*,SKC), parameter :: PROCEDURE_NAME = MODULE_NAME//SKC_"@sanitizeSpecDRAM()"
 
-        burninAdaptationMeasure_block: block
-            if (spec%burninAdaptationMeasure%val < 0._RKC) then
+        proposalAdaptationBurnin_block: block
+            if (spec%proposalAdaptationBurnin%val < 0._RKC) then
                 err%occurred = .true._LK
                 err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                            &The input specification `burninAdaptationMeasure` ("//getStr(spec%burninAdaptationMeasure%val)//SKC_") cannot be less than 0. &
-                            &If you are unsure of the appropriate value for burninAdaptationMeasure, drop it from the input list. &
+                            &The input specification `proposalAdaptationBurnin` ("//getStr(spec%proposalAdaptationBurnin%val)//SKC_") cannot be less than 0. &
+                            &If you are unsure of the appropriate value for proposalAdaptationBurnin, drop it from the input list. &
                             &The sampler will automatically assign an appropriate value to it."
             end if
-            if (1._RKC < spec%burninAdaptationMeasure%val) then
+            if (1._RKC < spec%proposalAdaptationBurnin%val) then
                 err%occurred = .true._LK
                 err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                            &The input specification `burninAdaptationMeasure` ("//getStr(spec%burninAdaptationMeasure%val)//SKC_") cannot be larger than 1. &
-                            &If you are unsure of the appropriate value for burninAdaptationMeasure, drop it from the input list. &
+                            &The input specification `proposalAdaptationBurnin` ("//getStr(spec%proposalAdaptationBurnin%val)//SKC_") cannot be larger than 1. &
+                            &If you are unsure of the appropriate value for proposalAdaptationBurnin, drop it from the input list. &
                             &The sampler will automatically assign an appropriate value to it."
             end if
-        end block burninAdaptationMeasure_block
+        end block proposalAdaptationBurnin_block
 
         proposalAdaptationCount_block: block
             if (spec%proposalAdaptationCount%val < 0_IK) then

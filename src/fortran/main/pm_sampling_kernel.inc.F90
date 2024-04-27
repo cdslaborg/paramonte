@@ -51,8 +51,8 @@
             integer                             :: ndimp1
             integer(IK)                         :: ndim
             integer(IK)                         :: numFunCallAcceptedLastAdaptation                     ! number of function calls accepted at Last proposal adaptation occurrence
-            integer(IK)                         :: counterAUP                                           ! counter for proposalAdaptationPeriod
-            integer(IK)                         :: counterAUC                                           ! counter for proposalAdaptationCount
+            integer(IK)                         :: counterPAP                                           ! counter for proposalAdaptationPeriod
+            integer(IK)                         :: counterPAC                                           ! counter for proposalAdaptationCount
             integer(IK)                         :: counterDRS                                           ! counter for Delayed Rejection Stages
             integer(IK)                         :: lastStateWeight                                      ! This is used for passing the most recent verbose chain segment to the adaptive updater of the sampler
             integer(IK)                         :: currentStateWeight                                   ! counter for SampleWeight, used only in restart mode
@@ -60,12 +60,12 @@
             real(RKC)                           :: meanAccRateSinceStart                                ! used for restart file read. xxx \todo: this could be merged with stat%cfc%meanAcceptanceRate.
             real(RKC)                           :: logFuncDiff                                          ! The difference between the log of the old and the new states. Used to avoid underflow.
             integer(IK)                         :: dumint
-            logical(LK)                         :: adaptationIsGreedy
-            logical(LK)                         :: adaptationSucceeded
-            integer(IK)                         :: adaptationMeasureLen
+            logical(LK)                         :: proposalAdaptationGreedyEnabled
+            integer(IK)                         :: proposalAdaptationLen
+            logical(LK)                         :: proposalAdaptationSucceeded
             integer(IK)                         :: acceptedRejectedDelayedUnusedRestartMode
-           !real(RKC)                           :: adaptationMeasureDummy
-            real(RKC)           , allocatable   :: adaptationMeasure(:)
+           !real(RKC)                           :: proposalAdaptationDummy
+            real(RKC)           , allocatable   :: proposalAdaptation(:)
             integer                             :: imageStartID, imageEndID, imageID ! This must be default integer, at least for MPI.
 #if         OMP_ENABLED
 #define     CO_LOGFUNCSTATE(I,J,K)co_logFuncState(I,J,K)
@@ -138,18 +138,18 @@
                 stat%numFunCallAcceptedRejectedDelayed = 0_IK ! Markov Chain counter
                 sumAccrAccRejDel = 0._RKC ! sum of acceptance rate
             end if
-            ! adaptationMeasure = 0._RKC ! needed for the first output
-            adaptationSucceeded = .true._LK ! needed to set up lastStateWeight and numFunCallAcceptedLastAdaptation for the first accepted proposal.
-            sumAccrAccRej = 0._RKC ! sum of acceptance rate
-            counterAUC = 0_IK ! counter for pproposalAdaptationCount.
-            counterAUP = 0_IK ! counter for proposalAdaptationPeriod.
+            ! proposalAdaptation = 0._RKC ! needed for the first output.
+            proposalAdaptationSucceeded = .true._LK ! needed to set up lastStateWeight and numFunCallAcceptedLastAdaptation for the first accepted proposal.
+            sumAccrAccRej = 0._RKC ! sum of acceptance rate.
+            counterPAC = 0_IK ! counter for pproposalAdaptationCount.
+            counterPAP = 0_IK ! counter for proposalAdaptationPeriod.
             stat%numFunCallAccepted = 0_IK ! Markov Chain acceptance counter.
             stat%numFunCallAcceptedRejected = 0_IK ! Markov Chain counter
             numFunCallAcceptedLastAdaptation = 0_IK
             lastStateWeight = -huge(lastStateWeight)
             meanAccRateSinceStart = 1._RKC ! needed for the first restart output in fresh run.
 
-            adaptationMeasureLen = 100_IK
+            proposalAdaptationLen = 100_IK
             blockNewDryRun: if (spec%run%is%new) then
                 RETURN_IF_FAILED(__LINE__,FAILED_IMAGE(isFailedChainResize(stat%cfc, ndim, spec%outputChainSize%val, err%msg)),SK_"Insufficient memory allocation space for the output chain file contents.")
             else blockNewDryRun
@@ -158,7 +158,7 @@
                 !err = getErrChainWrite(stat%cfc, spec%chainFile%file//".temp", spec%outputChainFileFormat%val, spec%chainFile%format%rows, 1_IK, stat%cfc%nsam, spec%proposalAdaptationPeriod%val)
                 RETURN_IF_FAILED(__LINE__,FAILED_IMAGE(err%occurred),err%msg)
                 if (err%iswarned .and. spec%image%is%first) call spec%disp%warn%show(PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SK_": "//err%msg)
-                if (0 < stat%cfc%nsam) adaptationMeasureLen = maxval(stat%cfc%sampleWeight(1 : stat%cfc%nsam))
+                if (0 < stat%cfc%nsam) proposalAdaptationLen = maxval(stat%cfc%sampleWeight(1 : stat%cfc%nsam))
                 spec%run%is%new = stat%cfc%nsam <= CHAIN_RESTART_OFFSET
                 spec%run%is%dry = .not. spec%run%is%new
                 call spec%image%sync()
@@ -196,7 +196,7 @@
                             !    read(spec%chainFile%unit, pos = ibeg, iostat = err%stat ) stat%cfc%processID            (stat%cfc%nsam) &
                             !                                                            , stat%cfc%delayedRejectionStage(stat%cfc%nsam) &
                             !                                                            , stat%cfc%meanAcceptanceRate   (stat%cfc%nsam) &
-                            !                                                            , stat%cfc%adaptationMeasure    (stat%cfc%nsam) &
+                            !                                                            , stat%cfc%proposalAdaptation   (stat%cfc%nsam) &
                             !                                                            , stat%cfc%burninLocation       (stat%cfc%nsam) &
                             !                                                            , stat%cfc%sampleWeight         (stat%cfc%nsam) &
                             !                                                            , stat%cfc%sampleLogFunc        (stat%cfc%nsam) &
@@ -217,7 +217,7 @@
                             !!    write(spec%chainFile%unit,iostat = err%stat, iomsg = err%msg) stat%cfc%processID            (stat%cfc%nsam) &
                             !!                                                                , stat%cfc%delayedRejectionStage(stat%cfc%nsam) &
                             !!                                                                , stat%cfc%meanAcceptanceRate   (stat%cfc%nsam) &
-                            !!                                                                , stat%cfc%adaptationMeasure    (stat%cfc%nsam) &
+                            !!                                                                , stat%cfc%proposalAdaptation   (stat%cfc%nsam) &
                             !!                                                                , stat%cfc%burninLocation       (stat%cfc%nsam) &
                             !!                                                                , stat%cfc%sampleWeight         (stat%cfc%nsam) &
                             !!                                                                , stat%cfc%sampleLogFunc        (stat%cfc%nsam) &
@@ -251,7 +251,7 @@
             stat%timer = timer_type()
             !stat%timer%start = stat%timer%time()
 
-            if (spec%image%is%leader) call setResized(adaptationMeasure, adaptationMeasureLen)
+            if (spec%image%is%leader) call setResized(proposalAdaptation, proposalAdaptationLen)
             if (spec%run%is%new) then ! this must be done separately from the above blockNewDryRun.
                 stat%cfc%burninLocation(1) = 1_IK
                 CO_LOGFUNCSTATE(1 : ndim, 1, 0) = spec%proposalStart%val ! proposal state.
@@ -301,7 +301,7 @@
                 SET_CAFMPI(blockLeaderImage: if (spec%image%is%leader) then)
 
                     co_proposalFound_samplerUpdateOccurred(1) = 0 ! co_proposalFound = .false._LK
-                    adaptationIsGreedy = counterAUC < spec%proposalAdaptationCountGreedy%val
+                    proposalAdaptationGreedyEnabled = counterPAC < spec%proposalAdaptationCountGreedy%val
 
                     SET_PARALLEL(imageID = imageStartID)
                     SET_PARALLEL(loopOverImages: do)
@@ -346,18 +346,18 @@
                                 stat%avgCommPerFunCall = stat%avgCommPerFunCall + stat%timer%time() - stat%timer%clock
                             end if
 #endif
-                            ! Note: after every adaptive update of the sampler, counterAUP is reset to 0.
-                            if (counterAUP == 0_IK .and. adaptationSucceeded) then
+                            ! Note: after every adaptive update of the sampler, counterPAP is reset to 0.
+                            if (counterPAP == 0_IK .and. proposalAdaptationSucceeded) then
                                 numFunCallAcceptedLastAdaptation = numFunCallAcceptedLastAdaptation + 1_IK
                                 lastStateWeight = 0_IK
                             end if
 
                             blockFreshDryRun: if (spec%run%is%new) then
-                                call writeCFC(spec, stat, adaptationMeasure)
+                                call writeCFC(spec, stat, proposalAdaptation)
                                 stat%numFunCallAccepted = stat%numFunCallAccepted + 1_IK
                                 stat%cfc%processID(stat%numFunCallAccepted) = imageID
                                 stat%cfc%delayedRejectionStage(stat%numFunCallAccepted) = counterDRS
-                                stat%cfc%adaptationMeasure(stat%numFunCallAccepted) = 0._RKC
+                                stat%cfc%proposalAdaptation(stat%numFunCallAccepted) = 0._RKC
                                 stat%cfc%sampleWeight(stat%numFunCallAccepted) = 0_IK
                                 stat%cfc%sampleLogFunc(stat%numFunCallAccepted) = CO_LOGFUNCSTATE(0, imageID, -1)
                                 stat%cfc%sampleState(1 : ndim, stat%numFunCallAccepted) = CO_LOGFUNCSTATE(1 : ndim, imageID, -1)
@@ -367,7 +367,7 @@
                                 numFunCallAcceptedPlusOne = stat%numFunCallAccepted + 1_IK
                                 if (numFunCallAcceptedPlusOne == stat%cfc%nsam) then
                                     spec%run%is%new = .true._LK
-                                    call writeCFC(spec, stat, adaptationMeasure)
+                                    call writeCFC(spec, stat, proposalAdaptation)
                                     spec%run%is%dry = .not. spec%run%is%new
                                     stat%cfc%sampleWeight(numFunCallAcceptedPlusOne) = 0_IK
                                     sumAccrAccRej = stat%cfc%meanAcceptanceRate(stat%numFunCallAccepted) * real(stat%numFunCallAcceptedRejected, RKC)
@@ -392,7 +392,7 @@
                         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% blockProposalAccepted %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-                        counterAUP = counterAUP + 1_IK
+                        counterPAP = counterPAP + 1_IK
                         stat%progress%counterPRP = stat%progress%counterPRP + 1_IK
                         ! UPDATE: The following comment is irrelevant and history as of Nov 2023.
                         ! In fact, it is now required to update `stat%numFunCallAcceptedRejected` before calling `reportProgress()`
@@ -411,9 +411,9 @@
                         if (spec%run%is%new) then ! these are used for adaptive proposal updating, so they have to be set on every accepted or rejected iteration (excluding delayed rejections)
                             stat%cfc%meanAcceptanceRate(stat%numFunCallAccepted) = sumAccrAccRej / real(stat%numFunCallAcceptedRejected,kind=RKC)
                             stat%cfc%sampleWeight(stat%numFunCallAccepted) = stat%cfc%sampleWeight(stat%numFunCallAccepted) + 1_IK
-                            if (adaptationMeasureLen < stat%cfc%sampleWeight(stat%numFunCallAccepted)) then
-                                adaptationMeasureLen = 2_IK * adaptationMeasureLen
-                                call setResized(adaptationMeasure, adaptationMeasureLen)
+                            if (proposalAdaptationLen < stat%cfc%sampleWeight(stat%numFunCallAccepted)) then
+                                proposalAdaptationLen = 2_IK * proposalAdaptationLen
+                                call setResized(proposalAdaptation, proposalAdaptationLen)
                             end if
                         else
                             SET_CAFMPI(acceptedRejectedDelayedUnusedRestartMode = stat%numFunCallAcceptedRejectedDelayedUnused)
@@ -433,7 +433,7 @@
                             ! on 5 images Linux  , substituting co_missionAccomplished with the following leads to 11% less communication overhead for 1D Gaussian example
                             co_proposalFound_samplerUpdateOccurred(1) = -1 ! equivalent to co_missionAccomplished = .true._LK
                             if (spec%run%is%new) then
-                                call writeCFC(spec, stat, adaptationMeasure)
+                                call writeCFC(spec, stat, proposalAdaptation)
                                 flush(spec%chainFile%unit)
                             end if
                             call reportProgress(spec, stat, timeLeft = 0._RKD) ! timeElapsed = stat%timer%time() - stat%timer%start, timeLeft = 0._RKC
@@ -443,10 +443,10 @@
                         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% last output write %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% proposal adaptationMeasure %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% proposalAdaptation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-                        blockSamplerAdaptation: if (counterAUC < spec%proposalAdaptationCount%val .and. counterAUP == spec%proposalAdaptationPeriod%val) then
+                        blockSamplerAdaptation: if (counterPAC < spec%proposalAdaptationCount%val .and. counterPAP == spec%proposalAdaptationPeriod%val) then
                             co_proposalFound_samplerUpdateOccurred(2) = 1 ! istart = numFunCallAcceptedLastAdaptation ! = max( numFunCallAcceptedLastAdaptation , stat%cfc%burninLocation(stat%numFunCallAccepted) ) ! this is experimental
                             ! the order in the following two MUST be preserved because occasionally stat%numFunCallAccepted = numFunCallAcceptedLastAdaptation
                             dumint = stat%cfc%sampleWeight(stat%numFunCallAccepted) ! needed for the restart mode, not needed in the fresh run
@@ -462,36 +462,36 @@
                             call setProposalAdapted ( spec, proposal &
                                                     , sampleState = stat%cfc%sampleState(:, numFunCallAcceptedLastAdaptation : stat%numFunCallAccepted) &
                                                     , sampleWeight = stat%cfc%sampleWeight(numFunCallAcceptedLastAdaptation : stat%numFunCallAccepted) &
-                                                    , adaptationIsGreedy = adaptationIsGreedy &
+                                                    , proposalAdaptationGreedyEnabled = proposalAdaptationGreedyEnabled &
                                                     , meanAccRateSinceStart = meanAccRateSinceStart &
-                                                    , adaptationSucceeded = adaptationSucceeded &
-                                                    , adaptationMeasure = adaptationMeasure(dumint) &
+                                                    , proposalAdaptationSucceeded = proposalAdaptationSucceeded &
+                                                    , proposalAdaptation = proposalAdaptation(dumint) &
                                                     , err = err &
                                                     )
                             RETURN_IF_FAILED(__LINE__,FAILED_IMAGE(err%occurred),err%msg)
                             if (spec%run%is%dry) sumAccrAccRej = meanAccRateSinceStart * stat%numFunCallAcceptedRejected
                             stat%cfc%sampleWeight(stat%numFunCallAccepted) = dumint   ! needed for the restart mode, not needed in the fresh run, but is not worth fencing it.
                             if (stat%numFunCallAccepted == numFunCallAcceptedLastAdaptation) then
-                                !adaptationMeasure = adaptationMeasure + adaptationMeasureDummy ! this is the worst-case upper-bound
-                                stat%cfc%adaptationMeasure(stat%numFunCallAccepted) = min(1._RKC, stat%cfc%adaptationMeasure(stat%numFunCallAccepted) + adaptationMeasure(dumint)) ! this is the worst-case upper-bound
+                                !proposalAdaptation = proposalAdaptation + proposalAdaptationDummy ! this is the worst-case upper-bound
+                                stat%cfc%proposalAdaptation(stat%numFunCallAccepted) = min(1._RKC, stat%cfc%proposalAdaptation(stat%numFunCallAccepted) + proposalAdaptation(dumint)) ! this is the worst-case upper-bound
                             else
-                                !adaptationMeasure = adaptationMeasureDummy
-                                stat%cfc%adaptationMeasure(stat%numFunCallAccepted) = adaptationMeasure(dumint)
+                                !proposalAdaptation = proposalAdaptationDummy
+                                stat%cfc%proposalAdaptation(stat%numFunCallAccepted) = proposalAdaptation(dumint)
                                 stat%cfc%sampleWeight(numFunCallAcceptedLastAdaptation) = stat%cfc%sampleWeight(numFunCallAcceptedLastAdaptation) + lastStateWeight
                             end if
-                            if (adaptationSucceeded) then
+                            if (proposalAdaptationSucceeded) then
                                 lastStateWeight = currentStateWeight ! stat%cfc%sampleWeight(stat%numFunCallAccepted) ! informative, do not remove
                                 numFunCallAcceptedLastAdaptation = stat%numFunCallAccepted
                             end if
-                            counterAUP = 0_IK
-                            counterAUC = counterAUC + 1_IK
-                            !if (counterAUC==spec%proposalAdaptationCount%val) adaptationMeasure = 0._RKC
+                            counterPAP = 0_IK
+                            counterPAC = counterPAC + 1_IK
+                            !if (counterPAC==spec%proposalAdaptationCount%val) proposalAdaptation = 0._RKC
                         else blockSamplerAdaptation
-                            adaptationMeasure(stat%cfc%sampleWeight(stat%numFunCallAccepted)) = 0._RKC
+                            proposalAdaptation(stat%cfc%sampleWeight(stat%numFunCallAccepted)) = 0._RKC
                         end if blockSamplerAdaptation
 
                         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% proposal adaptationMeasure %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% proposal proposalAdaptation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                         SET_PARALLEL(if (co_proposalFound_samplerUpdateOccurred(1) == 1) exit loopOverImages)
                         SET_PARALLEL(imageID = imageID + 1)
@@ -657,14 +657,14 @@
             if (spec%image%is%leader) then
                 block
                     integer(IK) :: i
-                    if (0.999999_RKC < spec%burninAdaptationMeasure%val) then
+                    if (0.999999_RKC < spec%proposalAdaptationBurnin%val) then
                         stat%burninLocDRAM%compact = 1_IK
                         stat%burninLocDRAM%verbose = 1_IK
                     else
                         stat%burninLocDRAM%compact = stat%numFunCallAccepted
                         stat%burninLocDRAM%verbose = stat%numFunCallAcceptedRejected - stat%cfc%sampleWeight(stat%numFunCallAccepted) + 1_IK
                         loopAdaptationBurnin: do i = stat%numFunCallAccepted - 1, 1, -1
-                            if (spec%burninAdaptationMeasure%val < stat%cfc%adaptationMeasure(i)) exit loopAdaptationBurnin
+                            if (spec%proposalAdaptationBurnin%val < stat%cfc%proposalAdaptation(i)) exit loopAdaptationBurnin
                             stat%burninLocDRAM%compact = stat%burninLocDRAM%compact - 1_IK
                             stat%burninLocDRAM%verbose = stat%burninLocDRAM%verbose - stat%cfc%sampleWeight(i)
                         end do loopAdaptationBurnin

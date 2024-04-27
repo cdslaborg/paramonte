@@ -415,8 +415,8 @@ contains
 
         proposalScale_block: block
             use pm_sampling_scio, only: proposalScale
-            spec%proposalScale%strdef = SKC_"gelman"
-            spec%proposalScale%valdef = 2.38_RKC / sqrt(real(ndim, RKC)) ! Gelman, Roberts, Gilks (1996): Efficient Metropolis Jumping Rules.
+            spec%proposalScale%strdef = SKC_"1"
+            spec%proposalScale%valdef = 1._RKC ! 2.38_RKC / sqrt(real(ndim, RKC)) ! Gelman, Roberts, Gilks (1996): Efficient Metropolis Jumping Rules.
             spec%proposalScale%null = repeat(SUB, len(proposalScale, IK))
             spec%proposalScale%desc = &
             SKC_"The simulation specification `proposalScale` is a scalar string of maximum length `"//getStr(len(proposalScale, IK))//SKC_"` &
@@ -448,8 +448,8 @@ contains
                 &The presence of other mathematical symbols or multiple appearances of the product symbol will lead to a simulation crash. &
                 &Also, note that the prescription of an acceptance range specified by the input variable `targetAcceptanceRate` will lead &
                 &to dynamic modification of the initial input value of `proposalScale` throughout sampling for `proposalAdaptationCount` times. &
-                &The default string value for `proposalScale` is `""gelman""` (for all proposal distributions), &
-                &which is subsequently converted to `2.38 / sqrt(ndim)`."
+                &The default string value for `proposalScale` is `""1""` (for all proposal distributions)."!, &
+                !&which is subsequently converted to `2.38 / sqrt(ndim)`."
             !!$omp master
             proposalScale = spec%proposalScale%null
             !!$omp end master
@@ -835,7 +835,8 @@ contains
             call spec%disp%note%show(spec%proposalCov%desc)
 
             call spec%disp%show("proposalScale")
-            call spec%disp%show(spec%proposalScale%str//SKC_" (gelman(ndim = "//getStr(spec%ndim%val)//SKC_") = "//getStr(spec%proposalScale%valdef)//SKC_")", format = format)
+            call spec%disp%show(spec%proposalScale%str, format = format)
+           !call spec%disp%show(spec%proposalScale%str//SKC_" (gelman(ndim = "//getStr(spec%ndim%val)//SKC_") = "//getStr(spec%proposalScale%valdef)//SKC_")", format = format)
             call spec%disp%note%show(spec%proposalScale%desc)
 
             call spec%disp%show("proposalStart")

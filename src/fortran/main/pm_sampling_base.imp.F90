@@ -172,6 +172,7 @@
     end type
 
     type                                    :: ndim_type
+        real(RKC)                           :: invhalf
         real(RKC)                           :: inv
         integer(IK)                         :: val
         character(:,SKC)    , allocatable   :: str
@@ -588,6 +589,7 @@ contains
         ndim_block: block
             spec%ndim%val = ndim
             spec%ndim%inv = 1._RKC / real(ndim, RKC)
+            spec%ndim%invhalf = .5_RKC * spec%ndim%inv
            !spec%ndim%sqpndim = ndim**2 + ndim
             spec%ndim%str = getStr(ndim)
             spec%ndim%desc = &

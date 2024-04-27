@@ -106,7 +106,7 @@
 /// \vis{mvn}
 /// \image html example/pm_sampling/mvn/mvn.traceplot.png width=700
 /// \image html example/pm_sampling/mvn/mvn.scatterplot.png width=700
-/// \image html example/pm_sampling/mvn/mvn.adaptationMeasure.png width=700
+/// \image html example/pm_sampling/mvn/mvn.proposalAdaptation.png width=700
 ///
 /// \example{himmelblau}
 /// \include{lineno} example/pm_sampling/himmelblau/main.c
@@ -120,7 +120,7 @@
 /// \vis{himmelblau}
 /// \image html example/pm_sampling/himmelblau/himmelblau.traceplot.png width=700
 /// \image html example/pm_sampling/himmelblau/himmelblau.scatterplot.png width=700
-/// \image html example/pm_sampling/himmelblau/himmelblau.adaptationMeasure.png width=700
+/// \image html example/pm_sampling/himmelblau/himmelblau.proposalAdaptation.png width=700
 ///
 /// \test
 /// [test_pm_sampling](@ref test_pm_sampling)

@@ -66,12 +66,12 @@ for file in files:
     # adaptation measure.
 
     #print(df.values)
-    if "adaptationMeasure" in df.columns.values:
-        if any(df["adaptationMeasure"].values != 0):
+    if "proposalAdaptation" in df.columns.values:
+        if any(df["proposalAdaptation"].values != 0):
             fig = plt.figure(figsize = (8, 6))
             ax = plt.subplot(1,1,1)
             ax.scatter  ( range(len(df.values[:, 0]))
-                        , df["adaptationMeasure"].values
+                        , df["proposalAdaptation"].values
                         , zorder = 1000
                         , c = "red"
                         , s = 1
@@ -80,13 +80,13 @@ for file in files:
             #ax.set_xscale("log")
             ax.set_yscale("log")
             ax.set_xlabel("MCMC Count", fontsize = 17)
-            ax.set_ylabel("adaptationMeasure", fontsize = 17)
+            ax.set_ylabel("proposalAdaptation", fontsize = 17)
             ax.tick_params(axis = "x", which = "minor")
             ax.tick_params(axis = "y", which = "minor")
             plt.grid(visible = True, which = "both", axis = "both", color = "0.85", linestyle = "-")
             #ax.legend(df.columns.values, fontsize = fontsize)
             plt.tight_layout()
-            plt.savefig("adaptationMeasure.png")
+            plt.savefig("proposalAdaptation.png")
 
     #sim = pm.ParaDRAM()
     #sample = sim.readSample("./out/", renabled = True)
