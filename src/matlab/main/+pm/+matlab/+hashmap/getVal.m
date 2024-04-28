@@ -30,7 +30,7 @@ function [val, failed] = getVal(key, hashmap)
     %           The output scalar MATLAB logical that is ``true``
     %           if and only if the input ``key`` exists in the input ``hashmap``,
     %           otherwise, it is ``false``.
-    %           (**optional**)
+    %           (**optional**. If missing, ``val`` will remain an empty array ``[]`` on output.)
     %
     %   Interface
     %   ---------
@@ -62,7 +62,7 @@ function [val, failed] = getVal(key, hashmap)
                 + newline ...
                 );
     end
-    val = {};
+    val = [];
     if 1 < nargout
         failed = true;
     end

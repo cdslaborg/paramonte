@@ -566,6 +566,27 @@ classdef Axes < pm.matlab.Handle
     %           A MATLAB vector of length ``2`` whose fields and values are
     %           passed as keyword arguments to the MATLAB intrinsic ``zlim()``.
     %
+    %       xscale (available for all axes types)
+    %
+    %           A MATLAB string whose value is passed directly to the MATLAB intrinsic
+    %           ``xscale()`` to set the axis scale to either logarithmic or linear.
+    %           Possible values are: ``"log"``, ``"linear"``.
+    %           The default behavior is set by MATLAB.
+    %
+    %       yscale (available for all axes types)
+    %
+    %           A MATLAB string whose value is passed directly to the MATLAB intrinsic
+    %           ``yscale()`` to set the axis scale to either logarithmic or linear.
+    %           Possible values are: ``"log"``, ``"linear"``.
+    %           The default behavior is set by MATLAB.
+    %
+    %       zscale (available only for all tri-axes axes types)
+    %
+    %           A MATLAB string whose value is passed directly to the MATLAB intrinsic
+    %           ``zscale()`` to set the axis scale to either logarithmic or linear.
+    %           Possible values are: ``"log"``, ``"linear"``.
+    %           The default behavior is set by MATLAB.
+    %
     properties(Access = protected, Hidden)
         type = struct();
         cenabled = [];
@@ -674,12 +695,9 @@ classdef Axes < pm.matlab.Handle
                 self.axes.fontSmoothing = [];
                 self.axes.fontWeight = [];
                 self.axes.xgrid = [];
-                self.axes.xscale = [];
                 self.axes.ygrid = [];
-                self.axes.yscale = [];
                 if  self.type.is.triaxes
                     self.axes.zgrid = [];
-                    self.axes.zscale = [];
                 end
                 self.axes.enabled = true;
             end
@@ -714,17 +732,20 @@ classdef Axes < pm.matlab.Handle
             self.xlabel.txt = [];
 
             self.newprop("xlim", []);
+            self.newprop("xscale", []);
 
             %%%% ylabel, ylim
 
             self.newprop("ylim", []);
             self.newprop("ylabel", self.xlabel);
+            self.newprop("yscale", []);
 
             %%%% zlabel, zlim
 
             if  self.type.is.triaxes
                 self.newprop("zlabel", self.xlabel);
                 self.newprop("zlim", []);
+                self.newprop("zscale", []);
             end
 
             %%%% colc, colorbar, colormap
@@ -1116,7 +1137,7 @@ classdef Axes < pm.matlab.Handle
                 self.setKeyVal("scatter", "size", 5);
                 self.setKeyVal("scatter", "marker", "o");
                 self.setKeyVal("scatter", "filled", true);
-                if  self.type.is.lineScatter
+                if  self.type.is.lineScatter && (self.scatter.enabled || self.colormap.enabled)
                     self.setKeyVal("plot", "color", uint8([200 200 200 150]));
                 end
             end
@@ -1125,7 +1146,7 @@ classdef Axes < pm.matlab.Handle
                 self.setKeyVal("scatter3", "size", 5);
                 self.setKeyVal("scatter3", "marker", "o");
                 self.setKeyVal("scatter3", "filled", true);
-                if  self.type.is.lineScatter3
+                if  self.type.is.lineScatter3 && (self.scatter3.enabled || self.colormap.enabled)
                     self.setKeyVal("plot3", "color", uint8([200 200 200 150]));
                 end
             end

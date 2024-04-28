@@ -121,7 +121,9 @@ classdef (Abstract) Handle < dynamicprops%handle
                     end
                 end
                 if  propertyDoesNotExist
-                    error("The requested property """ + string(hash{i}) + """ does not exist.");
+                    disp("hash{i}");
+                    disp( hash{i} );
+                    error("The requested object property displayed above does not exist:");
                 end
             end
         end

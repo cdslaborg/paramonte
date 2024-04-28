@@ -810,6 +810,14 @@ classdef Subplot < pm.vis.Axes
                 end
             end
 
+            %%%% set axes scales.
+
+            for prop = ["xscale", "yscale", "zscale"]
+                if  isprop(self, prop) && ~isempty(self.(prop))
+                    set(self.fout.axes, prop, self.(prop));
+                end
+            end
+
             if ~self.type.is.heatmap
                 %box on;
                 %grid on;

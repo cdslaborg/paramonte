@@ -11,8 +11,7 @@ classdef FileContentsRestartDRAM < pm.sampling.FileContentsRestart
     %
     %       The attributes of this class are considered
     %       internal implementation of the ParaMonte library.
-    %       As such, the interface of this class may change
-    %       over time.
+    %       As such, the interface of this class may change over time.
     %
     %   Parameters
     %   ----------
@@ -48,6 +47,24 @@ classdef FileContentsRestartDRAM < pm.sampling.FileContentsRestart
     %
     properties(Access = public)
         %
+        %   meanAcceptanceRateSinceStart
+        %
+        %       The real-valued MATLAB array of rank ``1`` of
+        %       shape ``(1:self.count)`` containing the set of
+        %       average MCMC acceptance rates of the sampler proposal
+        %       distribution over the course of the simulation.
+        %
+        meanAcceptanceRateSinceStart = [];
+        %
+        %   proposalAdaptiveScaleSq
+        %
+        %       The real-valued MATLAB array of rank ``1`` of
+        %       shape ``(1:self.count)`` containing the set of
+        %       adaptive squared scale factors of the sampler proposal
+        %       distribution over the course of the simulation.
+        %
+        proposalAdaptiveScaleSq = [];
+        %
         %   proposalCor
         %
         %       The real-valued MATLAB array of rank ``3`` of
@@ -68,16 +85,6 @@ classdef FileContentsRestartDRAM < pm.sampling.FileContentsRestart
         %
         proposalCov = [];
         %
-        %   proposalMean
-        %
-        %       The real-valued MATLAB array of rank ``2`` of
-        %       shape ``(1:self.ndim, 1:self.count)`` containing
-        %       the set of mean vectors of the proposal distribution
-        %       of the sampler, representing the evolution of the proposal
-        %       mean over the course of the simulation.
-        %
-        proposalMean = [];
-        %
         %   proposalLogVolume
         %
         %       The real-valued MATLAB array of rank ``1`` of
@@ -88,23 +95,24 @@ classdef FileContentsRestartDRAM < pm.sampling.FileContentsRestart
         %
         proposalLogVolume = [];
         %
-        %   meanAcceptanceRateSinceStart
+        %   proposalMean
         %
-        %       The real-valued MATLAB array of rank ``1`` of
-        %       shape ``(1:self.count)`` containing the set of
-        %       average MCMC acceptance rates of the sampler proposal
-        %       distribution over the course of the simulation.
+        %       The real-valued MATLAB array of rank ``2`` of
+        %       shape ``(1:self.ndim, 1:self.count)`` containing
+        %       the set of mean vectors of the proposal distribution
+        %       of the sampler, representing the evolution of the proposal
+        %       mean over the course of the simulation.
         %
-        meanAcceptanceRateSinceStart = [];
+        proposalMean = [];
         %
-        %   proposalAdaptiveScaleSq
+        %   uniqueStateVisitCount
         %
-        %       The real-valued MATLAB array of rank ``1`` of
-        %       shape ``(1:self.count)`` containing the set of
-        %       adaptive squared scale factors of the sampler proposal
-        %       distribution over the course of the simulation.
+        %       The scalar MATLAB integer containing the number of
+        %       states uniquely visited within the domain of the
+        %       objective function up to the stage specified
+        %       within the specified restart file.
         %
-        proposalAdaptiveScaleSq = [];
+        uniqueStateVisitCount = [];
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -158,16 +166,23 @@ classdef FileContentsRestartDRAM < pm.sampling.FileContentsRestart
             self = self@pm.sampling.FileContentsRestart(file, silent, "ParaDRAM");
 
             %%%%
+            %%%% find the update count in the file.
+            %%%%
+
+            self.count = count(self.contents, 'uniqueStateVisitCount');
+
+            %%%%
             %%%% Parse the restart file contents.
             %%%%
 
+            cholupp = zeros(self.ndim, self.ndim);
             self.meanAcceptanceRateSinceStart   = zeros(self.count, 1);
-            self.numFuncCall                    = zeros(self.count, 1);
             self.proposalAdaptiveScaleSq        = zeros(self.count, 1);
             self.proposalLogVolume              = zeros(self.count, 1);
             self.proposalMean                   = zeros(self.ndim, self.count);
             self.proposalCov                    = zeros(self.ndim, self.ndim, self.count);
             self.proposalCor                    = zeros(self.ndim, self.ndim, self.count);
+            self.uniqueStateVisitCount          = zeros(self.count, 1);
             skip = 10 + self.ndim * (self.ndim + 3) / 2;
             for icount = 1 : self.count
                 if mod(icount, 10) == 0
@@ -175,7 +190,7 @@ classdef FileContentsRestartDRAM < pm.sampling.FileContentsRestart
                 end
                 istart = (icount - 1) * skip + 1;
                 rowOffset = 1; self.meanAcceptanceRateSinceStart(icount) = str2double(self.lineList(self.ilast + istart + rowOffset));
-                rowOffset = 3; self.numFuncCall                 (icount) = str2double(self.lineList(self.ilast + istart + rowOffset));
+                rowOffset = 3; self.uniqueStateVisitCount       (icount) = str2double(self.lineList(self.ilast + istart + rowOffset));
                 rowOffset = 5; self.proposalAdaptiveScaleSq     (icount) = str2double(self.lineList(self.ilast + istart + rowOffset));
                 rowOffset = 7; self.proposalLogVolume           (icount) = str2double(self.lineList(self.ilast + istart + rowOffset));
                 rowOffset = 9;
@@ -183,10 +198,10 @@ classdef FileContentsRestartDRAM < pm.sampling.FileContentsRestart
                 self.proposalMean(1 : self.ndim, icount) = str2double(self.lineList(self.ilast + istart + rowOffset : self.ilast + iend - 1));
                 for idim = 1 : self.ndim % covmat
                     istart = iend + 1;
-                    iend = istart + self.ndim - idim;
-                    self.proposalCov(idim : self.ndim, idim, icount) = str2double(self.lineList(self.ilast + istart : self.ilast + iend));
-                    self.proposalCov(idim, idim + 1 : self.ndim, icount) = self.proposalCov(idim + 1 : self.ndim, idim, icount);
+                    iend = iend + idim;
+                    cholupp(1 : idim, idim) = str2double(self.lineList(self.ilast + istart : self.ilast + iend)); % This is the upper Cholesky.
                 end
+                self.proposalCov(:, :, icount) = cholupp' * cholupp;
                 self.proposalCor(:, :, icount) = corrcov(squeeze(self.proposalCov(:, :, icount)));
             end
             self.spinner.spin(1);

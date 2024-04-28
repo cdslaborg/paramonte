@@ -44,14 +44,6 @@ classdef FileContentsRestart < pm.io.FileContents
     %
     properties(Access = public)
         %
-        %   numFuncCall
-        %
-        %       The scalar MATLAB integer containing the number of
-        %       objective function calls made up to any given stage
-        %       within the specified restart file.
-        %
-        numFuncCall = [];
-        %
         %   count
         %
         %       The scalar MATLAB integer containing the number of
@@ -68,9 +60,9 @@ classdef FileContentsRestart < pm.io.FileContents
         %
         %   domainAxisName
         %
-        %       The vector of MATLAB strings of size ``ndim`` containing 
+        %       The vector of MATLAB strings of size ``ndim`` containing
         %       the domain axes names of the density function explored.
-        %       
+        %
         %
         domainAxisName = [];
         %
@@ -175,12 +167,6 @@ classdef FileContentsRestart < pm.io.FileContents
             %end
 
             %%%%
-            %%%% find the update count in the file.
-            %%%%
-
-            self.count = count(self.contents, 'numFuncCall');
-
-            %%%%
             %%%% Read restart meta data (ndim, domainAxisName).
             %%%%
 
@@ -237,7 +223,7 @@ classdef FileContentsRestart < pm.io.FileContents
                     self.domainAxisName(idim) = string(self.lineList(3 + idim));
                 end
             end
-            
+
             self.ilast = 3 + self.ndim;
 
         end % constructor
