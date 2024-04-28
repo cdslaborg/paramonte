@@ -1,0 +1,1781 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%                                                                                                                            %%%%
+%%%%                                                                                                                            %%%%
+%%%%                                                         ParaMonte                                                          %%%%
+%%%%                                                  Parallel Monte Carlo and                                                  %%%%
+%%%%                                                  Machine Learning Library                                                  %%%%
+%%%%                                                                                                                            %%%%
+%%%%                                                       Version 2.0.0                                                        %%%%
+%%%%                                                                                                                            %%%%
+%%%%                                              Build: Tue Jan  9 02:09:05 2024                                               %%%%
+%%%%                                                                                                                            %%%%
+%%%%                                                        Developed by                                                        %%%%
+%%%%                                                                                                                            %%%%
+%%%%                                             The computational Data Science Lab                                             %%%%
+%%%%                                                                                                                            %%%%
+%%%%                                                             at                                                             %%%%
+%%%%                                                                                                                            %%%%
+%%%%                                                   Department of Physics                                                    %%%%
+%%%%                                          Data Science Program, College of Science                                          %%%%
+%%%%                                            The University of Texas at Arlington                                            %%%%
+%%%%                                                                                                                            %%%%
+%%%%                                                 Multiscale Modeling Group                                                  %%%%
+%%%%                                          Center for Computational Oncology (CCO)                                           %%%%
+%%%%                                 Oden Institute for Computational Engineering and Sciences                                  %%%%
+%%%%                               Department of Aerospace Engineering and Engineering Mechanics                                %%%%
+%%%%                                     Department of Neurology, Dell-Seton Medical School                                     %%%%
+%%%%                                            Department of Biomedical Engineering                                            %%%%
+%%%%                                             The University of Texas at Austin                                              %%%%
+%%%%                                                                                                                            %%%%
+%%%%                               For questions and further information, please contact the PI:                                %%%%
+%%%%                                                                                                                            %%%%
+%%%%                                                      Amir Shahmoradi                                                       %%%%
+%%%%                                                   shahmoradi@utexas.edu                                                    %%%%
+%%%%                                                       cdslab.org/pm                                                        %%%%
+%%%%                                                                                                                            %%%%
+%%%%                                                                                                                            %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                                                                                %%
+%%                                           ParaMonte.library.interface.specifications                                           %%
+%%                                                                                                                                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The Fortran programming language.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                                                                                %%
+%%                                               ParaMonte.library.compiler.version                                               %%
+%%                                                                                                                                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+GCC version 13.1.0
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                                                                                %%
+%%                                               ParaMonte.library.compiler.options                                               %%
+%%                                                                                                                                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+-cpp -I /usr/lib/x86_64-linux-gnu/fortran/gfortran-mod-15/openmpi -I /usr/lib/x86_64-linux-gnu/openmpi/lib -imultiarch x86_64-linux-gnu 
+-D_REENTRANT -D BLAS_ENABLED=0 -D CAF_ENABLED=0 -D CFI_ENABLED=0 -D CHECK_ENABLED=1 -D CK1_ENABLED=1 -D CK2_ENABLED=2 -D CK3_ENABLED=3 
+-D CK4_ENABLED=4 -D CPP_ENABLED=0 -D C_ENABLED=0 -D DLL_ENABLED=1 -D FORTRAN_ENABLED=1 -D GNU_ENABLED=1 -D GO_ENABLED=0 -D IK1_ENABLED=1 
+-D IK2_ENABLED=2 -D IK3_ENABLED=3 -D IK4_ENABLED=4 -D IK5_ENABLED=5 -D INTEL_ENABLED=0 -D JAVA_ENABLED=0 -D JULIA_ENABLED=0 -D LAPACK_ENABLED=0 
+-D LINUX_ENABLED=1 -D LK1_ENABLED=1 -D LK2_ENABLED=2 -D LK3_ENABLED=3 -D LK4_ENABLED=4 -D LK5_ENABLED=5 -D MATHEMATICA_ENABLED=0 -D 
+MATLAB_ENABLED=0 -D MEXPRINT_ENABLED=0 -D MPI_ENABLED=1 -D OMP_ENABLED=0 -D PDT_ENABLED=0 -D PURE=impure -D PYTHON_ENABLED=0 -D RK1_ENABLED=1 
+-D RK2_ENABLED=2 -D RK3_ENABLED=3 -D RK4_ENABLED=4 -D R_ENABLED=0 -D SK1_ENABLED=1 -D WSL_ENABLED=1 -D libparamonte_EXPORTS -mtune=generic 
+-march=x86-64 -g3 -O0 -Wno-maybe-uninitialized -Wall -Wno-surprising -std=legacy -fmax-stack-var-size=10 -ffree-line-length-none -fimplicit-none 
+-fcheck=all -ffpe-trap=invalid,zero,overflow -ffpe-summary=all -finit-integer=-2147483647 -finit-real=snan -fbacktrace -fmax-errors=10 
+-fno-unsafe-math-optimizations -fsignaling-nans -frounding-math -fPIC -J ../inc -fpre-include=/usr/include/finclude/math-vector-fortran.h
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                                                                                %%
+%%                                           ParaMonte.runtime.platform.specifications                                            %%
+%%                                                                                                                                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Linux amir 5.15.133.1-microsoft-standard-WSL2 #1 SMP Thu Oct 5 21:02:42 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux
+
+Architecture:                       x86_64
+CPU op-mode(s):                     32-bit, 64-bit
+Address sizes:                      46 bits physical, 48 bits virtual
+Byte Order:                         Little Endian
+CPU(s):                             24
+On-line CPU(s) list:                0-23
+Vendor ID:                          GenuineIntel
+Model name:                         12th Gen Intel(R) Core(TM) i9-12950HX
+CPU family:                         6
+Model:                              151
+Thread(s) per core:                 2
+Core(s) per socket:                 12
+Socket(s):                          1
+Stepping:                           2
+BogoMIPS:                           4992.00
+Flags:                              fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 
+ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology tsc_reliable nonstop_tsc cpuid pni pclmulqdq vmx ssse3 fma cx16 
+sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch ssbd ibrs ibpb stibp 
+ibrs_enhanced tpr_shadow vnmi ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb sha_ni 
+xsaveopt xsavec xgetbv1 xsaves avx_vnni umip waitpkg gfni vaes vpclmulqdq rdpid movdiri movdir64b fsrm serialize flush_l1d arch_capabilities
+Virtualization:                     VT-x
+Hypervisor vendor:                  Microsoft
+Virtualization type:                full
+L1d cache:                          576 KiB (12 instances)
+L1i cache:                          384 KiB (12 instances)
+L2 cache:                           15 MiB (12 instances)
+L3 cache:                           30 MiB (1 instance)
+Vulnerability Gather data sampling: Not affected
+Vulnerability Itlb multihit:        Not affected
+Vulnerability L1tf:                 Not affected
+Vulnerability Mds:                  Not affected
+Vulnerability Meltdown:             Not affected
+Vulnerability Mmio stale data:      Not affected
+Vulnerability Retbleed:             Mitigation; Enhanced IBRS
+Vulnerability Spec rstack overflow: Not affected
+Vulnerability Spec store bypass:    Mitigation; Speculative Store Bypass disabled via prctl and seccomp
+Vulnerability Spectre v1:           Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:           Mitigation; Enhanced IBRS, IBPB conditional, RSB filling, PBRSB-eIBRS SW sequence
+Vulnerability Srbds:                Not affected
+Vulnerability Tsx async abort:      Not affected
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                                                                                %%
+%%                                             ParaDRAM.simulation.environment.setup                                              %%
+%%                                                                                                                                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    ParaDRAM - NOTE: Variable `outputFileName` detected among the user-supplied specifications of the ParaDRAM sampler:
+    ParaDRAM - NOTE: ./out/himmelblau
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: Path to the current working directory:
+    ParaDRAM - NOTE: /home/amir/git/pmdev/external/paramonte-doc-fortran/bld/linux/amd64/gnu/13.1.0/debug/shared/heap/mpi/fortran/checked/pkg/example/pm_sampling/himmelblau
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: Generating the requested directory for the ParaDRAM simulation output files:
+    ParaDRAM - NOTE: /home/amir/git/pmdev/external/paramonte-doc-fortran/bld/linux/amd64/gnu/13.1.0/debug/shared/heap/mpi/fortran/checked/pkg/example/pm_sampling/himmelblau/./out/
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: 5 counts of preexisting complete simulation runs with the same name prefix were detected.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: Checking for simulation restart possibility...
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: Starting a fresh simulation run #6 from the most recent completed simulation...
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: Running the simulation in parallel on 3 processes...
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: Generating the new output report file:
+    ParaDRAM - NOTE: /home/amir/git/pmdev/external/paramonte-doc-fortran/bld/linux/amd64/gnu/13.1.0/debug/shared/heap/mpi/fortran/checked/pkg/example/pm_sampling/himmelblau/./out//himmelblau_run6_pid1_report.txt
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: Generating the new output progress file:
+    ParaDRAM - NOTE: /home/amir/git/pmdev/external/paramonte-doc-fortran/bld/linux/amd64/gnu/13.1.0/debug/shared/heap/mpi/fortran/checked/pkg/example/pm_sampling/himmelblau/./out//himmelblau_run6_pid1_progress.txt
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: Generating the new output restart file:
+    ParaDRAM - NOTE: /home/amir/git/pmdev/external/paramonte-doc-fortran/bld/linux/amd64/gnu/13.1.0/debug/shared/heap/mpi/fortran/checked/pkg/example/pm_sampling/himmelblau/./out//himmelblau_run6_pid1_restart.bin
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: Generating the new output chain file:
+    ParaDRAM - NOTE: /home/amir/git/pmdev/external/paramonte-doc-fortran/bld/linux/amd64/gnu/13.1.0/debug/shared/heap/mpi/fortran/checked/pkg/example/pm_sampling/himmelblau/./out//himmelblau_run6_pid1_chain.txt
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: Done.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                                                                                %%
+%%                                            ParaDRAM.simulation.specifications.base                                             %%
+%%                                                                                                                                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ndim
+
+    2
+
+    ParaDRAM - NOTE: The simulation specification `ndim` is a positive scalar of type `integer` of kind 32bit, representing 
+    ParaDRAM - NOTE: the number of dimensions of the domain of the objective function. Unlike most other simulation specifications, 
+    ParaDRAM - NOTE: `ndim` cannot be set from within an external input function and the user must always specify it along with 
+    ParaDRAM - NOTE: the objective function at the time of calling the exploration routine, separately from the rest of the 
+    ParaDRAM - NOTE: (optional) simulation specifications. As such, `ndim` has no default value and is always user-supplied.
+
+nthread
+
+    1
+
+    ParaDRAM - NOTE: The simulation specification `nthread` is a non-negative scalar of type `integer` of kind 32bit, representing 
+    ParaDRAM - NOTE: the number of parallel (concurrent) user-specified objective function evaluations in a Fork-Join shared-memory 
+    ParaDRAM - NOTE: parallelism. Such parallelism paradigms include OpenMP-enabled shared-memory parallel simulations in C, 
+    ParaDRAM - NOTE: C++, and Fortran or shared-memory simulations in higher-level programming language environments such as 
+    ParaDRAM - NOTE: MATLAB, Python, and R. Unlike most other simulation specifications, `nthread` cannot be set from within 
+    ParaDRAM - NOTE: an external input function and the user must always specify it along with the objective function at the 
+    ParaDRAM - NOTE: time of calling the exploration routine, separately from the rest of the (optional) simulation specifications. 
+    ParaDRAM - NOTE: The specification `nthread` has been added to ParaMonte library to facilitate the concurrent (or parallel) 
+    ParaDRAM - NOTE: evaluation of target density function **by the user** for a set of `nthread` input states **concurrently**. 
+    ParaDRAM - NOTE: This specification is relevant to only OpenMP-enabled parallel ParaMonte library builds or in the context 
+    ParaDRAM - NOTE: of dynamic interpreted programming languages such as those mentioned above. As such, its value or presence 
+    ParaDRAM - NOTE: is ignored in serial simulations or Coarray/MPI -enabled parallel simulations. Specifying `0` leads to 
+    ParaDRAM - NOTE: using all available CPU threads for the requested simulation. The default value for `nthread` is `0`.
+
+method
+
+    ParaDRAM
+
+    ParaDRAM - NOTE: The simulation specification `method` is a scalar string, representing the method of exploring the objective 
+    ParaDRAM - NOTE: function. Unlike most other simulation specifications, `method` cannot be set from within an external input 
+    ParaDRAM - NOTE: function and the user always specifies it by calling the corresponding objective function exploration routine. 
+    ParaDRAM - NOTE: As such, `method` has no default value and is always user-supplied. The following density function exploration 
+    ParaDRAM - NOTE: methods are currently or will be supported by the ParaMonte library:
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:    ParaDRAM
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:        The ParaDRAM acronym stands for Parallel Delayed-Rejection Adaptive Metropolis Markov Chain Monte 
+    ParaDRAM - NOTE:        Carlo. The ParaDRAM sampler is capable of optimizing and exploring the landscape of objective functions 
+    ParaDRAM - NOTE:        stochastically. For more details of the ParaDRAM sampling scheme, refer to the references section 
+    ParaDRAM - NOTE:        in the documentation of the ParaMonte library:
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:            https://www.cdslab.org/paramonte
+
+modelr
+
+          digits: +53
+            kind: +8
+     maxexponent: +1024
+     minexponent: -1021
+       precision: +15
+           radix: +2
+           range: +307
+    storage_size: +64
+         epsilon: +0.222044604925031308084726333618164062E-15
+            huge: +0.179769313486231570814527423731704357E+309
+            tiny: +0.222507385850720138309023271733240406E-307
+
+    ParaDRAM - NOTE: The simulation specification `modelr` is an object whose components contain the characteristics of `real` 
+    ParaDRAM - NOTE: (float) data type model (hence the name `modelr`) used for (most) computations during the simulation. The 
+    ParaDRAM - NOTE: real/float type used within the simulation is the same as that of the input and output values to and from 
+    ParaDRAM - NOTE: the objective function. It is set by user at the time of calling the sampler. As such, unlike most other 
+    ParaDRAM - NOTE: simulation specifications, `modelr` cannot be set from within an external input function and the user always 
+    ParaDRAM - NOTE: specifies it at the time of calling the corresponding sampler. Therefore, `modelr` has no default value 
+    ParaDRAM - NOTE: and is always user-supplied at the time of calling the sampler. The components of `modelr` are important 
+    ParaDRAM - NOTE: for future determination of the type and kind of the real/float used in the simulation. The `modelr` object 
+    ParaDRAM - NOTE: contains the following real/float characteristics:
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     digits
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             The number of significant bit digits in the real/float model used in the simulations.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     kind
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             The processor-dependent kind type-parameter of the real/float model used in the current simulation.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     maxexponent
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             The maximum exponent for the real/float model used in the current simulation.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     minexponent
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             The minimum exponent for the real/float model used in the current simulation.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     precision
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             The equivalent decimal precision (number of digits after the decimal point) of the real/float 
+    ParaDRAM - NOTE:             model used in the current simulation.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     radix
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             The base in the real/float model used in the current simulation.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     range
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             The decimal exponent range in the real/float model used in the current simulation. It is the 
+    ParaDRAM - NOTE:             value corresponding to `int(min(log10(huge), -log10(tiny)))` where `huge` and `tiny` are the 
+    ParaDRAM - NOTE:             largest and smallest positive numbers in the real/float model
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     storage_size
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             The size, in bits, that would be taken in memory by a scalar of the real/float model used in 
+    ParaDRAM - NOTE:             the current simulation.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     epsilon
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             The smallest normal value representable by the real/float model used in the current simulation 
+    ParaDRAM - NOTE:             such that `1 < 1 + epsilon`.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     huge
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             The largest normal value representable by the real/float model used in the current simulation 
+    ParaDRAM - NOTE:             (without causing overflow).
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     tiny
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             The smallest positive normal value representable by the real/float model used in the current 
+    ParaDRAM - NOTE:             simulation (without causing underflow).
+
+description
+
+    This
+        is a
+            multi-line
+                description.\n
+
+    ParaDRAM - NOTE: The simulation specification `description` is a scalar string of maximum length 8191 characters containing 
+    ParaDRAM - NOTE: general information about the simulation to be performed. It has no effects on the simulation and serves 
+    ParaDRAM - NOTE: only as a general description of the simulation for future reference. The sampler parser automatically 
+    ParaDRAM - NOTE: recognizes the C-style '\n' escape sequence as the new-line character and '\\' as the backslash character 
+    ParaDRAM - NOTE: '\' if used in the contents of `description`. For example, '\\n' will be converted to '\n' on the output, 
+    ParaDRAM - NOTE: while '\n' translates to the new-line character. The default value for description is 'UNDEFINED'.
+
+domain
+
+    cube
+
+    ParaDRAM - NOTE: The simulation specification `domain` is a scalar string of maximum length 63, containing the name of the 
+    ParaDRAM - NOTE: model that defines the domain of the objective function. The string value must be enclosed by either single 
+    ParaDRAM - NOTE: or double quotation marks when provided as input. The following domain models are currently supported:
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     domain = 'cube'
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:         This is equivalent to an ndim-dimensional hyper-cube (n-cube) whose upper and lower bounds are 
+    ParaDRAM - NOTE:         specified by the input simulation specifications `domainCubeLimitUpper` and `domainCubeLimitLower` 
+    ParaDRAM - NOTE:         respectively.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     domain = 'ball'
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             This is equivalent to an ndim-dimensional hyper-ellipsoid (n-ball) whose center and covariance 
+    ParaDRAM - NOTE:             matrix can be specified by the input simulation specification `domainBallCenter` and `domainBallCov` 
+    ParaDRAM - NOTE:             respectively. Alternatively, the user can let the ParaMonte samplers construct the covariance 
+    ParaDRAM - NOTE:             matrix of ellipsoidal domain from the input values for the `domainBallCor` and `domainBallStdVec` 
+    ParaDRAM - NOTE:             simulation specifications. Note that a spherical domain can be defined by dropping the `domainBallCov` 
+    ParaDRAM - NOTE:             and `domainBallCor` specifications from the input and setting all elements of `domainBallStdVec` 
+    ParaDRAM - NOTE:             to the desired radius of the domain.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: The default value is an infinite cube in case of the ParaDRAM and ParaDISE samplers, and a unit-sized cube 
+    ParaDRAM - NOTE: for the ParaNest sampler.
+
+domainAxisName
+
+    variable1                                                      
+    variable2                                                      
+
+    ParaDRAM - NOTE: The simulation specification `domainAxisName` is a vector of scalar string values each element of which 
+    ParaDRAM - NOTE: contains the names of the corresponding axis of the domain of the density function (that is to be explored/sampled). 
+    ParaDRAM - NOTE: It is used to construct the headers of the simulation output files. Any element of `domainAxisName` that 
+    ParaDRAM - NOTE: is not set by the user will automatically be assigned a default name. If all elements of `domainAxisName` 
+    ParaDRAM - NOTE: are set to the same value, then a number will be suffixed to each element representing the ID of the corresponding 
+    ParaDRAM - NOTE: dimension of the domain of the density function. The default value is 'sampleStatei' where integer 'i' 
+    ParaDRAM - NOTE: at the end of the name is replaced by the index of the corresponding domain axis.
+
+domainBallCenter
+
+    0.0000000000000000
+    0.0000000000000000
+
+    ParaDRAM - NOTE: The simulation specification `domainBallCenter` is a vector of type `real` of highest precision supported 
+    ParaDRAM - NOTE: by the ParaMonte library, of size `ndim` containing the coordinates of the center of the hyper-ellipsoidal 
+    ParaDRAM - NOTE: (or spherical) ndim-dimensional domain of the objective function. When passed to the sampler from withing 
+    ParaDRAM - NOTE: an external input file, every missing element of `domainBallCenter` will be set to the origin (zero). Together 
+    ParaDRAM - NOTE: with `domainBallCov`, or with `domainBallCor` and `domainBallStdVec`, it forms a hyper-ellipsoidal 
+    ParaDRAM - NOTE: or hyper-spherical domain for the ParaMonte samplers. Note that an ellipsoidal/spherical domain is used 
+    ParaDRAM - NOTE: if only if the input simulation specification `domain` is set to 'ellipsoid' or 'sphere' or `ball`. Otherwise, 
+    ParaDRAM - NOTE: a cubical domain will be used. The default value is the origin (i.e., a zero-valued vector of size `ndim`).
+
+domainBallCor
+
+    1.0000000000000000 0.0000000000000000
+    0.0000000000000000 1.0000000000000000
+
+    ParaDRAM - NOTE: The simulation specification `domainBallCor` is a positive-definite matrix of type `real` of highest 
+    ParaDRAM - NOTE: precision available in the ParaMonte Library of size `(ndim, ndim)` representing the correlation matrix 
+    ParaDRAM - NOTE: of the domain of the objective function, where `ndim` is the dimension of the domain. Combined with the 
+    ParaDRAM - NOTE: input simulation specification `domainBallStdVec`, it defines the hyper-ellipsoidal (or spherical) domain 
+    ParaDRAM - NOTE: of the objective function. If the input simulation specification `domainBallCov` is provided by the 
+    ParaDRAM - NOTE: user, then any values set for `domainBallCor` and `domainBallStdVec` will be automatically ignored. 
+    ParaDRAM - NOTE: The input specification `domainBallCor` along with `proposalStd` are especially useful in situations 
+    ParaDRAM - NOTE: where the covariance matrix computation is non-trivial. When passed to the sampler from within an external 
+    ParaDRAM - NOTE: input sampler specification file, any missing element of `domainBallCov` will be set to the appropriate 
+    ParaDRAM - NOTE: default value. The default value of `domainBallCor` is an ndim-by-ndim Identity matrix.
+
+domainBallCov
+
+    1.0000000000000000 0.0000000000000000
+    0.0000000000000000 1.0000000000000000
+
+    ParaDRAM - NOTE: The simulation specification `domainBallCov` is a positive-definite matrix of type `real` of highest 
+    ParaDRAM - NOTE: precision available in the ParaMonte Library of size `(ndim, ndim)` representing the Gramian matrix of 
+    ParaDRAM - NOTE: the domain of the objective function, where `ndim` is the dimension of the domain. If this input simulation 
+    ParaDRAM - NOTE: specification is provided by the user, then any values set for the input simulation specifications `domainBallCor` 
+    ParaDRAM - NOTE: and `domainBallStdVec` will be automatically ignored. When set from inside an external input ParaMonte 
+    ParaDRAM - NOTE: specification file, any missing element of `domainBallCov` will be set to the appropriate default value. 
+    ParaDRAM - NOTE: To specify an ndim-dimensional spherical domain, set `domainBallCov` to the identity matrix whose diagonal 
+    ParaDRAM - NOTE: elements are radius-squared of the desired hyper-sphere (n-ball). The default value of `domainBallCov` 
+    ParaDRAM - NOTE: is an ndim-by-ndim Identity matrix for simulations (such as the ParaNest integrator) that require a finite 
+    ParaDRAM - NOTE: domain and an ndim-by-ndim  diagonal matrix whose diagonals are practically set to infinity for simulations 
+    ParaDRAM - NOTE: that do not require a finite domain (such the ParaDRAM and ParaDISE MCMC samplers).
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: NAMING CLARIFICATION: The use of `CovMat` in the name of this simulation specification is theoretically 
+    ParaDRAM - NOTE: incorrect as the domain of the objective function is not a distribution. Even if it is considered as a 
+    ParaDRAM - NOTE: hyper-ellipsoidal uniform distribution, this specification would still not represent its covariance matrix, 
+    ParaDRAM - NOTE: because it represents the Gramian matrix. However, the decision was made to name this specification as 
+    ParaDRAM - NOTE: `CovMat` because of its nice fit to the rest of the relevant simulation specifications and user familiarity 
+    ParaDRAM - NOTE: with keywords.
+
+domainBallStdVec
+
+    1.0000000000000000
+    1.0000000000000000
+
+    ParaDRAM - NOTE: The simulation specification `domainBallStdVec` is a positive-valued vector of type `real` of the highest 
+    ParaDRAM - NOTE: precision available within the ParaMonte library, of size `ndim`, where ndim is the dimension of the domain 
+    ParaDRAM - NOTE: of the objective function. It represents the square-roots of the diagonal elements of the covariance matrix 
+    ParaDRAM - NOTE: of the domain of the objective function. If the covariance matrix of the ellipsoidal/spherical domain (`domainBallCov`) 
+    ParaDRAM - NOTE: is missing from the input specifications to the sampler, then `domainBallStdVec` (along with the input 
+    ParaDRAM - NOTE: specification `domainBallCor`) will be used to construct the covariance matrix of the domain of the 
+    ParaDRAM - NOTE: objective function. However, if `domainBallCov` is present among the input specifications to the sampler, 
+    ParaDRAM - NOTE: then the input values for `domainBallStdVec` and `domainBallCor` will be ignored and `domainBallCov` 
+    ParaDRAM - NOTE: will be used to construct the domain of the user-specified objective function. To specify an ndim-dimensional 
+    ParaDRAM - NOTE: spherical domain, drop `domainBallCov` and `domainBallCor` from the input and set all elements of 
+    ParaDRAM - NOTE: `domainBallStdVec` to the desired radius of the hyper-spherical domain. The default value for any missing 
+    ParaDRAM - NOTE: elements of `domainBallStdVec` is `1` for simulations requiring a finite domain (such as the ParaNest integrator) 
+    ParaDRAM - NOTE: and `+Infinity` for simulations not requiring a finite domain (such as the ParaDRAM and ParaDISE samplers).
+
+domainCubeLimitLower
+
+    -0.10000000000000001E+301
+    -0.10000000000000001E+301
+
+    ParaDRAM - NOTE: The simulation specification `domainCubeLimitLower` is a vector of type `real` of the highest precision 
+    ParaDRAM - NOTE: available within by the ParaMonte library, of size `ndim` where `ndim` is the number dimensions of the 
+    ParaDRAM - NOTE: domain of the target density function. It contains the lower boundaries of the cubical domain of the objective 
+    ParaDRAM - NOTE: function to be sampled. When `domainCubeLimitLower` is specified inside inside an external input file supplied 
+    ParaDRAM - NOTE: to the sampler, it is also possible to assign only select values of `domainCubeLimitLower` and leave the 
+    ParaDRAM - NOTE: rest of the components to be assigned the default value. For example, having the following inside the input 
+    ParaDRAM - NOTE: file, 
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     domainCubeLimitLower(3:5) = -100
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             will only set the lower limits of the third, fourth, and the fifth dimensions to -100, or,
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     domainCubeLimitLower(1) = -100, domainCubeLimitLower(2) = -1.e6 
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             will set the lower limit on the first dimension to -100, and 1.e6 on the second dimension, 
+    ParaDRAM - NOTE:             or,
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     domainCubeLimitLower = 3*-2.5e100
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             will only set the lower limits on the first, second, and the third dimensions to -2.5*10^100, 
+    ParaDRAM - NOTE:             while the rest of the lower limits for the missing dimensions will be automatically set to 
+    ParaDRAM - NOTE:             the default value.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: The default value for all elements of `domainCubeLimitLower` is: -0.67039039649712978E+154.
+    ParaDRAM - NOTE: Beware that some ParaMonte samplers such as ParaNest require an explicit specification of the domain boundaries 
+    ParaDRAM - NOTE: by the user.
+
+domainCubeLimitUpper
+
+    0.10000000000000001E+301
+    0.10000000000000001E+301
+
+    ParaDRAM - NOTE: The simulation specification `domainCubeLimitUpper` is a vector of type `real` of the highest precision 
+    ParaDRAM - NOTE: available within by the ParaMonte library, of size `ndim` where `ndim` is the number dimensions of the 
+    ParaDRAM - NOTE: domain of the target density function. It contains the upper boundaries of the cubical domain of the objective 
+    ParaDRAM - NOTE: function to be sampled. When `domainCubeLimitUpper` is specified inside inside an external input file supplied 
+    ParaDRAM - NOTE: to the sampler, it is also possible to assign only select values of `domainCubeLimitUpper` and leave the 
+    ParaDRAM - NOTE: rest of the components to be assigned the default value. For example,
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     domainCubeLimitUpper(3:5) = 100
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             will only set the upper limits of the third, fourth, and the fifth dimensions to 100, or,
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     domainCubeLimitUpper(1) = 100, domainCubeLimitUpper(2) = 1.e6 
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             will set the upper limit on the first dimension to 100, and 1.e6 on the second dimension, or,
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     domainCubeLimitUpper = 3 * 2.5e100
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             will only set the upper limits on the first, second, and the third dimensions to 2.5*10^100, 
+    ParaDRAM - NOTE:             while the rest of the upper limits for the missing dimensions will be automatically set to 
+    ParaDRAM - NOTE:             the default value.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: The default value for all elements of `domainCubeLimitUpper` is: 0.67039039649712978E+154.
+    ParaDRAM - NOTE: Beware that some ParaMonte samplers such as ParaNest require an explicit specification of the domain boundaries 
+    ParaDRAM - NOTE: by the user.
+
+domainErrCount
+
+    100
+
+    ParaDRAM - NOTE: The simulation specification `domainErrCount` is a scalar of type `integer` beyond which the user will 
+    ParaDRAM - NOTE: be warned about the newly-proposed points excessively falling outside the domain of the objective function. 
+    ParaDRAM - NOTE: For every `domainErrCount` consecutively-proposed new points that fall outside the domain of the objective 
+    ParaDRAM - NOTE: function, the user will be warned until `domainErrCount = domainErrCountMax`, in which case the sampler 
+    ParaDRAM - NOTE: returns a fatal error and the program stops globally. The counter for this warning is reset after a proposal 
+    ParaDRAM - NOTE: sample from within the domain of the objective function is obtained. When out-of-domain sampling happens 
+    ParaDRAM - NOTE: frequently, it is a strong indication of something fundamentally wrong in the simulation. It is, therefore, 
+    ParaDRAM - NOTE: important to closely inspect and monitor for such frequent out-of-domain samplings. This can be done by 
+    ParaDRAM - NOTE: setting `domainErrCount` to an appropriate value determined by the user. The default value is 10000.
+
+domainErrCountMax
+
+    1000
+
+    ParaDRAM - NOTE: The simulation specification `domainErrCountMax` is a scalar of type `integer` beyond which the program 
+    ParaDRAM - NOTE: will stop globally with a fatal error message declaring that the maximum number of proposal-out-of-domain-bounds 
+    ParaDRAM - NOTE: has reached. The counter for this global-stop request is reset after a proposal is accepted as a sample 
+    ParaDRAM - NOTE: from within the domain of the objective function. When out-of-domain sampling happens frequently, it is 
+    ParaDRAM - NOTE: a strong indication of something fundamentally wrong in the simulation. It is, therefore, important to 
+    ParaDRAM - NOTE: closely inspect and monitor for such frequent out-of-domain samplings. This can be done by setting domainErrCountMax 
+    ParaDRAM - NOTE: to an appropriate value determined by the user. The default value is 100000.
+
+inputFileHasPriority
+
+    F
+
+    ParaDRAM - NOTE: The simulation specification `inputFileHasPriority` is a scalar of type `logical` (Boolean) of default 
+    ParaDRAM - NOTE: kind. If it is set to the logical true value (e.g., `.true.`, `true` or `.t.` from within an external input 
+    ParaDRAM - NOTE: file), then the input specifications of the simulation will be read from the user-specified input specification 
+    ParaDRAM - NOTE: file and the simulation specification assignments from within the programming language environment (if 
+    ParaDRAM - NOTE: any are made) will be completely ignored. If `inputFileHasPriority` is set to the logical false value, 
+    ParaDRAM - NOTE: then all simulation specifications that are taken from the user-specified input file will be overwritten 
+    ParaDRAM - NOTE: by their corresponding user-set input values from within the user programming environment (if any such 
+    ParaDRAM - NOTE: specifications is set). This feature is useful when, for example, some simulation specifications have to 
+    ParaDRAM - NOTE: computed and specified at runtime and therefore, cannot be specified before the program execution. Currently, 
+    ParaDRAM - NOTE: this functionality (i.e., prioritizing the input file values to input-procedure-argument values) is available 
+    ParaDRAM - NOTE: only in the Fortran interface to the ParaMonte library routines. It can be set exclusively within an external 
+    ParaDRAM - NOTE: input file and its value is ignored in non-Fortran programming language simulation environments. The default 
+    ParaDRAM - NOTE: value is FALSE.
+
+outputChainFileFormat
+
+    compact
+
+    ParaDRAM - NOTE: The simulation specification `outputChainFileFormat` is a scalar string of maximum length 15 characters 
+    ParaDRAM - NOTE: representing the sampler output chain file(s) format. It must be singly or doubly quoted if specified from 
+    ParaDRAM - NOTE: within an external input file. Three values are possible:
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     outputChainFileFormat = 'compact' or 'ascii'
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             This is the ASCII (text) file format which is human-readable but does not preserve the full 
+    ParaDRAM - NOTE:             accuracy of the output values. It is also a significantly slower mode of chain file generation, 
+    ParaDRAM - NOTE:             compared to the binary file format (see below). If the compact format is specified, each of 
+    ParaDRAM - NOTE:             the repeating visited states in the simulation will be condensed into a single entry (row) 
+    ParaDRAM - NOTE:             in the output simulation chain file. Each entry will be then assigned a sample-weight that 
+    ParaDRAM - NOTE:             is equal to the number of repetitions of that state in the chain. Thus, each row in the output 
+    ParaDRAM - NOTE:             chain file will represent a unique sample from the objective function. This will lead to a 
+    ParaDRAM - NOTE:             significantly smaller ASCII chain file and faster output size compared to the verbose chain 
+    ParaDRAM - NOTE:             file format (see below).
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     outputChainFileFormat = 'verbose'
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             This is the ASCII (text) file format which is human-readable but does not preserve the full 
+    ParaDRAM - NOTE:             accuracy of the output values. It is also a significantly slower mode of chain file generation, 
+    ParaDRAM - NOTE:             compared to both compact and binary chain file formats (see above and below). If the verbose 
+    ParaDRAM - NOTE:             format is specified, all visited states will have equal sampling-weights of 1 in the output 
+    ParaDRAM - NOTE:             simulation chain file. The verbose format can lead to much larger chain file sizes than the 
+    ParaDRAM - NOTE:             compact and binary file formats. This is especially true if the target objective function has 
+    ParaDRAM - NOTE:             a very high-dimensional domain.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     outputChainFileFormat = 'binary'
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             This is the binary file format which is not human-readable, but preserves the exact values 
+    ParaDRAM - NOTE:             in the output chain file. It is also often the fastest mode of chain file generation. If the 
+    ParaDRAM - NOTE:             binary file format is chosen, the chain will be automatically output in the compact format 
+    ParaDRAM - NOTE:             (but as binary) to ensure the production of the smallest-possible output chain file. Binary 
+    ParaDRAM - NOTE:             chain files will have the .bin file extensions. Use the binary format if you need full accuracy 
+    ParaDRAM - NOTE:             representation of the output values while having the smallest-size output chain file in the 
+    ParaDRAM - NOTE:             shortest time possible.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: The default value is outputChainFileFormat = 'compact' as it provides a reasonable trade-off between speed 
+    ParaDRAM - NOTE: and output file size for the specified simulation task. The input values are case-INsensitive.
+
+outputColumnWidth
+
+    0
+
+    ParaDRAM - NOTE: The simulation specification `outputColumnWidth` is a non-negative scalar of type `integer` that determines 
+    ParaDRAM - NOTE: the width of the data columns in the formatted tabular files by output the sampler. If it is set to zero, 
+    ParaDRAM - NOTE: the sampler will ensure to set the width of each output element to the minimum possible width without losing 
+    ParaDRAM - NOTE: the requested output precision. In other words, setting `outputColumnWidth = 0` will result in the smallest-size 
+    ParaDRAM - NOTE: for the formatted output files that are in ASCII format. The default value is 0.
+
+outputFileName
+
+    ./out/himmelblau
+
+    ParaDRAM - NOTE: The simulation specification `outputFileName` is a scalar string of maximum length 4096 containing the 
+    ParaDRAM - NOTE: path and the base of the filename for the sampler output files. If not provided by the user, the default 
+    ParaDRAM - NOTE: `outputFileName` is constructed from the current date and time:
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     sampler_yyyymmdd_hhmmss_mmm
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: where `sampler` is replaced with the name of the ParaMonte sampler invoked, and `yyyy`, `mm`, `dd`, `hh`, 
+    ParaDRAM - NOTE: `mm`, `ss`, and `mmm` are replaced respectively with the current year, month, day, hour, minute, second, 
+    ParaDRAM - NOTE: and millisecond. In such a case, the default directory for the output files will be the current working 
+    ParaDRAM - NOTE: directory of the sampler. If `outputFileName` is provided, but ends with a separator character '/' or '\' 
+    ParaDRAM - NOTE: (as in Unix or Windows OS), then its value will be used as the directory to which the sampler output files 
+    ParaDRAM - NOTE: will be written. In this case, the default output file naming convention described above will be used. 
+    ParaDRAM - NOTE: The specified directory will be automatically created if it does not exist already. Note that the specified 
+    ParaDRAM - NOTE: path is left-adjusted and right-padded erasing all trailing whitespace characters. The value of `outputFileName` 
+    ParaDRAM - NOTE: is always automatically suffixed with `_run<i>_pid<j>_<type>.<ext>` where 
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     1. `<ext>` is replaced with an appropriate file extension, typically `.txt` or `.bin` depending on 
+    ParaDRAM - NOTE:     the type of the file contents,
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     2. `<type>` is replaced with the simulation file type (e.g., `chain`, `report`, `sample`, `restart`, 
+    ParaDRAM - NOTE:     etc),
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     3. `<j>` is replaced with the process (image/thread) ID (PID) that generates the current simulation 
+    ParaDRAM - NOTE:     file,
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     4. `<i>` is replaced with the simulation run number which depends on the existence of previous simulation 
+    ParaDRAM - NOTE:     files with the same file name prefix and the specified value for the simulation specification `outputStatus`.
+
+outputPrecision
+
+    17
+
+    ParaDRAM - NOTE: The simulation specification `outputPrecision` is a scalar of type `integer` representing the precision 
+    ParaDRAM - NOTE: (i.e., the number of significant digits) of the real and complex numbers in the output simulation files. 
+    ParaDRAM - NOTE: Any positive integer is acceptable as the input value of `outputPrecision`. However, any digits of the 
+    ParaDRAM - NOTE: output real numbers beyond the actual accuracy of floating-point numbers (e.g., ~16 digits of significance 
+    ParaDRAM - NOTE: for 64-bit `real`) will be meaningless and random. Set this variable to the precision of the requested 
+    ParaDRAM - NOTE: floating point precision in the simulation (or to larger values) if full reproducibility of the simulation 
+    ParaDRAM - NOTE: is needed in the future. However, keep in mind that higher precisions result in larger-size output files. 
+    ParaDRAM - NOTE: This variable is ignored for binary output (if any occurs during the simulation). The binary output files 
+    ParaDRAM - NOTE: preserve the full precision of numbers. The default value is 18.
+
+outputReportPeriod
+
+    1000
+
+    ParaDRAM - NOTE: The simulation specification `outputReportPeriod` is a positive-valued scalar of type `integer`. Every 
+    ParaDRAM - NOTE: `outputReportPeriod` calls to the objective function, the sampling progress will be reported to the progress 
+    ParaDRAM - NOTE: file. The default value is 1000.
+
+outputRestartFileFormat
+
+    binary
+
+    ParaDRAM - NOTE: The simulation specification `outputRestartFileFormat` is a scalar string of maximum length 15 representing 
+    ParaDRAM - NOTE: the format of the output restart file(s) which are used to restart an interrupted simulation. Two values 
+    ParaDRAM - NOTE: are possible:
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     outputRestartFileFormat = 'binary'
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             This is the binary file format which is not human-readable, but preserves the exact values 
+    ParaDRAM - NOTE:             of the specification variables required for the simulation restart. This full accuracy representation 
+    ParaDRAM - NOTE:             is required to exactly reproduce an interrupted simulation. The binary format is also normally 
+    ParaDRAM - NOTE:             the fastest mode of restart file generation. Binary restart files will have the .bin file extensions.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     outputRestartFileFormat = 'ascii'
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             This is the ASCII (text) file format which is human-readable but does not preserve the full 
+    ParaDRAM - NOTE:             accuracy of the specification variables required for the simulation restart. It is also a significantly 
+    ParaDRAM - NOTE:             slower mode of restart file generation, compared to the binary format. Therefore, its usage 
+    ParaDRAM - NOTE:             should be limited to situations where the user wants to track the dynamics of simulation specifications 
+    ParaDRAM - NOTE:             throughout the simulation time. ASCII restart file(s) will have the .txt file extensions.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: The default value is outputRestartFileFormat = 'binary'. Note that the input values are case-INsensitive.
+
+outputSampleSize
+
+    -1
+
+    ParaDRAM - NOTE: The simulation specification `outputSampleSize` is a non-zero scalar of type `integer` whose value dictates 
+    ParaDRAM - NOTE: the number of (hopefully, independent and identically distributed [i.i.d.]) samples to be drawn from the 
+    ParaDRAM - NOTE: user-provided objective function.Three ranges of values are possible. If
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     outputSampleSize < 0,
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             then, the absolute value of outputSampleSize dictates the sample size in units of the effective 
+    ParaDRAM - NOTE:             sample size. The effective sample is by definition i.i.d., and free from duplicates and residual 
+    ParaDRAM - NOTE:             autocorrelation. The effective sample size is automatically determined by the sampler toward 
+    ParaDRAM - NOTE:             the end of the simulation. For example:
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:                     outputSampleSize = -1 yields the effective i.i.d. sample drawn from the objective function.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:                     outputSampleSize = -2 yields a (potentially non-i.i.d.) sample twice as big as the 
+    ParaDRAM - NOTE:                     effective sample.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     outputSampleSize > 0,
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             then, the sample size is assumed to be in units of the number of points to be sampled. If outputSampleSize 
+    ParaDRAM - NOTE:             turns out to be less than effectiveSampleSize, the resulting sample will be i.i.d.. If outputSampleSize 
+    ParaDRAM - NOTE:             turns out to be larger than effectiveSampleSize, the resulting sample will be potentially non-i.i.d.. 
+    ParaDRAM - NOTE:             The larger this difference, the more non-i.i.d. the resulting final refined sample will be. 
+    ParaDRAM - NOTE:             For example:
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:                     outputSampleSize = 1000 yields a 1000-points sample from the objective function.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: The default value is outputSampleSize = -1.
+
+outputSeparator
+
+    ,
+
+    ParaDRAM - NOTE: The simulation specification `outputSeparator` is a scalar string of maximum length 63 containing a sequence 
+    ParaDRAM - NOTE: of one or more allowed characters used to separate fields within records of tabular contents in the simulation 
+    ParaDRAM - NOTE: output files. Digits, the period symbol '.', and the addition and subtraction operators: '+' and '-') are 
+    ParaDRAM - NOTE: not allowed. To output in Comma-Separated-Values (CSV) format, set `outputSeparator = ','`. If the input 
+    ParaDRAM - NOTE: value is not provided, the default separator ',' will be used when input `outputColumnWidth = 0`, and a 
+    ParaDRAM - NOTE: single space character, ',' will be used when input `outputColumnWidth > 0`. A value of '\t' is interpreted 
+    ParaDRAM - NOTE: as the TAB character. To avoid this interpretation, use '\\\t' to yield '\t' without being interpreted 
+    ParaDRAM - NOTE: as the TAB character. The default value is ','.
+
+outputSplashMode
+
+    silent
+
+    ParaDRAM - NOTE: The simulation specification `outputSplashMode` is a scalar string of maximum length 63 representing the 
+    ParaDRAM - NOTE: level of information output on screen while running or postprocessing the simulation. Three values are 
+    ParaDRAM - NOTE: possible:
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     outputSplashMode = 'normal'
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             Under this option, the simulation splash and progress bar will be shown on screen as well as 
+    ParaDRAM - NOTE:             all post-processing details. This is the default behavior in compiled language environments 
+    ParaDRAM - NOTE:             (e.g., C, C++, Fortran, ...).
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     outputSplashMode = 'quiet'
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             Under this option, the splash screen will be hidden from the standard output but other information 
+    ParaDRAM - NOTE:             will be displayed as usual. This is the default behavior in dynamic language environments (e.g., 
+    ParaDRAM - NOTE:             MATLAB, Python, R, ...).
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     outputSplashMode = 'silent'
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             Under this option, no information will be shown on screen about the simulation. Use this option 
+    ParaDRAM - NOTE:             if the simulations are expected to be short and straightforward or there is a limit on the 
+    ParaDRAM - NOTE:             amount of text allowed for display in standard output. This situation happens for example, 
+    ParaDRAM - NOTE:             in online code coverage and CI platforms.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: The default value is outputSplashMode = 'normal' in compiled programming language environments and `quiet` 
+    ParaDRAM - NOTE: in dynamic programming language environments. Note that the input values are case-INsensitive.
+
+outputStatus
+
+    extend
+
+    ParaDRAM - NOTE: The simulation specification `outputStatus` is a scalar string of maximum 15 characters, whose value describes 
+    ParaDRAM - NOTE: the protocol for dealing and handling the simulation output files in relation to potentially-existing past 
+    ParaDRAM - NOTE: simulations. The string value must be enclosed by either single or double quotation marks when provided 
+    ParaDRAM - NOTE: as input in an external input file. Three values are possible:
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     outputStatus = 'extend'
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             This is the default behavior where the sampler will search for any prior simulation output 
+    ParaDRAM - NOTE:             files with the same user-specified file name prefix in the working directory to restart the 
+    ParaDRAM - NOTE:             simulation. If an old interrupted set of simulation output files exists in the working directory, 
+    ParaDRAM - NOTE:             the sampler will attempt to restart the simulation from the last recorded simulation state. 
+    ParaDRAM - NOTE:             The restart operation may fail if the user has modified or tampered with the old simulation 
+    ParaDRAM - NOTE:             output files. If prior simulation files exist and represent a complete simulation, a new simulation 
+    ParaDRAM - NOTE:             run will be performed with a new set of output files starting from the last successful run. 
+    ParaDRAM - NOTE:             The parameters of the new simulation are initialized based the output of the most recent successful 
+    ParaDRAM - NOTE:             simulation. For MCMC type of simulations, this means starting from the last sampled point in 
+    ParaDRAM - NOTE:             the output sample file of the previous simulation and using an initial proposal covariance 
+    ParaDRAM - NOTE:             matrix constructed from the output sample of the previous simulation. If the sampler does not 
+    ParaDRAM - NOTE:             find any prior simulations with the same output file names, it will start a new simulation. 
+    ParaDRAM - NOTE:             This default behavior allows seamless restart functionality while ensuring old potentially-valuable 
+    ParaDRAM - NOTE:             computationally expensive simulations are not inadvertently erased and replaced by the new 
+    ParaDRAM - NOTE:             simulation output files.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     outputStatus = 'repeat'
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             This option is nearly identical to 'extend' except for the fact that the new simulation specifications 
+    ParaDRAM - NOTE:             are not initialized from the specifications of the last successful simulation run (if any exists). 
+    ParaDRAM - NOTE:             Instead, a new set of simulation files will be generated as if the last simulation run is replicated. 
+    ParaDRAM - NOTE:             If the simulation configuration has not changed since the last successful simulation run, then 
+    ParaDRAM - NOTE:             the new simulation output sample, chain, and restart files will be identical to the those of 
+    ParaDRAM - NOTE:             the last successful simulation. This outputting is primarily useful for cross-platform or cross-compiler 
+    ParaDRAM - NOTE:             testing and development.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     outputStatus = 'retry'
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             This option is nearly identical to 'repeat' except for the fact that the new simulation starts 
+    ParaDRAM - NOTE:             afresh and overwrites any potentially existing output files from the most recent simulation 
+    ParaDRAM - NOTE:             with the same names without ever using them. There is no restart functionality with this option. 
+    ParaDRAM - NOTE:             The most recent simulation files are deleted regardless of completion status. This option is 
+    ParaDRAM - NOTE:             effectively equivalent to deleting the set of output files from the last simulation run and 
+    ParaDRAM - NOTE:             rerunning the simulation with the default value 'extend' for the specification `outputStatus`. 
+    ParaDRAM - NOTE:             Use this option for quick tests or small exploratory problems where lots of quick runs must 
+    ParaDRAM - NOTE:             be performed.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: The default value is outputStatus = 'extend'. The input values are case-INsensitive.
+
+parallelism
+
+    singlechain
+
+    ParaDRAM - NOTE: The simulation specification `parallelism` is a scalar string of maximum length 63 that represents the 
+    ParaDRAM - NOTE: parallelization method to be used in the simulation. The string value must be enclosed by either single 
+    ParaDRAM - NOTE: or double quotation marks when provided in an external input file. Two options are currently supported:
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     parallelism = 'multiChain'
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             This method uses the Prefect Parallelism scheme in which multiple MCMC chains are generated 
+    ParaDRAM - NOTE:             independently of each other. In this case, multiple output MCMC chain files will also be generated. 
+    ParaDRAM - NOTE:             The Perfect parallelism is currently available only in Coarray/MPI-enabled (and not in OpenMP 
+    ParaDRAM - NOTE:             or other shared-memory) parallel simulations. However, it can be readily emulated by running 
+    ParaDRAM - NOTE:             multiple independent simulations concurrently in any programming environment.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     parallelism = 'singleChain'
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             This method uses the fork-style parallelization scheme. A single MCMC chain file will be generated 
+    ParaDRAM - NOTE:             in this case. At each MCMC step multiple proposal steps will be checked in parallel until one 
+    ParaDRAM - NOTE:             proposal is accepted. This is the default for all parallelism paradigms supported by the ParaMonte 
+    ParaDRAM - NOTE:             library and the only option for shared memory parallelism.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: Note that in serial mode, there is no parallelism. Therefore, this option does not affect non-parallel 
+    ParaDRAM - NOTE: simulations and its value is ignored. The serial mode is equivalent to either of the parallelism methods 
+    ParaDRAM - NOTE: with only one simulation image (processor, core, or thread). The default value is parallelism = 'singleChain'. 
+    ParaDRAM - NOTE: Note that the input values are case-INsensitive and white-space characters are ignored.
+
+parallelismMpiFinalizeEnabled
+
+    T
+
+    ParaDRAM - NOTE: The simulation specification `parallelismMpiFinalizeEnabled` is a scalar of type `logical` (Boolean). In 
+    ParaDRAM - NOTE: MPI parallel simulations, if `parallelismMpiFinalizeEnabled` is set to the logical/Boolean true value, 
+    ParaDRAM - NOTE: then a call will be made to the `MPI_Finalize()` routine from inside the ParaMonte routine at the end of 
+    ParaDRAM - NOTE: the simulation to finalize the MPI communications. Set this variable to the logical/Boolean if you do not 
+    ParaDRAM - NOTE: want the ParaMonte library to finalize the MPI communications for you. When this specification is set within 
+    ParaDRAM - NOTE: an external input file, the values `F`, `False`, `false`, `FALSE`, and `.false.` all represent the logical 
+    ParaDRAM - NOTE: true value and the values `T`, `True`, `true`, `TRUE`, and `.true.` all represent the logical true value. 
+    ParaDRAM - NOTE: This is a low-level simulation specification variable, relevant to simulations that directly involve MPI 
+    ParaDRAM - NOTE: parallelism. If you do not use any MPI-routine calls in your main program, you can safely ignore this variable 
+    ParaDRAM - NOTE: with its default value. Note that in non-MPI-enabled simulations, such as serial and Coarray-enabled simulations, 
+    ParaDRAM - NOTE: the value of this variable is completely ignored. The default value is TRUE.
+
+randomSeed
+
+    2136275
+
+    ParaDRAM - NOTE: The simulation specification `randomSeed` is a positive scalar of type `integer` of kind 32-bit whose value 
+    ParaDRAM - NOTE: serves as the seed of the random number generator. When specified by the user, the seed of the simulation 
+    ParaDRAM - NOTE: random number generator will be set in a specific deterministic manner to enable future replications of 
+    ParaDRAM - NOTE: the simulation with the same configuration and input specifications. The default for `randomSeed` is processor-dependent 
+    ParaDRAM - NOTE: random value to ensure complete simulation randomness at every run. In parallel simulations, the seed, 
+    ParaDRAM - NOTE: whether default or user-specified, is uniquely set on all processors, threads, cores, or images in all 
+    ParaDRAM - NOTE: circumstances to ensure simulation randomness.
+
+targetAcceptanceRate
+
+    0.0000000000000000
+    1.0000000000000000
+
+    ParaDRAM - NOTE: The simulation specification `targetAcceptanceRate` is a vector of type `real` of size `2` of the highest 
+    ParaDRAM - NOTE: precision available within the ParaMonte library whose values (in the range `[0, 1]`) determine optimal 
+    ParaDRAM - NOTE: target range for the simulation efficiency, defined as the ratio of the number of accepted objective function 
+    ParaDRAM - NOTE: calls to the total number of function calls made through the simulation. The first and the second elements 
+    ParaDRAM - NOTE: of `targetAcceptanceRate` determine the lower and upper bounds of the desired acceptance rate respectively. 
+    ParaDRAM - NOTE: When the acceptance rate of the sampler is outside the specified limits, the simulation settings will be 
+    ParaDRAM - NOTE: automatically adjusted to bring the overall acceptance rate to within the user-specified limits given by 
+    ParaDRAM - NOTE: `targetAcceptanceRate`. When assigned from within a dynamic-language programming environment (such as MATLAB, 
+    ParaDRAM - NOTE: Python, or R) or from within an input file, `targetAcceptanceRate` can also be a scalar real number in 
+    ParaDRAM - NOTE: the range `[0, 1]`. In such a case, the sampler will constantly attempt (albeit with no guarantee of success) 
+    ParaDRAM - NOTE: to bring the average acceptance ratio of the sampler as close to the user-provided target ratio as possible. 
+    ParaDRAM - NOTE: Specifically, the success of the adaptive MCMC samplers (e.g., ParaDRAM) in keeping the average acceptance 
+    ParaDRAM - NOTE: ratio close to the requested target value depends heavily on:
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     1) the specified value of `proposalAdaptationPeriod`; the larger, the easier.
+    ParaDRAM - NOTE:     2) the specified value of `proposalAdaptationCount`; the larger, the easier.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: Note that the acceptance ratio adjustments will only occur every `proposalAdaptationPeriod` sampling steps 
+    ParaDRAM - NOTE: for a total number of `proposalAdaptationCount` in adaptive MCMC samplings. The default value for `targetAcceptanceRate` 
+    ParaDRAM - NOTE: is the range `[0, 1]`.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                                                                                %%
+%%                                            ParaDRAM.simulation.specifications.mcmc                                             %%
+%%                                                                                                                                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+outputChainSize
+
+    30000
+
+    ParaDRAM - NOTE: The simulation specification `outputChainSize` is a positive scalar of type `integer` whose value determines 
+    ParaDRAM - NOTE: the number of non-refined, potentially auto-correlated, but unique, samples drawn by the MCMC sampler before 
+    ParaDRAM - NOTE: stopping the sampling. For example, if `outputChainSize = 10000`, then 10000 unique sample points (with 
+    ParaDRAM - NOTE: no duplicates) will be drawn from the target objective function that the user has provided. The input value 
+    ParaDRAM - NOTE: for `outputChainSize` must be a positive integer of a minimum value `ndim + 1` or larger, where `ndim` 
+    ParaDRAM - NOTE: is the number of dimensions of the domain of the objective function to be sampled. Note that `outputChainSize` 
+    ParaDRAM - NOTE: is different from and always smaller than the length of the constructed MCMC chain. The default value is 
+    ParaDRAM - NOTE: `outputChainSize = 100000`.
+
+outputSampleRefinementCount
+
+    10
+
+    ParaDRAM - NOTE: The simulation specification `outputSampleRefinementCount` is a positive-valued scalar of type `integer`. 
+    ParaDRAM - NOTE: When `outputSampleSize < 0`, the value of `outputSampleRefinementCount` dictates the maximum number of 
+    ParaDRAM - NOTE: times the MCMC chain will be refined to remove the autocorrelation within the output MCMC sample. For example,
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     if outputSampleRefinementCount = 0,
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             no refinement of the output MCMC chain will be performed. The resulting MCMC sample will simply 
+    ParaDRAM - NOTE:             correspond to the full MCMC chain in verbose format (i.e., each sampled state has a weight 
+    ParaDRAM - NOTE:             of one).
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     if outputSampleRefinementCount = 1,
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             the refinement of the output MCMC chain will be done only once if needed, and no more, even 
+    ParaDRAM - NOTE:             though there may still exist some residual autocorrelation in the output MCMC sample. In practice, 
+    ParaDRAM - NOTE:             only one refinement of the final output MCMC chain should be enough to remove the existing 
+    ParaDRAM - NOTE:             autocorrelations in the final output sample. Exceptions occur when the integrated Autocorrelation 
+    ParaDRAM - NOTE:             (ACT) of the output MCMC chain is comparable to or larger than the length of the chain. In 
+    ParaDRAM - NOTE:             such cases, neither the BatchMeans method nor any other method of ACT computation will be able 
+    ParaDRAM - NOTE:             to accurately compute the ACT. Consequently, the samples generated based on the computed ACT 
+    ParaDRAM - NOTE:             values will likely not be i.i.d. and will still be significantly autocorrelated. In such scenarios, 
+    ParaDRAM - NOTE:             more than one refinement of the MCMC chain will be necessary. Very small sample size resulting 
+    ParaDRAM - NOTE:             from multiple refinements of the sample could be a strong indication of the bad mixing of the 
+    ParaDRAM - NOTE:             MCMC chain and the lack of convergence to the target objective function.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     if outputSampleRefinementCount > 1,
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             the refinement of the output MCMC chain will be done for a maximum `outputSampleRefinementCount` 
+    ParaDRAM - NOTE:             number of times, even though there may still exist some residual autocorrelation in the final 
+    ParaDRAM - NOTE:             output MCMC sample.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     if outputSampleRefinementCount >> 1 (e.g., comparable to or larger than the length of the MCMC chain),
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             the refinement of the output MCMC chain will continue until the integrated autocorrelation 
+    ParaDRAM - NOTE:             of the resulting final sample is less than 2, virtually implying that an independent identically-distributed 
+    ParaDRAM - NOTE:             (i.i.d.) sample from the target objective function has finally been obtained.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: Note that to obtain i.i.d. samples from a multidimensional chain, the sampler will, by default, use the 
+    ParaDRAM - NOTE: maximum of integrated Autocorrelation (ACT) among all dimensions of the chain to refine the chain. Note 
+    ParaDRAM - NOTE: that the value specified for `outputSampleRefinementCount` is used only when the variable outputSampleSize 
+    ParaDRAM - NOTE: < 0, otherwise, it will be ignored. The default value is `outputSampleRefinementCount = 2147483647`.
+
+outputSampleRefinementMethod
+
+    BatchMeans
+
+    ParaDRAM - NOTE: The simulation specification `outputSampleRefinementMethod` is a scalar string of maximum length 63 representing 
+    ParaDRAM - NOTE: the method of computing the (integrated) AutoCorrelation Time (ACT) to be used in the simulation for refining 
+    ParaDRAM - NOTE: the final output MCMC chain and sample. If specified within an external input file, it must be either singly 
+    ParaDRAM - NOTE: or doubly quoted. Methods that are currently supported include:
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     outputSampleRefinementMethod = 'BatchMeans'
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             This method of computing the integrated Autocorrelation Time is based on the approach described 
+    ParaDRAM - NOTE:             in SCHMEISER, B., 1982, Batch size effects in the analysis of simulation output, Oper. Res. 
+    ParaDRAM - NOTE:             30 556-568. The batch sizes in the BatchMeans method are chosen to be int(N^(2/3)) where N 
+    ParaDRAM - NOTE:             is the length of the MCMC chain. As long as the batch size is larger than the ACT of the chain 
+    ParaDRAM - NOTE:             and there are significantly more than 10 batches, the BatchMeans method will provide reliable 
+    ParaDRAM - NOTE:             estimates of the ACT. Note that the refinement strategy involves two separate phases of sample 
+    ParaDRAM - NOTE:             decorrelation. At the first stage, the Markov chain is decorrelated recursively (for as long 
+    ParaDRAM - NOTE:             as needed) based on the ACT of its compact format, where only the uniquely-visited states are 
+    ParaDRAM - NOTE:             kept in the (compact) chain. Once the Markov chain is refined such that its compact format 
+    ParaDRAM - NOTE:             is fully decorrelated, the second phase of the decorrelation begins during which the Markov 
+    ParaDRAM - NOTE:             chain is decorrelated based on the ACT of the chain in its verbose (Markov) format. This process 
+    ParaDRAM - NOTE:             is repeated recursively for as long as there is any residual autocorrelation in the refined 
+    ParaDRAM - NOTE:             sample.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     outputSampleRefinementMethod = 'BatchMeans-compact'
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             This is the same as the first case in the above, except that only the first phase of the sample 
+    ParaDRAM - NOTE:             refinement described in the above will be performed, that is, the (verbose) Markov chain is 
+    ParaDRAM - NOTE:             refined only based on the ACT computed from the compact format of the Markov chain. This will 
+    ParaDRAM - NOTE:             lead to a larger final refined sample. However, the final sample will likely not be fully decorrelated.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     outputSampleRefinementMethod = 'BatchMeans-verbose'
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             This is the same as the first case in the above, except that only the second phase of the sample 
+    ParaDRAM - NOTE:             refinement described in the above will be performed, that is, the (verbose) Markov chain is 
+    ParaDRAM - NOTE:             refined only based on the ACT computed from the verbose format of the Markov chain. While the 
+    ParaDRAM - NOTE:             resulting refined sample will be fully decorrelated, the size of the refined sample may be 
+    ParaDRAM - NOTE:             smaller than the default choice in the first case in the above.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: Note that in order to obtain i.i.d. samples from a multidimensional chain, the sampler will use the average 
+    ParaDRAM - NOTE: of the ACT among all dimensions of the chain to refine the chain. If the maximum, minimum, or the median 
+    ParaDRAM - NOTE: of IACs is preferred add '-max' (or '-maximum'), '-min' (or '-minimum'), '-med' (or '-median'), respectively, 
+    ParaDRAM - NOTE: to the value of `outputSampleRefinementMethod`. For example, 
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     outputSampleRefinementMethod = 'BatchMeans-max'
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: or, 
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     outputSampleRefinementMethod = 'BatchMeans-compact-max'
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: or, 
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     outputSampleRefinementMethod = 'BatchMeans-max-compact'
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: Note that the specified `outputSampleRefinementCount` is used only when the condition `outputSampleSize 
+    ParaDRAM - NOTE: < 0` holds. Otherwise, it is ignored. The default value is `outputSampleRefinementMethod = 'BatchMeans'`. 
+    ParaDRAM - NOTE: Note that the input values are case-INsensitive and white-space characters are ignored.
+
+proposal
+
+    normal
+
+    ParaDRAM - NOTE: The simulation specification `proposal` is a scalar string of maximum length 63 containing the name of 
+    ParaDRAM - NOTE: the proposal distribution for the MCMC sampler. When specified from within an external input file, it must 
+    ParaDRAM - NOTE: be singly or doubly quoted. Options that are currently supported include:
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     proposal = 'normal'
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             This is equivalent to the multivariate normal distribution, which is the most widely-used proposal 
+    ParaDRAM - NOTE:             model along with MCMC samplers.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     proposal = 'uniform'
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             The proposals will be drawn uniformly from within a ndim-dimensional ellipsoid whose covariance 
+    ParaDRAM - NOTE:             matrix and scale are initialized by the user and optionally adaptively updated throughout the 
+    ParaDRAM - NOTE:             simulation.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: The default value is 'normal'.
+
+proposalCor
+
+    1.0000000000000000 0.0000000000000000
+    0.0000000000000000 1.0000000000000000
+
+    ParaDRAM - NOTE: The simulation specification `proposalCor` is a positive-definite square matrix of type `real` of the 
+    ParaDRAM - NOTE: highest precision available within the ParaMonte library matrix of size `(ndim, ndim)`, where `ndim` is 
+    ParaDRAM - NOTE: the dimension of the sampling space. It serves as the best-guess starting correlation matrix of the proposal 
+    ParaDRAM - NOTE: distribution used by the sampler. It is used (along with the input vector `proposalStd`) to construct 
+    ParaDRAM - NOTE: the covariance matrix of the proposal distribution when the input covariance matrix is missing in the input 
+    ParaDRAM - NOTE: list of variables. If the covariance matrix is specified as input to the sampler, any input values for 
+    ParaDRAM - NOTE: `proposalCor`, and `proposalStd` will be automatically ignored. Specifying `proposalCor` along 
+    ParaDRAM - NOTE: with `proposalStd` is especially useful when obtaining the best-guess covariance matrix is not trivial. 
+    ParaDRAM - NOTE: The default value of `proposalCor` is a square Identity matrix of rank `ndim`.
+
+proposalCov
+
+    12.510965333280035 0.20771184229156420
+    0.20771184229156420 8.7185265491209609
+
+    ParaDRAM - NOTE: The simulation specification `proposalCov` is a square positive-definite matrix of type `real` of the 
+    ParaDRAM - NOTE: highest precision available within the ParaMonte library, of shape `(ndim, ndim)`, where `ndim` is the 
+    ParaDRAM - NOTE: number of dimension of the sampling space. It serves as the best-guess starting covariance matrix of the 
+    ParaDRAM - NOTE: proposal distribution. To bring the sampling efficiency of the sampler to within the desired requested 
+    ParaDRAM - NOTE: range, the covariance matrix will be adaptively updated throughout the simulation, according to the user-specified 
+    ParaDRAM - NOTE: schedule. If `proposalCov` is not provided by the user or it is completely missing from the input file, 
+    ParaDRAM - NOTE: its value will be automatically computed via the input variables `proposalCor` and `proposalStd` 
+    ParaDRAM - NOTE: (or via their default values, if not provided). If the simulation specification `outputStatus` is set to 
+    ParaDRAM - NOTE: "extend" and a successful prior simulation run exists, then `proposalCov` will be set to the covariance 
+    ParaDRAM - NOTE: matrix of the output sample from most recent simulation run. In this case, any user-specified value will 
+    ParaDRAM - NOTE: be overridden by the computed `proposalCov`. Otherwise, the default value of `proposalCov` is a square 
+    ParaDRAM - NOTE: Identity matrix of rank `ndim`.
+
+proposalScale
+
+    2*0.5*Gelman (gelman(ndim = 2) = 1.6829141392239828)
+
+    ParaDRAM - NOTE: The simulation specification `proposalScale` is a scalar string of maximum length 127 containing 
+    ParaDRAM - NOTE: a positive real-valued number whose square will be multiplied with the covariance matrix of the proposal 
+    ParaDRAM - NOTE: distribution of the MCMC sampler to shrink or enlarge it. In other words, the proposal distribution will 
+    ParaDRAM - NOTE: be scaled in every direction by the specified numeric value of `proposalScale`. It can also be given 
+    ParaDRAM - NOTE: in units of the string keyword 'gelman' (which is case-INsensitive) after the paper:
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:    Gelman, Roberts, and Gilks (1996): 'Efficient Metropolis Jumping Rules'.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: The paper finds that the optimal scaling factor for a Multivariate Gaussian proposal distribution for the 
+    ParaDRAM - NOTE: Metropolis-Hastings  Markov Chain Monte Carlo sampling of a target Multivariate Normal Distribution of 
+    ParaDRAM - NOTE: dimension `ndim` is given by:
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     proposalScale = 2.38 / sqrt(ndim)  ,  in the limit of ndim -> Infinity.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: Multiples of the Gelman scale factors are also acceptable as input and can be specified like the following 
+    ParaDRAM - NOTE: examples:
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     proposalScale = '1'
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             multiplies the ndim-dimensional proposal covariance matrix by 1, essentially no change occurs 
+    ParaDRAM - NOTE:             to the covariance matrix.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     proposalScale = "1"
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             same as the previous example. The double-quotation marks act the same way as single-quotation 
+    ParaDRAM - NOTE:             marks.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     proposalScale = '2.5'
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             multiplies the ndim-dimensional proposal covariance matrix by 2.5.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     proposalScale = '2.5*Gelman'
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             multiplies the ndim-dimensional proposal covariance matrix by 2.5 * 2.38/sqrt(ndim).
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     proposalScale = "2.5 * gelman"
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             same as the previous example, but with double-quotation marks. space characters are ignored.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     proposalScale = "2.5 * gelman*gelman*2"
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             equivalent to gelmanFactor-squared multiplied by 5.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: Note, however, that the result of Gelman et al. paper applies only to multivariate normal proposal distributions, 
+    ParaDRAM - NOTE: in the limit of infinite dimensions. Therefore, care must be taken when using Gelman's scaling factor with 
+    ParaDRAM - NOTE: non-Gaussian proposals and target objective functions. Note that only the product symbol (*) can be parsed 
+    ParaDRAM - NOTE: in the string value of `proposalScale`. The presence of other mathematical symbols or multiple appearances 
+    ParaDRAM - NOTE: of the product symbol will lead to a simulation crash. Also, note that the prescription of an acceptance 
+    ParaDRAM - NOTE: range specified by the input variable `targetAcceptanceRate` will lead to dynamic modification of the initial 
+    ParaDRAM - NOTE: input value of `proposalScale` throughout sampling for `proposalAdaptationCount` times. The default 
+    ParaDRAM - NOTE: string value for `proposalScale` is "gelman" (for all proposal distributions), which is subsequently 
+    ParaDRAM - NOTE: converted to `2.38 / sqrt(ndim)`.
+
+proposalStart
+
+    0.65853441196893192
+    0.20354377400374979
+
+    ParaDRAM - NOTE: The simulation specification `proposalStart` is a vector type of `real` of the highest precision available 
+    ParaDRAM - NOTE: within the ParaMonte library of length `ndim` where `ndim` is the dimension of the domain of the objective 
+    ParaDRAM - NOTE: function. For every element of `proposalStart` that is not provided as input, the default value will be 
+    ParaDRAM - NOTE: the center of the sampling domain as determined by `domainCubeLimitLower` and `domainCubeLimitUpper` input 
+    ParaDRAM - NOTE: specifications. If the condition `proposalStartRandomized` is set to the logical/Boolean true value, then 
+    ParaDRAM - NOTE: the missing elements of `proposalStart` will be initialized to values drawn randomly from within the corresponding 
+    ParaDRAM - NOTE: ranges specified by the input variables `proposalStartDomainCubeLimitLower` and `proposalStartDomainCubeLimitUpper`. 
+    ParaDRAM - NOTE: If the simulation specification `outputStatus` is set to "extend" and a prior successful simulation run 
+    ParaDRAM - NOTE: exists, then `proposalStart` will be set to the average of the sampled states of the most recent successful 
+    ParaDRAM - NOTE: run. In this case, any user-specified value will be overridden by the computed `proposalStart`.
+
+proposalStartDomainCubeLimitLower
+
+    -100.00000000000000
+    -100.00000000000000
+
+    ParaDRAM - NOTE: The simulation specification `proposalStartDomainCubeLimitLower` is a vector of type `real` of the highest 
+    ParaDRAM - NOTE: precision available in the ParaMonet library of size `ndim` is the number of dimensions of the domain of 
+    ParaDRAM - NOTE: the objective function. It contains the lower boundaries of the cubical domain from which the starting 
+    ParaDRAM - NOTE: point(s) of the MCMC chain(s) will be initialized randomly (only if requested via the input variable `proposalStartRandomized`). 
+    ParaDRAM - NOTE: This happens only when some or all of the elements of the input specification `proposalStart` are missing. 
+    ParaDRAM - NOTE: In such cases, every missing value of the input `proposalStart` will be set to the center point between 
+    ParaDRAM - NOTE: `proposalStartDomainCubeLimitLower` and `proposalStartDomainCubeLimitUpper` in the corresponding dimension. 
+    ParaDRAM - NOTE: If `proposalStartRandomized` is set to the logical/Boolean true value, then the missing elements of `proposalStart` 
+    ParaDRAM - NOTE: will be initialized to values drawn randomly from within the corresponding ranges whose lower limits are 
+    ParaDRAM - NOTE: specified by the input `proposalStartDomainCubeLimitLower`. When specified from within an external input 
+    ParaDRAM - NOTE: file to the sampler, it is also possible to assign only select values of `proposalStartDomainCubeLimitLower` 
+    ParaDRAM - NOTE: and leave the rest of the components to be assigned the default value. For example, having the following 
+    ParaDRAM - NOTE: inside the input file, 
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     proposalStartDomainCubeLimitLower(3:5) = -100
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             will only set the lower limits of the third, fourth, and the fifth dimensions to -100, or,
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     proposalStartDomainCubeLimitLower(1) = -100, proposalStartDomainCubeLimitLower(2) = -1.e6 
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             will set the lower limit on the first dimension to -100, and 1.e6 on the second dimension, 
+    ParaDRAM - NOTE:             or,
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     proposalStartDomainCubeLimitLower = 3*-2.5e100
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             will only set the lower limits on the first, second, and the third dimensions to `-2.5*10^100`, 
+    ParaDRAM - NOTE:             while the rest of the lower limits for the missing dimensions will be automatically set to 
+    ParaDRAM - NOTE:             the default value.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: The default for all `proposalStartDomainCubeLimitLower` elements are taken from the corresponding elements 
+    ParaDRAM - NOTE: of `domainCubeLimitLower`.
+
+proposalStartDomainCubeLimitUpper
+
+    100.00000000000000
+    100.00000000000000
+
+    ParaDRAM - NOTE: The simulation specification `proposalStartDomainCubeLimitUpper` is a vector of type `real` of the highest 
+    ParaDRAM - NOTE: precision available in the ParaMonet library of size `ndim` is the number of dimensions of the domain of 
+    ParaDRAM - NOTE: the objective function. It contains the upper boundaries of the cubical domain from which the starting 
+    ParaDRAM - NOTE: point(s) of the MCMC chain(s) will be initialized randomly (only if requested via the input variable `proposalStartRandomized`). 
+    ParaDRAM - NOTE: This happens only when some or all of the elements of the input specification `proposalStart` are missing. 
+    ParaDRAM - NOTE: In such cases, every missing value of the input `proposalStart` will be set to the center point between 
+    ParaDRAM - NOTE: `proposalStartDomainCubeLimitLower` and `proposalStartDomainCubeLimitUpper` in the corresponding dimension. 
+    ParaDRAM - NOTE: If `proposalStartRandomized` is set to the logical/Boolean true value, then the missing elements of `proposalStart` 
+    ParaDRAM - NOTE: will be initialized to values drawn randomly from within the corresponding ranges whose upper limits are 
+    ParaDRAM - NOTE: specified by the input `proposalStartDomainCubeLimitUpper`. When specified from within an external input 
+    ParaDRAM - NOTE: file to the sampler, it is also possible to assign only select values of `proposalStartDomainCubeLimitUpper` 
+    ParaDRAM - NOTE: and leave the rest of the components to be assigned the default value. For example, having the following 
+    ParaDRAM - NOTE: inside the input file, 
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     proposalStartDomainCubeLimitUpper(3:5) = -100
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             will only set the upper limits of the third, fourth, and the fifth dimensions to -100, or,
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     proposalStartDomainCubeLimitUpper(1) = -100, proposalStartDomainCubeLimitUpper(2) = -1.e6 
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             will set the upper limit on the first dimension to -100, and 1.e6 on the second dimension, 
+    ParaDRAM - NOTE:             or,
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     proposalStartDomainCubeLimitUpper = 3*-2.5e100
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             will only set the upper limits on the first, second, and the third dimensions to -2.5*10**100, 
+    ParaDRAM - NOTE:             while the rest of the upper limits for the missing dimensions will be automatically set to 
+    ParaDRAM - NOTE:             the default value.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: The default values for all elements of proposalStartDomainCubeLimitUpper are taken from the corresponding 
+    ParaDRAM - NOTE: values in the input variable `domainCubeLimitUpper`.
+
+proposalStartRandomized
+
+    F
+
+    ParaDRAM - NOTE: The simulation specification `proposalStartRandomized` is scalar of type `logical` (Boolean). If true (or 
+    ParaDRAM - NOTE: .true. or TRUE or .t. from within an external input file), then the variable `proposalStart` will be initialized 
+    ParaDRAM - NOTE: randomly for each MCMC chain that is to be generated by the sampler. The random values will be drawn from 
+    ParaDRAM - NOTE: the specified or the default domain of `proposalStart`, given by `proposalStartDomainCubeLimitLower` and 
+    ParaDRAM - NOTE: `proposalStartDomainCubeLimitUpper` variable. Note that the value of `proposalStart`, if provided, has 
+    ParaDRAM - NOTE: precedence over random initialization. In other words, only uninitialized elements of `proposalStart` will 
+    ParaDRAM - NOTE: be randomly initialized only if `proposalStartRandomized` is set to the logical true value. Note that even 
+    ParaDRAM - NOTE: if `proposalStart` is randomly initialized, its random value will be deterministic between different independent 
+    ParaDRAM - NOTE: simulation runs if the input variable `randomSeed` is specified by the user. The default value is FALSE.
+
+proposalStd
+
+    1.0000000000000000
+    1.0000000000000000
+
+    ParaDRAM - NOTE: The simulation specification `proposalStd` is a positive-valued vector of type `real` of the highest 
+    ParaDRAM - NOTE: precision available within the ParaMonte library, of size `ndim`, where `ndim` is the dimension of the 
+    ParaDRAM - NOTE: domain of the objective function. It serves as the best-guess starting Standard Deviation of each of the 
+    ParaDRAM - NOTE: components of the proposal distribution. If the initial covariance matrix (`proposalCov`) is missing 
+    ParaDRAM - NOTE: as an input specification to the sampler, then `proposalStd` (along with the specified `proposalCor`) 
+    ParaDRAM - NOTE: will be used to construct the initial covariance matrix of the proposal distribution of the MCMC sampler. 
+    ParaDRAM - NOTE: However, if `proposalCov` is specified for the sampler, then the input `proposalStd` and `proposalCor` 
+    ParaDRAM - NOTE: will be completely ignored and the input value for `proposalCov` will be used to construct the initial 
+    ParaDRAM - NOTE: covariance matrix of the proposal distribution. The default value of `proposalStd` is a vector of size 
+    ParaDRAM - NOTE: `ndim` of unit values (i.e., ones).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                                                                                %%
+%%                                            ParaDRAM.simulation.specifications.dram                                             %%
+%%                                                                                                                                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+proposalAdaptationBurnin
+
+    1.0000000000000000
+
+    ParaDRAM - NOTE: The simulation specification `proposalAdaptationBurnin` is a scalar of type `real` of the highest precision 
+    ParaDRAM - NOTE: available within the ParaMonte library whose value, between 0 and 1, represents the adaptation measure 
+    ParaDRAM - NOTE: threshold below which the simulated Markov chain will be used to generate the output sample. In other words, 
+    ParaDRAM - NOTE: any point in the output Markov chain that has been sampled during significant adaptation of the proposal 
+    ParaDRAM - NOTE: distribution (set by `proposalAdaptationBurnin`) will not be included in the construction of the final MCMC 
+    ParaDRAM - NOTE: output sample. This is to ensure that the generation of the output sample will be based only on the part 
+    ParaDRAM - NOTE: of the simulated chain that is practically guaranteed to be Markovian and ergodic. If this variable is 
+    ParaDRAM - NOTE: set to 0, then the output sample will be generated from the part of the chain where no proposal adaptation 
+    ParaDRAM - NOTE: has occurred. This non-adaptive or minimally-adaptive part of the chain may not even exist if the total 
+    ParaDRAM - NOTE: adaptation period of the simulation, set by `proposalAdaptationCount` and `proposalAdaptationPeriod` input 
+    ParaDRAM - NOTE: variables, is longer than the total length of the output MCMC chain. In such cases, the resulting output 
+    ParaDRAM - NOTE: sample may have a zero size. In general, when good mixing occurs (e.g., when the input variable `outputChainSize` 
+    ParaDRAM - NOTE: is reasonably large), then any specific value of `proposalAdaptationBurnin` becomes practically irrelevant. 
+    ParaDRAM - NOTE: The default value for `proposalAdaptationBurnin` is 1.0000000000000000, implying that the entire chain (excluding 
+    ParaDRAM - NOTE: of an initial automatically-determined burnin period) will be used to generate the final output sample.
+
+proposalAdaptationCount
+
+    10000000
+
+    ParaDRAM - NOTE: The simulation specification `proposalAdaptationCount` is a scalar of type `integer` representing the total 
+    ParaDRAM - NOTE: number of adaptive updates that will be made to the parameters of the proposal distribution to increase 
+    ParaDRAM - NOTE: the efficiency of the sampler thus increasing the overall sampling efficiency of the simulation. Every 
+    ParaDRAM - NOTE: `proposalAdaptationPeriod` number of calls to the objective function, the parameters of the proposal distribution 
+    ParaDRAM - NOTE: will be updated until either the total number of adaptive updates reaches the value of `proposalAdaptationCount`. 
+    ParaDRAM - NOTE: This variable must be a non-negative integer. As a rule of thumb, it may be appropriate to ensure the condition 
+    ParaDRAM - NOTE: `outputChainSize >> proposalAdaptationPeriod * proposalAdaptationCount` holds to improve the ergodicity 
+    ParaDRAM - NOTE: and stationarity of the MCMC sampler. If `proposalAdaptationCount = 0`, then the proposal distribution 
+    ParaDRAM - NOTE: parameters will be fixed to the initial input values throughout the entire MCMC sampling. The default value 
+    ParaDRAM - NOTE: is 2147483647.
+
+proposalAdaptationCountGreedy
+
+    0
+
+    ParaDRAM - NOTE: The simulation specification `proposalAdaptationCountGreedy` is a positive-valued scalar of type `integer` 
+    ParaDRAM - NOTE: representing the count of initial "greedy" adaptive updates the sampler will apply to the proposal distribution 
+    ParaDRAM - NOTE: before starting regular adaptation. Greedy adaptations are made using only the 'unique' accepted points 
+    ParaDRAM - NOTE: in the MCMC chain. This is useful, for example, when the function to be sampled by the sampler is high 
+    ParaDRAM - NOTE: dimensional, in which case, the adaptive updates to proposal distribution will less likely lead to numerical 
+    ParaDRAM - NOTE: instabilities, for example, a singular covariance matrix for the multivariate proposal sampler. The variable 
+    ParaDRAM - NOTE: `proposalAdaptationCountGreedy` must be less than the specified value for `proposalAdaptationCount`. If 
+    ParaDRAM - NOTE: it is larger, it will be automatically reset to `proposalAdaptationCount` for the simulation. The default 
+    ParaDRAM - NOTE: value is 0.
+
+proposalAdaptationPeriod
+
+    35
+
+    ParaDRAM - NOTE: The simulation specification `proposalAdaptationPeriod` is a positive-valued scalar of type `integer`. 
+    ParaDRAM - NOTE: Every `proposalAdaptationPeriod` calls to the objective function, the parameters of the proposal distribution 
+    ParaDRAM - NOTE: will be updated. The smaller the value of `proposalAdaptationPeriod`, the easier it will be for the sampler 
+    ParaDRAM - NOTE: kernel to adapt the proposal distribution to the covariance structure of the objective function. However, 
+    ParaDRAM - NOTE: this will happen at the expense of slower simulation runtime as the adaptation process can become computationally 
+    ParaDRAM - NOTE: expensive, in particular, for very high dimensional objective functions (ndim >> 1). The larger the value 
+    ParaDRAM - NOTE: of `proposalAdaptationPeriod`, the easier it will be for the sampler kernel to keep the sampling efficiency 
+    ParaDRAM - NOTE: close to the requested target acceptance rate range (if specified via the input variable targetAcceptanceRate). 
+    ParaDRAM - NOTE: However, too large values for `proposalAdaptationPeriod` will only delay the adaptation of the proposal 
+    ParaDRAM - NOTE: distribution to the global structure of the objective function that is being sampled. If the condition 
+    ParaDRAM - NOTE: `proposalAdaptationPeriod >= outputChainSize` holds, then no adaptive updates to the proposal distribution 
+    ParaDRAM - NOTE: will be made. The default value is `4 * ndim`, where `ndim` is the dimension of the domain of the objective 
+    ParaDRAM - NOTE: function to be sampled.
+
+proposalDelayedRejectionCount
+
+    5
+
+    ParaDRAM - NOTE: The simulation specification `proposalAdaptationPeriod` is a non-negative-valued scalar of type `integer` 
+    ParaDRAM - NOTE: representing the total number of stages for which rejections of new proposals will be tolerated by MCMC 
+    ParaDRAM - NOTE: sampler before going back to the previously accepted point (state). The condition `0 <= proposalDelayedRejectionCount 
+    ParaDRAM - NOTE: <= 1000` must hold. Possible values are:
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     proposalDelayedRejectionCount = 0
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             indicating no deployment of the delayed rejection algorithm.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     proposalDelayedRejectionCount > 0
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:             which implies a maximum proposalDelayedRejectionCount number of rejections will be tolerated.
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: For example, `proposalDelayedRejectionCount = 1`, means that at any point during the sampling, if a proposal 
+    ParaDRAM - NOTE: is rejected, the MCMC sampler will not go back to the last sampled state. Instead, it will continue to 
+    ParaDRAM - NOTE: propose a new state from the last rejected proposal. If the new state is again rejected based on the rules 
+    ParaDRAM - NOTE: of the MCMC sampler, then the algorithm will not tolerate further rejections, because the maximum number 
+    ParaDRAM - NOTE: of rejections to be tolerated has been set by the user to be `proposalDelayedRejectionCount = 1`. The algorithm 
+    ParaDRAM - NOTE: then goes back to the original last-accepted state and will begin proposing new states from that location. 
+    ParaDRAM - NOTE: The default value is 0.
+
+proposalDelayedRejectionScale
+
+    1.0000000000000000
+    1.0000000000000000
+    1.0000000000000000
+    1.0000000000000000
+    2.0000000000000000
+
+    ParaDRAM - NOTE: The simulation specification `proposalDelayedRejectionScale` is a positive-valued vector of type 
+    ParaDRAM - NOTE: `real` of the highest precision available within the ParaMonte library, of length `(1 : proposalDelayedRejectionCount)`, 
+    ParaDRAM - NOTE: by which the covariance matrix of the proposal distribution of MCMC sampler is scaled when the Delayed 
+    ParaDRAM - NOTE: Rejection (DR) scheme is activated (by setting `proposalDelayedRejectionCount > 0`). At each `i`th stage 
+    ParaDRAM - NOTE: of the DR process, the proposal distribution from the last stage is scaled by the factor `proposalDelayedRejectionScale(i)`. 
+    ParaDRAM - NOTE: Missing elements of the `proposalDelayedRejectionScale` in the input external file to the sampler 
+    ParaDRAM - NOTE: will be set to the default value. The default value at all stages is `0.5**(1 / ndim)` where `ndim` is 
+    ParaDRAM - NOTE: the number of dimensions of the domain of the objective function. This default value effectively reduces 
+    ParaDRAM - NOTE: the volume of the covariance matrix of the proposal distribution by half compared to the last DR stage.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                                                                                %%
+%%                                  ParaDRAM simulation began on Wed Jan 10 22:24:29 2024 -0360                                   %%
+%%                                                                                                                                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                                                                                %%
+%%                                  ParaDRAM simulation ended on Wed Jan 10 22:24:32 2024 -0360                                   %%
+%%                                                                                                                                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+stats.numFuncCall.accepted
+
+    30000
+
+    ParaDRAM - NOTE: This is the total number of accepted function calls (unique samples).
+
+stats.numFuncCall.acceptedRejected
+
+    148055
+
+    ParaDRAM - NOTE: This is the total number of accepted or rejected function calls.
+
+stats.numFuncCall.acceptedRejectedDelayed
+
+    755771
+
+    ParaDRAM - NOTE: This is the total number of accepted or rejected or delayed-rejection (if any requested) function calls.
+
+stats.numFuncCall.acceptedRejectedDelayedUnused
+
+    709449
+
+    ParaDRAM - NOTE: This is the total number of accepted or rejected or unused function calls (by all processes, including 
+    ParaDRAM - NOTE: delayed rejections, if any requested).
+
+stats.chain.verbose.efficiency.meanAcceptanceRate
+
+    0.15068706471434173
+
+    ParaDRAM - NOTE: This is the average MCMC acceptance rate of the ParaDRAM sampler.
+
+stats.chain.verbose.efficiency.acceptedOverAcceptedRejected
+
+    0.20262740197899429
+
+    ParaDRAM - NOTE: This is the ParaDRAM sampler efficiency given the accepted and rejected function calls, that is, the number 
+    ParaDRAM - NOTE: of accepted function calls divided by the number of (accepted + rejected) function calls.
+
+stats.chain.verbose.efficiency.acceptedOverAcceptedRejectedDelayed
+
+    0.39694563564889367E-1
+
+    ParaDRAM - NOTE: This is the ParaDRAM sampler efficiency given the accepted, rejected, and delayed-rejection (if any requested) 
+    ParaDRAM - NOTE: function calls, that is, the number of accepted function calls divided by the number of (accepted + rejected 
+    ParaDRAM - NOTE: + delayed-rejection) function calls.
+
+stats.chain.verbose.efficiency.acceptedOverAcceptedRejectedDelayedUnused
+
+    0.42286337707150200E-1
+
+    ParaDRAM - NOTE: This is the ParaDRAM sampler efficiency given the accepted, rejected, delayed-rejection (if any requested), 
+    ParaDRAM - NOTE: and unused function calls (in parallel simulations), that is, the number of accepted function calls divided 
+    ParaDRAM - NOTE: by the number of (accepted + rejected + delayed-rejection + unused) function calls.
+
+stats.time.total
+
+    3.3747319089999999
+
+    ParaDRAM - NOTE: This is the total runtime in seconds.
+
+stats.time.perFuncCallAccepted
+
+    0.11249106363333333E-3
+
+    ParaDRAM - NOTE: This is the average effective time cost of each accepted function call, in seconds.
+
+stats.time.perFuncCallAcceptedRejected
+
+    0.22793771969876058E-4
+
+    ParaDRAM - NOTE: This is the average effective time cost of each accepted or rejected function call, in seconds.
+
+stats.time.perFuncCallAcceptedRejectedDelayed
+
+    0.44652836758753641E-5
+
+    ParaDRAM - NOTE: This is the average effective time cost of each accepted or rejected function call (including delayed-rejections, 
+    ParaDRAM - NOTE: if any requested), in seconds.
+
+stats.time.perFuncCallAcceptedRejectedDelayedUnused
+
+    0.47568351058356553E-5
+
+    ParaDRAM - NOTE: This is the average effective time cost of each accepted or rejected or unused function call (including 
+    ParaDRAM - NOTE: delayed-rejections, if any requested), in seconds. This timing can be directly compared to the corresponding 
+    ParaDRAM - NOTE: timing of other parallel runs of the same simulation but with different processor counts to assess the 
+    ParaDRAM - NOTE: parallel scaling. A lower timing value implies a better parallel scaling and performance.
+
+stats.time.perInterProcessCommunication
+
+    0.80832065797711013E-6
+
+    ParaDRAM - NOTE: This is the average time cost of inter-process communications per used (accepted or rejected or delayed-rejection) 
+    ParaDRAM - NOTE: function call, in seconds.
+
+stats.time.perFuncCall
+
+    0.52956969422858960E-7
+
+    ParaDRAM - NOTE: This is the average pure time cost of each function call, in seconds.
+
+stats.parallelism.current.process.count
+
+    3
+
+    ParaDRAM - NOTE: This is the number of images/processes/threads used in this simulation.
+
+stats.parallelism.current.process.contribution.count
+
+                      processID                contribution
+                              1                       13579
+                              2                        9308
+                              3                        7113
+
+    ParaDRAM - NOTE: These are contributions of individual processes to the construction of the output chain of the ParaDRAM 
+    ParaDRAM - NOTE: sampler. Essentially, they represent the total number of accepted states (useful contributions to the simulation) 
+    ParaDRAM - NOTE: by the corresponding processor, starting from the first processor to the last. This information is mostly 
+    ParaDRAM - NOTE: informative in parallel Fork-Join (singleChain) simulations.
+
+stats.parallelism.current.process.contribution.fit.geometric.parameter
+
+                    successProb                     normFac
+         2.80432389772627577E-1      3.00091507775112950E+4
+
+    ParaDRAM - NOTE: These are the two parameters of the Cyclic Geometric fit to the distribution of the processor contributions 
+    ParaDRAM - NOTE: to the construction of the final output chain of visited states. The processor contributions are reported 
+    ParaDRAM - NOTE: in the first column of the output chain file. The processor contribution frequencies are listed above. 
+    ParaDRAM - NOTE: The fit has the following form: 
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE:     processConstribution(i) 
+    ParaDRAM - NOTE:     = successProbNormFac(1) * successProbNormFac(2) * (1 - successProbNormFac(1))^(i - 1)
+    ParaDRAM - NOTE:     / (1 - (1 - successProbNormFac(1))^processCount)
+    ParaDRAM - NOTE: 
+    ParaDRAM - NOTE: where `i` is the ID of the processor (starting from index `1`), `processCount` is the total number of processes 
+    ParaDRAM - NOTE: used in the simulation, `successProbNormFac(1)` is equivalent to an effective sampling efficiency computed 
+    ParaDRAM - NOTE: from contributions of individual processes to the output chain, and `successProbNormFac(2)` is a normalization 
+    ParaDRAM - NOTE: constant.
+
+stats.parallelism.current.speedup
+
+    0.94457224884216651E-1
+
+    ParaDRAM - NOTE: This is the estimated maximum speedup gained via singlechain parallelization model compared to serial mode.
+
+stats.parallelism.optimal.process.count
+
+    1
+
+    ParaDRAM - NOTE: This is the predicted optimal number of physical computing processes for singlechain parallelization model, 
+    ParaDRAM - NOTE: given the current sampling efficiency.
+
+stats.parallelism.optimal.speedup
+
+    1.0000000000000000
+
+    ParaDRAM - NOTE: This is the predicted optimal maximum speedup gained via singlechain parallelization model, given the current 
+    ParaDRAM - NOTE: sampling efficiency.
+    ParaDRAM - NOTE: The time cost of calling the user-provided objective function must be at least 10.5868 times more (that 
+    ParaDRAM - NOTE: is, ~0.560645 microseconds) to see any performance benefits from singlechain parallelization model for 
+    ParaDRAM - NOTE: this simulation. Consider simulating in serial mode in the future (if used within the same computing environment 
+    ParaDRAM - NOTE: and with the same configuration as used here).
+
+stats.parallelism.optimal.scaling.strong.speedup
+
+                   processCount                     speedup
+                              1      1.00000000000000000E+0
+                              2      1.77170634255899434E-1
+                              3      9.44572248842166506E-2
+                              4      6.40867697076962506E-2
+                              5      4.84246442316375730E-2
+                              6      3.88919442843958102E-2
+                              7      3.24861911992302896E-2
+                              8      2.78881158903359141E-2
+                              9      2.44282241325194556E-2
+                             10      2.17309584900529131E-2
+
+    ParaDRAM - NOTE: This is the predicted strong-scaling speedup behavior of the singlechain parallelization model, given the 
+    ParaDRAM - NOTE: current sampling efficiency, for increasing numbers of processes, starting from a single process.
+
+stats.parallelism.absolute.process.count
+
+    1
+
+    ParaDRAM - NOTE: This is the predicted absolute number of physical computing processes for singlechain parallelization model, 
+    ParaDRAM - NOTE: under any sampling efficiency.
+
+stats.parallelism.absolute.speedup
+
+    1.0000000000000000
+
+    ParaDRAM - NOTE: This is the predicted absolute optimal maximum speedup gained via singlechain parallelization model, under 
+    ParaDRAM - NOTE: any sampling efficiency. This simulation will likely NOT benefit from any additional computing processors 
+    ParaDRAM - NOTE: beyond the predicted absolute optimal number, 1, in the above. This is true for any value of MCMC sampling 
+    ParaDRAM - NOTE: efficiency. Keep in mind that the predicted absolute optimal number of processors is just an estimate whose 
+    ParaDRAM - NOTE: accuracy depends on many runtime factors, including the topology of the communication network being used, 
+    ParaDRAM - NOTE: the number of processors per node, and the number of tasks to each processor or node.
+
+stats.parallelism.absolute.scaling.strong.speedup
+
+                   processCount                     speedup
+                              1      1.00000000000000000E+0
+                              2      1.78957831602701678E-1
+                              3      9.51551701165311015E-2
+                              4      6.44590487061712791E-2
+                              5      4.86579309255482373E-2
+                              6      3.90530273753986398E-2
+                              7      3.26048236263081770E-2
+                              8      2.79795727170160449E-2
+                              9      2.45011686896408204E-2
+                             10      2.17906809943442595E-2
+
+    ParaDRAM - NOTE: This is the predicted absolute strong-scaling speedup behavior of the singlechain parallelization model, 
+    ParaDRAM - NOTE: under any MCMC sampling efficiency, for increasing numbers of processes, starting from a single process.
+
+stats.domain.logVolume
+
+    1382.9373501575474
+
+    ParaDRAM - NOTE: This is the natural logarithm of the volume of the 2-dimensional domain over which the objective function 
+    ParaDRAM - NOTE: was defined.
+
+stats.chain.verbose.logFunc.max.val
+
+    2.2922516249363589
+
+    ParaDRAM - NOTE: This is the maximum logFunc value (the maximum of the user-specified objective function).
+
+stats.chain.verbose.logFunc.max.crd
+
+                      variable1                   variable2
+         3.58168993347027342E+0     -1.84079228489782132E+0
+
+    ParaDRAM - NOTE: This is the coordinates, within the domain of the user-specified objective function, where the maximum 
+    ParaDRAM - NOTE: function value occurs.
+
+stats.chain.compact.logFunc.max.loc
+
+    8117
+
+    ParaDRAM - NOTE: This is the location of the first occurrence of the maximum logFunc in the compact chain.
+
+stats.chain.verbose.logFunc.max.loc
+
+    42006
+
+    ParaDRAM - NOTE: This is the location of the first occurrence of the maximum logFunc in the verbose (Markov) chain.
+
+stats.chain.compact.burnin.loc.likelihoodBased
+
+    1
+
+    ParaDRAM - NOTE: This is the burnin location in the compact chain, based on the occurrence likelihood.
+
+stats.chain.compact.burnin.loc.adaptationBased
+
+    1
+
+    ParaDRAM - NOTE: This is the burnin location in the compact chain, based on the value of proposalAdaptationBurnin simulation 
+    ParaDRAM - NOTE: specification.
+
+stats.chain.verbose.burnin.loc.likelihoodBased
+
+    1
+
+    ParaDRAM - NOTE: This is the burnin location in the verbose (Markov) chain, based on the occurrence likelihood.
+
+stats.chain.verbose.burnin.loc.adaptationBased
+
+    1
+
+    ParaDRAM - NOTE: This is the burnin location in the verbose (Markov) chain, based on the value of proposalAdaptationBurnin 
+    ParaDRAM - NOTE: simulation specification.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                                                                                %%
+%%                                         The statistical properties of the Markov chain                                         %%
+%%                                                                                                                                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+stats.chain.verbose.size.burninExcluded
+
+    148055
+
+    ParaDRAM - NOTE: This is the length of the verbose (Markov) Chain excluding burnin.
+
+stats.chain.verbose.avg
+
+                      variable1                   variable2
+         6.57536655624217592E-1      3.39787148213510970E-1
+
+    ParaDRAM - NOTE: This is the mean (avg) of the verbose (Markov) chain variables.
+
+stats.chain.verbose.std
+
+                      variable1                   variable2
+         4.04978734609729507E+0      3.37498536213530542E+0
+
+    ParaDRAM - NOTE: This is the standard deviation (std) of the verbose (Markov) chain variables.
+
+stats.chain.verbose.covmat
+
+                           axis                   variable1                   variable2
+                      variable1      1.64007775486097707E+1      1.32959065977542790E+0
+                      variable2      1.32959065977542790E+0      1.13905261946275775E+1
+
+    ParaDRAM - NOTE: This is the covariance matrix of the verbose (Markov) chain.
+
+stats.chain.verbose.cormat
+
+                           axis                   variable1                   variable2
+                      variable1      1.00000000000000000E+0      9.72778230192920812E-2
+                      variable2      9.72778230192920812E-2      1.00000000000000000E+0
+
+    ParaDRAM - NOTE: This is the correlation matrix of the verbose (Markov) chain.
+
+stats.chain.verbose.quantile
+
+                       quantile                   variable1                   variable2
+         0.00000000000000000E+0     -6.45119178841307388E+1     -4.46775341701919473E+1
+         5.00000000000000028E-2     -5.76846373959849146E+0     -5.69112541719484000E+0
+         1.00000000000000006E-1     -4.69475004311167154E+0     -4.44869003302293731E+0
+         2.50000000000000000E-1     -2.99334800987788396E+0     -2.44712431606192293E+0
+         5.00000000000000000E-1     -9.29856024582657315E-2     -8.30326902353430520E-4
+         7.50000000000000000E-1      3.12991636683165897E+0      2.61093528072134040E+0
+         9.00000000000000022E-1      4.56930251531556397E+0      4.22798220782292500E+0
+         9.49999999999999956E-1      6.22992735177136581E+0      5.84801407864038669E+0
+         1.00000000000000000E+0      7.55115267366474257E+1      8.66164007745103532E+1
+
+    ParaDRAM - NOTE: This is the quantiles table of the variables of the verbose (Markov) chain.
+
+stats.chain.refined.act
+
+                refinementStage                  sampleSize           ACT_sampleLogFunc               ACT_variable1               ACT_variable2
+                              0                      148055      2.95481826486828396E+1      4.49600924561066577E+1      3.43957177478213296E+1
+                              1                        4112      5.47430766513714051E+0      3.05762481742579473E+0      1.38682658473762821E+0
+                              2                        1370      1.65578781062446168E+0      1.11919927989270551E+0      1.18486707299224370E+0
+
+    ParaDRAM - NOTE: This is the table of the Integrated Autocorrelation (ACT) of individual variables in the verbose (Markov) 
+    ParaDRAM - NOTE: chain, at increasing stages of chain refinements.
+
+stats.chain.refined.ess
+
+    1370
+
+    ParaDRAM - NOTE: This is the estimated Effective (i.i.d.) Sample Size (ESS) of the final refined chain.
+
+stats.chain.refined.efficiency.essOverAccepted
+
+    0.45666666666666668E-1
+
+    ParaDRAM - NOTE: This is the effective sampling efficiency given the accepted function calls, that is, the final refined 
+    ParaDRAM - NOTE: effective sample size (ESS) divided by the number of accepted function calls.
+
+stats.chain.refined.efficiency.essOverAcceptedRejected
+
+    0.92533180237074058E-2
+
+    ParaDRAM - NOTE: This is the effective sampling efficiency given the accepted and rejected function calls, that is, the 
+    ParaDRAM - NOTE: final refined effective sample size (ESS) divided by the number of (accepted + rejected) function calls.
+
+stats.chain.refined.efficiency.essOverAcceptedRejectedDelayed
+
+    0.18127184027966143E-2
+
+    ParaDRAM - NOTE: This is the effective sampling efficiency given the accepted, rejected, and delayed-rejection (if any requested) 
+    ParaDRAM - NOTE: function calls, that is, the final refined effective sample size (ESS) divided by the number of (accepted 
+    ParaDRAM - NOTE: + rejected + delayed-rejection) function calls.
+
+stats.chain.refined.efficiency.essOverAcceptedRejectedDelayedUnused
+
+    0.19310760886265257E-2
+
+    ParaDRAM - NOTE: This is the effective sampling efficiency given the accepted, rejected, delayed-rejection (if any requested), 
+    ParaDRAM - NOTE: and unused function calls, (in parallel simulations), that is, the final refined effective sample size 
+    ParaDRAM - NOTE: (ESS) divided by the number of (accepted + rejected + delayed-rejection + unused) function calls.
+
+    ParaDRAM - NOTE: Generating the output sample file:
+    ParaDRAM - NOTE: /home/amir/git/pmdev/external/paramonte-doc-fortran/bld/linux/amd64/gnu/13.1.0/debug/shared/heap/mpi/fortran/checked/pkg/example/pm_sampling/himmelblau/./out//himmelblau_run6_pid1_sample.txt
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                                                                                %%
+%%                                     The statistical properties of the final output sample                                      %%
+%%                                                                                                                                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+stats.chain.refined.length
+
+    1370
+
+    ParaDRAM - NOTE: This is the final output refined sample size.
+
+stats.chain.refined.avg
+
+                      variable1                   variable2
+         6.49366586672452506E-1      3.32844169384045430E-1
+
+    ParaDRAM - NOTE: This is the mean (avg) of the final output refined sample.
+
+stats.chain.refined.std
+
+                      variable1                   variable2
+         3.88850768912776790E+0      3.04560711923937255E+0
+
+    ParaDRAM - NOTE: This is the standard deviation (std) of the final output refined sample.
+
+stats.chain.refined.covmat
+
+                           axis                   variable1                   variable2
+                      variable1      1.51204920484057741E+1      9.68101630755138776E-1
+                      variable2      9.68101630755138776E-1      9.27572272476154858E+0
+
+    ParaDRAM - NOTE: This is the covariance matrix of the final output refined sample.
+
+stats.chain.refined.cormat
+
+                           axis                   variable1                   variable2
+                      variable1      1.00000000000000000E+0      3.39447716402291044E-2
+                      variable2      3.39447716402291044E-2      1.00000000000000000E+0
+
+    ParaDRAM - NOTE: This is the correlation matrix of the final output refined sample.
+
+stats.chain.refined.quantile
+
+                       quantile                   variable1                   variable2
+         0.00000000000000000E+0     -1.67086377183897810E+1     -1.62089412900280934E+1
+         5.00000000000000028E-2     -4.19744784022921458E+0     -3.75277166858398825E+0
+         1.00000000000000006E-1     -3.78857381971582496E+0     -3.29168102674000940E+0
+         2.50000000000000000E-1     -2.77359036299741391E+0     -1.96260031269391488E+0
+         5.00000000000000000E-1      2.25948955600088164E+0      7.10645904676525886E-1
+         7.50000000000000000E-1      3.30584011337560213E+0      2.35729834845090735E+0
+         9.00000000000000022E-1      3.75294852187017103E+0      3.27888594536223144E+0
+         9.49999999999999956E-1      4.20540122104602787E+0      3.75317380810951651E+0
+         1.00000000000000000E+0      5.48407973342873234E+1      2.54352493650628055E+1
+
+    ParaDRAM - NOTE: This is the quantiles table of the variables of the final output refined sample.
+
+    ParaDRAM - NOTE: Mission Accomplished.
+
