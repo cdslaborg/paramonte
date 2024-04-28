@@ -149,6 +149,44 @@ module pm_distPareto
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
+    !>  This is the derived type for signifying distributions that are of type Pareto
+    !>  as defined in the description of [pm_distPareto](@ref pm_distPareto).
+    !>
+    !>  \details
+    !>  See the documentation of [pm_distPareto](@ref pm_distPareto) for the definition of the Pareto distribution.
+    !>
+    !>  \interface{distPareto_type}
+    !>  \code{.F90}
+    !>
+    !>      use pm_distPareto, only: distPareto_type
+    !>      type(distPareto_type) :: distPareto
+    !>
+    !>      distPareto = distPareto_type()
+    !>
+    !>  \endcode
+    !>
+    !>  \devnote
+    !>  This derived type is currently devoid of any components or type-bound procedures because of
+    !>  the lack of portable and reliable support for Parameterized Derived Types (PDT) in some Fortran compilers.<br>
+    !>  For now, the utility of this derived type is limited to generic interface resolutions.<br>
+    !>
+    !>  \test
+    !>  [test_pm_distPareto](@ref test_pm_distPareto)
+    !>
+    !>  \todo
+    !>  \pvhigh
+    !>  This derived type must be converted to PDT and the relevant components and methods must be added once PDTs are well supported.
+    !>
+    !>  \finmain{distPareto_type}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
+    type :: distPareto_type
+    end type
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !>  \brief
     !>  Generate and return the natural logarithm of the normalization factor of the PDF
     !>  of the (Truncated) Pareto distribution for an input parameter set \f$(\alpha, x_\mathrm{min}, x_\mathrm{max})\f$.
     !>

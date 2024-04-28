@@ -100,6 +100,44 @@ module pm_distUnifPar
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
+    !>  This is the derived type for signifying distributions that are of type MultiVariate Uniform Parallelepiped (MVUP)
+    !>  as defined in the description of [pm_distUnifPar](@ref pm_distUnifPar).
+    !>
+    !>  \details
+    !>  See the documentation of [pm_distUnifPar](@ref pm_distUnifPar) for the definition of the MultiVariate Uniform Parallelepiped (MVUP) distribution.
+    !>
+    !>  \interface{distUnifPar_type}
+    !>  \code{.F90}
+    !>
+    !>      use pm_distUnifPar, only: distUnifPar_type
+    !>      type(distUnifPar_type) :: distUnifPar
+    !>
+    !>      distUnifPar = distUnifPar_type()
+    !>
+    !>  \endcode
+    !>
+    !>  \devnote
+    !>  This derived type is currently devoid of any components or type-bound procedures because of
+    !>  the lack of portable and reliable support for Parameterized Derived Types (PDT) in some Fortran compilers.<br>
+    !>  For now, the utility of this derived type is limited to generic interface resolutions.<br>
+    !>
+    !>  \test
+    !>  [test_pm_distUnifPar](@ref test_pm_distUnifPar)
+    !>
+    !>  \todo
+    !>  \pvhigh
+    !>  This derived type must be converted to PDT and the relevant components and methods must be added once PDTs are well supported.
+    !>
+    !>  \finmain{distUnifPar_type}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
+    type :: distUnifPar_type
+    end type
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !>  \brief
     !>  Generate and return the natural logarithm of the Probability Density Function (PDF)
     !>  of the MultiVariate Uniform Parallelepiped (MVUP) Distribution.<br>
     !>

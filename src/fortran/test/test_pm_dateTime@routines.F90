@@ -3199,42 +3199,42 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if 0
-#define getMahalSq_ENABLED 1
+#define getDisMahalSq_ENABLED 1
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #define CK_ENABLED 1
 
 #if CK5_ENABLED
-    module procedure test_getMahalSq_CK5
+    module procedure test_getDisMahalSq_CK5
         use pm_kind, only: IK, CK => CK5
 #include "test_pm_dateTime@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
-    module procedure test_getMahalSq_CK4
+    module procedure test_getDisMahalSq_CK4
         use pm_kind, only: IK, CK => CK4
 #include "test_pm_dateTime@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
-    module procedure test_getMahalSq_CK3
+    module procedure test_getDisMahalSq_CK3
         use pm_kind, only: IK, CK => CK3
 #include "test_pm_dateTime@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
-    module procedure test_getMahalSq_CK2
+    module procedure test_getDisMahalSq_CK2
         use pm_kind, only: IK, CK => CK2
 #include "test_pm_dateTime@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
-    module procedure test_getMahalSq_CK1
+    module procedure test_getDisMahalSq_CK1
         use pm_kind, only: IK, CK => CK1
 #include "test_pm_dateTime@routines.inc.F90"
     end procedure
@@ -3244,7 +3244,7 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#undef getMahalSq_ENABLED
+#undef getDisMahalSq_ENABLED
 #endif
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -136,6 +136,44 @@ module pm_distUnifSphere
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
+    !>  This is the derived type for signifying distributions that are of type MultiVariate Uniform Spherical
+    !>  as defined in the description of [pm_distUnifSphere](@ref pm_distUnifSphere).
+    !>
+    !>  \details
+    !>  See the documentation of [pm_distUnifSphere](@ref pm_distUnifSphere) for the definition of the MultiVariate Uniform Spherical distribution.
+    !>
+    !>  \interface{distUnifSphere_type}
+    !>  \code{.F90}
+    !>
+    !>      use pm_distUnifSphere, only: distUnifSphere_type
+    !>      type(distUnifSphere_type) :: distUnifSphere
+    !>
+    !>      distUnifSphere = distUnifSphere_type()
+    !>
+    !>  \endcode
+    !>
+    !>  \devnote
+    !>  This derived type is currently devoid of any components or type-bound procedures because of
+    !>  the lack of portable and reliable support for Parameterized Derived Types (PDT) in some Fortran compilers.<br>
+    !>  For now, the utility of this derived type is limited to generic interface resolutions.<br>
+    !>
+    !>  \test
+    !>  [test_pm_distUnifSphere](@ref test_pm_distUnifSphere)
+    !>
+    !>  \todo
+    !>  \pvhigh
+    !>  This derived type must be converted to PDT and the relevant components and methods must be added once PDTs are well supported.
+    !>
+    !>  \finmain{distUnifSphere_type}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
+    type :: distUnifSphere_type
+    end type
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !>  \brief
     !>  Generate and return the natural logarithm of the Probability Density Function (PDF)
     !>  of the uniform distribution on an \f$n\f$-sphere embedded in an \f$\ndim\f$-dimensional space.<br>
     !>

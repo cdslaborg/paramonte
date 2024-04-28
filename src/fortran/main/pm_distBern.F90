@@ -47,6 +47,44 @@ module pm_distBern
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
+    !>  This is the derived type for signifying distributions that are of type Bernoulli
+    !>  as defined in the description of [pm_distBern](@ref pm_distBern).
+    !>
+    !>  \details
+    !>  See the documentation of [pm_distBern](@ref pm_distBern) for the definition of the Bernoulli distribution.
+    !>
+    !>  \interface{distBern_type}
+    !>  \code{.F90}
+    !>
+    !>      use pm_distBern, only: distBern_type
+    !>      type(distBern_type) :: distBern
+    !>
+    !>      distBern = distBern_type()
+    !>
+    !>  \endcode
+    !>
+    !>  \devnote
+    !>  This derived type is currently devoid of any components or type-bound procedures because of
+    !>  the lack of portable and reliable support for Parameterized Derived Types (PDT) in some Fortran compilers.<br>
+    !>  For now, the utility of this derived type is limited to generic interface resolutions.<br>
+    !>
+    !>  \test
+    !>  [test_pm_distBern](@ref test_pm_distBern)
+    !>
+    !>  \todo
+    !>  \pvhigh
+    !>  This derived type must be converted to PDT and the relevant components and methods must be added once PDTs are well supported.
+    !>
+    !>  \finmain{distBern_type}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
+    type :: distBern_type
+    end type
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !>  \brief
     !>  Generate and return a scalar (or a vector of length `size` or an array of the same shape as the input `p`)
     !>  containing the odds of getting a `head` in a single (or a series) of coin-flipping experiment(s).<br>
     !>

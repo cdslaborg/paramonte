@@ -61,7 +61,7 @@ program example
 
     end block
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     block
 
         use pm_kind, only: SKC => SK

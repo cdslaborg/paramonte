@@ -286,6 +286,44 @@ module pm_distUnif
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
+    !>  This is the derived type for signifying distributions that are of type Uniform
+    !>  as defined in the description of [pm_distUnif](@ref pm_distUnif).
+    !>
+    !>  \details
+    !>  See the documentation of [pm_distUnif](@ref pm_distUnif) for the definition of the Uniform distribution.
+    !>
+    !>  \interface{distUnif_type}
+    !>  \code{.F90}
+    !>
+    !>      use pm_distUnif, only: distUnif_type
+    !>      type(distUnif_type) :: distUnif
+    !>
+    !>      distUnif = distUnif_type()
+    !>
+    !>  \endcode
+    !>
+    !>  \devnote
+    !>  This derived type is currently devoid of any components or type-bound procedures because of
+    !>  the lack of portable and reliable support for Parameterized Derived Types (PDT) in some Fortran compilers.<br>
+    !>  For now, the utility of this derived type is limited to generic interface resolutions.<br>
+    !>
+    !>  \test
+    !>  [test_pm_distUnif](@ref test_pm_distUnif)
+    !>
+    !>  \todo
+    !>  \pvhigh
+    !>  This derived type must be converted to PDT and the relevant components and methods must be added once PDTs are well supported.
+    !>
+    !>  \finmain{distUnif_type}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
+    type :: distUnif_type
+    end type
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !>  \brief
     !>  Generate and return the Cumulative Distribution Function (CDF) of a univariate Standard Uniform distribution or a
     !>  Uniform distribution with the specified support via `lower` and `upper` input arguments at the specified input values.
     !>

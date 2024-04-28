@@ -72,8 +72,46 @@ module pm_distMultiNorm
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
+    !>  This is the derived type for signifying distributions that are of type MultiVariate Normal (MVN)
+    !>  as defined in the description of [pm_distMultiNorm](@ref pm_distMultiNorm).
+    !>
+    !>  \details
+    !>  See the documentation of [pm_distMultiNorm](@ref pm_distMultiNorm) for the definition of the MultiVariate Normal (MVN) distribution.
+    !>
+    !>  \interface{distMultiNorm_type}
+    !>  \code{.F90}
+    !>
+    !>      use pm_distMultiNorm, only: distMultiNorm_type
+    !>      type(distMultiNorm_type) :: distMultiNorm
+    !>
+    !>      distMultiNorm = distMultiNorm_type()
+    !>
+    !>  \endcode
+    !>
+    !>  \devnote
+    !>  This derived type is currently devoid of any components or type-bound procedures because of
+    !>  the lack of portable and reliable support for Parameterized Derived Types (PDT) in some Fortran compilers.<br>
+    !>  For now, the utility of this derived type is limited to generic interface resolutions.<br>
+    !>
+    !>  \test
+    !>  [test_pm_distMultiNorm](@ref test_pm_distMultiNorm)
+    !>
+    !>  \todo
+    !>  \pvhigh
+    !>  This derived type must be converted to PDT and the relevant components and methods must be added once PDTs are well supported.
+    !>
+    !>  \finmain{distMultiNorm_type}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
+    type :: distMultiNorm_type
+    end type
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !>  \brief
     !>  Generate and return the natural logarithm of the normalization coefficient of the Probability Density Function (PDF)
-    !>  of the MultiVariate Normal distribution as defined in description of [pm_distMultiNorm](@ref pm_distMultiNorm).
+    !>  of the MultiVariate Normal distribution as defined in the description of [pm_distMultiNorm](@ref pm_distMultiNorm).
     !>
     !>  \details
     !>  See the documentation of [pm_distMultiNorm](@ref pm_distMultiNorm) for the definition of the Normalization Factor of the MVN PDF.
@@ -332,7 +370,7 @@ module pm_distMultiNorm
 
     !>  \brief
     !>  Generate and return the natural logarithm of the Probability Density Function (PDF)
-    !>  of the MultiVariate Normal distribution as defined in description of [pm_distMultiNorm](@ref pm_distMultiNorm).
+    !>  of the MultiVariate Normal distribution as defined in the description of [pm_distMultiNorm](@ref pm_distMultiNorm).
     !>
     !>  \details
     !>  See the documentation of [pm_distMultiNorm](@ref pm_distMultiNorm) for the definition of the MVN PDF.
@@ -398,8 +436,9 @@ module pm_distMultiNorm
     !>  [test_pm_distMultiNorm](@ref test_pm_distMultiNorm)<br>
     !>
     !>  \todo
-    !>  When the input argument `logPDFNF` is missing and `invCov` is present, there is a possibility that
-    !>  the Cholesky Factorization in the computation of `logSqrtDetInvCov` fails.<br>
+    !>  \pmed
+    !>  When the input argument `logPDFNF` is missing and `invCov` is present, there is a
+    !>  possibility that the Cholesky Factorization in the computation of `logSqrtDetInvCov` fails.<br>
     !>  In such cases, the procedure will halt the program by calling `error stop`.<br>
     !>  An optional `info` output argument must be added in the future to handle such runtime failures gracefully.
     !>

@@ -291,7 +291,7 @@ program example
         call disp%skip()
     end block
 
-#if !__GFORTRAN__ && 0
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%show("!Sort array of string containers in ascending order.")

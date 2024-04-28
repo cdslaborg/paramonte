@@ -33,65 +33,65 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#define getMahalSq_ENABLED 1
+#define getDisMahalSq_ENABLED 1
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#define getMahalSq_CK_ENABLED 1
+#define getDisMahalSq_CK_ENABLED 1
 
 #if CK3_ENABLED
-    module procedure test_getMahalSq_CK3
+    module procedure test_getDisMahalSq_CK3
         use pm_kind, only: IK, CK => CK3
 #include "test_pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
-    module procedure test_getMahalSq_CK2
+    module procedure test_getDisMahalSq_CK2
         use pm_kind, only: IK, CK => CK2
 #include "test_pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
-    module procedure test_getMahalSq_CK1
+    module procedure test_getDisMahalSq_CK1
         use pm_kind, only: IK, CK => CK1
 #include "test_pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
-#undef getMahalSq_CK_ENABLED
+#undef getDisMahalSq_CK_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#define getMahalSq_RK_ENABLED 1
+#define getDisMahalSq_RK_ENABLED 1
 
 #if RK3_ENABLED
-    module procedure test_getMahalSq_RK3
+    module procedure test_getDisMahalSq_RK3
         use pm_kind, only: IK, RK => RK3
 #include "test_pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
-    module procedure test_getMahalSq_RK2
+    module procedure test_getDisMahalSq_RK2
         use pm_kind, only: IK, RK => RK2
 #include "test_pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
-    module procedure test_getMahalSq_RK1
+    module procedure test_getDisMahalSq_RK1
         use pm_kind, only: IK, RK => RK1
 #include "test_pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
-#undef getMahalSq_RK_ENABLED
+#undef getDisMahalSq_RK_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#undef getMahalSq_ENABLED
+#undef getDisMahalSq_ENABLED
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

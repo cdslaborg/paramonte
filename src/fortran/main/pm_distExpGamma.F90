@@ -99,6 +99,44 @@ module pm_distExpGamma
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
+    !>  This is the derived type for signifying distributions that are of type ExpGamma
+    !>  as defined in the description of [pm_distExpGamma](@ref pm_distExpGamma).
+    !>
+    !>  \details
+    !>  See the documentation of [pm_distExpGamma](@ref pm_distExpGamma) for the definition of the ExpGamma distribution.
+    !>
+    !>  \interface{distExpGamma_type}
+    !>  \code{.F90}
+    !>
+    !>      use pm_distExpGamma, only: distExpGamma_type
+    !>      type(distExpGamma_type) :: distExpGamma
+    !>
+    !>      distExpGamma = distExpGamma_type()
+    !>
+    !>  \endcode
+    !>
+    !>  \devnote
+    !>  This derived type is currently devoid of any components or type-bound procedures because of
+    !>  the lack of portable and reliable support for Parameterized Derived Types (PDT) in some Fortran compilers.<br>
+    !>  For now, the utility of this derived type is limited to generic interface resolutions.<br>
+    !>
+    !>  \test
+    !>  [test_pm_distExpGamma](@ref test_pm_distExpGamma)
+    !>
+    !>  \todo
+    !>  \pvhigh
+    !>  This derived type must be converted to PDT and the relevant components and methods must be added once PDTs are well supported.
+    !>
+    !>  \finmain{distExpGamma_type}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
+    type :: distExpGamma_type
+    end type
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !>  \brief
     !>  Generate and return the natural logarithm of the normalization factor of the Probability Density Function (PDF) of the ExpGamma distribution.<br>
     !>
     !>  \details

@@ -555,8 +555,8 @@ end if;
             contents = inputFile
         end if
 
-        iostat = index(getReplaced(contents, SK_" ", SK_""), SK_"&"//lcmethod, kind = IK)
-        RETURN_IF_ERRED(__LINE__, iostat == 0, SK_"Failed to find a `&"//lcmethod//SK_" namelist group in user-specified input file: '"//trim(inputFile)//SK_"'. ")
+        !iostat = index(getReplaced(contents, SK_" ", SK_""), SK_"&"//lcmethod, kind = IK)
+        !RETURN_IF_ERRED(__LINE__, iostat == 0, SK_"Failed to find a `&"//lcmethod//SK_" namelist group in user-specified input file: '"//trim(inputFile)//SK_"'. ")
 
         ! Now write the contents to a temporary file for the processor to parse it.
         ! The rewrite is important to avoid gfortran end of file IO errors.

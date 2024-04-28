@@ -335,9 +335,9 @@ contains
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        subroutine readRestart(spec, meanAccRateSinceStart, nskip)
+        subroutine readRestart(spec, meanAccRateSinceStart)!, nskip
             real(RKC), intent(out) :: meanAccRateSinceStart
-            integer(IK), intent(in), optional :: nskip
+            !integer(IK), intent(in), optional :: nskip
             type(spec_type), intent(in) :: spec
             integer(IK) :: nskip_def, idim
             if (spec%outputRestartFileFormat%isBinary) then
@@ -345,9 +345,9 @@ contains
             else
                 read(spec%restartFile%unit, *)
                 read(spec%restartFile%unit, *) meanAccRateSinceStart
-                nskip_def = 8 + ndim * (ndim + 3) / 2
-                if (present(nskip)) nskip_def = nskip
-                do idim = 1, nskip_def
+                !nskip_def = 8 + ndim * (ndim + 3) / 2
+                !if (present(nskip)) nskip_def = nskip
+                do idim = 1, 8 + ndim * (ndim + 3) / 2 !nskip_def
                     read(spec%restartFile%unit, *)
                 end do
             end if
@@ -472,20 +472,20 @@ contains
             real(RKC) :: sampleStateCovCholOld(size(sampleState, 1, IK), size(sampleState, 1, IK) + 1)
             real(RKC) :: sampleStateCovLowCurrent(size(sampleState, 1, IK), size(sampleState, 1, IK) + 1)
             real(RKC) :: logSqrtDetNew, logSqrtDetSum, adaptiveScale, adaptiveScaleSq, fracA
-            !logical(LK) :: proposalAdaptationEstimateNeeded ! only used to avoid redundant affinity computation, if no update occurs.
-            logical(LK) :: scalingNeeded!, singularityOccurred
             integer(IK) :: sampleSizeOld, sampleSizeCurrent
-            integer(IK):: idim, jdim, ndim, nsam, info
+            integer(IK):: jdim, ndim, nsam, info
             integer(IK), parameter :: dim = 2_IK
+            logical(LK) :: proposalScalingNeeded
 
-            scalingNeeded = .false._LK
             ndim = size(sampleState, 1, IK)
             nsam = size(sampleState, 2, IK)
             sampleSizeOld = proposal%sampleSizeOld ! this is kept only for restoration of proposal%sampleSizeOld, if needed.
+            proposalScalingNeeded = spec%targetAcceptanceRate%enabled
 
             ! First if there are less than ndimp1 points for new covariance computation, then just scale the covariance and return.
 
-            sufficientSampleSizeCheck_block: if (ndim < nsam) then
+            proposalAdaptationSucceeded = ndim < nsam
+            sufficientSampleSizeCheck_block: if (proposalAdaptationSucceeded) then
 
                 ! get the upper covariance matrix and mean of the new sample
 
@@ -500,7 +500,7 @@ contains
 
                 ! Combine old and new covariance matrices if both exist.
 
-                sampleStateCovCholOld = proposal%covLowChoUpp(:, :, 0) ! This will be used to recover the old covariance in case of update failure, and to compute the adaptation measure.
+                sampleStateCovCholOld = proposal%covLowChoUpp(:, :, 0) ! This will be used to recover the old covariance in case of proposal update failure, and to compute the adaptation measure.
 
                 mergeCovMat_block: if (proposal%sampleSizeOld == 1_IK) then
 
@@ -543,19 +543,14 @@ contains
 
                 call setMatChol(proposal%covLowChoUpp(:, 1 : ndim, 0), lowDia, info, proposal%covLowChoUpp(:, 2 : ndimp1, 0), transHerm) ! The `:` instead of `1 : ndim` avoids temporary array creation.
 
-                posDefCheck_block: if (info == 0_IK) then
+                proposalAdaptationSucceeded = info == 0_IK
+                posDefCheck_block: if (proposalAdaptationSucceeded) then
 
-                    !singularityOccurred = .false._LK
-                    proposalAdaptationSucceeded = .true._LK
-                    !proposalAdaptationEstimateNeeded = .true._LK
                     proposal%sampleSizeOld = proposal%sampleSizeOld + sampleSizeCurrent
 
-                else posDefCheck_block
+                else posDefCheck_block ! singularityOccurred
 
                     proposalAdaptation = 0._RKC
-                    !singularityOccurred = .true._LK
-                    proposalAdaptationSucceeded = .false._LK
-                    !proposalAdaptationEstimateNeeded = .false._LK
                     proposal%sampleSizeOld = sampleSizeOld
 
                     ! It may be a good idea to add a warning message printed out here for the singularity occurrence.
@@ -575,35 +570,27 @@ contains
                 !    end if
                 !    proposal%scaleSq%running = proposal%scaleSq%running * (meanAccRateSinceStart/spec%targetAcceptanceRate%aim)**spec%ndim%inv
                 !end if
-                if (spec%targetAcceptanceRate%enabled) scalingNeeded = .true._LK
 
             else sufficientSampleSizeCheck_block
 
-                ! Singularity has occurred. If the first covariance merging has not occurred yet, set the scaling factor appropriately to shrink the covariance matrix.
-                proposalAdaptationSucceeded = .false._LK
-                if (proposal%sampleSizeOld == 1_IK .or. spec%targetAcceptanceRate%enabled) then
-                    !proposalAdaptationEstimateNeeded = .true._LK
-                    scalingNeeded = .true._LK
+                ! If the first covariance merging has not occurred yet, set the scaling factor appropriately to shrink the covariance matrix.
+
+                proposalScalingNeeded = proposalScalingNeeded .or. proposal%sampleSizeOld == 1_IK
+                if (proposalScalingNeeded) then
                     ! Save the old covariance matrix for the computation of the adaptation measure.
                     ! \todo Could these copies be somehow removed and optimized away? perhaps unimportant if sample size is sufficient most of the times.
                     do jdim = 1, ndim
                         sampleStateCovCholOld(jdim : ndim, jdim) = proposal%covLowChoUpp(jdim : ndim, jdim, 0)
                     end do
-                else
-                    proposalAdaptation = 0._RKC
-                    !proposalAdaptationEstimateNeeded = .false._LK
                 end if
 
             end if sufficientSampleSizeCheck_block
 
             ! Adjust the scale of the covariance matrix and the Cholesky factor, if needed.
-            !scalingNeeded = .true._LK
 
-            if (spec%image%is%leader .and. spec%run%is%dry) then
-                call readRestart(spec, meanAccRateSinceStart)
-            end if
+            if (spec%image%is%leader .and. spec%run%is%dry) call readRestart(spec, meanAccRateSinceStart)
 
-            proposalScaling_block: if (scalingNeeded) then
+            proposalScaling_block: if (proposalScalingNeeded) then
 
                 if (spec%targetAcceptanceRate%enabled) then
                     if (meanAccRateSinceStart < spec%targetAcceptanceRate%val(1) .or. spec%targetAcceptanceRate%val(2) < meanAccRateSinceStart) then
@@ -629,7 +616,7 @@ contains
                 ! The `do concurrent` version is problematic for OpenMP builds of the ParaMonte library with the Intel ifort 2021.8 on heap, yielding segmentation fault.
                 !do concurrent(jdim = 2 : ndim)
                 do jdim = 2, ndim
-                    proposal%covLowChoUpp(1 : jdim - 1, jdim, 0) = proposal%covLowChoUpp(1 : jdim, jdim + 1, 0) * adaptiveScale ! Update the Cholesky factor.
+                    proposal%covLowChoUpp(1 : jdim - 1, jdim, 0) = proposal%covLowChoUpp(1 : jdim - 1, jdim, 0) * adaptiveScale ! Update the Cholesky factor.
                     proposal%covLowChoUpp(jdim : ndim, jdim, 0) = proposal%covLowChoUpp(jdim : ndim, jdim, 0) * adaptiveScaleSq ! Update covariance matrix.
                 end do
                 proposal%covLowChoUpp(1 : ndim, ndimp1, 0) = proposal%covLowChoUpp(1 : ndim, ndimp1, 0) * adaptiveScale ! Update last column of Cholesky factor.
@@ -638,8 +625,7 @@ contains
 
             ! Compute the adaptivity only if any updates has occurred.
 
-           !proposalAdaptationEstimate_block: if (proposalAdaptationEstimateNeeded) then
-            proposalAdaptationEstimate_block: if (proposalAdaptationSucceeded .or. scalingNeeded) then
+            proposalAdaptationEstimate_block: if (proposalAdaptationSucceeded .or. proposalScalingNeeded) then
 
                 logSqrtDetNew = getMatMulTraceLog(proposal%covLowChoUpp(:, 2 : ndimp1, 0))
                 ! Use the universal upper bound.
@@ -653,7 +639,7 @@ contains
                     sampleStateCovLowCurrent(jdim : ndim, jdim) = 0.5_RKC * (proposal%covLowChoUpp(jdim : ndim, jdim, 0) + sampleStateCovCholOld(jdim : ndim, jdim)) ! dummy
                 end do
                 call setMatChol(sampleStateCovLowCurrent(:, 1 : ndim), lowDia, info, sampleStateCovLowCurrent(:, 2 : ndimp1), transHerm)
-                if (info == 0_IK) then !singularityOccurred = info /= 0_IK
+                if (info == 0_IK) then
                     logSqrtDetSum = getMatMulTraceLog(sampleStateCovLowCurrent(:, 2 : ndimp1))
                 else ! singularityOccurred ! LCOV_EXCL_START
                     err%occurred = .true._LK
@@ -699,6 +685,10 @@ contains
                 ! update the higher-stage delayed-rejection Cholesky Upper matrices
                 if (proposal%delRejEnabled) call setProposalDelRejChol(spec, proposal)
                 SET_ParaDISE(call setProposalInvCov(spec, proposal))
+
+            else proposalAdaptationEstimate_block
+
+                proposalAdaptation = 0._RKC
 
             end if proposalAdaptationEstimate_block
 

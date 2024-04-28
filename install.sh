@@ -94,43 +94,43 @@ if [ 0 -lt 1 ]; then # just to allow toggling in notepad++.
 
             --build )       shift
                             verifyArgNotKey "$1" --build
-                            verifyArgNotEmpty "$1" --build
+                            #verifyArgNotEmpty "$1" --build
                             list_build="$1"
                             ;;
 
             --checking )    shift
                             verifyArgNotKey "$1" --checking
-                            verifyArgNotEmpty "$1" --checking
+                            #verifyArgNotEmpty "$1" --checking
                             list_checking="$1"
                             ;;
 
             --fc )          shift
                             verifyArgNotKey "$1" --fc
-                            verifyArgNotEmpty "$1" --fc
+                            #verifyArgNotEmpty "$1" --fc
                             list_fc="$1"
                             ;;
 
             --lang )        shift
                             verifyArgNotKey "$1" --lang
-                            verifyArgNotEmpty "$1" --lang
+                            #verifyArgNotEmpty "$1" --lang
                             list_lang="$1"
                             ;;
 
             --lib )         shift
                             verifyArgNotKey "$1" --lib
-                            verifyArgNotEmpty "$1" --lib
+                            #verifyArgNotEmpty "$1" --lib
                             list_lib="$1"
                             ;;
 
             --mem )         shift
                             verifyArgNotKey "$1" --mem
-                            verifyArgNotEmpty "$1" --mem
+                            #verifyArgNotEmpty "$1" --mem
                             list_mem="$1"
                             ;;
 
             --par )         shift
                             verifyArgNotKey "$1" --par
-                            verifyArgNotEmpty "$1" --par
+                            #verifyArgNotEmpty "$1" --par
                             list_par="$1"
                             ;;
 
@@ -138,91 +138,91 @@ if [ 0 -lt 1 ]; then # just to allow toggling in notepad++.
 
             --bench )       shift
                             verifyArgNotKey "$1" --bench
-                            verifyArgNotEmpty "$1" --bench
+                            #verifyArgNotEmpty "$1" --bench
                             flag_bench="-Dbench=$1"
                             ;;
 
             --benchpp )     shift
                             verifyArgNotKey "$1" --benchpp
-                            verifyArgNotEmpty "$1" --benchpp
+                            #verifyArgNotEmpty "$1" --benchpp
                             flag_benchpp="-Dbenchpp=$1"
                             ;;
 
             --blas )        shift
                             verifyArgNotKey "$1" --blas
-                            verifyArgNotEmpty "$1" --blas
+                            #verifyArgNotEmpty "$1" --blas
                             flag_blas="-Dblas=$1"
                             ;;
 
             --codecov )     shift
                             verifyArgNotKey "$1" --codecov
-                            verifyArgNotEmpty "$1" --codecov
+                            #verifyArgNotEmpty "$1" --codecov
                             flag_codecov="-Dcodecov=$1"
                             ;;
 
             --deps )        shift
                             verifyArgNotKey "$1" --deps
-                            verifyArgNotEmpty "$1" --deps
+                            #verifyArgNotEmpty "$1" --deps
                             flag_deps="-Ddeps=$1"
                             ;;
 
             --exam )        shift
                             verifyArgNotKey "$1" --exam
-                            verifyArgNotEmpty "$1" --exam
+                            #verifyArgNotEmpty "$1" --exam
                             flag_exam="-Dexam=$1"
                             ;;
 
             --exampp )      shift
                             verifyArgNotKey "$1" --exampp
-                            verifyArgNotEmpty "$1" --exampp
+                            #verifyArgNotEmpty "$1" --exampp
                             flag_exampp="-Dexampp=$1"
                             ;;
 
             --cfi )         shift
                             verifyArgNotKey "$1" --cfi
-                            verifyArgNotEmpty "$1" --cfi
+                            #verifyArgNotEmpty "$1" --cfi
                             flag_cfi="-Dcfi=$1"
                             ;;
 
             --fpp )         shift
                             verifyArgNotKey "$1" --fpp
-                            verifyArgNotEmpty "$1" --fpp
+                            #verifyArgNotEmpty "$1" --fpp
                             flag_fpp="-Dfpp=$1"
                             ;;
 
             --fresh )       shift
                             verifyArgNotKey "$1" --fresh
-                            verifyArgNotEmpty "$1" --fresh
+                            #verifyArgNotEmpty "$1" --fresh
                             flag_fresh="-Dfresh=$1"
                             ;;
 
             --lapack )      shift
                             verifyArgNotKey "$1" --lapack
-                            verifyArgNotEmpty "$1" --lapack
+                            #verifyArgNotEmpty "$1" --lapack
                             flag_lapack="-Dlapack=$1"
                             ;;
 
             --matlabdir )   shift
                             verifyArgNotKey "$1" --matlabdir
-                            verifyArgNotEmpty "$1" --matlabdir
+                            #verifyArgNotEmpty "$1" --matlabdir
                             flag_matlabdir="-Dmatlabdir=\"$1\""
                             ;;
 
             --me )          shift
                             verifyArgNotKey "$1" --me
-                            verifyArgNotEmpty "$1" --me
+                            #verifyArgNotEmpty "$1" --me
                             flag_me="-Dme=\"$1\""
                             ;;
 
             --mod )         shift
                             verifyArgNotKey "$1" --mod
-                            verifyArgNotEmpty "$1" --mod
+                            #verifyArgNotEmpty "$1" --mod
                             flag_mod="-Dmod=$1"
                             ;;
 
             --nproc )       shift
                             verifyArgNotKey "$1" --nproc
-                            verifyArgNotEmpty "$1" --nproc
+                            #verifyArgNotEmpty "$1" --nproc
                             isNumericValue="$(isnumeric ${nproc})"
                             if ! [ "${isNumericValue}" = "true" ]; then
                                 reportBadValue "--nproc" $nproc "The spoecified number of processors must be a positive integer."
@@ -233,25 +233,25 @@ if [ 0 -lt 1 ]; then # just to allow toggling in notepad++.
 
             --perfprof )    shift
                             verifyArgNotKey "$1" --perfprof
-                            verifyArgNotEmpty "$1" --perfprof
+                            #verifyArgNotEmpty "$1" --perfprof
                             flag_perfprof="-Dperfprof=$1"
                             ;;
 
             --pdt )         shift
                             verifyArgNotKey "$1" --pdt
-                            verifyArgNotEmpty "$1" --pdt
+                            #verifyArgNotEmpty "$1" --pdt
                             flag_pdt="-Dpdt=$1"
                             ;;
 
             --purity )      shift
                             verifyArgNotKey "$1" --purity
-                            verifyArgNotEmpty "$1" --purity
+                            #verifyArgNotEmpty "$1" --purity
                             flag_purity="-Dpurity=$1"
                             ;;
 
             --test )        shift
                             verifyArgNotKey "$1" --test
-                            verifyArgNotEmpty "$1" --test
+                            #verifyArgNotEmpty "$1" --test
                             flag_test="-Dtest=$1"
                             ;;
 
@@ -259,31 +259,31 @@ if [ 0 -lt 1 ]; then # just to allow toggling in notepad++.
 
             --ski )         shift
                             verifyArgNotKey "$1" --ski
-                            verifyArgNotEmpty "$1" --ski
+                            #verifyArgNotEmpty "$1" --ski
                             flag_ski="-Dski=$1"
                             ;;
 
             --iki )         shift
                             verifyArgNotKey "$1" --iki
-                            verifyArgNotEmpty "$1" --iki
+                            #verifyArgNotEmpty "$1" --iki
                             flag_iki="-Diki=$1"
                             ;;
 
             --lki )         shift
                             verifyArgNotKey "$1" --lki
-                            verifyArgNotEmpty "$1" --lki
+                            #verifyArgNotEmpty "$1" --lki
                             flag_lki="-Dlki=$1"
                             ;;
 
             --cki )         shift
                             verifyArgNotKey "$1" --cki
-                            verifyArgNotEmpty "$1" --cki
+                            #verifyArgNotEmpty "$1" --cki
                             flag_cki="-Dcki=$1"
                             ;;
 
             --rki )         shift
                             verifyArgNotKey "$1" --rki
-                            verifyArgNotEmpty "$1" --rki
+                            #verifyArgNotEmpty "$1" --rki
                             flag_rki="-Drki=$1"
                             ;;
 
@@ -291,13 +291,13 @@ if [ 0 -lt 1 ]; then # just to allow toggling in notepad++.
 
             --bdir )        shift
                             verifyArgNotKey "$1" --bdir
-                            verifyArgNotEmpty "$1" --bdir
+                            #verifyArgNotEmpty "$1" --bdir
                             bdir="$1"
                             ;;
 
             --ddir )        shift
                             verifyArgNotKey "$1" --ddir
-                            verifyArgNotEmpty "$1" --ddir
+                            #verifyArgNotEmpty "$1" --ddir
                             ddir="$1"
                             flag_ddir="-Dddir=${ddir}"
                             ;;
@@ -310,7 +310,7 @@ if [ 0 -lt 1 ]; then # just to allow toggling in notepad++.
 
             -j )            shift
                             verifyArgNotKey "$1" -j
-                            verifyArgNotEmpty "$1" -j
+                            #verifyArgNotEmpty "$1" -j
                             flag_j="-j $1"
                             ;;
 
@@ -337,19 +337,19 @@ if [ 0 -lt 1 ]; then # just to allow toggling in notepad++.
 
     #### list args
 
-    if  [ -z ${list_build+x} ]; then
+    if  [ "${list_build}" = "" ]; then
         list_build="release"
     else
         list_build="$(getLowerCase "$list_build")"
     fi
 
-    if  [ -z ${list_checking+x} ]; then
+    if  [ "${list_checking}" = "" ]; then
         list_checking="nocheck"
     else
         list_checking="$(getLowerCase "$list_checking")"
     fi
 
-    if [ -z ${list_fc+x} ]; then
+    if [ "${list_fc}" = "" ]; then
         #   On Windows OS, particularly with MinGW, CMake fails if the specified compiler name or path does not have the
         #   the file extension ".exe". Given that this extension is unlikely to change in the future, and that it is not used
         #   on Unix systems, try suffixing the extension to the compiler file path. If it fails, use the default specified path.
@@ -379,14 +379,14 @@ if [ 0 -lt 1 ]; then # just to allow toggling in notepad++.
         fi
     fi
 
-    if  [ -z ${list_lang+x} ]; then
+    if  [ "${list_lang}" = "" ]; then
         list_lang="fortran"
     else
         list_lang="$(getLowerCase "$list_lang")"
         list_lang="${list_lang/c++/cpp}"
     fi
 
-    if  [ -z ${list_lib+x} ]; then
+    if  [ "${list_lib}" = "" ]; then
         list_lib="shared"
     else
         # Replace `dynamic` with `shared`.
@@ -394,13 +394,13 @@ if [ 0 -lt 1 ]; then # just to allow toggling in notepad++.
         list_lib="$(getLowerCase "$list_lib")"
     fi
 
-    if  [ -z ${list_mem+x} ]; then
+    if  [ "${list_mem}" = "" ]; then
         list_mem="heap"
     else
         list_mem="$(getLowerCase "$list_mem")"
     fi
 
-    if  [ -z ${list_par+x} ]; then
+    if  [ "${list_par}" = "" ]; then
         list_par="serial"
     else
         # Replace `none` with `serial`.
@@ -408,7 +408,7 @@ if [ 0 -lt 1 ]; then # just to allow toggling in notepad++.
         list_par="$(getLowerCase "$list_par")"
     fi
 
-    if  [ -z ${flag_j+x} ]; then
+    if  [ "${flag_j}" = "" ]; then
         flag_j="-j"
     fi
 
@@ -520,7 +520,8 @@ for fc in ${list_fc//;/$'\n'}; do # replace `;` with newline character.
                                 # First, determine the MPI library name to be used in the ParaMonte library name and build directory.
 
                                 if [ "${par}" = "mpi" ]; then
-                                    if [ -z ${me+x} ]; then
+                                   #if [ -z ${me+x} ]; then
+                                    if [ "${me}" = "" ]; then
                                         me=mpiexec
                                     fi
                                     if ! [[ -f "${me}" ]]; then
@@ -554,7 +555,8 @@ for fc in ${list_fc//;/$'\n'}; do # replace `;` with newline character.
                                     parname="${par}"
                                 fi
 
-                                if [ -z ${bdir+x} ]; then
+                               #if [ -z ${bdir+x} ]; then
+                                if [ "${bdir}" = "" ]; then
                                     paramonte_bld_dir="${paramonte_dir}/bld/${os}/${arch}/${csid}/${csvs}/${build}/${lib}/${mem}/${parname}/${checking}/${lang}"
                                     if [[ "${flag_perfprof}" =~ .*"all".* ]]; then
                                         paramonte_bld_dir="${paramonte_bld_dir}/perfprof"

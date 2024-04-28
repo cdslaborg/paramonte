@@ -770,7 +770,7 @@ contains
             SKC_"\Sigma = \mathrm{eye}(V) ~ \rho ~ \mathrm{eye}(V)."//NL1//&
             SKC_"$$"//NL2//&
             SKC_"where $$\rho$$ stands for specification `domainBallCor` and $$\mathrm{eye}(V)$$ stands &
-                for diagonal matrix whose diagonals are set to the specification `domainBallStd`."//NL2//&
+                &for diagonal matrix whose diagonals are set to the specification `domainBallStd`."//NL2//&
             SKC_"Combined with the input simulation specification `domainBallStd` it defines the objective function's hyper-ellipsoidal (or spherical) domain. &
                 &If the input simulation specification `domainBallCov` is provided by the user, then any values set &
                 &for `domainBallCor` and `domainBallStd` will be automatically ignored. The input specification `domainBallCor` &
@@ -839,7 +839,7 @@ contains
             SKC_"\Sigma = \mathrm{eye}(V) ~ \rho ~ \mathrm{eye}(V)."//NL1//&
             SKC_"$$"//NL2//&
             SKC_"where $$\rho$$ stands for specification `domainBallCor` and $$\mathrm{eye}(V)$$ stands &
-                for diagonal matrix whose diagonals are set to the specification `domainBallStd`."//NL2//&
+                &for diagonal matrix whose diagonals are set to the specification `domainBallStd`."//NL2//&
             SKC_"If the covariance matrix of the ellipsoidal/spherical domain (`domainBallCov`) is missing from the input specifications &
                 &to the sampler, then `domainBallStd` (along with the input specification `domainBallCor`) will be used to &
                 &construct the covariance matrix of the domain of the objective function. However, if `domainBallCov` is present &

@@ -1500,7 +1500,7 @@ contains
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if     !__GFORTRAN__ && 0
+#if     PDT_ENABLED
 #if     SK5_ENABLED
         call test%run(test_getRankDense_D1_PSSK5, SK_"test_getRankDense_D1_PSSK5")
 #endif
@@ -1640,7 +1640,7 @@ contains
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if     !__GFORTRAN__ && 0
+#if     PDT_ENABLED
 #if     SK5_ENABLED
         call test%run(test_setRankDense_D1_PSSK5, SK_"test_setRankDense_D1_PSSK5")
 #endif
@@ -1780,7 +1780,7 @@ contains
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if     !__GFORTRAN__ && 0
+#if     PDT_ENABLED
 #if     SK5_ENABLED
         call test%run(test_getRankFractional_D1_PSSK5, SK_"test_getRankFractional_D1_PSSK5")
 #endif
@@ -1920,7 +1920,7 @@ contains
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if     !__GFORTRAN__ && 0
+#if     PDT_ENABLED
 #if     SK5_ENABLED
         call test%run(test_setRankFractional_D1_PSSK5, SK_"test_setRankFractional_D1_PSSK5")
 #endif
@@ -2060,7 +2060,7 @@ contains
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if     !__GFORTRAN__ && 0
+#if     PDT_ENABLED
 #if     SK5_ENABLED
         call test%run(test_getRankModified_D1_PSSK5, SK_"test_getRankModified_D1_PSSK5")
 #endif
@@ -2200,7 +2200,7 @@ contains
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if     !__GFORTRAN__ && 0
+#if     PDT_ENABLED
 #if     SK5_ENABLED
         call test%run(test_setRankModified_D1_PSSK5, SK_"test_setRankModified_D1_PSSK5")
 #endif
@@ -2340,7 +2340,7 @@ contains
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if     !__GFORTRAN__ && 0
+#if     PDT_ENABLED
 #if     SK5_ENABLED
         call test%run(test_getRankOrdinal_D1_PSSK5, SK_"test_getRankOrdinal_D1_PSSK5")
 #endif
@@ -2480,7 +2480,7 @@ contains
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if     !__GFORTRAN__ && 0
+#if     PDT_ENABLED
 #if     SK5_ENABLED
         call test%run(test_setRankOrdinal_D1_PSSK5, SK_"test_setRankOrdinal_D1_PSSK5")
 #endif
@@ -2620,7 +2620,7 @@ contains
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if     !__GFORTRAN__ && 0
+#if     PDT_ENABLED
 #if     SK5_ENABLED
         call test%run(test_getRankStandard_D1_PSSK5, SK_"test_getRankStandard_D1_PSSK5")
 #endif
@@ -2760,7 +2760,7 @@ contains
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if     !__GFORTRAN__ && 0
+#if     PDT_ENABLED
 #if     SK5_ENABLED
         call test%run(test_setRankStandard_D1_PSSK5, SK_"test_setRankStandard_D1_PSSK5")
 #endif

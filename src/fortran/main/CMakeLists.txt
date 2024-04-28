@@ -134,7 +134,9 @@ set(grandpa
     pm_dateTime
     pm_kind
     pm_io
+    pm_distanceBhat
     pm_distanceEuclid
+    pm_distanceHellinger
     pm_distanceKolm
     pm_distanceMahal
     pm_distBand

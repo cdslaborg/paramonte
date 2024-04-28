@@ -153,13 +153,14 @@
 /// +   The abbreviation `dist`     stands for **distance** or **distribution** depending on the context. Example: `DistMulti_type`.
 /// +   The abbreviation `eff`      stands for **effective**. Example: `effSamSize`.
 /// +   The abbreviation `exp`      stands for **exponential** or **exponentiated**. Example: `setDisSortedExpDiff()`.
+/// +   The abbreviation `hell`     stands for **Hellinger** in statistical distance computations. Example: `getDisHellSq()`.
 /// +   The abbreviation `herm`     stands for **hermitian** in matrix algebra.
-/// +   The abbreviation `ICE`      stands for **Internal Compiler Error**. It typically appears in the bug descriptions tagged via Doxygen command <tt>\\bug</tt>.
+/// +   The abbreviation `ice`      stands for **Internal Compiler Error**. It typically appears in the bug descriptions tagged via Doxygen command <tt>\\bug</tt>.
 /// +   The abbreviation `inv`      stands for **inverse**. Example: `getMatInv()`.
 /// +   The abbreviation `ks`       stands for **Kolmogorov-Smirnov** test. Example: `getProbKS()`.
 /// +   The abbreviation `lin`      stands for **linear**. Example: `getLinSpace()`.
 /// +   The abbreviation `low`      stands for **lower triangle of a matrix** or **lower limits**. Example: `setChoLow()`.
-/// +   The abbreviation `mahal`    stands for **Mahalanobis** distance. Example: `getMahalSq()`.
+/// +   The abbreviation `mahal`    stands for **Mahalanobis** distance. Example: `getDisMahalSq()`.
 /// +   The abbreviation `mat`      stands for **matrix**. Example: `getMatInv()`.
 /// +   The abbreviation `multi`    stands for **multivariate** mostly used in the context of statistical distributions. Example: `getMultiNormRand()`.
 /// +   The abbreviation `msn`      stands for **Multivariate Skew-Normal** mostly used in the context of the statistical MultiVariate Skew-Normal distribution.
@@ -175,7 +176,7 @@
 /// +   The abbreviation `rand`     stands for **random**, mostly in the context of statistics. Example: `getUnifRand()`.
 /// +   The abbreviation `ref`      stands for **reference**, mostly in the context of testings to represent the reference values for comparison. Example: `mean_ref`.
 /// +   The abbreviation `sam`      stands for **sample**, mostly in the context of statistics. Example: `effSamSize`.
-/// +   The abbreviation `sq`       stands for **squared**. Example: `getMahalSq()`.
+/// +   The abbreviation `sq`       stands for **squared**. Example: `getDisMahalSq()`.
 /// +   The abbreviation `stat`     stands for **statistics**. Example: `StatDRAM_type`.
 /// +   The abbreviation `std`      stands for **standard deviation**. Example: `StdVec`.
 /// +   The abbreviation `sym`      stands for **symmetric**.
