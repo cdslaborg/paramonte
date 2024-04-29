@@ -1,4 +1,4 @@
-classdef LineScatter < pm.vis.subplot.Subplot
+classdef LineScatter < pm.vis.plot.Plot
     %
     %   This is the LineScatter class for generating
     %   instances of 2-dimensional LineScatter plots
@@ -11,13 +11,13 @@ classdef LineScatter < pm.vis.subplot.Subplot
     %       dfref
     %
     %           See the documentation of the corresponding input
-    %           argument of the parent class ``pm.vis.subplot.Subplot``.
+    %           argument of the superclass ``pm.vis.plot.Plot``.
     %
     %   Attributes
     %   ----------
     %
     %       See the documentation of the attributes
-    %       of the parent class ``pm.vis.subplot.Subplot``.
+    %       of the superclass ``pm.vis.plot.Plot``.
     %
     %   Returns
     %   -------
@@ -27,7 +27,8 @@ classdef LineScatter < pm.vis.subplot.Subplot
     %   Interface
     %   ---------
     %
-    %       p = pm.vis.subplot.LineScatter(dfref);
+    %       s = pm.vis.subplot.LineScatter(dfref);
+    %       s = pm.vis.subplot.LineScatter(dfref, varargin);
     %
     %   LICENSE
     %   -------
@@ -35,11 +36,11 @@ classdef LineScatter < pm.vis.subplot.Subplot
     %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
     %
     methods(Access = public)
-        function self = LineScatter(dfref)
+        function self = LineScatter(dfref, varargin)
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.subplot.Subplot("LineScatter", dfref);
+            self = self@pm.vis.plot.Plot(pm.vis.subplot.LineScatter(dfref), varargin{:});
         end
     end
 end

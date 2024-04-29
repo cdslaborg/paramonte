@@ -392,6 +392,20 @@ function [imageData, alpha] = export_fig(varargin) %#ok<*STRCL1,*DATST,*TNOW1>
 % 07/12/23: (3.43) Fixed unintended modification of colorbar in bitmap export (issue #385)
 %}
 
+    %%%%
+    %%%% Ensure all input string values are characters.
+    %%%%
+
+    for i = 1:length(varargin)
+        if isa(varargin{i}, "string")
+            varargin{i} = convertStringsToChars(varargin{i});
+        end
+    end
+
+    %%%%
+    %%%% Continue.
+    %%%%
+
     if nargout
         [imageData, alpha] = deal([]);
     end

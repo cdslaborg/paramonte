@@ -11,13 +11,13 @@ classdef Heatmap < pm.vis.subplot.Subplot
     %       dfref
     %
     %           See the documentation of the corresponding input
-    %           argument of the parent class ``pm.vis.subplot.Subplot``.
+    %           argument of the superclass ``pm.vis.subplot.Subplot``.
     %
     %   Attributes
     %   ----------
     %
     %       See the documentation of the attributes
-    %       of the parent class ``pm.vis.subplot.Subplot``.
+    %       of the superclass ``pm.vis.subplot.Subplot``.
     %
     %   Returns
     %   -------
@@ -27,8 +27,8 @@ classdef Heatmap < pm.vis.subplot.Subplot
     %   Interface
     %   ---------
     %
-    %       p = pm.vis.subplot.Heatmap(dfref);
-    %       p = pm.vis.subplot.Heatmap(dfref, varargin);
+    %       s = pm.vis.subplot.Heatmap(dfref);
+    %       s = pm.vis.subplot.Heatmap(dfref, varargin);
     %
     %   LICENSE
     %   -------

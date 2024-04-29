@@ -1,4 +1,4 @@
-classdef Contour < pm.vis.subplot.Subplot
+classdef Contour < pm.vis.plot.Plot
     %
     %   This is the Contour class for generating
     %   instances of 2-dimensional Contour plots
@@ -11,13 +11,13 @@ classdef Contour < pm.vis.subplot.Subplot
     %       dfref
     %
     %           See the documentation of the corresponding input
-    %           argument of the parent class ``pm.vis.subplot.Subplot``.
+    %           argument of the superclass ``pm.vis.plot.Plot``.
     %
     %   Attributes
     %   ----------
     %
     %       See the documentation of the attributes
-    %       of the parent class ``pm.vis.subplot.Subplot``.
+    %       of the superclass ``pm.vis.plot.Plot``.
     %
     %   Returns
     %   -------
@@ -27,8 +27,8 @@ classdef Contour < pm.vis.subplot.Subplot
     %   Interface
     %   ---------
     %
-    %       p = pm.vis.subplot.Contour(dfref);
-    %       p = pm.vis.subplot.Contour(dfref, []);
+    %       s = pm.vis.subplot.Contour(dfref);
+    %       s = pm.vis.subplot.Contour(dfref, varargin);
     %
     %   LICENSE
     %   -------
@@ -36,11 +36,11 @@ classdef Contour < pm.vis.subplot.Subplot
     %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
     %
     methods(Access = public)
-        function self = Contour(dfref)
+        function self = Contour(dfref, varargin)
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.subplot.Subplot("Contour", dfref);
+            self = self@pm.vis.plot.Plot(pm.vis.subplot.Contour(dfref), varargin{:});
         end
     end
 end

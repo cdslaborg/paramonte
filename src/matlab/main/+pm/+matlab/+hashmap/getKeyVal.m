@@ -1,4 +1,4 @@
-function [val, failed] = getVal(key, hashmap)
+function [val, failed] = getKeyVal(key, hashmap)
     %
     %   Return the value corresponding to the input ``key``
     %   in the input ``hashmap`` cell array.
@@ -35,17 +35,17 @@ function [val, failed] = getVal(key, hashmap)
     %   Interface
     %   ---------
     %
-    %       [val, failed] = pm.matlab.hashmap.getVal(key, hashmap)
+    %       [val, failed] = pm.matlab.hashmap.getKeyVal(key, hashmap)
     %
     %   Example
     %   -------
     %
     %       hashmap = {"key1", 1, "key2", "val2", "key3", false};
-    %       val = pm.matlab.hashmap.getVal("key2", hashmap) % = "val2"
-    %       val = pm.matlab.hashmap.getVal("key3", hashmap) % = false
-    %       val = pm.matlab.hashmap.getVal("key3", hashmap(1:4)) % = {}
-    %       val = pm.matlab.hashmap.getVal("key2", hashmap(1:4)) % = "val2"
-    %       val = pm.matlab.hashmap.getVal("key2", hashmap(1:3)) % error
+    %       val = pm.matlab.hashmap.getKeyVal("key2", hashmap) % = "val2"
+    %       val = pm.matlab.hashmap.getKeyVal("key3", hashmap) % = false
+    %       val = pm.matlab.hashmap.getKeyVal("key3", hashmap(1:4)) % = {}
+    %       val = pm.matlab.hashmap.getKeyVal("key2", hashmap(1:4)) % = "val2"
+    %       val = pm.matlab.hashmap.getKeyVal("key2", hashmap(1:3)) % error
     %
     %   LICENSE
     %   -------
@@ -54,7 +54,7 @@ function [val, failed] = getVal(key, hashmap)
     %
     vararginLen = length(hashmap);
     if mod(vararginLen, 2) ~= 0
-        help("pm.matlab.hashmap.getVal");
+        help("pm.matlab.hashmap.getKeyVal");
         error   ( newline ...
                 + "The length of ``hashmap`` must be even." + newline ...
                 + newline ...

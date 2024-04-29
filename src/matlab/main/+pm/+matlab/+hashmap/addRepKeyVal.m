@@ -1,4 +1,4 @@
-function hashnew = addRepKeyVal(key, val, hashmap)
+function hashnew = repKeyVal(key, val, hashmap)
     %
     %   Return the input hashmap with the new (key, val) appended.
     %   only if the input pair does not exist in the input hashmap.
@@ -36,15 +36,15 @@ function hashnew = addRepKeyVal(key, val, hashmap)
     %   Interface
     %   ---------
     %
-    %       hashnew = pm.matlab.hashmap.addRepKeyVal(key, val, hashmap)
+    %       hashnew = pm.matlab.hashmap.repKeyVal(key, val, hashmap)
     %
     %   Example
     %   -------
     %
     %       hashmap = {"key1", 1, "key2", "val2"};
-    %       hashnew = pm.matlab.hashmap.addRepKeyVal("key2", 2, hashmap)
-    %       hashnew = pm.matlab.hashmap.addRepKeyVal("key3", true, hashmap)
-    %       hashnew = pm.matlab.hashmap.addRepKeyVal("key3", false, hashmap)
+    %       hashnew = pm.matlab.hashmap.repKeyVal("key2", 2, hashmap)
+    %       hashnew = pm.matlab.hashmap.repKeyVal("key3", true, hashmap)
+    %       hashnew = pm.matlab.hashmap.repKeyVal("key3", false, hashmap)
     %
     %   LICENSE
     %   -------

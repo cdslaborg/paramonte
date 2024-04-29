@@ -1039,13 +1039,13 @@ classdef Axes < pm.matlab.Handle
             %   Interface
             %   ---------
             %
-            %       h = pm.vis.Axes.premake(varargin);
+            %       a = pm.vis.Axes.premake(varargin);
             %
             %   Example
             %   -------
             %
-            %       h = pm.vis.Axes(ptype);
-            %       h.premake("xlim", [0, 1])
+            %       a = pm.vis.Axes(ptype);
+            %       a.premake("xlim", [0, 1])
             %
             %   LICENSE
             %   -------

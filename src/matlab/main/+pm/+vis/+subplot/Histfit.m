@@ -11,13 +11,13 @@ classdef Histfit < pm.vis.subplot.Subplot
     %       dfref
     %
     %           See the documentation of the corresponding input
-    %           argument of the parent class ``pm.vis.subplot.Subplot``.
+    %           argument of the superclass ``pm.vis.subplot.Subplot``.
     %
     %   Attributes
     %   ----------
     %
     %       See the documentation of the attributes
-    %       of the parent class ``pm.vis.subplot.Subplot``.
+    %       of the superclass ``pm.vis.subplot.Subplot``.
     %
     %   Returns
     %   -------
@@ -27,8 +27,8 @@ classdef Histfit < pm.vis.subplot.Subplot
     %   Interface
     %   ---------
     %
-    %       p = pm.vis.subplot.Histfit(dfref);
-    %       p = pm.vis.subplot.Histfit(dfref, varargin);
+    %       s = pm.vis.subplot.Histfit(dfref);
+    %       s = pm.vis.subplot.Histfit(dfref, varargin);
     %
     %   LICENSE
     %   -------

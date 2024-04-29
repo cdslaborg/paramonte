@@ -20,7 +20,7 @@ classdef Subplot < pm.vis.Axes
     %       ptype
     %
     %           See the documentation of the corresponding
-    %           component of the parent class constructor.
+    %           component of the superclass constructor.
     %
     %       dfref
     %
@@ -41,13 +41,13 @@ classdef Subplot < pm.vis.Axes
     %   Interface
     %   ---------
     %
-    %       p = pm.vis.subplot.Subplot(ptype, dfref);
-    %       p = pm.vis.subplot.Subplot(ptype, dfref, varargin);
+    %       s = pm.vis.subplot.Subplot(ptype, dfref);
+    %       s = pm.vis.subplot.Subplot(ptype, dfref, varargin);
     %
     %   Attributes
     %   ----------
     %
-    %       See the documentation of the parent class for a
+    %       See the documentation of the superclass for a
     %       list of all class attributes that are dynamically
     %       added to the instantiated class objects based
     %       on the specified input plot type.
@@ -241,9 +241,10 @@ classdef Subplot < pm.vis.Axes
             %   Generate a plot from the selected columns
             %   of the parent object component ``df``.
             %
-            %   \note
+            %   \warning
             %
-            %       This method is pure, except for the changes in ``fout`` component.
+            %       This method has side-effects by manipulating
+            %       the existing attributes of the parent object.
             %
             %   Parameters
             %   ----------
@@ -270,8 +271,8 @@ classdef Subplot < pm.vis.Axes
             %   -------
             %
             %       dfref = rand(1000, 3);
-            %       p = pm.vis.subplot.Subplot("scatter", dfref);
-            %       p.make("colx", 1, "coly", 2, "colc", 3)
+            %       s = pm.vis.subplot.Subplot("scatter", dfref);
+            %       s.make("colx", 1, "coly", 2, "colc", 3)
             %
             %   LICENSE
             %   -------
@@ -558,7 +559,7 @@ classdef Subplot < pm.vis.Axes
 
                     if  self.type.is.diffusion
                         if ~isempty(coldatc)
-                            kws.(self.type.name) = pm.matlab.hashmap.addRepKeyVal("color", coldatc, kws.(self.type.name));
+                            kws.(self.type.name) = pm.matlab.hashmap.repKeyVal("color", coldatc, kws.(self.type.name));
                         end
                         if  kde2dUpdateNeeded
                             [kde2d.bandwidth, kde2d.density, kde2d.crdx, kde2d.crdy] = pm.fit.kde2d([coldatx(:), coldaty(:)], self.resolution);
@@ -870,8 +871,8 @@ classdef Subplot < pm.vis.Axes
             %   -------
             %
             %       dfref = rand(1000, 3);
-            %       p = pm.vis.subplot.Subplot("scatter", dfref);
-            %       p.premake("colx", 1, "coly", 2, "colc", 3)
+            %       s = pm.vis.subplot.Subplot("scatter", dfref);
+            %       s.premake("colx", 1, "coly", 2, "colc", 3)
             %
             %   LICENSE
             %   -------

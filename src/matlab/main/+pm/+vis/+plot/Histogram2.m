@@ -1,4 +1,4 @@
-classdef Histogram2 < pm.vis.subplot.Subplot
+classdef Histogram2 < pm.vis.plot.Plot
     %
     %   This is the Histogram2 class for generating
     %   instances of 3-dimensional Histogram2 plots
@@ -11,13 +11,13 @@ classdef Histogram2 < pm.vis.subplot.Subplot
     %       dfref
     %
     %           See the documentation of the corresponding input
-    %           argument of the parent class ``pm.vis.subplot.Subplot``.
+    %           argument of the superclass ``pm.vis.plot.Plot``.
     %
     %   Attributes
     %   ----------
     %
     %       See the documentation of the attributes
-    %       of the parent class ``pm.vis.subplot.Subplot``.
+    %       of the superclass ``pm.vis.plot.Plot``.
     %
     %   Returns
     %   -------
@@ -27,9 +27,8 @@ classdef Histogram2 < pm.vis.subplot.Subplot
     %   Interface
     %   ---------
     %
-    %       p = pm.vis.subplot.Histogram2(dfref);
-    %       p = pm.vis.subplot.Histogram2(dfref, []);
-    %       p = pm.vis.subplot.Histogram2(dfref);
+    %       s = pm.vis.subplot.Histogram2(dfref);
+    %       s = pm.vis.subplot.Histogram2(dfref, varargin);
     %
     %   LICENSE
     %   -------
@@ -37,11 +36,11 @@ classdef Histogram2 < pm.vis.subplot.Subplot
     %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
     %
     methods(Access = public)
-        function self = Histogram2(dfref)
+        function self = Histogram2(dfref, varargin)
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.subplot.Subplot("Histogram2", dfref);
+            self = self@pm.vis.plot.Plot(pm.vis.subplot.Histogram2(dfref), varargin{:});
         end
     end
 end

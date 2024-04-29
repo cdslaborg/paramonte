@@ -19,9 +19,14 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
     %           If the above expression yields zero, then ``nell`` is set to ``75``.
     %
     %       3.  the variable ``npnt`` represents the number of points used in visualizing each ellipsoid.
-    %           The value of ``nell`` is inferred from the shapes of the input arguments
+    %           The value of ``npnt`` is inferred from the shapes of the input arguments
     %           ``zval`` and ``czval`` as ``max(size(zval, 1), size(cval, 1))``.
     %           If the above expression yields zero or one, then ``npnt`` is set to ``100``.
+    %
+    %   \note
+    %
+    %       To generate a 2D plot of ellipsoids, simply execute the
+    %       MATLAB command ``view(2)`` to change the camera view to 2D.
     %
     %   Parameters
     %   ----------
@@ -161,7 +166,7 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
     %   ----------
     %
     %       See below and also the documentation of the attributes
-    %       of the parent class ``pm.vis.subplot.LineScatter3``.
+    %       of the superclass ``pm.vis.subplot.LineScatter3``.
     %
     %   Returns
     %   -------
@@ -171,18 +176,18 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
     %   Interface
     %   ---------
     %
-    %       p = pm.vis.subplot.Ellipse3();
-    %       p = pm.vis.subplot.Ellipse3(gramian);
-    %       p = pm.vis.subplot.Ellipse3(gramian, center);
-    %       p = pm.vis.subplot.Ellipse3(gramian, center, zval);
-    %       p = pm.vis.subplot.Ellipse3(gramian, center, zval, cval);
-    %       p = pm.vis.subplot.Ellipse3(gramian, center, zval, cval, varargin);
+    %       s = pm.vis.subplot.Ellipse3();
+    %       s = pm.vis.subplot.Ellipse3(gramian);
+    %       s = pm.vis.subplot.Ellipse3(gramian, center);
+    %       s = pm.vis.subplot.Ellipse3(gramian, center, zval);
+    %       s = pm.vis.subplot.Ellipse3(gramian, center, zval, cval);
+    %       s = pm.vis.subplot.Ellipse3(gramian, center, zval, cval, varargin);
     %
     %   Example
     %   -------
     %
-    %       p = pm.vis.subplot.Ellipse3();
-    %       p.make("npnt", 200);
+    %       s = pm.vis.subplot.Ellipse3();
+    %       s.make("dims", [1, 2]);
     %
     %   LICENSE
     %   -------
@@ -402,8 +407,8 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
             %   Example
             %   -------
             %
-            %       p = pm.vis.subplot.Ellipse3();
-            %       p.premake("dims", [1, 2], "colormap", {"map", "autumn"})
+            %       s = pm.vis.subplot.Ellipse3();
+            %       s.premake("dims", [1, 2], "colormap", {"map", "autumn"})
             %
             %   LICENSE
             %   -------
@@ -453,9 +458,9 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
             %%%%
 
             if ~self.colormap.enabled && ~self.scatter3.enabled
-                [val, failed] = pm.matlab.hashmap.getVal("plot3", varargin);
+                [val, failed] = pm.matlab.hashmap.getKeyVal("plot3", varargin);
                 if ~failed
-                    [~, failed] = pm.matlab.hashmap.getVal("color", val);
+                    [~, failed] = pm.matlab.hashmap.getKeyVal("color", val);
                 end
                 if  failed
                     self.plot3.color = [0, 0.4470, 0.7410];
@@ -817,8 +822,8 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
             %   Example
             %   -------
             %
-            %       p = pm.vis.subplot.Ellipse3();
-            %       p.make("npnt", 200)
+            %       s = pm.vis.subplot.Ellipse3();
+            %       s.make("dims", [1, 2]);
             %
             %   LICENSE
             %   -------

@@ -51,7 +51,7 @@ function hashnew = addKeyVal(key, val, hashmap)
     %
     hashnew = hashmap;
     if  2 < nargin && 0 < length(hashnew)
-        [currentVal, failed] = pm.matlab.hashmap.getVal(key, hashmap);
+        [currentVal, failed] = pm.matlab.hashmap.getKeyVal(key, hashmap);
         if  failed
             hashnew = {hashnew{:}, key, val};
         end

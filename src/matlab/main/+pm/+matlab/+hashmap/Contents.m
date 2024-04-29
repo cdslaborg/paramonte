@@ -5,8 +5,8 @@
 %   --------
 %
 %       pm.matlab.hashmap.addKeyVal - function.
-%       pm.matlab.hashmap.addRepKeyVal - function.
-%       pm.matlab.hashmap.getVal - function.
+%       pm.matlab.hashmap.repKeyVal - function.
+%       pm.matlab.hashmap.getKeyVal - function.
 %       pm.matlab.hashmap.hash2comp - function.
 %       pm.matlab.hashmap.struct2hash - function.
 %

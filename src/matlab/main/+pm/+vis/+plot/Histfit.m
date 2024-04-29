@@ -1,4 +1,4 @@
-classdef Histfit < pm.vis.subplot.Subplot
+classdef Histfit < pm.vis.plot.Plot
     %
     %   This is the Histfit class for generating
     %   instances of 2-dimensional Histfit plots
@@ -11,13 +11,13 @@ classdef Histfit < pm.vis.subplot.Subplot
     %       dfref
     %
     %           See the documentation of the corresponding input
-    %           argument of the parent class ``pm.vis.subplot.Subplot``.
+    %           argument of the superclass ``pm.vis.plot.Plot``.
     %
     %   Attributes
     %   ----------
     %
     %       See the documentation of the attributes
-    %       of the parent class ``pm.vis.subplot.Subplot``.
+    %       of the superclass ``pm.vis.plot.Plot``.
     %
     %   Returns
     %   -------
@@ -27,9 +27,8 @@ classdef Histfit < pm.vis.subplot.Subplot
     %   Interface
     %   ---------
     %
-    %       p = pm.vis.subplot.Histfit(dfref);
-    %       p = pm.vis.subplot.Histfit(dfref, []);
-    %       p = pm.vis.subplot.Histfit(dfref);
+    %       s = pm.vis.subplot.Histfit(dfref);
+    %       s = pm.vis.subplot.Histfit(dfref, varargin);
     %
     %   LICENSE
     %   -------
@@ -37,11 +36,11 @@ classdef Histfit < pm.vis.subplot.Subplot
     %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
     %
     methods(Access = public)
-        function self = Histfit(dfref)
+        function self = Histfit(dfref, varargin)
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.subplot.Subplot("Histfit", dfref);
+            self = self@pm.vis.plot.Plot(pm.vis.subplot.Histfit(dfref), varargin{:});
         end
     end
 end

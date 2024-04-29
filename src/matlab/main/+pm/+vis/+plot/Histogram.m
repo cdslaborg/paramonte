@@ -1,4 +1,4 @@
-classdef Histogram < pm.vis.subplot.Subplot
+classdef Histogram < pm.vis.plot.Plot
     %
     %   This is the Histogram class for generating
     %   instances of 2-dimensional Histogram plots
@@ -11,13 +11,13 @@ classdef Histogram < pm.vis.subplot.Subplot
     %       dfref
     %
     %           See the documentation of the corresponding input
-    %           argument of the parent class ``pm.vis.subplot.Subplot``.
+    %           argument of the superclass ``pm.vis.plot.Plot``.
     %
     %   Attributes
     %   ----------
     %
     %       See the documentation of the attributes
-    %       of the parent class ``pm.vis.subplot.Subplot``.
+    %       of the superclass ``pm.vis.plot.Plot``.
     %
     %   Returns
     %   -------
@@ -27,9 +27,8 @@ classdef Histogram < pm.vis.subplot.Subplot
     %   Interface
     %   ---------
     %
-    %       p = pm.vis.subplot.Histogram(dfref);
-    %       p = pm.vis.subplot.Histogram(dfref, []);
-    %       p = pm.vis.subplot.Histogram(dfref);
+    %       s = pm.vis.subplot.Histogram(dfref);
+    %       s = pm.vis.subplot.Histogram(dfref, varargin);
     %
     %   LICENSE
     %   -------
@@ -37,11 +36,11 @@ classdef Histogram < pm.vis.subplot.Subplot
     %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
     %
     methods(Access = public)
-        function self = Histogram(dfref)
+        function self = Histogram(dfref, varargin)
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.subplot.Subplot("Histogram", dfref);
+            self = self@pm.vis.plot.Plot(pm.vis.subplot.Histogram(dfref), varargin{:});
         end
     end
 end
