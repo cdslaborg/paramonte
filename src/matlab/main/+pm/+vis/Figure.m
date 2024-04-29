@@ -293,9 +293,9 @@ classdef Figure < pm.matlab.Handle
 
             %%%% figure
 
-            if  isfield(self.figure, "color") && pm.array.len(self.figure.color) == 0
-                self.figure.color = "none";
-            end
+            %if  isfield(self.figure, "color") && pm.array.len(self.figure.color) == 0
+            %    self.figure.color = "none";
+            %end
 
         end
 

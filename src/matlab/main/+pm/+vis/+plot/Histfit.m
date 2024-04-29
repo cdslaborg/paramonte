@@ -19,6 +19,19 @@ classdef Histfit < pm.vis.plot.Plot
     %       See the documentation of the attributes
     %       of the superclass ``pm.vis.plot.Plot``.
     %
+    %       varargin
+    %
+    %           Any ``property, value`` pair of the parent object.
+    %           If the property is a ``struct()``, then its value must be given as a cell array,
+    %           with consecutive elements representing the struct ``property-name, property-value`` pairs.
+    %           Note that all of these property-value pairs can be also directly set via the
+    %           parent object attributes, before calling the ``make()`` method.
+    %
+    %       \note
+    %
+    %           The input ``varargin`` can also contain the components
+    %           of the ``subplot`` component of the parent object.
+    %
     %   Returns
     %   -------
     %
