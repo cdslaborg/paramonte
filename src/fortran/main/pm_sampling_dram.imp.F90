@@ -169,18 +169,18 @@ contains
             SKC_"The simulation specification `proposalAdaptationBurnin` is a scalar of type `real` of the highest precision available &
                 &within the ParaMonte library whose value, between 0 and 1, represents the adaptation measure threshold below which &
                 &the simulated Markov chain will be used to generate the output sample. In other words, any point in the output Markov &
-                &chain that has been sampled during significant adaptation of the proposal distribution (set by `proposalAdaptationBurnin`) &
+                &chain sampled during significant adaptation of the proposal distribution (set by `proposalAdaptationBurnin`) &
                 &will not be included in constructing the final MCMC output sample. &
                 &This is to ensure that the generation of the output sample will be based only on the part of the simulated chain that &
                 &is practically guaranteed to be Markovian and ergodic. If this variable is set to 0, then the output sample will be &
                 &generated from the part of the chain where no proposal adaptation has occurred. This non-adaptive or minimally-adaptive &
                 &part of the chain may not even exist if the total adaptation period of the simulation, set by `proposalAdaptationCount` &
                 &and `proposalAdaptationPeriod` input variables, is longer than the total length of the output MCMC chain. &
-                &In such cases, the resulting output sample may be zero size. In general, when good mixing occurs &
+                &In such cases, the resulting output sample may be zero size. Generally, when good mixing occurs &
                 &(e.g., when the input variable `outputChainSize` is reasonably large), then any specific &
                 &value of `proposalAdaptationBurnin` becomes practically irrelevant. &
                 &The default value for `proposalAdaptationBurnin` is `"//getStr(spec%proposalAdaptationBurnin%def)//SKC_"`, implying that the &
-                &entire chain (excluding of an initial automatically-determined burnin period) will be used to generate the final output sample."
+                &entire chain (excluding an initial automatically-determined burnin period) will be used to generate the final output sample."
             !$omp master
             call setNAN(proposalAdaptationBurnin)
             !$omp end master
@@ -192,7 +192,7 @@ contains
             spec%proposalAdaptationCount%def  = huge(0_IK)
             spec%proposalAdaptationCount%desc = &
             SKC_"The simulation specification `proposalAdaptationCount` is a scalar of type `integer` representing the total number of &
-                &adaptive updates that will be made to the parameters of the proposal distribution to increase the efficiency of the sampler &
+                &adaptive updates that will be made to the parameters of the proposal distribution to increase the efficiency of the sampler, &
                 &thus increasing the overall sampling efficiency of the simulation. Every `proposalAdaptationPeriod` number of calls to the &
                 &objective function, the parameters of the proposal distribution will be updated until either the total number of adaptive &
                 &updates reaches the value of `proposalAdaptationCount`. This variable must be a non-negative integer. As a rule of thumb, &
@@ -230,13 +230,13 @@ contains
             spec%proposalAdaptationPeriod%desc = &
             SKC_"The simulation specification `proposalAdaptationPeriod` is a positive-valued scalar of type `integer`. &
                 &Every `proposalAdaptationPeriod` calls to the objective function, the parameters of the proposal distribution will be updated. &
-                &The smaller the value of `proposalAdaptationPeriod`, the easier it will be for the sampler kernel to adapt the proposal distribution &
+                &The smaller the value of `proposalAdaptationPeriod`, the easier for the sampler kernel to adapt the proposal distribution &
                 &to the covariance structure of the objective function. However, this will happen at the expense of slower simulation runtime as the &
                 &adaptation process can become computationally expensive, particularly for very high dimensional objective functions (`ndim >> 1`). &
                 &The larger the value of `proposalAdaptationPeriod`, the easier it will be for the sampler kernel to keep the sampling efficiency &
                 &close to the requested target acceptance rate range (if specified via the input variable targetAcceptanceRate). However, too large &
                 &values for `proposalAdaptationPeriod` will only delay the adaptation of the proposal distribution to the global structure of &
-                &the objective function that is being sampled. If `outputChainSize <= proposalAdaptationPeriod` holds, then no adaptive &
+                &the objective function that is being sampled. If `outputChainSize <= proposalAdaptationPeriod` holds, no adaptive &
                 &updates to the proposal distribution will be made. The default value is `4 * ndim`, where `ndim` is the dimension &
                 &of the domain of the objective function to be sampled."
             !$omp master
@@ -250,7 +250,7 @@ contains
             spec%proposalDelayedRejectionCount%def = 0_IK
             spec%proposalDelayedRejectionCount%desc = &
             SKC_"The simulation specification `proposalAdaptationPeriod` is a non-negative-valued scalar of type `integer` representing &
-                &the total number of stages for which rejections of new proposals will be tolerated by MCMC sampler before going back &
+                &the total number of stages for which rejections of new proposals will be tolerated by the MCMC sampler before going back &
                 &to the previously accepted point (state). The condition `"//&
                 getStr(spec%proposalDelayedRejectionCount%min)//" <= proposalDelayedRejectionCount <= "//getStr(spec%proposalDelayedRejectionCount%max)//&
             SKC_"` must hold. Possible values are:"//NL2//&
@@ -259,10 +259,10 @@ contains
             SKC_"+   `proposalDelayedRejectionCount > 0`"//NL2//&
             SKC_"    which implies a maximum proposalDelayedRejectionCount number of rejections will be tolerated."//NL2//&
             SKC_"For example, setting `proposalDelayedRejectionCount` to `1` means that at any point during the sampling, if a proposal is rejected, &
-                &the MCMC sampler will not go back to the last sampled state. Instead, it will continue to propose a new state from the last &
+                &the MCMC sampler will not return to the last sampled state. Instead, it will continue to propose a new state from the last &
                 &rejected proposal. If the new state is again rejected based on the rules of the MCMC sampler, then the algorithm will not &
-                &tolerate further rejections, because the maximum number of rejections to be tolerated has been set by the user to be &
-                &`proposalDelayedRejectionCount = 1`. The algorithm then goes back to the original last-accepted state and will begin &
+                &tolerate further rejections because the maximum number of rejections to be tolerated has been set by the user to be &
+                &`proposalDelayedRejectionCount = 1`. The algorithm then returns to the original last-accepted state and will begin &
                 &proposing new states from that location. The default value is `"//getStr(spec%proposalDelayedRejectionCount%def)//SKC_"`."
             !$omp master
             proposalDelayedRejectionCount = spec%proposalDelayedRejectionCount%null
@@ -279,7 +279,7 @@ contains
             &is activated (by setting `proposalDelayedRejectionCount` to a positive value). At each `i`th stage of the DR process, &
             &the proposal distribution from the last stage is scaled by the factor `proposalDelayedRejectionScale(i)`. &
             &Missing elements of the `proposalDelayedRejectionScale` in the input external file to the sampler will be set to &
-            &the default value. The default value at all stages is `0.5**(1 / ndim)` where `ndim` is the number of dimensions of the &
+            &the default value. The default value at all stages is `0.5**(1 / ndim)`, where `ndim` is the number of dimensions of the &
             &domain of the objective function. This default value effectively reduces the volume of the covariance matrix &
             &of the proposal distribution by half compared to the last DR stage."
             !$omp master

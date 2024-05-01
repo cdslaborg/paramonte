@@ -149,7 +149,7 @@ module pm_distUnifPar
     !>                              containing the natural logarithm of the lengths of the edges of the `ndim`-dimensional
     !>                              rectangular support of the distribution along each of the `ndim` axes.<br>
     !>                              <ol>
-    !>                                  <li>    If `logLenEdge` is a scalar, the support of the distribution is assumed to be an `ndim`-dimensional hyper-cube.<br>
+    !>                                  <li>    If `logLenEdge` is a scalar, the support of the distribution is assumed to be a `ndim`-dimensional hyper-cube.<br>
     !>                                          In such a case, the input optional argument `ndim` must be specified.<br>
     !>                                  <li>    If `logLenEdge` is a vector, the support of the distribution is assumed to be a hyper-rectangle.<br>
     !>                              </ol>
