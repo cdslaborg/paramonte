@@ -184,25 +184,35 @@ classdef FileContentsRestartDRAM < pm.sampling.FileContentsRestart
             self.proposalCor                    = zeros(self.ndim, self.ndim, self.count);
             self.uniqueStateVisitCount          = zeros(self.count, 1);
             skip = 10 + self.ndim * (self.ndim + 3) / 2;
-            for icount = 1 : self.count
-                if mod(icount, 10) == 0
-                    self.spinner.spin(icount / self.count);
-                end
-                istart = (icount - 1) * skip + 1;
-                rowOffset = 1; self.meanAcceptanceRateSinceStart(icount) = str2double(self.lineList(self.ilast + istart + rowOffset));
-                rowOffset = 3; self.uniqueStateVisitCount       (icount) = str2double(self.lineList(self.ilast + istart + rowOffset));
-                rowOffset = 5; self.proposalAdaptiveScaleSq     (icount) = str2double(self.lineList(self.ilast + istart + rowOffset));
-                rowOffset = 7; self.proposalLogVolume           (icount) = str2double(self.lineList(self.ilast + istart + rowOffset));
-                rowOffset = 9;
-                iend = istart + rowOffset + self.ndim;
-                self.proposalMean(1 : self.ndim, icount) = str2double(self.lineList(self.ilast + istart + rowOffset : self.ilast + iend - 1));
-                for idim = 1 : self.ndim % covmat
+            icount = 0;
+            istart = 1;
+            while istart < length(self.lineList) - 1
+                "test"
+                self.lineList{self.ilast + istart}
+                self.lineList{self.ilast + istart + 2}
+                if ~strcmp(self.lineList{self.ilast + istart}, self.lineList{self.ilast + istart + 2})
+                    icount = icount + 1;
+                    if mod(icount, 10) == 0
+                        self.spinner.spin(icount / self.count);
+                    end
+                    self.meanAcceptanceRateSinceStart   (icount) = str2double(self.lineList(self.ilast + istart + 1));
+                    self.uniqueStateVisitCount          (icount) = str2double(self.lineList(self.ilast + istart + 3));
+                    self.proposalAdaptiveScaleSq        (icount) = str2double(self.lineList(self.ilast + istart + 5));
+                    self.proposalLogVolume              (icount) = str2double(self.lineList(self.ilast + istart + 7));
+                    istart = istart + 9;
+                    iend = istart + self.ndim;
+                    self.proposalMean(1 : self.ndim, icount) = str2double(self.lineList(self.ilast + istart : self.ilast + iend - 1));
+                    for idim = 1 : self.ndim % covmat
+                        istart = iend + 1;
+                        iend = iend + idim;
+                        cholupp(1 : idim, idim) = str2double(self.lineList(self.ilast + istart : self.ilast + iend)); % This is the upper Cholesky.
+                    end
+                    self.proposalCov(:, :, icount) = cholupp' * cholupp;
+                    self.proposalCor(:, :, icount) = corrcov(squeeze(self.proposalCov(:, :, icount)));
                     istart = iend + 1;
-                    iend = iend + idim;
-                    cholupp(1 : idim, idim) = str2double(self.lineList(self.ilast + istart : self.ilast + iend)); % This is the upper Cholesky.
+                else
+                    istart = istart + 2;
                 end
-                self.proposalCov(:, :, icount) = cholupp' * cholupp;
-                self.proposalCor(:, :, icount) = corrcov(squeeze(self.proposalCov(:, :, icount)));
             end
             self.spinner.spin(1);
             self.checkpoint([]);

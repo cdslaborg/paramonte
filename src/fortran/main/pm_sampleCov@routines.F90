@@ -4953,6 +4953,444 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#define setCovUpdated_ENABLED 1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define Old_ENABLED 1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define RDP_ENABLED 1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define UXD_ENABLED 1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define CK_ENABLED 1
+
+#if CK5_ENABLED
+    module procedure setCovUpdatedOld_RDP_UXD_CK5
+        use pm_kind, only: TKC => CK5
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#if CK4_ENABLED
+    module procedure setCovUpdatedOld_RDP_UXD_CK4
+        use pm_kind, only: TKC => CK4
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#if CK3_ENABLED
+    module procedure setCovUpdatedOld_RDP_UXD_CK3
+        use pm_kind, only: TKC => CK3
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#if CK2_ENABLED
+    module procedure setCovUpdatedOld_RDP_UXD_CK2
+        use pm_kind, only: TKC => CK2
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#if CK1_ENABLED
+    module procedure setCovUpdatedOld_RDP_UXD_CK1
+        use pm_kind, only: TKC => CK1
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#undef CK_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define RK_ENABLED 1
+
+#if RK5_ENABLED
+    module procedure setCovUpdatedOld_RDP_UXD_RK5
+        use pm_kind, only: TKC => RK5
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK4_ENABLED
+    module procedure setCovUpdatedOld_RDP_UXD_RK4
+        use pm_kind, only: TKC => RK4
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK3_ENABLED
+    module procedure setCovUpdatedOld_RDP_UXD_RK3
+        use pm_kind, only: TKC => RK3
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK2_ENABLED
+    module procedure setCovUpdatedOld_RDP_UXD_RK2
+        use pm_kind, only: TKC => RK2
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK1_ENABLED
+    module procedure setCovUpdatedOld_RDP_UXD_RK1
+        use pm_kind, only: TKC => RK1
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#undef RK_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef UXD_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define XLD_ENABLED 1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define CK_ENABLED 1
+
+#if CK5_ENABLED
+    module procedure setCovUpdatedOld_RDP_XLD_CK5
+        use pm_kind, only: TKC => CK5
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#if CK4_ENABLED
+    module procedure setCovUpdatedOld_RDP_XLD_CK4
+        use pm_kind, only: TKC => CK4
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#if CK3_ENABLED
+    module procedure setCovUpdatedOld_RDP_XLD_CK3
+        use pm_kind, only: TKC => CK3
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#if CK2_ENABLED
+    module procedure setCovUpdatedOld_RDP_XLD_CK2
+        use pm_kind, only: TKC => CK2
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#if CK1_ENABLED
+    module procedure setCovUpdatedOld_RDP_XLD_CK1
+        use pm_kind, only: TKC => CK1
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#undef CK_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define RK_ENABLED 1
+
+#if RK5_ENABLED
+    module procedure setCovUpdatedOld_RDP_XLD_RK5
+        use pm_kind, only: TKC => RK5
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK4_ENABLED
+    module procedure setCovUpdatedOld_RDP_XLD_RK4
+        use pm_kind, only: TKC => RK4
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK3_ENABLED
+    module procedure setCovUpdatedOld_RDP_XLD_RK3
+        use pm_kind, only: TKC => RK3
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK2_ENABLED
+    module procedure setCovUpdatedOld_RDP_XLD_RK2
+        use pm_kind, only: TKC => RK2
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK1_ENABLED
+    module procedure setCovUpdatedOld_RDP_XLD_RK1
+        use pm_kind, only: TKC => RK1
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#undef RK_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef XLD_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef RDP_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef Old_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef setCovUpdated_ENABLED
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if 0
+#define setCovMeanUpdated_ENABLED 1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define Old_ENABLED 1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define RDP_ENABLED 1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define UXD_ENABLED 1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define CK_ENABLED 1
+
+#if CK5_ENABLED
+    module procedure setCovMeanUpdatedOld_RDP_UXD_CK5
+        use pm_kind, only: TKC => CK5
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#if CK4_ENABLED
+    module procedure setCovMeanUpdatedOld_RDP_UXD_CK4
+        use pm_kind, only: TKC => CK4
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#if CK3_ENABLED
+    module procedure setCovMeanUpdatedOld_RDP_UXD_CK3
+        use pm_kind, only: TKC => CK3
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#if CK2_ENABLED
+    module procedure setCovMeanUpdatedOld_RDP_UXD_CK2
+        use pm_kind, only: TKC => CK2
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#if CK1_ENABLED
+    module procedure setCovMeanUpdatedOld_RDP_UXD_CK1
+        use pm_kind, only: TKC => CK1
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#undef CK_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define RK_ENABLED 1
+
+#if RK5_ENABLED
+    module procedure setCovMeanUpdatedOld_RDP_UXD_RK5
+        use pm_kind, only: TKC => RK5
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK4_ENABLED
+    module procedure setCovMeanUpdatedOld_RDP_UXD_RK4
+        use pm_kind, only: TKC => RK4
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK3_ENABLED
+    module procedure setCovMeanUpdatedOld_RDP_UXD_RK3
+        use pm_kind, only: TKC => RK3
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK2_ENABLED
+    module procedure setCovMeanUpdatedOld_RDP_UXD_RK2
+        use pm_kind, only: TKC => RK2
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK1_ENABLED
+    module procedure setCovMeanUpdatedOld_RDP_UXD_RK1
+        use pm_kind, only: TKC => RK1
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#undef RK_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef UXD_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define XLD_ENABLED 1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define CK_ENABLED 1
+
+#if CK5_ENABLED
+    module procedure setCovMeanUpdatedOld_RDP_XLD_CK5
+        use pm_kind, only: TKC => CK5
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#if CK4_ENABLED
+    module procedure setCovMeanUpdatedOld_RDP_XLD_CK4
+        use pm_kind, only: TKC => CK4
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#if CK3_ENABLED
+    module procedure setCovMeanUpdatedOld_RDP_XLD_CK3
+        use pm_kind, only: TKC => CK3
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#if CK2_ENABLED
+    module procedure setCovMeanUpdatedOld_RDP_XLD_CK2
+        use pm_kind, only: TKC => CK2
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#if CK1_ENABLED
+    module procedure setCovMeanUpdatedOld_RDP_XLD_CK1
+        use pm_kind, only: TKC => CK1
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#undef CK_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define RK_ENABLED 1
+
+#if RK5_ENABLED
+    module procedure setCovMeanUpdatedOld_RDP_XLD_RK5
+        use pm_kind, only: TKC => RK5
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK4_ENABLED
+    module procedure setCovMeanUpdatedOld_RDP_XLD_RK4
+        use pm_kind, only: TKC => RK4
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK3_ENABLED
+    module procedure setCovMeanUpdatedOld_RDP_XLD_RK3
+        use pm_kind, only: TKC => RK3
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK2_ENABLED
+    module procedure setCovMeanUpdatedOld_RDP_XLD_RK2
+        use pm_kind, only: TKC => RK2
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#if RK1_ENABLED
+    module procedure setCovMeanUpdatedOld_RDP_XLD_RK1
+        use pm_kind, only: TKC => RK1
+#include "pm_sampleCov@routines.inc.F90"
+    end procedure
+#endif
+
+#undef RK_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef XLD_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef RDP_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef Old_ENABLED
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#undef setCovMeanUpdated_ENABLED
+#endif
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 #undef CHECK_ASSERTION
 
 end submodule routines

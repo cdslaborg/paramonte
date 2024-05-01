@@ -295,7 +295,7 @@ contains
                                 write(spec%restartFile%unit, spec%restartFile%format) trim(adjustl(spec%domainAxisName%val(idim)))
                             end do
                         end if
-                        call writeRestart(spec, proposal, meanAccRateSinceStart = 1._RKC)
+                        call writeRestart(spec, meanAccRateSinceStart = 1._RKC, proposal = proposal)
                     else
                         if (.not. spec%outputRestartFileFormat%isBinary) then
                             do idim = 1, spec%ndim%val + 3
@@ -332,9 +332,9 @@ contains
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        subroutine readRestart(spec, meanAccRateSinceStart)!, nskip
+        subroutine readRestart(spec, meanAccRateSinceStart, nskip)
             real(RKC), intent(out) :: meanAccRateSinceStart
-            !integer(IK), intent(in), optional :: nskip
+            integer(IK), intent(in), optional :: nskip
             type(spec_type), intent(in) :: spec
             integer(IK) :: nskip_def, idim
             if (spec%outputRestartFileFormat%isBinary) then
@@ -342,22 +342,23 @@ contains
             else
                 read(spec%restartFile%unit, *)
                 read(spec%restartFile%unit, *) meanAccRateSinceStart
-                !nskip_def = 8 + spec%ndim%val * (spec%ndim%val + 3) / 2
-                !if (present(nskip)) nskip_def = nskip
-                do idim = 1, 8 + spec%ndim%val * (spec%ndim%val + 3) / 2 !nskip_def
+                nskip_def = 8 + spec%ndim%val * (spec%ndim%val + 3) / 2
+                if (present(nskip)) nskip_def = nskip
+                !do idim = 1, 8 + spec%ndim%val * (spec%ndim%val + 3) / 2 !nskip_def
+                do idim = 1, nskip_def
                     read(spec%restartFile%unit, *)
                 end do
             end if
         end subroutine readRestart
 
-        subroutine writeRestart(spec, proposal, meanAccRateSinceStart)
+        subroutine writeRestart(spec, meanAccRateSinceStart, proposal)
+            type(proposal_type), intent(in), optional :: proposal
             real(RKC), intent(in) :: meanAccRateSinceStart
-            type(proposal_type), intent(in) :: proposal
             type(spec_type), intent(in) :: spec
             integer(IK) :: idim, jdim
             if (spec%outputRestartFileFormat%isBinary) then
                 write(spec%restartFile%unit) meanAccRateSinceStart
-            else
+            elseif (present(proposal)) then
                 ! The extra components are all informational for the end user, otherwise not needed for a restart.
                 write(spec%restartFile%unit, spec%restartFile%format) "meanAcceptanceRateSinceStart" & ! LCOV_EXCL_LINE
                                                                     , meanAccRateSinceStart & ! LCOV_EXCL_LINE
@@ -374,6 +375,10 @@ contains
                                                                     ! Only the upper-triangle of the Cholesky factorization with no delayed rejection.
                                                                     ! We pass Cholesky factorization because the covariance matrix tends to become
                                                                     ! singular in the post-processing step in higher-level languages.
+            else
+                ! The extra components are all informational for the end user, otherwise not needed for a restart.
+                write(spec%restartFile%unit, spec%restartFile%format) "meanAcceptanceRateSinceStart" & ! LCOV_EXCL_LINE
+                                                                    , meanAccRateSinceStart
             end if
             flush(spec%restartFile%unit)
         end subroutine writeRestart
@@ -603,9 +608,17 @@ contains
 
             end if sufficientSampleSizeCheck_block
 
-            ! Adjust the scale of the covariance matrix and the Cholesky factor, if needed.
+            ! Read the restart file (in dry mode).
 
-            if (spec%image%is%leader .and. spec%run%is%dry) call readRestart(spec, meanAccRateSinceStart)
+            if (spec%image%is%leader .and. spec%run%is%dry) then
+                if (proposalAdaptationSucceeded .or. proposalScalingNeeded) then
+                    call readRestart(spec, meanAccRateSinceStart)
+                else
+                    call readRestart(spec, meanAccRateSinceStart, nskip = 0_IK)
+                end if
+            end if
+
+            ! Adjust the scale of the covariance matrix and the Cholesky factor, if needed.
 
             proposalScaling_block: if (proposalScalingNeeded) then
 
@@ -709,7 +722,17 @@ contains
 
             end if proposalAdaptationEstimate_block
 
-            if (spec%image%is%leader .and. spec%run%is%new) call writeRestart(spec, proposal, meanAccRateSinceStart)
+            ! Read the restart file (in new mode).
+
+            if (spec%image%is%leader .and. spec%run%is%new) then
+                ! This extra check avoids redundant restart writes when no scaling has occurred.
+                if (proposalAdaptationSucceeded .or. proposalScalingNeeded) then
+                    call writeRestart(spec, meanAccRateSinceStart, proposal)
+                else
+                    call writeRestart(spec, meanAccRateSinceStart)
+                end if
+            end if
+            !if (spec%image%is%leader .and. spec%run%is%new) call writeRestart(spec, proposal, meanAccRateSinceStart)
 
         end subroutine setProposalAdapted
 
