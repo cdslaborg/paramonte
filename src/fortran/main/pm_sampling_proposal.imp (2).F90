@@ -467,8 +467,6 @@ contains
                                         )
 
             use pm_sampleMean, only: setMean
-            use pm_sampleMean, only: setMeanMerged
-            use pm_sampleCov, only: setCovMeanUpdated
             use pm_matrixTrace, only: getMatMulTraceLog
             use pm_sampleCov, only: setCov, setCovMeanMerged
             use pm_matrixChol, only: setMatChol, lowDia, transHerm
@@ -491,7 +489,6 @@ contains
             integer(IK):: jdim, nsam, info
             integer(IK), parameter :: dim = 2_IK
             logical(LK) :: proposalScalingNeeded
-            logical(LK) :: nonSingularSample
 
             nsam = size(sampleState, 2, IK)
             sampleSizeOld = proposal%sampleSizeOld ! this is kept only for restoration of proposal%sampleSizeOld, if needed.
@@ -499,71 +496,26 @@ contains
 
             ! First if there are less than spec%ndim%vp1 points for new covariance computation, then just scale the covariance and return.
 
-            ! This will be used to recover the old covariance in case of proposal update failure, and to compute the adaptation measure.
-            sampleStateCovCholOld = proposal%covLowChoUpp(:, :, 0)
-
-            nonSingularSample = spec%ndim%val < nsam
-           !proposalAdaptationSampleUsed = nonSingularSample ! update proposal only if sample is non-singular.
-            proposalAdaptationSampleUsed = nonSingularSample .or. 1_IK < proposal%sampleSizeOld ! update sample for any input singular or non-singular sample.
-
-            mergeCovMat_block: if (proposalAdaptationSampleUsed) then
+            proposalAdaptationSampleUsed = spec%ndim%val < nsam
+            sufficientSampleSizeCheck_block: if (proposalAdaptationSampleUsed) then
 
                 ! Get the upper covariance matrix and mean of the new sample.
 
                 if (proposalAdaptationGreedyEnabled) then
                     sampleSizeCurrent = nsam
                     call setMean(sampleStateMeanCurrent, sampleState, dim)
-                    if (nonSingularSample) call setCov(sampleStateCovLowCurrent(:, 1 : spec%ndim%val), lowDia, sampleStateMeanCurrent, sampleState, dim)
+                    call setCov(sampleStateCovLowCurrent(:, 1 : spec%ndim%val), lowDia, sampleStateMeanCurrent, sampleState, dim)
                 else
                     call setMean(sampleStateMeanCurrent, sampleState, dim, sampleWeight, sampleSizeCurrent)
-                    if (nonSingularSample) call setCov(sampleStateCovLowCurrent(:, 1 : spec%ndim%val), lowDia, sampleStateMeanCurrent, sampleState, dim, sampleWeight, sampleSizeCurrent)
+                    call setCov(sampleStateCovLowCurrent(:, 1 : spec%ndim%val), lowDia, sampleStateMeanCurrent, sampleState, dim, sampleWeight, sampleSizeCurrent)
                 end if
 
                 ! Combine old and new covariance matrices if both exist.
 
-                if (1_IK < proposal%sampleSizeOld) then
+                ! This will be used to recover the old covariance in case of proposal update failure, and to compute the adaptation measure.
+                sampleStateCovCholOld = proposal%covLowChoUpp(:, :, 0)
 
-                    fracA = real(proposal%sampleSizeOld, RKC) / real(proposal%sampleSizeOld + sampleSizeCurrent, RKC)
-
-                    nonSingular_block: if (nonSingularSample) then
-
-                        ! First scale the new covariance matrix by the default scale factor, which will be then used to get the Cholesky Factor.
-
-                        if (proposal%scaleSq%default /= 1._RKC) then
-                            ! The `do concurrent` version is problematic for OpenMP builds of the ParaMonte library with the Intel ifort 2021.8 on heap, yielding segmentation fault.
-                            !do concurrent(jdim = 1 : spec%ndim%val)
-                            do jdim = 1, spec%ndim%val
-                                sampleStateCovLowCurrent(jdim : spec%ndim%val, jdim) = sampleStateCovLowCurrent(jdim : spec%ndim%val, jdim) * proposal%scaleSq%default
-                            end do
-                        end if
-
-                        ! Now combine it with the old covariance matrix.
-                        ! Do not set the full boundaries' range `(1 : spec%ndim%val)` for `proposal%covLowChoUpp` in the following subroutine call.
-                        ! Setting the boundaries forces the compiler to generate a temporary array.
-
-                        call setCovMeanMerged   ( proposal%covLowChoUpp(:, 1 : spec%ndim%val, 0) & ! LCOV_EXCL_LINE
-                                                , sampleStateMeanNew & ! LCOV_EXCL_LINE
-                                                , sampleStateCovLowCurrent(:, 1 : spec%ndim%val) & ! LCOV_EXCL_LINE
-                                                , sampleStateMeanCurrent & ! LCOV_EXCL_LINE
-                                                , sampleStateCovCholOld(:, 1 : spec%ndim%val) & ! LCOV_EXCL_LINE
-                                                , proposal%meanOld & ! LCOV_EXCL_LINE
-                                                , fracA & ! LCOV_EXCL_LINE
-                                                , lowDia & ! LCOV_EXCL_LINE
-                                                )
-                        proposal%meanOld(1 : spec%ndim%val) = sampleStateMeanNew
-
-                    else nonSingular_block ! singular new sample.
-
-                        call setCovMeanUpdated  ( covA = proposal%covLowChoUpp(:, 1 : spec%ndim%val, 0) & ! LCOV_EXCL_LINE
-                                                , meanA = proposal%meanOld & ! LCOV_EXCL_LINE
-                                                , meanB = sampleStateMeanCurrent & ! LCOV_EXCL_LINE
-                                                , fracA = fracA & ! LCOV_EXCL_LINE
-                                                , subset = lowDia & ! LCOV_EXCL_LINE
-                                                )
-
-                    end if nonSingular_block
-
-                else ! first occurrence of nonSingularSample.
+                mergeCovMat_block: if (proposal%sampleSizeOld == 1_IK) then
 
                     ! There is no prior old Covariance matrix to combine with the new one from the new sampleState
 
@@ -571,20 +523,40 @@ contains
                     proposal%sampleSizeOld = sampleSizeCurrent
 
                     ! Copy and then scale the new covariance matrix by the default scale factor, which will be then used to get the Cholesky Factor.
+                    ! The `do concurrent` version is problematic for OpenMP builds of the ParaMonte library with the Intel ifort 2021.8 on heap, yielding segmentation fault.
+                    !do concurrent(jdim = 1 : spec%ndim%val)
 
-                    if (proposal%scaleSq%default == 1._RKC) then
-                        ! The `do concurrent` version is problematic for OpenMP builds of the ParaMonte library with the Intel ifort 2021.8 on heap, yielding segmentation fault.
-                        !do concurrent(jdim = 1 : spec%ndim%val)
-                        do jdim = 1, spec%ndim%val
-                            proposal%covLowChoUpp(jdim : spec%ndim%val, jdim, 0) = sampleStateCovLowCurrent(jdim : spec%ndim%val, jdim)
-                        end do
-                    else
-                        do jdim = 1, spec%ndim%val
-                            proposal%covLowChoUpp(jdim : spec%ndim%val, jdim, 0) = sampleStateCovLowCurrent(jdim : spec%ndim%val, jdim) * proposal%scaleSq%default
-                        end do
-                    end if
+                    do jdim = 1, spec%ndim%val
+                        proposal%covLowChoUpp(jdim : spec%ndim%val, jdim, 0) = sampleStateCovLowCurrent(jdim : spec%ndim%val, jdim) * proposal%scaleSq%default
+                    end do
 
-                end if
+                else mergeCovMat_block
+
+                    ! First scale the new covariance matrix by the default scale factor, which will be then used to get the Cholesky Factor.
+
+                    ! The `do concurrent` version is problematic for OpenMP builds of the ParaMonte library with the Intel ifort 2021.8 on heap, yielding segmentation fault.
+                    !do concurrent(jdim = 1 : spec%ndim%val)
+                    do jdim = 1, spec%ndim%val
+                        sampleStateCovLowCurrent(jdim : spec%ndim%val, jdim) = sampleStateCovLowCurrent(jdim : spec%ndim%val, jdim) * proposal%scaleSq%default
+                    end do
+
+                    ! Now combine it with the old covariance matrix.
+                    ! Do not set the full boundaries' range `(1 : spec%ndim%val)` for `proposal%covLowChoUpp` in the following subroutine call.
+                    ! Setting the boundaries forces the compiler to generate a temporary array.
+
+                    fracA = real(proposal%sampleSizeOld, RKC) / real(proposal%sampleSizeOld + sampleSizeCurrent, RKC)
+                    call setCovMeanMerged   ( proposal%covLowChoUpp(:, 1 : spec%ndim%val, 0) & ! LCOV_EXCL_LINE
+                                            , sampleStateMeanNew & ! LCOV_EXCL_LINE
+                                            , sampleStateCovLowCurrent(:, 1 : spec%ndim%val) & ! LCOV_EXCL_LINE
+                                            , sampleStateMeanCurrent & ! LCOV_EXCL_LINE
+                                            , sampleStateCovCholOld(:, 1 : spec%ndim%val) & ! LCOV_EXCL_LINE
+                                            , proposal%meanOld & ! LCOV_EXCL_LINE
+                                            , fracA & ! LCOV_EXCL_LINE
+                                            , lowDia & ! LCOV_EXCL_LINE
+                                            )
+                    proposal%meanOld(1 : spec%ndim%val) = sampleStateMeanNew
+
+                end if mergeCovMat_block
 
                 ! Now get the Cholesky factorization.
                 ! WARNING: Do not set the full boundaries' range `(1 : spec%ndim%val)` for the first index of `proposal%covLowChoUpp` in the following subroutine call.
@@ -611,25 +583,30 @@ contains
 
                 end if posDefCheck_block
 
-            else mergeCovMat_block ! Happens only if this is the first update and the first sample is singular.
+                !! perform global adaptive scaling is requested
+                !if (spec%targetAcceptanceRate%enabled) then
+                !    if (meanAccRateSinceStart < spec%targetAcceptanceRate%aim) then
+                !        proposal%scaleSq%running = mc_maxScaleFactorSq**((spec%targetAcceptanceRate%aim-meanAccRateSinceStart)/spec%targetAcceptanceRate%aim)
+                !    else
+                !        proposal%scaleSq%running = mc_maxScaleFactorSq**((spec%targetAcceptanceRate%aim-meanAccRateSinceStart)/(1._RKC-spec%targetAcceptanceRate%aim))
+                !    end if
+                !    proposal%scaleSq%running = proposal%scaleSq%running * (meanAccRateSinceStart/spec%targetAcceptanceRate%aim)**spec%ndim%inv
+                !end if
 
-                ! If the first covariance merging has not occurred yet,
-                ! set the scaling factor appropriately to shrink the covariance matrix.
+            else sufficientSampleSizeCheck_block
 
-                !proposalScalingNeeded = proposalScalingNeeded .or. 1_IK == proposal%sampleSizeOld ! scale only when sample is singular in the first try.
-                proposalScalingNeeded = .true._LK
+                ! If the first covariance merging has not occurred yet, set the scaling factor appropriately to shrink the covariance matrix.
 
-            end if mergeCovMat_block
+                proposalScalingNeeded = proposalScalingNeeded .or. proposal%sampleSizeOld == 1_IK
+                if (proposalScalingNeeded) then
+                    ! Save the old covariance matrix for the computation of the adaptation measure.
+                    ! \todo Could these copies be somehow removed and optimized away? perhaps unimportant if sample size is sufficient most of the times.
+                    do jdim = 1, spec%ndim%val
+                        sampleStateCovCholOld(jdim : spec%ndim%val, jdim) = proposal%covLowChoUpp(jdim : spec%ndim%val, jdim, 0)
+                    end do
+                end if
 
-            !! perform global adaptive scaling is requested
-            !if (spec%targetAcceptanceRate%enabled) then
-            !    if (meanAccRateSinceStart < spec%targetAcceptanceRate%aim) then
-            !        proposal%scaleSq%running = mc_maxScaleFactorSq**((spec%targetAcceptanceRate%aim-meanAccRateSinceStart)/spec%targetAcceptanceRate%aim)
-            !    else
-            !        proposal%scaleSq%running = mc_maxScaleFactorSq**((spec%targetAcceptanceRate%aim-meanAccRateSinceStart)/(1._RKC-spec%targetAcceptanceRate%aim))
-            !    end if
-            !    proposal%scaleSq%running = proposal%scaleSq%running * (meanAccRateSinceStart/spec%targetAcceptanceRate%aim)**spec%ndim%inv
-            !end if
+            end if sufficientSampleSizeCheck_block
 
             ! Read the restart file (in dry mode).
 
@@ -661,7 +638,6 @@ contains
                         !end block
                     end if
                 else
-                    ! This should happen only for the first update with singular samples.
                     adaptiveScale = 0.5_RKC
                     adaptiveScaleSq = 0.25_RKC
                 end if

@@ -151,12 +151,12 @@ classdef SpecDRAM < pm.sampling.SpecMCMC
             %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
             %
             entries = getEntriesNML@pm.sampling.SpecMCMC(self, ndim);
-            if  ~isempty(self.proposalDelayedRejectionScale ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalAdaptationBurnin      ", self.proposalAdaptationBurnin         , "real"   , 1); end
-            if  ~isempty(self.proposalDelayedRejectionCount ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalAdaptationCount      ", self.proposalAdaptationCount         , "integer", 1); end
-            if  ~isempty(self.proposalAdaptationPeriod      ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalAdaptationCountGreedy", self.proposalAdaptationCountGreedy   , "integer", 1); end
-            if  ~isempty(self.proposalAdaptationCountGreedy ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalAdaptationPeriod     ", self.proposalAdaptationPeriod        , "integer", 1); end
-            if  ~isempty(self.proposalAdaptationCount       ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalDelayedRejectionCount", self.proposalDelayedRejectionCount   , "integer", 1); end
-            if  ~isempty(self.proposalAdaptationBurnin       ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalDelayedRejectionScale", self.proposalDelayedRejectionScale   , "real"   , self.proposalDelayedRejectionCount); end
+            if  ~isempty(self.proposalAdaptationBurnin      ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalAdaptationBurnin     ", self.proposalAdaptationBurnin        , "real"   , 1); end
+            if  ~isempty(self.proposalAdaptationCount       ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalAdaptationCount      ", self.proposalAdaptationCount         , "integer", 1); end
+            if  ~isempty(self.proposalAdaptationCountGreedy ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalAdaptationCountGreedy", self.proposalAdaptationCountGreedy   , "integer", 1); end
+            if  ~isempty(self.proposalAdaptationPeriod      ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalAdaptationPeriod     ", self.proposalAdaptationPeriod        , "integer", 1); end
+            if  ~isempty(self.proposalDelayedRejectionCount ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalDelayedRejectionCount", self.proposalDelayedRejectionCount   , "integer", 1); end
+            if  ~isempty(self.proposalDelayedRejectionScale ); entries = entries + self.nmlsep + pm.introspection.getEntryNML("proposalDelayedRejectionScale", self.proposalDelayedRejectionScale   , "real"   , self.proposalDelayedRejectionCount); end
         end
 
     end

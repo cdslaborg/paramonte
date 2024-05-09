@@ -503,8 +503,7 @@ contains
             sampleStateCovCholOld = proposal%covLowChoUpp(:, :, 0)
 
             nonSingularSample = spec%ndim%val < nsam
-           !proposalAdaptationSampleUsed = nonSingularSample ! update proposal only if sample is non-singular.
-            proposalAdaptationSampleUsed = nonSingularSample .or. 1_IK < proposal%sampleSizeOld ! update sample for any input singular or non-singular sample.
+            proposalAdaptationSampleUsed = nonSingularSample .or. 1_IK < proposal%sampleSizeOld
 
             mergeCovMat_block: if (proposalAdaptationSampleUsed) then
 
@@ -613,10 +612,7 @@ contains
 
             else mergeCovMat_block ! Happens only if this is the first update and the first sample is singular.
 
-                ! If the first covariance merging has not occurred yet,
-                ! set the scaling factor appropriately to shrink the covariance matrix.
-
-                !proposalScalingNeeded = proposalScalingNeeded .or. 1_IK == proposal%sampleSizeOld ! scale only when sample is singular in the first try.
+                ! If the first covariance merging has not occurred yet, set the scaling factor appropriately to shrink the covariance matrix.
                 proposalScalingNeeded = .true._LK
 
             end if mergeCovMat_block

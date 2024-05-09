@@ -8835,4 +8835,372 @@ module pm_sampleCov
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !>  \brief
+    !>  Return the covariance and mean of a sample that results from the merger of two separate (potentially weighted) non-singular \f$A\f$ and singular \f$B\f$ samples.<br>
+    !>
+    !>  \details
+    !>  See the documentation of [pm_sampleCov](@ref pm_sampleCov) for more information and definition online updating of sample covariance.<br>
+    !>
+    !>  \note
+    !>  The input and output variances of this generic interface are all **biased** variances.<br>
+    !>  A **biased** covariance can be readily unbiased by multiplying it with the appropriate bias-correction factors
+    !>  detailed in the documentation of [pm_sampleCov](@ref pm_sampleCov).<br>
+    !>
+    !>  \param[in]      covA        :   The input `contiguous` matrix of shape `(1 : ndim, 1 : ndim)` of,
+    !>                                  <ol>
+    !>                                      <li>    type `complex` of kind \CKALL,
+    !>                                      <li>    type `real` of kind \RKALL,
+    !>                                  </ol>
+    !>                                  containing the **biased** covariance of the first sample that must be merged with the second sample.<br>
+    !>  \param[in]      meanA       :   The input object of the same type and kind as the input argument `covA` of size `size(covA, 1)`,
+    !>                                  containing the mean of the first sample that must be merged with the mean of the second sample `meanB`.<br>
+    !>  \param[in]      meanB       :   The input or input/output object of the same type and kind and rank as the input argument `covA` of size `size(covA, 1)`,
+    !>                                  containing the mean of the second sample that must be merged with the mean of the first sample `meanA`.<br>
+    !>                                  If the input argument `mean` is missing, then `meanB` contains the updated mean of the merged sample on return.<br>
+    !>                                  Otherwise, the contents of `meanB` remain intact upon return.<br>
+    !>  \param[in]      fracA       :   The input scalar of type `real` of the same kind as `covA`,
+    !>                                  containing the ratio of the sum of the weights of all points in sample \f$A\f$ to sum of weights of all points in the merged sample.<br>
+    !>                                  If the sample is unweighted, then `fracA` is simply `size(sampleA) / (size(sampleA) + size(sampleB))`.<br>
+    !>  \param[in]      subset      :   The input scalar constant that can be:<br>
+    !>                                  <ol>
+    !>                                      <li>    The constant [lowDia](@ref pm_matrixSubset::lowDia), implying that only the lower-diagonal subset of the input `cov`, and `covA` matrices must be accessed and/or manipulated.<br>
+    !>                                      <li>    The constant [uppDia](@ref pm_matrixSubset::uppDia), implying that only the upper-diagonal subset of the input `cov`, and `covA` matrices must be accessed and/or manipulated.<br>
+    !>                                  </ol>
+    !>                                  This input argument is merely serves to resolve the different procedures of this generic interface from each other at compile-time.<br>
+    !>
+    !>  \interface{setCovMeanUpdated}
+    !>  \code{.F90}
+    !>
+    !>      use pm_sampleCov, only: setCovMeanUpdated
+    !>
+    !>      call setCovMeanUpdated(covA(1:ndim, 1:ndim), meanA(1:ndim), meanB(1:ndim), fracA, subset)
+    !>
+    !>  \endcode
+    !>
+    !>  \warning
+    !>  The condition `0 < fracA .and. fracA < 1` must hold for the corresponding input arguments.<br>
+    !>  The condition `all(size(meanB) == shape(covA))` must hold for the corresponding input arguments.<br>
+    !>  The condition `all(size(meanA) == shape(covA))` must hold for the corresponding input arguments.<br>
+    !>  \vericons
+    !>
+    !>  \warnpure
+    !>
+    !>  \see
+    !>  [getCor](@ref pm_sampleCor::getCor)<br>
+    !>  [setCor](@ref pm_sampleCor::setCor)<br>
+    !>  [getCov](@ref pm_sampleCov::getCov)<br>
+    !>  [setCov](@ref pm_sampleCov::setCov)<br>
+    !>  [getVar](@ref pm_sampleVar::getVar)<br>
+    !>  [setVar](@ref pm_sampleVar::setVar)<br>
+    !>  [getMean](@ref pm_sampleMean::getMean)<br>
+    !>  [setMean](@ref pm_sampleMean::setMean)<br>
+    !>  [getCovMerged](@ref pm_sampleCov::getCovMerged)<br>
+    !>  [setCovMerged](@ref pm_sampleCov::setCovMerged)<br>
+    !>  [setCovMeanUpdated](@ref pm_sampleCov::setCovMeanUpdated)<br>
+    !>  [getVarCorrection](@ref pm_sampleVar::getVarCorrection)<br>
+    !>  [getMeanMerged](@ref pm_sampleMean::getMeanMerged)<br>
+    !>  [setMeanMerged](@ref pm_sampleMean::setMeanMerged)<br>
+    !>  [getVarMerged](@ref pm_sampleVar::getVarMerged)<br>
+    !>  [setVarMerged](@ref pm_sampleVar::setVarMerged)<br>
+    !>
+    !>  \example{setCovMeanUpdated}
+    !>  \include{lineno} example/pm_sampleCov/setCovMeanUpdated/main.F90
+    !>  \compilef{setCovMeanUpdated}
+    !>  \output{setCovMeanUpdated}
+    !>  \include{lineno} example/pm_sampleCov/setCovMeanUpdated/main.out.F90
+    !>
+    !>  \test
+    !>  [test_pm_sampleCov](@ref test_pm_sampleCov)
+    !>
+    !>  \finmain
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
+
+    ! New_RDP_UXD
+
+    interface setCovMeanUpdated
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if CK5_ENABLED
+    PURE module subroutine setCovMeanUpdatedOld_RDP_UXD_CK5(covA, meanA, meanB, fracA, subset)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_UXD_CK5
+#endif
+        use pm_kind, only: TKC => CK5
+        real(TKC)           , intent(in)                        :: fracA
+        complex(TKC)        , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        complex(TKC)        , intent(in)    , contiguous        :: meanB(:)
+        type(uppDia_type)   , intent(in)                        :: subset
+    end subroutine
+#endif
+
+#if CK4_ENABLED
+    PURE module subroutine setCovMeanUpdatedOld_RDP_UXD_CK4(covA, meanA, meanB, fracA, subset)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_UXD_CK4
+#endif
+        use pm_kind, only: TKC => CK4
+        real(TKC)           , intent(in)                        :: fracA
+        complex(TKC)        , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        complex(TKC)        , intent(in)    , contiguous        :: meanB(:)
+        type(uppDia_type)   , intent(in)                        :: subset
+    end subroutine
+#endif
+
+#if CK3_ENABLED
+    PURE module subroutine setCovMeanUpdatedOld_RDP_UXD_CK3(covA, meanA, meanB, fracA, subset)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_UXD_CK3
+#endif
+        use pm_kind, only: TKC => CK3
+        real(TKC)           , intent(in)                        :: fracA
+        complex(TKC)        , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        complex(TKC)        , intent(in)    , contiguous        :: meanB(:)
+        type(uppDia_type)   , intent(in)                        :: subset
+    end subroutine
+#endif
+
+#if CK2_ENABLED
+    PURE module subroutine setCovMeanUpdatedOld_RDP_UXD_CK2(covA, meanA, meanB, fracA, subset)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_UXD_CK2
+#endif
+        use pm_kind, only: TKC => CK2
+        real(TKC)           , intent(in)                        :: fracA
+        complex(TKC)        , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        complex(TKC)        , intent(in)    , contiguous        :: meanB(:)
+        type(uppDia_type)   , intent(in)                        :: subset
+    end subroutine
+#endif
+
+#if CK1_ENABLED
+    PURE module subroutine setCovMeanUpdatedOld_RDP_UXD_CK1(covA, meanA, meanB, fracA, subset)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_UXD_CK1
+#endif
+        use pm_kind, only: TKC => CK1
+        real(TKC)           , intent(in)                        :: fracA
+        complex(TKC)        , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        complex(TKC)        , intent(in)    , contiguous        :: meanB(:)
+        type(uppDia_type)   , intent(in)                        :: subset
+    end subroutine
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if RK5_ENABLED
+    PURE module subroutine setCovMeanUpdatedOld_RDP_UXD_RK5(covA, meanA, meanB, fracA, subset)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_UXD_RK5
+#endif
+        use pm_kind, only: TKC => RK5
+        real(TKC)           , intent(in)                        :: fracA
+        real(TKC)           , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        real(TKC)           , intent(in)    , contiguous        :: meanB(:)
+        type(uppDia_type)   , intent(in)                        :: subset
+    end subroutine
+#endif
+
+#if RK4_ENABLED
+    PURE module subroutine setCovMeanUpdatedOld_RDP_UXD_RK4(covA, meanA, meanB, fracA, subset)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_UXD_RK4
+#endif
+        use pm_kind, only: TKC => RK4
+        real(TKC)           , intent(in)                        :: fracA
+        real(TKC)           , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        real(TKC)           , intent(in)    , contiguous        :: meanB(:)
+        type(uppDia_type)   , intent(in)                        :: subset
+    end subroutine
+#endif
+
+#if RK3_ENABLED
+    PURE module subroutine setCovMeanUpdatedOld_RDP_UXD_RK3(covA, meanA, meanB, fracA, subset)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_UXD_RK3
+#endif
+        use pm_kind, only: TKC => RK3
+        real(TKC)           , intent(in)                        :: fracA
+        real(TKC)           , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        real(TKC)           , intent(in)    , contiguous        :: meanB(:)
+        type(uppDia_type)   , intent(in)                        :: subset
+    end subroutine
+#endif
+
+#if RK2_ENABLED
+    PURE module subroutine setCovMeanUpdatedOld_RDP_UXD_RK2(covA, meanA, meanB, fracA, subset)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_UXD_RK2
+#endif
+        use pm_kind, only: TKC => RK2
+        real(TKC)           , intent(in)                        :: fracA
+        real(TKC)           , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        real(TKC)           , intent(in)    , contiguous        :: meanB(:)
+        type(uppDia_type)   , intent(in)                        :: subset
+    end subroutine
+#endif
+
+#if RK1_ENABLED
+    PURE module subroutine setCovMeanUpdatedOld_RDP_UXD_RK1(covA, meanA, meanB, fracA, subset)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_UXD_RK1
+#endif
+        use pm_kind, only: TKC => RK1
+        real(TKC)           , intent(in)                        :: fracA
+        real(TKC)           , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        real(TKC)           , intent(in)    , contiguous        :: meanB(:)
+        type(uppDia_type)   , intent(in)                        :: subset
+    end subroutine
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    end interface
+
+    ! New_RDP_XLD
+
+    interface setCovMeanUpdated
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if CK5_ENABLED
+    PURE module subroutine setCovMeanUpdatedOld_RDP_XLD_CK5(covA, meanA, meanB, fracA, subset)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_XLD_CK5
+#endif
+        use pm_kind, only: TKC => CK5
+        real(TKC)           , intent(in)                        :: fracA
+        complex(TKC)        , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        complex(TKC)        , intent(in)    , contiguous        :: meanB(:)
+        type(lowDia_type)   , intent(in)                        :: subset
+    end subroutine
+#endif
+
+#if CK4_ENABLED
+    PURE module subroutine setCovMeanUpdatedOld_RDP_XLD_CK4(covA, meanA, meanB, fracA, subset)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_XLD_CK4
+#endif
+        use pm_kind, only: TKC => CK4
+        real(TKC)           , intent(in)                        :: fracA
+        complex(TKC)        , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        complex(TKC)        , intent(in)    , contiguous        :: meanB(:)
+        type(lowDia_type)   , intent(in)                        :: subset
+    end subroutine
+#endif
+
+#if CK3_ENABLED
+    PURE module subroutine setCovMeanUpdatedOld_RDP_XLD_CK3(covA, meanA, meanB, fracA, subset)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_XLD_CK3
+#endif
+        use pm_kind, only: TKC => CK3
+        real(TKC)           , intent(in)                        :: fracA
+        complex(TKC)        , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        complex(TKC)        , intent(in)    , contiguous        :: meanB(:)
+        type(lowDia_type)   , intent(in)                        :: subset
+    end subroutine
+#endif
+
+#if CK2_ENABLED
+    PURE module subroutine setCovMeanUpdatedOld_RDP_XLD_CK2(covA, meanA, meanB, fracA, subset)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_XLD_CK2
+#endif
+        use pm_kind, only: TKC => CK2
+        real(TKC)           , intent(in)                        :: fracA
+        complex(TKC)        , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        complex(TKC)        , intent(in)    , contiguous        :: meanB(:)
+        type(lowDia_type)   , intent(in)                        :: subset
+    end subroutine
+#endif
+
+#if CK1_ENABLED
+    PURE module subroutine setCovMeanUpdatedOld_RDP_XLD_CK1(covA, meanA, meanB, fracA, subset)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_XLD_CK1
+#endif
+        use pm_kind, only: TKC => CK1
+        real(TKC)           , intent(in)                        :: fracA
+        complex(TKC)        , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        complex(TKC)        , intent(in)    , contiguous        :: meanB(:)
+        type(lowDia_type)   , intent(in)                        :: subset
+    end subroutine
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if RK5_ENABLED
+    PURE module subroutine setCovMeanUpdatedOld_RDP_XLD_RK5(covA, meanA, meanB, fracA, subset)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_XLD_RK5
+#endif
+        use pm_kind, only: TKC => RK5
+        real(TKC)           , intent(in)                        :: fracA
+        real(TKC)           , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        real(TKC)           , intent(in)    , contiguous        :: meanB(:)
+        type(lowDia_type)   , intent(in)                        :: subset
+    end subroutine
+#endif
+
+#if RK4_ENABLED
+    PURE module subroutine setCovMeanUpdatedOld_RDP_XLD_RK4(covA, meanA, meanB, fracA, subset)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_XLD_RK4
+#endif
+        use pm_kind, only: TKC => RK4
+        real(TKC)           , intent(in)                        :: fracA
+        real(TKC)           , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        real(TKC)           , intent(in)    , contiguous        :: meanB(:)
+        type(lowDia_type)   , intent(in)                        :: subset
+    end subroutine
+#endif
+
+#if RK3_ENABLED
+    PURE module subroutine setCovMeanUpdatedOld_RDP_XLD_RK3(covA, meanA, meanB, fracA, subset)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_XLD_RK3
+#endif
+        use pm_kind, only: TKC => RK3
+        real(TKC)           , intent(in)                        :: fracA
+        real(TKC)           , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        real(TKC)           , intent(in)    , contiguous        :: meanB(:)
+        type(lowDia_type)   , intent(in)                        :: subset
+    end subroutine
+#endif
+
+#if RK2_ENABLED
+    PURE module subroutine setCovMeanUpdatedOld_RDP_XLD_RK2(covA, meanA, meanB, fracA, subset)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_XLD_RK2
+#endif
+        use pm_kind, only: TKC => RK2
+        real(TKC)           , intent(in)                        :: fracA
+        real(TKC)           , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        real(TKC)           , intent(in)    , contiguous        :: meanB(:)
+        type(lowDia_type)   , intent(in)                        :: subset
+    end subroutine
+#endif
+
+#if RK1_ENABLED
+    PURE module subroutine setCovMeanUpdatedOld_RDP_XLD_RK1(covA, meanA, meanB, fracA, subset)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_XLD_RK1
+#endif
+        use pm_kind, only: TKC => RK1
+        real(TKC)           , intent(in)                        :: fracA
+        real(TKC)           , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        real(TKC)           , intent(in)    , contiguous        :: meanB(:)
+        type(lowDia_type)   , intent(in)                        :: subset
+    end subroutine
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    end interface
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 end module pm_sampleCov ! LCOV_EXCL_LINE

@@ -25,13 +25,13 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         ! Define the looping ranges for the corresponding matrix subsets.
-#if     (setCov_ENABLED || setCovMean_ENABLED || setCovMerged_ENABLED || setCovMeanMerged_ENABLED || setCovUpdated_ENABLED) && (XLD_ENABLED || XLD_XLD_ENABLED || XLD_UXD_ENABLED)
+#if     (setCov_ENABLED || setCovMean_ENABLED || setCovMerged_ENABLED || setCovMeanMerged_ENABLED || setCovUpdated_ENABLED || setCovMeanUpdated_ENABLED) && (XLD_ENABLED || XLD_XLD_ENABLED || XLD_UXD_ENABLED)
         ! Start from the beginning of the lower-triangle.
 #define OFF_RANGE(I,J,OFFSET)I + OFFSET, J
 #define ROW_RANGE(I,J,K)J + 1_IK, K
 #define COL_RANGE(I,J)I, J
 #define FIRST 1
-#elif   (setCov_ENABLED || setCovMean_ENABLED || setCovMerged_ENABLED || setCovMeanMerged_ENABLED || setCovUpdated_ENABLED) && (UXD_ENABLED || UXD_UXD_ENABLED || UXD_XLD_ENABLED)
+#elif   (setCov_ENABLED || setCovMean_ENABLED || setCovMerged_ENABLED || setCovMeanMerged_ENABLED || setCovUpdated_ENABLED || setCovMeanUpdated_ENABLED) && (UXD_ENABLED || UXD_UXD_ENABLED || UXD_XLD_ENABLED)
         ! Start from the end of the upper-triangle.
 #define OFF_RANGE(I,J,OFFSET)J - OFFSET, I, -1_IK
 #define ROW_RANGE(I,J,K)J - 1_IK, I, -1_IK

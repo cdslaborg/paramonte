@@ -186,10 +186,7 @@ classdef FileContentsRestartDRAM < pm.sampling.FileContentsRestart
             skip = 10 + self.ndim * (self.ndim + 3) / 2;
             icount = 0;
             istart = 1;
-            while istart < length(self.lineList) - 1
-                "test"
-                self.lineList{self.ilast + istart}
-                self.lineList{self.ilast + istart + 2}
+            while istart < length(self.lineList) - skip
                 if ~strcmp(self.lineList{self.ilast + istart}, self.lineList{self.ilast + istart + 2})
                     icount = icount + 1;
                     if mod(icount, 10) == 0

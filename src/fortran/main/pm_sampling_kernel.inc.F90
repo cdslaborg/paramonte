@@ -62,7 +62,7 @@
             integer(IK)                         :: dumint
             logical(LK)                         :: proposalAdaptationGreedyEnabled
             integer(IK)                         :: proposalAdaptationLen
-            logical(LK)                         :: proposalAdaptationSucceeded
+            logical(LK)                         :: proposalAdaptationSampleUsed
             integer(IK)                         :: acceptedRejectedDelayedUnusedRestartMode
            !real(RKC)                           :: proposalAdaptationDummy
             real(RKC)           , allocatable   :: proposalAdaptation(:)
@@ -139,7 +139,7 @@
                 sumAccrAccRejDel = 0._RKC ! sum of acceptance rate
             end if
             ! proposalAdaptation = 0._RKC ! needed for the first output.
-            proposalAdaptationSucceeded = .true._LK ! needed to set up lastStateWeight and numFunCallAcceptedLastAdaptation for the first accepted proposal.
+            proposalAdaptationSampleUsed = .true._LK ! needed to set up lastStateWeight and numFunCallAcceptedLastAdaptation for the first accepted proposal.
             sumAccrAccRej = 0._RKC ! sum of acceptance rate.
             counterPAC = 0_IK ! counter for pproposalAdaptationCount.
             counterPAP = 0_IK ! counter for proposalAdaptationPeriod.
@@ -347,7 +347,7 @@
                             end if
 #endif
                             ! Note: after every adaptive update of the sampler, counterPAP is reset to 0.
-                            if (counterPAP == 0_IK .and. proposalAdaptationSucceeded) then
+                            if (counterPAP == 0_IK .and. proposalAdaptationSampleUsed) then
                                 numFunCallAcceptedLastAdaptation = numFunCallAcceptedLastAdaptation + 1_IK
                                 lastStateWeight = 0_IK
                             end if
@@ -464,7 +464,7 @@
                                                     , sampleWeight = stat%cfc%sampleWeight(numFunCallAcceptedLastAdaptation : stat%numFunCallAccepted) &
                                                     , proposalAdaptationGreedyEnabled = proposalAdaptationGreedyEnabled &
                                                     , meanAccRateSinceStart = meanAccRateSinceStart &
-                                                    , proposalAdaptationSucceeded = proposalAdaptationSucceeded &
+                                                    , proposalAdaptationSampleUsed = proposalAdaptationSampleUsed &
                                                     , proposalAdaptation = proposalAdaptation(dumint) &
                                                     , err = err &
                                                     )
@@ -479,7 +479,7 @@
                                 stat%cfc%proposalAdaptation(stat%numFunCallAccepted) = proposalAdaptation(dumint)
                                 stat%cfc%sampleWeight(numFunCallAcceptedLastAdaptation) = stat%cfc%sampleWeight(numFunCallAcceptedLastAdaptation) + lastStateWeight
                             end if
-                            if (proposalAdaptationSucceeded) then
+                            if (proposalAdaptationSampleUsed) then
                                 lastStateWeight = currentStateWeight ! stat%cfc%sampleWeight(stat%numFunCallAccepted) ! informative, do not remove
                                 numFunCallAcceptedLastAdaptation = stat%numFunCallAccepted
                             end if
