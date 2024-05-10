@@ -217,7 +217,7 @@ classdef Tile < pm.vis.Tiling
 
             %%%% Define the tile shape.
 
-            self.tileshape = pm.matlab.hashmap.getKeyVal("tileshape", varargin);
+            %self.tileshape = pm.matlab.hashmap.getKeyVal("tileshape", varargin);
             if ~isempty(self.tileshape)
                 self.nrow = self.tileshape(1);
                 self.ncol = self.tileshape(2);
@@ -265,7 +265,9 @@ classdef Tile < pm.vis.Tiling
                     if  nplt < iplt
                         break;
                     end
-                    self.subplot{irow, icol} = self.template;
+                    %self.subplot{irow, icol} = self.template;
+                    copyStream = getByteStreamFromArray(self.template);
+                    self.subplot{irow, icol} = getArrayFromByteStream(copyStream);
                     if  1 < lencolx
                         self.subplot{irow, icol}.colx = self.template.colx(iplt);
                     end
@@ -277,7 +279,7 @@ classdef Tile < pm.vis.Tiling
                     end
                     if  1 < lencolc
                         self.subplot{irow, icol}.colc = self.template.colc(iplt);
-                    else
+                    elseif isprop(self.template, "colorbar")
                         self.subplot{irow, icol}.colorbar.enabled = false;
                     end
                 end
@@ -286,7 +288,7 @@ classdef Tile < pm.vis.Tiling
                 end
             end
 
-            make@pm.vis.Tiling(self, varobj{:});
+            make@pm.vis.Tiling(self);
 
         end % function
 
@@ -341,17 +343,18 @@ classdef Tile < pm.vis.Tiling
             %
             %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
             %
-            [varobj, vartemp] = pm.matlab.hashmap.popKeyVal(["figure", "subplot", "template", "tiledlayout"], varargin);
-            premake@pm.vis.Tiling(self, varobj{:});
+            if ~isempty(varargin)
+                [varobj, vartemp] = pm.matlab.hashmap.popKeyVal(["figure", "subplot", "template", "tiledlayout", "tileshape"], varargin);
+                premake@pm.vis.Tiling(self, varobj{:});
+                recursive = true;
+                extensible = true;
+                insensitive = true;
+                self.template = pm.matlab.hashmap.hash2comp(vartemp, self.template, insensitive, extensible, recursive);
+            end
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %%%% These settings must happen here so that they can be reset every time user nullifies the values.
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-            recursive = true;
-            extensible = true;
-            insensitive = true;
-            self.template = pm.matlab.hashmap.hash2comp(vartemp, self.template, insensitive, extensible, recursive);
 
         end
 
