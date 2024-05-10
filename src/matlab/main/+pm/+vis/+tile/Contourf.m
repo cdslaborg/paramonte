@@ -1,7 +1,7 @@
-classdef Contourf < pm.vis.plot.Plot
+classdef Contourf < pm.vis.tile.Tile
     %
     %   This is the Contourf class for generating
-    %   instances of 2-dimensional Contourf plots
+    %   instances of 2-dimensional Contourf tiles
     %   based on the relevant MATLAB
     %   intrinsic functions.
     %
@@ -11,7 +11,7 @@ classdef Contourf < pm.vis.plot.Plot
     %       dfref
     %
     %           See the documentation of the corresponding input
-    %           argument of the superclass ``pm.vis.plot.Plot``.
+    %           argument of the superclass ``pm.vis.tile.Tile``.
     %
     %       varargin
     %
@@ -30,18 +30,18 @@ classdef Contourf < pm.vis.plot.Plot
     %   ----------
     %
     %       See the documentation of the attributes
-    %       of the superclass ``pm.vis.plot.Plot``.
+    %       of the superclass ``pm.vis.tile.Tile``.
     %
     %   Returns
     %   -------
     %
-    %       An object of ``pm.vis.subplot.Contourf`` class.
+    %       An object of ``pm.vis.tile.Contourf`` class.
     %
     %   Interface
     %   ---------
     %
-    %       s = pm.vis.subplot.Contourf(dfref);
-    %       s = pm.vis.subplot.Contourf(dfref, varargin);
+    %       t = pm.vis.tile.Contourf(dfref);
+    %       t = pm.vis.tile.Contourf(dfref, varargin);
     %
     %   LICENSE
     %   -------
@@ -53,7 +53,7 @@ classdef Contourf < pm.vis.plot.Plot
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.plot.Plot(pm.vis.subplot.Contourf(dfref), varargin{:});
+            self = self@pm.vis.tile.Tile(pm.vis.subplot.Contourf(dfref), varargin{:});
         end
     end
 end

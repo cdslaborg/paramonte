@@ -1,7 +1,7 @@
-classdef Scatter < pm.vis.plot.Plot
+classdef Scatter < pm.vis.tile.Tile
     %
     %   This is the Scatter class for generating
-    %   instances of 2-dimensional Scatter plots
+    %   instances of 2-dimensional Scatter tiles
     %   based on the relevant MATLAB
     %   intrinsic functions.
     %
@@ -11,7 +11,7 @@ classdef Scatter < pm.vis.plot.Plot
     %       dfref
     %
     %           See the documentation of the corresponding input
-    %           argument of the superclass ``pm.vis.plot.Plot``.
+    %           argument of the superclass ``pm.vis.tile.Tile``.
     %
     %       varargin
     %
@@ -30,7 +30,7 @@ classdef Scatter < pm.vis.plot.Plot
     %   ----------
     %
     %       See the documentation of the attributes
-    %       of the superclass ``pm.vis.plot.Plot``.
+    %       of the superclass ``pm.vis.tile.Tile``.
     %
     %   Returns
     %   -------
@@ -40,8 +40,8 @@ classdef Scatter < pm.vis.plot.Plot
     %   Interface
     %   ---------
     %
-    %       s = pm.vis.subplot.Scatter(dfref);
-    %       s = pm.vis.subplot.Scatter(dfref, varargin);
+    %       t = pm.vis.tile.Scatter(dfref);
+    %       t = pm.vis.tile.Scatter(dfref, varargin);
     %
     %   LICENSE
     %   -------
@@ -53,7 +53,7 @@ classdef Scatter < pm.vis.plot.Plot
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.plot.Plot(pm.vis.subplot.Scatter(dfref), varargin{:});
+            self = self@pm.vis.tile.Tile(pm.vis.subplot.Scatter(dfref), varargin{:});
         end
     end
 end

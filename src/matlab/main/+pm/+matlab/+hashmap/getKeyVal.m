@@ -35,17 +35,18 @@ function [val, failed] = getKeyVal(key, hashmap)
     %   Interface
     %   ---------
     %
+    %       val = pm.matlab.hashmap.getKeyVal(key, hashmap)
     %       [val, failed] = pm.matlab.hashmap.getKeyVal(key, hashmap)
     %
     %   Example
     %   -------
     %
     %       hashmap = {"key1", 1, "key2", "val2", "key3", false};
-    %       val = pm.matlab.hashmap.getKeyVal("key2", hashmap) % = "val2"
-    %       val = pm.matlab.hashmap.getKeyVal("key3", hashmap) % = false
-    %       val = pm.matlab.hashmap.getKeyVal("key3", hashmap(1:4)) % = {}
-    %       val = pm.matlab.hashmap.getKeyVal("key2", hashmap(1:4)) % = "val2"
-    %       val = pm.matlab.hashmap.getKeyVal("key2", hashmap(1:3)) % error
+    %       [val, failed] = pm.matlab.hashmap.getKeyVal("key2", hashmap) % = "val2"
+    %       [val, failed] = pm.matlab.hashmap.getKeyVal("key3", hashmap) % = false
+    %       [val, failed] = pm.matlab.hashmap.getKeyVal("key3", hashmap(1:4)) % = {}
+    %       [val, failed] = pm.matlab.hashmap.getKeyVal("key2", hashmap(1:4)) % = "val2"
+    %       [val, failed] = pm.matlab.hashmap.getKeyVal("key2", hashmap(1:3)) % error
     %
     %   LICENSE
     %   -------

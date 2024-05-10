@@ -35,13 +35,13 @@ classdef Histogram < pm.vis.plot.Plot
     %   Returns
     %   -------
     %
-    %       An object of ``pm.vis.subplot.Histogram`` class.
+    %       An object of ``pm.vis.plot.Histogram`` class.
     %
     %   Interface
     %   ---------
     %
-    %       s = pm.vis.subplot.Histogram(dfref);
-    %       s = pm.vis.subplot.Histogram(dfref, varargin);
+    %       p = pm.vis.plot.Histogram(dfref);
+    %       p = pm.vis.plot.Histogram(dfref, varargin);
     %
     %   LICENSE
     %   -------

@@ -1,7 +1,7 @@
-classdef Histfit < pm.vis.plot.Plot
+classdef Histfit < pm.vis.tile.Tile
     %
     %   This is the Histfit class for generating
-    %   instances of 2-dimensional Histfit plots
+    %   instances of 2-dimensional Histfit tiles
     %   based on the relevant MATLAB
     %   intrinsic functions.
     %
@@ -11,13 +11,13 @@ classdef Histfit < pm.vis.plot.Plot
     %       dfref
     %
     %           See the documentation of the corresponding input
-    %           argument of the superclass ``pm.vis.plot.Plot``.
+    %           argument of the superclass ``pm.vis.tile.Tile``.
     %
     %   Attributes
     %   ----------
     %
     %       See the documentation of the attributes
-    %       of the superclass ``pm.vis.plot.Plot``.
+    %       of the superclass ``pm.vis.tile.Tile``.
     %
     %       varargin
     %
@@ -35,13 +35,13 @@ classdef Histfit < pm.vis.plot.Plot
     %   Returns
     %   -------
     %
-    %       An object of ``pm.vis.subplot.Histfit`` class.
+    %       An object of ``pm.vis.tile.Histfit`` class.
     %
     %   Interface
     %   ---------
     %
-    %       s = pm.vis.subplot.Histfit(dfref);
-    %       s = pm.vis.subplot.Histfit(dfref, varargin);
+    %       t = pm.vis.tile.Histfit(dfref);
+    %       t = pm.vis.tile.Histfit(dfref, varargin);
     %
     %   LICENSE
     %   -------
@@ -53,7 +53,7 @@ classdef Histfit < pm.vis.plot.Plot
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.plot.Plot(pm.vis.subplot.Histfit(dfref), varargin{:});
+            self = self@pm.vis.tile.Tile(pm.vis.subplot.Histfit(dfref), varargin{:});
         end
     end
 end

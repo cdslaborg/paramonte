@@ -1,7 +1,7 @@
-classdef Line3 < pm.vis.plot.Plot
+classdef Line3 < pm.vis.tile.Tile
     %
     %   This is the Line3 class for generating
-    %   instances of 3-dimensional Line3 plots
+    %   instances of 3-dimensional Line3 tiles
     %   based on the relevant MATLAB
     %   intrinsic functions.
     %
@@ -11,7 +11,7 @@ classdef Line3 < pm.vis.plot.Plot
     %       dfref
     %
     %           See the documentation of the corresponding input
-    %           argument of the superclass ``pm.vis.plot.Plot``.
+    %           argument of the superclass ``pm.vis.tile.Tile``.
     %
     %       varargin
     %
@@ -30,18 +30,18 @@ classdef Line3 < pm.vis.plot.Plot
     %   ----------
     %
     %       See the documentation of the attributes
-    %       of the superclass ``pm.vis.plot.Plot``.
+    %       of the superclass ``pm.vis.tile.Tile``.
     %
     %   Returns
     %   -------
     %
-    %       An object of ``pm.vis.subplot.Line3`` class.
+    %       An object of ``pm.vis.tile.Line3`` class.
     %
     %   Interface
     %   ---------
     %
-    %       s = pm.vis.subplot.Line3(dfref);
-    %       s = pm.vis.subplot.Line3(dfref, varargin);
+    %       t = pm.vis.tile.Line3(dfref);
+    %       t = pm.vis.tile.Line3(dfref, varargin);
     %
     %   LICENSE
     %   -------
@@ -53,7 +53,7 @@ classdef Line3 < pm.vis.plot.Plot
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.plot.Plot(pm.vis.subplot.Line3(dfref), varargin{:});
+            self = self@pm.vis.tile.Tile(pm.vis.subplot.Line3(dfref), varargin{:});
         end
     end
 end

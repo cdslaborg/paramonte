@@ -35,13 +35,13 @@ classdef LineScatter3 < pm.vis.plot.Plot
     %   Returns
     %   -------
     %
-    %       An object of ``pm.vis.subplot.LineScatter3`` class.
+    %       An object of ``pm.vis.plot.LineScatter3`` class.
     %
     %   Interface
     %   ---------
     %
-    %       s = pm.vis.subplot.LineScatter3(dfref);
-    %       s = pm.vis.subplot.LineScatter3(dfref, varargin);
+    %       p = pm.vis.plot.LineScatter3(dfref);
+    %       p = pm.vis.plot.LineScatter3(dfref, varargin);
     %
     %   LICENSE
     %   -------

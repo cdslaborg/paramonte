@@ -1,7 +1,7 @@
-classdef Ellipse3 < pm.vis.plot.Plot
+classdef Ellipse3 < pm.vis.tile.Tile
     %
     %   This is the Ellipse3 class for generating
-    %   instances of 3-dimensional Ellipse3 plots
+    %   instances of 3-dimensional Ellipse3 tiles
     %   based on the relevant MATLAB
     %   intrinsic functions.
     %
@@ -46,23 +46,23 @@ classdef Ellipse3 < pm.vis.plot.Plot
     %   Returns
     %   -------
     %
-    %       An object of class ``pm.vis.plot.Ellipse3``.
+    %       An object of class ``pm.vis.tile.Ellipse3``.
     %
     %   Interface
     %   ---------
     %
-    %       p = pm.vis.plot.Ellipse3();
-    %       p = pm.vis.plot.Ellipse3(gramian);
-    %       p = pm.vis.plot.Ellipse3(gramian, center);
-    %       p = pm.vis.plot.Ellipse3(gramian, center, zval);
-    %       p = pm.vis.plot.Ellipse3(gramian, center, zval, cval);
-    %       p = pm.vis.plot.Ellipse3(gramian, center, zval, cval, varargin);
+    %       t = pm.vis.tile.Ellipse3();
+    %       t = pm.vis.tile.Ellipse3(gramian);
+    %       t = pm.vis.tile.Ellipse3(gramian, center);
+    %       t = pm.vis.tile.Ellipse3(gramian, center, zval);
+    %       t = pm.vis.tile.Ellipse3(gramian, center, zval, cval);
+    %       t = pm.vis.tile.Ellipse3(gramian, center, zval, cval, varargin);
     %
     %   Example
     %   -------
     %
-    %       p = pm.vis.plot.Ellipse3();
-    %       p.make("dims", [1, 2]);
+    %       t = pm.vis.tile.Ellipse3();
+    %       t.make("dims", [1, 2]);
     %
     %   LICENSE
     %   -------
@@ -84,7 +84,7 @@ classdef Ellipse3 < pm.vis.plot.Plot
             if  nargin < 1
                 gramian = zeros(0, 0, 0);
             end
-            self = self@pm.vis.plot.Plot(pm.vis.subplot.Ellipse3(gramian, center, zval, cval), varargin{:});
+            self = self@pm.vis.tile.Tile(pm.vis.subplot.Ellipse3(gramian, center, zval, cval), varargin{:});
         end
     end
 end

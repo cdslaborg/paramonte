@@ -526,11 +526,6 @@ classdef Axes < pm.matlab.Handle
     %               Keep in mind that MATLAB keyword arguments are case-INsensitive.
     %               Hence, ensure you do not add the same keyword as multiple different fields.
     %
-    %       target (available only for all axes types except heatmap)
-    %
-    %           An object of class ``pm.vis.Target`` for adding target values to the plots.
-    %           For more information, see the documentation for the class ``pm.vis.Target``.
-    %
     %       title (available for all axes types)
     %
     %           A MATLAB ``struct`` whose fields and values are passed

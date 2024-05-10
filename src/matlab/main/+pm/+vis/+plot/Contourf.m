@@ -35,13 +35,13 @@ classdef Contourf < pm.vis.plot.Plot
     %   Returns
     %   -------
     %
-    %       An object of ``pm.vis.subplot.Contourf`` class.
+    %       An object of ``pm.vis.plot.Contourf`` class.
     %
     %   Interface
     %   ---------
     %
-    %       s = pm.vis.subplot.Contourf(dfref);
-    %       s = pm.vis.subplot.Contourf(dfref, varargin);
+    %       p = pm.vis.plot.Contourf(dfref);
+    %       p = pm.vis.plot.Contourf(dfref, varargin);
     %
     %   LICENSE
     %   -------

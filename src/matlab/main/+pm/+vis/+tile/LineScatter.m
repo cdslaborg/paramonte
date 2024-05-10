@@ -1,7 +1,7 @@
-classdef LineScatter < pm.vis.plot.Plot
+classdef LineScatter < pm.vis.tile.Tile
     %
     %   This is the LineScatter class for generating
-    %   instances of 2-dimensional LineScatter plots
+    %   instances of 2-dimensional LineScatter tiles
     %   based on the relevant MATLAB
     %   intrinsic functions.
     %
@@ -11,7 +11,7 @@ classdef LineScatter < pm.vis.plot.Plot
     %       dfref
     %
     %           See the documentation of the corresponding input
-    %           argument of the superclass ``pm.vis.plot.Plot``.
+    %           argument of the superclass ``pm.vis.tile.Tile``.
     %
     %       varargin
     %
@@ -30,18 +30,18 @@ classdef LineScatter < pm.vis.plot.Plot
     %   ----------
     %
     %       See the documentation of the attributes
-    %       of the superclass ``pm.vis.plot.Plot``.
+    %       of the superclass ``pm.vis.tile.Tile``.
     %
     %   Returns
     %   -------
     %
-    %       An object of ``pm.vis.subplot.LineScatter`` class.
+    %       An object of ``pm.vis.tile.LineScatter`` class.
     %
     %   Interface
     %   ---------
     %
-    %       s = pm.vis.subplot.LineScatter(dfref);
-    %       s = pm.vis.subplot.LineScatter(dfref, varargin);
+    %       t = pm.vis.tile.LineScatter(dfref);
+    %       t = pm.vis.tile.LineScatter(dfref, varargin);
     %
     %   LICENSE
     %   -------
@@ -53,7 +53,7 @@ classdef LineScatter < pm.vis.plot.Plot
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.plot.Plot(pm.vis.subplot.LineScatter(dfref), varargin{:});
+            self = self@pm.vis.tile.Tile(pm.vis.subplot.LineScatter(dfref), varargin{:});
         end
     end
 end

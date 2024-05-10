@@ -35,13 +35,13 @@ classdef Histfit < pm.vis.plot.Plot
     %   Returns
     %   -------
     %
-    %       An object of ``pm.vis.subplot.Histfit`` class.
+    %       An object of ``pm.vis.plot.Histfit`` class.
     %
     %   Interface
     %   ---------
     %
-    %       s = pm.vis.subplot.Histfit(dfref);
-    %       s = pm.vis.subplot.Histfit(dfref, varargin);
+    %       p = pm.vis.plot.Histfit(dfref);
+    %       p = pm.vis.plot.Histfit(dfref, varargin);
     %
     %   LICENSE
     %   -------

@@ -1,7 +1,7 @@
-classdef Histogram < pm.vis.plot.Plot
+classdef Histogram < pm.vis.tile.Tile
     %
     %   This is the Histogram class for generating
-    %   instances of 2-dimensional Histogram plots
+    %   instances of 2-dimensional Histogram tiles
     %   based on the relevant MATLAB
     %   intrinsic functions.
     %
@@ -11,7 +11,7 @@ classdef Histogram < pm.vis.plot.Plot
     %       dfref
     %
     %           See the documentation of the corresponding input
-    %           argument of the superclass ``pm.vis.plot.Plot``.
+    %           argument of the superclass ``pm.vis.tile.Tile``.
     %
     %       varargin
     %
@@ -30,18 +30,18 @@ classdef Histogram < pm.vis.plot.Plot
     %   ----------
     %
     %       See the documentation of the attributes
-    %       of the superclass ``pm.vis.plot.Plot``.
+    %       of the superclass ``pm.vis.tile.Tile``.
     %
     %   Returns
     %   -------
     %
-    %       An object of ``pm.vis.subplot.Histogram`` class.
+    %       An object of ``pm.vis.tile.Histogram`` class.
     %
     %   Interface
     %   ---------
     %
-    %       s = pm.vis.subplot.Histogram(dfref);
-    %       s = pm.vis.subplot.Histogram(dfref, varargin);
+    %       t = pm.vis.tile.Histogram(dfref);
+    %       t = pm.vis.tile.Histogram(dfref, varargin);
     %
     %   LICENSE
     %   -------
@@ -53,7 +53,7 @@ classdef Histogram < pm.vis.plot.Plot
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.plot.Plot(pm.vis.subplot.Histogram(dfref), varargin{:});
+            self = self@pm.vis.tile.Tile(pm.vis.subplot.Histogram(dfref), varargin{:});
         end
     end
 end

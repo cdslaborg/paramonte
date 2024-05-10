@@ -1,7 +1,7 @@
-classdef Contour3 < pm.vis.plot.Plot
+classdef Contour3 < pm.vis.tile.Tile
     %
     %   This is the Contour3 class for generating
-    %   instances of 3-dimensional Contour3 plots
+    %   instances of 3-dimensional Contour3 tiles
     %   based on the relevant MATLAB
     %   intrinsic functions.
     %
@@ -11,7 +11,7 @@ classdef Contour3 < pm.vis.plot.Plot
     %       dfref
     %
     %           See the documentation of the corresponding input
-    %           argument of the superclass ``pm.vis.plot.Plot``.
+    %           argument of the superclass ``pm.vis.tile.Tile``.
     %
     %       varargin
     %
@@ -30,18 +30,18 @@ classdef Contour3 < pm.vis.plot.Plot
     %   ----------
     %
     %       See the documentation of the attributes
-    %       of the superclass ``pm.vis.plot.Plot``.
+    %       of the superclass ``pm.vis.tile.Tile``.
     %
     %   Returns
     %   -------
     %
-    %       An object of ``pm.vis.subplot.Contour3`` class.
+    %       An object of ``pm.vis.tile.Contour3`` class.
     %
     %   Interface
     %   ---------
     %
-    %       s = pm.vis.subplot.Contour3(dfref);
-    %       s = pm.vis.subplot.Contour3(dfref, varargin);
+    %       t = pm.vis.tile.Contour3(dfref);
+    %       t = pm.vis.tile.Contour3(dfref, varargin);
     %
     %   LICENSE
     %   -------
@@ -53,7 +53,7 @@ classdef Contour3 < pm.vis.plot.Plot
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.plot.Plot(pm.vis.subplot.Contour3(dfref), varargin{:});
+            self = self@pm.vis.tile.Tile(pm.vis.subplot.Contour3(dfref), varargin{:});
         end
     end
 end

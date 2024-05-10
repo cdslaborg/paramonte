@@ -1,4 +1,4 @@
-classdef (Abstract) Handle < dynamicprops%handle
+classdef (Abstract) Handle < matlab.mixin.Copyable%dynamicprops%handle
     %
     %   This is the ``Abstract`` base class for generating
     %   subclass of MATLAB ``handle`` superclass whose annoying

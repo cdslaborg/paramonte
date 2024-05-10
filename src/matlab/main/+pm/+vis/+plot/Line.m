@@ -35,13 +35,13 @@ classdef Line < pm.vis.plot.Plot
     %   Returns
     %   -------
     %
-    %       An object of ``pm.vis.subplot.Line`` class.
+    %       An object of ``pm.vis.plot.Line`` class.
     %
     %   Interface
     %   ---------
     %
-    %       s = pm.vis.subplot.Line(dfref);
-    %       s = pm.vis.subplot.Line(dfref, varargin);
+    %       p = pm.vis.plot.Line(dfref);
+    %       p = pm.vis.plot.Line(dfref, varargin);
     %
     %   LICENSE
     %   -------

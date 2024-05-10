@@ -1,7 +1,7 @@
-classdef Contour < pm.vis.plot.Plot
+classdef Contour < pm.vis.tile.Tile
     %
     %   This is the Contour class for generating
-    %   instances of 2-dimensional Contour plots
+    %   instances of 2-dimensional Contour tiles
     %   based on the relevant MATLAB
     %   intrinsic functions.
     %
@@ -11,7 +11,7 @@ classdef Contour < pm.vis.plot.Plot
     %       dfref
     %
     %           See the documentation of the corresponding input
-    %           argument of the superclass ``pm.vis.plot.Plot``.
+    %           argument of the superclass ``pm.vis.tile.Tile``.
     %
     %       varargin
     %
@@ -30,18 +30,18 @@ classdef Contour < pm.vis.plot.Plot
     %   ----------
     %
     %       See the documentation of the attributes
-    %       of the superclass ``pm.vis.plot.Plot``.
+    %       of the superclass ``pm.vis.tile.Tile``.
     %
     %   Returns
     %   -------
     %
-    %       An object of ``pm.vis.subplot.Contour`` class.
+    %       An object of ``pm.vis.tile.Contour`` class.
     %
     %   Interface
     %   ---------
     %
-    %       s = pm.vis.subplot.Contour(dfref);
-    %       s = pm.vis.subplot.Contour(dfref, varargin);
+    %       t = pm.vis.tile.Contour(dfref);
+    %       t = pm.vis.tile.Contour(dfref, varargin);
     %
     %   LICENSE
     %   -------
@@ -53,7 +53,7 @@ classdef Contour < pm.vis.plot.Plot
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.plot.Plot(pm.vis.subplot.Contour(dfref), varargin{:});
+            self = self@pm.vis.tile.Tile(pm.vis.subplot.Contour(dfref), varargin{:});
         end
     end
 end

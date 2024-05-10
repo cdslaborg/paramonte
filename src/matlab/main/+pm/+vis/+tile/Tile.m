@@ -4,7 +4,12 @@ classdef Tile < pm.vis.Tiling
     %   that contain the specifications of various types of tile figures.
     %
     %   This is a generic class for generating figures
-    %   containing a single subplot (axes).
+    %   containing multiple subplots (axes) of the same class.
+    %
+    %   \note
+    %
+    %       This class is not meant to be used directly by the end users.
+    %       Instead, use the subclasses of this abstract class for visualizations.
     %
     %   Parameters
     %   ----------
@@ -53,6 +58,24 @@ classdef Tile < pm.vis.Tiling
         %           representing a template of the set of subplots to display.
         %
         template = [];
+        %
+        %       tileshape
+        %
+        %           The MATLAB vector ``[nrow, ncol]`` representing
+        %           the number of rows and columns in the tiled layout of subplots.
+        %           The default is the closest values of ``nrow`` and ``ncol`` whose
+        %           multiplication yields the maximum number of data columns in the
+        %           visualization.
+        %
+        tileshape = [];
+        %
+        %       tileindex
+        %
+        %           The MATLAB vector of size ``0`` or ``prod(tileshape)`` containing
+        %           the list of indices of the tiling to fill with subplots, starting
+        %
+        %
+        %tileindex = [];
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -62,11 +85,8 @@ classdef Tile < pm.vis.Tiling
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         function self = Tile(template, varargin)
-            if  nargin < 1
-            else
-            end
             varargin = {"template", template, varargin{:}};
-            self = self@pm.vis.Tile(varargin{:});
+            self = self@pm.vis.Tiling(cell(0, 0), varargin{:});
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -108,9 +128,7 @@ classdef Tile < pm.vis.Tiling
             %
             %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
             %
-            [varobj, vartemp] = pm.matlab.hashmap.popKeyVal(["figure", "subplot", "template", "tiledlayout"], varargin);
-            reset@pm.vis.Tile(self, varobj{:});
-            self.subplot.reset(vartemp{:});
+            reset@pm.vis.Tiling(self, varargin{:});
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %%%% RULE 0: Any non-MATLAB-default setting must be preferably set in premake() method to override user null values.
@@ -158,23 +176,117 @@ classdef Tile < pm.vis.Tiling
             %   Interface
             %   ---------
             %
-            %       p = pm.vis.tile.Tile.make(varargin);
+            %       t = pm.vis.tile.Tile.make(varargin);
             %
             %   Example
             %   -------
             %
-            %       p = pm.vis.tile.Tile(pm.vis.subplot.Line());
-            %       p.make()
+            %       t = pm.vis.tile.Tile(pm.vis.subplot.Line());
+            %       t.make()
             %
             %   LICENSE
             %   -------
             %
             %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
             %
-            [varobj, vartemp] = pm.matlab.hashmap.popKeyVal(["figure", "subplot", "template", "tiledlayout"], varargin);
-            make@pm.vis.Tile(self, varobj{:});
-            self.subplot.make(vartemp{:});
-            hold off;
+            self.premake(varargin{:});
+
+            %%%% First set the tile dimensions.
+
+            lencolx = 0;
+            if  isprop(self.template, "colx")
+                lencolx = pm.array.len(self.template.colx);
+            end
+
+            lencoly = 0;
+            if  isprop(self.template, "coly")
+                lencoly = pm.array.len(self.template.coly);
+            end
+
+            lencolz = 0;
+            if  isprop(self.template, "colz")
+                lencolz = pm.array.len(self.template.colz);
+            end
+
+            lencolc = 0;
+            if  isprop(self.template, "colc")
+                lencolc = pm.array.len(self.template.colc);
+            end
+
+            nplt = max([lencolx, lencoly, lencolz, lencolc]);
+
+            %%%% Define the tile shape.
+
+            self.tileshape = pm.matlab.hashmap.getKeyVal("tileshape", varargin);
+            if ~isempty(self.tileshape)
+                self.nrow = self.tileshape(1);
+                self.ncol = self.tileshape(2);
+                if  prod(self.tileshape) < nplt
+                    help("pm.vis.tile.Tile");
+                    disp("self.tileshape");
+                    disp( self.tileshape );
+                    disp("nplt");
+                    disp( nplt );
+                    error   ( newline ...
+                            + "The specified tile shape must be consistent" + newline ...
+                            + "with the specified data columns to visualize." + newline ...
+                            + newline ...
+                            );
+                end
+            else
+                self.nrow = round(sqrt(nplt));
+                self.ncol = self.nrow;
+                while self.nrow * self.ncol ~= nplt && 0 < self.nrow && 0 < self.ncol
+                    self.nrow = self.nrow + 1;
+                    self.ncol = self.ncol - 1;
+                end
+                if  self.nrow < 0 || self.ncol < 0
+                    self.nrow = ceil(sqrt(nplt));
+                    self.ncol = self.ncol;
+                end
+            end
+
+            %if  isempty(self.tileindex)
+            %    tileindices = 1 : nplt;
+            %end
+
+            %%%% Define the subplot cell matrix.
+            %%%% The following code block may be improved in
+            %%%% the future to avoid full data copy to subplots.
+
+            iplt = 0;
+            %tilecounter = 0;
+            self.subplot = cell(self.nrow, self.ncol);
+            for irow = 1 : self.nrow
+                for icol = 1 : self.ncol
+                    %tilecounter = tilecounter + 1;
+                    %if  tilecounter == tileindices(iplt + 1)
+                    iplt = iplt + 1;
+                    if  nplt < iplt
+                        break;
+                    end
+                    self.subplot{irow, icol} = self.template;
+                    if  1 < lencolx
+                        self.subplot{irow, icol}.colx = self.template.colx(iplt);
+                    end
+                    if  1 < lencoly
+                        self.subplot{irow, icol}.coly = self.template.coly(iplt);
+                    end
+                    if  1 < lencolz
+                        self.subplot{irow, icol}.colz = self.template.colz(iplt);
+                    end
+                    if  1 < lencolc
+                        self.subplot{irow, icol}.colc = self.template.colc(iplt);
+                    else
+                        self.subplot{irow, icol}.colorbar.enabled = false;
+                    end
+                end
+                if  nplt < iplt
+                    break;
+                end
+            end
+
+            make@pm.vis.Tiling(self, varobj{:});
 
         end % function
 
@@ -229,11 +341,17 @@ classdef Tile < pm.vis.Tiling
             %
             %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
             %
-            premake@pm.vis.Tile(self, varargin{:});
+            [varobj, vartemp] = pm.matlab.hashmap.popKeyVal(["figure", "subplot", "template", "tiledlayout"], varargin);
+            premake@pm.vis.Tiling(self, varobj{:});
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %%%% These settings must happen here so that they can be reset every time user nullifies the values.
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            recursive = true;
+            extensible = true;
+            insensitive = true;
+            self.template = pm.matlab.hashmap.hash2comp(vartemp, self.template, insensitive, extensible, recursive);
 
         end
 

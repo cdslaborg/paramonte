@@ -1,7 +1,7 @@
-classdef Line < pm.vis.plot.Plot
+classdef Line < pm.vis.tile.Tile
     %
     %   This is the Line class for generating
-    %   instances of 2-dimensional Line plots
+    %   instances of 2-dimensional Line tiles
     %   based on the relevant MATLAB
     %   intrinsic functions.
     %
@@ -11,7 +11,7 @@ classdef Line < pm.vis.plot.Plot
     %       dfref
     %
     %           See the documentation of the corresponding input
-    %           argument of the superclass ``pm.vis.plot.Plot``.
+    %           argument of the superclass ``pm.vis.tile.Tile``.
     %
     %       varargin
     %
@@ -30,18 +30,18 @@ classdef Line < pm.vis.plot.Plot
     %   ----------
     %
     %       See the documentation of the attributes
-    %       of the superclass ``pm.vis.plot.Plot``.
+    %       of the superclass ``pm.vis.tile.Tile``.
     %
     %   Returns
     %   -------
     %
-    %       An object of ``pm.vis.subplot.Line`` class.
+    %       An object of ``pm.vis.tile.Line`` class.
     %
     %   Interface
     %   ---------
     %
-    %       s = pm.vis.subplot.Line(dfref);
-    %       s = pm.vis.subplot.Line(dfref, varargin);
+    %       t = pm.vis.tile.Line(dfref);
+    %       t = pm.vis.tile.Line(dfref, varargin);
     %
     %   LICENSE
     %   -------
@@ -53,7 +53,7 @@ classdef Line < pm.vis.plot.Plot
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.plot.Plot(pm.vis.subplot.Line(dfref), varargin{:});
+            self = self@pm.vis.tile.Tile(pm.vis.subplot.Line(dfref), varargin{:});
         end
     end
 end

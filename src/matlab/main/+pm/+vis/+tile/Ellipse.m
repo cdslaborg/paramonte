@@ -1,7 +1,7 @@
-classdef Ellipse < pm.vis.plot.Plot
+classdef Ellipse < pm.vis.tile.Tile
     %
     %   This is the Ellipse class for generating
-    %   instances of 2-dimensional Ellipse plots
+    %   instances of 2-dimensional Ellipse tiles
     %   based on the relevant MATLAB
     %   intrinsic functions.
     %
@@ -42,22 +42,22 @@ classdef Ellipse < pm.vis.plot.Plot
     %   Returns
     %   -------
     %
-    %       An object of class ``pm.vis.plot.Ellipse``.
+    %       An object of class ``pm.vis.tile.Ellipse``.
     %
     %   Interface
     %   ---------
     %
-    %       p = pm.vis.plot.Ellipse();
-    %       p = pm.vis.plot.Ellipse(gramian);
-    %       p = pm.vis.plot.Ellipse(gramian, center);
-    %       p = pm.vis.plot.Ellipse(gramian, center, cval);
-    %       p = pm.vis.plot.Ellipse(gramian, center, cval, varargin);
+    %       t = pm.vis.tile.Ellipse();
+    %       t = pm.vis.tile.Ellipse(gramian);
+    %       t = pm.vis.tile.Ellipse(gramian, center);
+    %       t = pm.vis.tile.Ellipse(gramian, center, cval);
+    %       t = pm.vis.tile.Ellipse(gramian, center, cval, varargin);
     %
     %   Example
     %   -------
     %
-    %       p = pm.vis.plot.Ellipse();
-    %       p.make("dims", [1, 2]);
+    %       t = pm.vis.tile.Ellipse();
+    %       t.make("dims", [1, 2]);
     %
     %   LICENSE
     %   -------
@@ -76,7 +76,7 @@ classdef Ellipse < pm.vis.plot.Plot
             if  nargin < 1
                 gramian = zeros(0, 0, 0);
             end
-            self = self@pm.vis.plot.Plot(pm.vis.subplot.Ellipse(gramian, center, cval), varargin{:});
+            self = self@pm.vis.tile.Tile(pm.vis.subplot.Ellipse(gramian, center, cval), varargin{:});
         end
     end
 end

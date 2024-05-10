@@ -1,7 +1,7 @@
-classdef Heatmap < pm.vis.plot.Plot
+classdef Heatmap < pm.vis.tile.Tile
     %
     %   This is the Heatmap class for generating
-    %   instances of 2-dimensional Heatmap plots
+    %   instances of 2-dimensional Heatmap tiles
     %   based on the relevant MATLAB
     %   intrinsic functions.
     %
@@ -11,7 +11,7 @@ classdef Heatmap < pm.vis.plot.Plot
     %       dfref
     %
     %           See the documentation of the corresponding input
-    %           argument of the superclass ``pm.vis.plot.Plot``.
+    %           argument of the superclass ``pm.vis.tile.Tile``.
     %
     %       varargin
     %
@@ -30,18 +30,18 @@ classdef Heatmap < pm.vis.plot.Plot
     %   ----------
     %
     %       See the documentation of the attributes
-    %       of the superclass ``pm.vis.plot.Plot``.
+    %       of the superclass ``pm.vis.tile.Tile``.
     %
     %   Returns
     %   -------
     %
-    %       An object of ``pm.vis.subplot.Heatmap`` class.
+    %       An object of ``pm.vis.tile.Heatmap`` class.
     %
     %   Interface
     %   ---------
     %
-    %       s = pm.vis.subplot.Heatmap(dfref);
-    %       s = pm.vis.subplot.Heatmap(dfref, varargin);
+    %       t = pm.vis.tile.Heatmap(dfref);
+    %       t = pm.vis.tile.Heatmap(dfref, varargin);
     %
     %   LICENSE
     %   -------
@@ -53,7 +53,7 @@ classdef Heatmap < pm.vis.plot.Plot
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.plot.Plot(pm.vis.subplot.Heatmap(dfref), varargin{:});
+            self = self@pm.vis.tile.Tile(pm.vis.subplot.Heatmap(dfref), varargin{:});
         end
     end
 end

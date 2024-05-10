@@ -39,14 +39,14 @@ classdef Tiling < pm.vis.Figure
     properties(Access = public)
         %
         %   tiledlayout
-        %   
+        %
         %       A MATLAB ``struct`` whose fields and values are passed
         %       as keyword arguments to the MATLAB intrinsic ``tiledlayout()``.
         %
         tiledlayout = [];
         %
         %   subplot
-        %   
+        %
         %       The MATLAB cell matrix containing objects of superclass ``pm.vis.subplot.Subplot``
         %       each of which represents one subplot axes to display in the figure.
         %
@@ -221,8 +221,6 @@ classdef Tiling < pm.vis.Figure
             %
             %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
             %
-            reset@pm.vis.Figure(self, varargin{:}); % this will automatically call the ``premake()`` method of the object.
-
             self.tiledlayout.innerPosition = [];
             self.tiledlayout.outerPosition = [];
             self.tiledlayout.position = [];
@@ -230,6 +228,8 @@ classdef Tiling < pm.vis.Figure
             self.tiledlayout.padding = [];
             self.tiledlayout.tileSpacing = [];
             self.tiledlayout.units = [];
+
+            reset@pm.vis.Figure(self, varargin{:}); % this will automatically call the ``premake()`` method of the object.
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %%%% RULE 0: Any non-MATLAB-default setting must be preferably set in the make() method to override user null values.

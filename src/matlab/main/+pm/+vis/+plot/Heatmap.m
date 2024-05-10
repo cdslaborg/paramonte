@@ -35,13 +35,13 @@ classdef Heatmap < pm.vis.plot.Plot
     %   Returns
     %   -------
     %
-    %       An object of ``pm.vis.subplot.Heatmap`` class.
+    %       An object of ``pm.vis.plot.Heatmap`` class.
     %
     %   Interface
     %   ---------
     %
-    %       s = pm.vis.subplot.Heatmap(dfref);
-    %       s = pm.vis.subplot.Heatmap(dfref, varargin);
+    %       p = pm.vis.plot.Heatmap(dfref);
+    %       p = pm.vis.plot.Heatmap(dfref, varargin);
     %
     %   LICENSE
     %   -------
