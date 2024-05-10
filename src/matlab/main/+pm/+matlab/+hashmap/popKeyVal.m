@@ -38,17 +38,17 @@ function [keyval, hashout] = popKeyVal(keys, hashmap)
     %   Interface
     %   ---------
     %
-    %       [hashout, keyval] = pm.matlab.hashmap.popKeyVal(keys, hashmap)
+    %       [keyval, hashout] = pm.matlab.hashmap.popKeyVal(keys, hashmap)
     %
     %   Example
     %   -------
     %
     %       hashmap = {"key1", 1, "key2", "val2", "key3", false, "key2", "last"};
-    %       [hashout, keyval] = pm.matlab.hashmap.popKeyVal("key2", hashmap)
-    %       [hashout, keyval] = pm.matlab.hashmap.popKeyVal("key3", hashmap)
-    %       [hashout, keyval] = pm.matlab.hashmap.popKeyVal("key3", hashmap(1:4))
-    %       [hashout, keyval] = pm.matlab.hashmap.popKeyVal({"key2", "key1"}, hashmap(1:4))
-    %       [hashout, keyval] = pm.matlab.hashmap.popKeyVal("key2", hashmap(1:3)) % error: odd number of elements.
+    %       [keyval, hashout] = pm.matlab.hashmap.popKeyVal("key2", hashmap)
+    %       [keyval, hashout] = pm.matlab.hashmap.popKeyVal("key3", hashmap)
+    %       [keyval, hashout] = pm.matlab.hashmap.popKeyVal("key3", hashmap(1:4))
+    %       [keyval, hashout] = pm.matlab.hashmap.popKeyVal({"key2", "key1"}, hashmap(1:4))
+    %       [keyval, hashout] = pm.matlab.hashmap.popKeyVal("key2", hashmap(1:3)) % error: odd number of elements.
     %
     %   LICENSE
     %   -------

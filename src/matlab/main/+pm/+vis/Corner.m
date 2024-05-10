@@ -1,4 +1,4 @@
-classdef Tile < pm.vis.Figure
+classdef Corner < pm.vis.Figure
     %
     %   This is the abstract class for generating instances
     %   of figures containing a tile of subplots.
@@ -23,12 +23,12 @@ classdef Tile < pm.vis.Figure
     %
     %       self
     %
-    %           The output scalar object of class ``pm.vis.Tile``.
+    %           The output scalar object of class ``pm.vis.Corner``.
     %
     %   Interface
     %   ---------
     %
-    %       plot = pm.vis.Tile(subplot);
+    %       plot = pm.vis.Corner(subplot);
     %
     %   Attributes
     %   ----------
@@ -82,7 +82,7 @@ classdef Tile < pm.vis.Figure
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function self = Tile(subplot, varargin)
+        function self = Corner(subplot, varargin)
             if  nargin < 1
                 subplot = cell(0, 0);
             end
@@ -103,7 +103,7 @@ classdef Tile < pm.vis.Figure
             if ~failed
                 varargin = {"subplot", subplot, varargin{:}};
             else
-                help("pm.vis.Tile");
+                help("pm.vis.Corner");
                 error   ( newline ...
                         + "The input argument ``subplot`` must be a MATLAB cell matrix of " + newline ...
                         + "empty objects or objects of superclass ``pm.vis.subplot.Subplot``." + newline ...
@@ -146,12 +146,12 @@ classdef Tile < pm.vis.Figure
             %   Interface
             %   ---------
             %
-            %       f = pm.vis.Tile.make(varargin);
+            %       f = pm.vis.Corner.make(varargin);
             %
             %   Example
             %   -------
             %
-            %       f = pm.vis.Tile();
+            %       f = pm.vis.Corner();
             %       f.make()
             %
             %   LICENSE
@@ -213,7 +213,7 @@ classdef Tile < pm.vis.Figure
             %   Interface
             %   ---------
             %
-            %       pm.vis.Tile.reset() # reset all object properties to the default settings.
+            %       pm.vis.Corner.reset() # reset all object properties to the default settings.
             %
             %   LICENSE
             %   -------
