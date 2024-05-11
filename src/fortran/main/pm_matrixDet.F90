@@ -112,7 +112,8 @@ module pm_matrixDet
     !>
     !>  \details
     !>  This generic interface uses the [pivoted LU (LUP) factorization](@ref pm_matrixLUP) to compute the determinant.<br>
-    !>  If the matrix is already known to be positive-definite, use the other more appropriate faster generic interfaces of this module.<br>
+    !>  If the matrix is already known to be positive-definite, use the other more appropriate faster generic
+    !>  interfaces of this module (e.g., [getMatDetSqrt](@ref pm_matrixDet::getMatDetSqrt).<br>
     !>
     !>  \param[in]  mat :   The input `contiguous` square matrix of shape `(ndim,ndim)` of type `real` of kind \RKALL.
     !>
@@ -337,6 +338,11 @@ module pm_matrixDet
     !>  \brief
     !>  Return the determinant of the input **square** matrix.
     !>
+    !>  \details
+    !>  This generic interface uses the [pivoted LU (LUP) factorization](@ref pm_matrixLUP) to compute the determinant.<br>
+    !>  If the matrix is already known to be positive-definite, use the other more appropriate faster generic
+    !>  interfaces of this module (e.g., [setMatDetSqrt](@ref pm_matrixDet::setMatDetSqrt).<br>
+    !>
     !>  \param[inout]   mat     :   The input/output `contiguous` square matrix of shape `(1:ndim, 1:ndim)` of,
     !>                              <ol>
     !>                                  <li>    type `complex` of kind \CKALL,
@@ -540,7 +546,7 @@ module pm_matrixDet
     !>                              (**optional**, default = [uppDia](@ref pm_matrixSubset::uppDia))
     !>
     !>  \return
-    !>  `detSqrtLog`            :   The output scalar of type `real` of the same kind as the input `mat` containing 
+    !>  `detSqrtLog`            :   The output scalar of type `real` of the same kind as the input `mat` containing
     !>                              the square-root of the determinant of the input positive-definite square matrix.<br>
     !>                              If the input `mat` is not positive-definite, the algorithm will halt the program by calling `error stop`.<br>
     !>
