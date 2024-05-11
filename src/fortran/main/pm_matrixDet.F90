@@ -113,7 +113,7 @@ module pm_matrixDet
     !>  \details
     !>  This generic interface uses the [pivoted LU (LUP) factorization](@ref pm_matrixLUP) to compute the determinant.<br>
     !>  If the matrix is already known to be positive-definite, use the other more appropriate faster generic
-    !>  interfaces of this module (e.g., [getMatDetSqrt](@ref pm_matrixDet::getMatDetSqrt).<br>
+    !>  interfaces of this module (e.g., [getMatDetSqrt](@ref pm_matrixDet::getMatDetSqrt)).<br>
     !>
     !>  \param[in]  mat :   The input `contiguous` square matrix of shape `(ndim,ndim)` of type `real` of kind \RKALL.
     !>
@@ -341,7 +341,7 @@ module pm_matrixDet
     !>  \details
     !>  This generic interface uses the [pivoted LU (LUP) factorization](@ref pm_matrixLUP) to compute the determinant.<br>
     !>  If the matrix is already known to be positive-definite, use the other more appropriate faster generic
-    !>  interfaces of this module (e.g., [setMatDetSqrt](@ref pm_matrixDet::setMatDetSqrt).<br>
+    !>  interfaces of this module (e.g., [setMatDetSqrt](@ref pm_matrixDet::setMatDetSqrt)).<br>
     !>
     !>  \param[inout]   mat     :   The input/output `contiguous` square matrix of shape `(1:ndim, 1:ndim)` of,
     !>                              <ol>
