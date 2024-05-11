@@ -147,7 +147,7 @@ module pm_matrixMulAdd
     !>  For triangular matrix-matrix or matrix-vector multiplications, see [pm_matrixMulTri](@ref pm_matrixMulTri).<br>
     !>
     !>  \param[in]      matA        :   The input `contiguous` matrix of either shape `(:,:)` or `(:)`
-    !>                                  (in [Linear Full Packing (LFP) known as the **LAPACK packed storage format**](@ref pm_matrixPack) format) of either,
+    !>                                  (in [Linear Full Packing (LFP)](@ref pm_matrixPack) known as the **LAPACK packed storage** format) of either,
     !>                                  <ol>
     !>                                      <li>    type `integer` of kind \IKALL,
     !>                                      <li>    type `complex` of kind \CKALL,
