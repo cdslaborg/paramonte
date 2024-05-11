@@ -15,7 +15,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief
-!>  This module contains procedures and generic interfaces relevant to the computation of the determinants of square matrices.
+!>  This module contains procedures and generic interfaces relevant to the computation of the determinants of square matrices.<br>
 !>
 !>  \details
 !>  The determinant is a scalar value that is a function of the entries of a square matrix.<br>
@@ -119,7 +119,7 @@ module pm_matrixDet
     !>
     !>  \return
     !>  `det`           :   The output scalar of the same type and kind as the input `mat`
-    !>                      containing the determinant of the input square matrix.
+    !>                      containing the determinant of the input square matrix.<br>
     !>
     !>  \interface{getMatDet}
     !>  \code{.F90}
