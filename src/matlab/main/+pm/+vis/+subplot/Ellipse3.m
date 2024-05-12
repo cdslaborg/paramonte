@@ -423,9 +423,6 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
             if  isempty(self.colormap.map)
                 self.colormap.map = "winter";
             end
-            if  isempty(self.colormap.enabled)
-                self.colormap.enabled = true;
-            end
 
             if  isempty(self.plot3.enabled)
                 self.plot3.enabled = false;
@@ -435,7 +432,7 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
                 self.surface.enabled = true;
             end
 
-            if isempty(self.scatter3.enabled)
+            if  isempty(self.scatter3.enabled)
                 self.scatter3.enabled = ~(self.plot3.enabled || self.surface.enabled);
             end
 
@@ -457,7 +454,7 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
             %%%% Set the line color to default MATLAB blue only if scatter is disabled and colormap is disabled and color is unset by the user.
             %%%%
 
-            if ~self.colormap.enabled && ~self.scatter3.enabled
+            if ~(isempty(self.colormap.enabled) || self.colormap.enabled || self.scatter3.enabled)
                 [val, failed] = pm.matlab.hashmap.getKeyVal("plot3", varargin);
                 if ~failed
                     [~, failed] = pm.matlab.hashmap.getKeyVal("color", val);

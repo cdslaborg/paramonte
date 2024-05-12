@@ -583,8 +583,8 @@ classdef Axes < pm.matlab.Handle
     %           The default behavior is set by MATLAB.
     %
     properties(Access = protected, Hidden)
-        type = struct();
-        cenabled = [];
+        type = struct(); % auxiliary struct containing plot type information.
+        cenabled = []; % auxiliary logical scalar that is true if plot is color-mapped.
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -630,7 +630,7 @@ classdef Axes < pm.matlab.Handle
             self.type.is.d1             = self.type.is.histfit || self.type.is.histogram || self.type.is.heatmap;
             self.type.is.d2             = ~(self.type.is.d1 || self.type.is.d3);
             self.type.is.triaxes        = self.type.is.d3 || self.type.is.histogram2 || self.type.is.contour3;
-            self.type.is.targetable     = false; %xx ~self.type.is.heatmap && ~ self.type.is.d3;
+           %self.type.is.targetable     = false; %xx ~self.type.is.heatmap && ~ self.type.is.d3;
             self.type.has.line          = self.type.is.line || self.type.is.line3 || self.type.is.lineScatter || self.type.is.lineScatter3;
             self.type.has.scatter       = self.type.is.scatter || self.type.is.scatter3 || self.type.is.lineScatter || self.type.is.lineScatter3;
 
@@ -694,7 +694,7 @@ classdef Axes < pm.matlab.Handle
                 if  self.type.is.triaxes
                     self.axes.zgrid = [];
                 end
-                self.axes.enabled = true;
+                self.axes.enabled = [];
             end
 
             %%%% title
@@ -723,7 +723,7 @@ classdef Axes < pm.matlab.Handle
                 self.xlabel.interpreter = [];
                 self.xlabel.rotation = [];
             end
-            self.xlabel.enabled = true;
+            self.xlabel.enabled = [];
             self.xlabel.txt = [];
 
             self.newprop("xlim", []);
@@ -760,11 +760,11 @@ classdef Axes < pm.matlab.Handle
                     self.colorbar.ticks = [];
                     self.colorbar.tickLabels = [];
                     self.colorbar.tickLabelInterpreter = 'tex';
-                    self.colorbar.enabled = true;
+                    self.colorbar.enabled = [];
                 end
 
                 self.newprop("colormap", struct());
-                self.colormap.enabled = true;
+                self.colormap.enabled = [];
                 self.colormap.map = []; % 'default'
 
             end
@@ -780,15 +780,15 @@ classdef Axes < pm.matlab.Handle
                 self.legend.location = [];
                 self.legend.numColumns = [];
                 self.legend.textColor = [];
-                self.legend.enabled = false;
+                self.legend.enabled = [];
                 self.legend.labels = {};
             end
 
             %%%% target
 
-            if ~self.type.is.targetable
-                self.newprop("target");
-            end
+            %if ~self.type.is.targetable
+            %    self.newprop("target");
+            %end
 
             %%%%%%%%%%%%%%%%%%%%%%%
             %%%% heatmap attributes
@@ -802,7 +802,7 @@ classdef Axes < pm.matlab.Handle
                 self.heatmap.missingDataColor = [];
                 self.heatmap.fontName = [];
                 self.heatmap.fontSize = [];
-                self.heatmap.enabled = true;
+                self.heatmap.enabled = [];
             end
 
             %%%%%%%%%%%%%%%%%%%%%%%
@@ -811,7 +811,7 @@ classdef Axes < pm.matlab.Handle
 
             if  self.type.is.histfit
                 self.newprop("histfit", struct());
-                self.histfit.enabled = true;
+                self.histfit.enabled = [];
                 self.histfit.dist = [];
                 self.histfit.nbins = [];
             end
@@ -830,7 +830,7 @@ classdef Axes < pm.matlab.Handle
                 self.histogram.lineWidth = [];
                 self.histogram.normalization = [];
                 self.histogram.orientation = [];
-                self.histogram.enabled = true;
+                self.histogram.enabled = [];
                 self.histogram.edges = [];
                 self.histogram.nbins = [];
             end
@@ -853,7 +853,7 @@ classdef Axes < pm.matlab.Handle
                 self.histogram2.faceLighting = [];
                 self.histogram2.lineStyle = [];
                 self.histogram2.lineWidth = [];
-                self.histogram2.enabled = true;
+                self.histogram2.enabled = [];
                 self.histogram2.nbins = [];
                 self.histogram2.xedges = [];
                 self.histogram2.yedges = [];
@@ -870,7 +870,7 @@ classdef Axes < pm.matlab.Handle
                 self.contour.labelSpacing = [];
                 self.contour.lineWidth = [];
                 self.contour.showText = [];
-                self.contour.enabled = true;
+                self.contour.enabled = [];
                 self.contour.levels = [];
                 self.contour.lineSpec = [];
             end
@@ -882,7 +882,7 @@ classdef Axes < pm.matlab.Handle
                 self.contourf.labelSpacing = [];
                 self.contourf.lineWidth = [];
                 self.contourf.showText = [];
-                self.contourf.enabled = true;
+                self.contourf.enabled = [];
                 self.contourf.levels = [];
                 self.contourf.lineSpec = [];
             end
@@ -893,7 +893,7 @@ classdef Axes < pm.matlab.Handle
                 self.contour3.labelSpacing = [];
                 self.contour3.lineWidth = [];
                 self.contour3.showText = [];
-                self.contour3.enabled = true;
+                self.contour3.enabled = [];
                 self.contour3.levels = [];
                 self.contour3.lineSpec = [];
             end
@@ -912,7 +912,7 @@ classdef Axes < pm.matlab.Handle
                 self.plot.markerFaceColor = [];
                 self.plot.markerIndices = [];
                 self.plot.markerSize = [];
-                self.plot.enabled = true;
+                self.plot.enabled = [];
             end
 
             if  self.type.is.line3 || self.type.is.lineScatter3
@@ -925,7 +925,7 @@ classdef Axes < pm.matlab.Handle
                 self.plot3.markerFaceColor = [];
                 self.plot3.markerIndices = [];
                 self.plot3.markerSize = [];
-                self.plot3.enabled = true;
+                self.plot3.enabled = [];
             end
 
             if  isprop(self, "surface")
@@ -953,7 +953,7 @@ classdef Axes < pm.matlab.Handle
                 self.scatter.lineWidth = [];
                 self.scatter.markeredgeColor = [];
                 self.scatter.markerFaceColor = [];
-                self.scatter.enabled = true;
+                self.scatter.enabled = [];
                 self.scatter.color = [];
                 self.scatter.filled = [];
                 self.scatter.marker = [];
@@ -966,33 +966,21 @@ classdef Axes < pm.matlab.Handle
                 self.scatter3.lineWidth = [];
                 self.scatter3.markeredgeColor = [];
                 self.scatter3.markerFaceColor = [];
-                self.scatter3.enabled = true;
+                self.scatter3.enabled = [];
                 self.scatter3.color = [];
                 self.scatter3.filled = [];
                 self.scatter3.marker = [];
                 self.scatter3.size = [];
             end
 
-            %%%% ensure line plots are monochromatic when axes contains scatter plot.
+            %if  self.type.is.targetable
+            %    self.target = pm.vis.Target();
+            %end
 
-            if  self.type.has.line
-                if  self.type.has.scatter
-                    self.surface.enabled = false;
-                    if  self.type.is.d2
-                        self.plot.color = [];
-                    else
-                        self.plot3.color = [];
-                    end
-                else
-                    self.surface.enabled = true;
-                end
+            if ~isempty(varargin)
+                self.hash2comp(varargin); % parse arguments
             end
-
-            if  self.type.is.targetable
-                self.target = pm.vis.Target();
-            end
-
-            self.premake(varargin{:}); % This is the subclass method!
+            %self.premake(varargin{:}); % This is the subclass method!
 
         end
 
@@ -1055,7 +1043,112 @@ classdef Axes < pm.matlab.Handle
             %%%% These settings must happen here so that they can be reset every time user nullifies the values.
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+            %%%%
+            %%%% Set the enabled visualization components.
+            %%%%
+
+            if  isprop(self, "axes") && isempty(self.axes.enabled)
+                self.axes.enabled = true;
+            end
+
+            if  isprop(self, "title") && isempty(self.title.enabled)
+                self.title.enabled = ~isempty(self.title.titletext);
+            end
+
+            if  isprop(self, "xlabel") && isempty(self.xlabel.enabled)
+                self.xlabel.enabled = true;
+            end
+
+            if  isprop(self, "ylabel") && isempty(self.ylabel.enabled)
+                self.ylabel.enabled = true;
+            end
+
+            if  isprop(self, "zlabel") && isempty(self.zlabel.enabled)
+                self.zlabel.enabled = true;
+            end
+
+            if  isprop(self, "colorbar") && isempty(self.colorbar.enabled)
+                self.colorbar.enabled = true;
+            end
+
+            if  isprop(self, "colormap") && isempty(self.colormap.enabled)
+                self.colormap.enabled = true;
+            end
+
+            if  isprop(self, "contour") && isempty(self.contour.enabled)
+                self.contour.enabled = true;
+            end
+
+            if  isprop(self, "contourf") && isempty(self.contourf.enabled)
+                self.contourf.enabled = true;
+            end
+
+            if  isprop(self, "contour3") && isempty(self.contour3.enabled)
+                self.contour3.enabled = true;
+            end
+
+            if  isprop(self, "heatmap") && isempty(self.heatmap.enabled)
+                self.heatmap.enabled = true;
+            end
+
+            if  isprop(self, "histfit") && isempty(self.histfit.enabled)
+                self.histfit.enabled = true;
+            end
+
+            if  isprop(self, "histogram") && isempty(self.histogram.enabled)
+                self.histogram.enabled = true;
+            end
+
+            if  isprop(self, "histogram2") && isempty(self.histogram2.enabled)
+                self.histogram2.enabled = true;
+            end
+
+            if  isprop(self, "legend") && isempty(self.legend.enabled)
+                self.legend.enabled = false;
+            end
+
+            if  isprop(self, "plot") && isempty(self.plot.enabled)
+                self.plot.enabled = true;
+            end
+
+            if  isprop(self, "plot3") && isempty(self.plot3.enabled)
+                self.plot3.enabled = true;
+            end
+
+            if  isprop(self, "scatter") && isempty(self.scatter.enabled)
+                self.scatter.enabled = true;
+            end
+
+            if  isprop(self, "scatter3") && isempty(self.scatter3.enabled)
+                self.scatter3.enabled = true;
+            end
+
+            %%%%
+            %%%% ensure line plots are monochromatic when there is scatter plot.
+            %%%%
+
+            if  self.type.has.line
+                if  self.type.has.scatter && isempty(self.surface.enabled)
+                    self.surface.enabled = false;
+                    % if  self.type.is.d2
+                    %     self.plot.color = [];
+                    % else
+                    %     self.plot3.color = [];
+                    % end
+                elseif  isempty(self.surface.enabled)
+                    self.surface.enabled = true;
+                end
+                proplist = ["plot", "plot3"];
+                for prop = proplist
+                    if  isprop(self, prop) && isempty(self.(prop).enabled)
+                        self.(prop).enabled = ~self.surface.enabled;
+                    end
+                end
+            end
+
+            %%%%
             %%%% Set heatmap settings.
+            %%%%
 
             if  self.type.is.heatmap
                 if ~isempty(self.precision) && ~isnumeric(self.precision)
@@ -1147,10 +1240,6 @@ classdef Axes < pm.matlab.Handle
             end
 
             if  self.type.has.line
-                if  self.surface.enabled
-                    if self.type.is.d2; self.plot.enabled = false; end
-                    if self.type.is.d3; self.plot3.enabled = false; end
-                end
                 if self.type.is.d2; self.setKeyVal("plot", "lineWidth", 1); end
                 if self.type.is.d3; self.setKeyVal("plot3", "lineWidth", 1); end
                 self.setKeyVal("surface", "faceColor", "none");
@@ -1170,10 +1259,10 @@ classdef Axes < pm.matlab.Handle
             self.cenabled = self.cenabled || (self.type.is.diffusion && self.colormap.enabled);
             self.cenabled = self.cenabled || (self.type.is.heatmap && self.colormap.enabled);
 
-            if ~self.cenabled && self.type.has.line
-                if self.type.is.d2; self.plot.enabled = true; end
-                if self.type.is.d3; self.plot3.enabled = true; end
-            end
+            % if ~self.cenabled && self.type.has.line
+            %     if self.type.is.d2; self.plot.enabled = true; end
+            %     if self.type.is.d3; self.plot3.enabled = true; end
+            % end
 
             if isprop(self, "axes")
                 if isfield(self.axes, "box") && isempty(self.axes.box); self.axes.box = "on"; end

@@ -300,7 +300,8 @@ classdef Subplot < pm.vis.axes.Axes
             noPlotEnabled = noPlotEnabled || (self.type.is.contour3 && ~self.contour3.enabled);
             noPlotEnabled = noPlotEnabled || (self.type.is.histfit && ~self.histfit.enabled);
             noPlotEnabled = noPlotEnabled || (self.type.is.contour && ~self.contour.enabled);
-            if  noPlotEnabled && ~self.type.is.heatmap
+            noPlotEnabled = noPlotEnabled || (self.type.is.heatmap && ~self.heatmap.enabled);
+            if  noPlotEnabled
                 error   ( newline ...
                         + "All plot types are deactivated by the user. There is nothing to display." + newline ...
                         + "Enable at least one the following plotting components of the parent object." + newline  ...
@@ -528,7 +529,7 @@ classdef Subplot < pm.vis.axes.Axes
 
             %%%% Make plots.
 
-            if self.type.is.heatmap
+            if self.type.is.heatmap && self.heatmap.enabled
 
                 if ~isempty(self.precision)
                     self.fout.heatmap = heatmap(colnamx, colnamy, round(dfcopy{colnamy, colnamx}, self.precision), kws.heatmap{:});
@@ -685,8 +686,8 @@ classdef Subplot < pm.vis.axes.Axes
                 if isprop(self, "ylabel") && self.ylabel.enabled; if ~pm.array.len(self.ylabel.txt); txt = colnamy; else; txt = self.ylabel.txt; end; self.fout.ylabel = ylabel(txt, kws.ylabel{:}); end
                 if isprop(self, "zlabel") && self.zlabel.enabled; if ~pm.array.len(self.zlabel.txt); txt = colnamz; else; txt = self.zlabel.txt; end; self.fout.zlabel = zlabel(txt, kws.zlabel{:}); end
             else
-                if isprop(self, "xlabel") && self.xlabel.enabled && pm.array.len(self.xlabel.txt); xlabel(self.xlabel.txt, kws.xlabel{:}); end
-                if isprop(self, "ylabel") && self.ylabel.enabled && pm.array.len(self.ylabel.txt); ylabel(self.ylabel.txt, kws.ylabel{:}); end
+                if isprop(self, "xlabel") && self.xlabel.enabled; xlabel(self.xlabel.txt, kws.xlabel{:}); end
+                if isprop(self, "ylabel") && self.ylabel.enabled; ylabel(self.ylabel.txt, kws.ylabel{:}); end
             end
 
             % add the colormap and colorbar.
@@ -772,9 +773,9 @@ classdef Subplot < pm.vis.axes.Axes
                 end
             end
 
-            if  self.type.is.targetable
-                self.target.fout.axes = self.fout.axes;
-            end
+            %if  self.type.is.targetable
+            %    self.target.fout.axes = self.fout.axes;
+            %end
 
             %%%% add title.
 

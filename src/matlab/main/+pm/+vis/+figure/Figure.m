@@ -228,7 +228,9 @@ classdef Figure < pm.matlab.Handle
             self.figure.resize = [];
             self.figure.units = [];
             self.figure.visible = [];
-            self.premake(varargin{:}); % This is the subclass method!
+            if ~isempty(varargin)
+                self.hash2comp(varargin); % parse arguments
+            end
 
         end
 

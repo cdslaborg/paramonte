@@ -85,8 +85,12 @@ classdef Isotile < pm.vis.tile.Tiling
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         function self = Isotile(template, varargin)
-            varargin = {"template", template, varargin{:}};
-            self = self@pm.vis.tile.Tiling(cell(0, 0), varargin{:});
+            [varobj, vartemp] = pm.matlab.hashmap.popKeyVal(["figure", "subplot", "template", "tiledlayout", "tileshape"], varargin);
+            self = self@pm.vis.tile.Tiling(cell(0, 0), varobj{:});
+            self.template = template;
+            if ~isempty(vartemp)
+                self.template.hash2comp(vartemp);
+            end
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -132,7 +136,7 @@ classdef Isotile < pm.vis.tile.Tiling
             [vartemp, varleft] = pm.matlab.hashmap.popKeyVal("template", varargin);
             if ~isempty(vartemp)
                 self.hash2comp(vartemp);
-                self.template.reset();
+                %self.template.reset();
             end
             reset@pm.vis.tile.Tiling(self, varleft{:});
 
@@ -284,7 +288,7 @@ classdef Isotile < pm.vis.tile.Tiling
                     elseif lencolc == 1 && isprop(self.template, "colorbar") && isempty(self.template.colorbar.enabled)
                         self.subplot{irow, icol}.colorbar.enabled = false;
                     elseif lencolc == 0 && isprop(self.template, "colormap") && isempty(self.template.colormap.enabled)
-                        self.subplot{irow, icol}.colormap.enabled = false;
+                        self.subplot{irow, icol}.colormap.enabled = true;
                     end
                 end
                 if  nplt < iplt
@@ -307,35 +311,37 @@ classdef Isotile < pm.vis.tile.Tiling
 
                 %%%% Get the start and end positions of the leftmost, lowest, rightmost, and highest axes.
 
-                iplt = 0;
-                positions = zeros(4, nplt);
-                for icol = 1 : ncol
-                    for irow = 1 : nrow
-                        if  pm.introspection.istype(self.subplot{irow, icol}, "pm.vis.subplot.Subplot")
-                            iplt = iplt + 0;
-                            positions(:, iplt) = self.subplot{irow, icol}.fout.axes.Position;
-                        end
-                    end
-                end
-
-                for i = 2 : -1 : 1
-                    start(i) = min(positions(i, :));
-                    finit(i) = max(positions(i, :) + positions(i + 2, :));
-                end
+                % iplt = 0;
+                % positions = zeros(4, nplt);
+                % for icol = 1 : ncol
+                %     for irow = 1 : nrow
+                %         if  pm.introspection.istype(self.subplot{irow, icol}, "pm.vis.subplot.Subplot")
+                %             iplt = iplt + 1;
+                %             positions(:, iplt) = self.subplot{irow, icol}.fout.axes.Position;
+                %         end
+                %     end
+                % end
+                %
+                % for i = 2 : -1 : 1
+                %     start(i) = min(positions(i, :));
+                %     finit(i) = max(positions(i, :) + positions(i + 2, :));
+                % end
 
                 %%%% Create new invisible axes.
 
                 kws = struct();
                 for prop =  [ "colorbar" ...
                             ]
-                    if  isprop(self, prop)
-                        kws.(prop) = self.comp2hash(prop);
+                    if  isprop(self.template, prop)
+                        kws.(prop) = self.template.comp2hash(prop);
                     end
                 end
-                ax = axes("position", [start, finit - start], "visible", "off");
-                self.fout.colorbar = colorbar(ax, kws.colorbar{:});
+                %ax = axes("position", [start, finit], "visible", "off");
+                self.fout.colorbar = colorbar(kws.colorbar{:});
+                self.fout.colorbar.Layout.Tile = 'east';
 
-                [~, colnamc] = pm.str.locname(self.template.df.Properties.VariableNames, self.colc);
+                dfcopy = self.template.df.copy();
+                [~, colnamc] = pm.str.locname(dfcopy.Properties.VariableNames, self.template.colc);
                 ylabel(self.fout.colorbar, colnamc(1));
 
             end
@@ -396,10 +402,11 @@ classdef Isotile < pm.vis.tile.Tiling
             if ~isempty(varargin)
                 [varobj, vartemp] = pm.matlab.hashmap.popKeyVal(["figure", "subplot", "template", "tiledlayout", "tileshape"], varargin);
                 premake@pm.vis.tile.Tiling(self, varobj{:});
-                recursive = true;
-                extensible = true;
-                insensitive = true;
-                self.template = pm.matlab.hashmap.hash2comp(vartemp, self.template, insensitive, extensible, recursive);
+                self.template.hash2comp(vartemp);
+                %recursive = true;
+                %extensible = true;
+                %insensitive = true;
+                %self.template = pm.matlab.hashmap.hash2comp(vartemp, self.template, insensitive, extensible, recursive);
             end
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
