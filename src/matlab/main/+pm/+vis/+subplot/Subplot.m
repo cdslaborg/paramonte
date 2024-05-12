@@ -1,4 +1,4 @@
-classdef Subplot < pm.vis.Axes
+classdef Subplot < pm.vis.axes.Axes
     %
     %   This is the abstract class for generating instances of axes
     %   with various types of plots from one or more columns of data.
@@ -230,7 +230,7 @@ classdef Subplot < pm.vis.Axes
             if  nargin < 1
                 ptype = [];
             end
-            self@pm.vis.Axes(ptype, varargin{:});
+            self@pm.vis.axes.Axes(ptype, varargin{:});
             self.df = pm.data.DataFrame(dfref);
         end
 
@@ -316,7 +316,7 @@ classdef Subplot < pm.vis.Axes
                         + "Without any input data, visualizations are impossible." + newline ...
                         + "The input argument ``dfref`` to the object constructor was likely empty." + newline ...
                         + "If you merely want to create a template of visualization specifications," + newline ...
-                        + "then use the class ``pm.vis.Axes`` which is the superclass of this class." + newline ...
+                        + "then use the class ``pm.vis.axes.Axes`` which is the superclass of this class." + newline ...
                         + "For more information, see the class documentation displayed above." + newline ...
                         + newline ...
                         );
@@ -879,7 +879,7 @@ classdef Subplot < pm.vis.Axes
             %
             %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
             %
-            premake@pm.vis.Axes(self, varargin{:});
+            premake@pm.vis.axes.Axes(self, varargin{:});
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -925,7 +925,7 @@ classdef Subplot < pm.vis.Axes
                     self.newprop("colz", {});
                 end
             end
-            reset@pm.vis.Axes(self, varargin{:});
+            reset@pm.vis.axes.Axes(self, varargin{:});
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

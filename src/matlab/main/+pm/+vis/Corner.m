@@ -1,4 +1,4 @@
-classdef Corner < pm.vis.Figure
+classdef Corner < pm.vis.figure.Figure
     %
     %   This is the abstract class for generating instances
     %   of figures containing a tile of subplots.
@@ -34,7 +34,7 @@ classdef Corner < pm.vis.Figure
     %   ----------
     %
     %       See the list of class attributes below,
-    %       also those of the superclass ``pm.vis.Figure``.
+    %       also those of the superclass ``pm.vis.figure.Figure``.
     %
     properties(Access = public)
         %
@@ -111,7 +111,7 @@ classdef Corner < pm.vis.Figure
                         + newline ...
                         );
             end
-            self = self@pm.vis.Figure(varargin{:});
+            self = self@pm.vis.figure.Figure(varargin{:});
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -159,7 +159,7 @@ classdef Corner < pm.vis.Figure
             %
             %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
             %
-            make@pm.vis.Figure(self, varargin{:});
+            make@pm.vis.figure.Figure(self, varargin{:});
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %%%% RULE 0: No component of ``self`` is allowed to appear to the left of assignment operator, except ``fout``.
@@ -220,7 +220,7 @@ classdef Corner < pm.vis.Figure
             %
             %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
             %
-            reset@pm.vis.Figure(self, varargin{:}); % this will automatically call the ``premake()`` method of the object.
+            reset@pm.vis.figure.Figure(self, varargin{:}); % this will automatically call the ``premake()`` method of the object.
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %%%% RULE 0: Any non-MATLAB-default setting must be preferably set in the make() method to override user null values.
@@ -263,7 +263,7 @@ classdef Corner < pm.vis.Figure
             %       axis of the figure to provide room for lengthy variable names.
             %       Then call the ``self.update()`` method to reflect the changes.
             %
-            premake@pm.vis.Figure(self, varargin{:});
+            premake@pm.vis.figure.Figure(self, varargin{:});
 
             self.nrow = size(self.subplot, 1);
             self.ncol = size(self.subplot, 2);

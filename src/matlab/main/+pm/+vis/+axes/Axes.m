@@ -43,12 +43,12 @@ classdef Axes < pm.matlab.Handle
     %
     %       self
     %
-    %           The output scalar object of class ``pm.vis.Axes``.
+    %           The output scalar object of class ``pm.vis.axes.Axes``.
     %
     %   Interface
     %   ---------
     %
-    %       axes = pm.vis.Axes(ptype);
+    %       axes = pm.vis.axes.Axes(ptype);
     %
     %   Attributes
     %   ----------
@@ -596,7 +596,7 @@ classdef Axes < pm.matlab.Handle
         function self = Axes(ptype, varargin)
 
             if  nargin < 1 || ~pm.introspection.istype(ptype, "string", 1) || ~pm.array.len(ptype)
-                help("pm.vis.Axes");
+                help("pm.vis.axes.Axes");
                 error   ( newline ...
                         + "The input argument ``ptype`` is missing." + newline ...
                         + "For more information, see the class documentation displayed above." + newline ...
@@ -665,7 +665,7 @@ classdef Axes < pm.matlab.Handle
             %   Interface
             %   ---------
             %
-            %       pm.vis.Axes.reset() # reset the plot to the default settings.
+            %       pm.vis.axes.Axes.reset() # reset the plot to the default settings.
             %
             %   LICENSE
             %   -------
@@ -1034,12 +1034,12 @@ classdef Axes < pm.matlab.Handle
             %   Interface
             %   ---------
             %
-            %       a = pm.vis.Axes.premake(varargin);
+            %       a = pm.vis.axes.Axes.premake(varargin);
             %
             %   Example
             %   -------
             %
-            %       a = pm.vis.Axes(ptype);
+            %       a = pm.vis.axes.Axes(ptype);
             %       a.premake("xlim", [0, 1])
             %
             %   LICENSE
@@ -1059,7 +1059,7 @@ classdef Axes < pm.matlab.Handle
 
             if  self.type.is.heatmap
                 if ~isempty(self.precision) && ~isnumeric(self.precision)
-                    help("pm.vis.Axes");
+                    help("pm.vis.axes.Axes");
                     disp("self.precision");
                     disp( self.precision );
                     error   ( newline ...
@@ -1230,7 +1230,7 @@ classdef Axes < pm.matlab.Handle
                 disp( comp );
                 error   ( newline ...
                         + "Internal library error: Unrecognized MATLAB function name" + newline ...
-                        + "as ``comp`` argument of object of class ``pm.vis.Axes``." + newline ...
+                        + "as ``comp`` argument of object of class ``pm.vis.axes.Axes``." + newline ...
                         + newline ...
                         );
             end

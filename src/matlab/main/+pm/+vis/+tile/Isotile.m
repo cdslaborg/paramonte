@@ -1,4 +1,4 @@
-classdef Tile < pm.vis.Tiling
+classdef Isotile < pm.vis.tile.Tiling
     %
     %   This is the abstract class for generating instances of objects
     %   that contain the specifications of various types of tile figures.
@@ -37,18 +37,18 @@ classdef Tile < pm.vis.Tiling
     %
     %       self
     %
-    %           The output scalar object of class ``pm.vis.tile.Tile``.
+    %           The output scalar object of class ``pm.vis.tile.Isotile``.
     %
     %   Interface
     %   ---------
     %
-    %       tile = pm.vis.tile.Tile(template);
+    %       tile = pm.vis.tile.Isotile(template);
     %
     %   Attributes
     %   ----------
     %
     %       See the list of class attributes below,
-    %       also those of the superclass ``pm.vis.Tiling``.
+    %       also those of the superclass ``pm.vis.tile.Tiling``.
     %
     properties(Access = public)
         %
@@ -84,9 +84,9 @@ classdef Tile < pm.vis.Tiling
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function self = Tile(template, varargin)
+        function self = Isotile(template, varargin)
             varargin = {"template", template, varargin{:}};
-            self = self@pm.vis.Tiling(cell(0, 0), varargin{:});
+            self = self@pm.vis.tile.Tiling(cell(0, 0), varargin{:});
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -121,14 +121,20 @@ classdef Tile < pm.vis.Tiling
             %   Interface
             %   ---------
             %
-            %       pm.vis.tile.Tile.reset() # reset the tile to the default settings.
+            %       pm.vis.tile.Isotile.reset() # reset the tile to the default settings.
             %
             %   LICENSE
             %   -------
             %
             %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
             %
-            reset@pm.vis.Tiling(self, varargin{:});
+            self.tileshape = [];
+            [vartemp, varleft] = pm.matlab.hashmap.popKeyVal("template", varargin);
+            if ~isempty(vartemp)
+                self.hash2comp(vartemp);
+                self.template.reset();
+            end
+            reset@pm.vis.tile.Tiling(self, varleft{:});
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %%%% RULE 0: Any non-MATLAB-default setting must be preferably set in premake() method to override user null values.
@@ -176,12 +182,12 @@ classdef Tile < pm.vis.Tiling
             %   Interface
             %   ---------
             %
-            %       t = pm.vis.tile.Tile.make(varargin);
+            %       t = pm.vis.tile.Isotile.make(varargin);
             %
             %   Example
             %   -------
             %
-            %       t = pm.vis.tile.Tile(pm.vis.subplot.Line());
+            %       t = pm.vis.tile.Isotile(pm.vis.subplot.Line());
             %       t.make()
             %
             %   LICENSE
@@ -219,10 +225,10 @@ classdef Tile < pm.vis.Tiling
 
             %self.tileshape = pm.matlab.hashmap.getKeyVal("tileshape", varargin);
             if ~isempty(self.tileshape)
-                self.nrow = self.tileshape(1);
-                self.ncol = self.tileshape(2);
+                nrow = self.tileshape(1);
+                ncol = self.tileshape(2);
                 if  prod(self.tileshape) < nplt
-                    help("pm.vis.tile.Tile");
+                    help("pm.vis.tile.Isotile");
                     disp("self.tileshape");
                     disp( self.tileshape );
                     disp("nplt");
@@ -234,16 +240,12 @@ classdef Tile < pm.vis.Tiling
                             );
                 end
             else
-                self.nrow = round(sqrt(nplt));
-                self.ncol = self.nrow;
-                while self.nrow * self.ncol ~= nplt && 0 < self.nrow && 0 < self.ncol
-                    self.nrow = self.nrow + 1;
-                    self.ncol = self.ncol - 1;
-                end
-                if  self.nrow < 0 || self.ncol < 0
-                    self.nrow = ceil(sqrt(nplt));
-                    self.ncol = self.ncol;
-                end
+                rows = nplt : -1 : 1;
+                cols = ceil(nplt ./ rows);
+                circ = rows + cols + (rows .* cols) - nplt;
+                [~, irow] = min(circ);
+                nrow = rows(irow);
+                ncol = cols(irow);
             end
 
             %if  isempty(self.tileindex)
@@ -256,9 +258,9 @@ classdef Tile < pm.vis.Tiling
 
             iplt = 0;
             %tilecounter = 0;
-            self.subplot = cell(self.nrow, self.ncol);
-            for irow = 1 : self.nrow
-                for icol = 1 : self.ncol
+            self.subplot = cell(nrow, ncol);
+            for irow = 1 : nrow
+                for icol = 1 : ncol
                     %tilecounter = tilecounter + 1;
                     %if  tilecounter == tileindices(iplt + 1)
                     iplt = iplt + 1;
@@ -279,8 +281,10 @@ classdef Tile < pm.vis.Tiling
                     end
                     if  1 < lencolc
                         self.subplot{irow, icol}.colc = self.template.colc(iplt);
-                    elseif isprop(self.template, "colorbar")
+                    elseif lencolc == 1 && isprop(self.template, "colorbar") && isempty(self.template.colorbar.enabled)
                         self.subplot{irow, icol}.colorbar.enabled = false;
+                    elseif lencolc == 0 && isprop(self.template, "colormap") && isempty(self.template.colormap.enabled)
+                        self.subplot{irow, icol}.colormap.enabled = false;
                     end
                 end
                 if  nplt < iplt
@@ -288,7 +292,53 @@ classdef Tile < pm.vis.Tiling
                 end
             end
 
-            make@pm.vis.Tiling(self);
+            make@pm.vis.tile.Tiling(self);
+
+            %%%% Define a single colorbar.
+
+            unicbar = lencolc == 1;
+            if  unicbar && ~isempty(self.template.colormap.enabled)
+                unicbar = self.template.colormap.enabled;
+            end
+            if  unicbar && ~isempty(self.template.colorbar.enabled)
+                unicbar = self.template.colorbar.enabled;
+            end
+            if  unicbar
+
+                %%%% Get the start and end positions of the leftmost, lowest, rightmost, and highest axes.
+
+                iplt = 0;
+                positions = zeros(4, nplt);
+                for icol = 1 : ncol
+                    for irow = 1 : nrow
+                        if  pm.introspection.istype(self.subplot{irow, icol}, "pm.vis.subplot.Subplot")
+                            iplt = iplt + 0;
+                            positions(:, iplt) = self.subplot{irow, icol}.fout.axes.Position;
+                        end
+                    end
+                end
+
+                for i = 2 : -1 : 1
+                    start(i) = min(positions(i, :));
+                    finit(i) = max(positions(i, :) + positions(i + 2, :));
+                end
+
+                %%%% Create new invisible axes.
+
+                kws = struct();
+                for prop =  [ "colorbar" ...
+                            ]
+                    if  isprop(self, prop)
+                        kws.(prop) = self.comp2hash(prop);
+                    end
+                end
+                ax = axes("position", [start, finit - start], "visible", "off");
+                self.fout.colorbar = colorbar(ax, kws.colorbar{:});
+
+                [~, colnamc] = pm.str.locname(self.template.df.Properties.VariableNames, self.colc);
+                ylabel(self.fout.colorbar, colnamc(1));
+
+            end
 
         end % function
 
@@ -330,12 +380,12 @@ classdef Tile < pm.vis.Tiling
             %   Interface
             %   ---------
             %
-            %       f = pm.vis.tile.Tile.premake(varargin);
+            %       f = pm.vis.tile.Isotile.premake(varargin);
             %
             %   Example
             %   -------
             %
-            %       f = pm.vis.tile.Tile(pm.vis.Line());
+            %       f = pm.vis.tile.Isotile(pm.vis.Line());
             %       f.premake("figure", {"color", "none"})
             %
             %   LICENSE
@@ -345,7 +395,7 @@ classdef Tile < pm.vis.Tiling
             %
             if ~isempty(varargin)
                 [varobj, vartemp] = pm.matlab.hashmap.popKeyVal(["figure", "subplot", "template", "tiledlayout", "tileshape"], varargin);
-                premake@pm.vis.Tiling(self, varobj{:});
+                premake@pm.vis.tile.Tiling(self, varobj{:});
                 recursive = true;
                 extensible = true;
                 insensitive = true;

@@ -1,4 +1,4 @@
-classdef Scatter3 < pm.vis.tile.Tile
+classdef Scatter3 < pm.vis.tile.Isotile
     %
     %   This is the Scatter3 class for generating
     %   instances of 3-dimensional Scatter3 tiles
@@ -11,7 +11,7 @@ classdef Scatter3 < pm.vis.tile.Tile
     %       dfref
     %
     %           See the documentation of the corresponding input
-    %           argument of the superclass ``pm.vis.tile.Tile``.
+    %           argument of the superclass ``pm.vis.tile.Isotile``.
     %
     %       varargin
     %
@@ -30,7 +30,7 @@ classdef Scatter3 < pm.vis.tile.Tile
     %   ----------
     %
     %       See the documentation of the attributes
-    %       of the superclass ``pm.vis.tile.Tile``.
+    %       of the superclass ``pm.vis.tile.Isotile``.
     %
     %   Returns
     %   -------
@@ -53,7 +53,7 @@ classdef Scatter3 < pm.vis.tile.Tile
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.tile.Tile(pm.vis.subplot.Scatter3(dfref), varargin{:});
+            self = self@pm.vis.tile.Isotile(pm.vis.subplot.Scatter3(dfref), varargin{:});
         end
     end
 end

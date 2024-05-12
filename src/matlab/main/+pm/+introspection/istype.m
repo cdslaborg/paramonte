@@ -68,34 +68,32 @@ function itis = istype(varval, vartype, varsize)
     %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
     %
     varvalen = numel(varval);
+    itis = false;
     if 2 < nargin
         itis = varvalen <= varsize;
-    else
-        itis = true;
+        return;
     end
-    if itis
-        for i = 1 : varvalen
-            if isa(varval(i), "cell")
-                value = varval{i};
-            else
-                value = varval(i);
+    for i = 1 : varvalen
+        if isa(varval(i), "cell")
+            value = varval{i};
+        else
+            value = varval(i);
+        end
+        if strcmpi(vartype, "string")
+            itis = isa(value, "string") || isa(value, "char");
+        elseif strcmpi(vartype, "integer")
+            itis = isa(value, "int8") || isa(value, "int16") || isa(value, "int32") || isa(value, "int64");
+            if ~itis && isreal(value)
+                itis = rem(value, 1) == 0;
             end
-            if strcmpi(vartype, "string")
-                itis = isa(value, "string") || isa(value, "char");
-            elseif strcmpi(vartype, "integer")
-                itis = isa(value, "int8") || isa(value, "int16") || isa(value, "int32") || isa(value, "int64");
-                if ~itis && isreal(value)
-                    itis = rem(value, 1) == 0;
-                end
-            elseif strcmpi(vartype, "logical")
-                itis = isa(value, "logical") || isreal(value) || isa(value, "int8") || isa(value, "int16") || isa(value, "int32") || isa(value, "int64");
-            elseif strcmpi(vartype, "complex")
-                itis = isnumeric(value);
-            elseif strcmpi(vartype, "real")
-                itis = isreal(value) || isa(value, "int8") || isa(value, "int16") || isa(value, "int32") || isa(value, "int64");
-            else
-                itis = isa(value, vartype);
-            end
+        elseif strcmpi(vartype, "logical")
+            itis = isa(value, "logical") || isreal(value) || isa(value, "int8") || isa(value, "int16") || isa(value, "int32") || isa(value, "int64");
+        elseif strcmpi(vartype, "complex")
+            itis = isnumeric(value);
+        elseif strcmpi(vartype, "real")
+            itis = isreal(value) || isa(value, "int8") || isa(value, "int16") || isa(value, "int32") || isa(value, "int64");
+        else
+            itis = isa(value, vartype);
         end
     end
 end

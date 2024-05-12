@@ -1,4 +1,4 @@
-classdef Tiling < pm.vis.Figure
+classdef Tiling < pm.vis.figure.Figure
     %
     %   This is the abstract class for generating instances
     %   of figures containing a tile of subplots.
@@ -23,18 +23,18 @@ classdef Tiling < pm.vis.Figure
     %
     %       self
     %
-    %           The output scalar object of class ``pm.vis.Tiling``.
+    %           The output scalar object of class ``pm.vis.tile.Tiling``.
     %
     %   Interface
     %   ---------
     %
-    %       plot = pm.vis.Tiling(subplot);
+    %       plot = pm.vis.tile.Tiling(subplot);
     %
     %   Attributes
     %   ----------
     %
     %       See the list of class attributes below,
-    %       also those of the superclass ``pm.vis.Figure``.
+    %       also those of the superclass ``pm.vis.figure.Figure``.
     %
     properties(Access = public)
         %
@@ -55,20 +55,20 @@ classdef Tiling < pm.vis.Figure
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    properties(Access = public, Hidden)
-        %
-        %       ncol
-        %
-        %           The MATLAB scalar whole-number whose value represents ``size(self.suplot, 2)``.
-        %
-        ncol = [];
-        %
-        %       nrow
-        %
-        %           The MATLAB scalar whole-number whose value represents ``size(self.suplot, 1)``.
-        %
-        nrow = [];
-    end
+    %properties(Access = public, Hidden)
+    %    %
+    %    %       ncol
+    %    %
+    %    %           The MATLAB scalar whole-number whose value represents ``size(self.suplot, 2)``.
+    %    %
+    %    ncol = [];
+    %    %
+    %    %       nrow
+    %    %
+    %    %           The MATLAB scalar whole-number whose value represents ``size(self.suplot, 1)``.
+    %    %
+    %    nrow = [];
+    %end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -97,7 +97,7 @@ classdef Tiling < pm.vis.Figure
             if ~failed
                 varargin = {"subplot", subplot, varargin{:}};
             else
-                help("pm.vis.Tiling");
+                help("pm.vis.tile.Tiling");
                 error   ( newline ...
                         + "The input argument ``subplot`` must be a MATLAB cell matrix of " + newline ...
                         + "empty objects or objects of superclass ``pm.vis.subplot.Subplot``." + newline ...
@@ -105,7 +105,7 @@ classdef Tiling < pm.vis.Figure
                         + newline ...
                         );
             end
-            self = self@pm.vis.Figure(varargin{:});
+            self = self@pm.vis.figure.Figure(varargin{:});
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -140,12 +140,12 @@ classdef Tiling < pm.vis.Figure
             %   Interface
             %   ---------
             %
-            %       f = pm.vis.Tiling.make(varargin);
+            %       f = pm.vis.tile.Tiling.make(varargin);
             %
             %   Example
             %   -------
             %
-            %       f = pm.vis.Tiling();
+            %       f = pm.vis.tile.Tiling();
             %       f.make()
             %
             %   LICENSE
@@ -153,7 +153,7 @@ classdef Tiling < pm.vis.Figure
             %
             %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
             %
-            make@pm.vis.Figure(self, varargin{:});
+            make@pm.vis.figure.Figure(self, varargin{:});
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %%%% RULE 0: No component of ``self`` is allowed to appear to the left of assignment operator, except ``fout``.
@@ -168,17 +168,17 @@ classdef Tiling < pm.vis.Figure
             end
 
             try
-                self.fout.tiledlayout = tiledlayout(self.nrow, self.ncol, kws.tiledlayout{:}); % requires MATLAB R2019b.
+                self.fout.tiledlayout = tiledlayout(size(self.subplot, 1), size(self.subplot, 2), kws.tiledlayout{:}); % requires MATLAB R2019b.
             end
             iplot = 0;
-            for irow = 1 : self.nrow
-                for icol = 1 : self.ncol
+            for irow = 1 : size(self.subplot, 1)
+                for icol = 1 : size(self.subplot, 2)
                     iplot = iplot + 1;
                     if  pm.introspection.istype(self.subplot{irow, icol}, "pm.vis.subplot.Subplot")
                         try
                             nexttile;
                         catch
-                            subplot(self.nrow, self.ncol, iplot);
+                            subplot(size(self.subplot, 1), size(self.subplot, 2), iplot);
                         end
                         self.subplot{irow, icol}.make();
                     end
@@ -214,7 +214,7 @@ classdef Tiling < pm.vis.Figure
             %   Interface
             %   ---------
             %
-            %       pm.vis.Tiling.reset() # reset all object properties to the default settings.
+            %       pm.vis.tile.Tiling.reset() # reset all object properties to the default settings.
             %
             %   LICENSE
             %   -------
@@ -229,7 +229,7 @@ classdef Tiling < pm.vis.Figure
             self.tiledlayout.tileSpacing = [];
             self.tiledlayout.units = [];
 
-            reset@pm.vis.Figure(self, varargin{:}); % this will automatically call the ``premake()`` method of the object.
+            reset@pm.vis.figure.Figure(self, varargin{:}); % this will automatically call the ``premake()`` method of the object.
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %%%% RULE 0: Any non-MATLAB-default setting must be preferably set in the make() method to override user null values.
@@ -272,10 +272,10 @@ classdef Tiling < pm.vis.Figure
             %       axis of the figure to provide room for lengthy variable names.
             %       Then call the ``self.update()`` method to reflect the changes.
             %
-            premake@pm.vis.Figure(self, varargin{:});
+            premake@pm.vis.figure.Figure(self, varargin{:});
 
-            self.nrow = size(self.subplot, 1);
-            self.ncol = size(self.subplot, 2);
+            %self.nrow = size(self.subplot, 1);
+            %self.ncol = size(self.subplot, 2);
 
             %%%% Set the default margins.
 

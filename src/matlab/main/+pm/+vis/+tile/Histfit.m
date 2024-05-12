@@ -1,4 +1,4 @@
-classdef Histfit < pm.vis.tile.Tile
+classdef Histfit < pm.vis.tile.Isotile
     %
     %   This is the Histfit class for generating
     %   instances of 2-dimensional Histfit tiles
@@ -11,13 +11,13 @@ classdef Histfit < pm.vis.tile.Tile
     %       dfref
     %
     %           See the documentation of the corresponding input
-    %           argument of the superclass ``pm.vis.tile.Tile``.
+    %           argument of the superclass ``pm.vis.tile.Isotile``.
     %
     %   Attributes
     %   ----------
     %
     %       See the documentation of the attributes
-    %       of the superclass ``pm.vis.tile.Tile``.
+    %       of the superclass ``pm.vis.tile.Isotile``.
     %
     %       varargin
     %
@@ -53,7 +53,7 @@ classdef Histfit < pm.vis.tile.Tile
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.tile.Tile(pm.vis.subplot.Histfit(dfref), varargin{:});
+            self = self@pm.vis.tile.Isotile(pm.vis.subplot.Histfit(dfref), varargin{:});
         end
     end
 end

@@ -1,4 +1,4 @@
-classdef Ellipse3 < pm.vis.tile.Tile
+classdef Ellipse3 < pm.vis.tile.Isotile
     %
     %   This is the Ellipse3 class for generating
     %   instances of 3-dimensional Ellipse3 tiles
@@ -41,7 +41,7 @@ classdef Ellipse3 < pm.vis.tile.Tile
     %   ----------
     %
     %       See below and also the documentation of the
-    %       attributes of the superclass ``pm.vis.Figure``.
+    %       attributes of the superclass ``pm.vis.figure.Figure``.
     %
     %   Returns
     %   -------
@@ -84,7 +84,7 @@ classdef Ellipse3 < pm.vis.tile.Tile
             if  nargin < 1
                 gramian = zeros(0, 0, 0);
             end
-            self = self@pm.vis.tile.Tile(pm.vis.subplot.Ellipse3(gramian, center, zval, cval), varargin{:});
+            self = self@pm.vis.tile.Isotile(pm.vis.subplot.Ellipse3(gramian, center, zval, cval), varargin{:});
         end
     end
 end

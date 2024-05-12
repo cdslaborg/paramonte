@@ -22,12 +22,12 @@ classdef Figure < pm.matlab.Handle
     %
     %       self
     %
-    %           The output scalar object of class ``pm.vis.Figure``.
+    %           The output scalar object of class ``pm.vis.figure.Figure``.
     %
     %   Interface
     %   ---------
     %
-    %       f = pm.vis.Figure(varargin);
+    %       f = pm.vis.figure.Figure(varargin);
     %
     %   Attributes
     %   ----------
@@ -142,12 +142,12 @@ classdef Figure < pm.matlab.Handle
             %   Interface
             %   ---------
             %
-            %       f = pm.vis.Figure.make(varargin);
+            %       f = pm.vis.figure.Figure.make(varargin);
             %
             %   Example
             %   -------
             %
-            %       f = pm.vis.Figure();
+            %       f = pm.vis.figure.Figure();
             %       f.make()
             %
             %   LICENSE
@@ -205,7 +205,7 @@ classdef Figure < pm.matlab.Handle
             %   Interface
             %   ---------
             %
-            %       pm.vis.Figure.reset() # reset the plot to the default settings.
+            %       pm.vis.figure.Figure.reset() # reset the plot to the default settings.
             %
             %   LICENSE
             %   -------
@@ -270,12 +270,12 @@ classdef Figure < pm.matlab.Handle
             %   Interface
             %   ---------
             %
-            %       f = pm.vis.Figure.premake(varargin);
+            %       f = pm.vis.figure.Figure.premake(varargin);
             %
             %   Example
             %   -------
             %
-            %       f = pm.vis.Figure();
+            %       f = pm.vis.figure.Figure();
             %       f.premake("figure", {"color", "none"})
             %
             %   LICENSE
@@ -604,7 +604,7 @@ classdef Figure < pm.matlab.Handle
             %   Interface
             %   ---------
             %
-            %       f = pm.vis.Figure();
+            %       f = pm.vis.figure.Figure();
             %       [imageData, alpha] = f.savefig();
             %       [imageData, alpha] = f.savefig(file);
             %       [imageData, alpha] = f.savefig(file, varargin{:});
@@ -642,7 +642,7 @@ classdef Figure < pm.matlab.Handle
             %%%% Check the consistency of the file name.
 
             if ~pm.introspection.istype(file, "string", 1)
-                help("pm.vis.Figure");
+                help("pm.vis.figure.Figure");
                 disp("file = ");
                 disp(file);
                 error   ( newline ...
@@ -683,7 +683,7 @@ classdef Figure < pm.matlab.Handle
                 istransparent = false;
             end
 
-            pm.vis.export_fig.export_fig(file, varargin{:});
+            pm.vis.figure.savefig(file, varargin{:});
 
             %%%%
             %%%% Revert transparency if figure ws not transparent.

@@ -1,4 +1,4 @@
-classdef Plot < pm.vis.Figure
+classdef Plot < pm.vis.figure.Figure
     %
     %   This is the abstract class for generating instances of objects
     %   that contain the specifications of various types of figures.
@@ -43,7 +43,7 @@ classdef Plot < pm.vis.Figure
     %   ----------
     %
     %       See the list of class attributes below,
-    %       also those of the superclass ``pm.vis.Figure``.
+    %       also those of the superclass ``pm.vis.figure.Figure``.
     %
     properties(Access = public)
         %
@@ -63,7 +63,7 @@ classdef Plot < pm.vis.Figure
 
         function self = Plot(subplot, varargin)
             varargin = {"subplot", subplot, varargin{:}};
-            self = self@pm.vis.Figure(varargin{:});
+            self = self@pm.vis.figure.Figure(varargin{:});
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -106,7 +106,7 @@ classdef Plot < pm.vis.Figure
             %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
             %
             [varfig, varsub] = pm.matlab.hashmap.popKeyVal(["figure", "subplot"], varargin);
-            reset@pm.vis.Figure(self, varfig{:});
+            reset@pm.vis.figure.Figure(self, varfig{:});
             self.subplot.reset(varsub{:});
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -169,7 +169,7 @@ classdef Plot < pm.vis.Figure
             %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
             %
             [varfig, varsub] = pm.matlab.hashmap.popKeyVal(["figure", "subplot"], varargin);
-            make@pm.vis.Figure(self, varfig{:});
+            make@pm.vis.figure.Figure(self, varfig{:});
             self.subplot.make(varsub{:});
             hold off;
 
@@ -226,7 +226,7 @@ classdef Plot < pm.vis.Figure
             %
             %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
             %
-            premake@pm.vis.Figure(self, varargin{:});
+            premake@pm.vis.figure.Figure(self, varargin{:});
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %%%% These settings must happen here so that they can be reset every time user nullifies the values.

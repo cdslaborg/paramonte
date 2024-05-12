@@ -156,7 +156,7 @@ function objnew = hash2comp(hashmap, object, insensitive, extensible, recursive)
             end
         end
         if  recursive && isa(hashmap{i + 1}, "cell") && (isa(objnew.(key), "struct") || isa(objnew.(key), "handle") || ~isempty(properties(objnew.(key))))
-            objnew.(key) = pm.matlab.hashmap.hash2comp(hashmap(i + 1), objnew.(key), insensitive, extensible, recursive);
+            objnew.(key) = pm.matlab.hashmap.hash2comp(hashmap{i + 1}, objnew.(key), insensitive, extensible, recursive);
         else
             objnew.(key) = hashmap{i + 1};
         end

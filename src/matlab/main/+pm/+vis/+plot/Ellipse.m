@@ -37,7 +37,7 @@ classdef Ellipse < pm.vis.plot.Plot
     %   ----------
     %
     %       See below and also the documentation of the
-    %       attributes of the superclass ``pm.vis.Figure``.
+    %       attributes of the superclass ``pm.vis.figure.Figure``.
     %
     %   Returns
     %   -------
