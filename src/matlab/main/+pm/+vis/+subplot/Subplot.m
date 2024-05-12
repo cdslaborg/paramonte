@@ -527,6 +527,25 @@ classdef Subplot < pm.vis.axes.Axes
                 hold on;
             end
 
+            %%%%
+            %%%% Ensure points and lines are scaled properly.
+            %%%% It's not clear whether it's worth doing so because
+            %%%% most figure resizing happen after making it,
+            %%%% which makes the following solution useless.
+            %%%%
+
+            % temp = [];
+            % if ~strcmpi(self.fout.axes.Units, "normalized")
+            %     temp = self.fout.axes.Units;
+            %     self.fout.axes.Units = "normalized";
+            % end
+            % defaultSizeFig = [560, 420] % width, height in pixels.
+            % defaultSizeAxes = [0.775, 0.815] % width, height in pixels (assuming no colorbar).
+            % self.fout.axes.Position
+            % if ~isempty(temp)
+            %     self.fout.axes.Units = temp;
+            % end
+
             %%%% Make plots.
 
             if self.type.is.heatmap && self.heatmap.enabled
