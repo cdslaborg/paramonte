@@ -41,7 +41,7 @@ classdef Ellipse3 < pm.vis.tile.Isotile
     %   ----------
     %
     %       See below and also the documentation of the
-    %       attributes of the superclass ``pm.vis.figure.Figure``.
+    %       attributes of the superclass ``pm.vis.tile.Isotile``.
     %
     %   Returns
     %   -------
@@ -70,6 +70,9 @@ classdef Ellipse3 < pm.vis.tile.Isotile
     %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
     %
     methods(Access = public)
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
         function self = Ellipse3(gramian, center, zval, cval, varargin)
             %%%% Define the missing optional values as empty with the right rank.
             if  nargin < 4
@@ -86,5 +89,8 @@ classdef Ellipse3 < pm.vis.tile.Isotile
             end
             self = self@pm.vis.tile.Isotile(pm.vis.subplot.Ellipse3(gramian, center, zval, cval), varargin{:});
         end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     end
 end

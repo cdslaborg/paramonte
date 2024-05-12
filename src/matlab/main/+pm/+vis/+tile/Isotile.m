@@ -203,27 +203,44 @@ classdef Isotile < pm.vis.tile.Tiling
 
             %%%% First set the tile dimensions.
 
-            lencolx = 0;
-            if  isprop(self.template, "colx")
-                lencolx = pm.array.len(self.template.colx);
-            end
+            isEllipsoid = isa(self.template, "pm.vis.subplot.Ellipse") || isa(self.template, "pm.vis.subplot.Ellipse3");
 
-            lencoly = 0;
-            if  isprop(self.template, "coly")
-                lencoly = pm.array.len(self.template.coly);
-            end
+            if  isEllipsoid
+                nplt = size(self.template.dims, 1);
+                if  size(self.template.dims, 2) ~= 2
+                    help("pm.vis.tile.Ellipse3");
+                    error   ( newline ...
+                            + "The condition ``size(self.template.dims, 2) == 2`` must hold." + newline ...
+                            + "For more information, see the documentation displayed above." + newline ...
+                            + newline ...
+                            );
+                end
 
-            lencolz = 0;
-            if  isprop(self.template, "colz")
-                lencolz = pm.array.len(self.template.colz);
-            end
+            else
 
-            lencolc = 0;
-            if  isprop(self.template, "colc")
-                lencolc = pm.array.len(self.template.colc);
-            end
+                lencolx = 0;
+                if  isprop(self.template, "colx")
+                    lencolx = pm.array.len(self.template.colx);
+                end
 
-            nplt = max([lencolx, lencoly, lencolz, lencolc]);
+                lencoly = 0;
+                if  isprop(self.template, "coly")
+                    lencoly = pm.array.len(self.template.coly);
+                end
+
+                lencolz = 0;
+                if  isprop(self.template, "colz")
+                    lencolz = pm.array.len(self.template.colz);
+                end
+
+                lencolc = 0;
+                if  isprop(self.template, "colc")
+                    lencolc = pm.array.len(self.template.colc);
+                end
+
+                nplt = max([lencolx, lencoly, lencolz, lencolc]);
+
+            end
 
             %%%% Define the tile shape.
 
@@ -274,21 +291,25 @@ classdef Isotile < pm.vis.tile.Tiling
                     %self.subplot{irow, icol} = self.template;
                     copyStream = getByteStreamFromArray(self.template);
                     self.subplot{irow, icol} = getArrayFromByteStream(copyStream);
-                    if  1 < lencolx
-                        self.subplot{irow, icol}.colx = self.template.colx(iplt);
-                    end
-                    if  1 < lencoly
-                        self.subplot{irow, icol}.coly = self.template.coly(iplt);
-                    end
-                    if  1 < lencolz
-                        self.subplot{irow, icol}.colz = self.template.colz(iplt);
-                    end
-                    if  1 < lencolc
-                        self.subplot{irow, icol}.colc = self.template.colc(iplt);
-                    elseif lencolc == 1 && isprop(self.template, "colorbar") && isempty(self.template.colorbar.enabled)
-                        self.subplot{irow, icol}.colorbar.enabled = false;
-                    elseif lencolc == 0 && isprop(self.template, "colormap") && isempty(self.template.colormap.enabled)
-                        self.subplot{irow, icol}.colormap.enabled = true;
+                    if  isEllipsoid
+                        self.subplot{irow, icol}.dims = self.template.dims(iplt, :);
+                    else
+                        if  1 < lencolx
+                            self.subplot{irow, icol}.colx = self.template.colx(iplt);
+                        end
+                        if  1 < lencoly
+                            self.subplot{irow, icol}.coly = self.template.coly(iplt);
+                        end
+                        if  1 < lencolz
+                            self.subplot{irow, icol}.colz = self.template.colz(iplt);
+                        end
+                        if  1 < lencolc
+                            self.subplot{irow, icol}.colc = self.template.colc(iplt);
+                        elseif lencolc == 1 && isprop(self.template, "colorbar") && isempty(self.template.colorbar.enabled)
+                            self.subplot{irow, icol}.colorbar.enabled = false;
+                        elseif lencolc == 0 && isprop(self.template, "colormap") && isempty(self.template.colormap.enabled)
+                            self.subplot{irow, icol}.colormap.enabled = true;
+                        end
                     end
                 end
                 if  nplt < iplt
@@ -300,49 +321,53 @@ classdef Isotile < pm.vis.tile.Tiling
 
             %%%% Define a single colorbar.
 
-            unicbar = lencolc == 1;
-            if  unicbar && ~isempty(self.template.colormap.enabled)
-                unicbar = self.template.colormap.enabled;
-            end
-            if  unicbar && ~isempty(self.template.colorbar.enabled)
-                unicbar = self.template.colorbar.enabled;
-            end
-            if  unicbar
+            if ~isEllipsoid
 
-                %%%% Get the start and end positions of the leftmost, lowest, rightmost, and highest axes.
-
-                % iplt = 0;
-                % positions = zeros(4, nplt);
-                % for icol = 1 : ncol
-                %     for irow = 1 : nrow
-                %         if  pm.introspection.istype(self.subplot{irow, icol}, "pm.vis.subplot.Subplot")
-                %             iplt = iplt + 1;
-                %             positions(:, iplt) = self.subplot{irow, icol}.fout.axes.Position;
-                %         end
-                %     end
-                % end
-                %
-                % for i = 2 : -1 : 1
-                %     start(i) = min(positions(i, :));
-                %     finit(i) = max(positions(i, :) + positions(i + 2, :));
-                % end
-
-                %%%% Create new invisible axes.
-
-                kws = struct();
-                for prop =  [ "colorbar" ...
-                            ]
-                    if  isprop(self.template, prop)
-                        kws.(prop) = self.template.comp2hash(prop);
-                    end
+                unicbar = lencolc == 1;
+                if  unicbar && ~isempty(self.template.colormap.enabled)
+                    unicbar = self.template.colormap.enabled;
                 end
-                %ax = axes("position", [start, finit], "visible", "off");
-                self.fout.colorbar = colorbar(kws.colorbar{:});
-                self.fout.colorbar.Layout.Tile = 'east';
+                if  unicbar && ~isempty(self.template.colorbar.enabled)
+                    unicbar = self.template.colorbar.enabled;
+                end
+                if  unicbar
 
-                dfcopy = self.template.df.copy();
-                [~, colnamc] = pm.str.locname(dfcopy.Properties.VariableNames, self.template.colc);
-                ylabel(self.fout.colorbar, colnamc(1));
+                    %%%% Get the start and end positions of the leftmost, lowest, rightmost, and highest axes.
+
+                    % iplt = 0;
+                    % positions = zeros(4, nplt);
+                    % for icol = 1 : ncol
+                    %     for irow = 1 : nrow
+                    %         if  pm.introspection.istype(self.subplot{irow, icol}, "pm.vis.subplot.Subplot")
+                    %             iplt = iplt + 1;
+                    %             positions(:, iplt) = self.subplot{irow, icol}.fout.axes.Position;
+                    %         end
+                    %     end
+                    % end
+                    %
+                    % for i = 2 : -1 : 1
+                    %     start(i) = min(positions(i, :));
+                    %     finit(i) = max(positions(i, :) + positions(i + 2, :));
+                    % end
+
+                    %%%% Create new invisible axes.
+
+                    kws = struct();
+                    for prop =  [ "colorbar" ...
+                                ]
+                        if  isprop(self.template, prop)
+                            kws.(prop) = self.template.comp2hash(prop);
+                        end
+                    end
+                    %ax = axes("position", [start, finit], "visible", "off");
+                    self.fout.colorbar = colorbar(kws.colorbar{:});
+                    self.fout.colorbar.Layout.Tile = 'east';
+
+                    dfcopy = self.template.df.copy();
+                    [~, colnamc] = pm.str.locname(dfcopy.Properties.VariableNames, self.template.colc);
+                    ylabel(self.fout.colorbar, colnamc(1));
+
+                end
 
             end
 

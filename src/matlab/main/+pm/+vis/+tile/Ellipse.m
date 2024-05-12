@@ -37,7 +37,7 @@ classdef Ellipse < pm.vis.tile.Isotile
     %   ----------
     %
     %       See below and also the documentation of the
-    %       attributes of the superclass ``pm.vis.figure.Figure``.
+    %       attributes of the superclass ``pm.vis.tile.Isotile``.
     %
     %   Returns
     %   -------
