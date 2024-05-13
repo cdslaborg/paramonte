@@ -415,6 +415,9 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
             %
             %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
             %
+            if ~isempty(varargin)
+                self.hash2comp(varargin); % parse arguments
+            end
 
             %%%%
             %%%% Set the visualization types.
@@ -424,12 +427,20 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
                 self.colormap.map = "winter";
             end
 
+            if  isempty(self.colormap.enabled)
+                self.colormap.enabled = true;
+            end
+
+            if  isempty(self.colorbar.enabled)
+                self.colorbar.enabled = self.colormap.enabled;
+            end
+
             if  isempty(self.plot3.enabled)
-                self.plot3.enabled = false;
+                self.plot3.enabled = ~self.colormap.enabled;
             end
 
             if  isempty(self.surface.enabled)
-                self.surface.enabled = true;
+                self.surface.enabled = self.colormap.enabled;
             end
 
             if  isempty(self.scatter3.enabled)
@@ -448,13 +459,13 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
             %%%% Set the visualization specs of the parent (and set the data components).
             %%%%
 
-            premake@pm.vis.subplot.LineScatter3(self, varargin{:});
+            premake@pm.vis.subplot.LineScatter3(self);
 
             %%%%
             %%%% Set the line color to default MATLAB blue only if scatter is disabled and colormap is disabled and color is unset by the user.
             %%%%
 
-            if ~(isempty(self.colormap.enabled) || self.colormap.enabled || self.scatter3.enabled)
+            if ~(self.colormap.enabled || self.scatter3.enabled)
                 [val, failed] = pm.matlab.hashmap.getKeyVal("plot3", varargin);
                 if ~failed
                     [~, failed] = pm.matlab.hashmap.getKeyVal("color", val);
@@ -551,7 +562,7 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
 
             if  isempty(self.dims)
                 self.dims = [1, 2];
-            elseif  length(self.dims) ~= 2
+            elseif  size(self.dims, 2) ~= 2
                 help("pm.vis.subplot.Ellipse3")
                 disp("self.dims")
                 disp( self.dims )
@@ -596,10 +607,10 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
             end
 
             if ~pm.array.len(self.xlabel.txt)
-                self.xlabel.txt = self.workspace.names(self.dims(1));
+                self.xlabel.txt = string(self.workspace.names(self.dims(:, 1)));
             end
             if ~pm.array.len(self.ylabel.txt)
-                self.ylabel.txt = self.workspace.names(self.dims(2));
+                self.ylabel.txt = string(self.workspace.names(self.dims(:, 2)));
             end
             if ~pm.array.len(self.zlabel.txt)
                 if ~isempty(self.workspace.zval)
@@ -755,21 +766,27 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
             fields = ["colx", "coly", "colz", "colc"];
             for icol = 1 : length(fields)
                 field = fields(icol);
-                self.(field) = length(fields) * ((1 : length(self.workspace.ellindex)) - 1) + icol;
+                self.(field) = length(fields) * ((1 : length(self.workspace.ellindex) * size(self.dims, 1)) - 1) + icol;
             end
 
             %%%%
             %%%% Generate ellipse self.workspace.
             %%%%
 
-            bcrd = zeros(size(self.workspace.zval, 1), length(fields) * length(self.workspace.ellindex));
-            for i = 1 : length(self.workspace.ellindex)
-                iell = self.workspace.ellindex(i);
-                icol = (i - 1) * length(fields) + 1;
-                bcrd(:, icol : icol + 1) = pm.geom.ell2.getBorder(self.workspace.gramian(self.dims, self.dims, iell), self.workspace.center(self.dims, iell), size(self.workspace.zval, 1));
-                bcrd(:, icol + 2) = self.workspace.zval(:, iell);
-                if  3 < length(fields)
-                    bcrd(:, icol + 3) = self.workspace.cval(:, iell);
+            bcrd = zeros(size(self.workspace.zval, 1), length(fields) * length(self.workspace.ellindex) * size(self.dims, 1));
+            for idim = 1 : size(self.dims, 1)
+                for iell = 1 : length(self.workspace.ellindex)
+                    jell = self.workspace.ellindex(iell);
+                    icol = (iell - 1) * length(fields) + 1;
+                    iset = (idim - 1) * length(fields) * length(self.workspace.ellindex);
+                    bcrd(:, iset + icol : iset + icol + 1) = pm.geom.ell2.getBorder ( self.workspace.gramian(self.dims(idim, :), self.dims(idim, :), jell) ...
+                                                                                    , self.workspace.center(self.dims(idim, :), jell) ...
+                                                                                    , size(self.workspace.zval, 1) ...
+                                                                                    );
+                    bcrd(:, iset + icol + 2) = self.workspace.zval(:, jell);
+                    if  3 < length(fields)
+                        bcrd(:, iset + icol + 3) = self.workspace.cval(:, jell);
+                    end
                 end
             end
 
@@ -833,13 +850,15 @@ classdef Ellipse3 < pm.vis.subplot.LineScatter3
             %%%% RULE 0: No component of ``self`` is allowed to appear to the left of assignment operator, except ``fout``.
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            if  prod(self.workspace.shape.cval) < 1
-                % input cval is empty
-                %self.fout.colorbar.Ticks = self.fout.axes.ZTick;
-                %%self.fout.colorbar.Limits = self.fout.axes.ZLim;
-                ylabel(self.fout.colorbar, "Ellipsoid Index");
-            else
-                ylabel(self.fout.colorbar, "Color Data");
+            if  self.colormap.enabled && self.colorbar.enabled
+                if  prod(self.workspace.shape.cval) < 1
+                    % input cval is empty
+                    %self.fout.colorbar.Ticks = self.fout.axes.ZTick;
+                    %%self.fout.colorbar.Limits = self.fout.axes.ZLim;
+                    ylabel(self.fout.colorbar, "Ellipsoid Index");
+                else
+                    ylabel(self.fout.colorbar, "Color Data");
+                end
             end
 
         end
