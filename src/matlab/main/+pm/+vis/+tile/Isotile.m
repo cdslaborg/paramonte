@@ -55,7 +55,7 @@ classdef Isotile < pm.vis.tile.Tiling
         %       template
         %
         %           The scalar object of superclass ``pm.vis.subplot.Subplot``
-        %           representing a template of the set of subplots to display.
+        %           representing the template of the set of subplots to display.
         %
         template = [];
         %

@@ -1,7 +1,7 @@
-classdef Scatter3 < pm.vis.plot.Plot
+classdef Histfit < pm.vis.cascade.Cascade
     %
-    %   This is the Scatter3 class for generating
-    %   instances of 3-dimensional Scatter3 plots
+    %   This is the Histfit class for generating
+    %   instances of 2-dimensional Histfit plots
     %   based on the relevant MATLAB
     %   intrinsic functions.
     %
@@ -11,7 +11,13 @@ classdef Scatter3 < pm.vis.plot.Plot
     %       dfref
     %
     %           See the documentation of the corresponding input
-    %           argument of the superclass ``pm.vis.plot.Plot``.
+    %           argument of the class ``pm.vis.plot.Plot``.
+    %
+    %   Attributes
+    %   ----------
+    %
+    %       See the documentation of the attributes
+    %       of the superclass ``pm.vis.cascade.Cascade``.
     %
     %       varargin
     %
@@ -24,24 +30,18 @@ classdef Scatter3 < pm.vis.plot.Plot
     %       \note
     %
     %           The input ``varargin`` can also contain the components
-    %           of the ``subplot`` component of the parent object.
-    %
-    %   Attributes
-    %   ----------
-    %
-    %       See the documentation of the attributes
-    %       of the superclass ``pm.vis.plot.Plot``.
+    %           of the ``template`` component of the parent object.
     %
     %   Returns
     %   -------
     %
-    %       An object of ``pm.vis.subplot.Scatter3`` class.
+    %       An object of ``pm.vis.cascade.Histfit`` class.
     %
     %   Interface
     %   ---------
     %
-    %       s = pm.vis.plot.Scatter3(dfref);
-    %       s = pm.vis.plot.Scatter3(dfref, varargin);
+    %       p = pm.vis.cascade.Histfit(dfref);
+    %       p = pm.vis.cascade.Histfit(dfref, varargin);
     %
     %   LICENSE
     %   -------
@@ -49,11 +49,11 @@ classdef Scatter3 < pm.vis.plot.Plot
     %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
     %
     methods(Access = public)
-        function self = Scatter3(dfref, varargin)
+        function self = Histfit(dfref, varargin)
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.plot.Plot(pm.vis.subplot.Scatter3(dfref), varargin{:});
+            self = self@pm.vis.cascade.Cascade(pm.vis.plot.Histfit(dfref), varargin{:});
         end
     end
 end

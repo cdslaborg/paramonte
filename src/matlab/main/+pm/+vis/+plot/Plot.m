@@ -226,7 +226,11 @@ classdef Plot < pm.vis.figure.Figure
             %
             %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
             %
-            premake@pm.vis.figure.Figure(self, varargin{:});
+            [varfig, varsub] = pm.matlab.hashmap.popKeyVal(["figure", "subplot"], varargin);
+            premake@pm.vis.figure.Figure(self, varfig{:});
+            if ~isempty(varsub)
+                self.subplot.hash2comp(varsub);
+            end
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %%%% These settings must happen here so that they can be reset every time user nullifies the values.

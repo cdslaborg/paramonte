@@ -40,8 +40,8 @@ classdef Scatter < pm.vis.plot.Plot
     %   Interface
     %   ---------
     %
-    %       s = pm.vis.subplot.Scatter(dfref);
-    %       s = pm.vis.subplot.Scatter(dfref, varargin);
+    %       s = pm.vis.plot.Scatter(dfref);
+    %       s = pm.vis.plot.Scatter(dfref, varargin);
     %
     %   LICENSE
     %   -------

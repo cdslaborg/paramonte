@@ -55,6 +55,11 @@ classdef Figure < pm.matlab.Handle
         %                   but if you print the figure, the background prints as though the figure
         %                   window is transparent.
         %
+        %               fileName
+        %
+        %                   Character vector or string scalar containing the file name for
+        %                   saving the figure specified as a character vector or a string scalar.
+        %
         %               position
         %
         %                   Location and size of the drawable area, specified as
@@ -628,12 +633,17 @@ classdef Figure < pm.matlab.Handle
             end
             if  pm.array.len(file) == 0
                 if ~isempty(self.figure.fileName)
-                    file = self.figure.fileName;
+                    file = string(self.figure.fileName);
                 else
+                    if ~isempty(self.figure.name)
+                        prefix = string(self.figure.name);
+                    else
+                        prefix = "figure";
+                    end
                     fid = 0;
                     while true
                         fid = fid + 1;
-                        file = self.name + "." + string(fid) + ".png";
+                        file = prefix + "." + string(fid) + ".png";
                         if ~isfile(file)
                             break;
                         end
