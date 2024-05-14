@@ -1,14 +1,19 @@
-classdef Tiling < pm.vis.figure.Figure
+classdef Corner < pm.vis.figure.Tiling
     %
     %   This is the abstract class for generating instances
-    %   of figures containing a tile of subplots.
+    %   of figures containing a symmetric grid (corners) of subplots.
     %
     %   Parameters
     %   ----------
     %
-    %       subplot
+    %       dfref
     %
-    %           The input cell matrix of MATLAB objects of superclass ``pm.vis.subplot.Subplot``.
+    %           The input MATLAB 2D matrix or table containing the target dataset
+    %           or function handle that takes no arguments and returns the dataset.
+    %           Specifying a function handle is superior to specifying the dataset
+    %           directly, because the function handle will always allow the use of
+    %           the most updated version of the user table or matrix.
+    %           (**optional**. default = ``table(zeros(0, 0))``)
     %
     %       varargin
     %
@@ -23,12 +28,12 @@ classdef Tiling < pm.vis.figure.Figure
     %
     %       self
     %
-    %           The output scalar object of class ``pm.vis.tile.Tiling``.
+    %           The output scalar object of class ``pm.vis.corner.Corner``.
     %
     %   Interface
     %   ---------
     %
-    %       plot = pm.vis.tile.Tiling(subplot);
+    %       plot = pm.vis.corner.Corner(subplot);
     %
     %   Attributes
     %   ----------
@@ -38,37 +43,43 @@ classdef Tiling < pm.vis.figure.Figure
     %
     properties(Access = public)
         %
-        %   tiledlayout
+        %       margin
         %
-        %       A MATLAB ``struct`` whose fields and values are passed
-        %       as keyword arguments to the MATLAB intrinsic ``tiledlayout()``.
+        %           The MATLAB ``struct`` whose components contain information about the figure subplot margins.
+        %           This information is used to place the input subplots to the constructor of the object
+        %           in the appropriate locations in the figure.
         %
-        tiledlayout = [];
+        %           \warning
         %
-        %   subplot
+        %               All specified margin values must be a number between zero and one.
+        %               Furthermore, the specified values must make sense and be reasonable.
         %
-        %       The MATLAB cell matrix containing objects of superclass ``pm.vis.subplot.Subplot``
-        %       each of which represents one subplot axes to display in the figure.
+        template = [];
+        %
+        %       subplot
+        %
+        %           The MATLAB cell matrix containing objects of superclass ``pm.vis.subplot.Subplot``
+        %           each of which represents one subplot axes to display in the figure.
         %
         subplot = cell(0, 0);
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    %properties(Access = public, Hidden)
-    %    %
-    %    %       ncol
-    %    %
-    %    %           The MATLAB scalar whole-number whose value represents ``size(self.suplot, 2)``.
-    %    %
-    %    ncol = [];
-    %    %
-    %    %       nrow
-    %    %
-    %    %           The MATLAB scalar whole-number whose value represents ``size(self.suplot, 1)``.
-    %    %
-    %    nrow = [];
-    %end
+    properties(Access = public, Hidden)
+        %
+        %       ncol
+        %
+        %           The MATLAB scalar whole-number whose value represents ``size(self.suplot, 2)``.
+        %
+        ncol = [];
+        %
+        %       nrow
+        %
+        %           The MATLAB scalar whole-number whose value represents ``size(self.suplot, 1)``.
+        %
+        nrow = [];
+    end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -76,7 +87,7 @@ classdef Tiling < pm.vis.figure.Figure
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function self = Tiling(subplot, varargin)
+        function self = Corner(subplot, varargin)
             if  nargin < 1
                 subplot = cell(0, 0);
             end
@@ -97,7 +108,7 @@ classdef Tiling < pm.vis.figure.Figure
             if ~failed
                 varargin = {"subplot", subplot, varargin{:}};
             else
-                help("pm.vis.tile.Tiling");
+                help("pm.vis.corner.Corner");
                 error   ( newline ...
                         + "The input argument ``subplot`` must be a MATLAB cell matrix of " + newline ...
                         + "empty objects or objects of superclass ``pm.vis.subplot.Subplot``." + newline ...
@@ -140,12 +151,12 @@ classdef Tiling < pm.vis.figure.Figure
             %   Interface
             %   ---------
             %
-            %       f = pm.vis.tile.Tiling.make(varargin);
+            %       f = pm.vis.corner.Corner.make(varargin);
             %
             %   Example
             %   -------
             %
-            %       f = pm.vis.tile.Tiling();
+            %       f = pm.vis.corner.Corner();
             %       f.make()
             %
             %   LICENSE
@@ -159,26 +170,19 @@ classdef Tiling < pm.vis.figure.Figure
             %%%% RULE 0: No component of ``self`` is allowed to appear to the left of assignment operator, except ``fout``.
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            kws = struct();
-            for prop =  [ "tiledlayout" ...
-                        ]
-                if  isprop(self, prop)
-                    kws.(prop) = self.comp2hash(prop);
-                end
-            end
-
-            try
-                self.fout.tiledlayout = tiledlayout(size(self.subplot, 1), size(self.subplot, 2), kws.tiledlayout{:}); % requires MATLAB R2019b.
-            end
             iplot = 0;
-            for irow = 1 : size(self.subplot, 1)
-                for icol = 1 : size(self.subplot, 2)
+            try
+                notiles = false;
+                tiledlayout(2,2, 'TileSpacing', 'compact', 'Padding', 'none'); % requires MATLAB R2019b.
+            end
+            for irow = 1 : self.nrow
+                for icol = 1 : self.ncol
                     iplot = iplot + 1;
                     if  pm.introspection.istype(self.subplot{irow, icol}, "pm.vis.subplot.Subplot")
                         try
-                            nexttile;
+                            nexttile
                         catch
-                            subplot(size(self.subplot, 1), size(self.subplot, 2), iplot);
+                            subplot(self.nrow, self.ncol, iplot);
                         end
                         self.subplot{irow, icol}.make();
                     end
@@ -214,21 +218,13 @@ classdef Tiling < pm.vis.figure.Figure
             %   Interface
             %   ---------
             %
-            %       pm.vis.tile.Tiling.reset() # reset all object properties to the default settings.
+            %       pm.vis.corner.Corner.reset() # reset all object properties to the default settings.
             %
             %   LICENSE
             %   -------
             %
             %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
             %
-            self.tiledlayout.innerPosition = [];
-            self.tiledlayout.outerPosition = [];
-            self.tiledlayout.position = [];
-            self.tiledlayout.positionConstraint = [];
-            self.tiledlayout.padding = [];
-            self.tiledlayout.tileSpacing = [];
-            self.tiledlayout.units = [];
-
             reset@pm.vis.figure.Figure(self, varargin{:}); % this will automatically call the ``premake()`` method of the object.
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -274,14 +270,69 @@ classdef Tiling < pm.vis.figure.Figure
             %
             premake@pm.vis.figure.Figure(self, varargin{:});
 
-            %self.nrow = size(self.subplot, 1);
-            %self.ncol = size(self.subplot, 2);
+            self.nrow = size(self.subplot, 1);
+            self.ncol = size(self.subplot, 2);
 
             %%%% Set the default margins.
 
-            self.setKeyVal("tiledlayout", "tileSpacing", "tight");
-            %self.setKeyVal("tiledlayout", "padding", "tight");
+            if  isempty(self.margin.spacex)
+                self.margin.spacex = 0.015; % x-space between subplots
+            end
+            if  isempty(self.margin.spacey)
+                self.margin.spacey = 0.015; % y-space between subplots
+            end
+            if  isempty(self.margin.bottom)
+                self.margin.bottom = 0.07; % 0.14;
+            end
+            if  isempty(self.margin.right)
+                self.margin.right = 0.10;
+            end
+            if  isempty(self.margin.left)
+                self.margin.left = 0.07; %0.1;
+            end
+            if  isempty(self.margin.top)
+                self.margin.top = 0.0;
+            end
 
+            %for irow = 1 : self.nrow
+            %    for icol = 1 : self.ncol
+            %        jrow = self.nrow - irow + 1;
+            %        if  pm.introspection.istype(self.subplot{irow, icol}, "pm.vis.subplot.Subplot")
+            %            if ~isfield(self.subplot{irow, icol}.axes, "position") || isempty(self.subplot{irow, icol}.axes.position)
+            %                self.subplot{irow, icol}.axes.position = self.getpos(jrow, icol);
+            %            end
+            %        end
+            %    end
+            %end
+
+        end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    end
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    methods(Access = public, Hidden)
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        function position = getpos(self, irow, icol)
+            if  nargin == 3
+                width  = max(0, (1 - self.margin.left - self.margin.right) / self.nrow - self.margin.spacex);
+                height = max(0, (1 - self.margin.top - self.margin.bottom) / self.ncol - self.margin.spacey);
+                position =  [ (icol - 1) * (self.margin.spacex + width)  + self.margin.left ...
+                            , (irow - 1) * (self.margin.spacey + height) + self.margin.bottom ...
+                            , width ...
+                            , height ...
+                            ];
+            else
+                position =  [ self.margin.right ...
+                            , self.margin.bottom ...
+                            , 1 - self.margin.right ...width
+                            , 1 - self.margin.top ... height
+                            ];
+            end
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

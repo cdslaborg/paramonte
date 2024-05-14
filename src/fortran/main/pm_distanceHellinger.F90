@@ -88,7 +88,7 @@
 !>              \f{equation}{
 !>                  H(P,Q) = {\sqrt{1 - BC(P,Q)}} ~.
 !>              \f}
-!>      <li>    Hellinger distances are used in the theory of sequential and asymptotic statistics.
+!>      <li>    Hellinger distances are used in theory of sequential and asymptotic statistics.
 !>      <li>    The squared Hellinger distance between two normal distributions \f$P\sim{\mathcal{N}}(\mu_{1}, \sigma_{1}^{2})\f$ and \f$Q\sim{\mathcal{N}}(\mu_{2},\sigma_{2}^{2})\f$ is,
 !>              \f{equation}{
 !>                  H^{2}(P,Q) = 1 - {\sqrt {\frac {2\sigma_{1}\sigma_{2}}{\sigma_{1}^{2}+\sigma _{2}^{2}}}}\,e^{-{\frac {1}{4}}{\frac {(\mu _{1}-\mu _{2})^{2}}{\sigma _{1}^{2}+\sigma _{2}^{2}}}} ~.

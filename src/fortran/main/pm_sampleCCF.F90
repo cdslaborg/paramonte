@@ -110,7 +110,7 @@
 !>  More generally, convolution in one domain (e.g., time domain) equals point-wise multiplication in the other domain (e.g., frequency domain).<br>
 !>
 !>  \see
-!>  [pm_sampling](pm_sampling)<br>
+!>  [pm_sampling](@ref pm_sampling)<br>
 !>  [pm_sampleACT](@ref pm_sampleACT)<br>
 !>  [pm_sampleCCF](@ref pm_sampleCCF)<br>
 !>  [pm_sampleCor](@ref pm_sampleCor)<br>

@@ -1,4 +1,4 @@
-classdef Isotile < pm.vis.tile.Tiling
+classdef Tile < pm.vis.figure.Tiling
     %
     %   This is the abstract class for generating instances of objects
     %   that contain the specifications of various types of tile figures.
@@ -37,18 +37,18 @@ classdef Isotile < pm.vis.tile.Tiling
     %
     %       self
     %
-    %           The output scalar object of class ``pm.vis.tile.Isotile``.
+    %           The output scalar object of class ``pm.vis.tile.Tile``.
     %
     %   Interface
     %   ---------
     %
-    %       tile = pm.vis.tile.Isotile(template);
+    %       tile = pm.vis.tile.Tile(template);
     %
     %   Attributes
     %   ----------
     %
     %       See the list of class attributes below,
-    %       also those of the superclass ``pm.vis.tile.Tiling``.
+    %       also those of the superclass ``pm.vis.figure.Tiling``.
     %
     properties(Access = public)
         %
@@ -84,9 +84,9 @@ classdef Isotile < pm.vis.tile.Tiling
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function self = Isotile(template, varargin)
+        function self = Tile(template, varargin)
             [varobj, vartemp] = pm.matlab.hashmap.popKeyVal(["figure", "subplot", "template", "tiledlayout", "tileshape"], varargin);
-            self = self@pm.vis.tile.Tiling(cell(0, 0), varobj{:});
+            self = self@pm.vis.figure.Tiling(cell(0, 0), varobj{:});
             self.template = template;
             if ~isempty(vartemp)
                 self.template.hash2comp(vartemp);
@@ -125,7 +125,7 @@ classdef Isotile < pm.vis.tile.Tiling
             %   Interface
             %   ---------
             %
-            %       pm.vis.tile.Isotile.reset() # reset the tile to the default settings.
+            %       pm.vis.tile.Tile.reset() # reset the tile to the default settings.
             %
             %   LICENSE
             %   -------
@@ -138,7 +138,7 @@ classdef Isotile < pm.vis.tile.Tiling
                 self.hash2comp(vartemp);
                 %self.template.reset();
             end
-            reset@pm.vis.tile.Tiling(self, varleft{:});
+            reset@pm.vis.figure.Tiling(self, varleft{:});
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %%%% RULE 0: Any non-MATLAB-default setting must be preferably set in premake() method to override user null values.
@@ -186,12 +186,12 @@ classdef Isotile < pm.vis.tile.Tiling
             %   Interface
             %   ---------
             %
-            %       t = pm.vis.tile.Isotile.make(varargin);
+            %       t = pm.vis.tile.Tile.make(varargin);
             %
             %   Example
             %   -------
             %
-            %       t = pm.vis.tile.Isotile(pm.vis.subplot.Line());
+            %       t = pm.vis.tile.Tile(pm.vis.subplot.Line());
             %       t.make()
             %
             %   LICENSE
@@ -249,7 +249,7 @@ classdef Isotile < pm.vis.tile.Tiling
                 nrow = self.tileshape(1);
                 ncol = self.tileshape(2);
                 if  prod(self.tileshape) < nplt
-                    help("pm.vis.tile.Isotile");
+                    help("pm.vis.tile.Tile");
                     disp("self.tileshape");
                     disp( self.tileshape );
                     disp("nplt");
@@ -317,7 +317,7 @@ classdef Isotile < pm.vis.tile.Tiling
                 end
             end
 
-            make@pm.vis.tile.Tiling(self);
+            make@pm.vis.figure.Tiling(self);
 
             %%%% Define a single colorbar.
 
@@ -411,12 +411,12 @@ classdef Isotile < pm.vis.tile.Tiling
             %   Interface
             %   ---------
             %
-            %       f = pm.vis.tile.Isotile.premake(varargin);
+            %       f = pm.vis.tile.Tile.premake(varargin);
             %
             %   Example
             %   -------
             %
-            %       f = pm.vis.tile.Isotile(pm.vis.Line());
+            %       f = pm.vis.tile.Tile(pm.vis.Line());
             %       f.premake("figure", {"color", "none"})
             %
             %   LICENSE
@@ -426,7 +426,7 @@ classdef Isotile < pm.vis.tile.Tiling
             %
             if ~isempty(varargin)
                 [varobj, vartemp] = pm.matlab.hashmap.popKeyVal(["figure", "subplot", "template", "tiledlayout", "tileshape"], varargin);
-                premake@pm.vis.tile.Tiling(self, varobj{:});
+                premake@pm.vis.figure.Tiling(self, varobj{:});
                 self.template.hash2comp(vartemp);
                 %recursive = true;
                 %extensible = true;

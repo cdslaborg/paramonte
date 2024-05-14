@@ -244,7 +244,7 @@
 !>  There are also other definitions of Kendall \f$\tau\f$ which are not considered in the current version of the ParaMonte library.<br>
 !>
 !>  \see
-!>  [pm_sampling](pm_sampling)<br>
+!>  [pm_sampling](@ref pm_sampling)<br>
 !>  [pm_sampleACT](@ref pm_sampleACT)<br>
 !>  [pm_sampleCCF](@ref pm_sampleCCF)<br>
 !>  [pm_sampleCor](@ref pm_sampleCor)<br>

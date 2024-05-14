@@ -1,4 +1,4 @@
-classdef Histogram < pm.vis.tile.Isotile
+classdef Histogram < pm.vis.tile.Tile
     %
     %   This is the Histogram class for generating
     %   instances of 2-dimensional Histogram tiles
@@ -11,7 +11,7 @@ classdef Histogram < pm.vis.tile.Isotile
     %       dfref
     %
     %           See the documentation of the corresponding input
-    %           argument of the superclass ``pm.vis.tile.Isotile``.
+    %           argument of the superclass ``pm.vis.tile.Tile``.
     %
     %       varargin
     %
@@ -30,7 +30,7 @@ classdef Histogram < pm.vis.tile.Isotile
     %   ----------
     %
     %       See the documentation of the attributes
-    %       of the superclass ``pm.vis.tile.Isotile``.
+    %       of the superclass ``pm.vis.tile.Tile``.
     %
     %   Returns
     %   -------
@@ -53,7 +53,7 @@ classdef Histogram < pm.vis.tile.Isotile
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.tile.Isotile(pm.vis.subplot.Histogram(dfref), varargin{:});
+            self = self@pm.vis.tile.Tile(pm.vis.subplot.Histogram(dfref), varargin{:});
         end
     end
 end

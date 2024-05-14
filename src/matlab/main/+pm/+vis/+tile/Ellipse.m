@@ -1,4 +1,4 @@
-classdef Ellipse < pm.vis.tile.Isotile
+classdef Ellipse < pm.vis.tile.Tile
     %
     %   This is the Ellipse class for generating
     %   instances of 2-dimensional Ellipse tiles
@@ -37,7 +37,7 @@ classdef Ellipse < pm.vis.tile.Isotile
     %   ----------
     %
     %       See below and also the documentation of the
-    %       attributes of the superclass ``pm.vis.tile.Isotile``.
+    %       attributes of the superclass ``pm.vis.tile.Tile``.
     %
     %   Returns
     %   -------
@@ -76,7 +76,7 @@ classdef Ellipse < pm.vis.tile.Isotile
             if  nargin < 1
                 gramian = zeros(0, 0, 0);
             end
-            self = self@pm.vis.tile.Isotile(pm.vis.subplot.Ellipse(gramian, center, cval), varargin{:});
+            self = self@pm.vis.tile.Tile(pm.vis.subplot.Ellipse(gramian, center, cval), varargin{:});
         end
     end
 end

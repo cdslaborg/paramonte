@@ -101,7 +101,7 @@
 !>  where \f$\Sigma\f$ represents the covariance matrix, \f$\rho\f$ represents the correlation matrix, and \f$\sigma\f$ represents the standard deviations.<br>
 !>
 !>  \see
-!>  [pm_sampling](pm_sampling)<br>
+!>  [pm_sampling](@ref pm_sampling)<br>
 !>  [pm_sampleACT](@ref pm_sampleACT)<br>
 !>  [pm_sampleCCF](@ref pm_sampleCCF)<br>
 !>  [pm_sampleCor](@ref pm_sampleCor)<br>

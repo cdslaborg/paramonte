@@ -256,7 +256,7 @@ classdef Cascade < pm.matlab.Handle
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function savefig(self, file, varargin)
+        function savefigs(self, files, varargin)
             %
             %   Export the current cascade of figures to the specified external files.
             %
@@ -269,14 +269,14 @@ classdef Cascade < pm.matlab.Handle
             %   Parameters
             %   ----------
             %
-            %       file
+            %       files
             %
             %           The input vector of MATLAB strings or cell array of char vectors that must be
             %           of the same length as the length of the ``window`` component of the parent object.
             %           containing the paths to the external files to contain the visualizations.
             %           For more information, see the corresponding argument of the ``savefig``
             %           method of class ``pm.vis.figure.Figure``.
-            %           (**optional**.  If ``file`` or any elements of it are is missing or empty,
+            %           (**optional**.  If ``files`` or any elements of it are is missing or empty,
             %           the default will be set by the ``savefig`` method of the corresponding
             %           cascade figure in the ``window`` component.)
             %
@@ -294,36 +294,36 @@ classdef Cascade < pm.matlab.Handle
             %   Interface
             %   ---------
             %
-            %       c.savefig();
-            %       c.savefig(file);
-            %       c.savefig(file, varargin{:});
+            %       c.savefigs();
+            %       c.savefigs(files);
+            %       c.savefigs(files, varargin{:});
             %
             %   Example
             %   -------
             %
             %       c = pm.vis.cascade.Cascade(pm.vis.plot.Line());
-            %       c.savefig(); % export the current figure with the default name.
-            %       c.savefig("gridplot.pdf") % export figure to the specified PDF file.
-            %       c.savefig("gridplot.png", "-m4 -transparent") % export a large png plot of magnitude 4 with transparency.
+            %       c.savefigs(); % export the current figure with the default name.
+            %       c.savefigs("gridplot.pdf") % export figure to the specified PDF file.
+            %       c.savefigs("gridplot.png", "-m4 -transparent") % export a large png plot of magnitude 4 with transparency.
             %
             %   LICENSE
             %   -------
             %
             %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
             %
-            if  nargin < 2 || isempty(file)
-                file = strings(length(self.window), 1);
+            if  nargin < 2 || isempty(files)
+                files = strings(length(self.window), 1);
             end
-            if  length(file) ~= length(self.window)
+            if  length(files) ~= length(self.window)
                 help("pm.vis.cascade.Cascade");
                 error   ( newline ...
-                        + "The condition ``length(file) == length(self.window)`` must hold." + newline ...
+                        + "The condition ``length(files) == length(self.window)`` must hold." + newline ...
                         + "For more information, see the documentation displayed above." + newline ...
                         + newline ...
                         );
             end
             for iwin = 1 : length(self.window)
-                self.window{iwin}.savefig(file(iwin), varargin{:});
+                self.window{iwin}.savefig(files(iwin), varargin{:});
             end
         end
 

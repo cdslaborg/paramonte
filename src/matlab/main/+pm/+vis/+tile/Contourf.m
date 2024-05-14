@@ -1,4 +1,4 @@
-classdef Contourf < pm.vis.tile.Isotile
+classdef Contourf < pm.vis.tile.Tile
     %
     %   This is the Contourf class for generating
     %   instances of 2-dimensional Contourf tiles
@@ -11,7 +11,7 @@ classdef Contourf < pm.vis.tile.Isotile
     %       dfref
     %
     %           See the documentation of the corresponding input
-    %           argument of the superclass ``pm.vis.tile.Isotile``.
+    %           argument of the superclass ``pm.vis.tile.Tile``.
     %
     %       varargin
     %
@@ -30,7 +30,7 @@ classdef Contourf < pm.vis.tile.Isotile
     %   ----------
     %
     %       See the documentation of the attributes
-    %       of the superclass ``pm.vis.tile.Isotile``.
+    %       of the superclass ``pm.vis.tile.Tile``.
     %
     %   Returns
     %   -------
@@ -53,7 +53,7 @@ classdef Contourf < pm.vis.tile.Isotile
             if nargin < 1
                 dfref = [];
             end
-            self = self@pm.vis.tile.Isotile(pm.vis.subplot.Contourf(dfref), varargin{:});
+            self = self@pm.vis.tile.Tile(pm.vis.subplot.Contourf(dfref), varargin{:});
         end
     end
 end
