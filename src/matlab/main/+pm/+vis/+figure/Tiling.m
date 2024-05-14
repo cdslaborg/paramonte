@@ -155,6 +155,18 @@ classdef Tiling < pm.vis.figure.Figure
             %
             make@pm.vis.figure.Figure(self, varargin{:});
 
+            %%%% Resize the figure to allow good default visualization.
+
+            if  isempty(self.figure.position)
+                maxSize = get(0, 'ScreenSize');
+                figSize = self.fout.figure.Position;
+                maxScale = maxSize(3:4) ./ figSize(3:4);
+                newWidth = min(maxScale(2), size(self.subplot, 2)) * figSize(3) - 1;
+                newHeight = min(maxScale(1), size(self.subplot, 1)) * figSize(4) - 1;
+                figStart = [max(1, (maxSize(3) - newWidth) / 2), max(1, (maxSize(4) - newHeight) / 2)];
+                self.fout.figure.Position = [figStart, newWidth, newHeight];
+            end
+
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %%%% RULE 0: No component of ``self`` is allowed to appear to the left of assignment operator, except ``fout``.
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -170,15 +182,17 @@ classdef Tiling < pm.vis.figure.Figure
             try
                 self.fout.tiledlayout = tiledlayout(size(self.subplot, 1), size(self.subplot, 2), kws.tiledlayout{:}); % requires MATLAB R2019b.
             end
-            iplot = 0;
+            iplt = 0;
+            spinner = pm.timing.Spinner();
             for irow = 1 : size(self.subplot, 1)
                 for icol = 1 : size(self.subplot, 2)
-                    iplot = iplot + 1;
+                    iplt = iplt + 1;
+                    spinner.spin(iplt / numel(self.subplot)); disp([]);
                     if  pm.introspection.istype(self.subplot{irow, icol}, "pm.vis.subplot.Subplot")
                         try
                             nexttile;
                         catch
-                            subplot(size(self.subplot, 1), size(self.subplot, 2), iplot);
+                            subplot(size(self.subplot, 1), size(self.subplot, 2), iplt);
                         end
                         self.subplot{irow, icol}.make();
                     end
@@ -246,7 +260,7 @@ classdef Tiling < pm.vis.figure.Figure
             %
             %   \warning
             %
-            %       this method causes side-effects by manipulating
+            %       This method causes side-effects by manipulating
             %       the existing attributes of the object.
             %
             %   Parameters

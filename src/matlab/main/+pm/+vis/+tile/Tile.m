@@ -52,28 +52,27 @@ classdef Tile < pm.vis.figure.Tiling
     %
     properties(Access = public)
         %
-        %       template
+        %   template
         %
-        %           The scalar object of superclass ``pm.vis.subplot.Subplot``
-        %           representing the template of the set of subplots to display.
+        %       The scalar object of superclass ``pm.vis.subplot.Subplot``
+        %       representing the template of the set of subplots to display.
         %
         template = [];
         %
-        %       tileshape
+        %   tileshape
         %
-        %           The MATLAB vector ``[nrow, ncol]`` representing
-        %           the number of rows and columns in the tiled layout of subplots.
-        %           The default is the closest values of ``nrow`` and ``ncol`` whose
-        %           multiplication yields the maximum number of data columns in the
-        %           visualization.
+        %       The MATLAB vector ``[nrow, ncol]`` representing
+        %       the number of rows and columns in the tiled layout of subplots.
+        %       The default is the closest values of ``nrow`` and ``ncol`` whose
+        %       multiplication yields the maximum number of data columns in the
+        %       visualization.
         %
         tileshape = [];
         %
-        %       tileindex
+        %   tileindex
         %
-        %           The MATLAB vector of size ``0`` or ``prod(tileshape)`` containing
-        %           the list of indices of the tiling to fill with subplots, starting
-        %
+        %       The MATLAB vector of size ``0`` or ``prod(tileshape)`` containing
+        %       the list of indices of the tiling to fill with subplots, starting
         %
         %tileindex = [];
     end

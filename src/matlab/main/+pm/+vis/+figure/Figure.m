@@ -181,6 +181,17 @@ classdef Figure < pm.matlab.Handle
             self.fout.figure = figure(kws.figure{:});
             hold on;
 
+            %%%%
+            %%%% Resize the figure to allow good default visualization.
+            %%%%
+
+            if  isempty(self.figure.position)
+                maxSize = get(0, 'ScreenSize');
+                figSize = self.fout.figure.Position;
+                figStart = [max(1, (maxSize(3) - figSize(3)) / 2), max(1, (maxSize(4) - figSize(4)) / 2)];
+                self.fout.figure.Position = [figStart, figSize(3:4)];
+            end
+
         end % function
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
