@@ -185,11 +185,11 @@ classdef Figure < pm.matlab.Handle
             %%%% Resize the figure to allow good default visualization.
             %%%%
 
-            if  isempty(self.figure.position)
+            if  isempty(self.figure.outerPosition)
                 maxSize = get(0, 'ScreenSize');
-                figSize = self.fout.figure.Position;
-                figStart = [max(1, (maxSize(3) - figSize(3)) / 2), max(1, (maxSize(4) - figSize(4)) / 2)];
-                self.fout.figure.Position = [figStart, figSize(3:4)];
+                figSize = self.fout.figure.OuterPosition;
+                figStart = [(maxSize(3) - figSize(3)) / 2, (maxSize(4) - figSize(4)) / 2];
+                set(self.fout.figure, "OuterPosition", [figStart(1:2), figSize(3:4)]);
             end
 
         end % function
@@ -240,10 +240,12 @@ classdef Figure < pm.matlab.Handle
             self.figure.innerPosition = [];
             self.figure.name = [];
             self.figure.numberTitle = [];
+            self.figure.outerPosition = [];
             self.figure.position = [];
             self.figure.resize = [];
             self.figure.units = [];
             self.figure.visible = [];
+            self.figure.windowState = [];
             if ~isempty(varargin)
                 self.hash2comp(varargin); % parse arguments
             end

@@ -157,14 +157,17 @@ classdef Tiling < pm.vis.figure.Figure
 
             %%%% Resize the figure to allow good default visualization.
 
-            if  isempty(self.figure.position)
-                maxSize = get(0, 'ScreenSize');
-                figSize = self.fout.figure.Position;
+            if  isempty(self.figure.outerPosition) && 0 < numel(self.subplot)
+                fullSize = get(0, 'ScreenSize');
+                maxSize = fullSize;
+                maxSize(1:2) = .05 * maxSize(3:4);
+                maxSize(3:4) = maxSize(3:4) - maxSize(1:2);
+                figSize = self.fout.figure.OuterPosition;
                 maxScale = maxSize(3:4) ./ figSize(3:4);
-                newWidth = min(maxScale(2), size(self.subplot, 2)) * figSize(3) - 1;
-                newHeight = min(maxScale(1), size(self.subplot, 1)) * figSize(4) - 1;
-                figStart = [max(1, (maxSize(3) - newWidth) / 2), max(1, (maxSize(4) - newHeight) / 2)];
-                self.fout.figure.Position = [figStart, newWidth, newHeight];
+                newWidth = figSize(3) * min(maxScale(1), size(self.subplot, 2));
+                newHeight = figSize(4) * min(maxScale(2), size(self.subplot, 1));
+                figStart = [(fullSize(3) - newWidth) / 2, (fullSize(4) - newHeight) / 2];
+                set(self.fout.figure, "OuterPosition", [figStart(1:2), newWidth, newHeight]);
             end
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
