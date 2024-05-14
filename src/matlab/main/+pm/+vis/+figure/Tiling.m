@@ -183,11 +183,12 @@ classdef Tiling < pm.vis.figure.Figure
                 self.fout.tiledlayout = tiledlayout(size(self.subplot, 1), size(self.subplot, 2), kws.tiledlayout{:}); % requires MATLAB R2019b.
             end
             iplt = 0;
+            timer = pm.timing.Timer();
             spinner = pm.timing.Spinner();
             for irow = 1 : size(self.subplot, 1)
                 for icol = 1 : size(self.subplot, 2)
                     iplt = iplt + 1;
-                    spinner.spin(iplt / numel(self.subplot)); disp([]);
+                    spinner.spin(iplt / numel(self.subplot));
                     if  pm.introspection.istype(self.subplot{irow, icol}, "pm.vis.subplot.Subplot")
                         try
                             nexttile;
@@ -197,6 +198,9 @@ classdef Tiling < pm.vis.figure.Figure
                         self.subplot{irow, icol}.make();
                     end
                 end
+            end
+            if  0 < iplt
+                disp("done in " + sprintf("%.6f", string(timer.toc())) + " seconds.");
             end
 
         end % function
