@@ -356,13 +356,13 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#define constructField_ENABLED 1
+#define field_typer_ENABLED 1
 
     module procedure field_typer
 #include "pm_io@routines.inc.F90"
     end procedure
 
-#undef constructField_ENABLED
+#undef field_typer_ENABLED
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -4745,7 +4745,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#define constructDisplay_ENABLED 1
+#define display_typer_ENABLED 1
 
 #define File_ENABLED 1
     module procedure display_typer_file
@@ -4761,7 +4761,7 @@ contains
     end procedure
 #undef Unit_ENABLED
 
-#undef constructDisplay_ENABLED
+#undef display_typer_ENABLED
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -4943,6 +4943,8 @@ contains
 !#undef getLenFieldMin_ENABLED
 !
 !!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if FORTRAN_ENABLED
 
 #define getFormat_ENABLED 1
 
@@ -5176,6 +5178,9 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #undef getFormat_ENABLED
+
+#endif
+!FORTRAN_ENABLED
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -5898,6 +5903,8 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if FORTRAN_ENABLED
+
 #define D3_ENABLED 1
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -6109,6 +6116,9 @@ contains
 
 #undef D3_ENABLED
 
+#endif
+!FORTRAN_ENABLED
+
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -6132,7 +6142,7 @@ contains
 
 #define SK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if SK5_ENABLED
     module procedure show_D0_PSSK5
         use pm_kind, only: SKC => SK5
@@ -6175,7 +6185,7 @@ contains
 
 #define IK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if IK5_ENABLED
     module procedure show_D0_PSIK5
         use pm_kind, only: SKC => SK, IKC => IK5
@@ -6218,7 +6228,7 @@ contains
 
 #define LK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if LK5_ENABLED
     module procedure show_D0_PSLK5
         use pm_kind, only: SKC => SK, LKC => LK5
@@ -6261,7 +6271,7 @@ contains
 
 #define CK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if CK5_ENABLED
     module procedure show_D0_PSCK5
         use pm_kind, only: SKC => SK, CKC => CK5
@@ -6304,7 +6314,7 @@ contains
 
 #define RK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if RK5_ENABLED
     module procedure show_D0_PSRK5
         use pm_kind, only: SKC => SK, RKC => RK5
@@ -6357,7 +6367,7 @@ contains
 
 #define SK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if SK5_ENABLED
     module procedure show_D1_PSSK5
         use pm_kind, only: SKC => SK5
@@ -6400,7 +6410,7 @@ contains
 
 #define IK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if IK5_ENABLED
     module procedure show_D1_PSIK5
         use pm_kind, only: SKC => SK, IKC => IK5
@@ -6443,7 +6453,7 @@ contains
 
 #define LK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if LK5_ENABLED
     module procedure show_D1_PSLK5
         use pm_kind, only: SKC => SK, LKC => LK5
@@ -6486,7 +6496,7 @@ contains
 
 #define CK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if CK5_ENABLED
     module procedure show_D1_PSCK5
         use pm_kind, only: SKC => SK, CKC => CK5
@@ -6529,7 +6539,7 @@ contains
 
 #define RK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if RK5_ENABLED
     module procedure show_D1_PSRK5
         use pm_kind, only: SKC => SK, RKC => RK5
@@ -6582,7 +6592,7 @@ contains
 
 #define SK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if SK5_ENABLED
     module procedure show_D2_PSSK5
         use pm_kind, only: SKC => SK5
@@ -6625,7 +6635,7 @@ contains
 
 #define IK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if IK5_ENABLED
     module procedure show_D2_PSIK5
         use pm_kind, only: SKC => SK, IKC => IK5
@@ -6668,7 +6678,7 @@ contains
 
 #define LK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if LK5_ENABLED
     module procedure show_D2_PSLK5
         use pm_kind, only: SKC => SK, LKC => LK5
@@ -6711,7 +6721,7 @@ contains
 
 #define CK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if CK5_ENABLED
     module procedure show_D2_PSCK5
         use pm_kind, only: SKC => SK, CKC => CK5
@@ -6754,7 +6764,7 @@ contains
 
 #define RK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if RK5_ENABLED
     module procedure show_D2_PSRK5
         use pm_kind, only: SKC => SK, RKC => RK5
@@ -6807,7 +6817,7 @@ contains
 
 #define SK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if SK5_ENABLED
     module procedure show_D3_PSSK5
         use pm_kind, only: SKC => SK5
@@ -6850,7 +6860,7 @@ contains
 
 #define IK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if IK5_ENABLED
     module procedure show_D3_PSIK5
         use pm_kind, only: SKC => SK, IKC => IK5
@@ -6893,7 +6903,7 @@ contains
 
 #define LK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if LK5_ENABLED
     module procedure show_D3_PSLK5
         use pm_kind, only: SKC => SK, LKC => LK5
@@ -6936,7 +6946,7 @@ contains
 
 #define CK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if CK5_ENABLED
     module procedure show_D3_PSCK5
         use pm_kind, only: SKC => SK, CKC => CK5
@@ -6979,7 +6989,7 @@ contains
 
 #define RK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if RK5_ENABLED
     module procedure show_D3_PSRK5
         use pm_kind, only: SKC => SK, RKC => RK5
@@ -7044,7 +7054,7 @@ contains
 
 #define SK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if SK5_ENABLED
     module procedure show_D0_PVSK5
         use pm_kind, only: SKC => SK5
@@ -7087,7 +7097,7 @@ contains
 
 #define IK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if IK5_ENABLED
     module procedure show_D0_PVIK5
         use pm_kind, only: SKC => SK, IKC => IK5
@@ -7130,7 +7140,7 @@ contains
 
 #define LK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if LK5_ENABLED
     module procedure show_D0_PVLK5
         use pm_kind, only: SKC => SK, LKC => LK5
@@ -7173,7 +7183,7 @@ contains
 
 #define CK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if CK5_ENABLED
     module procedure show_D0_PVCK5
         use pm_kind, only: SKC => SK, CKC => CK5
@@ -7216,7 +7226,7 @@ contains
 
 #define RK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if RK5_ENABLED
     module procedure show_D0_PVRK5
         use pm_kind, only: SKC => SK, RKC => RK5
@@ -7269,7 +7279,7 @@ contains
 
 #define SK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if SK5_ENABLED
     module procedure show_D1_PVSK5
         use pm_kind, only: SKC => SK5
@@ -7312,7 +7322,7 @@ contains
 
 #define IK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if IK5_ENABLED
     module procedure show_D1_PVIK5
         use pm_kind, only: SKC => SK, IKC => IK5
@@ -7355,7 +7365,7 @@ contains
 
 #define LK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if LK5_ENABLED
     module procedure show_D1_PVLK5
         use pm_kind, only: SKC => SK, LKC => LK5
@@ -7398,7 +7408,7 @@ contains
 
 #define CK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if CK5_ENABLED
     module procedure show_D1_PVCK5
         use pm_kind, only: SKC => SK, CKC => CK5
@@ -7441,7 +7451,7 @@ contains
 
 #define RK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if RK5_ENABLED
     module procedure show_D1_PVRK5
         use pm_kind, only: SKC => SK, RKC => RK5
@@ -7494,7 +7504,7 @@ contains
 
 #define SK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if SK5_ENABLED
     module procedure show_D2_PVSK5
         use pm_kind, only: SKC => SK5
@@ -7537,7 +7547,7 @@ contains
 
 #define IK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if IK5_ENABLED
     module procedure show_D2_PVIK5
         use pm_kind, only: SKC => SK, IKC => IK5
@@ -7580,7 +7590,7 @@ contains
 
 #define LK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if LK5_ENABLED
     module procedure show_D2_PVLK5
         use pm_kind, only: SKC => SK, LKC => LK5
@@ -7623,7 +7633,7 @@ contains
 
 #define CK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if CK5_ENABLED
     module procedure show_D2_PVCK5
         use pm_kind, only: SKC => SK, CKC => CK5
@@ -7666,7 +7676,7 @@ contains
 
 #define RK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if RK5_ENABLED
     module procedure show_D2_PVRK5
         use pm_kind, only: SKC => SK, RKC => RK5
@@ -7731,7 +7741,7 @@ contains
 
 #define SK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if SK5_ENABLED
     module procedure show_D0_PMSK5
         use pm_kind, only: SKC => SK5
@@ -7774,7 +7784,7 @@ contains
 
 #define IK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if IK5_ENABLED
     module procedure show_D0_PMIK5
         use pm_kind, only: SKC => SK, IKC => IK5
@@ -7817,7 +7827,7 @@ contains
 
 #define LK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if LK5_ENABLED
     module procedure show_D0_PMLK5
         use pm_kind, only: SKC => SK, LKC => LK5
@@ -7860,7 +7870,7 @@ contains
 
 #define CK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if CK5_ENABLED
     module procedure show_D0_PMCK5
         use pm_kind, only: SKC => SK, CKC => CK5
@@ -7903,7 +7913,7 @@ contains
 
 #define RK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if RK5_ENABLED
     module procedure show_D0_PMRK5
         use pm_kind, only: SKC => SK, RKC => RK5
@@ -7956,7 +7966,7 @@ contains
 
 #define SK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if SK5_ENABLED
     module procedure show_D1_PMSK5
         use pm_kind, only: SKC => SK5
@@ -7999,7 +8009,7 @@ contains
 
 #define IK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if IK5_ENABLED
     module procedure show_D1_PMIK5
         use pm_kind, only: SKC => SK, IKC => IK5
@@ -8042,7 +8052,7 @@ contains
 
 #define LK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if LK5_ENABLED
     module procedure show_D1_PMLK5
         use pm_kind, only: SKC => SK, LKC => LK5
@@ -8085,7 +8095,7 @@ contains
 
 #define CK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if CK5_ENABLED
     module procedure show_D1_PMCK5
         use pm_kind, only: SKC => SK, CKC => CK5
@@ -8128,7 +8138,7 @@ contains
 
 #define RK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if RK5_ENABLED
     module procedure show_D1_PMRK5
         use pm_kind, only: SKC => SK, RKC => RK5
@@ -8193,7 +8203,7 @@ contains
 
 #define SK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if SK5_ENABLED
     module procedure show_D0_PCSK5
         use pm_kind, only: SKC => SK5
@@ -8236,7 +8246,7 @@ contains
 
 #define IK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if IK5_ENABLED
     module procedure show_D0_PCIK5
         use pm_kind, only: SKC => SK, IKC => IK5
@@ -8279,7 +8289,7 @@ contains
 
 #define LK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if LK5_ENABLED
     module procedure show_D0_PCLK5
         use pm_kind, only: SKC => SK, LKC => LK5
@@ -8322,7 +8332,7 @@ contains
 
 #define CK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if CK5_ENABLED
     module procedure show_D0_PCCK5
         use pm_kind, only: SKC => SK, CKC => CK5
@@ -8365,7 +8375,7 @@ contains
 
 #define RK_ENABLED 1
 
-#if !__GFORTRAN__ || 1
+#if PDT_ENABLED
 #if RK5_ENABLED
     module procedure show_D0_PCRK5
         use pm_kind, only: SKC => SK, RKC => RK5
@@ -8901,6 +8911,8 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if FORTRAN_ENABLED
+
 #define BM_ENABLED 1
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -9116,6 +9128,9 @@ contains
 
 #undef BC_ENABLED
 
+#endif
+!FORTRAN_ENABLED
+
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -9127,6 +9142,8 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ! LCOV_EXCL_START
+
+#if FORTRAN_ENABLED
 
 #define dump_ENABLED 1
 
@@ -9154,6 +9171,9 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #undef dump_ENABLED
+
+#endif
+!FORTRAN_ENABLED
 
 ! LCOV_EXCL_STOP
 

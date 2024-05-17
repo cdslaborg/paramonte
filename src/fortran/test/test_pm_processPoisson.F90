@@ -310,7 +310,7 @@ contains
         use pm_err, only: err_type
 
         use pm_sampleWeight, only: setChoLowCovUpp
-        use pm_distanceMahal, only: getMahalSq
+        use pm_distanceMahal, only: getDisMahalSq
         use pm_matrixDet, only: getMatInvFromChoLow
         use pm_matrixChol, only: setChoLow
         use pm_matrixInit, only: setMatInit
@@ -402,7 +402,7 @@ contains
 
             InvMatLow = getLogPDF(nd,ChoLowCovUpp,choDia)
             !invCov = getMatInvFromChoLow(nd,ChoLowCovUpp,choDia)
-            !mahalSq = getMahalSq(nd,np,mean,invCov,Sample)
+            !mahalSq = getDisMahalSq(nd,np,mean,invCov,Sample)
 
             ! Decorrelate the entire sample.
 

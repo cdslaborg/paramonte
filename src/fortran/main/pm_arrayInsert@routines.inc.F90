@@ -41,7 +41,7 @@
 #error  "Unrecognized interface."
 #endif
         integer(IK)                 :: lenArray, lenArrayNew, lenIndex
-        integer(IK)                 :: IndexNew(size(index))
+        integer(IK)                 :: indexNew(size(index))
         integer(IK)                 :: start, stop, i
         logical(LK)                 :: negative
         logical(LK)                 :: unsorted
@@ -94,13 +94,13 @@
             if (negative) then
                 do i = 1_IK, lenIndex
                     if (index(i) > 0_IK) then
-                        IndexNew(i) = index(i)
+                        indexNew(i) = index(i)
                     else
-                        IndexNew(i) = lenArray + index(i) + 1_IK
+                        indexNew(i) = lenArray + index(i) + 1_IK
                     end if
                 end do
             else
-                IndexNew(1_IK:lenIndex) = index
+                indexNew(1_IK:lenIndex) = index
             end if
             ! Sort the index if needed.
             if (present(sorted)) then
@@ -108,22 +108,22 @@
             else
                 unsorted = .true._LK
             end if
-            if (unsorted) call setSorted(IndexNew)
+            if (unsorted) call setSorted(indexNew)
             ! Insert the `insertion` into the proper locations.
-            if (IndexNew(1) > 1_IK) arrayNew(1_IK:IndexNew(1)-1_IK) = array(1_IK:IndexNew(1)-1_IK)
-            start = IndexNew(1)
+            if (indexNew(1) > 1_IK) arrayNew(1_IK:indexNew(1)-1_IK) = array(1_IK:indexNew(1)-1_IK)
+            start = indexNew(1)
             do i = 2_IK, lenIndex
                 stop = start + lenInsertion - 1_IK
                 arrayNew(start:stop) = insertion
                 start = stop + 1_IK
-                stop = start + IndexNew(i) - IndexNew(i-1_IK) - 1_IK
-                arrayNew(start:stop) = array(IndexNew(i-1_IK):IndexNew(i)-1_IK)
+                stop = start + indexNew(i) - indexNew(i-1_IK) - 1_IK
+                arrayNew(start:stop) = array(indexNew(i-1_IK):indexNew(i)-1_IK)
                 start = stop + 1_IK
             end do
             stop = start + lenInsertion - 1_IK
             arrayNew(start:stop) = insertion
             start = stop + 1_IK
-            arrayNew(start:lenArrayNew) = array(IndexNew(lenIndex):lenArray)
+            arrayNew(start:lenArrayNew) = array(indexNew(lenIndex):lenArray)
         else ! index is empty.
             arrayNew = array
             return

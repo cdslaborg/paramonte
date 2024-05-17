@@ -43,7 +43,6 @@ call setAsserted(ASSERTION,getFine(__FILE__,LINE)//MODULE_NAME//MSG);
     use pm_sampleScale, only: setScaled
     use pm_sampleNorm, only: setNormed
     use pm_sampleMean, only: getMean
-    use pm_sampleVar, only: setVar
 
     implicit none
 

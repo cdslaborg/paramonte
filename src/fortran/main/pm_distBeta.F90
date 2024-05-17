@@ -23,7 +23,7 @@
 !>      <li>    the Probability Density Function (**PDF**)
 !>      <li>    the Cumulative Distribution Function (**CDF**)
 !>      <li>    the Random Number Generation from the distribution (**RNG**)
-!>      <li>    the Inverse Cumulative Distribution Function **(ICDF)** or the **Quantile Function**
+!>      <li>    the Inverse Cumulative Distribution Function (**ICDF**) or the **Quantile Function**
 !>  </ol>
 !>
 !>  The **PDF** of the Beta distribution is defined with two shape parameters \f$(\alpha > 0, \beta > 0)\f$ as,
@@ -105,6 +105,44 @@ module pm_distBeta
     implicit none
 
     character(*, SK), parameter :: MODULE_NAME = "@pm_distBeta"
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !>  \brief
+    !>  This is the derived type for signifying distributions that are of type Beta
+    !>  as defined in the description of [pm_distBeta](@ref pm_distBeta).
+    !>
+    !>  \details
+    !>  See the documentation of [pm_distBeta](@ref pm_distBeta) for the definition of the Beta distribution.
+    !>
+    !>  \interface{distBeta_type}
+    !>  \code{.F90}
+    !>
+    !>      use pm_distBeta, only: distBeta_type
+    !>      type(distBeta_type) :: distBeta
+    !>
+    !>      distBeta = distBeta_type()
+    !>
+    !>  \endcode
+    !>
+    !>  \devnote
+    !>  This derived type is currently devoid of any components or type-bound procedures because of
+    !>  the lack of portable and reliable support for Parameterized Derived Types (PDT) in some Fortran compilers.<br>
+    !>  For now, the utility of this derived type is limited to generic interface resolutions.<br>
+    !>
+    !>  \test
+    !>  [test_pm_distBeta](@ref test_pm_distBeta)
+    !>
+    !>  \todo
+    !>  \pvhigh
+    !>  This derived type must be converted to PDT and the relevant components and methods must be added once PDTs are well supported.
+    !>
+    !>  \finmain{distBeta_type}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
+    type :: distBeta_type
+    end type
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

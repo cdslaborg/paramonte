@@ -10,7 +10,7 @@ program example
 
     ! Bypass gfortran 11 pdt bug
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     use pm_container, only: cvi_pdt ! Containers of all kinds are supported.
     use pm_container, only: cvc_pdt ! Containers of all kinds are supported.
     use pm_container, only: cvr_pdt ! Containers of all kinds are supported.
@@ -31,7 +31,7 @@ program example
     real(RK)        , allocatable   :: array_RK(:)  , sepArray_RK(:)  ! Can be any processor-supported kind.
     logical(LK)     , allocatable   :: array_LK(:)  , sepArray_LK(:)  ! Can be any processor-supported kind.
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     type(css_pdt), allocatable :: parts_SSK(:)
     type(cvs_pdt), allocatable :: parts_VSK(:)
     type(cvi_pdt), allocatable :: parts_VIK(:)
@@ -71,7 +71,7 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("string_SK")
     call disp%show( string_SK, deliml = SK_"""" )
@@ -95,7 +95,7 @@ program example
     call disp%show( splitIndex )
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("string_SK")
     call disp%show( string_SK, deliml = SK_"""" )
@@ -126,7 +126,7 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("Array_SK")
     call disp%show( array_SK, deliml = SK_"""" )
@@ -150,7 +150,7 @@ program example
     call disp%show( splitIndex )
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("Array_SK")
     call disp%show( array_SK, deliml = SK_"""" )
@@ -181,7 +181,7 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("Array_LK")
     call disp%show( array_LK )
@@ -205,7 +205,7 @@ program example
     call disp%show( splitIndex )
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("Array_LK")
     call disp%show( array_LK )
@@ -236,7 +236,7 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("Array_IK")
     call disp%show( array_IK )
@@ -260,7 +260,7 @@ program example
     call disp%show( splitIndex )
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("Array_IK")
     call disp%show( array_IK )
@@ -291,7 +291,7 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("Array_CK")
     call disp%show( array_CK )
@@ -315,7 +315,7 @@ program example
     call disp%show( splitIndex )
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("Array_CK")
     call disp%show( array_CK )
@@ -345,7 +345,7 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("Array_RK")
     call disp%show( array_RK )
@@ -369,7 +369,7 @@ program example
     call disp%show( splitIndex )
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("Array_RK")
     call disp%show( array_RK )
@@ -424,7 +424,7 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("string_SK")
     call disp%show( string_SK, deliml = SK_"""" )
@@ -452,7 +452,7 @@ program example
     call disp%show( splitIndex )
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("string_SK")
     call disp%show( string_SK, deliml = SK_"""" )
@@ -487,7 +487,7 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("Array_SK")
     call disp%show( array_SK, deliml = SK_"""" )
@@ -515,7 +515,7 @@ program example
     call disp%show( splitIndex )
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("Array_SK")
     call disp%show( array_SK, deliml = SK_"""" )
@@ -550,7 +550,7 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("Array_SK")
     call disp%show( array_SK, deliml = SK_"""" )
@@ -578,7 +578,7 @@ program example
     call disp%show( splitIndex )
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("Array_SK")
     call disp%show( array_SK, deliml = SK_"""" )
@@ -613,7 +613,7 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("Array_LK")
     call disp%show( array_LK )
@@ -641,7 +641,7 @@ program example
     call disp%show( splitIndex )
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("Array_LK")
     call disp%show( array_LK )
@@ -676,7 +676,7 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("Array_LK")
     call disp%show( array_LK )
@@ -704,7 +704,7 @@ program example
     call disp%show( splitIndex )
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("Array_LK")
     call disp%show( array_LK )
@@ -739,7 +739,7 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("Array_IK")
     call disp%show( array_IK )
@@ -767,7 +767,7 @@ program example
     call disp%show( splitIndex )
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("Array_IK")
     call disp%show( array_IK )
@@ -802,7 +802,7 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("Array_IK")
     call disp%show( array_IK )
@@ -830,7 +830,7 @@ program example
     call disp%show( splitIndex )
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("Array_IK")
     call disp%show( array_IK )
@@ -865,7 +865,7 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("Array_CK")
     call disp%show( array_CK )
@@ -893,7 +893,7 @@ program example
     call disp%show( splitIndex )
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("Array_CK")
     call disp%show( array_CK )
@@ -928,7 +928,7 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("Array_CK")
     call disp%show( array_CK )
@@ -956,7 +956,7 @@ program example
     call disp%show( splitIndex )
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("Array_CK")
     call disp%show( array_CK )
@@ -991,7 +991,7 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("Array_RK")
     call disp%show( array_RK )
@@ -1019,7 +1019,7 @@ program example
     call disp%show( splitIndex )
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("Array_RK")
     call disp%show( array_RK )
@@ -1054,7 +1054,7 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("Array_RK")
     call disp%show( array_RK )
@@ -1082,7 +1082,7 @@ program example
     call disp%show( splitIndex )
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("Array_RK")
     call disp%show( array_RK )
@@ -1129,7 +1129,7 @@ program example
     string_SK = "ABBAbbA"
     stringSep_SK = "bb"
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("string_SK")
     call disp%show( string_SK, deliml = SK_"""")
@@ -1153,7 +1153,7 @@ program example
     call disp%show( splitIndex )
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("string_SK")
     call disp%show( string_SK, deliml = SK_"""")
@@ -1188,7 +1188,7 @@ program example
     sepArray_RK = [-1._RK, 1._RK]
     instance = [-2_IK]
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("Array_RK")
     call disp%show( array_RK )
@@ -1216,7 +1216,7 @@ program example
     call disp%show( splitIndex )
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("Array_RK")
     call disp%show( array_RK )
@@ -1251,7 +1251,7 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("Array_RK")
     call disp%show( array_RK )
@@ -1279,7 +1279,7 @@ program example
     call disp%show( splitIndex )
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("Array_RK")
     call disp%show( array_RK )

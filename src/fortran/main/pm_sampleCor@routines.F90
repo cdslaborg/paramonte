@@ -4723,7 +4723,7 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
 #define PSSK_ENABLED 1
 
 #if SK5_ENABLED
@@ -4910,7 +4910,7 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
 #define PSSK_ENABLED 1
 
 #if SK5_ENABLED
@@ -5097,7 +5097,7 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
 #define PSSK_ENABLED 1
 
 #if SK5_ENABLED
@@ -5306,7 +5306,7 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
 #define PSSK_ENABLED 1
 
 #if SK5_ENABLED
@@ -5493,7 +5493,7 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
 #define PSSK_ENABLED 1
 
 #if SK5_ENABLED
@@ -5680,7 +5680,7 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
 #define PSSK_ENABLED 1
 
 #if SK5_ENABLED
@@ -6064,7 +6064,7 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
 #define PSSK_ENABLED 1
 
 #if SK5_ENABLED
@@ -6251,7 +6251,7 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
 #define PSSK_ENABLED 1
 
 #if SK5_ENABLED
@@ -6438,7 +6438,7 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
 #define PSSK_ENABLED 1
 
 #if SK5_ENABLED
@@ -6647,7 +6647,7 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
 #define PSSK_ENABLED 1
 
 #if SK5_ENABLED
@@ -6834,7 +6834,7 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
 #define PSSK_ENABLED 1
 
 #if SK5_ENABLED
@@ -7021,7 +7021,7 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
 #define PSSK_ENABLED 1
 
 #if SK5_ENABLED
@@ -7230,7 +7230,7 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
 #define PSSK_ENABLED 1
 
 #if SK5_ENABLED
@@ -7417,7 +7417,7 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
 #define PSSK_ENABLED 1
 
 #if SK5_ENABLED
@@ -7604,7 +7604,7 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
 #define PSSK_ENABLED 1
 
 #if SK5_ENABLED
@@ -7988,7 +7988,7 @@ contains
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
-!#if !__GFORTRAN__
+!#if PDT_ENABLED
 !#define PSSK_ENABLED 1
 !
 !#if SK5_ENABLED
@@ -8175,7 +8175,7 @@ contains
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
-!#if !__GFORTRAN__
+!#if PDT_ENABLED
 !#define PSSK_ENABLED 1
 !
 !#if SK5_ENABLED
@@ -8362,7 +8362,7 @@ contains
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
-!#if !__GFORTRAN__
+!#if PDT_ENABLED
 !#define PSSK_ENABLED 1
 !
 !#if SK5_ENABLED
@@ -8571,7 +8571,7 @@ contains
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
-!#if !__GFORTRAN__
+!#if PDT_ENABLED
 !#define PSSK_ENABLED 1
 !
 !#if SK5_ENABLED
@@ -8758,7 +8758,7 @@ contains
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
-!#if !__GFORTRAN__
+!#if PDT_ENABLED
 !#define PSSK_ENABLED 1
 !
 !#if SK5_ENABLED
@@ -8945,7 +8945,7 @@ contains
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
-!#if !__GFORTRAN__
+!#if PDT_ENABLED
 !#define PSSK_ENABLED 1
 !
 !#if SK5_ENABLED
@@ -9329,7 +9329,7 @@ contains
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
-!#if !__GFORTRAN__
+!#if PDT_ENABLED
 !#define PSSK_ENABLED 1
 !
 !#if SK5_ENABLED
@@ -9516,7 +9516,7 @@ contains
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
-!#if !__GFORTRAN__
+!#if PDT_ENABLED
 !#define PSSK_ENABLED 1
 !
 !#if SK5_ENABLED
@@ -9703,7 +9703,7 @@ contains
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
-!#if !__GFORTRAN__
+!#if PDT_ENABLED
 !#define PSSK_ENABLED 1
 !
 !#if SK5_ENABLED
@@ -9912,7 +9912,7 @@ contains
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
-!#if !__GFORTRAN__
+!#if PDT_ENABLED
 !#define PSSK_ENABLED 1
 !
 !#if SK5_ENABLED
@@ -10099,7 +10099,7 @@ contains
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
-!#if !__GFORTRAN__
+!#if PDT_ENABLED
 !#define PSSK_ENABLED 1
 !
 !#if SK5_ENABLED
@@ -10286,7 +10286,7 @@ contains
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
-!#if !__GFORTRAN__
+!#if PDT_ENABLED
 !#define PSSK_ENABLED 1
 !
 !#if SK5_ENABLED
@@ -10495,7 +10495,7 @@ contains
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
-!#if !__GFORTRAN__
+!#if PDT_ENABLED
 !#define PSSK_ENABLED 1
 !
 !#if SK5_ENABLED
@@ -10682,7 +10682,7 @@ contains
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
-!#if !__GFORTRAN__
+!#if PDT_ENABLED
 !#define PSSK_ENABLED 1
 !
 !#if SK5_ENABLED
@@ -10869,7 +10869,7 @@ contains
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
-!#if !__GFORTRAN__
+!#if PDT_ENABLED
 !#define PSSK_ENABLED 1
 !
 !#if SK5_ENABLED
@@ -11129,7 +11129,7 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
 #define PSSK_ENABLED 1
 
 #if SK5_ENABLED
@@ -11379,7 +11379,7 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
 #define PSSK_ENABLED 1
 
 #if SK5_ENABLED

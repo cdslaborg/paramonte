@@ -301,11 +301,11 @@ module pm_ellipsoid
     !>  \image html benchmark/pm_ellipsoid/setLogVolUnitBall/benchmark.setLogVolUnitBall.runtime.ratio.png width=1000
     !>  \moralb{setLogVolUnitBall}
     !>      -#  The benchmark procedures named `ndimInt2RK1` and `ndimInt2RK2` call the generic interface [setLogVolUnitBall](@ref pm_ellipsoid::setLogVolUnitBall)
-    !>          with an `ndim` argument of type `integer` of kind \IK and return the result as `real` of kind \RK32 and \RK64 respectively.<br>
+    !>          with a `ndim` argument of type `integer` of kind \IK and return the result as `real` of kind \RK32 and \RK64 respectively.<br>
     !>          Conversely, the procedures named `ndimReal2RK1` and `ndimReal2RK2` take `ndim` as `real` of kind \RK32 and \RK64 respectively
     !>          and return results of the same type and kind as `ndim`.<br>
-    !>          The first class of procedure interfaces (working with an `ndim` of type `integer`) compute the result using an iterative factorial computation approach.<br>
-    !>          The second class of procedure interfaces (working with an `ndim` of type `real`) use the Fortran intrinsic `log_gamma()` to compute the results.<br>
+    !>          The first class of procedure interfaces (working with a `ndim` of type `integer`) compute the result using an iterative factorial computation approach.<br>
+    !>          The second class of procedure interfaces (working with a `ndim` of type `real`) use the Fortran intrinsic `log_gamma()` to compute the results.<br>
     !>          This performance difference tends to be about a factor of 10 times for scalar `optional` arguments and grows
     !>          substantially to larger factors with switching to increasing-size array-like `optional` dummy arguments.<br>
     !>      -#  From the benchmark results it appears that the interface accepting `ndim` of type \RK32 offers the fastest algorithm, followed by the iterative methods.<br>

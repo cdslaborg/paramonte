@@ -2178,24 +2178,24 @@ module pm_quadPack
     !>                                  \endcode
     !>                                  where `RKC` refers to any desired `real` kind supported by the processor that is desired for the output `abserr`.<br>
     !>  \param[in]  lb              :   The input scalar argument that can be either,<br>
-    !>                                  <ul>
+    !>                                  <ol>
     !>                                      <li>    a value of type `real` of the same kind as the kind for the output `abserr`, representing the lower limit of integration, or<br>
     !>                                      <li>    the constant [ninf](@ref pm_mathConst::ninf), representing negative infinity (\f$-\infty\f$) as the lower limit of integration.<br>
-    !>                                  </ul>
+    !>                                  </ol>
     !>  \param[in]  ub              :   The input scalar argument that can be either,<br>
-    !>                                  <ul>
+    !>                                  <ol>
     !>                                      <li>    a value of type `real` of the same kind as the kind for the output `abserr`, representing the upper limit of integration, or<br>
     !>                                      <li>    the constant [pinf](@ref pm_mathConst::pinf), representing positive infinity (\f$+\infty\f$) as the upper limit of integration.<br>
-    !>                                  </ul>
+    !>                                  </ol>
     !>  \param[out] qrule           :   The input scalar constant argument that can be either,<br>
-    !>                                  <ul>
+    !>                                  <ol>
     !>                                      <li>    [GK15](@ref pm_quadPack::GK15) of type [GK15_type](@ref pm_quadPack::GK15_type), or<br>
     !>                                      <li>    [GK21](@ref pm_quadPack::GK21) of type [GK21_type](@ref pm_quadPack::GK21_type), or<br>
     !>                                      <li>    [GK31](@ref pm_quadPack::GK31) of type [GK31_type](@ref pm_quadPack::GK31_type), or<br>
     !>                                      <li>    [GK41](@ref pm_quadPack::GK41) of type [GK41_type](@ref pm_quadPack::GK41_type), or<br>
     !>                                      <li>    [GK51](@ref pm_quadPack::GK51) of type [GK51_type](@ref pm_quadPack::GK51_type), or<br>
     !>                                      <li>    [GK61](@ref pm_quadPack::GK61) of type [GK61_type](@ref pm_quadPack::GK61_type).<br>
-    !>                                  </ul>
+    !>                                  </ol>
     !>                                  The specified objects are empty and merely serve to differentiate the multitude of orders of Gauss-Kronrod quadrature rules.<br>
     !>                                  For example, specifying [GK15](@ref pm_quadPack::GK15) dictates the use of 15-points Gauss-Kronrod quadrature rules for computing the integral and estimating its error.<br>
     !>                                  (**optional**. It can be present <b>if and only if</b> `nodeK`, `weightK` and `weightG` optional input arguments are missing.)
@@ -5407,7 +5407,7 @@ module pm_quadPack
     !>  This interface combines and significantly extends the functionalities of the `QAG`, `QAGI`, `QAGP`, `QAGS`, `QAWC`, `QAWO`, `QAWS` subroutines of the venerable QUADPACK library.<br>
     !>
     !>  Specifically,<br>
-    !>  <ul>
+    !>  <ol>
     !>      <li>    When the input argument `help` is missing, this interface performs **adaptive global Gauss-Kronrod (GK)** with the user-specified
     !>              predefined (7-15 (`GK15`), 10-21 (`GK21`), 15-31 (`GK31`), 20-41 (`GK41`), 25-51 (`GK51`), 30-61 (`GK61`)) Gauss-Kronrod extension rules,<br>
     !>              or with user-specified arbitrarily-defined Gauss-Kronrod extension rules via the triple `(nodeK, weightK, weightG)` input arguments.<br>
@@ -5446,7 +5446,7 @@ module pm_quadPack
     !>                  <li>    allows the use of all predefined or arbitrary Gauss-Kronrod rules for semi or fully infinite integrations.<br>
     !>                  <li>    allows explicit specification of singularities or discontinuities via the input `help` argument for semi or fully infinite integrations.<br>
     !>              </ol>
-    !>  </ul>
+    !>  </ol>
     !>
     !>  \param      getFunc         :   The input function to be integrated (i.e., the integrand).<br>
     !>                                  <ol>
@@ -5464,15 +5464,15 @@ module pm_quadPack
     !>                                  \endcode
     !>                                  where `RKC` must match the user-specified kind type parameter for the `integral` output argument below.<br>
     !>  \param[in]  lb              :   The input scalar argument that can be either,<br>
-    !>                                  <ul>
+    !>                                  <ol>
     !>                                      <li>    a value of type `real` of the same kind as `integral`, representing the lower limit of integration, or<br>
     !>                                      <li>    the constant [ninf](@ref pm_mathConst::ninf), representing negative infinity (\f$-\infty\f$) as the lower limit of integration.<br>
-    !>                                  </ul>
+    !>                                  </ol>
     !>  \param[in]  ub              :   The input scalar argument that can be either,<br>
-    !>                                  <ul>
+    !>                                  <ol>
     !>                                      <li>    a value of type `real` of the same kind as `integral`, representing the upper limit of integration, or<br>
     !>                                      <li>    the constant [pinf](@ref pm_mathConst::pinf), representing positive infinity (\f$+\infty\f$) as the upper limit of integration.<br>
-    !>                                  </ul>
+    !>                                  </ol>
     !>  \param[in]  abstol          :   The input scalar argument of the same type and kind as `integral`, representing the absolute tolerance of integration.<br>
     !>                                  If the estimated integration error reaches a value below this threshold, the integration is assumed to have converged.<br>
     !>                                  This argument can be set to any non-negative value, including `abstol = 0.`.<br>
@@ -5482,14 +5482,14 @@ module pm_quadPack
     !>                                  A good rule of thumb is to set `reltol = epsilon(real(0, kind(integral)))**(2./3.)`.<br>
     !>                                  The integration result is generally orders of magnitude more precise than the specified `reltol`.<br>
     !>  \param[in]  qrule           :   The input scalar constant argument that can be either,<br>
-    !>                                  <ul>
+    !>                                  <ol>
     !>                                      <li>    [GK15](@ref pm_quadPack::GK15) of type [GK15_type](@ref pm_quadPack::GK15_type), or<br>
     !>                                      <li>    [GK21](@ref pm_quadPack::GK21) of type [GK21_type](@ref pm_quadPack::GK21_type), or<br>
     !>                                      <li>    [GK31](@ref pm_quadPack::GK31) of type [GK31_type](@ref pm_quadPack::GK31_type), or<br>
     !>                                      <li>    [GK41](@ref pm_quadPack::GK41) of type [GK41_type](@ref pm_quadPack::GK41_type), or<br>
     !>                                      <li>    [GK51](@ref pm_quadPack::GK51) of type [GK51_type](@ref pm_quadPack::GK51_type), or<br>
     !>                                      <li>    [GK61](@ref pm_quadPack::GK61) of type [GK61_type](@ref pm_quadPack::GK61_type).<br>
-    !>                                  </ul>
+    !>                                  </ol>
     !>                                  The specified objects are empty and merely serve to differentiate the multitude of orders of Gauss-Kronrod quadrature rules.<br>
     !>                                  For example, specifying [GK15](@ref pm_quadPack::GK15) dictates the use of 15-points Gauss-Kronrod quadrature rules for computing the integral and estimating its error.<br>
     !>                                  (**optional**. It must be present <b>if and only if</b> `nodeK`, `weightK` and `weightG` optional input arguments are missing.)

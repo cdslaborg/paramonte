@@ -42,25 +42,25 @@ module test_pm_distanceMahal
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if CK3_ENABLED
-    module function test_getMahalSq_CK3 () result(assertion); logical(LK) :: assertion; end function
+    module function test_getDisMahalSq_CK3 () result(assertion); logical(LK) :: assertion; end function
 #endif
 #if CK2_ENABLED
-    module function test_getMahalSq_CK2  () result(assertion); logical(LK) :: assertion; end function
+    module function test_getDisMahalSq_CK2  () result(assertion); logical(LK) :: assertion; end function
 #endif
 #if CK1_ENABLED
-    module function test_getMahalSq_CK1  () result(assertion); logical(LK) :: assertion; end function
+    module function test_getDisMahalSq_CK1  () result(assertion); logical(LK) :: assertion; end function
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK3_ENABLED
-    module function test_getMahalSq_RK3 () result(assertion); logical(LK) :: assertion; end function
+    module function test_getDisMahalSq_RK3 () result(assertion); logical(LK) :: assertion; end function
 #endif
 #if RK2_ENABLED
-    module function test_getMahalSq_RK2  () result(assertion); logical(LK) :: assertion; end function
+    module function test_getDisMahalSq_RK2  () result(assertion); logical(LK) :: assertion; end function
 #endif
 #if RK1_ENABLED
-    module function test_getMahalSq_RK1  () result(assertion); logical(LK) :: assertion; end function
+    module function test_getDisMahalSq_RK1  () result(assertion); logical(LK) :: assertion; end function
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -82,42 +82,42 @@ contains
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if CK3_ENABLED
-        call test%run(test_getMahalSq_CK3, SK_"test_getMahalSq_CK3")
+        call test%run(test_getDisMahalSq_CK3, SK_"test_getDisMahalSq_CK3")
 #endif
 #if CK2_ENABLED
-        call test%run(test_getMahalSq_CK2 , SK_"test_getMahalSq_CK2")
+        call test%run(test_getDisMahalSq_CK2 , SK_"test_getDisMahalSq_CK2")
 #endif
 #if CK1_ENABLED
-        call test%run(test_getMahalSq_CK1, SK_"test_getMahalSq_CK1")
+        call test%run(test_getDisMahalSq_CK1, SK_"test_getDisMahalSq_CK1")
 #endif
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if RK3_ENABLED
-        call test%run(test_getMahalSq_RK3, SK_"test_getMahalSq_RK3")
+        call test%run(test_getDisMahalSq_RK3, SK_"test_getDisMahalSq_RK3")
 #endif
 #if RK2_ENABLED
-        call test%run(test_getMahalSq_RK2 , SK_"test_getMahalSq_RK2")
+        call test%run(test_getDisMahalSq_RK2 , SK_"test_getDisMahalSq_RK2")
 #endif
 #if RK1_ENABLED
-        call test%run(test_getMahalSq_RK1, SK_"test_getMahalSq_RK1")
+        call test%run(test_getDisMahalSq_RK1, SK_"test_getDisMahalSq_RK1")
 #endif
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        !call test%run(test_getMahalSqSP_RK_1, SK_"test_getMahalSqSP_RK_1")
-        !call test%run(test_getMahalSqMP_RK_1, SK_"test_getMahalSqMP_RK_1")
-        !call test%run(test_getMahalSqSP_CK_1, SK_"test_getMahalSqSP_CK_1")
-        !call test%run(test_getMahalSqMP_CK_1, SK_"test_getMahalSqMP_CK_1")
+        !call test%run(test_getDisMahalSqSP_RK_1, SK_"test_getDisMahalSqSP_RK_1")
+        !call test%run(test_getDisMahalSqMP_RK_1, SK_"test_getDisMahalSqMP_RK_1")
+        !call test%run(test_getDisMahalSqSP_CK_1, SK_"test_getDisMahalSqSP_CK_1")
+        !call test%run(test_getDisMahalSqMP_CK_1, SK_"test_getDisMahalSqMP_CK_1")
         call test%summarize()
 
     end subroutine setTest
 
 !!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
-!    function test_getMahalSqSP_RK_1() result(assertion)
+!    function test_getDisMahalSqSP_RK_1() result(assertion)
 !        use pm_kind, only: IK, RK
 !        implicit none
 !        integer(IK)             :: i
@@ -132,7 +132,7 @@ contains
 !                                                                , 1._RK, 0._RK, 3._RK ], shape = shape(invCov) )
 !        real(RK)                :: mahalSq
 !        real(RK)                :: difference
-!        mahalSq = getMahalSqSP_RK(nd = nd, mean = mean, invCov = invCov, Point = Point)
+!        mahalSq = getDisMahalSqSP_RK(nd = nd, mean = mean, invCov = invCov, Point = Point)
 !        difference = abs(mahalSq - mahalSq_ref) / mahalSq_ref
 !        assertion = difference <= tolerance
 !
@@ -146,11 +146,11 @@ contains
 !        end if
 !        ! LCOV_EXCL_STOP
 !
-!    end function test_getMahalSqSP_RK_1
+!    end function test_getDisMahalSqSP_RK_1
 !
 !!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
-!    function test_getMahalSqMP_RK_1() result(assertion)
+!    function test_getDisMahalSqMP_RK_1() result(assertion)
 !        use pm_kind, only: IK, RK
 !        implicit none
 !        integer(IK)             :: i
@@ -165,7 +165,7 @@ contains
 !                                                                , 1._RK, 0._RK, 3._RK ], shape = shape(invCov) )
 !        real(RK)                :: mahalSq(np)
 !        real(RK)                :: Difference(np)
-!        mahalSq = getMahalSqMP_RK(nd = nd, np = np, mean = mean, invCov = invCov, Point = Point)
+!        mahalSq = getDisMahalSqMP_RK(nd = nd, np = np, mean = mean, invCov = invCov, Point = Point)
 !        Difference = abs(mahalSq - MahalSq_ref) / MahalSq_ref
 !        assertion = all(Difference <= tolerance)
 !
@@ -179,11 +179,11 @@ contains
 !        end if
 !        ! LCOV_EXCL_STOP
 !
-!    end function test_getMahalSqMP_RK_1
+!    end function test_getDisMahalSqMP_RK_1
 !
 !!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
-!    function test_getMahalSqSP_CK_1() result(assertion)
+!    function test_getDisMahalSqSP_CK_1() result(assertion)
 !
 !        use pm_kind, only: IK, RK, CK
 !        implicit none
@@ -199,7 +199,7 @@ contains
 !                                                                    , 1._RK, 0._RK, 3._RK ], shape = shape(invCov) ), kind = RK )
 !        complex(CK)             :: mahalSq
 !        real(RK)                :: difference
-!        mahalSq = getMahalSqSP_CK(nd = nd, mean = mean, invCov = invCov, Point = Point)
+!        mahalSq = getDisMahalSqSP_CK(nd = nd, mean = mean, invCov = invCov, Point = Point)
 !        difference = abs(real(mahalSq - mahalSq_ref,RK)) / real(mahalSq_ref,RK)
 !        assertion = difference <= tolerance
 !
@@ -213,11 +213,11 @@ contains
 !        end if
 !        ! LCOV_EXCL_STOP
 !
-!    end function test_getMahalSqSP_CK_1
+!    end function test_getDisMahalSqSP_CK_1
 !
 !!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
-!    function test_getMahalSqMP_CK_1() result(assertion)
+!    function test_getDisMahalSqMP_CK_1() result(assertion)
 !        use pm_kind, only: IK, RK, CK
 !        implicit none
 !        integer(IK)             :: i
@@ -233,7 +233,7 @@ contains
 !
 !        complex(CK)             :: mahalSq(np)
 !        real(RK)                :: Difference(np)
-!        mahalSq = getMahalSqMP_CK(nd = nd, np = np, mean = mean, invCov = invCov, Point = Point)
+!        mahalSq = getDisMahalSqMP_CK(nd = nd, np = np, mean = mean, invCov = invCov, Point = Point)
 !        Difference = abs(real(mahalSq - MahalSq_ref,RK) / real(MahalSq_ref,RK))
 !        assertion = all(Difference <= tolerance)
 !
@@ -247,7 +247,7 @@ contains
 !        end if
 !        ! LCOV_EXCL_STOP
 !
-!    end function test_getMahalSqMP_CK_1
+!    end function test_getDisMahalSqMP_CK_1
 !
 !!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

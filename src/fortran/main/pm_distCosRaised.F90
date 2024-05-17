@@ -23,7 +23,7 @@
 !>      <li>    the Probability Density Function (**PDF**)
 !>      <li>    the Cumulative Distribution Function (**CDF**)
 !>      <li>    the Random Number Generation from the distribution (**RNG**)
-!>      <li>    the Inverse Cumulative Distribution Function **(ICDF)** or the **Quantile Function**
+!>      <li>    the Inverse Cumulative Distribution Function (**ICDF**) or the **Quantile Function**
 !>  </ol>
 !>
 !>  The **PDF** \f$\pi(\cdot)\f$ of the <b>Raised Cosine distribution</b> over a strictly-positive support \f$x \in [\mu - \sigma, \mu + \sigma]\f$
@@ -87,6 +87,44 @@ module pm_distCosRaised
     implicit none
 
     character(*, SK), parameter :: MODULE_NAME = "@pm_distCosRaised"
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !>  \brief
+    !>  This is the derived type for signifying distributions that are of type Raised Cosine
+    !>  as defined in the description of [pm_distCosRaised](@ref pm_distCosRaised).
+    !>
+    !>  \details
+    !>  See the documentation of [pm_distCosRaised](@ref pm_distCosRaised) for the definition of the Raised Cosine distribution.
+    !>
+    !>  \interface{distCosRaised_type}
+    !>  \code{.F90}
+    !>
+    !>      use pm_distCosRaised, only: distCosRaised_type
+    !>      type(distCosRaised_type) :: distCosRaised
+    !>
+    !>      distCosRaised = distCosRaised_type()
+    !>
+    !>  \endcode
+    !>
+    !>  \devnote
+    !>  This derived type is currently devoid of any components or type-bound procedures because of
+    !>  the lack of portable and reliable support for Parameterized Derived Types (PDT) in some Fortran compilers.<br>
+    !>  For now, the utility of this derived type is limited to generic interface resolutions.<br>
+    !>
+    !>  \test
+    !>  [test_pm_distCosRaised](@ref test_pm_distCosRaised)
+    !>
+    !>  \todo
+    !>  \pvhigh
+    !>  This derived type must be converted to PDT and the relevant components and methods must be added once PDTs are well supported.
+    !>
+    !>  \finmain{distCosRaised_type}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
+    type :: distCosRaised_type
+    end type
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

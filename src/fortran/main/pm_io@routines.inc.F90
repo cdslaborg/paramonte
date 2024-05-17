@@ -68,9 +68,9 @@ if (present(iostat)) then; iostat = iostat_def; if (present(iomsg)) iomsg = ioms
 
         inquire(ITEM = ITEM, action = action)
 
-        !%%%%%%%%%%%%%%%%%%%%%
-#elif   constructField_ENABLED
-        !%%%%%%%%%%%%%%%%%%%%%
+        !%%%%%%%%%%%%%%%%%%
+#elif   field_typer_ENABLED
+        !%%%%%%%%%%%%%%%%%%
 
         if (present(string)) field%string = string
         if (present(integer)) field%integer = integer
@@ -1362,9 +1362,9 @@ do isep = 1, isam - 1; backspace(unit); end do; if (present(iomsg)) iomsg = getS
         end if
         format = SK_'('//prefix_def//sign_str//count_str//SK_'('//deliml_def//field//delimr_def//SK_',:,'//sep_def//SK_'))'
 
-        !%%%%%%%%%%%%%%%%%%%%%%%
-#elif   constructDisplay_ENABLED
-        !%%%%%%%%%%%%%%%%%%%%%%%
+        !%%%%%%%%%%%%%%%%%%%%
+#elif   display_typer_ENABLED
+        !%%%%%%%%%%%%%%%%%%%%
 
 #if     File_ENABLED
         logical(LK) :: opened
@@ -1373,7 +1373,7 @@ do isep = 1, isam - 1; backspace(unit); end do; if (present(iomsg)) iomsg = getS
         if (opened) close(disp%unit)
 
         if (present(status)) then
-            CHECK_ASSERTION(__LINE__, isValidStatus(status), SK_"@constructDisplay(): The condition `isValidPosition(status)` must hold. status = "//getStr(status))
+            CHECK_ASSERTION(__LINE__, isValidStatus(status), SK_"@display_typer(): The condition `isValidPosition(status)` must hold. status = "//getStr(status))
             status_def = status
         elseif (opened) then
             status_def = SKC_"old"
@@ -1382,7 +1382,7 @@ do isep = 1, isam - 1; backspace(unit); end do; if (present(iomsg)) iomsg = getS
         end if
 
         if (present(position)) then
-            CHECK_ASSERTION(__LINE__, isValidPosition(position), SK_"@constructDisplay(): The condition `isValidPosition(position)` must hold. position = "//getStr(position))
+            CHECK_ASSERTION(__LINE__, isValidPosition(position), SK_"@display_typer(): The condition `isValidPosition(position)` must hold. position = "//getStr(position))
             position_def = position
         elseif (opened) then
             position_def = SKC_"append"

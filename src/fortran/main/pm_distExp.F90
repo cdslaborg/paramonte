@@ -23,7 +23,7 @@
 !>      <li>    the Probability Density Function (**PDF**)
 !>      <li>    the Cumulative Distribution Function (**CDF**)
 !>      <li>    the Random Number Generation from the distribution (**RNG**)
-!>      <li>    the Inverse Cumulative Distribution Function **(ICDF)** or the **Quantile Function**
+!>      <li>    the Inverse Cumulative Distribution Function (**ICDF**) or the **Quantile Function**
 !>  </ol>
 !>
 !>  The **PDF** of the **Exponential distribution** with the two location and scale parameters \f$(\mu, \sigma)\f$ is defined as,<br>
@@ -94,7 +94,7 @@
 !>  \image html benchmark/pm_distExp/setExpLogPDF-logInvSigma-missing_vs_present/benchmark.setExpLogPDF-logInvSigma-missing_vs_present.runtime.ratio.png width=1000
 !>  \moralb{setExpLogPDF-logInvSigma-missing_vs_present}
 !>      -#  The procedures under the generic interface [setExpLogPDF](@ref pm_distExp::setExpLogPDF)
-!>          accept an extra argument `logInvSigma = log(invSigma)` while the procedures under the generic interface 
+!>          accept an extra argument `logInvSigma = log(invSigma)` while the procedures under the generic interface
 !>          [getExpLogPDF](@ref pm_distExp::getExpLogPDF) compute this term internally with every procedure call.<br>
 !>          In the presence of this argument, the logarithmic computation `log(invSigma)` will be avoided.<br>
 !>          As such, the presence of `logInvSigma` is expected to lead to faster computations.<br>
@@ -116,6 +116,44 @@ module pm_distExp
     implicit none
 
     character(*, SK), parameter :: MODULE_NAME = "@pm_distExp"
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !>  \brief
+    !>  This is the derived type for signifying distributions that are of type Exponential
+    !>  as defined in the description of [pm_distExp](@ref pm_distExp).
+    !>
+    !>  \details
+    !>  See the documentation of [pm_distExp](@ref pm_distExp) for the definition of the Exponential distribution.
+    !>
+    !>  \interface{distExp_type}
+    !>  \code{.F90}
+    !>
+    !>      use pm_distExp, only: distExp_type
+    !>      type(distExp_type) :: distExp
+    !>
+    !>      distExp = distExp_type()
+    !>
+    !>  \endcode
+    !>
+    !>  \devnote
+    !>  This derived type is currently devoid of any components or type-bound procedures because of
+    !>  the lack of portable and reliable support for Parameterized Derived Types (PDT) in some Fortran compilers.<br>
+    !>  For now, the utility of this derived type is limited to generic interface resolutions.<br>
+    !>
+    !>  \test
+    !>  [test_pm_distExp](@ref test_pm_distExp)
+    !>
+    !>  \todo
+    !>  \pvhigh
+    !>  This derived type must be converted to PDT and the relevant components and methods must be added once PDTs are well supported.
+    !>
+    !>  \finmain{distExp_type}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
+    type :: distExp_type
+    end type
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1067,7 +1105,7 @@ module pm_distExp
     !>                                  <li>    must contain uniformly-distributed random value(s) in range \f$[0, 1)\f$ on input, and
     !>                                  <li>    will contain exponentially-distributed random value(s) in range \f$[0, +\infty)\f$ on output.
     !>                              </ol>
-    !>                              The uniformly-distributed random value(s) can be readily obtained via 
+    !>                              The uniformly-distributed random value(s) can be readily obtained via
     !>                              <ol>
     !>                                  <li>    the Fortran intrinsic procedure `random_number()` or,
     !>                                  <li>    via [getUnifRand()](@ref pm_distUnif::getUnifRand).

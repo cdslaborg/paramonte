@@ -5,7 +5,6 @@ program example
     use pm_kind, only: RKL, RKD, RKH
     use pm_kind, only: IKL, IKS, IKD, IKH
     use pm_arraySelect, only: setSelected
-    use pm_container, only: strc => css_pdt
 
     implicit none
 
@@ -32,8 +31,6 @@ program example
     character(10,SK), allocatable   :: array_SK(:)
     character(10,SK)                :: selectionarray_SK
 
-    type(strc)      , allocatable   :: array_PSSK(:)
-    type(strc)                      :: selection_PSSK
 
     integer(IK)                     :: i, rank
 
@@ -227,33 +224,38 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-#if !__GFORTRAN__ && 0
-    array_PSSK = [ strc("ParaMonte") &
-                , strc("V.2") &
-                , strc("is") &
-                , strc("a") &
-                , strc("Parallel") &
-                , strc("Monte") &
-                , strc("Carlo") &
-                , strc("and") &
-                , strc("Machine") &
-                , strc("Learning") &
-                , strc("Library.") &
-                ]
+#if PDT_ENABLED
+    block
+        use pm_container, only: css_pdt
+        type(strc) :: selection
+        type(strc), allocatable :: array(:)
+        array = [ strc("ParaMonte") &
+                    , strc("V.2") &
+                    , strc("is") &
+                    , strc("a") &
+                    , strc("Parallel") &
+                    , strc("Monte") &
+                    , strc("Carlo") &
+                    , strc("and") &
+                    , strc("Machine") &
+                    , strc("Learning") &
+                    , strc("Library.") &
+                    ]
 
-    rank = 3_IK
-    call disp%skip()
-    call disp%show("rank")
-    call disp%show( rank )
-    call disp%show("array_PSSK")
-    call disp%show( array_PSSK, deliml = SK_"""" )
-    call disp%show("call setSelected(selection_PSSK, array_PSSK, rank)")
-                    call setSelected(selection_PSSK, array_PSSK, rank)
-    call disp%show("selection_PSSK")
-    call disp%show( selection_PSSK, deliml = SK_"""" )
-    call disp%show("array_PSSK")
-    call disp%show( array_PSSK, deliml = SK_"""" )
-    call disp%skip()
+        rank = 3_IK
+        call disp%skip()
+        call disp%show("rank")
+        call disp%show( rank )
+        call disp%show("array")
+        call disp%show( array, deliml = SK_"""" )
+        call disp%show("call setSelected(selection, array, rank)")
+                        call setSelected(selection, array, rank)
+        call disp%show("selection")
+        call disp%show( selection, deliml = SK_"""" )
+        call disp%show("array")
+        call disp%show( array, deliml = SK_"""" )
+        call disp%skip()
+    end block
 #endif
 
     call disp%skip()

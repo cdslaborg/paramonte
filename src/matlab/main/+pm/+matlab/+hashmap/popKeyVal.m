@@ -1,0 +1,88 @@
+function [keyval, hashout] = popKeyVal(keys, hashmap)
+    %
+    %   Return the input ``hashmap`` while all cases
+    %   of keys matching the input ``keys`` are deleted
+    %   along with their corresponding values immediately
+    %   appearing after the elements matching the input ``keys``.
+    %
+    %   Parameters
+    %   ----------
+    %
+    %       keys
+    %
+    %           The input MATLAB cell array of rank 1 containing
+    %           the key(s) to search for in the input pair list.
+    %
+    %       hashmap
+    %
+    %           The input cell array of even number of elements
+    %           containing the ``(key, val)`` pairs of the input
+    %           ``hashmap`` in sequence as element of the cell array.
+    %
+    %   Returns
+    %   -------
+    %
+    %       keyval
+    %
+    %           The output cell array of even number of elements
+    %           containing the ``(key, val)`` pairs of the keys
+    %           in the input argument ``keys``.
+    %
+    %       hashout
+    %
+    %           The output cell array of even number of elements
+    %           containing the ``(key, val)`` pairs of the input
+    %           ``hashmap`` while all instances of keys matching
+    %           the input ``keys`` along with their values are deleted.
+    %
+    %   Interface
+    %   ---------
+    %
+    %       [keyval, hashout] = pm.matlab.hashmap.popKeyVal(keys, hashmap)
+    %
+    %   Example
+    %   -------
+    %
+    %       hashmap = {"key1", 1, "key2", "val2", "key3", false, "key2", "last"};
+    %       [keyval, hashout] = pm.matlab.hashmap.popKeyVal("key2", hashmap)
+    %       [keyval, hashout] = pm.matlab.hashmap.popKeyVal("key3", hashmap)
+    %       [keyval, hashout] = pm.matlab.hashmap.popKeyVal("key3", hashmap(1:4))
+    %       [keyval, hashout] = pm.matlab.hashmap.popKeyVal({"key2", "key1"}, hashmap(1:4))
+    %       [keyval, hashout] = pm.matlab.hashmap.popKeyVal("key2", hashmap(1:3)) % error: odd number of elements.
+    %
+    %   LICENSE
+    %   -------
+    %
+    %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
+    %
+    vararginLen = length(hashmap);
+    if mod(vararginLen, 2) ~= 0
+        help("pm.matlab.hashmap.popKeyVal");
+        error   ( newline ...
+                + "The length of ``hashmap`` must be even." + newline ...
+                + newline ...
+                + "length(hashmap) = " + string(vararginLen) + newline ...
+                + newline ...
+                );
+    end
+    hashout = cell(length(hashmap), 1);
+    keyval = cell(length(hashmap), 1);
+    counter = 0;
+    kvcount = 0;
+    strkeys = string(keys);
+    for jkey = 1 : 2 : vararginLen
+        if ~any(strcmpi(string(hashmap{jkey}), strkeys))
+            counter = counter + 1;
+            hashout{counter} = hashmap{jkey};
+            counter = counter + 1;
+            hashout{counter} = hashmap{jkey + 1};
+        else
+            kvcount = kvcount + 1;
+            keyval{kvcount} = hashmap{jkey};
+            kvcount = kvcount + 1;
+            keyval{kvcount} = hashmap{jkey + 1};
+        end
+    end
+    hashout = hashout(1 : counter);
+    keyval = keyval(1 : kvcount);
+end

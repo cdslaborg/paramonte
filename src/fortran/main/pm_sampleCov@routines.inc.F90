@@ -25,13 +25,13 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         ! Define the looping ranges for the corresponding matrix subsets.
-#if     (setCov_ENABLED || setCovMean_ENABLED || setCovMerged_ENABLED || setCovMeanMerged_ENABLED) && (XLD_ENABLED || XLD_XLD_ENABLED || XLD_UXD_ENABLED)
+#if     (setCov_ENABLED || setCovMean_ENABLED || setCovMerged_ENABLED || setCovMeanMerged_ENABLED || setCovUpdated_ENABLED || setCovMeanUpdated_ENABLED) && (XLD_ENABLED || XLD_XLD_ENABLED || XLD_UXD_ENABLED)
         ! Start from the beginning of the lower-triangle.
 #define OFF_RANGE(I,J,OFFSET)I + OFFSET, J
 #define ROW_RANGE(I,J,K)J + 1_IK, K
 #define COL_RANGE(I,J)I, J
 #define FIRST 1
-#elif   (setCov_ENABLED || setCovMean_ENABLED || setCovMerged_ENABLED || setCovMeanMerged_ENABLED) && (UXD_ENABLED || UXD_UXD_ENABLED || UXD_XLD_ENABLED)
+#elif   (setCov_ENABLED || setCovMean_ENABLED || setCovMerged_ENABLED || setCovMeanMerged_ENABLED || setCovUpdated_ENABLED || setCovMeanUpdated_ENABLED) && (UXD_ENABLED || UXD_UXD_ENABLED || UXD_XLD_ENABLED)
         ! Start from the end of the upper-triangle.
 #define OFF_RANGE(I,J,OFFSET)J - OFFSET, I, -1_IK
 #define ROW_RANGE(I,J,K)J - 1_IK, I, -1_IK
@@ -136,6 +136,25 @@ PROC//SK_": The condition `0 < sum(weight)` must hold. weisum, sum(weight) = "//
             cov(idim, 1 : idim - 1) = GET_CONJG(cov(1 : idim - 1, idim))
         end do
 
+        !%%%%%%%%%%%%%%%%%%%%
+#elif   setCovUpdated_ENABLED
+        !%%%%%%%%%%%%%%%%%%%%
+
+        integer(IK) :: idim, jdim, ndim
+        real(TKC) :: fracB, fracAB
+        fracB = 1._TKC - fracA
+        ! Define the output value for setCovMerged.
+        CHECK_ASSERTION(__LINE__, 0._TKC < fracA .and. fracA < 1._TKC, SK_"@setCovMerged(): The condition `0 < fracA .and. fracA < 1` must hold. fracA = "//getStr(fracA))
+        CHECK_ASSERTION(__LINE__, all(size(meanDiff, 1, IK) == shape(covA, IK)), SK_"@setCovMerged(): The condition `all(size(meanDiff) == shape(covA))` must hold. size(meanDiff), shape(covA) = "//getStr([size(meanDiff, 1, IK), shape(covA, IK)]))
+        fracAB = fracA * fracB
+        ndim = size(covA, 1, IK)
+        do jdim = COL_RANGE(1_IK,ndim)
+            covA(jdim, jdim) = fracA * GET_RE(covA(jdim, jdim)) + fracAB * GET_ABSQ(meanDiff(jdim))
+            do idim = ROW_RANGE(1_IK,jdim,ndim)
+                covA(idim, jdim) = fracA * covA(idim, jdim) + fracAB * (meanDiff(idim) * GET_CONJG(meanDiff(jdim)))
+            end do
+        end do
+
         !%%%%%%%%%%%%%%%%%%%
 #elif   setCovMerged_ENABLED
         !%%%%%%%%%%%%%%%%%%%
@@ -163,6 +182,34 @@ PROC//SK_": The condition `0 < sum(weight)` must hold. weisum, sum(weight) = "//
             end do
         end do
 #undef  cov
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%
+#elif   setCovMeanUpdated_ENABLED
+        !%%%%%%%%%%%%%%%%%%%%%%%%
+
+        TYPE_OF_SAMPLE :: idiff, temp
+        integer(IK) :: idim, jdim, ndim
+        real(TKC) :: fracB, fracAB
+        fracB = 1._TKC - fracA
+        ! Define the output value for setCovMerged.
+        CHECK_ASSERTION(__LINE__, 0._TKC < fracA .and. fracA < 1._TKC, SK_"@setCovMerged(): The condition `0 < fracA .and. fracA < 1` must hold. fracA = "//getStr(fracA))
+        CHECK_ASSERTION(__LINE__, all(size(meanA, 1, IK) == shape(covA, IK)), SK_"@setCovMerged(): The condition `all(size(meanA) == shape(covA))` must hold. size(meanA), shape(covA) = "//getStr([size(meanA, 1, IK), shape(covA, IK)]))
+        CHECK_ASSERTION(__LINE__, all(size(meanB, 1, IK) == shape(covA, IK)), SK_"@setCovMerged(): The condition `all(size(meanB) == shape(covA))` must hold. size(meanB), shape(covA) = "//getStr([size(meanB, 1, IK), shape(covA, IK)]))
+        fracAB = fracA * fracB
+        ndim = size(covA, 1, IK)
+        do jdim = COL_RANGE(1_IK,ndim)
+            temp = meanA(jdim) - meanB(jdim)
+            covA(jdim, jdim) = fracA * GET_RE(covA(jdim, jdim)) + fracAB * GET_ABSQ(temp)
+            SET_CONJG(temp)
+            do idim = ROW_RANGE(1_IK,jdim,ndim)
+                idiff = meanA(idim) - meanB(idim)
+                covA(idim, jdim) = fracA * covA(idim, jdim) + fracAB * idiff * temp
+            end do
+        end do
+        !do concurrent(idim = 1 : size(covA, 1, IK))
+        do idim = 1, size(covA, 1, IK)
+            meanA(idim) = fracA * meanA(idim) + fracB * meanB(idim)
+        end do
 
         !%%%%%%%%%%%%%%%%%%%%%%%
 #elif   setCovMeanMerged_ENABLED

@@ -39,7 +39,7 @@
 !>  This implies that \f${\widehat{F}}_{N}(t)\f$ is an unbiased estimator for \f$F(t)\f$.<br>
 !>
 !>  \see
-!>  [pm_sampling](pm_sampling)<br>
+!>  [pm_sampling](@ref pm_sampling)<br>
 !>  [pm_sampleACT](@ref pm_sampleACT)<br>
 !>  [pm_sampleCCF](@ref pm_sampleCCF)<br>
 !>  [pm_sampleCor](@ref pm_sampleCor)<br>

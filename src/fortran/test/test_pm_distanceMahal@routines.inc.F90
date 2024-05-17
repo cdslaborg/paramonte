@@ -26,7 +26,7 @@
         use pm_matrixInit, only: setMatDia
         use pm_distUnif, only: setUnifRand
 
-#if     getMahalSq_CK_ENABLED || setMahalSq_CK_ENABLED
+#if     CK_ENABLED
         real(CK)    , parameter     :: EPS = epsilon(0._CK) * 100
         complex(CK) , allocatable   :: MahalSq_ref(:)
         complex(CK) , allocatable   :: invCov(:,:)
@@ -34,7 +34,7 @@
         complex(CK) , allocatable   :: diff(:)
         complex(CK) , allocatable   :: mean(:)
         complex(CK) , allocatable   :: X(:,:)
-#elif   getMahalSq_RK_ENABLED || setMahalSq_RK_ENABLED
+#elif   RK_ENABLED
         real(RK)    , parameter     :: EPS = epsilon(0._RK) * 100
         real(RK)    , allocatable   :: MahalSq_ref(:)
         real(RK)    , allocatable   :: invCov(:,:)
@@ -47,8 +47,8 @@
 #endif
         integer(IK) :: ndim, npnt, i
 
-        interface getMahalSq_ref
-            procedure :: getMahalSq_ref_D0, getMahalSq_ref_D1, getMahalSq_ref_D2
+        interface getDisMahalSq_ref
+            procedure :: getDisMahalSq_ref_D0, getDisMahalSq_ref_D1, getDisMahalSq_ref_D2
         end interface
 
         assertion = .true._LK
@@ -58,55 +58,55 @@
         ndim = 1_IK
         npnt = 5_IK
         call reset()
-#if     getMahalSq_CK_ENABLED || setMahalSq_CK_ENABLED
+#if     CK_ENABLED
         call setMatDia(invCov, 1._RK, ndim, 0_IK, 0_IK)
         mean = (0._CK, 0._CK)
-#elif   getMahalSq_RK_ENABLED || setMahalSq_RK_ENABLED
+#elif   RK_ENABLED
         call setMatDia(invCov, 1._RK, ndim, 0_IK, 0_IK)
         mean = 0._RK
 #endif
 
         call setUnifRand(X)
         do i = 1, npnt
-            MahalSq_ref(i) = getMahalSq_ref(X(1,i), invCov(1,1), mean(1))
-            mahalSq(i) = getMahalSq(X(1,i), invCov(1,1))
+            MahalSq_ref(i) = getDisMahalSq_ref(X(1,i), invCov(1,1), mean(1))
+            mahalSq(i) = getDisMahalSq(X(1,i), invCov(1,1))
         end do
         call report()
         call test%assert(assertion, SK_"ndim = 1: The procedure must compute mahalSq correctly for scalar values.")
 
         call setUnifRand(X)
         do i = 1, npnt
-            MahalSq_ref(i) = getMahalSq_ref(X(1,i), invCov(1,1), mean(1))
-            mahalSq(i) = getMahalSq(X(1,i), invCov(1,1), mean(1))
+            MahalSq_ref(i) = getDisMahalSq_ref(X(1,i), invCov(1,1), mean(1))
+            mahalSq(i) = getDisMahalSq(X(1,i), invCov(1,1), mean(1))
         end do
         call report()
         call test%assert(assertion, SK_"ndim = 1: The procedure must compute mahalSq correctly for scalar values with zero mean.")
 
         call setUnifRand(X)
         do i = 1, npnt
-            MahalSq_ref(i) = getMahalSq_ref(X(:,i), invCov, mean)
-            mahalSq(i) = getMahalSq(X(:,i), invCov)
+            MahalSq_ref(i) = getDisMahalSq_ref(X(:,i), invCov, mean)
+            mahalSq(i) = getDisMahalSq(X(:,i), invCov)
         end do
         call report()
         call test%assert(assertion, SK_"ndim = 1: The procedure must compute mahalSq correctly for vector values.")
 
         call setUnifRand(X)
         do i = 1, npnt
-            MahalSq_ref(i) = getMahalSq_ref(X(:,i), invCov, mean)
-            mahalSq(i) = getMahalSq(X(:,i), invCov, mean)
+            MahalSq_ref(i) = getDisMahalSq_ref(X(:,i), invCov, mean)
+            mahalSq(i) = getDisMahalSq(X(:,i), invCov, mean)
         end do
         call report()
         call test%assert(assertion, SK_"ndim = 1: The procedure must compute mahalSq correctly for vector values with zero mean.")
 
         call setUnifRand(X)
-        MahalSq_ref = getMahalSq_ref(X, invCov, mean)
-        mahalSq = getMahalSq(X, invCov)
+        MahalSq_ref = getDisMahalSq_ref(X, invCov, mean)
+        mahalSq = getDisMahalSq(X, invCov)
         call report()
         call test%assert(assertion, SK_"ndim = 1: The procedure must compute mahalSq correctly for matrix values.")
 
         call setUnifRand(X)
-        MahalSq_ref = getMahalSq_ref(X, invCov, mean)
-        mahalSq = getMahalSq(X, invCov, mean)
+        MahalSq_ref = getDisMahalSq_ref(X, invCov, mean)
+        mahalSq = getDisMahalSq(X, invCov, mean)
         call report()
         call test%assert(assertion, SK_"ndim = 1: The procedure must compute mahalSq correctly for matrix values with zero mean.")
 
@@ -115,55 +115,55 @@
         ndim = 3_IK
         npnt = 5_IK
         call reset()
-#if     getMahalSq_CK_ENABLED || setMahalSq_CK_ENABLED
+#if     CK_ENABLED
         call setMatDia(invCov, 1._RK, ndim, 0_IK, 0_IK)
         mean = (0._CK, 0._CK)
-#elif   getMahalSq_RK_ENABLED || setMahalSq_RK_ENABLED
+#elif   RK_ENABLED
         call setMatDia(invCov, 1._RK, ndim, 0_IK, 0_IK)
         mean = 0._RK
 #endif
 
         call setUnifRand(X)
         do i = 1, npnt
-            MahalSq_ref(i) = getMahalSq_ref(X(1,i), invCov(1,1), mean(1))
-            mahalSq(i) = getMahalSq(X(1,i), invCov(1,1))
+            MahalSq_ref(i) = getDisMahalSq_ref(X(1,i), invCov(1,1), mean(1))
+            mahalSq(i) = getDisMahalSq(X(1,i), invCov(1,1))
         end do
         call report()
         call test%assert(assertion, SK_"The procedure must compute mahalSq correctly for scalar values.")
 
         call setUnifRand(X)
         do i = 1, npnt
-            MahalSq_ref(i) = getMahalSq_ref(X(1,i), invCov(1,1), mean(1))
-            mahalSq(i) = getMahalSq(X(1,i), invCov(1,1), mean(1))
+            MahalSq_ref(i) = getDisMahalSq_ref(X(1,i), invCov(1,1), mean(1))
+            mahalSq(i) = getDisMahalSq(X(1,i), invCov(1,1), mean(1))
         end do
         call report()
         call test%assert(assertion, SK_"The procedure must compute mahalSq correctly for scalar values with zero mean.")
 
         call setUnifRand(X)
         do i = 1, npnt
-            MahalSq_ref(i) = getMahalSq_ref(X(:,i), invCov, mean)
-            mahalSq(i) = getMahalSq(X(:,i), invCov)
+            MahalSq_ref(i) = getDisMahalSq_ref(X(:,i), invCov, mean)
+            mahalSq(i) = getDisMahalSq(X(:,i), invCov)
         end do
         call report()
         call test%assert(assertion, SK_"The procedure must compute mahalSq correctly for vector values.")
 
         call setUnifRand(X)
         do i = 1, npnt
-            MahalSq_ref(i) = getMahalSq_ref(X(:,i), invCov, mean)
-            mahalSq(i) = getMahalSq(X(:,i), invCov, mean)
+            MahalSq_ref(i) = getDisMahalSq_ref(X(:,i), invCov, mean)
+            mahalSq(i) = getDisMahalSq(X(:,i), invCov, mean)
         end do
         call report()
         call test%assert(assertion, SK_"The procedure must compute mahalSq correctly for vector values with zero mean.")
 
         call setUnifRand(X)
-        MahalSq_ref = getMahalSq_ref(X, invCov, mean)
-        mahalSq = getMahalSq(X, invCov)
+        MahalSq_ref = getDisMahalSq_ref(X, invCov, mean)
+        mahalSq = getDisMahalSq(X, invCov)
         call report()
         call test%assert(assertion, SK_"The procedure must compute mahalSq correctly for matrix values.")
 
         call setUnifRand(X)
-        MahalSq_ref = getMahalSq_ref(X, invCov, mean)
-        mahalSq = getMahalSq(X, invCov, mean)
+        MahalSq_ref = getDisMahalSq_ref(X, invCov, mean)
+        mahalSq = getDisMahalSq(X, invCov, mean)
         call report()
         call test%assert(assertion, SK_"The procedure must compute mahalSq correctly for matrix values with zero mean.")
 
@@ -172,55 +172,55 @@
         ndim = 3_IK
         npnt = 5_IK
         call reset()
-#if     getMahalSq_CK_ENABLED || setMahalSq_CK_ENABLED
+#if     CK_ENABLED
         call setMatDia(invCov, (+0.5_CK, -0.5_CK), ndim, 0_IK, 0_IK)
         mean = (0._CK, 0._CK)
-#elif   getMahalSq_RK_ENABLED || setMahalSq_RK_ENABLED
+#elif   RK_ENABLED
         call setMatDia(invCov, +0.5_RK, ndim, 0_IK, 0_IK)
         mean = 0._RK
 #endif
 
         call setUnifRand(X)
         do i = 1, npnt
-            MahalSq_ref(i) = getMahalSq_ref(X(1,i), invCov(1,1), mean(1))
-            mahalSq(i) = getMahalSq(X(1,i), invCov(1,1))
+            MahalSq_ref(i) = getDisMahalSq_ref(X(1,i), invCov(1,1), mean(1))
+            mahalSq(i) = getDisMahalSq(X(1,i), invCov(1,1))
         end do
         call report()
         call test%assert(assertion, SK_"The procedure must compute mahalSq correctly for scalar values.")
 
         call setUnifRand(X)
         do i = 1, npnt
-            MahalSq_ref(i) = getMahalSq_ref(X(1,i), invCov(1,1), mean(1))
-            mahalSq(i) = getMahalSq(X(1,i), invCov(1,1), mean(1))
+            MahalSq_ref(i) = getDisMahalSq_ref(X(1,i), invCov(1,1), mean(1))
+            mahalSq(i) = getDisMahalSq(X(1,i), invCov(1,1), mean(1))
             call report()
             call test%assert(assertion, SK_"The procedure must compute mahalSq correctly for scalar values with zero mean.")
         end do
 
         call setUnifRand(X)
         do i = 1, npnt
-            MahalSq_ref(i) = getMahalSq_ref(X(:,i), invCov, mean)
-            mahalSq(i) = getMahalSq(X(:,i), invCov)
+            MahalSq_ref(i) = getDisMahalSq_ref(X(:,i), invCov, mean)
+            mahalSq(i) = getDisMahalSq(X(:,i), invCov)
             call report()
             call test%assert(assertion, SK_"The procedure must compute mahalSq correctly for vector values.")
         end do
 
         call setUnifRand(X)
         do i = 1, npnt
-            MahalSq_ref(i) = getMahalSq_ref(X(:,i), invCov, mean)
-            mahalSq(i) = getMahalSq(X(:,i), invCov, mean)
+            MahalSq_ref(i) = getDisMahalSq_ref(X(:,i), invCov, mean)
+            mahalSq(i) = getDisMahalSq(X(:,i), invCov, mean)
             call report()
             call test%assert(assertion, SK_"The procedure must compute mahalSq correctly for vector values with zero mean.")
         end do
 
         call setUnifRand(X)
-        MahalSq_ref = getMahalSq_ref(X, invCov, mean)
-        mahalSq = getMahalSq(X, invCov)
+        MahalSq_ref = getDisMahalSq_ref(X, invCov, mean)
+        mahalSq = getDisMahalSq(X, invCov)
         call report()
         call test%assert(assertion, SK_"The procedure must compute mahalSq correctly for matrix values.")
 
         call setUnifRand(X)
-        MahalSq_ref = getMahalSq_ref(X, invCov, mean)
-        mahalSq = getMahalSq(X, invCov, mean)
+        MahalSq_ref = getDisMahalSq_ref(X, invCov, mean)
+        mahalSq = getDisMahalSq(X, invCov, mean)
         call report()
         call test%assert(assertion, SK_"The procedure must compute mahalSq correctly for matrix values with zero mean.")
 
@@ -229,33 +229,33 @@
         ndim = 3_IK
         npnt = 5_IK
         call reset()
-#if     getMahalSq_CK_ENABLED || setMahalSq_CK_ENABLED
+#if     CK_ENABLED
         call setMatDia(invCov, (+0.8_CK, -0.5_CK), ndim, 0_IK, 0_IK)
         mean = (2._CK, -5._CK)
-#elif   getMahalSq_RK_ENABLED || setMahalSq_RK_ENABLED
+#elif   RK_ENABLED
         call setMatDia(invCov, +0.8_RK, ndim, 0_IK, 0_IK)
         mean = 2._RK
 #endif
 
         call setUnifRand(X)
         do i = 1, npnt
-            MahalSq_ref(i) = getMahalSq_ref(X(1,i), invCov(1,1), mean(1))
-                mahalSq(i) =     getMahalSq(X(1,i), invCov(1,1), mean(1))
+            MahalSq_ref(i) = getDisMahalSq_ref(X(1,i), invCov(1,1), mean(1))
+                mahalSq(i) =     getDisMahalSq(X(1,i), invCov(1,1), mean(1))
         end do
         call report()
         call test%assert(assertion, SK_"The procedure must compute mahalSq correctly for scalar values with zero mean.")
 
         call setUnifRand(X)
         do i = 1, npnt
-            MahalSq_ref(i) = getMahalSq_ref(X(:,i), invCov, mean)
-            mahalSq(i) = getMahalSq(X(:,i), invCov, mean)
+            MahalSq_ref(i) = getDisMahalSq_ref(X(:,i), invCov, mean)
+            mahalSq(i) = getDisMahalSq(X(:,i), invCov, mean)
         end do
         call report()
         call test%assert(assertion, SK_"The procedure must compute mahalSq correctly for vector values with zero mean.")
 
         call setUnifRand(X)
-        MahalSq_ref = getMahalSq_ref(X, invCov, mean)
-        mahalSq = getMahalSq(X, invCov, mean)
+        MahalSq_ref = getDisMahalSq_ref(X, invCov, mean)
+        mahalSq = getDisMahalSq(X, invCov, mean)
         call report()
         call test%assert(assertion, SK_"The procedure must compute mahalSq correctly for matrix values with zero mean.")
 
@@ -265,11 +265,11 @@
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function getMahalSq_ref_D0(X, invCov, mean) result(mahalSq)
-#if         getMahalSq_RK_ENABLED || setMahalSq_RK_ENABLED
+        function getDisMahalSq_ref_D0(X, invCov, mean) result(mahalSq)
+#if         RK_ENABLED
             real(RK)    , intent(in)            :: X, invCov, mean
             real(RK)                            :: mahalSq
-#elif       getMahalSq_CK_ENABLED || setMahalSq_CK_ENABLED
+#elif       CK_ENABLED
             complex(CK) , intent(in)            :: X, invCov, mean
             complex(CK)                         :: mahalSq
 #else
@@ -280,11 +280,11 @@
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function getMahalSq_ref_D1(X, invCov, mean) result(mahalSq)
-#if         getMahalSq_RK_ENABLED || setMahalSq_RK_ENABLED
+        function getDisMahalSq_ref_D1(X, invCov, mean) result(mahalSq)
+#if         RK_ENABLED
             real(RK)    , intent(in)            :: X(:), invCov(:,:), mean(:)
             real(RK)                            :: mahalSq
-#elif       getMahalSq_CK_ENABLED || setMahalSq_CK_ENABLED
+#elif       CK_ENABLED
             complex(CK) , intent(in)            :: X(:), invCov(:,:), mean(:)
             complex(CK)                         :: mahalSq
 #else
@@ -295,11 +295,11 @@
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function getMahalSq_ref_D2(X, invCov, mean) result(mahalSq)
-#if         getMahalSq_RK_ENABLED || setMahalSq_RK_ENABLED
+        function getDisMahalSq_ref_D2(X, invCov, mean) result(mahalSq)
+#if         RK_ENABLED
             real(RK)    , intent(in)            :: X(:,:), invCov(:,:), mean(:)
             real(RK)                            :: mahalSq(size(X,2))
-#elif       getMahalSq_CK_ENABLED || setMahalSq_CK_ENABLED
+#elif       CK_ENABLED
             complex(CK) , intent(in)            :: X(:,:), invCov(:,:), mean(:)
             complex(CK)                         :: mahalSq(size(X,2))
 #else
@@ -314,10 +314,10 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 !#if 0
-!        subroutine getMahalSq_ref(X, invCov, mean)
-!#if         getMahalSq_RK_ENABLED || setMahalSq_RK_ENABLED
+!        subroutine getDisMahalSq_ref(X, invCov, mean)
+!#if         RK_ENABLED
 !            real(RK)    , intent(in)            :: X(..), invCov(..), mean(..)
-!#elif       getMahalSq_CK_ENABLED || setMahalSq_CK_ENABLED
+!#elif       CK_ENABLED
 !            complex(CK) , intent(in)            :: X(..), invCov(..), mean(..)
 !#else
 !#error      "Unrecognized interface."
@@ -391,11 +391,11 @@
                 ! LCOV_EXCL_START
                 write(test%disp%unit,"(*(g0,:,', '))")
                 write(test%disp%unit,"(*(g0,:,', '))") "mahalSq, MahalSq_ref"
-#if             getMahalSq_CK_ENABLED
+#if             getDisMahalSq_CK_ENABLED
                 write(test%disp%unit,"(4(g0,:,', '))") (mahalSq(i), MahalSq_ref(i), i = 1, size(mahalSq))
                 write(test%disp%unit,"(*(g0,:,', '))") "diff"
                 write(test%disp%unit,"(2(g0,:,', '))") (diff(i), i = 1, size(diff))
-#elif           getMahalSq_RK_ENABLED
+#elif           getDisMahalSq_RK_ENABLED
                 write(test%disp%unit,"(2(g0,:,', '))") (mahalSq(i), MahalSq_ref(i), i = 1, size(mahalSq))
                 write(test%disp%unit,"(*(g0,:,', '))") "diff"
                 write(test%disp%unit,"(1(g0,:,', '))") (diff(i), i = 1, size(diff))

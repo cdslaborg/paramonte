@@ -37,7 +37,7 @@ call setAsserted(ASSERTION,getFine(__FILE__,LINE)//MODULE_NAME//MSG);
 #endif
     
     use pm_distNorm, only: setNormRand
-    use pm_distanceMahal, only: getMahalSq
+    use pm_distanceMahal, only: getDisMahalSq
     use pm_matrixCopy, only: setMatCopy, rdpack
     use pm_matrixDet, only: getMatDetSqrtLog, setMatDetSqrtLog, nothing
     implicit none

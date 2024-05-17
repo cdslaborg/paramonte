@@ -27,11 +27,11 @@
 ! Check the positive-definiteness of `invCov`.
 #define CHECK_POSDEF(INVCOV,ISAM) \
 CHECK_ASSERTION(__LINE__, isMatClass(INVCOV, posdefmat), \
-SK_"@setMahalSq(): The condition `isMatClass(invCov(:,:,isam), posdefmat)` must hold. isam, invCov(:, :, isam) = "//getStr(ISAM)//SK_", "//getStr(INVCOV))
+SK_"@setDisMahalSq(): The condition `isMatClass(invCov(:,:,isam), posdefmat)` must hold. isam, invCov(:, :, isam) = "//getStr(ISAM)//SK_", "//getStr(INVCOV))
 ! Check bounds of `invCov`.
 #define CHECK_LEN_INVCOV \
 CHECK_ASSERTION(__LINE__, all(size(point, 1, IK) == [size(invCov, 1, IK), size(invCov, 2, IK)]), \
-SK_"@setMahalSq(): The condition `all(size(point, 1) == [size(invCov, 1), size(invCov, 2)])` must hold. size(point), shape(invCov) = "//\
+SK_"@setDisMahalSq(): The condition `all(size(point, 1) == [size(invCov, 1), size(invCov, 2)])` must hold. size(point), shape(invCov) = "//\
 getStr([size(point, 1, IK), shape(invCov, IK)]))
 ! Check bounds of `invCov`.
 #if     InvDef_ENABLED
@@ -40,12 +40,12 @@ getStr([size(point, 1, IK), shape(invCov, IK)]))
 #elif   InvCen_ENABLED
 #define CHECK_LEN_CENTER \
 CHECK_ASSERTION(__LINE__, size(point, 1) == size(center, 1, IK), \
-SK_"@setMahalSq(): The condition `size(point, 1) == size(center, 1)` must hold. size(point, 1), size(center) = "//\
+SK_"@setDisMahalSq(): The condition `size(point, 1) == size(center, 1)` must hold. size(point, 1), size(center) = "//\
 getStr([size(point, 1, IK), size(center, 1, IK)]))
 ! Check bounds of `invCov`.
 #define CHECK_LEN_CENTER_INVCOV \
 CHECK_ASSERTION(__LINE__, size(center, rank(center), IK) == size(invCov, rank(invCov), IK), \
-SK_"@setMahalSq(): The condition `size(center, rank(center)) == size(invCov, rank(invCov))` must hold. shape(center), shape(invCov) = "//\
+SK_"@setDisMahalSq(): The condition `size(center, rank(center)) == size(invCov, rank(invCov))` must hold. shape(center), shape(invCov) = "//\
 getStr([shape(center, IK), shape(invCov, IK)]))
 #else
 #error  "Unrecognized interface."
@@ -131,9 +131,9 @@ getStr([shape(center, IK), shape(invCov, IK)]))
         CHECK_POSDEF(invCov, 1)
         CHECK_LEN_CENTER
         CHECK_LEN_INVCOV
-#if     setMahalSq_ENABLED
+#if     setDisMahalSq_ENABLED
         CHECK_ASSERTION(__LINE__, size(point, 2, IK) == size(mahalSq, 1, IK), \
-        SK_"@setMahalSq(): The condition `size(point, 2) == size(mahalSq, 1)` must hold. size(point, 2), shape(mahalSq, 1) = "//\
+        SK_"@setDisMahalSq(): The condition `size(point, 2) == size(mahalSq, 1)` must hold. size(point, 2), shape(mahalSq, 1) = "//\
         getStr([size(point, 2, IK), size(mahalSq, 1, IK)]))
 #endif
 
@@ -146,7 +146,7 @@ getStr([shape(center, IK), shape(invCov, IK)]))
 #if         CK_ENABLED
             mahalSq(ipnt) = dot_product(PNORMED(1:ndim), matmul(invCov, PNORMED(1:ndim))) ! fpp
 #elif       RK_ENABLED
-            !mahalSq(ipnt) = getMahalSq(PNORMED(1:ndim), invCov)
+            !mahalSq(ipnt) = getDisMahalSq(PNORMED(1:ndim), invCov)
             mahalSq(ipnt) = ZERO
             do idim = 1_IK, ndim
                 mahalSq(ipnt) = mahalSq(ipnt) + PNORMED(idim) * dot_product(PNORMED(1:ndim), invCov(1:ndim, idim))
@@ -169,9 +169,9 @@ getStr([shape(center, IK), shape(invCov, IK)]))
         CHECK_LEN_CENTER_INVCOV
         CHECK_LEN_CENTER
         CHECK_LEN_INVCOV
-#if     setMahalSq_ENABLED
+#if     setDisMahalSq_ENABLED
         CHECK_ASSERTION(__LINE__, size(invCov, 3, IK) == size(mahalSq, 1, IK), \
-        SK_"@setMahalSq(): The condition `size(invCov, 3) == size(mahalSq, 1)` must hold. size(invCov, 3), shape(mahalSq, 1) = "//\
+        SK_"@setDisMahalSq(): The condition `size(invCov, 3) == size(mahalSq, 1)` must hold. size(invCov, 3), shape(mahalSq, 1) = "//\
         getStr([size(invCov, 3, IK), size(mahalSq, 1, IK)]))
 #endif
 
@@ -208,9 +208,9 @@ getStr([shape(center, IK), shape(invCov, IK)]))
         CHECK_LEN_CENTER_INVCOV
         CHECK_LEN_CENTER
         CHECK_LEN_INVCOV
-#if     setMahalSq_ENABLED
+#if     setDisMahalSq_ENABLED
         CHECK_ASSERTION(__LINE__, all([size(invCov, 3, IK), size(point, 2, IK)] == shape(mahalSq, IK)), \
-        SK_"@setMahalSq(): The condition `all([size(invCov, 3), size(point, 2)] == shape(mahalSq))` must hold. size(invCov, 3), size(point, 2), shape(mahalSq) = "//\
+        SK_"@setDisMahalSq(): The condition `all([size(invCov, 3), size(point, 2)] == shape(mahalSq))` must hold. size(invCov, 3), size(point, 2), shape(mahalSq) = "//\
         getStr([size(invCov, 3, IK), size(point, 2, IK), shape(mahalSq, IK)]))
 #endif
 

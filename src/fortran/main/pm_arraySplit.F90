@@ -285,7 +285,7 @@ module pm_arraySplit
     !                                   <li>    An output `contiguous` vector of shape `(:)` of type `integer` of default kind \IK, <br>
     !                                           representing the positions of the last elements of the split parts in the input `array` such that,<br>
     !                                           <ol>
-    !                                               <li>    The subset `array(1 : field(1) - lenDelim)` represents the first 
+    !                                               <li>    The subset `array(1 : field(1) - lenDelim)` represents the first
     !                                               <li>    The subset `field(2, :)` contains the indices of the end points of the split parts of the input `array`.<br>
     !                                           </ol>
     !                                           The two elements along the first dimension represent the starting and the ending indices of each split part in `array`.<br>
@@ -7426,8 +7426,9 @@ module pm_arraySplit
 
     end interface
 
-    ! allocatable container
+    ! PDT container
 
+#if PDT_ENABLED
     interface setSplit
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -11089,6 +11090,14 @@ module pm_arraySplit
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    end interface
+#endif
+!PDT_ENABLED
+
+    ! Box container
+
+    interface setSplit
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

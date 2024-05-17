@@ -305,9 +305,9 @@
 #endif
 #undef  SET_MARKED
 
-        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-#elif   constructMark_ENABLED || constructNote_ENABLED || constructWarn_ENABLED || constructStop_ENABLED
-        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#elif   mark_typer_ENABLED || note_typer_ENABLED || warn_typer_ENABLED || stop_typer_ENABLED
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         if (present(prefix      )) self%prefix      = prefix
         if (present(indent      )) self%indent      = indent
@@ -319,11 +319,11 @@
         if (present(bmsize      )) self%bmsize      = bmsize
         if (present(unit        )) self%unit        = unit
         if (present(sticky      )) self%sticky      = sticky
-#if     constructStop_ENABLED
+#if     stop_typer_ENABLED
         if (present(stat        )) self%stat        = stat
         if (present(help        )) self%help        = help
         if (present(renabled    )) self%renabled    = renabled
-#elif   !(constructMark_ENABLED || constructNote_ENABLED || constructWarn_ENABLED)
+#elif   !(mark_typer_ENABLED || note_typer_ENABLED || warn_typer_ENABLED)
 #error  "Unrecognized interface."
 #endif
 

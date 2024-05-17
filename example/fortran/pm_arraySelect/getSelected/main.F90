@@ -3,7 +3,6 @@ program example
     use pm_kind, only: SK, IK, LK, RK
     use pm_distUnif, only: getUnifRand
     use pm_arraySelect, only: getSelected
-    use pm_container, only: strc => css_pdt
     use pm_io, only: display_type
 
     implicit none

@@ -45,7 +45,7 @@
     namelist /NAMELIST/ proposalStartRandomized
     namelist /NAMELIST/ proposalStd
     ! specdram
-    namelist /NAMELIST/ burninAdaptationMeasure
+    namelist /NAMELIST/ proposalAdaptationBurnin
     namelist /NAMELIST/ proposalAdaptationCount
     namelist /NAMELIST/ proposalAdaptationCountGreedy
     namelist /NAMELIST/ proposalAdaptationPeriod
@@ -334,7 +334,7 @@ end if;
                 read(unit, iostat = err%stat, iomsg = err%msg   ) row%processID             (1) & ! LCOV_EXCL_LINE
                                                                 , row%delayedRejectionStage (1) & ! LCOV_EXCL_LINE
                                                                 , row%meanAcceptanceRate    (1) & ! LCOV_EXCL_LINE
-                                                                , row%adaptationMeasure     (1) & ! LCOV_EXCL_LINE
+                                                                , row%proposalAdaptation    (1) & ! LCOV_EXCL_LINE
                                                                 , row%burninLocation        (1) & ! LCOV_EXCL_LINE
                                                                 , row%sampleWeight          (1) & ! LCOV_EXCL_LINE
                                                                 , row%sampleLogFunc         (1) & ! LCOV_EXCL_LINE
@@ -362,7 +362,7 @@ end if;
 #if                 ParaDRAM_ENABLED || ParaDISE_ENABLED
                     ibeg = iend + seplen; iend = ibeg + index(record(ibeg:lenrec), cfc%sep, kind = IK) - 1; read(record(ibeg:iend), *, iostat = err%stat, iomsg = err%msg) row%delayedRejectionStage; if (iserf(err%stat)) exit blockParseRecord
                     ibeg = iend + seplen; iend = ibeg + index(record(ibeg:lenrec), cfc%sep, kind = IK) - 1; read(record(ibeg:iend), *, iostat = err%stat, iomsg = err%msg) row%meanAcceptanceRate   ; if (iserf(err%stat)) exit blockParseRecord
-                    ibeg = iend + seplen; iend = ibeg + index(record(ibeg:lenrec), cfc%sep, kind = IK) - 1; read(record(ibeg:iend), *, iostat = err%stat, iomsg = err%msg) row%adaptationMeasure    ; if (iserf(err%stat)) exit blockParseRecord
+                    ibeg = iend + seplen; iend = ibeg + index(record(ibeg:lenrec), cfc%sep, kind = IK) - 1; read(record(ibeg:iend), *, iostat = err%stat, iomsg = err%msg) row%proposalAdaptation   ; if (iserf(err%stat)) exit blockParseRecord
                     ibeg = iend + seplen; iend = ibeg + index(record(ibeg:lenrec), cfc%sep, kind = IK) - 1; read(record(ibeg:iend), *, iostat = err%stat, iomsg = err%msg) row%burninLocation       ; if (iserf(err%stat)) exit blockParseRecord
                     ibeg = iend + seplen; iend = ibeg + index(record(ibeg:lenrec), cfc%sep, kind = IK) - 1; read(record(ibeg:iend), *, iostat = err%stat, iomsg = err%msg) row%sampleWeight         ; if (iserf(err%stat)) exit blockParseRecord
 #elif               ParaNest_ENABLED
@@ -396,7 +396,7 @@ end if;
                     if (isPastFirstRead) then
                         if (1_IK < cfc%nsam) then
                             if (all(row%sampleState(1 : ndim, 1) == cfc%sampleState(1 : ndim, cfc%nsam - 1))) then
-                                row%adaptationMeasure(1) = max(row%adaptationMeasure(1), cfc%adaptationMeasure(cfc%nsam - 1))
+                                row%proposalAdaptation(1) = max(row%proposalAdaptation(1), cfc%proposalAdaptation(cfc%nsam - 1))
                                 row%sampleWeight(1) = row%sampleWeight(1) + cfc%sampleWeight(cfc%nsam - 1)
                                 cfc%nsam = cfc%nsam - 1_IK
                             end if
@@ -408,7 +408,7 @@ end if;
                 cfc%processID             (cfc%nsam)            = row%processID             (1)
                 cfc%delayedRejectionStage (cfc%nsam)            = row%delayedRejectionStage (1)
                 cfc%meanAcceptanceRate    (cfc%nsam)            = row%meanAcceptanceRate    (1)
-                cfc%adaptationMeasure     (cfc%nsam)            = row%adaptationMeasure     (1)
+                cfc%proposalAdaptation    (cfc%nsam)            = row%proposalAdaptation    (1)
                 cfc%burninLocation        (cfc%nsam)            = row%burninLocation        (1)
                 cfc%sampleWeight          (cfc%nsam)            = row%sampleWeight          (1)
                 cfc%sampleLogFunc         (cfc%nsam)            = row%sampleLogFunc         (1)
@@ -513,7 +513,7 @@ end if;
         call setRefilled(cfc%meanAcceptanceRate     , NULL_RK  , nrow           , failed = failed, errmsg = errmsg)
 #if     ParaDISE_ENABLED || ParaDRAM_ENABLED
         call setRefilled(cfc%delayedRejectionStage  , NULL_IK  , nrow           , failed = failed, errmsg = errmsg)
-        call setRefilled(cfc%adaptationMeasure      , NULL_RK  , nrow           , failed = failed, errmsg = errmsg)
+        call setRefilled(cfc%proposalAdaptation     , NULL_RK  , nrow           , failed = failed, errmsg = errmsg)
         call setRefilled(cfc%burninLocation         , NULL_IK  , nrow           , failed = failed, errmsg = errmsg)
         call setRefilled(cfc%sampleWeight           , NULL_IK  , nrow           , failed = failed, errmsg = errmsg)
 #elif   ParaNest_ENABLED
@@ -609,7 +609,7 @@ end if;
 #if                                                             ParaDISE_ENABLED || ParaDRAM_ENABLED
                                                                 , cfc%delayedRejectionStage(i) &
                                                                 , cfc%meanAcceptanceRate(i) &
-                                                                , cfc%adaptationMeasure(i) &
+                                                                , cfc%proposalAdaptation(i) &
                                                                 , cfc%burninLocation(i) &
                                                                 , cfc%sampleWeight(i) &
 #elif                                                           ParaNest_ENABLED
@@ -630,7 +630,7 @@ end if;
 #if                                                                     ParaDISE_ENABLED || ParaDRAM_ENABLED
                                                                         , cfc%delayedRejectionStage(i) &
                                                                         , cfc%meanAcceptanceRate(i) &
-                                                                        , cfc%adaptationMeasure(i) &
+                                                                        , cfc%proposalAdaptation(i) &
                                                                         , cfc%burninLocation(i) &
                                                                         , cfc%sampleWeight(i) &
 #elif                                                                   ParaNest_ENABLED
@@ -655,14 +655,14 @@ end if;
                     do i = ibeg_def, iend_def
                         do j = 1, cfc%sampleWeight(i)
                             if (mod(counter, proposalAdaptationPeriod) == 0_IK) then
-                                adaptation = cfc%adaptationMeasure(i)
+                                adaptation = cfc%proposalAdaptation(i)
                             else
                                 adaptation = 0._RKC
                             end if
                             write(unit, format, iostat = err%stat, iomsg = err%msg  ) cfc%processID(i) &
                                                                                     , cfc%delayedRejectionStage(i) &
                                                                                     , cfc%meanAcceptanceRate(i) &
-                                                                                    , cfc%adaptationMeasure(i) &
+                                                                                    , cfc%proposalAdaptation(i) &
                                                                                     , cfc%burninLocation(i) &
                                                                                     , 1_IK &
                                                                                     , cfc%sampleLogFunc(i) &
