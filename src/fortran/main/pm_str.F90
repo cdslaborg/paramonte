@@ -49,7 +49,10 @@
 module pm_str
 
     use pm_kind, only: SK, IK, LK
-    use pm_container, only: css_pdt, css_type
+    use pm_container, only: css_type
+#if PDT_ENABLED
+    use pm_container, only: css_pdt
+#endif
 
 !#if SK5_ENABLED
 !    use pm_arraySplit, only: setSplit_D0_D0_SK5, setSplitCustom_D0_D0_SK5, setSplitInstance_D0_D0_SK5, setSplitCustomInstance_D0_D0_SK5
@@ -349,6 +352,8 @@ module pm_str
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     pure elemental module function isEndedWith_PSSK5(str, suffix) result(endedWith)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -403,6 +408,9 @@ module pm_str
         logical(LK)                                 :: endedWith
     end function
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

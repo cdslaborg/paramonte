@@ -620,7 +620,7 @@ end if;
 
                 call spec%disp%show("stats.chain.compact.burnin.loc.adaptationBased")
                 call spec%disp%show(stat%burninLocDRAM%compact, format = format)
-                call spec%disp%note%show("This is the burnin location in the compact chain, based on the value of burninAdaptationMeasure simulation specification.")
+                call spec%disp%note%show("This is the burnin location in the compact chain, based on the value of proposalAdaptationBurnin simulation specification.")
 
                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -632,7 +632,7 @@ end if;
 
                 call spec%disp%show("stats.chain.verbose.burnin.loc.adaptationBased")
                 call spec%disp%show(stat%burninLocDRAM%verbose, format = format)
-                call spec%disp%note%show("This is the burnin location in the verbose (Markov) chain, based on the value of burninAdaptationMeasure simulation specification.")
+                call spec%disp%note%show("This is the burnin location in the verbose (Markov) chain, based on the value of proposalAdaptationBurnin simulation specification.")
 
                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

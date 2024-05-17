@@ -532,6 +532,8 @@ module pm_val2str
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module function getStr_D0_PSSK5_SK(val, format, length, signed) result(str)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -606,6 +608,9 @@ module pm_val2str
         character(:,SKO)        , allocatable                   :: str
     end function
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -990,6 +995,8 @@ module pm_val2str
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module function getStr_D1_PSSK5_SK(val, format, length, signed) result(str)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -1064,6 +1071,9 @@ module pm_val2str
         character(:,SKO)        , allocatable                   :: str
     end function
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1448,6 +1458,8 @@ module pm_val2str
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module function getStr_D2_PSSK5_SK(val, format, length, signed) result(str)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -1522,6 +1534,9 @@ module pm_val2str
         character(:,SKO)        , allocatable                   :: str
     end function
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2020,6 +2035,8 @@ module pm_val2str
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module subroutine setStr_D0_PSSK5_SK5(str, length, val, format, signed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -2094,6 +2111,9 @@ module pm_val2str
         character(*,SKO)        , intent(out)                   :: str
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2478,6 +2498,8 @@ module pm_val2str
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module subroutine setStr_D1_PSSK5_SK5(str, length, val, format, signed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -2552,6 +2574,9 @@ module pm_val2str
         character(*,SKO)        , intent(out)                   :: str
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2936,6 +2961,8 @@ module pm_val2str
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module subroutine setStr_D2_PSSK5_SK5(str, length, val, format, signed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -3010,6 +3037,9 @@ module pm_val2str
         character(*,SKO)        , intent(out)                   :: str
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -3406,6 +3436,8 @@ module pm_val2str
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module subroutine setStr_D0_PSSK5_SK4(str, length, val, format, signed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -3480,6 +3512,9 @@ module pm_val2str
         character(*,SKO)        , intent(out)                   :: str
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -3864,6 +3899,8 @@ module pm_val2str
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module subroutine setStr_D1_PSSK5_SK4(str, length, val, format, signed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -3938,6 +3975,9 @@ module pm_val2str
         character(*,SKO)        , intent(out)                   :: str
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -4322,6 +4362,8 @@ module pm_val2str
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module subroutine setStr_D2_PSSK5_SK4(str, length, val, format, signed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -4396,6 +4438,9 @@ module pm_val2str
         character(*,SKO)        , intent(out)                   :: str
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -4792,6 +4837,8 @@ module pm_val2str
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module subroutine setStr_D0_PSSK5_SK3(str, length, val, format, signed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -4866,6 +4913,9 @@ module pm_val2str
         character(*,SKO)        , intent(out)                   :: str
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -5250,6 +5300,8 @@ module pm_val2str
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module subroutine setStr_D1_PSSK5_SK3(str, length, val, format, signed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -5324,6 +5376,9 @@ module pm_val2str
         character(*,SKO)        , intent(out)                   :: str
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -5708,6 +5763,8 @@ module pm_val2str
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module subroutine setStr_D2_PSSK5_SK3(str, length, val, format, signed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -5782,6 +5839,9 @@ module pm_val2str
         character(*,SKO)        , intent(out)                   :: str
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -6178,6 +6238,8 @@ module pm_val2str
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module subroutine setStr_D0_PSSK5_SK2(str, length, val, format, signed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -6252,6 +6314,9 @@ module pm_val2str
         character(*,SKO)        , intent(out)                   :: str
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -6636,6 +6701,8 @@ module pm_val2str
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module subroutine setStr_D1_PSSK5_SK2(str, length, val, format, signed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -6710,6 +6777,9 @@ module pm_val2str
         character(*,SKO)        , intent(out)                   :: str
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -7094,6 +7164,8 @@ module pm_val2str
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module subroutine setStr_D2_PSSK5_SK2(str, length, val, format, signed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -7168,6 +7240,9 @@ module pm_val2str
         character(*,SKO)        , intent(out)                   :: str
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -7564,6 +7639,8 @@ module pm_val2str
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module subroutine setStr_D0_PSSK5_SK1(str, length, val, format, signed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -7638,6 +7715,9 @@ module pm_val2str
         character(*,SKO)        , intent(out)                   :: str
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -8022,6 +8102,8 @@ module pm_val2str
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module subroutine setStr_D1_PSSK5_SK1(str, length, val, format, signed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -8096,6 +8178,9 @@ module pm_val2str
         character(*,SKO)        , intent(out)                   :: str
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -8480,6 +8565,8 @@ module pm_val2str
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module subroutine setStr_D2_PSSK5_SK1(str, length, val, format, signed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -8554,6 +8641,9 @@ module pm_val2str
         character(*,SKO)        , intent(out)                   :: str
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

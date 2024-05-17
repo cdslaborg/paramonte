@@ -176,13 +176,13 @@ contains
 
         !>  \brief
         !>  Write the latest simulated state to the output chain file contents.
-        subroutine writeCFC(spec, stat, adaptationMeasure)
+        subroutine writeCFC(spec, stat, proposalAdaptation)
 #if     __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
             !DEC$ ATTRIBUTES DLLEXPORT :: writeCFC
 #endif
             type(spec_type), intent(in) :: spec
             type(stat_type), intent(in) :: stat
-            real(RKC), intent(in), contiguous :: adaptationMeasure(:)
+            real(RKC), intent(in), contiguous :: proposalAdaptation(:)
             integer(IK) :: j
             ! if new point has been sampled, write the previous sampled point to output file.
             blockOutputWrite: if (0_IK < stat%numFunCallAccepted) then
@@ -190,7 +190,7 @@ contains
                     write(spec%chainFile%unit,spec%chainFile%format%rows) stat%cfc%processID            (stat%numFunCallAccepted) &
                                                                         , stat%cfc%delayedRejectionStage(stat%numFunCallAccepted) &
                                                                         , stat%cfc%meanAcceptanceRate   (stat%numFunCallAccepted) &
-                                                                        , stat%cfc%adaptationMeasure    (stat%numFunCallAccepted) &
+                                                                        , stat%cfc%proposalAdaptation   (stat%numFunCallAccepted) &
                                                                         , stat%cfc%burninLocation       (stat%numFunCallAccepted) &
                                                                         , stat%cfc%sampleWeight         (stat%numFunCallAccepted) &
                                                                         , stat%cfc%sampleLogFunc        (stat%numFunCallAccepted) &
@@ -199,7 +199,7 @@ contains
                     write(spec%chainFile%unit                           ) stat%cfc%processID            (stat%numFunCallAccepted) &
                                                                         , stat%cfc%delayedRejectionStage(stat%numFunCallAccepted) &
                                                                         , stat%cfc%meanAcceptanceRate   (stat%numFunCallAccepted) &
-                                                                        , stat%cfc%adaptationMeasure    (stat%numFunCallAccepted) &
+                                                                        , stat%cfc%proposalAdaptation   (stat%numFunCallAccepted) &
                                                                         , stat%cfc%burninLocation       (stat%numFunCallAccepted) &
                                                                         , stat%cfc%sampleWeight         (stat%numFunCallAccepted) &
                                                                         , stat%cfc%sampleLogFunc        (stat%numFunCallAccepted) &
@@ -209,8 +209,8 @@ contains
                     write(spec%chainFile%unit,spec%chainFile%format%rows) stat%cfc%processID            (stat%numFunCallAccepted) &
                                                                         , stat%cfc%delayedRejectionStage(stat%numFunCallAccepted) &
                                                                         , stat%cfc%meanAcceptanceRate   (stat%numFunCallAccepted) &
-                                                                        , adaptationMeasure(j) &
-                                                                       !, stat%cfc%adaptationMeasure(stat%numFunCallAccepted) &
+                                                                        , proposalAdaptation(j) &
+                                                                       !, stat%cfc%proposalAdaptation(stat%numFunCallAccepted) &
                                                                         , stat%cfc%burninLocation       (stat%numFunCallAccepted) &
                                                                         , 1_IK &
                                                                         , stat%cfc%sampleLogFunc        (stat%numFunCallAccepted) &

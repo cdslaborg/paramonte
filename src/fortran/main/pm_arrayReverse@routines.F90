@@ -316,7 +316,7 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-! LCOV_EXCL_START
+#if PDT_ENABLED
 #define PSSK_ENABLED 1
 
 #if SK5_ENABLED
@@ -355,7 +355,7 @@ contains
 #endif
 
 #undef PSSK_ENABLED
-! LCOV_EXCL_STOP
+#endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -647,7 +647,7 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-! LCOV_EXCL_START
+#if PDT_ENABLED
 #define PSSK_ENABLED 1
 
 #if SK5_ENABLED
@@ -686,7 +686,7 @@ contains
 #endif
 
 #undef PSSK_ENABLED
-! LCOV_EXCL_STOP
+#endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -968,7 +968,7 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-! LCOV_EXCL_START
+#if PDT_ENABLED
 #define PSSK_ENABLED 1
 
 #if SK5_ENABLED
@@ -1007,7 +1007,7 @@ contains
 #endif
 
 #undef PSSK_ENABLED
-! LCOV_EXCL_STOP
+#endif
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #undef D1_ENABLED

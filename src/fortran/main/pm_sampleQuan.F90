@@ -32,7 +32,7 @@
 !>  (the inverse function of the cumulative distribution function) to the values \f$\{1/q, 2/q, …, (q − 1)/q\}\f$.<br>
 !>
 !>  \see
-!>  [pm_sampling](pm_sampling)<br>
+!>  [pm_sampling](@ref pm_sampling)<br>
 !>  [pm_sampleACT](@ref pm_sampleACT)<br>
 !>  [pm_sampleCCF](@ref pm_sampleCCF)<br>
 !>  [pm_sampleCor](@ref pm_sampleCor)<br>

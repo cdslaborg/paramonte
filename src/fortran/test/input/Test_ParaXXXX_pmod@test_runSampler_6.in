@@ -59,7 +59,7 @@
     proposalAdaptationCountGreedy       = 0
    !proposalDelayedRejectionCount       = 20
    !proposalDelayedRejectionScale       = 20*1.
-   !burninAdaptationMeasure             = 1.
+   !proposalAdaptationBurnin            = 1.
     proposalScale                       = "Gelman"
    !proposalStd                         = 1*0.0001e6
    !proposalCor                         = 1000,0,0,1000

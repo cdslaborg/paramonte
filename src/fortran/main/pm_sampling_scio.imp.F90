@@ -109,7 +109,7 @@
 
     ! specdram
     !>  \cond excluded
-    real(RKC)                               :: burninAdaptationMeasure
+    real(RKC)                               :: proposalAdaptationBurnin
     integer(IK)                             :: proposalAdaptationCount
     integer(IK)                             :: proposalAdaptationCountGreedy
     integer(IK)                             :: proposalAdaptationPeriod
@@ -268,8 +268,8 @@
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     type, extends(cfhmcmc_type)             :: cfhdram_type
+        character(31,SKC)                   :: proposalAdaptation = "proposalAdaptation"
         character(31,SKC)                   :: delayedRejectionStage = "delayedRejectionStage"
-        character(31,SKC)                   :: adaptationMeasure = "adaptationMeasure"
     end type
     type(cfhdram_type)      , parameter     :: cfhdram = cfhdram_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -279,7 +279,7 @@
     character(31,SKC)       , parameter     :: chainFileColNameDRAM(*) =[ cfhdram%processID &
                                                                         , cfhdram%delayedRejectionStage &
                                                                         , cfhdram%meanAcceptanceRate &
-                                                                        , cfhdram%adaptationMeasure &
+                                                                        , cfhdram%proposalAdaptation &
                                                                         , cfhdram%burninLocation &
                                                                         , cfhdram%sampleWeight &
                                                                         , cfhdram%sampleLogFunc &
@@ -315,7 +315,7 @@
     !>  \author
     !>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
     type, extends(cfcmcmc_type)             :: cfcdram_type
-        real(RKC)           , allocatable   :: adaptationMeasure(:)     !<  \public The `allocatable` vector of type `real` of kind \RKALL, containing the vector of the adaptation measures at the accepted states.<br>
+        real(RKC)           , allocatable   :: proposalAdaptation(:)     !<  \public The `allocatable` vector of type `real` of kind \RKALL, containing the vector of the adaptation measures at the accepted states.<br>
         integer(IK)         , allocatable   :: delayedRejectionStage(:) !<  \public The `allocatable` vector of type `integer` of default kind \IK, containing the delayed rejection stages at which the proposed states were accepted.<br>
     end type
 
@@ -331,7 +331,7 @@
     character(31,SKC)       , parameter     :: chainFileColNameDISE(*) =[ cfhdise%processID &
                                                                         , cfhdise%delayedRejectionStage &
                                                                         , cfhdise%meanAcceptanceRate &
-                                                                        , cfhdise%adaptationMeasure &
+                                                                        , cfhdise%proposalAdaptation &
                                                                         , cfhdise%burninLocation &
                                                                         , cfhdise%sampleWeight &
                                                                         , cfhdise%sampleLogFunc &
@@ -555,8 +555,8 @@ end if;
             contents = inputFile
         end if
 
-        iostat = index(getReplaced(contents, SK_" ", SK_""), SK_"&"//lcmethod, kind = IK)
-        RETURN_IF_ERRED(__LINE__, iostat == 0, SK_"Failed to find a `&"//lcmethod//SK_" namelist group in user-specified input file: '"//trim(inputFile)//SK_"'. ")
+        !iostat = index(getReplaced(contents, SK_" ", SK_""), SK_"&"//lcmethod, kind = IK)
+        !RETURN_IF_ERRED(__LINE__, iostat == 0, SK_"Failed to find a `&"//lcmethod//SK_" namelist group in user-specified input file: '"//trim(inputFile)//SK_"'. ")
 
         ! Now write the contents to a temporary file for the processor to parse it.
         ! The rewrite is important to avoid gfortran end of file IO errors.

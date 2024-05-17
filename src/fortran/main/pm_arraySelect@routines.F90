@@ -36,7 +36,6 @@ call setAsserted(ASSERTION,getFine(__FILE__,LINE)//MODULE_NAME//MSG);
 #define CHECK_ASSERTION(LINE,ASSERTION,MSG) continue;
 #endif
 
-    use pm_container, only: css_pdt
     use pm_container, only: css_type
     use pm_arraySort, only: setSorted
 
@@ -320,11 +319,12 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
 #define PSSK_ENABLED 1
 
 #if SK5_ENABLED
     module procedure getSelectedDefCom_D1_PSSK5
+        use pm_container, only: css_pdt
         use pm_kind, only: SKC => SK5
 #include "pm_arraySelect@routines.inc.F90"
     end procedure
@@ -332,6 +332,7 @@ contains
 
 #if SK4_ENABLED
     module procedure getSelectedDefCom_D1_PSSK4
+        use pm_container, only: css_pdt
         use pm_kind, only: SKC => SK4
 #include "pm_arraySelect@routines.inc.F90"
     end procedure
@@ -339,6 +340,7 @@ contains
 
 #if SK3_ENABLED
     module procedure getSelectedDefCom_D1_PSSK3
+        use pm_container, only: css_pdt
         use pm_kind, only: SKC => SK3
 #include "pm_arraySelect@routines.inc.F90"
     end procedure
@@ -346,6 +348,7 @@ contains
 
 #if SK2_ENABLED
     module procedure getSelectedDefCom_D1_PSSK2
+        use pm_container, only: css_pdt
         use pm_kind, only: SKC => SK2
 #include "pm_arraySelect@routines.inc.F90"
     end procedure
@@ -353,6 +356,7 @@ contains
 
 #if SK1_ENABLED
     module procedure getSelectedDefCom_D1_PSSK1
+        use pm_container, only: css_pdt
         use pm_kind, only: SKC => SK1
 #include "pm_arraySelect@routines.inc.F90"
     end procedure
@@ -650,11 +654,12 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
 #define PSSK_ENABLED 1
 
 #if SK5_ENABLED
     module procedure getSelectedCusCom_D1_PSSK5
+        use pm_container, only: css_pdt
         use pm_kind, only: SKC => SK5
 #include "pm_arraySelect@routines.inc.F90"
     end procedure
@@ -662,6 +667,7 @@ contains
 
 #if SK4_ENABLED
     module procedure getSelectedCusCom_D1_PSSK4
+        use pm_container, only: css_pdt
         use pm_kind, only: SKC => SK4
 #include "pm_arraySelect@routines.inc.F90"
     end procedure
@@ -669,6 +675,7 @@ contains
 
 #if SK3_ENABLED
     module procedure getSelectedCusCom_D1_PSSK3
+        use pm_container, only: css_pdt
         use pm_kind, only: SKC => SK3
 #include "pm_arraySelect@routines.inc.F90"
     end procedure
@@ -676,6 +683,7 @@ contains
 
 #if SK2_ENABLED
     module procedure getSelectedCusCom_D1_PSSK2
+        use pm_container, only: css_pdt
         use pm_kind, only: SKC => SK2
 #include "pm_arraySelect@routines.inc.F90"
     end procedure
@@ -683,6 +691,7 @@ contains
 
 #if SK1_ENABLED
     module procedure getSelectedCusCom_D1_PSSK1
+        use pm_container, only: css_pdt
         use pm_kind, only: SKC => SK1
 #include "pm_arraySelect@routines.inc.F90"
     end procedure
@@ -990,11 +999,12 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
 #define PSSK_ENABLED 1
 
 #if SK5_ENABLED
     module procedure setSelectedDefCom_D1_PSSK5
+        use pm_container, only: css_pdt
         use pm_kind, only: SKC => SK5
 #include "pm_arraySelect@routines.inc.F90"
     end procedure
@@ -1002,6 +1012,7 @@ contains
 
 #if SK4_ENABLED
     module procedure setSelectedDefCom_D1_PSSK4
+        use pm_container, only: css_pdt
         use pm_kind, only: SKC => SK4
 #include "pm_arraySelect@routines.inc.F90"
     end procedure
@@ -1009,6 +1020,7 @@ contains
 
 #if SK3_ENABLED
     module procedure setSelectedDefCom_D1_PSSK3
+        use pm_container, only: css_pdt
         use pm_kind, only: SKC => SK3
 #include "pm_arraySelect@routines.inc.F90"
     end procedure
@@ -1016,6 +1028,7 @@ contains
 
 #if SK2_ENABLED
     module procedure setSelectedDefCom_D1_PSSK2
+        use pm_container, only: css_pdt
         use pm_kind, only: SKC => SK2
 #include "pm_arraySelect@routines.inc.F90"
     end procedure
@@ -1023,6 +1036,7 @@ contains
 
 #if SK1_ENABLED
     module procedure setSelectedDefCom_D1_PSSK1
+        use pm_container, only: css_pdt
         use pm_kind, only: SKC => SK1
 #include "pm_arraySelect@routines.inc.F90"
     end procedure
@@ -1320,11 +1334,12 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
 #define PSSK_ENABLED 1
 
 #if SK5_ENABLED
     module procedure setSelectedCusCom_D1_PSSK5
+        use pm_container, only: css_pdt
         use pm_kind, only: SKC => SK5
 #include "pm_arraySelect@routines.inc.F90"
     end procedure
@@ -1332,6 +1347,7 @@ contains
 
 #if SK4_ENABLED
     module procedure setSelectedCusCom_D1_PSSK4
+        use pm_container, only: css_pdt
         use pm_kind, only: SKC => SK4
 #include "pm_arraySelect@routines.inc.F90"
     end procedure
@@ -1339,6 +1355,7 @@ contains
 
 #if SK3_ENABLED
     module procedure setSelectedCusCom_D1_PSSK3
+        use pm_container, only: css_pdt
         use pm_kind, only: SKC => SK3
 #include "pm_arraySelect@routines.inc.F90"
     end procedure
@@ -1346,6 +1363,7 @@ contains
 
 #if SK2_ENABLED
     module procedure setSelectedCusCom_D1_PSSK2
+        use pm_container, only: css_pdt
         use pm_kind, only: SKC => SK2
 #include "pm_arraySelect@routines.inc.F90"
     end procedure
@@ -1353,6 +1371,7 @@ contains
 
 #if SK1_ENABLED
     module procedure setSelectedCusCom_D1_PSSK1
+        use pm_container, only: css_pdt
         use pm_kind, only: SKC => SK1
 #include "pm_arraySelect@routines.inc.F90"
     end procedure

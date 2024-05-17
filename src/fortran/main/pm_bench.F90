@@ -425,10 +425,10 @@ module pm_bench
     !>                              effectively yielding zero overhead.)
     !>  \param[in]  minsec      :   The input scalar of type `real` of kind double precision \RKD representing
     !>                              the minimum time in units of seconds that the overall benchmark should last.<br>
-    !>                              (**optional**. The default is set by the constructor of the parent class [benchBase_type](@ref pm_bench::benchBase_type).)
+    !>                              (**optional**. The default is set by the constructor of the superclass [benchBase_type](@ref pm_bench::benchBase_type).)
     !>  \param[in]  miniter     :   The input scalar of type `integer` of default kind \IK representing
     !>                              the minimum number of timing the user-specified wrapper procedure repeatedly.<br>
-    !>                              (**optional**. The default is set by the constructor of the parent class [benchBase_type](@ref pm_bench::benchBase_type).)
+    !>                              (**optional**. The default is set by the constructor of the superclass [benchBase_type](@ref pm_bench::benchBase_type).)
     !>  \param[in]  timer       :   The input object of `abstract` class [timer_type](@ref pm_timer::timer_type) representing the benchmark timer.<br>
     !>                              This object can be one of the available timers in [pm_timer](@ref pm_timer):
     !>                              <ol>
@@ -522,10 +522,10 @@ module pm_bench
     !>  \param[inout]   self    :   The parent object of class [bench_type](@ref pm_bench::bench_type) (passed implicitly to the method).<br>
     !>  \param[in]      minsec  :   The input scalar `real` of kind double precision \RKD
     !>                              representing the minimum time in seconds to spend on timing repeatedly.<br>
-    !>                              (**optional**. The default is set by the constructor of the parent class [benchBase_type](@ref pm_bench::benchBase_type).)
+    !>                              (**optional**. The default is set by the constructor of the superclass [benchBase_type](@ref pm_bench::benchBase_type).)
     !>  \param[in]      miniter :   The input scalar `integer` of default kind \IK representing
     !>                              the minimum number of iterations (repetitions) of the timing to perform.<br>
-    !>                              (**optional**. The default is set by the constructor of the parent class [benchBase_type](@ref pm_bench::benchBase_type).)
+    !>                              (**optional**. The default is set by the constructor of the superclass [benchBase_type](@ref pm_bench::benchBase_type).)
     !>
     !>  \return
     !>  `timing`                :   The output object of class [timing_type](@ref timing_type) containing the resulting timing vector and statistics.<br>
@@ -598,9 +598,9 @@ module pm_bench
     !>
     !>  \param[inout]   self    :   The parent object of class [bench_type](@ref pm_bench::bench_type) (passed implicitly to the method).<br>
     !>  \param[in]      miniter :   The input scalar `integer` of default kind \IK representing the minimum number of iterations (repetitions) of the timing to perform.<br>
-    !>                              (**optional**. The default is set by the constructor of the parent class [benchBase_type](@ref pm_bench::benchBase_type).)
+    !>                              (**optional**. The default is set by the constructor of the superclass [benchBase_type](@ref pm_bench::benchBase_type).)
     !>  \param[in]      minsec  :   The input scalar `real` of kind double precision \RKD representing the minimum time in seconds to spend on timing repeatedly.<br>
-    !>                              (**optional**. The default is set by the constructor of the parent class [benchBase_type](@ref pm_bench::benchBase_type).)
+    !>                              (**optional**. The default is set by the constructor of the superclass [benchBase_type](@ref pm_bench::benchBase_type).)
     !>
     !>  \interface{setTiming}
     !>  \code{.F90}

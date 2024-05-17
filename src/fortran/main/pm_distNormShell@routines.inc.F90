@@ -67,7 +67,7 @@ getStr([size(width, 1, IK), size(center, 2, IK)])) ! fpp
 #if     DD_ENABLED
 #define MAHAL_SQ dot_product(X, X)
 #elif   CI_ENABLED
-#define MAHAL_SQ getMahalSq(X, invCov, center)
+#define MAHAL_SQ getDisMahalSq(X, invCov, center)
 #else
 #error  "Unrecognized interface."
 #endif

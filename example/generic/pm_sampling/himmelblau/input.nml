@@ -95,7 +95,7 @@ This\n
 
     ! DRAM specifications.
 
-    burninAdaptationMeasure             = 1.
+    proposalAdaptationBurnin            = 1.
     proposalAdaptationCount             = 10000000
     proposalAdaptationCountGreedy       = 0
     proposalAdaptationPeriod            = 35

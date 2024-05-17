@@ -195,8 +195,8 @@ contains
 
         call spec%disp%show("## DRAM specifications")
 
-        call spec%disp%show("### burninAdaptationMeasure")
-        call spec%disp%show(getStrWrapped(spec%burninAdaptationMeasure%desc, width = 99999_IK))
+        call spec%disp%show("### proposalAdaptationBurnin")
+        call spec%disp%show(getStrWrapped(spec%proposalAdaptationBurnin%desc, width = 99999_IK))
 
         call spec%disp%show("### proposalAdaptationCount")
         call spec%disp%show(getStrWrapped(spec%proposalAdaptationCount%desc, width = 99999_IK))

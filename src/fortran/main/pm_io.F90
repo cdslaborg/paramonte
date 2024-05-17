@@ -2803,424 +2803,6 @@ module pm_io
 
     end interface
 
-    ! D1 unit NO
-
-    interface getErrTableRead
-
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#if SK5_ENABLED
-    module function getErrTableReadUnit_NO_D1_SK5(unit, table, header, sep, roff, iomsg) result(err)
-#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_SK5
-#endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:)
-        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
-        character(*, SK)            , intent(in)                    , optional  :: sep
-        character(*, SK)            , intent(inout)                 , optional  :: iomsg
-        integer(IK)                 , intent(in)                    , optional  :: roff
-        integer(IK)                 , intent(in)                                :: unit
-        integer(IK)                                                             :: err
-    end function
-#endif
-
-#if SK4_ENABLED
-    module function getErrTableReadUnit_NO_D1_SK4(unit, table, header, sep, roff, iomsg) result(err)
-#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_SK4
-#endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:)
-        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
-        character(*, SK)            , intent(in)                    , optional  :: sep
-        character(*, SK)            , intent(inout)                 , optional  :: iomsg
-        integer(IK)                 , intent(in)                    , optional  :: roff
-        integer(IK)                 , intent(in)                                :: unit
-        integer(IK)                                                             :: err
-    end function
-#endif
-
-#if SK3_ENABLED
-    module function getErrTableReadUnit_NO_D1_SK3(unit, table, header, sep, roff, iomsg) result(err)
-#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_SK3
-#endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:)
-        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
-        character(*, SK)            , intent(in)                    , optional  :: sep
-        character(*, SK)            , intent(inout)                 , optional  :: iomsg
-        integer(IK)                 , intent(in)                    , optional  :: roff
-        integer(IK)                 , intent(in)                                :: unit
-        integer(IK)                                                             :: err
-    end function
-#endif
-
-#if SK2_ENABLED
-    module function getErrTableReadUnit_NO_D1_SK2(unit, table, header, sep, roff, iomsg) result(err)
-#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_SK2
-#endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:)
-        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
-        character(*, SK)            , intent(in)                    , optional  :: sep
-        character(*, SK)            , intent(inout)                 , optional  :: iomsg
-        integer(IK)                 , intent(in)                    , optional  :: roff
-        integer(IK)                 , intent(in)                                :: unit
-        integer(IK)                                                             :: err
-    end function
-#endif
-
-#if SK1_ENABLED
-    module function getErrTableReadUnit_NO_D1_SK1(unit, table, header, sep, roff, iomsg) result(err)
-#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_SK1
-#endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:)
-        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
-        character(*, SK)            , intent(in)                    , optional  :: sep
-        character(*, SK)            , intent(inout)                 , optional  :: iomsg
-        integer(IK)                 , intent(in)                    , optional  :: roff
-        integer(IK)                 , intent(in)                                :: unit
-        integer(IK)                                                             :: err
-    end function
-#endif
-
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#if IK5_ENABLED
-    module function getErrTableReadUnit_NO_D1_IK5(unit, table, header, sep, roff, iomsg) result(err)
-#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_IK5
-#endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(out)   , allocatable               :: table(:)
-        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
-        character(*, SK)            , intent(in)                    , optional  :: sep
-        character(*, SK)            , intent(inout)                 , optional  :: iomsg
-        integer(IK)                 , intent(in)                    , optional  :: roff
-        integer(IK)                 , intent(in)                                :: unit
-        integer(IK)                                                             :: err
-    end function
-#endif
-
-#if IK4_ENABLED
-    module function getErrTableReadUnit_NO_D1_IK4(unit, table, header, sep, roff, iomsg) result(err)
-#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_IK4
-#endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(out)   , allocatable               :: table(:)
-        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
-        character(*, SK)            , intent(in)                    , optional  :: sep
-        character(*, SK)            , intent(inout)                 , optional  :: iomsg
-        integer(IK)                 , intent(in)                    , optional  :: roff
-        integer(IK)                 , intent(in)                                :: unit
-        integer(IK)                                                             :: err
-    end function
-#endif
-
-#if IK3_ENABLED
-    module function getErrTableReadUnit_NO_D1_IK3(unit, table, header, sep, roff, iomsg) result(err)
-#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_IK3
-#endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(out)   , allocatable               :: table(:)
-        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
-        character(*, SK)            , intent(in)                    , optional  :: sep
-        character(*, SK)            , intent(inout)                 , optional  :: iomsg
-        integer(IK)                 , intent(in)                    , optional  :: roff
-        integer(IK)                 , intent(in)                                :: unit
-        integer(IK)                                                             :: err
-    end function
-#endif
-
-#if IK2_ENABLED
-    module function getErrTableReadUnit_NO_D1_IK2(unit, table, header, sep, roff, iomsg) result(err)
-#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_IK2
-#endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(out)   , allocatable               :: table(:)
-        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
-        character(*, SK)            , intent(in)                    , optional  :: sep
-        character(*, SK)            , intent(inout)                 , optional  :: iomsg
-        integer(IK)                 , intent(in)                    , optional  :: roff
-        integer(IK)                 , intent(in)                                :: unit
-        integer(IK)                                                             :: err
-    end function
-#endif
-
-#if IK1_ENABLED
-    module function getErrTableReadUnit_NO_D1_IK1(unit, table, header, sep, roff, iomsg) result(err)
-#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_IK1
-#endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(out)   , allocatable               :: table(:)
-        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
-        character(*, SK)            , intent(in)                    , optional  :: sep
-        character(*, SK)            , intent(inout)                 , optional  :: iomsg
-        integer(IK)                 , intent(in)                    , optional  :: roff
-        integer(IK)                 , intent(in)                                :: unit
-        integer(IK)                                                             :: err
-    end function
-#endif
-
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#if LK5_ENABLED
-    module function getErrTableReadUnit_NO_D1_LK5(unit, table, header, sep, roff, iomsg) result(err)
-#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_LK5
-#endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(out)   , allocatable               :: table(:)
-        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
-        character(*, SK)            , intent(in)                    , optional  :: sep
-        character(*, SK)            , intent(inout)                 , optional  :: iomsg
-        integer(IK)                 , intent(in)                    , optional  :: roff
-        integer(IK)                 , intent(in)                                :: unit
-        integer(IK)                                                             :: err
-    end function
-#endif
-
-#if LK4_ENABLED
-    module function getErrTableReadUnit_NO_D1_LK4(unit, table, header, sep, roff, iomsg) result(err)
-#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_LK4
-#endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(out)   , allocatable               :: table(:)
-        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
-        character(*, SK)            , intent(in)                    , optional  :: sep
-        character(*, SK)            , intent(inout)                 , optional  :: iomsg
-        integer(IK)                 , intent(in)                    , optional  :: roff
-        integer(IK)                 , intent(in)                                :: unit
-        integer(IK)                                                             :: err
-    end function
-#endif
-
-#if LK3_ENABLED
-    module function getErrTableReadUnit_NO_D1_LK3(unit, table, header, sep, roff, iomsg) result(err)
-#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_LK3
-#endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(out)   , allocatable               :: table(:)
-        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
-        character(*, SK)            , intent(in)                    , optional  :: sep
-        character(*, SK)            , intent(inout)                 , optional  :: iomsg
-        integer(IK)                 , intent(in)                    , optional  :: roff
-        integer(IK)                 , intent(in)                                :: unit
-        integer(IK)                                                             :: err
-    end function
-#endif
-
-#if LK2_ENABLED
-    module function getErrTableReadUnit_NO_D1_LK2(unit, table, header, sep, roff, iomsg) result(err)
-#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_LK2
-#endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(out)   , allocatable               :: table(:)
-        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
-        character(*, SK)            , intent(in)                    , optional  :: sep
-        character(*, SK)            , intent(inout)                 , optional  :: iomsg
-        integer(IK)                 , intent(in)                    , optional  :: roff
-        integer(IK)                 , intent(in)                                :: unit
-        integer(IK)                                                             :: err
-    end function
-#endif
-
-#if LK1_ENABLED
-    module function getErrTableReadUnit_NO_D1_LK1(unit, table, header, sep, roff, iomsg) result(err)
-#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_LK1
-#endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(out)   , allocatable               :: table(:)
-        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
-        character(*, SK)            , intent(in)                    , optional  :: sep
-        character(*, SK)            , intent(inout)                 , optional  :: iomsg
-        integer(IK)                 , intent(in)                    , optional  :: roff
-        integer(IK)                 , intent(in)                                :: unit
-        integer(IK)                                                             :: err
-    end function
-#endif
-
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#if CK5_ENABLED
-    module function getErrTableReadUnit_NO_D1_CK5(unit, table, header, sep, roff, iomsg) result(err)
-#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_CK5
-#endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(out)   , allocatable               :: table(:)
-        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
-        character(*, SK)            , intent(in)                    , optional  :: sep
-        character(*, SK)            , intent(inout)                 , optional  :: iomsg
-        integer(IK)                 , intent(in)                    , optional  :: roff
-        integer(IK)                 , intent(in)                                :: unit
-        integer(IK)                                                             :: err
-    end function
-#endif
-
-#if CK4_ENABLED
-    module function getErrTableReadUnit_NO_D1_CK4(unit, table, header, sep, roff, iomsg) result(err)
-#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_CK4
-#endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(out)   , allocatable               :: table(:)
-        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
-        character(*, SK)            , intent(in)                    , optional  :: sep
-        character(*, SK)            , intent(inout)                 , optional  :: iomsg
-        integer(IK)                 , intent(in)                    , optional  :: roff
-        integer(IK)                 , intent(in)                                :: unit
-        integer(IK)                                                             :: err
-    end function
-#endif
-
-#if CK3_ENABLED
-    module function getErrTableReadUnit_NO_D1_CK3(unit, table, header, sep, roff, iomsg) result(err)
-#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_CK3
-#endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(out)   , allocatable               :: table(:)
-        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
-        character(*, SK)            , intent(in)                    , optional  :: sep
-        character(*, SK)            , intent(inout)                 , optional  :: iomsg
-        integer(IK)                 , intent(in)                    , optional  :: roff
-        integer(IK)                 , intent(in)                                :: unit
-        integer(IK)                                                             :: err
-    end function
-#endif
-
-#if CK2_ENABLED
-    module function getErrTableReadUnit_NO_D1_CK2(unit, table, header, sep, roff, iomsg) result(err)
-#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_CK2
-#endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(out)   , allocatable               :: table(:)
-        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
-        character(*, SK)            , intent(in)                    , optional  :: sep
-        character(*, SK)            , intent(inout)                 , optional  :: iomsg
-        integer(IK)                 , intent(in)                    , optional  :: roff
-        integer(IK)                 , intent(in)                                :: unit
-        integer(IK)                                                             :: err
-    end function
-#endif
-
-#if CK1_ENABLED
-    module function getErrTableReadUnit_NO_D1_CK1(unit, table, header, sep, roff, iomsg) result(err)
-#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_CK1
-#endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(out)   , allocatable               :: table(:)
-        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
-        character(*, SK)            , intent(in)                    , optional  :: sep
-        character(*, SK)            , intent(inout)                 , optional  :: iomsg
-        integer(IK)                 , intent(in)                    , optional  :: roff
-        integer(IK)                 , intent(in)                                :: unit
-        integer(IK)                                                             :: err
-    end function
-#endif
-
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#if RK5_ENABLED
-    module function getErrTableReadUnit_NO_D1_RK5(unit, table, header, sep, roff, iomsg) result(err)
-#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_RK5
-#endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(out)   , allocatable               :: table(:)
-        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
-        character(*, SK)            , intent(in)                    , optional  :: sep
-        character(*, SK)            , intent(inout)                 , optional  :: iomsg
-        integer(IK)                 , intent(in)                    , optional  :: roff
-        integer(IK)                 , intent(in)                                :: unit
-        integer(IK)                                                             :: err
-    end function
-#endif
-
-#if RK4_ENABLED
-    module function getErrTableReadUnit_NO_D1_RK4(unit, table, header, sep, roff, iomsg) result(err)
-#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_RK4
-#endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(out)   , allocatable               :: table(:)
-        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
-        character(*, SK)            , intent(in)                    , optional  :: sep
-        character(*, SK)            , intent(inout)                 , optional  :: iomsg
-        integer(IK)                 , intent(in)                    , optional  :: roff
-        integer(IK)                 , intent(in)                                :: unit
-        integer(IK)                                                             :: err
-    end function
-#endif
-
-#if RK3_ENABLED
-    module function getErrTableReadUnit_NO_D1_RK3(unit, table, header, sep, roff, iomsg) result(err)
-#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_RK3
-#endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(out)   , allocatable               :: table(:)
-        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
-        character(*, SK)            , intent(in)                    , optional  :: sep
-        character(*, SK)            , intent(inout)                 , optional  :: iomsg
-        integer(IK)                 , intent(in)                    , optional  :: roff
-        integer(IK)                 , intent(in)                                :: unit
-        integer(IK)                                                             :: err
-    end function
-#endif
-
-#if RK2_ENABLED
-    module function getErrTableReadUnit_NO_D1_RK2(unit, table, header, sep, roff, iomsg) result(err)
-#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_RK2
-#endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(out)   , allocatable               :: table(:)
-        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
-        character(*, SK)            , intent(in)                    , optional  :: sep
-        character(*, SK)            , intent(inout)                 , optional  :: iomsg
-        integer(IK)                 , intent(in)                    , optional  :: roff
-        integer(IK)                 , intent(in)                                :: unit
-        integer(IK)                                                             :: err
-    end function
-#endif
-
-#if RK1_ENABLED
-    module function getErrTableReadUnit_NO_D1_RK1(unit, table, header, sep, roff, iomsg) result(err)
-#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
-        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_RK1
-#endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(out)   , allocatable               :: table(:)
-        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
-        character(*, SK)            , intent(in)                    , optional  :: sep
-        character(*, SK)            , intent(inout)                 , optional  :: iomsg
-        integer(IK)                 , intent(in)                    , optional  :: roff
-        integer(IK)                 , intent(in)                                :: unit
-        integer(IK)                                                             :: err
-    end function
-#endif
-
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    end interface
-
     ! D2 file NO
 
     interface getErrTableRead
@@ -3631,6 +3213,424 @@ module pm_io
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
         integer(IK)                 , intent(in)                    , optional  :: roff
+        integer(IK)                                                             :: err
+    end function
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    end interface
+
+    ! D1 unit NO
+
+    interface getErrTableRead
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if SK5_ENABLED
+    module function getErrTableReadUnit_NO_D1_SK5(unit, table, header, sep, roff, iomsg) result(err)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_SK5
+#endif
+        use pm_kind, only: SKC => SK5
+        character(*,SKC)            , intent(out)   , allocatable               :: table(:)
+        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
+        character(*, SK)            , intent(in)                    , optional  :: sep
+        character(*, SK)            , intent(inout)                 , optional  :: iomsg
+        integer(IK)                 , intent(in)                    , optional  :: roff
+        integer(IK)                 , intent(in)                                :: unit
+        integer(IK)                                                             :: err
+    end function
+#endif
+
+#if SK4_ENABLED
+    module function getErrTableReadUnit_NO_D1_SK4(unit, table, header, sep, roff, iomsg) result(err)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_SK4
+#endif
+        use pm_kind, only: SKC => SK4
+        character(*,SKC)            , intent(out)   , allocatable               :: table(:)
+        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
+        character(*, SK)            , intent(in)                    , optional  :: sep
+        character(*, SK)            , intent(inout)                 , optional  :: iomsg
+        integer(IK)                 , intent(in)                    , optional  :: roff
+        integer(IK)                 , intent(in)                                :: unit
+        integer(IK)                                                             :: err
+    end function
+#endif
+
+#if SK3_ENABLED
+    module function getErrTableReadUnit_NO_D1_SK3(unit, table, header, sep, roff, iomsg) result(err)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_SK3
+#endif
+        use pm_kind, only: SKC => SK3
+        character(*,SKC)            , intent(out)   , allocatable               :: table(:)
+        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
+        character(*, SK)            , intent(in)                    , optional  :: sep
+        character(*, SK)            , intent(inout)                 , optional  :: iomsg
+        integer(IK)                 , intent(in)                    , optional  :: roff
+        integer(IK)                 , intent(in)                                :: unit
+        integer(IK)                                                             :: err
+    end function
+#endif
+
+#if SK2_ENABLED
+    module function getErrTableReadUnit_NO_D1_SK2(unit, table, header, sep, roff, iomsg) result(err)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_SK2
+#endif
+        use pm_kind, only: SKC => SK2
+        character(*,SKC)            , intent(out)   , allocatable               :: table(:)
+        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
+        character(*, SK)            , intent(in)                    , optional  :: sep
+        character(*, SK)            , intent(inout)                 , optional  :: iomsg
+        integer(IK)                 , intent(in)                    , optional  :: roff
+        integer(IK)                 , intent(in)                                :: unit
+        integer(IK)                                                             :: err
+    end function
+#endif
+
+#if SK1_ENABLED
+    module function getErrTableReadUnit_NO_D1_SK1(unit, table, header, sep, roff, iomsg) result(err)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_SK1
+#endif
+        use pm_kind, only: SKC => SK1
+        character(*,SKC)            , intent(out)   , allocatable               :: table(:)
+        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
+        character(*, SK)            , intent(in)                    , optional  :: sep
+        character(*, SK)            , intent(inout)                 , optional  :: iomsg
+        integer(IK)                 , intent(in)                    , optional  :: roff
+        integer(IK)                 , intent(in)                                :: unit
+        integer(IK)                                                             :: err
+    end function
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if IK5_ENABLED
+    module function getErrTableReadUnit_NO_D1_IK5(unit, table, header, sep, roff, iomsg) result(err)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_IK5
+#endif
+        use pm_kind, only: IKC => IK5
+        integer(IKC)                , intent(out)   , allocatable               :: table(:)
+        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
+        character(*, SK)            , intent(in)                    , optional  :: sep
+        character(*, SK)            , intent(inout)                 , optional  :: iomsg
+        integer(IK)                 , intent(in)                    , optional  :: roff
+        integer(IK)                 , intent(in)                                :: unit
+        integer(IK)                                                             :: err
+    end function
+#endif
+
+#if IK4_ENABLED
+    module function getErrTableReadUnit_NO_D1_IK4(unit, table, header, sep, roff, iomsg) result(err)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_IK4
+#endif
+        use pm_kind, only: IKC => IK4
+        integer(IKC)                , intent(out)   , allocatable               :: table(:)
+        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
+        character(*, SK)            , intent(in)                    , optional  :: sep
+        character(*, SK)            , intent(inout)                 , optional  :: iomsg
+        integer(IK)                 , intent(in)                    , optional  :: roff
+        integer(IK)                 , intent(in)                                :: unit
+        integer(IK)                                                             :: err
+    end function
+#endif
+
+#if IK3_ENABLED
+    module function getErrTableReadUnit_NO_D1_IK3(unit, table, header, sep, roff, iomsg) result(err)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_IK3
+#endif
+        use pm_kind, only: IKC => IK3
+        integer(IKC)                , intent(out)   , allocatable               :: table(:)
+        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
+        character(*, SK)            , intent(in)                    , optional  :: sep
+        character(*, SK)            , intent(inout)                 , optional  :: iomsg
+        integer(IK)                 , intent(in)                    , optional  :: roff
+        integer(IK)                 , intent(in)                                :: unit
+        integer(IK)                                                             :: err
+    end function
+#endif
+
+#if IK2_ENABLED
+    module function getErrTableReadUnit_NO_D1_IK2(unit, table, header, sep, roff, iomsg) result(err)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_IK2
+#endif
+        use pm_kind, only: IKC => IK2
+        integer(IKC)                , intent(out)   , allocatable               :: table(:)
+        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
+        character(*, SK)            , intent(in)                    , optional  :: sep
+        character(*, SK)            , intent(inout)                 , optional  :: iomsg
+        integer(IK)                 , intent(in)                    , optional  :: roff
+        integer(IK)                 , intent(in)                                :: unit
+        integer(IK)                                                             :: err
+    end function
+#endif
+
+#if IK1_ENABLED
+    module function getErrTableReadUnit_NO_D1_IK1(unit, table, header, sep, roff, iomsg) result(err)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_IK1
+#endif
+        use pm_kind, only: IKC => IK1
+        integer(IKC)                , intent(out)   , allocatable               :: table(:)
+        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
+        character(*, SK)            , intent(in)                    , optional  :: sep
+        character(*, SK)            , intent(inout)                 , optional  :: iomsg
+        integer(IK)                 , intent(in)                    , optional  :: roff
+        integer(IK)                 , intent(in)                                :: unit
+        integer(IK)                                                             :: err
+    end function
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if LK5_ENABLED
+    module function getErrTableReadUnit_NO_D1_LK5(unit, table, header, sep, roff, iomsg) result(err)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_LK5
+#endif
+        use pm_kind, only: LKC => LK5
+        logical(LKC)                , intent(out)   , allocatable               :: table(:)
+        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
+        character(*, SK)            , intent(in)                    , optional  :: sep
+        character(*, SK)            , intent(inout)                 , optional  :: iomsg
+        integer(IK)                 , intent(in)                    , optional  :: roff
+        integer(IK)                 , intent(in)                                :: unit
+        integer(IK)                                                             :: err
+    end function
+#endif
+
+#if LK4_ENABLED
+    module function getErrTableReadUnit_NO_D1_LK4(unit, table, header, sep, roff, iomsg) result(err)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_LK4
+#endif
+        use pm_kind, only: LKC => LK4
+        logical(LKC)                , intent(out)   , allocatable               :: table(:)
+        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
+        character(*, SK)            , intent(in)                    , optional  :: sep
+        character(*, SK)            , intent(inout)                 , optional  :: iomsg
+        integer(IK)                 , intent(in)                    , optional  :: roff
+        integer(IK)                 , intent(in)                                :: unit
+        integer(IK)                                                             :: err
+    end function
+#endif
+
+#if LK3_ENABLED
+    module function getErrTableReadUnit_NO_D1_LK3(unit, table, header, sep, roff, iomsg) result(err)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_LK3
+#endif
+        use pm_kind, only: LKC => LK3
+        logical(LKC)                , intent(out)   , allocatable               :: table(:)
+        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
+        character(*, SK)            , intent(in)                    , optional  :: sep
+        character(*, SK)            , intent(inout)                 , optional  :: iomsg
+        integer(IK)                 , intent(in)                    , optional  :: roff
+        integer(IK)                 , intent(in)                                :: unit
+        integer(IK)                                                             :: err
+    end function
+#endif
+
+#if LK2_ENABLED
+    module function getErrTableReadUnit_NO_D1_LK2(unit, table, header, sep, roff, iomsg) result(err)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_LK2
+#endif
+        use pm_kind, only: LKC => LK2
+        logical(LKC)                , intent(out)   , allocatable               :: table(:)
+        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
+        character(*, SK)            , intent(in)                    , optional  :: sep
+        character(*, SK)            , intent(inout)                 , optional  :: iomsg
+        integer(IK)                 , intent(in)                    , optional  :: roff
+        integer(IK)                 , intent(in)                                :: unit
+        integer(IK)                                                             :: err
+    end function
+#endif
+
+#if LK1_ENABLED
+    module function getErrTableReadUnit_NO_D1_LK1(unit, table, header, sep, roff, iomsg) result(err)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_LK1
+#endif
+        use pm_kind, only: LKC => LK1
+        logical(LKC)                , intent(out)   , allocatable               :: table(:)
+        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
+        character(*, SK)            , intent(in)                    , optional  :: sep
+        character(*, SK)            , intent(inout)                 , optional  :: iomsg
+        integer(IK)                 , intent(in)                    , optional  :: roff
+        integer(IK)                 , intent(in)                                :: unit
+        integer(IK)                                                             :: err
+    end function
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if CK5_ENABLED
+    module function getErrTableReadUnit_NO_D1_CK5(unit, table, header, sep, roff, iomsg) result(err)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_CK5
+#endif
+        use pm_kind, only: CKC => CK5
+        complex(CKC)                , intent(out)   , allocatable               :: table(:)
+        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
+        character(*, SK)            , intent(in)                    , optional  :: sep
+        character(*, SK)            , intent(inout)                 , optional  :: iomsg
+        integer(IK)                 , intent(in)                    , optional  :: roff
+        integer(IK)                 , intent(in)                                :: unit
+        integer(IK)                                                             :: err
+    end function
+#endif
+
+#if CK4_ENABLED
+    module function getErrTableReadUnit_NO_D1_CK4(unit, table, header, sep, roff, iomsg) result(err)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_CK4
+#endif
+        use pm_kind, only: CKC => CK4
+        complex(CKC)                , intent(out)   , allocatable               :: table(:)
+        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
+        character(*, SK)            , intent(in)                    , optional  :: sep
+        character(*, SK)            , intent(inout)                 , optional  :: iomsg
+        integer(IK)                 , intent(in)                    , optional  :: roff
+        integer(IK)                 , intent(in)                                :: unit
+        integer(IK)                                                             :: err
+    end function
+#endif
+
+#if CK3_ENABLED
+    module function getErrTableReadUnit_NO_D1_CK3(unit, table, header, sep, roff, iomsg) result(err)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_CK3
+#endif
+        use pm_kind, only: CKC => CK3
+        complex(CKC)                , intent(out)   , allocatable               :: table(:)
+        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
+        character(*, SK)            , intent(in)                    , optional  :: sep
+        character(*, SK)            , intent(inout)                 , optional  :: iomsg
+        integer(IK)                 , intent(in)                    , optional  :: roff
+        integer(IK)                 , intent(in)                                :: unit
+        integer(IK)                                                             :: err
+    end function
+#endif
+
+#if CK2_ENABLED
+    module function getErrTableReadUnit_NO_D1_CK2(unit, table, header, sep, roff, iomsg) result(err)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_CK2
+#endif
+        use pm_kind, only: CKC => CK2
+        complex(CKC)                , intent(out)   , allocatable               :: table(:)
+        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
+        character(*, SK)            , intent(in)                    , optional  :: sep
+        character(*, SK)            , intent(inout)                 , optional  :: iomsg
+        integer(IK)                 , intent(in)                    , optional  :: roff
+        integer(IK)                 , intent(in)                                :: unit
+        integer(IK)                                                             :: err
+    end function
+#endif
+
+#if CK1_ENABLED
+    module function getErrTableReadUnit_NO_D1_CK1(unit, table, header, sep, roff, iomsg) result(err)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_CK1
+#endif
+        use pm_kind, only: CKC => CK1
+        complex(CKC)                , intent(out)   , allocatable               :: table(:)
+        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
+        character(*, SK)            , intent(in)                    , optional  :: sep
+        character(*, SK)            , intent(inout)                 , optional  :: iomsg
+        integer(IK)                 , intent(in)                    , optional  :: roff
+        integer(IK)                 , intent(in)                                :: unit
+        integer(IK)                                                             :: err
+    end function
+#endif
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if RK5_ENABLED
+    module function getErrTableReadUnit_NO_D1_RK5(unit, table, header, sep, roff, iomsg) result(err)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_RK5
+#endif
+        use pm_kind, only: RKC => RK5
+        real(RKC)                   , intent(out)   , allocatable               :: table(:)
+        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
+        character(*, SK)            , intent(in)                    , optional  :: sep
+        character(*, SK)            , intent(inout)                 , optional  :: iomsg
+        integer(IK)                 , intent(in)                    , optional  :: roff
+        integer(IK)                 , intent(in)                                :: unit
+        integer(IK)                                                             :: err
+    end function
+#endif
+
+#if RK4_ENABLED
+    module function getErrTableReadUnit_NO_D1_RK4(unit, table, header, sep, roff, iomsg) result(err)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_RK4
+#endif
+        use pm_kind, only: RKC => RK4
+        real(RKC)                   , intent(out)   , allocatable               :: table(:)
+        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
+        character(*, SK)            , intent(in)                    , optional  :: sep
+        character(*, SK)            , intent(inout)                 , optional  :: iomsg
+        integer(IK)                 , intent(in)                    , optional  :: roff
+        integer(IK)                 , intent(in)                                :: unit
+        integer(IK)                                                             :: err
+    end function
+#endif
+
+#if RK3_ENABLED
+    module function getErrTableReadUnit_NO_D1_RK3(unit, table, header, sep, roff, iomsg) result(err)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_RK3
+#endif
+        use pm_kind, only: RKC => RK3
+        real(RKC)                   , intent(out)   , allocatable               :: table(:)
+        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
+        character(*, SK)            , intent(in)                    , optional  :: sep
+        character(*, SK)            , intent(inout)                 , optional  :: iomsg
+        integer(IK)                 , intent(in)                    , optional  :: roff
+        integer(IK)                 , intent(in)                                :: unit
+        integer(IK)                                                             :: err
+    end function
+#endif
+
+#if RK2_ENABLED
+    module function getErrTableReadUnit_NO_D1_RK2(unit, table, header, sep, roff, iomsg) result(err)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_RK2
+#endif
+        use pm_kind, only: RKC => RK2
+        real(RKC)                   , intent(out)   , allocatable               :: table(:)
+        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
+        character(*, SK)            , intent(in)                    , optional  :: sep
+        character(*, SK)            , intent(inout)                 , optional  :: iomsg
+        integer(IK)                 , intent(in)                    , optional  :: roff
+        integer(IK)                 , intent(in)                                :: unit
+        integer(IK)                                                             :: err
+    end function
+#endif
+
+#if RK1_ENABLED
+    module function getErrTableReadUnit_NO_D1_RK1(unit, table, header, sep, roff, iomsg) result(err)
+#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_RK1
+#endif
+        use pm_kind, only: RKC => RK1
+        real(RKC)                   , intent(out)   , allocatable               :: table(:)
+        character(:, SK)            , intent(out)   , allocatable   , optional  :: header
+        character(*, SK)            , intent(in)                    , optional  :: sep
+        character(*, SK)            , intent(inout)                 , optional  :: iomsg
+        integer(IK)                 , intent(in)                    , optional  :: roff
+        integer(IK)                 , intent(in)                                :: unit
         integer(IK)                                                             :: err
     end function
 #endif
@@ -10310,116 +10310,116 @@ module pm_io
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     SK5_ENABLED
-        procedure, pass, private                ::          show_D0_SK5, show_D1_SK5, show_D2_SK5, show_D3_SK5
-        generic                                 :: show =>  show_D0_SK5, show_D1_SK5, show_D2_SK5, show_D3_SK5
+        procedure, pass, private                ::          show_D0_SK5
+        generic                                 :: show =>  show_D0_SK5
 #endif
 #if     SK4_ENABLED
-        procedure, pass, private                ::          show_D0_SK4, show_D1_SK4, show_D2_SK4, show_D3_SK4
-        generic                                 :: show =>  show_D0_SK4, show_D1_SK4, show_D2_SK4, show_D3_SK4
+        procedure, pass, private                ::          show_D0_SK4
+        generic                                 :: show =>  show_D0_SK4
 #endif
 #if     SK3_ENABLED
-        procedure, pass, private                ::          show_D0_SK3, show_D1_SK3, show_D2_SK3, show_D3_SK3
-        generic                                 :: show =>  show_D0_SK3, show_D1_SK3, show_D2_SK3, show_D3_SK3
+        procedure, pass, private                ::          show_D0_SK3
+        generic                                 :: show =>  show_D0_SK3
 #endif
 #if     SK2_ENABLED
-        procedure, pass, private                ::          show_D0_SK2, show_D1_SK2, show_D2_SK2, show_D3_SK2
-        generic                                 :: show =>  show_D0_SK2, show_D1_SK2, show_D2_SK2, show_D3_SK2
+        procedure, pass, private                ::          show_D0_SK2
+        generic                                 :: show =>  show_D0_SK2
 #endif
 #if     SK1_ENABLED
-        procedure, pass, private                ::          show_D0_SK1, show_D1_SK1, show_D2_SK1, show_D3_SK1
-        generic                                 :: show =>  show_D0_SK1, show_D1_SK1, show_D2_SK1, show_D3_SK1
+        procedure, pass, private                ::          show_D0_SK1
+        generic                                 :: show =>  show_D0_SK1
 #endif
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     IK5_ENABLED
-        procedure, pass, private                ::          show_D0_IK5, show_D1_IK5, show_D2_IK5, show_D3_IK5
-        generic                                 :: show =>  show_D0_IK5, show_D1_IK5, show_D2_IK5, show_D3_IK5
+        procedure, pass, private                ::          show_D0_IK5
+        generic                                 :: show =>  show_D0_IK5
 #endif
 #if     IK4_ENABLED
-        procedure, pass, private                ::          show_D0_IK4, show_D1_IK4, show_D2_IK4, show_D3_IK4
-        generic                                 :: show =>  show_D0_IK4, show_D1_IK4, show_D2_IK4, show_D3_IK4
+        procedure, pass, private                ::          show_D0_IK4
+        generic                                 :: show =>  show_D0_IK4
 #endif
 #if     IK3_ENABLED
-        procedure, pass, private                ::          show_D0_IK3, show_D1_IK3, show_D2_IK3, show_D3_IK3
-        generic                                 :: show =>  show_D0_IK3, show_D1_IK3, show_D2_IK3, show_D3_IK3
+        procedure, pass, private                ::          show_D0_IK3
+        generic                                 :: show =>  show_D0_IK3
 #endif
 #if     IK2_ENABLED
-        procedure, pass, private                ::          show_D0_IK2, show_D1_IK2, show_D2_IK2, show_D3_IK2
-        generic                                 :: show =>  show_D0_IK2, show_D1_IK2, show_D2_IK2, show_D3_IK2
+        procedure, pass, private                ::          show_D0_IK2
+        generic                                 :: show =>  show_D0_IK2
 #endif
 #if     IK1_ENABLED
-        procedure, pass, private                ::          show_D0_IK1, show_D1_IK1, show_D2_IK1, show_D3_IK1
-        generic                                 :: show =>  show_D0_IK1, show_D1_IK1, show_D2_IK1, show_D3_IK1
+        procedure, pass, private                ::          show_D0_IK1
+        generic                                 :: show =>  show_D0_IK1
 #endif
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     LK5_ENABLED
-        procedure, pass, private                ::          show_D0_LK5, show_D1_LK5, show_D2_LK5, show_D3_LK5
-        generic                                 :: show =>  show_D0_LK5, show_D1_LK5, show_D2_LK5, show_D3_LK5
+        procedure, pass, private                ::          show_D0_LK5
+        generic                                 :: show =>  show_D0_LK5
 #endif
 #if     LK4_ENABLED
-        procedure, pass, private                ::          show_D0_LK4, show_D1_LK4, show_D2_LK4, show_D3_LK4
-        generic                                 :: show =>  show_D0_LK4, show_D1_LK4, show_D2_LK4, show_D3_LK4
+        procedure, pass, private                ::          show_D0_LK4
+        generic                                 :: show =>  show_D0_LK4
 #endif
 #if     LK3_ENABLED
-        procedure, pass, private                ::          show_D0_LK3, show_D1_LK3, show_D2_LK3, show_D3_LK3
-        generic                                 :: show =>  show_D0_LK3, show_D1_LK3, show_D2_LK3, show_D3_LK3
+        procedure, pass, private                ::          show_D0_LK3
+        generic                                 :: show =>  show_D0_LK3
 #endif
 #if     LK2_ENABLED
-        procedure, pass, private                ::          show_D0_LK2, show_D1_LK2, show_D2_LK2, show_D3_LK2
-        generic                                 :: show =>  show_D0_LK2, show_D1_LK2, show_D2_LK2, show_D3_LK2
+        procedure, pass, private                ::          show_D0_LK2
+        generic                                 :: show =>  show_D0_LK2
 #endif
 #if     LK1_ENABLED
-        procedure, pass, private                ::          show_D0_LK1, show_D1_LK1, show_D2_LK1, show_D3_LK1
-        generic                                 :: show =>  show_D0_LK1, show_D1_LK1, show_D2_LK1, show_D3_LK1
+        procedure, pass, private                ::          show_D0_LK1
+        generic                                 :: show =>  show_D0_LK1
 #endif
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     CK5_ENABLED
-        procedure, pass, private                ::          show_D0_CK5, show_D1_CK5, show_D2_CK5, show_D3_CK5
-        generic                                 :: show =>  show_D0_CK5, show_D1_CK5, show_D2_CK5, show_D3_CK5
+        procedure, pass, private                ::          show_D0_CK5
+        generic                                 :: show =>  show_D0_CK5
 #endif
 #if     CK4_ENABLED
-        procedure, pass, private                ::          show_D0_CK4, show_D1_CK4, show_D2_CK4, show_D3_CK4
-        generic                                 :: show =>  show_D0_CK4, show_D1_CK4, show_D2_CK4, show_D3_CK4
+        procedure, pass, private                ::          show_D0_CK4
+        generic                                 :: show =>  show_D0_CK4
 #endif
 #if     CK3_ENABLED
-        procedure, pass, private                ::          show_D0_CK3, show_D1_CK3, show_D2_CK3, show_D3_CK3
-        generic                                 :: show =>  show_D0_CK3, show_D1_CK3, show_D2_CK3, show_D3_CK3
+        procedure, pass, private                ::          show_D0_CK3
+        generic                                 :: show =>  show_D0_CK3
 #endif
 #if     CK2_ENABLED
-        procedure, pass, private                ::          show_D0_CK2, show_D1_CK2, show_D2_CK2, show_D3_CK2
-        generic                                 :: show =>  show_D0_CK2, show_D1_CK2, show_D2_CK2, show_D3_CK2
+        procedure, pass, private                ::          show_D0_CK2
+        generic                                 :: show =>  show_D0_CK2
 #endif
 #if     CK1_ENABLED
-        procedure, pass, private                ::          show_D0_CK1, show_D1_CK1, show_D2_CK1, show_D3_CK1
-        generic                                 :: show =>  show_D0_CK1, show_D1_CK1, show_D2_CK1, show_D3_CK1
+        procedure, pass, private                ::          show_D0_CK1
+        generic                                 :: show =>  show_D0_CK1
 #endif
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     RK5_ENABLED
-        procedure, pass, private                ::          show_D0_RK5, show_D1_RK5, show_D2_RK5, show_D3_RK5
-        generic                                 :: show =>  show_D0_RK5, show_D1_RK5, show_D2_RK5, show_D3_RK5
+        procedure, pass, private                ::          show_D0_RK5
+        generic                                 :: show =>  show_D0_RK5
 #endif
 #if     RK4_ENABLED
-        procedure, pass, private                ::          show_D0_RK4, show_D1_RK4, show_D2_RK4, show_D3_RK4
-        generic                                 :: show =>  show_D0_RK4, show_D1_RK4, show_D2_RK4, show_D3_RK4
+        procedure, pass, private                ::          show_D0_RK4
+        generic                                 :: show =>  show_D0_RK4
 #endif
 #if     RK3_ENABLED
-        procedure, pass, private                ::          show_D0_RK3, show_D1_RK3, show_D2_RK3, show_D3_RK3
-        generic                                 :: show =>  show_D0_RK3, show_D1_RK3, show_D2_RK3, show_D3_RK3
+        procedure, pass, private                ::          show_D0_RK3
+        generic                                 :: show =>  show_D0_RK3
 #endif
 #if     RK2_ENABLED
-        procedure, pass, private                ::          show_D0_RK2, show_D1_RK2, show_D2_RK2, show_D3_RK2
-        generic                                 :: show =>  show_D0_RK2, show_D1_RK2, show_D2_RK2, show_D3_RK2
+        procedure, pass, private                ::          show_D0_RK2
+        generic                                 :: show =>  show_D0_RK2
 #endif
 #if     RK1_ENABLED
-        procedure, pass, private                ::          show_D0_RK1, show_D1_RK1, show_D2_RK1, show_D3_RK1
-        generic                                 :: show =>  show_D0_RK1, show_D1_RK1, show_D2_RK1, show_D3_RK1
+        procedure, pass, private                ::          show_D0_RK1
+        generic                                 :: show =>  show_D0_RK1
 #endif
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -10427,6 +10427,376 @@ module pm_io
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if     SK5_ENABLED
+        procedure, pass, private                ::          show_D1_SK5
+        generic                                 :: show =>  show_D1_SK5
+#endif
+#if     SK4_ENABLED
+        procedure, pass, private                ::          show_D1_SK4
+        generic                                 :: show =>  show_D1_SK4
+#endif
+#if     SK3_ENABLED
+        procedure, pass, private                ::          show_D1_SK3
+        generic                                 :: show =>  show_D1_SK3
+#endif
+#if     SK2_ENABLED
+        procedure, pass, private                ::          show_D1_SK2
+        generic                                 :: show =>  show_D1_SK2
+#endif
+#if     SK1_ENABLED
+        procedure, pass, private                ::          show_D1_SK1
+        generic                                 :: show =>  show_D1_SK1
+#endif
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if     IK5_ENABLED
+        procedure, pass, private                ::          show_D1_IK5
+        generic                                 :: show =>  show_D1_IK5
+#endif
+#if     IK4_ENABLED
+        procedure, pass, private                ::          show_D1_IK4
+        generic                                 :: show =>  show_D1_IK4
+#endif
+#if     IK3_ENABLED
+        procedure, pass, private                ::          show_D1_IK3
+        generic                                 :: show =>  show_D1_IK3
+#endif
+#if     IK2_ENABLED
+        procedure, pass, private                ::          show_D1_IK2
+        generic                                 :: show =>  show_D1_IK2
+#endif
+#if     IK1_ENABLED
+        procedure, pass, private                ::          show_D1_IK1
+        generic                                 :: show =>  show_D1_IK1
+#endif
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if     LK5_ENABLED
+        procedure, pass, private                ::          show_D1_LK5
+        generic                                 :: show =>  show_D1_LK5
+#endif
+#if     LK4_ENABLED
+        procedure, pass, private                ::          show_D1_LK4
+        generic                                 :: show =>  show_D1_LK4
+#endif
+#if     LK3_ENABLED
+        procedure, pass, private                ::          show_D1_LK3
+        generic                                 :: show =>  show_D1_LK3
+#endif
+#if     LK2_ENABLED
+        procedure, pass, private                ::          show_D1_LK2
+        generic                                 :: show =>  show_D1_LK2
+#endif
+#if     LK1_ENABLED
+        procedure, pass, private                ::          show_D1_LK1
+        generic                                 :: show =>  show_D1_LK1
+#endif
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if     CK5_ENABLED
+        procedure, pass, private                ::          show_D1_CK5
+        generic                                 :: show =>  show_D1_CK5
+#endif
+#if     CK4_ENABLED
+        procedure, pass, private                ::          show_D1_CK4
+        generic                                 :: show =>  show_D1_CK4
+#endif
+#if     CK3_ENABLED
+        procedure, pass, private                ::          show_D1_CK3
+        generic                                 :: show =>  show_D1_CK3
+#endif
+#if     CK2_ENABLED
+        procedure, pass, private                ::          show_D1_CK2
+        generic                                 :: show =>  show_D1_CK2
+#endif
+#if     CK1_ENABLED
+        procedure, pass, private                ::          show_D1_CK1
+        generic                                 :: show =>  show_D1_CK1
+#endif
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if     RK5_ENABLED
+        procedure, pass, private                ::          show_D1_RK5
+        generic                                 :: show =>  show_D1_RK5
+#endif
+#if     RK4_ENABLED
+        procedure, pass, private                ::          show_D1_RK4
+        generic                                 :: show =>  show_D1_RK4
+#endif
+#if     RK3_ENABLED
+        procedure, pass, private                ::          show_D1_RK3
+        generic                                 :: show =>  show_D1_RK3
+#endif
+#if     RK2_ENABLED
+        procedure, pass, private                ::          show_D1_RK2
+        generic                                 :: show =>  show_D1_RK2
+#endif
+#if     RK1_ENABLED
+        procedure, pass, private                ::          show_D1_RK1
+        generic                                 :: show =>  show_D1_RK1
+#endif
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if     SK5_ENABLED
+        procedure, pass, private                ::          show_D2_SK5
+        generic                                 :: show =>  show_D2_SK5
+#endif
+#if     SK4_ENABLED
+        procedure, pass, private                ::          show_D2_SK4
+        generic                                 :: show =>  show_D2_SK4
+#endif
+#if     SK3_ENABLED
+        procedure, pass, private                ::          show_D2_SK3
+        generic                                 :: show =>  show_D2_SK3
+#endif
+#if     SK2_ENABLED
+        procedure, pass, private                ::          show_D2_SK2
+        generic                                 :: show =>  show_D2_SK2
+#endif
+#if     SK1_ENABLED
+        procedure, pass, private                ::          show_D2_SK1
+        generic                                 :: show =>  show_D2_SK1
+#endif
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if     IK5_ENABLED
+        procedure, pass, private                ::          show_D2_IK5
+        generic                                 :: show =>  show_D2_IK5
+#endif
+#if     IK4_ENABLED
+        procedure, pass, private                ::          show_D2_IK4
+        generic                                 :: show =>  show_D2_IK4
+#endif
+#if     IK3_ENABLED
+        procedure, pass, private                ::          show_D2_IK3
+        generic                                 :: show =>  show_D2_IK3
+#endif
+#if     IK2_ENABLED
+        procedure, pass, private                ::          show_D2_IK2
+        generic                                 :: show =>  show_D2_IK2
+#endif
+#if     IK1_ENABLED
+        procedure, pass, private                ::          show_D2_IK1
+        generic                                 :: show =>  show_D2_IK1
+#endif
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if     LK5_ENABLED
+        procedure, pass, private                ::          show_D2_LK5
+        generic                                 :: show =>  show_D2_LK5
+#endif
+#if     LK4_ENABLED
+        procedure, pass, private                ::          show_D2_LK4
+        generic                                 :: show =>  show_D2_LK4
+#endif
+#if     LK3_ENABLED
+        procedure, pass, private                ::          show_D2_LK3
+        generic                                 :: show =>  show_D2_LK3
+#endif
+#if     LK2_ENABLED
+        procedure, pass, private                ::          show_D2_LK2
+        generic                                 :: show =>  show_D2_LK2
+#endif
+#if     LK1_ENABLED
+        procedure, pass, private                ::          show_D2_LK1
+        generic                                 :: show =>  show_D2_LK1
+#endif
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if     CK5_ENABLED
+        procedure, pass, private                ::          show_D2_CK5
+        generic                                 :: show =>  show_D2_CK5
+#endif
+#if     CK4_ENABLED
+        procedure, pass, private                ::          show_D2_CK4
+        generic                                 :: show =>  show_D2_CK4
+#endif
+#if     CK3_ENABLED
+        procedure, pass, private                ::          show_D2_CK3
+        generic                                 :: show =>  show_D2_CK3
+#endif
+#if     CK2_ENABLED
+        procedure, pass, private                ::          show_D2_CK2
+        generic                                 :: show =>  show_D2_CK2
+#endif
+#if     CK1_ENABLED
+        procedure, pass, private                ::          show_D2_CK1
+        generic                                 :: show =>  show_D2_CK1
+#endif
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if     RK5_ENABLED
+        procedure, pass, private                ::          show_D2_RK5
+        generic                                 :: show =>  show_D2_RK5
+#endif
+#if     RK4_ENABLED
+        procedure, pass, private                ::          show_D2_RK4
+        generic                                 :: show =>  show_D2_RK4
+#endif
+#if     RK3_ENABLED
+        procedure, pass, private                ::          show_D2_RK3
+        generic                                 :: show =>  show_D2_RK3
+#endif
+#if     RK2_ENABLED
+        procedure, pass, private                ::          show_D2_RK2
+        generic                                 :: show =>  show_D2_RK2
+#endif
+#if     RK1_ENABLED
+        procedure, pass, private                ::          show_D2_RK1
+        generic                                 :: show =>  show_D2_RK1
+#endif
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if     FORTRAN_ENABLED
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if     SK5_ENABLED
+        procedure, pass, private                ::          show_D3_SK5
+        generic                                 :: show =>  show_D3_SK5
+#endif
+#if     SK4_ENABLED
+        procedure, pass, private                ::          show_D3_SK4
+        generic                                 :: show =>  show_D3_SK4
+#endif
+#if     SK3_ENABLED
+        procedure, pass, private                ::          show_D3_SK3
+        generic                                 :: show =>  show_D3_SK3
+#endif
+#if     SK2_ENABLED
+        procedure, pass, private                ::          show_D3_SK2
+        generic                                 :: show =>  show_D3_SK2
+#endif
+#if     SK1_ENABLED
+        procedure, pass, private                ::          show_D3_SK1
+        generic                                 :: show =>  show_D3_SK1
+#endif
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if     IK5_ENABLED
+        procedure, pass, private                ::          show_D3_IK5
+        generic                                 :: show =>  show_D3_IK5
+#endif
+#if     IK4_ENABLED
+        procedure, pass, private                ::          show_D3_IK4
+        generic                                 :: show =>  show_D3_IK4
+#endif
+#if     IK3_ENABLED
+        procedure, pass, private                ::          show_D3_IK3
+        generic                                 :: show =>  show_D3_IK3
+#endif
+#if     IK2_ENABLED
+        procedure, pass, private                ::          show_D3_IK2
+        generic                                 :: show =>  show_D3_IK2
+#endif
+#if     IK1_ENABLED
+        procedure, pass, private                ::          show_D3_IK1
+        generic                                 :: show =>  show_D3_IK1
+#endif
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if     LK5_ENABLED
+        procedure, pass, private                ::          show_D3_LK5
+        generic                                 :: show =>  show_D3_LK5
+#endif
+#if     LK4_ENABLED
+        procedure, pass, private                ::          show_D3_LK4
+        generic                                 :: show =>  show_D3_LK4
+#endif
+#if     LK3_ENABLED
+        procedure, pass, private                ::          show_D3_LK3
+        generic                                 :: show =>  show_D3_LK3
+#endif
+#if     LK2_ENABLED
+        procedure, pass, private                ::          show_D3_LK2
+        generic                                 :: show =>  show_D3_LK2
+#endif
+#if     LK1_ENABLED
+        procedure, pass, private                ::          show_D3_LK1
+        generic                                 :: show =>  show_D3_LK1
+#endif
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if     CK5_ENABLED
+        procedure, pass, private                ::          show_D3_CK5
+        generic                                 :: show =>  show_D3_CK5
+#endif
+#if     CK4_ENABLED
+        procedure, pass, private                ::          show_D3_CK4
+        generic                                 :: show =>  show_D3_CK4
+#endif
+#if     CK3_ENABLED
+        procedure, pass, private                ::          show_D3_CK3
+        generic                                 :: show =>  show_D3_CK3
+#endif
+#if     CK2_ENABLED
+        procedure, pass, private                ::          show_D3_CK2
+        generic                                 :: show =>  show_D3_CK2
+#endif
+#if     CK1_ENABLED
+        procedure, pass, private                ::          show_D3_CK1
+        generic                                 :: show =>  show_D3_CK1
+#endif
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if     RK5_ENABLED
+        procedure, pass, private                ::          show_D3_RK5
+        generic                                 :: show =>  show_D3_RK5
+#endif
+#if     RK4_ENABLED
+        procedure, pass, private                ::          show_D3_RK4
+        generic                                 :: show =>  show_D3_RK4
+#endif
+#if     RK3_ENABLED
+        procedure, pass, private                ::          show_D3_RK3
+        generic                                 :: show =>  show_D3_RK3
+#endif
+#if     RK2_ENABLED
+        procedure, pass, private                ::          show_D3_RK2
+        generic                                 :: show =>  show_D3_RK2
+#endif
+#if     RK1_ENABLED
+        procedure, pass, private                ::          show_D3_RK1
+        generic                                 :: show =>  show_D3_RK1
+#endif
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#endif
+!FORTRAN_ENABLED
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if     PDT_ENABLED
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -10908,6 +11278,10 @@ module pm_io
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#endif
+!PDT_ENABLED
+
+
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -10944,6 +11318,7 @@ module pm_io
         procedure, pass, private                ::          show_D0_BVRK, show_D1_BVRK, show_D2_BVRK
         generic                                 :: show =>  show_D0_BVRK, show_D1_BVRK, show_D2_BVRK
 
+#if     FORTRAN_ENABLED
         procedure, pass, private                ::          show_D0_BMSK, show_D1_BMSK
         generic                                 :: show =>  show_D0_BMSK, show_D1_BMSK
 
@@ -10984,6 +11359,8 @@ module pm_io
 
         procedure, pass, private                ::          dump_D0, dump_D1, dump_D2
         generic                                 :: dump =>  dump_D0, dump_D1, dump_D2
+#endif
+!FORTRAN_ENABLED
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -12923,6 +13300,8 @@ module pm_io
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -17091,6 +17470,9 @@ module pm_io
 #endif
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

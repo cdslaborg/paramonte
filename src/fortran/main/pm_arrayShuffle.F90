@@ -56,7 +56,10 @@
 module pm_arrayShuffle
 
     use pm_kind, only: SK, IK
-    use pm_container, only: css_pdt, css_type
+#if PDT_ENABLED
+    use pm_container, only: css_pdt
+#endif
+    use pm_container, only: css_type
     use pm_distUnif, only: rngf_type, xoshiro256ssw_type
 
     implicit none
@@ -515,6 +518,8 @@ module pm_arrayShuffle
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     module function getShuffledRNGD_D1_PSSK5(array, count) result(arrayShuffled)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -574,6 +579,9 @@ module pm_arrayShuffle
         type(css_pdt(SKC))          , allocatable                   :: arrayShuffled(:)
     end function
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1027,6 +1035,8 @@ module pm_arrayShuffle
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     module subroutine setShuffledRNGD_D1_PSSK5(array, count)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -1081,6 +1091,9 @@ module pm_arrayShuffle
         integer(IK)                 , intent(in)    , optional      :: count
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1473,6 +1486,8 @@ module pm_arrayShuffle
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     module subroutine setShuffledRNGF_D1_PSSK5(rng, array, count)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -1532,6 +1547,9 @@ module pm_arrayShuffle
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1925,6 +1943,8 @@ module pm_arrayShuffle
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module subroutine setShuffledRNGX_D1_PSSK5(rng, array, count)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -1984,6 +2004,9 @@ module pm_arrayShuffle
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

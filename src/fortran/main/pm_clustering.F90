@@ -61,7 +61,7 @@ module pm_clustering
     !>                              <ol>
     !>                                  <li>    type `real` of kind \RKALL,
     !>                              </ol>
-    !>                              containing the sample of `nsam` points in an `ndim`-dimensional space whose
+    !>                              containing the sample of `nsam` points in a `ndim`-dimensional space whose
     !>                              memberships and minimum distances with respect to the input `center`s must be computed.<br>
     !>                              <ol>
     !>                                  <li>    If `sample` is a **scalar** and `center` is a **vector** of shape `(1 : ncls)`,
@@ -418,7 +418,7 @@ module pm_clustering
     !>                              <ol>
     !>                                  <li>    type `real` of kind \RKALL,
     !>                              </ol>
-    !>                              containing the sample of `nsam` points in an `ndim`-dimensional space whose corresponding cluster centers must be computed.<br>
+    !>                              containing the sample of `nsam` points in a `ndim`-dimensional space whose corresponding cluster centers must be computed.<br>
     !>                              <ol>
     !>                                  <li>    If `sample` is a **vector** of shape `(1 : nsam)` and `center` is a **vector** of shape `(1 : ncls)`,
     !>                                          then the input `sample` must be a **collection** of `nsam` points (in univariate space).<br>
@@ -698,7 +698,7 @@ module pm_clustering
     !>                                  <ol>
     !>                                      <li>    type `real` of kind \RKALL,
     !>                                  </ol>
-    !>                                  containing the sample of `nsam` points in an `ndim`-dimensional space whose corresponding cluster centers must be computed.<br>
+    !>                                  containing the sample of `nsam` points in a `ndim`-dimensional space whose corresponding cluster centers must be computed.<br>
     !>                                  <ol>
     !>                                      <li>    If `sample` is a **vector** of shape `(1 : nsam)` and `center` is a **vector** of shape `(1 : ncls)`,
     !>                                              then the input `sample` must be a **collection** of `nsam` points (in univariate space).<br>
@@ -1193,7 +1193,7 @@ module pm_clustering
     !>                                  <ol>
     !>                                      <li>    type `real` of kind \RKALL,
     !>                                  </ol>
-    !>                                  containing the sample of `nsam` points in an `ndim`-dimensional space whose corresponding cluster centers must be computed.<br>
+    !>                                  containing the sample of `nsam` points in a `ndim`-dimensional space whose corresponding cluster centers must be computed.<br>
     !>                                  <ol>
     !>                                      <li>    If `sample` is a **vector** of shape `(1 : nsam)` and `center` is a **vector** of shape `(1 : ncls)`,
     !>                                              then the input `sample` must be a **collection** of `nsam` points (in univariate space).<br>

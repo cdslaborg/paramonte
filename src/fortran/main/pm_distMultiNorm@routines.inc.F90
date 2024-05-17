@@ -74,10 +74,10 @@
 #if     DDD_ENABLED || DDN_ENABLED
 #define MAHAL_SQ sum(X**2)
 #elif   DID_ENABLED || DIN_ENABLED
-#define MAHAL_SQ getMahalSq(X, invCov)
+#define MAHAL_SQ getDisMahalSq(X, invCov)
         CHECK_ASSERTION(__LINE__, all(shape(invCov, IK) == size(X, 1, IK)), SK_"@getMultiNormLogPDF(): The condition `all(shape(invCov) == size(X))` must hold. shape(invCov), size(X) = "//getStr([shape(invCov, IK), size(X, 1, IK)]))
 #elif   MID_ENABLED || MIN_ENABLED
-#define MAHAL_SQ getMahalSq(X, invCov, mean)
+#define MAHAL_SQ getDisMahalSq(X, invCov, mean)
         CHECK_ASSERTION(__LINE__, all(shape(invCov, IK) == size(X, 1, IK)), SK_"@getMultiNormLogPDF(): The condition `all(shape(invCov) == size(X))` must hold. shape(invCov), size(X) = "//getStr([shape(invCov, IK), size(X, 1, IK)]))
         CHECK_ASSERTION(__LINE__, size(mean, 1, IK) == size(X, 1, IK), SK_"@getMultiNormLogPDF(): The condition `size(mean) == size(X)` must hold. size(mean), size(X) = "//getStr([size(mean, 1, IK), size(X, 1, IK)]))
 #elif   MDD_ENABLED || MDN_ENABLED

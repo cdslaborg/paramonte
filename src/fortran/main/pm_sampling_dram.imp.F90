@@ -64,8 +64,8 @@
     ! specification declarations.
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-   !real(RKC)                               :: burninAdaptationMeasure ! namelist input
-    type                                    :: burninAdaptationMeasure_type
+   !real(RKC)                               :: proposalAdaptationBurnin ! namelist input
+    type                                    :: proposalAdaptationBurnin_type
         real(RKC)                           :: val
         real(RKC)                           :: def
         character(:,SKC)    , allocatable   :: desc
@@ -114,7 +114,7 @@
     end type
 
     type, extends(specmcmc_type)                    :: specdram_type
-        type(burninAdaptationMeasure_type)          :: burninAdaptationMeasure
+        type(proposalAdaptationBurnin_type)         :: proposalAdaptationBurnin
         type(proposalAdaptationCount_type)          :: proposalAdaptationCount
         type(proposalAdaptationCountGreedy_type)    :: proposalAdaptationCountGreedy
         type(proposalAdaptationPeriod_type)         :: proposalAdaptationPeriod
@@ -162,29 +162,29 @@ contains
 
         spec%specmcmc_type = specmcmc_type(modelr, method, ndim)
 
-        burninAdaptationMeasure_block: block
-            use pm_sampling_scio, only: burninAdaptationMeasure
-            spec%burninAdaptationMeasure%def = 1._RKC
-            spec%burninAdaptationMeasure%desc = &
-            SKC_"The simulation specification `burninAdaptationMeasure` is a scalar of type `real` of the highest precision available &
+        proposalAdaptationBurnin_block: block
+            use pm_sampling_scio, only: proposalAdaptationBurnin
+            spec%proposalAdaptationBurnin%def = 1._RKC
+            spec%proposalAdaptationBurnin%desc = &
+            SKC_"The simulation specification `proposalAdaptationBurnin` is a scalar of type `real` of the highest precision available &
                 &within the ParaMonte library whose value, between 0 and 1, represents the adaptation measure threshold below which &
                 &the simulated Markov chain will be used to generate the output sample. In other words, any point in the output Markov &
-                &chain that has been sampled during significant adaptation of the proposal distribution (set by `burninAdaptationMeasure`) &
+                &chain sampled during significant adaptation of the proposal distribution (set by `proposalAdaptationBurnin`) &
                 &will not be included in constructing the final MCMC output sample. &
                 &This is to ensure that the generation of the output sample will be based only on the part of the simulated chain that &
                 &is practically guaranteed to be Markovian and ergodic. If this variable is set to 0, then the output sample will be &
                 &generated from the part of the chain where no proposal adaptation has occurred. This non-adaptive or minimally-adaptive &
                 &part of the chain may not even exist if the total adaptation period of the simulation, set by `proposalAdaptationCount` &
                 &and `proposalAdaptationPeriod` input variables, is longer than the total length of the output MCMC chain. &
-                &In such cases, the resulting output sample may be zero size. In general, when good mixing occurs &
+                &In such cases, the resulting output sample may be zero size. Generally, when good mixing occurs &
                 &(e.g., when the input variable `outputChainSize` is reasonably large), then any specific &
-                &value of `burninAdaptationMeasure` becomes practically irrelevant. &
-                &The default value for `burninAdaptationMeasure` is `"//getStr(spec%burninAdaptationMeasure%def)//SKC_"`, implying that the &
-                &entire chain (excluding of an initial automatically-determined burnin period) will be used to generate the final output sample."
+                &value of `proposalAdaptationBurnin` becomes practically irrelevant. &
+                &The default value for `proposalAdaptationBurnin` is `"//getStr(spec%proposalAdaptationBurnin%def)//SKC_"`, implying that the &
+                &entire chain (excluding an initial automatically-determined burnin period) will be used to generate the final output sample."
             !$omp master
-            call setNAN(burninAdaptationMeasure)
+            call setNAN(proposalAdaptationBurnin)
             !$omp end master
-        end block burninAdaptationMeasure_block
+        end block proposalAdaptationBurnin_block
 
         proposalAdaptationCount_block: block
             use pm_sampling_scio, only: proposalAdaptationCount
@@ -192,7 +192,7 @@ contains
             spec%proposalAdaptationCount%def  = huge(0_IK)
             spec%proposalAdaptationCount%desc = &
             SKC_"The simulation specification `proposalAdaptationCount` is a scalar of type `integer` representing the total number of &
-                &adaptive updates that will be made to the parameters of the proposal distribution to increase the efficiency of the sampler &
+                &adaptive updates that will be made to the parameters of the proposal distribution to increase the efficiency of the sampler, &
                 &thus increasing the overall sampling efficiency of the simulation. Every `proposalAdaptationPeriod` number of calls to the &
                 &objective function, the parameters of the proposal distribution will be updated until either the total number of adaptive &
                 &updates reaches the value of `proposalAdaptationCount`. This variable must be a non-negative integer. As a rule of thumb, &
@@ -230,13 +230,13 @@ contains
             spec%proposalAdaptationPeriod%desc = &
             SKC_"The simulation specification `proposalAdaptationPeriod` is a positive-valued scalar of type `integer`. &
                 &Every `proposalAdaptationPeriod` calls to the objective function, the parameters of the proposal distribution will be updated. &
-                &The smaller the value of `proposalAdaptationPeriod`, the easier it will be for the sampler kernel to adapt the proposal distribution &
+                &The smaller the value of `proposalAdaptationPeriod`, the easier for the sampler kernel to adapt the proposal distribution &
                 &to the covariance structure of the objective function. However, this will happen at the expense of slower simulation runtime as the &
                 &adaptation process can become computationally expensive, particularly for very high dimensional objective functions (`ndim >> 1`). &
                 &The larger the value of `proposalAdaptationPeriod`, the easier it will be for the sampler kernel to keep the sampling efficiency &
                 &close to the requested target acceptance rate range (if specified via the input variable targetAcceptanceRate). However, too large &
                 &values for `proposalAdaptationPeriod` will only delay the adaptation of the proposal distribution to the global structure of &
-                &the objective function that is being sampled. If `outputChainSize <= proposalAdaptationPeriod` holds, then no adaptive &
+                &the objective function that is being sampled. If `outputChainSize <= proposalAdaptationPeriod` holds, no adaptive &
                 &updates to the proposal distribution will be made. The default value is `4 * ndim`, where `ndim` is the dimension &
                 &of the domain of the objective function to be sampled."
             !$omp master
@@ -250,7 +250,7 @@ contains
             spec%proposalDelayedRejectionCount%def = 0_IK
             spec%proposalDelayedRejectionCount%desc = &
             SKC_"The simulation specification `proposalAdaptationPeriod` is a non-negative-valued scalar of type `integer` representing &
-                &the total number of stages for which rejections of new proposals will be tolerated by MCMC sampler before going back &
+                &the total number of stages for which rejections of new proposals will be tolerated by the MCMC sampler before going back &
                 &to the previously accepted point (state). The condition `"//&
                 getStr(spec%proposalDelayedRejectionCount%min)//" <= proposalDelayedRejectionCount <= "//getStr(spec%proposalDelayedRejectionCount%max)//&
             SKC_"` must hold. Possible values are:"//NL2//&
@@ -259,10 +259,10 @@ contains
             SKC_"+   `proposalDelayedRejectionCount > 0`"//NL2//&
             SKC_"    which implies a maximum proposalDelayedRejectionCount number of rejections will be tolerated."//NL2//&
             SKC_"For example, setting `proposalDelayedRejectionCount` to `1` means that at any point during the sampling, if a proposal is rejected, &
-                &the MCMC sampler will not go back to the last sampled state. Instead, it will continue to propose a new state from the last &
+                &the MCMC sampler will not return to the last sampled state. Instead, it will continue to propose a new state from the last &
                 &rejected proposal. If the new state is again rejected based on the rules of the MCMC sampler, then the algorithm will not &
-                &tolerate further rejections, because the maximum number of rejections to be tolerated has been set by the user to be &
-                &`proposalDelayedRejectionCount = 1`. The algorithm then goes back to the original last-accepted state and will begin &
+                &tolerate further rejections because the maximum number of rejections to be tolerated has been set by the user to be &
+                &`proposalDelayedRejectionCount = 1`. The algorithm then returns to the original last-accepted state and will begin &
                 &proposing new states from that location. The default value is `"//getStr(spec%proposalDelayedRejectionCount%def)//SKC_"`."
             !$omp master
             proposalDelayedRejectionCount = spec%proposalDelayedRejectionCount%null
@@ -279,7 +279,7 @@ contains
             &is activated (by setting `proposalDelayedRejectionCount` to a positive value). At each `i`th stage of the DR process, &
             &the proposal distribution from the last stage is scaled by the factor `proposalDelayedRejectionScale(i)`. &
             &Missing elements of the `proposalDelayedRejectionScale` in the input external file to the sampler will be set to &
-            &the default value. The default value at all stages is `0.5**(1 / ndim)` where `ndim` is the number of dimensions of the &
+            &the default value. The default value at all stages is `0.5**(1 / ndim)`, where `ndim` is the number of dimensions of the &
             &domain of the objective function. This default value effectively reduces the volume of the covariance matrix &
             &of the proposal distribution by half compared to the last DR stage."
             !$omp master
@@ -311,15 +311,15 @@ contains
             err = spec%specmcmc_type%set(sampler%paramcmc_type)
             if (err%occurred) return
 
-            burninAdaptationMeasure_block: block
-                use pm_sampling_scio, only: burninAdaptationMeasure
-                if (spec%overridable .and. allocated(sampler%burninAdaptationMeasure)) then
-                    spec%burninAdaptationMeasure%val = real(sampler%burninAdaptationMeasure, RKC)
+            proposalAdaptationBurnin_block: block
+                use pm_sampling_scio, only: proposalAdaptationBurnin
+                if (spec%overridable .and. allocated(sampler%proposalAdaptationBurnin)) then
+                    spec%proposalAdaptationBurnin%val = real(sampler%proposalAdaptationBurnin, RKC)
                 else
-                    spec%burninAdaptationMeasure%val = burninAdaptationMeasure
+                    spec%proposalAdaptationBurnin%val = proposalAdaptationBurnin
                 end if
-                if (isNAN(spec%burninAdaptationMeasure%val)) spec%burninAdaptationMeasure%val = spec%burninAdaptationMeasure%def
-            end block burninAdaptationMeasure_block
+                if (isNAN(spec%proposalAdaptationBurnin%val)) spec%proposalAdaptationBurnin%val = spec%proposalAdaptationBurnin%def
+            end block proposalAdaptationBurnin_block
 
             proposalAdaptationCount_block: block
                 use pm_sampling_scio, only: proposalAdaptationCount
@@ -418,9 +418,9 @@ contains
 
         associate(ndim => spec%ndim%val, format => spec%reportFile%format%generic)
 
-            call spec%disp%show("burninAdaptationMeasure")
-            call spec%disp%show(spec%burninAdaptationMeasure%val, format = format)
-            call spec%disp%note%show(spec%burninAdaptationMeasure%desc)
+            call spec%disp%show("proposalAdaptationBurnin")
+            call spec%disp%show(spec%proposalAdaptationBurnin%val, format = format)
+            call spec%disp%note%show(spec%proposalAdaptationBurnin%desc)
 
             call spec%disp%show("proposalAdaptationCount")
             call spec%disp%show(spec%proposalAdaptationCount%val, format = format)
@@ -461,22 +461,22 @@ contains
         class(specdram_type), intent(inout) :: spec
         character(*,SKC), parameter :: PROCEDURE_NAME = MODULE_NAME//SKC_"@sanitizeSpecDRAM()"
 
-        burninAdaptationMeasure_block: block
-            if (spec%burninAdaptationMeasure%val < 0._RKC) then
+        proposalAdaptationBurnin_block: block
+            if (spec%proposalAdaptationBurnin%val < 0._RKC) then
                 err%occurred = .true._LK
                 err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                            &The input specification `burninAdaptationMeasure` ("//getStr(spec%burninAdaptationMeasure%val)//SKC_") cannot be less than 0. &
-                            &If you are unsure of the appropriate value for burninAdaptationMeasure, drop it from the input list. &
+                            &The input specification `proposalAdaptationBurnin` ("//getStr(spec%proposalAdaptationBurnin%val)//SKC_") cannot be less than 0. &
+                            &If you are unsure of the appropriate value for proposalAdaptationBurnin, drop it from the input list. &
                             &The sampler will automatically assign an appropriate value to it."
             end if
-            if (1._RKC < spec%burninAdaptationMeasure%val) then
+            if (1._RKC < spec%proposalAdaptationBurnin%val) then
                 err%occurred = .true._LK
                 err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                            &The input specification `burninAdaptationMeasure` ("//getStr(spec%burninAdaptationMeasure%val)//SKC_") cannot be larger than 1. &
-                            &If you are unsure of the appropriate value for burninAdaptationMeasure, drop it from the input list. &
+                            &The input specification `proposalAdaptationBurnin` ("//getStr(spec%proposalAdaptationBurnin%val)//SKC_") cannot be larger than 1. &
+                            &If you are unsure of the appropriate value for proposalAdaptationBurnin, drop it from the input list. &
                             &The sampler will automatically assign an appropriate value to it."
             end if
-        end block burninAdaptationMeasure_block
+        end block proposalAdaptationBurnin_block
 
         proposalAdaptationCount_block: block
             if (spec%proposalAdaptationCount%val < 0_IK) then

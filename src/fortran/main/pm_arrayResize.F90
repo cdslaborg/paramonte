@@ -630,6 +630,8 @@ module pm_arrayResize
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     module subroutine setResizedDDDD_D1_PSSK5(array, failed, errmsg)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -694,6 +696,9 @@ module pm_arrayResize
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1028,6 +1033,8 @@ module pm_arrayResize
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     module subroutine setResizedDDDD_D2_PSSK5(array, failed, errmsg)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -1092,6 +1099,9 @@ module pm_arrayResize
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1426,6 +1436,8 @@ module pm_arrayResize
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     module subroutine setResizedDDDD_D3_PSSK5(array, failed, errmsg)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -1490,6 +1502,9 @@ module pm_arrayResize
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1926,6 +1941,8 @@ module pm_arrayResize
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     module subroutine setResizedSDDD_D1_PSSK5(array, size, failed, errmsg)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -1995,6 +2012,9 @@ module pm_arrayResize
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2355,6 +2375,8 @@ module pm_arrayResize
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     module subroutine setResizedSDDD_D2_PSSK5(array, size, failed, errmsg)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -2424,6 +2446,9 @@ module pm_arrayResize
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2784,6 +2809,8 @@ module pm_arrayResize
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     module subroutine setResizedSDDD_D3_PSSK5(array, size, failed, errmsg)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -2853,6 +2880,9 @@ module pm_arrayResize
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -3290,6 +3320,8 @@ module pm_arrayResize
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     module subroutine setResizedSLDD_D1_PSSK5(array, size, lbc, failed, errmsg)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -3359,6 +3391,9 @@ module pm_arrayResize
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -3719,6 +3754,8 @@ module pm_arrayResize
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     module subroutine setResizedSLDD_D2_PSSK5(array, size, lbc, failed, errmsg)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -3788,6 +3825,9 @@ module pm_arrayResize
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -4148,6 +4188,8 @@ module pm_arrayResize
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     module subroutine setResizedSLDD_D3_PSSK5(array, size, lbc, failed, errmsg)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -4217,6 +4259,9 @@ module pm_arrayResize
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -4654,6 +4699,8 @@ module pm_arrayResize
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     module subroutine setResizedSLLU_D1_PSSK5(array, size, lbc, lbcold, ubcold, failed, errmsg)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -4723,6 +4770,9 @@ module pm_arrayResize
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -5083,6 +5133,8 @@ module pm_arrayResize
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     module subroutine setResizedSLLU_D2_PSSK5(array, size, lbc, lbcold, ubcold, failed, errmsg)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -5152,6 +5204,9 @@ module pm_arrayResize
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -5512,6 +5567,8 @@ module pm_arrayResize
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     module subroutine setResizedSLLU_D3_PSSK5(array, size, lbc, lbcold, ubcold, failed, errmsg)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -5581,6 +5638,9 @@ module pm_arrayResize
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

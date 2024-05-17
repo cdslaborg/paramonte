@@ -953,6 +953,8 @@ module pm_arraySelect
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     module function getSelectedDefCom_D1_PSSK5(array, rank, lb, ub) result(selection)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -1022,6 +1024,9 @@ module pm_arraySelect
         type(css_pdt(SKC))                                          :: selection
     end function
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1487,6 +1492,8 @@ module pm_arraySelect
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     module function getSelectedCusCom_D1_PSSK5(array, rank, isSorted, lb, ub) result(selection)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -1561,6 +1568,9 @@ module pm_arraySelect
         type(css_pdt(SKC))                                          :: selection
     end function
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2128,6 +2138,8 @@ module pm_arraySelect
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     module subroutine setSelectedDefCom_D1_PSSK5(selection, array, rank, lb, ub)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -2197,6 +2209,9 @@ module pm_arraySelect
         type(css_pdt(SKC))          , intent(out)                   :: selection
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2658,6 +2673,8 @@ module pm_arraySelect
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     module subroutine setSelectedCusCom_D1_PSSK5(selection, array, rank, isSorted, lb, ub)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -2732,6 +2749,9 @@ module pm_arraySelect
         type(css_pdt(SKC))          , intent(out)                   :: selection
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

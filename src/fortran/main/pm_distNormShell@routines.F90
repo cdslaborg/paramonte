@@ -36,7 +36,7 @@ call setAsserted(ASSERTION,getFine(__FILE__,LINE)//MODULE_NAME//MSG);
 #define CHECK_ASSERTION(LINE,ASSERTION,MSG) continue;
 #endif
 
-    use pm_distanceMahal, only: getMahalSq
+    use pm_distanceMahal, only: getDisMahalSq
     use pm_option, only: getOption
 
     implicit none

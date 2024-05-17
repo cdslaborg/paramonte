@@ -51,35 +51,35 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#define constructMark_ENABLED 1
+#define mark_typer_ENABLED 1
     module procedure mark_typer
 #include "pm_err@routines.inc.F90"
     end procedure
-#undef constructMark_ENABLED
+#undef mark_typer_ENABLED
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#define constructNote_ENABLED 1
+#define note_typer_ENABLED 1
     module procedure note_typer
 #include "pm_err@routines.inc.F90"
     end procedure
-#undef constructNote_ENABLED
+#undef note_typer_ENABLED
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#define constructWarn_ENABLED 1
+#define warn_typer_ENABLED 1
     module procedure warn_typer
 #include "pm_err@routines.inc.F90"
     end procedure
-#undef constructWarn_ENABLED
+#undef warn_typer_ENABLED
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#define constructStop_ENABLED 1
+#define stop_typer_ENABLED 1
     module procedure stop_typer
 #include "pm_err@routines.inc.F90"
     end procedure
-#undef constructStop_ENABLED
+#undef stop_typer_ENABLED
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

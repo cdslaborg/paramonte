@@ -529,7 +529,7 @@ module pm_matrixDet
     !>
     !>  \details
     !>  The positive-definiteness guarantee by the user enables a fast method of computing the
-    !>  determinant of the input positive-definite square matrix via its Cholesky Factorization.
+    !>  determinant of the input positive-definite square matrix via its Cholesky Factorization.<br>
     !>  For high rank matrices, there is an overflow possibility for the output of this generic interface.<br>
     !>  The overflow risk can be avoided by calling [getMatDetSqrtLog](@ref pm_matrixDet::getMatDetSqrtLog) instead.<br>
     !>
@@ -542,7 +542,7 @@ module pm_matrixDet
     !>                                  <li>    the constant [lowDia](@ref pm_matrixSubset::lowDia) implying that the lower-diagonal triangular block
     !>                                          of `mat` should be used for building the **upper-diagonal** Cholesky factor in the output `chol`.<br>
     !>                              </ol>
-    !>                              This argument is merely a convenience to differentiate the different procedure functionalities within this generic interface.
+    !>                              This argument is merely a convenience to differentiate the different procedure functionalities within this generic interface.<br>
     !>                              (**optional**, default = [uppDia](@ref pm_matrixSubset::uppDia))
     !>
     !>  \return

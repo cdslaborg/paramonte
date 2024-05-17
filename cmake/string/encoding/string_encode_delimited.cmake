@@ -1,5 +1,5 @@
 ## escapes a string to be delimited
-## by the the specified delimiters
+## by the specified delimiters
 function(string_encode_delimited str)
     delimiters(${ARGN})
     ans(ds)

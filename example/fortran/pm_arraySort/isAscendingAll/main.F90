@@ -1,7 +1,6 @@
 program example
 
     use pm_kind, only: SK, IK, LK ! all intrinsic types and kinds are supported.
-    use pm_container, only: css_pdt
     use pm_arraySort, only: isAscendingAll
     use pm_io, only: display_type
 
@@ -116,19 +115,22 @@ program example
     call disp%show( isAscendingAll([-1., -1., -1.]) )
     call disp%skip()
 
-#if !__GFORTRAN__
+#if PDT_ENABLED
     !   \bug
     !   Intel ifort 2022.3 cannot handle aliases for pdt names (e.g., strc => css_pdt).
-    call disp%skip()
-    call disp%show("isAscendingAll([css_pdt('is'), css_pdt(  'sorted'), css_pdt('string')])")
-    call disp%show( isAscendingAll([css_pdt('is'), css_pdt(  'sorted'), css_pdt('string')]) )
-    call disp%skip()
-    call disp%show("isAscendingAll([css_pdt('string'), css_pdt('is'), css_pdt('sorted')])")
-    call disp%show( isAscendingAll([css_pdt('string'), css_pdt('is'), css_pdt('sorted')]) )
-    call disp%skip()
-    call disp%show("isAscendingAll([css_pdt('same string'), css_pdt('same '), css_pdt('same')])")
-    call disp%show( isAscendingAll([css_pdt('same string'), css_pdt('same '), css_pdt('same')]) )
-    call disp%skip()
+    block
+        use pm_container, only: css_pdt
+        call disp%skip()
+        call disp%show("isAscendingAll([css_pdt('is'), css_pdt(  'sorted'), css_pdt('string')])")
+        call disp%show( isAscendingAll([css_pdt('is'), css_pdt(  'sorted'), css_pdt('string')]) )
+        call disp%skip()
+        call disp%show("isAscendingAll([css_pdt('string'), css_pdt('is'), css_pdt('sorted')])")
+        call disp%show( isAscendingAll([css_pdt('string'), css_pdt('is'), css_pdt('sorted')]) )
+        call disp%skip()
+        call disp%show("isAscendingAll([css_pdt('same string'), css_pdt('same '), css_pdt('same')])")
+        call disp%show( isAscendingAll([css_pdt('same string'), css_pdt('same '), css_pdt('same')]) )
+        call disp%skip()
+    end block
 #endif
 
 end program example

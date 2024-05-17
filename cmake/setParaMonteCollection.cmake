@@ -179,6 +179,13 @@ if (EXISTS "${origin}")
             "            \"\${CMAKE_CURRENT_SOURCE_DIR}/../../../lib\" # library directory for examples/benchmarks.\n"
             "            )\n"
             "target_link_libraries(binary PUBLIC \"\${pmlib}\")\n"
+            "target_link_libraries(binary PUBLIC \"\${pmlib}\")\n"
+            "if (APPLE)\n"
+            "    set(rpath_prop \"@loader_path\")\n"
+            "elseif(UNIX)\n"
+            "    set(rpath_prop \"$ORIGIN\")\n"
+            "endif()\n"
+            "set_target_properties(binary PROPERTIES INSTALL_RPATH \"${rpath_prop}\")\n"
         )
         #if (${csid_is_gnu} AND ${codecov_enabled})
         #    string(CONCAT collection_cmakelists_contents "${collection_cmakelists_contents}"

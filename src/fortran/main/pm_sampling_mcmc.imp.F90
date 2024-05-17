@@ -272,9 +272,9 @@ contains
                      &the existing autocorrelations in the final output sample. Exceptions occur when the integrated &
                      &Autocorrelation (ACT) of the output MCMC chain is comparable to or larger than the length of the chain. &
                      &In such cases, neither the BatchMeans method nor any other method of ACT computation will be able to &
-                     &accurately compute the ACT. Consequently, the samples generated based on the computed ACT values will &
+                     &compute the ACT accurately. Consequently, the samples generated based on the computed ACT values will &
                      &likely not be i.i.d. and will still be significantly autocorrelated. In such scenarios, more than &
-                     &one refinement of the MCMC chain will be necessary. Very small sample size resulting from multiple &
+                     &one refinement of the MCMC chain will be necessary. A tiny small sample size resulting from multiple &
                      &refinements of the sample could be a strong indication of the bad mixing of the MCMC chain and &
                      &the lack of convergence to the target objective function."//NL2//&
             SKC_"+   if `outputSampleRefinementCount > 1`,"//NL2//&
@@ -282,11 +282,11 @@ contains
                      &times, even though some residual autocorrelation in the final output MCMC sample may still exist."//NL2//&
             SKC_"+   if `outputSampleRefinementCount >> 1` (e.g., comparable to or larger than the length of the MCMC chain),"//NL2//&
             SKC_"    the refinement of the output MCMC chain will continue until the integrated autocorrelation of the resulting &
-                     &final sample is less than 2, virtually implying that an independent identically-distributed (i.i.d.) sample &
+                     &final sample is less than 2, virtually implying that an independent identically distributed (i.i.d.) sample &
                      &from the target objective function has finally been obtained."//NL2//&
             SKC_"Note that to obtain i.i.d. samples from a multidimensional chain, the sampler will, by default, use the maximum of &
                 &integrated Autocorrelation (ACT) among all chain dimensions to refine the chain. &
-                &Note that the value specified for `outputSampleRefinementCount` is used only when the variable `outputSampleSize < 0`, &
+                &Note that the value specified for `outputSampleRefinementCount` is used only when the variable `outputSampleSize < 0`; &
                 &otherwise, it will be ignored. The default value for `outputSampleRefinementCount` is `"//getStr(spec%outputSampleRefinementCount%def)//SKC_"`."
             !!$omp master
             outputSampleRefinementCount = spec%outputSampleRefinementCount%null
@@ -315,17 +315,17 @@ contains
                      &the Markov chain is decorrelated based on the ACT of the chain in its verbose (Markov) format. This process &
                      &is repeated recursively for as long as residual autocorrelation exists in the refined sample."//NL2//&
             SKC_"+   `outputSampleRefinementMethod = '"//spec%outputSampleRefinementMethod%batchMeans//SKC_"-compact'`"//NL2//&
-            SKC_"    This is the same as the first case in the above, except that only the first phase of the sample refinement &
-                     &described in the above will be performed; that is, the (verbose) Markov chain is refined only based on the &
+            SKC_"    This is the same as the first case above, except that only the first phase of the sample refinement &
+                     &described above will be performed; that is, the (verbose) Markov chain is refined only based on the &
                      &ACT computed from the compact format of the Markov chain. This will lead to a larger, final, refined sample. &
                      &However, the final sample will likely not be fully decorrelated."//NL2//&
             SKC_"+   `outputSampleRefinementMethod = '"//spec%outputSampleRefinementMethod%batchMeans//SKC_"-verbose'`"//NL2//&
-            SKC_"    This is the same as the first case in the above, except that only the second phase of the sample refinement &
-                     &described in the above will be performed; that is, the (verbose) Markov chain is refined only based on the ACT &
+            SKC_"    This is the same as the first case above, except that only the second phase of the sample refinement &
+                     &described above will be performed; that is, the (verbose) Markov chain is refined only based on the ACT &
                      &computed from the verbose format of the Markov chain. While the resulting refined sample will be fully decorrelated, &
-                     &the size of the refined sample may be smaller than the default choice in the first case in the above."//NL2//&
+                     &the size of the refined sample may be smaller than the default choice in the first case above."//NL2//&
             SKC_"Note that to obtain i.i.d. samples from a multidimensional chain, the sampler will use the average of the &
-                &ACT among all dimensions of the chain to refine the chain. If the maximum, minimum, or the median of IACs is preferred &
+                &ACT among all dimensions of the chain to refine the chain. If the maximum, minimum, or median of IACs is preferred &
                 &add `'-max'` (or `'-maximum'`), `'-min'` (or `'-minimum'`), `'-med'` (or `'-median'`), respectively, to the value of &
                 &`outputSampleRefinementMethod`. For example, "//NL2//&
             SKC_"+   `outputSampleRefinementMethod = '"//spec%outputSampleRefinementMethod%batchMeans//SKC_"-max'`"//NL2//&
@@ -354,8 +354,7 @@ contains
                 &the name of the proposal distribution for the MCMC sampler. When specified from within an external input file, it must &
                 &be singly or doubly quoted. Options that are currently supported include:"//NL2//&
             SKC_"+   `proposal = '"//spec%proposal%normal//SKC_"'`"//NL2//&
-            SKC_"    This is equivalent to the multivariate normal distribution, &
-                     &which is the most widely-used proposal model along with MCMC samplers."//NL2//&
+            SKC_"    This is equivalent to the multivariate normal distribution, which, for MCMC samplers, is the most widely used proposal model."//NL2//&
             SKC_"+   `proposal = '"//spec%proposal%uniform//SKC_"'`"//NL2//&
             SKC_"    The proposals will be drawn uniformly from within a ndim-dimensional ellipsoid whose covariance matrix &
                      &and scale are initialized by the user and optionally adaptively updated throughout the simulation."//NL2//&
@@ -399,7 +398,7 @@ contains
                 &available within the ParaMonte library, of shape `(ndim, ndim)`, where `ndim` is the number of dimensions of the sampling space. &
                 &It serves as the best-guess starting covariance matrix of the proposal distribution. &
                 &To bring the sampling efficiency of the sampler to within the desired requested range, the covariance matrix will &
-                &be adaptively updated throughout the simulation, according to the user-specified schedule. If `proposalCov` &
+                &be adaptively updated throughout the simulation according to the user-specified schedule. If `proposalCov` &
                 &is not provided by the user or it is completely missing from the input file, its value will be automatically &
                 &computed via the input variables `proposalCor` and `proposalStd` (or via their default values, if not provided). &
                 &If the simulation specification `outputStatus` is set to ""extend"" and a successful prior simulation run exists, &
@@ -415,8 +414,8 @@ contains
 
         proposalScale_block: block
             use pm_sampling_scio, only: proposalScale
-            spec%proposalScale%strdef = SKC_"gelman"
-            spec%proposalScale%valdef = 2.38_RKC / sqrt(real(ndim, RKC)) ! Gelman, Roberts, Gilks (1996): Efficient Metropolis Jumping Rules.
+            spec%proposalScale%strdef = SKC_"1"
+            spec%proposalScale%valdef = 1._RKC ! 2.38_RKC / sqrt(real(ndim, RKC)) ! Gelman, Roberts, Gilks (1996): Efficient Metropolis Jumping Rules.
             spec%proposalScale%null = repeat(SUB, len(proposalScale, IK))
             spec%proposalScale%desc = &
             SKC_"The simulation specification `proposalScale` is a scalar string of maximum length `"//getStr(len(proposalScale, IK))//SKC_"` &
@@ -428,7 +427,7 @@ contains
             SKC_"The paper finds that the optimal scaling factor for a Multivariate Gaussian proposal distribution for the Metropolis-Hastings &
                 &Markov Chain Monte Carlo sampling of a target Multivariate Normal Distribution of dimension `ndim` is given by:"//NL2//&
             SKC_"    proposalScale = 2.38 / sqrt(ndim)  ,  in the limit of ndim -> Infinity."//NL2//&
-            SKC_"Multiples of the Gelman scale factors are also acceptable as input and can be specified like the following examples:"//NL2//&
+            SKC_"Multiples of the Gelman scale factors are also acceptable as input and can be specified as in the following examples:"//NL2//&
             SKC_"+   `proposalScale = '1'`"//NL2//&
             SKC_"    multiplies the ndim-dimensional proposal covariance matrix by 1, &
                      &essentially no change occurs to the covariance matrix."//NL2//&
@@ -442,14 +441,14 @@ contains
             SKC_"    same as the previous example but with double-quotation marks. space characters are ignored."//NL2//&
             SKC_"+   `proposalScale = ""2.5 * gelman*gelman*2""`"//NL2//&
             SKC_"    equivalent to gelmanFactor-squared multiplied by `5`."//NL2//&
-            SKC_"Note, however, that the result of Gelman et al. paper applies only to multivariate normal proposal distributions, in the limit &
+            SKC_"Note, however, that the result of Gelman et al. paper applies only to multivariate normal proposal distributions in the limit &
                 &of infinite dimensions. Therefore, care must be taken when using Gelman's scaling factor with non-Gaussian proposals and target &
                 &objective functions. Only the product symbol `*` can be parsed in the string value of `proposalScale`. &
                 &The presence of other mathematical symbols or multiple appearances of the product symbol will lead to a simulation crash. &
                 &Also, note that the prescription of an acceptance range specified by the input variable `targetAcceptanceRate` will lead &
                 &to dynamic modification of the initial input value of `proposalScale` throughout sampling for `proposalAdaptationCount` times. &
-                &The default string value for `proposalScale` is `""gelman""` (for all proposal distributions), &
-                &which is subsequently converted to `2.38 / sqrt(ndim)`."
+                &The default string value for `proposalScale` is `""1""` (for all proposal distributions)."!, &
+                !&which is subsequently converted to `2.38 / sqrt(ndim)`."
             !!$omp master
             proposalScale = spec%proposalScale%null
             !!$omp end master
@@ -460,7 +459,7 @@ contains
             spec%proposalStart%desc = &
             SKC_"The simulation specification `proposalStart` is a vector type of `real` of the highest precision available &
                 &within the ParaMonte library of length `ndim` where `ndim` is the dimension of the domain of the objective function. &
-                &For every element of `proposalStart` that is not provided as input, the default value will be the center of the sampling domain &
+                &For every element of `proposalStart` not provided as input, the default value will be the center of the sampling domain &
                 &as determined by `domainCubeLimitLower` and `domainCubeLimitUpper` input specifications. &
                 &If the condition `proposalStartRandomized` is set to the logical/Boolean true value, then the missing &
                 &elements of `proposalStart` will be initialized to values drawn randomly from within the corresponding &
@@ -493,13 +492,13 @@ contains
                 &values of `proposalStartDomainCubeLimitLower` and leave the rest of the components to be assigned the default value. &
                 &For example, having the following inside the input file, "//NL2//&
             SKC_"+   `proposalStartDomainCubeLimitLower(3:5) = -100`"//NL2//&
-            SKC_"    will only set the lower limits of the third, fourth, and the fifth dimensions to -100, or,"//NL2//&
+            SKC_"    will only set the lower limits of the third, fourth, and fifth dimensions to -100, or,"//NL2//&
             SKC_"+   `proposalStartDomainCubeLimitLower(1) = -100, proposalStartDomainCubeLimitLower(2) = -1.e6`"//NL2//&
             SKC_"    will set the lower limit on the first dimension to -100, and 1.e6 on the second dimension, or,"//NL2//&
             SKC_"+   `proposalStartDomainCubeLimitLower = 3*-2.5e100`"//NL2//&
-            SKC_"    will only set the lower limits on the first, second, and the third dimensions to `-2.5*10^100`, &
+            SKC_"    will only set the lower limits on the first, second, and third dimensions to `-2.5*10^100`, &
                      &while the rest of the lower limits for the missing dimensions will be automatically set to the default value."//NL2//&
-            SKC_"The default for all `proposalStartDomainCubeLimitLower` elements are taken from the corresponding elements of `domainCubeLimitLower`."
+            SKC_"The default for all `proposalStartDomainCubeLimitLower` elements is taken from the corresponding elements of `domainCubeLimitLower`."
             !!$omp master
             call setResized(proposalStartDomainCubeLimitLower, ndim)
             call setNAN(proposalStartDomainCubeLimitLower)
@@ -524,11 +523,11 @@ contains
                 &values of `proposalStartDomainCubeLimitUpper` and leave the rest of the components to be assigned the default value. &
                 &For example, having the following inside the input file, "//NL2//&
             SKC_"+   `proposalStartDomainCubeLimitUpper(3:5) = -100`"//NL2//&
-            SKC_"    will only set the upper limits of the third, fourth, and the fifth dimensions to `-100`, or,"//NL2//&
+            SKC_"    will only set the upper limits of the third, fourth, and fifth dimensions to `-100`, or,"//NL2//&
             SKC_"+   `proposalStartDomainCubeLimitUpper(1) = -100, proposalStartDomainCubeLimitUpper(2) = -1.e6`"//NL2//&
             SKC_"    will set the upper limit on the first dimension to -100, and 1.e6 on the second dimension, or,"//NL2//&
             SKC_"+   `proposalStartDomainCubeLimitUpper = 3*-2.5e100`"//NL2//&
-            SKC_"    will only set the upper limits on the first, second, and the third dimensions to `-2.5*10**100`, while &
+            SKC_"    will only set the upper limits on the first, second, and third dimensions to `-2.5*10**100`, while &
                      &the rest of the upper limits for the missing dimensions will be automatically set to the default value."//NL2//&
             SKC_"The default values for all elements of `proposalStartDomainCubeLimitUpper` are &
                 &taken from the corresponding values in the input variable `domainCubeLimitUpper`."
@@ -542,11 +541,11 @@ contains
             use pm_sampling_scio, only: proposalStartRandomized
             spec%proposalStartRandomized%def = .false._LK
             spec%proposalStartRandomized%desc = &
-            SKC_"The simulation specification `proposalStartRandomized` is scalar of type `logical` (Boolean). &
+            SKC_"The simulation specification `proposalStartRandomized` is a scalar of type `logical` (Boolean). &
                 &If `true` (or `.true.` or `TRUE` or `.t.` from within an external input file), then the variable `proposalStart` &
                 &will be initialized randomly for each MCMC chain that is to be generated by the sampler. The random values will be &
                 &drawn from the specified or the default domain of `proposalStart`, given by `proposalStartDomainCubeLimitLower` and &
-                &`proposalStartDomainCubeLimitUpper` variable. Note that the value of `proposalStart`, if provided, has precedence over &
+                &`proposalStartDomainCubeLimitUpper` variables. Note that the value of `proposalStart`, if provided, has precedence over &
                 &random initialization. In other words, only uninitialized elements of `proposalStart` will be randomly initialized only &
                 &if `proposalStartRandomized` is set to the logical true value. Note that even if `proposalStart` is randomly initialized, &
                 &its random value will be deterministic between different independent simulation runs if the input variable `randomSeed` &
@@ -835,7 +834,8 @@ contains
             call spec%disp%note%show(spec%proposalCov%desc)
 
             call spec%disp%show("proposalScale")
-            call spec%disp%show(spec%proposalScale%str//SKC_" (gelman(ndim = "//getStr(spec%ndim%val)//SKC_") = "//getStr(spec%proposalScale%valdef)//SKC_")", format = format)
+            call spec%disp%show(spec%proposalScale%str, format = format)
+           !call spec%disp%show(spec%proposalScale%str//SKC_" (gelman(ndim = "//getStr(spec%ndim%val)//SKC_") = "//getStr(spec%proposalScale%valdef)//SKC_")", format = format)
             call spec%disp%note%show(spec%proposalScale%desc)
 
             call spec%disp%show("proposalStart")

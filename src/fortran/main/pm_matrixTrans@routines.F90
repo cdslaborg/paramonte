@@ -38,8 +38,7 @@ call setAsserted(ASSERTION,getFine(__FILE__,LINE)//MODULE_NAME//MSG);
 
     use pm_matrixLUP, only: setMatLUP
    !use pm_matrixInit, only: setMatInit
-    use pm_matrixCopy, only: setMatCopy, rdpack
-    use pm_matrixCopy, only: getMatCopy, lfpack, dia
+    use pm_matrixCopy, only: setMatCopy, rdpack, lfpack, dia
     implicit none
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

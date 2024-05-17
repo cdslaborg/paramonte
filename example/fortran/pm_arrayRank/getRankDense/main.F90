@@ -4,8 +4,6 @@ program example
     use pm_kind, only: SK, IK, LK, CK, RK ! all other processor kinds are also supported.
     use pm_distUnif, only: setUnifRand
     use pm_arrayRank, only: getRankDense
-    !use pm_container, only: strc => css_pdt
-    use pm_container, only: strc => css_pdt
 
     implicit none
 
@@ -212,7 +210,7 @@ program example
     call disp%show( Rank )
     call disp%skip()
 
-#if 0
+#if PDT_ENABLED
     call disp%skip()
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%show("!Rank array of strings of varying length in ascending order.")

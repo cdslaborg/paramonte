@@ -24,7 +24,7 @@
 !>      <li>    the Probability Density Function (**PDF**)
 !>      <li>    the Cumulative Distribution Function (**CDF**)
 !>      <li>    the Random Number Generation from the distribution (**RNG**)
-!>      <li>    the Inverse Cumulative Distribution Function **(ICDF)** or the **Quantile Function**
+!>      <li>    the Inverse Cumulative Distribution Function (**ICDF**) or the **Quantile Function**
 !>  </ol>
 !>
 !>  The (Truncated) PiwiPoweto distribution is better known by its special case: the <b>Broken Power Law distribution</b>.<br>

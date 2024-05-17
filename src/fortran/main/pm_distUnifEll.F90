@@ -156,6 +156,44 @@ module pm_distUnifEll
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !>  \brief
+    !>  This is the derived type for signifying distributions that are of type MultiVariate Uniform Ellipsoid (MVUE)
+    !>  as defined in the description of [pm_distUnifEll](@ref pm_distUnifEll).
+    !>
+    !>  \details
+    !>  See the documentation of [pm_distUnifEll](@ref pm_distUnifEll) for the definition of the MultiVariate Uniform Ellipsoid (MVUE) distribution.
+    !>
+    !>  \interface{distUnifEll_type}
+    !>  \code{.F90}
+    !>
+    !>      use pm_distUnifEll, only: distUnifEll_type
+    !>      type(distUnifEll_type) :: distUnifEll
+    !>
+    !>      distUnifEll = distUnifEll_type()
+    !>
+    !>  \endcode
+    !>
+    !>  \devnote
+    !>  This derived type is currently devoid of any components or type-bound procedures because of
+    !>  the lack of portable and reliable support for Parameterized Derived Types (PDT) in some Fortran compilers.<br>
+    !>  For now, the utility of this derived type is limited to generic interface resolutions.<br>
+    !>
+    !>  \test
+    !>  [test_pm_distUnifEll](@ref test_pm_distUnifEll)
+    !>
+    !>  \todo
+    !>  \pvhigh
+    !>  This derived type must be converted to PDT and the relevant components and methods must be added once PDTs are well supported.
+    !>
+    !>  \finmain{distUnifEll_type}
+    !>
+    !>  \author
+    !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
+    type :: distUnifEll_type
+    end type
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !>  \brief
     !>  Generate and return the natural logarithm of the Probability Density Function (PDF)
     !>  of the MultiVariate MVUE (MVUE) Distribution.<br>
     !>

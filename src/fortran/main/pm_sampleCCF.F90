@@ -110,7 +110,7 @@
 !>  More generally, convolution in one domain (e.g., time domain) equals point-wise multiplication in the other domain (e.g., frequency domain).<br>
 !>
 !>  \see
-!>  [pm_sampling](pm_sampling)<br>
+!>  [pm_sampling](@ref pm_sampling)<br>
 !>  [pm_sampleACT](@ref pm_sampleACT)<br>
 !>  [pm_sampleCCF](@ref pm_sampleCCF)<br>
 !>  [pm_sampleCor](@ref pm_sampleCor)<br>
@@ -140,8 +140,8 @@
 module pm_sampleCCF
 
     use pm_kind, only: SK, IK, LK
+    use pm_container, only: css_type
     use pm_array, only: nothing, nothing_type
-    use pm_container, only: css_type, css_pdt
     use pm_sampleNorm, only: zscore, zscore_type
     use pm_sampleScale, only: stdscale, stdscale_type
     use pm_sampleShift, only: meanshift, meanshift_type

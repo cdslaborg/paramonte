@@ -45,7 +45,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#define getMahalSq_ENABLED 1
+#define getDisMahalSq_ENABLED 1
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -64,35 +64,35 @@ contains
 #define CK_ENABLED 1
 
 #if CK5_ENABLED
-    module procedure getMahalSqEleInvDef_D0_CK5
+    module procedure getDisMahalSqEleInvDef_D0_CK5
         use pm_kind, only: CKC => CK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
-    module procedure getMahalSqEleInvDef_D0_CK4
+    module procedure getDisMahalSqEleInvDef_D0_CK4
         use pm_kind, only: CKC => CK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
-    module procedure getMahalSqEleInvDef_D0_CK3
+    module procedure getDisMahalSqEleInvDef_D0_CK3
         use pm_kind, only: CKC => CK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
-    module procedure getMahalSqEleInvDef_D0_CK2
+    module procedure getDisMahalSqEleInvDef_D0_CK2
         use pm_kind, only: CKC => CK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
-    module procedure getMahalSqEleInvDef_D0_CK1
+    module procedure getDisMahalSqEleInvDef_D0_CK1
         use pm_kind, only: CKC => CK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -105,35 +105,35 @@ contains
 #define RK_ENABLED 1
 
 #if RK5_ENABLED
-    module procedure getMahalSqEleInvDef_D0_RK5
+    module procedure getDisMahalSqEleInvDef_D0_RK5
         use pm_kind, only: RKC => RK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
-    module procedure getMahalSqEleInvDef_D0_RK4
+    module procedure getDisMahalSqEleInvDef_D0_RK4
         use pm_kind, only: RKC => RK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
-    module procedure getMahalSqEleInvDef_D0_RK3
+    module procedure getDisMahalSqEleInvDef_D0_RK3
         use pm_kind, only: RKC => RK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
-    module procedure getMahalSqEleInvDef_D0_RK2
+    module procedure getDisMahalSqEleInvDef_D0_RK2
         use pm_kind, only: RKC => RK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
-    module procedure getMahalSqEleInvDef_D0_RK1
+    module procedure getDisMahalSqEleInvDef_D0_RK1
         use pm_kind, only: RKC => RK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -156,35 +156,35 @@ contains
 #define CK_ENABLED 1
 
 #if CK5_ENABLED
-    module procedure getMahalSqEleInvCen_D0_CK5
+    module procedure getDisMahalSqEleInvCen_D0_CK5
         use pm_kind, only: CKC => CK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
-    module procedure getMahalSqEleInvCen_D0_CK4
+    module procedure getDisMahalSqEleInvCen_D0_CK4
         use pm_kind, only: CKC => CK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
-    module procedure getMahalSqEleInvCen_D0_CK3
+    module procedure getDisMahalSqEleInvCen_D0_CK3
         use pm_kind, only: CKC => CK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
-    module procedure getMahalSqEleInvCen_D0_CK2
+    module procedure getDisMahalSqEleInvCen_D0_CK2
         use pm_kind, only: CKC => CK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
-    module procedure getMahalSqEleInvCen_D0_CK1
+    module procedure getDisMahalSqEleInvCen_D0_CK1
         use pm_kind, only: CKC => CK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -197,35 +197,35 @@ contains
 #define RK_ENABLED 1
 
 #if RK5_ENABLED
-    module procedure getMahalSqEleInvCen_D0_RK5
+    module procedure getDisMahalSqEleInvCen_D0_RK5
         use pm_kind, only: RKC => RK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
-    module procedure getMahalSqEleInvCen_D0_RK4
+    module procedure getDisMahalSqEleInvCen_D0_RK4
         use pm_kind, only: RKC => RK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
-    module procedure getMahalSqEleInvCen_D0_RK3
+    module procedure getDisMahalSqEleInvCen_D0_RK3
         use pm_kind, only: RKC => RK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
-    module procedure getMahalSqEleInvCen_D0_RK2
+    module procedure getDisMahalSqEleInvCen_D0_RK2
         use pm_kind, only: RKC => RK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
-    module procedure getMahalSqEleInvCen_D0_RK1
+    module procedure getDisMahalSqEleInvCen_D0_RK1
         use pm_kind, only: RKC => RK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -266,35 +266,35 @@ contains
 #define CK_ENABLED 1
 
 #if CK5_ENABLED
-    module procedure getMahalSqOneInvDef_D1_CK5
+    module procedure getDisMahalSqOneInvDef_D1_CK5
         use pm_kind, only: CKC => CK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
-    module procedure getMahalSqOneInvDef_D1_CK4
+    module procedure getDisMahalSqOneInvDef_D1_CK4
         use pm_kind, only: CKC => CK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
-    module procedure getMahalSqOneInvDef_D1_CK3
+    module procedure getDisMahalSqOneInvDef_D1_CK3
         use pm_kind, only: CKC => CK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
-    module procedure getMahalSqOneInvDef_D1_CK2
+    module procedure getDisMahalSqOneInvDef_D1_CK2
         use pm_kind, only: CKC => CK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
-    module procedure getMahalSqOneInvDef_D1_CK1
+    module procedure getDisMahalSqOneInvDef_D1_CK1
         use pm_kind, only: CKC => CK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -307,35 +307,35 @@ contains
 #define RK_ENABLED 1
 
 #if RK5_ENABLED
-    module procedure getMahalSqOneInvDef_D1_RK5
+    module procedure getDisMahalSqOneInvDef_D1_RK5
         use pm_kind, only: RKC => RK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
-    module procedure getMahalSqOneInvDef_D1_RK4
+    module procedure getDisMahalSqOneInvDef_D1_RK4
         use pm_kind, only: RKC => RK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
-    module procedure getMahalSqOneInvDef_D1_RK3
+    module procedure getDisMahalSqOneInvDef_D1_RK3
         use pm_kind, only: RKC => RK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
-    module procedure getMahalSqOneInvDef_D1_RK2
+    module procedure getDisMahalSqOneInvDef_D1_RK2
         use pm_kind, only: RKC => RK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
-    module procedure getMahalSqOneInvDef_D1_RK1
+    module procedure getDisMahalSqOneInvDef_D1_RK1
         use pm_kind, only: RKC => RK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -358,35 +358,35 @@ contains
 #define CK_ENABLED 1
 
 #if CK5_ENABLED
-    module procedure getMahalSqOneInvCen_D1_CK5
+    module procedure getDisMahalSqOneInvCen_D1_CK5
         use pm_kind, only: CKC => CK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
-    module procedure getMahalSqOneInvCen_D1_CK4
+    module procedure getDisMahalSqOneInvCen_D1_CK4
         use pm_kind, only: CKC => CK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
-    module procedure getMahalSqOneInvCen_D1_CK3
+    module procedure getDisMahalSqOneInvCen_D1_CK3
         use pm_kind, only: CKC => CK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
-    module procedure getMahalSqOneInvCen_D1_CK2
+    module procedure getDisMahalSqOneInvCen_D1_CK2
         use pm_kind, only: CKC => CK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
-    module procedure getMahalSqOneInvCen_D1_CK1
+    module procedure getDisMahalSqOneInvCen_D1_CK1
         use pm_kind, only: CKC => CK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -399,35 +399,35 @@ contains
 #define RK_ENABLED 1
 
 #if RK5_ENABLED
-    module procedure getMahalSqOneInvCen_D1_RK5
+    module procedure getDisMahalSqOneInvCen_D1_RK5
         use pm_kind, only: RKC => RK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
-    module procedure getMahalSqOneInvCen_D1_RK4
+    module procedure getDisMahalSqOneInvCen_D1_RK4
         use pm_kind, only: RKC => RK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
-    module procedure getMahalSqOneInvCen_D1_RK3
+    module procedure getDisMahalSqOneInvCen_D1_RK3
         use pm_kind, only: RKC => RK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
-    module procedure getMahalSqOneInvCen_D1_RK2
+    module procedure getDisMahalSqOneInvCen_D1_RK2
         use pm_kind, only: RKC => RK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
-    module procedure getMahalSqOneInvCen_D1_RK1
+    module procedure getDisMahalSqOneInvCen_D1_RK1
         use pm_kind, only: RKC => RK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -462,35 +462,35 @@ contains
 #define CK_ENABLED 1
 
 #if CK5_ENABLED
-    module procedure getMahalSqOneInvDef_D2_CK5
+    module procedure getDisMahalSqOneInvDef_D2_CK5
         use pm_kind, only: CKC => CK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
-    module procedure getMahalSqOneInvDef_D2_CK4
+    module procedure getDisMahalSqOneInvDef_D2_CK4
         use pm_kind, only: CKC => CK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
-    module procedure getMahalSqOneInvDef_D2_CK3
+    module procedure getDisMahalSqOneInvDef_D2_CK3
         use pm_kind, only: CKC => CK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
-    module procedure getMahalSqOneInvDef_D2_CK2
+    module procedure getDisMahalSqOneInvDef_D2_CK2
         use pm_kind, only: CKC => CK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
-    module procedure getMahalSqOneInvDef_D2_CK1
+    module procedure getDisMahalSqOneInvDef_D2_CK1
         use pm_kind, only: CKC => CK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -503,35 +503,35 @@ contains
 #define RK_ENABLED 1
 
 #if RK5_ENABLED
-    module procedure getMahalSqOneInvDef_D2_RK5
+    module procedure getDisMahalSqOneInvDef_D2_RK5
         use pm_kind, only: RKC => RK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
-    module procedure getMahalSqOneInvDef_D2_RK4
+    module procedure getDisMahalSqOneInvDef_D2_RK4
         use pm_kind, only: RKC => RK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
-    module procedure getMahalSqOneInvDef_D2_RK3
+    module procedure getDisMahalSqOneInvDef_D2_RK3
         use pm_kind, only: RKC => RK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
-    module procedure getMahalSqOneInvDef_D2_RK2
+    module procedure getDisMahalSqOneInvDef_D2_RK2
         use pm_kind, only: RKC => RK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
-    module procedure getMahalSqOneInvDef_D2_RK1
+    module procedure getDisMahalSqOneInvDef_D2_RK1
         use pm_kind, only: RKC => RK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -554,35 +554,35 @@ contains
 #define CK_ENABLED 1
 
 #if CK5_ENABLED
-    module procedure getMahalSqOneInvCen_D2_CK5
+    module procedure getDisMahalSqOneInvCen_D2_CK5
         use pm_kind, only: CKC => CK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
-    module procedure getMahalSqOneInvCen_D2_CK4
+    module procedure getDisMahalSqOneInvCen_D2_CK4
         use pm_kind, only: CKC => CK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
-    module procedure getMahalSqOneInvCen_D2_CK3
+    module procedure getDisMahalSqOneInvCen_D2_CK3
         use pm_kind, only: CKC => CK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
-    module procedure getMahalSqOneInvCen_D2_CK2
+    module procedure getDisMahalSqOneInvCen_D2_CK2
         use pm_kind, only: CKC => CK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
-    module procedure getMahalSqOneInvCen_D2_CK1
+    module procedure getDisMahalSqOneInvCen_D2_CK1
         use pm_kind, only: CKC => CK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -595,35 +595,35 @@ contains
 #define RK_ENABLED 1
 
 #if RK5_ENABLED
-    module procedure getMahalSqOneInvCen_D2_RK5
+    module procedure getDisMahalSqOneInvCen_D2_RK5
         use pm_kind, only: RKC => RK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
-    module procedure getMahalSqOneInvCen_D2_RK4
+    module procedure getDisMahalSqOneInvCen_D2_RK4
         use pm_kind, only: RKC => RK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
-    module procedure getMahalSqOneInvCen_D2_RK3
+    module procedure getDisMahalSqOneInvCen_D2_RK3
         use pm_kind, only: RKC => RK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
-    module procedure getMahalSqOneInvCen_D2_RK2
+    module procedure getDisMahalSqOneInvCen_D2_RK2
         use pm_kind, only: RKC => RK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
-    module procedure getMahalSqOneInvCen_D2_RK1
+    module procedure getDisMahalSqOneInvCen_D2_RK1
         use pm_kind, only: RKC => RK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -670,35 +670,35 @@ contains
 #define CK_ENABLED 1
 
 #if CK5_ENABLED
-    module procedure getMahalSqMixInvDef_D1_CK5
+    module procedure getDisMahalSqMixInvDef_D1_CK5
         use pm_kind, only: CKC => CK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
-    module procedure getMahalSqMixInvDef_D1_CK4
+    module procedure getDisMahalSqMixInvDef_D1_CK4
         use pm_kind, only: CKC => CK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
-    module procedure getMahalSqMixInvDef_D1_CK3
+    module procedure getDisMahalSqMixInvDef_D1_CK3
         use pm_kind, only: CKC => CK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
-    module procedure getMahalSqMixInvDef_D1_CK2
+    module procedure getDisMahalSqMixInvDef_D1_CK2
         use pm_kind, only: CKC => CK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
-    module procedure getMahalSqMixInvDef_D1_CK1
+    module procedure getDisMahalSqMixInvDef_D1_CK1
         use pm_kind, only: CKC => CK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -711,35 +711,35 @@ contains
 #define RK_ENABLED 1
 
 #if RK5_ENABLED
-    module procedure getMahalSqMixInvDef_D1_RK5
+    module procedure getDisMahalSqMixInvDef_D1_RK5
         use pm_kind, only: RKC => RK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
-    module procedure getMahalSqMixInvDef_D1_RK4
+    module procedure getDisMahalSqMixInvDef_D1_RK4
         use pm_kind, only: RKC => RK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
-    module procedure getMahalSqMixInvDef_D1_RK3
+    module procedure getDisMahalSqMixInvDef_D1_RK3
         use pm_kind, only: RKC => RK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
-    module procedure getMahalSqMixInvDef_D1_RK2
+    module procedure getDisMahalSqMixInvDef_D1_RK2
         use pm_kind, only: RKC => RK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
-    module procedure getMahalSqMixInvDef_D1_RK1
+    module procedure getDisMahalSqMixInvDef_D1_RK1
         use pm_kind, only: RKC => RK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -762,35 +762,35 @@ contains
 #define CK_ENABLED 1
 
 #if CK5_ENABLED
-    module procedure getMahalSqMixInvCen_D1_CK5
+    module procedure getDisMahalSqMixInvCen_D1_CK5
         use pm_kind, only: CKC => CK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
-    module procedure getMahalSqMixInvCen_D1_CK4
+    module procedure getDisMahalSqMixInvCen_D1_CK4
         use pm_kind, only: CKC => CK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
-    module procedure getMahalSqMixInvCen_D1_CK3
+    module procedure getDisMahalSqMixInvCen_D1_CK3
         use pm_kind, only: CKC => CK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
-    module procedure getMahalSqMixInvCen_D1_CK2
+    module procedure getDisMahalSqMixInvCen_D1_CK2
         use pm_kind, only: CKC => CK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
-    module procedure getMahalSqMixInvCen_D1_CK1
+    module procedure getDisMahalSqMixInvCen_D1_CK1
         use pm_kind, only: CKC => CK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -803,35 +803,35 @@ contains
 #define RK_ENABLED 1
 
 #if RK5_ENABLED
-    module procedure getMahalSqMixInvCen_D1_RK5
+    module procedure getDisMahalSqMixInvCen_D1_RK5
         use pm_kind, only: RKC => RK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
-    module procedure getMahalSqMixInvCen_D1_RK4
+    module procedure getDisMahalSqMixInvCen_D1_RK4
         use pm_kind, only: RKC => RK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
-    module procedure getMahalSqMixInvCen_D1_RK3
+    module procedure getDisMahalSqMixInvCen_D1_RK3
         use pm_kind, only: RKC => RK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
-    module procedure getMahalSqMixInvCen_D1_RK2
+    module procedure getDisMahalSqMixInvCen_D1_RK2
         use pm_kind, only: RKC => RK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
-    module procedure getMahalSqMixInvCen_D1_RK1
+    module procedure getDisMahalSqMixInvCen_D1_RK1
         use pm_kind, only: RKC => RK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -866,35 +866,35 @@ contains
 #define CK_ENABLED 1
 
 #if CK5_ENABLED
-    module procedure getMahalSqMixInvDef_D2_CK5
+    module procedure getDisMahalSqMixInvDef_D2_CK5
         use pm_kind, only: CKC => CK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
-    module procedure getMahalSqMixInvDef_D2_CK4
+    module procedure getDisMahalSqMixInvDef_D2_CK4
         use pm_kind, only: CKC => CK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
-    module procedure getMahalSqMixInvDef_D2_CK3
+    module procedure getDisMahalSqMixInvDef_D2_CK3
         use pm_kind, only: CKC => CK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
-    module procedure getMahalSqMixInvDef_D2_CK2
+    module procedure getDisMahalSqMixInvDef_D2_CK2
         use pm_kind, only: CKC => CK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
-    module procedure getMahalSqMixInvDef_D2_CK1
+    module procedure getDisMahalSqMixInvDef_D2_CK1
         use pm_kind, only: CKC => CK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -907,35 +907,35 @@ contains
 #define RK_ENABLED 1
 
 #if RK5_ENABLED
-    module procedure getMahalSqMixInvDef_D2_RK5
+    module procedure getDisMahalSqMixInvDef_D2_RK5
         use pm_kind, only: RKC => RK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
-    module procedure getMahalSqMixInvDef_D2_RK4
+    module procedure getDisMahalSqMixInvDef_D2_RK4
         use pm_kind, only: RKC => RK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
-    module procedure getMahalSqMixInvDef_D2_RK3
+    module procedure getDisMahalSqMixInvDef_D2_RK3
         use pm_kind, only: RKC => RK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
-    module procedure getMahalSqMixInvDef_D2_RK2
+    module procedure getDisMahalSqMixInvDef_D2_RK2
         use pm_kind, only: RKC => RK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
-    module procedure getMahalSqMixInvDef_D2_RK1
+    module procedure getDisMahalSqMixInvDef_D2_RK1
         use pm_kind, only: RKC => RK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -958,35 +958,35 @@ contains
 #define CK_ENABLED 1
 
 #if CK5_ENABLED
-    module procedure getMahalSqMixInvCen_D2_CK5
+    module procedure getDisMahalSqMixInvCen_D2_CK5
         use pm_kind, only: CKC => CK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
-    module procedure getMahalSqMixInvCen_D2_CK4
+    module procedure getDisMahalSqMixInvCen_D2_CK4
         use pm_kind, only: CKC => CK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
-    module procedure getMahalSqMixInvCen_D2_CK3
+    module procedure getDisMahalSqMixInvCen_D2_CK3
         use pm_kind, only: CKC => CK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
-    module procedure getMahalSqMixInvCen_D2_CK2
+    module procedure getDisMahalSqMixInvCen_D2_CK2
         use pm_kind, only: CKC => CK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
-    module procedure getMahalSqMixInvCen_D2_CK1
+    module procedure getDisMahalSqMixInvCen_D2_CK1
         use pm_kind, only: CKC => CK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -999,35 +999,35 @@ contains
 #define RK_ENABLED 1
 
 #if RK5_ENABLED
-    module procedure getMahalSqMixInvCen_D2_RK5
+    module procedure getDisMahalSqMixInvCen_D2_RK5
         use pm_kind, only: RKC => RK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
-    module procedure getMahalSqMixInvCen_D2_RK4
+    module procedure getDisMahalSqMixInvCen_D2_RK4
         use pm_kind, only: RKC => RK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
-    module procedure getMahalSqMixInvCen_D2_RK3
+    module procedure getDisMahalSqMixInvCen_D2_RK3
         use pm_kind, only: RKC => RK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
-    module procedure getMahalSqMixInvCen_D2_RK2
+    module procedure getDisMahalSqMixInvCen_D2_RK2
         use pm_kind, only: RKC => RK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
-    module procedure getMahalSqMixInvCen_D2_RK1
+    module procedure getDisMahalSqMixInvCen_D2_RK1
         use pm_kind, only: RKC => RK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -1055,11 +1055,11 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#undef getMahalSq_ENABLED
+#undef getDisMahalSq_ENABLED
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#define setMahalSq_ENABLED 1
+#define setDisMahalSq_ENABLED 1
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1078,35 +1078,35 @@ contains
 #define CK_ENABLED 1
 
 #if CK5_ENABLED
-    module procedure setMahalSqEleInvDef_D0_CK5
+    module procedure setDisMahalSqEleInvDef_D0_CK5
         use pm_kind, only: CKC => CK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
-    module procedure setMahalSqEleInvDef_D0_CK4
+    module procedure setDisMahalSqEleInvDef_D0_CK4
         use pm_kind, only: CKC => CK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
-    module procedure setMahalSqEleInvDef_D0_CK3
+    module procedure setDisMahalSqEleInvDef_D0_CK3
         use pm_kind, only: CKC => CK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
-    module procedure setMahalSqEleInvDef_D0_CK2
+    module procedure setDisMahalSqEleInvDef_D0_CK2
         use pm_kind, only: CKC => CK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
-    module procedure setMahalSqEleInvDef_D0_CK1
+    module procedure setDisMahalSqEleInvDef_D0_CK1
         use pm_kind, only: CKC => CK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -1119,35 +1119,35 @@ contains
 #define RK_ENABLED 1
 
 #if RK5_ENABLED
-    module procedure setMahalSqEleInvDef_D0_RK5
+    module procedure setDisMahalSqEleInvDef_D0_RK5
         use pm_kind, only: RKC => RK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
-    module procedure setMahalSqEleInvDef_D0_RK4
+    module procedure setDisMahalSqEleInvDef_D0_RK4
         use pm_kind, only: RKC => RK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
-    module procedure setMahalSqEleInvDef_D0_RK3
+    module procedure setDisMahalSqEleInvDef_D0_RK3
         use pm_kind, only: RKC => RK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
-    module procedure setMahalSqEleInvDef_D0_RK2
+    module procedure setDisMahalSqEleInvDef_D0_RK2
         use pm_kind, only: RKC => RK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
-    module procedure setMahalSqEleInvDef_D0_RK1
+    module procedure setDisMahalSqEleInvDef_D0_RK1
         use pm_kind, only: RKC => RK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -1170,35 +1170,35 @@ contains
 #define CK_ENABLED 1
 
 #if CK5_ENABLED
-    module procedure setMahalSqEleInvCen_D0_CK5
+    module procedure setDisMahalSqEleInvCen_D0_CK5
         use pm_kind, only: CKC => CK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
-    module procedure setMahalSqEleInvCen_D0_CK4
+    module procedure setDisMahalSqEleInvCen_D0_CK4
         use pm_kind, only: CKC => CK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
-    module procedure setMahalSqEleInvCen_D0_CK3
+    module procedure setDisMahalSqEleInvCen_D0_CK3
         use pm_kind, only: CKC => CK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
-    module procedure setMahalSqEleInvCen_D0_CK2
+    module procedure setDisMahalSqEleInvCen_D0_CK2
         use pm_kind, only: CKC => CK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
-    module procedure setMahalSqEleInvCen_D0_CK1
+    module procedure setDisMahalSqEleInvCen_D0_CK1
         use pm_kind, only: CKC => CK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -1211,35 +1211,35 @@ contains
 #define RK_ENABLED 1
 
 #if RK5_ENABLED
-    module procedure setMahalSqEleInvCen_D0_RK5
+    module procedure setDisMahalSqEleInvCen_D0_RK5
         use pm_kind, only: RKC => RK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
-    module procedure setMahalSqEleInvCen_D0_RK4
+    module procedure setDisMahalSqEleInvCen_D0_RK4
         use pm_kind, only: RKC => RK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
-    module procedure setMahalSqEleInvCen_D0_RK3
+    module procedure setDisMahalSqEleInvCen_D0_RK3
         use pm_kind, only: RKC => RK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
-    module procedure setMahalSqEleInvCen_D0_RK2
+    module procedure setDisMahalSqEleInvCen_D0_RK2
         use pm_kind, only: RKC => RK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
-    module procedure setMahalSqEleInvCen_D0_RK1
+    module procedure setDisMahalSqEleInvCen_D0_RK1
         use pm_kind, only: RKC => RK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -1280,35 +1280,35 @@ contains
 #define CK_ENABLED 1
 
 #if CK5_ENABLED
-    module procedure setMahalSqOneInvDef_D1_CK5
+    module procedure setDisMahalSqOneInvDef_D1_CK5
         use pm_kind, only: CKC => CK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
-    module procedure setMahalSqOneInvDef_D1_CK4
+    module procedure setDisMahalSqOneInvDef_D1_CK4
         use pm_kind, only: CKC => CK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
-    module procedure setMahalSqOneInvDef_D1_CK3
+    module procedure setDisMahalSqOneInvDef_D1_CK3
         use pm_kind, only: CKC => CK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
-    module procedure setMahalSqOneInvDef_D1_CK2
+    module procedure setDisMahalSqOneInvDef_D1_CK2
         use pm_kind, only: CKC => CK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
-    module procedure setMahalSqOneInvDef_D1_CK1
+    module procedure setDisMahalSqOneInvDef_D1_CK1
         use pm_kind, only: CKC => CK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -1321,35 +1321,35 @@ contains
 #define RK_ENABLED 1
 
 #if RK5_ENABLED
-    module procedure setMahalSqOneInvDef_D1_RK5
+    module procedure setDisMahalSqOneInvDef_D1_RK5
         use pm_kind, only: RKC => RK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
-    module procedure setMahalSqOneInvDef_D1_RK4
+    module procedure setDisMahalSqOneInvDef_D1_RK4
         use pm_kind, only: RKC => RK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
-    module procedure setMahalSqOneInvDef_D1_RK3
+    module procedure setDisMahalSqOneInvDef_D1_RK3
         use pm_kind, only: RKC => RK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
-    module procedure setMahalSqOneInvDef_D1_RK2
+    module procedure setDisMahalSqOneInvDef_D1_RK2
         use pm_kind, only: RKC => RK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
-    module procedure setMahalSqOneInvDef_D1_RK1
+    module procedure setDisMahalSqOneInvDef_D1_RK1
         use pm_kind, only: RKC => RK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -1372,35 +1372,35 @@ contains
 #define CK_ENABLED 1
 
 #if CK5_ENABLED
-    module procedure setMahalSqOneInvCen_D1_CK5
+    module procedure setDisMahalSqOneInvCen_D1_CK5
         use pm_kind, only: CKC => CK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
-    module procedure setMahalSqOneInvCen_D1_CK4
+    module procedure setDisMahalSqOneInvCen_D1_CK4
         use pm_kind, only: CKC => CK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
-    module procedure setMahalSqOneInvCen_D1_CK3
+    module procedure setDisMahalSqOneInvCen_D1_CK3
         use pm_kind, only: CKC => CK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
-    module procedure setMahalSqOneInvCen_D1_CK2
+    module procedure setDisMahalSqOneInvCen_D1_CK2
         use pm_kind, only: CKC => CK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
-    module procedure setMahalSqOneInvCen_D1_CK1
+    module procedure setDisMahalSqOneInvCen_D1_CK1
         use pm_kind, only: CKC => CK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -1413,35 +1413,35 @@ contains
 #define RK_ENABLED 1
 
 #if RK5_ENABLED
-    module procedure setMahalSqOneInvCen_D1_RK5
+    module procedure setDisMahalSqOneInvCen_D1_RK5
         use pm_kind, only: RKC => RK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
-    module procedure setMahalSqOneInvCen_D1_RK4
+    module procedure setDisMahalSqOneInvCen_D1_RK4
         use pm_kind, only: RKC => RK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
-    module procedure setMahalSqOneInvCen_D1_RK3
+    module procedure setDisMahalSqOneInvCen_D1_RK3
         use pm_kind, only: RKC => RK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
-    module procedure setMahalSqOneInvCen_D1_RK2
+    module procedure setDisMahalSqOneInvCen_D1_RK2
         use pm_kind, only: RKC => RK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
-    module procedure setMahalSqOneInvCen_D1_RK1
+    module procedure setDisMahalSqOneInvCen_D1_RK1
         use pm_kind, only: RKC => RK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -1476,35 +1476,35 @@ contains
 #define CK_ENABLED 1
 
 #if CK5_ENABLED
-    module procedure setMahalSqOneInvDef_D2_CK5
+    module procedure setDisMahalSqOneInvDef_D2_CK5
         use pm_kind, only: CKC => CK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
-    module procedure setMahalSqOneInvDef_D2_CK4
+    module procedure setDisMahalSqOneInvDef_D2_CK4
         use pm_kind, only: CKC => CK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
-    module procedure setMahalSqOneInvDef_D2_CK3
+    module procedure setDisMahalSqOneInvDef_D2_CK3
         use pm_kind, only: CKC => CK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
-    module procedure setMahalSqOneInvDef_D2_CK2
+    module procedure setDisMahalSqOneInvDef_D2_CK2
         use pm_kind, only: CKC => CK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
-    module procedure setMahalSqOneInvDef_D2_CK1
+    module procedure setDisMahalSqOneInvDef_D2_CK1
         use pm_kind, only: CKC => CK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -1517,35 +1517,35 @@ contains
 #define RK_ENABLED 1
 
 #if RK5_ENABLED
-    module procedure setMahalSqOneInvDef_D2_RK5
+    module procedure setDisMahalSqOneInvDef_D2_RK5
         use pm_kind, only: RKC => RK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
-    module procedure setMahalSqOneInvDef_D2_RK4
+    module procedure setDisMahalSqOneInvDef_D2_RK4
         use pm_kind, only: RKC => RK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
-    module procedure setMahalSqOneInvDef_D2_RK3
+    module procedure setDisMahalSqOneInvDef_D2_RK3
         use pm_kind, only: RKC => RK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
-    module procedure setMahalSqOneInvDef_D2_RK2
+    module procedure setDisMahalSqOneInvDef_D2_RK2
         use pm_kind, only: RKC => RK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
-    module procedure setMahalSqOneInvDef_D2_RK1
+    module procedure setDisMahalSqOneInvDef_D2_RK1
         use pm_kind, only: RKC => RK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -1568,35 +1568,35 @@ contains
 #define CK_ENABLED 1
 
 #if CK5_ENABLED
-    module procedure setMahalSqOneInvCen_D2_CK5
+    module procedure setDisMahalSqOneInvCen_D2_CK5
         use pm_kind, only: CKC => CK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
-    module procedure setMahalSqOneInvCen_D2_CK4
+    module procedure setDisMahalSqOneInvCen_D2_CK4
         use pm_kind, only: CKC => CK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
-    module procedure setMahalSqOneInvCen_D2_CK3
+    module procedure setDisMahalSqOneInvCen_D2_CK3
         use pm_kind, only: CKC => CK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
-    module procedure setMahalSqOneInvCen_D2_CK2
+    module procedure setDisMahalSqOneInvCen_D2_CK2
         use pm_kind, only: CKC => CK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
-    module procedure setMahalSqOneInvCen_D2_CK1
+    module procedure setDisMahalSqOneInvCen_D2_CK1
         use pm_kind, only: CKC => CK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -1609,35 +1609,35 @@ contains
 #define RK_ENABLED 1
 
 #if RK5_ENABLED
-    module procedure setMahalSqOneInvCen_D2_RK5
+    module procedure setDisMahalSqOneInvCen_D2_RK5
         use pm_kind, only: RKC => RK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
-    module procedure setMahalSqOneInvCen_D2_RK4
+    module procedure setDisMahalSqOneInvCen_D2_RK4
         use pm_kind, only: RKC => RK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
-    module procedure setMahalSqOneInvCen_D2_RK3
+    module procedure setDisMahalSqOneInvCen_D2_RK3
         use pm_kind, only: RKC => RK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
-    module procedure setMahalSqOneInvCen_D2_RK2
+    module procedure setDisMahalSqOneInvCen_D2_RK2
         use pm_kind, only: RKC => RK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
-    module procedure setMahalSqOneInvCen_D2_RK1
+    module procedure setDisMahalSqOneInvCen_D2_RK1
         use pm_kind, only: RKC => RK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -1684,35 +1684,35 @@ contains
 #define CK_ENABLED 1
 
 #if CK5_ENABLED
-    module procedure setMahalSqMixInvDef_D1_CK5
+    module procedure setDisMahalSqMixInvDef_D1_CK5
         use pm_kind, only: CKC => CK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
-    module procedure setMahalSqMixInvDef_D1_CK4
+    module procedure setDisMahalSqMixInvDef_D1_CK4
         use pm_kind, only: CKC => CK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
-    module procedure setMahalSqMixInvDef_D1_CK3
+    module procedure setDisMahalSqMixInvDef_D1_CK3
         use pm_kind, only: CKC => CK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
-    module procedure setMahalSqMixInvDef_D1_CK2
+    module procedure setDisMahalSqMixInvDef_D1_CK2
         use pm_kind, only: CKC => CK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
-    module procedure setMahalSqMixInvDef_D1_CK1
+    module procedure setDisMahalSqMixInvDef_D1_CK1
         use pm_kind, only: CKC => CK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -1725,35 +1725,35 @@ contains
 #define RK_ENABLED 1
 
 #if RK5_ENABLED
-    module procedure setMahalSqMixInvDef_D1_RK5
+    module procedure setDisMahalSqMixInvDef_D1_RK5
         use pm_kind, only: RKC => RK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
-    module procedure setMahalSqMixInvDef_D1_RK4
+    module procedure setDisMahalSqMixInvDef_D1_RK4
         use pm_kind, only: RKC => RK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
-    module procedure setMahalSqMixInvDef_D1_RK3
+    module procedure setDisMahalSqMixInvDef_D1_RK3
         use pm_kind, only: RKC => RK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
-    module procedure setMahalSqMixInvDef_D1_RK2
+    module procedure setDisMahalSqMixInvDef_D1_RK2
         use pm_kind, only: RKC => RK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
-    module procedure setMahalSqMixInvDef_D1_RK1
+    module procedure setDisMahalSqMixInvDef_D1_RK1
         use pm_kind, only: RKC => RK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -1776,35 +1776,35 @@ contains
 #define CK_ENABLED 1
 
 #if CK5_ENABLED
-    module procedure setMahalSqMixInvCen_D1_CK5
+    module procedure setDisMahalSqMixInvCen_D1_CK5
         use pm_kind, only: CKC => CK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
-    module procedure setMahalSqMixInvCen_D1_CK4
+    module procedure setDisMahalSqMixInvCen_D1_CK4
         use pm_kind, only: CKC => CK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
-    module procedure setMahalSqMixInvCen_D1_CK3
+    module procedure setDisMahalSqMixInvCen_D1_CK3
         use pm_kind, only: CKC => CK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
-    module procedure setMahalSqMixInvCen_D1_CK2
+    module procedure setDisMahalSqMixInvCen_D1_CK2
         use pm_kind, only: CKC => CK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
-    module procedure setMahalSqMixInvCen_D1_CK1
+    module procedure setDisMahalSqMixInvCen_D1_CK1
         use pm_kind, only: CKC => CK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -1817,35 +1817,35 @@ contains
 #define RK_ENABLED 1
 
 #if RK5_ENABLED
-    module procedure setMahalSqMixInvCen_D1_RK5
+    module procedure setDisMahalSqMixInvCen_D1_RK5
         use pm_kind, only: RKC => RK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
-    module procedure setMahalSqMixInvCen_D1_RK4
+    module procedure setDisMahalSqMixInvCen_D1_RK4
         use pm_kind, only: RKC => RK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
-    module procedure setMahalSqMixInvCen_D1_RK3
+    module procedure setDisMahalSqMixInvCen_D1_RK3
         use pm_kind, only: RKC => RK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
-    module procedure setMahalSqMixInvCen_D1_RK2
+    module procedure setDisMahalSqMixInvCen_D1_RK2
         use pm_kind, only: RKC => RK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
-    module procedure setMahalSqMixInvCen_D1_RK1
+    module procedure setDisMahalSqMixInvCen_D1_RK1
         use pm_kind, only: RKC => RK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -1880,35 +1880,35 @@ contains
 #define CK_ENABLED 1
 
 #if CK5_ENABLED
-    module procedure setMahalSqMixInvDef_D2_CK5
+    module procedure setDisMahalSqMixInvDef_D2_CK5
         use pm_kind, only: CKC => CK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
-    module procedure setMahalSqMixInvDef_D2_CK4
+    module procedure setDisMahalSqMixInvDef_D2_CK4
         use pm_kind, only: CKC => CK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
-    module procedure setMahalSqMixInvDef_D2_CK3
+    module procedure setDisMahalSqMixInvDef_D2_CK3
         use pm_kind, only: CKC => CK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
-    module procedure setMahalSqMixInvDef_D2_CK2
+    module procedure setDisMahalSqMixInvDef_D2_CK2
         use pm_kind, only: CKC => CK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
-    module procedure setMahalSqMixInvDef_D2_CK1
+    module procedure setDisMahalSqMixInvDef_D2_CK1
         use pm_kind, only: CKC => CK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -1921,35 +1921,35 @@ contains
 #define RK_ENABLED 1
 
 #if RK5_ENABLED
-    module procedure setMahalSqMixInvDef_D2_RK5
+    module procedure setDisMahalSqMixInvDef_D2_RK5
         use pm_kind, only: RKC => RK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
-    module procedure setMahalSqMixInvDef_D2_RK4
+    module procedure setDisMahalSqMixInvDef_D2_RK4
         use pm_kind, only: RKC => RK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
-    module procedure setMahalSqMixInvDef_D2_RK3
+    module procedure setDisMahalSqMixInvDef_D2_RK3
         use pm_kind, only: RKC => RK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
-    module procedure setMahalSqMixInvDef_D2_RK2
+    module procedure setDisMahalSqMixInvDef_D2_RK2
         use pm_kind, only: RKC => RK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
-    module procedure setMahalSqMixInvDef_D2_RK1
+    module procedure setDisMahalSqMixInvDef_D2_RK1
         use pm_kind, only: RKC => RK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -1972,35 +1972,35 @@ contains
 #define CK_ENABLED 1
 
 #if CK5_ENABLED
-    module procedure setMahalSqMixInvCen_D2_CK5
+    module procedure setDisMahalSqMixInvCen_D2_CK5
         use pm_kind, only: CKC => CK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
-    module procedure setMahalSqMixInvCen_D2_CK4
+    module procedure setDisMahalSqMixInvCen_D2_CK4
         use pm_kind, only: CKC => CK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
-    module procedure setMahalSqMixInvCen_D2_CK3
+    module procedure setDisMahalSqMixInvCen_D2_CK3
         use pm_kind, only: CKC => CK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
-    module procedure setMahalSqMixInvCen_D2_CK2
+    module procedure setDisMahalSqMixInvCen_D2_CK2
         use pm_kind, only: CKC => CK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
-    module procedure setMahalSqMixInvCen_D2_CK1
+    module procedure setDisMahalSqMixInvCen_D2_CK1
         use pm_kind, only: CKC => CK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -2013,35 +2013,35 @@ contains
 #define RK_ENABLED 1
 
 #if RK5_ENABLED
-    module procedure setMahalSqMixInvCen_D2_RK5
+    module procedure setDisMahalSqMixInvCen_D2_RK5
         use pm_kind, only: RKC => RK5
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
-    module procedure setMahalSqMixInvCen_D2_RK4
+    module procedure setDisMahalSqMixInvCen_D2_RK4
         use pm_kind, only: RKC => RK4
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
-    module procedure setMahalSqMixInvCen_D2_RK3
+    module procedure setDisMahalSqMixInvCen_D2_RK3
         use pm_kind, only: RKC => RK3
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
-    module procedure setMahalSqMixInvCen_D2_RK2
+    module procedure setDisMahalSqMixInvCen_D2_RK2
         use pm_kind, only: RKC => RK2
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
-    module procedure setMahalSqMixInvCen_D2_RK1
+    module procedure setDisMahalSqMixInvCen_D2_RK1
         use pm_kind, only: RKC => RK1
 #include "pm_distanceMahal@routines.inc.F90"
     end procedure
@@ -2069,7 +2069,7 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#undef setMahalSq_ENABLED
+#undef setDisMahalSq_ENABLED
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

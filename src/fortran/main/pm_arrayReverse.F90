@@ -463,6 +463,8 @@ module pm_arrayReverse
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module function getReversedNew_D1_PSSK5(array) result(ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -522,6 +524,9 @@ module pm_arrayReverse
         type(css_pdt(SKC))                                       :: ArrayReversed(size(array))
     end function
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -928,6 +933,8 @@ module pm_arrayReverse
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module subroutine setReversedOld_D1_PSSK5(array)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -982,6 +989,9 @@ module pm_arrayReverse
         type(css_pdt(SKC))       , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1333,6 +1343,8 @@ module pm_arrayReverse
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if PDT_ENABLED
+
 #if SK5_ENABLED
     PURE module subroutine setReversedNew_D1_PSSK5(array, ArrayReversed)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -1392,6 +1404,9 @@ module pm_arrayReverse
         type(css_pdt(SKC))       , intent(out)   , contiguous    :: ArrayReversed(:)
     end subroutine
 #endif
+
+#endif
+!PDT_ENABLED
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

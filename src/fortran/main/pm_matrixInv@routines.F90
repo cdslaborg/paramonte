@@ -30,6 +30,7 @@ submodule (pm_matrixInv) routines ! LCOV_EXCL_LINE
     use pm_err, only: getFine
     use pm_val2str, only: getStr
     use pm_err, only: setAsserted
+    use pm_matrixCopy, only: getMatCopy, lfpack, dia
 #define CHECK_ASSERTION(LINE,ASSERTION,MSG) \
 call setAsserted(ASSERTION,getFine(__FILE__,LINE)//MODULE_NAME//MSG);
 #else
@@ -39,7 +40,6 @@ call setAsserted(ASSERTION,getFine(__FILE__,LINE)//MODULE_NAME//MSG);
     use pm_matrixLUP, only: setMatLUP
    !use pm_matrixInit, only: setMatInit
     use pm_matrixCopy, only: setMatCopy, rdpack
-    use pm_matrixCopy, only: getMatCopy, lfpack, dia
     implicit none
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -35,7 +35,7 @@
 
 REAL getLogFunc(REAL state[], int32_t ndim){
     //
-    //  Return the natural logarithm of an ndim-dimensional Multivariate Normal (MVN)
+    //  Return the natural logarithm of a `ndim`-dimensional Multivariate Normal (MVN)
     //  probability density function (PDF) with the Mean and Covariance Matrix as defined below.
     //  See also: https://en.wikipedia.org/wiki/Multivariate_normal_distribution
     //
