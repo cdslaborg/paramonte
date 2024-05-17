@@ -77,6 +77,12 @@ ParaMonte has been developed while bearing the following design goals in mind:
 Quick Start
 ===========
 
+> The MATLAB branch of the latest release of ParaMonte is a work in progress.  
+> While most library functionalities are already implemented, the library API remains unstable and subject to changes.  
+> We encourage you to build the library from source on your system and test or use it and let us know any comments you may have.  
+> Remember that the previous major release of ParaMonte MATLAB remains fully functional, albeit with entirely different API.  
+> The following guidelines apply to the previous major release of [ParaMonte MATLAB](https://www.cdslab.org/paramonte/generic/1/installation/matlab/).  
+
 For a quick start with some MATLAB Live Script examples, visit [this ParaMonte documentation page](https://www.cdslab.org/paramonte/generic/latest/examples/matlab/mlx/).
 The corresponding example source files (the `*.mlx` files) can be downloaded from the [paramontex GitHub repository](https://github.com/cdslaborg/paramontex/tree/main/MATLAB/mlx),
 a repository dedicated to the ParaMonte library examples.
