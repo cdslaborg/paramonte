@@ -2,7 +2,7 @@
 ///
 /// \tableofcontents
 ///
-/// This is the <b>ParaMonte C++</b> documentation website for the C users and developers.
+/// This is the <b>ParaMonte C++</b> documentation website for the C++ users and developers.
 ///
 /// [⛓](#ParaMonte)
 /// <!--==============================-->
