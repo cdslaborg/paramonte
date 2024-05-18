@@ -38,61 +38,63 @@
 !>
 !>  For probability distributions \f$P\f$ and \f$Q\f$ on the same domain \f$\mathcal{X}\f$, the Bhattacharyya distance is defined as,
 !>  \f{equation}{
-!>      D_{B}(P, Q) = -\ln\left(BC(P,Q)\right) ~,
+!>      D_{B}(P, Q) = -\ln\left(\up{BC}(P,Q)\right) ~,
 !>  \f}
 !>
 !>  where
 !>  \f{equation}{
-!>      BC(P, Q) = \sum_{x \in {\mathcal{X}}}{\sqrt {P(x)Q(x)}} ~,
+!>      \up{BC}(P, Q) = \sum_{x \in {\mathcal{X}}}{\sqrt {P(x)Q(x)}} ~,
 !>  \f}
 !>
 !>  is the Bhattacharyya coefficient for discrete probability distributions.<br>
 !>  For continuous probability distributions, \f$P(dx) = p(x)dx\f$ and \f$Q(dx) = q(x)dx\f$ where \f$p(x)\f$ and \f$q(x)\f$ are the probability density functions, the Bhattacharyya coefficient is defined as,
 !>  \f{equation}{
-!>      BC(P, Q) = \int_{\mathcal{X}}{\sqrt{p(x)q(x)}}\,dx ~.
+!>      \up{BC}(P, Q) = \int_{\mathcal{X}}{\sqrt{p(x)q(x)}}\,dx ~.
 !>  \f}
 !>
 !>  Definition using Measure Theory
 !>  -------------------------------
 !>
-!>  More generally, given two probability measures \f$P, Q\f$ on a measurable space \f$\mathcal{X}}, {\mathcal {B}})\f$, let \f$\lambda\f$ be a sigma finite measure such that \f$P\f$ and \f$Q\f$
+!>  More generally, given two probability measures \f$P, Q\f$ on a measurable space \f$(\mathcal{X}, \mathcal{B})\f$, let \f$\lambda\f$ be a sigma finite measure such that \f$P\f$ and \f$Q\f$
 !>  are absolutely continuous with respect to \f$\lambda\f$, that is, such that \f$P(dx) = p(x) \lambda(dx)\f$, and \f$Q(dx) = q(x)\lambda(dx)\f$ for probability density functions \f$p, q\f$
 !>  with respect to \f$\lambda\f$ defined \f$\lambda\f$-almost everywhere.<br>
-!>  Such a measure, even such a probability measure, always exists, for example, \f$\lambda = {\tfrac {1}{2}}(P + Q)\f$.<br>
+!>  Such a measure, even such a probability measure, always exists, for example, \f$\lambda = \frac{1}{2}(P + Q)\f$.<br>
 !>  Then the Bhattacharyya measure on \f$({\mathcal {X}},{\mathcal {B}})\f$ is defined by,
 !>  \f{equation}{
-!>      bc(dx|P,Q)={\sqrt {p(x)q(x)}}\,\lambda (dx)={\sqrt {{\frac {P(dx)}{\lambda (dx)}}(x){\frac {Q(dx)}{\lambda (dx)}}(x)}}\lambda (dx) ~.
+!>      \up{bc}(dx|P,Q)={\sqrt {p(x)q(x)}}\,\lambda (dx)={\sqrt {{\frac {P(dx)}{\lambda (dx)}}(x){\frac {Q(dx)}{\lambda (dx)}}(x)}}\lambda (dx) ~.
 !>  \f}
 !>
 !>  The definition does not depend on the measure \f$\lambda\f$, for if we choose a measure \f$\mu\f$ such that \f$\lambda\f$ and another measure choice \f$\lambda'\f$
-!>  are absolutely continuous, i.e., \f$\lambda =l(x)\mu\f$ and \f$\lambda '=l'(x)\mu\f$, then,
+!>  are absolutely continuous, i.e., \f$\lambda = l(x)\mu\f$ and \f$\lambda '=l'(x)\mu\f$, then,
 !>  \f{equation}{
-!>      P(dx) = p(x)\lambda (dx) = p'(x)\lambda '(dx)=p(x)l(x)\mu (dx)=p'(x)l'(x)\mu (dx)} ~,
+!>      P(dx) = p(x)\lambda (dx) = p'(x)\lambda '(dx)=p(x)l(x)\mu (dx)=p'(x)l'(x)\mu (dx) ~,
 !>  \f}
 !>
 !>  and similarly for \f$Q\f$.<br>
 !>  We then have,
 !>  \f{equation}{
-!>      bc(dx | P, Q) = {\sqrt{p(x)q(x)}}\,\lambda (dx)={\sqrt {p(x)q(x)}}\,l(x)\mu (x)={\sqrt {p(x)l(x)q(x)\,l(x)}}\mu (dx)={\sqrt {p'(x)l'(x)q'(x)l'(x)}}\,\mu (dx)={\sqrt {p'(x)q'(x)}}\,\lambda '(dx)} ~.
+!>      \up{bc}(dx | P, Q) = {\sqrt{p(x)q(x)}} \, \lambda (dx) = {\sqrt {p(x)q(x)}} \, l(x) \mu(x) =
+!>      {\sqrt{p(x)l(x)q(x) \, l(x)}} \mu(dx) = {\sqrt{p'(x)l'(x)q'(x)l'(x)}} \, \mu(dx) =
+!>      {\sqrt{p'(x)q'(x)}} \, \lambda'(dx) ~.
 !>  \f}
 !>
 !>  Then define the Bhattacharyya coefficient as,
 !>  \f{equation}{
-!>      BC(P,Q)=\int _{\mathcal {X}}bc(dx|P,Q)=\int _{\mathcal {X}}{\sqrt {p(x)q(x)}}\,\lambda (dx)} ~.
+!>      \up{BC}(P,Q) = \int_{\mathcal{X}} \up{bc}(dx|P, Q) = \int_{\mathcal{X}}{\sqrt {p(x)q(x)}}\,\lambda (dx) ~.
 !>  \f}
 !>
-!>  By the above, the quantity \f$BC(P,Q)\f$ does not depend on \f$\lambda\f$, and by the Cauchy inequality \f$0\leq BC(P,Q)\leq 1\f$.<br>
-!>  In particular if \f$P(dx)=p(x)Q(dx)\f$ is absolutely continuous w.r.t. to \f$Q\f$ with Radon Nikodym derivative \f$p(x) = {\frac {P(dx)}{Q(dx)}}(x)\f$, then,
+!>  By the above, the quantity \f$\up{BC}(P,Q)\f$ does not depend on \f$\lambda\f$, and by the Cauchy inequality \f$0\leq \up{BC}(P,Q)\leq 1\f$.<br>
+!>  In particular if \f$P(dx) = p(x)Q(dx)\f$ is absolutely continuous w.r.t. to \f$Q\f$ with Radon Nikodym derivative \f$p(x) = {\frac {P(dx)}{Q(dx)}}(x)\f$, then,
 !>  \f{equation}{
-!>      BC(P,Q) = \int _{\mathcal {X}}{\sqrt {p(x)}}Q(dx)=\int _{\mathcal {X}}{\sqrt {\frac {P(dx)}{Q(dx)}}}Q(dx)=E_{Q}\left[{\sqrt {\frac {P(dx)}{Q(dx)}}}\right] ~.
+!>      \up{BC}(P,Q) = \int_{\mathcal{X}}{\sqrt {p(x)}}Q(dx) = \int_{\mathcal{X}} {\sqrt {\frac{P(dx)}{Q(dx)}}} Q(dx) = E_{Q} \left[{\sqrt{\frac{P(dx)}{Q(dx)}}}\right] ~.
 !>  \f}
 !>
 !>  Properties of the Bhattacharyya Distance
 !>  ----------------------------------------
 !>
 !>  <ol>
-!>      <li>    The conditions \f$0\leq BC\leq 1\f$ and \f$0\leq D_{B}\leq \infty\f$ hold for the Bhattacharyya coefficient and distance, respectively.
-!>      <li>    The Bhattacharyya distance \f$D_{B}\f$ does not obey the triangle inequality, though the [Hellinger distance](@ref pm_distanceHellinger) \f$\sqrt{1 - BC(p,q)}\f$ does.<br>
+!>      <li>    The conditions \f$0\leq \up{BC}\leq 1\f$ and \f$0\leq D_{B}\leq \infty\f$ hold for the Bhattacharyya coefficient and distance, respectively.
+!>      <li>    The Bhattacharyya distance \f$D_{B}\f$ does not obey the triangle inequality, though the [Hellinger distance](@ref pm_distanceHellinger) \f$\sqrt{1 - \up{BC}(p,q)}\f$ does.<br>
 !>  </ol>
 !>
 !>  Connection with Total Variation Distance (TVD)

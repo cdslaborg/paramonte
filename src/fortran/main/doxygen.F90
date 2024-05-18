@@ -134,7 +134,9 @@
 !>  pm_cosmicRate           | This module contains procedures and generic interfaces for computing the cosmic rates of celestial phenomena.
 !>  pm_cosmology            | This module contains procedures and generic interfaces and constants for cosmological calculations.
 !>  pm_dateTime             | This module contains classes and procedures for computing, manipulating, and styling dates and times.
+!>  pm_distanceBhat         | This module contains classes and procedures for computing the Bhattacharyya statistical distance between two probability distributions.
 !>  pm_distanceEuclid       | This module contains procedures and generic interfaces for computing the Euclidean norm of a single point (with respect to origin or a given reference) or the pairwise Euclidean distances (squared) of a collection of points with respect to another set of reference points, optionally without undue overflow or underflow.
+!>  pm_distanceHellinger    | This module contains classes and procedures for computing the Hellinger statistical distance between two probability distributions.
 !>  pm_distanceKolm         | This module contains classes and procedures for computing the Kolmogorov statistical distance.
 !>  pm_distanceMahal        | This module contains classes and procedures for computing the Mahalanobis statistical distance.
 !>  pm_distBand             | This module contains procedures and generic interfaces for computing the Band photon distribution widely used in modeling the spectra of a class of celestial objects knowns Gamma-Ray Bursts.
