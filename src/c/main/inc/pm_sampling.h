@@ -23,7 +23,7 @@
 /// \brief
 /// This header file contains function interfaces to the ParaMonte library Monte Carlo samplers and integrators.
 ///
-/// \finminc
+/// \final
 ///
 /// \author
 /// \AmirShahmoradi, Monday 00:01 AM, January 1, 2018, Institute for Computational Engineering and Sciences, University of Texas Austin
@@ -44,6 +44,12 @@
 /// This interface group is the entry point to all **C-style interfaces** to the ParaDRAM samplers of mathematical density functions.<br>
 /// Although the procedures of this generic interface return a single scalar of type `int32_t`, the procedures generate
 /// massive amounts of information about each simulation which are stored in appropriate external hard drive files.<br>
+///
+/// See,
+/// <ol>
+///     <li>    [this generic documentation page](\pmdoc_usage_sampling/paradram/output/)
+///             for more information on the generated output files for samplings performed using the [ParaDRAM](@ref pm_sampling::paradram_type) sampler.
+/// </ol>
 ///
 /// \param[in]  getLogFunc  :   The input user-specified procedure pointer to the natural logarithm of the target density function.<br>
 ///                             On input, the function must take an input vector `state` of size `ndim` of type floating-point of kind \C_RKALL
@@ -148,7 +154,7 @@
 /// This issue does not exist with GNU compilers, although the GNU definition of `long double`
 /// appears to yield incorrect values in some calculations, e.g., in `isFailedGeomCyclicFit()` of the ParaMonte library.<br>
 ///
-/// \finminc{runParaDRAM}
+/// \final{runParaDRAM}
 ///
 /// \author
 /// \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin

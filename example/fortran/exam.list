@@ -363,6 +363,7 @@ pm_distUnifPar/setUnifParRand
 pm_distUnifSphere/getUnifSphereLogPDF
 pm_distUnifSphere/getUnifSphereRand
 pm_distUnifSphere/setUnifSphereRand
+pm_distanceBhat/getDisBhat
 pm_distanceEuclid/getDisEuclid
 pm_distanceEuclid/getDisMatEuclid
 pm_distanceEuclid/setDisEuclid
@@ -586,7 +587,9 @@ pm_sampleCov/getCovMerged
 pm_sampleCov/setCov
 pm_sampleCov/setCovMean
 pm_sampleCov/setCovMeanMerged
+pm_sampleCov/setCovMeanUpdated
 pm_sampleCov/setCovMerged
+pm_sampleCov/setCovUpdated
 pm_sampleECDF/setECDF
 pm_sampleMean/getMean
 pm_sampleMean/getMeanMerged

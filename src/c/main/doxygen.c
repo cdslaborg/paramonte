@@ -91,7 +91,7 @@
 ///
 /// +   All constants and parameters should generally be typed in uppercase.
 ///
-/// +   The names of variables that **always** represent vectors of values **may** suffixed with `Vec` or `Vector`.
+/// +   The names of variables that **always** represent vectors of values **may** be suffixed with `Vec` or `Vector`.
 ///
 /// +   The names of variables that **always** represent matrices of values **may** be suffixed with `Mat` or `Matrix`.
 ///
@@ -118,12 +118,12 @@
 ///
 /// +   The names of functions with return values should preferably begin with <b>`get`</b>.<br>
 ///     The reasoning is simple: Functions in mathematics *generate and obtain* a **new** object instead of changing (resetting) the state of an existing object.<br>
-///     For example, the function `getMatSym(mat) result(matsym)` generates a symmetric version of the input matrix and returns it as the function result.<br>
+///     For example, the function `getMatSym(mat)` generates a symmetric version of the input matrix and returns it as the function result.<br>
 ///     **Exceptions** to this naming convention are allowed, for example, when the `get` prefix is inconvenient or when the function returns a `_Bool` result.<br>
 ///
 /// +   Functions that return objects of type `_Bool` should be preferably prefixed with `is` or
 ///     be named such that the name begins with a verb and reads as a proposition, evaluating to
-///     either `.true.` or `.false.`.
+///     either true or false.
 ///
 /// +   The keyword <b>`get`</b> should be avoided as a prefix for `void` function names since `void` functions do not generate
 ///     and <i>get</i> a new object as their results, rather they <b>(re)set</b> the state of existing objects passed to them.<br>
@@ -236,7 +236,7 @@
 ///     +   The Doxygen `\test` tag, if any exists, must appear immediately after the example section designated by the <tt>\\example</tt> tag.<br>
 ///     +   The Doxygen `\todo` tag, if any exists, must appear immediately after the `\test` tag or any other tag immediately preceding it.<br>
 ///     +   The Doxygen `\bug` tag, if any exists, must appear immediately after the `\todo` tag or any other tag immediately preceding it.<br>
-///     +   The closing command of each documentation section must be the ParaMonte custom command <tt>\\finmain</tt> separated from the tags before and after by an empty line.<br>
+///     +   The closing command of each documentation section must be the ParaMonte custom command <tt>\\final</tt> separated from the tags before and after by an empty line.<br>
 ///     +   The Doxygen `\author` tag is the last command to appear in any documentation section, and it must preferably have the format exemplified in the example below.<br>
 ///     <br>
 ///     <br>
@@ -259,8 +259,8 @@
 ///         +   <tt>\\postproc</tt> Inserts a title line for the postprocessing section of an example paragraph.
 ///         +   <tt>\\abbr</tt> Inserts a `\remark` tag about the naming abbreviations used in the library.
 ///         +   <tt>\\naming</tt> Inserts a `\remark` tag about the naming conventions used in the library.
-///         +   <tt>\\license</tt> Inserts a `\remark` tag about the generic licensing of the library.
-///         +   <tt>\\finmain</tt> Inserts the set of final generic remarks that should appear at the end of each documentation section.
+///         +   <tt>\\license</tt>  Inserts a `\remark` tag about the generic licensing of the library.
+///         +   <tt>\\final</tt>    Inserts the set of final generic remarks that should appear at the end of each documentation section.
 ///         +   <tt>\\RK</tt>       Inserts a hyper-link reference \RK     to the default `real` kind used in the library.
 ///         +   <tt>\\RK32</tt>     Inserts a hyper-link reference \RK32   to the `real32` real kind used in the library.
 ///         +   <tt>\\RK64</tt>     Inserts a hyper-link reference \RK64   to the `real64` real kind used in the library.
@@ -312,6 +312,12 @@
 /// This interface group is the entry point to all **C-style interfaces** to the ParaDRAM samplers of mathematical density functions.<br>
 /// Although the procedures of this generic interface return a single scalar of type `int32_t`, the procedures generate
 /// massive amounts of information about each simulation which are stored in appropriate external hard drive files.<br>
+///
+/// See,
+/// <ol>
+///     <li>    [this generic documentation page](\pmdoc_usage_sampling/paradram/output/)
+///             for more information on the generated output files for samplings performed using the [ParaDRAM](@ref pm_sampling::paradram_type) sampler.
+/// </ol>
 ///
 /// \param[in]  getLogFunc  :   The input user-specified procedure pointer to the natural logarithm of the target density function.<br>
 ///                             On input, the function must take an input vector `state` of size `ndim` of type floating-point of kind \C_RKALL
@@ -416,7 +422,7 @@
 /// This issue does not exist with GNU compilers, although the GNU definition of `long double`
 /// appears to yield incorrect values in some calculations, e.g., in `isFailedGeomCyclicFit()` of the ParaMonte library.<br>
 ///
-/// \finminc{runParaDRAM}
+/// \final{runParaDRAM}
 ///
 /// \author
 /// \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin
