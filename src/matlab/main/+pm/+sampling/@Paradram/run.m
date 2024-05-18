@@ -1,50 +1,40 @@
+%>  \brief
+%>  Run the ParaDRAM sampler and return nothing.
+%>
+%>  \details
+%>  For example usage, see the documentation of the parent class of this method [pm.sampler.Paradram](@ref Paradram).<br>
+%>
+%>  \param[in]  getLogFunc()    :   The input MATLAB function handle or anonymous (lambda) function
+%>                                  containing the implementation of the objective function to be sampled.<br>
+%>                                  This user-specified function must have the following interface,
+%>                                  \code{.m}
+%>                                      function logFunc = getLogFunc(state)
+%>                                      end
+%>                                  \endcode
+%>                                  where,
+%>                                  <ol>
+%>                                      <li>    the input argument ``state`` is a vector of type MATLAB ``double``
+%>                                              of size ``ndim`` representing a single point from within the ``ndim``
+%>                                              dimensional domain of the mathematical object function to be explored.<br>
+%>                                      <li>    the output argument `logFunc` is a scalar of the same type as the
+%>                                              input ``state`` containing the natural logarithm of the objective
+%>                                              function at the specified input ``state`` within its domain.<br>
+%>  \param[in]  ndim            :   The input scalar positive-valued whole-number representing the number of dimensions
+%>                                  of the domain of the user-specified objective function in the input ``getLogFunc()``.
+%>
+%>  \interface{run}
+%>  \code{.m}
+%>
+%>      sampler = pm.sampling.Paradram();
+%>      sampler.run(getLogFunc, ndim);
+%>
+%>  \endcode
+%>
+%>  \final{run}
+%>
+%>  \author
+%>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin%>
 function run(self, getLogFunc, ndim)
-    %
-    %   Run the sampler and return nothing.
-    %
-    %   Parameters
-    %   ----------
-    %
-    %       getLogFunc()
-    %
-    %           The input MATLAB function handle or anonymous (lambda) function
-    %           containing the implementation of the objective function to be sampled.
-    %           This user-specified function must have the following interface,
-    %
-    %               function logFunc = getLogFunc(state)
-    %               end
-    %
-    %           where,
-    %
-    %               1.  the input argument ``state`` is a vector of type MATLAB ``double``
-    %                   of size ``ndim`` representing a single point from within the ``ndim``
-    %                   dimensional domain of the mathematical object function to be explored.
-    %
-    %               2.  the output argument `logFunc` is a scalar of the same type as the
-    %                   input ``state`` containing the natural logarithm of the objective
-    %                   function at the specified input ``state`` within its domain.
-    %
-    %       ndim
-    %
-    %           The input scalar positive-valued whole-number representing the number of dimensions
-    %           of the domain of the user-specified objective function in the input ``getLogFunc()``.
-    %
-    %   Returns
-    %   -------
-    %
-    %       None
-    %
-    %   Interface
-    %   ---------
-    %
-    %       sampler = pm.sampling.Paradram();
-    %       sampler.run(getLogFunc, ndim);
-    %
-    %   LICENSE
-    %   -------
-    %
-    %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-    %
     if nargin < 3
         help("pm.sampling.Paradram.run");
         error   ( newline ...

@@ -19,7 +19,7 @@
 %>                          containing the coordinates of a set of ``npnt`` points on
 %>                          the boundary of the target 2D ellipsoid.<br>
 %>
-%>  \interface{Paradram}
+%>  \interface{getBorder}
 %>  \code{.m}
 %>
 %>      bcrd = pm.geom.ell2.getBorder();
@@ -38,12 +38,12 @@
 %>  [pm.vis.tile.Ellipse](@ref Ellipse)<br>
 %>
 %>  \example{getBorder}
-%>  \include{lineno} example/pm_sampling/mvn/main.m
+%>  \include{lineno} example/+geom/+ell2/getBorder/main.m
 %>  \matlabrun{getBorder}
 %>  \vis{getBorder}
-%>  \image html example/+geom/+ell2/getBorder.2d.png width=700
-%>  \image html example/+geom/+ell2/getBorder.3d.png width=700
-%>  \image html example/+geom/+ell2/getBorder.wavy.png width=700
+%>  \image html example/+geom/+ell2/getBorder/getBorder.2d.png width=700
+%>  \image html example/+geom/+ell2/getBorder/getBorder.3d.png width=700
+%>  \image html example/+geom/+ell2/getBorder/getBorder.wavy.png width=700
 %>
 %>  \final{getBorder}
 %>
