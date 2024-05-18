@@ -72,7 +72,7 @@
 !>  \test
 !>  [test_pm_distanceMahal](@ref test_pm_distanceMahal)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, March 22, 2012, 2:21 PM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -178,7 +178,7 @@ module pm_distanceMahal
     !>  \pvhigh
     !>  The runtime checks for the complex input `invCov` must be implemented.<br>
     !>
-    !>  \finmain{getDisMahalSq}
+    !>  \final{getDisMahalSq}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -1526,7 +1526,7 @@ module pm_distanceMahal
     !>  The performance of the implementation for `complex` input can be improved by using `do_product` on columns of `invCov`
     !>  instead of the current implementation working with rows of `invCov` in `matmul`.<br>
     !>
-    !>  \finmain{setDisMahalSq}
+    !>  \final{setDisMahalSq}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>

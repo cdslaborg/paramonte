@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains implementations of procedures [pm_distanceEuclid](@ref pm_distanceEuclid).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

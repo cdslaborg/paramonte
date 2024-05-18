@@ -87,7 +87,7 @@
 !>  \test
 !>  [test_pm_distBand](@ref test_pm_distBand)<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
@@ -111,7 +111,7 @@ module pm_distBand
     !>  \warning
     !>  This average value makes the Band distribution unnormalized because the integral of the PDF does not converge for \f$x\rightarrow0\f$.<br>
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
@@ -123,7 +123,7 @@ module pm_distBand
     !>  This reported average value is primarily based on the analyses of data collected by
     !>  the BATSE telescope onboard the Compton Gamma-Ray Observatory (CGRO).<br>
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
@@ -160,7 +160,7 @@ module pm_distBand
     !>  \pvhigh
     !>  This derived type must be converted to PDT and the relevant components and methods must be added once PDTs are well supported.
     !>
-    !>  \finmain{distBand_type}
+    !>  \final{distBand_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -230,7 +230,7 @@ module pm_distBand
     !>  \test
     !>  [test_pm_distBand](@ref test_pm_distBand)
     !>
-    !>  \finmain{getBandEpeak}
+    !>  \final{getBandEpeak}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -357,7 +357,7 @@ module pm_distBand
     !>  \test
     !>  [test_pm_distBand](@ref test_pm_distBand)
     !>
-    !>  \finmain{getBandEbreak}
+    !>  \final{getBandEbreak}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -485,7 +485,7 @@ module pm_distBand
     !>  \test
     !>  [test_pm_distBand](@ref test_pm_distBand)
     !>
-    !>  \finmain{getBandZeta}
+    !>  \final{getBandZeta}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -649,7 +649,7 @@ module pm_distBand
     !>  \test
     !>  [test_pm_distBand](@ref test_pm_distBand)
     !>
-    !>  \finmain{getBandUDF}
+    !>  \final{getBandUDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -808,7 +808,7 @@ module pm_distBand
     !>  \test
     !>  [test_pm_distBand](@ref test_pm_distBand)
     !>
-    !>  \finmain{setBandUCDF}
+    !>  \final{setBandUCDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1001,7 +1001,7 @@ module pm_distBand
     !>  \test
     !>  [test_pm_distBand](@ref test_pm_distBand)
     !>
-    !>  \finmain{setBandMean}
+    !>  \final{setBandMean}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1269,7 +1269,7 @@ module pm_distBand
     !>  \test
     !>  [test_pm_distBand](@ref test_pm_distBand)
     !>
-    !>  \finmain{setBandPhoton}
+    !>  \final{setBandPhoton}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1598,7 +1598,7 @@ module pm_distBand
     !>  \test
     !>  [test_pm_distBand](@ref test_pm_distBand)
     !>
-    !>  \finmain{setBandEnergy}
+    !>  \final{setBandEnergy}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

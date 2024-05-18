@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains the implementation details of the 2D routines under the generic interface [pm_sampleCor](@ref pm_sampleCor).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Saturday 4:40 PM, August 21, 2021, Dallas, TX

@@ -23,7 +23,7 @@
 !>  \test
 !>  [test_pm_mathNumSys](@ref test_pm_mathNumSys)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Tuesday 02:49 AM, August 10, 2021, Dallas, TX
@@ -89,7 +89,7 @@ module pm_mathNumSys
     !>  \test
     !>  [test_pm_mathNumSys](@ref test_pm_mathNumSys)
     !>
-    !>  \finmain{getDecimal}
+    !>  \final{getDecimal}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 02:49 AM, August 10, 2021, Dallas, TX
@@ -494,7 +494,7 @@ module pm_mathNumSys
     !>  There is a dependency on the kind type parameter of the `integer` input arguments requiring `range(0_IKC) < 1024`.<br>
     !>  The algorithm must be modified to become kind-agnostic.<br>
     !>
-    !>  \finmain{getNumeral}
+    !>  \final{getNumeral}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday 03:59 AM, August 10, 2021, Dallas, TX
@@ -613,7 +613,7 @@ module pm_mathNumSys
     !>  \pmed
     !>  The performance of this algorithm can be improved by invoking the proper approach to computing the number of digits.
     !>
-    !>  \finmain{getCountDigit}
+    !>  \final{getCountDigit}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin

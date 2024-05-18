@@ -53,7 +53,7 @@
 !>  \test
 !>  [test_pm_arrayInsert](@ref test_pm_arrayInsert)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX
@@ -158,7 +158,7 @@ module pm_arrayInsert
     !>  \todo
     !>  \pmed A benchmark comparing the performance of [getInserted](@ref pm_arrayInsert::getInserted) with and without `positive, sorted` should be added.
     !>
-    !>  \finmain{getInserted}
+    !>  \final{getInserted}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1074,7 +1074,7 @@ module pm_arrayInsert
     !>  \todo
     !>  \pmed A benchmark comparing the performance of [setInserted](@ref pm_arrayInsert::setInserted) with and without `positive, sorted` should be added.<br>
     !>
-    !>  \finmain{setInserted}
+    !>  \final{setInserted}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

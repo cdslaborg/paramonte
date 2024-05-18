@@ -169,7 +169,7 @@
 !>  \pvhigh
 !>  The sine and cosine forward and reverse transforms must be added to this module.<br>
 !>
-!>  \finmain
+!>  \final
 !>  This module is a complete modernization and significant extension of the original
 !>  [netlib.org](https://netlib.org/fftpack) public-domain FFTPACK library in FORTRAN77 programming language.<br>
 !>  If you use any or parts of this module, you should also cite the following reference in addition to the relevant ParaMonte library reference.<br>
@@ -285,7 +285,7 @@ module pm_fftpack
     !>  \plow
     !>  Extension to higher order factors may be worthwhile in future.
     !>
-    !>  \finmain{getFactorFFT}
+    !>  \final{getFactorFFT}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 11:34 PM, August 10, 2021, Dallas, TX
@@ -739,7 +739,7 @@ module pm_fftpack
     !>  \test
     !>  [test_pm_fftpack](@ref test_pm_fftpack)
     !>
-    !>  \finmain{getFFTF}
+    !>  \final{getFFTF}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 11:34 PM, August 10, 2021, Dallas, TX
@@ -942,7 +942,7 @@ module pm_fftpack
     !>  \test
     !>  [test_pm_fftpack](@ref test_pm_fftpack)
     !>
-    !>  \finmain{setFFTF}
+    !>  \final{setFFTF}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 11:34 PM, August 10, 2021, Dallas, TX
@@ -1149,7 +1149,7 @@ module pm_fftpack
     !>  \test
     !>  [test_pm_fftpack](@ref test_pm_fftpack)
     !>
-    !>  \finmain{getFFTR}
+    !>  \final{getFFTR}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 11:34 PM, August 10, 2021, Dallas, TX
@@ -1354,7 +1354,7 @@ module pm_fftpack
     !>  \test
     !>  [test_pm_fftpack](@ref test_pm_fftpack)
     !>
-    !>  \finmain{setFFTR}
+    !>  \final{setFFTR}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 11:34 PM, August 10, 2021, Dallas, TX
@@ -1560,7 +1560,7 @@ module pm_fftpack
     !>  \test
     !>  [test_pm_fftpack](@ref test_pm_fftpack)
     !>
-    !>  \finmain{getFFTI}
+    !>  \final{getFFTI}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 11:34 PM, August 10, 2021, Dallas, TX
@@ -1747,7 +1747,7 @@ module pm_fftpack
     !>  \test
     !>  [test_pm_fftpack](@ref test_pm_fftpack)
     !>
-    !>  \finmain{setFFTI}
+    !>  \final{setFFTI}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 11:34 PM, August 10, 2021, Dallas, TX

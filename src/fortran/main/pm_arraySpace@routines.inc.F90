@@ -17,7 +17,7 @@
 !>  \brief
 !>  This include file contains procedure implementation of [getLinSpace](@ref pm_arraySpace::getLinSpace).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Sunday 3:33 PM, September 19, 2021, Dallas, TX

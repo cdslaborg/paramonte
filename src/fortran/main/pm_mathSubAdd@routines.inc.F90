@@ -17,7 +17,7 @@
 !>  \brief
 !>  This include file contains implementations of the procedures in module [pm_mathSubAdd](@ref pm_mathSubAdd).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin

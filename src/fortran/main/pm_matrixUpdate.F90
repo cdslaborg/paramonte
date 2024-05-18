@@ -105,7 +105,7 @@
 !>  \pmed
 !>  A benchmark comparison of the procedures of this module with the default BLAS/LAPACK implementation would be informative.<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Tuesday 08:49 PM, August 10, 2021, Dallas, TX
@@ -294,7 +294,7 @@ module pm_matrixUpdate
     !>  This should be done only after performing relevant benchmarks with the current interface
     !>  to gauge whether the extension of this module is worth the effort.<br>
     !>
-    !>  \finmain{setMatUpdate}
+    !>  \final{setMatUpdate}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 08:49 PM, August 10, 2021, Dallas, TX
@@ -4373,7 +4373,7 @@ module pm_matrixUpdate
     !>  \pmed
     !>  Benchmarks comparing this interface with LAPACK routines and conventional approach should be added to the documentation.
     !>
-    !>  \finmain{setMatUpdateR1}
+    !>  \final{setMatUpdateR1}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 11:34 PM, August 10, 2021, Dallas, TX
@@ -5087,7 +5087,7 @@ module pm_matrixUpdate
     !>  This should be done only after performing relevant benchmarks with the current interface
     !>  to gauge whether the extension of this module is worth the effort.<br>
     !>
-    !>  \finmain{setMatUpdateTriang}
+    !>  \final{setMatUpdateTriang}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 08:49 PM, August 10, 2021, Dallas, TX

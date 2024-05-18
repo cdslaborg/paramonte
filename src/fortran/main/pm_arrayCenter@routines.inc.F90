@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains the implementation details of the routines under the generic interfaces of [pm_arrayCenter](@ref pm_arrayCenter).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

@@ -17,7 +17,7 @@
 !>  \brief
 !>  This module contains implementations of the procedures in [pm_sysPath](@ref pm_sysPath).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX

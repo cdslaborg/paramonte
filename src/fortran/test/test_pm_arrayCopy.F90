@@ -17,7 +17,7 @@
 !>  \brief
 !>  This module contains tests of the module [pm_arrayCopy](@ref pm_arrayCopy).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

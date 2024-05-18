@@ -17,7 +17,7 @@
 !>  \brief
 !>  This module contains tests of the module [pm_timer](@ref pm_timer).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains procedure implementations of [pm_str](@ref pm_str).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, 12:53 AM Monday, February 14, 2022, Dallas, TX

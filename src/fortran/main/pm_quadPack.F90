@@ -131,7 +131,7 @@
 !>  \test
 !>  [test_pm_quadPack](@ref test_pm_quadPack)<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -186,7 +186,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{wcauchy_type}
+    !>  \final{wcauchy_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -230,7 +230,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)<br>
     !>
-    !>  \finmain{wcauchy_typer}
+    !>  \final{wcauchy_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -338,7 +338,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{wsin_type}
+    !>  \final{wsin_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -382,7 +382,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)<br>
     !>
-    !>  \finmain{wsin_typer}
+    !>  \final{wsin_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -490,7 +490,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{wcos_type}
+    !>  \final{wcos_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -534,7 +534,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)<br>
     !>
-    !>  \finmain{wcos_typer}
+    !>  \final{wcos_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -638,7 +638,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{GK15_type}
+    !>  \final{GK15_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -667,7 +667,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{GK15}
+    !>  \final{GK15}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -691,7 +691,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{nodeG7}
+    !>  \final{nodeG7}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -719,7 +719,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{weightG7}
+    !>  \final{weightG7}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -747,7 +747,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{nodeK15}
+    !>  \final{nodeK15}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -779,7 +779,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{weightK15}
+    !>  \final{weightK15}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -833,7 +833,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{GK21_type}
+    !>  \final{GK21_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -863,7 +863,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{GK21}
+    !>  \final{GK21}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -887,7 +887,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{nodeG10}
+    !>  \final{nodeG10}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -916,7 +916,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{weightG10}
+    !>  \final{weightG10}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -945,7 +945,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{nodeK21}
+    !>  \final{nodeK21}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -980,7 +980,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{weightK21}
+    !>  \final{weightK21}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1037,7 +1037,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{GK31_type}
+    !>  \final{GK31_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1067,7 +1067,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{GK31}
+    !>  \final{GK31}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1091,7 +1091,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{nodeG15}
+    !>  \final{nodeG15}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1123,7 +1123,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{weightG15}
+    !>  \final{weightG15}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1155,7 +1155,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{nodeK31}
+    !>  \final{nodeK31}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1195,7 +1195,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{weightK31}
+    !>  \final{weightK31}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1257,7 +1257,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{GK41_type}
+    !>  \final{GK41_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1287,7 +1287,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{GK41}
+    !>  \final{GK41}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1311,7 +1311,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{nodeG20}
+    !>  \final{nodeG20}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1345,7 +1345,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{weightG20}
+    !>  \final{weightG20}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1379,7 +1379,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{nodeK41}
+    !>  \final{nodeK41}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1424,7 +1424,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{weightK41}
+    !>  \final{weightK41}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1491,7 +1491,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{GK51_type}
+    !>  \final{GK51_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1521,7 +1521,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{GK51}
+    !>  \final{GK51}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1545,7 +1545,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{nodeG25}
+    !>  \final{nodeG25}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1582,7 +1582,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{weightG25}
+    !>  \final{weightG25}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1619,7 +1619,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{nodeK51}
+    !>  \final{nodeK51}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1669,7 +1669,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{weightK51}
+    !>  \final{weightK51}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1741,7 +1741,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{GK61_type}
+    !>  \final{GK61_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1771,7 +1771,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{GK61}
+    !>  \final{GK61}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1795,7 +1795,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{nodeG30}
+    !>  \final{nodeG30}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1834,7 +1834,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{weightG30}
+    !>  \final{weightG30}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1873,7 +1873,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{nodeK61}
+    !>  \final{nodeK61}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1928,7 +1928,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{weightK61}
+    !>  \final{weightK61}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2029,7 +2029,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{setNodeWeightGK}
+    !>  \final{setNodeWeightGK}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -2262,7 +2262,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{getQuadGK}
+    !>  \final{getQuadGK}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -4494,7 +4494,7 @@ module pm_quadPack
     !>  [getQuadErr](@ref pm_quadPack::getQuadErr)<br>
     !>  [setSeqLimEps](@ref pm_quadPack::setSeqLimEps)<br>
     !>
-    !>  \finmain{MAXLEN_EPSTAB}
+    !>  \final{MAXLEN_EPSTAB}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -4523,7 +4523,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{weps_type}
+    !>  \final{weps_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -4544,7 +4544,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{weps}
+    !>  \final{weps}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -4592,7 +4592,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{setSeqLimEps}
+    !>  \final{setSeqLimEps}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -4705,7 +4705,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{setErrSorted}
+    !>  \final{setErrSorted}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -4831,7 +4831,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{setChebExpan}
+    !>  \final{setChebExpan}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -4982,7 +4982,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{isFailedQuad}
+    !>  \final{isFailedQuad}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -5629,7 +5629,7 @@ module pm_quadPack
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{getQuadErr}
+    !>  \final{getQuadErr}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

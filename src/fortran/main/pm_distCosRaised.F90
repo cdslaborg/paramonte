@@ -73,7 +73,7 @@
 !>  Two additional interfaces for computing the quantiles and random values of Raised Cosine Distribution must be added.<br>
 !>  The methodology employed for the [Beta distribution](@ pm_distBeta) might be useful here.<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -119,7 +119,7 @@ module pm_distCosRaised
     !>  \pvhigh
     !>  This derived type must be converted to PDT and the relevant components and methods must be added once PDTs are well supported.
     !>
-    !>  \finmain{distCosRaised_type}
+    !>  \final{distCosRaised_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -189,7 +189,7 @@ module pm_distCosRaised
     !>  \todo
     !>  \pvlow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{getCosRaisedPDF}
+    !>  \final{getCosRaisedPDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -325,7 +325,7 @@ module pm_distCosRaised
     !>  \pvlow
     !>  This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{setCosRaisedPDF}
+    !>  \final{setCosRaisedPDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -569,7 +569,7 @@ module pm_distCosRaised
     !>  \todo
     !>  \pvlow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{getCosRaisedCDF}
+    !>  \final{getCosRaisedCDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -705,7 +705,7 @@ module pm_distCosRaised
     !>  \pvlow
     !>  This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{setCosRaisedCDF}
+    !>  \final{setCosRaisedCDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

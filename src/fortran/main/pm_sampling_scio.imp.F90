@@ -202,7 +202,7 @@
     !>  \pvhigh
     !>  This derived type must be converted to a PDT as soon as PDTs are supported bug-free in \gfortran.<br>
     !>
-    !>  \finmain{cfcbase_type}
+    !>  \final{cfcbase_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -255,7 +255,7 @@
     !>  \pvhigh
     !>  This derived type must be converted to a PDT as soon as PDTs are supported bug-free in \gfortran.<br>
     !>
-    !>  \finmain{cfcbase_type}
+    !>  \final{cfcbase_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -310,7 +310,7 @@
     !>  \pvhigh
     !>  This derived type must be converted to a PDT as soon as PDTs are supported bug-free in \gfortran.<br>
     !>
-    !>  \finmain{cfcbase_type}
+    !>  \final{cfcbase_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -362,7 +362,7 @@
     !>  \pvhigh
     !>  This derived type must be converted to a PDT as soon as PDTs are supported bug-free in \gfortran.<br>
     !>
-    !>  \finmain{cfcbase_type}
+    !>  \final{cfcbase_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -422,7 +422,7 @@
     !>  \pvhigh
     !>  This derived type must be converted to a PDT as soon as PDTs are supported bug-free in \gfortran.<br>
     !>
-    !>  \finmain{chainParaNest_type}
+    !>  \final{chainParaNest_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -504,7 +504,7 @@ contains
     !>  [pm_sampling_dram](@ref pm_sampling_dram)<br>
     !>  [pm_sampling_nest](@ref pm_sampling_nest)<br>
     !>
-    !>  \finmain{setSpecFromInput}
+    !>  \final{setSpecFromInput}
     !>
     !>  \author
     !>  \FatemehBagheri, Monday 02:15 AM, September 27, 2021, Dallas, TX<br>

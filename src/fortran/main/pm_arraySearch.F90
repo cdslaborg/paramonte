@@ -41,7 +41,7 @@
 !>  \test
 !>  [test_pm_arraySearch](@ref test_pm_arraySearch)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX
@@ -167,7 +167,7 @@ module pm_arraySearch
     !>  \test
     !>  [test_pm_arraySearch](@ref test_pm_arraySearch)
     !>
-    !>  \finmain{getBin}
+    !>  \final{getBin}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

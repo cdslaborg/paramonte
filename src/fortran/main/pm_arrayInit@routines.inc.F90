@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains the implementation details of the routines under the generic interface of [pm_arrayInit](@ref pm_arrayInit).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX

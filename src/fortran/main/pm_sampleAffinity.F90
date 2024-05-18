@@ -86,7 +86,7 @@
 !>  \test
 !>  [test_pm_sampleAffinity](@ref test_pm_sampleAffinity)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  Amir Shahmoradi, Monday 4:00 AM, August 23, 2021, Dallas, TX
@@ -217,7 +217,7 @@ module pm_sampleAffinity
     !>  \test
     !>  [test_pm_sampleAffinity](@ref test_pm_sampleAffinity)
     !>
-    !>  \finmain{getAffinity}
+    !>  \final{getAffinity}
     !>
     !>  \author
     !>  \AmirShahmoradi, Saturday 2:48 AM, August 22, 2021, Dallas, TX
@@ -491,7 +491,7 @@ module pm_sampleAffinity
     !>  The performance of the algorithm for the case `dim = 1` can be
     !>  further improved by looping over the sample in the innermost layer.<br>
     !>
-    !>  \finmain{setAffinity}
+    !>  \final{setAffinity}
     !>
     !>  \author
     !>  \AmirShahmoradi, Thursday 2:45 AM, August 19, 2021, Dallas, TX<br>

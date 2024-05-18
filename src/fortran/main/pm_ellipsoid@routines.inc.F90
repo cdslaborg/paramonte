@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains procedure implementations of [pm_ellipsoid](@ref pm_ellipsoid).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Wednesday 00:57 AM, September 22, 2021, Dallas TX

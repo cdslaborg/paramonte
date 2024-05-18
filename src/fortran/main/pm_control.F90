@@ -35,7 +35,7 @@
 !>
 !>  This module contains an incomplete list of derived types that help resolve the various implementations of the same algorithms using different control flows at compile time.<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -71,7 +71,7 @@ module pm_control
     !>  [selection_type](@ref pm_control::selection_type)<br>
     !>  [control_type](@ref pm_control::control_type)<br>
     !>
-    !>  \finmain{control_type}
+    !>  \final{control_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -105,7 +105,7 @@ module pm_control
     !>  [selection_type](@ref pm_control::selection_type)<br>
     !>  [control_type](@ref pm_control::control_type)<br>
     !>
-    !>  \finmain{sequence_type}
+    !>  \final{sequence_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -130,7 +130,7 @@ module pm_control
     !>  [selection_type](@ref pm_control::selection_type)<br>
     !>  [control_type](@ref pm_control::control_type)<br>
     !>
-    !>  \finmain{sequence}
+    !>  \final{sequence}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -166,7 +166,7 @@ module pm_control
     !>  [selection_type](@ref pm_control::selection_type)<br>
     !>  [control_type](@ref pm_control::control_type)<br>
     !>
-    !>  \finmain{recursion_type}
+    !>  \final{recursion_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -191,7 +191,7 @@ module pm_control
     !>  [selection_type](@ref pm_control::selection_type)<br>
     !>  [control_type](@ref pm_control::control_type)<br>
     !>
-    !>  \finmain{recursion}
+    !>  \final{recursion}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -227,7 +227,7 @@ module pm_control
     !>  [selection_type](@ref pm_control::selection_type)<br>
     !>  [control_type](@ref pm_control::control_type)<br>
     !>
-    !>  \finmain{iteration_type}
+    !>  \final{iteration_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -252,7 +252,7 @@ module pm_control
     !>  [selection_type](@ref pm_control::selection_type)<br>
     !>  [control_type](@ref pm_control::control_type)<br>
     !>
-    !>  \finmain{iteration}
+    !>  \final{iteration}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -288,7 +288,7 @@ module pm_control
     !>  [selection_type](@ref pm_control::selection_type)<br>
     !>  [control_type](@ref pm_control::control_type)<br>
     !>
-    !>  \finmain{selection_type}
+    !>  \final{selection_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -313,7 +313,7 @@ module pm_control
     !>  [selection_type](@ref pm_control::selection_type)<br>
     !>  [control_type](@ref pm_control::control_type)<br>
     !>
-    !>  \finmain{selection}
+    !>  \final{selection}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

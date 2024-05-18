@@ -21,7 +21,7 @@
 !>  \test
 !>  [test_pm_logicalCompare](@ref test_pm_logicalCompare)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -74,7 +74,7 @@ module pm_logicalCompare
     !>  \test
     !>  [test_pm_logicalCompare](@ref test_pm_logicalCompare)
     !>
-    !>  \finmain{pm_logicalCompare_isless}
+    !>  \final{pm_logicalCompare_isless}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -180,7 +180,7 @@ module pm_logicalCompare
     !>  \test
     !>  [test_pm_logicalCompare](@ref test_pm_logicalCompare)
     !>
-    !>  \finmain{pm_logicalCompare_isleq}
+    !>  \final{pm_logicalCompare_isleq}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -286,7 +286,7 @@ module pm_logicalCompare
     !>  \test
     !>  [test_pm_logicalCompare](@ref test_pm_logicalCompare)
     !>
-    !>  \finmain{pm_logicalCompare_iseq}
+    !>  \final{pm_logicalCompare_iseq}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -392,7 +392,7 @@ module pm_logicalCompare
     !>  \test
     !>  [test_pm_logicalCompare](@ref test_pm_logicalCompare)
     !>
-    !>  \finmain{pm_logicalCompare_isneq}
+    !>  \final{pm_logicalCompare_isneq}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -498,7 +498,7 @@ module pm_logicalCompare
     !>  \test
     !>  [test_pm_logicalCompare](@ref test_pm_logicalCompare)
     !>
-    !>  \finmain{pm_logicalCompare_ismeq}
+    !>  \final{pm_logicalCompare_ismeq}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -604,7 +604,7 @@ module pm_logicalCompare
     !>  \test
     !>  [test_pm_logicalCompare](@ref test_pm_logicalCompare)
     !>
-    !>  \finmain{pm_logicalCompare_ismore}
+    !>  \final{pm_logicalCompare_ismore}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

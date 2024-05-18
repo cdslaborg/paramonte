@@ -89,7 +89,7 @@
 !>  \test
 !>  [test_pm_timer](@ref test_pm_timer)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, March 22, 2012, 2:21 PM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -122,7 +122,7 @@ end block;
     !>  This is the `abstract interface` of the [setTime](@ref pm_timer::timer_type) static type-bound procedure
     !>  component of [timer_type](@ref pm_timer::timer_type) `abstract` type that performs the timing since a user-specified or a processor-dependent origin.
     !>
-    !>  \finmain{getTime_proc}
+    !>  \final{getTime_proc}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 23, 2012, 2:21 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -146,7 +146,7 @@ end block;
     !>  \note
     !>  Note that even though the system sleeps during the idle time, the timer clock is still ticking.<br>
     !>
-    !>  \finmain{setIdle_proc}
+    !>  \final{setIdle_proc}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 23, 2012, 2:21 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -205,7 +205,7 @@ end block;
     !>  \pvhigh
     !>  The `start` component of this derived type must become `protected` as soon as Fortran 2023 is supported by the compilers.<br>
     !>
-    !>  \finmain{timer_type}
+    !>  \final{timer_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 2:21 PM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -264,7 +264,7 @@ end block;
     !>  \test
     !>  [test_pm_timer](@ref test_pm_timer)
     !>
-    !>  \finmain{timerCPU_type}
+    !>  \final{timerCPU_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -315,7 +315,7 @@ end block;
     !>  \test
     !>  [test_pm_timer](@ref test_pm_timer)
     !>
-    !>  \finmain{timerDAT_type}
+    !>  \final{timerDAT_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -369,7 +369,7 @@ end block;
     !>  \test
     !>  [test_pm_timer](@ref test_pm_timer)
     !>
-    !>  \finmain{timerMPI_type}
+    !>  \final{timerMPI_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -425,7 +425,7 @@ end block;
     !>  \test
     !>  [test_pm_timer](@ref test_pm_timer)
     !>
-    !>  \finmain{timerOMP_type}
+    !>  \final{timerOMP_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -446,7 +446,7 @@ end block;
     !!>  \brief
     !!>  This s the derived type for generating objects containing information about the system clock count.
     !!>
-    !!>  \finmain{Count_type}
+    !!>  \final{Count_type}
     !!>
     !!>  \author
     !!>  Amir Shahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -495,7 +495,7 @@ end block;
     !>  \test
     !>  [test_pm_timer](@ref test_pm_timer)
     !>
-    !>  \finmain{timerSYS_type}
+    !>  \final{timerSYS_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -549,7 +549,7 @@ contains
     !>  \remark
     !>  See the documentation of [timer_type](@ref pm_timer::timer_type) for example usage.
     !>
-    !>  \finmain{timer_typer}
+    !>  \final{timer_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -594,7 +594,7 @@ contains
     !>  \remark
     !>  See the documentation of [timerCPU_type](@ref pm_timer::timerCPU_type) for example usage.
     !>
-    !>  \finmain{timerCPU_typer}
+    !>  \final{timerCPU_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -634,7 +634,7 @@ contains
     !>  \remark
     !>  See the documentation of [timerDAT_type](@ref pm_timer::timerDAT_type) for example usage.
     !>
-    !>  \finmain{timerDAT_typer}
+    !>  \final{timerDAT_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -681,7 +681,7 @@ contains
     !>  \remark
     !>  See the documentation of [timerMPI_type](@ref pm_timer::timerMPI_type) for example usage.
     !>
-    !>  \finmain{timerMPI_typer}
+    !>  \final{timerMPI_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 02:51 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -744,7 +744,7 @@ contains
     !>  \remark
     !>  See the documentation of [timerOMP_type](@ref pm_timer::timerOMP_type) for example usage.
     !>
-    !>  \finmain{timerOMP_typer}
+    !>  \final{timerOMP_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -787,7 +787,7 @@ contains
     !>  \remark
     !>  See the documentation of [timerSYS_type](@ref pm_timer::timerSYS_type) for example usage.
     !>
-    !>  \finmain{timerSYS_typer}
+    !>  \final{timerSYS_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 03:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -850,7 +850,7 @@ contains
     !>  \test
     !>  [test_pm_timer](@ref test_pm_timer)
     !>
-    !>  \finmain{getTime}
+    !>  \final{getTime}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -910,7 +910,7 @@ contains
     !>  \test
     !>  [test_pm_timer](@ref test_pm_timer)
     !>
-    !>  \finmain{getTimeCPU}
+    !>  \final{getTimeCPU}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -965,7 +965,7 @@ contains
     !>  \test
     !>  [test_pm_timer](@ref test_pm_timer)
     !>
-    !>  \finmain{getTimeDAT}
+    !>  \final{getTimeDAT}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -1027,7 +1027,7 @@ contains
     !>  \test
     !>  [test_pm_timer](@ref test_pm_timer)
     !>
-    !>  \finmain{getTimeMPI}
+    !>  \final{getTimeMPI}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -1088,7 +1088,7 @@ contains
     !>  \test
     !>  [test_pm_timer](@ref test_pm_timer)
     !>
-    !>  \finmain{getTimeOMP}
+    !>  \final{getTimeOMP}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -1190,7 +1190,7 @@ contains
     !>  \endcode
     !>  The above code yields highly similar time costs for multiplication vs. division operation in most benchmarks.
     !>
-    !>  \finmain{getTimeSYS}
+    !>  \final{getTimeSYS}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -1253,7 +1253,7 @@ contains
     !>  \test
     !>  [test_pm_timer](@ref test_pm_timer)
     !>
-    !>  \finmain{getResTimer}
+    !>  \final{getResTimer}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -1308,7 +1308,7 @@ contains
     !>  \test
     !>  [test_pm_timer](@ref test_pm_timer)
     !>
-    !>  \finmain{getResTimerCPU}
+    !>  \final{getResTimerCPU}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -1365,7 +1365,7 @@ contains
     !>  \test
     !>  [test_pm_timer](@ref test_pm_timer)
     !>
-    !>  \finmain{getResTimerDAT}
+    !>  \final{getResTimerDAT}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -1415,7 +1415,7 @@ contains
     !>  \test
     !>  [test_pm_timer](@ref test_pm_timer)
     !>
-    !>  \finmain{getResTimerMPI}
+    !>  \final{getResTimerMPI}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -1468,7 +1468,7 @@ contains
     !>  \test
     !>  [test_pm_timer](@ref test_pm_timer)
     !>
-    !>  \finmain{getResTimerOMP}
+    !>  \final{getResTimerOMP}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -1520,7 +1520,7 @@ contains
     !>  \test
     !>  [test_pm_timer](@ref test_pm_timer)
     !>
-    !>  \finmain{getResTimerSYS}
+    !>  \final{getResTimerSYS}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -1585,7 +1585,7 @@ contains
     !>  \test
     !>  [test_pm_timer](@ref test_pm_timer)
     !>
-    !>  \finmain{setIdle}
+    !>  \final{setIdle}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -1650,7 +1650,7 @@ contains
     !>  \test
     !>  [test_pm_timer](@ref test_pm_timer)
     !>
-    !>  \finmain{setIdleCPU}
+    !>  \final{setIdleCPU}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -1713,7 +1713,7 @@ contains
     !>  \test
     !>  [test_pm_timer](@ref test_pm_timer)
     !>
-    !>  \finmain{setIdleDAT}
+    !>  \final{setIdleDAT}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -1778,7 +1778,7 @@ contains
     !>  \test
     !>  [test_pm_timer](@ref test_pm_timer)
     !>
-    !>  \finmain{setIdleMPI}
+    !>  \final{setIdleMPI}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -1841,7 +1841,7 @@ contains
     !>  \test
     !>  [test_pm_timer](@ref test_pm_timer)
     !>
-    !>  \finmain{setIdleOMP}
+    !>  \final{setIdleOMP}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -1906,7 +1906,7 @@ contains
     !>  \test
     !>  [test_pm_timer](@ref test_pm_timer)
     !>
-    !>  \finmain{setIdleSYS}
+    !>  \final{setIdleSYS}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin

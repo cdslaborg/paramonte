@@ -16,7 +16,7 @@
 
 !>  \brief This file contains the implementations of the tests of module [pm_dateTime](@ref pm_dateTime).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, March 22, 2012, 2:21 PM, National Institute for Fusion Studies, The University of Texas at Austin

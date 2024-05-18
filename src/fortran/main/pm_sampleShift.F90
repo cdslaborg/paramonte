@@ -48,7 +48,7 @@
 !>  \test
 !>  [test_pm_sampleShift](@ref test_pm_sampleShift)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Thursday 12:45 AM, August 20, 2021, Dallas, TX
@@ -79,7 +79,7 @@ module pm_sampleShift
     !>  \test
     !>  [test_pm_sampleShift](@ref test_pm_sampleShift)
     !>
-    !>  \finmain{meanshift_type}
+    !>  \final{meanshift_type}
     !>
     !>  \author
     !>  \FatemehBagheri, Thursday 12:45 AM, August 20, 2021, Dallas, TX
@@ -184,7 +184,7 @@ module pm_sampleShift
     !>  The functionality of this interface can be expanded to include shifting of higher dimensional input `sample`
     !>  and whole `sample` input arrays of arbitrary shape, although the latter is trivial using the Fortran array syntax.<br>
     !>
-    !>  \finmain{getShifted}
+    !>  \final{getShifted}
     !>
     !>  \author
     !>  \AmirShahmoradi, Saturday 2:48 AM, August 22, 2021, Dallas, TX
@@ -1120,7 +1120,7 @@ module pm_sampleShift
     !>  The functionality of this interface can be expanded to include shifting of higher dimensional input `sample`
     !>  and whole `sample` input arrays of arbitrary shape, although the latter is trivial using the Fortran array syntax.<br>
     !>
-    !>  \finmain{setShifted}
+    !>  \final{setShifted}
     !>
     !>  \author
     !>  \AmirShahmoradi, Wednesday 00:01 AM, August 25, 2021, Dallas, TX

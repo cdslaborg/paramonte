@@ -59,7 +59,7 @@
 !>
 !>  \test[test_pm_matrixIndex](@ref test_pm_matrixTrace)<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -154,7 +154,7 @@ module pm_matrixTrace
     !>  \test
     !>  [test_pm_matrixTrace](@ref test_pm_matrixTrace)
     !>
-    !>  \finmain{getMatTrace}
+    !>  \final{getMatTrace}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin
@@ -1458,7 +1458,7 @@ module pm_matrixTrace
     !>  \test
     !>  [test_pm_matrixTrace](@ref test_pm_matrixTrace)
     !>
-    !>  \finmain{getMatMulTrace}
+    !>  \final{getMatMulTrace}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin
@@ -2762,7 +2762,7 @@ module pm_matrixTrace
     !>  \test
     !>  [test_pm_matrixTrace](@ref test_pm_matrixTrace)
     !>
-    !>  \finmain{getMatMulTraceLog}
+    !>  \final{getMatMulTraceLog}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin

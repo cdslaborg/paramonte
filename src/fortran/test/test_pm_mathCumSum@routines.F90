@@ -16,7 +16,7 @@
 
 !>  \brief This file contains the implementations of the tests of module [pm_mathCumSum](@ref pm_mathCumSum).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Tuesday 12:01 AM, August 11, 2021, Dallas, TX

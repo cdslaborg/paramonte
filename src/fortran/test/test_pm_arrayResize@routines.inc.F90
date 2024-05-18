@@ -17,7 +17,7 @@
 !>  \brief
 !>  This module contains implementations of the tests of the procedures under the generic interfaces of [pm_arrayResize](@ref pm_arrayResize).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX

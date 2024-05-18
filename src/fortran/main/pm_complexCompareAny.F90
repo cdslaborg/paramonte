@@ -25,7 +25,7 @@
 !>  \test
 !>  [test_pm_complexCompareAny](@ref test_pm_complexCompareAny)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -84,7 +84,7 @@ module pm_complexCompareAny
     !>  \test
     !>  [test_pm_complexCompareAny](@ref test_pm_complexCompareAny)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -197,7 +197,7 @@ module pm_complexCompareAny
     !>  \test
     !>  [test_pm_complexCompareAny](@ref test_pm_complexCompareAny)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -310,7 +310,7 @@ module pm_complexCompareAny
     !>  \test
     !>  [test_pm_complexCompareAny](@ref test_pm_complexCompareAny)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -427,7 +427,7 @@ module pm_complexCompareAny
     !>  \test
     !>  [test_pm_complexCompareAny](@ref test_pm_complexCompareAny)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -540,7 +540,7 @@ module pm_complexCompareAny
     !>  \test
     !>  [test_pm_complexCompareAny](@ref test_pm_complexCompareAny)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -653,7 +653,7 @@ module pm_complexCompareAny
     !>  \test
     !>  [test_pm_complexCompareAny](@ref test_pm_complexCompareAny)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

@@ -17,7 +17,7 @@
 !>  \brief
 !>  This module contains tests of the module [pm_mathRoot](@ref pm_mathRoot).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi

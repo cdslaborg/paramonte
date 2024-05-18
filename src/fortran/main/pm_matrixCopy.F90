@@ -103,7 +103,7 @@
 !>  [pm_arrayCopy](@ref pm_arrayCopy)<br>
 !>  [pm_matrixCopy](@ref pm_matrixCopy)<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -290,7 +290,7 @@ module pm_matrixCopy
     !>  \phigh
     !>  The implementation for `subset = dia` must be extended to allow `operation` argument.<br>
     !>
-    !>  \finmain{getMatCopy}
+    !>  \final{getMatCopy}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday 00:06 AM, September 20, 2021, Dallas, TX
@@ -17738,7 +17738,7 @@ module pm_matrixCopy
     !>  \phigh
     !>  The implementation for `subset = dia` must be extended to allow `operation` argument.<br>
     !>
-    !>  \finmain{setMatCopy}
+    !>  \final{setMatCopy}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday 00:06 AM, September 20, 2021, Dallas, TX

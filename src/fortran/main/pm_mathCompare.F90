@@ -195,7 +195,7 @@
 !>  \test
 !>  [test_pm_mathCompare](@ref test_pm_mathCompare)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Thursday 12:45 AM, August 20, 2021, Dallas, TX
@@ -232,7 +232,7 @@ module pm_mathCompare
     !>  \see
     !>  [isClose()](@ref pm_mathCompare::isClose)<br>
     !>
-    !>  \finmain{reference_type}
+    !>  \final{reference_type}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 08:49 PM, August 10, 2021, Dallas, TX
@@ -260,7 +260,7 @@ module pm_mathCompare
     !>  \see
     !>  [isClose()](@ref pm_mathCompare::isClose)<br>
     !>
-    !>  \finmain{REFERENCE}
+    !>  \final{REFERENCE}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 08:49 PM, August 10, 2021, Dallas, TX
@@ -292,7 +292,7 @@ module pm_mathCompare
     !>  \see
     !>  [isClose()](@ref pm_mathCompare::isClose)<br>
     !>
-    !>  \finmain{strong_type}
+    !>  \final{strong_type}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 08:49 PM, August 10, 2021, Dallas, TX
@@ -320,7 +320,7 @@ module pm_mathCompare
     !>  \see
     !>  [isClose()](@ref pm_mathCompare::isClose)<br>
     !>
-    !>  \finmain{STRONG}
+    !>  \final{STRONG}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 08:49 PM, August 10, 2021, Dallas, TX
@@ -352,7 +352,7 @@ module pm_mathCompare
     !>  \see
     !>  [isClose()](@ref pm_mathCompare::isClose)<br>
     !>
-    !>  \finmain{weak_type}
+    !>  \final{weak_type}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 08:49 PM, August 10, 2021, Dallas, TX
@@ -380,7 +380,7 @@ module pm_mathCompare
     !>  \see
     !>  [isClose()](@ref pm_mathCompare::isClose)<br>
     !>
-    !>  \finmain{WEAK}
+    !>  \final{WEAK}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 08:49 PM, August 10, 2021, Dallas, TX
@@ -412,7 +412,7 @@ module pm_mathCompare
     !>  \see
     !>  [isClose()](@ref pm_mathCompare::isClose)<br>
     !>
-    !>  \finmain{mean_type}
+    !>  \final{mean_type}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 08:49 PM, August 10, 2021, Dallas, TX
@@ -440,7 +440,7 @@ module pm_mathCompare
     !>  \see
     !>  [isClose()](@ref pm_mathCompare::isClose)<br>
     !>
-    !>  \finmain{MEAN}
+    !>  \final{MEAN}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 08:49 PM, August 10, 2021, Dallas, TX
@@ -528,7 +528,7 @@ module pm_mathCompare
     !>  to ensure robustness against possible rare cases of overflows and underflow as
     !>  discussed in the documentation of [pm_mathCompare](@ref pm_mathCompare).<br>
     !>
-    !>  \finmain{isClose}
+    !>  \final{isClose}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 08:49 PM, August 10, 2021, Dallas, TX

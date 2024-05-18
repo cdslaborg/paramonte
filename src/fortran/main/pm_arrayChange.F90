@@ -42,7 +42,7 @@
 !>  \test
 !>  [test_pm_arrayChange](@ref test_pm_arrayChange)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -131,7 +131,7 @@ module pm_arrayChange
     !>  The input argument `step` can be made `optional`.<br>
     !>  Currently, it is a required argument to avoid testing complexities in the case of input real-valued ranges.<br>
     !>
-    !>  \finmain{getChange}
+    !>  \final{getChange}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -441,7 +441,7 @@ module pm_arrayChange
     !>  \test
     !>  [test_pm_arrayChange](@ref test_pm_arrayChange)
     !>
-    !>  \finmain{setChange}
+    !>  \final{setChange}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>

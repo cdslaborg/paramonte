@@ -17,7 +17,7 @@
 !>  \brief
 !>  This module contains tests of the module [pm_strASCII](@ref pm_strASCII).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi

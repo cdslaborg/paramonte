@@ -18,7 +18,7 @@
 !>  This file contains the implementation details of the routines under the
 !>  generic interfaces of module [pm_complexCompareAll](@ref pm_complexCompareAll).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

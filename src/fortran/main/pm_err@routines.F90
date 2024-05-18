@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains procedure implementations of [pm_err](@ref pm_err).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, 3:43 AM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas at Austin

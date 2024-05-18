@@ -51,7 +51,7 @@
 !>  \test
 !>  [test_pm_strASCII](@ref test_pm_strASCII)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -283,7 +283,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -397,7 +397,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -514,7 +514,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -642,7 +642,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -770,7 +770,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -886,7 +886,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1013,7 +1013,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1134,7 +1134,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1255,7 +1255,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1372,7 +1372,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1489,7 +1489,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1606,7 +1606,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1734,7 +1734,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1862,7 +1862,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1980,7 +1980,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2109,7 +2109,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2237,7 +2237,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2353,7 +2353,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2471,7 +2471,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2600,7 +2600,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2728,7 +2728,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2844,7 +2844,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2962,7 +2962,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3091,7 +3091,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3219,7 +3219,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3335,7 +3335,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3446,7 +3446,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3553,7 +3553,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3659,7 +3659,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3766,7 +3766,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3872,7 +3872,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3979,7 +3979,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -4085,7 +4085,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -4192,7 +4192,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -4304,7 +4304,7 @@ module pm_strASCII
     !>  \pmed This generic interface can be extended to include an optional argument `delim` of type
     !>  `character(1,SKC)` that contains the user-specified quotation mark (other than double-quote).<br>
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -4418,7 +4418,7 @@ module pm_strASCII
     !>  \pmed This generic interface can be extended to include an optional argument `delim` of type
     !>  `character(1,SKC)` that contains the user-specified quotation mark (other than double-quote).<br>
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -4527,7 +4527,7 @@ module pm_strASCII
     !>  \test
     !>  [test_pm_strASCII](@ref test_pm_strASCII)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:02 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -4726,7 +4726,7 @@ module pm_strASCII
     !>  \phigh
     !>  A performance benchmarking of the different interfaces of this generic interface should be added in the future.<br>
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:02 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

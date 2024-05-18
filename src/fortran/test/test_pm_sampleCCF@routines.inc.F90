@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains procedure implementations of tests of [test_pm_sampleCCF](@ref test_pm_sampleCCF).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 5:03 PM, August 11, 2021, Dallas, TX

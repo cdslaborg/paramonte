@@ -17,7 +17,7 @@
 !>  \brief
 !>  This include file contains procedure implementation of [pm_mathCompare](@ref pm_mathCompare).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Sunday 3:33 AM, September 19, 2021, Dallas, TX

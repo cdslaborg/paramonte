@@ -17,7 +17,7 @@
 !>  \brief
 !>  This include file contains the implementations of procedures of [test_pm_complexDiv](@ref test_pm_complexDiv).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX

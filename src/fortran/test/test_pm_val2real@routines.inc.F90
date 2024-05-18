@@ -17,7 +17,7 @@
 !>  \brief
 !>  This include file contains procedure implementations of the tests of [pm_val2Real](@ref pm_val2real).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

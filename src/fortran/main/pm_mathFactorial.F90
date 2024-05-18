@@ -43,7 +43,7 @@
 !>  \test
 !>  [test_pm_mathFactorial](@ref test_pm_mathFactorial)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin
@@ -107,7 +107,7 @@ module pm_mathFactorial
     !>  \test
     !>  [test_pm_mathFactorial](@ref test_pm_mathFactorial)
     !>
-    !>  \finmain{getFactorial}
+    !>  \final{getFactorial}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin
@@ -237,7 +237,7 @@ module pm_mathFactorial
     !>  \test
     !>  [test_pm_mathFactorial](@ref test_pm_mathFactorial)
     !>
-    !>  \finmain{getLogFactorial}
+    !>  \final{getLogFactorial}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin

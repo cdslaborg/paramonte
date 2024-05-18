@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains the implementation details of the routines under the generic interface [setChoice](@ref pm_arrayResize::setChoice).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>

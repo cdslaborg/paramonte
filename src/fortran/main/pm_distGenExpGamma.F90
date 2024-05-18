@@ -123,7 +123,7 @@
 !>  \test
 !>  [test_pm_distGenExpGamma](@ref test_pm_distGenExpGamma)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -169,7 +169,7 @@ module pm_distGenExpGamma
     !>  \pvhigh
     !>  This derived type must be converted to PDT and the relevant components and methods must be added once PDTs are well supported.
     !>
-    !>  \finmain{distGenExpGamma_type}
+    !>  \final{distGenExpGamma_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -263,7 +263,7 @@ module pm_distGenExpGamma
     !>  \todo
     !>  \pmed This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{getGenExpGammaLogPDFNF}
+    !>  \final{getGenExpGammaLogPDFNF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -452,7 +452,7 @@ module pm_distGenExpGamma
     !>  \todo
     !>  \pmed This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{getGenExpGammaLogPDF}
+    !>  \final{getGenExpGammaLogPDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -594,7 +594,7 @@ module pm_distGenExpGamma
     !>  \pmed
     !>  This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{setGenExpGammaLogPDF}
+    !>  \final{setGenExpGammaLogPDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -926,7 +926,7 @@ module pm_distGenExpGamma
     !>  \todo
     !>  \plow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{getGenExpGammaCDF}
+    !>  \final{getGenExpGammaCDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1073,7 +1073,7 @@ module pm_distGenExpGamma
     !>  \todo
     !>  \plow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{setGenExpGammaCDF}
+    !>  \final{setGenExpGammaCDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

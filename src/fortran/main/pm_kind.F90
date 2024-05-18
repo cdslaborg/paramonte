@@ -258,7 +258,7 @@
 !>      <li>    [modelr_type](@ref pm_kind::modelr_type) can hold information about `complex` and `real` containers of various kinds.<br>
 !>  </ol>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -581,7 +581,7 @@ module pm_kind
     !>  \details
     !>  Note that this vector may only be a subset of the `character` kinds supported by the processor.<br>
     !>
-    !>  \finmain{SKALL}
+    !>  \final{SKALL}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -593,7 +593,7 @@ module pm_kind
     !>  \details
     !>  Note that this vector may only be a subset of the `integer` kinds supported by the processor.<br>
     !>
-    !>  \finmain{SKALL}
+    !>  \final{SKALL}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -605,7 +605,7 @@ module pm_kind
     !>  \details
     !>  Note that this vector may only be a subset of the `logical` kinds supported by the processor.<br>
     !>
-    !>  \finmain{SKALL}
+    !>  \final{SKALL}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -617,7 +617,7 @@ module pm_kind
     !>  \details
     !>  Note that this vector may only be a subset of the `complex` kinds supported by the processor.<br>
     !>
-    !>  \finmain{SKALL}
+    !>  \final{SKALL}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -629,7 +629,7 @@ module pm_kind
     !>  \details
     !>  Note that this vector may only be a subset of the `real` kinds supported by the processor.<br>
     !>
-    !>  \finmain{SKALL}
+    !>  \final{SKALL}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -642,7 +642,7 @@ module pm_kind
     !>  \brief
     !>  The scalar `integer` constant of intrinsic default kind, representing the <b>l</b>owest range among all `integer` kinds supported by the specific library build.<br>
     !>
-    !>  \finmain{IRL}
+    !>  \final{IRL}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -651,7 +651,7 @@ module pm_kind
     !>  \brief
     !>  The scalar `integer` constant of intrinsic default kind, representing the <b>h</b>ighest range among all `integer` kinds supported by the specific library build.<br>
     !>
-    !>  \finmain{IRH}
+    !>  \final{IRH}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -660,7 +660,7 @@ module pm_kind
     !>  \brief
     !>  The scalar `integer` constant of intrinsic default kind, representing the <b>l</b>owest precision among all `complex` kinds supported by the specific library build.<br>
     !>
-    !>  \finmain{CPL}
+    !>  \final{CPL}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -669,7 +669,7 @@ module pm_kind
     !>  \brief
     !>  The scalar `integer` constant of intrinsic default kind, representing the <b>h</b>ighest precision among all `complex` kinds supported by the specific library build.<br>
     !>
-    !>  \finmain{CPH}
+    !>  \final{CPH}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -678,7 +678,7 @@ module pm_kind
     !>  \brief
     !>  The scalar `integer` constant of intrinsic default kind, representing the <b>l</b>owest decimal exponent range among all `complex` kinds supported by the specific library build.<br>
     !>
-    !>  \finmain{CRL}
+    !>  \final{CRL}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -687,7 +687,7 @@ module pm_kind
     !>  \brief
     !>  The scalar `integer` constant of intrinsic default kind, representing the <b>h</b>ighest decimal exponent range among all `complex` kinds supported by the specific library build.<br>
     !>
-    !>  \finmain{CRH}
+    !>  \final{CRH}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -696,7 +696,7 @@ module pm_kind
     !>  \brief
     !>  The scalar `integer` constant of intrinsic default kind, representing the <b>l</b>owest precision among all `real` kinds supported by the specific library build.<br>
     !>
-    !>  \finmain{RPL}
+    !>  \final{RPL}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -705,7 +705,7 @@ module pm_kind
     !>  \brief
     !>  The scalar `integer` constant of intrinsic default kind, representing the <b>h</b>ighest precision among all `real` kinds supported by the specific library build.<br>
     !>
-    !>  \finmain{RPH}
+    !>  \final{RPH}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -714,7 +714,7 @@ module pm_kind
     !>  \brief
     !>  The scalar `integer` constant of intrinsic default kind, representing the <b>l</b>owest decimal exponent range among all `real` kinds supported by the specific library build.<br>
     !>
-    !>  \finmain{RRL}
+    !>  \final{RRL}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -723,7 +723,7 @@ module pm_kind
     !>  \brief
     !>  The scalar `integer` constant of intrinsic default kind, representing the <b>h</b>ighest decimal exponent range among all `real` kinds supported by the specific library build.<br>
     !>
-    !>  \finmain{RRH}
+    !>  \final{RRH}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -742,7 +742,7 @@ module pm_kind
     !>  In other words, the lowest-range `integer` kind \IKL <b>supported by a specific library build</b>  is not necessarily the same as the worst-range `integer` kind \IKW <b>supported by the processor</b>.<br>
     !>  While all relevant routines of the library are guaranteed to support the lowest-range `integer` kind of the library \IKL, the same does not hold for \IKW when its value is different from \IKL.<br>
     !>
-    !>  \finmain{IKL}
+    !>  \final{IKL}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -757,7 +757,7 @@ module pm_kind
     !>  In other words, the lowest-precision `complex` kind \CKL <b>supported by a specific library build</b>  is not necessarily the same as the worst-precision `complex` kind \CKW <b>supported by the processor</b>.<br>
     !>  While all relevant routines of the library are guaranteed to support the lowest-precision `complex` kind of the library \CKL, the same does not hold for \CKW when its value is different from \CKL.<br>
     !>
-    !>  \finmain{CKL}
+    !>  \final{CKL}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -772,7 +772,7 @@ module pm_kind
     !>  In other words, the lowest-precision `real` kind \RKL <b>supported by a specific library build</b>  is not necessarily the same as the worst-precision `real` kind \RKW <b>supported by the processor</b>.<br>
     !>  While all relevant routines of the library are guaranteed to support the lowest-precision `real` kind of the library \RKL, the same does not hold for \RKW when its value is different from \RKL.<br>
     !>
-    !>  \finmain{RKL}
+    !>  \final{RKL}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -787,7 +787,7 @@ module pm_kind
     !>  In other words, the highest-range `complex` kind \CKLR <b>supported by a specific library build</b>  is not necessarily the same as the best-range `complex` kind \CKWR <b>supported by the processor</b>.<br>
     !>  While all relevant routines of the library are guaranteed to support the highest-range `complex` kind of the library \CKLR, the same does not hold for \CKWR when its value is different from \CKLR.<br>
     !>
-    !>  \finmain{CKL}
+    !>  \final{CKL}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -802,7 +802,7 @@ module pm_kind
     !>  In other words, the highest-range `real` kind \RKLR <b>supported by a specific library build</b>  is not necessarily the same as the best-range `real` kind \RKWR <b>supported by the processor</b>.<br>
     !>  While all relevant routines of the library are guaranteed to support the highest-range `real` kind of the library \RKLR, the same does not hold for \RKWR when its value is different from \RKLR.<br>
     !>
-    !>  \finmain{RKL}
+    !>  \final{RKL}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -821,7 +821,7 @@ module pm_kind
     !>  In other words, the highest-range `integer` kind \IKH <b>supported by a specific library build</b>  is not necessarily the same as the best-range `integer` kind \IKB <b>supported by the processor</b>.<br>
     !>  While all relevant routines of the library are guaranteed to support the highest-range `integer` kind of the library \IKH, the same does not hold for \IKB when its value is different from \IKH.<br>
     !>
-    !>  \finmain{IKH}
+    !>  \final{IKH}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -836,7 +836,7 @@ module pm_kind
     !>  In other words, the highest-precision `complex` kind \CKH <b>supported by a specific library build</b>  is not necessarily the same as the best-precision `complex` kind \CKB <b>supported by the processor</b>.<br>
     !>  While all relevant routines of the library are guaranteed to support the highest-precision `complex` kind of the library \CKH, the same does not hold for \CKB when its value is different from \CKH.<br>
     !>
-    !>  \finmain{CKH}
+    !>  \final{CKH}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -851,7 +851,7 @@ module pm_kind
     !>  In other words, the highest-precision `real` kind \RKH <b>supported by a specific library build</b>  is not necessarily the same as the best-precision `real` kind \RKB <b>supported by the processor</b>.<br>
     !>  While all relevant routines of the library are guaranteed to support the highest-precision `real` kind of the library \RKH, the same does not hold for \RKB when its value is different from \RKH.<br>
     !>
-    !>  \finmain{RKH}
+    !>  \final{RKH}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -873,7 +873,7 @@ module pm_kind
     !>  In other words, the highest-range `complex` kind \CKHR <b>supported by a specific library build</b>  is not necessarily the same as the best-range `complex` kind \CKBR <b>supported by the processor</b>.<br>
     !>  While all relevant routines of the library are guaranteed to support the highest-range `complex` kind of the library \CKHR, the same does not hold for \CKBR when its value is different from \CKHR.<br>
     !>
-    !>  \finmain{CKH}
+    !>  \final{CKH}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -895,7 +895,7 @@ module pm_kind
     !>  In other words, the highest-range `real` kind \RKHR <b>supported by a specific library build</b>  is not necessarily the same as the best-range `real` kind \RKBR <b>supported by the processor</b>.<br>
     !>  While all relevant routines of the library are guaranteed to support the highest-range `real` kind of the library \RKHR, the same does not hold for \RKBR when its value is different from \RKHR.<br>
     !>
-    !>  \finmain{RKH}
+    !>  \final{RKH}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -914,7 +914,7 @@ module pm_kind
     !>  In other words, the lowest-range `integer` kind \IKL <b>supported by a specific library build</b>  is not necessarily the same as the worst-range `integer` kind \IKW <b>supported by the processor</b>.<br>
     !>  While all relevant routines of the library are guaranteed to support the lowest-range `integer` kind of the library \IKL, the same does not hold for \IKW when its value is different from \IKL.<br>
     !>
-    !>  \finmain{IKW}
+    !>  \final{IKW}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -929,7 +929,7 @@ module pm_kind
     !>  In other words, the lowest-precision `complex` kind \CKL <b>supported by a specific library build</b>  is not necessarily the same as the worst-precision `complex` kind \CKW <b>supported by the processor</b>.<br>
     !>  While all relevant routines of the library are guaranteed to support the lowest-precision `complex` kind of the library \CKL, the same does not hold for \CKW when its value is different from \CKL.<br>
     !>
-    !>  \finmain{CKW}
+    !>  \final{CKW}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -944,7 +944,7 @@ module pm_kind
     !>  In other words, the lowest-precision `real` kind \RKL <b>supported by a specific library build</b>  is not necessarily the same as the worst-precision `real` kind \RKW <b>supported by the processor</b>.<br>
     !>  While all relevant routines of the library are guaranteed to support the lowest-precision `real` kind of the library \RKL, the same does not hold for \RKW when its value is different from \RKL.<br>
     !>
-    !>  \finmain{RKW}
+    !>  \final{RKW}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -959,7 +959,7 @@ module pm_kind
     !>  In other words, the lowest-decimal-exponent-range `complex` kind \CKLR <b>supported by a specific library build</b>  is not necessarily the same as the worst-decimal-exponent-range `complex` kind \CKWR <b>supported by the processor</b>.<br>
     !>  While all relevant routines of the library are guaranteed to support the lowest-decimal-exponent-range `complex` kind of the library \CKLR, the same does not hold for \CKWR when its value is different from \CKLR.<br>
     !>
-    !>  \finmain{CKWR}
+    !>  \final{CKWR}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -974,7 +974,7 @@ module pm_kind
     !>  In other words, the lowest-decimal-exponent-range `real` kind \RKLR <b>supported by a specific library build</b>  is not necessarily the same as the worst-decimal-exponent-range `real` kind \RKWR <b>supported by the processor</b>.<br>
     !>  While all relevant routines of the library are guaranteed to support the lowest-decimal-exponent-range `real` kind of the library \RKLR, the same does not hold for \RKWR when its value is different from \RKLR.<br>
     !>
-    !>  \finmain{RKWR}
+    !>  \final{RKWR}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -995,7 +995,7 @@ module pm_kind
     !>  The current implementation assumes the `integer_kinds` vector of the intrinsic Fortran module `iso_fortran_env` has a maximum length of `50`.<br>
     !>  While this assumption will likely hold for many more decades to come, it is bound to fail in the distant future.<br>
     !>
-    !>  \finmain{integer_kinds_range}
+    !>  \final{integer_kinds_range}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1063,7 +1063,7 @@ module pm_kind
     !>  The current implementation assumes the `real_kinds` vector of the intrinsic Fortran module `iso_fortran_env` has a maximum length of `50`.<br>
     !>  While this assumption will likely hold for many more decades to come, it is bound to fail in the distant future.<br>
     !>
-    !>  \finmain{real_kinds_range}
+    !>  \final{real_kinds_range}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1131,7 +1131,7 @@ module pm_kind
     !>  The current implementation assumes the `real_kinds` vector of the intrinsic Fortran module `iso_fortran_env` has a maximum length of `50`.<br>
     !>  While this assumption will likely hold for many more decades to come, it is bound to fail in the distant future.<br>
     !>
-    !>  \finmain{real_kinds_precision}
+    !>  \final{real_kinds_precision}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1192,7 +1192,7 @@ module pm_kind
     !>  The scalar `integer` constant of intrinsic default kind, representing the
     !>  highest-decimal-exponent-range of `real` types made available by the processor.
     !>
-    !>  \finmain{real_kinds_range_max}
+    !>  \final{real_kinds_range_max}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1202,7 +1202,7 @@ module pm_kind
     !>  The scalar `integer` constant of intrinsic default kind, representing
     !>  the highest-precision of `real` types made available by the processor.
     !>
-    !>  \finmain{real_kinds_precision_max}
+    !>  \final{real_kinds_precision_max}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1212,7 +1212,7 @@ module pm_kind
     !>  The scalar `integer` constant of intrinsic default kind, representing
     !>  the lowest-precision of `real` types made available by the processor.
     !>
-    !>  \finmain{real_kinds_precision_min}
+    !>  \final{real_kinds_precision_min}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1225,7 +1225,7 @@ module pm_kind
     !>  \details
     !>  This constant is internally used within the module to identify the highest-range highest-precision `real` kind type parameter.
     !>
-    !>  \finmain{real_kinds_precision_hop}
+    !>  \final{real_kinds_precision_hop}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1242,7 +1242,7 @@ module pm_kind
     !>  The current implementation assumes the `real_kinds` vector of the intrinsic Fortran module `iso_fortran_env` has a maximum length of `50`.<br>
     !>  While this assumption will likely hold for many more decades to come, it is bound to fail in the distant future.<br>
     !>
-    !>  \finmain{real_kinds_prmax_kind}
+    !>  \final{real_kinds_prmax_kind}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1308,7 +1308,7 @@ module pm_kind
     !>  \details
     !>  This nightmare is necessary to identify the highest-range highest-precision `real` kind type parameter supported by the processor.
     !>
-    !>  \finmain{real_kinds_prmax_kind_avail}
+    !>  \final{real_kinds_prmax_kind_avail}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1326,7 +1326,7 @@ module pm_kind
     !>  The current Fortran standard does not allow automatic selection of the highest-range `integer` kind made available by the processor.<br>
     !>  However, such a kind is essential for defining `integer` constants of highest-range that can be later coerced to `integer` kinds of lower range.<br>
     !>
-    !>  \finmain{IKB}
+    !>  \final{IKB}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1345,7 +1345,7 @@ module pm_kind
     !>  The current Fortran standard does not allow automatic selection of the highest-precision `complex` kind made available by the processor.<br>
     !>  However, such a kind is essential for defining `complex` constants of highest-precision that can be later coerced to `complex` kinds of lower precision.<br>
     !>
-    !>  \finmain{CKB}
+    !>  \final{CKB}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1363,7 +1363,7 @@ module pm_kind
     !>  The current Fortran standard does not allow automatic selection of the highest-precision `real` kind made available by the processor.<br>
     !>  However, such a kind is essential for defining `real` constants of highest-precision that can be later coerced to `real` kinds of lower precision.<br>
     !>
-    !>  \finmain{RKB}
+    !>  \final{RKB}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1382,7 +1382,7 @@ module pm_kind
     !>  The current Fortran standard does not allow automatic selection of the highest-decimal-exponent-range `complex` kind made available by the processor.<br>
     !>  However, such a kind is essential for defining `complex` constants of highest-decimal-exponent-range that can be later coerced to `complex` kinds of lower decimal-exponent-range.<br>
     !>
-    !>  \finmain{CKBR}
+    !>  \final{CKBR}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1400,7 +1400,7 @@ module pm_kind
     !>  The current Fortran standard does not allow automatic selection of the highest-decimal-exponent-range `real` kind made available by the processor.<br>
     !>  However, such a kind is essential for defining `real` constants of highest-decimal-exponent-range that can be later coerced to `real` kinds of lower decimal-exponent-range.<br>
     !>
-    !>  \finmain{RKBR}
+    !>  \final{RKBR}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1497,7 +1497,7 @@ module pm_kind
     !>  [modelb_type](@ref pm_kind::modelb_type)<br>
     !>  [modelr_type](@ref pm_kind::modelr_type)<br>
     !>
-    !>  \finmain{model_type}
+    !>  \final{model_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1537,7 +1537,7 @@ module pm_kind
     !>  [modelb_type](@ref pm_kind::modelb_type)<br>
     !>  [modelr_type](@ref pm_kind::modelr_type)<br>
     !>
-    !>  \finmain{modeln_type}
+    !>  \final{modeln_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1608,7 +1608,7 @@ module pm_kind
     !>  \test
     !>  [test_pm_kind](@ref test_pm_kind)
     !>
-    !>  \finmain{modeli_type}
+    !>  \final{modeli_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1673,7 +1673,7 @@ module pm_kind
     !>  \output{modelb_type}
     !>  \include{lineno} example/pm_kind/modelb_type/main.out.F90
     !>
-    !>  \finmain{modelb_type}
+    !>  \final{modelb_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1739,7 +1739,7 @@ module pm_kind
     !>  \test
     !>  [test_pm_kind](@ref test_pm_kind)
     !>
-    !>  \finmain{modelr_type}
+    !>  \final{modelr_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1827,7 +1827,7 @@ module pm_kind
     !>  \test
     !>  [test_pm_kind](@ref test_pm_kind)
     !>
-    !>  \finmain{modeli_typer}
+    !>  \final{modeli_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -1951,7 +1951,7 @@ module pm_kind
     !>  \test
     !>  [test_pm_kind](@ref test_pm_kind)
     !>
-    !>  \finmain{modelb_typer}
+    !>  \final{modelb_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -2075,7 +2075,7 @@ module pm_kind
     !>  \test
     !>  [test_pm_kind](@ref test_pm_kind)
     !>
-    !>  \finmain{modelr_typer}
+    !>  \final{modelr_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX

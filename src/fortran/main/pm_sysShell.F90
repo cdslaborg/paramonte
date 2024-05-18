@@ -28,7 +28,7 @@
 !>  \test
 !>  [test_pm_sysShell](@ref test_pm_sysShell)<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Friday 3:09 AM, Dec 8, 2017, Dell Medical School, Austin, TX
@@ -65,7 +65,7 @@ module pm_sysShell
     !>  [getPathTemp](@ref pm_sysPath::getPathTemp)<br>
     !>  [getPathNew](@ref pm_sysPath::getPathNew)<br>
     !>
-    !>  \finmain{VARENV_DIRTEMP_WINDOWS}
+    !>  \final{VARENV_DIRTEMP_WINDOWS}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -93,7 +93,7 @@ module pm_sysShell
     !>  [getPathTemp](@ref pm_sysPath::getPathTemp)<br>
     !>  [getPathNew](@ref pm_sysPath::getPathNew)<br>
     !>
-    !>  \finmain{VARENV_DIRTEMP_UNIX}
+    !>  \final{VARENV_DIRTEMP_UNIX}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -189,7 +189,7 @@ module pm_sysShell
     !>  \output{shellis_type}
     !>  \include{lineno} example/pm_sysShell/shellis_type/main.out.F90
     !>
-    !>  \finmain{shellis_type}
+    !>  \final{shellis_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -314,7 +314,7 @@ module pm_sysShell
     !>  \output{shell_type}
     !>  \include{lineno} example/pm_sysShell/shell_type/main.out.F90
     !>
-    !>  \finmain{shell_type}
+    !>  \final{shell_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -419,7 +419,7 @@ module pm_sysShell
     !>  \output{isFailedGetEnvVar}
     !>  \include{lineno} example/pm_sysShell/isFailedGetEnvVar/main.out.F90
     !>
-    !>  \finmain{isFailedGetEnvVar}
+    !>  \final{isFailedGetEnvVar}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -498,7 +498,7 @@ module pm_sysShell
     !>  A subroutine version of this functional interface could be implemented in
     !>  future to avoid allocations and allow for non-default character kinds.<br>
     !>
-    !>  \finmain{isFailedPutEnvVar}
+    !>  \final{isFailedPutEnvVar}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -575,7 +575,7 @@ module pm_sysShell
     !>  \output{isFailedGetOutput}
     !>  \include{lineno} example/pm_sysShell/isFailedGetOutput/main.out.F90
     !>
-    !>  \finmain{isFailedGetOutput}
+    !>  \final{isFailedGetOutput}
     !>
     !>  \todo
     !>  \plow
@@ -683,7 +683,7 @@ module pm_sysShell
     !>  A subroutine version of this functional interface could be implemented in the future to avoid allocations and
     !>  allow for non-default character kinds (once the Fortran compilers fully support non-default characters).
     !>
-    !>  \finmain{isFailedGetDirTemp}
+    !>  \final{isFailedGetDirTemp}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -766,7 +766,7 @@ module pm_sysShell
     !>  \test
     !>  [test_pm_sysShell](@ref test_pm_sysShell)
     !>
-    !>  \finmain{isShellPosix}
+    !>  \final{isShellPosix}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -850,7 +850,7 @@ module pm_sysShell
     !>  \test
     !>  [test_pm_sysShell](@ref test_pm_sysShell)
     !>
-    !>  \finmain{isShellWindows}
+    !>  \final{isShellWindows}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -935,7 +935,7 @@ module pm_sysShell
     !>  \test
     !>  [test_pm_sysShell](@ref test_pm_sysShell)
     !>
-    !>  \finmain{isShellCMD}
+    !>  \final{isShellCMD}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1020,7 +1020,7 @@ module pm_sysShell
     !>  \test
     !>  [test_pm_sysShell](@ref test_pm_sysShell)
     !>
-    !>  \finmain{isShellPowerShell}
+    !>  \final{isShellPowerShell}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1134,7 +1134,7 @@ module pm_sysShell
     !>  This generic interface should be extended to in the future to support non-default character kinds when
     !>  they fully supported by the Fortran intrinsic procedures.<br>
     !>
-    !>  \finmain{isFailedExec}
+    !>  \final{isFailedExec}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1208,7 +1208,7 @@ module pm_sysShell
     !>  This generic interface should be extended to in the future to support non-default character kinds when
     !>  they fully supported by the Fortran intrinsic procedures.<br>
     !>
-    !>  \finmain{isFailedGetShellShape}
+    !>  \final{isFailedGetShellShape}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1276,7 +1276,7 @@ module pm_sysShell
     !>  This generic interface should be extended to in the future to support non-default character kinds when
     !>  they fully supported by the Fortran intrinsic procedures.<br>
     !>
-    !>  \finmain{isFailedGetShellWidth}
+    !>  \final{isFailedGetShellWidth}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1343,7 +1343,7 @@ module pm_sysShell
     !>  This generic interface should be extended to in the future to support non-default character kinds when
     !>  they fully supported by the Fortran intrinsic procedures.<br>
     !>
-    !>  \finmain{isFailedGetShellHeight}
+    !>  \final{isFailedGetShellHeight}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

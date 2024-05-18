@@ -89,7 +89,7 @@
 !>  \test
 !>  [test_pm_arrayFind](@ref test_pm_arrayFind)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX
@@ -356,7 +356,7 @@ module pm_arrayFind
     !>  \pmed
     !>  The functionality of this generic interface can be extended with an optional `border` argument as in [getCountLoc](@ref pm_arrayFind::getCountLoc).<br>
     !>
-    !>  \finmain{getCountLoc}
+    !>  \final{getCountLoc}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3929,7 +3929,7 @@ module pm_arrayFind
     !>  \pmed
     !>  The functionality of this generic interface can be extended with an optional `border` argument as in [getCountLoc](@ref pm_arrayFind::getCountLoc).<br>
     !>
-    !>  \finmain{getLoc}
+    !>  \final{getLoc}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -7614,7 +7614,7 @@ module pm_arrayFind
     !>  However, the documentation of `blindness` requires it to be positive.<br>
     !>  This conflict between the implementation and documentation must be resolved.<br>
     !>
-    !>  \finmain{setLoc}
+    !>  \final{setLoc}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

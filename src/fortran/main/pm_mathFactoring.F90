@@ -41,7 +41,7 @@
 !>  \test
 !>  [test_pm_mathFactoring](@ref test_pm_mathFactoring)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin
@@ -120,7 +120,7 @@ module pm_mathFactoring
     !>      <li>    \f$posint \leq 10^{100}\f$: General Number Field Sieve.
     !>  </ul>
     !>
-    !>  \finmain{getFactoring}
+    !>  \final{getFactoring}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin

@@ -17,7 +17,7 @@
 !>  \brief
 !>  This include file contains the implementation of procedures in [pm_distPower](@ref pm_distPower).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

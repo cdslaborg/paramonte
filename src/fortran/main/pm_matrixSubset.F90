@@ -29,7 +29,7 @@
 !>      \ms{U} = {\begin{bmatrix}u_{1,1}&u_{1,2}&u_{1,3}&\ldots &u_{1,n}\\&u_{2,2}&u_{2,3}&\ldots &u_{2,n}\\&&\ddots &\ddots &\vdots \\&&&\ddots &u_{n-1,n}\\0&&&&u_{n,n}\end{bmatrix}} ~.
 !>  \f}
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -70,7 +70,7 @@ module pm_matrixSubset
     !>  [uppLowDia_type](@ref pm_matrixSubset::uppLowDia_type)<br>
     !>  [subset_type](@ref pm_matrixSubset::subset_type)<br>
     !>
-    !>  \finmain{subset_type}
+    !>  \final{subset_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -110,7 +110,7 @@ module pm_matrixSubset
     !>  [uppLowDia_type](@ref pm_matrixSubset::uppLowDia_type)<br>
     !>  [subset_type](@ref pm_matrixSubset::subset_type)<br>
     !>
-    !>  \finmain{upp_type}
+    !>  \final{upp_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -139,7 +139,7 @@ module pm_matrixSubset
     !>  [uppLowDia_type](@ref pm_matrixSubset::uppLowDia_type)<br>
     !>  [subset_type](@ref pm_matrixSubset::subset_type)<br>
     !>
-    !>  \finmain{upp}
+    !>  \final{upp}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -181,7 +181,7 @@ module pm_matrixSubset
     !>  [uppLowDia_type](@ref pm_matrixSubset::uppLowDia_type)<br>
     !>  [subset_type](@ref pm_matrixSubset::subset_type)<br>
     !>
-    !>  \finmain{low_type}
+    !>  \final{low_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -210,7 +210,7 @@ module pm_matrixSubset
     !>  [uppLowDia_type](@ref pm_matrixSubset::uppLowDia_type)<br>
     !>  [subset_type](@ref pm_matrixSubset::subset_type)<br>
     !>
-    !>  \finmain{low}
+    !>  \final{low}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -252,7 +252,7 @@ module pm_matrixSubset
     !>  [uppLowDia_type](@ref pm_matrixSubset::uppLowDia_type)<br>
     !>  [subset_type](@ref pm_matrixSubset::subset_type)<br>
     !>
-    !>  \finmain{dia_type}
+    !>  \final{dia_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -281,7 +281,7 @@ module pm_matrixSubset
     !>  [uppLowDia_type](@ref pm_matrixSubset::uppLowDia_type)<br>
     !>  [subset_type](@ref pm_matrixSubset::subset_type)<br>
     !>
-    !>  \finmain{dia}
+    !>  \final{dia}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -323,7 +323,7 @@ module pm_matrixSubset
     !>  [uppLowDia_type](@ref pm_matrixSubset::uppLowDia_type)<br>
     !>  [subset_type](@ref pm_matrixSubset::subset_type)<br>
     !>
-    !>  \finmain{uppLow_type}
+    !>  \final{uppLow_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -352,7 +352,7 @@ module pm_matrixSubset
     !>  [uppLowDia_type](@ref pm_matrixSubset::uppLowDia_type)<br>
     !>  [subset_type](@ref pm_matrixSubset::subset_type)<br>
     !>
-    !>  \finmain{uppLow}
+    !>  \final{uppLow}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -394,7 +394,7 @@ module pm_matrixSubset
     !>  [uppLowDia_type](@ref pm_matrixSubset::uppLowDia_type)<br>
     !>  [subset_type](@ref pm_matrixSubset::subset_type)<br>
     !>
-    !>  \finmain{uppLowDia_type}
+    !>  \final{uppLowDia_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -423,7 +423,7 @@ module pm_matrixSubset
     !>  [uppLowDia_type](@ref pm_matrixSubset::uppLowDia_type)<br>
     !>  [subset_type](@ref pm_matrixSubset::subset_type)<br>
     !>
-    !>  \finmain{uppLowDia}
+    !>  \final{uppLowDia}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -465,7 +465,7 @@ module pm_matrixSubset
     !>  [uppLowDia_type](@ref pm_matrixSubset::uppLowDia_type)<br>
     !>  [subset_type](@ref pm_matrixSubset::subset_type)<br>
     !>
-    !>  \finmain{uppDia_type}
+    !>  \final{uppDia_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -494,7 +494,7 @@ module pm_matrixSubset
     !>  [uppLowDia_type](@ref pm_matrixSubset::uppLowDia_type)<br>
     !>  [subset_type](@ref pm_matrixSubset::subset_type)<br>
     !>
-    !>  \finmain{uppDia}
+    !>  \final{uppDia}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -531,7 +531,7 @@ module pm_matrixSubset
     !>  [subset_type](@ref pm_matrixSubset::subset_type)<br>
     !>  [subset_type](@ref pm_matrixSubset::subset_type)<br>
     !>
-    !>  \finmain{lowDia_type}
+    !>  \final{lowDia_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -560,7 +560,7 @@ module pm_matrixSubset
     !>  [uppLowDia_type](@ref pm_matrixSubset::uppLowDia_type)<br>
     !>  [subset_type](@ref pm_matrixSubset::subset_type)<br>
     !>
-    !>  \finmain{lowDia}
+    !>  \final{lowDia}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -620,7 +620,7 @@ module pm_matrixSubset
     !>  [getSubSymm](@ref pm_matrixSubset::getSubSymm)<br>
     !>  [getSubUnion](@ref pm_matrixSubset::getSubUnion)<br>
     !>
-    !>  \finmain{getSubComp}
+    !>  \final{getSubComp}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -733,7 +733,7 @@ module pm_matrixSubset
     !>  [getSubSymm](@ref pm_matrixSubset::getSubSymm)<br>
     !>  [getSubUnion](@ref pm_matrixSubset::getSubUnion)<br>
     !>
-    !>  \finmain{getSubSymm}
+    !>  \final{getSubSymm}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -852,7 +852,7 @@ module pm_matrixSubset
     !>  [getSubSymm](@ref pm_matrixSubset::getSubSymm)<br>
     !>  [getSubUnion](@ref pm_matrixSubset::getSubUnion)<br>
     !>
-    !>  \finmain{getSubUnion}
+    !>  \final{getSubUnion}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

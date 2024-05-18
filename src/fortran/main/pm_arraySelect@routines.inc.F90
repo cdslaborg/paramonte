@@ -17,7 +17,7 @@
 !>  \brief
 !>  This include file contains the procedure implementation of Non-Recursive QuickSort selecting the smallest `rank`th value in the input array.
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi

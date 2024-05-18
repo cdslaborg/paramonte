@@ -54,7 +54,7 @@
 !>  \test
 !>  [test_pm_arrayRebind](@ref test_pm_arrayRebind)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX
@@ -211,7 +211,7 @@ module pm_arrayRebind
     !>  \pmed
     !>  This generic interface should be extended to arrays of container type as done in [pm_arrayResize](@ref pm_arrayResize).<br>
     !>
-    !>  \finmain{setRebound}
+    !>  \final{setRebound}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

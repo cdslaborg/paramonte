@@ -264,7 +264,7 @@
 !>  \test
 !>  [test_pm_distUnif](@ref test_pm_distUnif)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -314,7 +314,7 @@ module pm_distUnif
     !>  \pvhigh
     !>  This derived type must be converted to PDT and the relevant components and methods must be added once PDTs are well supported.
     !>
-    !>  \finmain{distUnif_type}
+    !>  \final{distUnif_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -385,7 +385,7 @@ module pm_distUnif
     !>  \todo
     !>  \pmed This generic interface can be extended to input string arguments to make it compatible with [setUnifRand](@ref pm_distUnif::setUnifRand).
     !>
-    !>  \finmain{getUnifCDF}
+    !>  \final{getUnifCDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -825,7 +825,7 @@ module pm_distUnif
     !>  \todo
     !>  \pmed This generic interface can be extended to input string arguments to make it compatible with [setUnifRand](@ref pm_distUnif::setUnifRand).
     !>
-    !>  \finmain{setUnifCDF}
+    !>  \final{setUnifCDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -2612,7 +2612,7 @@ module pm_distUnif
     !>  [xoshiro256ssw_typer](@ref pm_distUnif::xoshiro256ssw_typer)<br>
     !>  [xoshiro256ssStateSize](@ref pm_distUnif::xoshiro256ssStateSize)<br>
     !>
-    !>  \finmain{xoshiro256ssStateSize}
+    !>  \final{xoshiro256ssStateSize}
     !>
     !>  \author
     !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX
@@ -2634,7 +2634,7 @@ module pm_distUnif
     !>  [xoshiro256ssw_typer](@ref pm_distUnif::xoshiro256ssw_typer)<br>
     !>  [xoshiro256ssStateSize](@ref pm_distUnif::xoshiro256ssStateSize)<br>
     !>
-    !>  \finmain{xoshiro256ssStateSize}
+    !>  \final{xoshiro256ssStateSize}
     !>
     !>  \author
     !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX
@@ -2668,7 +2668,7 @@ module pm_distUnif
     !>  [xoshiro256ssw_typer](@ref pm_distUnif::xoshiro256ssw_typer)<br>
     !>  [xoshiro256ssStateSize](@ref pm_distUnif::xoshiro256ssStateSize)<br>
     !>
-    !>  \finmain{xoshiro256ssJump128}
+    !>  \final{xoshiro256ssJump128}
     !>
     !>  \author
     !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX
@@ -2708,7 +2708,7 @@ module pm_distUnif
     !>  [xoshiro256ssw_typer](@ref pm_distUnif::xoshiro256ssw_typer)<br>
     !>  [xoshiro256ssStateSize](@ref pm_distUnif::xoshiro256ssStateSize)<br>
     !>
-    !>  \finmain{xoshiro256ssJump192}
+    !>  \final{xoshiro256ssJump192}
     !>
     !>  \author
     !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX
@@ -2732,7 +2732,7 @@ module pm_distUnif
     !>  \test
     !>  [test_pm_distUnif](@ref test_pm_distUnif)
     !>
-    !>  \finmain{rngu_type}
+    !>  \final{rngu_type}
     !>
     !>  \author
     !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX
@@ -2830,7 +2830,7 @@ module pm_distUnif
     !>  \output{rngf_type}
     !>  \include{lineno} example/pm_distUnif/rngf_type/main.out.F90
     !>
-    !>  \finmain{rngf_type}
+    !>  \final{rngf_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2879,7 +2879,7 @@ module pm_distUnif
     !>  \remedy{2.0.0}
     !>  For now, the `parameter` attribute is removed from the declaration of [rngf](@ref pm_distUnif::rngf).<br>
     !>
-    !>  \finmain{rngf}
+    !>  \final{rngf}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2922,7 +2922,7 @@ module pm_distUnif
     !>  \test
     !>  [test_pm_distUnif](@ref test_pm_distUnif)
     !>
-    !>  \finmain{rngf_typer}
+    !>  \final{rngf_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2977,7 +2977,7 @@ module pm_distUnif
     !>  \test
     !>  [test_pm_distUnif](@ref test_pm_distUnif)
     !>
-    !>  \finmain{xoshiro256ss_type}
+    !>  \final{xoshiro256ss_type}
     !>
     !>  \author
     !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX
@@ -3147,7 +3147,7 @@ module pm_distUnif
     !>  An illustration of the distribution of the probability of individual bits being `0` or `1` in the
     !>  mantissa of `real`-valued random numbers and `integer` random numbers must be added to the example.<br>
     !>
-    !>  \finmain{xoshiro256ssw_type}
+    !>  \final{xoshiro256ssw_type}
     !>
     !>  \author
     !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX
@@ -3236,7 +3236,7 @@ module pm_distUnif
     !>  \test
     !>  [test_pm_distUnif](@ref test_pm_distUnif)<br>
     !>
-    !>  \finmain{xoshiro256ssw_typer}
+    !>  \final{xoshiro256ssw_typer}
     !>
     !>  \author
     !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX
@@ -3355,7 +3355,7 @@ module pm_distUnif
     !>  An illustration of the distribution of the probability of individual bits being `0` or `1` in the
     !>  mantissa of `real`-valued random numbers and `integer` random numbers must be added to the example.<br>
     !>
-    !>  \finmain{xoshiro256ssg_type}
+    !>  \final{xoshiro256ssg_type}
     !>
     !>  \author
     !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX
@@ -3447,7 +3447,7 @@ module pm_distUnif
     !>  \test
     !>  [test_pm_distUnif](@ref test_pm_distUnif)<br>
     !>
-    !>  \finmain{xoshiro256ssw_typer}
+    !>  \final{xoshiro256ssw_typer}
     !>
     !>  \author
     !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX
@@ -3586,7 +3586,7 @@ module pm_distUnif
     !>  An illustration of the distribution of the probability of individual bits being `0` or `1` in the
     !>  mantissa of `real`-valued random numbers and `integer` random numbers must be added to the example.<br>
     !>
-    !>  \finmain{splitmix64_type}
+    !>  \final{splitmix64_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3675,7 +3675,7 @@ module pm_distUnif
     !>  \test
     !>  [test_pm_distUnif](@ref test_pm_distUnif)
     !>
-    !>  \finmain{splitmix64_typer}
+    !>  \final{splitmix64_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3826,7 +3826,7 @@ module pm_distUnif
     !>  \test
     !>  [test_pm_distUnif](@ref test_pm_distUnif)
     !>
-    !>  \finmain{getUnifRandStateSize}
+    !>  \final{getUnifRandStateSize}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3895,7 +3895,7 @@ module pm_distUnif
     !>  \test
     !>  [test_pm_distUnif](@ref test_pm_distUnif)
     !>
-    !>  \finmain{getUnifRandState}
+    !>  \final{getUnifRandState}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3986,7 +3986,7 @@ module pm_distUnif
     !>  \test
     !>  [test_pm_distUnif](@ref test_pm_distUnif)
     !>
-    !>  \finmain{setUnifRandState}
+    !>  \final{setUnifRandState}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -4140,7 +4140,7 @@ module pm_distUnif
     !>  As of 2021, the use of double precision (64-bit) vs. single-precision for random number generation increases the
     !>  computational cost of the algorithms by about three times.<br>
     !>
-    !>  \finmain{getUnifRand}
+    !>  \final{getUnifRand}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -11051,7 +11051,7 @@ module pm_distUnif
     !>  \remedy
     !>  For now, the expression is replaced with `rand = int(0.5d0 + temp, kind = IKC)`.<br>
     !>
-    !>  \finmain{setUnifRand}
+    !>  \final{setUnifRand}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

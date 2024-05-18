@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains procedure implementations of [pm_container](@ref pm_container).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Monday 2:21 AM, August 30, 2021, Dallas, TX

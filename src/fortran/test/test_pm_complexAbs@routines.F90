@@ -16,7 +16,7 @@
 
 !>  \brief This file contains the procedure implementations of [pm_complexAbs](@ref pm_complexAbs).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX

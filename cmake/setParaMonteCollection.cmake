@@ -159,9 +159,9 @@ if (EXISTS "${origin}")
         #### Build the contents of CMakeLists.
 
         # WARNING
-        # The first paramonet library path search option below in `find_library` is 
+        # The first paramonet library path search option below in `find_library` is
         # essential for correct (original) library identification in code coverage builds.
-        
+
         string(CONCAT collection_cmakelists_contents "${collection_cmakelists_contents}"
             "cmake_minimum_required(VERSION 3.14)\n"
             "set(CMAKE_BUILD_TYPE ${CMAKE_BUILD_TYPE})\n"
@@ -664,26 +664,33 @@ if (EXISTS "${origin}")
             string(REPLACE " " ";" ${collection}List "${${collection}List}")
             message(NOTICE "${pmattn} Enabling the requested paramonte::${lang} library ${collection} as outlined by the flag value \"${${collection}BR}\"")
             setSubDirList(paramonte_collection_mod_list "${destin}")
-            #file(GLOB_RECURSE paramonte_${collection}BR_dir_list LIST_DIRECTORIES true RELATIVE "${destin}" *main${lang_ext})
-            foreach(paramonte_collection_inc_dir ${paramonte_collection_mod_list})
-                set(paramonte_collection_inc_dir_abs "${destin}/${paramonte_collection_inc_dir}")
-                setSubDirList(paramonte_collection_sub_dir_list "${paramonte_collection_inc_dir_abs}")
-                foreach(paramonte_collection_sub_dir ${paramonte_collection_sub_dir_list})
-                    set(paramonte_collection_current ${paramonte_collection_inc_dir}/${paramonte_collection_sub_dir})
-                    foreach(bitem ${${collection}List}) # no quotations for ${collection}List!
-                        #message(NOTICE "${pmwarn} ${paramonte_collection_inc_dir} ${paramonte_collection_sub_dir} ${bitem}")
-                        string(TOLOWER "${bitem}" bitem_lower)
-                        if ("${bitem_lower}" STREQUAL "all"
-                            OR
-                            "${paramonte_collection_inc_dir}" MATCHES ".*${bitem}.*" # OR "${bitem}" MATCHES ".*${paramonte_collection_inc_dir}.*"
-                            OR
-                            "${paramonte_collection_sub_dir}" MATCHES ".*${bitem}.*" # OR "${bitem}" MATCHES ".*${paramonte_collection_sub_dir}.*"
-                            )
-                            list(APPEND paramonte_${collection}BR_dir_list ${paramonte_collection_current})
-                        endif()
+            if(lang_is_dynamic)
+                file(GLOB_RECURSE paramonte_${collection}BR_dir_list
+                    LIST_DIRECTORIES true
+                    #RELATIVE "${destin}"
+                    *main${lang_ext}
+                    )
+            else()
+                foreach(paramonte_collection_inc_dir ${paramonte_collection_mod_list})
+                    set(paramonte_collection_inc_dir_abs "${destin}/${paramonte_collection_inc_dir}")
+                    setSubDirList(paramonte_collection_sub_dir_list "${paramonte_collection_inc_dir_abs}")
+                    foreach(paramonte_collection_sub_dir ${paramonte_collection_sub_dir_list})
+                        set(paramonte_collection_current ${paramonte_collection_inc_dir}/${paramonte_collection_sub_dir})
+                        foreach(bitem ${${collection}List}) # no quotations for ${collection}List!
+                            #message(NOTICE "${pmwarn} ${paramonte_collection_inc_dir} ${paramonte_collection_sub_dir} ${bitem}")
+                            string(TOLOWER "${bitem}" bitem_lower)
+                            if ("${bitem_lower}" STREQUAL "all"
+                                OR
+                                "${paramonte_collection_inc_dir}" MATCHES ".*${bitem}.*" # OR "${bitem}" MATCHES ".*${paramonte_collection_inc_dir}.*"
+                                OR
+                                "${paramonte_collection_sub_dir}" MATCHES ".*${bitem}.*" # OR "${bitem}" MATCHES ".*${paramonte_collection_sub_dir}.*"
+                                )
+                                list(APPEND paramonte_${collection}BR_dir_list ${paramonte_collection_current})
+                            endif()
+                        endforeach()
                     endforeach()
                 endforeach()
-            endforeach()
+            endif()
         endif()
 
         #### Loop over all collection items to add the custom commands.

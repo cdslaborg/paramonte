@@ -33,7 +33,7 @@
 !>  \test
 !>  [test_pm_val2int](@ref test_pm_val2int)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -102,7 +102,7 @@ module pm_val2int
     !>  \test
     !>  [test_pm_val2int](@ref test_pm_val2int)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -290,7 +290,7 @@ module pm_val2int
     !>  \test
     !>  [test_pm_val2int](@ref test_pm_val2int)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

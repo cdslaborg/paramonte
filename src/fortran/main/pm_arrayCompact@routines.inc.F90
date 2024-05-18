@@ -17,7 +17,7 @@
 !>  \brief
 !>  This include file contains procedure implementations of [pm_arrayCompact](@ref pm_arrayCompact).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Saturday 1:48 AM, August 20, 2016, Institute for Computational Engineering and Sciences, UT Austin, TX

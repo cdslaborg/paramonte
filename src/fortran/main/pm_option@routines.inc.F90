@@ -17,7 +17,7 @@
 !>  \brief
 !>  This include file contains procedure implementation of procedures in [pm_option](@ref pm_option).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Saturday 10:17 PM, December 5, 2021, Dallas, TX

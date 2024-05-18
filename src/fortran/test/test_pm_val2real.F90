@@ -17,7 +17,7 @@
 !>  \brief
 !>  This module contains tests of the module [pm_val2Real](@ref pm_val2real).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi

@@ -36,7 +36,7 @@
 !>  \test
 !>  [test_pm_arrayReverse](@ref test_pm_arrayReverse)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX
@@ -109,7 +109,7 @@ module pm_arrayReverse
     !>  \todo
     !>  \plow This generic interface can be extended to 2D input objects.<br>
     !>
-    !>  \finmain{getReversed}
+    !>  \final{getReversed}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -609,7 +609,7 @@ module pm_arrayReverse
     !>  \todo
     !>  \plow This generic interface can be extended to 2D input objects.<br>
     !>
-    !>  \finmain{setReversed}
+    !>  \final{setReversed}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

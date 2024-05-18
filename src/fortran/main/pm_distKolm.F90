@@ -74,7 +74,7 @@
 !>  Two additional interfaces for computing the quantiles and random values of Kolmogorov Distribution must be added.<br>
 !>  The methodology employed for the [Beta distribution](@ pm_distBeta) might be useful here.<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -120,7 +120,7 @@ module pm_distKolm
     !>  \pvhigh
     !>  This derived type must be converted to PDT and the relevant components and methods must be added once PDTs are well supported.
     !>
-    !>  \finmain{distKolm_type}
+    !>  \final{distKolm_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -182,7 +182,7 @@ module pm_distKolm
     !>  \todo
     !>  \pvlow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{getKolmPDF}
+    !>  \final{getKolmPDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -303,7 +303,7 @@ module pm_distKolm
     !>  \pvlow
     !>  This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{setKolmPDF}
+    !>  \final{setKolmPDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -425,7 +425,7 @@ module pm_distKolm
     !>  \todo
     !>  \pvlow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{getKolmCDF}
+    !>  \final{getKolmCDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -546,7 +546,7 @@ module pm_distKolm
     !>  \pvlow
     !>  This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{setKolmCDF}
+    !>  \final{setKolmCDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -668,7 +668,7 @@ module pm_distKolm
     !>  \todo
     !>  \pvlow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{getKolmQuan}
+    !>  \final{getKolmQuan}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -785,7 +785,7 @@ module pm_distKolm
     !>  \test
     !>  [test_pm_distKolm](@ref test_pm_distKolm)
     !>
-    !>  \finmain{setKolmQuan}
+    !>  \final{setKolmQuan}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -908,7 +908,7 @@ module pm_distKolm
     !>  \todo
     !>  \pvlow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{getKolmRand}
+    !>  \final{getKolmRand}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1030,7 +1030,7 @@ module pm_distKolm
     !>  This interface can be extended to support vector-like `rand` arguments other than the `elemental` approach.<br>
     !>  Such an extension would be sensible only if the new interface improves the performance against the `elemental` approach.<br>
     !>
-    !>  \finmain{setKolmRand}
+    !>  \final{setKolmRand}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

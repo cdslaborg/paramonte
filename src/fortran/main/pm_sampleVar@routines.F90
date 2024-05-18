@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains procedure implementations of [pm_sampleVar](@ref pm_sampleVar).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Monday March 6, 2017, 2:48 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>

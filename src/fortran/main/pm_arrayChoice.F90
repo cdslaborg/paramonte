@@ -28,7 +28,7 @@
 !>  \test
 !>  [test_pm_arrayChoice](@ref test_pm_arrayChoice)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -130,7 +130,7 @@ module pm_arrayChoice
     !>  \test
     !>  [test_pm_arrayChoice](@ref test_pm_arrayChoice)
     !>
-    !>  \finmain{getChoice}
+    !>  \final{getChoice}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -980,7 +980,7 @@ module pm_arrayChoice
     !>  \output{setChoice}
     !>  \include{lineno} example/pm_arrayChoice/setChoice/main.out.F90
     !>
-    !>  \finmain{setChoice}
+    !>  \final{setChoice}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>

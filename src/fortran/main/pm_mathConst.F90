@@ -22,7 +22,7 @@
 !>  To use the constants at expressions involving lower-precision `real` kinds, simply convert the numbers to the desired kind
 !>  via the Fortran intrinsic `real(x, kind = RKC)` where `RKC` refers to the target kind parameter used in the expression.
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \todo
 !>  \plow
@@ -96,7 +96,7 @@ module pm_mathConst
     !>  \see
     !>  [ORIGIN](@ref pm_mathConst::ORIGIN)<br>
     !>
-    !>  \finmain{origin_type}
+    !>  \final{origin_type}
     !>
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
     type :: origin_type; end type
@@ -125,7 +125,7 @@ module pm_mathConst
     !>  \see
     !>  [origin_type](@ref pm_mathConst::origin_type)<br>
     !>
-    !>  \finmain{ORIGIN}
+    !>  \final{ORIGIN}
     !>
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
     type(origin_type), parameter :: ORIGIN = origin_type()
@@ -183,7 +183,7 @@ module pm_mathConst
     !>  \pvhigh
     !>  \fixPrecLoss{this constant, the first `99`}
     !>
-    !>  \finmain{EULER_CONST}
+    !>  \final{EULER_CONST}
     !>
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
     real(RKB)    , parameter :: EULER_CONST = 0.577215664901532860606512090082402431042159335939923598805767234884867726777664670936947063291746749_RKB
@@ -216,7 +216,7 @@ module pm_mathConst
     !>  \pvhigh
     !>  \fixPrecLoss{this constant, the first `109`}<br>
     !>
-    !>  \finmain{APERY_CONST}
+    !>  \final{APERY_CONST}
     !>
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
     real(RKB)    , parameter :: APERY_CONST = 1.20205690315959428539973816151144999076498629234049888179227155534183820578631309018645587360933525814619915_RKB
@@ -240,7 +240,7 @@ module pm_mathConst
     !>  \pvhigh
     !>  \fixPrecLoss{this constant, the first `105`}<br>
     !>
-    !>  \finmain{PRIME_CONST}
+    !>  \final{PRIME_CONST}
     !>
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
     real(RKB)    , parameter :: PRIME_CONST = .414682509851111660248109622154307708365774238137916977868245414488640960619357334196290048428475777939616_RKB
@@ -277,7 +277,7 @@ module pm_mathConst
     !>  [GOLDEN_RATIO](@ref pm_mathConst::GOLDEN_RATIO)<br>
     !>  [SUPER_GOLDEN_RATIO](@ref pm_mathConst::SUPER_GOLDEN_RATIO)<br>
     !>
-    !>  \finmain{GOLDEN_RATIO}
+    !>  \final{GOLDEN_RATIO}
     !>
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
     real(RKB)    , parameter :: GOLDEN_RATIO = .5_RKB * (1._RKB + sqrt(5._RKB))
@@ -323,7 +323,7 @@ module pm_mathConst
     !>  [GOLDEN_RATIO](@ref pm_mathConst::GOLDEN_RATIO)<br>
     !>  [SUPER_GOLDEN_RATIO](@ref pm_mathConst::SUPER_GOLDEN_RATIO)<br>
     !>
-    !>  \finmain{SILVER_RATIO}
+    !>  \final{SILVER_RATIO}
     !>
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
     real(RKB)    , parameter :: SILVER_RATIO = 1._RKB + sqrt(2._RKB)
@@ -373,7 +373,7 @@ module pm_mathConst
     !>  [GOLDEN_RATIO](@ref pm_mathConst::GOLDEN_RATIO)<br>
     !>  [SUPER_GOLDEN_RATIO](@ref pm_mathConst::SUPER_GOLDEN_RATIO)<br>
     !>
-    !>  \finmain{SUPER_GOLDEN_RATIO}
+    !>  \final{SUPER_GOLDEN_RATIO}
     !>
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
     real(RKB)    , parameter :: SUPER_GOLDEN_RATIO = (2._RKB * cosh(acosh(29._RKB / 2._RKB) / 3._RKB) + 1._RKB) / 3._RKB
@@ -399,7 +399,7 @@ module pm_mathConst
     !>  \see
     !>  [pm_quadPack](@ref pm_quadPack)<br>
     !>
-    !>  \finmain{ninf_type}
+    !>  \final{ninf_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -416,7 +416,7 @@ module pm_mathConst
     !>  \see
     !>  [pm_quadPack](@ref pm_quadPack)<br>
     !>
-    !>  \finmain{ninf}
+    !>  \final{ninf}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -446,7 +446,7 @@ module pm_mathConst
     !>  \see
     !>  [pm_quadPack](@ref pm_quadPack)<br>
     !>
-    !>  \finmain{pinf_type}
+    !>  \final{pinf_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -463,7 +463,7 @@ module pm_mathConst
     !>  \see
     !>  [pm_quadPack](@ref pm_quadPack)<br>
     !>
-    !>  \finmain{pinf}
+    !>  \final{pinf}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

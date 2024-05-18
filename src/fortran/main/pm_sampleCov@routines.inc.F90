@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains the implementation details of the routines of [pm_sampleVar](@ref pm_sampleVar).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Saturday 4:40 PM, August 21, 2021, Dallas, TX

@@ -28,7 +28,7 @@
 !>  \test
 !>  [test_pm_distEggBox](@ref test_pm_distEggBox)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -103,7 +103,7 @@ module pm_distEggBox
     !>  \test
     !>  [test_pm_distEggBox](@ref test_pm_distEggBox)
     !>
-    !>  \finmain{getEggBoxLogUDF}
+    !>  \final{getEggBoxLogUDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

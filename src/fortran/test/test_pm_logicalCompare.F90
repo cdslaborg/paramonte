@@ -16,7 +16,7 @@
 
 !>  \brief This module contains tests of the module [pm_logicalCompare](@ref pm_logicalCompare).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi

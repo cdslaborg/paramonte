@@ -20,7 +20,7 @@
 !>  \test
 !>  [test_pm_arrayUnique](@ref test_pm_arrayUnique)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -132,7 +132,7 @@ module pm_arrayUnique
     !>  \test
     !>  [test_pm_arrayUnique](@ref test_pm_arrayUnique)
     !>
-    !>  \finmain{isUnique}
+    !>  \final{isUnique}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -948,7 +948,7 @@ module pm_arrayUnique
     !>  \test
     !>  [test_pm_arrayUnique](@ref test_pm_arrayUnique)
     !>
-    !>  \finmain{isUniqueAll}
+    !>  \final{isUniqueAll}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1763,7 +1763,7 @@ module pm_arrayUnique
     !>  \test
     !>  [test_pm_arrayUnique](@ref test_pm_arrayUnique)
     !>
-    !>  \finmain{isUniqueAny}
+    !>  \final{isUniqueAny}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2675,7 +2675,7 @@ module pm_arrayUnique
     !>  \todo
     !>  \pvhigh The internal compiler error with `ifort` and `gfortran` has to be fixed in the future versions.<br>
     !>
-    !>  \finmain{getUnique}
+    !>  \final{getUnique}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3543,7 +3543,7 @@ module pm_arrayUnique
     !>  In such a case, the onus would be on the user to ensure only the elements `(1:lenUnique)` of the output arrays are used for any subsequent
     !>  work as only these elements are meaningful. This would, however, come with the benefit of extra efficiency.<br>
     !>
-    !>  \finmain{setUnique}
+    !>  \final{setUnique}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

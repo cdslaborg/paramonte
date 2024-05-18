@@ -34,7 +34,7 @@
 !>  \test
 !>  [test_pm_arrayCompact](@ref test_pm_arrayCompact)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Saturday 1:48 AM, August 20, 2016, Institute for Computational Engineering and Sciences, UT Austin, TX
@@ -115,7 +115,7 @@ module pm_arrayCompact
     !>  For now, a preprocessor macro defines two separate interfaces for the two compilers so that both compilers can compile this file.<br>
     !>  This minor interface difference should not impact the usage of this module with different compilers.<br>
     !>
-    !>  \finmain{getCompact}
+    !>  \final{getCompact}
     !>
     !>  \author
     !>  \AmirShahmoradi, Saturday 1:48 AM, August 20, 2016, Institute for Computational Engineering and Sciences, UT Austin, TX
@@ -858,7 +858,7 @@ module pm_arrayCompact
     !>  \test
     !>  [test_pm_arrayCompact](@ref test_pm_arrayCompact)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Saturday 1:48 AM, August 20, 2016, Institute for Computational Engineering and Sciences, UT Austin, TX

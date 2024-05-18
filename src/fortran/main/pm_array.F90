@@ -34,7 +34,7 @@
 !>              </ol>
 !>  </ol>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -81,7 +81,7 @@ module pm_array
     !>  [action_type](@ref pm_array::action_type)<br>
     !>  [side_type](@ref pm_array::side_type)<br>
     !>
-    !>  \finmain{action_type}
+    !>  \final{action_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -125,7 +125,7 @@ module pm_array
     !>  [action_type](@ref pm_array::action_type)<br>
     !>  [side_type](@ref pm_array::side_type)<br>
     !>
-    !>  \finmain{nothing_type}
+    !>  \final{nothing_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -137,7 +137,7 @@ module pm_array
     !>  to request **no action** on a given array within an interface of a procedure of the ParaMonte library.<br>
     !>
     !>  \details
-    !>  For example usage, see the documentation of the target procedure requiring this object.<br>
+    !>  For example usage, see the documentation of the target procedure requiring this object.
     !>
     !>  \see
     !>  [left](@ref pm_array::left)<br>
@@ -160,7 +160,7 @@ module pm_array
     !>  [action_type](@ref pm_array::action_type)<br>
     !>  [side_type](@ref pm_array::side_type)<br>
     !>
-    !>  \finmain{nothing}
+    !>  \final{nothing}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -206,7 +206,7 @@ module pm_array
     !>  [action_type](@ref pm_array::action_type)<br>
     !>  [side_type](@ref pm_array::side_type)<br>
     !>
-    !>  \finmain{reverse_type}
+    !>  \final{reverse_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -218,7 +218,7 @@ module pm_array
     !>  to request reversal of a given array within an interface of a procedure of the ParaMonte library.<br>
     !>
     !>  \details
-    !>  For example usage, see the documentation of the target procedure requiring this object.<br>
+    !>  For example usage, see the documentation of the target procedure requiring this object.
     !>
     !>  \see
     !>  [left](@ref pm_array::left)<br>
@@ -241,7 +241,7 @@ module pm_array
     !>  [action_type](@ref pm_array::action_type)<br>
     !>  [side_type](@ref pm_array::side_type)<br>
     !>
-    !>  \finmain{reverse}
+    !>  \final{reverse}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -287,7 +287,7 @@ module pm_array
     !>  [action_type](@ref pm_array::action_type)<br>
     !>  [side_type](@ref pm_array::side_type)<br>
     !>
-    !>  \finmain{inverse_type}
+    !>  \final{inverse_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -299,7 +299,7 @@ module pm_array
     !>  to request reversal of a given array within an interface of a procedure of the ParaMonte library.<br>
     !>
     !>  \details
-    !>  For example usage, see the documentation of the target procedure requiring this object.<br>
+    !>  For example usage, see the documentation of the target procedure requiring this object.
     !>
     !>  \see
     !>  [left](@ref pm_array::left)<br>
@@ -322,7 +322,7 @@ module pm_array
     !>  [action_type](@ref pm_array::action_type)<br>
     !>  [side_type](@ref pm_array::side_type)<br>
     !>
-    !>  \finmain{inverse}
+    !>  \final{inverse}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -363,7 +363,7 @@ module pm_array
     !>  [action_type](@ref pm_array::action_type)<br>
     !>  [side_type](@ref pm_array::side_type)<br>
     !>
-    !>  \finmain{direction_type}
+    !>  \final{direction_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -407,7 +407,7 @@ module pm_array
     !>  [action_type](@ref pm_array::action_type)<br>
     !>  [side_type](@ref pm_array::side_type)<br>
     !>
-    !>  \finmain{forward_type}
+    !>  \final{forward_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -419,7 +419,7 @@ module pm_array
     !>  to request reversal of a given array within an interface of a procedure of the ParaMonte library.<br>
     !>
     !>  \details
-    !>  For example usage, see the documentation of the target procedure requiring this object.<br>
+    !>  For example usage, see the documentation of the target procedure requiring this object.
     !>
     !>  \see
     !>  [left](@ref pm_array::left)<br>
@@ -442,7 +442,7 @@ module pm_array
     !>  [action_type](@ref pm_array::action_type)<br>
     !>  [side_type](@ref pm_array::side_type)<br>
     !>
-    !>  \finmain{forward}
+    !>  \final{forward}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -488,7 +488,7 @@ module pm_array
     !>  [action_type](@ref pm_array::action_type)<br>
     !>  [side_type](@ref pm_array::side_type)<br>
     !>
-    !>  \finmain{backward_type}
+    !>  \final{backward_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -500,7 +500,7 @@ module pm_array
     !>  to request reversal of a given array within an interface of a procedure of the ParaMonte library.<br>
     !>
     !>  \details
-    !>  For example usage, see the documentation of the target procedure requiring this object.<br>
+    !>  For example usage, see the documentation of the target procedure requiring this object.
     !>
     !>  \see
     !>  [left](@ref pm_array::left)<br>
@@ -523,7 +523,7 @@ module pm_array
     !>  [action_type](@ref pm_array::action_type)<br>
     !>  [side_type](@ref pm_array::side_type)<br>
     !>
-    !>  \finmain{backward}
+    !>  \final{backward}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -564,7 +564,7 @@ module pm_array
     !>  [action_type](@ref pm_array::action_type)<br>
     !>  [side_type](@ref pm_array::side_type)<br>
     !>
-    !>  \finmain{side_type}
+    !>  \final{side_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -608,7 +608,7 @@ module pm_array
     !>  [action_type](@ref pm_array::action_type)<br>
     !>  [side_type](@ref pm_array::side_type)<br>
     !>
-    !>  \finmain{left_type}
+    !>  \final{left_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -620,7 +620,7 @@ module pm_array
     !>  to request the left side of a given array within an interface of a procedure of the ParaMonte library.<br>
     !>
     !>  \details
-    !>  For example usage, see the documentation of the target procedure requiring this object.<br>
+    !>  For example usage, see the documentation of the target procedure requiring this object.
     !>
     !>  \see
     !>  [left](@ref pm_array::left)<br>
@@ -643,7 +643,7 @@ module pm_array
     !>  [action_type](@ref pm_array::action_type)<br>
     !>  [side_type](@ref pm_array::side_type)<br>
     !>
-    !>  \finmain{left}
+    !>  \final{left}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -689,7 +689,7 @@ module pm_array
     !>  [action_type](@ref pm_array::action_type)<br>
     !>  [side_type](@ref pm_array::side_type)<br>
     !>
-    !>  \finmain{right_type}
+    !>  \final{right_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -701,7 +701,7 @@ module pm_array
     !>  to request the right side of a given array within an interface of a procedure of the ParaMonte library.<br>
     !>
     !>  \details
-    !>  For example usage, see the documentation of the target procedure requiring this object.<br>
+    !>  For example usage, see the documentation of the target procedure requiring this object.
     !>
     !>  \see
     !>  [left](@ref pm_array::left)<br>
@@ -724,7 +724,7 @@ module pm_array
     !>  [action_type](@ref pm_array::action_type)<br>
     !>  [side_type](@ref pm_array::side_type)<br>
     !>
-    !>  \finmain{right}
+    !>  \final{right}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -770,7 +770,7 @@ module pm_array
     !>  [action_type](@ref pm_array::action_type)<br>
     !>  [side_type](@ref pm_array::side_type)<br>
     !>
-    !>  \finmain{leftRight_type}
+    !>  \final{leftRight_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -782,7 +782,7 @@ module pm_array
     !>  to request the left-and-right sides of a given array within an interface of a procedure of the ParaMonte library.<br>
     !>
     !>  \details
-    !>  For example usage, see the documentation of the target procedure requiring this object.<br>
+    !>  For example usage, see the documentation of the target procedure requiring this object.
     !>
     !>  \see
     !>  [left](@ref pm_array::left)<br>
@@ -805,7 +805,7 @@ module pm_array
     !>  [action_type](@ref pm_array::action_type)<br>
     !>  [side_type](@ref pm_array::side_type)<br>
     !>
-    !>  \finmain{leftRight}
+    !>  \final{leftRight}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -832,7 +832,7 @@ module pm_array
     !>  [discrete_type](@ref pm_array::discrete_type)<br>
     !>  [border_type](@ref pm_array::border_type)<br>
     !>
-    !>  \finmain{border_type}
+    !>  \final{border_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -862,7 +862,7 @@ module pm_array
     !>  [discrete_type](@ref pm_array::discrete_type)<br>
     !>  [border_type](@ref pm_array::border_type)<br>
     !>
-    !>  \finmain{adjacent_type}
+    !>  \final{adjacent_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -874,7 +874,7 @@ module pm_array
     !>  to signify the adjacent sequence border within an interface of a procedure of the ParaMonte library.<br>
     !>
     !>  \details
-    !>  For example usage, see the documentation of the target procedure requiring this object.<br>
+    !>  For example usage, see the documentation of the target procedure requiring this object.
     !>
     !>  \see
     !>  [adjacent](@ref pm_array::adjacent)<br>
@@ -883,7 +883,7 @@ module pm_array
     !>  [discrete_type](@ref pm_array::discrete_type)<br>
     !>  [border_type](@ref pm_array::border_type)<br>
     !>
-    !>  \finmain{adjacent}
+    !>  \final{adjacent}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -915,7 +915,7 @@ module pm_array
     !>  [discrete_type](@ref pm_array::discrete_type)<br>
     !>  [border_type](@ref pm_array::border_type)<br>
     !>
-    !>  \finmain{discrete_type}
+    !>  \final{discrete_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -927,7 +927,7 @@ module pm_array
     !>  to signify the discrete sequence border within an interface of a procedure of the ParaMonte library.<br>
     !>
     !>  \details
-    !>  For example usage, see the documentation of the target procedure requiring this object.<br>
+    !>  For example usage, see the documentation of the target procedure requiring this object.
     !>
     !>  \see
     !>  [adjacent](@ref pm_array::adjacent)<br>
@@ -936,7 +936,7 @@ module pm_array
     !>  [discrete_type](@ref pm_array::discrete_type)<br>
     !>  [border_type](@ref pm_array::border_type)<br>
     !>
-    !>  \finmain{discrete}
+    !>  \final{discrete}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -967,7 +967,7 @@ module pm_array
     !>  [descending_type](@ref pm_array::descending_type)<br>
     !>  [order_type](@ref pm_array::order_type)<br>
     !>
-    !>  \finmain{order_type}
+    !>  \final{order_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1001,7 +1001,7 @@ module pm_array
     !>  [descending_type](@ref pm_array::descending_type)<br>
     !>  [order_type](@ref pm_array::order_type)<br>
     !>
-    !>  \finmain{sorted_type}
+    !>  \final{sorted_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1013,7 +1013,7 @@ module pm_array
     !>  to signify the sorted sequence order within an interface of a procedure of the ParaMonte library.<br>
     !>
     !>  \details
-    !>  For example usage, see the documentation of the target procedure requiring this object.<br>
+    !>  For example usage, see the documentation of the target procedure requiring this object.
     !>
     !>  \see
     !>  [sorted](@ref pm_array::sorted)<br>
@@ -1026,7 +1026,7 @@ module pm_array
     !>  [descending_type](@ref pm_array::descending_type)<br>
     !>  [order_type](@ref pm_array::order_type)<br>
     !>
-    !>  \finmain{sorted}
+    !>  \final{sorted}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1062,7 +1062,7 @@ module pm_array
     !>  [descending_type](@ref pm_array::descending_type)<br>
     !>  [order_type](@ref pm_array::order_type)<br>
     !>
-    !>  \finmain{monotonic_type}
+    !>  \final{monotonic_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1074,7 +1074,7 @@ module pm_array
     !>  to signify the monotonic sequence order (e.g., **strictly** ascending, descending, equal, ...) within an interface of a procedure of the ParaMonte library.<br>
     !>
     !>  \details
-    !>  For example usage, see the documentation of the target procedure requiring this object.<br>
+    !>  For example usage, see the documentation of the target procedure requiring this object.
     !>
     !>  \see
     !>  [sorted](@ref pm_array::sorted)<br>
@@ -1087,7 +1087,7 @@ module pm_array
     !>  [descending_type](@ref pm_array::descending_type)<br>
     !>  [order_type](@ref pm_array::order_type)<br>
     !>
-    !>  \finmain{monotonic}
+    !>  \final{monotonic}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1123,7 +1123,7 @@ module pm_array
     !>  [descending_type](@ref pm_array::descending_type)<br>
     !>  [order_type](@ref pm_array::order_type)<br>
     !>
-    !>  \finmain{ascending_type}
+    !>  \final{ascending_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1135,7 +1135,7 @@ module pm_array
     !>  to signify the ascending sequence order within an interface of a procedure of the ParaMonte library.<br>
     !>
     !>  \details
-    !>  For example usage, see the documentation of the target procedure requiring this object.<br>
+    !>  For example usage, see the documentation of the target procedure requiring this object.
     !>
     !>  \see
     !>  [sorted](@ref pm_array::sorted)<br>
@@ -1148,7 +1148,7 @@ module pm_array
     !>  [descending_type](@ref pm_array::descending_type)<br>
     !>  [order_type](@ref pm_array::order_type)<br>
     !>
-    !>  \finmain{ascending}
+    !>  \final{ascending}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1182,7 +1182,7 @@ module pm_array
     !>  [descending_type](@ref pm_array::descending_type)<br>
     !>  [order_type](@ref pm_array::order_type)<br>
     !>
-    !>  \finmain{descending_type}
+    !>  \final{descending_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1194,7 +1194,7 @@ module pm_array
     !>  to signify the descending sequence order within an interface of a procedure of the ParaMonte library.<br>
     !>
     !>  \details
-    !>  For example usage, see the documentation of the target procedure requiring this object.<br>
+    !>  For example usage, see the documentation of the target procedure requiring this object.
     !>
     !>  \see
     !>  [sorted](@ref pm_array::sorted)<br>
@@ -1205,7 +1205,7 @@ module pm_array
     !>  [descending_type](@ref pm_array::descending_type)<br>
     !>  [order_type](@ref pm_array::order_type)<br>
     !>
-    !>  \finmain{descending}
+    !>  \final{descending}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1235,7 +1235,7 @@ module pm_array
     !>  [allocatable](@ref pm_array::allocatable)<br>
     !>  [allocatable_type](@ref pm_array::allocatable_type)<br>
     !>
-    !>  \finmain{allocatable_type}
+    !>  \final{allocatable_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1247,13 +1247,13 @@ module pm_array
     !>  to signify that an array of arbitrary rank has the `allocatable` attribute.<br>
     !>
     !>  \details
-    !>  For example usage, see the documentation of the target procedure requiring this object.<br>
+    !>  For example usage, see the documentation of the target procedure requiring this object.
     !>
     !>  \see
     !>  [allocatable](@ref pm_array::allocatable)<br>
     !>  [allocatable_type](@ref pm_array::allocatable_type)<br>
     !>
-    !>  \finmain{allocatable}
+    !>  \final{allocatable}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

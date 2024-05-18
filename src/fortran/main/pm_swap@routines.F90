@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains procedure implementations of [pm_swap](@ref pm_swap).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 12:20 PM, September 22, 2021, Dallas, TX

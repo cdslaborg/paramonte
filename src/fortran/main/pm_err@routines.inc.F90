@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains procedure implementations of [pm_except](@ref pm_except).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX

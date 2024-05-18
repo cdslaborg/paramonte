@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains the implementation details of the routines of the module [pm_arrayResize](@ref pm_arrayResize).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX

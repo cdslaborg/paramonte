@@ -36,7 +36,7 @@
 !>  \test
 !>  [test_pm_mathDivMul](@ref test_pm_mathDivMul)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin
@@ -111,7 +111,7 @@ module pm_mathDivMul
     !>  \test
     !>  [test_pm_mathDivMul](@ref test_pm_mathDivMul)
     !>
-    !>  \finmain{divmul}
+    !>  \final{divmul}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin

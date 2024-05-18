@@ -20,7 +20,7 @@
 !>  \todo
 !>  \phigh The tests in this file still benefit from expansion and improvement.
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

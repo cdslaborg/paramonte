@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains procedure implementations of [pm_arrayResize](@ref pm_arrayResize).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX

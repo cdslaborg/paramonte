@@ -26,7 +26,7 @@
 !>  [pm_mathSubAdd](@ref pm_mathSubAdd)<br>
 !>  [pm_mathMinMax](@ref pm_mathMinMax) (for lexical minimum/maximum of a pair of **scalar** values)<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \test
 !>  [test_pm_arrayMinMax](@ref test_pm_arrayMinMax)
@@ -123,7 +123,7 @@ module pm_arrayMinMax
     !>  \todo
     !>  \plow This generic interface can be expanded to include the possibility of passing user-defined custom comparison.
     !>
-    !>  \finmain{getMinMaxVal}
+    !>  \final{getMinMaxVal}
     !>
     !>  \author
     !>  \AmirShahmoradi, Thursday 1:45 AM, August 22, 2019, Dallas, TX
@@ -674,7 +674,7 @@ module pm_arrayMinMax
     !>  \todo
     !>  \plow This generic interface can be expanded to include the possibility of passing user-defined custom comparison.
     !>
-    !>  \finmain{setMinMaxVal}
+    !>  \final{setMinMaxVal}
     !>
     !>  \author
     !>  \AmirShahmoradi, Thursday 1:45 AM, August 22, 2019, Dallas, TX

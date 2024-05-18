@@ -17,7 +17,7 @@
 !>  \brief
 !>  This module contains tests of the module [pm_arraySpace](@ref pm_arraySpace).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi

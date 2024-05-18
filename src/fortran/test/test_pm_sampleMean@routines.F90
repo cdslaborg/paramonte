@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains procedure implementations of tests of [test_pm_sampleMean](@ref test_pm_sampleMean).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 5:03 PM, August 11, 2021, Dallas, TX

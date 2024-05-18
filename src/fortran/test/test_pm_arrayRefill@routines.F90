@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains procedure implementations of [test_pm_arrayRefill](@ref test_pm_arrayRefill).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX

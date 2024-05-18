@@ -812,7 +812,7 @@ contains
     !>  See,
     !>  <ol>
     !>      <li>    [this generic documentation page](\pmdoc_usage_sampling/paradram/output/)
-    !>              for more information on the generated output files for samplings performed using the [ParaDRAM](@ref pm_sampling::paradram_type) sampler.
+    !>              for more information on the generated output files for samplings performed using the [ParaDRAM](@ref pm_sampling::paradram_type) sampler.<br>
     !>  </ol>
     !>
     !>  \param[in]  getLogFunc  :   The input user-specified procedure pointer to the natural logarithm of the target density function.<br>
@@ -855,8 +855,8 @@ contains
     !>  \endcode
     !>
     !>  \warning
-    !>  Beware that the definition of extended precision real type `long double` is compiler and platform dependent
-    !>  making the use of `long double` with precompiled ParaMonte libraries problematic and non-functional.<br>
+    !>  Beware that the definition of extended precision real type `long double` is compiler and platform dependent.<br>
+    !>  This makes the use of `long double` with precompiled ParaMonte libraries problematic and non-functional.<br>
     !>
     !>  \warning
     !>  The condition `0 < ndim` must hold for the corresponding input arguments.<br>
@@ -879,7 +879,7 @@ contains
     !>  \status \unresolved
     !>  \source \ifx{2024.0.0 20231017}
     !>  \desc
-    !>  \ifx This interface yields a segmentation fault error for all `real` types supported when linked with the ParaMonte library built with \ifx.
+    !>  \ifx This interface yields a segmentation fault error for all `real` types supported when linked with the ParaMonte library built with \ifx.<br>
     !>  \remedy
     !>  For now, only \ifort will be used.<br>
     !>

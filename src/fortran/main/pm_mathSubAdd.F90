@@ -57,7 +57,7 @@
 !>  \test
 !>  [test_pm_mathSubAdd](@ref test_pm_mathSubAdd)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin
@@ -134,7 +134,7 @@ module pm_mathSubAdd
     !>  \test
     !>  [test_pm_mathSubAdd](@ref test_pm_mathSubAdd)
     !>
-    !>  \finmain{subadd}
+    !>  \final{subadd}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin

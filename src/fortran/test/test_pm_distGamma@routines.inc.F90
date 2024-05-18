@@ -17,7 +17,7 @@
 !>  \brief
 !>  This include file contains procedure implementations of the tests of [pm_distGamma](@ref pm_distGamma).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, 12:27 AM Tuesday, February 22, 2022, Dallas, TX

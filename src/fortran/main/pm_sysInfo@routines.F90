@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains procedure implementations of [pm_sysInfo](@ref pm_sysInfo).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX
@@ -60,7 +60,7 @@ call setAsserted(ASSERTION,getFine(__FILE__,LINE)//MODULE_NAME//MSG);
     !>  It is set by and exclusively used within the routines of this submodule and nowhere else.<br>
     !>  The allocation status of the object is used as an indicator of its initialization.<br>
     !>
-    !>  \finmain{kernel_type}
+    !>  \final{kernel_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

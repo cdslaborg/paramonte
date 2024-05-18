@@ -249,7 +249,7 @@
 !>      <li>    Changing file permission: `chmod`
 !>  </ol>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Friday 3:09 AM, Dec 8, 2017, Dell Medical School, Austin, TX
@@ -343,7 +343,7 @@ module pm_sysPath
     !>  [verbatim](@ref pm_sysPath::verbatim)<br>
     !>  [verbatim_type](@ref pm_sysPath::verbatim_type)<br>
     !>
-    !>  \finmain{verbatim_type}
+    !>  \final{verbatim_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:56 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -360,7 +360,7 @@ module pm_sysPath
     !>  [verbatim](@ref pm_sysPath::verbatim)<br>
     !>  [verbatim_type](@ref pm_sysPath::verbatim_type)<br>
     !>
-    !>  \finmain{verbatim_type}
+    !>  \final{verbatim_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:56 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -395,7 +395,7 @@ module pm_sysPath
     !>  as well as relaxing the 260 character path name limit of Windows OS,
     !>  if the underlying file system supports long paths and file names.<br>
     !>
-    !>  \finmain{WIN32_NAMESPACE_FILE}
+    !>  \final{WIN32_NAMESPACE_FILE}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:56 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -423,7 +423,7 @@ module pm_sysPath
     !>  as well as relaxing the 260 character path name limit of Windows OS,
     !>  if the underlying file system supports long paths and file names.<br>
     !>
-    !>  \finmain{WIN32_NAMESPACE_DEVICE}
+    !>  \final{WIN32_NAMESPACE_DEVICE}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:56 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -441,7 +441,7 @@ module pm_sysPath
     !>  The zeroth ASCII character (the null character) is intentionally excluded from the list to avoid certain
     !>  runtime failures that can happen due to the convention of terminating the C strings with the null character.<br>
     !>
-    !>  \finmain{ASCII_CONTROL_STR}
+    !>  \final{ASCII_CONTROL_STR}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:56 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -489,7 +489,7 @@ module pm_sysPath
     !>  \warning
     !>  It is critical for this constant to begin with the character `\`.<br>
     !>
-    !>  \finmain{WINDOWS_RESERVED_STR}
+    !>  \final{WINDOWS_RESERVED_STR}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:56 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -505,7 +505,7 @@ module pm_sysPath
     !>  \warning
     !>  The first character must always be the Windows directory separator `\`.<br>
     !>
-    !>  \finmain{WINDOWS_RESERVED_CHR}
+    !>  \final{WINDOWS_RESERVED_CHR}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -522,7 +522,7 @@ module pm_sysPath
     !>  \details
     !>  Metacharacters are characters that have special meaning for Windows CMD.<br>
     !>
-    !>  \finmain{WINDOWS_CMD_METACHAR_STR}
+    !>  \final{WINDOWS_CMD_METACHAR_STR}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:56 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -535,7 +535,7 @@ module pm_sysPath
     !>  The vector `character` constant of default kind \SK of `len = 1`
     !>  containing the individual characters in [WINDOWS_CMD_METACHAR_STR](@ref pm_sysPath::WINDOWS_CMD_METACHAR_STR).<br>
     !>
-    !>  \finmain{WINDOWS_CMD_METACHAR_CHR}
+    !>  \final{WINDOWS_CMD_METACHAR_CHR}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -550,7 +550,7 @@ module pm_sysPath
     !>  The vector `character` constant of default kind \SK, containing the Windows reserved (forbidden) file names.<br>
     !>  No file or directory name can contain these names alone, possibly mixed with leading or trailing blanks.<br>
     !>
-    !>  \finmain{WINDOWS_RESERVED_DEVICE_NAME}
+    !>  \final{WINDOWS_RESERVED_DEVICE_NAME}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -629,7 +629,7 @@ module pm_sysPath
     !>  the second containing `E` if character need to be escaped and third field
     !>  showing escaped presentation of character.<br>
     !>
-    !>  \finmain{POSIX_RESERVED_STR}
+    !>  \final{POSIX_RESERVED_STR}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -669,7 +669,7 @@ module pm_sysPath
     !>  \brief
     !>  The vector `character` constant of default kind \SK of `len = 1` containing the individual characters in [POSIX_RESERVED_STR](@ref pm_sysPath::POSIX_RESERVED_STR).<br>
     !>
-    !>  \finmain{POSIX_RESERVED_CHR}
+    !>  \final{POSIX_RESERVED_CHR}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -687,7 +687,7 @@ module pm_sysPath
     !>  meaningless in the POSIX standard.<br>
     !>  See the [GNU Bash manual](https://www.gnu.org/software/bash/manual/html_node/Double-Quotes.html) for more information.<br>
     !>
-    !>  \finmain{POSIX_RESERVED_DQUOTE_STR}
+    !>  \final{POSIX_RESERVED_DQUOTE_STR}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -699,7 +699,7 @@ module pm_sysPath
     !>  \brief
     !>  The vector `character` constant of default kind \SK of `len = 1` containing the individual characters in [POSIX_RESERVED_DQUOTE_STR](@ref pm_sysPath::POSIX_RESERVED_DQUOTE_STR).<br>
     !>
-    !>  \finmain{POSIX_RESERVED_DQUOTE_CHR}
+    !>  \final{POSIX_RESERVED_DQUOTE_CHR}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -720,7 +720,7 @@ module pm_sysPath
 !!>  \output{PathPart_type}
 !!>  \include{lineno} example/pm_sysPath/PathPart_type/main.out.F90
 !!>
-!!>  \finmain
+!!>  \final
 !!>
 !!>  \author
 !!>  Amir Shahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -875,7 +875,7 @@ module pm_sysPath
     !>  As such, the implementation of the procedures of this generic interface for non-default `character` kinds leads to compile-time kind mismatch errors.<br>
     !>  This procedure should be converted back to a generic interface in the future when non-default character kinds are also fully supported by the intrinsic functions.<br>
     !>
-    !>  \finmain{ls}
+    !>  \final{ls}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -947,7 +947,7 @@ module pm_sysPath
     !>  As such, the implementation of the procedures of this generic interface for non-default `character` kinds leads to compile-time kind mismatch errors.<br>
     !>  This procedure should be converted back to a generic interface in the future when non-default character kinds are also fully supported by the intrinsic functions.<br>
     !>
-    !>  \finmain{glob}
+    !>  \final{glob}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1097,7 +1097,7 @@ module pm_sysPath
     !>  If the runtime shell is unrecognized, the algorithm falls back to `bash` if the shell is detected on the system, otherwise, the procedure fails.<br>
     !>  This should be fixed by changing the approach to rely instead on `scandir()` and `fnmatch()` popular interfaces for cross-platform globing.<br>
     !>
-    !>  \finmain{isFailedGlob}
+    !>  \final{isFailedGlob}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1250,7 +1250,7 @@ module pm_sysPath
     !>  \pvhigh
     !>  Support for input wildcard patterns must be added with the help of [isFailedGlob](@ref pm_sysPath::isFailedGlob).<br>
     !>
-    !>  \finmain{isFailedList}
+    !>  \final{isFailedList}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1333,7 +1333,7 @@ module pm_sysPath
     !>  \pmed The implementation of this procedure can be improved by
     !>  replacing the call to the subroutine version with the actual code.<br>
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1447,7 +1447,7 @@ module pm_sysPath
     !>  \plow This procedure can be converted to a generic interface with an input
     !>  `intent(inout), allocatable :: path` interface for further convenience.<br>
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1570,7 +1570,7 @@ module pm_sysPath
     !>  \plow The performance of this algorithm could be likely improved by
     !>  reimplementing the function to remove the unnecessary copy `pathPosix = path`.<br>
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1719,7 +1719,7 @@ module pm_sysPath
     !>  An optional argument external procedure `iseq()` should be added to the procedures
     !>  of this generic interface to bring flexibility to searching for `ignore` patterns.<br>
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1850,7 +1850,7 @@ module pm_sysPath
     !>  \test
     !>  [test_pm_sysPath](@ref test_pm_sysPath)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1992,7 +1992,7 @@ module pm_sysPath
     !>  An optional argument external procedure `iseq()` should be added to the procedures
     !>  of this generic interface to bring flexibility to searching for `ignore` patterns.<br>
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2128,7 +2128,7 @@ module pm_sysPath
     !>  \test
     !>  [test_pm_sysPath](@ref test_pm_sysPath)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2240,7 +2240,7 @@ module pm_sysPath
     !>  \test
     !>  [test_pm_sysPath](@ref test_pm_sysPath)
     !>
-    !>  \finmain{hasDriveLetter}
+    !>  \final{hasDriveLetter}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2365,7 +2365,7 @@ module pm_sysPath
     !>  \test
     !>  [test_pm_sysPath](@ref test_pm_sysPath)
     !>
-    !>  \finmain{isPathAbsWindows}
+    !>  \final{isPathAbsWindows}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2477,7 +2477,7 @@ module pm_sysPath
     !>  \test
     !>  [test_pm_sysPath](@ref test_pm_sysPath)
     !>
-    !>  \finmain{isPathAbsPosix}
+    !>  \final{isPathAbsPosix}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2634,7 +2634,7 @@ module pm_sysPath
     !>  \pvlow
     !>  A subroutine version of this functional interface could be implemented in the future to avoid allocations.<br>
     !>
-    !>  \finmain{getPathAbs}
+    !>  \final{getPathAbs}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2752,7 +2752,7 @@ module pm_sysPath
     !>  A subroutine version of this functional interface could be implemented in
     !>  future to avoid allocations and allow for non-default character kinds.<br>
     !>
-    !>  \finmain{getDirCurrent}
+    !>  \final{getDirCurrent}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2872,7 +2872,7 @@ module pm_sysPath
     !>  A subroutine version of this functional interface could be implemented in
     !>  future to avoid allocations and allow for non-default character kinds.<br>
     !>
-    !>  \finmain{getDirHome}
+    !>  \final{getDirHome}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2980,7 +2980,7 @@ module pm_sysPath
     !>  A subroutine version of this functional interface could be implemented in
     !>  future to avoid allocations and allow for non-default character kinds.<br>
     !>
-    !>  \finmain{getPathExpandedUser}
+    !>  \final{getPathExpandedUser}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3078,7 +3078,7 @@ module pm_sysPath
     !>  A subroutine version of this functional interface could be implemented in
     !>  future to avoid allocations and allow for non-default character kinds.<br>
     !>
-    !>  \finmain{isFailedChangeDir}
+    !>  \final{isFailedChangeDir}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3218,7 +3218,7 @@ module pm_sysPath
     !>  The current Fortran standard 202x does not allow passing characters of non-default kind to the intrinsic Fortran statements and procedures.<br>
     !>  This generic interface should be extended to in the future to support non-default character kinds when they fully supported by the Fortran intrinsic procedures.<br>
     !>
-    !>  \finmain{isFailedMakeDir}
+    !>  \final{isFailedMakeDir}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3301,7 +3301,7 @@ module pm_sysPath
     !>  The current Fortran standard 202x does not allow passing characters of non-default kind to the intrinsic Fortran statements and procedures.<br>
     !>  This generic interface should be extended to in the future to support non-default character kinds when they fully supported by the Fortran intrinsic procedures.<br>
     !>
-    !>  \finmain{isFailedMakeDirTemp}
+    !>  \final{isFailedMakeDirTemp}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3477,7 +3477,7 @@ module pm_sysPath
     !>  The current Fortran standard 202x does not allow passing characters of non-default kind to the intrinsic Fortran statements and procedures.<br>
     !>  This generic interface should be extended to in the future to support non-default character kinds when they fully supported by the Fortran intrinsic procedures.<br>
     !>
-    !>  \finmain{isFailedCopy}
+    !>  \final{isFailedCopy}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3619,7 +3619,7 @@ module pm_sysPath
     !>  As such, the implementation of this procedure for non-default `character` kinds leads to compile-time kind mismatch errors.<br>
     !>  This procedure should be converted back to a generic interface in the future when non-default character kinds are also fully supported by the intrinsic functions.<br>
     !>
-    !>  \finmain{isFailedMove}
+    !>  \final{isFailedMove}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3742,7 +3742,7 @@ module pm_sysPath
     !>  As such, the implementation of this procedure for non-default `character` kinds leads to compile-time kind mismatch errors.<br>
     !>  This procedure should be converted back to a generic interface in the future when non-default character kinds are also fully supported by the intrinsic functions.<br>
     !>
-    !>  \finmain{isFailedCopy}
+    !>  \final{isFailedCopy}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3836,7 +3836,7 @@ module pm_sysPath
     !>  As such, the implementation of this procedure for non-default `character` kinds leads to compile-time kind mismatch errors.<br>
     !>  This procedure should be converted back to a generic interface in the future when non-default character kinds are also fully supported by the intrinsic functions.<br>
     !>
-    !>  \finmain{getDirSep}
+    !>  \final{getDirSep}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -4002,7 +4002,7 @@ module pm_sysPath
     !>  As such, the implementation of this procedure for non-default `character` kinds leads to compile-time kind mismatch errors.<br>
     !>  This procedure should be converted back to a generic interface in the future when non-default character kinds are also fully supported by the intrinsic functions.<br>
     !>
-    !>  \finmain{getDirSeps}
+    !>  \final{getDirSeps}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -4158,7 +4158,7 @@ module pm_sysPath
     !>  \test
     !>  [test_pm_sysPath](@ref test_pm_sysPath)
     !>
-    !>  \finmain{getPathSep}
+    !>  \final{getPathSep}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -4360,7 +4360,7 @@ module pm_sysPath
     !>  \phigh
     !>  An optional `suffix` argument can be added in the future. Currently, the path suffix is hard-coded in the procedure, unlike `prefix`.<br>
     !>
-    !>  \finmain{getPathNew}
+    !>  \final{getPathNew}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -4491,7 +4491,7 @@ module pm_sysPath
     !>  \phigh
     !>  An optional `suffix` argument can be added in the future. Currently, the path suffix is hard-coded in the procedure, unlike `prefix`.<br>
     !>
-    !>  \finmain{getPathTemp}
+    !>  \final{getPathTemp}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -4567,7 +4567,7 @@ module pm_sysPath
     !>  As such, the implementation of this procedure for non-default `character` kinds leads to compile-time kind mismatch errors.<br>
     !>  This procedure should be converted back to a generic interface in the future when non-default character kinds are also fully supported by the intrinsic functions.<br>
     !>
-    !>  \finmain{getPathJoined}
+    !>  \final{getPathJoined}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -4665,7 +4665,7 @@ module pm_sysPath
     !>  \pvhigh
     !>  This generic interface should be extended in the future to gracefully handle intrinsic `inquire()` exceptions.<br>
     !>
-    !>  \finmain{isFile}
+    !>  \final{isFile}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -4764,7 +4764,7 @@ module pm_sysPath
     !>  \pvhigh
     !>  This generic interface should be extended in the future to gracefully handle intrinsic `inquire()` exceptions.<br>
     !>
-    !>  \finmain{isDir}
+    !>  \final{isDir}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -4852,7 +4852,7 @@ module pm_sysPath
     !>  \test
     !>  [test_pm_sysPath](@ref test_pm_sysPath)
     !>
-    !>  \finmain{isExtant}
+    !>  \final{isExtant}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -4948,7 +4948,7 @@ module pm_sysPath
     !>  \test
     !>  [test_pm_sysPath](@ref test_pm_sysPath)
     !>
-    !>  \finmain{getPathVerbatimCMD}
+    !>  \final{getPathVerbatimCMD}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -5070,7 +5070,7 @@ module pm_sysPath
     !>  \test
     !>  [test_pm_sysPath](@ref test_pm_sysPath)
     !>
-    !>  \finmain{getPathVerbatimPowerShell}
+    !>  \final{getPathVerbatimPowerShell}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -5192,7 +5192,7 @@ module pm_sysPath
     !>  \test
     !>  [test_pm_sysPath](@ref test_pm_sysPath)
     !>
-    !>  \finmain{getPathVerbatimPosix}
+    !>  \final{getPathVerbatimPosix}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -5315,7 +5315,7 @@ module pm_sysPath
     !>  \test
     !>  [test_pm_sysPath](@ref test_pm_sysPath)
     !>
-    !>  \finmain{getPathVerbatimFish}
+    !>  \final{getPathVerbatimFish}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -5447,7 +5447,7 @@ module pm_sysPath
     !>  As such, the implementation of this procedure for non-default `character` kinds leads to compile-time kind mismatch errors.<br>
     !>  This procedure should be converted back to a generic interface in the future when non-default character kinds are also fully supported by the intrinsic functions.<br>
     !>
-    !>  \finmain{getPathVerbatim}
+    !>  \final{getPathVerbatim}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -5554,7 +5554,7 @@ module pm_sysPath
     !>  \pmed
     !>  The examples should be extended to cover the optional argument `style`.<br>
     !>
-    !>  \finmain{getIndexDirName}
+    !>  \final{getIndexDirName}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -5659,7 +5659,7 @@ module pm_sysPath
     !>  \pmed
     !>  The examples should be extended to cover the optional argument `style`.<br>
     !>
-    !>  \finmain{getIndexBaseName}
+    !>  \final{getIndexBaseName}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -5751,7 +5751,7 @@ module pm_sysPath
     !>  \phigh
     !>  This procedure should be extended to support non-default character kinds.<br>
     !>
-    !>  \finmain{getIndexExtName}
+    !>  \final{getIndexExtName}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -5867,7 +5867,7 @@ module pm_sysPath
     !>  As such, the implementation of this procedure for non-default `character` kinds leads to compile-time kind mismatch errors.<br>
     !>  This procedure should be converted back to a generic interface in the future when non-default character kinds are also fully supported by the intrinsic functions.<br>
     !>
-    !>  \finmain{getDirName}
+    !>  \final{getDirName}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -5954,7 +5954,7 @@ module pm_sysPath
     !>  As such, the implementation of this procedure for non-default `character` kinds leads to compile-time kind mismatch errors.<br>
     !>  This procedure should be converted back to a generic interface in the future when non-default character kinds are also fully supported by the intrinsic functions.<br>
     !>
-    !>  \finmain{getExtName}
+    !>  \final{getExtName}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -6043,7 +6043,7 @@ module pm_sysPath
     !>  As such, the implementation of this procedure for non-default `character` kinds leads to compile-time kind mismatch errors.<br>
     !>  This procedure should be converted back to a generic interface in the future when non-default character kinds are also fully supported by the intrinsic functions.<br>
     !>
-    !>  \finmain{getBaseName}
+    !>  \final{getBaseName}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -6133,7 +6133,7 @@ module pm_sysPath
     !>  As such, the implementation of this procedure for non-default `character` kinds leads to compile-time kind mismatch errors.<br>
     !>  This procedure should be converted back to a generic interface in the future when non-default character kinds are also fully supported by the intrinsic functions.<br>
     !>
-    !>  \finmain{getFileName}
+    !>  \final{getFileName}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -6220,7 +6220,7 @@ module pm_sysPath
     !>  As such, the implementation of this procedure for non-default `character` kinds leads to compile-time kind mismatch errors.<br>
     !>  This procedure should be converted back to a generic interface in the future when non-default character kinds are also fully supported by the intrinsic functions.<br>
     !>
-    !>  \finmain{getPathMatch}
+    !>  \final{getPathMatch}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -6331,7 +6331,7 @@ module pm_sysPath
     !>  As such, the implementation of this procedure for non-default `character` kinds leads to compile-time kind mismatch errors.<br>
     !>  This procedure should be converted back to a generic interface in the future when non-default character kinds are also fully supported by the intrinsic functions.<br>
     !>
-    !>  \finmain{setPathMatch}
+    !>  \final{setPathMatch}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

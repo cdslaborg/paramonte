@@ -95,7 +95,7 @@
 !>  \test
 !>  [test_pm_mathErf](@ref test_pm_mathErf)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Nov 10, 2009, 8:53 PM, Michigan
@@ -179,7 +179,7 @@ module pm_mathErf
     !>  \test
     !>  [test_pm_mathErf](@ref test_pm_mathErf)
     !>
-    !>  \finmain{getErfInv}
+    !>  \final{getErfInv}
     !>
     !>  \author
     !>  \AmirShahmoradi, Nov 10, 2009, 8:53 PM, Michigan
@@ -328,7 +328,7 @@ module pm_mathErf
     !>  \test
     !>  [test_pm_mathErf](@ref test_pm_mathErf)
     !>
-    !>  \finmain{setErfInv}
+    !>  \final{setErfInv}
     !>
     !>  \author
     !>  \AmirShahmoradi, Nov 10, 2009, 8:53 PM, Michigan

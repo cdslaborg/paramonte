@@ -48,7 +48,7 @@
 !>  \test
 !>  [test_pm_sampleScale](@ref test_pm_sampleScale)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Thursday 12:45 AM, August 20, 2021, Dallas, TX
@@ -79,7 +79,7 @@ module pm_sampleScale
     !>  \test
     !>  [test_pm_sampleScale](@ref test_pm_sampleScale)
     !>
-    !>  \finmain{stdscale_type}
+    !>  \final{stdscale_type}
     !>
     !>  \author
     !>  \FatemehBagheri, Thursday 12:45 AM, August 20, 2021, Dallas, TX
@@ -188,7 +188,7 @@ module pm_sampleScale
     !>  The functionality of this interface can be expanded to include scaling of higher dimensional input `sample`
     !>  and whole `sample` input arrays of arbitrary shape, although the latter is trivial using the Fortran array syntax.<br>
     !>
-    !>  \finmain{getScaled}
+    !>  \final{getScaled}
     !>
     !>  \author
     !>  \AmirShahmoradi, Saturday 2:48 AM, August 22, 2021, Dallas, TX
@@ -905,7 +905,7 @@ module pm_sampleScale
     !>  The functionality of this interface can be expanded to include scaling of higher dimensional input `sample`
     !>  and whole `sample` input arrays of arbitrary shape, although the latter is trivial using the Fortran array syntax.<br>
     !>
-    !>  \finmain{setScaled}
+    !>  \final{setScaled}
     !>
     !>  \author
     !>  \AmirShahmoradi, Wednesday 00:01 AM, August 25, 2021, Dallas, TX

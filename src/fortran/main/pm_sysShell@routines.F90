@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains procedure implementations of [pm_sysShell](@ref pm_sysShell).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX
@@ -52,7 +52,7 @@ call setAsserted(ASSERTION,getFine(__FILE__,LINE)//MODULE_NAME//MSG);
     !>  It is set by and exclusively used within the routines of this submodule and nowhere else.<br>
     !>  The allocation status of the object is used as an indicator of its initialization.<br>
     !>
-    !>  \finmain{mc_shell}
+    !>  \final{mc_shell}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -69,7 +69,7 @@ call setAsserted(ASSERTION,getFine(__FILE__,LINE)//MODULE_NAME//MSG);
     !>  This indicator could have readily been the allocation status of an `allocatable` mc_shell.<br>
     !>  However, gfortran as of V. 13 appears to have bug not being able to set the components of the object correctly.<br>
     !>
-    !>  \finmain{mc_shellSet}
+    !>  \final{mc_shellSet}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

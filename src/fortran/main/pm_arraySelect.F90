@@ -39,7 +39,7 @@
 !>  \test
 !>  [test_pm_arraySelect](@ref test_pm_arraySelect)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX
@@ -536,7 +536,7 @@ module pm_arraySelect
     !>  \todo
     !>  \plow This generic interface can be extended to higher-rank input objects.<br>
     !>
-    !>  \finmain{getSelected}
+    !>  \final{getSelected}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1715,7 +1715,7 @@ module pm_arraySelect
     !>  \todo
     !>  \plow This generic interface can be extended to higher-rank input objects.<br>
     !>
-    !>  \finmain{setSelected}
+    !>  \final{setSelected}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

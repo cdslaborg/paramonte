@@ -79,7 +79,7 @@
 !>      end block
 !>  \endcode
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX
@@ -330,7 +330,7 @@ module pm_arrayRemove
     !>  \todo
     !>  \plow This generic interface can be extended to 2D input objects.<br>
     !>
-    !>  \finmain{getRemoved}
+    !>  \final{getRemoved}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3749,7 +3749,7 @@ module pm_arrayRemove
     !>  \todo
     !>  \plow This generic interface can be extended to 2D input objects.<br>
     !>
-    !>  \finmain{setRemoved}
+    !>  \final{setRemoved}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

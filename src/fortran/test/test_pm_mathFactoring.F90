@@ -17,7 +17,7 @@
 !>  \brief
 !>  This module contains tests of the module [pm_mathFactoring](@ref pm_mathFactoring).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Tuesday 2:06 AM, September 21, 2021, Dallas, TX

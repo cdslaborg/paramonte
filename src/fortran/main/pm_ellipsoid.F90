@@ -95,7 +95,7 @@
 !>  \pvhigh
 !>  The excluded procedure `getLogVolUnion()` in this module needs cleanup and merging with this module.<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin
@@ -162,7 +162,7 @@ module pm_ellipsoid
     !>  \test
     !>  [test_pm_ellipsoid](@ref test_pm_ellipsoid)<br>
     !>
-    !>  \finmain{getLogVolUnitBall}
+    !>  \final{getLogVolUnitBall}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin
@@ -313,7 +313,7 @@ module pm_ellipsoid
     !>  \test
     !>  [test_pm_ellipsoid](@ref test_pm_ellipsoid)<br>
     !>
-    !>  \finmain{setLogVolUnitBall}
+    !>  \final{setLogVolUnitBall}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin
@@ -501,7 +501,7 @@ module pm_ellipsoid
     !>  \phigh
     !>  A positive-definiteness runtime check for the `gramian` input argument of this generic interface must be added.<br>
     !>
-    !>  \finmain{getLogVolEll}
+    !>  \final{getLogVolEll}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin
@@ -644,7 +644,7 @@ module pm_ellipsoid
     !>  whose current implementation relies on the Fortran intrinsic routines.<br>
     !>  This hardcoding should be replaced with potential BLAS alternatives.<br>
     !>
-    !>  \finmain{isMemberEll}
+    !>  \final{isMemberEll}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin
@@ -991,7 +991,7 @@ module pm_ellipsoid
     !>  \test
     !>  [test_pm_ellipsoid](@ref test_pm_ellipsoid)<br>
     !>
-    !>  \finmain{getCountMemberEll}
+    !>  \final{getCountMemberEll}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin

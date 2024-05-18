@@ -45,7 +45,7 @@
 !>  \plow
 !>  A benchmark comparing the performance of indexing vs. allocating a modified array should be provided here.
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, 3:48 AM, October 13, 2017, Institute for Computational Engineering and Sciences, Austin, TX
@@ -187,7 +187,7 @@ module pm_arrayStrip
     !>  \test
     !>  [test_pm_arrayStrip](@ref test_pm_arrayStrip)
     !>
-    !>  \finmain{getStripped}
+    !>  \final{getStripped}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -4996,7 +4996,7 @@ module pm_arrayStrip
     !>  \test
     !>  [test_pm_arrayStrip](@ref test_pm_arrayStrip)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -6566,7 +6566,7 @@ module pm_arrayStrip
     !>  \test
     !>  [test_pm_arrayStrip](@ref test_pm_arrayStrip)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

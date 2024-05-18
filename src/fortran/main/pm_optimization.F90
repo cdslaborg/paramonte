@@ -71,7 +71,7 @@
 !>  \phigh
 !>  The Nedler-Mead algorithm must be implemented.<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -144,7 +144,7 @@ module pm_optimization
     !>  \test
     !>  [test_pm_optimization](@ref test_pm_optimization)
     !>
-    !>  \finmain{isBracketMax}
+    !>  \final{isBracketMax}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -269,7 +269,7 @@ module pm_optimization
     !>  \test
     !>  [test_pm_optimization](@ref test_pm_optimization)
     !>
-    !>  \finmain{isBracketMin}
+    !>  \final{isBracketMin}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -426,7 +426,7 @@ module pm_optimization
     !>  \test
     !>  [test_pm_optimization](@ref test_pm_optimization)
     !>
-    !>  \finmain{setBracketMax}
+    !>  \final{setBracketMax}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -598,7 +598,7 @@ module pm_optimization
     !>  \test
     !>  [test_pm_optimization](@ref test_pm_optimization)
     !>
-    !>  \finmain{setBracketMin}
+    !>  \final{setBracketMin}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -761,7 +761,7 @@ module pm_optimization
     !>  \test
     !>  [test_pm_optimization](@ref test_pm_optimization)
     !>
-    !>  \finmain{getMinBrent}
+    !>  \final{getMinBrent}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -928,7 +928,7 @@ module pm_optimization
     !>  \test
     !>  [test_pm_optimization](@ref test_pm_optimization)
     !>
-    !>  \finmain{setMinBrent}
+    !>  \final{setMinBrent}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1082,7 +1082,7 @@ module pm_optimization
     !>  \test
     !>  [test_pm_optimization](@ref test_pm_optimization)
     !>
-    !>  \finmain{isFailedMinPowell}
+    !>  \final{isFailedMinPowell}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1250,7 +1250,7 @@ module pm_optimization
     !>  \test
     !>  [test_pm_optimization](@ref test_pm_optimization)
     !>
-    !>  \finmain{setMinPowell}
+    !>  \final{setMinPowell}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

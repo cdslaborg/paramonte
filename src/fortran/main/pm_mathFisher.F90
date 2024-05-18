@@ -73,7 +73,7 @@
 !>  \test
 !>  [test_pm_mathFisher](@ref test_pm_mathFisher)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin
@@ -146,7 +146,7 @@ module pm_mathFisher
     !>  \test
     !>  [test_pm_mathFisher](@ref test_pm_mathFisher)
     !>
-    !>  \finmain{getFisher}
+    !>  \final{getFisher}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin
@@ -328,7 +328,7 @@ module pm_mathFisher
     !>  \test
     !>  [test_pm_mathFisher](@ref test_pm_mathFisher)
     !>
-    !>  \finmain{getFisherInv}
+    !>  \final{getFisherInv}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin

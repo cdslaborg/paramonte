@@ -22,7 +22,7 @@
 !>  \test
 !>  [test_pm_arrayInsert](@ref test_pm_arrayInsert)
 !>
-!>  \finmain
+!>  \final
 !>  This module is inspired by a similar functionality in the Fortran stdlib.<br>
 !>  If you use or redistribute this module you should also acknowledge and cite the [Fortran stdlib](https://github.com/fortran-lang/stdlib).<br>
 !>
@@ -125,7 +125,7 @@ module pm_option
     !>  \test
     !>  [test_pm_option](@ref test_pm_option)
     !>
-    !>  \finmain{getOption}
+    !>  \final{getOption}
     !>  The functions under the generic interface [getOption](@ref pm_option::getOption) are inspired by and further extend the
     !>  functionalities implemented in [optval](https://github.com/fortran-lang/stdlib/blob/stdlib-fpm/src/stdlib_optval.F90)
     !>  of the [Fortran stdlib](https://github.com/fortran-lang/stdlib).

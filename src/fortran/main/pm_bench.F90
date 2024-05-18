@@ -31,7 +31,7 @@
 !>  \test
 !>  [test_pm_bench](@ref test_pm_bench)
 !>
-!>  \finmain{pm_bench}
+!>  \final{pm_bench}
 !>
 !>  \author
 !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -62,7 +62,7 @@ module pm_bench
     !>  This is the `abstract interface` of the [exec](@ref pm_bench::bench_type) static type-bound procedure pointer
     !>  component of [bench_type](@ref pm_bench::bench_type) derived type that points to the user-supplied procedure to be timed.
     !>
-    !>  \finmain{exec_proc}
+    !>  \final{exec_proc}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 23, 2012, 2:21 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -86,7 +86,7 @@ module pm_bench
     !!>  \test
     !!>  [test_pm_bench](@ref test_pm_bench)
     !!>
-    !!>  \finmain{Stat_type}
+    !!>  \final{Stat_type}
     !!>
     !!>  \author
     !!>  Amir Shahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -120,7 +120,7 @@ module pm_bench
     !>  \test
     !>  [test_pm_bench](@ref test_pm_bench)
     !>
-    !>  \finmain{timing_type}
+    !>  \final{timing_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -193,7 +193,7 @@ module pm_bench
     !>  \test
     !>  [test_pm_bench](@ref test_pm_bench)
     !>
-    !>  \finmain{benchBase_type}
+    !>  \final{benchBase_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -301,7 +301,7 @@ module pm_bench
     !>  \test
     !>  [test_pm_bench](@ref test_pm_bench)
     !>
-    !>  \finmain{benchBase_typer}
+    !>  \final{benchBase_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -379,7 +379,7 @@ module pm_bench
     !>  \test
     !>  [test_pm_bench](@ref test_pm_bench)
     !>
-    !>  \finmain{bench_type}
+    !>  \final{bench_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -491,7 +491,7 @@ module pm_bench
     !>  \test
     !>  [test_pm_bench](@ref test_pm_bench)
     !>
-    !>  \finmain{bench_typer}
+    !>  \final{bench_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -567,7 +567,7 @@ module pm_bench
     !>  \test
     !>  [test_pm_bench](@ref test_pm_bench)
     !>
-    !>  \finmain{getTiming}
+    !>  \final{getTiming}
     !>
     !>  \author
     !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -636,7 +636,7 @@ module pm_bench
     !>  \test
     !>  [test_pm_bench](@ref test_pm_bench)
     !>
-    !>  \finmain{setTiming}
+    !>  \final{setTiming}
     !>
     !>  \author
     !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -673,7 +673,7 @@ module pm_bench
     !!>  \test
     !!>  [test_pm_bench](@ref test_pm_bench)
     !!>
-    !!>  \finmain{timing_type}
+    !!>  \final{timing_type}
     !!>
     !!>  \author
     !!>  Amir Shahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -728,7 +728,7 @@ module pm_bench
     !>  \test
     !>  [test_pm_bench](@ref test_pm_bench)
     !>
-    !>  \finmain{benchMulti_type}
+    !>  \final{benchMulti_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -808,7 +808,7 @@ module pm_bench
     !>  The current construction of the `name` component of the output object relies on repeated allocation of `name`.<br>
     !>  This can be improved by removing the redundant allocation in future, although any performance benefits are questionable.<br>
     !>
-    !>  \finmain{benchMulti_typer}
+    !>  \final{benchMulti_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -866,7 +866,7 @@ module pm_bench
     !>  \test
     !>  [test_pm_bench](@ref test_pm_bench)
     !>
-    !>  \finmain{showsum}
+    !>  \final{showsum}
     !>
     !>  \author
     !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -915,7 +915,7 @@ contains
     !>  \test
     !>  [test_pm_bench](@ref test_pm_bench)
     !>
-    !>  \finmain{doNothing}
+    !>  \final{doNothing}
     !>
     !>  \author
     !>  \AmirShahmoradi, Wednesday 4:13 AM, August 13, 2016, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

@@ -16,7 +16,7 @@
 
 !>  \brief This file contains the implementations of the tests of module [pm_val2Real](@ref pm_val2real).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi

@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains procedure implementations of [pm_distanceEuclid](@ref pm_distanceEuclid).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Wednesday 5:43 PM, December 25, 2013, Institute for Fusion Studies, The University of Texas at Austin

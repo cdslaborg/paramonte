@@ -68,7 +68,7 @@
 !>  \test
 !>  [test_pm_distExp](@ref test_pm_distExp)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 2:38 AM, Michigan
@@ -263,7 +263,7 @@ module pm_cosmology
     !>  \test
     !>  [test_pm_cosmology](@ref test_pm_cosmology)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -691,7 +691,7 @@ module pm_cosmology
     !>  \test
     !>  [test_pm_cosmology](@ref test_pm_cosmology)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1099,7 +1099,7 @@ module pm_cosmology
     !>  \test
     !>  [test_pm_cosmology](@ref test_pm_cosmology)
     !>
-    !>  \finmain{getDisComNormed}
+    !>  \final{getDisComNormed}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1516,7 +1516,7 @@ module pm_cosmology
     !>  \test
     !>  [test_pm_cosmology](@ref test_pm_cosmology)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1925,7 +1925,7 @@ module pm_cosmology
     !>  \test
     !>  [test_pm_cosmology](@ref test_pm_cosmology)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2337,7 +2337,7 @@ module pm_cosmology
     !>  \test
     !>  [test_pm_cosmology](@ref test_pm_cosmology)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2728,7 +2728,7 @@ module pm_cosmology
     !>  \phigh
     !>  The origins of the glitch in the output of this algorithm at high redshifts (visible in the plots) must be investigated and corrected.<br>
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2956,7 +2956,7 @@ module pm_cosmology
     !>  \test
     !>  [test_pm_cosmology](@ref test_pm_cosmology)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Wednesday 5:43 PM, December 25, 2013, Institute for Fusion Studies, The University of Texas at Austin
@@ -3316,7 +3316,7 @@ module pm_cosmology
     !>  \test
     !>  [test_pm_cosmology](@ref test_pm_cosmology)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -3716,7 +3716,7 @@ module pm_cosmology
     !>  \test
     !>  [test_pm_cosmology](@ref test_pm_cosmology)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -3890,7 +3890,7 @@ module pm_cosmology
     !>  \test
     !>  [test_pm_cosmology](@ref test_pm_cosmology)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin

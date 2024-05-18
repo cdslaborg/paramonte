@@ -268,7 +268,7 @@
 !>  \phigh
 !>  The procedures of this module should be extended to support samples of type `complex` of arbitrary kind type parameter, similar to procedures of [pm_sampleVar](@ref pm_sampleVar).<br>
 !>
-!>  \finmain{pm_sampleCor}
+!>  \final{pm_sampleCor}
 !>
 !>  \author
 !>  \AmirShahmoradi, Tuesday 01:45 AM, August 21, 2018, Dallas, TX
@@ -310,7 +310,7 @@ module pm_sampleCor
     !>  [pearson_type](@ref pm_sampleCor::pearson_type)<br>
     !>  [spearman_type](@ref pm_sampleCor::spearman_type)<br>
     !>
-    !>  \finmain{corcoef_type}
+    !>  \final{corcoef_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -342,7 +342,7 @@ module pm_sampleCor
     !>  [pearson_type](@ref pm_sampleCor::pearson_type)<br>
     !>  [spearman_type](@ref pm_sampleCor::spearman_type)<br>
     !>
-    !>  \finmain{kendall_type}
+    !>  \final{kendall_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -365,7 +365,7 @@ module pm_sampleCor
     !>  [pearson_type](@ref pm_sampleCor::pearson_type)<br>
     !>  [spearman_type](@ref pm_sampleCor::spearman_type)<br>
     !>
-    !>  \finmain{kendall}
+    !>  \final{kendall}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -403,7 +403,7 @@ module pm_sampleCor
     !>  [kendallB_type](@ref pm_sampleCor::kendallB_type)<br>
     !>  [spearman_type](@ref pm_sampleCor::spearman_type)<br>
     !>
-    !>  \finmain{kendallA_type}
+    !>  \final{kendallA_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -430,7 +430,7 @@ module pm_sampleCor
     !>  [kendallB_type](@ref pm_sampleCor::kendallB_type)<br>
     !>  [spearman_type](@ref pm_sampleCor::spearman_type)<br>
     !>
-    !>  \finmain{kendallA}
+    !>  \final{kendallA}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -468,7 +468,7 @@ module pm_sampleCor
     !>  [kendallB_type](@ref pm_sampleCor::kendallB_type)<br>
     !>  [spearman_type](@ref pm_sampleCor::spearman_type)<br>
     !>
-    !>  \finmain{kendallB_type}
+    !>  \final{kendallB_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -495,7 +495,7 @@ module pm_sampleCor
     !>  [kendallB_type](@ref pm_sampleCor::kendallB_type)<br>
     !>  [spearman_type](@ref pm_sampleCor::spearman_type)<br>
     !>
-    !>  \finmain{kendallB}
+    !>  \final{kendallB}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -530,7 +530,7 @@ module pm_sampleCor
     !>  [pearson_type](@ref pm_sampleCor::pearson_type)<br>
     !>  [spearman_type](@ref pm_sampleCor::spearman_type)<br>
     !>
-    !>  \finmain{pearson_type}
+    !>  \final{pearson_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -553,7 +553,7 @@ module pm_sampleCor
     !>  [pearson_type](@ref pm_sampleCor::pearson_type)<br>
     !>  [spearman_type](@ref pm_sampleCor::spearman_type)<br>
     !>
-    !>  \finmain{pearson}
+    !>  \final{pearson}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -587,7 +587,7 @@ module pm_sampleCor
     !>  [pearson_type](@ref pm_sampleCor::pearson_type)<br>
     !>  [spearman_type](@ref pm_sampleCor::spearman_type)<br>
     !>
-    !>  \finmain{spearman_type}
+    !>  \final{spearman_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -610,7 +610,7 @@ module pm_sampleCor
     !>  [pearson_type](@ref pm_sampleCor::pearson_type)<br>
     !>  [spearman_type](@ref pm_sampleCor::spearman_type)<br>
     !>
-    !>  \finmain{spearman}
+    !>  \final{spearman}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -755,7 +755,7 @@ module pm_sampleCor
     !>  \test
     !>  [test_pm_sampleCor](@ref test_pm_sampleCor)
     !>
-    !>  \finmain{getCor}
+    !>  \final{getCor}
     !>
     !>  \author
     !>  \FatemehBagheri, Monday 02:15 AM, September 27, 2021, Dallas, TX<br>
@@ -2308,7 +2308,7 @@ module pm_sampleCor
     !>  \test
     !>  [test_pm_sampleCor](@ref test_pm_sampleCor)
     !>
-    !>  \finmain{setCor}
+    !>  \final{setCor}
     !>
     !>  \author
     !>  \FatemehBagheri, Monday 02:15 AM, September 27, 2021, Dallas, TX<br>
@@ -7632,7 +7632,7 @@ module pm_sampleCor
     !>  \test
     !>  [test_pm_sampleCor](@ref test_pm_sampleCor)
     !>
-    !>  \finmain{getRho}
+    !>  \final{getRho}
     !>
     !>  \author
     !>  \FatemehBagheri, Monday 02:15 AM, September 27, 2021, Dallas, TX<br>
@@ -9634,7 +9634,7 @@ module pm_sampleCor
     !>  \test
     !>  [test_pm_sampleCor](@ref test_pm_sampleCor)
     !>
-    !>  \finmain{setRho}
+    !>  \final{setRho}
     !>
     !>  \author
     !>  \FatemehBagheri, Monday 02:15 AM, September 27, 2021, Dallas, TX<br>
@@ -12795,7 +12795,7 @@ module pm_sampleCor
 !    !>  \test
 !    !>  [test_pm_sampleCor](@ref test_pm_sampleCor)
 !    !>
-!    !>  \finmain{getTau}
+!    !>  \final{getTau}
 !    !>
 !    !>  \author
 !    !>  \FatemehBagheri, Monday 02:15 AM, September 27, 2021, Dallas, TX<br>
@@ -14787,7 +14787,7 @@ module pm_sampleCor
 !    !>  \test
 !    !>  [test_pm_sampleCor](@ref test_pm_sampleCor)
 !    !>
-!    !>  \finmain{setTau}
+!    !>  \final{setTau}
 !    !>
 !    !>  \author
 !    !>  \FatemehBagheri, Monday 02:15 AM, September 27, 2021, Dallas, TX<br>
@@ -17877,7 +17877,7 @@ module pm_sampleCor
     !>  \pmed
     !>  This generic interface should be extended to allow custom user-specified cordance criteria.<br>
     !>
-    !>  \finmain{setCordance}
+    !>  \final{setCordance}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

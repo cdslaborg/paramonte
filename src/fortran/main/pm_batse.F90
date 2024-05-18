@@ -59,7 +59,7 @@
 !>  \test
 !>  [test_pm_batse](@ref test_pm_batse)<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
@@ -128,7 +128,7 @@ module pm_batse
     !>  \test
     !>  [test_pm_batse](@ref test_pm_batse)
     !>
-    !>  \finmain{getCorrectionLogEffPPF}
+    !>  \final{getCorrectionLogEffPPF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -184,7 +184,7 @@ module pm_batse
     !>  \test
     !>  [test_pm_batse](@ref test_pm_batse)
     !>
-    !>  \finmain{getCorrectionLogEffPPF}
+    !>  \final{getCorrectionLogEffPPF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -299,7 +299,7 @@ module pm_batse
     !>  \test
     !>  [test_pm_batse](@ref test_pm_batse)
     !>
-    !>  \finmain{getLogEffPPF}
+    !>  \final{getLogEffPPF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -420,7 +420,7 @@ module pm_batse
     !>  \test
     !>  [test_pm_batse](@ref test_pm_batse)
     !>
-    !>  \finmain{getLogPbol}
+    !>  \final{getLogPbol}
     !>
     !>  \author
     !>  \AmirShahmoradi, Wednesday June 27, 2012, 7:15 PM, Institute for Fusion Studies, The University of Texas at Austin.<br>
@@ -541,7 +541,7 @@ module pm_batse
     !>  \test
     !>  [test_pm_batse](@ref test_pm_batse)
     !>
-    !>  \finmain{getLogPF53}
+    !>  \final{getLogPF53}
     !>
     !>  \author
     !>  \AmirShahmoradi, Wednesday June 27, 2012, 7:15 PM, Institute for Fusion Studies, The University of Texas at Austin.<br>
@@ -653,7 +653,7 @@ module pm_batse
     !>  \test
     !>  [test_pm_batse](@ref test_pm_batse)
     !>
-    !>  \finmain{getLog10PF53}
+    !>  \final{getLog10PF53}
     !>
     !>  \author
     !>  \AmirShahmoradi, Wednesday June 27, 2012, 7:15 PM, Institute for Fusion Studies, The University of Texas at Austin.<br>

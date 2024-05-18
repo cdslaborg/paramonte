@@ -84,7 +84,7 @@
 !>  \todo
 !>  Generic interfaces for computing the logarithm of CDF robustly (without numerical rounding) must be added in the future.
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -172,7 +172,7 @@ module pm_distPiwiPoweto
     !>  \todo
     !>  \plow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{getPiwiPowetoLogPDFNF}
+    !>  \final{getPiwiPowetoLogPDFNF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -364,7 +364,7 @@ module pm_distPiwiPoweto
     !>  \todo
     !>  \plow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{getPiwiPowetoLogPDF}
+    !>  \final{getPiwiPowetoLogPDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -507,7 +507,7 @@ module pm_distPiwiPoweto
     !>  \todo
     !>  \plow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{setPiwiPowetoLogPDF}
+    !>  \final{setPiwiPowetoLogPDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -735,7 +735,7 @@ module pm_distPiwiPoweto
     !>  \todo
     !>  \plow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{getPiwiPowetoCDF}
+    !>  \final{getPiwiPowetoCDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -960,7 +960,7 @@ module pm_distPiwiPoweto
     !>  \todo
     !>  \plow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{setPiwiPowetoCDF}
+    !>  \final{setPiwiPowetoCDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

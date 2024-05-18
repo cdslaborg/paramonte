@@ -26,7 +26,7 @@
 !>  \test
 !>  [test_pm_os](@ref test_pm_os)<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Friday 3:09 AM, Dec 8, 2017, Dell Medical School, Austin, TX
@@ -96,7 +96,7 @@ module pm_os
     !>  \test
     !>  [test_pm_os](@ref test_pm_os)
     !>
-    !>  \finmain{isLinux}
+    !>  \final{isLinux}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -184,7 +184,7 @@ module pm_os
     !>  \test
     !>  [test_pm_os](@ref test_pm_os)
     !>
-    !>  \finmain{isDarwin}
+    !>  \final{isDarwin}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -272,7 +272,7 @@ module pm_os
     !>  \test
     !>  [test_pm_os](@ref test_pm_os)
     !>
-    !>  \finmain{isWindows}
+    !>  \final{isWindows}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

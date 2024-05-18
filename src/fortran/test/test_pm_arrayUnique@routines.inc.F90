@@ -19,7 +19,7 @@
 !>  [getUnique](@ref pm_arrayUnique::getUnique),
 !>  [setUnique](@ref pm_arrayUnique::setUnique).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

@@ -17,7 +17,7 @@
 !>  \brief
 !>  This include file contains procedure implementation of [pm_arrayVerbose](@ref pm_arrayVerbose).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Saturday 1:30 AM, August 20, 2016, Institute for Computational Engineering and Sciences, UT Austin, TX

@@ -174,7 +174,7 @@
 !>  \test
 !>  [test_pm_fftnr](@ref test_pm_fftnr)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -243,7 +243,7 @@ module pm_fftnr
     !>  \test
     !>  [test_pm_fftnr](@ref test_pm_fftnr)
     !>
-    !>  \finmain{getFFTF}
+    !>  \final{getFFTF}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 11:34 PM, August 10, 2021, Dallas, TX
@@ -421,7 +421,7 @@ module pm_fftnr
     !>  \test
     !>  [test_pm_fftnr](@ref test_pm_fftnr)
     !>
-    !>  \finmain{getFFTI}
+    !>  \final{getFFTI}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 11:34 PM, August 10, 2021, Dallas, TX
@@ -604,7 +604,7 @@ module pm_fftnr
     !>  \test
     !>  [test_pm_fftnr](@ref test_pm_fftnr)
     !>
-    !>  \finmain{getFFTR}
+    !>  \final{getFFTR}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 11:34 PM, August 10, 2021, Dallas, TX
@@ -776,7 +776,7 @@ module pm_fftnr
     !>  \test
     !>  [test_pm_fftnr](@ref test_pm_fftnr)
     !>
-    !>  \finmain{setFFTF}
+    !>  \final{setFFTF}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 11:34 PM, August 10, 2021, Dallas, TX
@@ -938,7 +938,7 @@ module pm_fftnr
     !>  \test
     !>  [test_pm_fftnr](@ref test_pm_fftnr)
     !>
-    !>  \finmain{setFFTI}
+    !>  \final{setFFTI}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 11:34 PM, August 10, 2021, Dallas, TX
@@ -1100,7 +1100,7 @@ module pm_fftnr
     !>  \test
     !>  [test_pm_fftnr](@ref test_pm_fftnr)
     !>
-    !>  \finmain{setFFTR}
+    !>  \final{setFFTR}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 11:34 PM, August 10, 2021, Dallas, TX

@@ -17,7 +17,7 @@
 !>  \brief
 !>  This module contains tests of the module [pm_mathCumSum](@ref pm_mathCumSum).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Tuesday 2:06 AM, September 21, 2021, Dallas, TX

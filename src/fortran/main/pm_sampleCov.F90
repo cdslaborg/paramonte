@@ -158,7 +158,7 @@
 !>  frequentist abomination and shenanigan that must be eliminated in the future.<br>
 !>  The correction factor should be computed separately from the actual covariance calculation.<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Nov 24, 2020, 4:19 AM, Dallas, TX<br>
@@ -334,7 +334,7 @@ module pm_sampleCov
     !>  \remedy
     !>  For now, all do concurrent statements are converted back to normal do loops.<br>
     !>
-    !>  \finmain{getCov}
+    !>  \final{getCov}
     !>
     !>  \author
     !>  \FatemehBagheri, Monday 02:15 AM, September 27, 2021, Dallas, TX<br>
@@ -1683,7 +1683,7 @@ module pm_sampleCov
     !>  \pmed
     !>  The examples of this generic interface should be extended to corrected weighted covariance matrices.<br>
     !>
-    !>  \finmain{setCov}
+    !>  \final{setCov}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -5287,7 +5287,7 @@ module pm_sampleCov
     !>  \pmed
     !>  The examples of this generic interface should be extended to corrected weighted covariance matrices.<br>
     !>
-    !>  \finmain{setCovMean}
+    !>  \final{setCovMean}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -6965,7 +6965,7 @@ module pm_sampleCov
     !>  \test
     !>  [test_pm_sampleCov](@ref test_pm_sampleCov)
     !>
-    !>  \finmain{getCovMerged}
+    !>  \final{getCovMerged}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -7187,7 +7187,7 @@ module pm_sampleCov
     !>  \test
     !>  [test_pm_sampleCov](@ref test_pm_sampleCov)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -7873,7 +7873,7 @@ module pm_sampleCov
     !>  \test
     !>  [test_pm_sampleCov](@ref test_pm_sampleCov)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -8543,7 +8543,7 @@ module pm_sampleCov
     !>  \test
     !>  [test_pm_sampleCov](@ref test_pm_sampleCov)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -8912,7 +8912,7 @@ module pm_sampleCov
     !>  \test
     !>  [test_pm_sampleCov](@ref test_pm_sampleCov)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

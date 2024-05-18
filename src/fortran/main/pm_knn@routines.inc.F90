@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains implementations of procedures [pm_knn](@ref pm_knn).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Thursday 8:40 PM, July 20, 2023, Dallas, TX

@@ -29,7 +29,7 @@
 !>  \test
 !>  [test_pm_distBern](@ref test_pm_distBern)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -75,7 +75,7 @@ module pm_distBern
     !>  \pvhigh
     !>  This derived type must be converted to PDT and the relevant components and methods must be added once PDTs are well supported.
     !>
-    !>  \finmain{distBern_type}
+    !>  \final{distBern_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -153,7 +153,7 @@ module pm_distBern
     !>  \test
     !>  [test_pm_distBern](@ref test_pm_distBern)
     !>
-    !>  \finmain{isHead}
+    !>  \final{isHead}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -350,7 +350,7 @@ module pm_distBern
     !>  \test
     !>  [test_pm_distBern](@ref test_pm_distBern)
     !>
-    !>  \finmain{getBernRand}
+    !>  \final{getBernRand}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -547,7 +547,7 @@ module pm_distBern
     !>  \test
     !>  [test_pm_distBern](@ref test_pm_distBern)
     !>
-    !>  \finmain{setBernRand}
+    !>  \final{setBernRand}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

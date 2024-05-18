@@ -18,7 +18,7 @@
 !>  This file contains the implementation details of the routines under the generic interface
 !>  [setReversed](@ref pm_arrayReverse::setReversed).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

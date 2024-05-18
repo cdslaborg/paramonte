@@ -17,7 +17,7 @@
 !>  \brief
 !>  This include file contains the implementation of procedures in [pm_distGenExpGamma](@ref pm_distGenExpGamma).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 12:20 PM, Michigan

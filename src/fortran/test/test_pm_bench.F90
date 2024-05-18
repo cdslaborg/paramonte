@@ -21,7 +21,7 @@
 !>  \phigh 
 !>  The following tests should be extended to include allocatable arrays of arbitrary bounds.
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX

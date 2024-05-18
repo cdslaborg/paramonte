@@ -47,7 +47,7 @@
 !>  \todo
 !>  \pvhigh The gfortran bug must be resolved as soon as possible.
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -144,7 +144,7 @@ module pm_strANSI
     !>  and [this page](https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797)
     !>  for more information on ANSI/VT100 standard subset.
     !>
-    !>  \finmain{styleSeq_type}
+    !>  \final{styleSeq_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -287,7 +287,7 @@ module pm_strANSI
 !    !>  \pmed Two new optional input scalar `lbcold` and `ubcold` arguments can be added to procedures to specify
 !    !>  a subset of the contents of the original array that has to be kept in the newly allocated centered array.
 !    !>
-!    !>  \finmain
+!    !>  \final
 !    !>
 !    !>  \author
 !    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

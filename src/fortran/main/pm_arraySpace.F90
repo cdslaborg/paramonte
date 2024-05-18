@@ -23,7 +23,7 @@
 !>  \test
 !>  [test_pm_arraySpace](@ref test_pm_arraySpace)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Tuesday 08:49 PM, August 10, 2021, Dallas, TX
@@ -101,7 +101,7 @@ module pm_arraySpace
     !>  \test
     !>  [test_pm_arraySpace](@ref test_pm_arraySpace)
     !>
-    !>  \finmain{getLinSpace}
+    !>  \final{getLinSpace}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 08:49 PM, August 10, 2021, Dallas, TX
@@ -320,7 +320,7 @@ module pm_arraySpace
     !>  \test
     !>  [test_pm_arraySpace](@ref test_pm_arraySpace)
     !>
-    !>  \finmain{setLinSpace}
+    !>  \final{setLinSpace}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 08:49 PM, August 10, 2021, Dallas, TX
@@ -534,7 +534,7 @@ module pm_arraySpace
     !>  \todo
     !>  \pmed This generic interface can be expanded to include procedures with real-valued input argument `space` instead of `count`.
     !>
-    !>  \finmain{getLogSpace}
+    !>  \final{getLogSpace}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 11:34 PM, August 10, 2021, Dallas, TX
@@ -761,7 +761,7 @@ module pm_arraySpace
     !>  \todo
     !>  \plow This generic interface can be expanded to include procedures with real-valued input argument `space` instead of `count`.
     !>
-    !>  \finmain{setLogSpace}
+    !>  \final{setLogSpace}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 11:34 PM, August 10, 2021, Dallas, TX

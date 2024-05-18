@@ -61,7 +61,7 @@
 !>  \pmed Ideally, a procedure with unlimited polymorphic arguments could be also added for lexical
 !>  comparison of all types of input arrays, albeit with a user-defined operator supplied to the procedure.<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -140,7 +140,7 @@ module pm_arrayCompareLex
     !>  \todo
     !>  \pvlow The functionality of this generic interface should be extended to input container arguments, also to arrays of higher ranks.
     !>
-    !>  \finmain{llt}
+    !>  \final{llt}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -586,7 +586,7 @@ module pm_arrayCompareLex
     !>  \todo
     !>  \pvlow The functionality of this generic interface should be extended to input container arguments, also to arrays of higher ranks.
     !>
-    !>  \finmain{lle}
+    !>  \final{lle}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1032,7 +1032,7 @@ module pm_arrayCompareLex
     !>  \todo
     !>  \pvlow The functionality of this generic interface should be extended to input container arguments, also to arrays of higher ranks.
     !>
-    !>  \finmain{lge}
+    !>  \final{lge}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1478,7 +1478,7 @@ module pm_arrayCompareLex
     !>  \todo
     !>  \pvlow The functionality of this generic interface should be extended to input container arguments, also to arrays of higher ranks.
     !>
-    !>  \finmain{lgt}
+    !>  \final{lgt}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1924,7 +1924,7 @@ module pm_arrayCompareLex
 !    \todo
 !    \pvlow The functionality of this generic interface should be extended to input container arguments, also to arrays of higher ranks.
 !
-!    \finmain
+!    \final
 !
 !    \author
 !    Amir Shahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

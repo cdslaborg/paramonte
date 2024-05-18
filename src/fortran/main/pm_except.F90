@@ -36,7 +36,7 @@
 !>  \test
 !>  [test_pm_except](@ref test_pm_except)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin
@@ -105,7 +105,7 @@ module pm_except
     !>  \test
     !>  [test_pm_except](@ref test_pm_except)
     !>
-    !>  \finmain{isAddOutflow}
+    !>  \final{isAddOutflow}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin
@@ -340,7 +340,7 @@ module pm_except
     !>  \test
     !>  [test_pm_except](@ref test_pm_except)
     !>
-    !>  \finmain{isAddOutflowNeg}
+    !>  \final{isAddOutflowNeg}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin
@@ -575,7 +575,7 @@ module pm_except
     !>  \test
     !>  [test_pm_except](@ref test_pm_except)
     !>
-    !>  \finmain{isAddOutflowPos}
+    !>  \final{isAddOutflowPos}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin
@@ -816,7 +816,7 @@ module pm_except
     !>  \test
     !>  [test_pm_except](@ref test_pm_except)
     !>
-    !>  \finmain{isInf}
+    !>  \final{isInf}
     !>
     !>  \author
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -1004,7 +1004,7 @@ module pm_except
     !>  \test
     !>  [test_pm_except](@ref test_pm_except)
     !>
-    !>  \finmain{isInfPos}
+    !>  \final{isInfPos}
     !>
     !>  \author
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -1182,7 +1182,7 @@ module pm_except
     !>  \test
     !>  [test_pm_except](@ref test_pm_except)
     !>
-    !>  \finmain{getInfPos}
+    !>  \final{getInfPos}
     !>
     !>  \author
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -1356,7 +1356,7 @@ module pm_except
     !>  \test
     !>  [test_pm_except](@ref test_pm_except)
     !>
-    !>  \finmain{setInfPos}
+    !>  \final{setInfPos}
     !>
     !>  \author
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -1534,7 +1534,7 @@ module pm_except
     !>  \test
     !>  [test_pm_except](@ref test_pm_except)
     !>
-    !>  \finmain{isInfNeg}
+    !>  \final{isInfNeg}
     !>
     !>  \author
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -1712,7 +1712,7 @@ module pm_except
     !>  \test
     !>  [test_pm_except](@ref test_pm_except)
     !>
-    !>  \finmain{getInfNeg}
+    !>  \final{getInfNeg}
     !>
     !>  \author
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -1886,7 +1886,7 @@ module pm_except
     !>  \test
     !>  [test_pm_except](@ref test_pm_except)
     !>
-    !>  \finmain{setInfNeg}
+    !>  \final{setInfNeg}
     !>
     !>  \author
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -2096,7 +2096,7 @@ module pm_except
     !>  The implementation of the test for `NaN` should be improved to
     !>  a bitwise comparison that is also valid with non-IEEE-compliant processors.
     !>
-    !>  \finmain{isNAN}
+    !>  \final{isNAN}
     !>
     !>  \author
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -2407,7 +2407,7 @@ module pm_except
     !>  \test
     !>  [test_pm_except](@ref test_pm_except)
     !>
-    !>  \finmain{getNAN}
+    !>  \final{getNAN}
     !>
     !>  \author
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -2586,7 +2586,7 @@ module pm_except
     !>  \test
     !>  [test_pm_except](@ref test_pm_except)
     !>
-    !>  \finmain{setNAN}
+    !>  \final{setNAN}
     !>
     !>  \author
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX

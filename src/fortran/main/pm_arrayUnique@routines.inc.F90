@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains the implementations of the procedures in [pm_arrayUnique](@ref pm_arrayUnique).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

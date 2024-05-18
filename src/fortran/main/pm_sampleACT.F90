@@ -41,7 +41,7 @@
 !>  \test
 !>  [test_pm_sampleACT](@ref test_pm_sampleACT)
 !>
-!>  \finmain{pm_sampleACT}
+!>  \final{pm_sampleACT}
 !>
 !>  \author
 !>  \AmirShahmoradi, Tuesday 01:45 AM, August 21, 2018, Dallas, TX
@@ -210,7 +210,7 @@ module pm_sampleACT
     !>  \phigh
     !>  The performance of the implementations of this generic interface can be improved by minimizing allocations and converting function calls to subroutine calls.<br>
     !>
-    !>  \finmain{getACT}
+    !>  \final{getACT}
     !>
     !>  \author
     !>  \FatemehBagheri, Monday 02:15 AM, September 27, 2021, Dallas, TX<br>

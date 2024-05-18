@@ -1,5 +1,4 @@
 classdef Paradram < pm.sampling.Sampler
-    %>
     %>  \brief
     %>  This is the ParaDRAM class for generating instances of serial and parallel
     %>  Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo
@@ -15,10 +14,6 @@ classdef Paradram < pm.sampling.Sampler
     %>
     %>  \return
     %>  `sampler`   :   The output scalar object of class [pm.sampling.Paradram](@ref Paradram).
-    %>
-    %>  Interface
-    %>  ---------
-    %>
     %>
     %>  \interface{Paradram}
     %>  \code{.m}
@@ -64,8 +59,8 @@ classdef Paradram < pm.sampling.Sampler
     %>                  );
     %>      samples = sampler.readSample();
     %>      sample = samples{1};
-    %>      tile = pm.vis.tile.Line(sample.contents);
-    %>      tile.make("coly", sample.sampleLogFuncColIndex + 1 : sample.sampleLogFuncColIndex + 4);
+    %>      tile = pm.vis.tile.Line(sample.df);
+    %>      tile.make("coly", sample.sampleLogFuncColIndex + 1 : sample.sampleLogFuncColIndex + 4, "colc", "sampleLogFunc");
     %>
     %>  \endcode
     %>
@@ -233,29 +228,6 @@ classdef Paradram < pm.sampling.Sampler
     %>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin
     methods(Access = public)
         function self = Paradram()
-            %
-            %   Construct and return a scalar object of class ``pm.sampling.Paradram``.
-            %
-            %   Parameters
-            %   ----------
-            %
-            %       None
-            %
-            %   Returns
-            %   -------
-            %
-            %       None
-            %
-            %   Interface
-            %   ---------
-            %
-            %       sampler = pm.sampling.Paradram();
-            %
-            %   LICENSE
-            %   -------
-            %
-            %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-            %
             self = self@pm.sampling.Sampler("ParaDRAM")
         end
         failed = run(self, getLogFunc, ndim);

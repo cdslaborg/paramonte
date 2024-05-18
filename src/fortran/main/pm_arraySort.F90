@@ -79,7 +79,7 @@
 !>  +   the works of <a href="https://www.mjr19.org.uk/IT/sorts/" target="_blank">Dr. Michael Rutter</a> and,
 !>  +   the [Numerical Recipes in Fortran](https://www.amazon.com/Numerical-Recipes-Fortran-Scientific-Computing/dp/052143064X/) by Press et al., 1992.
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -223,7 +223,7 @@ module pm_arraySort
     !>  \todo
     !>  This interface can be extended to scalar containers of strings.
     !>
-    !>  \finmain{isAscendingAll}
+    !>  \final{isAscendingAll}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 3:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -722,7 +722,7 @@ module pm_arraySort
     !>  \todo
     !>  This interface can be extended to scalar containers of strings.
     !>
-    !>  \finmain{isDescendingAll}
+    !>  \final{isDescendingAll}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 3:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1221,7 +1221,7 @@ module pm_arraySort
     !>  \todo
     !>  This interface can be extended to scalar containers of strings.
     !>
-    !>  \finmain{isAscending}
+    !>  \final{isAscending}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 3:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1717,7 +1717,7 @@ module pm_arraySort
     !>  \test
     !>  [test_pm_arraySort](@ref test_pm_arraySort)
     !>
-    !>  \finmain{isDescending}
+    !>  \final{isDescending}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 3:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2244,7 +2244,7 @@ module pm_arraySort
     !>  \test
     !>  [test_pm_arraySort](@ref test_pm_arraySort)
     !>
-    !>  \finmain{isSorted}
+    !>  \final{isSorted}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 3:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3339,7 +3339,7 @@ module pm_arraySort
     !>  \test
     !>  [test_pm_arraySort](@ref test_pm_arraySort)
     !>
-    !>  \finmain{getSorted}
+    !>  \final{getSorted}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -5530,7 +5530,7 @@ module pm_arraySort
     !>  \pmed
     !>  \plow The current bypass for the PDT name aliasing bug should be reverted back to PDT name aliasing once the ifort bug is resolved.
     !>
-    !>  \finmain{setSorted}
+    !>  \final{setSorted}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

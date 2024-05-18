@@ -16,7 +16,7 @@
 
 !>  \brief This file contains the implementations of the tests of module [pm_val2Real](@ref pm_timer).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

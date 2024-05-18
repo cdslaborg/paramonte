@@ -20,7 +20,7 @@
 !>  \test
 !>  [test_pm_arrayPad](@ref test_pm_arrayPad)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -154,7 +154,7 @@ module pm_arrayPad
     !>  Two new optional input scalar `lbcold` and `ubcold` arguments can be added to procedures to specify
     !>  a subset of the contents of the original array that has to be kept in the newly allocated padded array.
     !>
-    !>  \finmain{getPadded}
+    !>  \final{getPadded}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1110,7 +1110,7 @@ module pm_arrayPad
     !>  \pmed Two new optional input scalar `lbcold` and `ubcold` arguments can be added to procedures to specify
     !>  a subset of the contents of the original array that has to be kept in the newly allocated padded array.
     !>
-    !>  \finmain{setPadded}
+    !>  \final{setPadded}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2056,7 +2056,7 @@ module pm_arrayPad
     !>  \pmed Two new optional input scalar `lbcold` and `ubcold` arguments can be added to procedures to specify
     !>  a subset of the contents of the original array that has to be kept in the newly allocated padded array.
     !>
-    !>  \finmain{getPaddedl}
+    !>  \final{getPaddedl}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2999,7 +2999,7 @@ module pm_arrayPad
     !>  \pmed Two new optional input scalar `lbcold` and `ubcold` arguments can be added to procedures to specify
     !>  a subset of the contents of the original array that has to be kept in the newly allocated padded array.
     !>
-    !>  \finmain{setPaddedl}
+    !>  \final{setPaddedl}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3945,7 +3945,7 @@ module pm_arrayPad
     !>  \pmed Two new optional input scalar `lbcold` and `ubcold` arguments can be added to procedures to specify
     !>  a subset of the contents of the original array that has to be kept in the newly allocated padded array.
     !>
-    !>  \finmain{getPaddedr}
+    !>  \final{getPaddedr}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -4887,7 +4887,7 @@ module pm_arrayPad
     !>  \pmed Two new optional input scalar `lbcold` and `ubcold` arguments can be added to procedures to specify
     !>  a subset of the contents of the original array that has to be kept in the newly allocated padded array.
     !>
-    !>  \finmain{setPaddedr}
+    !>  \final{setPaddedr}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

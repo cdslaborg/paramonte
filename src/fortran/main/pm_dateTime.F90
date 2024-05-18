@@ -298,7 +298,7 @@
 !>  The choice of kinds is primarily dictated by the output of the Fortran intrinsic `date_and_time()`.<br>
 !>  All routines should be extended to generic interfaces supporting multiple kinds in future.<br>
 !>
-!>  \finmain{pm_dateTime}
+!>  \final{pm_dateTime}
 !>
 !>  \author
 !>  \AmirShahmoradi, January 30, 2021, 5:36 AM, Dallas, TX
@@ -340,7 +340,7 @@ module pm_dateTime
     !>  \see
     !>  [dateTimeInt_type](@ref pm_dateTime::dateTimeInt_type)<br>
     !>
-    !>  \finmain{ORIGIN}
+    !>  \final{ORIGIN}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -375,7 +375,7 @@ module pm_dateTime
     !>  \output{WEEKDAY_NAME}
     !>  \include{lineno} example/pm_dateTime/WEEKDAY_NAME/main.out.F90
     !>
-    !>  \finmain{WEEKDAY_NAME}
+    !>  \final{WEEKDAY_NAME}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -414,7 +414,7 @@ module pm_dateTime
     !>  \output{WEEKDAY_NAME_ISO}
     !>  \include{lineno} example/pm_dateTime/WEEKDAY_NAME_ISO/main.out.F90
     !>
-    !>  \finmain{WEEKDAY_NAME_ISO}
+    !>  \final{WEEKDAY_NAME_ISO}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -448,7 +448,7 @@ module pm_dateTime
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{MONTH_NAME}
+    !>  \final{MONTH_NAME}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -486,7 +486,7 @@ module pm_dateTime
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{DAYS_OF_MONTH}
+    !>  \final{DAYS_OF_MONTH}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -516,7 +516,7 @@ module pm_dateTime
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{DAYS_OF_MONTH_LEAP}
+    !>  \final{DAYS_OF_MONTH_LEAP}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -533,7 +533,7 @@ module pm_dateTime
     !>  \see
     !>  [MINUTES_PER_DAY](@ref pm_dateTime::MINUTES_PER_DAY)<br>
     !>
-    !>  \finmain{SECONDS_PER_DAY}
+    !>  \final{SECONDS_PER_DAY}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -550,7 +550,7 @@ module pm_dateTime
     !>  \see
     !>  [SECONDS_PER_DAY](@ref pm_dateTime::SECONDS_PER_DAY)<br>
     !>
-    !>  \finmain{MINUTES_PER_DAY}
+    !>  \final{MINUTES_PER_DAY}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -579,7 +579,7 @@ module pm_dateTime
     !>  [MEAN_MINUTES_PER_YEAR](@ref pm_dateTime::MEAN_MINUTES_PER_YEAR)<br>
     !>  [MEAN_SECONDS_PER_YEAR](@ref pm_dateTime::MEAN_SECONDS_PER_YEAR)<br>
     !>
-    !>  \finmain{MEAN_DAYS_PER_MONTH}
+    !>  \final{MEAN_DAYS_PER_MONTH}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -608,7 +608,7 @@ module pm_dateTime
     !>  [MEAN_MINUTES_PER_YEAR](@ref pm_dateTime::MEAN_MINUTES_PER_YEAR)<br>
     !>  [MEAN_SECONDS_PER_YEAR](@ref pm_dateTime::MEAN_SECONDS_PER_YEAR)<br>
     !>
-    !>  \finmain{MEAN_WEEKS_PER_MONTH}
+    !>  \final{MEAN_WEEKS_PER_MONTH}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -637,7 +637,7 @@ module pm_dateTime
     !>  [MEAN_MINUTES_PER_YEAR](@ref pm_dateTime::MEAN_MINUTES_PER_YEAR)<br>
     !>  [MEAN_SECONDS_PER_YEAR](@ref pm_dateTime::MEAN_SECONDS_PER_YEAR)<br>
     !>
-    !>  \finmain{MEAN_HOURS_PER_MONTH}
+    !>  \final{MEAN_HOURS_PER_MONTH}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -666,7 +666,7 @@ module pm_dateTime
     !>  [MEAN_MINUTES_PER_YEAR](@ref pm_dateTime::MEAN_MINUTES_PER_YEAR)<br>
     !>  [MEAN_SECONDS_PER_YEAR](@ref pm_dateTime::MEAN_SECONDS_PER_YEAR)<br>
     !>
-    !>  \finmain{MEAN_MINUTES_PER_MONTH}
+    !>  \final{MEAN_MINUTES_PER_MONTH}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -695,7 +695,7 @@ module pm_dateTime
     !>  [MEAN_MINUTES_PER_YEAR](@ref pm_dateTime::MEAN_MINUTES_PER_YEAR)<br>
     !>  [MEAN_SECONDS_PER_YEAR](@ref pm_dateTime::MEAN_SECONDS_PER_YEAR)<br>
     !>
-    !>  \finmain{MEAN_SECONDS_PER_MONTH}
+    !>  \final{MEAN_SECONDS_PER_MONTH}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -724,7 +724,7 @@ module pm_dateTime
     !>  [MEAN_MINUTES_PER_YEAR](@ref pm_dateTime::MEAN_MINUTES_PER_YEAR)<br>
     !>  [MEAN_SECONDS_PER_YEAR](@ref pm_dateTime::MEAN_SECONDS_PER_YEAR)<br>
     !>
-    !>  \finmain{MEAN_DAYS_PER_YEAR}
+    !>  \final{MEAN_DAYS_PER_YEAR}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -753,7 +753,7 @@ module pm_dateTime
     !>  [MEAN_MINUTES_PER_YEAR](@ref pm_dateTime::MEAN_MINUTES_PER_YEAR)<br>
     !>  [MEAN_SECONDS_PER_YEAR](@ref pm_dateTime::MEAN_SECONDS_PER_YEAR)<br>
     !>
-    !>  \finmain{MEAN_WEEKS_PER_YEAR}
+    !>  \final{MEAN_WEEKS_PER_YEAR}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -782,7 +782,7 @@ module pm_dateTime
     !>  [MEAN_MINUTES_PER_YEAR](@ref pm_dateTime::MEAN_MINUTES_PER_YEAR)<br>
     !>  [MEAN_SECONDS_PER_YEAR](@ref pm_dateTime::MEAN_SECONDS_PER_YEAR)<br>
     !>
-    !>  \finmain{MEAN_HOURS_PER_YEAR}
+    !>  \final{MEAN_HOURS_PER_YEAR}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -811,7 +811,7 @@ module pm_dateTime
     !>  [MEAN_MINUTES_PER_YEAR](@ref pm_dateTime::MEAN_MINUTES_PER_YEAR)<br>
     !>  [MEAN_SECONDS_PER_YEAR](@ref pm_dateTime::MEAN_SECONDS_PER_YEAR)<br>
     !>
-    !>  \finmain{MEAN_MINUTES_PER_YEAR}
+    !>  \final{MEAN_MINUTES_PER_YEAR}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -840,7 +840,7 @@ module pm_dateTime
     !>  [MEAN_MINUTES_PER_YEAR](@ref pm_dateTime::MEAN_MINUTES_PER_YEAR)<br>
     !>  [MEAN_SECONDS_PER_YEAR](@ref pm_dateTime::MEAN_SECONDS_PER_YEAR)<br>
     !>
-    !>  \finmain{MEAN_SECONDS_PER_YEAR}
+    !>  \final{MEAN_SECONDS_PER_YEAR}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -888,7 +888,7 @@ module pm_dateTime
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{dateTimeInt_type}
+    !>  \final{dateTimeInt_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -950,7 +950,7 @@ module pm_dateTime
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{dateTimeStr_type}
+    !>  \final{dateTimeStr_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -1011,7 +1011,7 @@ module pm_dateTime
     ! >  \test
     ! >  [test_pm_dateTime](@ref test_pm_dateTime)
     ! >
-    ! >  \finmain{DateTime_type}
+    ! >  \final{DateTime_type}
     ! >
     ! >  \author
     ! >  Amir Shahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -1077,7 +1077,7 @@ module pm_dateTime
     !>  [timeZone](@ref pm_dateTime::timeZone)<br>
     !>  [getZoneAbbr](@ref pm_dateTime::getZoneAbbr)<br>
     !>
-    !>  \finmain{timeZone_type}
+    !>  \final{timeZone_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, January 30, 2021, 5:36 AM, Dallas, TX
@@ -1177,7 +1177,7 @@ module pm_dateTime
     !>  [getZoneAbbr](@ref pm_dateTime::getZoneAbbr)<br>
     !>  [timeZone_type](@ref pm_dateTime::timeZone_type)<br>
     !>
-    !>  \finmain{timeZone}
+    !>  \final{timeZone}
     !>
     !>  \author
     !>  \AmirShahmoradi, January 30, 2021, 5:36 AM, Dallas, TX
@@ -1251,7 +1251,7 @@ module pm_dateTime
     !>  On Windows, this could be also be done via the Powershell command `(Get-Date).IsDaylightSavingTime()` to test whether the daylight savings is activated.<br>
     !>  On Unix, The command `date +"\%Z"` outputs the zone abbreviation.<br>
     !>
-    !>  \finmain{getZoneAbbr}
+    !>  \final{getZoneAbbr}
     !>
     !>  \author
     !>  \AmirShahmoradi, January 30, 2021, 5:36 AM, Dallas, TX
@@ -1328,7 +1328,7 @@ module pm_dateTime
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{getHour12}
+    !>  \final{getHour12}
     !>
     !>  \author
     !>  \AmirShahmoradi, January 30, 2021, 5:36 AM, Dallas, TX
@@ -1463,7 +1463,7 @@ module pm_dateTime
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{getJulianDay}
+    !>  \final{getJulianDay}
     !>  If you use this generic interface, you must also cite the paper by [Peter Baum, 2017, Date Algorithms](https://www.researchgate.net/publication/316558298_Date_Algorithms).<br>
     !>
     !>  \author
@@ -1645,7 +1645,7 @@ module pm_dateTime
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{getDateTimeShifted}
+    !>  \final{getDateTimeShifted}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 3:59 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -1804,7 +1804,7 @@ module pm_dateTime
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{getDateTimeDiff}
+    !>  \final{getDateTimeDiff}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 3:59 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -1910,7 +1910,7 @@ module pm_dateTime
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{getDateTimeUTC}
+    !>  \final{getDateTimeUTC}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 3:59 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -2090,7 +2090,7 @@ module pm_dateTime
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{getDateTimeNewZone}
+    !>  \final{getDateTimeNewZone}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 3:59 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -2360,7 +2360,7 @@ module pm_dateTime
     !>  \phigh
     !>  The format specifiers \f$\ms{%U}\f$ and \f$\ms{%W}\f$ must be implemented.<br>
     !>
-    !>  \finmain{getDateTime}
+    !>  \final{getDateTime}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -2566,7 +2566,7 @@ module pm_dateTime
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{getWeekDate}
+    !>  \final{getWeekDate}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -2662,7 +2662,7 @@ module pm_dateTime
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{getWeekYear}
+    !>  \final{getWeekYear}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -2788,7 +2788,7 @@ module pm_dateTime
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{isValidDateTime}
+    !>  \final{isValidDateTime}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -2929,7 +2929,7 @@ module pm_dateTime
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{isLastDayInMonth}
+    !>  \final{isLastDayInMonth}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -3021,7 +3021,7 @@ module pm_dateTime
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{getDateAfter}
+    !>  \final{getDateAfter}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -3113,7 +3113,7 @@ module pm_dateTime
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{getDateBefore}
+    !>  \final{getDateBefore}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -3216,7 +3216,7 @@ module pm_dateTime
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{getOrdinalDay}
+    !>  \final{getOrdinalDay}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -3328,7 +3328,7 @@ module pm_dateTime
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{getWeekNumber}
+    !>  \final{getWeekNumber}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -3429,7 +3429,7 @@ module pm_dateTime
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{getWeekDay}
+    !>  \final{getWeekDay}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -3536,7 +3536,7 @@ module pm_dateTime
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{getWeekDayISO}
+    !>  \final{getWeekDayISO}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -3621,7 +3621,7 @@ module pm_dateTime
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{getCountDays}
+    !>  \final{getCountDays}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -3702,7 +3702,7 @@ module pm_dateTime
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{getCountWeeks}
+    !>  \final{getCountWeeks}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -3776,7 +3776,7 @@ module pm_dateTime
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{getCountLeapYears}
+    !>  \final{getCountLeapYears}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -3866,7 +3866,7 @@ module pm_dateTime
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{isMorning}
+    !>  \final{isMorning}
     !>
     !>  \author
     !>  \AmirShahmoradi, January 30, 2021, 5:36 AM, Dallas, TX
@@ -3965,7 +3965,7 @@ module pm_dateTime
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{isValidZone}
+    !>  \final{isValidZone}
     !>
     !>  \author
     !>  \AmirShahmoradi, January 30, 2021, 5:36 AM, Dallas, TX
@@ -4085,7 +4085,7 @@ end block;
     !>  \remark
     !>  See the documentation of [dateTimeInt_type](@ref pm_dateTime::dateTimeInt_type) for example usage.
     !>
-    !>  \finmain{dateTimeInt_typer}
+    !>  \final{dateTimeInt_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -4137,7 +4137,7 @@ end block;
     !>  \remark
     !>  See the documentation of [dateTimeInt_type](@ref pm_dateTime::dateTimeInt_type) for example usage.
     !>
-    !>  \finmain{getDateTimeIntValues}
+    !>  \final{getDateTimeIntValues}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -4186,7 +4186,7 @@ end block;
     !>  \remark
     !>  See the documentation of [dateTimeStr_type](@ref pm_dateTime::dateTimeStr_type) for example usage.
     !>
-    !>  \finmain{dateTimeStr_typer}
+    !>  \final{dateTimeStr_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -4272,7 +4272,7 @@ end block;
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{isLeapYear}
+    !>  \final{isLeapYear}
     !>
     !>  \author
     !>  \AmirShahmoradi, January 30, 2021, 5:36 AM, Dallas, TX
@@ -4338,7 +4338,7 @@ end block;
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{getMillisecond}
+    !>  \final{getMillisecond}
     !>
     !>  \author
     !>  \AmirShahmoradi, January 30, 2021, 5:36 AM, Dallas, TX
@@ -4398,7 +4398,7 @@ end block;
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{getSecond}
+    !>  \final{getSecond}
     !>
     !>  \author
     !>  \AmirShahmoradi, January 30, 2021, 5:36 AM, Dallas, TX
@@ -4458,7 +4458,7 @@ end block;
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{getMinute}
+    !>  \final{getMinute}
     !>
     !>  \author
     !>  \AmirShahmoradi, January 30, 2021, 5:36 AM, Dallas, TX
@@ -4522,7 +4522,7 @@ end block;
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{getHour}
+    !>  \final{getHour}
     !>
     !>  \author
     !>  \AmirShahmoradi, January 30, 2021, 5:36 AM, Dallas, TX
@@ -4589,7 +4589,7 @@ end block;
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{getZone}
+    !>  \final{getZone}
     !>
     !>  \author
     !>  \AmirShahmoradi, January 30, 2021, 5:36 AM, Dallas, TX
@@ -4649,7 +4649,7 @@ end block;
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{getDay}
+    !>  \final{getDay}
     !>
     !>  \author
     !>  \AmirShahmoradi, January 30, 2021, 5:36 AM, Dallas, TX
@@ -4709,7 +4709,7 @@ end block;
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{getMonth}
+    !>  \final{getMonth}
     !>
     !>  \author
     !>  \AmirShahmoradi, January 30, 2021, 5:36 AM, Dallas, TX
@@ -4769,7 +4769,7 @@ end block;
     !>  \test
     !>  [test_pm_dateTime](@ref test_pm_dateTime)
     !>
-    !>  \finmain{getYear}
+    !>  \final{getYear}
     !>
     !>  \author
     !>  \AmirShahmoradi, January 30, 2021, 5:36 AM, Dallas, TX

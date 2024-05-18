@@ -26,7 +26,7 @@
 !>  \test
 !>  [test_pm_arraySpace](@ref test_pm_arraySpace)<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Tuesday 08:49 PM, August 10, 2021, Dallas, TX
@@ -128,7 +128,7 @@ module pm_arrayRange
     !>  \test
     !>  [test_pm_arrayRange](@ref test_pm_arrayRange)
     !>
-    !>  \finmain{getRange}
+    !>  \final{getRange}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 08:49 PM, August 10, 2021, Dallas, TX
@@ -688,7 +688,7 @@ module pm_arrayRange
     !>  \test
     !>  [test_pm_arrayRange](@ref test_pm_arrayRange)<br>
     !>
-    !>  \finmain{setRange}
+    !>  \final{setRange}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 08:49 PM, August 10, 2021, Dallas, TX

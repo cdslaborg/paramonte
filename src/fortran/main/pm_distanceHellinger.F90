@@ -142,7 +142,7 @@
 !>  \test
 !>  [test_pm_distanceHellinger](@ref test_pm_distanceHellinger)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, March 22, 2012, 2:21 PM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -264,7 +264,7 @@ module pm_distanceHellinger
     !>  \pvhigh
     !>  The runtime checks for the complex input `invCov` must be implemented.<br>
     !>
-    !>  \finmain{getDisHellSq}
+    !>  \final{getDisHellSq}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>

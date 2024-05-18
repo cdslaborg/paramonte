@@ -131,7 +131,7 @@
 !>  \test
 !>  [test_pm_distPareto](@ref test_pm_distPareto)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -177,7 +177,7 @@ module pm_distPareto
     !>  \pvhigh
     !>  This derived type must be converted to PDT and the relevant components and methods must be added once PDTs are well supported.
     !>
-    !>  \finmain{distPareto_type}
+    !>  \final{distPareto_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -265,7 +265,7 @@ module pm_distPareto
     !>  \todo
     !>  \pvlow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{getParetoLogPDFNF}
+    !>  \final{getParetoLogPDFNF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -451,7 +451,7 @@ module pm_distPareto
     !>  \todo
     !>  \pvlow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{getParetoLogPDF}
+    !>  \final{getParetoLogPDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -635,7 +635,7 @@ module pm_distPareto
     !>  \todo
     !>  \pvlow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{setParetoLogPDF}
+    !>  \final{setParetoLogPDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -786,7 +786,7 @@ module pm_distPareto
     !>  \todo
     !>  \pvlow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{getParetoLogCDFNF}
+    !>  \final{getParetoLogCDFNF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -972,7 +972,7 @@ module pm_distPareto
     !>  \todo
     !>  \pvlow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{getParetoLogCDF}
+    !>  \final{getParetoLogCDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1161,7 +1161,7 @@ module pm_distPareto
     !>  \todo
     !>  \pvlow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{setParetoLogCDF}
+    !>  \final{setParetoLogCDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1351,7 +1351,7 @@ module pm_distPareto
     !>  \todo
     !>  \pvlow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{getParetoLogQuan}
+    !>  \final{getParetoLogQuan}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1539,7 +1539,7 @@ module pm_distPareto
     !>  \test
     !>  [test_pm_distPareto](@ref test_pm_distPareto)
     !>
-    !>  \finmain{setParetoLogQuan}
+    !>  \final{setParetoLogQuan}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1725,7 +1725,7 @@ module pm_distPareto
     !>  \todo
     !>  \pvlow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{getParetoLogRand}
+    !>  \final{getParetoLogRand}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1918,7 +1918,7 @@ module pm_distPareto
     !>  This interface can be extended to support vector-like `logRand` arguments other than the `elemental` approach.<br>
     !>  Such an extension would be sensible only if the new interface improves the performance against the `elemental` approach.<br>
     !>
-    !>  \finmain{setParetoLogRand}
+    !>  \final{setParetoLogRand}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

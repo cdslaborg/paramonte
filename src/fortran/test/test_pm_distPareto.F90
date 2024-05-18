@@ -16,7 +16,7 @@
 
 !>  \brief This module contains tests of the module [pm_distPareto](@ref pm_distPareto).<br>
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, 12:27 AM Tuesday, February 22, 2022, Dallas, TX

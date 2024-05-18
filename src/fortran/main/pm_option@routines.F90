@@ -20,7 +20,7 @@
 !>  \test
 !>  [test_pm_option](@ref test_pm_option)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Saturday 10:17 PM, December 5, 2021, Dallas, TX

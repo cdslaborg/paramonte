@@ -20,7 +20,7 @@
 !>  \test
 !>  [test_pm_distGenExpGamma](@ref test_pm_distGenExpGamma)
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

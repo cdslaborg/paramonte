@@ -17,7 +17,7 @@
 !>  \brief
 !>  This is main entry to the tests of the ParaMonte kernel library.
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

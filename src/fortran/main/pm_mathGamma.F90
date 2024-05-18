@@ -60,7 +60,7 @@
 !>  \test
 !>  [test_pm_mathGamma](@ref test_pm_mathGamma)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Monday 12:56 pm, August 16, 2021, Dallas TX
@@ -153,7 +153,7 @@ module pm_mathGamma
     !>  \test
     !>  [test_pm_mathGamma](@ref test_pm_mathGamma)
     !>
-    !>  \finmain{getGammaIncLow}
+    !>  \final{getGammaIncLow}
     !>
     !>  \author
     !>  \FatemehBagheri, Monday 12:36 pm, August 16, 2021, Dallas TX
@@ -304,7 +304,7 @@ module pm_mathGamma
     !>  \remark
     !>  See Numerical Recipes by Press et al. 1992 for further details of the Incomplete Gamma function.
     !>
-    !>  \finmain{getGammaIncUpp}
+    !>  \final{getGammaIncUpp}
     !>
     !>  \author
     !>  \FatemehBagheri, Monday 12:36 pm, August 16, 2021, Dallas TX
@@ -463,7 +463,7 @@ module pm_mathGamma
     !>  [test_pm_mathGamma](@ref test_pm_mathGamma)
     !>
     !>
-    !>  \finmain{setGammaIncLow}
+    !>  \final{setGammaIncLow}
     !>
     !>  \author
     !>  \FatemehBagheri, Monday 12:36 pm, August 16, 2021, Dallas TX
@@ -630,7 +630,7 @@ module pm_mathGamma
     !>  \remark
     !>  See Numerical Recipes by Press et al. 1992 for further details of the Incomplete Gamma function.
     !>
-    !>  \finmain{setGammaIncUpp}
+    !>  \final{setGammaIncUpp}
     !>
     !>  \author
     !>  \FatemehBagheri, Monday 12:36 pm, August 16, 2021, Dallas TX
@@ -788,7 +788,7 @@ module pm_mathGamma
     !>  \test
     !>  [test_pm_mathGamma](@ref test_pm_mathGamma)
     !>
-    !>  \finmain{setGammaIncLowSeries}
+    !>  \final{setGammaIncLowSeries}
     !>
     !>  \author
     !>  \FatemehBagheri, Monday 12:36 pm, August 16, 2021, Dallas TX
@@ -944,7 +944,7 @@ module pm_mathGamma
     !>  \test
     !>  [test_pm_mathGamma](@ref test_pm_mathGamma)
     !>
-    !>  \finmain{setGammaIncUppContFrac}
+    !>  \final{setGammaIncUppContFrac}
     !>
     !>  \author
     !>  \FatemehBagheri, Monday 12:36 pm, August 16, 2021, Dallas TX

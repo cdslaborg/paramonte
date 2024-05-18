@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains the implementation details of the routines under the generic interfaces of [pm_sampleNorm](@ref pm_sampleNorm).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Saturday 2:33 AM, August 22, 2021, Dallas, TX

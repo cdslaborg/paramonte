@@ -29,7 +29,7 @@
 !>  \brief
 !>  This module contains procedures and data that provide general information about the ParaMonte library, its interfaces, and its build.
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Monday 00:01 AM, January 1, 2018, Institute for Computational Engineering and Sciences, University of Texas Austin
@@ -61,7 +61,7 @@ module pm_paramonte
     !>  [getBaseName](@ref pm_sysPath::getBaseName)<br>
     !>  [getDirName](@ref pm_sysPath::getDirName)<br>
     !>
-    !>  \finmain{PARAMONTE_WEB_REPOSITORY}
+    !>  \final{PARAMONTE_WEB_REPOSITORY}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -82,7 +82,7 @@ module pm_paramonte
     !>  [getBaseName](@ref pm_sysPath::getBaseName)<br>
     !>  [getDirName](@ref pm_sysPath::getDirName)<br>
     !>
-    !>  \finmain{PARAMONTE_WEB_ISSUES}
+    !>  \final{PARAMONTE_WEB_ISSUES}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -103,7 +103,7 @@ module pm_paramonte
     !>  [getBaseName](@ref pm_sysPath::getBaseName)<br>
     !>  [getDirName](@ref pm_sysPath::getDirName)<br>
     !>
-    !>  \finmain{PARAMONTE_WEB_DOC}
+    !>  \final{PARAMONTE_WEB_DOC}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -126,7 +126,7 @@ module pm_paramonte
     !>  [getBaseName](@ref pm_sysPath::getBaseName)<br>
     !>  [getDirName](@ref pm_sysPath::getDirName)<br>
     !>
-    !>  \finmain{PARAMONTE_COMPILER_VERSION}
+    !>  \final{PARAMONTE_COMPILER_VERSION}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -147,7 +147,7 @@ module pm_paramonte
     !>  [getBaseName](@ref pm_sysPath::getBaseName)<br>
     !>  [getDirName](@ref pm_sysPath::getDirName)<br>
     !>
-    !>  \finmain{PARAMONTE_COMPILER_OPTIONS}
+    !>  \final{PARAMONTE_COMPILER_OPTIONS}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -170,7 +170,7 @@ module pm_paramonte
     !>  [getBaseName](@ref pm_sysPath::getBaseName)<br>
     !>  [getDirName](@ref pm_sysPath::getDirName)<br>
     !>
-    !>  \finmain{paramonte_type}
+    !>  \final{paramonte_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -192,7 +192,7 @@ module pm_paramonte
     !>  [getBaseName](@ref pm_sysPath::getBaseName)<br>
     !>  [getDirName](@ref pm_sysPath::getDirName)<br>
     !>
-    !>  \finmain{paramonte}
+    !>  \final{paramonte}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -302,7 +302,7 @@ module pm_paramonte
     !>  [envis_type](@ref pm_paramonte::envis_type)<br>
     !>  [envname](@ref pm_paramonte::envname)<br>
     !>
-    !>  \finmain{filext_type}
+    !>  \final{filext_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -321,7 +321,7 @@ module pm_paramonte
     !>  [envis_type](@ref pm_paramonte::envis_type)<br>
     !>  [envname](@ref pm_paramonte::envname)<br>
     !>
-    !>  \finmain{envis_type}
+    !>  \final{envis_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -353,7 +353,7 @@ module pm_paramonte
     !>  [envis_type](@ref pm_paramonte::envis_type)<br>
     !>  [envname](@ref pm_paramonte::envname)<br>
     !>
-    !>  \finmain{envis}
+    !>  \final{envis}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -397,7 +397,7 @@ module pm_paramonte
     !>  \output{PARAMONTE_BUILD_DATE}
     !>  \include{lineno} example/pm_paramonte/PARAMONTE_BUILD_DATE/main.out.F90
     !>
-    !>  \finmain{PARAMONTE_BUILD_DATE}
+    !>  \final{PARAMONTE_BUILD_DATE}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -442,7 +442,7 @@ module pm_paramonte
     !>  \output{PARAMONTE_VERSION}
     !>  \include{lineno} example/pm_paramonte/PARAMONTE_VERSION/main.out.F90
     !>
-    !>  \finmain{PARAMONTE_VERSION}
+    !>  \final{PARAMONTE_VERSION}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -497,7 +497,7 @@ module pm_paramonte
     !>  \output{PARAMONTE_SPLASH}
     !>  \include{lineno} example/pm_paramonte/PARAMONTE_SPLASH/main.out.F90
     !>
-    !>  \finmain{PARAMONTE_SPLASH}
+    !>  \final{PARAMONTE_SPLASH}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -612,7 +612,7 @@ contains
     !>  \output{getParaMonteSplash}
     !>  \include{lineno} example/pm_paramonte/getParaMonteSplash/main.out.F90
     !>
-    !>  \finmain{getParaMonteSplash}
+    !>  \final{getParaMonteSplash}
     !>
     !>  \author
     !>  \AmirShahmoradi, March 22, 2012, 00:00 AM, National Institute for Fusion Studies, The University of Texas at Austin

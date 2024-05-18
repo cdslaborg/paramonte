@@ -19,7 +19,7 @@
 !>  [getReplaced](@ref Array_pmod::getReplaced),
 !>  [setReplaced](@ref Array_pmod::setReplaced).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

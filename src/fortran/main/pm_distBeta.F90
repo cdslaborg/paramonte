@@ -89,7 +89,7 @@
 !>  \pvhigh
 !>  The quantile function must be implemented here.
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -137,7 +137,7 @@ module pm_distBeta
     !>  \pvhigh
     !>  This derived type must be converted to PDT and the relevant components and methods must be added once PDTs are well supported.
     !>
-    !>  \finmain{distBeta_type}
+    !>  \final{distBeta_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -220,7 +220,7 @@ module pm_distBeta
     !>  \todo
     !>  \pmed This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -350,7 +350,7 @@ module pm_distBeta
     !>  \todo
     !>  \pmed This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -535,7 +535,7 @@ module pm_distBeta
     !>  \todo
     !>  \pmed This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -725,7 +725,7 @@ module pm_distBeta
     !>  \test
     !>  [test_pm_distBeta](@ref test_pm_distBeta)
     !>
-    !>  \finmain{getBetaCDF}
+    !>  \final{getBetaCDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -874,7 +874,7 @@ module pm_distBeta
     !>  \test
     !>  [test_pm_distBeta](@ref test_pm_distBeta)
     !>
-    !>  \finmain{setBetaCDF}
+    !>  \final{setBetaCDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1032,7 +1032,7 @@ module pm_distBeta
     !>  \test
     !>  [test_pm_distBeta](@ref test_pm_distBeta)
     !>
-    !>  \finmain{setBetaRand}
+    !>  \final{setBetaRand}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

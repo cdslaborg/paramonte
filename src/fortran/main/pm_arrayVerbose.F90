@@ -28,7 +28,7 @@
 !>  \pmed
 !>  A generic subroutine interface corresponding to the generic function interface [getVerbose](@ref pm_arrayVerbose::getVerbose) might be added in future.<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Saturday 1:30 AM, August 20, 2016, Institute for Computational Engineering and Sciences, UT Austin, TX
@@ -135,7 +135,7 @@ module pm_arrayVerbose
     !>  \remedy
     !>  See the bug described in [getUnique](@ref pm_arrayUnique::getUnique).<br>
     !>
-    !>  \finmain{getVerbose}
+    !>  \final{getVerbose}
     !>
     !>  \author
     !>  \AmirShahmoradi, Saturday 1:30 AM, August 20, 2016, Institute for Computational Engineering and Sciences, UT Austin, TX

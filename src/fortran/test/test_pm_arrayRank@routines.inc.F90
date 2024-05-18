@@ -17,7 +17,7 @@
 !>  \brief
 !>  This module contains implementations of the tests of the procedures of [pm_arrayRank](@ref pm_arrayRank).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi

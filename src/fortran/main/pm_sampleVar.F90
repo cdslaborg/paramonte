@@ -376,7 +376,7 @@
 !>  Once the \gfortran PDT bugs are resolved, the [getVar](@ref pm_sampleVar::getVar) generic interface can be extended to serve as a
 !>  high-level wrapper for the weight-specific generic interfaces in this module.<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \todo
 !>  \pmed
@@ -473,7 +473,7 @@ module pm_sampleVar
     !>  \test
     !>  [test_pm_sampleVar](@ref test_pm_sampleVar)
     !>
-    !>  \finmain{getVarCorrection}
+    !>  \final{getVarCorrection}
     !>
     !>  \author
     !>  \FatemehBagheri, Monday 02:15 AM, September 27, 2021, Dallas, TX<br>
@@ -705,7 +705,7 @@ module pm_sampleVar
     !>  The functionality of this interface can be expanded in the future to include the computation of
     !>  the variance of higher dimensional input `sample` and whole `sample` input arrays of arbitrary shape.<br>
     !>
-    !>  \finmain{getVar}
+    !>  \final{getVar}
     !>
     !>  \author
     !>  \FatemehBagheri, Monday 02:15 AM, September 27, 2021, Dallas, TX<br>
@@ -2608,7 +2608,7 @@ module pm_sampleVar
     !>  The functionality of this interface can be expanded in the future to include the computation of
     !>  the variance of higher dimensional input `sample` and whole `sample` input arrays of arbitrary shape.<br>
     !>
-    !>  \finmain{setVar}
+    !>  \final{setVar}
     !>
     !>  \author
     !>  \FatemehBagheri, Monday 02:15 AM, September 27, 2021, Dallas, TX<br>
@@ -6294,7 +6294,7 @@ module pm_sampleVar
     !>  \test
     !>  [test_pm_sampleMean](@ref test_pm_sampleMean)
     !>
-    !>  \finmain{setVarMean}
+    !>  \final{setVarMean}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -8320,7 +8320,7 @@ module pm_sampleVar
     !>  \test
     !>  [test_pm_sampleVar](@ref test_pm_sampleVar)
     !>
-    !>  \finmain{getVarMerged}
+    !>  \final{getVarMerged}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -8695,7 +8695,7 @@ module pm_sampleVar
     !>  \test
     !>  [test_pm_sampleVar](@ref test_pm_sampleVar)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -9364,7 +9364,7 @@ module pm_sampleVar
     !>  \test
     !>  [test_pm_sampleVar](@ref test_pm_sampleVar)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

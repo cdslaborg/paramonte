@@ -69,7 +69,7 @@
 !>  \test
 !>  [test_pm_arrayRefill](@ref test_pm_arrayRefill)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX
@@ -238,7 +238,7 @@ module pm_arrayRefill
     !>  \pmed
     !>  This generic interface should be extended to arrays of container type as done in [pm_arrayResize](@ref pm_arrayResize).<br>
     !>
-    !>  \finmain{setRefilled}
+    !>  \final{setRefilled}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

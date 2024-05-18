@@ -17,7 +17,7 @@
 !>  \brief
 !>  This include file contains the implementations of the tests of procedures of [pm_matrixChol](@ref pm_matrixChol).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Sunday 4:33 PM, September 19, 2021, Dallas, TX

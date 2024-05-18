@@ -17,7 +17,7 @@
 !>  \brief
 !>  This include file contains the implementations of the tests of procedures in [pm_matrixDet](@ref pm_matrixDet).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Apr 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

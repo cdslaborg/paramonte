@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains procedure implementations of [pm_distExp](@ref pm_distExp).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

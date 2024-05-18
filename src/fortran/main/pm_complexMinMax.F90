@@ -26,7 +26,7 @@
 !>  \test
 !>  [test_pm_complexMinMax](@ref test_pm_complexMinMax)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX
@@ -96,7 +96,7 @@ module pm_complexMinMax
     !>  \test
     !>  [test_pm_complexMinMax](@ref test_pm_complexMinMax)
     !>
-    !>  \finmain{min}
+    !>  \final{min}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -210,7 +210,7 @@ module pm_complexMinMax
     !>  \test
     !>  [test_pm_complexMinMax](@ref test_pm_complexMinMax)
     !>
-    !>  \finmain{max}
+    !>  \final{max}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -333,7 +333,7 @@ module pm_complexMinMax
     !>  \test
     !>  [test_pm_complexMinMax](@ref test_pm_complexMinMax)
     !>
-    !>  \finmain{minval}
+    !>  \final{minval}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -638,7 +638,7 @@ module pm_complexMinMax
     !>  \test
     !>  [test_pm_complexMinMax](@ref test_pm_complexMinMax)
     !>
-    !>  \finmain{maxval}
+    !>  \final{maxval}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -956,7 +956,7 @@ module pm_complexMinMax
     !>  \pmed
     !>  This generic interface can be extended with optional `mask` and `back` arguments to match those of the intrinsic `minloc()`.<br>
     !>
-    !>  \finmain{minloc}
+    !>  \final{minloc}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1274,7 +1274,7 @@ module pm_complexMinMax
     !>  \pmed
     !>  This generic interface can be extended with optional `mask` and `back` arguments to match those of the intrinsic `maxloc()`.<br>
     !>
-    !>  \finmain{maxloc}
+    !>  \final{maxloc}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

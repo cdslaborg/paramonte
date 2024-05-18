@@ -70,7 +70,7 @@
 !>  \test
 !>  [test_pm_distGeomCyclic](@ref test_pm_distGeomCyclic)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -117,7 +117,7 @@ module pm_distGeomCyclic
     !>  \pvhigh
     !>  This derived type must be converted to PDT and the relevant components and methods must be added once PDTs are well supported.
     !>
-    !>  \finmain{distGeomCyclic_type}
+    !>  \final{distGeomCyclic_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -191,7 +191,7 @@ module pm_distGeomCyclic
     !>  \test
     !>  [test_pm_distGeomCyclic](@ref test_pm_distGeomCyclic)
     !>
-    !>  \finmain{getGeomCyclicLogPMF}
+    !>  \final{getGeomCyclicLogPMF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -403,7 +403,7 @@ module pm_distGeomCyclic
     !>  \todo
     !>  \pmed This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{setGeomCyclicLogPMF}
+    !>  \final{setGeomCyclicLogPMF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -1049,7 +1049,7 @@ module pm_distGeomCyclic
     !>  \test
     !>  [test_pm_distGeomCyclic](@ref test_pm_distGeomCyclic)
     !>
-    !>  \finmain{getGeomCyclicLogCDF}
+    !>  \final{getGeomCyclicLogCDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -1264,7 +1264,7 @@ module pm_distGeomCyclic
     !>  \todo
     !>  \pmed This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{setGeomCyclicLogCDF}
+    !>  \final{setGeomCyclicLogCDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -1901,7 +1901,7 @@ module pm_distGeomCyclic
     !>  \test
     !>  [test_pm_distGeomCyclic](@ref test_pm_distGeomCyclic)
     !>
-    !>  \finmain{getGeomCyclicRand}
+    !>  \final{getGeomCyclicRand}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -2042,7 +2042,7 @@ module pm_distGeomCyclic
     !>  \test
     !>  [test_pm_distGeomCyclic](@ref test_pm_distGeomCyclic)
     !>
-    !>  \finmain{setGeomCyclicRand}
+    !>  \final{setGeomCyclicRand}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -2546,7 +2546,7 @@ module pm_distGeomCyclic
     !>  \test
     !>  [test_pm_distGeomCyclic](@ref test_pm_distGeomCyclic)
     !>
-    !>  \finmain{isFailedGeomCyclicFit}
+    !>  \final{isFailedGeomCyclicFit}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>

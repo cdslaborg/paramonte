@@ -17,7 +17,7 @@
 !>  \brief
 !>  This module contains implementations of the tests of the procedures under the generic interfaces of [pm_arrayRebind](@ref pm_arrayRebind).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX

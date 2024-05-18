@@ -40,7 +40,7 @@
 !>  \pmed
 !>  A benchmark comparing the performance of output index array vs. output jagged array would be informative here.<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX
@@ -277,7 +277,7 @@ module pm_arraySplit
     !>  \todo
     !>  \pmed A `backward` optional argument can be added in the future to search for the input `sep` in the backward direction.
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

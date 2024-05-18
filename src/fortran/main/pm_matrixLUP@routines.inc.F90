@@ -17,7 +17,7 @@
 !>  \brief
 !>  This include file contains procedure implementation of the generic interface [pm_matrixLUP](@ref pm_matrixLUP).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Apr 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

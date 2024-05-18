@@ -43,7 +43,7 @@
 !>  \test
 !>  [test_pm_distLogNorm](@ref test_pm_distLogNorm)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -89,7 +89,7 @@ module pm_distLogNorm
     !>  \pvhigh
     !>  This derived type must be converted to PDT and the relevant components and methods must be added once PDTs are well supported.
     !>
-    !>  \finmain{distLogNorm_type}
+    !>  \final{distLogNorm_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -151,7 +151,7 @@ module pm_distLogNorm
     !>  \test
     !>  [test_pm_distLogNorm](@ref test_pm_distLogNorm)
     !>
-    !>  \finmain{getLogNormLogPDF}
+    !>  \final{getLogNormLogPDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -285,7 +285,7 @@ module pm_distLogNorm
     !>  \pmed
     !>  A performant vectorized `logPDF(:)` version of the subroutines under this generic interface could be added in the future.
     !>
-    !>  \finmain{setLogNormLogPDF}
+    !>  \final{setLogNormLogPDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -595,7 +595,7 @@ module pm_distLogNorm
     !>  \test
     !>  [test_pm_distLogNorm](@ref test_pm_distLogNorm)
     !>
-    !>  \finmain{getLogNormCDF}
+    !>  \final{getLogNormCDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -721,7 +721,7 @@ module pm_distLogNorm
     !>  \test
     !>  [test_pm_distLogNorm](@ref test_pm_distLogNorm)
     !>
-    !>  \finmain{setLogNormCDF}
+    !>  \final{setLogNormCDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

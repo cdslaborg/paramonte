@@ -71,7 +71,7 @@
 !>  \test
 !>  [test_pm_distanceEuclid](@ref test_pm_distanceEuclid)<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Thursday 8:40 PM, July 20, 2023, Dallas, TX
@@ -170,7 +170,7 @@ module pm_knn
     !>  \phigh
     !>  This generic interface should be extended to support discrete distance matrices.<br>
     !>
-    !>  \finmain{setKnnSorted}
+    !>  \final{setKnnSorted}
     !>
     !>  \author
     !>  \FatemehBagheri, Thursday 8:40 PM, July 20, 2023, Dallas, TX

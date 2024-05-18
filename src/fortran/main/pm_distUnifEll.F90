@@ -134,7 +134,7 @@
 !>  \test
 !>  [test_pm_distUnifEll](@ref test_pm_distUnifEll)<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin
@@ -184,7 +184,7 @@ module pm_distUnifEll
     !>  \pvhigh
     !>  This derived type must be converted to PDT and the relevant components and methods must be added once PDTs are well supported.
     !>
-    !>  \finmain{distUnifEll_type}
+    !>  \final{distUnifEll_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -264,7 +264,7 @@ module pm_distUnifEll
     !>  \test
     !>  [test_pm_distUnifEll](@ref test_pm_distUnifEll)
     !>
-    !>  \finmain{getUnifEllLogPDF}
+    !>  \final{getUnifEllLogPDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -549,7 +549,7 @@ module pm_distUnifEll
     !>  \test
     !>  [test_pm_distUnifEll](@ref test_pm_distUnifEll)
     !>
-    !>  \finmain{getUnifEllRand}
+    !>  \final{getUnifEllRand}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 23, 2017, 12:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin
@@ -2704,7 +2704,7 @@ module pm_distUnifEll
     !>  \test
     !>  [test_pm_distUnifEll](@ref test_pm_distUnifEll)
     !>
-    !>  \finmain{setUnifEllRand}
+    !>  \final{setUnifEllRand}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 23, 2017, 12:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin

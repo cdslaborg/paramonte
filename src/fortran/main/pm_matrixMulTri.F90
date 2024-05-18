@@ -93,7 +93,7 @@
 !>  \test
 !>  [test_pm_matrixMul](@ref test_pm_matrixMul)<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -383,7 +383,7 @@ module pm_matrixMulTri
     !>      The BLAS routine implemented: trmv, trsv, trsm, trmm.
     !>  \endcode
     !>
-    !>  \finmain{setMatMulTri}
+    !>  \final{setMatMulTri}
     !>
     !>  \author
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX

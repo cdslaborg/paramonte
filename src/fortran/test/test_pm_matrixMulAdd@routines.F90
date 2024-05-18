@@ -16,7 +16,7 @@
 
 !>  \brief This file contains the implementations of the tests of module [pm_matrixMulAdd](@ref pm_matrixMulAdd).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, 12:27 AM Tuesday, February 22, 2022, Dallas, TX

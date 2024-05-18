@@ -15,7 +15,7 @@
 !>  \brief
 !>  This module contains tests of the module [pm_arrayCompareLex](@ref pm_arrayCompareLex).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

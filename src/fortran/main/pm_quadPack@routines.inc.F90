@@ -17,7 +17,7 @@
 !>  \brief
 !>  This include file contains the implementations of procedures of [pm_quadPack](@ref pm_quadPack).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

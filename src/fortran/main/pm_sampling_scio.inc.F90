@@ -201,7 +201,7 @@ end if;
     !>  Ideally, the derived type [chainParaDRAM_type](@ref pm_sampling_scio::chainParaDRAM_type) must be converted to a parameterized derived type (PDT) once supported by \gfortran.<br>
     !>  Consequently, all chain contents components that are explicitly passed to the procedures can be implicitly returned as components of the output `chain` argument.<br>
     !>
-    !>  \finmain{getErrChainRead}
+    !>  \final{getErrChainRead}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin

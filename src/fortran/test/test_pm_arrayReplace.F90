@@ -20,7 +20,7 @@
 !>  \todo
 !>  \phigh The following tests should be extended to include allocatable arrays of arbitrary bounds.
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

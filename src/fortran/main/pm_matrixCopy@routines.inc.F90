@@ -17,7 +17,7 @@
 !>  \brief
 !>  This include file contains procedure implementation of [pm_matrixCopy](@ref pm_matrixCopy).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Sunday 11:23 PM, September 19, 2021, Dallas, TX

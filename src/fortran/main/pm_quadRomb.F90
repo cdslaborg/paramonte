@@ -20,7 +20,7 @@
 !>  \test
 !>  [test_pm_distExp](@ref test_pm_distExp)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 4:41 AM, Michigan<br>
@@ -71,7 +71,7 @@ module pm_quadRomb
     !>  \test
     !>  [test_pm_quadRomb](@ref test_pm_quadRomb)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -118,7 +118,7 @@ module pm_quadRomb
     !>  \test
     !>  [test_pm_quadRomb](@ref test_pm_quadRomb)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -162,7 +162,7 @@ module pm_quadRomb
     !>  \test
     !>  [test_pm_quadRomb](@ref test_pm_quadRomb)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -206,7 +206,7 @@ module pm_quadRomb
     !>  \test
     !>  [test_pm_quadRomb](@ref test_pm_quadRomb)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -249,7 +249,7 @@ module pm_quadRomb
     !>  \test
     !>  [test_pm_quadRomb](@ref test_pm_quadRomb)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -293,7 +293,7 @@ module pm_quadRomb
     !>  \test
     !>  [test_pm_quadRomb](@ref test_pm_quadRomb)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -388,7 +388,7 @@ module pm_quadRomb
     !>  \test
     !>  [test_pm_quadRomb](@ref test_pm_quadRomb)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2102,7 +2102,7 @@ module pm_quadRomb
 !    !>  \test
 !    !>  [test_pm_quadRomb](@ref test_pm_quadRomb)
 !    !>
-!    !>  \finmain
+!    !>  \final
 !    !>
 !    !>  \author
 !    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

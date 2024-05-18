@@ -17,7 +17,7 @@
 !>  \brief
 !>  This include file contains procedure implementation of the generic interfaces of [pm_matrixMulAdd](@ref pm_matrixMulAdd).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Apr 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

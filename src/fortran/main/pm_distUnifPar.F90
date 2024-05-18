@@ -82,7 +82,7 @@
 !>  \test
 !>  [test_pm_distUnifPar](@ref test_pm_distUnifPar)<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin
@@ -128,7 +128,7 @@ module pm_distUnifPar
     !>  \pvhigh
     !>  This derived type must be converted to PDT and the relevant components and methods must be added once PDTs are well supported.
     !>
-    !>  \finmain{distUnifPar_type}
+    !>  \final{distUnifPar_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -204,7 +204,7 @@ module pm_distUnifPar
     !>  The current implementation computes the corresponding Gramian matrix which may be slower than directly computing the determinant of
     !>  the representative matrix.<br>
     !>
-    !>  \finmain{getUnifParLogPDF}
+    !>  \final{getUnifParLogPDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -463,7 +463,7 @@ module pm_distUnifPar
     !>  \test
     !>  [test_pm_distUnifPar](@ref test_pm_distUnifPar)
     !>
-    !>  \finmain{getUnifParRand}
+    !>  \final{getUnifParRand}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 23, 2017, 12:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin
@@ -913,7 +913,7 @@ module pm_distUnifPar
     !>  \test
     !>  [test_pm_distUnifPar](@ref test_pm_distUnifPar)
     !>
-    !>  \finmain{setUnifParRand}
+    !>  \final{setUnifParRand}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 23, 2017, 12:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin

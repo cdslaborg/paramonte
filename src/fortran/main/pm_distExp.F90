@@ -102,7 +102,7 @@
 !>  \test
 !>  [test_pm_distExp](@ref test_pm_distExp)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -148,7 +148,7 @@ module pm_distExp
     !>  \pvhigh
     !>  This derived type must be converted to PDT and the relevant components and methods must be added once PDTs are well supported.
     !>
-    !>  \finmain{distExp_type}
+    !>  \final{distExp_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -214,7 +214,7 @@ module pm_distExp
     !>  \todo
     !>  \pmed This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{getExpLogPDF}
+    !>  \final{getExpLogPDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -351,7 +351,7 @@ module pm_distExp
     !>  \todo
     !>  \pmed This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{setExpLogPDF}
+    !>  \final{setExpLogPDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -648,7 +648,7 @@ module pm_distExp
     !>  \todo
     !>  \pmed This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -779,7 +779,7 @@ module pm_distExp
     !>  \todo
     !>  \pmed This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1015,7 +1015,7 @@ module pm_distExp
     !>  \test
     !>  [test_pm_distExp](@ref test_pm_distExp)
     !>
-    !>  \finmain{getExpRand}
+    !>  \final{getExpRand}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1170,7 +1170,7 @@ module pm_distExp
     !>  \remedy{Oct, 2022}
     !>  The `complex` interface of the routines is now deprecated and removed.<br>
     !>
-    !>  \finmain{setExpRand}
+    !>  \final{setExpRand}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

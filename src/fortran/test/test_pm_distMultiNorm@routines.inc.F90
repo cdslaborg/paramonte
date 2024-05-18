@@ -17,7 +17,7 @@
 !>  \brief
 !>  This include file contains procedure implementations of the tests of [pm_distMultiNorm](@ref pm_distMultiNorm).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Tuesday 2:06 AM, September 21, 2021, Dallas, TX

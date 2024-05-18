@@ -27,7 +27,7 @@
 !>  \test
 !>  [test_pm_sysInfo](@ref test_pm_sysInfo)<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Friday 3:09 AM, Dec 8, 2017, Dell Medical School, Austin, TX
@@ -110,7 +110,7 @@ module pm_sysInfo
     !>  \output{kernelis_type}
     !>  \include{lineno} example/pm_sysInfo/kernelis_type/main.out.F90
     !>
-    !>  \finmain{kernelis_type}
+    !>  \final{kernelis_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -237,7 +237,7 @@ module pm_sysInfo
     !>  \output{kernel_type}
     !>  \include{lineno} example/pm_sysInfo/kernel_type/main.out.F90
     !>
-    !>  \finmain{kernel_type}
+    !>  \final{kernel_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -338,7 +338,7 @@ module pm_sysInfo
     !>  \test
     !>  [test_pm_sys](@ref test_pm_sys)
     !>
-    !>  \finmain{getSysInfo}
+    !>  \final{getSysInfo}
     !>
     !>  \author
     !>  Amir Shahmoradi, Tuesday March 7, 2017, 3:09 AM, ICES, The University of Texas at Austin
@@ -429,7 +429,7 @@ module pm_sysInfo
     !>  \test
     !>  [test_pm_sysInfo](@ref test_pm_sysInfo)
     !>
-    !>  \finmain{isKernelWindows}
+    !>  \final{isKernelWindows}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -517,7 +517,7 @@ module pm_sysInfo
     !>  \test
     !>  [test_pm_sysInfo](@ref test_pm_sysInfo)
     !>
-    !>  \finmain{isKernelDarwin}
+    !>  \final{isKernelDarwin}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -605,7 +605,7 @@ module pm_sysInfo
     !>  \test
     !>  [test_pm_sysInfo](@ref test_pm_sysInfo)
     !>
-    !>  \finmain{isKernelLinux}
+    !>  \final{isKernelLinux}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:09 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

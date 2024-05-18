@@ -112,7 +112,7 @@
 !>  \test
 !>  [test_pm_distPois](@ref test_pm_distPois)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -159,7 +159,7 @@ module pm_distPois
     !>  \pvhigh
     !>  This derived type must be converted to PDT and the relevant components and methods must be added once PDTs are well supported.
     !>
-    !>  \finmain{distPois_type}
+    !>  \final{distPois_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -219,7 +219,7 @@ module pm_distPois
     !>  \test
     !>  [test_pm_distPois](@ref test_pm_distPois)
     !>
-    !>  \finmain{getPoisLogPMF}
+    !>  \final{getPoisLogPMF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -351,7 +351,7 @@ module pm_distPois
     !>  \todo
     !>  \pmed This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{setPoisLogPMF}
+    !>  \final{setPoisLogPMF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -538,7 +538,7 @@ module pm_distPois
     !>  \test
     !>  [test_pm_distPois](@ref test_pm_distPois)
     !>
-    !>  \finmain{getPoisCDF}
+    !>  \final{getPoisCDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -675,7 +675,7 @@ module pm_distPois
     !>  \test
     !>  [test_pm_distPois](@ref test_pm_distPois)
     !>
-    !>  \finmain{setPoisCDF}
+    !>  \final{setPoisCDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -766,7 +766,7 @@ module pm_distPois
     !>  \test
     !>  [test_pm_distPois](@ref test_pm_distPois)
     !>
-    !>  \finmain{getPoisRand}
+    !>  \final{getPoisRand}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -825,7 +825,7 @@ module pm_distPois
     !>  \test
     !>  [test_pm_distPois](@ref test_pm_distPois)
     !>
-    !>  \finmain{getPoisRand}
+    !>  \final{getPoisRand}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -980,7 +980,7 @@ module pm_distPois
     !>  \test
     !>  [test_pm_distPois](@ref test_pm_distPois)
     !>
-    !>  \finmain{setPoisRand}
+    !>  \final{setPoisRand}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

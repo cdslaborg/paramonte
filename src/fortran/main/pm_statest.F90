@@ -67,7 +67,7 @@
 !>  \test
 !>  [test_pm_statest](@ref test_pm_statest)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, March 22, 2012, 2:21 PM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -186,7 +186,7 @@ module pm_statest
     !>                The sample presence and weight types: X => missing, WDD => default (unweighted) / default (unweighted), WID => integer-weighted, default, WRD => real-weighted, default., WII => integer-weighted, integer-weighted, WRR => real-weighted, real-weighted.
     !>  \endcode
     !>
-    !>  \finmain{getProbKS}
+    !>  \final{getProbKS}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -670,7 +670,7 @@ module pm_statest
     !>                The sample presence and weight types: X => missing, WDD => default (unweighted) / default (unweighted), WID => integer-weighted, default, WRD => real-weighted, default., WII => integer-weighted, integer-weighted, WRR => real-weighted, real-weighted.
     !>  \endcode
     !>
-    !>  \finmain{setProbKS}
+    !>  \final{setProbKS}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>

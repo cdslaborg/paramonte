@@ -94,7 +94,7 @@
 !>              The corresponding transposition is called [Unitary](@ref pm_matrixTrans::transUnit_type) denoted by the operator \f$\cdot^{\up{-H}}\f$.<br>
 !>  </ol>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -148,7 +148,7 @@ module pm_matrixTrans
     !>  [transHermSkew_type](@ref pm_matrixTrans::transHermSkew_type)<br>
     !>  [trans_type](@ref pm_matrixTrans::trans_type)<br>
     !>
-    !>  \finmain{trans_type}
+    !>  \final{trans_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -178,7 +178,7 @@ module pm_matrixTrans
     !>  [transHermSkew_type](@ref pm_matrixTrans::transHermSkew_type)<br>
     !>  [trans_type](@ref pm_matrixTrans::trans_type)<br>
     !>
-    !>  \finmain{trans}
+    !>  \final{trans}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -219,7 +219,7 @@ module pm_matrixTrans
     !>  [transHermSkew_type](@ref pm_matrixTrans::transHermSkew_type)<br>
     !>  [trans_type](@ref pm_matrixTrans::trans_type)<br>
     !>
-    !>  \finmain{transSymm_type}
+    !>  \final{transSymm_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -249,7 +249,7 @@ module pm_matrixTrans
     !>  [transHermSkew_type](@ref pm_matrixTrans::transHermSkew_type)<br>
     !>  [trans_type](@ref pm_matrixTrans::trans_type)<br>
     !>
-    !>  \finmain{transSymm}
+    !>  \final{transSymm}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -290,7 +290,7 @@ module pm_matrixTrans
     !>  [transHermSkew_type](@ref pm_matrixTrans::transHermSkew_type)<br>
     !>  [trans_type](@ref pm_matrixTrans::trans_type)<br>
     !>
-    !>  \finmain{transHerm_type}
+    !>  \final{transHerm_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -321,7 +321,7 @@ module pm_matrixTrans
     !>  [trans_type](@ref pm_matrixTrans::trans_type)<br>
     !>  [nothing](@ref pm_array::nothing)<br>
     !>
-    !>  \finmain{transHerm}
+    !>  \final{transHerm}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -362,7 +362,7 @@ module pm_matrixTrans
     !>  [transHermSkew_type](@ref pm_matrixTrans::transHermSkew_type)<br>
     !>  [trans_type](@ref pm_matrixTrans::trans_type)<br>
     !>
-    !>  \finmain{transOrth_type}
+    !>  \final{transOrth_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -392,7 +392,7 @@ module pm_matrixTrans
     !>  [transHermSkew_type](@ref pm_matrixTrans::transHermSkew_type)<br>
     !>  [trans_type](@ref pm_matrixTrans::trans_type)<br>
     !>
-    !>  \finmain{transOrth}
+    !>  \final{transOrth}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -433,7 +433,7 @@ module pm_matrixTrans
     !>  [transHermSkew_type](@ref pm_matrixTrans::transHermSkew_type)<br>
     !>  [trans_type](@ref pm_matrixTrans::trans_type)<br>
     !>
-    !>  \finmain{transUnit_type}
+    !>  \final{transUnit_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -463,7 +463,7 @@ module pm_matrixTrans
     !>  [transHermSkew_type](@ref pm_matrixTrans::transHermSkew_type)<br>
     !>  [trans_type](@ref pm_matrixTrans::trans_type)<br>
     !>
-    !>  \finmain{transUnit}
+    !>  \final{transUnit}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -504,7 +504,7 @@ module pm_matrixTrans
     !>  [transHermSkew_type](@ref pm_matrixTrans::transHermSkew_type)<br>
     !>  [trans_type](@ref pm_matrixTrans::trans_type)<br>
     !>
-    !>  \finmain{transSymmSkew_type}
+    !>  \final{transSymmSkew_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -534,7 +534,7 @@ module pm_matrixTrans
     !>  [transHermSkew_type](@ref pm_matrixTrans::transHermSkew_type)<br>
     !>  [trans_type](@ref pm_matrixTrans::trans_type)<br>
     !>
-    !>  \finmain{transSymmSkew}
+    !>  \final{transSymmSkew}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -575,7 +575,7 @@ module pm_matrixTrans
     !>  [transHermSkew_type](@ref pm_matrixTrans::transHermSkew_type)<br>
     !>  [trans_type](@ref pm_matrixTrans::trans_type)<br>
     !>
-    !>  \finmain{transHermSkew_type}
+    !>  \final{transHermSkew_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -605,7 +605,7 @@ module pm_matrixTrans
     !>  [transHermSkew_type](@ref pm_matrixTrans::transHermSkew_type)<br>
     !>  [trans_type](@ref pm_matrixTrans::trans_type)<br>
     !>
-    !>  \finmain{transHermSkew}
+    !>  \final{transHermSkew}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -755,7 +755,7 @@ module pm_matrixTrans
     !>  \test
     !>  [test_pm_matrixTrans](@ref test_pm_matrixTrans)
     !>
-    !>  \finmain{setMatTrans}
+    !>  \final{setMatTrans}
     !>
     !>  \todo
     !>  \pmed

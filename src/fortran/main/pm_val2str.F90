@@ -48,7 +48,7 @@
 !>  \test
 !>  [test_pm_val2str](@ref test_pm_val2str)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -160,7 +160,7 @@ module pm_val2str
     !>  \todo
     !>  \plow This generic interface can be expanded to arrays of higher dimensions than two.
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1659,7 +1659,7 @@ module pm_val2str
     !>  it is bound to fail in the distant future.<br>
     !>  Therefore, it must be generically set based on the `precision` of the fields.<br>
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

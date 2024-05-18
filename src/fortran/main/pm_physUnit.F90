@@ -26,7 +26,7 @@
 !>  This is an experimental module still under development.<br>
 !>  Other similar work includes but is not limited to *Kim et al. 2017, Fortran 90 Programming With Physical Unit Annotations.*<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \todo
 !>  \pmed
@@ -52,7 +52,7 @@ module pm_physUnit
     !>  \brief
     !>  This derived minimally contains two components for holding the physical value and its associated standard deviation.
     !>
-    !>  \finmain{uncertain_type}
+    !>  \final{uncertain_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

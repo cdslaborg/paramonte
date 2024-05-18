@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains procedure implementations of [pm_mathLogSubExp](@ref pm_mathLogSubExp).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Thursday 1:45 AM, August 22, 2019, Dallas, TX

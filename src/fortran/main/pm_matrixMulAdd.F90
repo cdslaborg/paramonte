@@ -91,7 +91,7 @@
 !>      <li>    `STBMV`, `DTBMV`, `CTBMV`, and `ZTBMV` (Matrix-Vector Product for a Triangular Band Matrix, Its Transpose, or Its Conjugate Transpose).<br>
 !>  </ol>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -475,7 +475,7 @@ module pm_matrixMulAdd
     !>      The BLAS routine implemented: gemv, symv, hemv, gemm, symm, hemm, spmv, hpmv
     !>  \endcode
     !>
-    !>  \finmain{setMatMulAdd}
+    !>  \final{setMatMulAdd}
     !>
     !>  \author
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX

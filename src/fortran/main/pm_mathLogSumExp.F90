@@ -29,7 +29,7 @@
 !>  \test
 !>  [test_pm_mathLogSumExp](@ref test_pm_mathLogSumExp)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Thursday 12:45 AM, August 20, 2021, Dallas, TX
@@ -140,7 +140,7 @@ module pm_mathLogSumExp
     !>  \todo
     !>  \pmed This generic interface can be expanded to include input arrays with `Weight`s.
     !>
-    !>  \finmain{getLogSumExp}
+    !>  \final{getLogSumExp}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 08:49 PM, August 10, 2021, Dallas, TX

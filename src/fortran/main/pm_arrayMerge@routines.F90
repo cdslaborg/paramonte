@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains procedure implementations of [pm_arrayMerge](@ref pm_arrayMerge).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 5:03 PM, August 11, 2021, Dallas, TX

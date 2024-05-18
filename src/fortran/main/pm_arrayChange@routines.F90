@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains procedure implementations of [pm_arrayChange](@ref pm_arrayChange).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>

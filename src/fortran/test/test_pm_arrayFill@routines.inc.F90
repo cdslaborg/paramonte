@@ -17,7 +17,7 @@
 !>  \brief
 !>  This module contains implementations of the tests of the procedures under the generic interfaces [pm_arrayFill](@ref pm_arrayFill).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

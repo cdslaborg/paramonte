@@ -61,7 +61,7 @@
 !>  A comparison and benchmark with faster less numerically-stable computational methods for pairwise distances might be informative here.<br>
 !>  See also a relevant discussion in [stackexchange](https://scicomp.stackexchange.com/questions/30360/fast-and-numerically-stable-pairwise-distance-algorithms).<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2022, 2:38 AM, Dallas, TX
@@ -109,7 +109,7 @@ module pm_distanceEuclid
     !>  [getDisMatEuclid](@ref pm_distanceEuclid::getDisMatEuclid)<br>
     !>  [setDisMatEuclid](@ref pm_distanceEuclid::setDisMatEuclid)<br>
     !>
-    !>  \finmain{euclid_type}
+    !>  \final{euclid_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -136,7 +136,7 @@ module pm_distanceEuclid
     !>  [getDisMatEuclid](@ref pm_distanceEuclid::getDisMatEuclid)<br>
     !>  [setDisMatEuclid](@ref pm_distanceEuclid::setDisMatEuclid)<br>
     !>
-    !>  \finmain{euclid}
+    !>  \final{euclid}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -173,7 +173,7 @@ module pm_distanceEuclid
     !>  [getDisMatEuclid](@ref pm_distanceEuclid::getDisMatEuclid)<br>
     !>  [setDisMatEuclid](@ref pm_distanceEuclid::setDisMatEuclid)<br>
     !>
-    !>  \finmain{euclidu_type}
+    !>  \final{euclidu_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -200,7 +200,7 @@ module pm_distanceEuclid
     !>  [getDisMatEuclid](@ref pm_distanceEuclid::getDisMatEuclid)<br>
     !>  [setDisMatEuclid](@ref pm_distanceEuclid::setDisMatEuclid)<br>
     !>
-    !>  \finmain{euclidu}
+    !>  \final{euclidu}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -237,7 +237,7 @@ module pm_distanceEuclid
     !>  [getDisMatEuclid](@ref pm_distanceEuclid::getDisMatEuclid)<br>
     !>  [setDisMatEuclid](@ref pm_distanceEuclid::setDisMatEuclid)<br>
     !>
-    !>  \finmain{euclidsq_type}
+    !>  \final{euclidsq_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -264,7 +264,7 @@ module pm_distanceEuclid
     !>  [getDisMatEuclid](@ref pm_distanceEuclid::getDisMatEuclid)<br>
     !>  [setDisMatEuclid](@ref pm_distanceEuclid::setDisMatEuclid)<br>
     !>
-    !>  \finmain{euclidsq}
+    !>  \final{euclidsq}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -391,7 +391,7 @@ module pm_distanceEuclid
     !>  \pmed
     !>  A benchmark comparison with the equivalent compiler implementations would be informative.
     !>
-    !>  \finmain{getDisEuclid}
+    !>  \final{getDisEuclid}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -967,7 +967,7 @@ module pm_distanceEuclid
     !>  \pmed
     !>  A benchmark comparison with the equivalent compiler implementations would be informative.
     !>
-    !>  \finmain{setDisEuclid}
+    !>  \final{setDisEuclid}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2314,7 +2314,7 @@ module pm_distanceEuclid
     !>  \phigh
     !>  This generic interface must be extended to allow other packing and subsets of the output distance matrix.
     !>
-    !>  \finmain{getDisMatEuclid}
+    !>  \final{getDisMatEuclid}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2653,7 +2653,7 @@ module pm_distanceEuclid
     !>  \phigh
     !>  This generic interface must be extended to allow other packing and subsets of the output distance matrix.
     !>
-    !>  \finmain{setDisMatEuclid}
+    !>  \final{setDisMatEuclid}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

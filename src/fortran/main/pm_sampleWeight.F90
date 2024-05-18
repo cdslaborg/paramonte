@@ -74,7 +74,7 @@
 !>  [Wikipedia](https://en.wikipedia.org/wiki/Weighted_arithmetic_mean#Frequency_weights)<br>
 !>  [Types of weights](https://stats.oarc.ucla.edu/other/mult-pkg/faq/what-types-of-weights-do-sas-stata-and-spss-support/)<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Thursday 12:45 AM, August 20, 2021, Dallas, TX
@@ -108,7 +108,7 @@ module pm_sampleWeight
     !>  [fweight_type](@ref pm_sampleWeight::fweight_type)<br>
     !>  [rweight_type](@ref pm_sampleWeight::rweight_type)<br>
     !>
-    !>  \finmain{weight_type}
+    !>  \final{weight_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -142,7 +142,7 @@ module pm_sampleWeight
     !>  [fweight_type](@ref pm_sampleWeight::fweight_type)<br>
     !>  [rweight_type](@ref pm_sampleWeight::rweight_type)<br>
     !>
-    !>  \finmain{aweight_type}
+    !>  \final{aweight_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -168,7 +168,7 @@ module pm_sampleWeight
     !>  [fweight_type](@ref pm_sampleWeight::fweight_type)<br>
     !>  [rweight_type](@ref pm_sampleWeight::rweight_type)<br>
     !>
-    !>  \finmain{aweight}
+    !>  \final{aweight}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -202,7 +202,7 @@ module pm_sampleWeight
     !>  [fweight_type](@ref pm_sampleWeight::fweight_type)<br>
     !>  [rweight_type](@ref pm_sampleWeight::rweight_type)<br>
     !>
-    !>  \finmain{fweight_type}
+    !>  \final{fweight_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -226,7 +226,7 @@ module pm_sampleWeight
     !>  [fweight_type](@ref pm_sampleWeight::fweight_type)<br>
     !>  [rweight_type](@ref pm_sampleWeight::rweight_type)<br>
     !>
-    !>  \finmain{fweight}
+    !>  \final{fweight}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -260,7 +260,7 @@ module pm_sampleWeight
     !>  [fweight_type](@ref pm_sampleWeight::fweight_type)<br>
     !>  [rweight_type](@ref pm_sampleWeight::rweight_type)<br>
     !>
-    !>  \finmain{rweight_type}
+    !>  \final{rweight_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -283,7 +283,7 @@ module pm_sampleWeight
     !>  [fweight_type](@ref pm_sampleWeight::fweight_type)<br>
     !>  [rweight_type](@ref pm_sampleWeight::rweight_type)<br>
     !>
-    !>  \finmain{rweight}
+    !>  \final{rweight}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -367,7 +367,7 @@ module pm_sampleWeight
     !>  \test
     !>  [test_pm_sampleWeight](@ref test_pm_sampleWeight)
     !>
-    !>  \finmain{getReweight}
+    !>  \final{getReweight}
     !>
     !>  \author
     !>  \AmirShahmoradi, Saturday 1:48 AM, August 20, 2016, Institute for Computational Engineering and Sciences, UT Austin, TX
@@ -633,7 +633,7 @@ module pm_sampleWeight
     !>  \test
     !>  [test_pm_sampleWeight](@ref test_pm_sampleWeight)
     !>
-    !>  \finmain{setReweight}
+    !>  \final{setReweight}
     !>
     !>  \author
     !>  \AmirShahmoradi, Saturday 1:48 AM, August 20, 2016, Institute for Computational Engineering and Sciences, UT Austin, TX

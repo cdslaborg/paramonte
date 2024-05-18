@@ -32,7 +32,7 @@
 !>  [pm_matrixInit](@ref pm_matrixInit)<br>
 !>  [pm_matrixCopy](@ref pm_matrixCopy)<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -113,7 +113,7 @@ module pm_arrayCopy
     !>  \test
     !>  [test_pm_arrayCopy](@ref test_pm_arrayCopy)
     !>
-    !>  \finmain{setCopyIndexed}
+    !>  \final{setCopyIndexed}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -585,7 +585,7 @@ module pm_arrayCopy
     !>  \pmed
     !>  Benchmarks comparing this interface with LAPACK routines and conventional approach should be added to the documentation.<br>
     !>
-    !>  \finmain{setCopyStrided}
+    !>  \final{setCopyStrided}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

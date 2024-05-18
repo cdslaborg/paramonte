@@ -27,7 +27,7 @@
 !>  \test
 !>  [test_pm_complexAbs](@ref test_pm_complexAbs)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX
@@ -79,7 +79,7 @@ module pm_complexAbs
     !>  \test
     !>  [test_pm_complexAbs](@ref test_pm_complexAbs)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

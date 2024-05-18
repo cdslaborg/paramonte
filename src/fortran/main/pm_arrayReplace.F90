@@ -44,7 +44,7 @@
 !>  \test
 !>  [test_pm_arrayReplace](@ref test_pm_arrayReplace)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX
@@ -979,7 +979,7 @@ module pm_arrayReplace
     !>  A benchmark comparing the performance of [setReplaced](@ref pm_arrayReplace::setReplaced) with and without `sorted, unique`
     !>  optional input arguments should be added.<br>
     !>
-    !>  \finmain{getReplaced}
+    !>  \final{getReplaced}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -8069,7 +8069,7 @@ module pm_arrayReplace
     !>  \phigh A benchmark comparing the performance of [setReplaced](@ref pm_arrayReplace::setReplaced) with and without `sorted, unique`
     !>  optional input arguments should be added.
     !>
-    !>  \finmain{setReplaced}
+    !>  \final{setReplaced}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -14605,7 +14605,7 @@ contains
     !>
     !>  [test_pm_arrayReplace](@ref test_pm_arrayReplace)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

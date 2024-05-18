@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains procedure implementations of [pm_complexCompareAll](@ref pm_complexCompareAll).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

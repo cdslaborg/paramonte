@@ -373,7 +373,7 @@
 !>  coefficients from its roots using recursive FFT-based polynomial multiplications.<br>
 !>  See the commented-out generic interface `setPolyCoef` within this module as the starting point.<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Tuesday 08:49 PM, August 10, 2021, Dallas, TX
@@ -456,7 +456,7 @@ module pm_polynomial
     !>  \test
     !>  [test_pm_polynomial](@ref test_pm_polynomial)
     !>
-    !>  \finmain{getPolyVal}
+    !>  \final{getPolyVal}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 11:34 PM, August 10, 2021, Dallas, TX
@@ -913,7 +913,7 @@ module pm_polynomial
     !>  \test
     !>  [test_pm_polynomial](@ref test_pm_polynomial)
     !>
-    !>  \finmain{getPolyAdd}
+    !>  \final{getPolyAdd}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 11:34 PM, August 10, 2021, Dallas, TX
@@ -1117,7 +1117,7 @@ module pm_polynomial
     !>  \test
     !>  [test_pm_polynomial](@ref test_pm_polynomial)
     !>
-    !>  \finmain{setPolyAdd}
+    !>  \final{setPolyAdd}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 11:34 PM, August 10, 2021, Dallas, TX
@@ -1320,7 +1320,7 @@ module pm_polynomial
     !>  \test
     !>  [test_pm_polynomial](@ref test_pm_polynomial)
     !>
-    !>  \finmain{getPolySub}
+    !>  \final{getPolySub}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 11:34 PM, August 10, 2021, Dallas, TX
@@ -1524,7 +1524,7 @@ module pm_polynomial
     !>  \test
     !>  [test_pm_polynomial](@ref test_pm_polynomial)
     !>
-    !>  \finmain{setPolySub}
+    !>  \final{setPolySub}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 11:34 PM, August 10, 2021, Dallas, TX
@@ -1731,7 +1731,7 @@ module pm_polynomial
     !>  \test
     !>  [test_pm_polynomial](@ref test_pm_polynomial)
     !>
-    !>  \finmain{getPolyMul}
+    !>  \final{getPolyMul}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 11:34 PM, August 10, 2021, Dallas, TX
@@ -1935,7 +1935,7 @@ module pm_polynomial
     !>  \test
     !>  [test_pm_polynomial](@ref test_pm_polynomial)
     !>
-    !>  \finmain{setPolyMul}
+    !>  \final{setPolyMul}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 11:34 PM, August 10, 2021, Dallas, TX
@@ -2147,7 +2147,7 @@ module pm_polynomial
     !>  \test
     !>  [test_pm_polynomial](@ref test_pm_polynomial)
     !>
-    !>  \finmain{setPolyDiv}
+    !>  \final{setPolyDiv}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 11:34 PM, August 10, 2021, Dallas, TX
@@ -2354,7 +2354,7 @@ module pm_polynomial
     !>  \test
     !>  [test_pm_polynomial](@ref test_pm_polynomial)
     !>
-    !>  \finmain{getPolyDiff}
+    !>  \final{getPolyDiff}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 11:34 PM, August 10, 2021, Dallas, TX
@@ -2669,7 +2669,7 @@ module pm_polynomial
     !>  \test
     !>  [test_pm_polynomial](@ref test_pm_polynomial)
     !>
-    !>  \finmain{setPolyDiff}
+    !>  \final{setPolyDiff}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 11:34 PM, August 10, 2021, Dallas, TX
@@ -2986,7 +2986,7 @@ module pm_polynomial
     !>  The significance of the improvements should be weighed in the light of the relevance of such improvements.<br>
     !>  Is this procedure going to be called frequently in numerically intensive applications? Unlikely.<br>
     !>
-    !>  \finmain{getPolyStr}
+    !>  \final{getPolyStr}
     !>
     !>  \author
     !>  \AmirShahmoradi, Thursday 1:45 AM, August 22, 2019, Dallas, TX
@@ -3137,7 +3137,7 @@ module pm_polynomial
     !>  [laguerre_type](@ref pm_polynomial::laguerre_type)<br>
     !>  [method_type](@ref pm_polynomial::method_type)<br>
     !>
-    !>  \finmain{method_type}
+    !>  \final{method_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3169,7 +3169,7 @@ module pm_polynomial
     !>  [laguerre_type](@ref pm_polynomial::laguerre_type)<br>
     !>  [method_type](@ref pm_polynomial::method_type)<br>
     !>
-    !>  \finmain{eigen_type}
+    !>  \final{eigen_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3193,7 +3193,7 @@ module pm_polynomial
     !>  [laguerre_type](@ref pm_polynomial::laguerre_type)<br>
     !>  [method_type](@ref pm_polynomial::method_type)<br>
     !>
-    !>  \finmain{eigen}
+    !>  \final{eigen}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3227,7 +3227,7 @@ module pm_polynomial
     !>  [laguerre_type](@ref pm_polynomial::laguerre_type)<br>
     !>  [method_type](@ref pm_polynomial::method_type)<br>
     !>
-    !>  \finmain{jenkins_type}
+    !>  \final{jenkins_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3251,7 +3251,7 @@ module pm_polynomial
     !>  [laguerre_type](@ref pm_polynomial::laguerre_type)<br>
     !>  [method_type](@ref pm_polynomial::method_type)<br>
     !>
-    !>  \finmain{jenkins}
+    !>  \final{jenkins}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3285,7 +3285,7 @@ module pm_polynomial
     !>  [laguerre_type](@ref pm_polynomial::laguerre_type)<br>
     !>  [method_type](@ref pm_polynomial::method_type)<br>
     !>
-    !>  \finmain{laguerre_type}
+    !>  \final{laguerre_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3309,7 +3309,7 @@ module pm_polynomial
     !>  [laguerre_type](@ref pm_polynomial::laguerre_type)<br>
     !>  [method_type](@ref pm_polynomial::method_type)<br>
     !>
-    !>  \finmain{laguerre}
+    !>  \final{laguerre}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3570,7 +3570,7 @@ module pm_polynomial
     !>  \test
     !>  [test_pm_polynomial](@ref test_pm_polynomial)
     !>
-    !>  \finmain{getPolyRoot}
+    !>  \final{getPolyRoot}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -4254,7 +4254,7 @@ module pm_polynomial
     !>  A benchmark comparing the runtime performances of the `complex` vs. `real`
     !>  coefficient routines of this module should be added here.<br>
     !>
-    !>  \finmain{setPolyRoot}
+    !>  \final{setPolyRoot}
     !>  <br>
     !>  Copyright © 1996 California Institute of Technology, Pasadena, California. ALL RIGHTS RESERVED.
     !>  Based on Government Sponsored Research NAS7-03001.
@@ -4803,7 +4803,7 @@ module pm_polynomial
     !>  \pmed
     !>  An optional `reltol` may be added in the future to allow control over the error in the refined `root`.<br>
     !>
-    !>  \finmain{setPolyRootPolished}
+    !>  \final{setPolyRootPolished}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

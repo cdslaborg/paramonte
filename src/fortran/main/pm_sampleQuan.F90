@@ -52,7 +52,7 @@
 !>  \test
 !>  [test_pm_sampleQuan](@ref test_pm_sampleQuan)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -195,7 +195,7 @@ module pm_sampleQuan
     !>  \test
     !>  [test_pm_sampleQuan](@ref test_pm_sampleQuan)
     !>
-    !>  \finmain{getQuan}
+    !>  \final{getQuan}
     !>
     !>  \author
     !>  Amir Shahmoradi, Thursday 2:45 AM, August 19, 2021, Dallas, TX<br>

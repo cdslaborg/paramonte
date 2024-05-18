@@ -32,7 +32,7 @@
 !>  \see
 !>  [pm_err](@ref pm_err)<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -85,7 +85,7 @@ module pm_test
     !>  [file_type](@ref pm_test::file_type)<br>
     !>  [test_type](@ref pm_test::test_type)<br>
     !>
-    !>  \finmain{dir_type}
+    !>  \final{dir_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -106,7 +106,7 @@ module pm_test
     !>  [file_type](@ref pm_test::file_type)<br>
     !>  [test_type](@ref pm_test::test_type)<br>
     !>
-    !>  \finmain{file_type}
+    !>  \final{file_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -202,7 +202,7 @@ module pm_test
     !>  \see
     !>  [test_type](@ref pm_test::test_type)<br>
     !>
-    !>  \finmain{test_typer}
+    !>  \final{test_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -253,7 +253,7 @@ contains
     !>  [test_type](@ref pm_test::test_type)<br>
     !>  [setSummary](@ref pm_test::setSummary)<br>
     !>
-    !>  \finmain{setInitial}
+    !>  \final{setInitial}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -300,7 +300,7 @@ contains
     !>  [test_type](@ref pm_test::test_type)<br>
     !>  [setInitial](@ref pm_test::setInitial)<br>
     !>
-    !>  \finmain{setSummary}
+    !>  \final{setSummary}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -405,7 +405,7 @@ contains
     !>  \see
     !>  [test_type](@ref pm_test::test_type)<br>
     !>
-    !>  \finmain{test_typer}
+    !>  \final{test_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -501,7 +501,7 @@ contains
     !>  \see
     !>  [test_type](@ref pm_test::test_type)<br>
     !>
-    !>  \finmain{setTestFunc}
+    !>  \final{setTestFunc}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -585,7 +585,7 @@ contains
     !>  \see
     !>  [test_type](@ref pm_test::test_type)<br>
     !>
-    !>  \finmain{setTestAsserted}
+    !>  \final{setTestAsserted}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 20, 2015, 1:11 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -675,7 +675,7 @@ contains
     !>  \see
     !>  [test_type](@ref pm_test::test_type)<br>
     !>
-    !>  \finmain{setTestSummary}
+    !>  \final{setTestSummary}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

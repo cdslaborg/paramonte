@@ -114,7 +114,7 @@
 !>  \test
 !>  [test_pm_distUnifSphere](@ref test_pm_distUnifSphere)<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin
@@ -164,7 +164,7 @@ module pm_distUnifSphere
     !>  \pvhigh
     !>  This derived type must be converted to PDT and the relevant components and methods must be added once PDTs are well supported.
     !>
-    !>  \finmain{distUnifSphere_type}
+    !>  \final{distUnifSphere_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -225,7 +225,7 @@ module pm_distUnifSphere
     !>  \test
     !>  [test_pm_distUnifSphere](@ref test_pm_distUnifSphere)
     !>
-    !>  \finmain{getUnifSphereLogPDF}
+    !>  \final{getUnifSphereLogPDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -403,7 +403,7 @@ module pm_distUnifSphere
     !>  \test
     !>  [test_pm_distUnifSphere](@ref test_pm_distUnifSphere)
     !>
-    !>  \finmain{getUnifSphereRand}
+    !>  \final{getUnifSphereRand}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 23, 2017, 12:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin
@@ -2566,7 +2566,7 @@ module pm_distUnifSphere
     !>  \test
     !>  [test_pm_distUnifSphere](@ref test_pm_distUnifSphere)
     !>
-    !>  \finmain{setUnifSphereRand}
+    !>  \final{setUnifSphereRand}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 23, 2017, 12:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin

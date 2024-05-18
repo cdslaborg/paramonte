@@ -202,7 +202,7 @@
 !>  \test
 !>  [test_pm_matrixInv](@ref test_pm_matrixInv)<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -252,7 +252,7 @@ module pm_matrixInv
     !>  [inversion_type](@ref pm_matrixInv::inversion_type)<br>
     !>  [trans_type](@ref pm_matrixTrans::trans_type)<br>
     !>
-    !>  \finmain{inversion_type}
+    !>  \final{inversion_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -270,7 +270,7 @@ module pm_matrixInv
     !>  [nothing](@ref pm_array::nothing)<br>
     !>  [trans](@ref pm_matrixTrans::trans)<br>
     !>
-    !>  \finmain{inversion}
+    !>  \final{inversion}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -352,7 +352,7 @@ module pm_matrixInv
     !>  \test
     !>  [test_pm_matrixInv](@ref test_pm_matrixInv)<br>
     !>
-    !>  \finmain{getMatInv}
+    !>  \final{getMatInv}
     !>
     !>  \author
     !>  \AmirShahmoradi, Apr 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1776,7 +1776,7 @@ module pm_matrixInv
     !>  \phigh
     !>  The functionality of this generic interface must be extended to fully dispatch to LAPACK inverse matrix routines where appropriate.<br>
     !>
-    !>  \finmain{setMatInv}
+    !>  \final{setMatInv}
     !>
     !>  \author
     !>  \AmirShahmoradi, Apr 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

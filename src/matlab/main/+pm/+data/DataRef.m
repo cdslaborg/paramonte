@@ -33,7 +33,7 @@
 %>  [DataFrame](@ref DataFrame)<br>
 %>  See the class attributes descriptions.<br>
 %>
-%>  \finmain{DataRef}
+%>  \final{DataRef}
 %>
 %>  \author
 %>  \AmirShahmoradi, Tuesday March 7, 2017, 7:03 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -91,7 +91,7 @@ classdef DataRef < pm.matlab.Handle
         %>  \see
         %>  See the parent class [DataRef](@ref DataRef) documentation for example usage.
         %>
-        %>  \finmain{copy}
+        %>  \final{copy}
         %>
         %>  \author
         %>  \JoshuaOsborne, Friday May 17, 2014, 6:40 PM, The University of Texas at Arlington, Dallas, TX

@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains procedure implementations of [pm_mathNumSys](@ref pm_mathNumSys).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Wednesday 03:29 AM, September 22, 2021, Dallas, TX

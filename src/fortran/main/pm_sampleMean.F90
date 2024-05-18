@@ -94,7 +94,7 @@
 !>  \test
 !>  [test_pm_sampleMean](@ref test_pm_sampleMean)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Thursday 12:45 AM, August 20, 2021, Dallas, TX
@@ -219,7 +219,7 @@ module pm_sampleMean
     !>  \test
     !>  [test_pm_sampleMean](@ref test_pm_sampleMean)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1998,7 +1998,7 @@ module pm_sampleMean
     !>  \test
     !>  [test_pm_sampleMean](@ref test_pm_sampleMean)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -4184,7 +4184,7 @@ module pm_sampleMean
     !>  \test
     !>  [test_pm_sampleMean](@ref test_pm_sampleMean)
     !>
-    !>  \finmain{getMeanMerged}
+    !>  \final{getMeanMerged}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -4538,7 +4538,7 @@ module pm_sampleMean
     !>  \test
     !>  [test_pm_sampleMean](@ref test_pm_sampleMean)
     !>
-    !>  \finmain{setMeanMerged}
+    !>  \final{setMeanMerged}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

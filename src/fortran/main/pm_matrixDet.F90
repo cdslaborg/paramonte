@@ -85,7 +85,7 @@
 !>  \test
 !>  [test_pm_matrixDet](@ref test_pm_matrixDet)<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 18, 2009, 4:10 PM, Houghton, Michigan
@@ -209,7 +209,7 @@ module pm_matrixDet
     !>  the task of computing the determinant of such matrices is either trivially explained in the
     !>  [module documentation](@ref pm_matrixDet) or already implemented by other generic interfaces of this module.<br>
     !>
-    !>  \finmain{getMatDet}
+    !>  \final{getMatDet}
     !>
     !>  \author
     !>  \AmirShahmoradi, Apr 21, 2017, 1:43 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -388,7 +388,7 @@ module pm_matrixDet
     !>  \test
     !>  [test_pm_matrixDet](@ref test_pm_matrixDet)
     !>
-    !>  \finmain{setMatDet}
+    !>  \final{setMatDet}
     !>
     !>  \author
     !>  \AmirShahmoradi, Apr 21, 2017, 1:43 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -592,7 +592,7 @@ module pm_matrixDet
     !>  \test
     !>  [test_pm_matrixDet](@ref test_pm_matrixDet)
     !>
-    !>  \finmain{getMatDetSqrtLog}
+    !>  \final{getMatDetSqrtLog}
     !>
     !>  \author
     !>  \AmirShahmoradi, Apr 21, 2017, 1:43 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -812,7 +812,7 @@ module pm_matrixDet
     !>  \test
     !>  [test_pm_matrixDet](@ref test_pm_matrixDet)
     !>
-    !>  \finmain{setMatDetSqrtLog}
+    !>  \final{setMatDetSqrtLog}
     !>
     !>  \author
     !>  \AmirShahmoradi, Apr 21, 2017, 1:43 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1517,7 +1517,7 @@ module pm_matrixDet
     !>  \test
     !>  [test_pm_matrixDet](@ref test_pm_matrixDet)
     !>
-    !>  \finmain{getMatDetSqrtLog}
+    !>  \final{getMatDetSqrtLog}
     !>
     !>  \author
     !>  \AmirShahmoradi, Apr 21, 2017, 1:43 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1737,7 +1737,7 @@ module pm_matrixDet
     !>  \test
     !>  [test_pm_matrixDet](@ref test_pm_matrixDet)
     !>
-    !>  \finmain{setMatDetSqrtLog}
+    !>  \final{setMatDetSqrtLog}
     !>
     !>  \author
     !>  \AmirShahmoradi, Apr 21, 2017, 1:43 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

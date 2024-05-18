@@ -34,7 +34,7 @@
 !>  \test
 !>  [test_pm_mathExp](@ref test_pm_mathExp)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, April 25, 2015, 2:21 PM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -106,7 +106,7 @@ module pm_mathExp
     !>  \test
     !>  [test_pm_mathExp](@ref test_pm_mathExp)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, April 25, 2015, 2:21 PM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -302,7 +302,7 @@ module pm_mathExp
     !>  \test
     !>  [test_pm_mathExp](@ref test_pm_mathExp)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, April 25, 2015, 2:21 PM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -503,7 +503,7 @@ module pm_mathExp
     !>  \test
     !>  [test_pm_mathExp](@ref test_pm_mathExp)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, April 25, 2015, 2:21 PM, National Institute for Fusion Studies, The University of Texas at Austin

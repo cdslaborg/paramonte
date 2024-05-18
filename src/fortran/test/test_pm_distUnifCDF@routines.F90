@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains the implementations of the tests of module [pm_distUnif](@ref pm_distUnif).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author 
 !>  \FatemehBagheri, 12:27 AM Tuesday, February 22, 2022, Dallas, TX

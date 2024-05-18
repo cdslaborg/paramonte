@@ -32,7 +32,7 @@
 !>  [pm_mathSubAdd](@ref pm_mathSubAdd)<br>
 !>  [pm_mathMinMax](@ref pm_mathMinMax)<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \test
 !>  [test_pm_swap](@ref test_pm_swap)
@@ -132,7 +132,7 @@ module pm_swap
     !>                              (**optional**, default = `.true.`.)
     !>  \endverbatim
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Thursday 1:45 AM, August 22, 2019, Dallas, TX

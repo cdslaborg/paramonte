@@ -59,7 +59,7 @@
 !>  \test
 !>  [test_pm_sampleECDF](@ref test_pm_sampleECDF)<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Thursday 12:45 AM, August 20, 2021, Dallas, TX
@@ -144,7 +144,7 @@ module pm_sampleECDF
     !>  \test
     !>  [test_pm_sampleECDF](@ref test_pm_sampleECDF)
     !>
-    !>  \finmain{setECDF}
+    !>  \final{setECDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

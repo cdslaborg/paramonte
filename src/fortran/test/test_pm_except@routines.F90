@@ -16,7 +16,7 @@
 
 !>  \brief This file contains the implementations of the tests of module [pm_except](@ref pm_except).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX

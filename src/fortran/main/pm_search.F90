@@ -40,7 +40,7 @@
 !>      <li>    **Hashing**, search algorithms directly map keys to records based on a [hash function](https://en.wikipedia.org/wiki/Hash_function).<br>
 !>  </ol>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -73,7 +73,7 @@ module pm_search
     !>  [binary_type](@ref pm_search::binary_type)<br>
     !>  [search_type](@ref pm_search::search_type)<br>
     !>
-    !>  \finmain{search_type}
+    !>  \final{search_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -103,7 +103,7 @@ module pm_search
     !>  [binary_type](@ref pm_search::binary_type)<br>
     !>  [search_type](@ref pm_search::search_type)<br>
     !>
-    !>  \finmain{linear_type}
+    !>  \final{linear_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -124,7 +124,7 @@ module pm_search
     !>  [binary_type](@ref pm_search::binary_type)<br>
     !>  [search_type](@ref pm_search::search_type)<br>
     !>
-    !>  \finmain{linear}
+    !>  \final{linear}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -156,7 +156,7 @@ module pm_search
     !>  [binary_type](@ref pm_search::binary_type)<br>
     !>  [search_type](@ref pm_search::search_type)<br>
     !>
-    !>  \finmain{binary_type}
+    !>  \final{binary_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -177,7 +177,7 @@ module pm_search
     !>  [binary_type](@ref pm_search::binary_type)<br>
     !>  [search_type](@ref pm_search::search_type)<br>
     !>
-    !>  \finmain{binary}
+    !>  \final{binary}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

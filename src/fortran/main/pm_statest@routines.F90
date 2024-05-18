@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains procedure implementations of [pm_statest](@ref pm_statest).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

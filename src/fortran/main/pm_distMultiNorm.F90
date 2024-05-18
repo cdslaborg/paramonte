@@ -50,7 +50,7 @@
 !>  \test
 !>  [test_pm_distMultiNorm](@ref test_pm_distMultiNorm)<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 20, 2009, 9:12 PM, Michigan
@@ -100,7 +100,7 @@ module pm_distMultiNorm
     !>  \pvhigh
     !>  This derived type must be converted to PDT and the relevant components and methods must be added once PDTs are well supported.
     !>
-    !>  \finmain{distMultiNorm_type}
+    !>  \final{distMultiNorm_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -175,7 +175,7 @@ module pm_distMultiNorm
     !>  \test
     !>  [test_pm_distMultiNorm](@ref test_pm_distMultiNorm)
     !>
-    !>  \finmain{getMultiNormLogPDFNF}
+    !>  \final{getMultiNormLogPDFNF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -442,7 +442,7 @@ module pm_distMultiNorm
     !>  In such cases, the procedure will halt the program by calling `error stop`.<br>
     !>  An optional `info` output argument must be added in the future to handle such runtime failures gracefully.
     !>
-    !>  \finmain{getMultiNormLogPDF}
+    !>  \final{getMultiNormLogPDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -1082,7 +1082,7 @@ module pm_distMultiNorm
     !>             The random number generator: RNG D/F/X => Default/Fortran/Xoroshiro256++
     !>  \endcode
     !>
-    !>  \finmain{getMultiNormRand}
+    !>  \final{getMultiNormRand}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 23, 2017, 12:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin
@@ -3254,7 +3254,7 @@ module pm_distMultiNorm
     !>  The access pattern for the upper-diagonal subset of `chol` is non `contiguous` in the current implementation.<br>
     !>  The access pattern can be likely made `contiguous` by an appropriate implementation.<br>
     !>
-    !>  \finmain{setMultiNormRand}
+    !>  \final{setMultiNormRand}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 23, 2017, 12:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin

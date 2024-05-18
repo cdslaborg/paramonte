@@ -130,7 +130,7 @@
 !>  \test
 !>  [test_pm_sampleCCF](@ref test_pm_sampleCCF)
 !>
-!>  \finmain{pm_sampleCCF}
+!>  \final{pm_sampleCCF}
 !>
 !>  \author
 !>  \AmirShahmoradi, Tuesday 01:45 AM, August 21, 2018, Dallas, TX
@@ -254,7 +254,7 @@ module pm_sampleCCF
     !>         ACF: Cross-Correlation Function.
     !>  \endcode
     !>
-    !>  \finmain{getACF}
+    !>  \final{getACF}
     !>
     !>  \author
     !>  \FatemehBagheri, Monday 02:15 AM, September 27, 2021, Dallas, TX<br>
@@ -514,7 +514,7 @@ module pm_sampleCCF
     !>         ACF: Cross-Correlation Function.
     !>  \endcode
     !>
-    !>  \finmain{setACF}
+    !>  \final{setACF}
     !>
     !>  \author
     !>  \FatemehBagheri, Monday 02:15 AM, September 27, 2021, Dallas, TX<br>
@@ -774,7 +774,7 @@ module pm_sampleCCF
     !>         CCF: Cross-Correlation Function.
     !>  \endcode
     !>
-    !>  \finmain{getCCF}
+    !>  \final{getCCF}
     !>
     !>  \author
     !>  \FatemehBagheri, Monday 02:15 AM, September 27, 2021, Dallas, TX<br>
@@ -1040,7 +1040,7 @@ module pm_sampleCCF
     !>         CCF: Cross-Correlation Function.
     !>  \endcode
     !>
-    !>  \finmain{setCCF}
+    !>  \final{setCCF}
     !>
     !>  \author
     !>  \FatemehBagheri, Monday 02:15 AM, September 27, 2021, Dallas, TX<br>

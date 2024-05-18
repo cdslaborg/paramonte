@@ -57,7 +57,7 @@
 !>  \test
 !>  [test_pm_mathSqrt](@ref test_pm_mathSqrt)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin
@@ -134,7 +134,7 @@ module pm_mathSqrt
     !>  \plow
     !>  A binary-representation calculation of the integer square root should be added in the future.<br>
     !>
-    !>  \finmain{getSqrt}
+    !>  \final{getSqrt}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin

@@ -95,7 +95,7 @@
 !>  \test
 !>  [test_pm_matrixLUP](@ref test_pm_matrixLUP)<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -181,7 +181,7 @@ module pm_matrixLUP
     !>  \test
     !>  [test_pm_matrixLUP](@ref test_pm_matrixLUP)
     !>
-    !>  \finmain{setMatLUP}
+    !>  \final{setMatLUP}
     !>
     !>  \author
     !>  \AmirShahmoradi, Apr 21, 2017, 1:43 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

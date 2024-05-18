@@ -103,7 +103,7 @@
 !>      <li>    [csr_type](@ref pm_container::csr_type)<br>
 !>  </ol>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
@@ -183,7 +183,7 @@ module pm_container
     !>  \test
     !>  [test_pm_container](@ref test_pm_container)
     !>
-    !>  \finmain{css_type}
+    !>  \final{css_type}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
@@ -253,7 +253,7 @@ module pm_container
     !>  \test
     !>  [test_pm_container](@ref test_pm_container)
     !>
-    !>  \finmain{csi_type}
+    !>  \final{csi_type}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
@@ -322,7 +322,7 @@ module pm_container
     !>  \test
     !>  [test_pm_container](@ref test_pm_container)
     !>
-    !>  \finmain{csl_type}
+    !>  \final{csl_type}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
@@ -391,7 +391,7 @@ module pm_container
     !>  \test
     !>  [test_pm_container](@ref test_pm_container)
     !>
-    !>  \finmain{csc_type}
+    !>  \final{csc_type}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
@@ -460,7 +460,7 @@ module pm_container
     !>  \test
     !>  [test_pm_container](@ref test_pm_container)
     !>
-    !>  \finmain{csr_type}
+    !>  \final{csr_type}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
@@ -525,7 +525,7 @@ module pm_container
     !>  \test
     !>  [test_pm_container](@ref test_pm_container)
     !>
-    !>  \finmain{csp_type}
+    !>  \final{csp_type}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
@@ -594,7 +594,7 @@ module pm_container
     !>  \brief
     !>  This is the **derived type** for generating a container of a vector component of type unlimited polymorphic.<br>
     !>
-    !>  \finmain{cvp_type}
+    !>  \final{cvp_type}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
@@ -649,7 +649,7 @@ module pm_container
     !>  \brief
     !>  This is the **derived type** for generating a container of a matrix component of type unlimited polymorphic.<br>
     !>
-    !>  \finmain{cmp_type}
+    !>  \final{cmp_type}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
@@ -704,7 +704,7 @@ module pm_container
     !>  \brief
     !>  This is the **derived type** for generating a container of a cube component of type unlimited polymorphic.<br>
     !>
-    !>  \finmain{ccp_type}
+    !>  \final{ccp_type}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
@@ -775,7 +775,7 @@ module pm_container
     !>  \test
     !>  [test_pm_container](@ref test_pm_container)
     !>
-    !>  \finmain{css_pdt}
+    !>  \final{css_pdt}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
@@ -921,7 +921,7 @@ module pm_container
     !>  \test
     !>  [test_pm_container](@ref test_pm_container)
     !>
-    !>  \finmain{csi_pdt}
+    !>  \final{csi_pdt}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
@@ -1060,7 +1060,7 @@ module pm_container
     !>  \test
     !>  [test_pm_container](@ref test_pm_container)
     !>
-    !>  \finmain{csl_pdt}
+    !>  \final{csl_pdt}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
@@ -1199,7 +1199,7 @@ module pm_container
     !>  \test
     !>  [test_pm_container](@ref test_pm_container)
     !>
-    !>  \finmain{csc_pdt}
+    !>  \final{csc_pdt}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
@@ -1338,7 +1338,7 @@ module pm_container
     !>  \test
     !>  [test_pm_container](@ref test_pm_container)
     !>
-    !>  \finmain{csc_pdt}
+    !>  \final{csc_pdt}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
@@ -1511,7 +1511,7 @@ module pm_container
     !>  \todo
     !>  \pvlow The functionality of this generic interface can be extended to input arrays of higher rank.
     !>
-    !>  \finmain{isless}
+    !>  \final{isless}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1997,7 +1997,7 @@ module pm_container
     !>  \todo
     !>  \pvlow The functionality of this generic interface can be extended to input arrays of higher rank.
     !>
-    !>  \finmain{ismore}
+    !>  \final{ismore}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2441,7 +2441,7 @@ module pm_container
     !>  \todo
     !>  \pvlow The functionality of this generic interface can be extended to input arrays of higher rank.
     !>
-    !>  \finmain{isleq}
+    !>  \final{isleq}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2885,7 +2885,7 @@ module pm_container
     !>  \todo
     !>  \pvlow The functionality of this generic interface can be extended to input arrays of higher rank.
     !>
-    !>  \finmain{ismeq}
+    !>  \final{ismeq}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3329,7 +3329,7 @@ module pm_container
     !>  \todo
     !>  \pvlow The functionality of this generic interface can be extended to input arrays of higher rank.
     !>
-    !>  \finmain{isneq}
+    !>  \final{isneq}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3774,7 +3774,7 @@ module pm_container
     !>  \todo
     !>  \pvlow The functionality of this generic interface can be extended to input arrays of higher rank.
     !>
-    !>  \finmain{iseq}
+    !>  \final{iseq}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -4220,7 +4220,7 @@ module pm_container
     !>  \todo
     !>  \pvlow The functionality of this generic interface can be extended to input arrays of higher rank.
     !>
-    !>  \finmain{assignment}
+    !>  \final{assignment}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 3:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -4624,7 +4624,7 @@ module pm_container
     ! >  \test
     ! >  [test_pm_container](@ref test_pm_container)
     ! >
-    ! >  \finmain{csis_type}
+    ! >  \final{csis_type}
     ! >
     ! >  \author
     ! >  \FatemehBagheri, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
@@ -4691,7 +4691,7 @@ module pm_container
 !    !>  \todo
 !    !>  \pvlow The functionality of this generic interface can be extended to input containers of higher rank component.<br>
 !    !>
-!    !>  \finmain{getVal}
+!    !>  \final{getVal}
 !    !>
 !    !>  \author
 !    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

@@ -18,7 +18,7 @@
 !>  This file contains the implementation details of the routines under the
 !>  generic interfaces of module [pm_complexAbs](@ref pm_complexAbs).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX

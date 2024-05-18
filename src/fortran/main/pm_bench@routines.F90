@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains procedure implementations of [pm_bench](@ref pm_bench).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Saturday 1:30 AM, August 20, 2016, Institute for Computational Engineering and Sciences, UT Austin, TX

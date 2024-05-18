@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains procedure implementations of [pm_mathGamma](@ref pm_mathGamma).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 5:03 PM, August 11, 2021, Dallas, TX

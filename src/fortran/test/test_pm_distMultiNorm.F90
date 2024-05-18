@@ -17,7 +17,7 @@
 !>  \brief
 !>  This module contains tests of the module [pm_distMultiNorm](@ref pm_distMultiNorm).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

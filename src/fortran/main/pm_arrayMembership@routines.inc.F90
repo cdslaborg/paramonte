@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains procedures implementations of the module [pm_arrayMembership](@ref pm_arrayMembership).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 5:03 PM, August 11, 2021, Dallas, TX

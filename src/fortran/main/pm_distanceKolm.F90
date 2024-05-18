@@ -44,7 +44,7 @@
 !>  \test
 !>  [test_pm_distanceKolm](@ref test_pm_distanceKolm)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, March 22, 2012, 2:21 PM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -202,7 +202,7 @@ module pm_distanceKolm
     !>                The entities in the distance computation, S => sample, X => default (uniform) distribution, C => custom user-specified CDF.
     !>  \endcode
     !>
-    !>  \finmain{getDisKolm}
+    !>  \final{getDisKolm}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -2108,7 +2108,7 @@ module pm_distanceKolm
     !>                The entities in the distance computation, S => sample, X => default (uniform) distribution, C => custom user-specified CDF.
     !>  \endcode
     !>
-    !>  \finmain{setDisKolm}
+    !>  \final{setDisKolm}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>

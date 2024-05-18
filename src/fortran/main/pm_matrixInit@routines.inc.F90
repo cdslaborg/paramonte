@@ -17,7 +17,7 @@
 !>  \brief
 !>  This include file contains procedure implementation of the generic interface [pm_matrixInit](@ref pm_matrixInit).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Thursday 01:00 AM, September 23, 2021, Dallas, TX

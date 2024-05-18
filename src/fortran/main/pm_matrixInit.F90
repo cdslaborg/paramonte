@@ -106,7 +106,7 @@
 !>  \test
 !>  [test_pm_matrixInit](@ref test_pm_matrixInit)<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -281,7 +281,7 @@ module pm_matrixInit
     !>  \pvhigh
     !>  This generic interface should be extended to matrices of different packing formats besides the default.
     !>
-    !>  \finmain{getMatInit}
+    !>  \final{getMatInit}
     !>
     !>  \author
     !>  \AmirShahmoradi, Apr 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -4129,7 +4129,7 @@ module pm_matrixInit
     !>  \pvhigh
     !>  This generic interface should be extended to matrices of different packing formats besides the default.
     !>
-    !>  \finmain{setMatInit}
+    !>  \final{setMatInit}
     !>
     !>  \author
     !>  \AmirShahmoradi, Apr 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

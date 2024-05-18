@@ -17,7 +17,7 @@
 !>  \brief
 !>  This include file contains procedure implementations of [pm_polynomial](@ref pm_polynomial).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Sunday 3:33 PM, September 19, 2021, Dallas, TX

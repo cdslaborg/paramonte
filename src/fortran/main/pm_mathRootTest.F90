@@ -35,7 +35,7 @@
 !>  The migration to PDTs must be done as soon as gfortran supports for PDTs is complete.<br>
 !>  Note that other compilers have full support of PDTs.<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -78,7 +78,7 @@ module pm_mathRootTest
     !>  \see
     !>  [getQuadErr](@ref pm_quadPack::getQuadErr)<br>
     !>
-    !>  \finmain{func_type}
+    !>  \final{func_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -100,7 +100,7 @@ module pm_mathRootTest
     !>  \see
     !>  [func_type](@ref pm_mathRootTest::func_type)<br>
     !>
-    !>  \finmain{get_proc}
+    !>  \final{get_proc}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -154,7 +154,7 @@ module pm_mathRootTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{func1_type}
+    !>  \final{func1_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

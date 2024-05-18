@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains procedure implementations of [pm_io](@ref pm_io).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -327,7 +327,7 @@ contains
     !>  \test
     !>  [test_pm_io](@ref test_pm_io)
     !>
-    !>  \finmain{isFalseAssertion}
+    !>  \final{isFalseAssertion}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 2:22 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

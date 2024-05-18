@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains the implementations of the tests of module [pm_mathRoot](@ref pm_mathRoot).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Sunday 4:33 PM, September 19, 2021, Dallas, TX

@@ -28,7 +28,7 @@
 !>
 !>  \test[test_pm_matrixIndex](@ref test_pm_matrixIndex)<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -164,7 +164,7 @@ module pm_matrixIndex
     !>  \pmed
     !>  The implementation of the procedures for converting indices from LFP to RDP could be likely improved for better performance.<br>
     !>
-    !>  \finmain{getMatIndex}
+    !>  \final{getMatIndex}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 23, 2017, 1:36 AM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin

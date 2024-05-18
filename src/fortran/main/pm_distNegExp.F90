@@ -70,7 +70,7 @@
 !>  \test
 !>  [test_pm_distNegExp](@ref test_pm_distNegExp)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -116,7 +116,7 @@ module pm_distNegExp
     !>  \pvhigh
     !>  This derived type must be converted to PDT and the relevant components and methods must be added once PDTs are well supported.
     !>
-    !>  \finmain{distNegExp_type}
+    !>  \final{distNegExp_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -182,7 +182,7 @@ module pm_distNegExp
     !>  \todo
     !>  \pmed This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{getNegExpLogPDF}
+    !>  \final{getNegExpLogPDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -319,7 +319,7 @@ module pm_distNegExp
     !>  \todo
     !>  \pmed This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{setNegExpLogPDF}
+    !>  \final{setNegExpLogPDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -616,7 +616,7 @@ module pm_distNegExp
     !>  \todo
     !>  \pmed This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{getNegsetNegExpCDF}
+    !>  \final{getNegsetNegExpCDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -747,7 +747,7 @@ module pm_distNegExp
     !>  \todo
     !>  \pmed This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{setNegExpCDF}
+    !>  \final{setNegExpCDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -983,7 +983,7 @@ module pm_distNegExp
     !>  \test
     !>  [test_pm_distNegExp](@ref test_pm_distNegExp)
     !>
-    !>  \finmain{getNegExpRand}
+    !>  \final{getNegExpRand}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1132,7 +1132,7 @@ module pm_distNegExp
     !>  \remedy{Oct, 2022}
     !>  The `complex` interface of the routines is now deprecated and removed.<br>
     !>
-    !>  \finmain{setNegExpRand}
+    !>  \final{setNegExpRand}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

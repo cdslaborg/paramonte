@@ -17,7 +17,7 @@
 !>  \brief
 !>  This module contains implementations of the procedures in [pm_sysInfo](@ref pm_sysInfo).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi

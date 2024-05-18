@@ -17,7 +17,7 @@
 !>  \brief
 !>  This include file contains procedure implementations of [pm_optimization](@ref pm_optimization).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Thursday 1:45 AM, August 22, 2019, Dallas, TX

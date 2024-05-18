@@ -65,7 +65,7 @@
 !>  \test
 !>  [test_pm_distGamma](@ref test_pm_distGamma)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -113,7 +113,7 @@ module pm_distGamma
     !>  \pvhigh
     !>  This derived type must be converted to PDT and the relevant components and methods must be added once PDTs are well supported.
     !>
-    !>  \finmain{distGamma_type}
+    !>  \final{distGamma_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -191,7 +191,7 @@ module pm_distGamma
     !>  \todo
     !>  \plow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{getGammaLogPDFNF}
+    !>  \final{getGammaLogPDFNF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -385,7 +385,7 @@ module pm_distGamma
     !>  \todo
     !>  \plow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{getGammaLogPDF}
+    !>  \final{getGammaLogPDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -526,7 +526,7 @@ module pm_distGamma
     !>  \todo
     !>  \plow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{setGammaLogPDF}
+    !>  \final{setGammaLogPDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -774,7 +774,7 @@ module pm_distGamma
     !>  \todo
     !>  \plow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{getGammaCDF}
+    !>  \final{getGammaCDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -919,7 +919,7 @@ module pm_distGamma
     !>  \todo
     !>  \plow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{setGammaCDF}
+    !>  \final{setGammaCDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1210,7 +1210,7 @@ module pm_distGamma
     !>  \test
     !>  [test_pm_distGamma](@ref test_pm_distGamma)
     !>
-    !>  \finmain{setGammaRand}
+    !>  \final{setGammaRand}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

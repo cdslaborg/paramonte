@@ -39,7 +39,7 @@
 !>  \see
 !>  [pm_cosmology](@ref pm_cosmology)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -108,7 +108,7 @@ module pm_cosmicRate
     !>  \todo
     !>  \pvlow This generic interface can be extended to higher-rank input arrays.<br>
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -286,7 +286,7 @@ module pm_cosmicRate
     !>  \todo
     !>  \pvlow This generic interface can be extended to higher-rank input arrays.<br>
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -472,7 +472,7 @@ module pm_cosmicRate
     !>  \todo
     !>  \pvlow This generic interface can be extended to higher-rank input arrays.<br>
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -657,7 +657,7 @@ module pm_cosmicRate
     !>  \todo
     !>  \pvlow This generic interface can be extended to higher-rank input arrays.<br>
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -842,7 +842,7 @@ module pm_cosmicRate
     !>  \todo
     !>  \pvlow This generic interface can be extended to higher-rank input arrays.<br>
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1032,7 +1032,7 @@ module pm_cosmicRate
     !>  \todo
     !>  This generic interface can be extended to higher-rank input arrays.<br>
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1154,7 +1154,7 @@ module pm_cosmicRate
     !>  \todo
     !>  This generic interface can be extended to higher-rank input arrays.<br>
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

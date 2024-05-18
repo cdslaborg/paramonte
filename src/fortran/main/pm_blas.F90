@@ -25,7 +25,7 @@
 !>  \see
 !>  [pm_lapack](@ref pm_lapack)<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -53,7 +53,7 @@ module pm_blas
     !>  \see
     !>  [pm_matrixMulAdd](@ref pm_matrixMulAdd)<br>
     !>
-    !>  \finmain{blasGEMV}
+    !>  \final{blasGEMV}
     !>
     !>  \author
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -95,7 +95,7 @@ module pm_blas
     !>  \see
     !>  [pm_matrixMulAdd](@ref pm_matrixMulAdd)<br>
     !>
-    !>  \finmain{blasGEMV}
+    !>  \final{blasGEMV}
     !>
     !>  \author
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -149,7 +149,7 @@ module pm_blas
     !>  \see
     !>  [pm_matrixMulAdd](@ref pm_matrixMulAdd)<br>
     !>
-    !>  \finmain{blasHPMV}
+    !>  \final{blasHPMV}
     !>
     !>  \author
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -187,7 +187,7 @@ module pm_blas
     !>  \see
     !>  [pm_matrixMulAdd](@ref pm_matrixMulAdd)<br>
     !>
-    !>  \finmain{blasSPMV}
+    !>  \final{blasSPMV}
     !>
     !>  \author
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -225,7 +225,7 @@ module pm_blas
     !>  \see
     !>  [pm_matrixMulAdd](@ref pm_matrixMulAdd)<br>
     !>
-    !>  \finmain{blasHEMV}
+    !>  \final{blasHEMV}
     !>
     !>  \author
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -263,7 +263,7 @@ module pm_blas
     !>  \see
     !>  [pm_matrixMulAdd](@ref pm_matrixMulAdd)<br>
     !>
-    !>  \finmain{blasSYMV}
+    !>  \final{blasSYMV}
     !>
     !>  \author
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -300,7 +300,7 @@ module pm_blas
     !>  \see
     !>  [pm_matrixMulAdd](@ref pm_matrixMulAdd)<br>
     !>
-    !>  \finmain{blasSYMM}
+    !>  \final{blasSYMM}
     !>
     !>  \author
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -353,7 +353,7 @@ module pm_blas
     !>  \see
     !>  [pm_matrixMulAdd](@ref pm_matrixMulAdd)<br>
     !>
-    !>  \finmain{blasHEMM}
+    !>  \final{blasHEMM}
     !>
     !>  \author
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -389,7 +389,7 @@ module pm_blas
     !>  \see
     !>  [pm_matrixMulAdd](@ref pm_matrixMulAdd)<br>
     !>
-    !>  \finmain{blasGEMM}
+    !>  \final{blasGEMM}
     !>
     !>  \author
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -446,7 +446,7 @@ module pm_blas
     !>  \see
     !>  [pm_matrixMulTri](@ref pm_matrixMulTri)<br>
     !>
-    !>  \finmain{blasTRMV}
+    !>  \final{blasTRMV}
     !>
     !>  \author
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -503,7 +503,7 @@ module pm_blas
     !>  \see
     !>  [pm_matrixMulTri](@ref pm_matrixMulTri)<br>
     !>
-    !>  \finmain{blasTRSV}
+    !>  \final{blasTRSV}
     !>
     !>  \author
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -556,7 +556,7 @@ module pm_blas
     !>  \see
     !>  [pm_matrixMulTri](@ref pm_matrixMulTri)<br>
     !>
-    !>  \finmain{blasTRMM}
+    !>  \final{blasTRMM}
     !>
     !>  \author
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -609,7 +609,7 @@ module pm_blas
     !>  \see
     !>  [pm_matrixMulTri](@ref pm_matrixMulTri)<br>
     !>
-    !>  \finmain{blasTRSM}
+    !>  \final{blasTRSM}
     !>
     !>  \author
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -665,7 +665,7 @@ module pm_blas
     !>  \see
     !>  [pm_matrixUpdate](@ref pm_matrixUpdate)<br>
     !>
-    !>  \finmain{blasSYRK}
+    !>  \final{blasSYRK}
     !>
     !>  \author
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -721,7 +721,7 @@ module pm_blas
     !>  \see
     !>  [pm_matrixUpdate](@ref pm_matrixUpdate)<br>
     !>
-    !>  \finmain{blasHERK}
+    !>  \final{blasHERK}
     !>
     !>  \author
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX

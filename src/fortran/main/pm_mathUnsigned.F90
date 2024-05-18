@@ -54,7 +54,7 @@
 !>  \test
 !>  [test_pm_mathUnsigned](@ref test_pm_mathUnsigned)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, 12:27 AM Tuesday, February 22, 2022, Dallas, TX
@@ -121,7 +121,7 @@ module pm_mathUnsigned
     !>  \test
     !>  [test_pm_mathUnsigned](@ref test_pm_mathUnsigned)
     !>
-    !>  \finmain{uadd}
+    !>  \final{uadd}
     !>
     !>  \author
     !>  \FatemehBagheri, 12:27 AM Tuesday, February 22, 2022, Dallas, TX

@@ -54,7 +54,7 @@
 !>  \phigh
 !>  The two function interfaces of this module can be merged into a single generic interface.<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 12:24 PM, August 11, 2021, Dallas, TX
@@ -175,7 +175,7 @@ module pm_arrayComplement
     !>  For now, a preprocessor macro defines two separate interfaces for the two compilers so that both compilers can compile this file.<br>
     !>  This minor interface difference should not impact the usage of this module with different compilers.<br>
     !>
-    !>  \finmain{getComplement}
+    !>  \final{getComplement}
     !>
     !>  \author
     !>  \FatemehBagheri, Wednesday 1:35 PM, August 11, 2021, Dallas, TX
@@ -1935,7 +1935,7 @@ module pm_arrayComplement
     !>  \test
     !>  [test_pm_arrayComplement](@ref test_pm_arrayComplement)
     !>
-    !>  \finmain{getComplementRange}
+    !>  \final{getComplementRange}
     !>
     !>  \author
     !>  \FatemehBagheri, Wednesday 1:35 PM, August 11, 2021, Dallas, TX

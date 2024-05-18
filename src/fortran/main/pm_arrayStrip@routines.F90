@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains procedure implementations of [pm_arrayStrip](@ref pm_arrayStrip).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, 3:48 AM, October 13, 2017, Institute for Computational Engineering and Sciences, Austin, TX

@@ -44,7 +44,7 @@
 !>  The migration to PDTs must be done as soon as gfortran supports for PDTs is complete.<br>
 !>  Note that other compilers have full support of PDTs.<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -101,7 +101,7 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{integrand_type}
+    !>  \final{integrand_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -134,7 +134,7 @@ module pm_quadTest
     !>  \see
     !>  [integrand_type](@ref pm_quadTest::integrand_type)<br>
     !>
-    !>  \finmain{get_proc}
+    !>  \final{get_proc}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -204,7 +204,7 @@ module pm_quadTest
     !>  \remedy
     !>  Avoid this coding style until the bug is resolved.
     !>
-    !>  \finmain{test_isFailedQuad}
+    !>  \final{test_isFailedQuad}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -260,7 +260,7 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{test_getQuadErr}
+    !>  \final{test_getQuadErr}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -324,7 +324,7 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{int1_type}
+    !>  \final{int1_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -405,7 +405,7 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{int2_type}
+    !>  \final{int2_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -482,7 +482,7 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{int3_type}
+    !>  \final{int3_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -551,7 +551,7 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{int4_type}
+    !>  \final{int4_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -630,7 +630,7 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{int5_type}
+    !>  \final{int5_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -699,7 +699,7 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{int6_type}
+    !>  \final{int6_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -772,7 +772,7 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{int7_type}
+    !>  \final{int7_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -845,7 +845,7 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{int8_type}
+    !>  \final{int8_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -922,7 +922,7 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{int9_type}
+    !>  \final{int9_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1018,7 +1018,7 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{intGamUpp_type}
+    !>  \final{intGamUpp_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1104,7 +1104,7 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{intSinCos_type}
+    !>  \final{intSinCos_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1183,7 +1183,7 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{intNormPDF_type}
+    !>  \final{intNormPDF_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1264,7 +1264,7 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{intLogNormPDF_type}
+    !>  \final{intLogNormPDF_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1342,7 +1342,7 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{intGenExpGammaPDF_type}
+    !>  \final{intGenExpGammaPDF_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1421,7 +1421,7 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{intPentaGammaInf_type}
+    !>  \final{intPentaGammaInf_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1499,7 +1499,7 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{intDoncker1_type}
+    !>  \final{intDoncker1_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1582,7 +1582,7 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{intDoncker2_type}
+    !>  \final{intDoncker2_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1658,7 +1658,7 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{intCauchy1_type}
+    !>  \final{intCauchy1_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1753,7 +1753,7 @@ module pm_quadTest
     !>  \test
     !>  [test_pm_quadPack](@ref test_pm_quadPack)
     !>
-    !>  \finmain{intCauchy2_type}
+    !>  \final{intCauchy2_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

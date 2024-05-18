@@ -39,7 +39,7 @@
 !>  \test
 !>  [test_pm_str](@ref test_pm_str)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -155,7 +155,7 @@ module pm_str
     !>  \test
     !>  [test_pm_str](@ref test_pm_str)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -287,7 +287,7 @@ module pm_str
     !>  \remedy
     !>  For now, the above example is commented out in the example script.<br>
     !>
-    !>  \finmain{isEndedWith}
+    !>  \final{isEndedWith}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -486,7 +486,7 @@ module pm_str
     !>  \test
     !>  [test_pm_str](@ref test_pm_str)
     !>
-    !>  \finmain{getMaxLoc}
+    !>  \final{getMaxLoc}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -684,7 +684,7 @@ module pm_str
     !>  \test
     !>  [test_pm_str](@ref test_pm_str)
     !>
-    !>  \finmain{getMaxLoc}
+    !>  \final{getMaxLoc}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -882,7 +882,7 @@ module pm_str
     !>  \phigh
     !>  The restriction on the non-zero length of the input string can be lifted to make the behavior compatible with the corresponding intrinsic routine.<br>
     !>
-    !>  \finmain{getMinVal}
+    !>  \final{getMinVal}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1070,7 +1070,7 @@ module pm_str
     !>  \phigh
     !>  The restriction on the non-zero length of the input string can be lifted to make the behavior compatible with the corresponding intrinsic routine.<br>
     !>
-    !>  \finmain{getMaxVal}
+    !>  \final{getMaxVal}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1235,7 +1235,7 @@ module pm_str
     !>  \test
     !>  [test_pm_str](@ref test_pm_str)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1340,7 +1340,7 @@ module pm_str
     !>  \test
     !>  [test_pm_str](@ref test_pm_str)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1442,7 +1442,7 @@ module pm_str
     !>  \test
     !>  [test_pm_str](@ref test_pm_str)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1610,7 +1610,7 @@ module pm_str
     !>  \test
     !>  [test_pm_str](@ref test_pm_str)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1739,7 +1739,7 @@ module pm_str
     !>  \test
     !>  [test_pm_str](@ref test_pm_str)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1893,7 +1893,7 @@ module pm_str
 !   >  \test
 !   >  [test_pm_str](@ref test_pm_str)
 !   >
-!   >  \finmain
+!   >  \final
 !   >
 !   >  \author
 !   >  Amir Shahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2010,7 +2010,7 @@ module pm_str
 !    !>  \test
 !    !>  [test_pm_str](@ref test_pm_str)
 !    !>
-!    !>  \finmain
+!    !>  \final
 !    !>
 !    !>  \author
 !    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2065,7 +2065,7 @@ module pm_str
 !    !>  \test
 !    !>  [test_pm_str](@ref test_pm_str)
 !    !>
-!    !>  \finmain
+!    !>  \final
 !    !>
 !    !>  \author
 !    !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

@@ -36,7 +36,7 @@
 !>  Definition using Probability Theory
 !>  -----------------------------------
 !>
-!>  For probability distributions \$P\$ and \$Q\$ on the same domain \$\mathcal{X}\$, the Bhattacharyya distance is defined as,
+!>  For probability distributions \f$P\f$ and \f$Q\f$ on the same domain \f$\mathcal{X}\f$, the Bhattacharyya distance is defined as,
 !>  \f{equation}{
 !>      D_{B}(P, Q) = -\ln\left(BC(P,Q)\right) ~,
 !>  \f}
@@ -47,7 +47,7 @@
 !>  \f}
 !>
 !>  is the Bhattacharyya coefficient for discrete probability distributions.<br>
-!>  For continuous probability distributions, \$P(dx) = p(x)dx\$ and \$Q(dx) = q(x)dx\$ where \$p(x)\$ and \$q(x)\$ are the probability density functions, the Bhattacharyya coefficient is defined as,
+!>  For continuous probability distributions, \f$P(dx) = p(x)dx\f$ and \f$Q(dx) = q(x)dx\f$ where \f$p(x)\f$ and \f$q(x)\f$ are the probability density functions, the Bhattacharyya coefficient is defined as,
 !>  \f{equation}{
 !>      BC(P, Q) = \int_{\mathcal{X}}{\sqrt{p(x)q(x)}}\,dx ~.
 !>  \f}
@@ -115,7 +115,7 @@
 !>  \test
 !>  [test_pm_distanceBhat](@ref test_pm_distanceBhat)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, March 22, 2012, 2:21 PM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -237,7 +237,7 @@ module pm_distanceBhat
     !>  \pvhigh
     !>  The runtime checks for the complex input `invCov` must be implemented.<br>
     !>
-    !>  \finmain{getDisBhat}
+    !>  \final{getDisBhat}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>

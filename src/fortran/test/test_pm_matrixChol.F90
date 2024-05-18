@@ -21,7 +21,7 @@
 !>  \pvhigh
 !>  This test collection must be expanded to cover all interfaces.<br>
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

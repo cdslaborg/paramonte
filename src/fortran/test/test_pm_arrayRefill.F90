@@ -31,7 +31,7 @@
 !>  For now, all `use` statements are moved to the declaration body of the submodules.<br>
 !>  This causes non-locality of the statements, but is the only solution as of today.<br>
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX

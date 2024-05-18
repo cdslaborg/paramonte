@@ -46,7 +46,7 @@
 !>  \test
 !>  [test_pm_arrayShuffle](@ref test_pm_arrayShuffle)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:20 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -138,7 +138,7 @@ module pm_arrayShuffle
     !>  \todo
     !>  \plow This generic interface can be extended to 2D input objects.<br>
     !>
-    !>  \finmain{getShuffled}
+    !>  \final{getShuffled}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -681,7 +681,7 @@ module pm_arrayShuffle
     !>  As of 2021, the use of double precision (64-bit) vs. single-precision for random number generation increases the
     !>  computational cost of the algorithms by about three times.<br>
     !>
-    !>  \finmain{setShuffled}
+    !>  \final{setShuffled}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

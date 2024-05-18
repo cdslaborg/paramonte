@@ -25,7 +25,7 @@
 !>  \see
 !>  [pm_blas](@ref pm_blas)<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -53,7 +53,7 @@ module pm_lapack
     !>  \see
     !>  [pm_matrixLUP](@ref pm_matrixLUP)<br>
     !>
-    !>  \finmain{lapackGETRF}
+    !>  \final{lapackGETRF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX

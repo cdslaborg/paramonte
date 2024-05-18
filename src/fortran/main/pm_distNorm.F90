@@ -169,7 +169,7 @@
 !>  in the procedures that rely on [xoshiro256ssw_type](@ref pm_distUnif::xoshiro256ssw_type) for uniform RNG.<br>
 !>  This requires a customized implementation of the Ziggurat method for this `real` kind.<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -217,7 +217,7 @@ module pm_distNorm
     !>  \pvhigh
     !>  This derived type must be converted to PDT and the relevant components and methods must be added once PDTs are well supported.
     !>
-    !>  \finmain{distNorm_type}
+    !>  \final{distNorm_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -287,7 +287,7 @@ module pm_distNorm
     !>  \test
     !>  [test_pm_distNorm](@ref test_pm_distNorm)
     !>
-    !>  \finmain{getNormLogPDF}
+    !>  \final{getNormLogPDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -430,7 +430,7 @@ module pm_distNorm
     !>  \pmed
     !>  A performant vectorized `logPDF(:)` version of the subroutines under this generic interface could be added in the future.
     !>
-    !>  \finmain{setNormLogPDF}
+    !>  \final{setNormLogPDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -747,7 +747,7 @@ module pm_distNorm
     !>  \test
     !>  [test_pm_distNorm](@ref test_pm_distNorm)
     !>
-    !>  \finmain{getNormCDF}
+    !>  \final{getNormCDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -879,7 +879,7 @@ module pm_distNorm
     !>  \test
     !>  [test_pm_distNorm](@ref test_pm_distNorm)
     !>
-    !>  \finmain{setNormCDF}
+    !>  \final{setNormCDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1131,7 +1131,7 @@ module pm_distNorm
     !>  \test
     !>  [test_pm_distNorm](@ref test_pm_distNorm)
     !>
-    !>  \finmain{getNormQuan}
+    !>  \final{getNormQuan}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1269,7 +1269,7 @@ module pm_distNorm
     !>  \test
     !>  [test_pm_distNorm](@ref test_pm_distNorm)
     !>
-    !>  \finmain{setNormQuan}
+    !>  \final{setNormQuan}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1480,7 +1480,7 @@ module pm_distNorm
     !>  \test
     !>  [test_pm_distNorm](@ref test_pm_distNorm)
     !>
-    !>  \finmain{ZIG_PRECISION}
+    !>  \final{ZIG_PRECISION}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1767,7 +1767,7 @@ module pm_distNorm
     !>  \test
     !>  [test_pm_distNorm](@ref test_pm_distNorm)
     !>
-    !>  \finmain{ZIG_RKB}
+    !>  \final{ZIG_RKB}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1842,7 +1842,7 @@ module pm_distNorm
     !>  \test
     !>  [test_pm_distNorm](@ref test_pm_distNorm)<br>
     !>
-    !>  \finmain{getNormRand}
+    !>  \final{getNormRand}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -2015,7 +2015,7 @@ module pm_distNorm
     !>  \test
     !>  [test_pm_distNorm](@ref test_pm_distNorm)
     !>
-    !>  \finmain{setNormRand}
+    !>  \final{setNormRand}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -2859,7 +2859,7 @@ module pm_distNorm
     !>  \test
     !>  [test_pm_distNorm](@ref test_pm_distNorm)
     !>
-    !>  \finmain{setNormRandBox}
+    !>  \final{setNormRandBox}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -3287,7 +3287,7 @@ module pm_distNorm
     !>  \test
     !>  [test_pm_distNorm](@ref test_pm_distNorm)<br>
     !>
-    !>  \finmain{getZigNorm}
+    !>  \final{getZigNorm}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 25, 2015, 2:21 PM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -3681,7 +3681,7 @@ module pm_distNorm
     !>  \test
     !>  [test_pm_distNorm](@ref test_pm_distNorm)
     !>
-    !>  \finmain{getNormEntropy}
+    !>  \final{getNormEntropy}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -3798,7 +3798,7 @@ module pm_distNorm
     !>  \test
     !>  [test_pm_distNorm](@ref test_pm_distNorm)
     !>
-    !>  \finmain{getNormFisher}
+    !>  \final{getNormFisher}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -3935,7 +3935,7 @@ module pm_distNorm
     !>  \todo
     !>  \phigh The KLD implementation should be implemented with `log1mexp` for better accuracy.
     !>
-    !>  \finmain{getNormKLD}
+    !>  \final{getNormKLD}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

@@ -62,7 +62,7 @@
 !>  \see
 !>  [pm_distBeta](@ref pm_distBeta)<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -113,7 +113,7 @@ module pm_distCov
     !>  \test
     !>  [test_pm_distCov](@ref test_pm_distCov)<br>
     !>
-    !>  \finmain{gram_type}
+    !>  \final{gram_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -150,7 +150,7 @@ module pm_distCov
     !>  \test
     !>  [test_pm_distCov](@ref test_pm_distCov)<br>
     !>
-    !>  \finmain{gram}
+    !>  \final{gram}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -194,7 +194,7 @@ module pm_distCov
     !>  \test
     !>  [test_pm_distCov](@ref test_pm_distCov)<br>
     !>
-    !>  \finmain{dvine_type}
+    !>  \final{dvine_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -231,7 +231,7 @@ module pm_distCov
     !>  \test
     !>  [test_pm_distCov](@ref test_pm_distCov)<br>
     !>
-    !>  \finmain{dvine}
+    !>  \final{dvine}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -276,7 +276,7 @@ module pm_distCov
     !>  \test
     !>  [test_pm_distCov](@ref test_pm_distCov)<br>
     !>
-    !>  \finmain{onion_type}
+    !>  \final{onion_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -324,7 +324,7 @@ module pm_distCov
     !>  \test
     !>  [test_pm_distCov](@ref test_pm_distCov)<br>
     !>
-    !>  \finmain{onion}
+    !>  \final{onion}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -383,7 +383,7 @@ module pm_distCov
     !>  \test
     !>  [test_pm_distCov](@ref test_pm_distCov)
     !>
-    !>  \finmain{getCovRand}
+    !>  \final{getCovRand}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -767,7 +767,7 @@ module pm_distCov
     !>  \phigh
     !>  The current implementation of the Gram method can be significantly improved, both computationally and functionally.<br>
     !>
-    !>  \finmain{setCovRand}
+    !>  \final{setCovRand}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>

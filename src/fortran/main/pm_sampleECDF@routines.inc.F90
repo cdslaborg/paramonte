@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains the implementation details of the routines under the generic interface [pm_sampleECDF](@ref pm_sampleECDF).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Saturday 4:40 PM, August 21, 2021, Dallas, TX

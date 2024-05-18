@@ -57,7 +57,7 @@
 !>  \todo
 !>  Generic interfaces for computing the logarithm of CDF robustly (without numerical rounding) must be added in the future.
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -103,7 +103,7 @@ module pm_distPoweto
     !>  \pvhigh
     !>  This derived type must be converted to PDT and the relevant components and methods must be added once PDTs are well supported.
     !>
-    !>  \finmain{distPoweto_type}
+    !>  \final{distPoweto_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -179,7 +179,7 @@ module pm_distPoweto
     !>  \plow
     !>  This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{getPowetoLogPDFNF}
+    !>  \final{getPowetoLogPDFNF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -315,7 +315,7 @@ module pm_distPoweto
     !>  \todo
     !>  \plow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{getPowetoLogPDF}
+    !>  \final{getPowetoLogPDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -446,7 +446,7 @@ module pm_distPoweto
     !>  \todo
     !>  \plow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{setPowetoLogPDF}
+    !>  \final{setPowetoLogPDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -593,7 +593,7 @@ module pm_distPoweto
     !>  \plow
     !>  This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{getPowetoLogCDFNF}
+    !>  \final{getPowetoLogCDFNF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -729,7 +729,7 @@ module pm_distPoweto
     !>  \todo
     !>  \plow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{getPowetoLogCDF}
+    !>  \final{getPowetoLogCDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -870,7 +870,7 @@ module pm_distPoweto
     !>  \todo
     !>  \plow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{setPowetoLogCDF}
+    !>  \final{setPowetoLogCDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1011,7 +1011,7 @@ module pm_distPoweto
     !>  \todo
     !>  \plow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{getPowetoLogQuan}
+    !>  \final{getPowetoLogQuan}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1154,7 +1154,7 @@ module pm_distPoweto
     !>  \todo
     !>  \plow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{getPowetoLogQuan}
+    !>  \final{getPowetoLogQuan}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1296,7 +1296,7 @@ module pm_distPoweto
     !>  \todo
     !>  \pvlow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1438,7 +1438,7 @@ module pm_distPoweto
     !>  This interface can be extended to support vector-like `logRand` arguments other than the `elemental` approach.<br>
     !>  Such an extension would be sensible only if the new interface improves the performance against the `elemental` approach.<br>
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

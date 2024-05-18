@@ -16,7 +16,7 @@
 
 !>  \brief This file contains the implementations of the tests of module [pm_distMultiNorm](@ref pm_distMultiNorm).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

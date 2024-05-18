@@ -116,7 +116,7 @@
 !>  A benchmark comparing the performance of the two computational algorithms above
 !>  should be implemented and gauge the impact of row vs. column major access pattern.<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
@@ -203,7 +203,7 @@ module pm_matrixChol
     !>  \test
     !>  [test_pm_matrixChol](@ref test_pm_matrixChol)
     !>
-    !>  \finmain{setChoLow}
+    !>  \final{setChoLow}
     !>
     !>  \author
     !>  \AmirShahmoradi, Apr 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -359,7 +359,7 @@ module pm_matrixChol
     !>  \test
     !>  [test_pm_matrixChol](@ref test_pm_matrixChol)
     !>
-    !>  \finmain{getMatChol}
+    !>  \final{getMatChol}
     !>
     !>  \author
     !>  \AmirShahmoradi, Apr 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -818,7 +818,7 @@ module pm_matrixChol
     !>            The explicitness of the interface: IMP => implicit, EXP => explicit.
     !>  \endcode
     !>
-    !>  \finmain{setMatChol}
+    !>  \final{setMatChol}
     !>
     !>  \author
     !>  \AmirShahmoradi, Apr 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3932,7 +3932,7 @@ module pm_matrixChol
 !   >  Returns in the upper triangle of `ChoUppCovLow`, the Cholesky factorization \f$L^T\f$ of \f$\ms{ChoUppCovLow} = L.L^T\f$.
 !   >  On input, the lower triangle of `ChoUppCovLow` must be given, which remains intact on output.<br>
 !   >
-!   >  \finmain
+!   >  \final
 !   >
 !   >  \author
 !   >  Amir Shahmoradi, Friday 1:53 AM, August 27, 2021, Dallas, TX

@@ -86,7 +86,7 @@
 !>  \test
 !>  [test_pm_distGeom](@ref test_pm_distGeom)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -133,7 +133,7 @@ module pm_distGeom
     !>  \pvhigh
     !>  This derived type must be converted to PDT and the relevant components and methods must be added once PDTs are well supported.
     !>
-    !>  \finmain{distGeom_type}
+    !>  \final{distGeom_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -195,7 +195,7 @@ module pm_distGeom
     !>  \test
     !>  [test_pm_distGeom](@ref test_pm_distGeom)
     !>
-    !>  \finmain{getGeomLogPMF}
+    !>  \final{getGeomLogPMF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -329,7 +329,7 @@ module pm_distGeom
     !>  \todo
     !>  \pmed This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain{setGeomLogPMF}
+    !>  \final{setGeomLogPMF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -518,7 +518,7 @@ module pm_distGeom
     !>  \test
     !>  [test_pm_distGeom](@ref test_pm_distGeom)
     !>
-    !>  \finmain{getGeomCDF}
+    !>  \final{getGeomCDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -642,7 +642,7 @@ module pm_distGeom
     !>  \test
     !>  [test_pm_distGeom](@ref test_pm_distGeom)
     !>
-    !>  \finmain{setGeomCDF}
+    !>  \final{setGeomCDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -765,7 +765,7 @@ module pm_distGeom
     !>  \test
     !>  [test_pm_distGeom](@ref test_pm_distGeom)
     !>
-    !>  \finmain{getGeomRand}
+    !>  \final{getGeomRand}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -897,7 +897,7 @@ module pm_distGeom
     !>  \test
     !>  [test_pm_distGeom](@ref test_pm_distGeom)
     !>
-    !>  \finmain{setGeomRand}
+    !>  \final{setGeomRand}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

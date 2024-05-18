@@ -17,7 +17,7 @@
 !>  \brief
 !>  This module contains constants and procedures that are relevant to bit manipulation.<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -89,7 +89,7 @@ module pm_bit
     !>  [Fortran Discourse](https://fortran-lang.discourse.group/t/moving-bits-question/4799/14)<br>
     !>  [How to write endian-independent code in C](https://developer.ibm.com/articles/au-endianc/)<br>
     !>
-    !>  \finmain{IS_BIG_ENDIAN}
+    !>  \final{IS_BIG_ENDIAN}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

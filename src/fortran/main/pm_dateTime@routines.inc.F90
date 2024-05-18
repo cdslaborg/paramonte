@@ -17,7 +17,7 @@
 !>  \brief
 !>  This include file contains procedure implementations of [pm_dateTime](@ref pm_dateTime).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, March 23, 2012, 5:33 PM, National Institute for Fusion Studies, The University of Texas at Austin

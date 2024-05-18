@@ -37,7 +37,7 @@
 !>  \test
 !>  [test_pm_distNormShell](@ref test_pm_distNormShell)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -154,7 +154,7 @@ module pm_distNormShell
     !>  \test
     !>  [test_pm_distNormShell](@ref test_pm_distNormShell)
     !>
-    !>  \finmain{getNormShellLogUDF}
+    !>  \final{getNormShellLogUDF}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

@@ -17,7 +17,7 @@
 !>  \brief
 !>  This include file contains implementations of the procedures in module [pm_distNormShell](@ref pm_distNormShell).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

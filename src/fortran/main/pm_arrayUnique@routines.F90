@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains procedures implementations of the generic interfaces of [pm_arrayUnique](@ref pm_arrayUnique).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

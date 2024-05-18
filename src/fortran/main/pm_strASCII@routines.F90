@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains procedure implementations of [pm_strASCII](@ref pm_strASCII).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Monday 2:21 AM, August 30, 2021, Dallas, TX

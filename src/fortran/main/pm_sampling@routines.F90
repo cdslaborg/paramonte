@@ -20,7 +20,7 @@
 !>  \test
 !>  [test_pm_sampling](@ref test_pm_sampling)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin

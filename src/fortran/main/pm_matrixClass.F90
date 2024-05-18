@@ -72,7 +72,7 @@
 !>  This module is a work in progress.<br>
 !>  Various missing classifications of matrices should be added in the future and the existing classifications be refined.<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -112,7 +112,7 @@ module pm_matrixClass
     !>  [genrecmat_type](@ref pm_matrixClass::genrecmat_type)<br>
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>
-    !>  \finmain{matrix_type}
+    !>  \final{matrix_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -157,7 +157,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{genrecmat_type}
+    !>  \final{genrecmat_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -193,7 +193,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{genrecmat}
+    !>  \final{genrecmat}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -240,7 +240,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{square_type}
+    !>  \final{square_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -276,7 +276,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{square}
+    !>  \final{square}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -323,7 +323,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{invertible_type}
+    !>  \final{invertible_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -359,7 +359,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{invertible}
+    !>  \final{invertible}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -406,7 +406,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{factoring_type}
+    !>  \final{factoring_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -442,7 +442,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{factoring}
+    !>  \final{factoring}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -489,7 +489,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{cholesky_type}
+    !>  \final{cholesky_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -525,7 +525,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{cholesky}
+    !>  \final{cholesky}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -572,7 +572,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{choLow_type}
+    !>  \final{choLow_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -608,7 +608,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{choLow}
+    !>  \final{choLow}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -655,7 +655,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{choUpp_type}
+    !>  \final{choUpp_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -691,7 +691,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{choUpp}
+    !>  \final{choUpp}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -738,7 +738,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{lup_type}
+    !>  \final{lup_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -774,7 +774,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{lup}
+    !>  \final{lup}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -821,7 +821,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{symmetric_type}
+    !>  \final{symmetric_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -857,7 +857,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{symmetric}
+    !>  \final{symmetric}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -904,7 +904,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{hermitian_type}
+    !>  \final{hermitian_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -940,7 +940,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{hermitian}
+    !>  \final{hermitian}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -987,7 +987,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{posdefmat_type}
+    !>  \final{posdefmat_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1023,7 +1023,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{posdefmat}
+    !>  \final{posdefmat}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1097,7 +1097,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{triang_type}
+    !>  \final{triang_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1133,7 +1133,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{triang}
+    !>  \final{triang}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1180,7 +1180,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{upperDiag_type}
+    !>  \final{upperDiag_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1216,7 +1216,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{upperDiag}
+    !>  \final{upperDiag}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1261,7 +1261,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{upperUnit_type}
+    !>  \final{upperUnit_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1297,7 +1297,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{upperUnit}
+    !>  \final{upperUnit}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1342,7 +1342,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{upperZero_type}
+    !>  \final{upperZero_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1378,7 +1378,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{upperZero}
+    !>  \final{upperZero}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1425,7 +1425,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{lowerDiag_type}
+    !>  \final{lowerDiag_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1461,7 +1461,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{lowerDiag}
+    !>  \final{lowerDiag}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1506,7 +1506,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{lowerUnit_type}
+    !>  \final{lowerUnit_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1542,7 +1542,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{lowerUnit}
+    !>  \final{lowerUnit}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1587,7 +1587,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{lowerZero_type}
+    !>  \final{lowerZero_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1623,7 +1623,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{lowerZero}
+    !>  \final{lowerZero}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1676,7 +1676,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{unitTriang_type}
+    !>  \final{unitTriang_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1712,7 +1712,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{unitTriang}
+    !>  \final{unitTriang}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1765,7 +1765,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{atomicTriang_type}
+    !>  \final{atomicTriang_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1801,7 +1801,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{atomicTriang}
+    !>  \final{atomicTriang}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1882,7 +1882,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{frobenius_type}
+    !>  \final{frobenius_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1918,7 +1918,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{frobenius}
+    !>  \final{frobenius}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1984,7 +1984,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{gauss_type}
+    !>  \final{gauss_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2020,7 +2020,7 @@ module pm_matrixClass
     !>  [matrix_type](@ref pm_matrixClass::matrix_type)<br>
     !>  [gauss_type](@ref pm_matrixClass::gauss_type)<br>
     !>
-    !>  \finmain{gauss}
+    !>  \final{gauss}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2108,7 +2108,7 @@ module pm_matrixClass
     !>  For example, the current implementation for positive-definiteness check makes a copy of the input array which can be avoided if
     !>  the corresponding [setMatChol](@ref pm_matrixChol::setMatChol) interface is implemented.<br>
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>

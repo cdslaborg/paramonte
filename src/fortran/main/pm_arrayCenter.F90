@@ -25,7 +25,7 @@
 !>  \test
 !>  [test_pm_arrayCenter](@ref test_pm_arrayCenter)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -162,7 +162,7 @@ module pm_arrayCenter
     !>  \pmed Two new optional input scalar `lbcold` and `ubcold` arguments can be added to procedures to specify
     !>  a subset of the contents of the original array that has to be kept in the newly allocated centered array.<br>
     !>
-    !>  \finmain{getCentered}
+    !>  \final{getCentered}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1112,7 +1112,7 @@ module pm_arrayCenter
     !>  Two new optional input scalar `lbcold` and `ubcold` arguments can be added to procedures to specify
     !>  a subset of the contents of the original array that has to be kept in the newly allocated centered array.
     !>
-    !>  \finmain{setCentered}
+    !>  \final{setCentered}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

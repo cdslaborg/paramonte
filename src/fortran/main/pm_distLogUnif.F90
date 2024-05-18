@@ -104,7 +104,7 @@
 !>  \test
 !>  [test_pm_distLogUnif](@ref test_pm_distLogUnif)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -150,7 +150,7 @@ module pm_distLogUnif
     !>  \pvhigh
     !>  This derived type must be converted to PDT and the relevant components and methods must be added once PDTs are well supported.
     !>
-    !>  \finmain{distLogUnif_type}
+    !>  \final{distLogUnif_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>
@@ -225,7 +225,7 @@ module pm_distLogUnif
     !>  \todo
     !>  \pvlow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -350,7 +350,7 @@ module pm_distLogUnif
     !>  \todo
     !>  \pvlow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -471,7 +471,7 @@ module pm_distLogUnif
     !>  \todo
     !>  \pvlow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -595,7 +595,7 @@ module pm_distLogUnif
     !>  \todo
     !>  \pvlow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -722,7 +722,7 @@ module pm_distLogUnif
     !>  \todo
     !>  \pvlow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -850,7 +850,7 @@ module pm_distLogUnif
     !>  \todo
     !>  \pvlow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -975,7 +975,7 @@ module pm_distLogUnif
     !>  \test
     !>  [test_pm_distLogUnif](@ref test_pm_distLogUnif)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1101,7 +1101,7 @@ module pm_distLogUnif
     !>  \todo
     !>  \pvlow This generic interface can be extended to `complex` arguments.<br>
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -1284,7 +1284,7 @@ module pm_distLogUnif
     !>  \test
     !>  [test_pm_distLogUnif](@ref test_pm_distLogUnif)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

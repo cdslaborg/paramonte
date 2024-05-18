@@ -17,7 +17,7 @@
 !>  \brief
 !>  This module contains tests of the statistics modules.
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  Amir Shahmoradi

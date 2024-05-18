@@ -33,7 +33,7 @@
 !>  \test
 !>  [test_pm_val2complex](@ref test_pm_val2complex)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -106,7 +106,7 @@ module pm_val2complex
     !>  This generic interface can be extended to support conversion to `complex` of arbitrary kind
     !>  via an optional input `mold` argument whose type and kind dictates that of the output.<br>
     !>
-    !>  \finmain{getComplex}
+    !>  \final{getComplex}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -293,7 +293,7 @@ module pm_val2complex
     !>  \test
     !>  [test_pm_val2complex](@ref test_pm_val2complex)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

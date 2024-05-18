@@ -17,7 +17,7 @@
 !>  \brief
 !>  This module contains implementations of the procedures in [pm_sysShell](@ref pm_sysShell).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi

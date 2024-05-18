@@ -24,7 +24,7 @@
 !>  [getLogSubExp](@ref pm_mathLogSubExp::getLogSubExp)<br>
 !>  [getLogSumExp](@ref pm_mathLogSumExp::getLogSumExp)<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \test
 !>  [test_pm_mathLogSubExp](@ref test_pm_mathLogSubExp)
@@ -159,7 +159,7 @@ module pm_mathLogSubExp
     !>  \test
     !>  [test_pm_mathLogSubExp](@ref test_pm_mathLogSubExp)
     !>
-    !>  \finmain{getLogSubExp}
+    !>  \final{getLogSubExp}
     !>
     !>  \author
     !>  \AmirShahmoradi, Thursday 1:45 AM, August 22, 2019, Dallas, TX

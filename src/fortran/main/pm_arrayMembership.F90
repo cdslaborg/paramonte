@@ -65,7 +65,7 @@
 !>  \test
 !>  [test_pm_arrayMembership](@ref test_pm_arrayMembership)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 12:24 PM, August 11, 2021, Dallas, TX
@@ -135,7 +135,7 @@ module pm_arrayMembership
     !>  \test
     !>  [test_pm_arrayMembership](@ref test_pm_arrayMembership)
     !>
-    !>  \finmain{in}
+    !>  \final{in}
     !>
     !>  \author
     !>  \FatemehBagheri, Wednesday 1:35 PM, August 11, 2021, Dallas, TX
@@ -917,7 +917,7 @@ module pm_arrayMembership
     !>  \test
     !>  [test_pm_arrayMembership](@ref test_pm_arrayMembership)
     !>
-    !>  \finmain{inrange}
+    !>  \final{inrange}
     !>
     !>  \author
     !>  \FatemehBagheri, Wednesday 1:35 PM, August 11, 2021, Dallas, TX
@@ -1693,7 +1693,7 @@ module pm_arrayMembership
     !>  \test
     !>  [test_pm_arrayMembership](@ref test_pm_arrayMembership)
     !>
-    !>  \finmain{allin}
+    !>  \final{allin}
     !>
     !>  \author
     !>  \FatemehBagheri, Wednesday 1:35 PM, August 11, 2021, Dallas, TX
@@ -2166,7 +2166,7 @@ module pm_arrayMembership
     !>  \test
     !>  [test_pm_arrayMembership](@ref test_pm_arrayMembership)
     !>
-    !>  \finmain{allinrange}
+    !>  \final{allinrange}
     !>
     !>  \author
     !>  \FatemehBagheri, Wednesday 1:35 PM, August 11, 2021, Dallas, TX
@@ -2626,7 +2626,7 @@ module pm_arrayMembership
     !>  \test
     !>  [test_pm_arrayMembership](@ref test_pm_arrayMembership)
     !>
-    !>  \finmain{anyin}
+    !>  \final{anyin}
     !>
     !>  \author
     !>  \FatemehBagheri, Wednesday 1:35 PM, August 11, 2021, Dallas, TX
@@ -3099,7 +3099,7 @@ module pm_arrayMembership
     !>  \test
     !>  [test_pm_arrayMembership](@ref test_pm_arrayMembership)
     !>
-    !>  \finmain{anyinrange}
+    !>  \final{anyinrange}
     !>
     !>  \author
     !>  \FatemehBagheri, Wednesday 1:35 PM, August 11, 2021, Dallas, TX

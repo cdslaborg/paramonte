@@ -16,7 +16,7 @@
 
 !>  \brief This file contains the implementations of the tests of module [pm_complexCompareAny](@ref pm_complexCompareAny).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

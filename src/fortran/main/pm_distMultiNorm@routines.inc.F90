@@ -17,7 +17,7 @@
 !>  \brief
 !>  This include file contains procedure implementation of [pm_distMultiNorm](@ref pm_distMultiNorm).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

@@ -19,7 +19,7 @@
 !>  [setReversed](@ref pm_arrayReverse::setReversed)<br>
 !>  [getReversed](@ref pm_arrayReverse::getReversed)<br>
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

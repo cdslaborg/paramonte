@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains the implementation details of the routines for converting a logical or number of different types and kinds to char.
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Saturday 9:44 PM, August 21, 2021, Dallas, TX

@@ -17,7 +17,7 @@
 !>  \brief
 !>  This module contains tests of the module [pm_sampleVar](@ref pm_sampleVar).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Thursday 12:45 AM, August 20, 2021, Dallas, TX

@@ -16,7 +16,7 @@
 
 !>  \brief This file contains the implementations of the tests of module [val2complex_pmod](@ref pm_val2complex).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi

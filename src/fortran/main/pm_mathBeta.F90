@@ -74,7 +74,7 @@
 !>  \test
 !>  [test_pm_mathBeta](@ref test_pm_mathBeta)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -137,7 +137,7 @@ module pm_mathBeta
     !>  \test
     !>  [test_pm_mathBeta](@ref test_pm_mathBeta)
     !>
-    !>  \finmain{getLogBeta}
+    !>  \final{getLogBeta}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -273,7 +273,7 @@ module pm_mathBeta
     !>  \test
     !>  [test_pm_mathBeta](@ref test_pm_mathBeta)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -436,7 +436,7 @@ module pm_mathBeta
     !>  \test
     !>  [test_pm_mathBeta](@ref test_pm_mathBeta)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -671,7 +671,7 @@ module pm_mathBeta
     !>  \test
     !>  [test_pm_mathBeta](@ref test_pm_mathBeta)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -820,7 +820,7 @@ module pm_mathBeta
     !>  \test
     !>  [test_pm_mathBeta](@ref test_pm_mathBeta)
     !>
-    !>  \finmain{setBetaInv}
+    !>  \final{setBetaInv}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

@@ -124,7 +124,7 @@
 !>  For now, the procedures for different ranking methods were are under separate generic interface names, because of the complexity in the merging of the
 !>  fractional ranking procedures (which output `real` ranks of default kind \RK) with the rest (which output `integer` ranks of default kind \IK).<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -164,7 +164,7 @@ module pm_arrayRank
     !>  [fractional_type](@ref pm_arrayRank::fractional_type)<br>
     !>  [rank_type](@ref pm_arrayRank::rank_type)<br>
     !>
-    !>  \finmain{rank_type}
+    !>  \final{rank_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -200,7 +200,7 @@ module pm_arrayRank
     !>  [fractional_type](@ref pm_arrayRank::fractional_type)<br>
     !>  [rank_type](@ref pm_arrayRank::rank_type)<br>
     !>
-    !>  \finmain{dense_type}
+    !>  \final{dense_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -227,7 +227,7 @@ module pm_arrayRank
     !>  [fractional_type](@ref pm_arrayRank::fractional_type)<br>
     !>  [rank_type](@ref pm_arrayRank::rank_type)<br>
     !>
-    !>  \finmain{dense}
+    !>  \final{dense}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -262,7 +262,7 @@ module pm_arrayRank
     !>  [fractional_type](@ref pm_arrayRank::fractional_type)<br>
     !>  [rank_type](@ref pm_arrayRank::rank_type)<br>
     !>
-    !>  \finmain{ordinal_type}
+    !>  \final{ordinal_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -289,7 +289,7 @@ module pm_arrayRank
     !>  [fractional_type](@ref pm_arrayRank::fractional_type)<br>
     !>  [rank_type](@ref pm_arrayRank::rank_type)<br>
     !>
-    !>  \finmain{ordinal}
+    !>  \final{ordinal}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -324,7 +324,7 @@ module pm_arrayRank
     !>  [fractional_type](@ref pm_arrayRank::fractional_type)<br>
     !>  [rank_type](@ref pm_arrayRank::rank_type)<br>
     !>
-    !>  \finmain{modified_type}
+    !>  \final{modified_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -351,7 +351,7 @@ module pm_arrayRank
     !>  [fractional_type](@ref pm_arrayRank::fractional_type)<br>
     !>  [rank_type](@ref pm_arrayRank::rank_type)<br>
     !>
-    !>  \finmain{modified}
+    !>  \final{modified}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -386,7 +386,7 @@ module pm_arrayRank
     !>  [fractional_type](@ref pm_arrayRank::fractional_type)<br>
     !>  [rank_type](@ref pm_arrayRank::rank_type)<br>
     !>
-    !>  \finmain{standard_type}
+    !>  \final{standard_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -413,7 +413,7 @@ module pm_arrayRank
     !>  [fractional_type](@ref pm_arrayRank::fractional_type)<br>
     !>  [rank_type](@ref pm_arrayRank::rank_type)<br>
     !>
-    !>  \finmain{standard}
+    !>  \final{standard}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -448,7 +448,7 @@ module pm_arrayRank
     !>  [fractional_type](@ref pm_arrayRank::fractional_type)<br>
     !>  [rank_type](@ref pm_arrayRank::rank_type)<br>
     !>
-    !>  \finmain{fractional_type}
+    !>  \final{fractional_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -475,7 +475,7 @@ module pm_arrayRank
     !>  [fractional_type](@ref pm_arrayRank::fractional_type)<br>
     !>  [rank_type](@ref pm_arrayRank::rank_type)<br>
     !>
-    !>  \finmain{fractional}
+    !>  \final{fractional}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -617,7 +617,7 @@ module pm_arrayRank
     !>  \todo
     !>  \plow A test should be implemented for arrays of size that can be represented *only* by an \IKD integer.
     !>
-    !>  \finmain{getRankDense}
+    !>  \final{getRankDense}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1655,7 +1655,7 @@ module pm_arrayRank
     !>  \todo
     !>  \plow A test should be implemented for arrays of size that can be represented *only* by an \IKD integer.
     !>
-    !>  \finmain{setRankDense}
+    !>  \final{setRankDense}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2695,7 +2695,7 @@ module pm_arrayRank
     !>  \todo
     !>  \plow A test should be implemented for arrays of size that can be represented *only* by an \IKD integer.
     !>
-    !>  \finmain{getRankFractional}
+    !>  \final{getRankFractional}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3739,7 +3739,7 @@ module pm_arrayRank
     !>  \todo
     !>  \plow A test should be implemented for arrays of size that can be represented *only* by an \IKD integer.
     !>
-    !>  \finmain{setRankFractional}
+    !>  \final{setRankFractional}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -4786,7 +4786,7 @@ module pm_arrayRank
     !>  \todo
     !>  \plow A test should be implemented for arrays of size that can be represented *only* by an \IKD integer.
     !>
-    !>  \finmain{getRankModified}
+    !>  \final{getRankModified}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -5827,7 +5827,7 @@ module pm_arrayRank
     !>  \todo
     !>  \plow A test should be implemented for arrays of size that can be represented *only* by an \IKD integer.
     !>
-    !>  \finmain{setRankModified}
+    !>  \final{setRankModified}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -6864,7 +6864,7 @@ module pm_arrayRank
     !>  \todo
     !>  \plow A test should be implemented for arrays of size that can be represented *only* by an \IKD integer.
     !>
-    !>  \finmain{getRankOrdinal}
+    !>  \final{getRankOrdinal}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -7900,7 +7900,7 @@ module pm_arrayRank
     !>  \todo
     !>  \plow A test should be implemented for arrays of size that can be represented *only* by an \IKD integer.
     !>
-    !>  \finmain{setRankOrdinal}
+    !>  \final{setRankOrdinal}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -8947,7 +8947,7 @@ module pm_arrayRank
     !>  \todo
     !>  \plow A test should be implemented for arrays of size that can be represented *only* by an \IKD integer.
     !>
-    !>  \finmain{getRankStandard}
+    !>  \final{getRankStandard}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -9989,7 +9989,7 @@ module pm_arrayRank
     !>  \todo
     !>  \plow A test should be implemented for arrays of size that can be represented *only* by an \IKD integer.
     !>
-    !>  \finmain{setRankStandard}
+    !>  \final{setRankStandard}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 21, 2017, 1:54 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

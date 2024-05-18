@@ -25,7 +25,7 @@
 !>  \test
 !>  [test_pm_parallelism](@ref test_pm_parallelism)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -71,7 +71,7 @@ module pm_parallelism
     !>
     !>  \endcode
     !>
-    !>  \finmain{imageis_type}
+    !>  \final{imageis_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -126,7 +126,7 @@ module pm_parallelism
     !>  The desired number of OpenMP threads can be set at runtime via [setImageCount()](@ref pm_parallelism::setImageCount),
     !>  or directly via the OpenMP intrinsic subroutine `omp_set_num_threads()`.<br>
     !>
-    !>  \finmain{image_type}
+    !>  \final{image_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -221,7 +221,7 @@ module pm_parallelism
     !>  \test
     !>  [test_pm_parallelism](@ref test_pm_parallelism)
     !>
-    !>  \finmain{setForkJoinScaling}
+    !>  \final{setForkJoinScaling}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 4:13 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -356,7 +356,7 @@ contains
     !>  The desired number of OpenMP threads can be set at runtime via [setImageCount()](@ref pm_parallelism::setImageCount),
     !>  or directly via the OpenMP intrinsic subroutine `omp_set_num_threads()`.<br>
     !>
-    !>  \finmain{image_typer}
+    !>  \final{image_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -405,7 +405,7 @@ contains
     !>  \test
     !>  [test_pm_parallelism](@ref test_pm_parallelism)
     !>
-    !>  \finmain{setImageSynced}
+    !>  \final{setImageSynced}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 4:13 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -458,7 +458,7 @@ contains
     !>  \test
     !>  [test_pm_parallelism](@ref test_pm_parallelism)
     !>
-    !>  \finmain{setImageFinalized}
+    !>  \final{setImageFinalized}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 4:13 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -516,7 +516,7 @@ contains
     !>  \test
     !>  [test_pm_parallelism](@ref test_pm_parallelism)
     !>
-    !>  \finmain{getImageID}
+    !>  \final{getImageID}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 4:13 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -592,7 +592,7 @@ contains
     !>  \test
     !>  [test_pm_parallelism](@ref test_pm_parallelism)
     !>
-    !>  \finmain{getImageCount}
+    !>  \final{getImageCount}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 4:13 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -647,7 +647,7 @@ contains
     !>  \test
     !>  [test_pm_parallelism](@ref test_pm_parallelism)
     !>
-    !>  \finmain{getImageCountMPI}
+    !>  \final{getImageCountMPI}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 4:13 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -705,7 +705,7 @@ contains
     !>  \test
     !>  [test_pm_parallelism](@ref test_pm_parallelism)
     !>
-    !>  \finmain{getImageCountOMP}
+    !>  \final{getImageCountOMP}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 4:13 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -754,7 +754,7 @@ contains
     !>
     !>  \endcode
     !>
-    !>  \finmain{setImageCount}
+    !>  \final{setImageCount}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -821,7 +821,7 @@ contains
         !>  \test
         !>  [test_pm_parallelism](@ref test_pm_parallelism)
         !>
-        !>  \finmain{isFailedImage}
+        !>  \final{isFailedImage}
         !>
         !>  \author
         !>  \AmirShahmoradi, 9:49 PM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas at Austin

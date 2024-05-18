@@ -234,7 +234,7 @@
 !>  \test
 !>  [test_pm_io](@ref test_pm_io)
 !>
-!>  \finmain{pm_io}
+!>  \final{pm_io}
 !>
 !>  \author
 !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -277,7 +277,7 @@ module pm_io
     !>  \see
     !>  [filext](@ref pm_io::filext)<br>
     !>
-    !>  \finmain{filext_type}
+    !>  \final{filext_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -309,7 +309,7 @@ module pm_io
     !>  \see
     !>  [filext_type](@ref pm_io::filext_type)<br>
     !>
-    !>  \finmain{filext}
+    !>  \final{filext}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 11:35 PM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -475,7 +475,7 @@ module pm_io
     !>  \test
     !>  [test_pm_io](@ref test_pm_io)
     !>
-    !>  \finmain{field_type}
+    !>  \final{field_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -522,7 +522,7 @@ module pm_io
     !>  [formatted_type](@ref pm_io::formatted_type)<br>
     !>  [unformatted_type](@ref pm_io::unformatted_type)<br>
     !>
-    !>  \finmain{form_type}
+    !>  \final{form_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -558,7 +558,7 @@ module pm_io
     !>  [formatted_type](@ref pm_io::formatted_type)<br>
     !>  [unformatted_type](@ref pm_io::unformatted_type)<br>
     !>
-    !>  \finmain{unknown_type}
+    !>  \final{unknown_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -585,7 +585,7 @@ module pm_io
     !>  [formatted_type](@ref pm_io::formatted_type)<br>
     !>  [unformatted_type](@ref pm_io::unformatted_type)<br>
     !>
-    !>  \finmain{unknown}
+    !>  \final{unknown}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -623,7 +623,7 @@ module pm_io
     !>  [formatted_type](@ref pm_io::formatted_type)<br>
     !>  [unformatted_type](@ref pm_io::unformatted_type)<br>
     !>
-    !>  \finmain{unformatted_type}
+    !>  \final{unformatted_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -650,7 +650,7 @@ module pm_io
     !>  [formatted_type](@ref pm_io::formatted_type)<br>
     !>  [unformatted_type](@ref pm_io::unformatted_type)<br>
     !>
-    !>  \finmain{unformatted}
+    !>  \final{unformatted}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -688,7 +688,7 @@ module pm_io
     !>  [formatted_type](@ref pm_io::formatted_type)<br>
     !>  [unformatted_type](@ref pm_io::unformatted_type)<br>
     !>
-    !>  \finmain{formatted_type}
+    !>  \final{formatted_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -715,7 +715,7 @@ module pm_io
     !>  [formatted_type](@ref pm_io::formatted_type)<br>
     !>  [unformatted_type](@ref pm_io::unformatted_type)<br>
     !>
-    !>  \finmain{formatted}
+    !>  \final{formatted}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -753,7 +753,7 @@ module pm_io
     !>  [formatted_type](@ref pm_io::formatted_type)<br>
     !>  [unformatted_type](@ref pm_io::unformatted_type)<br>
     !>
-    !>  \finmain{csv_type}
+    !>  \final{csv_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -780,7 +780,7 @@ module pm_io
     !>  [formatted_type](@ref pm_io::formatted_type)<br>
     !>  [unformatted_type](@ref pm_io::unformatted_type)<br>
     !>
-    !>  \finmain{csv}
+    !>  \final{csv}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -818,7 +818,7 @@ module pm_io
     !>  [formatted_type](@ref pm_io::formatted_type)<br>
     !>  [unformatted_type](@ref pm_io::unformatted_type)<br>
     !>
-    !>  \finmain{fld_type}
+    !>  \final{fld_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -845,7 +845,7 @@ module pm_io
     !>  [formatted_type](@ref pm_io::formatted_type)<br>
     !>  [unformatted_type](@ref pm_io::unformatted_type)<br>
     !>
-    !>  \finmain{fld}
+    !>  \final{fld}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -904,7 +904,7 @@ module pm_io
 !   >  \test
 !   >  [test_pm_io](@ref test_pm_io)
 !   >
-!   >  \finmain{getRecl}
+!   >  \final{getRecl}
 !   >
 !   >  \author
 !   >  Amir Shahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1032,7 +1032,7 @@ module pm_io
     !>  \remedy
     !>  All `iomsg` arguments are now assumed-length strings.<br>
     !>
-    !>  \finmain{openArg_type}
+    !>  \final{openArg_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1183,7 +1183,7 @@ module pm_io
     !>  \test
     !>  [test_pm_io](@ref test_pm_io)
     !>
-    !>  \finmain{openArg_typer}
+    !>  \final{openArg_typer}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1282,7 +1282,7 @@ module pm_io
     !>  \test
     !>  [test_pm_io](@ref test_pm_io)
     !>
-    !>  \finmain{isOpen}
+    !>  \final{isOpen}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1377,7 +1377,7 @@ module pm_io
     !>  \test
     !>  [test_pm_io](@ref test_pm_io)
     !>
-    !>  \finmain{getAction}
+    !>  \final{getAction}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1495,7 +1495,7 @@ module pm_io
     !>  This procedure can be converted to a generic interface to add the optional `iseq()`
     !>  external comparison procedures for custom exclusion or inclusion of lines in the count.
     !>
-    !>  \finmain{getCountRecord}
+    !>  \final{getCountRecord}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1579,7 +1579,7 @@ module pm_io
     !>  \test
     !>  [test_pm_io](@ref test_pm_io)
     !>
-    !>  \finmain{getContentsFrom}
+    !>  \final{getContentsFrom}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1671,7 +1671,7 @@ module pm_io
     !>  \test
     !>  [test_pm_io](@ref test_pm_io)
     !>
-    !>  \finmain{setContentsFrom}
+    !>  \final{setContentsFrom}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1784,7 +1784,7 @@ module pm_io
     !>  This generic interface must be expanded to input `unit` in place of an input `file`.<br>
     !>  There are potential complexities associated with an input `unit` that need `inquire` statement such as `access`, `form`, etc.<br>
     !>
-    !>  \finmain{setContentsTo}
+    !>  \final{setContentsTo}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1882,7 +1882,7 @@ module pm_io
     !>  \test
     !>  [test_pm_io](@ref test_pm_io)
     !>
-    !>  \finmain{setFileClosed}
+    !>  \final{setFileClosed}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1964,7 +1964,7 @@ module pm_io
     !>  \test
     !>  [test_pm_io](@ref test_pm_io)
     !>
-    !>  \finmain{getRecordFrom}
+    !>  \final{getRecordFrom}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2107,7 +2107,7 @@ module pm_io
     !>  \test
     !>  [test_pm_io](@ref test_pm_io)
     !>
-    !>  \finmain{setRecordFrom}
+    !>  \final{setRecordFrom}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2219,7 +2219,7 @@ module pm_io
     !>  This procedure can be converted to a generic interface to add the optional `iseq()`
     !>  external comparison procedures for custom exclusion or inclusion of lines in the count.
     !>
-    !>  \finmain{getCountRecordLeft}
+    !>  \final{getCountRecordLeft}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2380,7 +2380,7 @@ module pm_io
     !>  In the current implementation, the behavior under an empty `sep` with `trans` option present is vague and untested.<br>
     !>  This must be clarified via testing and further improvements.<br>
     !>
-    !>  \finmain{getErrTableRead}
+    !>  \final{getErrTableRead}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -5930,7 +5930,7 @@ module pm_io
     !>  \test
     !>  [test_pm_io](@ref test_pm_io)
     !>
-    !>  \finmain{getErrTableWrite}
+    !>  \final{getErrTableWrite}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -9397,7 +9397,7 @@ module pm_io
     !>  The `optional` input arguments `deliml` and `delimr` of rank `1` of type [css_type](@ref pm_container::css_type)
     !>  must be added to allow field recognition with arbitrary left/right delimiters within a record.<br>
     !>
-    !>  \finmain{getFieldSep}
+    !>  \final{getFieldSep}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -9823,7 +9823,7 @@ module pm_io
     !>  \test
     !>  [test_pm_io](@ref test_pm_io)
     !>
-    !>  \finmain{wrap_type}
+    !>  \final{wrap_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -9988,7 +9988,7 @@ module pm_io
     !>  \test
     !>  [test_pm_io](@ref test_pm_io)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -10275,7 +10275,7 @@ module pm_io
     !>  The `public` attributes of all components of this derived type must be converted to `protected`
     !>  once the `protected` attribute of Fortran 2023 is supported by the Fortran compilers supported by the ParaMonte library.<br>
     !>
-    !>  \finmain{display_type}
+    !>  \final{display_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -11386,7 +11386,7 @@ module pm_io
     !>  The existence of this object is to merely facilitate quick tests and displays of items on the default stdout.<br>
     !>  Given the global nature of this object, its usage is not recommended beyond simple tests and debugging tasks.<br>
     !>
-    !>  \finmain{disp}
+    !>  \final{disp}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -11501,7 +11501,7 @@ module pm_io
     !>  \test
     !>  [test_pm_io](@ref test_pm_io)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -11718,7 +11718,7 @@ module pm_io
     !>  The syntax of the procedure interfaces must be fixed and reverted to the original aliasing style, as soon as the \ifort{2021.5} bug is resolved.
     !>  Note that \gfortran{10-11} has no problem compiling the code.
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -18478,7 +18478,7 @@ module pm_io
     !>  \remedy
     !>  For now, the `value` attribute of the input argument of function [getCountDigit](@ref pm_mathNumSys::getCountDigit) was converted to `intent(in)`.<br>
     !>
-    !>  \finmain{getFormat}
+    !>  \final{getFormat}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 2:47 AM, Michigan
@@ -18942,7 +18942,7 @@ module pm_io
 !    !>  \pmed
 !    !>  A new interface for computing the maximum field length without redundant blanks for a specific given input **value** or collection of values should be added.<br>
 !    !>
-!    !>  \finmain{getLenFieldMin}
+!    !>  \final{getLenFieldMin}
 !    !>
 !    !>  \author
 !    !>  \AmirShahmoradi, Oct 16, 2009, 2:47 AM, Michigan
@@ -19178,7 +19178,7 @@ contains
 !    !>  \test
 !    !>  [test_pm_io](@ref test_pm_io)
 !    !>
-!    !>  \finmain{setStatIO}
+!    !>  \final{setStatIO}
 !    !>
 !    !>  \author
 !    !>  \AmirShahmoradi, Tuesday March 7, 2017, 2:22 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -19357,7 +19357,7 @@ contains
     !>  \test
     !>  [test_pm_io](@ref test_pm_io)
     !>
-    !>  \finmain{isPreconnected}
+    !>  \final{isPreconnected}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -19427,7 +19427,7 @@ contains
     !>  \test
     !>  [test_pm_io](@ref test_pm_io)
     !>
-    !>  \finmain{getFileUnit}
+    !>  \final{getFileUnit}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

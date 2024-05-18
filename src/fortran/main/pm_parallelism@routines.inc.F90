@@ -17,7 +17,7 @@
 !>  \brief
 !>  This include file contains procedure implementations of [pm_optimization](@ref pm_optimization).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -45,7 +45,7 @@
         !>
         !>  \endcode
         !>
-        !>  \finmain{MAX_NUM_IMAGE}
+        !>  \final{MAX_NUM_IMAGE}
         !>
         !>  \author
         !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

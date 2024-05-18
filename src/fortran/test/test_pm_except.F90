@@ -20,7 +20,7 @@
 !>  The tests of this module are bound to fail with non-IEEE-compliant processors or compiler optimization flags.
 !>  For example, in `-fast-math` mode of gfortran, the regular tests of `NaN` value will fail.
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX

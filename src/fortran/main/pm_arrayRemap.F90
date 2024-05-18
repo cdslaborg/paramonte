@@ -40,7 +40,7 @@
 !>  \test
 !>  [test_pm_arrayRemap](@ref test_pm_arrayRemap)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX
@@ -133,7 +133,7 @@ module pm_arrayRemap
     !>  \todo
     !>  \pvhigh The gfortran bugs in the implementations of this generic interface must be resolved in the future.<br>
     !>
-    !>  \finmain{getRemapped}
+    !>  \final{getRemapped}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1064,7 +1064,7 @@ module pm_arrayRemap
     !>  \todo
     !>  \pvhigh The gfortran bugs in the implementations of this generic interface must be resolved in the future.<br>
     !>
-    !>  \finmain{setRemapped}
+    !>  \final{setRemapped}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

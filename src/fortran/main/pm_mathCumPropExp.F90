@@ -37,7 +37,7 @@
 !>  \test
 !>  [test_pm_mathCumPropExp](@ref test_pm_mathCumPropExp)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, April 25, 2015, 2:21 PM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -171,7 +171,7 @@ module pm_mathCumPropExp
     !>  \test
     !>  [test_pm_mathCumPropExp](@ref test_pm_mathCumPropExp)
     !>
-    !>  \finmain{getCumPropExp}
+    !>  \final{getCumPropExp}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 25, 2015, 2:21 PM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -559,7 +559,7 @@ module pm_mathCumPropExp
     !>  \plow
     !>  This generic interface can be expanded to include input arrays with `Weight`s.
     !>
-    !>  \finmain{setCumPropExp}
+    !>  \final{setCumPropExp}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 25, 2015, 2:21 PM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -2118,7 +2118,7 @@ contains
     !>  This routine is only kept for backward compatibility and should not be used in production code.
     !>  Instead, use the procedures under the generic interface [setCumPropExp](@ref pm_mathCumPropExp::setCumPropExp).
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \test
     !>  [test_pm_mathCumPropExp](@ref test_pm_mathCumPropExp)

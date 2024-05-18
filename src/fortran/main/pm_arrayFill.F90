@@ -32,7 +32,7 @@
 !>  \test
 !>  [test_pm_arrayFill](@ref test_pm_arrayFill)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX
@@ -125,7 +125,7 @@ module pm_arrayFill
     !>  \plow
     !>  This generic interface can be extended to `array` arguments of higher ranks.<br>
     !>
-    !>  \finmain{getFilled}
+    !>  \final{getFilled}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

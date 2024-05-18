@@ -1,70 +1,55 @@
+%>  \brief
+%>  Return a matrix of MATLAB doubles of shape ``[npnt, 2]``
+%>  containing the coordinates of a set of points on the boundary
+%>  of a 2D ellipsoid whose Gramian matrix is specified as input
+%>  and whose center is also optionally specified.<br>
+%>
+%>  \param[in]  gramian :   The input square matrix of MATLAB doubles of shape ``[2, 2]`` containing the
+%>                          Gramian of the target 2D ellipsoid whose boundary points are to be returned.<br>
+%>                          (**optional**. If not present or empty, the default is ``eye(2, 2)``.)
+%>  \param[in]  center  :   The input vector of MATLAB doubles of size ``2`` containing the 2D coordinates
+%>                          of the center of the target 2D ellipsoid whose boundary points are to be returned.<br>
+%>                          (**optional**. If not present or empty, the default is ``zeros(2, 1)``.)
+%>  \param[in]  npnt    :   The input scalar MATLAB whole number containing the number of points to
+%>                          return on the boundary of the target 2D ellipsoid.<br>
+%>                          (**optional**, default = ``50``.)
+%>
+%>  \return
+%>  `bcrd`              :   The output matrix of MATLAB doubles of shape ``[npnt, 2]``
+%>                          containing the coordinates of a set of ``npnt`` points on
+%>                          the boundary of the target 2D ellipsoid.<br>
+%>
+%>  \interface{Paradram}
+%>  \code{.m}
+%>
+%>      bcrd = pm.geom.ell2.getBorder();
+%>      bcrd = pm.geom.ell2.getBorder(gramian);
+%>      bcrd = pm.geom.ell2.getBorder(gramian, center);
+%>      bcrd = pm.geom.ell2.getBorder(gramian, center, npnt);
+%>      bcrd = pm.geom.ell2.getBorder([], [], []);
+%>
+%>  \endcode
+%>
+%>  \see
+%>  [pm.geom.ell2.getBorders](@ref getBorders)<br>
+%>  [pm.vis.cascade.Ellipse](@ref Ellipse)<br>
+%>  [pm.vis.subplot.Ellipse](@ref Ellipse)<br>
+%>  [pm.vis.plot.Ellipse](@ref Ellipse)<br>
+%>  [pm.vis.tile.Ellipse](@ref Ellipse)<br>
+%>
+%>  \example{getBorder}
+%>  \include{lineno} example/pm_sampling/mvn/main.m
+%>  \matlabrun{getBorder}
+%>  \vis{getBorder}
+%>  \image html example/+geom/+ell2/getBorder.2d.png width=700
+%>  \image html example/+geom/+ell2/getBorder.3d.png width=700
+%>  \image html example/+geom/+ell2/getBorder.wavy.png width=700
+%>
+%>  \final{getBorder}
+%>
+%>  \author
+%>  \AmirShahmoradi, May 16 2016, 9:03 AM, Oden Institute for Computational Engineering and Sciences (ICES), UT Austin
 function bcrd = getBorder(gramian, center, npnt)
-    %
-    %   Return a matrix of MATLAB doubles of shape ``[npnt, 2]``
-    %   containing the coordinates of a set of points on the boundary
-    %   of a 2D ellipsoid whose Gramian matrix is specified as input
-    %   and whose center is also optionally specified.
-    %
-    %   Parameters
-    %   ----------
-    %
-    %       gramian
-    %
-    %           The input square matrix of MATLAB doubles of shape ``[2, 2]``
-    %           containing the Gramian of the target 2D ellipsoid whose
-    %           boundary points are to be returned.
-    %           (**optional**. If not present or empty, the default is ``eye(2, 2)``.)
-    %
-    %       center
-    %
-    %           The input vector of MATLAB doubles of size ``2`` containing
-    %           the 2D coordinates of the center of the target 2D ellipsoid
-    %           whose boundary points are to be returned.
-    %           (**optional**. If not present or empty, the default is ``zeros(2, 1)``.)
-    %
-    %       npnt
-    %
-    %           The input scalar MATLAB whole number containing the number of
-    %           points to return on the boundary of the target 2D ellipsoid.
-    %           (**optional**, default = ``50``.)
-    %
-    %   Returns
-    %   -------
-    %
-    %       bcrd
-    %
-    %           The output matrix of MATLAB doubles of shape ``[npnt, 2]``
-    %           containing the coordinates of a set of ``npnt`` points on
-    %           the boundary of the target 2D ellipsoid.
-    %
-    %   Interface
-    %   ---------
-    %
-    %       pm.geom.ell2.getBorder()
-    %       pm.geom.ell2.getBorder(gramian)
-    %       pm.geom.ell2.getBorder(gramian, center)
-    %       pm.geom.ell2.getBorder(gramian, center, npnt)
-    %       pm.geom.ell2.getBorder([], [], [])
-    %
-    %   Example
-    %   -------
-    %
-    %       bcrd = pm.geom.ell2.getBorder();
-    %       figure; h = plot(bcrd(:, 1), bcrd(:, 2), '-');
-    %
-    %       bcrd = pm.geom.ell2.getBorder([], [], 1);
-    %       figure; h = plot3(bcrd(:, 1), bcrd(:, 2), bcrd(:, 3), '-');
-    %
-    %       npnt = 500;
-    %       range = 10 * pi * [-1 : 2 / (npnt - 1) : 1];
-    %       bcrd = pm.geom.ell2.getBorder([], [], sin(range / 5) + sin(range) / 5, npnt);
-    %       figure; plot3(bcrd(:, 1), bcrd(:, 2), bcrd(:, 3));
-    %
-    %   LICENSE
-    %   -------
-    %
-    %       https://github.com/cdslaborg/paramonte/blob/main/LICENSE.md
-    %
     if  nargin < 3
         npnt = [];
     end

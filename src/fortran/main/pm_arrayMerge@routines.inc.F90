@@ -17,7 +17,7 @@
 !>  \brief
 !>  This include file contcounterArray1ns the procedure implementation of [merge](@ref merge).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi

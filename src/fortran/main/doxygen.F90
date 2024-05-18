@@ -459,7 +459,7 @@
 !>      +   The Doxygen `\test` tag, if any exists, must appear immediately after the example section designated by the <tt>\\example</tt> tag.<br>
 !>      +   The Doxygen `\todo` tag, if any exists, must appear immediately after the `\test` tag or any other tag immediately preceding it.<br>
 !>      +   The Doxygen `\bug` tag, if any exists, must appear immediately after the `\todo` tag or any other tag immediately preceding it.<br>
-!>      +   The closing command of each documentation section must be the ParaMonte custom command <tt>\\finmain</tt> separated from the tags before and after by an empty line.<br>
+!>      +   The closing command of each documentation section must be the ParaMonte custom command <tt>\\final</tt> separated from the tags before and after by an empty line.<br>
 !>      +   The Doxygen `\author` tag is the last command to appear in any documentation section, and it must preferably have the format exemplified in the example below.<br>
 !>      <br>
 !>      <br>
@@ -483,7 +483,7 @@
 !>          +   <tt>\\abbr</tt> Inserts a `\remark` tag about the naming abbreviations used in the library.
 !>          +   <tt>\\naming</tt> Inserts a `\remark` tag about the naming conventions used in the library.
 !>          +   <tt>\\license</tt> Inserts a `\remark` tag about the generic licensing of the library.
-!>          +   <tt>\\finmain</tt> Inserts the set of final generic remarks that should appear at the end of each documentation section.
+!>          +   <tt>\\final</tt> Inserts the set of final generic remarks that should appear at the end of each documentation section.
 !>          +   <tt>\\RK</tt>       Inserts a hyper-link reference \RK     to the default `real` kind used in the library.
 !>          +   <tt>\\RK32</tt>     Inserts a hyper-link reference \RK32   to the `real32` real kind used in the library.
 !>          +   <tt>\\RK64</tt>     Inserts a hyper-link reference \RK64   to the `real64` real kind used in the library.
@@ -585,7 +585,7 @@
 !>      !>  \bug
 !>      !>  This code used to have a well-known bug in version 1.1, but is now resolved.
 !>      !>
-!>      !>  \finmain
+!>      !>  \final
 !>      !>
 !>      !>  \author
 !>      !>  \FatemehBagheri, Monday 02:15 AM, September 27, 2021, Dallas, TX<br>

@@ -50,7 +50,7 @@
 !>  \pmed
 !>  Interfaces for `real` weights and without weights should be added in future.<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Saturday 1:48 AM, August 20, 2016, Institute for Computational Engineering and Sciences, UT Austin, TX
@@ -147,7 +147,7 @@ module pm_arrayRefine
     !>  For now, a preprocessor macro defines two separate interfaces for the two compilers so that both compilers can compile this file.<br>
     !>  This minor interface difference should not impact the usage of this module with different compilers.<br>
     !>
-    !>  \finmain{getRefined}
+    !>  \final{getRefined}
     !>
     !>  \author
     !>  \AmirShahmoradi, Saturday 1:48 AM, August 20, 2016, Institute for Computational Engineering and Sciences, UT Austin, TX
@@ -1010,7 +1010,7 @@ module pm_arrayRefine
     !>  \test
     !>  [test_pm_arrayRefine](@ref test_pm_arrayRefine)
     !>
-    !>  \finmain{setRefined}
+    !>  \final{setRefined}
     !>
     !>  \author
     !>  \AmirShahmoradi, Saturday 1:48 AM, August 20, 2016, Institute for Computational Engineering and Sciences, UT Austin, TX

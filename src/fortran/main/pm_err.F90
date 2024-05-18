@@ -42,7 +42,7 @@
 !>
 !>  [test_pm_err](@ref test_pm_err)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, 3:43 AM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas at Austin
@@ -72,7 +72,7 @@ module pm_err
     !>  Instead it return the program control to the caller procedure for further actions.<br>
     !>  This flag is important for testing the parallel implementations of the routines of the ParaMonte library.<br>
     !>
-    !>  \finmain{SOFT_EXIT_ENABLED}
+    !>  \final{SOFT_EXIT_ENABLED}
     !>
     !>  \author
     !>  \AmirShahmoradi, 3:43 AM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas at Austin
@@ -91,7 +91,7 @@ module pm_err
     !>  assigned to the `stat` component of the [err_type](@ref pm_err::err_type).<br>
     !>  It is used to detect and control the printing of the compiler error `stat` number if any exists.<br>
     !>
-    !>  \finmain{STATNULL}
+    !>  \final{STATNULL}
     !>
     !>  \author
     !>  \AmirShahmoradi, 3:43 AM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas at Austin
@@ -150,7 +150,7 @@ module pm_err
     !>  \output{err_type}
     !>  \include{lineno} example/pm_err/err_type/main.out.F90
     !>
-    !>  \finmain{err_type}
+    !>  \final{err_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, 3:43 AM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas at Austin
@@ -195,7 +195,7 @@ module pm_err
 !    !>  \output{message_type}
 !    !>  \include{lineno} example/pm_err/err_type/main.out.F90
 !    !>
-!    !>  \finmain{message_type}
+!    !>  \final{message_type}
 !    !>
 !    !>  \author
 !    !>  \AmirShahmoradi, 3:43 AM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas at Austin
@@ -372,7 +372,7 @@ module pm_err
     !>
     !>  [test_pm_err](@ref test_pm_err)
     !>
-    !>  \finmain{getFine}
+    !>  \final{getFine}
     !>
     !>  \todo
     !>  \pmed Adding an example usage to this interface can be helpful.<br>
@@ -494,7 +494,7 @@ module pm_err
     !>
     !>  [test_pm_err](@ref test_pm_err)
     !>
-    !>  \finmain{getFile}
+    !>  \final{getFile}
     !>
     !>  \todo
     !>  \pmed Adding an example usage to this interface can be helpful.<br>
@@ -611,7 +611,7 @@ module pm_err
     !>
     !>  [test_pm_err](@ref test_pm_err)
     !>
-    !>  \finmain{getLine}
+    !>  \final{getLine}
     !>
     !>  \todo
     !>  \pmed Adding an example usage to this interface can be helpful.<br>
@@ -725,7 +725,7 @@ module pm_err
     !>
     !>  [test_pm_err](@ref test_pm_err)
     !>
-    !>  \finmain{setAsserted}
+    !>  \final{setAsserted}
     !>
     !>  \todo
     !>  \pmed Adding an example usage to this interface can be helpful.<br>
@@ -882,7 +882,7 @@ module pm_err
     !>  \test
     !>  [test_pm_err](@ref test_pm_err)
     !>
-    !>  \finmain{message_type}
+    !>  \final{message_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -966,7 +966,7 @@ module pm_err
     !>  \remedy
     !>  For now, the custom constructor bypasses \gfortran bug.<br>
     !>
-    !>  \finmain{mark_type}
+    !>  \final{mark_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1032,7 +1032,7 @@ module pm_err
     !>  \todo
     !>  \plow A test should be implemented for arrays of size that can be represented *only* by an \IKD integer.
     !>
-    !>  \finmain{mark_type}
+    !>  \final{mark_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1120,7 +1120,7 @@ module pm_err
     !>  \remedy
     !>  For now, the custom constructor bypasses \gfortran bug.<br>
     !>
-    !>  \finmain{note_type}
+    !>  \final{note_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1186,7 +1186,7 @@ module pm_err
     !>  \todo
     !>  \plow A test should be implemented for arrays of size that can be represented *only* by an \IKD integer.
     !>
-    !>  \finmain{note_type}
+    !>  \final{note_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1271,7 +1271,7 @@ module pm_err
     !>  \remedy
     !>  For now, the custom constructor bypasses \gfortran bug.<br>
     !>
-    !>  \finmain{warn_type}
+    !>  \final{warn_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1337,7 +1337,7 @@ module pm_err
     !>  \todo
     !>  \plow A test should be implemented for arrays of size that can be represented *only* by an \IKD integer.
     !>
-    !>  \finmain{warn_type}
+    !>  \final{warn_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1435,7 +1435,7 @@ module pm_err
     !>  \remedy
     !>  For now, the custom constructor bypasses \gfortran bug.<br>
     !>
-    !>  \finmain{stop_type}
+    !>  \final{stop_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1504,7 +1504,7 @@ module pm_err
     !>  \todo
     !>  \plow A test should be implemented for arrays of size that can be represented *only* by an \IKD integer.
     !>
-    !>  \finmain{stop_type}
+    !>  \final{stop_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1611,7 +1611,7 @@ module pm_err
     !>
     !>  [test_pm_err](@ref test_pm_err)
     !>
-    !>  \finmain{show}
+    !>  \final{show}
     !>
     !>  \author
     !>  \AmirShahmoradi, 9:49 PM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas at Austin
@@ -1992,7 +1992,7 @@ module pm_err
     !>
     !>  [test_pm_err](@ref test_pm_err)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, 9:49 PM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas at Austin
@@ -2134,7 +2134,7 @@ module pm_err
     !>
     !>  [test_pm_err](@ref test_pm_err)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, 9:49 PM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas at Austin
@@ -2276,7 +2276,7 @@ module pm_err
     !>
     !>  [test_pm_err](@ref test_pm_err)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, 9:49 PM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas at Austin
@@ -2429,7 +2429,7 @@ module pm_err
     !>
     !>  [test_pm_err](@ref test_pm_err)
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, 9:49 PM Friday, March 1, 2013, Institute for Fusion Studies, The University of Texas at Austin

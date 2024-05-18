@@ -38,7 +38,7 @@
 !>  \test
 !>  [test_pm_mathCumSum](@ref test_pm_mathCumSum)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, April 25, 2015, 2:21 PM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -122,7 +122,7 @@ module pm_mathCumSum
     !>  \todo
     !>  \pmed This generic interface can be expanded to include input arrays with `Weight`s.
     !>
-    !>  \finmain{getCumSum}
+    !>  \final{getCumSum}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 08:49 PM, August 10, 2021, Dallas, TX
@@ -413,7 +413,7 @@ module pm_mathCumSum
     !>  \todo
     !>  \pmed This generic interface can be expanded to include input arrays with `Weight`s.
     !>
-    !>  \finmain{setCumSum}
+    !>  \final{setCumSum}
     !>
     !>  \author
     !>  \FatemehBagheri, Tuesday 08:49 PM, August 10, 2021, Dallas, TX

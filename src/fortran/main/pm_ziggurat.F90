@@ -33,7 +33,7 @@
 !>  \test
 !>  [test_pm_ziggurat](@ref test_pm_ziggurat)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, April 25, 2015, 2:21 PM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -170,7 +170,7 @@ module pm_ziggurat
     !>  \pmed
     !>  Examples should be added to the documentation of this generic interface in future.<br>
     !>
-    !>  \finmain{getZig}
+    !>  \final{getZig}
     !>
     !>  \author
     !>  \AmirShahmoradi, April 25, 2015, 2:21 PM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -309,7 +309,7 @@ module pm_ziggurat
 !    !>  \pmed
 !    !>  Examples should be added to the documentation of this generic interface in future.<br>
 !    !>
-!    !>  \finmain{getZigCRD}
+!    !>  \final{getZigCRD}
 !    !>
 !    !>  \author
 !    !>  \AmirShahmoradi, April 25, 2015, 2:21 PM, National Institute for Fusion Studies, The University of Texas at Austin

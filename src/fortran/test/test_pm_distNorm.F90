@@ -16,7 +16,7 @@
 
 !>  \brief This module contains tests of the module [pm_distNorm](@ref pm_distNorm).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Tuesday 2:06 AM, September 21, 2021, Dallas, TX

@@ -33,7 +33,7 @@
 !>  \test
 !>  [test_pm_val2logical](@ref test_pm_val2logical)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -100,7 +100,7 @@ module pm_val2logical
     !>  \test
     !>  [test_pm_val2logical](@ref test_pm_val2logical)
     !>
-    !>  \finmain{getLogical}
+    !>  \final{getLogical}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -230,7 +230,7 @@ module pm_val2logical
     !>  \test
     !>  [test_pm_val2logical](@ref test_pm_val2logical)
     !>
-    !>  \finmain{setLogical}
+    !>  \final{setLogical}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

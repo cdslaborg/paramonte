@@ -54,7 +54,7 @@
 !>  \remedy
 !>  Avoid compiling the library with \ifx.
 !>  
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX
@@ -174,7 +174,7 @@ module pm_arrayInit
     !>  This is because of ambiguity created by scalar `core` for output `array` of ranks two and higher.<br>
     !>  This can be resolved once the Fortran standard allows deferred rank function output.<br>
     !>
-    !>  \finmain{getCoreHalo}
+    !>  \final{getCoreHalo}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1497,7 +1497,7 @@ module pm_arrayInit
     !>  The former offers a simple yet powerful solution.<br>
     !>  However, a benchmark must be done to investigate the performance penalty of switching the `contiguous` attribute off.<br>
     !>
-    !>  \finmain{setCoreHalo}
+    !>  \final{setCoreHalo}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

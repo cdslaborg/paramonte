@@ -132,7 +132,7 @@
 !>  \test
 !>  [test_pm_polation](@ref test_pm_polation)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Tuesday March 7, 2017, 3:50 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -173,7 +173,7 @@ module pm_polation
     !>  [monopol_type](@ref pm_polation::monopol_type) <br>
     !>  [piwipol_type](@ref pm_polation::piwipol_type)<br>
     !>
-    !>  \finmain{neimean_type}
+    !>  \final{neimean_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -209,7 +209,7 @@ module pm_polation
     !>  [monopol_type](@ref pm_polation::monopol_type) <br>
     !>  [piwipol_type](@ref pm_polation::piwipol_type)<br>
     !>
-    !>  \finmain{neinear_type}
+    !>  \final{neinear_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -245,7 +245,7 @@ module pm_polation
     !>  [monopol_type](@ref pm_polation::monopol_type) <br>
     !>  [piwipol_type](@ref pm_polation::piwipol_type)<br>
     !>
-    !>  \finmain{neinext_type}
+    !>  \final{neinext_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -281,7 +281,7 @@ module pm_polation
     !>  [monopol_type](@ref pm_polation::monopol_type) <br>
     !>  [piwipol_type](@ref pm_polation::piwipol_type)<br>
     !>
-    !>  \finmain{neiprev_type}
+    !>  \final{neiprev_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -316,7 +316,7 @@ module pm_polation
     !>  [monopol_type](@ref pm_polation::monopol_type) <br>
     !>  [piwipol_type](@ref pm_polation::piwipol_type)<br>
     !>
-    !>  \finmain{piwilin_type}
+    !>  \final{piwilin_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -351,7 +351,7 @@ module pm_polation
     !>  [monopol_type](@ref pm_polation::monopol_type) <br>
     !>  [piwipol_type](@ref pm_polation::piwipol_type)<br>
     !>
-    !>  \finmain{monopol_type}
+    !>  \final{monopol_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -381,7 +381,7 @@ module pm_polation
     !>  [monopol_type](@ref pm_polation::monopol_type) <br>
     !>  [piwipol_type](@ref pm_polation::piwipol_type)<br>
     !>
-    !>  \finmain{piwipol_type}
+    !>  \final{piwipol_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -482,7 +482,7 @@ module pm_polation
     !>  \test
     !>  [test_pm_polation](@ref test_pm_polation)
     !>
-    !>  \finmain{getInterp}
+    !>  \final{getInterp}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1437,7 +1437,7 @@ module pm_polation
     !>  \test
     !>  [test_pm_polation](@ref test_pm_polation)
     !>
-    !>  \finmain{setInterp}
+    !>  \final{setInterp}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -2530,7 +2530,7 @@ module pm_polation
     !>  \test
     !>  [test_pm_polation](@ref test_pm_polation)
     !>
-    !>  \finmain{getExtrap}
+    !>  \final{getExtrap}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -3486,7 +3486,7 @@ module pm_polation
     !>  \test
     !>  [test_pm_polation](@ref test_pm_polation)
     !>
-    !>  \finmain{setExtrap}
+    !>  \final{setExtrap}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

@@ -71,7 +71,7 @@
 !>  \test
 !>  [test_pm_arrayResize](@ref test_pm_arrayResize)
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 12:20 AM, October 13, 2021, Dallas, TX
@@ -239,7 +239,7 @@ module pm_arrayResize
     !>  For now, the resolution was to remove and replace the checking macros with explicit merged `block` statements.<br>
     !>  A similar problem also was present in the implementation of [pm_quadPack](@ref pm_quadPack).<br>
     !>
-    !>  \finmain{setResized}
+    !>  \final{setResized}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

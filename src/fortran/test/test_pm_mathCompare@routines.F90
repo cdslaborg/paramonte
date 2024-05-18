@@ -16,7 +16,7 @@
 
 !>  \brief This file contains the implementations of the tests of module [pm_mathCompare](@ref pm_mathCompare).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Tuesday 2:06 AM, September 21, 2021, Dallas, TX

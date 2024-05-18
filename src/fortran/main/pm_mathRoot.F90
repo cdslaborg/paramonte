@@ -444,7 +444,7 @@
 !>  \pmed
 !>  The [Muller method](https://en.wikipedia.org/wiki/Muller%27s_method) of root-finding should be implemented.<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -493,7 +493,7 @@ module pm_mathRoot
     !>  [hybrid_type](@ref pm_mathRoot::hybrid_type)<br>
     !>  [method_type](@ref pm_mathRoot::method_type)<br>
     !>
-    !>  \finmain{method_type}
+    !>  \final{method_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -534,7 +534,7 @@ module pm_mathRoot
     !>  [hybrid_type](@ref pm_mathRoot::hybrid_type)<br>
     !>  [method_type](@ref pm_mathRoot::method_type)<br>
     !>
-    !>  \finmain{bracket_type}
+    !>  \final{bracket_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -575,7 +575,7 @@ module pm_mathRoot
     !>  [hybrid_type](@ref pm_mathRoot::hybrid_type)<br>
     !>  [method_type](@ref pm_mathRoot::method_type)<br>
     !>
-    !>  \finmain{iteration_type}
+    !>  \final{iteration_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -616,7 +616,7 @@ module pm_mathRoot
     !>  [hybrid_type](@ref pm_mathRoot::hybrid_type)<br>
     !>  [method_type](@ref pm_mathRoot::method_type)<br>
     !>
-    !>  \finmain{hybrid_type}
+    !>  \final{hybrid_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -663,7 +663,7 @@ module pm_mathRoot
     !>  [hybrid_type](@ref pm_mathRoot::hybrid_type)<br>
     !>  [method_type](@ref pm_mathRoot::method_type)<br>
     !>
-    !>  \finmain{brent_type}
+    !>  \final{brent_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -702,7 +702,7 @@ module pm_mathRoot
     !>  [hybrid_type](@ref pm_mathRoot::hybrid_type)<br>
     !>  [method_type](@ref pm_mathRoot::method_type)<br>
     !>
-    !>  \finmain{brent}
+    !>  \final{brent}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -751,7 +751,7 @@ module pm_mathRoot
     !>  [hybrid_type](@ref pm_mathRoot::hybrid_type)<br>
     !>  [method_type](@ref pm_mathRoot::method_type)<br>
     !>
-    !>  \finmain{toms748_type}
+    !>  \final{toms748_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -790,7 +790,7 @@ module pm_mathRoot
     !>  [hybrid_type](@ref pm_mathRoot::hybrid_type)<br>
     !>  [method_type](@ref pm_mathRoot::method_type)<br>
     !>
-    !>  \finmain{toms748}
+    !>  \final{toms748}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -839,7 +839,7 @@ module pm_mathRoot
     !>  [hybrid_type](@ref pm_mathRoot::hybrid_type)<br>
     !>  [method_type](@ref pm_mathRoot::method_type)<br>
     !>
-    !>  \finmain{false_type}
+    !>  \final{false_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -878,7 +878,7 @@ module pm_mathRoot
     !>  [hybrid_type](@ref pm_mathRoot::hybrid_type)<br>
     !>  [method_type](@ref pm_mathRoot::method_type)<br>
     !>
-    !>  \finmain{false}
+    !>  \final{false}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -927,7 +927,7 @@ module pm_mathRoot
     !>  [hybrid_type](@ref pm_mathRoot::hybrid_type)<br>
     !>  [method_type](@ref pm_mathRoot::method_type)<br>
     !>
-    !>  \finmain{secant_type}
+    !>  \final{secant_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -966,7 +966,7 @@ module pm_mathRoot
     !>  [hybrid_type](@ref pm_mathRoot::hybrid_type)<br>
     !>  [method_type](@ref pm_mathRoot::method_type)<br>
     !>
-    !>  \finmain{secant}
+    !>  \final{secant}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1015,7 +1015,7 @@ module pm_mathRoot
     !>  [hybrid_type](@ref pm_mathRoot::hybrid_type)<br>
     !>  [method_type](@ref pm_mathRoot::method_type)<br>
     !>
-    !>  \finmain{newton_type}
+    !>  \final{newton_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1054,7 +1054,7 @@ module pm_mathRoot
     !>  [hybrid_type](@ref pm_mathRoot::hybrid_type)<br>
     !>  [method_type](@ref pm_mathRoot::method_type)<br>
     !>
-    !>  \finmain{newton}
+    !>  \final{newton}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1103,7 +1103,7 @@ module pm_mathRoot
     !>  [hybrid_type](@ref pm_mathRoot::hybrid_type)<br>
     !>  [method_type](@ref pm_mathRoot::method_type)<br>
     !>
-    !>  \finmain{halley_type}
+    !>  \final{halley_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1142,7 +1142,7 @@ module pm_mathRoot
     !>  [hybrid_type](@ref pm_mathRoot::hybrid_type)<br>
     !>  [method_type](@ref pm_mathRoot::method_type)<br>
     !>
-    !>  \finmain{halley}
+    !>  \final{halley}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1191,7 +1191,7 @@ module pm_mathRoot
     !>  [hybrid_type](@ref pm_mathRoot::hybrid_type)<br>
     !>  [method_type](@ref pm_mathRoot::method_type)<br>
     !>
-    !>  \finmain{schroder_type}
+    !>  \final{schroder_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1230,7 +1230,7 @@ module pm_mathRoot
     !>  [hybrid_type](@ref pm_mathRoot::hybrid_type)<br>
     !>  [method_type](@ref pm_mathRoot::method_type)<br>
     !>
-    !>  \finmain{schroder}
+    !>  \final{schroder}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1279,7 +1279,7 @@ module pm_mathRoot
     !>  [hybrid_type](@ref pm_mathRoot::hybrid_type)<br>
     !>  [method_type](@ref pm_mathRoot::method_type)<br>
     !>
-    !>  \finmain{ridders_type}
+    !>  \final{ridders_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1318,7 +1318,7 @@ module pm_mathRoot
     !>  [hybrid_type](@ref pm_mathRoot::hybrid_type)<br>
     !>  [method_type](@ref pm_mathRoot::method_type)<br>
     !>
-    !>  \finmain{ridders}
+    !>  \final{ridders}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1367,7 +1367,7 @@ module pm_mathRoot
     !>  [hybrid_type](@ref pm_mathRoot::hybrid_type)<br>
     !>  [method_type](@ref pm_mathRoot::method_type)<br>
     !>
-    !>  \finmain{bisection_type}
+    !>  \final{bisection_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1406,7 +1406,7 @@ module pm_mathRoot
     !>  [hybrid_type](@ref pm_mathRoot::hybrid_type)<br>
     !>  [method_type](@ref pm_mathRoot::method_type)<br>
     !>
-    !>  \finmain{bisection}
+    !>  \final{bisection}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -1579,7 +1579,7 @@ module pm_mathRoot
     !>  \test
     !>  [test_pm_mathRoot](@ref test_pm_mathRoot)
     !>
-    !>  \finmain{getRoot}
+    !>  \final{getRoot}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
@@ -2665,7 +2665,7 @@ module pm_mathRoot
     !>  Regardless, this should be further investigated.<br>
     !>  For now, Schroder is diverted to Halley.<br>
     !>
-    !>  \finmain{setRoot}
+    !>  \final{setRoot}
     !>
     !>  \author
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan

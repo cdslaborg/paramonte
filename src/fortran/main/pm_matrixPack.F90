@@ -115,7 +115,7 @@
 !>
 !>  </ol>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -153,7 +153,7 @@ module pm_matrixPack
     !>  [rdpack_type](@ref pm_matrixPack::rdpack_type)<br>
     !>  [package_type](@ref pm_matrixPack::package_type)<br>
     !>
-    !>  \finmain{package_type}
+    !>  \final{package_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -191,7 +191,7 @@ module pm_matrixPack
     !>  [rdpack_type](@ref pm_matrixPack::rdpack_type)<br>
     !>  [package_type](@ref pm_matrixPack::package_type)<br>
     !>
-    !>  \finmain{ldpack_type}
+    !>  \final{ldpack_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -229,7 +229,7 @@ module pm_matrixPack
     !>  [rdpack_type](@ref pm_matrixPack::rdpack_type)<br>
     !>  [package_type](@ref pm_matrixPack::package_type)<br>
     !>
-    !>  \finmain{rdpack_type}
+    !>  \final{rdpack_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -256,7 +256,7 @@ module pm_matrixPack
     !>  [rdpack_type](@ref pm_matrixPack::rdpack_type)<br>
     !>  [package_type](@ref pm_matrixPack::package_type)<br>
     !>
-    !>  \finmain{rdpack}
+    !>  \final{rdpack}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -295,7 +295,7 @@ module pm_matrixPack
     !>  [rdpack_type](@ref pm_matrixPack::rdpack_type)<br>
     !>  [package_type](@ref pm_matrixPack::package_type)<br>
     !>
-    !>  \finmain{lcpack_type}
+    !>  \final{lcpack_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -329,7 +329,7 @@ module pm_matrixPack
     !>  [rdpack_type](@ref pm_matrixPack::rdpack_type)<br>
     !>  [package_type](@ref pm_matrixPack::package_type)<br>
     !>
-    !>  \finmain{rcpack_type}
+    !>  \final{rcpack_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -367,7 +367,7 @@ module pm_matrixPack
     !>  [rdpack_type](@ref pm_matrixPack::rdpack_type)<br>
     !>  [package_type](@ref pm_matrixPack::package_type)<br>
     !>
-    !>  \finmain{lfpack_type}
+    !>  \final{lfpack_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -394,7 +394,7 @@ module pm_matrixPack
     !>  [rdpack_type](@ref pm_matrixPack::rdpack_type)<br>
     !>  [package_type](@ref pm_matrixPack::package_type)<br>
     !>
-    !>  \finmain{lfpack}
+    !>  \final{lfpack}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -434,7 +434,7 @@ module pm_matrixPack
     !>  [rdpack_type](@ref pm_matrixPack::rdpack_type)<br>
     !>  [package_type](@ref pm_matrixPack::package_type)<br>
     !>
-    !>  \finmain{rfpack_type}
+    !>  \final{rfpack_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -461,7 +461,7 @@ module pm_matrixPack
     !>  [rdpack_type](@ref pm_matrixPack::rdpack_type)<br>
     !>  [package_type](@ref pm_matrixPack::package_type)<br>
     !>
-    !>  \finmain{rfpack}
+    !>  \final{rfpack}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -518,7 +518,7 @@ module pm_matrixPack
     !>  \pvhigh
     !>  This generic interface must be extended to `lfpack` format.
     !>
-    !>  \finmain
+    !>  \final
     !>
     !>  \author
     !>  \AmirShahmoradi, Monday March 6, 2017, 3:22 pm, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin.<br>

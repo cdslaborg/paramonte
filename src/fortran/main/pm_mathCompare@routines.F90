@@ -17,7 +17,7 @@
 !>  \brief
 !>  This file contains procedure implementations of [pm_mathCompare](@ref pm_mathCompare).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Wednesday 12:20 PM, September 22, 2021, Dallas, TX

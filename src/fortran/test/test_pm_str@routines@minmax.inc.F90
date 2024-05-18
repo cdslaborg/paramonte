@@ -17,7 +17,7 @@
 !>  \brief
 !>  This module contains implementations of the tests of the procedures under the generic interfaces in [pm_str](@ref pm_str).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi

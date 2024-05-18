@@ -17,7 +17,7 @@
 !>  \brief
 !>  This include file contains implementations of the procedures in module [pm_mathGamma](@ref pm_mathGamma).
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \FatemehBagheri, Sunday 11:23 PM, September 19, 2021, Dallas, TX

@@ -17,7 +17,7 @@
 !>  \brief
 !>  This module contains tests of the module [val2complex_pmod](@ref pm_val2complex).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi

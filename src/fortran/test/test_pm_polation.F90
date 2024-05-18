@@ -17,7 +17,7 @@
 !>  \brief 
 !>  This module contains tests of the module [pm_polation](@ref pm_polation).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author 
 !>  Amir Shahmoradi

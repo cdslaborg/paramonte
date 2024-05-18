@@ -17,7 +17,7 @@
 !>  \brief 
 !>  This module contains tests of the module [pm_matrixDet](@ref pm_matrixDet).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author 
 !>  Amir Shahmoradi

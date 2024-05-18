@@ -23,7 +23,7 @@
 !>  [pm_io](@ref pm_io)<br>
 !>  [pm_err](@ref pm_err)<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -54,7 +54,7 @@ module pm_memory
     !>  [sticky_type](@ref pm_memory::sticky_type)<br>
     !>  [memory_type](@ref pm_memory::memory_type)<br>
     !>
-    !>  \finmain{memory_type}
+    !>  \final{memory_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -82,7 +82,7 @@ module pm_memory
     !>  [sticky_type](@ref pm_memory::sticky_type)<br>
     !>  [memory_type](@ref pm_memory::memory_type)<br>
     !>
-    !>  \finmain{linear_type}
+    !>  \final{linear_type}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
@@ -101,7 +101,7 @@ module pm_memory
     !>  [sticky_type](@ref pm_memory::sticky_type)<br>
     !>  [memory_type](@ref pm_memory::memory_type)<br>
     !>
-    !>  \finmain{sticky}
+    !>  \final{sticky}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin

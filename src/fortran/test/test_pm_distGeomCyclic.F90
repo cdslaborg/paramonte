@@ -17,7 +17,7 @@
 !>  \brief 
 !>  This module contains tests of the module [pm_distGeomCyclic](@ref pm_distGeomCyclic).
 !>
-!>  \fintest
+!>  \final
 !>
 !>  \author 
 !>  Amir Shahmoradi

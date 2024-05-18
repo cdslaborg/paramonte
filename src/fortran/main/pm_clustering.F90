@@ -25,7 +25,7 @@
 !>  \test
 !>  [test_pm_clustering](@ref test_pm_clustering)<br>
 !>
-!>  \finmain
+!>  \final
 !>
 !>  \author
 !>  \AmirShahmoradi, April 03, 2017, 2:16 PM, Institute for Computational Engineering and Sciences (ICES), University of Texas at Austin
@@ -119,7 +119,7 @@ module pm_clustering
     !>  \test
     !>  [test_pm_clustering](@ref test_pm_clustering)
     !>
-    !>  \finmain{setMember}
+    !>  \final{setMember}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -478,7 +478,7 @@ module pm_clustering
     !>  \test
     !>  [test_pm_clustering](@ref test_pm_clustering)
     !>
-    !>  \finmain{setCenter}
+    !>  \final{setCenter}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
@@ -778,7 +778,7 @@ module pm_clustering
     !>  \test
     !>  [test_pm_clustering](@ref test_pm_clustering)
     !>
-    !>  \finmain{setKmeansPP}
+    !>  \final{setKmeansPP}
     !>  If you use or redistribute ideas based on this generic interface implementation, you should also cite the original k-means++ article:<br>
     !>  [Arthur, D.; Vassilvitskii, S. (2007). k-means++: the advantages of careful seeding](http://ilpubs.stanford.edu:8090/778/1/2006-13.pdf)<br>
     !>
@@ -1285,7 +1285,7 @@ module pm_clustering
     !>  \test
     !>  [test_pm_clustering](@ref test_pm_clustering)
     !>
-    !>  \finmain{setKmeans}
+    !>  \final{setKmeans}
     !>
     !>  \author
     !>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
